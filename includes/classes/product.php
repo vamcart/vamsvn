@@ -190,30 +190,52 @@ class product {
 			$group_check = " and p.group_permission_".$_SESSION['customers_status']['customers_status_id']."=1 ";
 		}
 
-		$orders_query = "select
-														                                  p.products_fsk18,
-														                                  p.products_id,
-														                                  p.label_id,
-														                                  p.products_price,
-														                                  p.products_quantity,
-														                                  p.products_tax_class_id,
-														                                  p.products_image,
-														                                  pd.products_name,
-														                                  p.products_vpe,
-						                           										  p.products_vpe_status,
-						                           										  p.products_vpe_value,
-														                                  pd.products_short_description FROM ".TABLE_ORDERS_PRODUCTS." opa, ".TABLE_ORDERS_PRODUCTS." opb, ".TABLE_ORDERS." o, ".TABLE_PRODUCTS." p, ".TABLE_PRODUCTS_DESCRIPTION." pd
-														                                  where opa.products_id = '".$this->pID."'
-														                                  and opa.orders_id = opb.orders_id
-														                                  and opb.products_id != '".$this->pID."'
-														                                  and opb.products_id = p.products_id
-														                                  and opb.orders_id = o.orders_id
-														                                  and p.products_status = '1'
-														                                  and pd.language_id = '".(int) $_SESSION['languages_id']."'
-														                                  and opb.products_id = pd.products_id
-														                                  ".$group_check."
-														                                  ".$fsk_lock."
-														                                  group by p.products_id order by o.date_purchased desc limit ".MAX_DISPLAY_ALSO_PURCHASED;
+$orders_id_query = vamDBquery("select orders_id from orders_products where products_id = '".$this->pID."' order by orders_products_id desc limit ".MAX_DISPLAY_ALSO_PURCHASED*3);
+
+$orders_id_array = array();
+while ($item = vam_db_fetch_array($orders_id_query, true)) {
+    $orders_id_array[] = $item['orders_id'];
+}
+$orders_id = '"'.join('","',$orders_id_array).'"';
+
+$products_id_query = vamDBquery("select
+                               products_id
+                               from ".TABLE_ORDERS_PRODUCTS."
+                               where orders_id in (".$orders_id.")
+                               and products_id <> '".$this->pID."'
+                               GROUP BY products_id
+                               order by orders_products_id Desc limit ".MAX_DISPLAY_ALSO_PURCHASED) ;
+
+$products_id_array = array();
+while ($item = vam_db_fetch_array($products_id_query, true)) {
+    $products_id_array[] = $item['products_id'];
+}
+
+$products_id = '"'.join('","',$products_id_array).'"';
+
+$orders_query = "select
+                      p.products_fsk18,
+                      p.products_id,
+                      p.label_id,
+                      p.products_price,
+                      p.products_quantity,
+                      p.products_tax_class_id,
+                      p.products_image,
+                      pd.products_name,
+                      p.products_vpe,
+                      p.products_vpe_status,
+                      p.products_vpe_value,
+                      pd.products_short_description
+                    from ".TABLE_PRODUCTS." p, ".TABLE_PRODUCTS_DESCRIPTION." pd 
+                    where p.products_id = pd.products_id
+                    and p.products_id in (".$products_id.")
+                    and p.products_status = '1' 
+                    and pd.language_id = '".(int) $_SESSION['languages_id']."'
+                    and p.products_quantity > '0' 
+                    ".$group_check."
+                    ".$fsk_lock."
+                    ORDER BY FIELD(p.products_id,".$products_id.") limit ".MAX_DISPLAY_ALSO_PURCHASED;
+                    
 		$orders_query = vamDBquery($orders_query);
 		while ($orders = vam_db_fetch_array($orders_query, true)) {
 
