@@ -75,13 +75,13 @@ require (DIR_WS_CLASSES.'order.php');
 
             }else{
                 unset($_SESSION['cart_alfabank_id']);
-                echo 'Ошибка проведения платежа #'.$response['ErrorCode'].', Статус операции #'.$response['OrderStatus'];
-                vam_redirect(vam_href_link(FILENAME_CHECKOUT, '', 'SSL'));
+                $error_text = 'Ошибка проведения платежа #'.$response['ErrorCode'].', Статус операции #'.$response['OrderStatus'];
+                vam_redirect(vam_href_link(FILENAME_CHECKOUT, 'payment_error='.$error_text, 'SSL'));
             }
         }else{
                 unset($_SESSION['cart_alfabank_id']);
-            echo 'Сервер получил неверные данные. Попробуйте повторить ваш запрос немного позже.';
-                vam_redirect(vam_href_link(FILENAME_DEFAULT, '', 'SSL'));
+            $error_text = 'Сервер получил неверные данные. Попробуйте повторить ваш запрос немного позже.';
+                vam_redirect(vam_href_link(FILENAME_DEFAULT, 'payment_error='.$error_text, 'SSL'));
         }
 
 
