@@ -511,7 +511,7 @@ background: #fff;
 #breadcrumbs .breadcrumbs a {
   padding: 0 5px 0 0;
   text-decoration: none;
-  color: #888888;
+  color: #555;
 }
 #breadcrumbs .breadcrumbs a:hover {
   color: #333333;
@@ -2604,7 +2604,7 @@ span.productSpecialPrice
 
 span.productOldPrice 
    {
-	  color: #000;
+	  color: #fff;
 	  text-decoration: line-through;
    }
 
