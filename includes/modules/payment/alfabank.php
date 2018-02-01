@@ -32,7 +32,7 @@
       $this->sort_order = MODULE_PAYMENT_ALFABANK_SORT_ORDER;
       $this->enabled = ((MODULE_PAYMENT_ALFABANK_STATUS == 'True') ? true : false);
 
-      ((MODULE_PAYMENT_ALFABANK_TEST == 'test') ? $this->form_action_url = 'https://web.rbsuat.com/ab/rest/' : $this->form_action_url = 'https://engine.paymentgate.ru/payment/rest/');
+      ((MODULE_PAYMENT_ALFABANK_TEST == 'test') ? $this->form_action_url = 'https://web.rbsuat.com/ab/rest/' : $this->form_action_url = 'https://pay.alfabank.ru/payment/rest/');
       
     }
 
