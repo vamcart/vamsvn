@@ -35,7 +35,7 @@ require (DIR_WS_CLASSES.'order.php');
 
         if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['orderId'])){
         
-            $_sgateway = ((MODULE_PAYMENT_ALFABANK_TEST == 'test') ? 'https://web.rbsuat.com/ab/rest/' : 'https://engine.paymentgate.ru/payment/rest/');
+            $_sgateway = ((MODULE_PAYMENT_ALFABANK_TEST == 'test') ? 'https://web.rbsuat.com/ab/rest/' : 'https://pay.alfabank.ru/payment/rest/');
             $_slogin = MODULE_PAYMENT_ALFABANK_API_LOGIN;
             $_spassword = MODULE_PAYMENT_ALFABANK_API_PASS;
             $_qdata = array(
