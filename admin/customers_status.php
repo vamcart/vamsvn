@@ -108,7 +108,7 @@
         }
       }
        
-      if ($customers_status_image = &vam_try_upload('customers_status_image', DIR_WS_ICONS)) {
+      if ($customers_status_image = &vam_try_upload('customers_status_image', DIR_FS_CATALOG_IMAGES . 'icons/')) {
         vam_db_query("update " . TABLE_CUSTOMERS_STATUS . " set customers_status_image = '" . $customers_status_image->filename . "' where customers_status_id = '" . vam_db_input($customers_status_id) . "'");
       }
 
@@ -250,7 +250,7 @@
 
     echo '<td class="dataTableContent" align="left">';
      if ($customers_status['customers_status_image'] != '') {
-       echo vam_image(DIR_WS_ICONS . $customers_status['customers_status_image'] , IMAGE_ICON_INFO);
+       echo vam_image(DIR_WS_CATALOG_IMAGES . 'icons/' . $customers_status['customers_status_image'] , IMAGE_ICON_INFO);
      }
      echo '</td>';
 
@@ -383,7 +383,7 @@
       }
 	  
       $contents[] = array('text' => '<br />' . TEXT_INFO_CUSTOMERS_STATUS_NAME . $customers_status_inputs_string);
-      $contents[] = array('text' => '<br />' . vam_image(DIR_WS_ICONS . $cInfo->customers_status_image, $cInfo->customers_status_name) . '<br />' . DIR_WS_ICONS . '<br /><b>' . $cInfo->customers_status_image . '</b>');
+      $contents[] = array('text' => '<br />' . vam_image(DIR_WS_CATALOG_IMAGES . 'icons/' . $cInfo->customers_status_image, $cInfo->customers_status_name) . '<br />' . DIR_WS_CATALOG_IMAGES . 'icons/' . '<br /><b>' . $cInfo->customers_status_image . '</b>');
       $contents[] = array('text' => '<br />' . TEXT_INFO_CUSTOMERS_STATUS_IMAGE . '<br />' . vam_draw_file_field('customers_status_image', $cInfo->customers_status_image));
       $contents[] = array('text' => '<br />' . TEXT_INFO_CUSTOMERS_STATUS_PUBLIC_INTRO . '<br />' . ENTRY_CUSTOMERS_STATUS_PUBLIC . ' ' . vam_draw_pull_down_menu('customers_status_public', $customers_status_public_array, $cInfo->customers_status_public ));
       $contents[] = array('text' => '<br />' . TEXT_INFO_CUSTOMERS_STATUS_MIN_ORDER_INTRO . '<br />' . ENTRY_CUSTOMERS_STATUS_MIN_ORDER . ' ' . vam_draw_input_field('customers_status_min_order', $cInfo->customers_status_min_order ));
