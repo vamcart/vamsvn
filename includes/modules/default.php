@@ -227,7 +227,7 @@ elseif ($category_depth == 'products' || $_GET['manufacturers_id']) {
     my_sorting_products($sorting_data);
     if (!$sorting_data['products_sorting'])
     $sorting_data['products_sorting'] = 'pd.products_name';
-    $sorting = ' ORDER BY '.$sorting_data['products_sorting'].' '.$sorting_data['products_sorting2'].' ';
+    $sorting = ' GROUP BY p.products_id ORDER BY '.$sorting_data['products_sorting'].' '.$sorting_data['products_sorting2'].' ';
     // We are asked to show only a specific category
     if (GROUP_CHECK == 'true') {
     $group_check = " and p.group_permission_".$_SESSION['customers_status']['customers_status_id']."=1 ";
@@ -310,7 +310,7 @@ elseif ($category_depth == 'products' || $_GET['manufacturers_id']) {
     my_sorting_products($sorting_data);
     if (!$sorting_data['products_sorting'])
     $sorting_data['products_sorting'] = 'pd.products_name';
-    $sorting = ' ORDER BY '.$sorting_data['products_sorting'].' '.$sorting_data['products_sorting2'].' ';
+    $sorting = ' GROUP BY p.products_id ORDER BY '.$sorting_data['products_sorting'].' '.$sorting_data['products_sorting2'].' ';
     // We are asked to show only specific catgeory
     if (GROUP_CHECK == 'true') {
     $group_check = " and p.group_permission_".$_SESSION['customers_status']['customers_status_id']."=1 ";
@@ -363,7 +363,7 @@ elseif ($category_depth == 'products' || $_GET['manufacturers_id']) {
     my_sorting_products($sorting_data);
     if (!$sorting_data['products_sorting'])
     $sorting_data['products_sorting'] = 'pd.products_name';
-    $sorting = ' ORDER BY '.$sorting_data['products_sorting'].' '.$sorting_data['products_sorting2'].' ';
+    $sorting = ' GROUP BY p.products_id ORDER BY '.$sorting_data['products_sorting'].' '.$sorting_data['products_sorting2'].' ';
     // We show them all
     if (GROUP_CHECK == 'true') {
     $group_check = " and p.group_permission_".$_SESSION['customers_status']['customers_status_id']."=1 ";
