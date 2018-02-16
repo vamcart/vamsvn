@@ -1001,7 +1001,7 @@ if (($_GET['action'] == 'edit') && ($order_exists)) {
         }
         
     </script>
-    <script src="http://api-maps.yandex.ru/1.1/index.xml?key=<?php echo MAP_API_KEY; ?>&onerror=apifault" type="text/javascript"></script>
+    <script src="https://api-maps.yandex.ru/1.1/index.xml?key=<?php echo MAP_API_KEY; ?>&onerror=apifault" type="text/javascript"></script>
     <script type="text/javascript">
 
 	$(document).ready(function(){
