@@ -1,6 +1,6 @@
 <?php
 /* -----------------------------------------------------------------------------------------
-   $Id: kupivkredit.php 998 2009/05/07 13:24:46 VaM $
+   $Id: webmoney_merchant.php 998 2009/05/07 13:24:46 VaM $
 
    VaM Shop - open source ecommerce solution
    http://vamshop.ru
@@ -17,26 +17,26 @@
    Released under the GNU General Public License 
    ---------------------------------------------------------------------------------------*/
 
-define('MODULE_PAYMENT_KUPIVKREDIT_TEXT_TITLE', 'КупиВкредит');
-define('MODULE_PAYMENT_KUPIVKREDIT_TEXT_PUBLIC_TITLE', 'КупиВкредит');
-define('MODULE_PAYMENT_KUPIVKREDIT_TEXT_ADMIN_DESCRIPTION', 'Модуль оплаты КупиВкредит.');
-define('MODULE_PAYMENT_KUPIVKREDIT_TEXT_DESCRIPTION', '');
-
+define('MODULE_PAYMENT_KUPIVKREDIT_TEXT_TITLE', 'КупиВкредит.Ру');
+define('MODULE_PAYMENT_KUPIVKREDIT_TEXT_PUBLIC_TITLE', 'КупиВкредит.Ру');
+define('MODULE_PAYMENT_KUPIVKREDIT_TEXT_ADMIN_DESCRIPTION', 'Модуль оплаты КупиВкредит.Ру');
+define('MODULE_PAYMENT_KUPIVKREDIT_TEXT_DESCRIPTION', 'После нажатия кнопки Подтвердить заказ Вы перейдёте на сайт КупиВкредит для подтверждения заказа.');
+  
 define('MODULE_PAYMENT_KUPIVKREDIT_STATUS_TITLE' , 'Разрешить модуль КупиВкредит');
 define('MODULE_PAYMENT_KUPIVKREDIT_STATUS_DESC' , 'Вы хотите разрешить использование модуля при оформлении заказов?');
 define('MODULE_PAYMENT_KUPIVKREDIT_ALLOWED_TITLE' , 'Разрешённые страны');
 define('MODULE_PAYMENT_KUPIVKREDIT_ALLOWED_DESC' , 'Укажите коды стран, для которых будет доступен данный модуль (например RU,DE (оставьте поле пустым, если хотите что б модуль был доступен покупателям из любых стран))');
-define('MODULE_PAYMENT_KUPIVKREDIT_ID_TITLE' , 'Идентификатор магазина:');
-define('MODULE_PAYMENT_KUPIVKREDIT_ID_DESC' , 'Укажите идентификатор Вашего магазина в системе kupivkredit.ru.');
+define('MODULE_PAYMENT_KUPIVKREDIT_SHOPID_TITLE' , 'shopId:');
+define('MODULE_PAYMENT_KUPIVKREDIT_SHOPID_DESC' , 'Укажите Ваш shopId');
+define('MODULE_PAYMENT_KUPIVKREDIT_SHOWCASEID_TITLE' , 'showcaseId:');
+define('MODULE_PAYMENT_KUPIVKREDIT_SHOWCASEID_DESC' , 'Укажите Ваш showcaseId');
 define('MODULE_PAYMENT_KUPIVKREDIT_SORT_ORDER_TITLE' , 'Порядок сортировки');
 define('MODULE_PAYMENT_KUPIVKREDIT_SORT_ORDER_DESC' , 'Порядок сортировки модуля.');
 define('MODULE_PAYMENT_KUPIVKREDIT_ZONE_TITLE' , 'Зона');
 define('MODULE_PAYMENT_KUPIVKREDIT_ZONE_DESC' , 'Если выбрана зона, то данный модуль оплаты будет виден только покупателям из выбранной зоны.');
-define('MODULE_PAYMENT_KUPIVKREDIT_SECRET_KEY_TITLE' , 'Секретная строка');
-define('MODULE_PAYMENT_KUPIVKREDIT_SECRET_KEY_DESC' , 'В данной опции укажите значение опции секретная строка в системе kupivkredit.ru.');
+define('MODULE_PAYMENT_KUPIVKREDIT_PROMOCODE_TITLE' , 'promoCode');
+define('MODULE_PAYMENT_KUPIVKREDIT_PROMOCODE_DESC' , 'Укажите promoCode, если есть.');
 define('MODULE_PAYMENT_KUPIVKREDIT_ORDER_STATUS_ID_TITLE' , 'Укажите оплаченный статус заказа');
 define('MODULE_PAYMENT_KUPIVKREDIT_ORDER_STATUS_ID_DESC' , 'Укажите оплаченный статус заказа.');
-define('MODULE_PAYMENT_KUPIVKREDIT_TEST_TITLE','Режим работы');
-define('MODULE_PAYMENT_KUPIVKREDIT_TEST_DESC','test - для тестирования работы модуля, production - для рабочего режима работы модуля.');
   
 ?>
