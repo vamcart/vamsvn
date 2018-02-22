@@ -335,6 +335,7 @@ if ($_SERVER["HTTP_X_FORWARDED_FOR"]) {
 
       $process_button_string = '';
 
+                               //$order_sum = number_format($order->info['total'], 2, '.', '');
                                $order_sum = number_format($order->info['total'], 2, '.', '');
 
       $process_button_string = 
@@ -355,7 +356,7 @@ $i = 0;
                                $process_button_string .= vam_draw_hidden_field('itemVendorCode_'.$i, $product['model']);
                                $process_button_string .= vam_draw_hidden_field('itemName_'.$i, $product['name']);
                                $process_button_string .= vam_draw_hidden_field('itemQuantity_'.$i, $product['qty']);
-                               $process_button_string .= vam_draw_hidden_field('itemPrice_'.$i, number_format($product['price'], 2, '.', ''));
+                               $process_button_string .= vam_draw_hidden_field('itemPrice_'.$i, number_format($product['price']*$product['qty'], 2, '.', ''));
                                //$process_button_string .= vam_draw_hidden_field('itemCategory_'.$i, $order_sum);
 
 
