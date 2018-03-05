@@ -19,7 +19,7 @@
 //header('Cache-Control: no-store, no-cache, must-revalidate');
 //header('Content-Type: text/html; charset=utf-8');
 //error_reporting(E_ALL);
-//error_reporting(0);
+error_reporting(0);
 if (!ini_get('zlib.output_compression') && function_exists('ob_gzhandler')) {
     ob_start('ob_gzhandler');
 }
