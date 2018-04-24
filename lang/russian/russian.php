@@ -587,7 +587,7 @@ define('text_seven', 'семь');
 define('text_eight', 'восемь');
 define('text_nine', 'девять');
 define('text_ten', 'десять');
-define('text_eleven', 'одинадцать');
+define('text_eleven', 'одиннадцать');
 define('text_twelve', 'двенадцать');
 define('text_thirteen', 'тринадцать');
 define('text_fourteen', 'четырнадцать');
