@@ -343,7 +343,7 @@ if ($_SERVER["HTTP_X_FORWARDED_FOR"]) {
                                vam_draw_hidden_field('shopId', MODULE_PAYMENT_KUPIVKREDIT_SHOPID) .
                                vam_draw_hidden_field('showcaseId', MODULE_PAYMENT_KUPIVKREDIT_SHOWCASEID) .
                                vam_draw_hidden_field('promoCode', MODULE_PAYMENT_KUPIVKREDIT_PROMOCODE) .
-                               vam_draw_hidden_field('orderNumber', $purse) .
+                               vam_draw_hidden_field('orderNumber', substr($_SESSION['cart_kupivkredit_id'], strpos($_SESSION['cart_kupivkredit_id'], '-')+1)) .
                                vam_draw_hidden_field('sum', $order_sum) .
                                vam_draw_hidden_field('customerEmail', $order->customer['email_address']) .
                                vam_draw_hidden_field('customerPhone', $order->customer['telephone']);
