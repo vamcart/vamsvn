@@ -26,8 +26,8 @@ define('MODULE_SHIPPING_RUSSIANPOSTEMS_STATUS_TITLE' , 'Разрешить мо�
 define('MODULE_SHIPPING_RUSSIANPOSTEMS_STATUS_DESC' , 'Вы хотите разрешить модуль на единицу?');
 define('MODULE_SHIPPING_RUSSIANPOSTEMS_ALLOWED_TITLE' , 'Разрешённые страны');
 define('MODULE_SHIPPING_RUSSIANPOSTEMS_ALLOWED_DESC' , 'Укажите коды стран, для которых будет доступен данный модуль (например RU,DE (оставьте поле пустым, если хотите что б модуль был доступен покупателям из любых стран))');
-define('MODULE_SHIPPING_RUSSIANPOSTEMS_CITY_TITLE' , 'Город отправки');
-define('MODULE_SHIPPING_RUSSIANPOSTEMS_CITY_DESC' , 'Город отправки посылок.');
+define('MODULE_SHIPPING_RUSSIANPOSTEMS_CITY_TITLE' , 'Почтовый индекс места отправки');
+define('MODULE_SHIPPING_RUSSIANPOSTEMS_CITY_DESC' , 'Почтовый индекс места отправки посылок.');
 define('MODULE_SHIPPING_RUSSIANPOSTEMS_HANDLING_TITLE' , 'Стоимость использования данного модуля');
 define('MODULE_SHIPPING_RUSSIANPOSTEMS_HANDLING_DESC' , 'Стоимость использования данного способа доставки.');
 define('MODULE_SHIPPING_RUSSIANPOSTEMS_TAX_CLASS_TITLE' , 'Налог');
