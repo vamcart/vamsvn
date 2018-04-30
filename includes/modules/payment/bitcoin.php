@@ -83,7 +83,7 @@ class bitcoin {
 	function confirmation() {
 		global $order;
 
-		$ethereum_wallet_data = json_decode(file_get_contents('https://api.coinbase.com/v2/prices/ETH-RUB/spot'),true);
+		$ethereum_wallet_data = json_decode(file_get_contents('https://api.coinbase.com/v2/prices/BTC-RUB/spot'),true);
 
 		$order_total = $order->info['total'];
 		$ethereum_order_total = $order_total*(1/$ethereum_wallet_data['data']['amount']);
