@@ -55,7 +55,7 @@ $cpath = vam_get_product_path($_SESSION['tracking']['products_history'][$i]);
 	$i ++;
 }
 
-$order_content = '';
+$order_content = array();
 if (vam_count_customer_orders() > 0) {
 
 	$orders_query = vam_db_query("select
