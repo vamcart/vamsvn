@@ -22,7 +22,7 @@
   
   function vam_db_query($query, $link = 'db_link') {
 
-  	if (!defined("STORE_DB_TRANSACTIONS")) define("STORE_DB_TRANSACTIONS", "false");
+  	//if (!defined("STORE_DB_TRANSACTIONS")) define("STORE_DB_TRANSACTIONS", "false");
 
     global $$link;
     global $query_counts;
