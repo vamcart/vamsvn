@@ -506,7 +506,16 @@ CREATE TABLE `admin_access` (
   `products_specifications` int(1) NOT NULL default '0',
   `attributeManager` int(1) NOT NULL default '0',
   `answer_templates` int(1) NOT NULL default '0',
-  `product_labels` int(1) NOT NULL default '0',
+  `product_labels` int(1) NOT NULL DEFAULT '0',
+  `article_reviews` int(1) NOT NULL DEFAULT '0',
+  `author_reviews` int(1) NOT NULL DEFAULT '0',
+  `company_reviews` int(1) NOT NULL DEFAULT '0',
+  `reviews_add` int(1) NOT NULL DEFAULT '0',
+  `company_reviews_add` int(1) NOT NULL DEFAULT '0',
+  `article_reviews_add` int(1) NOT NULL DEFAULT '0',
+  `author_reviews_add` int(1) NOT NULL DEFAULT '0',
+  `site_reviews` int(11) NOT NULL DEFAULT '0',
+  `site_reviews_add` int(11)  DEFAULT '0'
   PRIMARY KEY  (`customers_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
