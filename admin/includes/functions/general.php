@@ -610,6 +610,13 @@ function vam_get_categories_name($category_id, $language_id) {
 	return $category['categories_name'];
 }
 
+function vam_get_categories_keywords($category_id, $language_id) {
+	$category_query = vam_db_query("select categories_keywords from ".TABLE_CATEGORIES_DESCRIPTION." where categories_id = '".$category_id."' and language_id = '".$language_id."'");
+	$category = vam_db_fetch_array($category_query);
+
+	return $category['categories_keywords'];
+}
+
 function vam_get_categories_heading_title($category_id, $language_id) {
 	$category_query = vam_db_query("select categories_heading_title from ".TABLE_CATEGORIES_DESCRIPTION." where categories_id = '".$category_id."' and language_id = '".$language_id."'");
 	$category = vam_db_fetch_array($category_query);
@@ -788,6 +795,16 @@ function vam_get_manufacturer_url($manufacturer_id, $language_id) {
 	$manufacturer = vam_db_fetch_array($manufacturer_query);
 
 	return $manufacturer['manufacturers_url'];
+}
+
+////
+// Return the manufacturers URL in the needed language
+// TABLES: manufacturers_info
+function vam_get_manufacturer_name($manufacturer_id) {
+	$manufacturer_query = vam_db_query("select manufacturers_name from ".TABLE_MANUFACTURERS." where manufacturers_id = '".$manufacturer_id."'");
+	$manufacturer = vam_db_fetch_array($manufacturer_query);
+
+	return $manufacturer['manufacturers_name'];
 }
 
 ////
@@ -2206,4 +2223,135 @@ function vam_get_spsr_zone_id($zone_id) {
   }
 // End products specifications
 	
+	
+  function vam_get_manufacturers_name($manufacturers_id, $language_id = 0) {
+    global $languages_id;
+
+    if ($language_id == 0) $language_id = $_SESSION['languages_id'];
+    $manufacturers_query = vam_db_query("select manufacturers_name from " . TABLE_MANUFACTURERS . " where manufacturers_id = '" . (int)$manufacturers_id . "'");
+    $manufacturers = vam_db_fetch_array($manufacturers_query);
+
+    return $manufacturers['manufacturers_name'];
+  }
+  
+  
+function vam_draw_products_pull_down_review($name, $parameters = '', $exclude = '') {
+	global $currencies;
+
+	if ($exclude == '') {
+		$exclude = array ();
+	}
+	$select_string = '<select class="chosen-select" name="'.$name.'"';
+	if ($parameters) {
+		$select_string .= ' '.$parameters;
+	}
+	$select_string .= '>';
+	$select_string .= '<option value="">'.TEXT_SELECT.'</option>';
+	$products_query = vam_db_query("select p.products_id, pd.products_name,p.products_tax_class_id, p.products_price from ".TABLE_PRODUCTS." p, ".TABLE_PRODUCTS_DESCRIPTION." pd where p.products_id = pd.products_id and pd.language_id = '".$_SESSION['languages_id']."' order by products_name");
+	while ($products = vam_db_fetch_array($products_query)) {
+		if (!vam_in_array($products['products_id'], $exclude)) {
+			//brutto admin:
+			if (PRICE_IS_BRUTTO == 'true') {
+				$products['products_price'] = vam_round($products['products_price'] * ((100 + vam_get_tax_rate($products['products_tax_class_id'])) / 100), PRICE_PRECISION);
+			}
+			$select_string .= '<option value="'.$products['products_id'].'">'.$products['products_name'].'</option>';
+		}
+	}
+	$select_string .= '</select>';
+
+	return $select_string;
+}  
+
+function vam_draw_products_pull_down_article_review($name, $parameters = '', $exclude = '') {
+	global $currencies;
+
+	if ($exclude == '') {
+		$exclude = array ();
+	}
+	$select_string = '<select class="chosen-select" name="'.$name.'"';
+	if ($parameters) {
+		$select_string .= ' '.$parameters;
+	}
+	$select_string .= '>';
+	$select_string .= '<option value="">'.TEXT_SELECT.'</option>';
+	$products_query = vam_db_query("select a.articles_id, ad.articles_name from ".TABLE_ARTICLES." a, ".TABLE_ARTICLES_DESCRIPTION." ad where ad.articles_id = a.articles_id and ad.language_id = '".$_SESSION['languages_id']."' order by ad.articles_name");
+	while ($products = vam_db_fetch_array($products_query)) {
+		if (!vam_in_array($products['articles_id'], $exclude)) {
+			$select_string .= '<option value="'.$products['articles_id'].'">'.$products['articles_name'].'</option>';
+		}
+	}
+	$select_string .= '</select>';
+
+	return $select_string;
+} 
+
+function vam_draw_products_pull_down_author_review($name, $parameters = '', $exclude = '') {
+	global $currencies;
+
+	if ($exclude == '') {
+		$exclude = array ();
+	}
+	$select_string = '<select class="chosen-select" name="'.$name.'"';
+	if ($parameters) {
+		$select_string .= ' '.$parameters;
+	}
+	$select_string .= '>';
+	$select_string .= '<option value="">'.TEXT_SELECT.'</option>';
+	$products_query = vam_db_query("select au.authors_id, au.authors_name from ".TABLE_AUTHORS." au order by au.authors_name");
+	while ($products = vam_db_fetch_array($products_query)) {
+		if (!vam_in_array($products['authors_id'], $exclude)) {
+			$select_string .= '<option value="'.$products['authors_id'].'">'.$products['authors_name'].'</option>';
+		}
+	}
+	$select_string .= '</select>';
+
+	return $select_string;
+}   	
+
+function vam_draw_products_pull_down_company_review($name, $parameters = '', $exclude = '') {
+	global $currencies;
+
+	if ($exclude == '') {
+		$exclude = array ();
+	}
+	$select_string = '<select class="chosen-select" name="'.$name.'"';
+	if ($parameters) {
+		$select_string .= ' '.$parameters;
+	}
+	$select_string .= '>';
+	$select_string .= '<option value="">'.TEXT_SELECT.'</option>';
+	$products_query = vam_db_query("select m.manufacturers_id, m.manufacturers_name from ".TABLE_MANUFACTURERS." m order by m.manufacturers_name");
+	while ($products = vam_db_fetch_array($products_query)) {
+		if (!vam_in_array($products['manufacturers_id'], $exclude)) {
+			$select_string .= '<option value="'.$products['manufacturers_id'].'">'.$products['manufacturers_name'].'</option>';
+		}
+	}
+	$select_string .= '</select>';
+
+	return $select_string;
+} 
+
+function vam_draw_customers_pull_down($name, $parameters = '', $exclude = '') {
+	global $currencies;
+
+	if ($exclude == '') {
+		$exclude = array ();
+	}
+	$select_string = '<select class="chosen-select" name="'.$name.'"';
+	if ($parameters) {
+		$select_string .= ' '.$parameters;
+	}
+	$select_string .= '>';
+	$select_string .= '<option value="">'.TEXT_SELECT.'</option>';
+	$customers_query = vam_db_query("select c.* from ".TABLE_CUSTOMERS." c order by c.customers_firstname");
+	while ($customers = vam_db_fetch_array($customers_query)) {
+		//if (!vam_in_array($customers['manufacturers_id'], $exclude)) {
+			$select_string .= '<option value="'.$customers['customers_firstname']. ' ' . $customers['customers_lastname'].'">'.$customers['customers_firstname']. ' ' . $customers['customers_lastname']. '</option>';
+		//}
+	}
+	$select_string .= '</select>';
+
+	return $select_string;
+} 
+
 ?>

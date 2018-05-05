@@ -654,4 +654,20 @@ define('FILENAME_PIN_LOADER', 'pin_loader.php');
   define('TABLE_AUTHOR_REVIEWS', 'author_reviews');
   define('TABLE_AUTHOR_REVIEWS_DESCRIPTION', 'author_reviews_description');
 
+  define('FILENAME_COMPANY_REVIEWS', 'company_reviews.php');
+  
+  define('TABLE_COMPANY_REVIEWS', 'company_reviews');
+  define('TABLE_COMPANY_REVIEWS_DESCRIPTION', 'company_reviews_description');
+
+  define('FILENAME_REVIEWS_ADD', 'reviews_add.php');
+  define('FILENAME_COMPANY_REVIEWS_ADD', 'company_reviews_add.php');
+  define('FILENAME_AUTHOR_REVIEWS_ADD', 'author_reviews_add.php');
+  define('FILENAME_ARTICLE_REVIEWS_ADD', 'article_reviews_add.php');
+
+  define('FILENAME_SITE_REVIEWS', 'site_reviews.php');
+  define('FILENAME_SITE_REVIEWS_ADD', 'site_reviews_add.php');
+
+  define('TABLE_SITE_REVIEWS', 'site_reviews');
+  define('TABLE_SITE_REVIEWS_DESCRIPTION', 'site_reviews_description');
+  
 ?>
