@@ -17,16 +17,16 @@
    Released under the GNU General Public License 
    --------------------------------------------------------------*/
 
-define('HEADING_TITLE', 'Отзывы о статьях');
+define('HEADING_TITLE', 'Отзывы о портале');
 
-define('TABLE_HEADING_PRODUCTS', 'Отзыв о статье');
+define('TABLE_HEADING_PRODUCTS', 'Товар');
+define('TABLE_HEADING_NAME', 'Автор');
 define('TABLE_HEADING_RATING', 'Рейтинг');
 define('TABLE_HEADING_DATE_ADDED', 'Дата добавления');
 define('TABLE_HEADING_ACTION', 'Действие');
 
-define('ENTRY_PRODUCT', 'Отзыв о статье:');
+define('ENTRY_PRODUCT', 'Товар:');
 define('ENTRY_AVATAR', 'Аватарка:');
-define('ENTRY_NAME', 'или укажите имя:');
 define('ENTRY_FROM', 'От:');
 define('ENTRY_DATE', 'Дата:');
 define('ENTRY_REVIEW', 'Отзыв:');

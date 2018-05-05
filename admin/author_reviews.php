@@ -18,17 +18,25 @@
    --------------------------------------------------------------*/
 
   require('includes/application_top.php');
-
+  require_once(DIR_FS_INC . 'vam_wysiwyg_tiny.inc.php');
+  
   if ($_GET['action']) {
     switch ($_GET['action']) {
       case 'update':
         $reviews_id = vam_db_prepare_input($_GET['rID']);
         $reviews_rating = vam_db_prepare_input($_POST['reviews_rating']);
+        $customers_name = vam_db_prepare_input($_POST['customers_name']);
         $date_added = vam_db_prepare_input($_POST['date_added']);
         $last_modified = vam_db_prepare_input($_POST['last_modified']);
         $reviews_text = vam_db_prepare_input($_POST['reviews_text']);
 
-        vam_db_query("update " . TABLE_AUTHOR_REVIEWS . " set reviews_rating = '" . vam_db_input($reviews_rating) . "',date_added = '" . vam_db_input($date_added) . "', last_modified = now() where reviews_id = '" . vam_db_input($reviews_id) . "'");
+        $avatar = $_POST['customers_avatar'];
+
+			if ($avatar == '' && $_POST['customers_avatar_name'] != '' && $avatar != $_POST['customers_avatar_name']) {
+        $avatar = $_POST['customers_avatar_name'];
+        }
+        
+        vam_db_query("update " . TABLE_AUTHOR_REVIEWS . " set reviews_rating = '" . vam_db_input($reviews_rating) . "',date_added = '" . vam_db_input($date_added) . "', customers_name = '" . vam_db_input($customers_name) . "', customers_avatar = '" . vam_db_input($avatar) . "', last_modified = now() where reviews_id = '" . vam_db_input($reviews_id) . "'");
         vam_db_query("update " . TABLE_AUTHOR_REVIEWS_DESCRIPTION . " set reviews_text = '" . vam_db_input($reviews_text) . "' where reviews_id = '" . vam_db_input($reviews_id) . "'");
 
         vam_redirect(vam_href_link(FILENAME_AUTHOR_REVIEWS, 'page=' . $_GET['page'] . '&rID=' . $reviews_id));
@@ -52,6 +60,24 @@
 <title><?php echo TITLE; ?></title>
 <link rel="stylesheet" type="text/css" href="includes/stylesheet.css">
 <script type="text/javascript" src="includes/general.js"></script>
+
+<script type="text/javascript" src="/jscript/jquery/jquery.js"></script>
+<link rel="stylesheet" type="text/css" href="includes/javascript/jquery/plugins/ui/jquery-ui.css">
+<script type="text/javascript" src="includes/javascript/jquery/plugins/ui/jquery-ui-min.js"></script><script type="text/javascript" src="includes/javascript/jquery/plugins/ui/datepicker-ru.js"></script>
+<script type="text/javascript" src="/jscript/jquery/plugins/maskedinput/jquery.maskedinput.min.js"></script>
+<script type="text/javascript" src="/jscript/modified.js"></script>
+<script type="text/javascript"><!--
+
+$(document).ready(function() {
+
+$( "#date_added" ).datepicker({ dateFormat: "dd-mm-yy" }).val();
+
+   });
+   
+//--></script>
+<?php 
+ echo vam_wysiwyg_tiny('latest_news',$data['code']); 
+?>
 </head>
 <body marginwidth="0" marginheight="0" topmargin="0" bottommargin="0" leftmargin="0" rightmargin="0" bgcolor="#FFFFFF" onload="SetFocus();">
 <!-- header //-->
@@ -78,7 +104,7 @@
   if ($_GET['action'] == 'edit') {
     $rID = vam_db_prepare_input($_GET['rID']);
 
-    $reviews_query = vam_db_query("select r.reviews_id, r.authors_id, r.customers_name, r.date_added, r.last_modified, r.reviews_read, rd.reviews_text, r.reviews_rating from " . TABLE_AUTHOR_REVIEWS . " r, " . TABLE_AUTHOR_REVIEWS_DESCRIPTION . " rd where r.reviews_id = '" . vam_db_input($rID) . "' and r.reviews_id = rd.reviews_id");
+    $reviews_query = vam_db_query("select r.reviews_id, r.authors_id, r.customers_name, r.customers_avatar, r.date_added, r.last_modified, r.reviews_read, rd.reviews_text, r.reviews_rating from " . TABLE_AUTHOR_REVIEWS . " r, " . TABLE_AUTHOR_REVIEWS_DESCRIPTION . " rd where r.reviews_id = '" . vam_db_input($rID) . "' and r.reviews_id = rd.reviews_id");
     $reviews = vam_db_fetch_array($reviews_query);
     $products_query = vam_db_query("select authors_image from " . TABLE_AUTHORS . " where authors_id = '" . $reviews['authors_id'] . "'");
     $products = vam_db_fetch_array($products_query);
@@ -89,28 +115,40 @@
     $rInfo_array = vam_array_merge($reviews, $products, $article_name);
     $rInfo = new objectInfo($rInfo_array);
 ?>
-      <tr><?php echo vam_draw_form('review', FILENAME_AUTHOR_REVIEWS, 'page=' . $_GET['page'] . '&rID=' . $_GET['rID'] . '&action=preview'); ?>
+      <tr><?php echo vam_draw_form('review', FILENAME_AUTHOR_REVIEWS, 'page=' . $_GET['page'] . '&rID=' . $_GET['rID'] . '&action=preview', 'post', 'enctype="multipart/form-data"'); ?>
         <td><table border="0" width="100%" cellspacing="0" cellpadding="0">
           <tr>
-            <td class="main" valign="top"><b><?php echo ENTRY_PRODUCT; ?></b> <?php echo $rInfo->authors_name; ?><br /><b><?php echo ENTRY_FROM; ?></b> <?php echo $rInfo->customers_name; ?><br /><br /><b><?php echo ENTRY_DATE; ?></b> <?php echo vam_date_short($rInfo->date_added); ?></td>
-            <td class="main" align="right" valign="top"><?php echo vam_product_thumb_image($rInfo->products_image, $rInfo->authors_name); ?></td>
+            <td class="main" valign="top"><b><?php echo ENTRY_PRODUCT; ?></b> <?php echo $rInfo->authors_name; ?><br /><b><?php echo ENTRY_FROM; ?></b> <?php echo $rInfo->customers_name; ?><br /><br /></td>
+            <td class="main" align="right" valign="top"><?php if (vam_not_null($rInfo->authors_image)) echo vam_image(DIR_WS_CATALOG_IMAGES.'articles/'.$rInfo->authors_image, $rInfo->authors_name); ?></td>
           </tr>
         </table></td>
       </tr>
       <tr>
         <td><table witdh="100%" border="0" cellspacing="0" cellpadding="0">
           <tr>
-            <td class="main" valign="top"><b><?php echo ENTRY_DATE; ?></b><br /><br /><?php echo vam_draw_input_field('date_added', $rInfo->date_added); ?></td>
+            <td class="main" valign="top"><b><?php echo ENTRY_FIRST_NAME; ?></b><?php echo vam_draw_input_field('customers_name', $rInfo->customers_name); ?></td>
           </tr>
         </table></td>
       </tr>
       <tr>
         <td><table witdh="100%" border="0" cellspacing="0" cellpadding="0">
           <tr>
-            <td class="main" valign="top"><b><?php echo ENTRY_REVIEW; ?></b><br /><br /><?php echo vam_draw_textarea_field('reviews_text', 'soft', '60', '15', $rInfo->reviews_text); ?></td>
+            <td class="main" valign="top"><b><?php echo ENTRY_AVATAR; ?></b> <?php echo vam_draw_input_field('customers_avatar_name', $rInfo->customers_avatar) . '&nbsp;&nbsp;' .  vam_draw_file_field('customers_avatar'); ?></td>
           </tr>
+        </table></td>
+      </tr>
+      <tr>
+        <td><table witdh="100%" border="0" cellspacing="0" cellpadding="0">
           <tr>
-            <td class="smallText" align="right"><?php echo ENTRY_REVIEW_TEXT; ?></td>
+            <td class="main" valign="top"><b><?php echo ENTRY_DATE; ?></b><?php echo vam_draw_input_field('date_added', $rInfo->date_added, 'id="date_added"'); ?></td>
+            <td class="main rating"><?php for ($i=1; $i<=5; $i++) echo vam_draw_radio_field('reviews_rating', $i, $rInfo->reviews_rating, true, 'class="star-rating"'); ?>
+          </tr>
+        </table></td>
+      </tr>
+      <tr>
+        <td><table witdh="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td class="main" valign="top"><b><?php echo ENTRY_REVIEW; ?></b><?php echo vam_draw_textarea_field('reviews_text', 'soft', '60', '15', $rInfo->reviews_text); ?></td>
           </tr>
         </table></td>
       </tr>
@@ -118,20 +156,30 @@
         <td><?php echo vam_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
       </tr>
       <tr>
-        <td class="main"><b><?php echo ENTRY_RATING; ?></b>&nbsp;<?php echo TEXT_BAD; ?>&nbsp;<?php for ($i=1; $i<=5; $i++) echo vam_draw_radio_field('reviews_rating', $i, '', $rInfo->reviews_rating) . '&nbsp;'; echo TEXT_GOOD; ?></td>
-      </tr>
-      <tr>
-        <td><?php echo vam_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
-      </tr>
-      <tr>
-        <td align="right" class="main"><?php echo vam_draw_hidden_field('reviews_id', $rInfo->reviews_id) . vam_draw_hidden_field('authors_id', $rInfo->authors_id) . vam_draw_hidden_field('customers_name', $rInfo->customers_name) . vam_draw_hidden_field('authors_name', $rInfo->authors_name) . vam_draw_hidden_field('products_image', $rInfo->products_image) . '<span class="button"><button type="submit" value="' . BUTTON_PREVIEW . '">' . vam_image(DIR_WS_IMAGES . 'icons/buttons/submit.png', '', '12', '12') . '&nbsp;' . BUTTON_PREVIEW . '</button></span> <a class="button" href="' . vam_href_link(FILENAME_AUTHOR_REVIEWS, 'page=' . $_GET['page'] . '&rID=' . $_GET['rID']) . '"><span>' . vam_image(DIR_WS_IMAGES . 'icons/buttons/cancel.png', '', '12', '12') . '&nbsp;' . BUTTON_CANCEL . '</span></a>'; ?></td>
+        <td align="right" class="main"><?php echo vam_draw_hidden_field('reviews_id', $rInfo->reviews_id) . vam_draw_hidden_field('authors_id', $rInfo->authors_id) . vam_draw_hidden_field('authors_name', $rInfo->authors_name) . vam_draw_hidden_field('products_image', $rInfo->products_image) . '<span class="button"><button type="submit" value="' . BUTTON_PREVIEW . '">' . vam_image(DIR_WS_IMAGES . 'icons/buttons/submit.png', '', '12', '12') . '&nbsp;' . BUTTON_PREVIEW . '</button></span> <a class="button" href="' . vam_href_link(FILENAME_AUTHOR_REVIEWS, 'page=' . $_GET['page'] . '&rID=' . $_GET['rID']) . '"><span>' . vam_image(DIR_WS_IMAGES . 'icons/buttons/cancel.png', '', '12', '12') . '&nbsp;' . BUTTON_CANCEL . '</span></a>'; ?></td>
       </form></tr>
 <?php
   } elseif ($_GET['action'] == 'preview') {
     if ($_POST) {
       $rInfo = new objectInfo($_POST);
+
+			if ($_POST['customers_avatar'] == '' && $_POST['customers_avatar_name'] != '' && $_POST['customers_avatar'] != $_POST['customers_avatar_name']) {
+        $_POST['customers_avatar'] = $_POST['customers_avatar_name'];
+        }
+
+        $customers_avatar = new upload('customers_avatar');
+        $customers_avatar->set_destination(DIR_FS_CATALOG_IMAGES .'avatars/');
+
+        if ($customers_avatar->parse() && $customers_avatar->save()) {
+            
+            $avatar = vam_db_input($customers_avatar->filename);
+        }
+        
+        
+        $customers_avatar = $avatar;         
+
     } else {
-      $reviews_query = vam_db_query("select r.reviews_id, r.authors_id, r.customers_name, r.date_added, r.last_modified, r.reviews_read, rd.reviews_text, r.reviews_rating from " . TABLE_AUTHOR_REVIEWS . " r, " . TABLE_AUTHOR_REVIEWS_DESCRIPTION . " rd where r.reviews_id = '" . $_GET['rID'] . "' and r.reviews_id = rd.reviews_id");
+      $reviews_query = vam_db_query("select r.reviews_id, r.authors_id, r.customers_name, r.customers_avatar, r.date_added, r.last_modified, r.reviews_read, rd.reviews_text, r.reviews_rating from " . TABLE_AUTHOR_REVIEWS . " r, " . TABLE_AUTHOR_REVIEWS_DESCRIPTION . " rd where r.reviews_id = '" . $_GET['rID'] . "' and r.reviews_id = rd.reviews_id");
       $reviews = vam_db_fetch_array($reviews_query);
       $products_query = vam_db_query("select authors_image from " . TABLE_AUTHORS . " where authors_id = '" . $reviews['authors_id'] . "'");
       $products = vam_db_fetch_array($products_query);
@@ -146,15 +194,15 @@
       <tr><?php echo vam_draw_form('update', FILENAME_AUTHOR_REVIEWS, 'page=' . $_GET['page'] . '&rID=' . $_GET['rID'] . '&action=update', 'post', 'enctype="multipart/form-data"'); ?>
         <td><table border="0" width="100%" cellspacing="0" cellpadding="0">
           <tr>
-            <td class="main" valign="top"><b><?php echo ENTRY_PRODUCT; ?></b> <?php echo $rInfo->authors_name; ?><br /><b><?php echo ENTRY_FROM; ?></b> <?php echo $rInfo->customers_name; ?><br /><br /><b><?php echo ENTRY_DATE; ?></b> <?php echo vam_date_short($rInfo->date_added); ?></td>
-            <td class="main" align="right" valign="top"><?php echo vam_product_thumb_image($rInfo->authors_image, $rInfo->authors_name); ?></td>
+            <td class="main" valign="top"><b><?php echo ENTRY_PRODUCT; ?></b> <?php echo $rInfo->authors_name; ?><br /><b><?php echo ENTRY_FROM; ?></b> <?php echo $rInfo->customers_name; ?><br /><br /></td>
+            <td class="main" align="right" valign="top"><?php if (vam_not_null($rInfo->authors_image)) echo vam_image(DIR_WS_CATALOG_IMAGES.'articles/'.$rInfo->authors_image, $rInfo->authors_name); ?></td>
           </tr>
         </table>
       </tr>
       <tr>
         <td><table witdh="100%" border="0" cellspacing="0" cellpadding="0">
           <tr>
-            <td valign="top" class="main"><b><?php echo ENTRY_REVIEW; ?></b><br /><br /><?php echo nl2br(vam_db_output($rInfo->reviews_text)); ?></td>
+            <td valign="top" class="main"><b><?php echo ENTRY_REVIEW; ?></b><?php echo nl2br(vam_db_output($rInfo->reviews_text)); ?></td>
           </tr>
         </table></td>
       </tr>
@@ -172,6 +220,9 @@
       // Re-Post all POST'ed variables
       reset($_POST);
       while(list($key, $value) = each($_POST)) echo '<input type="hidden" name="' . $key . '" value="' . htmlspecialchars(stripslashes($value)) . '">';
+
+        echo vam_draw_hidden_field('customers_avatar', htmlspecialchars(stripslashes($customers_avatar)));
+
 ?>
       <tr>
         <td align="right" class="smallText"><?php echo '<a class="button" href="' . vam_href_link(FILENAME_AUTHOR_REVIEWS, 'page=' . $_GET['page'] . '&rID=' . $rInfo->reviews_id . '&action=edit') . '"><span>' . vam_image(DIR_WS_IMAGES . 'icons/buttons/back.png', '', '12', '12') . '&nbsp;' . BUTTON_BACK . '</span></a> <span class="button"><button type="submit" value="' . BUTTON_UPDATE . '">' . vam_image(DIR_WS_IMAGES . 'icons/buttons/submit.png', '', '12', '12') . '&nbsp;' . BUTTON_INSERT . '</button></span> <a class="button" href="' . vam_href_link(FILENAME_AUTHOR_REVIEWS, 'page=' . $_GET['page'] . '&rID=' . $rInfo->reviews_id) . '"><span>' . vam_image(DIR_WS_IMAGES . 'icons/buttons/cancel.png', '', '12', '12') . '&nbsp;' . BUTTON_CANCEL . '</span></a>'; ?></td>
@@ -204,12 +255,12 @@
                 <td class="dataTableHeadingContent" align="right"><?php echo TABLE_HEADING_ACTION; ?>&nbsp;</td>
               </tr>
 <?php
-    $reviews_query_raw = "select reviews_id, authors_id, date_added, last_modified, reviews_rating from " . TABLE_AUTHOR_REVIEWS . " order by date_added DESC";
+    $reviews_query_raw = "select reviews_id, authors_id, date_added, last_modified, reviews_rating from " . TABLE_AUTHOR_REVIEWS . " order by reviews_id DESC";
     $reviews_split = new splitPageResults($_GET['page'], MAX_DISPLAY_ADMIN_PAGE, $reviews_query_raw, $reviews_query_numrows);
     $reviews_query = vam_db_query($reviews_query_raw);
     while ($reviews = vam_db_fetch_array($reviews_query)) {
       if ( ((!$_GET['rID']) || ($_GET['rID'] == $reviews['reviews_id'])) && (!$rInfo) ) {
-        $reviews_text_query = vam_db_query("select r.reviews_read, r.customers_name, length(rd.reviews_text) as reviews_text_size from " . TABLE_AUTHOR_REVIEWS . " r, " . TABLE_AUTHOR_REVIEWS_DESCRIPTION . " rd where r.reviews_id = '" . $reviews['reviews_id'] . "' and r.reviews_id = rd.reviews_id");
+        $reviews_text_query = vam_db_query("select r.reviews_read, r.customers_name, r.customers_avatar, length(rd.reviews_text) as reviews_text_size from " . TABLE_AUTHOR_REVIEWS . " r, " . TABLE_AUTHOR_REVIEWS_DESCRIPTION . " rd where r.reviews_id = '" . $reviews['reviews_id'] . "' and r.reviews_id = rd.reviews_id");
         $reviews_text = vam_db_fetch_array($reviews_text_query);
 
         $products_image_query = vam_db_query("select authors_image from " . TABLE_AUTHORS . " where authors_id = '" . $reviews['authors_id'] . "'");
@@ -246,6 +297,12 @@
                     <td class="smallText" valign="top"><?php echo $reviews_split->display_count($reviews_query_numrows, MAX_DISPLAY_ADMIN_PAGE, $_GET['page'], TEXT_DISPLAY_NUMBER_OF_REVIEWS); ?></td>
                     <td class="smallText" align="right"><?php echo $reviews_split->display_links($reviews_query_numrows, MAX_DISPLAY_ADMIN_PAGE, MAX_DISPLAY_PAGE_LINKS, $_GET['page']); ?></td>
                   </tr>
+                  
+                  <tr>
+                    <td class="smallText">&nbsp;</td>
+                    <td align="right" class="smallText"><?php echo '&nbsp;<a class="button" href="' . vam_href_link(FILENAME_AUTHOR_REVIEWS_ADD, 'action=add_review') . '"><span>' . vam_image(DIR_WS_IMAGES . 'icons/buttons/add.png', '', '12', '12') . '&nbsp;' . TEXT_ADD_REVIEW . '</span></a>'; ?>&nbsp;</td>
+                  </tr>																																		  
+                  
                 </table></td>
               </tr>
             </table></td>
@@ -267,9 +324,9 @@
         $heading[] = array('text' => '<b>' . $rInfo->authors_name . '</b>');
 
         $contents[] = array('align' => 'center', 'text' => '<a class="button"href="' . vam_href_link(FILENAME_AUTHOR_REVIEWS, 'page=' . $_GET['page'] . '&rID=' . $rInfo->reviews_id . '&action=edit') . '"><span>' . vam_image(DIR_WS_IMAGES . 'icons/buttons/edit.png', '', '12', '12') . '&nbsp;' . BUTTON_EDIT . '</span></a> <a class="button" href="' . vam_href_link(FILENAME_AUTHOR_REVIEWS, 'page=' . $_GET['page'] . '&rID=' . $rInfo->reviews_id . '&action=delete') . '"><span>' . vam_image(DIR_WS_IMAGES . 'icons/buttons/delete.png', '', '12', '12') . '&nbsp;' . BUTTON_DELETE . '</span></a>');
-        $contents[] = array('text' => '<br />' . TEXT_INFO_DATE_ADDED . ' ' . vam_date_short($rInfo->date_added));
+        $contents[] = array('text' => '<br />' . TEXT_INFO_DATE_ADDED . ' ' . $rInfo->date_added);
         if (vam_not_null($rInfo->last_modified)) $contents[] = array('text' => TEXT_INFO_LAST_MODIFIED . ' ' . vam_date_short($rInfo->last_modified));
-        $contents[] = array('text' => '<br />' . vam_product_thumb_image($rInfo->products_image, $rInfo->authors_name));
+        if (vam_not_null($rInfo->customers_avatar)) $contents[] = array('text' => '<br />' . vam_image(DIR_WS_CATALOG_IMAGES.'avatars/'.$rInfo->customers_avatar, $rInfo->articles_name));
         $contents[] = array('text' => '<br />' . TEXT_INFO_REVIEW_AUTHOR . ' ' . $rInfo->customers_name);
         $contents[] = array('text' => TEXT_INFO_REVIEW_RATING . ' ' . vam_image(HTTP_CATALOG_SERVER . DIR_WS_CATALOG . 'templates/'. CURRENT_TEMPLATE .'/img/stars_' . $rInfo->reviews_rating . '.gif'));
         $contents[] = array('text' => TEXT_INFO_REVIEW_READ . ' ' . $rInfo->reviews_read);

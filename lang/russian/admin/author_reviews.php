@@ -19,12 +19,14 @@
 
 define('HEADING_TITLE', 'Отзывы об авторах');
 
-define('TABLE_HEADING_PRODUCTS', 'Автор');
+define('TABLE_HEADING_PRODUCTS', 'Отзыв для автора');
 define('TABLE_HEADING_RATING', 'Рейтинг');
 define('TABLE_HEADING_DATE_ADDED', 'Дата добавления');
 define('TABLE_HEADING_ACTION', 'Действие');
 
-define('ENTRY_PRODUCT', 'Автор:');
+define('ENTRY_PRODUCT', 'Отзыв для автора:');
+define('ENTRY_AVATAR', 'Аватарка:');
+define('ENTRY_NAME', 'или укажите имя:');
 define('ENTRY_FROM', 'От:');
 define('ENTRY_DATE', 'Дата:');
 define('ENTRY_REVIEW', 'Отзыв:');
