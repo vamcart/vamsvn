@@ -445,6 +445,8 @@ define('BOX_TOPICS_ARTICLES', 'Статьи/Разделы');
 define('BOX_ARTICLES_CONFIG', 'Настройка');
 define('BOX_ARTICLES_AUTHORS', 'Авторы');
 define('BOX_ARTICLES_REVIEWS', 'Отзывы'); 
+define('BOX_ARTICLE_REVIEWS', 'Отзывы о статьях'); 
+define('BOX_AUTHOR_REVIEWS', 'Отзывы об авторах'); 
 define('BOX_ARTICLES_XSELL', 'Товары-Статьи');
 define('IMAGE_NEW_TOPIC', 'Новый раздел');
 define('IMAGE_NEW_ARTICLE', 'Новая статья');
@@ -602,9 +604,9 @@ define('TEXT_PRODUCTS_ATTRIBUTES','Атрибуты товара');
 define('BOX_ANSWER_TEMPLATES','Шаблоны ответов');
 define('BOX_PRODUCT_LABELS','Ярлыки товаров');
 
-define('BOX_COMPANY_REVIEWS', 'Отзывы о компаниях');
+define('BOX_COMPANY_REVIEWS', 'Отзывы о производителях');
 
-define('BOX_SITE_REVIEWS', 'Отзывы о портале');
+define('BOX_SITE_REVIEWS', 'Отзывы о магазине');
 
 define('BOX_CONFIGURATION_1611', 'Карточки компаний');
 
