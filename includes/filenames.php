@@ -142,4 +142,15 @@ define('FILENAME_AUTHOR_REVIEWS', 'author_reviews.php');
 define('FILENAME_AUTHOR_REVIEWS_INFO', 'author_reviews_info.php');
 define('FILENAME_AUTHOR_REVIEWS_WRITE', 'author_reviews_write.php');
 
+define('FILENAME_COMPANY_REVIEWS', 'company_reviews.php');
+define('FILENAME_COMPANY_REVIEWS_INFO', 'company_reviews_info.php');
+define('FILENAME_COMPANY_REVIEWS_WRITE', 'company_reviews_write.php');
+
+define('FILENAME_SITE_REVIEWS', 'site_reviews.php');
+define('FILENAME_SITE_REVIEWS_INFO', 'site_reviews_info.php');
+define('FILENAME_SITE_REVIEWS_WRITE', 'site_reviews_write.php');
+
+define('FILENAME_SITEMAP', 'sitemap.php');
+define('FILENAME_MANUFACTURERS', 'manufacturers.php');
+
 ?>
