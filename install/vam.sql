@@ -236,6 +236,8 @@ CREATE TABLE articles (
   authors_id int(11) default NULL,
   articles_page_url varchar(255),
   sort_order int(4) NOT NULL default '0',
+  articles_image varchar(255),
+  articles_keywords varchar(255),
   PRIMARY KEY  (articles_id),
   KEY idx_articles_date_added (articles_date_added)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
@@ -3914,3 +3916,63 @@ INSERT INTO `configuration` (`configuration_key`, `configuration_value`, `config
 ('MODULE_SHIPPING_FLAT_TAX_CLASS', '0', 6, 0, NULL, '2016-09-27 19:57:38', 'vam_get_tax_class_title', 'vam_cfg_pull_down_tax_classes('),
 ('MODULE_SHIPPING_FLAT_ZONE', '0', 6, 0, NULL, '2016-09-27 19:57:38', 'vam_get_zone_class_title', 'vam_cfg_pull_down_zone_classes('),
 ('MODULE_SHIPPING_FLAT_SORT_ORDER', '0', 6, 0, NULL, '2016-09-27 19:57:38', NULL, NULL);
+
+CREATE TABLE `article_reviews` (
+  `reviews_id` int(11) NOT NULL,
+  `articles_id` int(11) NOT NULL,
+  `customers_id` int(11) DEFAULT NULL,
+  `customers_avatar` varchar(255) NOT NULL,
+  `customers_name` varchar(255) NOT NULL,
+  `reviews_rating` int(1) DEFAULT NULL,
+  `date_added` varchar(255) DEFAULT NULL,
+  `last_modified` datetime DEFAULT NULL,
+  `reviews_read` int(5) NOT NULL default '0',
+  PRIMARY KEY (reviews_id)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+
+CREATE TABLE `article_reviews_description` (
+  `reviews_id` int(11) NOT NULL,
+  `languages_id` int(11) NOT NULL,
+  `reviews_text` text,
+  PRIMARY KEY (reviews_id, languages_id)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+
+CREATE TABLE `author_reviews` (
+  `reviews_id` int(11) NOT NULL,
+  `authors_id` int(11) NOT NULL,
+  `customers_id` int(11) DEFAULT NULL,
+  `customers_avatar` varchar(255) NOT NULL,
+  `customers_name` varchar(255) NOT NULL,
+  `reviews_rating` int(1) DEFAULT NULL,
+  `date_added` varchar(255) DEFAULT NULL,
+  `last_modified` datetime DEFAULT NULL,
+  `reviews_read` int(5) NOT NULL default '0',
+  PRIMARY KEY (reviews_id)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+
+CREATE TABLE `author_reviews_description` (
+  `reviews_id` int(11) NOT NULL,
+  `languages_id` int(11) NOT NULL,
+  `reviews_text` text,
+  PRIMARY KEY (reviews_id, languages_id)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+
+CREATE TABLE `company_reviews` (
+  `reviews_id` int(11) NOT NULL,
+  `manufacturers_id` int(11) NOT NULL,
+  `customers_id` int(11) DEFAULT NULL,
+  `customers_avatar` varchar(255) NOT NULL,
+  `customers_name` varchar(255) NOT NULL,
+  `reviews_rating` int(1) DEFAULT NULL,
+  `date_added` varchar(255) DEFAULT NULL,
+  `last_modified` datetime DEFAULT NULL,
+  `reviews_read` int(5) NOT NULL default '0',
+  PRIMARY KEY (reviews_id)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+
+CREATE TABLE `company_reviews_description` (
+  `reviews_id` int(11) NOT NULL,
+  `languages_id` int(11) NOT NULL,
+  `reviews_text` text,
+  PRIMARY KEY (reviews_id, languages_id)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
