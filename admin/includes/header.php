@@ -107,6 +107,11 @@
   if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['new_attributes'] == '1')) echo '<dd><a href="' . vam_href_link(FILENAME_NEW_ATTRIBUTES, '', 'NONSSL') . '">' . BOX_ATTRIBUTES_MANAGER . '</a></dd>' . "\n";
   if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['manufacturers'] == '1')) echo '<dd><a href="' . vam_href_link(FILENAME_MANUFACTURERS, '', 'NONSSL') . '">' . BOX_MANUFACTURERS . '</a></dd>' . "\n";
   if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['reviews'] == '1')) echo '<dd><a href="' . vam_href_link(FILENAME_REVIEWS, '', 'NONSSL') . '">' . BOX_REVIEWS . '</a></dd>' . "\n";
+  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['site_reviews'] == '1')) echo '<dd><a href="' . vam_href_link(FILENAME_SITE_REVIEWS, '', 'NONSSL') . '">' . BOX_SITE_REVIEWS . '</a></dd>' . "\n";
+  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['company_reviews'] == '1')) echo '<dd><a href="' . vam_href_link(FILENAME_COMPANY_REVIEWS, '', 'NONSSL') . '">' . BOX_COMPANY_REVIEWS . '</a></dd>' . "\n";
+  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['article_reviews'] == '1')) echo '<dd><a href="' . vam_href_link(FILENAME_ARTICLE_REVIEWS, '', 'NONSSL') . '">' . BOX_ARTICLE_REVIEWS . '</a></dd>' . "\n";
+  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['author_reviews'] == '1')) echo '<dd><a href="' . vam_href_link(FILENAME_AUTHOR_REVIEWS, '', 'NONSSL') . '">' . BOX_AUTHOR_REVIEWS . '</a></dd>' . "\n";
+  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['configuration'] == '1')) echo '<dd><a href="' . vam_href_link(FILENAME_CONFIGURATION, 'gID=16', 'NONSSL') . '">' . BOX_CONFIGURATION_16 . '</a></dd>' . "\n";
   if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['specials'] == '1')) echo '<dd><a href="' . vam_href_link(FILENAME_SPECIALS, '', 'NONSSL') . '">' . BOX_SPECIALS . '</a></dd>' . "\n";
   if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['featured'] == '1')) echo '<dd><a href="' . vam_href_link(FILENAME_FEATURED, '', 'NONSSL') . '">' . BOX_FEATURED . '</a></dd>' . "\n";
   if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['products_specifications'] == '1')) echo '<dd><a href="' . vam_href_link(FILENAME_PRODUCTS_SPECIFICATIONS, '', 'NONSSL') . '">' . BOX_CATALOG_PRODUCTS_SPECIFICATIONS . '</a></dd>' . "\n";
@@ -335,15 +340,11 @@
   if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['articles_config'] == '1')) echo '<dd><a href="' . vam_href_link(FILENAME_ARTICLES_CONFIG, '', 'NONSSL') . '">' . BOX_ARTICLES_CONFIG . '</a></dd>' . "\n";
   if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['authors'] == '1')) echo '<dd><a href="' . vam_href_link(FILENAME_AUTHORS, '', 'NONSSL') . '">' . BOX_ARTICLES_AUTHORS . '</a></dd>' . "\n";
   if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['articles_xsell'] == '1')) echo '<dd><a href="' . vam_href_link(FILENAME_ARTICLES_XSELL, '', 'NONSSL') . '">' . BOX_ARTICLES_XSELL . '</a></dd>' . "\n";
-  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['article_reviews'] == '1')) echo '<dd><a href="' . vam_href_link(FILENAME_ARTICLE_REVIEWS, '', 'NONSSL') . '">' . BOX_ARTICLE_REVIEWS . '</a></dd>' . "\n";
-  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['author_reviews'] == '1')) echo '<dd><a href="' . vam_href_link(FILENAME_AUTHOR_REVIEWS, '', 'NONSSL') . '">' . BOX_AUTHOR_REVIEWS . '</a></dd>' . "\n";
 
  if (($_SESSION['customers_status']['customers_status_id'] == '0') && 
  ($admin_access['articles'] == '0') && 
  ($admin_access['articles_config'] == '0') && 
  ($admin_access['authors'] == '0') && 
- ($admin_access['article_reviews'] == '0') && 
- ($admin_access['author_reviews'] == '0') && 
  ($admin_access['articles_xsell'] == '0')
  ) echo '<dd>'.TEXT_ACCESS_FORBIDDEN.'</dd>'; 
 
