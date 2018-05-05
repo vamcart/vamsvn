@@ -204,7 +204,7 @@ defined( '_VALID_VAM' ) or die( 'Direct Access to this location is not allowed.'
 
   ////
   // Output a selection field - alias function for vam_draw_checkbox_field() and vam_draw_radio_field()
-  function vam_draw_selection_field($name, $type, $value = '', $checked = false, $compare = '', $parameters) {
+  function vam_draw_selection_field($name, $type, $value = '', $checked = false, $compare = '', $parameters = false) {
     $selection = '<input type="' . $type . '" name="' . $name . '"';
     if ($value != '') {
       $selection .= ' value="' . $value . '"';
@@ -222,13 +222,13 @@ defined( '_VALID_VAM' ) or die( 'Direct Access to this location is not allowed.'
 
   ////
   // Output a form checkbox field
-  function vam_draw_checkbox_field($name, $value = '', $checked = false, $compare = '', $parameters) {
+  function vam_draw_checkbox_field($name, $value = '', $checked = false, $compare = '', $parameters = false) {
     return vam_draw_selection_field($name, 'checkbox', $value, $checked, $compare, $parameters);
   }
 
   ////
   // Output a form radio field
-  function vam_draw_radio_field($name, $value = '', $checked = false, $compare = '', $parameters) {
+  function vam_draw_radio_field($name, $value = '', $checked = false, $compare = '', $parameters = false) {
     return vam_draw_selection_field($name, 'radio', $value, $checked, $compare, $parameters);
   }
 
