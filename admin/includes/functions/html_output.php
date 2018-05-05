@@ -204,14 +204,17 @@ defined( '_VALID_VAM' ) or die( 'Direct Access to this location is not allowed.'
 
   ////
   // Output a selection field - alias function for vam_draw_checkbox_field() and vam_draw_radio_field()
-  function vam_draw_selection_field($name, $type, $value = '', $checked = false, $compare = '') {
+  function vam_draw_selection_field($name, $type, $value = '', $checked = false, $compare = '', $parameters) {
     $selection = '<input type="' . $type . '" name="' . $name . '"';
     if ($value != '') {
       $selection .= ' value="' . $value . '"';
     }
-    if ( ($checked == true) || ($GLOBALS[$name] == 'on') || ($value && ($GLOBALS[$name] == $value)) || ($value && ($value == $compare)) ) {
-      $selection .= ' CHECKED';
+    if ( ($checked == true) || ($GLOBALS[$name] == 'on') || ( (isset($value)) && ($GLOBALS[$name] == $value) ) ) {
+      $selection .= ' checked="checked"';
     }
+    
+    if (vam_not_null($parameters)) $selection .= ' ' . $parameters;
+        
     $selection .= '>';
 
     return $selection;
@@ -219,14 +222,14 @@ defined( '_VALID_VAM' ) or die( 'Direct Access to this location is not allowed.'
 
   ////
   // Output a form checkbox field
-  function vam_draw_checkbox_field($name, $value = '', $checked = false, $compare = '') {
-    return vam_draw_selection_field($name, 'checkbox', $value, $checked, $compare);
+  function vam_draw_checkbox_field($name, $value = '', $checked = false, $compare = '', $parameters) {
+    return vam_draw_selection_field($name, 'checkbox', $value, $checked, $compare, $parameters);
   }
 
   ////
   // Output a form radio field
-  function vam_draw_radio_field($name, $value = '', $checked = false, $compare = '') {
-    return vam_draw_selection_field($name, 'radio', $value, $checked, $compare);
+  function vam_draw_radio_field($name, $value = '', $checked = false, $compare = '', $parameters) {
+    return vam_draw_selection_field($name, 'radio', $value, $checked, $compare, $parameters);
   }
 
   ////
@@ -315,6 +318,13 @@ defined( '_VALID_VAM' ) or die( 'Direct Access to this location is not allowed.'
 
           $nav='&nbsp;<a href="'.vam_href_link(FILENAME_CATEGORIES,'sorting='.$sort.'&'.vam_get_all_get_params(array('action','sorting'))).'">+</a>';
           $nav.='<a href="'.vam_href_link(FILENAME_CATEGORIES,'sorting='.$sort.'-desc&'.vam_get_all_get_params(array('action','sorting'))).'">-</a>&nbsp;';
+
+          break;          
+
+          case FILENAME_MANUFACTURERS:
+
+          $nav='&nbsp;<a href="'.vam_href_link(FILENAME_MANUFACTURERS,'sorting='.$sort.'&'.vam_get_all_get_params(array('action','sorting'))).'">+</a>';
+          $nav.='<a href="'.vam_href_link(FILENAME_MANUFACTURERS,'sorting='.$sort.'-desc&'.vam_get_all_get_params(array('action','sorting'))).'">-</a>&nbsp;';
 
           break;          
 
