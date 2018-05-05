@@ -1139,3 +1139,88 @@ mg.image_filter {
 .panel-body span a {
   color: #fff;
 }
+
+.rating {
+	animation: 1.25s 1 cubic-bezier(.25, 0, 1, 0) fade-in;
+	animation-fill-mode: forwards;
+}
+.star-rating,
+.star-rating:after {
+	transition: .25s all ease-out, 0s margin;
+	outline: 0 !important;
+}
+.star-rating {
+	width: 28px;
+	height: 23px;
+	font-size: 32px;
+	visibility: hidden;
+	position: relative;
+	cursor: pointer;
+}
+.star-rating:after {
+	content: "★";
+	color: #ef6c00;
+	visibility: visible;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translateX(-50%) translateY(-50%) scale(1);
+	transition: .25s all ease-out, 0s margin , 0s transform;
+	text-shadow: 0 3px 2px rgba(0,0,0,.25);
+	opacity: 1;
+}
+.star-rating:hover:after {
+	transform: translateX(-50%) translateY(-50%) scale(1.1);
+}
+.star-rating:checked {
+	z-index: 11;
+}
+.star-rating:checked:hover:after {
+	transform: translateX(-50%) translateY(-50%) scale(1);
+}
+.star-rating:checked:after {
+	color: #ef6c00;
+	animation: .25s 1 cubic-bezier(0, 1.64, 1, 1.48) star-pop;
+	z-index: 10;
+}
+.rate .input-container:hover .star-rating:after,
+.star-rating:hover:after {
+	color: #ff8e22 !important;
+}
+.star-rating:hover ~ .star-rating:after,
+.star-rating:checked ~ .star-rating:after,
+.rate .input-container .star-rating:hover ~ .star-rating:after {
+	color: #bbb !important;
+	text-shadow: none;
+}
+.star-rating:before {
+    content: "★";
+    visibility: visible;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    color: #fff;
+    z-index: 0;
+		transition: .5s all ease-out;
+}
+.star-rating:checked:before {
+  z-index: -1;
+  animation: .5s 1 ease-out star-pop-2;
+	pointer-events: none;
+}
+@keyframes star-pop {
+	0% { color: #ef6c00; transform: translateX(-50%) translateY(-50%) scale(1) rotate(0); text-shadow: 0 3px 2px rgba(0,0,0,.25); }
+	80% { color: #0099d5; transform: translateX(-50%) translateY(-50%) scale(1.75) rotate(-5deg); text-shadow: 0 0 0 rgba(255,255,255,0); }
+	100% { color: #ef6c00; transform: translateX(-50%) translateY(-50%) scale(1) rotate(0); text-shadow: 0 3px 2px rgba(0,0,0,.25); }
+}
+@keyframes star-pop-2 {
+	0% { color: rgba(0,153,213,0); transform: translateX(-50%) translateY(-50%) scale(1) rotate(0); }
+	20% { color: rgba(0,153,213,0); transform: translateX(-50%) translateY(-50%) scale(1) rotate(0); }
+	60% { color: rgba(0,153,213,.325); transform: translateX(-50%) translateY(-57.5%) scale(2.5) rotate(-2.5deg); }
+	100% { color: rgba(255,255,255,0); transform: translateX(-50%) translateY(-65%) scale(4) rotate(0deg); }
+}
+@keyframes fade-in {
+	0% { opacity: 0; }
+	100% { opacity: 100%; }
+}

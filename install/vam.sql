@@ -3917,8 +3917,9 @@ INSERT INTO `configuration` (`configuration_key`, `configuration_value`, `config
 ('MODULE_SHIPPING_FLAT_ZONE', '0', 6, 0, NULL, '2016-09-27 19:57:38', 'vam_get_zone_class_title', 'vam_cfg_pull_down_zone_classes('),
 ('MODULE_SHIPPING_FLAT_SORT_ORDER', '0', 6, 0, NULL, '2016-09-27 19:57:38', NULL, NULL);
 
+DROP TABLE IF EXISTS article_reviews;
 CREATE TABLE `article_reviews` (
-  `reviews_id` int(11) NOT NULL,
+  `reviews_id` int(11) NOT NULL auto_increment,
   `articles_id` int(11) NOT NULL,
   `customers_id` int(11) DEFAULT NULL,
   `customers_avatar` varchar(255) NOT NULL,
@@ -3930,6 +3931,7 @@ CREATE TABLE `article_reviews` (
   PRIMARY KEY (reviews_id)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
+DROP TABLE IF EXISTS article_reviews_description;
 CREATE TABLE `article_reviews_description` (
   `reviews_id` int(11) NOT NULL,
   `languages_id` int(11) NOT NULL,
@@ -3937,8 +3939,9 @@ CREATE TABLE `article_reviews_description` (
   PRIMARY KEY (reviews_id, languages_id)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
+DROP TABLE IF EXISTS author_reviews;
 CREATE TABLE `author_reviews` (
-  `reviews_id` int(11) NOT NULL,
+  `reviews_id` int(11) NOT NULL auto_increment,
   `authors_id` int(11) NOT NULL,
   `customers_id` int(11) DEFAULT NULL,
   `customers_avatar` varchar(255) NOT NULL,
@@ -3950,6 +3953,7 @@ CREATE TABLE `author_reviews` (
   PRIMARY KEY (reviews_id)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
+DROP TABLE IF EXISTS author_reviews_description;
 CREATE TABLE `author_reviews_description` (
   `reviews_id` int(11) NOT NULL,
   `languages_id` int(11) NOT NULL,
@@ -3957,8 +3961,9 @@ CREATE TABLE `author_reviews_description` (
   PRIMARY KEY (reviews_id, languages_id)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
+DROP TABLE IF EXISTS company_reviews;
 CREATE TABLE `company_reviews` (
-  `reviews_id` int(11) NOT NULL,
+  `reviews_id` int(11) NOT NULL auto_increment,
   `manufacturers_id` int(11) NOT NULL,
   `customers_id` int(11) DEFAULT NULL,
   `customers_avatar` varchar(255) NOT NULL,
@@ -3970,9 +3975,32 @@ CREATE TABLE `company_reviews` (
   PRIMARY KEY (reviews_id)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
+DROP TABLE IF EXISTS company_reviews_description;
 CREATE TABLE `company_reviews_description` (
   `reviews_id` int(11) NOT NULL,
   `languages_id` int(11) NOT NULL,
   `reviews_text` text,
   PRIMARY KEY (reviews_id, languages_id)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+
+DROP TABLE IF EXISTS site_reviews;
+CREATE TABLE `site_reviews` (
+  `reviews_id` int(11) NOT NULL auto_increment,
+  `products_id` int(11) NOT NULL,
+  `customers_id` int(11) DEFAULT NULL,
+  `customers_avatar` varchar(255) NOT NULL,
+  `customers_name` varchar(255) NOT NULL,
+  `reviews_rating` int(1) DEFAULT NULL,
+  `date_added` varchar(255) DEFAULT NULL,
+  `last_modified` datetime DEFAULT NULL,
+  `reviews_read` int(5) NOT NULL default '0',
+  PRIMARY KEY (reviews_id)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+
+DROP TABLE IF EXISTS site_reviews_description;
+CREATE TABLE `site_reviews_description` (
+  `reviews_id` int(11) NOT NULL,
+  `languages_id` int(11) NOT NULL,
+  `reviews_text` text,
+  PRIMARY KEY (reviews_id, languages_id)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
