@@ -602,4 +602,16 @@ define('TEXT_PRODUCTS_ATTRIBUTES','Атрибуты товара');
 define('BOX_ANSWER_TEMPLATES','Шаблоны ответов');
 define('BOX_PRODUCT_LABELS','Ярлыки товаров');
 
+define('BOX_COMPANY_REVIEWS', 'Отзывы о компаниях');
+
+define('BOX_SITE_REVIEWS', 'Отзывы о портале');
+
+define('BOX_CONFIGURATION_1611', 'Карточки компаний');
+
+define('CG_COMPANY_TEXT_SETTINGS', 'Карточки компаний');
+define('CG_COMPANY_TEXT_SETTINGS_TITLE', 'Карточки компаний');
+define('CG_COMPANY_TEXT_SETTINGS_DESC', '');
+
+define('TEXT_ADD_REVIEW', 'Добавить отзыв');
+
 ?>

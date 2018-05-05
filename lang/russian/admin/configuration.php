@@ -1033,4 +1033,24 @@ define('DADATA_API_KEY_DESC', 'Укажите свой ключ для подс�
 define('PHONE_MASK_TITLE', 'Маска телефона');
 define('PHONE_MASK_DESC', 'Укажите шаблон для ввода телефонного номера');
 
+define('COMPANIES_TEXT_TITLE' , 'Текст для страницы компаний');
+define('COMPANIES_TEXT_DESC' , '');
+
+define('CG_COMPANY_TEXT_SETTINGS', 'Карточки компаний');
+define('CG_COMPANY_TEXT_SETTINGS_TITLE', 'Карточки компаний');
+define('CG_COMPANY_TEXT_SETTINGS_DESC', '');
+
+
+define('COMPANY_PAYMENT_TEXT_TITLE', 'Общий текст оплаты на странице карточки компании');
+define('COMPANY_PAYMENT_TEXT_DESC', '');
+
+define('COMPANY_SHIPPING_TEXT_TITLE', 'Общий текст доставки на странице карточки компании');
+define('COMPANY_SHIPPING_TEXT_DESC', '');
+
+define('COMPANY_PAYMENT_3_MASK_TITLE', 'Шаблон для оплаты электронными деньгами');
+define('COMPANY_PAYMENT_3_MASK_DESC', '');
+
+define('COMPANY_PAYMENT_4_MASK_TITLE', 'Шаблон для безналичной оплаты');
+define('COMPANY_PAYMENT_4_MASK_DESC', '');
+
 ?>
