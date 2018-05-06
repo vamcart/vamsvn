@@ -643,7 +643,7 @@ global $current_category_id;
 		$specifications_data[$row] = array (
 		
 			'GROUP_NAME' => $categories_data['specification_group_name'],
-			'DATA' => ''
+			//'DATA' => ''
 		
 		);
 		
