@@ -1428,6 +1428,7 @@ CREATE TABLE reviews (
   reviews_id int NOT NULL auto_increment,
   products_id int NOT NULL,
   customers_id int,
+  customers_avatar varchar(255) NOT NULL,
   customers_name varchar(255) NOT NULL,
   reviews_rating int(1),
   date_added datetime,
