@@ -82,7 +82,32 @@ if (($specials_split->number_of_rows > 0)) {
 
 }
 
-$vamTemplate->assign('SPECIAL_CATEGORY', vam_draw_pull_down_menu('categories_id', vam_get_categories(array(array('id' => '0', 'text' => TEXT_ALL_CATEGORIES))), $categories_id, 'onChange="location.href=\''.vam_href_link(FILENAME_SPECIALS, "categories_id='+this.value+'").'\'"'));
+$select_cat_specials = "SELECT DISTINCT 
+  ptc.categories_id, 
+  cd.categories_name 
+  FROM specials s, 
+  products_to_categories ptc, 
+  categories_description cd,
+  products p 
+  WHERE ptc.products_id = s.products_id 
+  AND cd.categories_id = ptc.categories_id
+  AND p.products_id = s.products_id
+  AND p.products_status = 1
+  AND s.status = 1;";
+
+$cat_specials_query = vamDBquery($select_cat_specials);
+
+$cat_array[] = array('id' => '0', 'text' => TEXT_ALL_CATEGORIES);
+
+while ($cat = vam_db_fetch_array($cat_specials_query,true)) {
+    $cat_array[] = array(
+        'id' => $cat['categories_id'],
+        'text' => $cat['categories_name']
+    );
+}
+
+$vamTemplate->assign('SPECIAL_CATEGORY', vam_draw_pull_down_menu('categories_id', $cat_array, $categories_id, 'onChange="location.href=\''.vam_href_link(FILENAME_SPECIALS, "categories_id='+this.value+'").'\'"'));
+
 
 $vamTemplate->assign('language', $_SESSION['language']);
 $vamTemplate->assign('module_content', $module_content);
