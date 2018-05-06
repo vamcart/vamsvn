@@ -257,13 +257,21 @@
 						
                 $articles_page_url = $_POST['articles_page_url'];
 					}    
+
+
+$authorsImg = $_POST['articles_image'];
+
+			if ($authorsImg == '' && $_POST['articles_image_name'] != '' && $authorsImg != $_POST['articles_image_name']) {
+        $authorsImg = $_POST['articles_image_name'];
+        }
+
 					
           $sql_data_array = array('articles_date_available' => $articles_date_available,
                                   'articles_status' => vam_db_prepare_input($_POST['articles_status']),
                                   'articles_page_url' => vam_db_prepare_input($articles_page_url),
                                   'articles_keywords' => vam_db_prepare_input($articles_keywords),
                                   'sort_order' => vam_db_prepare_input($_POST['sort_order']),
-                                  'articles_image' => vam_db_prepare_input($_POST['articles_image']),
+                                  'articles_image' => vam_db_prepare_input($authorsImg),
                                   'authors_id' => vam_db_prepare_input($_POST['authors_id']));
 
           if ($action == 'insert_article') {
@@ -298,12 +306,31 @@
           for ($i=0, $n=sizeof($languages); $i<$n; $i++) {
             $language_id = $languages[$i]['id'];
 
+
+					if ($articles_head_title_tag == '') {
+                  $articles_head_title_tag = $_POST['articles_name'][$language_id];
+					} else {
+                  $articles_head_title_tag = $_POST['articles_head_title_tag'][$language_id];
+					}  
+
+					if ($articles_head_desc_tag == '') {
+                  $articles_head_desc_tag = $_POST['articles_name'][$language_id];
+					} else {
+                  $articles_head_desc_tag = $_POST['articles_head_desc_tag'][$language_id];
+					}  
+
+					if ($articles_head_keywords_tag == '') {
+                  $articles_head_keywords_tag = $_POST['articles_name'][$language_id];
+					} else {
+                  $articles_head_keywords_tag = $_POST['articles_head_keywords_tag'][$language_id];
+					}  
+
             $sql_data_array = array('articles_name' => vam_db_prepare_input($_POST['articles_name'][$language_id]),
                                     'articles_description' => vam_db_prepare_input($_POST['articles_description'][$language_id]),
                                     'articles_url' => vam_db_prepare_input($_POST['articles_url'][$language_id]),
-                                    'articles_head_title_tag' => vam_db_prepare_input($_POST['articles_head_title_tag'][$language_id]),
-                                    'articles_head_desc_tag' => vam_db_prepare_input($_POST['articles_head_desc_tag'][$language_id]),
-                                    'articles_head_keywords_tag' => vam_db_prepare_input($_POST['articles_head_keywords_tag'][$language_id]));
+                                    'articles_head_title_tag' => vam_db_prepare_input($articles_head_title_tag),
+                                    'articles_head_desc_tag' => vam_db_prepare_input($articles_head_desc_tag),
+                                    'articles_head_keywords_tag' => vam_db_prepare_input($articles_head_keywords_tag));
 
             if ($action == 'insert_article') {
               $insert_sql_data = array('articles_id' => $articles_id,
@@ -689,6 +716,20 @@ $manual_link = 'add-topic';
       $articles_head_title_tag = $_POST['articles_head_title_tag'];
       $articles_head_desc_tag = $_POST['articles_head_desc_tag'];
       $articles_head_keywords_tag = $_POST['articles_head_keywords_tag'];
+      
+					if ($articles_head_title_tag == '') {
+                  $articles_head_title_tag = $_POST['articles_name'];
+					}
+
+					if ($articles_head_desc_tag == '') {
+                  $articles_head_desc_tag = $_POST['articles_name'];
+					}
+
+					if ($articles_head_keywords_tag == '') {
+                  $articles_head_keywords_tag = $_POST['articles_name'];
+					}      
+      
+      
     }
 
     $authors_array = array(array('id' => '', 'text' => TEXT_NONE));
@@ -888,14 +929,11 @@ textarea.addEventListener("input", function(){
 <?php
     }
 
-$image_field = '';
-if ($aInfo->articles_image != '') {
+
 //$image_field = vam_draw_input_field('articles_image', $aInfo->articles_image, 'disabled size="20"');	
 $image_field .= vam_draw_input_field('articles_image_name', $aInfo->articles_image, 'size="20"');	
-$image_field .= vam_draw_file_field('articles_image',$aInfo->articles_image);	
-} else {
-$image_field = vam_draw_file_field('articles_image');	
-}
+$image_field .= vam_draw_file_field('articles_image');	
+
 ?>
         <div id="other">
           <table border="0">
@@ -968,12 +1006,36 @@ $image_field = vam_draw_file_field('articles_image');
     if (vam_not_null($_POST)) {
       $aInfo = new objectInfo($_POST);
       $articles_name = $_POST['articles_name'];
-      $articles_image = $_POST['articles_image'];
+      //$articles_image = $_POST['articles_image'];
       $articles_description = $_POST['articles_description'];
       $articles_url = $_POST['articles_url'];
       $articles_head_title_tag = $_POST['articles_head_title_tag'];
       $articles_head_desc_tag = $_POST['articles_head_desc_tag'];
       $articles_head_keywords_tag = $_POST['articles_head_keywords_tag'];
+      
+
+        $authorsImg = '';
+        $authors_image = new upload('articles_image');
+        $authors_image->set_destination(DIR_FS_CATALOG_IMAGES .'articles/');
+
+        if ($authors_image->parse() && $authors_image->save()) {
+            $authorsImg = vam_db_input($authors_image->filename);
+        }
+
+      $articles_image = $authorsImg;
+      
+					if ($articles_head_title_tag == '') {
+                  $articles_head_title_tag = $_POST['articles_name'];
+					}
+
+					if ($articles_head_desc_tag == '') {
+                  $articles_head_desc_tag = $_POST['articles_name'];
+					}
+
+					if ($articles_head_keywords_tag == '') {
+                  $articles_head_keywords_tag = $_POST['articles_name'];
+					}        
+      
     } else {
       $article_query = vam_db_query("select a.articles_id, a.articles_image, ad.language_id, ad.articles_name, ad.articles_description, ad.articles_url, ad.articles_head_title_tag, ad.articles_head_desc_tag, ad.articles_head_keywords_tag, a.articles_date_added, a.articles_last_modified, a.articles_date_available, a.articles_status, a.authors_id  from " . TABLE_ARTICLES . " a, " . TABLE_ARTICLES_DESCRIPTION . " ad where a.articles_id = ad.articles_id and a.articles_id = '" . (int)$_GET['aID'] . "'");
       $article = vam_db_fetch_array($article_query);
@@ -1088,37 +1150,7 @@ $image_field = vam_draw_file_field('articles_image');
 <?php
 
 
-if ($form_action == "insert_article") {
-	
-        $articles_img = '';
-        $articles_image = new upload('articles_image');
-        $articles_image->set_destination(DIR_FS_CATALOG_IMAGES .'articles/');
 
-        if ($articles_image->parse() && $articles_image->save()) {
-            $articles_img = vam_db_input($articles_image->filename);
-        }
-
-        if ($articles_img != '') echo vam_draw_hidden_field('articles_image', htmlspecialchars(stripslashes($articles_img)));
-
-}
-
-if ($form_action == "update_article") {
-        
-        $articles_img = '';
-        $articles_image = new upload('articles_image');
-        $articles_image->set_destination(DIR_FS_CATALOG_IMAGES .'articles/');
-
-        if ($articles_image->parse() && $articles_image->save()) {
-            $articles_img = vam_db_input($articles_image->filename);
-        }
-
-			if ($articles_img != '') {
-        echo vam_draw_hidden_field('articles_image', $articles_img);
-        } else {
-        echo vam_draw_hidden_field('articles_image', $_POST['articles_image_name']);
-        }
-        
-}
 
 
 /* Re-Post all POST'ed variables */
@@ -1128,7 +1160,7 @@ if ($form_action == "update_article") {
           echo vam_draw_hidden_field($key, htmlspecialchars(stripslashes($value)));
         }
       }
-        //echo vam_draw_hidden_field('articles_image', htmlspecialchars(stripslashes($articles_image)));
+        echo vam_draw_hidden_field('articles_image', htmlspecialchars(stripslashes($articles_image)));
 
       $languages = vam_get_languages();
       for ($i=0, $n=sizeof($languages); $i<$n; $i++) {
