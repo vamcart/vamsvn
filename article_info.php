@@ -28,13 +28,13 @@ $vamTemplate = new vamTemplate;
 // include boxes
 require (DIR_FS_CATALOG.'templates/'.CURRENT_TEMPLATE.'/source/boxes.php');
 // include needed function
-require_once (DIR_FS_INC.'vam_date_long.inc.php');
+require_once (DIR_FS_INC.'vam_date_short.inc.php');
 
   $article_check_query = "select count(*) as total from " . TABLE_ARTICLES . " a, " . TABLE_ARTICLES_DESCRIPTION . " ad where a.articles_status = '1' and a.articles_id = '" . (int)$_GET['articles_id'] . "' and ad.articles_id = a.articles_id and ad.language_id = '" . (int)$_SESSION['languages_id'] . "'";
   $article_check_query = vamDBquery($article_check_query);
   $article_check = vam_db_fetch_array($article_check_query, true);
 
-    $article_info_query = "select a.articles_id, a.articles_image, a.articles_keywords, a.articles_image, a.articles_date_added, a.articles_date_available, a.authors_id, ad.articles_name, ad.articles_description, ad.articles_url, ad.articles_viewed, au.authors_name from " . TABLE_ARTICLES . " a left join " . TABLE_AUTHORS . " au on a.authors_id = au.authors_id, " . TABLE_ARTICLES_DESCRIPTION . " ad where a.articles_status = '1' and a.articles_id = '" . (int)$_GET['articles_id'] . "' and ad.articles_id = a.articles_id and ad.language_id = '" . (int)$_SESSION['languages_id'] . "'";
+    $article_info_query = "select a.articles_id, a.articles_image, a.articles_keywords, a.articles_image, a.articles_date_added, a.articles_date_available, a.authors_id, ad.articles_name, ad.articles_description, ad.articles_url, ad.articles_viewed, au.authors_name, au.authors_image from " . TABLE_ARTICLES . " a left join " . TABLE_AUTHORS . " au on a.authors_id = au.authors_id, " . TABLE_ARTICLES_DESCRIPTION . " ad where a.articles_status = '1' and a.articles_id = '" . (int)$_GET['articles_id'] . "' and ad.articles_id = a.articles_id and ad.language_id = '" . (int)$_SESSION['languages_id'] . "'";
     $article_info_query = vamDBquery($article_info_query);
     $article_info = vam_db_fetch_array($article_info_query, true);
 
@@ -48,6 +48,8 @@ if ($article_check['total'] > 0) {
 		if (SEARCH_ENGINE_FRIENDLY_URLS == 'true')
 			$SEF_parameter_author = '&author='.vam_cleanName($article_info['authors_name']);
 
+$products_tags = explode (",", $article_info['articles_keywords']);
+
     $blacklist = array();
     $blacklist = explode(",",TAGS_BLACKLIST);
 
@@ -55,7 +57,7 @@ if ($article_check['total'] > 0) {
 $article_info['articles_keywords'] = str_replace($value.",","",$article_info['articles_keywords']);
 } 
 
-$products_tags = explode (",", $article_info['articles_keywords']);
+//$products_tags = explode (",", $article_info['articles_keywords']);
 
 		$tags_data = array();
 
@@ -84,7 +86,7 @@ $products_tags = explode (",", $article_info['articles_keywords']);
 	if ($reviews_rating['total'] > 0 && $reviews_rating['rating'] > 0) {
 	$article_rating = $reviews_rating['rating']/$reviews_rating['total'];
 		
-	$vamTemplate->assign('ARTICLE_RATING', intval($article_rating));
+	$vamTemplate->assign('ARTICLE_RATING', number_format($article_rating,1));
 	$vamTemplate->assign('ARTICLE_STAR_RATING', vam_image('templates/'.CURRENT_TEMPLATE.'/img/stars_'.intval($article_rating).'.gif', sprintf(BOX_REVIEWS_TEXT_OF_5_STARS, intval($article_rating))));
 	}
 
@@ -92,12 +94,14 @@ $products_tags = explode (",", $article_info['articles_keywords']);
 	$vamTemplate->assign('ARTICLE_IMAGE', $article_info['articles_image']);
 	$vamTemplate->assign('ARTICLE_KEYWORDS', $article_info['articles_keywords']);
 	$vamTemplate->assign('ARTICLE_KEYWORDS_ARRAY_TAGS', $tags_data);
-	$vamTemplate->assign('ARTICLE_KEYWORDS_ARRAY', explode(",", $article_info['articles_keywords']));
+	$vamTemplate->assign('ARTICLE_KEYWORDS_ARRAY', array($article_info['articles_keywords']));
+	//$vamTemplate->assign('ARTICLE_KEYWORDS_ARRAY', explode(",", $article_info['articles_keywords']));
 	$vamTemplate->assign('ARTICLE_DESCRIPTION', $article_info['articles_description']);
 	$vamTemplate->assign('ARTICLE_VIEWED', $article_info['articles_viewed']);
-	$vamTemplate->assign('ARTICLE_DATE', vam_date_long($article_info['articles_date_added']));
+	$vamTemplate->assign('ARTICLE_DATE', vam_date_short($article_info['articles_date_added']));
 	$vamTemplate->assign('ARTICLE_URL', $article_info['articles_url']);
 	$vamTemplate->assign('AUTHOR_NAME', $article_info['authors_name']);
+	$vamTemplate->assign('AUTHOR_IMAGE', $article_info['authors_image']);
 	$vamTemplate->assign('AUTHOR_ID', $article_info['authors_id']);
 	$vamTemplate->assign('AUTHOR_REVIEWS', $author_reviews['total']);
 
@@ -106,7 +110,7 @@ $products_tags = explode (",", $article_info['articles_keywords']);
 	if ($author_rating['total'] > 0 && $author_rating['rating'] > 0) {
 	$author_rating = $author_rating['rating']/$author_rating['total'];
 		
-	$vamTemplate->assign('AUTHOR_RATING', intval($author_rating));
+	$vamTemplate->assign('AUTHOR_RATING', number_format($author_rating,1));
 	$vamTemplate->assign('AUTHOR_STAR_RATING', vam_image('templates/'.CURRENT_TEMPLATE.'/img/stars_'.intval($author_rating).'.gif', sprintf(BOX_REVIEWS_TEXT_OF_5_STARS, intval($author_rating))));
 	}
 
