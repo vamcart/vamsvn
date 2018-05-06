@@ -47,7 +47,7 @@ vam_db_query("update ".TABLE_SITE_REVIEWS." set reviews_read = reviews_read+1 wh
 require (DIR_WS_INCLUDES.'header.php');
 
 	   $avatar = DIR_WS_IMAGES.'avatars/'.$reviews['customers_avatar'];
-if (!is_file($avatar)) $avatar = '/templates/doverie27/doverie27/img/company/review.jpg';
+if (!is_file($avatar)) $avatar = false;
 
 $vamTemplate->assign('REVIEWS_ID', $reviews['reviews_id']);
 $vamTemplate->assign('REVIEWS_AVATAR', $avatar);
