@@ -668,6 +668,8 @@ define('TEXT_VIEW_PRODUCTS', 'смотреть товары');
 
 define('TEXT_PRODUCT_DESCRIPTION', 'Описание');
 define('TEXT_PRODUCT_REVIEWS', 'Отзывы');
+define('NAVBAR_TITLE_SITE_REVIEW', 'Отзыв');
+define('NAVBAR_TITLE_SITE_REVIEWS','Отзывы о магазине');
 define('TEXT_PAGE_PRODUCT_REVIEWS', 'Отзывы');
 define('TEXT_PRODUCT_QTY', 'Количество:');
 
