@@ -66,6 +66,8 @@ if ($content_data['content_url'] != '') {
 		$content_string .= $link.$content_data['content_title'].'</a></li>' . "\n";
 	}
 
+		$content_string .= '<li><a href="'.vam_href_link(FILENAME_SITE_REVIEWS).'">'.NAVBAR_TITLE_SITE_REVIEWS.'</a></li>' . "\n";
+
 	if ($content_string != '')
 		$box->assign('BOX_CONTENT', $content_string);
 
