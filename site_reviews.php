@@ -48,7 +48,7 @@ if ($reviews_split->number_of_rows > 0) {
 	$reviews_query = vam_db_query($reviews_split->sql_query);
 	while ($reviews = vam_db_fetch_array($reviews_query)) {
 	   $avatar = DIR_WS_IMAGES.'avatars/'.$reviews['customers_avatar'];
-if (!is_file($avatar)) $avatar = '/templates/doverie27/doverie27/img/company/review.jpg';
+if (!is_file($avatar)) $avatar = false;
 		$module_data[] = array (
 		
 		'LINK' => vam_href_link(FILENAME_SITE_REVIEWS_INFO, 'reviews_id='.$reviews['reviews_id']), 
@@ -62,10 +62,9 @@ if (!is_file($avatar)) $avatar = '/templates/doverie27/doverie27/img/company/rev
 	}
 	$vamTemplate->assign('module_content', $module_data);
 
-	$vamTemplate->assign('ADD_REVIEW', '<a class="button" href="'.vam_href_link(FILENAME_SITE_REVIEWS_WRITE, $get_params).'">'.vam_image_button('add.png', IMAGE_BUTTON_WRITE_REVIEW).'</a>');
-
-
 }
+
+	$vamTemplate->assign('ADD_REVIEW', '<a class="button" href="'.vam_href_link(FILENAME_SITE_REVIEWS_WRITE, $get_params).'">'.vam_image_button('add.png', IMAGE_BUTTON_WRITE_REVIEW).'</a>');
 
 $vamTemplate->assign('language', $_SESSION['language']);
 
