@@ -1,0 +1,29 @@
+{config_load file="$language/lang_$language.conf" section="reviews"}
+		<div class="company_tabs">
+			<!--<div class="reviews_content">-->
+			
+				<div class="review_items reviews">
+				
+					<div class="item">
+						<div class="autorBlock">
+							<img src="{$REVIEWS_AVATAR}" alt="Отзыв {$REVIEWS_ID}">
+							<p class="nameReview">{$REVIEWS_AUTHOR}</p>
+							<p class="revData">{$REVIEWS_DATE}</p>
+							<div class="autorBlock_Rating">
+								<p>Оценка <br> пользователя</p>
+								<input class="input-3" name="input-3" value="{$REVIEWS_RATING}" class="rating-loading" data-size="xs">
+							</div>
+						</div>
+						<p>{$REVIEWS_TEXT}</p>
+					</div>
+
+
+				</div>
+
+<div>
+<br />
+{$ADD_REVIEW}
+</div>
+
+			</div>
+	<!--</div>-->

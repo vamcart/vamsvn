@@ -44,13 +44,9 @@ if ($_SESSION['customers_status']['customers_status_write_reviews'] == 0) {
 			$spam_flag = true;
 			$antispam_error_message .= 'Error: field should be empty. ['.$_POST['anti-bot-e-email-url'].']<br> ';
 		}
-
-$article_query = "select a.articles_id, ad.articles_name from ".TABLE_ARTICLES." a left join ".TABLE_ARTICLES_DESCRIPTION." ad on (ad.articles_id = a.articles_id and ad.language_id = '".(int) $_SESSION['languages_id']."') where a.articles_id = '".(int) $_GET['articles_id']."'";
-$article_query = vam_db_query($article_query);
-$article = vam_db_fetch_array($article_query);
 		
 if (isset ($_GET['action']) && $_GET['action'] == 'process' && $spam_flag == false) {
-	if ($article['articles_id'] > 0 && $article['articles_name'] != '') { // We got to the process but it is an illegal product, don't write
+	//if (is_object($product) && $product->isProduct()) { // We got to the process but it is an illegal product, don't write
 
     $rating = vam_db_prepare_input($_POST['rating']);
     $review = vam_db_prepare_input($_POST['review']);
@@ -78,14 +74,14 @@ if (isset ($_GET['action']) && $_GET['action'] == 'process' && $spam_flag == fal
 		$date_now = date('Ymd');
 		if ($customer_values['customers_lastname'] == '')
 			$customer_values['customers_lastname'] = TEXT_GUEST;
-		vam_db_query("insert into ".TABLE_ARTICLE_REVIEWS." (articles_id, customers_id, customers_name, reviews_rating, date_added) values ('".$_GET['articles_id']."', '".(int) $_SESSION['customer_id']."', '".addslashes($customer_values['customers_firstname']).' '.addslashes($customer_values['customers_lastname'])."', '".addslashes($_POST['rating'])."', now())");
+		vam_db_query("insert into ".TABLE_SITE_REVIEWS." (products_id, customers_id, customers_name, reviews_rating, date_added) values ('0', '".(int) $_SESSION['customer_id']."', '".addslashes($customer_values['customers_firstname']).' '.addslashes($customer_values['customers_lastname'])."', '".addslashes($_POST['rating'])."', now())");
 		$insert_id = vam_db_insert_id();
-		vam_db_query("insert into ".TABLE_ARTICLE_REVIEWS_DESCRIPTION." (reviews_id, languages_id, reviews_text) values ('".$insert_id."', '".(int) $_SESSION['languages_id']."', '".addslashes($_POST['review'])."')");
+		vam_db_query("insert into ".TABLE_SITE_REVIEWS_DESCRIPTION." (reviews_id, languages_id, reviews_text) values ('".$insert_id."', '".(int) $_SESSION['languages_id']."', '".addslashes($_POST['review'])."')");
 
 
-	vam_redirect(vam_href_link(FILENAME_ARTICLE_INFO, $_POST['get_params']));
+	vam_redirect(vam_href_link(FILENAME_SITE_REVIEWS, $_POST['get_params']));
 	}
- }
+ //}
 }
 
 // lets retrieve all $HTTP_GET_VARS keys and values..
@@ -105,33 +101,33 @@ $customer_info = vam_db_fetch_array($customer_info_query);
 
 require (DIR_WS_INCLUDES.'header.php');
 
-if (!$article['articles_id']) {
-	$vamTemplate->assign('error', ERROR_INVALID_PRODUCT);
-} else {
+//if (!$product->isProduct()) {
+	//$vamTemplate->assign('error', ERROR_INVALID_PRODUCT);
+//} else {
 	$name = $customer_info['customers_firstname'].' '.$customer_info['customers_lastname'];
 	if ($name == ' ')
 		$customer_info['customers_lastname'] = TEXT_GUEST;
-	$vamTemplate->assign('PRODUCTS_NAME', $article['articles_name']);
+	//$vamTemplate->assign('PRODUCTS_NAME', $product->data['products_name']);
 	$vamTemplate->assign('AUTHOR', $customer_info['customers_firstname'].' '.$customer_info['customers_lastname']);
 	$vamTemplate->assign('INPUT_TEXT', vam_draw_textarea_field('review', 'soft', 60, 15, $_POST['review'], '', false));
 	$vamTemplate->assign('INPUT_RATING', vam_draw_radio_field('rating', '1').' '.vam_draw_radio_field('rating', '2').' '.vam_draw_radio_field('rating', '3').' '.vam_draw_radio_field('rating', '4').' '.vam_draw_radio_field('rating', '5'));
-	$vamTemplate->assign('FORM_ACTION', vam_draw_form('article_reviews_write', vam_href_link(FILENAME_ARTICLE_REVIEWS_WRITE, 'action=process&articles_id='.$_GET['articles_id']), 'post', 'onsubmit="return checkForm();"'));
+	$vamTemplate->assign('FORM_ACTION', vam_draw_form('site_reviews_write', vam_href_link(FILENAME_SITE_REVIEWS_WRITE, 'action=process'), 'post', 'onsubmit="return checkForm();"'));
 	$vamTemplate->assign('BUTTON_BACK', '<a class="button" href="javascript:history.back(1)">'.vam_image_button('back.png', IMAGE_BUTTON_BACK).'</a>');
 	$vamTemplate->assign('BUTTON_SUBMIT', vam_image_submit('submit.png',  IMAGE_BUTTON_CONTINUE).vam_draw_hidden_field('get_params', $get_params));
 	$vamTemplate->assign('CAPTCHA_IMG', '<img src="'.vam_href_link(FILENAME_DISPLAY_CAPTCHA).'" alt="captcha" name="captcha" />');
 	$vamTemplate->assign('CAPTCHA_INPUT', vam_draw_input_field('captcha', '', 'size="6" id="captcha"', 'text', false));
 	$vamTemplate->assign('FORM_END', '</form>');
-}
+//}
 $vamTemplate->assign('language', $_SESSION['language']);
 
 $vamTemplate->caching = 0;
-$main_content = $vamTemplate->fetch(CURRENT_TEMPLATE.'/module/article_reviews_write.html');
+$main_content = $vamTemplate->fetch(CURRENT_TEMPLATE.'/module/site_reviews_write.html');
 
 $vamTemplate->assign('language', $_SESSION['language']);
 $vamTemplate->assign('main_content', $main_content);
 $vamTemplate->caching = 0;
 if (!defined(RM)) $vamTemplate->loadFilter('output', 'note');
-$template = (file_exists('templates/'.CURRENT_TEMPLATE.'/'.FILENAME_ARTICLE_REVIEWS_WRITE.'.html') ? CURRENT_TEMPLATE.'/'.FILENAME_ARTICLE_REVIEWS_WRITE.'.html' : CURRENT_TEMPLATE.'/index.html');
+$template = (file_exists('templates/'.CURRENT_TEMPLATE.'/'.FILENAME_SITE_REVIEWS_WRITE.'.html') ? CURRENT_TEMPLATE.'/'.FILENAME_SITE_REVIEWS_WRITE.'.html' : CURRENT_TEMPLATE.'/index.html');
 $vamTemplate->display($template);
 include ('includes/application_bottom.php');
 ?>
