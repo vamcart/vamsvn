@@ -322,12 +322,37 @@ $content_meta = vam_db_fetch_array($content_meta_query, true);
 
     break;
 
+  case (strstr($PHP_SELF, FILENAME_SITE_REVIEWS)):
+
+?>
+<title><?php echo NAVBAR_TITLE_SITE_REVIEWS . ' ' . STORE_NAME; ?></title>
+<meta name="description" content="<?php echo NAVBAR_TITLE_SITE_REVIEWS . ' ' . STORE_NAME; ?>" />
+<meta name="keywords" content="<?php echo NAVBAR_TITLE_SITE_REVIEWS . ' ' . STORE_NAME; ?>" />
+<?php
+
+    break;
+    
   case (strstr($PHP_SELF, FILENAME_REVIEWS)):
 
 ?>
 <title><?php echo TEXT_PAGE_PRODUCT_REVIEWS; ?></title>
 <meta name="description" content="<?php echo TEXT_PAGE_PRODUCT_REVIEWS . ' ' . META_DESCRIPTION; ?>" />
 <meta name="keywords" content="<?php echo TEXT_PAGE_PRODUCT_REVIEWS . ' ' . META_KEYWORDS; ?>" />
+<?php
+
+    break;
+
+  case (strstr($PHP_SELF, FILENAME_SITE_REVIEWS_INFO)):
+
+$site_reviews_query = "select rd.reviews_text, r.reviews_rating, r.reviews_id, r.products_id, r.customers_name, r.date_added, r.last_modified, r.reviews_read from ".TABLE_SITE_REVIEWS." r, ".TABLE_SITE_REVIEWS_DESCRIPTION." rd where rd.reviews_id = r.reviews_id and r.reviews_id = '".(int) $_GET['reviews_id']."'";
+$site_reviews_query = vam_db_query($site_reviews_query);
+
+$site_reviews = vam_db_fetch_array($site_reviews_query);
+
+?>
+<title><?php echo NAVBAR_TITLE_SITE_REVIEWS . ' ' . STORE_NAME . ' - ' . NAVBAR_TITLE_SITE_REVIEW . ' ' . $site_reviews['reviews_id']; ?></title>
+<meta name="description" content="<?php echo NAVBAR_TITLE_SITE_REVIEWS . ' ' . STORE_NAME . ' ' . NAVBAR_TITLE_SITE_REVIEW . ' ' . $site_reviews['reviews_id']; ?>" />
+<meta name="keywords" content="<?php echo NAVBAR_TITLE_SITE_REVIEWS . ' ' . STORE_NAME . ' ' . NAVBAR_TITLE_SITE_REVIEW . ' ' . $site_reviews['reviews_id']; ?>" />
 <?php
 
     break;
