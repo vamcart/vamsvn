@@ -3,22 +3,13 @@
 			<div class="reviews_content">
 			
 				<div class="review_items reviews">
-				
-{foreach name=aussen item=module_data from=$module_content}
-					<div class="item">
-						<div class="autorBlock">
-							<img src="{$module_data.AVATAR}" alt="Отзыв">
-							<p class="nameReview">{$module_data.AUTHOR}</p>
-							<p class="revData">{$module_data.DATE}</p>
-							<div class="autorBlock_Rating">
-								<p>Оценка <br> пользователя</p>
-								<input class="input-3" name="input-3" value="{$module_data.RATING}" class="rating-loading" data-size="xs">
-								<a href="{$module_data.LINK}"><u>Читать отзыв</u></a>
-							</div>
-						</div>
-						<p>{$module_data.TEXT|strip_tags|vam_truncate:300:"...":true}</p>
-					</div>
-{/foreach}
+{foreach name=aussen item=module_data from=$module_content} 
+<p itemprop="review" itemscope itemtype="http://schema.org/Review">
+<meta itemprop="itemReviewed" content="{$content_name}">
+{$module_data.ID}&nbsp;&nbsp;&nbsp;<span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">{$module_data.AUTHOR}</span></span>&nbsp;&nbsp;&nbsp;<span itemprop="reviewRating" itemscope itemtype="http://schema.org/Rating"><span itemprop="ratingValue" content="{$module_data.RATING_TXT}">{$module_data.RATING}</span></span>&nbsp;&nbsp;&nbsp;<span content="{$module_data.DATE|date_format:"%Y-%m-%d"}" itemprop="datePublished">{$module_data.DATE|date_format:"%Y-%m-%d"}</span>&nbsp;&nbsp;&nbsp;<span itemprop="reviewBody">{$module_data.TEXT}</span>
+</p>
+<a href="{$module_data.LINK}"><u>Читать отзыв</u></a>
+{/foreach} 
 
 				</div>
 
