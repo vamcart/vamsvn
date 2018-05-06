@@ -68,18 +68,22 @@
 <p>
 Отзывы о статье: <a href="{$smarty.const.FILENAME_ARTICLE_REVIEWS}?articles_id={$module_data.ARTICLE_ID}">{$module_data.ARTICLE_REVIEWS}</a> (<a href="{$smarty.const.FILENAME_ARTICLE_REVIEWS}?articles_id={$module_data.ARTICLE_ID}">читать все отзывы о статье</a>, <a href="{$smarty.const.FILENAME_ARTICLE_REVIEWS_WRITE}?articles_id={$module_data.ARTICLE_ID}">добавить отзыв о статье</a>)
 </p>
+{if {$module_data.ARTICLE_RATING} > 0 }
 <p>
 Рейтинг статьи: {$module_data.ARTICLE_STAR_RATING}
 </p>
+{/if}
 {/if}
 
 {if {$module_data.AUTHOR_ID} > 0}
 <p>
 Отзывы об авторе: <a href="{$smarty.const.FILENAME_AUTHOR_REVIEWS}?authors_id={$module_data.AUTHOR_ID}">{$module_data.AUTHOR_REVIEWS}</a> (<a href="{$smarty.const.FILENAME_AUTHOR_REVIEWS}?authors_id={$module_data.AUTHOR_ID}">читать все отзывы автора</a> , <a href="{$smarty.const.FILENAME_AUTHOR_REVIEWS_WRITE}?authors_id={$module_data.AUTHOR_ID}">добавить отзыв об авторе</a>)
 </p>
+{if {$module_data.AUTHOR_RATING} > 0 }
 <p>
 Рейтинг автора: {$module_data.AUTHOR_STAR_RATING}
 </p>
+{/if}
 {/if}
 
 {if $module_data.ARTICLE_SHORT_DESCRIPTION}
