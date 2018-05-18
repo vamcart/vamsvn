@@ -413,7 +413,7 @@ while ($manufacturers = vam_db_fetch_array($manufacturers_query)) {
 }            
 
 echo             
-            (isset($sInfo->manufacturers_name)) ? $sInfo->manufacturers_name 
+            (isset($sInfo->manuf_id)) ? vam_get_manufacturer_name($sInfo->manuf_id) 
 				: vam_draw_pull_down_menu('manuf_id', $manufacturers_array, $specials_array); 
 
 ?></td>
