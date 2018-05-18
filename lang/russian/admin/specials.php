@@ -50,4 +50,7 @@ define('IMAGE_ICON_STATUS_GREEN_LIGHT', 'Активизировать');
 define('IMAGE_ICON_STATUS_RED', 'Неактивна');
 define('IMAGE_ICON_STATUS_RED_LIGHT', 'Сделать неактивной');
 
+
+define('NEW_MANUFACTURER_DISCOUNT', 'Новая скидка по брэндам');
+
 ?>
