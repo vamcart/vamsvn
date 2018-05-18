@@ -451,7 +451,7 @@ if($action == 'edit')
                         <td class="dataTableHeadingContent" align="right"><?php echo TABLE_HEADING_ACTION; ?>&nbsp;</td>
                       </tr>
 <?php
-$categ_id = $sInfo->categ_id;			    
+$categ_id = ($sInfo->categ_id > 0) ? $sInfo->categ_id : 0;			    
 $specials_query_raw = "select A.products_id, B.products_name, A.products_price, C.specials_id, C.specials_new_products_price, 
 				C.specials_date_added, C.specials_last_modified, C.expires_date, C.date_status_change, C.status, F.special_id from " . 
 				TABLE_PRODUCTS . " A, " . TABLE_PRODUCTS_DESCRIPTION . " B , products_to_categories E 
