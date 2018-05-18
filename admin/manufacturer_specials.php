@@ -442,7 +442,7 @@ echo
 	  </td>
       </tr>
 </form></tr>
-<?
+<?php
 if($action == 'edit')
 {
 ?>
@@ -461,8 +461,7 @@ if($action == 'edit')
 $manuf_id = ($sInfo->manuf_id > 0) ? $sInfo->manuf_id : 0;			    
 $specials_query_raw = "select A.products_id, A.manufacturers_id, B.products_name, A.products_price, C.specials_id, C.specials_new_products_price, 
 				C.specials_date_added, C.specials_last_modified, C.expires_date, C.date_status_change, C.status, F.special_id from " . 
-				TABLE_PRODUCTS . " A, " . TABLE_PRODUCTS_DESCRIPTION . " B, products_to_categories E   
-				left join " . TABLE_SPECIALS . " C on C.products_id = E.products_id left join special_product F on F.product_id = C.products_id, special_manufacturer D where D.manuf_id = A.manufacturers_id and A.manufacturers_id = $manuf_id and 
+				TABLE_PRODUCTS . " A, " . TABLE_PRODUCTS_DESCRIPTION . " B, " . TABLE_SPECIALS . " C left join special_product F on F.product_id = C.products_id, special_manufacturer D where C.products_id = A.products_id and D.manuf_id = A.manufacturers_id and A.manufacturers_id = $manuf_id and 
 				A.products_id = B.products_id and B.language_id = '" . (int)$_SESSION['languages_id'] . "' order by F.special_id, C.specials_id, B.products_name ";
 $specials_split = new splitPageResults($_GET['page'], MAX_DISPLAY_ADMIN_PAGE, $specials_query_raw, $specials_query_numrows);
 $specials_query = vam_db_query($specials_query_raw);
@@ -494,7 +493,7 @@ while ($specials = vam_db_fetch_array($specials_query))
             <td  class="dataTableContent" align="right"><span class="<?php echo $class; ?>"><?php echo $currencies->format($specials['products_price']); ?></span>&nbsp;</td>
             <td  class="dataTableContent">&nbsp;<span class="specialPrice">$<input type="text" size="10" name="new_price" value="<?php echo $specials['specials_new_products_price']; ?>"></span></td>
 		<td  class="dataTableContent" align="center">
-<?
+<?php
 	if($specials['specials_id'] > 0)
 	{
 		if ($specials['status'] == '1')
@@ -517,24 +516,24 @@ while ($specials = vam_db_fetch_array($specials_query))
 ?>
 		</td>
                       <td class="dataTableContent" align="right">
-<?
+<?php
 if($specials['specials_id'] > 0)
 {
 ?>
 			    <span class="button"><input type="button" value="<?php echo BUTTON_UPDATE; ?>" onClick="this.form.act.value = 'update'; this.form.submit();"></span>&nbsp;&nbsp;<span class="button"><input type="button" value="<?php echo BUTTON_DELETE; ?>" onClick="this.form.act.value = 'delete'; this.form.submit();"></span>
-<?
+<?php
 }
 else if($specials['special_id'] > 0 )
 {
 ?>
 			    <span class="button"><input type="button" value="<?php echo BUTTON_RE_ADD; ?>" onClick="this.form.act.value = 're-add'; this.form.submit();"></span>&nbsp;&nbsp;<span class="button"><input type="button" value="<?php echo BUTTON_DELETE; ?>" onClick="this.form.act.value = 'delete'; this.form.submit();"></span>
-<?
+<?php
 }
 else
 {
 ?>
 			    <span class="button"><input type="button" value="<?php echo BUTTON_MAKE_SPECIAL; ?>" onClick="this.form.act.value = 'make-special'; this.form.submit();"></span>
-<?
+<?php
 }
 ?>			    
 			    
@@ -568,7 +567,7 @@ else
               </table>
               </td>
           </tr>
-<?
+<?php
 }
 ?>  
         </table></td>

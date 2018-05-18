@@ -435,7 +435,7 @@ if ( ($action == 'new') || ($action == 'edit') )
 	  </td>
       </tr>
 </form></tr>
-<?
+<?php
 if($action == 'edit')
 {
 ?>
@@ -488,7 +488,7 @@ while ($specials = vam_db_fetch_array($specials_query))
             <td  class="dataTableContent" align="right"><span class="<?php echo $class; ?>"><?php echo $currencies->format($specials['products_price']); ?></span>&nbsp;</td>
             <td  class="dataTableContent">&nbsp;<span class="specialPrice">$<input type="text" size="10" name="new_price" value="<?php echo $specials['specials_new_products_price']; ?>"></span></td>
 		<td  class="dataTableContent" align="center">
-<?
+<?php
 	if($specials['specials_id'] > 0)
 	{
 		if ($specials['status'] == '1')
@@ -511,24 +511,24 @@ while ($specials = vam_db_fetch_array($specials_query))
 ?>
 		</td>
                       <td class="dataTableContent" align="right">
-<?
+<?php
 if($specials['specials_id'] > 0)
 {
 ?>
 			    <span class="button"><input type="button" value="<?php echo BUTTON_UPDATE; ?>" onClick="this.form.act.value = 'update'; this.form.submit();"></span>&nbsp;&nbsp;<span class="button"><input type="button" value="<?php echo BUTTON_DELETE; ?>" onClick="this.form.act.value = 'delete'; this.form.submit();"></span>
-<?
+<?php
 }
 else if($specials['special_id'] > 0 )
 {
 ?>
 			    <span class="button"><input type="button" value="<?php echo BUTTON_RE_ADD; ?>" onClick="this.form.act.value = 're-add'; this.form.submit();"></span>&nbsp;&nbsp;<span class="button"><input type="button" value="<?php echo BUTTON_DELETE; ?>" onClick="this.form.act.value = 'delete'; this.form.submit();"></span>
-<?
+<?php
 }
 else
 {
 ?>
 			    <span class="button"><input type="button" value="<?php echo BUTTON_MAKE_SPECIAL; ?>" onClick="this.form.act.value = 'make-special'; this.form.submit();"></span>
-<?
+<?php
 }
 ?>			    
 			    
@@ -562,7 +562,7 @@ else
               </table>
               </td>
           </tr>
-<?
+<?php
 }
 ?>  
         </table></td>
