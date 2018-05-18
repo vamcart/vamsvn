@@ -673,7 +673,7 @@ switch ($action)
 
 	$contents = array('form' => vam_draw_form('specials', FILENAME_MANUFACTURER_SPECIALS, 'page=' . $_GET['page'] . '&sID=' . $sInfo->special_id . '&action=deleteconfirm'));
 	$contents[] = array('text' => TEXT_INFO_DELETE_INTRO);
-	$contents[] = array('text' => '<br><b>' . $sInfo->categories_name . '</b>');
+	$contents[] = array('text' => '<br><b>' . vam_get_manufacturer_name($sInfo->manuf_id) . '</b>');
 	$contents[] = array('align' => 'center', 'text' => '<br><span class="button"><button type="submit" value="' . BUTTON_DELETE . '">' . vam_image(DIR_WS_IMAGES . 'icons/buttons/delete.png', '', '12', '12') . '&nbsp;' . BUTTON_DELETE . '</button></span>&nbsp;<a class="button" href="' . vam_href_link(FILENAME_MANUFACTURER_SPECIALS, 'page=' . $_GET['page'] . '&sID=' . $sInfo->special_id) . '"><span>' . vam_image(DIR_WS_IMAGES . 'icons/buttons/cancel.png', '', '12', '12') . '&nbsp;' . BUTTON_CANCEL . '</span></a>');
 	break;
 	default:
@@ -682,12 +682,12 @@ switch ($action)
 		$discount_type = $sInfo->discount_type == "p" ? "Percentage" : "Flat Rate Diduction";
 		$discount = $sInfo->discount_type == "p" ? sprintf("%0.2f", $sInfo->discount). " %" : $currencies->format($sInfo->discount);
 
-		$heading[] = array('text' => '<b>' . $sInfo->categories_name . '</b>');
+		$heading[] = array('text' => '<b>' . vam_get_manufacturer_name($sInfo->manuf_id) . '</b>');
 
 		$contents[] = array('align' => 'center', 'text' => '<a class="button" href="' . vam_href_link(FILENAME_MANUFACTURER_SPECIALS, 'page=' . $_GET['page'] . '&sID=' . $sInfo->special_id . '&action=edit') . '"><span>' . vam_image(DIR_WS_IMAGES . 'icons/buttons/edit.png', '', '12', '12') . '&nbsp;' . BUTTON_EDIT . '</span></a> <a class="button" href="' . vam_href_link(FILENAME_MANUFACTURER_SPECIALS, 'page=' . $_GET['page'] . '&sID=' . $sInfo->special_id . '&action=delete') . '"><span>' . vam_image(DIR_WS_IMAGES . 'icons/buttons/delete.png', '', '12', '12') . '&nbsp;' . BUTTON_DELETE . '</span></a>');
 		$contents[] = array('text' => '<br>' . TEXT_INFO_DATE_ADDED . ' ' . vam_date_short($sInfo->special_date_added));
 		$contents[] = array('text' => '' . TEXT_INFO_LAST_MODIFIED . ' ' . vam_date_short($sInfo->special_last_modified));
-		$contents[] = array('align' => 'center', 'text' => '<br>' . vam_info_image($sInfo->categories_image, $sInfo->categories_name, SMALL_IMAGE_WIDTH, SMALL_IMAGE_HEIGHT));
+		//$contents[] = array('align' => 'center', 'text' => '<br>' . vam_info_image($sInfo->categories_image, vam_get_manufacturer_name($sInfo->manuf_id), SMALL_IMAGE_WIDTH, SMALL_IMAGE_HEIGHT));
 		$contents[] = array('text' => '<br>' . TEXT_INFO_DISCOUNT_TYPE . ' ' . $discount_type);
 		$contents[] = array('text' => '' . TEXT_INFO_DISCOUNT . ' ' . $discount);
 
