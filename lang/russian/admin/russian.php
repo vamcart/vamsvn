@@ -616,4 +616,7 @@ define('CG_COMPANY_TEXT_SETTINGS_DESC', '');
 
 define('TEXT_ADD_REVIEW', 'Добавить отзыв');
 
+define('TEXT_CATEGORY_DISCOUNT', 'Скидки по категориям');
+define('TEXT_MANUFACTURER_DISCOUNT', 'Скидки по брэндам');
+
 ?>
