@@ -600,7 +600,8 @@ while ($specials = vam_db_fetch_array($specials_query))
 	{
 		$products_query = vam_db_query("select categories_image from " . TABLE_CATEGORIES . " where categories_id = '" . (int)$specials['manuf_id'] . "'");
 		$products = vam_db_fetch_array($products_query);
-		$sInfo_array = array_merge($specials, $products);
+		//$sInfo_array = array_merge($specials, $products);
+		$sInfo_array = $specials;
 		$sInfo = new objectInfo($sInfo_array);
 	}
 
