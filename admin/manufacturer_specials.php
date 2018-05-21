@@ -375,11 +375,12 @@ if ( ($action == 'new') || ($action == 'edit') )
 	{
 		$form_action = 'update';
 
-		$product_query = vam_db_query("select A.manuf_id, B.categories_name, A.discount, A.discount_type, A.expire_date from ". TABLE_SPECIAL_MANUFACTURER. " A, " .
-		TABLE_CATEGORIES_DESCRIPTION . " B where A.manuf_id = B.categories_id and B.language_id = '" . (int)$_SESSION['languages_id'] . "'
-					and A.special_id = '" . (int)$_GET['sID'] . "'");
+		$product_query = vam_db_query("select A.manuf_id, A.discount, A.discount_type, A.expire_date from ". TABLE_SPECIAL_MANUFACTURER. " A, " .
+		TABLE_PRODUCTS . " B where A.manuf_id = B.manufacturers_id 
+					and A.special_id = '" . (int)$_GET['sID'] . "'");					
 		$product = vam_db_fetch_array($product_query);
 		$sInfo = new objectInfo($product);
+		
 	}
 	else
 	{
