@@ -1,6 +1,6 @@
 <?php
 /* --------------------------------------------------------------
-   $Id: category_specials.php 1125 2008-02-26 11:13:01Z VaM $   
+   $Id: category_specials.php 1126 2008-02-26 11:13:01Z VaM $   
 
    VaM Shop - open source ecommerce solution
    http://vamshop.ru
@@ -589,9 +589,8 @@ else
                 <td class="dataTableHeadingContent" align="right"><?php echo TABLE_HEADING_ACTION; ?>&nbsp;</td>
               </tr>
 <?php
-$specials_query_raw = "select A.special_id, A.manuf_id, A.discount, A.discount_type, A.status, B.manufacturers_id, A.special_date_added, A.special_last_modified, A.expire_date,
-					A.date_status_change from ". TABLE_SPECIAL_MANUFACTURER. " A, " . TABLE_PRODUCTS . " B where A.manuf_id = B.manufacturers_id  
-					group by B.manufacturers_id";
+$specials_query_raw = "select A.special_id, A.manuf_id, A.discount, A.discount_type, A.status, A.special_date_added, A.special_last_modified, A.expire_date,
+					A.date_status_change from ". TABLE_SPECIAL_MANUFACTURER. " A";
 $specials_split = new splitPageResults($_GET['page'], MAX_DISPLAY_ADMIN_PAGE, $specials_query_raw, $specials_query_numrows);
 $specials_query = vam_db_query($specials_query_raw);
 while ($specials = vam_db_fetch_array($specials_query))
@@ -625,7 +624,7 @@ while ($specials = vam_db_fetch_array($specials_query))
 	$prod_count = vam_db_fetch_array($prod_count);
 	$total_product = $prod_count['cnt'];
 ?>
-                <td  class="dataTableContent"><?php echo vam_get_manufacturer_name($specials['manufacturers_id']); ?></td>
+                <td  class="dataTableContent"><?php echo vam_get_manufacturer_name($specials['manuf_id']); ?></td>
                 <td  class="dataTableContent" align="center"><?php echo $special_product. " / ". $total_product; ?></td>
                 <td  class="dataTableContent" align="right"><span class="specialPrice"><?php echo $specials['discount_type'] == "f" ? "$" : "%"; ?> <?php echo sprintf("%0.2f", $specials['discount']); ?></span></td>
                 <td  class="dataTableContent" align="right">
