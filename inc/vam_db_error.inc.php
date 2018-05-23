@@ -38,8 +38,7 @@ function vam_db_error($query, $errno, $error) {
 	 }
    $log = date("d/m/Y H:m:s",time()) . ' | ' . $errno . ' - ' . $error . ' | ' . $query . ' | ' . $_SERVER["REQUEST_URI"] . "\n";
 	 error_log($log, 3, 'mysql_db_error.log');
-   //mail(DB_ERR_MAIL, 'MySQL DB Error!', $msg,
-        'From: db_error@'.$_SERVER["SERVER_NAME"]);
+   //mail(DB_ERR_MAIL, 'MySQL DB Error!', $msg,'From: db_error@'.$_SERVER["SERVER_NAME"]);
 if (!headers_sent() && file_exists('db_error.htm') ) {
      header('Location: db_error.htm');
      //include('db_error.htm');
