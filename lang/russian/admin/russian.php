@@ -1,6 +1,6 @@
 <?php
 /* --------------------------------------------------------------
-   $Id: russian.php 1231 2013-11-07 17:37:58 VaM $
+   $Id: russian.php 1231 2017-11-07 17:37:58 VaM $
 
    VaM Shop - open source ecommerce solution
    http://vamshop.ru
@@ -618,5 +618,6 @@ define('TEXT_ADD_REVIEW', 'Добавить отзыв');
 
 define('TEXT_CATEGORY_DISCOUNT', 'Скидки по категориям');
 define('TEXT_MANUFACTURER_DISCOUNT', 'Скидки по брэндам');
+define('TEXT_DISPLAY_NUMBER_OF_SPECIAL_MANUFACTURER', 'Показано <b>%d</b> - <b>%d</b> (всего <b>%d</b> брэндов со скидками)');
 
 ?>
