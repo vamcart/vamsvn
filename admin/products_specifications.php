@@ -1337,9 +1337,6 @@
             case 'products_date_available':
             case 'products_ordered':
             case 'products_ship_method':
-            case 'products_length':
-            case 'products_width':
-            case 'products_height':
             case 'products_ready_to_ship':
             case 'vendors_id':
             case 'vendors_product_price':
