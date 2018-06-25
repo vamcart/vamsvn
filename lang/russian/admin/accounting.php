@@ -120,4 +120,15 @@ define('ACCESS_ATTRIBUTEMANAGER','Админка - Каталог - Устано
 define('ACCESS_ANSWER_TEMPLATES', 'Админка - Настройки - Шаблоны ответов');
 define('ACCESS_PRODUCT_LABELS', 'Админка - Настройки - Ярлыки товара');
 
+define('ACCESS_ARTICLE_REVIEWS','Админка - Каталог - Отзывы о статьях');
+define('ACCESS_ARTICLE_REVIEWS_ADD','Админка - Каталог - Отзывы о статьях - Добавить отзыв');
+define('ACCESS_AUTHOR_REVIEWS','Админка - Каталог - Отзывы об авторах');
+define('ACCESS_AUTHOR_REVIEWS_ADD','Админка - Каталог - Отзывы об авторах - Добавить отзыв');
+define('ACCESS_COMPANY_REVIEWS','Админка - Каталог - Отзывы о производителях');
+define('ACCESS_COMPANY_REVIEWS_ADD','Админка - Каталог - Отзывы о производителях - Добавить отзыв');
+define('ACCESS_REVIEWS_ADD','Админка - Каталог - Отзывы о товарах - Добавить отзыв');
+define('ACCESS_SITE_REVIEWS','Админка - Каталог - Отзывы о магазине');
+define('ACCESS_SITE_REVIEWS_ADD','Админка - Каталог - Отзывы о магазине - Добавить отзыв');
+define('ACCESS_MANUFACTURER_SPECIALS','Админка - Каталог - Скидки по брэндам');
+
 ?>
