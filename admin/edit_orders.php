@@ -136,7 +136,7 @@ require_once (DIR_FS_CATALOG.DIR_WS_CLASSES.'vam_price.php');
     'delivery_postcode' => vam_db_input(vam_db_prepare_input(((isset($_POST['shipping_same_as_billing']) && $_POST['shipping_same_as_billing'] == 'on') ? (($_POST['billing_same_as_customer'] == 'on') ? $_POST['update_customer_postcode'] : $_POST['update_billing_postcode']) : $_POST['update_delivery_postcode']))),
     'delivery_country' => vam_db_input(vam_db_prepare_input(((isset($_POST['shipping_same_as_billing']) && $_POST['shipping_same_as_billing'] == 'on') ? (($_POST['billing_same_as_customer'] == 'on') ? $update_customer_country : $update_billing_country) : $update_delivery_country))),
                                 
-	'payment_method' => vam_db_input(vam_db_prepare_input($_POST['update_info_payment_method'])),
+	'payment_class' => vam_db_input(vam_db_prepare_input($_POST['update_info_payment_method'])),
     'currency' => vam_db_input(vam_db_prepare_input($_POST['update_info_payment_currency'])),
     'currency_value' => vam_db_input(vam_db_prepare_input($currency_value['value'])),
     'cc_type' => vam_db_prepare_input($_POST['update_info_cc_type']),
@@ -352,7 +352,7 @@ require_once (DIR_FS_CATALOG.DIR_WS_CLASSES.'vam_price.php');
 	  } //end if is_array
 
        if (vam_not_null($shipping['id'])) {
-   vam_db_query("UPDATE " . TABLE_ORDERS . " SET shipping_method = '" . $shipping['id'] . "' WHERE orders_id = '" . (int)$oID . "'");
+   vam_db_query("UPDATE " . TABLE_ORDERS . " SET shipping_method = '" . $shipping['title'] . "' , shipping_class ='".$shipping['id']."' WHERE orders_id = '" . (int)$oID . "'");
        }
 
         $order = new manualOrder($oID);
