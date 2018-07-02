@@ -30,7 +30,7 @@
 <?php } ?>
 <?php if (YANDEX_METRIKA == 'true') { ?>
 <!-- Yandex.Metrika counter -->
-<div style="display:none;"><script type="text/javascript">
+<script type="text/javascript">
     (function (d, w, c) {
         (w[c] = w[c] || []).push(function() {
             try {
@@ -58,7 +58,7 @@
             d.addEventListener("DOMContentLoaded", f, false);
         } else { f(); }
     })(document, window, "yandex_metrika_callbacks");
-</script></div>
+</script>
 
 <noscript><div><img src="https://mc.yandex.ru/watch/<?php echo YANDEX_METRIKA_ID; ?>?ut=noindex" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 <!-- /Yandex.Metrika counter -->
