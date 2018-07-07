@@ -107,6 +107,10 @@ if (!is_object($product) || !$product->isProduct() OR !$product->data['products_
 		$info->assign('PRODUCTS_MODEL', $product->data['products_model']);
 		$info->assign('PRODUCTS_EAN', $product->data['products_ean']);
 		$info->assign('PRODUCTS_QUANTITY', $product->data['products_quantity']);
+		$info->assign('PRODUCTS_LENGTH', $product->data['products_length']);
+		$info->assign('PRODUCTS_WIDTH', $product->data['products_width']);
+		$info->assign('PRODUCTS_HEIGHT', $product->data['products_height']);
+		$info->assign('PRODUCTS_VOLUME', $product->data['products_volume']);
 		$info->assign('PRODUCTS_WEIGHT', $product->data['products_weight']);
 		$info->assign('PRODUCTS_STATUS', $product->data['products_status']);
 		$info->assign('PRODUCTS_ORDERED', $product->data['products_ordered']);
