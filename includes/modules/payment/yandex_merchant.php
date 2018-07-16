@@ -383,7 +383,7 @@ if ($_SERVER["HTTP_X_FORWARDED_FOR"]) {
 
       $process_button_string = vam_draw_hidden_field('shopId', MODULE_PAYMENT_YANDEX_MERCHANT_SHOP_ID) .
                                vam_draw_hidden_field('scid', MODULE_PAYMENT_YANDEX_MERCHANT_SCID) .
-                               vam_draw_hidden_field('sum', $order_sum) . 
+                               vam_draw_hidden_field('sum', number_format($order_sum, 2, '.', '')) . 
                                vam_draw_hidden_field('customerNumber', $order->customer['id']) .
                                vam_draw_hidden_field('orderNumber', substr($_SESSION['cart_yandex_id'], strpos($_SESSION['cart_yandex_id'], '-')+1)) .
                                vam_draw_hidden_field('shopSuccessURL', vam_href_link(FILENAME_CHECKOUT_PROCESS, '', 'SSL')) .
