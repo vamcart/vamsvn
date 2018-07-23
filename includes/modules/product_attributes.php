@@ -74,7 +74,9 @@ if ($product->getAttributesCount() > 0) {
 		while ($products_options = vam_db_fetch_array($products_options_query,true)) {
 			$price = '';
 			if ($_SESSION['customers_status']['customers_status_show_price'] == '0') {
-				$products_options_data[$row][﻿'DAT﻿A'] = array();
+				
+				//$products_options_data[$row][﻿'DAT﻿A'] = array();
+
 				$products_options_data[$row]['DATA'][$col] = array (
 				
 				'ID' => $products_options['products_options_values_id'], 
@@ -111,7 +113,7 @@ if ($product->getAttributesCount() > 0) {
 					$full_price = $vamPrice->Format($full_price, true);
 			}
 			
-			$products_options_data[$row][﻿'DAT﻿A'] = array();
+			//$products_options_data[$row][﻿'DAT﻿A'] = array();
 			$products_options_data[$row]['DATA'][$col] = array (
 			
 			'ID' => $products_options['products_options_values_id'], 
