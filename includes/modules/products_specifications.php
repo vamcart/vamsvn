@@ -120,6 +120,8 @@ $col = 0;
       } // if ($specifications['specification']
 
 
+            $specifications_data[$row]['DATA'] = array();
+            
 				$specifications_data[$row]['DATA'][$col] = array (
 				
 					'NAME' => $specifications['specification_name'], 
