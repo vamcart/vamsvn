@@ -55,7 +55,7 @@ if (!isset ($_SESSION['tracking']['browser']))
 
 
 
-$i = count($_SESSION['tracking']['pageview_history']);
+$i = count(array($_SESSION['tracking']['pageview_history']));
 if ($i > 6) {
 	array_shift($_SESSION['tracking']['pageview_history']);
 	$_SESSION['tracking']['pageview_history'][6] = $ref_url;
