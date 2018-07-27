@@ -70,16 +70,10 @@
         $shipping_num_boxes = 1;
         $shipping_weight = $total_weight;
 
-        if( is_numeric(SHIPPING_BOX_PADDING )){
-						$shP = SHIPPING_BOX_PADDING*1;﻿
-					}else{
-						$shP = 1;
-					}
-
-        if (SHIPPING_BOX_WEIGHT >= $shipping_weight*$shP/100) {
-          $shipping_weight = $shipping_weight+SHIP﻿PING_BOX_WEIGHT;
+        if (SHIPPING_BOX_WEIGHT >= $shipping_weight*SHIPPING_BOX_PADDING/100) {
+          $shipping_weight = $shipping_weight+SHIPPING_BOX_WEIGHT;
         } else {
-          $shipping_weight = $shipping_weight + ($shipping_weight*$shP/100);
+          $shipping_weight = $shipping_weight + ($shipping_weight*SHIPPING_BOX_PADDING/100);
         }
 
         if ($shipping_weight > SHIPPING_MAX_WEIGHT) { // Split into many boxes
