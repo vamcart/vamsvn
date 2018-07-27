@@ -55,14 +55,13 @@ class shoppingCart {
 		// insert current cart contents in database
 		if (is_array($this->contents)) {
 			reset($this->contents);
-			while (list ($products_id,) = each($this->contents)) {
+			foreach (array_keys($this->contents) as $products_id) {
 				$qty = $this->contents[$products_id]['qty'];
 				$product_query = vam_db_query("select products_id from ".TABLE_CUSTOMERS_BASKET." where customers_id = '".$_SESSION['customer_id']."' and products_id = '".$products_id."'");
 				if (!vam_db_num_rows($product_query)) {
 					vam_db_query("insert into ".TABLE_CUSTOMERS_BASKET." (customers_id, products_id, customers_basket_quantity, customers_basket_date_added) values ('".$_SESSION['customer_id']."', '".$products_id."', '".$qty."', '".date('Ymd')."')");
 					if (isset ($this->contents[$products_id]['attributes'])) {
-						reset($this->contents[$products_id]['attributes']);
-						while (list ($option, $value) = each($this->contents[$products_id]['attributes'])) {
+						foreach ($this->contents[$products_id]['attributes'] as $option => $value) {
 						           $attr_value = $this->contents[$products_id]['attributes_values'][$option];
 
 							vam_db_query("insert into ".TABLE_CUSTOMERS_BASKET_ATTRIBUTES." (customers_id, products_id, products_options_id, products_options_value_id, products_options_value_text) values ('".$_SESSION['customer_id']."', '".$products_id."', '".$option."', '".$value."', '" . vam_db_input($attr_value) . "')");
@@ -128,8 +127,7 @@ class shoppingCart {
 				vam_db_query("insert into ".TABLE_CUSTOMERS_BASKET." (customers_id, products_id, customers_basket_quantity, customers_basket_date_added) values ('".$_SESSION['customer_id']."', '".$products_id."', '".$qty."', '".date('Ymd')."')");
 
 			if (is_array($attributes)) {
-				reset($attributes);
-				while (list ($option, $value) = each($attributes)) {
+				foreach ($attributes as $option => $value) {
 
              $attr_value = NULL;
             $blank_value = FALSE;
@@ -174,8 +172,7 @@ class shoppingCart {
 			vam_db_query("update ".TABLE_CUSTOMERS_BASKET." set customers_basket_quantity = '".$quantity."' where customers_id = '".$_SESSION['customer_id']."' and products_id = '".$products_id."'");
 
 		if (is_array($attributes)) {
-			reset($attributes);
-			while (list ($option, $value) = each($attributes)) {
+			foreach ($attributes as $option => $value) {
 
 			// txt attributes
              $attr_value = NULL;
@@ -207,8 +204,7 @@ class shoppingCart {
 
 	function cleanup() {
 
-		reset($this->contents);
-		while (list ($key,) = each($this->contents)) {
+		foreach (array_keys($this->contents) as $key) {
 			if ($this->contents[$key]['qty'] < 1) {
 				unset ($this->contents[$key]);
 				// remove from database
@@ -223,8 +219,7 @@ class shoppingCart {
 	function count_contents() { // get total number of items in cart
 		$total_items = 0;
 		if (is_array($this->contents)) {
-			reset($this->contents);
-			while (list ($products_id,) = each($this->contents)) {
+			foreach (array_keys($this->contents) as $products_id) {
 				$total_items += $this->get_quantity($products_id);
 			}
 		}
@@ -268,8 +263,7 @@ class shoppingCart {
 	function get_product_id_list() {
 		$product_id_list = '';
 		if (is_array($this->contents)) {
-			reset($this->contents);
-			while (list ($products_id,) = each($this->contents)) {
+			foreach (array_keys($this->contents) as $products_id) {
 				$product_id_list .= ', '.$products_id;
 			}
 		}
@@ -290,8 +284,7 @@ class shoppingCart {
 		if (!is_array($this->contents))
 			return 0;
 
-		reset($this->contents);
-		while (list ($products_id,) = each($this->contents)) {
+		foreach (array_keys($this->contents) as $products_id) {
 			$qty = $this->contents[$products_id]['qty'];
 
 			// products price
@@ -311,8 +304,7 @@ class shoppingCart {
 							// attributes price
 				$attribute_price = 0;
 			if (isset ($this->contents[$products_id]['attributes'])) {
-				reset($this->contents[$products_id]['attributes']);
-				while (list ($option, $value) = each($this->contents[$products_id]['attributes'])) {
+				foreach ($this->contents[$products_id]['attributes'] as $option => $value) {
 
 					$values = $vamPrice->GetOptionPrice($product['products_id'], $option, $value);
 					$this->weight += $values['weight'] * $qty;
@@ -374,9 +366,7 @@ class shoppingCart {
 	function attributes_price($products_id) {
 		global $vamPrice;
 		if (isset ($this->contents[$products_id]['attributes'])) {
-			reset($this->contents[$products_id]['attributes']);
-			while (list ($option, $value) = each($this->contents[$products_id]['attributes'])) {
-
+			foreach ($this->contents[$products_id]['attributes'] as $option => $value) {
 				$values = $vamPrice->GetOptionPrice($products_id, $option, $value);
 				$attributes_price += $values['price'];
 
@@ -391,10 +381,9 @@ class shoppingCart {
 			return false;
 
 		$products_array = array ();
-		reset($this->contents);
-		while (list ($products_id,) = each($this->contents)) {
+		foreach (array_keys($this->contents) as $products_id) {
 			if($this->contents[$products_id]['qty'] != 0 || $this->contents[$products_id]['qty'] !=''){
-			$products_query = vam_db_query("select p.products_id, pd.products_name,p.products_shippingtime, p.products_image, p.products_model, p.products_quantity, p.products_price, p.products_discount_allowed, p.products_weight, p.products_length, p.products_width, p.products_height, p.products_volume, p.products_tax_class_id from ".TABLE_PRODUCTS." p, ".TABLE_PRODUCTS_DESCRIPTION." pd where p.products_id='".vam_get_prid($products_id)."' and pd.products_id = p.products_id and pd.language_id = '".$_SESSION['languages_id']."'");
+			$products_query = vam_db_query("select p.products_id, pd.products_name,p.products_shippingtime, p.products_image, p.products_model, p.products_price, p.products_discount_allowed, p.products_weight, p.products_length, p.products_width, p.products_height, p.products_volume, p.products_tax_class_id from ".TABLE_PRODUCTS." p, ".TABLE_PRODUCTS_DESCRIPTION." pd where p.products_id='".vam_get_prid($products_id)."' and pd.products_id = p.products_id and pd.language_id = '".$_SESSION['languages_id']."'");
 			if ($products = vam_db_fetch_array($products_query)) {
 				$prid = $products['products_id'];
 
@@ -408,7 +397,6 @@ class shoppingCart {
 				'image' => $products['products_image'], 
 				'price' => $products_price + $this->attributes_price($products_id), 
 				'quantity' => $this->contents[$products_id]['qty'], 
-				'stock' => $products['products_quantity'],
 				'weight' => $products['products_weight'],
 				'length' => $products['products_length'],
 				'width' => $products['products_width'],
@@ -496,11 +484,9 @@ class shoppingCart {
 		$this->content_type = false;
 
 		if ((DOWNLOAD_ENABLED == 'true') && ($this->count_contents() > 0)) {
-			reset($this->contents);
-			while (list ($products_id,) = each($this->contents)) {
+			foreach (array_keys($this->contents) as $products_id) {
 				if (isset ($this->contents[$products_id]['attributes'])) {
-					reset($this->contents[$products_id]['attributes']);
-					while (list (, $value) = each($this->contents[$products_id]['attributes'])) {
+					foreach (array_keys($this->contents) as $products_id) {
 						$virtual_check_query = vam_db_query("select count(*) as total from ".TABLE_PRODUCTS_ATTRIBUTES." pa, ".TABLE_PRODUCTS_ATTRIBUTES_DOWNLOAD." pad where pa.products_id = '".$products_id."' and pa.options_values_id = '".$value."' and pa.products_attributes_id = pad.products_attributes_id");
 						$virtual_check = vam_db_fetch_array($virtual_check_query);
 
@@ -565,8 +551,7 @@ class shoppingCart {
 	function count_contents_virtual() { // get total number of items in cart disregard gift vouchers
 		$total_items = 0;
 		if (is_array($this->contents)) {
-			reset($this->contents);
-			while (list ($products_id,) = each($this->contents)) {
+			foreach (array_keys($this->contents) as $products_id) {
 				$no_count = false;
 				$gv_query = vam_db_query("select products_model from ".TABLE_PRODUCTS." where products_id = '".$products_id."'");
 				$gv_result = vam_db_fetch_array($gv_query);

@@ -38,7 +38,8 @@ if ($_SESSION['cart']->count_contents() > 0) {
 		$product_attributes_in_cart = "";
 
 		if (isset ($products[$i]['attributes'])) {
-			while (list ($option, $value) = each($products[$i]['attributes'])) {
+			foreach ($products[$i]['attributes'] as $option => $value) {
+				
 				//$hidden_options .= vam_draw_hidden_field('id['.$products[$i]['id'].']['.$option.']', $value);
 				$attributes = vam_db_query("select popt.products_options_name, popt.products_options_type, poval.products_options_values_name, pa.options_values_price, pa.price_prefix,pa.attributes_stock,pa.products_attributes_id,pa.attributes_model , pa.options_values_id
 				                                      from ".TABLE_PRODUCTS_OPTIONS." popt, ".TABLE_PRODUCTS_OPTIONS_VALUES." poval, ".TABLE_PRODUCTS_ATTRIBUTES." pa
