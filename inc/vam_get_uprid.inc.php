@@ -27,8 +27,7 @@
       $attributes_check = true;
       $attributes_ids = '';
 
-      reset($params);
-      while (list($option, $value) = each($params)) {
+      foreach ($params as $option => $value) {
         if (is_numeric($option) && is_numeric($value)) {
           $attributes_ids .= '{' . (int)$option . '}' . (int)$value;
         } else {
