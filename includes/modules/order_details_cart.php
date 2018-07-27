@@ -57,32 +57,13 @@ for ($i = 0, $n = sizeof($products); $i < $n; $i ++) {
 		$image = DIR_WS_THUMBNAIL_IMAGES.$products[$i]['image'];
 	}
 	if (!is_file($image)) $image = DIR_WS_THUMBNAIL_IMAGES.'../noimage.gif';
-	$module_content[$i] = array (
-	
-	'PRODUCTS_NAME' => $products[$i]['name'].$mark_stock, 
-	'PRODUCTS_QTY' => vam_draw_input_field('cart_quantity[]', $products[$i]['quantity'], 'size="2" class="input-small"').vam_draw_hidden_field('products_id[]', $products[$i]['id']).vam_draw_hidden_field('old_qty[]', $products[$i]['quantity']), 
-	'PRODUCTS_STOCK' => $products[$i]['stock'],
-	'PRODUCTS_MODEL' => $products[$i]['model'],
-	'PRODUCTS_SHIPPING_TIME'=>$products[$i]['shipping_time'], 
-	'PRODUCTS_TAX' => number_format($products[$i]['tax'], TAX_DECIMAL_PLACES), 
-	'PRODUCTS_IMAGE' => $image, 
-	'IMAGE_ALT' => $products[$i]['name'], 
-	'BOX_DELETE' => vam_draw_checkbox_field('cart_delete[]', $products[$i]['id']), 
-	'PRODUCTS_LINK' => vam_href_link(FILENAME_PRODUCT_INFO, vam_product_link($products[$i]['id'], $products[$i]['name'])), 
-	'PRODUCTS_PRICE' => $vamPrice->Format($products[$i]['price'] * $products[$i]['quantity'], true), 
-	'PRODUCTS_SINGLE_PRICE' =>$vamPrice->Format($products[$i]['price'], true), 
-	'PRODUCTS_SHORT_DESCRIPTION' => vam_get_short_description($products[$i]['id']), 
-	'ATTRIBUTES' => ''
-	
-	);
+	$module_content[$i] = array ('PRODUCTS_NAME' => $products[$i]['name'].$mark_stock, 'PRODUCTS_QTY' => vam_draw_input_field('cart_quantity[]', $products[$i]['quantity'], 'size="2" class="input-small"').vam_draw_hidden_field('products_id[]', $products[$i]['id']).vam_draw_hidden_field('old_qty[]', $products[$i]['quantity']), 'PRODUCTS_MODEL' => $products[$i]['model'],'PRODUCTS_SHIPPING_TIME'=>$products[$i]['shipping_time'], 'PRODUCTS_TAX' => number_format($products[$i]['tax'], TAX_DECIMAL_PLACES), 'PRODUCTS_IMAGE' => $image, 'IMAGE_ALT' => $products[$i]['name'], 'BOX_DELETE' => vam_draw_checkbox_field('cart_delete[]', $products[$i]['id']), 'PRODUCTS_LINK' => vam_href_link(FILENAME_PRODUCT_INFO, vam_product_link($products[$i]['id'], $products[$i]['name'])), 'PRODUCTS_PRICE' => $vamPrice->Format($products[$i]['price'] * $products[$i]['quantity'], true), 'PRODUCTS_SINGLE_PRICE' =>$vamPrice->Format($products[$i]['price'], true), 'PRODUCTS_SHORT_DESCRIPTION' => vam_get_short_description($products[$i]['id']), 'ATTRIBUTES' => '');
 	// Product options names
 	$attributes_exist = ((isset ($products[$i]['attributes'])) ? 1 : 0);
 
 	if ($attributes_exist == 1) {
-		reset($products[$i]['attributes']);
-
-		while (list ($option, $value) = each($products[$i]['attributes'])) {
-
+		$module_content[$i]['ATTRIBUTES'] = array();
+		foreach ($products[$i]['attributes'] as $option => $value) {
 			if (ATTRIBUTE_STOCK_CHECK == 'true' && STOCK_CHECK == 'true') {
 				$attribute_stock_check = vam_check_stock_attributes($products[$i][$option]['products_attributes_id'], $products[$i]['quantity']);
 				if ($attribute_stock_check)
