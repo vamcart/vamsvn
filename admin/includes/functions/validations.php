@@ -90,7 +90,7 @@
                 $tld_pattern = '';
                 // Get authorized TLDs from text file
                 $tlds = file(DIR_WS_INCLUDES . 'tld.txt');
-                while (list(,$line) = each($tlds)) {
+                foreach ($tlds as $line) {
                   // Get rid of comments
                   $words = explode('#', $line);
                   $tld = trim($words[0]);

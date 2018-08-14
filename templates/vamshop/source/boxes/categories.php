@@ -85,8 +85,7 @@ while ($categories = vam_db_fetch_array($categories_query, true)) {
 if ($cPath) {
 	$new_path = '';
 	$id = preg_split('/_/', $cPath);
-	reset($id);
-	while (list ($key, $value) = each($id)) {
+	foreach ($id as $key => $value) {	
 		unset ($prev_id);
 		unset ($first_id);
 		$categories_query = "select c.categories_id, c.categories_image, cd.categories_name, c.parent_id from ".TABLE_CATEGORIES." c, ".TABLE_CATEGORIES_DESCRIPTION." cd where c.categories_status = '1' and c.parent_id = '".$value."' ".$group_check." and c.categories_id = cd.categories_id and cd.language_id='".$_SESSION['languages_id']."' order by sort_order, cd.categories_name";

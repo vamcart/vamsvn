@@ -116,8 +116,7 @@ if (!$box->isCached(CURRENT_TEMPLATE.'/boxes/box_articles.html', $cache_id) || !
   //------------------------
   if (vam_not_null($tPath)) {
     $new_path = '';
-    reset($tPath_array);
-    while (list($key, $value) = each($tPath_array)) {
+    foreach ($tPath_array as $key => $value) {	
       unset($parent_id);
       unset($first_id);
       $topics_query = vam_db_query("select t.topics_id, td.topics_name, t.parent_id from " . TABLE_TOPICS . " t, " . TABLE_TOPICS_DESCRIPTION . " td where t.parent_id = '" . (int)$value . "' and t.topics_id = td.topics_id and td.language_id = '" . (int)$_SESSION['languages_id'] . "' order by sort_order, td.topics_name");

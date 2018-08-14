@@ -210,8 +210,7 @@ function vam_get_all_get_params($exclude_array = '') {
 
 	$get_url = '';
 
-	reset($_GET);
-	while (list ($key, $value) = each($_GET)) {
+	foreach ($_GET as $key => $value) {
 		if (($key != session_name()) && ($key != 'error') && (!vam_in_array($key, $exclude_array)))
 			$get_url .= $key.'='.$value.'&';
 	}
@@ -279,12 +278,12 @@ function vam_array_merge($array1, $array2, $array3 = '') {
 	if (function_exists('array_merge')) {
 		$array_merged = array_merge($array1, $array2, $array3);
 	} else {
-		while (list ($key, $val) = each($array1))
+		foreach ($array1 as $key => $val)
 			$array_merged[$key] = $val;
-		while (list ($key, $val) = each($array2))
+		foreach ($array2 as $key => $val)
 			$array_merged[$key] = $val;
 		if (sizeof($array3) > 0)
-			while (list ($key, $val) = each($array3))
+		foreach ($array3 as $key => $val)
 				$array_merged[$key] = $val;
 	}
 
@@ -296,8 +295,7 @@ function vam_in_array($lookup_value, $lookup_array) {
 		if (in_array($lookup_value, $lookup_array))
 			return true;
 	} else {
-		reset($lookup_array);
-		while (list ($key, $value) = each($lookup_array)) {
+		foreach ($lookup_array as $key => $val)
 			if ($value == $lookup_value)
 				return true;
 		}
@@ -580,7 +578,7 @@ function vam_get_zone_code($country, $zone, $def_state) {
 function vam_get_uprid($prid, $params) {
 	$uprid = $prid;
 	if ((is_array($params)) && (!strstr($prid, '{'))) {
-		while (list ($option, $value) = each($params)) {
+		foreach ($params as $option => $value) {
 			$uprid = $uprid.'{'.$option.'}'.$value;
 		}
 	}
@@ -1000,8 +998,7 @@ function vam_cfg_select_option($select_array, $key_value, $key = '') {
 ////
 // Alias function for module configuration keys
 function vam_mod_select_option($select_array, $key_name, $key_value) {
-	reset($select_array);
-	while (list ($key, $value) = each($select_array)) {
+	foreach ($select_array as $key => $value) {
 		if (is_int($key))
 			$key = $value;
 		$string .= '<input type="radio" name="configuration['.$key_name.']" value="'.$key.'"';
@@ -1033,8 +1030,7 @@ function vam_array_shift(& $array) {
 	} else {
 		$i = 0;
 		$shifted_array = array ();
-		reset($array);
-		while (list ($key, $value) = each($array)) {
+		foreach ($array as $key => $value) {
 			if ($i > 0) {
 				$shifted_array[$key] = $value;
 			} else {

@@ -150,7 +150,7 @@ function addAttributeToProduct($get) {
 			
 			// search for the current Sort Order where the new value needs to be added
 			$i = -1;
-			while ( list($key, $val) = each($result) ) {
+			foreach ($result as $key => $val) {
    				$i++;
    				if( $key == $getArray['option_id'] ){
    					$insertIndex = $key;
@@ -444,8 +444,8 @@ function addAttributeToProduct($get) {
 		
 		$sorter = -1;
 		// reformat the $arrAllProductOptionsAndValues 
-		while( list($key, $currentOption) = each($arrAllProductOptionsAndValues) ){
-			while( list($currentOptionValuekey, $currentOptionValues) = each($currentOption['values']) ){
+		foreach ($arrAllProductOptionsAndValues as $key => $currentOption) {
+			foreach ($currentOption['values'] as $currentOptionValuekey => $currentOptionValues) {
 					$sorter++;
 					
 					$sortorder = $currentOptionValues['sortOrder'];
@@ -476,7 +476,7 @@ function addAttributeToProduct($get) {
 		$finalSortedArray = array();
 		
 		// now rebuild the $arrAllProductOptionsAndValues
-		while( list($key, $currentOption) = each($sortedArray) ){
+		foreach ($sortedArray as $key => $currentOption) {
 			if( $lastOption['option-key'] != $currentOption['option-key']){
 				$lastOption = $currentOption;
 				$optionValues = array();

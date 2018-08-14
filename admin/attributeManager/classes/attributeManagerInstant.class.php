@@ -135,8 +135,8 @@ class attributeManagerInstant extends attributeManager {
 			
 			// search for the current Sort Order where the new value needs to be added
 			$i = -1;
-			while ( list($key, $val) = each($result) ) {
-   				$i++;
+			foreach ($result as $key => $val) {
+	   				$i++;
    				if( $val['options_id'] == $optionId ){
    					$insertIndex = $i;
    				}
@@ -510,10 +510,7 @@ class attributeManagerInstant extends attributeManager {
 		$firstRow = current($sortedArray);
 		$start_ID = $firstRow['options_id'];
 		
-		reset($sortedArray);
-		
-		while ( list($key, $val) = each($sortedArray)) {
-
+		foreach ($sortedArray as $key => $val) {
 			if( $val['options_id'] != $start_ID ){
 				$i =  - 1;
 				$start_ID  = $val['options_id'];
@@ -552,8 +549,9 @@ class attributeManagerInstant extends attributeManager {
 
 		// set new Sortvalues 
 		$i =  - 1;
-		while ( list($key, $val) = each($positionArray)) {
-			while ( list($okey, $oval) = each( $optionsArray[ $val ]) ) {
+		foreach ($positionArray as $key => $val) {
+			
+			foreach ($optionsArray[ $val ] as $okey => $oval) {
 					$i++;
 					$oval[AM_FIELD_OPTION_SORT_ORDER] = $i;
 					$newArray[$i] = $oval;
@@ -579,7 +577,7 @@ class attributeManagerInstant extends attributeManager {
 		$i = -1;
 		
 		// filter array
-		while ( list($key, $val) = each($sortedArray) ) {
+		foreach ($sortedArray as $key => $val) {
    			if( $val['options_id'] == $extraValues['option_id'] ){
    				$i++;
    				$newArray[$val[AM_FIELD_OPTION_VALUE_SORT_ORDER]] = $val;
@@ -587,13 +585,13 @@ class attributeManagerInstant extends attributeManager {
    		}
 
 		// get first and Last Row, so we can determine lowest and higest Sort order value later
-		reset($newArray);
 		
 		$first = current($newArray);
 		$firstSortValue = (int)$first[AM_FIELD_OPTION_VALUE_SORT_ORDER];
 		$lastSortValue = $firstSortValue + count($newArray) - 1;
 		
-		while ( list($key, $val) = each($newArray) ) {
+		foreach ($newArray as $key => $val) {
+
    			if( $val['products_attributes_id'] == $extraValues['products_attributes_id'] ){
     				$startSort = $val[AM_FIELD_OPTION_VALUE_SORT_ORDER];
 			}
@@ -659,7 +657,7 @@ class attributeManagerInstant extends attributeManager {
 		//$i = (int)$result[0][$sortfield];
 		$i=0;
 		
-		while(list($key, $val) = each($result)) {
+		foreach ($result as $key => $val) {
 			// set the sorting new
 			$val[AM_FIELD_OPTION_VALUE_SORT_ORDER] = $i;
 			$sortedArray[$i] = $val;
@@ -672,8 +670,7 @@ class attributeManagerInstant extends attributeManager {
 	
 	function updateSortedProductArray($newArray){
 	
-		reset($newArray);
-		while ( list($key, $val) = each($newArray)) {
+		foreach ($newArray as $key => $val) {
 			if( !empty($val['products_attributes_id'] )){
 				amDB::perform(TABLE_PRODUCTS_ATTRIBUTES,$val,'update','products_attributes_id = ' . $val['products_attributes_id'] );
 			}
