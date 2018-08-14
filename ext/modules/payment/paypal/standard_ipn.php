@@ -15,8 +15,7 @@
 
   $parameters = 'cmd=_notify-validate';
 
-  reset($_POST);
-  while (list($key, $value) = each($_POST)) {
+  foreach ($_POST as $key => $value) {
     $parameters .= '&' . $key . '=' . urlencode(stripslashes($value));
   }
 
@@ -123,15 +122,13 @@
     if (vam_not_null(MODULE_PAYMENT_PAYPAL_STANDARD_DEBUG_EMAIL)) {
       $email_body = '$_POST:' . "\n\n";
 
-      reset($_POST);
-      while (list($key, $value) = each($_POST)) {
+      foreach ($_POST as $key => $value) {
         $email_body .= $key . '=' . $value . "\n";
       }
 
       $email_body .= "\n" . '$_GET:' . "\n\n";
 
-      reset($_GET);
-      while (list($key, $value) = each($_GET)) {
+      foreach ($_GET as $key => $value) {
         $email_body .= $key . '=' . $value . "\n";
       }
 

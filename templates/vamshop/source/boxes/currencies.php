@@ -23,15 +23,13 @@
 
   $currencies_string = '';
   $count_cur='';
-  reset($vamPrice->currencies);
-  while (list($key, $value) = each($vamPrice->currencies)) {
+  foreach ($vamPrice->currencies as $key => $value) {
   $count_cur++;
     $currencies_string .= ' <a href="' . vam_href_link(basename($PHP_SELF), 'currency=' . $key.'&'.vam_get_all_get_params(array('language', 'currency')), $request_type) . '">' . $value['title'] . '</a> ';
   }
 
     $hidden_get_variables = '';
-    reset($_GET);
-    while (list($key, $value) = each($_GET)) {
+    foreach ($_GET as $key => $value) {
       if ( ($key != 'currency') && ($key != vam_session_name()) && ($key != 'x') && ($key != 'y') ) {
         $hidden_get_variables .= vam_draw_hidden_field($key, $value);
       }
