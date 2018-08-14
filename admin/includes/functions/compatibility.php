@@ -25,7 +25,7 @@ defined( '_VALID_VAM' ) or die( 'Direct Access to this location is not allowed.'
   function do_magic_quotes_gpc(&$ar) {
     if (!is_array($ar)) return;
 
-    while (list($key, $value) = each($ar)) {
+    foreach ($ar as $key => $value) {
       if (is_array($value)) {
         do_magic_quotes_gpc($value);
       } else {
@@ -83,7 +83,7 @@ defined( '_VALID_VAM' ) or die( 'Direct Access to this location is not allowed.'
     function checkdnsrr($host, $type) {
       if(vam_not_null($host) && vam_not_null($type)) {
         @exec("nslookup -type=$type $host", $output);
-        while(list($k, $line) = each($output)) {
+        foreach ($output as $k => $line) {
           if(preg_match("/^$host/i", $line)) {
             return true;
           }

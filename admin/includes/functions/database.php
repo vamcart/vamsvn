@@ -67,12 +67,11 @@ defined( '_VALID_VAM' ) or die( 'Direct Access to this location is not allowed.'
     reset($data);
     if ($action == 'insert') {
       $query = 'insert into ' . $table . ' (';
-      while (list($columns, ) = each($data)) {
+      foreach (array_keys($data) as $columns) {
         $query .= $columns . ', ';
       }
       $query = substr($query, 0, -2) . ') values (';
-      reset($data);
-      while (list(, $value) = each($data)) {
+      foreach ($data as $value) {
         switch ((string)$value) {
           case 'now()':
             $query .= 'now(), ';
@@ -88,7 +87,7 @@ defined( '_VALID_VAM' ) or die( 'Direct Access to this location is not allowed.'
       $query = substr($query, 0, -2) . ')';
     } elseif ($action == 'update') {
       $query = 'update ' . $table . ' set ';
-      while (list($columns, $value) = each($data)) {
+      foreach ($data as $columns => $value) {
         switch ((string)$value) {
           case 'now()':
             $query .= $columns . ' = now(), ';

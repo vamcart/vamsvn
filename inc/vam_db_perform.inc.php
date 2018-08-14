@@ -22,12 +22,11 @@
 
     if ($action == 'insert') {
       $query = 'insert into ' . $table . ' (';
-      while (list($columns, ) = each($data)) {
+      foreach (array_keys($data) as $columns) {
         $query .= $columns . ', ';
       }
       $query = substr($query, 0, -2) . ') values (';
-      reset($data);
-      while (list(, $value) = each($data)) {
+      foreach ($data as $value) {
       	 $value = (is_Float($value) & PHP4_3_10) ? sprintf("%.F",$value) : (string)($value);
         switch ($value) {
           case 'now()':
@@ -44,7 +43,7 @@
       $query = substr($query, 0, -2) . ')';
     } elseif ($action == 'update') {
       $query = 'update ' . $table . ' set ';
-      while (list($columns, $value) = each($data)) {
+      foreach ($data as $columns => $value) {
          $value = (is_Float($value) & PHP4_3_10) ? sprintf("%.F",$value) : (string)($value);
       	switch ($value) {
           case 'now()':

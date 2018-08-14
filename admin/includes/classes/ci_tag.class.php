@@ -184,7 +184,7 @@ class ContribInstallerBaseTag {
     function read_from_database() {
         if (!$this->is_database_table_exists())    return;
         $query="SELECT ";
-        while (list($columns, ) = each($data)) {$query .= 'tag.'.$columns.', ';}
+        foreach (array_keys($data) as $columns) {$query .= 'tag.'.$columns.', ';}
         $query = substr($query, 0, -2) . " FROM ".$this->table." tag, ".TABLE_CIP." cip
                         WHERE tag_id=".$this->id." AND cip.cip_id=tag.cip_id AND cip.cip_folder_name=".$this->contrib;
         $data=vam_db_output(vam_db_fetch_array(vam_db_query($query)));
@@ -233,7 +233,7 @@ class ContribInstallerBaseTag {
 
 
         //Range check:
-        while (list($tag_name, ) = each($this->params)) {
+        foreach (array_keys($this->params) as $tag_name) {
             $value=$this->data[$tag_name];
             if($value) {
                 $pieces=strtolower(explode(" ", $this->params[$tag_name]['sql_type']));//get a first word
