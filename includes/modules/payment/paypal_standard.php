@@ -397,8 +397,7 @@ if ($_SERVER["HTTP_X_FORWARDED_FOR"]) {
         $random_string = rand(100000, 999999) . '-' . $customer_id . '-';
 
         $data = '';
-        reset($parameters);
-        while (list($key, $value) = each($parameters)) {
+        foreach ($parameters as $key => $value) {
           $data .= $key . '=' . $value . "\n";
         }
 
@@ -453,8 +452,7 @@ if ($_SERVER["HTTP_X_FORWARDED_FOR"]) {
 
         unset($data);
       } else {
-        reset($parameters);
-        while (list($key, $value) = each($parameters)) {
+        foreach ($parameters as $key => $value) {
           $process_button_string .= vam_draw_hidden_field($key, $value);
         }
       }

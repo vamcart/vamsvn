@@ -169,9 +169,8 @@
     //$required_ot_totals = oe_required_ot();
     $installed_ot_modules = explode(';', MODULE_ORDER_TOTAL_INSTALLED);
     $return_string = '';
-    reset($installed_ot_modules);
     $i=0;
-    while (list(, $value) = each($installed_ot_modules)) {
+    foreach ($installed_ot_modules as $value) {
       $ot_class = substr($value, 0, strrpos($value, '.'));
       //if (in_array($ot_class, $required_ot_totals)) continue;
       

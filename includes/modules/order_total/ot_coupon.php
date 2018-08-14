@@ -352,8 +352,7 @@ class ot_coupon {
 							$tod_amount = $od_amount / (100 + $tax_rate) * $tax_rate;
 							$order->info['tax_groups'][TAX_ADD_TAX.$tax_desc] -= $tod_amount;
 						} else {
-							reset($order->info['tax_groups']);
-							while (list ($key, $value) = each($order->info['tax_groups'])) {
+							foreach ($order->info['tax_groups'] as $key => $value) {
 								$ratio1 = $od_amount / ($amount - $order->info['tax_groups'][$key]); 
 								$tax_rate = vam_get_tax_rate_from_desc( str_replace(TAX_ADD_TAX, "", $key) );
 								$net = $tax_rate * $order->info['tax_groups'][$key];
@@ -375,8 +374,7 @@ $order->info['tax'] -= $tod_amount;
 							$tod_amount = $order->info['tax_groups'][$tax_desc] * $od_amount / 100;
 							$order->info['tax_groups'][TAX_ADD_TAX.$tax_desc] -= $tod_amount;
 						} else {
-							reset($order->info['tax_groups']);
-							while (list ($key, $value) = each($order->info['tax_groups'])) {
+							foreach ($order->info['tax_groups'] as $key => $value) {
 								$god_amout = 0;
 								$tax_rate = vam_get_tax_rate_from_desc( str_replace(TAX_ADD_TAX, "", $key) );
 								$net = $tax_rate * $order->info['tax_groups'][$key];
@@ -448,7 +446,7 @@ $order->info['tax'] -= $tod_amount;
 				for ($i = 0; $i < count($cat_ids); $i ++) {
 					if (is_array($this->contents)) {
 						reset($this->contents);
-						while (list ($products_id,) = each($this->contents)) {
+						foreach (array_keys($this->contents) as $products_id) {
 							$cat_query = vam_db_query("select products_id from " . TABLE_PRODUCTS_TO_CATEGORIES . " where products_id = '".$products_id."' and categories_id = '".$cat_ids[$i]."'");
 							if (vam_db_num_rows($cat_query) != 0) {
 								$in_cat = true;
@@ -501,7 +499,7 @@ $total_price += $qty * $vamPrice->GetPrice($product['products_id'], $format = fa
 			// attributes price
 			if (isset ($_SESSION['cart']->contents[$product_id]['attributes'])) {
 				reset($_SESSION['cart']->contents[$product_id]['attributes']);
-				while (list ($option, $value) = each($_SESSION['cart']->contents[$product_id]['attributes'])) {
+				foreach ($_SESSION['cart']->contents[$product_id]['attributes'] as $option => $value) {
 					$attribute_price_query = vam_db_query("select options_values_price, price_prefix from ".TABLE_PRODUCTS_ATTRIBUTES." where products_id = '".$prid."' and options_id = '".$option."' and options_values_id = '".$value."'");
 					$attribute_price = vam_db_fetch_array($attribute_price_query);
 					if ($attribute_price['price_prefix'] == '+') {

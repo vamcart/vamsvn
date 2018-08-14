@@ -913,7 +913,7 @@ class vat_validation {
 
 		/* Die deserialisierte Ausgabe in ein Array schreiben */
 
-		while (list ($key, $val) = each($des_out)) {
+		foreach ($des_out as $key => $val) {
 			$ergebnis[$key] = $val;
 		}
 

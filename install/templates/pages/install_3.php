@@ -68,8 +68,7 @@
     <p align="right"><span class="button"><button type="submit"><img src="images/icons/buttons/submit.png" alt="Продолжить" title=" Продолжить " width="12" height="12" />&nbsp;Продолжить</button></span>&nbsp;&nbsp;<a class="button" href="index.php"><span><img src="images/icons/buttons/cancel.png" alt="Отменить" title="Отменить" width="12" height="12"  />&nbsp;Отменить</span></a></p>
 
 <?php
-  reset($_POST);
-  while (list($key, $value) = each($_POST)) {
+  foreach ($_POST as $key => $value) {
     if (($key != 'x') && ($key != 'y')) {
       if (is_array($value)) {
         for ($i=0, $n=sizeof($value); $i<$n; $i++) {
