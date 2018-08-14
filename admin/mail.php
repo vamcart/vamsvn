@@ -182,8 +182,7 @@ echo vam_wysiwyg_tiny('mail',$data['code']);
               <tr>
                 <td><?php
     // Re-Post all POST'ed variables
-    reset($_POST);
-    while (list($key, $value) = each($_POST)) {
+    foreach ($_POST as $key => $value) {
       if (!is_array($_POST[$key])) {
         echo vam_draw_hidden_field($key, htmlspecialchars(stripslashes($value)));
       }

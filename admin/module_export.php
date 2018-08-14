@@ -43,7 +43,7 @@ ini_set("max_execution_time", "1200");
     case 'save':
     if (is_array($_POST['configuration'])) {
     if (count($_POST['configuration'])) {
-      while (list($key, $value) = each($_POST['configuration'])) {
+      foreach ($_POST['configuration'] as $key => $value) {
         vam_db_query("update " . TABLE_CONFIGURATION . " set configuration_value = '" . $value . "' where configuration_key = '" . $key . "'");
         //if (substr($key,'FILE')) $file=$value;
       }
@@ -205,8 +205,7 @@ ini_set("max_execution_time", "1200");
   switch ($_GET['action']) {
     case 'edit':
       $keys = '';
-      reset($mInfo->keys);
-      while (list($key, $value) = each($mInfo->keys)) {
+      foreach ($mInfo->keys as $key => $value) {
 	 // if($value['description']!='_DESC' && $value['title']!='_TITLE'){ 
         $keys .= '<b>' . $value['title'] . '</b><br />' .  $value['description'].'<br />';
 	//	}
@@ -234,8 +233,7 @@ ini_set("max_execution_time", "1200");
 
       if ($mInfo->status == '1') {
         $keys = '';
-        reset($mInfo->keys);
-        while (list(, $value) = each($mInfo->keys)) {
+        foreach ($mInfo->keys as $value) {
           $keys .= '<b>' . $value['title'] . '</b><br />';
           if ($value['use_function']) {
             $use_function = $value['use_function'];

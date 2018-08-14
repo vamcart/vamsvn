@@ -240,8 +240,6 @@
                 <td>
 <?php
 /* Re-Post all POST'ed variables */
-    reset($_POST);
-    while (list($key, $value) = each($_POST)) {
       if (!is_array($_POST[$key])) {
         echo vam_draw_hidden_field($key, htmlspecialchars(stripslashes($value)));
       }
