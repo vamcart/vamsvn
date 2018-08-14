@@ -210,8 +210,7 @@ $( "#date_added" ).datepicker({ dateFormat: "dd-mm-yy" }).val();
 <?php
     if ($_POST) {
       // Re-Post all POST'ed variables
-      reset($_POST);
-      while(list($key, $value) = each($_POST)) echo '<input type="hidden" name="' . $key . '" value="' . htmlspecialchars(stripslashes($value)) . '">';
+      foreach ($_POST as $key => $value) echo '<input type="hidden" name="' . $key . '" value="' . htmlspecialchars(stripslashes($value)) . '">';
 
         echo vam_draw_hidden_field('customers_avatar', htmlspecialchars(stripslashes($customers_avatar)));
 
