@@ -295,7 +295,7 @@ function vam_in_array($lookup_value, $lookup_array) {
 		if (in_array($lookup_value, $lookup_array))
 			return true;
 	} else {
-		foreach ($lookup_array as $key => $val)
+		foreach ($lookup_array as $key => $val) {
 			if ($value == $lookup_value)
 				return true;
 		}
