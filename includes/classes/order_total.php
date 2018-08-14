@@ -68,7 +68,7 @@ class order_total {
 			$close_string .= '<tr><td width="100%">'.vam_draw_separator('pixel_trans.gif', '100%', '10').'</td></tr>';
 			reset($this->modules);
 			$output_string = '';
-			while (list (, $value) = each($this->modules)) {
+			foreach ($this->modules as $value) {
 				$class = substr($value, 0, strrpos($value, '.'));
 				if ($GLOBALS[$class]->enabled && $GLOBALS[$class]->credit_class) {
 					$use_credit_string = $GLOBALS[$class]->use_credit_amount();
@@ -105,8 +105,7 @@ class order_total {
 	//
 	function update_credit_account($i) {
 		if (MODULE_ORDER_TOTAL_INSTALLED) {
-			reset($this->modules);
-			while (list (, $value) = each($this->modules)) {
+			foreach ($this->modules as $value) {
 				$class = substr($value, 0, strrpos($value, '.'));
 				if (($GLOBALS[$class]->enabled && $GLOBALS[$class]->credit_class)) {
 					$GLOBALS[$class]->update_credit_account($i);
@@ -123,8 +122,7 @@ class order_total {
 	function collect_posts() {
 
 		if (MODULE_ORDER_TOTAL_INSTALLED) {
-			reset($this->modules);
-			while (list (, $value) = each($this->modules)) {
+			foreach ($this->modules as $value) {
 				$class = substr($value, 0, strrpos($value, '.'));
 				if (($GLOBALS[$class]->enabled && $GLOBALS[$class]->credit_class)) {
 					$post_var = 'c'.$GLOBALS[$class]->code;
@@ -147,7 +145,7 @@ class order_total {
 			$total_deductions = 0;
 			reset($this->modules);
 			$order_total = $order->info['total'];
-			while (list (, $value) = each($this->modules)) {
+			foreach ($this->modules as $value) {
 				$class = substr($value, 0, strrpos($value, '.'));
 				$order_total = $this->get_order_total_main($class, $order_total);
 				if (($GLOBALS[$class]->enabled && $GLOBALS[$class]->credit_class)) {
@@ -168,8 +166,7 @@ class order_total {
 	//
 	function apply_credit() {
 		if (MODULE_ORDER_TOTAL_INSTALLED) {
-			reset($this->modules);
-			while (list (, $value) = each($this->modules)) {
+			foreach ($this->modules as $value) {
 				$class = substr($value, 0, strrpos($value, '.'));
 				if (($GLOBALS[$class]->enabled && $GLOBALS[$class]->credit_class)) {
 					$GLOBALS[$class]->apply_credit();
@@ -182,8 +179,7 @@ class order_total {
 	function clear_posts() {
 
 		if (MODULE_ORDER_TOTAL_INSTALLED) {
-			reset($this->modules);
-			while (list (, $value) = each($this->modules)) {
+			foreach ($this->modules as $value) {
 				$class = substr($value, 0, strrpos($value, '.'));
 				if (($GLOBALS[$class]->enabled && $GLOBALS[$class]->credit_class)) {
 					$post_var = 'c'.$GLOBALS[$class]->code;
@@ -211,8 +207,7 @@ class order_total {
 			$this->modules = explode(';', MODULE_ORDER_TOTAL_INSTALLED);
 			$modules = $this->modules;
 			sort($modules); // cgoenner: we need to include the ot_coupon & ot_gv BEFORE ot_tax
-			reset($modules);
-			while (list (, $value) = each($modules)) {
+			foreach ($this->modules as $value) {
 				include (DIR_WS_LANGUAGES.$_SESSION['language'].'/modules/order_total/'.$value);
 				include (DIR_WS_MODULES.'order_total/'.$value);
 
@@ -226,8 +221,7 @@ class order_total {
 	function process() {
 		$order_total_array = array ();
 		if (is_array($this->modules)) {
-			reset($this->modules);
-			while (list (, $value) = each($this->modules)) {
+			foreach ($this->modules as $value) {
 				$class = substr($value, 0, strrpos($value, '.'));
 				if ($GLOBALS[$class]->enabled) {
 					$GLOBALS[$class]->process();
@@ -255,8 +249,7 @@ class order_total {
 	function output() {
 		$output_string = '';
 		if (is_array($this->modules)) {
-			reset($this->modules);
-			while (list (, $value) = each($this->modules)) {
+			foreach ($this->modules as $value) {
 				$class = substr($value, 0, strrpos($value, '.'));
 				if ($GLOBALS[$class]->enabled) {
 					$size = sizeof($GLOBALS[$class]->output);
