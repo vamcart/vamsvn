@@ -40,8 +40,7 @@
     function count_contents() {  // get total number of items in cart 
         $total_items = 0;
         if (is_array($this->contents)) {
-            reset($this->contents);
-            while (list($products_id, ) = each($this->contents)) {
+            foreach (array_keys($this->contents) as $products_id) {
                 $total_items += $this->get_quantity($products_id);
             }
         }
@@ -72,8 +71,7 @@
       $product_id_list = '';
       if (is_array($this->contents))
       {
-        reset($this->contents);
-        while (list($products_id, ) = each($this->contents)) {
+        foreach (array_keys($this->contents) as $products_id) {
           $product_id_list .= ', ' . $products_id;
         }
       }
@@ -85,8 +83,7 @@
       $this->weight = 0;
       if (!is_array($this->contents)) return 0;
 
-      reset($this->contents);
-      while (list($products_id, ) = each($this->contents)) {
+      foreach (array_keys($this->contents) as $products_id) {
         $qty = $this->contents[$products_id]['qty'];
 
 // products price
@@ -109,8 +106,7 @@
 
 // attributes price
         if (isset($this->contents[$products_id]['attributes'])) { 
-          reset($this->contents[$products_id]['attributes']);
-          while (list($option, $value) = each($this->contents[$products_id]['attributes'])) {
+          foreach ($this->contents[$products_id]['attributes'] as $option => $value) {
             $attribute_price_query = vam_db_query("select options_values_price, price_prefix from " . TABLE_PRODUCTS_ATTRIBUTES . " where products_id = '" . $prid . "' and options_id = '" . $option . "' and options_values_id = '" . $value . "'");
             $attribute_price = vam_db_fetch_array($attribute_price_query);
             if ($attribute_price['price_prefix'] == '+') {
@@ -125,8 +121,7 @@
 
     function attributes_price($products_id) {
       if ($this->contents[$products_id]['attributes']) {
-        reset($this->contents[$products_id]['attributes']);
-        while (list($option, $value) = each($this->contents[$products_id]['attributes'])) {
+        foreach ($this->contents[$products_id]['attributes'] as $option => $value) {
           $attribute_price_query = vam_db_query("select options_values_price, price_prefix from " . TABLE_PRODUCTS_ATTRIBUTES . " where products_id = '" . $products_id . "' and options_id = '" . $option . "' and options_values_id = '" . $value . "'");
           $attribute_price = vam_db_fetch_array($attribute_price_query);
           if ($attribute_price['price_prefix'] == '+') {
@@ -144,8 +139,7 @@
 
       if (!is_array($this->contents)) return 0;
       $products_array = array();
-      reset($this->contents);
-      while (list($products_id, ) = each($this->contents)) {
+      foreach (array_keys($this->contents) as $products_id) {
         $products_query = vam_db_query("select p.products_id, pd.products_name, p.products_model, p.products_price, p.products_weight, p.products_tax_class_id from " . TABLE_PRODUCTS . " p, " . TABLE_PRODUCTS_DESCRIPTION . " pd where p.products_id='" . vam_get_prid($products_id) . "' and pd.products_id = p.products_id and pd.language_id = '" . $_SESSION['languages_id'] . "'");
         if ($products = vam_db_fetch_array($products_query)) {
           $prid = $products['products_id'];
@@ -186,8 +180,7 @@
     function dist_allowed() {      
       $allowed = true;     
       if (is_array($this->contents)) {        
-        reset($this->contents);        
-        while (list($products_id, ) = each($this->contents)) {                                                       
+        foreach (array_keys($this->contents) as $products_id) {                                                       
           $distributor_query = vam_db_query("select distributors_id from " . TABLE_PRODUCTS . " where products_id = '" . (int)$products_id . "'");
           $distributor = vam_db_fetch_array($distributor_query);
         

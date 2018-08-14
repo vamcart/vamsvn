@@ -30,15 +30,13 @@ defined( '_VALID_VAM' ) or die( 'Direct Access to this location is not allowed.'
 
       // insert current cart contents in database
       if ($this->contents) {
-        reset($this->contents);
-        while (list($products_id, ) = each($this->contents)) {
+        foreach (array_keys($this->contents) as $products_id) {
           $qty = $this->contents[$products_id]['qty'];
           $product_query = vam_db_query("select products_id from " . TABLE_CUSTOMERS_BASKET . " where customers_id = '" . $_SESSION['customer_id'] . "' and products_id = '" . $products_id . "'");
           if (!vam_db_num_rows($product_query)) {
             vam_db_query("insert into " . TABLE_CUSTOMERS_BASKET . " (customers_id, products_id, customers_basket_quantity, customers_basket_date_added) values ('" . $_SESSION['customer_id'] . "', '" . $products_id . "', '" . $qty . "', '" . date('Ymd') . "')");
             if ($this->contents[$products_id]['attributes']) {
-              reset($this->contents[$products_id]['attributes']);
-              while (list($option, $value) = each($this->contents[$products_id]['attributes'])) {
+              foreach ($this->contents[$products_id]['attributes'] as $option => $value) {
                 vam_db_query("insert into " . TABLE_CUSTOMERS_BASKET_ATTRIBUTES . " (customers_id, products_id, products_options_id, products_options_value_id) values ('" . $_SESSION['customer_id'] . "', '" . $products_id . "', '" . $option . "', '" . $value . "')");
               }
             }
@@ -90,8 +88,7 @@ defined( '_VALID_VAM' ) or die( 'Direct Access to this location is not allowed.'
         if ($_SESSION['customer_id']) vam_db_query("insert into " . TABLE_CUSTOMERS_BASKET . " (customers_id, products_id, customers_basket_quantity, customers_basket_date_added) values ('" . $_SESSION['customer_id'] . "', '" . $products_id . "', '" . $qty . "', '" . date('Ymd') . "')");
 
         if (is_array($attributes)) {
-          reset($attributes);
-          while (list($option, $value) = each($attributes)) {
+          foreach ($attributes as $option => $value) {
             $this->contents[$products_id]['attributes'][$option] = $value;
             // insert into database
             if ($_SESSION['customer_id']) vam_db_query("insert into " . TABLE_CUSTOMERS_BASKET_ATTRIBUTES . " (customers_id, products_id, products_options_id, products_options_value_id) values ('" . $_SESSION['customer_id'] . "', '" . $products_id . "', '" . $option . "', '" . $value . "')");
@@ -111,8 +108,7 @@ defined( '_VALID_VAM' ) or die( 'Direct Access to this location is not allowed.'
       if ($_SESSION['customer_id']) vam_db_query("update " . TABLE_CUSTOMERS_BASKET . " set customers_basket_quantity = '" . $quantity . "' where customers_id = '" . $_SESSION['customer_id'] . "' and products_id = '" . $products_id . "'");
 
       if (is_array($attributes)) {
-        reset($attributes);
-        while (list($option, $value) = each($attributes)) {
+        foreach ($attributes as $option => $value) {
           $this->contents[$products_id]['attributes'][$option] = $value;
           // update database
           if ($_SESSION['customer_id']) vam_db_query("update " . TABLE_CUSTOMERS_BASKET_ATTRIBUTES . " set products_options_value_id = '" . $value . "' where customers_id = '" . $_SESSION['customer_id'] . "' and products_id = '" . $products_id . "' and products_options_id = '" . $option . "'");
@@ -122,8 +118,7 @@ defined( '_VALID_VAM' ) or die( 'Direct Access to this location is not allowed.'
 
     function cleanup() {
 
-      reset($this->contents);
-      while (list($key,) = each($this->contents)) {
+      foreach (array_keys($this->contents) as $key) {
         if ($this->contents[$key]['qty'] < 1) {
           unset($this->contents[$key]);
           // remove from database
@@ -138,8 +133,7 @@ defined( '_VALID_VAM' ) or die( 'Direct Access to this location is not allowed.'
     function count_contents() {  // get total number of items in cart 
         $total_items = 0;
         if (is_array($this->contents)) {
-            reset($this->contents);
-            while (list($products_id, ) = each($this->contents)) {
+            foreach (array_keys($this->contents) as $products_id) {
                 $total_items += $this->get_quantity($products_id);
             }
         }
@@ -179,8 +173,7 @@ defined( '_VALID_VAM' ) or die( 'Direct Access to this location is not allowed.'
     function get_product_id_list() {
       $product_id_list = '';
       if (is_array($this->contents)) {
-        reset($this->contents);
-        while (list($products_id, ) = each($this->contents)) {
+        foreach (array_keys($this->contents) as $products_id) {
           $product_id_list .= ', ' . $products_id;
         }
       }
@@ -192,8 +185,7 @@ defined( '_VALID_VAM' ) or die( 'Direct Access to this location is not allowed.'
       $this->weight = 0;
       if (!is_array($this->contents)) return 0;
 
-      reset($this->contents);
-      while (list($products_id, ) = each($this->contents)) {
+      foreach (array_keys($this->contents) as $products_id) {
         $qty = $this->contents[$products_id]['qty'];
 
         // products price
@@ -216,8 +208,7 @@ defined( '_VALID_VAM' ) or die( 'Direct Access to this location is not allowed.'
 
         // attributes price
         if ($this->contents[$products_id]['attributes']) {
-          reset($this->contents[$products_id]['attributes']);
-          while (list($option, $value) = each($this->contents[$products_id]['attributes'])) {
+          foreach ($this->contents[$products_id]['attributes'] as $option => $value) {
             $attribute_price_query = vam_db_query("select options_values_price, price_prefix from " . TABLE_PRODUCTS_ATTRIBUTES . " where products_id = '" . $prid . "' and options_id = '" . $option . "' and options_values_id = '" . $value . "'");
             $attribute_price = vam_db_fetch_array($attribute_price_query);
             if ($attribute_price['price_prefix'] == '+') {
@@ -232,8 +223,7 @@ defined( '_VALID_VAM' ) or die( 'Direct Access to this location is not allowed.'
 
     function attributes_price($products_id) {
       if ($this->contents[$products_id]['attributes']) {
-        reset($this->contents[$products_id]['attributes']);
-        while (list($option, $value) = each($this->contents[$products_id]['attributes'])) {
+        foreach ($this->contents[$products_id]['attributes'] as $option => $value) {
           $attribute_price_query = vam_db_query("select options_values_price, price_prefix from " . TABLE_PRODUCTS_ATTRIBUTES . " where products_id = '" . $products_id . "' and options_id = '" . $option . "' and options_values_id = '" . $value . "'");
           $attribute_price = vam_db_fetch_array($attribute_price_query);
           if ($attribute_price['price_prefix'] == '+') {
@@ -251,8 +241,7 @@ defined( '_VALID_VAM' ) or die( 'Direct Access to this location is not allowed.'
 
       if (!is_array($this->contents)) return 0;
       $products_array = array();
-      reset($this->contents);
-      while (list($products_id, ) = each($this->contents)) {
+      foreach (array_keys($this->contents) as $products_id) {
         $products_query = vam_db_query("select p.products_id, pd.products_name, p.products_model, p.products_price, p.products_weight, p.products_tax_class_id from " . TABLE_PRODUCTS . " p, " . TABLE_PRODUCTS_DESCRIPTION . " pd where p.products_id='" . vam_get_prid($products_id) . "' and pd.products_id = p.products_id and pd.language_id = '" . $_SESSION['languages_id'] . "'");
         if ($products = vam_db_fetch_array($products_query)) {
           $prid = $products['products_id'];

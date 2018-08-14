@@ -21,8 +21,7 @@ defined( '_VALID_VAM' ) or die( 'Direct Access to this location is not allowed.'
 
     // class constructor
     function objectInfo($object_array) {
-      reset($object_array);
-      while (list($key, $value) = each($object_array)) {
+      foreach ($object_array as $key => $value) {
         $this->$key = vam_db_prepare_input($value);
       }
     }
