@@ -534,7 +534,7 @@ class shoppingCart {
 	}
 
 	function unserialize($broken) {
-		for (reset($broken); $kv = each($broken);) {
+      foreach ($broken as $kv) {
 			$key = $kv['key'];
 			if (gettype($this-> $key) != "user function")
 				$this-> $key = $kv['value'];

@@ -66,8 +66,7 @@
 
   if (!function_exists('in_array')) {
     function in_array($lookup_value, $lookup_array) {
-      reset($lookup_array);
-      while (list($key, $value) = each($lookup_array)) {
+      foreach ($lookup_array as $key => $value) {
         if ($value == $lookup_value) return true;
       }
 
@@ -112,9 +111,9 @@
   if (!function_exists('array_merge')) {
     function array_merge($array1, $array2, $array3 = '') {
       if (empty($array3) && !is_array($array3)) $array3 = array();
-      while (list($key, $val) = each($array1)) $array_merged[$key] = $val;
-      while (list($key, $val) = each($array2)) $array_merged[$key] = $val;
-      if (sizeof($array3) > 0) while (list($key, $val) = each($array3)) $array_merged[$key] = $val;
+      foreach ($array1 as $key => $val) $array_merged[$key] = $val;
+      foreach ($array2 as $key => $val) $array_merged[$key] = $val;
+      if (sizeof($array3) > 0) foreach ($array3 as $key => $val) $array_merged[$key] = $val;
 
       return (array) $array_merged;
     }
@@ -144,8 +143,7 @@
     function array_map($callback, $array) {
       if (is_array($array)) {
         $_new_array = array();
-        reset($array);
-        while (list($key, $value) = each($array)) {
+        foreach ($array as $key => $value) {
           $_new_array[$key] = array_map($callback, $array[$key]);
         }
         return $_new_array;
@@ -171,7 +169,7 @@
     function checkdnsrr($host, $type) {
       if(vam_not_null($host) && vam_not_null($type)) {
         @exec("nslookup -type=$type $host", $output);
-        while(list($k, $line) = each($output)) {
+        foreach ($output as $k => $line) {
           if(preg_match("/^$host/i", $line)) {
             return true;
           }

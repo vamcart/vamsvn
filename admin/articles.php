@@ -139,8 +139,7 @@
             }
           }
 
-          reset($articles);
-          while (list($key, $value) = each($articles)) {
+          foreach ($articles as $key => $value) {
             $topic_ids = '';
 
             for ($i=0, $n=sizeof($value['topics']); $i<$n; $i++) {
@@ -161,8 +160,7 @@
             vam_remove_topic($topics[$i]['id']);
           }
 
-          reset($articles_delete);
-          while (list($key) = each($articles_delete)) {
+          foreach ($articles_delete as $key => $value) {
             vam_remove_article($key);
           }
         }
@@ -659,8 +657,7 @@ $manual_link = 'add-topic';
         <td align="right" class="smallText">
 <?php
 /* Re-Post all POST'ed variables */
-      reset($_POST);
-      while (list($key, $value) = each($_POST)) {
+      foreach ($_POST as $key => $value) {
         if (!is_array($_POST[$key])) {
           echo vam_draw_hidden_field($key, htmlspecialchars(stripslashes($value)));
         }
@@ -1154,8 +1151,7 @@ $image_field .= vam_draw_file_field('articles_image');
 
 
 /* Re-Post all POST'ed variables */
-      reset($_POST);
-      while (list($key, $value) = each($_POST)) {
+      foreach ($_POST as $key => $value) {
         if (!is_array($_POST[$key])) {
           echo vam_draw_hidden_field($key, htmlspecialchars(stripslashes($value)));
         }

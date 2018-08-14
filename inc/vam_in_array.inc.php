@@ -31,7 +31,7 @@
       }
     } else {
       reset($array);
-      while (list(,$key_value) = each($array)) {
+      foreach ($array as $key_value) {
         if (is_array($value)) {
           for ($i=0; $i<sizeof($value); $i++) {
             if ($key_value == $value[$i]) return true;

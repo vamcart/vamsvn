@@ -36,7 +36,7 @@ function vam_get_products($session) {
 
   if (is_array($session['cart']->contents)) {     
 			      
-      while (list($products_id, ) = each($session['cart']->contents)) {
+      foreach (array_keys($session['cart']->contents) as $products_id) {
         $products_query = vam_db_query("select p.products_id, pd.products_name,p.products_image, p.products_model, p.products_price, p.products_discount_allowed, p.products_weight, p.products_tax_class_id from " . TABLE_PRODUCTS . " p, " . TABLE_PRODUCTS_DESCRIPTION . " pd where p.products_id='" . vam_get_prid($products_id) . "' and pd.products_id = p.products_id and pd.language_id = '" . $_SESSION['languages_id'] . "'");
         if ($products = vam_db_fetch_array($products_query)) {
           $prid = $products['products_id'];
@@ -73,7 +73,7 @@ function attributes_price($products_id,$session) {
       $vamPrice = new vamPrice($session['currency'],$session['customers_status']['customers_status_id'],$_SESSION['customer_id'] ? $_SESSION['customer_id'] : "");
       if (isset($session['contents'][$products_id]['attributes'])) {
         reset($session['contents'][$products_id]['attributes']);
-        while (list($option, $value) = each($session['contents'][$products_id]['attributes'])) {
+        foreach ($session['contents'][$products_id]['attributes'] as $option => $value) {
           $attribute_price_query = vam_db_query("select pd.products_tax_class_id, p.options_values_price, p.price_prefix from " . TABLE_PRODUCTS_ATTRIBUTES . " p, " . TABLE_PRODUCTS . " pd where p.products_id = '" . $products_id . "' and p.options_id = '" . $option . "' and pd.products_id = p.products_id and p.options_values_id = '" . $value . "'");
           $attribute_price = vam_db_fetch_array($attribute_price_query);
           if ($attribute_price['price_prefix'] == '+') {
