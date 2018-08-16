@@ -527,7 +527,7 @@ class CIP {
             //Delete all tables from database:
             $tables_query=cip_db_query('show tables');
             while ($tables=mysqli_fetch_array($tables_query, MYSQLI_ASSOC)) {
-                list(,$table)=each($tables);
+                $table = reset($tables);
                 global $$link;
                 mysqli_query($$link, 'DROP TABLE IF EXISTS '.$table);
             }
@@ -588,7 +588,7 @@ class CIP {
                 $index[$kname]['columns'][]=$keys['Column_name'];
                 $index[$kname]['sub_part'][]=$keys['Sub_part'];
             }
-            while (list($kname, $info)=each($index)) {
+            foreach ($index as $kname => $info) {
                 $schema.=','."\n";
                 $columns='';
                 foreach($info['columns'] as $id=>$col){

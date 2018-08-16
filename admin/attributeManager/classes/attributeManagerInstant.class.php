@@ -313,7 +313,7 @@ class attributeManagerInstant extends attributeManager {
 //		customPrompt('debug','we are here');
 //		$inputok = true;
 //		// Work out how many option were sent
-//		while(list($v1,$v2)=each($get)) {
+//		foreach ($get as $v1 => $v2) {
 //			if (preg_match("/^option(\d+)$/",$v1,$m1)) {
 //				if (is_numeric($v2) and ($v2==(int)$v2)) $val_array[]=$m1[1]."-".$v2;
 //        		else $inputok = false;

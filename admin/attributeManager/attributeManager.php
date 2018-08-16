@@ -422,7 +422,7 @@ $q=vam_db_query($sql="select products_name, products_options_name as _option, pr
 			</td>
 <?php
   if (vam_db_num_rows($q)>0) {
-    while(list($k,$v)=each($options)) {
+    foreach ($options as $k => $v) {
 ?>   	
 			<td>
 				<?php echo $option_names[$k]; ?>
@@ -515,9 +515,8 @@ if(!isset($_GET['target']) || 'newProductStockValue' == $_GET['target'] ) {
   }
    $title_num=1;
   if ($flag) {
-    reset($options);
     $i=0;
-    while(list($k,$v)=each($options)) {
+    foreach ($options as $k => $v) {
       echo "<td><select name=option$k id=option$k>";
       $dropDownOptions[] = 'option'.$k;
       foreach($v as $v1) {

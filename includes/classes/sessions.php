@@ -200,7 +200,7 @@
 
     $ret = '';
     // Create a string containing the serialized variables
-    for (reset($session->vars); list($i)=each($session->vars);) {
+    for (reset($session->vars); $i = reset($session->vars);) {
       $ret .= $session->vars[$i] . $session->delimiter_value . serialize($GLOBALS[$session->vars[$i]]) . $session->delimiter;
     }
 
@@ -214,7 +214,7 @@
     $vars = explode($session->delimiter, $data);
 
     // Add the variables to the global namespace
-    for (reset($vars); list($i)=each($vars);) {
+    for (reset($vars); $i = reset($session->vars);) {
       $tmp = explode($session->delimiter_value, $vars[$i]);
       $name = trim($tmp[0]);
       $value = trim($tmp[1]);
@@ -301,7 +301,7 @@
   function session_unregister($var) {
     global $session;
 
-    for (reset($session->vars); list($i)=each($session->vars);) {
+    for (reset($session->vars); $i = reset($session->vars);) {
       if ($session->vars[$i] == trim($var)) {
         unset($session->vars[$i]);
         break;
@@ -312,7 +312,7 @@
   function session_is_registered($var) {
     global $session;
 
-    for (reset($session->vars); list($i)=each($session->vars);) {
+    for (reset($session->vars); $i = reset($session->vars);) {
       if ($session->vars[$i] == trim($var)) {
         return true;
       }
