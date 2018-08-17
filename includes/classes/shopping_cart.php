@@ -383,7 +383,7 @@ class shoppingCart {
 		$products_array = array ();
 		foreach (array_keys($this->contents) as $products_id) {
 			if($this->contents[$products_id]['qty'] != 0 || $this->contents[$products_id]['qty'] !=''){
-			$products_query = vam_db_query("select p.products_id, pd.products_name,p.products_shippingtime, p.products_image, p.products_model, p.products_price, p.products_discount_allowed, p.products_weight, p.products_length, p.products_width, p.products_height, p.products_volume, p.products_tax_class_id from ".TABLE_PRODUCTS." p, ".TABLE_PRODUCTS_DESCRIPTION." pd where p.products_id='".vam_get_prid($products_id)."' and pd.products_id = p.products_id and pd.language_id = '".$_SESSION['languages_id']."'");
+			$products_query = vam_db_query("select p.products_id, pd.products_name,p.products_shippingtime, p.products_image, p.products_quantity, p.products_model, p.products_price, p.products_discount_allowed, p.products_weight, p.products_length, p.products_width, p.products_height, p.products_volume, p.products_tax_class_id from ".TABLE_PRODUCTS." p, ".TABLE_PRODUCTS_DESCRIPTION." pd where p.products_id='".vam_get_prid($products_id)."' and pd.products_id = p.products_id and pd.language_id = '".$_SESSION['languages_id']."'");
 			if ($products = vam_db_fetch_array($products_query)) {
 				$prid = $products['products_id'];
 
@@ -397,6 +397,7 @@ class shoppingCart {
 				'image' => $products['products_image'], 
 				'price' => $products_price + $this->attributes_price($products_id), 
 				'quantity' => $this->contents[$products_id]['qty'], 
+				'stock' => $products['products_quantity'], 
 				'weight' => $products['products_weight'],
 				'length' => $products['products_length'],
 				'width' => $products['products_width'],
