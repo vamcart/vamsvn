@@ -17,6 +17,47 @@
 {$module_data.error}
 </p>{else} {foreach name=aussen item=method_data from=$module_data.methods} <p>
 <label for="{$method_data.id}">{$method_data.radio_field}&nbsp;{$method_data.title}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{$method_data.price}</label>
-</p> {/foreach}{/if}</div>
+</p>
+
+{if $method_data.id == "pickpoint"}
+<script type="text/javascript" src="http://www.pickpoint.ru/select/postamat.js"></script>
+
+<script type="text/javascript">
+function pickpoint_call(id_this){
+  PickPoint.open(pickpoint_callback_function, pickpoint_options);
+}
+function pickpoint_callback_function(result){
+  var pickpoint_id = document.getElementById("pickpoint_id");
+  var pickpoint_address = document.getElementById("pickpoint_address");
+  var to_pickpoint_id = document.getElementById("to_pickpoint_id");
+  var to_pickpoint_address = document.getElementById("to_pickpoint_address");
+  var pickpoint_address_text = document.getElementById("pickpoint_address_text");
+  var pickpoint_link = document.getElementById("pickpoint_link");
+  var pickpoint_error = document.getElementById("pickpoint_error");
+  var pickpoint_link_help = document.getElementById("pickpoint_link_help");
+  pickpoint_id.value = result["id"];
+  pickpoint_address.value = result["address"];
+  
+  document.getElementById("street_address").value=result["name"]+result["address"];
+
+  document.getElementById("pickpoint").checked="checked";
+  
+  to_pickpoint_id.value = result["id"];
+  to_pickpoint_address.value = result["address"];
+  // textContent innerHTML
+  pickpoint_address_text.innerHTML = "{$smarty.const.MODULE_SHIPPING_PICKPOINT_TEXT_ADDRESS}" + result["address"] + " ";
+  pickpoint_link.innerHTML = "{$smarty.const.MODULE_SHIPPING_PICKPOINT_TEXT_ANOTHER_ADDRESS}";
+  if (pickpoint_error) pickpoint_error.innerHTML="";
+//  if (pickpoint_link_help) pickpoint_link_help.innerHTML="";
+}
+var pickpoint_options={};
+</script>
+<input type="hidden" name="pickpoint_id" id="pickpoint_id" value="" />
+<input type="hidden" name="pickpoint_address" id="pickpoint_address" value="" />
+<span id="pickpoint_address_text"></span>
+<u><a href="" onclick="pickpoint_call(this);return false;"><span id="pickpoint_link" style="color:blue;">{$smarty.const.MODULE_SHIPPING_PICKPOINT_TEXT_SELECT_ADDRESS}</span></a></u> <span id="pickpoint_link_help">{$smarty.const.MODULE_SHIPPING_PICKPOINT_TEXT_ADDRESS_HELP}</span>
+
+{/if}
+ {/foreach}{/if}</div>
 {/foreach}
 {/if}

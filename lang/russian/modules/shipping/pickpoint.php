@@ -25,41 +25,7 @@ define('MODULE_SHIPPING_PICKPOINT_TEXT_ADDRESS_HELP','(откроется во �
 define('MODULE_SHIPPING_PICKPOINT_TEXT_ADDRESS','Ваш заказ доставят по адресу: ');
 define('MODULE_SHIPPING_PICKPOINT_TEXT_ANOTHER_ADDRESS','Выбрать другой адрес');
 
-define('MODULE_SHIPPING_PICKPOINT_TEXT_WAY', '
-
-<script type="text/javascript" src="http://www.pickpoint.ru/select/postamat.js"></script>
-
-<script type="text/javascript">
-function pickpoint_call(id_this){
-  PickPoint.open(pickpoint_callback_function, pickpoint_options);
-}
-function pickpoint_callback_function(result){
-  var pickpoint_id = document.getElementById("pickpoint_id");
-  var pickpoint_address = document.getElementById("pickpoint_address");
-  var to_pickpoint_id = document.getElementById("to_pickpoint_id");
-  var to_pickpoint_address = document.getElementById("to_pickpoint_address");
-  var pickpoint_address_text = document.getElementById("pickpoint_address_text");
-  var pickpoint_link = document.getElementById("pickpoint_link");
-  var pickpoint_error = document.getElementById("pickpoint_error");
-  var pickpoint_link_help = document.getElementById("pickpoint_link_help");
-  pickpoint_id.value = result["id"];
-  pickpoint_address.value = result["address"];
-  to_pickpoint_id.value = result["id"];
-  to_pickpoint_address.value = result["address"];
-  // textContent innerHTML
-  pickpoint_address_text.innerHTML = "'.MODULE_SHIPPING_PICKPOINT_TEXT_ADDRESS.'" + result["address"] + " ";
-  pickpoint_link.innerHTML = "'.MODULE_SHIPPING_PICKPOINT_TEXT_ANOTHER_ADDRESS.'";
-  if (pickpoint_error) pickpoint_error.innerHTML="";
-//  if (pickpoint_link_help) pickpoint_link_help.innerHTML="";
-}
-var pickpoint_options={};
-</script>
-<input type="hidden" name="pickpoint_id" id="pickpoint_id" value="" />
-<input type="hidden" name="pickpoint_address" id="pickpoint_address" value="" />
-<span id="pickpoint_address_text"></span>
-<u><a href="" onclick="pickpoint_call(this);return false;"><span id="pickpoint_link" style="color:blue;">'.MODULE_SHIPPING_PICKPOINT_TEXT_SELECT_ADDRESS.'</span></a></u> <span id="pickpoint_link_help">'.MODULE_SHIPPING_PICKPOINT_TEXT_ADDRESS_HELP.'</span>
-
-');
+define('MODULE_SHIPPING_PICKPOINT_TEXT_WAY', 'Заказ будет доставлен в выбранный постамат');
 
 define('MODULE_SHIPPING_PICKPOINT_STATUS_TITLE' , 'Разрешить модуль pickpoint');
 define('MODULE_SHIPPING_PICKPOINT_STATUS_DESC' , 'Вы хотите разрешить модуль pickpoint?');
