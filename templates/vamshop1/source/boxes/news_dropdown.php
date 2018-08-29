@@ -25,9 +25,8 @@ $sql = "
          status = '1'
          and language = '" . (int)$_SESSION['languages_id'] . "'
     ORDER BY news_id DESC
-    LIMIT 5
-    ";
-
+    LIMIT 5";
+    
 $module_content = array();
 $query = vamDBquery($sql);
 while ($one = vam_db_fetch_array($query,true)) {
