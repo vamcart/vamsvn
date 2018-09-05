@@ -244,7 +244,7 @@
                 <td class="dataTableHeadingContent" align="right"><?php echo TABLE_HEADING_ACTION; ?>&nbsp;</td>
               </tr>
 <?php
-    $cc_query_raw = "select * from " . TABLE_COUPON_REDEEM_TRACK . " where coupon_id = '" . $_GET['cid'] . "'";
+    $cc_query_raw = "select * from " . TABLE_COUPON_REDEEM_TRACK . " where coupon_amount > '0' and coupon_code != '' and coupon_id = '" . $_GET['cid'] . "'";
     $cc_split = new splitPageResults($_GET['page'], MAX_DISPLAY_ADMIN_PAGE, $cc_query_raw, $cc_query_numrows);
     $cc_query = vam_db_query($cc_query_raw);
     while ($cc_list = vam_db_fetch_array($cc_query)) {
@@ -759,9 +759,9 @@ $customer = vam_db_fetch_array($customer_query);
 <?php
     if ($_GET['page'] > 1) $rows = $_GET['page'] * 20 - 20;
     if ($status != '*') {
-      $cc_query_raw = "select coupon_id, coupon_code, coupon_amount, coupon_type, coupon_start_date,coupon_expire_date,uses_per_user,uses_per_coupon,restrict_to_products, restrict_to_categories, date_created,date_modified from " . TABLE_COUPONS ." where coupon_active='" . vam_db_input($status) . "' and coupon_type != 'G'";
+      $cc_query_raw = "select coupon_id, coupon_code, coupon_amount, coupon_type, coupon_start_date,coupon_expire_date,uses_per_user,uses_per_coupon,restrict_to_products, restrict_to_categories, date_created,date_modified from " . TABLE_COUPONS ." where coupon_amount > '0' and coupon_code != '' and coupon_active='" . vam_db_input($status) . "' and coupon_type != 'G'";
     } else {
-      $cc_query_raw = "select coupon_id, coupon_code, coupon_amount, coupon_type, coupon_start_date,coupon_expire_date,uses_per_user,uses_per_coupon,restrict_to_products, restrict_to_categories, date_created,date_modified from " . TABLE_COUPONS . " where coupon_type != 'G'";
+      $cc_query_raw = "select coupon_id, coupon_code, coupon_amount, coupon_type, coupon_start_date,coupon_expire_date,uses_per_user,uses_per_coupon,restrict_to_products, restrict_to_categories, date_created,date_modified from " . TABLE_COUPONS . " where coupon_amount > '0' and coupon_code != '' and coupon_type != 'G'";
     }
     $cc_split = new splitPageResults($_GET['page'], MAX_DISPLAY_ADMIN_PAGE, $cc_query_raw, $cc_query_numrows);
     $cc_query = vam_db_query($cc_query_raw);
