@@ -161,7 +161,8 @@ class ot_coupon {
 				$this->coupon_code = $coupon_result['coupon_code'];
 				$coupon_get = vam_db_query("select coupon_amount, coupon_minimum_order, restrict_to_products, restrict_to_categories, coupon_type from ".TABLE_COUPONS." where coupon_code = '".$coupon_result['coupon_code']."'");
 				$get_result = vam_db_fetch_array($coupon_get);
-				$c_deduct = $vamPrice->CalculateCurr($get_result['coupon_amount']);
+				//$c_deduct = $vamPrice->CalculateCurr($get_result['coupon_amount']);
+				$c_deduct = $get_result['coupon_amount'];
 				
 				
 				if ($get_result['coupon_type'] == 'S')
