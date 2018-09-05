@@ -1,6 +1,6 @@
 <?php
 /* --------------------------------------------------------------
-  $Id: coupon_admin.php 1084 2007-02-08 11:13:01Z VaM $   
+  $Id: coupon_admin.php 1084 2018-02-08 11:13:01Z VaM $   
 
    VaM Shop - open source ecommerce solution
    http://vamshop.ru
