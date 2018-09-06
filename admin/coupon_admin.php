@@ -1,6 +1,6 @@
 <?php
 /* --------------------------------------------------------------
-  $Id: coupon_admin.php 1084 2018-02-08 11:13:01Z VaM $   
+  $Id: coupon_admin.php 1084 2007-02-08 11:13:01Z VaM $   
 
    VaM Shop - open source ecommerce solution
    http://vamshop.ru
@@ -244,7 +244,7 @@
                 <td class="dataTableHeadingContent" align="right"><?php echo TABLE_HEADING_ACTION; ?>&nbsp;</td>
               </tr>
 <?php
-    $cc_query_raw = "select * from " . TABLE_COUPON_REDEEM_TRACK . " where coupon_amount > '0' and coupon_code != '' and coupon_id = '" . $_GET['cid'] . "'";
+    $cc_query_raw = "select * from " . TABLE_COUPON_REDEEM_TRACK . " where coupon_id = '" . $_GET['cid'] . "'";
     $cc_split = new splitPageResults($_GET['page'], MAX_DISPLAY_ADMIN_PAGE, $cc_query_raw, $cc_query_numrows);
     $cc_query = vam_db_query($cc_query_raw);
     while ($cc_list = vam_db_fetch_array($cc_query)) {
