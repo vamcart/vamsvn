@@ -17,12 +17,12 @@
    Released under the GNU General Public License 
    ---------------------------------------------------------------------------------------*/
 
-define('MODULE_PAYMENT_KUPIVKREDIT_TEXT_TITLE', 'КупиВкредит.Ру');
-define('MODULE_PAYMENT_KUPIVKREDIT_TEXT_PUBLIC_TITLE', 'КупиВкредит.Ру');
-define('MODULE_PAYMENT_KUPIVKREDIT_TEXT_ADMIN_DESCRIPTION', 'Модуль оплаты КупиВкредит.Ру');
-define('MODULE_PAYMENT_KUPIVKREDIT_TEXT_DESCRIPTION', 'После нажатия кнопки Подтвердить заказ Вы перейдёте на сайт КупиВкредит для подтверждения заказа.');
+define('MODULE_PAYMENT_KUPIVKREDIT_TEXT_TITLE', 'Тинькофф Кредит');
+define('MODULE_PAYMENT_KUPIVKREDIT_TEXT_PUBLIC_TITLE', 'Тинькофф Кредит');
+define('MODULE_PAYMENT_KUPIVKREDIT_TEXT_ADMIN_DESCRIPTION', 'Модуль оплаты Тинькофф Кредит');
+define('MODULE_PAYMENT_KUPIVKREDIT_TEXT_DESCRIPTION', 'После нажатия кнопки Подтвердить заказ Вы перейдёте на сайт Тинькофф Кредит для подтверждения заказа.');
   
-define('MODULE_PAYMENT_KUPIVKREDIT_STATUS_TITLE' , 'Разрешить модуль КупиВкредит');
+define('MODULE_PAYMENT_KUPIVKREDIT_STATUS_TITLE' , 'Разрешить модуль Тинькофф Кредит');
 define('MODULE_PAYMENT_KUPIVKREDIT_STATUS_DESC' , 'Вы хотите разрешить использование модуля при оформлении заказов?');
 define('MODULE_PAYMENT_KUPIVKREDIT_ALLOWED_TITLE' , 'Разрешённые страны');
 define('MODULE_PAYMENT_KUPIVKREDIT_ALLOWED_DESC' , 'Укажите коды стран, для которых будет доступен данный модуль (например RU,DE (оставьте поле пустым, если хотите что б модуль был доступен покупателям из любых стран))');

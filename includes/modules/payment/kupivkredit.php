@@ -28,11 +28,11 @@
       $this->title = MODULE_PAYMENT_KUPIVKREDIT_TEXT_TITLE;
       $this->public_title = MODULE_PAYMENT_KUPIVKREDIT_TEXT_PUBLIC_TITLE;
       $this->description = MODULE_PAYMENT_KUPIVKREDIT_TEXT_ADMIN_DESCRIPTION;
-      $this->icon = DIR_WS_ICONS . 'kupivkredit.png';
+      $this->icon = DIR_WS_ICONS . 'tinkoff.png';
       $this->sort_order = MODULE_PAYMENT_KUPIVKREDIT_SORT_ORDER;
       $this->enabled = ((MODULE_PAYMENT_KUPIVKREDIT_STATUS == 'True') ? true : false);
 
-        $this->form_action_url = 'https://loans.tinkoff.ru/api/partners/v1/lightweight/create';
+        $this->form_action_url = 'https://loans-qa.tcsbank.ru/api/partners/v1/lightweight/create';
     }
 
 // class methods
