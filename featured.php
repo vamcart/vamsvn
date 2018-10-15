@@ -53,7 +53,7 @@ $featured_query_raw = "select p.products_id,
                                 and f.status = '1' order by f.featured_date_added DESC";
 $featured_split = new splitPageResults($featured_query_raw, $_GET['page'], MAX_DISPLAY_FEATURED_PRODUCTS);
 
-$module_content = [];
+//$module_content = [];
 $row = 0;
 $featured_query = vam_db_query($featured_split->sql_query);
 while ($featured = vam_db_fetch_array($featured_query)) {
