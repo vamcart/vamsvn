@@ -102,7 +102,7 @@ if (isset ($_GET['action']) && ($_GET['action'] == 'process')) {
 				        vam_redirect(vam_href_link(FILENAME_SHOPPING_CART, '', 'SSL'));
 				}
 			} else {
-				vam_redirect(vam_href_link(FILENAME_DEFAULT));
+				vam_redirect(vam_href_link(FILENAME_ACCOUNT));
 			}
 
 		}
@@ -153,7 +153,7 @@ if (isset ($_GET['action']) && ($_GET['action'] == 'process')) {
 				        vam_redirect(vam_href_link(FILENAME_SHOPPING_CART, '', 'SSL'));
 				}
 			} else {
-				vam_redirect(vam_href_link(FILENAME_DEFAULT));
+				vam_redirect(vam_href_link(FILENAME_ACCOUNT));
 			}
 
 		}
