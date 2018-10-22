@@ -171,6 +171,7 @@
           mysqli_close($db_l);
 
           $PHP_SELF = '/index.php';
+          header("HTTP/1.1 301 Moved Permanently");
           header("Location: ".DIR_WS_CATALOG."404.html");
           
           }
