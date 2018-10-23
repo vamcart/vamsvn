@@ -171,8 +171,13 @@
           mysqli_close($db_l);
 
           $PHP_SELF = '/index.php';
-          header("HTTP/1.1 301 Moved Permanently");
-          header("Location: ".DIR_WS_CATALOG."404.html");
+          //header("HTTP/1.1 301 Moved Permanently");
+          //header("Location: ".DIR_WS_CATALOG."404.html");
+          
+				header('HTTP/1.1 404 Not Found');
+				$_GET['coID'] = '12'; // 12 - это id нужной информационной страницы
+				include __DIR__ . '/shop_content.php';
+				exit();          
           
           }
         }        
