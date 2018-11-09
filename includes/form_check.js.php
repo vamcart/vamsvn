@@ -80,9 +80,14 @@ $(function () {
    });
 
 <?php if(PHONE_MASK != '') { ?>
-$("#telephone").mask("<?php echo PHONE_MASK; ?>");
+$(function () {
+new Cleave("#telephone", {
+  numericOnly: true,
+  blocks: [0, 3, 0, 3, 2, 2],
+  delimiters: ["(", ")", " ", "-","-"],
+});
+});
 <?php } ?>
-$("#qiwi_telephone").mask("79999999999");
    	
 	// validate signup form on keyup and submit
 	$("#<?php echo $form_id; ?>").validate({
