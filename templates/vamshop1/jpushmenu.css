@@ -19,7 +19,9 @@
     padding:0;
     margin:0 !important;
     overflow-x:hidden;
-    overflow-y:visible;
+    overflow-y:scroll;
+    height: 100%;
+    min-height: 100%;
     display:block;
     visibility:visible;
   }
@@ -61,6 +63,7 @@
   .cbp-spmenu-left.cbp-spmenu-open,
   .cbp-spmenu-push-toright .navbar-fixed-top .cbp-spmenu-left.cbp-spmenu-open {
     left: 0px;
+    overflow-y: scroll;
   }
   .cbp-spmenu-right.cbp-spmenu-open,
   .cbp-spmenu-push-toleft .navbar-fixed-top .cbp-spmenu-right.cbp-spmenu-open {
@@ -102,6 +105,6 @@
     transition: all 0.3s ease;
   }
 
-.cbp-spmenu-open .nav { max-height: 400px !important; overflow-x: hidden; overflow-y: auto; }
+
 
 }
