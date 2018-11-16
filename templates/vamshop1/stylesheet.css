@@ -52,13 +52,6 @@ a.read-more {
 a.read-more:hover {
   border-bottom-style: solid;
 }
-.italic {
-  color: #dd2c00;
-  font-style: italic;
-}
-strong {
-  color: #000000;
-}
 .underline:after {
   background: none repeat scroll 0 0 #dd2c00;
   bottom: 0;
