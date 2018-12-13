@@ -390,8 +390,13 @@ if ($_SERVER["HTTP_X_FORWARDED_FOR"]) {
                                vam_draw_hidden_field('cps_email', $order->customer['email_address']) .
                                vam_draw_hidden_field('cps_phone', $order->customer['telephone']) . 
                                vam_draw_hidden_field('cms_name', 'vamshop') . 
-                               (defined('MODULE_PAYMENT_YANDEX_MERCHANT_SEND_CHECK') && constant('MODULE_PAYMENT_YANDEX_MERCHANT_SEND_CHECK') == 'True' ? vam_draw_hidden_field1('ym_merchant_receipt', json_encode($receipt, JSON_UNESCAPED_UNICODE)) : '') . "\n" .
                                vam_draw_hidden_field('paymentType', MODULE_PAYMENT_YANDEX_MERCHANT_PAYMENT_TYPE);
+                               
+                               
+                               if (defined('MODULE_PAYMENT_YANDEX_MERCHANT_SEND_CHECK') && constant('MODULE_PAYMENT_YANDEX_MERCHANT_SEND_CHECK') == 'True')  {
+                               $process_button_string .= '<input type="hidden" name="ym_merchant_receipt" value=\''.json_encode($receipt, JSON_UNESCAPED_UNICODE).'\' />';
+                            }
+                               
 
       return $process_button_string;
     }
