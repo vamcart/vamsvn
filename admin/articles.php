@@ -525,7 +525,7 @@ $manual_link = 'add-topic';
 
           <tr>
             <td class="main"><?php echo TEXT_EDIT_TOPICS_HEADING_TITLE; ?></td>
-            <td class="main"><?php echo vam_draw_input_field('topics_heading_title[' . $languages[$i]['id'] . ']', (($topics_name[$languages[$i]['id']]) ? stripslashes($topics_name[$languages[$i]['id']]) : vam_get_topic_heading_title($tInfo->topics_id, $languages[$i]['id']))); ?></td>
+            <td class="main"><?php echo vam_draw_input_field('topics_heading_title[' . $languages[$i]['id'] . ']', (($topics_heading_title[$languages[$i]['id']]) ? stripslashes($topics_heading_title[$languages[$i]['id']]) : vam_get_topic_heading_title($tInfo->topics_id, $languages[$i]['id']))); ?></td>
           </tr>
 
           <tr>
@@ -620,6 +620,9 @@ $manual_link = 'add-topic';
         <td><table border="0" width="100%" cellspacing="0" cellpadding="0">
           <tr>
             <td class="pageHeading"><?php echo $languages[$i]['name'] . '&nbsp;' . $tInfo->topics_heading_title; ?></td>
+          </tr>
+          <tr>
+            <td class="pageHeading"><?php echo $languages[$i]['name'] . '&nbsp;' . $tInfo->topics_name; ?></td>
           </tr>
         </table></td>
       </tr>
