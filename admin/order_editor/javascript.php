@@ -629,10 +629,10 @@ function init()
 	var totalInclValue = document.getElementById("update_products[" + pid + "][price]").value;
 	var totalExclValue = document.getElementById("update_products[" + pid + "][price]").value;
 			
-	finalPriceValue = Number(attValue) + Number(finalPriceValue);
-	priceInclValue = ( Number(attValue) + Number(priceInclValue) ) * ((taxRate / 100) + 1);
-	totalInclValue = ( Number(attValue) + Number(totalInclValue) ) * ((taxRate / 100) + 1) * qty;
-	totalExclValue = ( Number(attValue) + Number(totalExclValue) ) * qty;
+	finalPriceValue = Number(finalPriceValue);
+	priceInclValue = ( Number(priceInclValue) ) * ((taxRate / 100) + 1);
+	totalInclValue = ( Number(totalInclValue) ) * ((taxRate / 100) + 1) * qty;
+	totalExclValue = ( Number(totalExclValue) ) * qty;
 	taxValue = taxRate * finalPriceValue / 100 * qty;
 	
 	}
