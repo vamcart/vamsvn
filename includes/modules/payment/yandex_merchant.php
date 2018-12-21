@@ -358,6 +358,8 @@ if ($_SERVER["HTTP_X_FORWARDED_FOR"]) {
                 $receipt['items'][] = array(
                     'quantity' => $product['qty'],
                     'text' => substr($product['name'], 0, 128),
+                    'paymentMethodType': 'full_prepayment',
+                    'paymentSubjectType': 'commodity',
                     'tax' => $id_tax,
                     'price' => array(
                         'amount' => number_format($product['final_price'], 2, '.', ''),
@@ -371,6 +373,8 @@ if ($_SERVER["HTTP_X_FORWARDED_FOR"]) {
                 $receipt['items'][] = array(
                     'quantity' => 1,
                     'text' => substr('Доставка - ' . $order->info['shipping_method'], 0, 128),
+                    'paymentMethodType': 'full_prepayment',
+                    'paymentSubjectType': 'commodity',
                     'tax' => $id_tax,
                     'price' => array(
                         'amount' => number_format($order->info['shipping_cost'], 2, '.', ''),
