@@ -152,8 +152,6 @@ require ('includes/application_top.php');
 			  
 <?php
  
-require_once(DIR_FS_CATALOG.'includes/external/simplepie/autoloader.php');
-
 // We'll process this feed with all of the default options.
 $url = 'http://blog.vamshop.ru/feed/';
 $feed = new SimplePie();
