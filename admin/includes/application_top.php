@@ -60,7 +60,7 @@
   define('SQL_CACHEDIR',DIR_FS_CATALOG.'cache/');
 
   // Define the project version
-  define('PROJECT_VERSION', 'VamShop 1.94');
+  define('PROJECT_VERSION', 'VamShop 1.91');
 
   // Set the length of the redeem code, the longer the more secure
   define('SECURITY_CODE_LENGTH', '6');
@@ -422,7 +422,7 @@ if (SESSION_CHECK_USER_AGENT == 'True') {
   }
 
   // set the language
-  if (!isset($_SESSION['language']) || isset($_GET['language']) || empty($language)) {
+  //if (!isset($_SESSION['language']) || isset($_GET['language']) || empty($language)) {
 
     include(DIR_WS_CLASSES . 'language.php');
     $lng = new language($_GET['language']);
@@ -431,7 +431,7 @@ if (SESSION_CHECK_USER_AGENT == 'True') {
 
     $_SESSION['language'] = $lng->language['directory'];
     $_SESSION['languages_id'] = $lng->language['id'];
-  }
+  //}
 
   // include the language translations
   require_once (DIR_FS_LANGUAGES . $_SESSION['language'] . '/admin/'.$_SESSION['language'] . '.php');
@@ -672,4 +672,7 @@ define('FILENAME_PIN_LOADER', 'pin_loader.php');
   define('TABLE_SITE_REVIEWS', 'site_reviews');
   define('TABLE_SITE_REVIEWS_DESCRIPTION', 'site_reviews_description');
   
+// include composer autoload
+  require(DIR_FS_CATALOG . '/vendor/autoload.php');
+    
 ?>

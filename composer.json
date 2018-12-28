@@ -1,0 +1,9 @@
+{
+    "name": "vamshop",
+    "require": {
+        "simplepie/simplepie": "~1.5"
+    },
+    "config": {
+        "vendor-dir": "vendor"
+    }
+}

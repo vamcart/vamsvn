@@ -60,7 +60,7 @@ if (defined('DIR_WS_INCLUDES') === false) header('Location: install');
 $php4_3_10 = (0 == version_compare(phpversion(), "4.3.10"));
 define('PHP4_3_10', $php4_3_10);
 // define the project version
-define('PROJECT_VERSION', 'VamShop 1.94');
+define('PROJECT_VERSION', 'VamShop 1.91');
 
 // set the type of request (secure or not)
 $request_type = (getenv('HTTPS') == '1' || getenv('HTTPS') == 'on') ? 'SSL' : 'NONSSL';
@@ -810,5 +810,8 @@ if($_SERVER['REQUEST_URI'] != DIR_WS_CATALOG && $PHP_SELF == DIR_WS_CATALOG.'ind
 if (strpos($PHP_SELF, FILENAME_PRODUCT_INFO) !== FALSE || strpos($PHP_SELF, FILENAME_PRODUCT_REVIEWS) !== FALSE) {
     require('includes/modules/headerstatushandler.php');
 }
+
+// include composer autoload
+  require(DIR_FS_CATALOG . '/vendor/autoload.php');
 
 ?>
