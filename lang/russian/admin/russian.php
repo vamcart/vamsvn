@@ -503,24 +503,24 @@ define('VAMSHOP_SUPPORT_KEY',(file_exists(DIR_FS_CATALOG .'vamshop.key') ? implo
 define('TEXT_ACCESS_FORBIDDEN','Нет доступа');
 
 define('TEXT_MANUAL_LINK','Справка');
-define('MANUAL_LINK_EDIT_CATEGORY','http://vamshop.ru/manual/ch05.html#edit-category');
-define('MANUAL_LINK_NEW_CATEGORY','http://vamshop.ru/manual/ch05.html#new-category');
-define('MANUAL_LINK_PRODUCTS','http://vamshop.ru/manual/ch05s03.html');
-define('MANUAL_LINK_MANUFACTURERS','http://vamshop.ru/manual/ch05s02.html');
-define('MANUAL_LINK_EASYPOPULATE','http://vamshop.ru/manual/catalog.html#easypopulate');
-define('MANUAL_LINK_ATTRIBUTE','http://vamshop.ru/manual/ch05s05.html');
-define('MANUAL_LINK_TAX','http://vamshop.ru/manual/ch05s06.html');
-define('MANUAL_LINK_FILTERS','http://vamshop.ru/manual/ch05s07.html');
-define('MANUAL_LINK_GV','http://vamshop.ru/manual/ch08.html');
-define('MANUAL_LINK_COUPONS','http://vamshop.ru/manual/ch08s02.html');
-define('MANUAL_LINK_AFFILIATE','http://vamshop.ru/manual/ch09.html');
-define('MANUAL_LINK_NEWSLETTER','http://vamshop.ru/manual/ch11.html#id2647059');
-define('MANUAL_LINK_RCS','http://vamshop.ru/manual/ch11s03.html');
-define('MANUAL_LINK_NEWS','http://vamshop.ru/manual/ch12.html');
-define('MANUAL_LINK_INFOPAGES','http://vamshop.ru/manual/ch12s02.html');
-define('MANUAL_LINK_FAQ','http://vamshop.ru/manual/ch12s03.html');
-define('MANUAL_LINK_ARTICLES','http://vamshop.ru/manual/ch12s04.html');
-define('MANUAL_LINK_BACKUP','http://vamshop.ru/manual/ch12s06.html');
+define('MANUAL_LINK_EDIT_CATEGORY','http://manual.vamshop.ru/ch05.html#edit-category');
+define('MANUAL_LINK_NEW_CATEGORY','http://manual.vamshop.ru/ch05.html#new-category');
+define('MANUAL_LINK_PRODUCTS','http://manual.vamshop.ru/ch05s03.html');
+define('MANUAL_LINK_MANUFACTURERS','http://manual.vamshop.ru/ch05s02.html');
+define('MANUAL_LINK_EASYPOPULATE','http://manual.vamshop.ru/catalog.html#easypopulate');
+define('MANUAL_LINK_ATTRIBUTE','http://manual.vamshop.ru/ch05s05.html');
+define('MANUAL_LINK_TAX','http://manual.vamshop.ru/ch05s06.html');
+define('MANUAL_LINK_FILTERS','http://manual.vamshop.ru/ch05s07.html');
+define('MANUAL_LINK_GV','http://manual.vamshop.ru/ch09.html');
+define('MANUAL_LINK_COUPONS','http://manual.vamshop.ru/ch09s02.html');
+define('MANUAL_LINK_AFFILIATE','http://manual.vamshop.ru/ch10.html');
+define('MANUAL_LINK_NEWSLETTER','http://manual.vamshop.ru/ch12.html#id2647059');
+define('MANUAL_LINK_RCS','http://manual.vamshop.ru/ch12s03.html');
+define('MANUAL_LINK_NEWS','http://manual.vamshop.ru/ch13.html');
+define('MANUAL_LINK_INFOPAGES','http://manual.vamshop.ru/ch13s02.html');
+define('MANUAL_LINK_FAQ','http://manual.vamshop.ru/ch13s03.html');
+define('MANUAL_LINK_ARTICLES','http://manual.vamshop.ru/ch13s04.html');
+define('MANUAL_LINK_BACKUP','http://manual.vamshop.ru/ch13s06.html');
 
 define('TXT_FREE','<span class="Requirement"><strong>free</strong></span>');
 
@@ -619,5 +619,24 @@ define('TEXT_ADD_REVIEW', 'Добавить отзыв');
 define('TEXT_CATEGORY_DISCOUNT', 'Скидки по категориям');
 define('TEXT_MANUFACTURER_DISCOUNT', 'Скидки по брэндам');
 define('TEXT_DISPLAY_NUMBER_OF_SPECIAL_MANUFACTURER', 'Показано <b>%d</b> - <b>%d</b> (всего <b>%d</b> брэндов со скидками)');
+
+define('BOX_HEADING_MARKETING', 'Маркетинг');
+
+define('BOX_MERKETING_1', 'Скидка на способ оплаты');
+define('BOX_MERKETING_2', 'Скидка на способ доставки');
+define('BOX_MERKETING_3', 'Наценка на способ оплаты');
+define('BOX_MERKETING_4', 'Наценка на способ доставки');
+define('BOX_MERKETING_5', 'Скидка на сумму заказа');
+define('BOX_MERKETING_6', 'Скидка от количество единиц в заказе');
+define('BOX_MERKETING_7', 'Индивидуальная скидка покупателя');
+define('BOX_MERKETING_8', 'Индивидуальная скидка покупателя на брэнд');
+define('BOX_MERKETING_9', 'Скидка от суммы заказа для групп');
+define('BOX_MERKETING_10', 'Скидка от количества единиц товара для групп');
+define('BOX_MERKETING_11', 'Скидка группам покупателей');
+define('BOX_MERKETING_12', 'Накопительная система скидок');
+define('BOX_MERKETING_13', 'Максимально возможная скидка');
+define('BOX_MERKETING_14', 'Купоны');
+define('BOX_MERKETING_15', 'Подарочные сертификаты');
+define('BOX_MERKETING_16', 'Партнёрская программа');
 
 ?>

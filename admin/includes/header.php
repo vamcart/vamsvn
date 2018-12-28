@@ -90,6 +90,69 @@
                 </div>
                 <!--[if lte IE 6]></td></tr></table></a><![endif]-->
 
+                </li>   
+                <li class="level1"><a class="sub" href="<?php echo vam_href_link(FILENAME_SPECIALS, '', 'NONSSL'); ?>" onclick="return false"><b><?php echo BOX_HEADING_MARKETING; ?></b><!--[if gte IE 7]><!--></a><!--<![endif]-->
+                <!--[if lte IE 6]><table class="ie6"><tr><td><![endif]-->
+                <div class="holder">
+                    <div class="leftSide">
+                        <div class="rightSide">
+                        <table><tr>
+
+                            <td>
+                                <dl>
+                                
+<?php
+  $admin_access_query = vam_db_query("select * from " . TABLE_ADMIN_ACCESS . " where customers_id = '" . $_SESSION['customer_id'] . "'");
+  $admin_access = vam_db_fetch_array($admin_access_query); 
+?>
+                                
+<?php
+
+  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['specials'] == '1')) echo '<dd><a href="' . vam_href_link(FILENAME_SPECIALS, '', 'NONSSL') . '">' . BOX_SPECIALS . '</a></dd>' . "\n";
+  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['category_specials'] == '1')) echo '<dd><a href="' . vam_href_link(FILENAME_CATEGORY_SPECIALS, '', 'NONSSL') . '">' . TEXT_CATEGORY_DISCOUNT . '</a></dd>' . "\n";
+  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['manufacturer_specials'] == '1')) echo '<dd><a href="' . vam_href_link(FILENAME_MANUFACTURER_SPECIALS, '', 'NONSSL') . '">' . TEXT_MANUFACTURER_DISCOUNT . '</a></dd>' . "\n";
+  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['featured'] == '1')) echo '<dd><a href="' . vam_href_link(FILENAME_FEATURED, '', 'NONSSL') . '">' . BOX_FEATURED . '</a></dd>' . "\n";
+  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['modules'] == '1')) echo '<dd><a href="' . vam_href_link(FILENAME_MODULES, 'set=ordertotal&module=ot_discountpayment', 'NONSSL') . '">' . BOX_MERKETING_1 . '</a></dd>' . "\n";
+  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['modules'] == '1')) echo '<dd><a href="' . vam_href_link(FILENAME_MODULES, 'set=ordertotal&module=ot_discountshipping', 'NONSSL') . '">' . BOX_MERKETING_2 . '</a></dd>' . "\n";
+  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['modules'] == '1')) echo '<dd><a href="' . vam_href_link(FILENAME_MODULES, 'set=ordertotal&module=ot_surcharge', 'NONSSL') . '">' . BOX_MERKETING_3 . '</a></dd>' . "\n";
+  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['modules'] == '1')) echo '<dd><a href="' . vam_href_link(FILENAME_MODULES, 'set=ordertotal&module=ot_surchargeshipping', 'NONSSL') . '">' . BOX_MERKETING_4 . '</a></dd>' . "\n";
+  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['modules'] == '1')) echo '<dd><a href="' . vam_href_link(FILENAME_MODULES, 'set=ordertotal&module=ot_lev_discount', 'NONSSL') . '">' . BOX_MERKETING_5 . '</a></dd>' . "\n";
+  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['modules'] == '1')) echo '<dd><a href="' . vam_href_link(FILENAME_MODULES, 'set=ordertotal&module=ot_discount_quant', 'NONSSL') . '">' . BOX_MERKETING_6 . '</a></dd>' . "\n";
+  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['modules'] == '1')) echo '<dd><a href="' . vam_href_link(FILENAME_CUSTOMERS, 'cID=1&action=edit', 'NONSSL') . '">' . BOX_MERKETING_7 . '</a></dd>' . "\n";
+  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['modules'] == '1')) echo '<dd><a href="' . vam_href_link(FILENAME_CUSTOMERS, 'cID=1&action=edit', 'NONSSL') . '">' . BOX_MERKETING_8 . '</a></dd>' . "\n";
+  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['modules'] == '1')) echo '<dd><a href="http://manual.vamshop.ru/ch07.html#idp19112040">' . BOX_MERKETING_9 . '</a></dd>';
+  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['modules'] == '1')) echo '<dd><a href="http://manual.vamshop.ru/ch07s02.html">' . BOX_MERKETING_10 . '</a></dd>';
+  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['modules'] == '1')) echo '<dd><a href="http://manual.vamshop.ru/ch07s03.html">' . BOX_MERKETING_11 . '</a></dd>';
+  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['modules'] == '1')) echo '<dd><a href="http://manual.vamshop.ru/ch07s04.html">' . BOX_MERKETING_12 . '</a></dd>';
+  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['modules'] == '1')) echo '<dd><a href="http://manual.vamshop.ru/ch05s03.html#idp16858336">' . BOX_MERKETING_13 . '</a></dd>';
+  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['modules'] == '1')) echo '<dd><a href="http://manual.vamshop.ru/ch09s02.html">' . BOX_MERKETING_14 . '</a></dd>' . "\n";
+  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['modules'] == '1')) echo '<dd><a href="http://manual.vamshop.ru/ch09.html">' . BOX_MERKETING_15 . '</a></dd>' . "\n";
+  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['modules'] == '1')) echo '<dd><a href="http://manual.vamshop.ru/ch10.html">' . BOX_MERKETING_16 . '</a></dd>' . "\n";
+  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['module_newsletter'] == '1')) echo '<dd><a href="' . vam_href_link(FILENAME_MODULE_NEWSLETTER) . '">' . BOX_MODULE_NEWSLETTER . '</a></dd>' . "\n";
+  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['ship2pay'] == '1')) echo '<dd><a href="' . vam_href_link(FILENAME_SHIP2PAY) . '">' . BOX_MODULES_SHIP2PAY . '</a></dd>' . "\n";
+  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['recover_cart_sales'] == '1')) echo '<dd><a href="' . vam_href_link(FILENAME_RECOVER_CART_SALES) . '">' . BOX_TOOLS_RECOVER_CART . '</a></dd>' . "\n";
+
+ if (($_SESSION['customers_status']['customers_status_id'] == '0') && 
+ ($admin_access['specials'] == '0') && 
+ ($admin_access['category_specials'] == '0') && 
+ ($admin_access['manufacturer_specials'] == '0') && 
+ ($admin_access['featured'] == '0') && 
+ ($admin_access['modules'] == '0') && 
+ ($admin_access['module_newsletter'] == '0') && 
+ ($admin_access['ship2pay'] == '0') && 
+ ($admin_access['recover_cart_sales'] == '0')  
+ ) echo '<dd>'.TEXT_ACCESS_FORBIDDEN.'</dd>'; 
+
+?>
+                                </dl>
+
+                            </td>
+                        </tr></table>
+                        </div>
+                    </div>
+                </div>
+                <!--[if lte IE 6]></td></tr></table></a><![endif]-->
+
                 </li>                
                 <li><a class="sub" href="<?php echo vam_href_link(FILENAME_CATEGORIES, '', 'NONSSL'); ?>" onclick="return false"><b><?php echo BOX_HEADING_CATALOG; ?></b><!--[if gte IE 7]><!--></a><!--<![endif]-->
                 <!--[if lte IE 6]><table class="ie6"><tr><td><![endif]-->
