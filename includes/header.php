@@ -41,13 +41,13 @@
 <link rel="shortcut icon" href="favicon.ico"/>
 
 <?php include(DIR_WS_MODULES.FILENAME_METATAGS); ?>
+
 <base href="<?php echo (($request_type == 'SSL') ? HTTPS_SERVER : HTTP_SERVER) . DIR_WS_CATALOG; ?>" />
-<script type="text/javascript" src="jscript/jquery/jquery.js"></script>
 <?php
 if (file_exists(dirname($_SERVER['SCRIPT_FILENAME']) . '/templates/'.CURRENT_TEMPLATE.'/css/css.php')) include('templates/'.CURRENT_TEMPLATE.'/css/css.php');
 if (file_exists(dirname($_SERVER['SCRIPT_FILENAME']) . '/templates/'.CURRENT_TEMPLATE.'/javascript/script.php')) include('templates/'.CURRENT_TEMPLATE.'/javascript/script.php');
 ?>
-<link rel="stylesheet" type="text/css" href="<?php echo 'templates/'.CURRENT_TEMPLATE.'/stylesheet.css'; ?>" />
+
 <?php
 if (isset($_GET['products_id']) && strstr($PHP_SELF, FILENAME_PRODUCT_INFO)) {
 ?>
@@ -96,44 +96,7 @@ if (isset($_GET['faq_id']) && strstr($PHP_SELF, FILENAME_FAQ)) {
 <link rel="alternate" type="application/rss+xml" title="<?php echo TEXT_RSS_NEW_PRODUCTS; ?>" href="<?php echo HTTP_SERVER . DIR_WS_CATALOG . FILENAME_RSS2. '?feed=new_products&amp;limit=10'; ?>" />
 <link rel="alternate" type="application/rss+xml" title="<?php echo TEXT_RSS_FEATURED_PRODUCTS; ?>" href="<?php echo HTTP_SERVER . DIR_WS_CATALOG . FILENAME_RSS2. '?feed=featured&amp;limit=10'; ?>" />
 <link rel="alternate" type="application/rss+xml" title="<?php echo TEXT_RSS_BEST_SELLERS; ?>" href="<?php echo HTTP_SERVER . DIR_WS_CATALOG . FILENAME_RSS2. '?feed=best_sellers&amp;limit=10'; ?>" />
-<?php
-if (strstr($PHP_SELF, FILENAME_PRODUCT_INFO)) {
-?>
-<link rel="stylesheet" type="text/css" href="jscript/jquery/plugins/colorbox/colorbox.css" media="screen" />
-<script type="text/javascript" src="jscript/jquery/plugins/colorbox/jquery.colorbox-min.js"></script>
-<?php
-if (file_exists(DIR_FS_CATALOG.'jscript/jquery/plugins/colorbox/i18n/jquery.colorbox-'.$_SESSION['language_code'].'.js')) {
-?>
-<script type="text/javascript" src="jscript/jquery/plugins/colorbox/i18n/jquery.colorbox-ru.js"></script>
-<?php } ?>
-<script type="text/javascript">
-// Make ColorBox responsive
-	jQuery.colorbox.settings.maxWidth  = '95%';
-	jQuery.colorbox.settings.maxHeight = '95%';
 
-	// ColorBox resize function
-	var resizeTimer;
-	function resizeColorBox()
-	{
-		if (resizeTimer) clearTimeout(resizeTimer);
-		resizeTimer = setTimeout(function() {
-				if (jQuery('#cboxOverlay').is(':visible')) {
-						jQuery.colorbox.load(true);
-				}
-		}, 300);
-	}
-
-	// Resize ColorBox when resizing window or changing mobile device orientation
-	jQuery(window).resize(resizeColorBox);
-	
-$(document).ready(function(){
-  $(".lightbox").colorbox({rel:"lightbox", title: false});
-  $(".iframe").colorbox({iframe:true, width:"30%", height:"80%"});
-});
-</script>
-<?php
- }
-?>
 <?php
 // require theme based javascript
 require('templates/'.CURRENT_TEMPLATE.'/javascript/general.js.php');
