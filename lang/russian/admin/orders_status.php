@@ -20,6 +20,8 @@
 define('HEADING_TITLE', 'Статус заказов');
 
 define('TABLE_HEADING_ORDERS_STATUS', 'Статус заказов');
+define('TABLE_HEADING_ANSWER_TEMPLATE', 'Шаблон ответа');
+define('TABLE_HEADING_RESTOCK', 'Склад');
 define('TABLE_HEADING_ACTION', 'Действие');
 
 define('TEXT_INFO_EDIT_INTRO', 'Пожалуйста, внесите необходимые изменения');
@@ -33,4 +35,10 @@ define('TEXT_INFO_HEADING_DELETE_ORDERS_STATUS', 'Удалить статус з
 define('ERROR_REMOVE_DEFAULT_ORDER_STATUS', 'Ошибка: Статус заказа по умолчанию не может быть удален, измените статус и попробуйте снова.');
 define('ERROR_STATUS_USED_IN_ORDERS', 'Ошибка: Этот статус используется в настоящее время.');
 define('ERROR_STATUS_USED_IN_HISTORY', 'Ошибка: Этот статус используется сейчас в истории заказов.');
+
+define('ENTRY_ANSWER_TEMPLATE', 'Шаблон ответа:');
+define('ENTRY_RESTOCK', 'Склад:');
+define('ENTRY_RESTOCK_0', 'Вычитать со склада');
+define('ENTRY_RESTOCK_1', 'Добавлять на склад');
+
 ?>

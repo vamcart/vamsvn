@@ -27,9 +27,17 @@
       $languages = vam_get_languages();
       for ($i = 0, $n = sizeof($languages); $i < $n; $i++) {
         $orders_status_name_array = $_POST['orders_status_name'];
+        $answer_templates_id_array = $_POST['answer_templates_id'];
+        $restock_array = $_POST['restock'];
         $language_id = $languages[$i]['id'];
 
-        $sql_data_array = array('orders_status_name' => vam_db_prepare_input($orders_status_name_array[$language_id]));
+        $sql_data_array = array(
+        
+        'orders_status_name' => vam_db_prepare_input($orders_status_name_array[$language_id]),
+        'answer_templates_id' => vam_db_prepare_input($answer_templates_id_array[$language_id]),
+        'restock' => vam_db_prepare_input($restock_array[$language_id]),
+        
+        );
 
         if ($_GET['action'] == 'insert') {
           if (!vam_not_null($orders_status_id)) {
@@ -38,8 +46,12 @@
             $orders_status_id = $next_id['orders_status_id'] + 1;
           }
 
-          $insert_sql_data = array('orders_status_id' => $orders_status_id,
-                                   'language_id' => $language_id);
+          $insert_sql_data = array(
+          
+          'orders_status_id' => $orders_status_id,
+          'language_id' => $language_id
+                                   
+                                   );
           $sql_data_array = vam_array_merge($sql_data_array, $insert_sql_data);
           vam_db_perform(TABLE_ORDERS_STATUS, $sql_data_array);
         } elseif ($_GET['action'] == 'save') {
@@ -127,10 +139,12 @@
             <td valign="top"><table border="0" width="100%" cellspacing="2" cellpadding="0" class="contentListingTable">
               <tr class="dataTableHeadingRow">
                 <td class="dataTableHeadingContent"><?php echo TABLE_HEADING_ORDERS_STATUS; ?></td>
+                <td class="dataTableHeadingContent"><?php echo TABLE_HEADING_ANSWER_TEMPLATE; ?></td>
+                <td class="dataTableHeadingContent"><?php echo TABLE_HEADING_RESTOCK; ?></td>
                 <td class="dataTableHeadingContent" align="right"><?php echo TABLE_HEADING_ACTION; ?>&nbsp;</td>
               </tr>
 <?php
-  $orders_status_query_raw = "select orders_status_id, orders_status_name from " . TABLE_ORDERS_STATUS . " where language_id = '" . $_SESSION['languages_id'] . "' order by orders_status_id";
+  $orders_status_query_raw = "select orders_status_id, answer_templates_id, restock, orders_status_name from " . TABLE_ORDERS_STATUS . " where language_id = '" . $_SESSION['languages_id'] . "' order by orders_status_id";
   $orders_status_split = new splitPageResults($_GET['page'], MAX_DISPLAY_ADMIN_PAGE, $orders_status_query_raw, $orders_status_query_numrows);
   $orders_status_query = vam_db_query($orders_status_query_raw);
   while ($orders_status = vam_db_fetch_array($orders_status_query)) {
@@ -149,6 +163,10 @@
     } else {
       echo '                <td class="dataTableContent">' . $orders_status['orders_status_name'] . '</td>' . "\n";
     }
+
+      echo '                <td class="dataTableContent">' . vam_get_answer_templates_name($orders_status['answer_templates_id'],$_SESSION['languages_id']) . '</td>' . "\n";
+      echo '                <td class="dataTableContent">' . vam_get_orders_status_restock_text($orders_status['orders_status_id'],$_SESSION['languages_id']) . '</td>' . "\n";
+
 ?>
                 <td class="dataTableContent" align="right"><?php if ( (is_object($oInfo)) && ($orders_status['orders_status_id'] == $oInfo->orders_status_id) ) { echo vam_image(DIR_WS_IMAGES . 'icon_arrow_right.gif', ''); } else { echo '<a href="' . vam_href_link(FILENAME_ORDERS_STATUS, 'page=' . $_GET['page'] . '&oID=' . $orders_status['orders_status_id']) . '">' . vam_image(DIR_WS_IMAGES . 'icon_info.gif', IMAGE_ICON_INFO) . '</a>'; } ?>&nbsp;</td>
               </tr>
@@ -156,7 +174,7 @@
   }
 ?>
               <tr>
-                <td colspan="2"><table border="0" width="100%" cellspacing="0" cellpadding="2">
+                <td colspan="4"><table border="0" width="100%" cellspacing="0" cellpadding="2">
                   <tr>
                     <td class="smallText" valign="top"><?php echo $orders_status_split->display_count($orders_status_query_numrows, MAX_DISPLAY_ADMIN_PAGE, $_GET['page'], TEXT_DISPLAY_NUMBER_OF_ORDERS_STATUS); ?></td>
                     <td class="smallText" align="right"><?php echo $orders_status_split->display_links($orders_status_query_numrows, MAX_DISPLAY_ADMIN_PAGE, MAX_DISPLAY_PAGE_LINKS, $_GET['page']); ?></td>
@@ -165,7 +183,7 @@
   if (substr($_GET['action'], 0, 3) != 'new') {
 ?>
                   <tr>
-                    <td colspan="2" align="right"><?php echo '<a class="button" href="' . vam_href_link(FILENAME_ORDERS_STATUS, 'page=' . $_GET['page'] . '&action=new') . '"><span>' . vam_image(DIR_WS_IMAGES . 'icons/buttons/add.png', '', '12', '12') . '&nbsp;' . BUTTON_INSERT . '</span></a>'; ?></td>
+                    <td colspan="4" align="right"><?php echo '<a class="button" href="' . vam_href_link(FILENAME_ORDERS_STATUS, 'page=' . $_GET['page'] . '&action=new') . '"><span>' . vam_image(DIR_WS_IMAGES . 'icons/buttons/add.png', '', '12', '12') . '&nbsp;' . BUTTON_INSERT . '</span></a>'; ?></td>
                   </tr>
 <?php
   }
@@ -187,6 +205,22 @@
       $languages = vam_get_languages();
       for ($i = 0, $n = sizeof($languages); $i < $n; $i++) {
         $orders_status_inputs_string .= '<br />' . $languages[$i]['name'] . ':&nbsp;' . vam_draw_input_field('orders_status_name[' . $languages[$i]['id'] . ']');
+
+$answer_templates_array = array (array ('id' => '', 'text' => TEXT_SELECT));
+$answer_templates_query = vam_db_query("select id, name, content from ".TABLE_ANSWER_TEMPLATES." WHERE status = '1' and language='".$_SESSION['languages_id']."' order by id");
+while ($answer_templates = vam_db_fetch_array($answer_templates_query)) {
+        $answer_templates_array[] = array ('id' => vam_db_output($answer_templates['id']), 'text' => $answer_templates['name']);
+}
+
+$restock_array = array( 
+array ('id' => '0', 'text' => ENTRY_RESTOCK_0),
+array ('id' => '1', 'text' => ENTRY_RESTOCK_1)
+);
+
+      $orders_status_inputs_string .= '<br /><br />' . ENTRY_ANSWER_TEMPLATE . '<br />' . vam_draw_pull_down_menu('answer_templates_id[' . $languages[$i]['id'] . ']', $answer_templates_array, '', ''). '&nbsp;<a href="'.vam_href_link(FILENAME_ANSWER_TEMPLATES).'" target="_blank">' . vam_image(DIR_WS_IMAGES . 'icons/buttons/add.png', '', '12', '12').'</a><br />';
+
+      $orders_status_inputs_string .= '<br /><br />' . ENTRY_RESTOCK . '<br />' . vam_draw_pull_down_menu('restock[' . $languages[$i]['id'] . ']', $restock_array, '', '') . '<br />';
+
       }
 
       $contents[] = array('text' => '<br />' . TEXT_INFO_ORDERS_STATUS_NAME . $orders_status_inputs_string);
@@ -204,6 +238,22 @@
       $languages = vam_get_languages();
       for ($i = 0, $n = sizeof($languages); $i < $n; $i++) {
         $orders_status_inputs_string .= '<br />' . $languages[$i]['name'] . ':&nbsp;' . vam_draw_input_field('orders_status_name[' . $languages[$i]['id'] . ']', vam_get_orders_status_name($oInfo->orders_status_id, $languages[$i]['id']));
+
+$answer_templates_array = array (array ('id' => '', 'text' => TEXT_SELECT));
+$answer_templates_query = vam_db_query("select id, name, content from ".TABLE_ANSWER_TEMPLATES." WHERE status = '1' and language='".$_SESSION['languages_id']."' order by id");
+while ($answer_templates = vam_db_fetch_array($answer_templates_query)) {
+        $answer_templates_array[] = array ('id' => vam_db_output($answer_templates['id']), 'text' => $answer_templates['name']);
+}
+
+$restock_array = array( 
+array ('id' => '0', 'text' => ENTRY_RESTOCK_0),
+array ('id' => '1', 'text' => ENTRY_RESTOCK_1)
+);
+
+      $orders_status_inputs_string .= '<br /><br />' . ENTRY_ANSWER_TEMPLATE . '<br />' . vam_draw_pull_down_menu('answer_templates_id[' . $languages[$i]['id'] . ']', $answer_templates_array, $oInfo->answer_templates_id, ''). '&nbsp;<a href="'.vam_href_link(FILENAME_ANSWER_TEMPLATES).'" target="_blank">' . vam_image(DIR_WS_IMAGES . 'icons/buttons/add.png', '', '12', '12').'</a><br />';
+
+      $orders_status_inputs_string .= '<br /><br />' . ENTRY_RESTOCK . '<br />' . vam_draw_pull_down_menu('restock[' . $languages[$i]['id'] . ']', $restock_array, $oInfo->restock, '') . '</a><br />';
+
       }
 
       $contents[] = array('text' => '<br />' . TEXT_INFO_ORDERS_STATUS_NAME . $orders_status_inputs_string);

@@ -659,6 +659,28 @@ function vam_get_orders_status_name($orders_status_id, $language_id = '') {
 	return $orders_status['orders_status_name'];
 }
 
+function vam_get_answer_templates_name($answer_templates_id, $language_id = '') {
+
+	if (!$language_id)
+		$language_id = $_SESSION['languages_id'];
+	$answer_templates_query = vam_db_query("select name from ".TABLE_ANSWER_TEMPLATES." where id = '".$answer_templates_id."' and language = '".$language_id."'");
+	$answer_templates = vam_db_fetch_array($answer_templates_query);
+
+	return $answer_templates['name'];
+}
+
+function vam_get_orders_status_restock_text($status_id, $language_id = '') {
+
+	if (!$language_id)
+		$language_id = $_SESSION['languages_id'];
+	$status_query = vam_db_query("select restock from ".TABLE_ORDERS_STATUS." where orders_status_id = '".$status_id."' and language_id = '".$language_id."'");
+	$status = vam_db_fetch_array($status_query);
+	
+	$text = ($status['restock'] == 0) ? TEXT_RESTOCK_0 : TEXT_RESTOCK_1;
+
+	return $text;
+}
+
 function vam_get_cross_sell_name($cross_sell_group, $language_id = '') {
 
 	if (!$language_id)

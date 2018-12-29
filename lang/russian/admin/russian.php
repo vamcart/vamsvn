@@ -265,6 +265,8 @@ define('SAVE_ENTRY','Сохранить изменения?');
 define('TEXT_CHOOSE_INFO_TEMPLATE','Шаблон для описания товара:');
 define('TEXT_CHOOSE_OPTIONS_TEMPLATE','Шаблон для атрибутов товара');
 define('TEXT_SELECT','-- Выберите --');
+define('TEXT_RESTOCK_0','Вычитать со склада');
+define('TEXT_RESTOCK_1','Добавлять на склад');
 
 // Icons
 define('ICON_CROSS', 'Недействительно');
