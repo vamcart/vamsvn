@@ -1100,6 +1100,8 @@ CREATE TABLE orders_products (
 DROP TABLE IF EXISTS orders_status;
 CREATE TABLE orders_status (
   orders_status_id int DEFAULT '0' NOT NULL,
+  answer_templates_id int DEFAULT NULL,
+  restock int DEFAULT '0' NOT NULL,
   language_id int DEFAULT '1' NOT NULL,
   orders_status_name varchar(255) NOT NULL,
   PRIMARY KEY (orders_status_id, language_id),
@@ -2755,12 +2757,12 @@ INSERT INTO currencies VALUES (1,'Рубль','RUR','','руб.',',','.','2','1.
 INSERT INTO languages VALUES (1,'Русский','ru','icon.gif','russian',1,'utf-8');
 
 
-INSERT INTO orders_status VALUES ( '1', '1', 'Ожидает проверки');
-INSERT INTO orders_status VALUES ( '2', '1', 'Ждём оплаты');
-INSERT INTO orders_status VALUES ( '3', '1', 'Отменён');
-INSERT INTO orders_status VALUES ( '4', '1', 'Выполняется');
-INSERT INTO orders_status VALUES ( '5', '1', 'Доставляется');
-INSERT INTO orders_status VALUES ( '6', '1', 'Доставлен');
+INSERT INTO orders_status VALUES ( '1', NULL, '0', '1', 'Ожидает проверки');
+INSERT INTO orders_status VALUES ( '2', NULL, '0', '1', 'Ждём оплаты');
+INSERT INTO orders_status VALUES ( '3', NULL, '0', '1', 'Отменён');
+INSERT INTO orders_status VALUES ( '4', NULL, '0', '1', 'Выполняется');
+INSERT INTO orders_status VALUES ( '5', NULL, '0', '1', 'Доставляется');
+INSERT INTO orders_status VALUES ( '6', NULL, '0', '1', 'Доставлен');
 
 
 
