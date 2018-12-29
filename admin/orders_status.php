@@ -219,7 +219,7 @@ array ('id' => '1', 'text' => ENTRY_RESTOCK_1)
 
       $orders_status_inputs_string .= '<br /><br />' . ENTRY_ANSWER_TEMPLATE . '<br />' . vam_draw_pull_down_menu('answer_templates_id[' . $languages[$i]['id'] . ']', $answer_templates_array, '', ''). '&nbsp;<a href="'.vam_href_link(FILENAME_ANSWER_TEMPLATES).'" target="_blank">' . vam_image(DIR_WS_IMAGES . 'icons/buttons/add.png', '', '12', '12').'</a><br />';
 
-      $orders_status_inputs_string .= '<br /><br />' . ENTRY_RESTOCK . '<br />' . vam_draw_pull_down_menu('restock[' . $languages[$i]['id'] . ']', $restock_array, '', '') . '<br />';
+      $orders_status_inputs_string .= '<br />' . ENTRY_RESTOCK . '<br />' . vam_draw_pull_down_menu('restock[' . $languages[$i]['id'] . ']', $restock_array, '', '') . '<br />';
 
       }
 
@@ -252,7 +252,7 @@ array ('id' => '1', 'text' => ENTRY_RESTOCK_1)
 
       $orders_status_inputs_string .= '<br /><br />' . ENTRY_ANSWER_TEMPLATE . '<br />' . vam_draw_pull_down_menu('answer_templates_id[' . $languages[$i]['id'] . ']', $answer_templates_array, $oInfo->answer_templates_id, ''). '&nbsp;<a href="'.vam_href_link(FILENAME_ANSWER_TEMPLATES).'" target="_blank">' . vam_image(DIR_WS_IMAGES . 'icons/buttons/add.png', '', '12', '12').'</a><br />';
 
-      $orders_status_inputs_string .= '<br /><br />' . ENTRY_RESTOCK . '<br />' . vam_draw_pull_down_menu('restock[' . $languages[$i]['id'] . ']', $restock_array, $oInfo->restock, '') . '</a><br />';
+      $orders_status_inputs_string .= '<br />' . ENTRY_RESTOCK . '<br />' . vam_draw_pull_down_menu('restock[' . $languages[$i]['id'] . ']', $restock_array, $oInfo->restock, '') . '</a><br />';
 
       }
 
