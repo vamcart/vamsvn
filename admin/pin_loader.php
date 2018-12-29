@@ -183,7 +183,7 @@ else { // default action - show stats
 		<td class="dataTableContent"><?php echo $pin_res['pcount'].' / ' . $pin_res['all_pin']?></td>
 		<td class="dataTableContent"><a href="<?php echo vam_href_link(FILENAME_PIN_LOADER, 'action=edit&products_id='.$pin_res['products_id'], 'SSL');?>"><?php echo PIN_ACTION_EDIT?></a></td>
 		</tr>
-	<?
+	<?php
 	$odd_even++;
 	}
 
