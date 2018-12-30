@@ -17,7 +17,17 @@
    Released under the GNU General Public License 
    ---------------------------------------------------------------------------------------*/
    
-  function vam_send_answer_template($order_number = 0, $order_status = 0) {
+function vam_send_answer_template ( $oID = 0, $status = 0, $notify = "off", $notify_comments = "off") {
+	
+		$url = HTTP_SERVER.DIR_WS_CATALOG.'/send_answer_template.php?oID='.$oID.'&status='.$status.'&notify='.$notify.'&notify_comments='.$notify_comments;
+		$ch = curl_init( $url );
 
-  }
- ?>
+		curl_setopt( $ch, CURLOPT_POST, 0 );
+		curl_setopt( $ch, CURLOPT_FOLLOWLOCATION, 0 );
+		curl_setopt( $ch, CURLOPT_HEADER, 0 );
+		curl_setopt( $ch, CURLOPT_RETURNTRANSFER, 1 );
+
+		return curl_exec( $ch );
+}
+
+?>

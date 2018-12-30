@@ -36,6 +36,8 @@ require_once (DIR_FS_INC.'changedataout.inc.php');
 require_once (DIR_FS_INC.'vam_validate_vatid_status.inc.php');
 require_once (DIR_FS_INC.'vam_get_attributes_model.inc.php');
 
+require_once (DIR_FS_INC.'vam_send_answer_template.inc.php');
+
 // initiate template engine for mail
 $vamTemplate = new vamTemplate;
 require (DIR_WS_CLASSES.'currencies.php');
@@ -149,6 +151,9 @@ if (isset($_POST['submit']) && isset($_POST['multi_orders'])){
 				// sms to customer
 				vam_php_mail(EMAIL_BILLING_ADDRESS, EMAIL_BILLING_NAME, AVISOSMS_EMAIL, $check_status['customers_name'], '', EMAIL_BILLING_REPLY_ADDRESS, EMAIL_BILLING_REPLY_ADDRESS_NAME, '', '', $check_status['customers_telephone'], $html_mail_sms, $txt_mail_sms);
 				}
+				
+				//Send answer template 
+				vam_send_answer_template($this_orderID,$status,'on','on');
 
 
             $customer_notified = '1';
@@ -409,6 +414,12 @@ switch ($_GET['action']) {
 			vam_db_query("insert into ".TABLE_ORDERS_STATUS_HISTORY." (orders_id, orders_status_id, date_added, customer_notified, comments) values ('".vam_db_input($oID)."', '".vam_db_input($status)."', now(), '".$customer_notified."', '".vam_db_input($comments)."')");
 
 			$order_updated = true;
+			
+			
+		//Send answer template
+      vam_send_answer_template($oID,$status,$_POST['notify'],$_POST['notify_comments']);
+			
+			
 		}
 
 		if ($order_updated) {
