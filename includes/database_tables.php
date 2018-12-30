@@ -151,5 +151,7 @@ define('TABLE_PRODUCTS_PINS', 'products_pins');
 
   define('TABLE_SITE_REVIEWS', 'site_reviews');
   define('TABLE_SITE_REVIEWS_DESCRIPTION', 'site_reviews_description');
+
+  define('TABLE_ANSWER_TEMPLATES', 'answer_templates');
   
 ?>
