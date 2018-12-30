@@ -36,6 +36,8 @@ require_once (DIR_FS_INC.'changedataout.inc.php');
 require_once (DIR_FS_INC.'vam_validate_vatid_status.inc.php');
 require_once (DIR_FS_INC.'vam_get_attributes_model.inc.php');
 
+require_once (DIR_FS_INC.'vam_send_answer_template.inc.php');
+
   $PHP_SELF = (((strlen(ini_get('cgi.fix_pathinfo')) > 0) && ((bool)ini_get('cgi.fix_pathinfo') == false)) || !isset($_SERVER['SCRIPT_NAME'])) ? basename($_SERVER['PHP_SELF']) : basename($_SERVER['SCRIPT_NAME']);
 
 	$vamTemplate = new vamTemplate;
@@ -195,7 +197,18 @@ require_once (DIR_FS_CATALOG.DIR_WS_CLASSES.'vam_price.php');
 
 				vam_php_mail(EMAIL_BILLING_ADDRESS, EMAIL_BILLING_NAME, $check_status['customers_email_address'], $check_status['customers_name'], '', EMAIL_BILLING_REPLY_ADDRESS, EMAIL_BILLING_REPLY_ADDRESS_NAME, '', '', $billing_subject, $html_mail, $txt_mail);
 
-			  
+				if (defined('AVISOSMS_EMAIL') && AVISOSMS_EMAIL != '') {
+
+				$html_mail_sms = $vamTemplate->fetch(CURRENT_TEMPLATE.'/admin/mail/'.$_SESSION['language'].'/change_order_mail_sms.html');
+				$txt_mail_sms = $vamTemplate->fetch(CURRENT_TEMPLATE.'/admin/mail/'.$_SESSION['language'].'/change_order_mail_sms.txt');
+
+				// sms to customer
+				vam_php_mail(EMAIL_BILLING_ADDRESS, EMAIL_BILLING_NAME, AVISOSMS_EMAIL, $check_status['customers_name'], '', EMAIL_BILLING_REPLY_ADDRESS, EMAIL_BILLING_REPLY_ADDRESS_NAME, '', '', $check_status['customers_telephone'], $html_mail_sms, $txt_mail_sms);
+				}
+				
+				//Send answer template 
+				vam_send_answer_template($oID,$_GET['status'],'on','on');
+							  
 			  $customer_notified = '1';
 			}			  
           		
