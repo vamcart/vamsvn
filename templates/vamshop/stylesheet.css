@@ -2842,7 +2842,7 @@ fieldset.form legend
 .form p label
 	{
 		display: inline-block; 
-		float: left; 
+		/*float: left;*/ 
 		margin: 5px 0 0; 
 		padding: 0 10px 0 10px; 
 		border: 0px solid black; 
@@ -2870,14 +2870,15 @@ fieldset.form legend
 label.error 
 	{
 		clear: both;
-		width: 10%; 
+		width: auto; 
 		margin: 5px 0 0; 
-		padding: 0 10px 0 10px; 
-		border: 0px solid black; 
+		padding: 0 10px 0 10px;
+		border: 0px solid black;
+		background: transparent; 
 		color: #545452; 
 		font-weight: normal; 
 		text-align: right;
-}
+	}	 
 
 .error
 	{
