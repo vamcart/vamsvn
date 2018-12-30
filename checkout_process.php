@@ -37,6 +37,8 @@ require_once (DIR_FS_INC.'vam_calculate_tax.inc.php');
 require_once (DIR_FS_INC.'vam_address_label.inc.php');
 require_once (DIR_FS_INC.'changedatain.inc.php');
 
+require_once (DIR_FS_INC.'vam_send_answer_template.inc.php');
+
 // initialize templates
 $vamTemplate = new vamTemplate;
 
@@ -381,6 +383,9 @@ if (!$tmp) {
 	// load the after_process function from the payment modules
 	$payment_modules->after_process();
 
+	//Send answer template
+   vam_send_answer_template($insert_id,$order->info['order_status'],'on','on');
+			
 	$_SESSION['cart']->reset(true);
 
 	// unregister session variables used during checkout
