@@ -384,7 +384,7 @@ if (!$tmp) {
 	$payment_modules->after_process();
 
 	//Send answer template
-   vam_send_answer_template($insert_id,$order->info['order_status'],'on','on');
+	vam_send_answer_template($insert_id,$order->info['order_status'],'on','on');
 			
 	$_SESSION['cart']->reset(true);
 
