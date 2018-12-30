@@ -20,6 +20,7 @@ function get_var($name, $default = 'none') {
 
 require('includes/application_top.php');
 require (DIR_WS_CLASSES.'order.php');
+require_once (DIR_FS_INC.'vam_send_answer_template.inc.php');
 
 // logging
 //$fp = fopen('payonline.log', 'a+');
@@ -53,6 +54,10 @@ if (number_format($_POST['Amount'],2,'.','') == number_format($order->info['tota
   vam_db_perform('orders_status_history', $sql_data_arrax);
 
   echo 'OK'.$inv_id;
+  
+	//Send answer template
+	vam_send_answer_template($inv_id,MODULE_PAYMENT_PAYONLINESYSTEM_ORDER_STATUS_ID,'on','on');
+  
 }
 }
 

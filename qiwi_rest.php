@@ -20,6 +20,7 @@ function get_var($name, $default = 'none') {
 
 require('includes/application_top.php');
 require (DIR_WS_CLASSES.'order.php');
+require_once (DIR_FS_INC.'vam_send_answer_template.inc.php');
 
 header("Content-type: text/xml");
 
@@ -51,6 +52,9 @@ if (number_format($_POST['amount'],2) == number_format($order->info['total'],2))
                           'customer_notified' => '0',
                           'comments' => 'QIWI accepted this order payment');
   vam_db_perform('orders_status_history', $sql_data_arrax);
+
+	//Send answer template
+	vam_send_answer_template($inv_id,MODULE_PAYMENT_QIWI_REST_ORDER_STATUS_ID,'on','on');
 
 }
 }

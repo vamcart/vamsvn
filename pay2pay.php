@@ -14,6 +14,7 @@ function get_var($name, $default = 'none') {
 
 require('includes/application_top.php');
 require (DIR_WS_CLASSES.'order.php');
+require_once (DIR_FS_INC.'vam_send_answer_template.inc.php');
 
 // logging
 
@@ -71,6 +72,10 @@ if ($error == '')
                             'comments' => 'Pay2Pay accepted this order payment');
     vam_db_perform('orders_status_history', $sql_data_arrax);
     $ret = true;
+    
+	//Send answer template
+	vam_send_answer_template($xml->order_id,MODULE_PAYMENT_PAY2PAY_ORDER_STATUS_ID,'on','on');
+    
   }
   if ($ret === true)
     $status = "yes";

@@ -20,6 +20,7 @@ function get_var($name, $default = 'none') {
 
 require('includes/application_top.php');
 require (DIR_WS_CLASSES.'order.php');
+require_once (DIR_FS_INC.'vam_send_answer_template.inc.php');
 
 header('Content-type: text/xml; charset=utf-8');
 
@@ -73,6 +74,9 @@ if (number_format($_POST['orderSumAmount'],0) == number_format($order->info['tot
                           'customer_notified' => '0',
                           'comments' => 'Yandex Money accepted this order payment');
   vam_db_perform('orders_status_history', $sql_data_arrax);
+
+	//Send answer template
+	vam_send_answer_template($inv_id,MODULE_PAYMENT_YANDEX_MERCHANT_ORDER_STATUS_ID,'on','on');
 
 }
 }

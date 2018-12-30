@@ -20,6 +20,7 @@ function get_var($name, $default = 'none') {
 
 require('includes/application_top.php');
 require (DIR_WS_CLASSES.'order.php');
+require_once (DIR_FS_INC.'vam_send_answer_template.inc.php');
 
 function ikGetSign($post)
 {
@@ -103,6 +104,10 @@ if ($ik_sign === $sign && $ik_inv_st == 'success')
 	vam_db_perform('orders_status_history', $sql_data_arrax);
 
 	echo 'OK'.$ik_pm_no;
+	
+	//Send answer template
+	vam_send_answer_template($ik_pm_no,MODULE_PAYMENT_IK_ORDER_STATUS_ID,'on','on');
+	
 }
 else{
 

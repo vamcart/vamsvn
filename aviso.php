@@ -16,6 +16,7 @@
 
 require('includes/application_top.php');
 require (DIR_WS_CLASSES.'order.php');
+require_once (DIR_FS_INC.'vam_send_answer_template.inc.php');
 
 // checking and handling
 $aviso_data = json_decode(implode("", file('php://input')),true);
@@ -31,6 +32,10 @@ if ($aviso_data['order_status'] == 'success') {
                           'customer_notified' => '0',
                           'comments' => 'AvisoSMS accepted this order payment');
   vam_db_perform('orders_status_history', $sql_data_arrax);
+  
+	//Send answer template
+	vam_send_answer_template($aviso_data['merchant_order_id'],MODULE_PAYMENT_AVISO_ORDER_STATUS_ID,'on','on');
+  
 
 }
 }

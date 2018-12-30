@@ -19,6 +19,7 @@ function get_var($name, $default = 'none') {
 }
 
 require('includes/application_top.php');
+require_once (DIR_FS_INC.'vam_send_answer_template.inc.php');
 
 // logging
 //$fp = fopen(DIR_WS_IMAGES.'.ht-robox.log', 'a+');
@@ -49,6 +50,10 @@ if (strtoupper($signature) == strtoupper($crc)) {
   vam_db_perform('orders_status_history', $sql_data_arrax);
 
   echo 'OK';
+  
+	//Send answer template
+	vam_send_answer_template($inv_id,MODULE_PAYMENT_WEBPAY_ORDER_STATUS_ID,'on','on');
+  
 }
 }
 

@@ -20,6 +20,7 @@ function get_var($name, $default = 'none') {
 
 require('includes/application_top.php');
 require (DIR_WS_CLASSES.'order.php');
+require_once (DIR_FS_INC.'vam_send_answer_template.inc.php');
 
 //header('Content-type: text/xml; charset=utf-8');
 
@@ -58,6 +59,10 @@ require (DIR_WS_CLASSES.'order.php');
                           'customer_notified' => '0',
                           'comments' => 'Alfabank accepted this order payment');
   vam_db_perform('orders_status_history', $sql_data_arrax);
+  
+	//Send answer template
+	vam_send_answer_template($order_id,MODULE_PAYMENT_ALFABANK_ORDER_STATUS_ID,'on','on');
+  
 
 	$_SESSION['cart']->reset(true);
 

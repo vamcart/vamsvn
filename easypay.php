@@ -20,6 +20,7 @@ function get_var($name, $default = 'none') {
 
 require('includes/application_top.php');
 require (DIR_WS_CLASSES.'order.php');
+require_once (DIR_FS_INC.'vam_send_answer_template.inc.php');
 
 	#Сбор параметров
 	$status		= 2;
@@ -63,6 +64,10 @@ if (number_format($params["sum"],0) == number_format($order->info['total_value']
   vam_db_perform('orders_status_history', $sql_data_arrax);
 
   echo 'OK'.$inv_id;
+  
+	//Send answer template
+	vam_send_answer_template($inv_id,MODULE_PAYMENT_EASYPAY_ORDER_STATUS_ID,'on','on');
+  
 
 }
 

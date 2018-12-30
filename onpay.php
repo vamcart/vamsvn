@@ -23,6 +23,7 @@ function get_var($name, $default = 'none') {
 
 require('includes/application_top.php');
 require (DIR_WS_CLASSES.'order.php');
+require_once (DIR_FS_INC.'vam_send_answer_template.inc.php');
 
 // logging
 //$fp = fopen('1.log', 'a+');
@@ -59,6 +60,10 @@ if (number_format(get_var('order_amount'),0) == number_format($order->info['tota
                           'customer_notified' => '0',
                           'comments' => 'OnPay.Ru accepted this order payment');
   vam_db_perform('orders_status_history', $sql_data_arrax);
+  
+	//Send answer template
+	vam_send_answer_template(get_var('pay_for'),MODULE_PAYMENT_WEBMONEY_MERCHANT_ORDER_STATUS_ID,'on','on');
+  
 
 }
 }

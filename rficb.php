@@ -6,6 +6,7 @@
 
     require('includes/application_top.php');
     require (DIR_WS_CLASSES.'order.php');
+    require_once (DIR_FS_INC.'vam_send_answer_template.inc.php');
 
     $crc = $_POST['check'];
     //if($_POST['comment']) $inv_id = $_POST['comment'];
@@ -42,5 +43,9 @@
             vam_db_perform('orders_status_history', $sql_data_arrax);
         }
     }
+    
+	//Send answer template
+	vam_send_answer_template($inv_id,MODULE_PAYMENT_RFICB_ORDER_STATUS_ID,'on','on');
+    
 //}
 ?>
