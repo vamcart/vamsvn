@@ -371,21 +371,8 @@ a:hover
 /*- Стили для мобильных устройств */
 
 @media (max-width: 767px) {
-  #navigation {
+  #container {
     flex-direction: column;
-  }
-  #navigation a {
-    text-align: center;
-    margin: 0;
-    padding: 5px 0;
-  }  
-  #menu {
-    flex-direction: column;
-  }
-  #menu a {
-    text-align: center;
-    margin: 0;
-    padding: 5px 0;
   }
   #wrapper {
     flex-direction: column;
