@@ -23,7 +23,7 @@ $box_content='';
 
 
 $box->assign('FORM_ACTION', vam_draw_form('sign_in', vam_href_link(FILENAME_NEWSLETTER, '', 'NONSSL')));
-$box->assign('FIELD_EMAIL',vam_draw_input_field('email', '', ''));
+$box->assign('FIELD_EMAIL',vam_draw_input_field('email', '', 'id="newsletter_email"'));
 $box->assign('BUTTON',vam_image_submit('login.png', IMAGE_BUTTON_LOGIN));
 $box->assign('FORM_END','</form>');
 	$box->assign('language', $_SESSION['language']);
