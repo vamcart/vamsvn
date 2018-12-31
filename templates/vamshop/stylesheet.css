@@ -82,6 +82,7 @@ a:hover
    {
      order: -1;
      flex: 0 0 15%; /* Ширина левой колонки 15% */
+     overflow: auto;
      background: transparent;
    }
 /* Левая колонка */
