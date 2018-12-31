@@ -83,10 +83,7 @@ define('EMAIL_PASSWORD_REMINDER_BODY', 'Вы запросили новый па�
 
 define('MAIL_AFFILIATE_SUBJECT', 'Партнёрская программа ' . STORE_NAME);
 define('MAIL_AFFILIATE_HEADER', 'Спасибо, что присоединились к нашей партнёрской программе!
-
 Ваши данные:
-**************************
-
 ');
 define('MAIL_AFFILIATE_ID', 'Партнёрский код: ');
 define('MAIL_AFFILIATE_USERNAME', 'E-mail: ');
