@@ -1,8 +1,8 @@
 /* -----------------------------------------------------------------------------------------
-   VaM Shop - open source ecommerce solution
+   VamShop - open source ecommerce solution
    http://vamshop.ru
 
-   Copyright (c) 2005-2008 VaM Shop 
+   Copyright (c) 2005-2019 VamShop 
    -----------------------------------------------------------------------------------------
    Released under the GNU General Public License 
    ---------------------------------------------------------------------------------------*/
@@ -2987,7 +2987,6 @@ a.button,
 span.button, 
 del.button
 	{
-		display: -moz-inline-box;
 		display: inline-block;
 		cursor: pointer;
 		border: none;
@@ -3006,14 +3005,11 @@ del.button
 		color: #2e523b;
 		font-style: normal;
 		margin: 0 6px 0px 0;
-		padding-top: -2px;
+		/*padding-top: -2px;*/
 		padding-right: 10px;
-		padding-botton: 0;
+		padding-bottom: 0;
 		padding-left: 0;	
 		vertical-align: middle;	
-		_position: relative;
-		_width: 10px;	
-		_overflow-y: hidden;
 	}
 
 a.button, 
@@ -3025,7 +3021,6 @@ span.button input,
 del.button span
 	{
 		background-image: url(img/vamcart/buttons/form_buttons.png);
-		_background-image: url(img/vamcart/buttons/form_buttons.gif);
 	}
 
 a.button span, 
@@ -3036,7 +3031,6 @@ del.button span
 		white-space: nowrap;
 		cursor: pointer;
 		color: #222;
-		display: -moz-inline-box;
 		display: inline-block;
 		line-height: 1;
 		letter-spacing: 0 !important;
@@ -3051,14 +3045,6 @@ del.button span
 		margin: 0 -16px 0 10px;
 		border: none;
 		vertical-align: text-top;
-		zoom: 1;
-		_position: relative;
-		_padding-left: 0px;
-		_padding-right: 12px;
-		_margin-right: -10px;	
-		_display: block;
-		_top: 0;
-		_right: -5px;
 	}
 
 span.button button
@@ -3226,7 +3212,7 @@ div.CheckoutError
   background-color: transparent;
 }
 
-// DaData
+/* DaData Start */
 
 .suggestions-nowrap {
   white-space: nowrap;
@@ -3236,9 +3222,6 @@ div.CheckoutError
   height: 30px !important;
 }
 
-.suggestions-input::-ms-clear {
-  display: none;
-}
 .suggestions-wrapper {
   display: inline-block;
   position: relative;
@@ -3372,5 +3355,7 @@ div.CheckoutError
   border-top: 1px solid rgba(0, 0, 0, 0.4);
   content: '';
 }
+
+/* /DaData End */
 
 /*]]>*/
