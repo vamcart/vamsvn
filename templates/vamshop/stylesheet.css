@@ -52,45 +52,53 @@ a:hover
    }
 /* /Цвет обычных ссылок в магазине */
 
+/* Контейнер */
+#container
+   {
+     display: flex;
+     flex-direction: column;
+     flex: 1 1 auto;
+   }
+/* /Контейнер */
+
+/* Обёртка для центра, левой и правой колонки */
+#wrapper
+   {
+     display: flex;
+     flex: 0 auto;
+   }
+/* /Обёртка для центра, левой и правой колонки */
+
 /* Центр */
-div#wrapper
+#content
    {
-     float: left;
-     width: 100%;
+     flex: 1 auto;
    }
-
-div#content
-   {
-     margin: 0 19%; /* отступ центра от боковых колонок */
-   }
-
 /* /Центр */
 
 /* Левая колонка */
-div#left
+#left
    {
-     float: left;
-     width: 18%; /* Ширина левой колонки */
-     margin-left: -100%;
+     order: -1;
+     flex: 0 0 15%; /* Ширина левой колонки 15% */
      background: transparent;
    }
-/* /Левая колонка */
+/* Левая колонка */
 
 /* Правая колонка */
-div#right
+#right
    {
-     float: left;
+     flex: 0 0 15%; /* Ширина левой колонки 15% */
      overflow: auto;
-     width: 18%; /* Ширина правой колонки */
-     margin-left: -18%;
      background: transparent;
    }
 /* /Правая колонка */
 
-/* Header */
-
+/* Шапка */
 #header 
 	{
+		display: flex;
+		flex: 0 auto;
 		background-color: #fff;
 		background-image: url(img/vamcart/bg.png);
 		background-position: 0 0;
@@ -117,21 +125,19 @@ div#right
 		margin: 0; 
 		padding: .3em;
 	}
-
-/* /Header */
+/* /Шапка */
 
 /* Низ */
-div#footer
+#footer
    {
-     clear: left;
-     width: 100%;
+     flex: 0 auto;
      background: transparent;
      border-top: 0px solid #67748B;
      text-align: center;
      color: #000;
    }
    
-div#footer p
+#footer p
    {
      margin: 0;
      padding: 5px 10px;
@@ -140,8 +146,11 @@ div#footer p
 /* /Низ */
 
 /* Навигация */
-div#navigation 
+#navigation 
    {
+     display: flex;
+     flex: 0 auto;
+     justify-content: center;
      padding-top: 0.5em;
      padding-bottom: 0.5em;
      padding-left: 10px;
@@ -366,6 +375,9 @@ div#navigation
 
 div#menu
 	{
+		display: flex;
+		flex: 0 auto;
+		justify-content: center;		
 		border-top: 3px solid #dd2c00;
 		background-color: #fff;
 		background-image: url(img/vamcart/bg.png);
@@ -457,6 +469,39 @@ div#menu
 /**/
 
 /*- /Меню-закладки сверху */
+
+/*- Стили для мобильных устройств */
+
+@media (max-width: 767px) {
+  #navigation {
+    flex-direction: column;
+  }
+  #navigation a {
+    text-align: center;
+    margin: 0;
+    padding: 5px 0;
+  }  
+  #menu {
+    flex-direction: column;
+  }
+  #menu a {
+    text-align: center;
+    margin: 0;
+    padding: 5px 0;
+  }
+  #wrapper {
+    flex-direction: column;
+  }
+  #left {
+    order: 0;
+    flex: 0 0 auto;
+  }
+  #right {
+    flex: 0 0 auto;
+  }
+}
+
+/*- /Стили для мобильных устройств */
 
 /*- Боксы */
 
