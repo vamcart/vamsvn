@@ -80,6 +80,7 @@ $(function () {
    });
 
 <?php if(PHONE_MASK != '') { ?>
+<?php if (!vam_session_is_registered('customer_id')) { ?>
 $(function () {
 new Cleave("#telephone", {
   numericOnly: true,
@@ -87,6 +88,7 @@ new Cleave("#telephone", {
   delimiters: ["(", ")", " ", "-","-"],
 });
 });
+<?php } ?>
 <?php } ?>
    	
 	// validate signup form on keyup and submit
