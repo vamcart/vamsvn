@@ -3197,7 +3197,7 @@ div.CheckoutError
 }   
 
 .label {
-  background-color: #ff6633;
+  background-color: #dd2c00;
   color: #fff;
   right: 0;
   padding: 0 15px 0 15px;
@@ -3211,7 +3211,7 @@ div.CheckoutError
 }
 
 .label.new {
-  background-color: #0081c2;
+  background-color: #005685;
 }
 
 .label.hit {
@@ -3219,7 +3219,7 @@ div.CheckoutError
 }
 
 .label.sale {
-  background-color: #00b600;
+  background-color: #006100;
 }
 
 .label.html {
