@@ -27,6 +27,11 @@
 </div>
 
 </div>
+{else}
+<div class="page">
+<div class="pageItem">
+</div>
+</div>
 {/if}
 
 {if $MANUFACTURERS_DESCRIPTION}
@@ -42,6 +47,7 @@
 {/if}
 
 {if $CATEGORIES_NAME}
+<h1>{#text_show#}</h1>
 <div class="page">
 <div class="pageItem">
 {$FILTERS}
@@ -90,6 +96,7 @@
 </div>
 {/if}
 
+<h1>{$smarty.const.BOX_ENTRY_PRODUCTS}</h1>
 <div class="page">
 <div class="pageItem">
 
