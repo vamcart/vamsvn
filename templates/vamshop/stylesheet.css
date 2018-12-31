@@ -116,7 +116,7 @@ a:hover
 
 #header img 
 	{
-		margin: 18px 0 0 0; 
+		margin: 18px 0 0 0;
 	}
 
 #header div.header-right 
@@ -150,7 +150,7 @@ a:hover
    {
      display: flex;
      flex: 0 auto;
-     justify-content: center;
+     justify-content: left;
      padding-top: 0.5em;
      padding-bottom: 0.5em;
      padding-left: 10px;
@@ -278,7 +278,7 @@ a:hover
 
 /*- Меню-закладки сверху */
 
-div#menu
+#menu
 	{
 		display: flex;
 		flex: 0 auto;
@@ -289,7 +289,7 @@ div#menu
 		background-position: 0 -100px;
 		background-repeat: repeat-x; 
 		padding: 0;
-		margin: 0 auto;
+		margin: 0;
 	}
 
 #menu ul, #menu ul li 
