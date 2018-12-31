@@ -21,7 +21,7 @@
 <?php
 if (strstr($PHP_SELF, FILENAME_PRODUCT_INFO) && AJAX_CART == 'true') {
 ?>
-<script type="text/javascript">
+<script>
 // <![CDATA[
 (function($) {$(document).ready(function(){
 
@@ -51,7 +51,7 @@ if (strstr($PHP_SELF, FILENAME_PRODUCT_INFO) && AJAX_CART == 'true') {
 <?php
 }
 ?>
-<script type="text/javascript">
+<script>
 // Responsive equal height
 // http://codepen.io/micahgodbolt/pen/FgqLc
 

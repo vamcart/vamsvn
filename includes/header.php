@@ -134,7 +134,7 @@ require(DIR_WS_INCLUDES.'form_check.js.php');
 if (strstr($PHP_SELF, FILENAME_CHECKOUT_SHIPPING_ADDRESS )or strstr($PHP_SELF,FILENAME_CHECKOUT_PAYMENT_ADDRESS)) {
 require(DIR_WS_INCLUDES.'form_check.js.php');
 ?>
-<script type="text/javascript"><!--
+<script><!--
 function check_form_optional(form_name) {
   var form = form_name;
 
@@ -154,8 +154,8 @@ function check_form_optional(form_name) {
 
 if (strstr($PHP_SELF, FILENAME_ADVANCED_SEARCH )) {
 ?>
-<script type="text/javascript" src="includes/general.js"></script>
-<script type="text/javascript"><!--
+<script src="includes/general.js"></script>
+<script><!--
 function check_form() {
   var error_message = unescape("<?php echo vam_js_lang(JS_ERROR); ?>");
   var error_found = false;
@@ -219,7 +219,7 @@ function popupWindow(url) {
 if (strstr($PHP_SELF, FILENAME_PRODUCT_REVIEWS_WRITE )) {
 ?>
 
-<script type="text/javascript"><!--
+<script><!--
 function checkForm() {
   var error = 0;
   var error_message = unescape("<?php echo vam_js_lang(JS_ERROR); ?>");

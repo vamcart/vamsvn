@@ -52,10 +52,10 @@ $form_id = 'checkout_address';
 }
 
 ?>
-<script type="text/javascript" src="jscript/jquery/plugins/validate/jquery.validate.pack.js"></script>
-<script type="text/javascript" src="jscript/jquery/plugins/maskedinput/jquery.maskedinput.min.js"></script>
-<script type="text/javascript" src="jscript/modified.js"></script>
-<script type="text/javascript"><!--
+<script src="jscript/jquery/plugins/validate/jquery.validate.pack.js"></script>
+<script src="jscript/jquery/plugins/maskedinput/jquery.maskedinput.min.js"></script>
+<script src="jscript/modified.js"></script>
+<script><!--
 
 $(document).ready(function() {
 <?php

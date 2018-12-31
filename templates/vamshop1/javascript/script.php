@@ -1,25 +1,25 @@
-<script type="text/javascript" src="jscript/jquery/jquery.js"></script>
-<script type="text/javascript" src="jscript/bootstrap/bootstrap.min.js"></script>
-<script type="text/javascript" src="jscript/jquery/plugins/easing/jquery.easing.1.3.js"></script>
-<script type="text/javascript" src="jscript/jquery/plugins/jpushmenu/jpushmenu.js"></script>
-<script type="text/javascript" src="jscript/jquery/plugins/jpushmenu/v2p.js"></script>
-<script type="text/javascript" src="<?php echo 'templates/'.CURRENT_TEMPLATE.'/javascript/vamshop.js'; ?>"></script>
+<script src="jscript/jquery/jquery.js"></script>
+<script src="jscript/bootstrap/bootstrap.min.js"></script>
+<script src="jscript/jquery/plugins/easing/jquery.easing.1.3.js"></script>
+<script src="jscript/jquery/plugins/jpushmenu/jpushmenu.js"></script>
+<script src="jscript/jquery/plugins/jpushmenu/v2p.js"></script>
+<script src="<?php echo 'templates/'.CURRENT_TEMPLATE.'/javascript/vamshop.js'; ?>"></script>
 
 <?php if (AJAX_CART == 'true') { ?>
-<script type="text/javascript" src="<?php echo 'templates/'.CURRENT_TEMPLATE.'/javascript/jscript_ajax_cart.js'; ?>"></script>
+<script src="<?php echo 'templates/'.CURRENT_TEMPLATE.'/javascript/jscript_ajax_cart.js'; ?>"></script>
 <?php } ?>
 
 <?php
 if (strstr($PHP_SELF, FILENAME_PRODUCT_INFO)) {
 ?>
 <link rel="stylesheet" type="text/css" href="jscript/jquery/plugins/colorbox/colorbox.css" media="screen" />
-<script type="text/javascript" src="jscript/jquery/plugins/colorbox/jquery.colorbox-min.js"></script>
+<script src="jscript/jquery/plugins/colorbox/jquery.colorbox-min.js"></script>
 <?php
 if (file_exists(DIR_FS_CATALOG.'jscript/jquery/plugins/colorbox/i18n/jquery.colorbox-'.$_SESSION['language_code'].'.js')) {
 ?>
-<script type="text/javascript" src="jscript/jquery/plugins/colorbox/i18n/jquery.colorbox-ru.js"></script>
+<script src="jscript/jquery/plugins/colorbox/i18n/jquery.colorbox-ru.js"></script>
 <?php } ?>
-<script type="text/javascript">
+<script>
 // Make ColorBox responsive
 	jQuery.colorbox.settings.maxWidth  = '95%';
 	jQuery.colorbox.settings.maxHeight = '95%';
@@ -50,5 +50,5 @@ $(document).ready(function(){
 
 <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
 <!--[if lt IE 9]>
-<script type="text/javascript" src="<?php echo 'templates/'.CURRENT_TEMPLATE.'/javascript/html5.js'; ?>"></script>
+<script src="<?php echo 'templates/'.CURRENT_TEMPLATE.'/javascript/html5.js'; ?>"></script>
 <![endif]-->

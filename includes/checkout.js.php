@@ -22,7 +22,7 @@
 <?php
 // if the customer is logged on - show this javascript
 if (vam_session_is_registered('customer_id')) { ?>
-<script type="text/javascript">
+<script>
 $(document).ready(function() {
 $(init);
 function init()
@@ -56,7 +56,7 @@ $('#box')
    
 <?php } else { //not logged in javascript ?>
 
-<script type="text/javascript">
+<script>
 $(document).ready(function() {
 $(hidePay);		
 	function hidePay()	{
@@ -158,7 +158,7 @@ point();
 </script>
 
 <?php if ((SC_CREATE_ACCOUNT_CHECKOUT_PAGE == 'true') && (($sc_is_virtual_product != true) || ($sc_is_mixed_product != true))) { ?>  
-<script type="text/javascript">
+<script>
 $(document).ready(function() {
 $(hidePw);		
 	function hidePw()	{
