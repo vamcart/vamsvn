@@ -8,6 +8,9 @@
 <div class="header-left">
 <img src="{$tpl_path}img/logo.png" alt="{$store_name}" />
 </div>
+<div class="header-center">
+<h4><a href="tel:{$smarty.const.STORE_TELEPHONE}">{$smarty.const.STORE_TELEPHONE}</a>, <a href="contact_us.html">{#text_contact_us#}</a></h4>
+</div>
 <div class="header-right">
 &nbsp;
 </div>
@@ -24,7 +27,6 @@
 {/if}{/if}
 <li{$cart_current}><a href="{$cart}"><span>{#link_cart#}</span></a></li>
 <li{$checkout_current}><a href="{$checkout}"><span>{#link_checkout#}</span></a></li>
-<li{if $smarty.SERVER.REQUEST_URI == '/contact_us.html'} class="current"{/if}><a href="contact_us.html"><span>{#text_contact_us#}</span></a></li>
 {if $smarty.session.customer_id}
 <li{$logoff_current}><a href="{$logoff}"><span>{#link_logoff#}</span></a></li>
 {else}
@@ -51,13 +53,13 @@
 <!-- Левая колонка -->
 <div id="left">
 {$box_CATEGORIES}
+{$box_SEARCH}
 {$box_FILTERS}
 {$box_CONTENT}
 {$box_INFORMATION}
 {$box_ADD_QUICKIE}
 {$box_LAST_VIEWED}
 {$box_REVIEWS}
-{$box_SEARCH}
 {$box_SPECIALS}
 {$box_FEATURED}
 {$box_LATESTNEWS}

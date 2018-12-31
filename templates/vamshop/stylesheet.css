@@ -99,7 +99,9 @@ a:hover
 #header 
 	{
 		display: flex;
+		justify-content: space-between;
 		flex: 0 auto;
+		align-items: center;
 		background-color: #fff;
 		background-image: url(img/vamcart/bg.png);
 		background-position: 0 0;
@@ -110,7 +112,12 @@ a:hover
 
 #header div.header-left 
 	{
-		float: left;
+		margin: 0; 
+		padding: 0; 
+	}
+
+#header div.header-center 
+	{
 		margin: 0; 
 		padding: 0; 
 	}
@@ -120,9 +127,16 @@ a:hover
 		margin: 18px 0 0 0;
 	}
 
+#header h4,
+#header h4 a,
+#header h4 a:hover,
+#header h4 a:visited
+	{
+		color: #555;
+	}
+	
 #header div.header-right 
 	{
-		float: right;
 		margin: 0; 
 		padding: .3em;
 	}
@@ -371,6 +385,16 @@ a:hover
 /*- Стили для мобильных устройств */
 
 @media (max-width: 767px) {
+  #header {
+    flex-direction: column;
+    justify-content: space-around;
+    height: auto;
+  }
+  #header .header-left,
+  #header .header-center,
+  #header .header-right {
+    text-align: center;
+  }
   #container {
     flex-direction: column;
   }
