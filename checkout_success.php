@@ -144,7 +144,7 @@ require_once (DIR_FS_INC.'vam_kupi_v_kredit.inc.php');
 
 		
       $kupi_v_kredit = '
-<script type="text/javascript">
+<script>
 $.getScript("' . $server . '", function() {
   vkredit = new VkreditWidget(1, ' . $order_sum . ',  {
 			order: "' . $base64 . '",
@@ -201,10 +201,10 @@ if (YANDEX_METRIKA == 'true') {
 include(DIR_WS_MODULES . 'analytics/metrika.php');
 
 $tracking_code .= '
-<script type="text/javascript">
+<script>
 window.dataLayer = window.dataLayer || [];
 </script>			
-<script type="text/javascript">
+<script>
 dataLayer.push({
     "ecommerce": {
         "purchase": {
@@ -220,7 +220,7 @@ dataLayer.push({
 	
 </script>
 <!-- Yandex.Metrika counter -->
-<div style="display:none;"><script type="text/javascript">
+<div style="display:none;"><script>
     (function (d, w, c) {
         (w[c] = w[c] || []).push(function() {
             try {
