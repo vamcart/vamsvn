@@ -63,9 +63,9 @@ $(document).ajaxStop(function(){
     	               $("#divShoppingCart").html(msg);
     	               //$('html, body').animate({ scrollTop: 0 }, 'slow');	
     	               //$(".shopping-cart-widget").addClass( "ajax-cart-hightlight" );
-      $("#navigation .btn.btn-navbar").click();
-      $("#navigation .btn.btn-navbar").focus();    	               
-      $("#navigation .dropdown-toggle.cart").dropdown("toggle");
+      //$("#navigation .btn.btn-navbar").click();
+      //$("#navigation .btn.btn-navbar").focus();    	               
+      //$("#navigation .dropdown-toggle.cart").dropdown("toggle");
     	               }       
                    });                     
 
@@ -97,9 +97,9 @@ function doAddProduct() {
 						$("#divShoppingCart").html(msg);
 						//$('html, body').animate({ scrollTop: 0 }, 'slow');	
 						//$(".shopping-cart-widget").addClass( "ajax-cart-hightlight" );
-      $("#navigation .btn.btn-navbar").click();
-      $("#navigation .btn.btn-navbar").focus();						
-      $("#navigation .dropdown-toggle.cart").dropdown("toggle");
+      //$("#navigation .btn.btn-navbar").click();
+      //$("#navigation .btn.btn-navbar").focus();						
+      //$("#navigation .dropdown-toggle.cart").dropdown("toggle");
 					}
 		});
 	}
