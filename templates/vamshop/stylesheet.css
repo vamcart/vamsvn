@@ -440,7 +440,7 @@ p.CartContentRight,
      text-align: center !important;
    }  
 
-#content form#cart_quantity img 
+#content form#cart_quantity .pagecontent table img 
    {
      display: none;
    }  
