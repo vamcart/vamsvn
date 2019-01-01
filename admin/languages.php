@@ -55,6 +55,18 @@
         vam_db_query("insert into " . TABLE_PRODUCTS_OPTIONS_VALUES . " (products_options_values_id, language_id, products_options_values_name) values ('" . $products_options_values['products_options_values_id'] . "', '" . $insert_id . "', '" . vam_db_input($products_options_values['products_options_values_name']) . "')");
       }
 
+      // create additional articles_description records
+      $articles_query = vam_db_query("select a.articles_id, ad.articles_name from " . TABLE_ARTICLES . " a left join " . TABLE_ARTICLES_DESCRIPTION . " ad on a.articles_id = ad.articles_id where ad.language_id = '" . $_SESSION['languages_id'] . "'");
+      while ($articles = vam_db_fetch_array($articles_query)) {
+        vam_db_query("insert into " . TABLE_ARTICLES_DESCRIPTION . " (articles_id, language_id, articles_name) values ('" . $articles['articles_id'] . "', '" . $insert_id . "', '" . vam_db_input($articles['articles_name']) . "')");
+      }
+
+      // create additional topics_description records
+      $topics_query = vam_db_query("select t.topics_id, td.topics_name from " . TABLE_TOPICS . " t left join " . TABLE_TOPICS_DESCRIPTION . " td on t.topics_id = td.topics_id where td.language_id = '" . $_SESSION['languages_id'] . "'");
+      while ($topics = vam_db_fetch_array($topics_query)) {
+        vam_db_query("insert into " . TABLE_TOPICS_DESCRIPTION . " (topics_id, language_id, topics_name) values ('" . $topics['topics_id'] . "', '" . $insert_id . "', '" . vam_db_input($topics['topics_name']) . "')");
+      }
+
       // create additional manufacturers_info records
       $manufacturers_query = vam_db_query("select m.manufacturers_id, mi.manufacturers_url from " . TABLE_MANUFACTURERS . " m left join " . TABLE_MANUFACTURERS_INFO . " mi on m.manufacturers_id = mi.manufacturers_id where mi.languages_id = '" . $_SESSION['languages_id'] . "'");
       while ($manufacturers = vam_db_fetch_array($manufacturers_query)) {
