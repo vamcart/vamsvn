@@ -386,29 +386,35 @@ a:hover
 /*- Стили для мобильных устройств */
 
 @media (max-width: 767px) {
-#header {
-  flex-direction: column;
-  justify-content: space-around;
-  height: auto;
-}
+#header 
+  {
+    flex-direction: column;
+    justify-content: space-around;
+    height: auto;
+  }
 #header .header-left,
 #header .header-center,
-#header .header-right {
-  text-align: center;
-}
-#container {
-  flex-direction: column;
-}
-#wrapper {
-  flex-direction: column;
-}
-#left {
-  order: 0;
-  flex: 0 0 auto;
-}
-#right {
-  flex: 0 0 auto;
-}
+#header .header-right 
+  {
+    text-align: center;
+  }
+#container 
+  {
+    flex-direction: column;
+  }
+#wrapper 
+  {
+    flex-direction: column;
+  }
+#left 
+  {
+    order: 0;
+    flex: 0 0 auto;
+  }
+#right 
+  {
+    flex: 0 0 auto;
+  }
 
 dl.itemLatestNewsDefault, 
 dl.itemNewProductsDefault, 
@@ -422,28 +428,34 @@ dl.ordersAddress,
 dl.AddressBook,
 dl.AddressBookList, 
 dl.Login,
-dl.itemCategoriesListing {
+dl.itemCategoriesListing 
+  {
     width: 100% !important;  
-}
+  }
 
 .ProductInfoLeft, 
-.ProductInfoRight {
+.ProductInfoRight 
+  {
     float: none !important;
     width: 100% !important;  
     margin: 0 auto !important;
     text-align: center !important;
-}
+  }
   
-p.CartContentRight,
-.pagecontent p
-   {
-     text-align: center !important;
-   }  
+p.CartContentRight
+  {
+    text-align: center !important;
+  }  
 
 #content form#cart_quantity .pagecontent table img 
-   {
-     display: none;
-   }  
+  {
+    display: none;
+  }  
+   
+textarea 
+  {
+    width: 80%;
+  }   
   
 }
 
