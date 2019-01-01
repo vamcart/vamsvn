@@ -29,7 +29,7 @@
 
 <div id="pageHeader">
   <div>
-    <div style="float: right; padding-top: 40px; padding-right: 15px; color: #000000; font-weight: bold;"><a href="http://vamshop.ru" target="_blank">Официальный сайт VamShop</a> &nbsp;|&nbsp; <a href="http://vamshop.ru/forum/" target="_blank">Поддержка</a> &nbsp;|&nbsp; <a href="http://vamshop.ru/manual/" target="_blank">Документация</a></div>
+    <div style="float: right; padding-top: 40px; padding-right: 15px; color: #000000; font-weight: bold;"><a href="http://vamshop.ru" target="_blank">Официальный сайт VamShop</a> &nbsp;|&nbsp; <a href="https://forum.vamshop.ru/" target="_blank">Поддержка</a> &nbsp;|&nbsp; <a href="http://manual.vamshop.ru/" target="_blank">Документация</a></div>
 
     <a href="index.php"><img src="images/vamshop.png" border="0" title="VamShop" style="margin: 5px;" /></a>
   </div>
