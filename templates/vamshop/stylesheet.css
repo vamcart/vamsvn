@@ -2782,6 +2782,7 @@ dd.itemDescriptionPrice
      padding: 0 0;
      line-height: normal;
      background: transparent;
+     font-weight: bold;
    }
 
 dd.itemNews
