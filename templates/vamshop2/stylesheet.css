@@ -1511,7 +1511,7 @@ div.CheckoutError
   background-color: transparent;
 }
 
-// DaData
+/* DaData Start */
 
 .suggestions-nowrap {
   white-space: nowrap;
@@ -1670,5 +1670,6 @@ div.CheckoutError
   content: '';
 }
 
+/* /DaData End */
 		
 /*]]>*/

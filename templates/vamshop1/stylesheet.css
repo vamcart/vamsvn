@@ -4,9 +4,10 @@
 /* Global properties (body, common classes, vertical rhythm, structure etc)
 /* ========================================================================== */
 body {
-  font-family: "Open Sans", sans-serif !important;
+  font-family: 'MetropolisMedium', sans-serif;
+  font-size: 16px;
   background-color: #ffffff;
-  color: #000;
+  color: #555;
   padding: 0;
 }
 .inner {
@@ -3108,7 +3109,7 @@ dd.itemCategoriesListing
   background: #555;
 }
 
-// DaData
+/* DaData Start */
 
 .suggestions-nowrap {
   white-space: nowrap;
@@ -3266,6 +3267,8 @@ dd.itemCategoriesListing
   border-top: 1px solid rgba(0, 0, 0, 0.4);
   content: '';
 }
+
+/* /DaData End */
 
 .dropdown-sub {
     position: relative;
