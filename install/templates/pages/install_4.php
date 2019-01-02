@@ -369,7 +369,45 @@ vam_db_query("UPDATE " .TABLE_CONFIGURATION . " SET configuration_value='". (tri
 'php_value mbstring.encoding_translation   0'. "\n" .
 'php_value default_charset UTF-8'. "\n" .
 'php_value mbstring.internal_encoding UTF-8'. "\n" .
-'</IfModule>    '. "\n" . '';
+'</IfModule>    '. "\n" .
+'<IfModule mod_deflate.c>'. "\n" .
+'    AddOutputFilterByType DEFLATE text/html text/plain text/css text/javascript application/x-javascript application/font-woff application/font-woff2'. "\n" .
+'' . "\n" .
+'<FilesMatch "\\\.(js|css|woff|woff2|ttf|eot|otf)$">'. "\n" .
+'  SetOutputFilter DEFLATE'. "\n" .
+'</FilesMatch>'. "\n" .
+'</IfModule>'. "\n" .
+'' . "\n" .
+'<IfModule mod_expires.c>'. "\n" .
+'  AddType application/vnd.ms-fontobject .eot'. "\n" .
+'  AddType application/x-font-ttf .ttf'. "\n" .
+'  AddType application/x-font-opentype .otf'. "\n" .
+'  AddType application/x-font-woff .woff'. "\n" .
+'  AddType application/x-font-woff2 .woff2'. "\n" .
+'  AddType image/svg+xml .svg'. "\n" .
+'  ExpiresActive On'. "\n" .
+'  ExpiresByType text/css "access plus 10 years"'. "\n" .
+'  ExpiresByType text/js "access plus 10 years"'. "\n" .
+'  ExpiresByType text/javascript "access plus 10 years"'. "\n" .
+'  ExpiresByType application/x-javascript "access plus 10 years"'. "\n" .
+'  ExpiresByType application/javascript "access plus 10 years"'. "\n" .
+'  ExpiresByType application/font-woff "access plus 10 years"'. "\n" .
+'  ExpiresByType application/font-woff2 "access plus 10 years"'. "\n" .
+'  ExpiresByType application/vnd.ms-fontobject "access plus 10 years"'. "\n" .
+'  ExpiresByType application/x-font-ttf "access plus 10 years"'. "\n" .
+'  ExpiresByType application/x-font-opentype "access plus 10 years"'. "\n" .
+'  ExpiresByType application/x-font-woff "access plus 10 years"'. "\n" .
+'  ExpiresByType application/x-font-woff2 "access plus 10 years"'. "\n" .
+'  ExpiresByType image/svg+xml "access plus 10 years"'. "\n" .
+'  ExpiresByType image/png "access plus 10 years"'. "\n" .
+'  ExpiresByType image/x-icon "access plus 10 years"'. "\n" .
+'  ExpiresByType image/vnd.microsoft.icon "access plus 10 years"'. "\n" .
+'  ExpiresByType image/gif "access plus 10 years"'. "\n" .
+'  ExpiresByType image/jpeg "access plus 10 years"'. "\n" .
+'</IfModule>'. "\n" .
+'' . "\n" .
+'FileETag none'. "\n" .
+'';
 
     $fp = fopen(DIR_FS_CATALOG . 'install/htaccess.txt', 'w');
     fputs($fp, $file_contents);
