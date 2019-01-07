@@ -169,7 +169,7 @@ else {$page= '';}
 
 ?>
 <title><?php echo $categories_meta['categories_meta_title'] . $filter.$mName . $page; ?></title>
-<meta name="description" content="<?php echo $filter.$categories_meta['categories_meta_description'] . $mDesc; ?>" />
+<meta name="description" content="<?php echo $filter.$filter_description.$categories_meta['categories_meta_description'] . $mDesc; ?>" />
 <meta name="keywords" content="<?php echo $categories_meta['categories_meta_keywords'] . $mKey; ?>" />
 <?php
 
