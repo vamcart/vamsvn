@@ -56,7 +56,6 @@ Disallow: /specials.php
 Disallow: /*action=*
 Disallow: /*q=*
 Disallow: /*on_page=*
-Disallow: /*cPath
 Disallow: /*manufacturers_id*
 Disallow: /*filter_id*
 Disallow: /manu/
