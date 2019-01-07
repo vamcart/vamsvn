@@ -3604,7 +3604,7 @@ INSERT INTO `specifications` VALUES
 (11, 3, 0, 'True', 'True', 'True', 'False', '', 'Left', 'exact', 'radio', 'True', 'radio'),
 (12, 3, 0, 'True', 'True', 'True', 'False', '', 'Left', 'exact', 'radio', 'True', 'radio'),
 (13, 3, 0, 'True', 'True', 'True', 'False', '', 'Left', 'exact', 'radio', 'True', 'radio'),
-(14, 3, 0, 'True', 'True', 'True', 'False', '', 'Left', 'exact', 'radio', 'True', 'radio'),
+(14, 3, 0, 'True', 'True', 'True', 'False', '', 'Left', 'exact', 'links', 'True', 'radio'),
 (15, 3, 0, 'True', 'True', 'True', 'False', '', 'Left', 'exact', 'radio', 'True', 'radio');
 
 ##
@@ -3640,7 +3640,7 @@ INSERT INTO `specification_description` VALUES
 (11, 11, 1, 'Экран', '', '', ''),
 (12, 12, 1, 'Батарея', '', '', ''),
 (13, 13, 1, 'Вес', '', '', ''),
-(14, 14, 1, 'Память', '', '', ''),
+(14, 14, 1, 'Память', 'Отфильтрованные смартфоны с выбранным объёмом памяти.', '', ''),
 (15, 15, 1, 'Размеры', '', '', '');
 
 ##
