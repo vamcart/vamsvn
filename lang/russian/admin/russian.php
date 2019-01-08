@@ -629,7 +629,7 @@ define('BOX_MERKETING_2', 'Скидка на способ доставки');
 define('BOX_MERKETING_3', 'Наценка на способ оплаты');
 define('BOX_MERKETING_4', 'Наценка на способ доставки');
 define('BOX_MERKETING_5', 'Скидка на сумму заказа');
-define('BOX_MERKETING_6', 'Скидка от количество единиц в заказе');
+define('BOX_MERKETING_6', 'Скидка от количества единиц в заказе');
 define('BOX_MERKETING_7', 'Индивидуальная скидка покупателя');
 define('BOX_MERKETING_8', 'Индивидуальная скидка покупателя на брэнд');
 define('BOX_MERKETING_9', 'Скидка от суммы заказа для групп');
