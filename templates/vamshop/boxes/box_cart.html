@@ -18,7 +18,7 @@
 
 {$products_data.QTY}&nbsp;x&nbsp;&nbsp;<a href="{$products_data.LINK}" title="{$products_data.NAME}">{$products_data.NAME|vam_truncate:$smarty.const.MAX_DISPLAY_CART:"...":true}</a>&nbsp;
 {if $smarty.const.AJAX_CART == 'true'}
-<input type="image" src="images/delete.gif" title="{#text_delete#}" /></form>
+<input type="image" src="images/delete.gif" title="{#text_delete#}" alt="{#text_delete#}" /></form>
 {/if}
 <br />
 {if $products_data.ATTRIBUTES!=''} 
