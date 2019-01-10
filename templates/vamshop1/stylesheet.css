@@ -16,6 +16,11 @@ body {
   padding-right: 0;
 }
 
+#container {
+  padding-left: .5em;
+  padding-right: .5em;
+}
+
 .inner {
   background-color: #fff;
   position: relative;
@@ -659,6 +664,8 @@ background: #fff;
 /* ========================================================================== */
 #footer {
   padding-top: 40px;
+  padding-left: .5em;
+  padding-right: .5em;
   background-color: #333333;
   color: #000;
 }
