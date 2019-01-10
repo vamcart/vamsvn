@@ -10,6 +10,12 @@ body {
   color: #555;
   padding: 0;
 }
+
+.container-fluid {
+  padding-left: 0;
+  padding-right: 0;
+}
+
 .inner {
   background-color: #fff;
   position: relative;
