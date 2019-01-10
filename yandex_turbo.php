@@ -414,7 +414,7 @@
       $lang_param = ($product_data['code'] != DEFAULT_LANGUAGE) ? '&language='.$product_data['code'] : '';
       $date = ($product_data['last_modified'] != NULL) ? $product_data['last_modified'] : $product_data['date_added'];
       
-      $string = sprintf(SITEMAP_ENTRY, htmlspecialchars(utf8_encode(vam_href_link(FILENAME_CONTENT, 'coID='.$product_data['content_id']))) , HTTP_SERVER . DIR_WS_CATALOG . DIR_WS_IMAGES . 'pixel_trans.gif', $product_data['content_heading'], $product_data['content_heading'], htmlspecialchars(utf8_encode(vam_href_link(FILENAME_CONTENT, 'coID='.$product_data['content_id']))));
+      $string = sprintf(SITEMAP_ENTRY, htmlspecialchars(utf8_encode(vam_href_link(FILENAME_CONTENT, 'coID='.$product_data['content_id']))) , HTTP_SERVER . DIR_WS_CATALOG . DIR_WS_IMAGES . 'pixel_trans.gif', $product_data['content_title'], $product_data['content_title'], htmlspecialchars(utf8_encode(vam_href_link(FILENAME_CONTENT, 'coID='.$product_data['content_id']))));
       
       output($string);
       $strlen += strlen($string);
@@ -460,7 +460,7 @@
       $lang_param = ($product_data['code'] != DEFAULT_LANGUAGE) ? '&language='.$product_data['code'] : '';
       $date = ($product_data['last_modified'] != NULL) ? $product_data['last_modified'] : $product_data['date_added'];
       
-      $string = sprintf(SITEMAP_ENTRY, htmlspecialchars(utf8_encode(vam_href_link(FILENAME_NEWS, 'news_id='.$product_data['news_id']))) , HTTP_SERVER . DIR_WS_CATALOG . DIR_WS_IMAGES . 'pixel_trans.gif', $product_data['news_headline'], $product_data['news_headline'], htmlspecialchars(utf8_encode(vam_href_link(FILENAME_NEWS, 'news_id='.$product_data['news_id']))));
+      $string = sprintf(SITEMAP_ENTRY, htmlspecialchars(utf8_encode(vam_href_link(FILENAME_NEWS, 'news_id='.$product_data['news_id']))) , HTTP_SERVER . DIR_WS_CATALOG . DIR_WS_IMAGES . 'pixel_trans.gif', $product_data['headline'], $product_data['headline'], htmlspecialchars(utf8_encode(vam_href_link(FILENAME_NEWS, 'news_id='.$product_data['news_id']))));
       
       output($string);
       $strlen += strlen($string);
@@ -506,7 +506,7 @@
       $lang_param = ($product_data['code'] != DEFAULT_LANGUAGE) ? '&language='.$product_data['code'] : '';
       $date = ($product_data['last_modified'] != NULL) ? $product_data['last_modified'] : $product_data['date_added'];
       
-      $string = sprintf(SITEMAP_ENTRY, htmlspecialchars(utf8_encode(vam_href_link(FILENAME_FAQ, 'faq_id='.$product_data['faq_id']))) , HTTP_SERVER . DIR_WS_CATALOG . DIR_WS_IMAGES . 'pixel_trans.gif', $product_data['faq_question'], $product_data['faq_question'], htmlspecialchars(utf8_encode(vam_href_link(FILENAME_FAQ, 'faq_id='.$product_data['faq_id']))));
+      $string = sprintf(SITEMAP_ENTRY, htmlspecialchars(utf8_encode(vam_href_link(FILENAME_FAQ, 'faq_id='.$product_data['faq_id']))) , HTTP_SERVER . DIR_WS_CATALOG . DIR_WS_IMAGES . 'pixel_trans.gif', $product_data['question'], $product_data['question'], htmlspecialchars(utf8_encode(vam_href_link(FILENAME_FAQ, 'faq_id='.$product_data['faq_id']))));
       
       output($string);
       $strlen += strlen($string);
