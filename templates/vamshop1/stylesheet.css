@@ -11,6 +11,10 @@ body {
   padding: 0;
 }
 
+label {
+  font-size: 16px;  
+}
+
 .container-fluid {
   padding-left: 0;
   padding-right: 0;
@@ -78,7 +82,7 @@ blockquote {
   border-left-width: 2px;
 }
 blockquote p {
-  font-size: 14px;
+  font-size: 16px;
   margin-bottom: 10px;
 }
 blockquote p:last-child {
@@ -248,7 +252,7 @@ hr.transparent {
 }
 #header .logo .site-slogan {
   font-weight: normal;
-  font-size: 13px;
+  font-size: 16px;
   line-height: 15px;
   height: 15px;
   margin: 0;
@@ -321,7 +325,7 @@ hr.transparent {
 .navbar .nav > li > a:hover,
 .navbar .nav > li > a:visited
 {
-  font-size: 14px;
+  font-size: 16px;
   font-weight: normal;
   color: #fff;
   text-shadow:	0 0 0 transparent;
@@ -461,7 +465,7 @@ background: #fff;
 }
 .shopping-cart-widget.dropdown .products .media-heading {
   font-weight: bold;
-  font-size: 14px;
+  font-size: 16px;
   color: #dd2c00;
 }
 .shopping-cart-widget.dropdown .products .media-heading a {
@@ -494,6 +498,7 @@ background: #fff;
 /* Breadcrumbs / Page Header
 /* ========================================================================== */
 #breadcrumbs {
+	padding-left: .5em;
 }
 @media (max-width: 480px) {
   #breadcrumbs {
@@ -844,7 +849,7 @@ background: #fff;
 }
 .page-sidebar .widget-title,
 .sidebar .widget-title {
-  font-size: 14px;
+  font-size: 16px;
   font-weight: bold;
   text-transform: uppercase;
   line-height: 20px;
@@ -927,7 +932,7 @@ background: #fff;
 }
 .shopping-cart-widget .products .media-heading {
   font-weight: bold;
-  font-size: 14px;
+  font-size: 16px;
   color: #dd2c00;
 }
 .shopping-cart-widget .products .media-heading a {
@@ -942,7 +947,7 @@ background: #fff;
   margin-bottom: 0;
 }
 .shopping-cart-widget .buttons .btn {
-  font-size: 13px;
+  font-size: 16px;
   padding: 6px 12px;
   margin-top: 5px;
   margin-bottom: 5px;
@@ -1249,7 +1254,7 @@ background: #fff;
   border-top: solid 1px #e1e1e1;
 }
 .shop-products .btn-add-to-cart {
-  font-size: 14px;
+  font-size: 16px;
   font-weight: bold;
   padding: 10px 20px;
   color: #ffffff;
@@ -1568,7 +1573,7 @@ background: #fff;
   color: #000000;
   padding: 11px 15px;
   height: auto;
-  font-size: 13px;
+  font-size: 16px;
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
   box-shadow: none;
@@ -1648,7 +1653,7 @@ background: #fff;
   border-top: solid 1px #e1e1e1;
 }
 .featured-products .btn-add-to-cart {
-  font-size: 14px;
+  font-size: 16px;
   font-weight: bold;
   padding: 10px 20px;
   color: #ffffff;
@@ -1913,7 +1918,7 @@ background: #fff;
   color: #555555;
   padding: 10px 15px;
   height: auto;
-  font-size: 13px;
+  font-size: 16px;
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
   box-shadow: none;
@@ -2175,7 +2180,7 @@ span.Requirement
 /* Buttons */
 
 .btn.btn-inverse {
-  font-size: 13px;
+  font-size: 16px;
   padding: 6px 12px;
   margin-top: 5px;
   margin-bottom: 5px;
@@ -2239,7 +2244,7 @@ del.button span
 		line-height: 1;
 		letter-spacing: 0 !important;
 		font-family: "Arial" !important;
-		font-size: 13px !important;
+		font-size: 16px !important;
 		font-style: normal;				
 		padding: 10px;
 		margin: 0;
