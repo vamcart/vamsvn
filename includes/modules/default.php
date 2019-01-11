@@ -419,7 +419,7 @@ elseif ($category_depth == 'products' || $_GET['manufacturers_id']) {
     }
   }
   $filterlist_query = vamDBquery($filterlist_sql);
-  if (vam_db_num_rows($filterlist_query, true) > 1) {
+  if (vam_db_num_rows($filterlist_query, true) >= 1) {
     $manufacturer_dropdown = vam_draw_form('filter', vam_href_link(FILENAME_DEFAULT, 'cat='.$current_category_id), 'get');
     if (isset ($_GET['manufacturers_id'])) {
     $manufacturer_dropdown .= vam_draw_hidden_field('manufacturers_id', (int)$_GET['manufacturers_id']);

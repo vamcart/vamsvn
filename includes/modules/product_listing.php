@@ -82,13 +82,16 @@ if ($listing_split->number_of_rows > 0) {
 	$module->assign('FILTER_DESCRIPTION', $filter_description);
 	
 	}
-	
-	$query = "SELECT manufacturers_description FROM ".TABLE_MANUFACTURERS_INFO." where manufacturers_id = '" . (int)$_GET['manufacturers_id'] . "' and languages_id = '".$_SESSION['languages_id']."'";
+
+	(!$_GET['manufacturers_id'] && $_GET['filter_id'] > 0) ? $_GET['manufacturers_id'] = $_GET['filter_id'] : false;
+		
+	$query = "SELECT m.*, mi.* FROM ".TABLE_MANUFACTURERS." as m left join ".TABLE_MANUFACTURERS_INFO." as mi on mi.manufacturers_id = m.manufacturers_id where m.manufacturers_id = '" . (int)$_GET['manufacturers_id'] . "' and mi.languages_id = '".$_SESSION['languages_id']."'";
 
 		$open_query = vamDBquery($query);
 		$open_data = vam_db_fetch_array($open_query, true);
 		$manufacturers_description = $open_data["manufacturers_description"]; 
 		$module->assign('MANUFACTURERS_DESCRIPTION', $manufacturers_description);
+		$module->assign('MANUFACTURERS_NAME', $open_data["manufacturers_name"]);
 		
 	$rows = 0;
 	$listing_query = vamDBquery($listing_split->sql_query);
@@ -126,12 +129,15 @@ if ($result != false) {
 	$module->assign('MANUFACTURER_DROPDOWN', $manufacturer_dropdown);
 	$module->assign('MANUFACTURER_SORT', $manufacturer_sort);
 	
-	$query = "SELECT manufacturers_description FROM ".TABLE_MANUFACTURERS_INFO." where manufacturers_id = '" . (int)$_GET['manufacturers_id'] . "' and languages_id = '".$_SESSION['languages_id']."'";
+	(!$_GET['manufacturers_id'] && $_GET['filter_id'] > 0) ? $_GET['manufacturers_id'] = $_GET['filter_id'] : false;
+	
+	$query = "SELECT m.*, mi.* FROM ".TABLE_MANUFACTURERS." as m left join ".TABLE_MANUFACTURERS_INFO." as mi on mi.manufacturers_id = m.manufacturers_id where m.manufacturers_id = '" . (int)$_GET['manufacturers_id'] . "' and mi.languages_id = '".$_SESSION['languages_id']."'";
 
 		$open_query = vamDBquery($query);
 		$open_data = vam_db_fetch_array($open_query, true);
 		$manufacturers_description = $open_data["manufacturers_description"]; 
 		$module->assign('MANUFACTURERS_DESCRIPTION', $manufacturers_description);
+		$module->assign('MANUFACTURERS_NAME', $open_data["manufacturers_name"]);
 
 	$module->assign('language', $_SESSION['language']);
 	$module->assign('module_content', $module_content);
