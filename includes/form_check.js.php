@@ -82,6 +82,7 @@ $(function () {
 <?php if(PHONE_MASK != '') { ?>
 $("#telephone").mask("<?php echo PHONE_MASK; ?>");
 <?php } ?>
+$("#qiwi_telephone").mask("79999999999");
    	
 	// validate signup form on keyup and submit
 	$("#<?php echo $form_id; ?>").validate({
