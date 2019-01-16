@@ -962,15 +962,15 @@ background: #fff;
   color: #999999;
 }
 .widget ul.icons li {
-  float: left;
-  width: 180px;
+  /*float: left;
+  width: auto;*/
   padding: 6px 0 0 12px;
   position: relative;
   text-indent: 0;
 }
 .categories-widget ul.icons li {
-  float: left;
-  width: 180px;
+  /*float: left;
+  width: auto;*/
   padding: 6px 0 0 12px;
   position: relative;
   text-indent: 0;
@@ -1306,7 +1306,7 @@ background: #fff;
 }
 .shop-products .thumbnail .price {
   position: absolute;
-  top: 80%;
+  top: 60%;
   left: -30px;
   padding: 10px 15px 10px 50px;
   background-color: #dd2c00;
@@ -1705,7 +1705,7 @@ background: #fff;
 }
 .featured-products .thumbnail .price {
   position: absolute;
-  top: 80%;
+  top: 60%;
   left: -30px;
   padding: 10px 15px 10px 50px;
   background-color: #dd2c00;
