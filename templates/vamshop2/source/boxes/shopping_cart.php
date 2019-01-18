@@ -34,8 +34,9 @@ if ($_SESSION['cart']->count_contents() > 0) {
 		$qty += $products[$i]['quantity'];
 
 		// Push all attributes information in an array
-	        $product_attributes = "";
-		$product_attributes_in_cart = "";
+	        $product_attributes = array();
+	        $product_attributes1 = $product_attributes;
+	        $product_attributes_in_cart = "";
 
 		if (isset ($products[$i]['attributes'])) {
 			foreach ($products[$i]['attributes'] as $option => $value) {
@@ -58,17 +59,20 @@ if ($_SESSION['cart']->count_contents() > 0) {
 					$hidden_options .= vam_draw_hidden_field('id[' . $products[$i]['id'] . '][' . $option . ']', $value);
 				    $attr_value = $attributes_values['products_options_values_name'];
 				}
-				$product_attributes[$option]['NAME']  = $attributes_values['products_options_name'];
-				$product_attributes[$option]['VALUE'] = $attr_value;
+				$product_attributes1[$option]['NAME']  = $attributes_values['products_options_name'];
+				$product_attributes1[$option]['VALUE'] = $attr_value;
 				$product_attributes_in_cart .= vam_draw_hidden_field('id[' . $products[$i]['id'] . '][' . $option . ']', $attributes_values['options_values_id']);
 			}
 		}
 		// Push all attributes information in an array
 		$products_in_cart[] = array ('QTY' => $products[$i]['quantity'], 
-									 'PRICE' => $products[$i]['price'] * $products[$i]['quantity'], 
+									 'ID' => $products[$i]['id'], 
+									 //'PRICE' => $products[$i]['price'] * $products[$i]['quantity'], 
+									 'PRICE' => $products[$i]['price'], 
 									 'LINK' => vam_href_link(FILENAME_PRODUCT_INFO, vam_product_link($products[$i]['id'],$products[$i]['name'])), 
 'PRODUCTS_QTY' => $product_attributes_in_cart . vam_draw_hidden_field('cart_quantity[]', $products[$i]['quantity'] - 1) . vam_draw_hidden_field('products_id[]', $products[$i]['id']) . vam_draw_hidden_field('old_qty[]', $products[$i]['quantity']) . ($products[$i]['quantity'] < 2 ? vam_draw_hidden_field('cart_delete[]', $products[$i]['id']) : ''),
-'ATTRIBUTES' => $product_attributes,
+'ATTRIBUTES' => $product_attributes1,
+                            'IMAGE' => (($products[$i]['image'] != '' ? DIR_WS_THUMBNAIL_IMAGES.$products[$i]['image'] : DIR_WS_IMAGES.'product_images/noimage.gif')),
 									 'NAME' => $products[$i]['name']);
 
 	
@@ -131,6 +135,7 @@ if (isset ($_SESSION['cc_id'])) {
 	$box->assign('COUPON_HELP_LINK', '<a href="javascript:popupWindow(\''.vam_href_link(FILENAME_POPUP_COUPON_HELP, 'cID='.$_SESSION['cc_id']).'\')">');
 }
 // GV Code End
+$box->assign('LINK_HOME', vam_href_link(FILENAME_DEFAULT, '', 'SSL'));
 $box->assign('LINK_CART', vam_href_link(FILENAME_SHOPPING_CART, '', 'SSL'));
 $box->assign('LINK_CHECKOUT', vam_href_link(FILENAME_CHECKOUT_SHIPPING, '', 'SSL'));
 $box->assign('products', $products_in_cart);
