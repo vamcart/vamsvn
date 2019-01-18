@@ -43,12 +43,14 @@ a
    {
      color: #000;
      text-decoration: underline;
+     outline: 0;
    }
 
 a:hover 
    {
      color: #990000;
      text-decoration: none;
+     outline: 0;
    }
 /* /Цвет обычных ссылок в магазине */
 
@@ -3119,11 +3121,13 @@ del.button span
 		margin: 0 -16px 0 10px;
 		border: none;
 		vertical-align: text-top;
+		outline: 0;
 	}
 
 span.button button
 	{
 		line-height: 2.5; /*Opera need this*/
+		outline: none;
 	}
 
 html.safari a.button span, 
