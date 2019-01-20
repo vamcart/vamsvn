@@ -107,7 +107,7 @@ if ($_GET['authors_id'] && $_GET['authors_id'] > 0) {
 	$vamTemplate->assign('AUTHOR_NAME', $author_images['authors_name']);
 }
 
-$module_content = [];
+$module_content = array();
 if ($articles_new_split->number_of_rows > 0) {
 
 	$vamTemplate->assign('no_new_articles', 'false');
