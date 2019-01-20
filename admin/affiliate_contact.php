@@ -166,7 +166,7 @@
       if (!is_array($_POST[$key])) {
         echo vam_draw_hidden_field($key, htmlspecialchars(stripslashes($value)));
       }
-    }
+    //}
 ?>
                 <table border="0" width="100%" cellpadding="0" cellspacing="2">
                   <tr>
