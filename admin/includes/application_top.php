@@ -674,5 +674,7 @@ define('FILENAME_PIN_LOADER', 'pin_loader.php');
   
 // include composer autoload
   require(DIR_FS_CATALOG . '/vendor/autoload.php');
-    
+
+  define('TABLE_PRODUCTS_BUNDLES', 'products_bundles');
+      
 ?>

@@ -17,12 +17,25 @@
    Released under the GNU General Public License 
    ---------------------------------------------------------------------------------------*/
    
+// BOF Bundled Products
+////
+// Return a product's stock
+// TABLES: products
   function vam_get_products_stock($products_id) {
     $products_id = vam_get_prid($products_id);
-    $stock_query = vam_db_query("select products_quantity from " . TABLE_PRODUCTS . " where products_id = '" . $products_id . "'");
+    $stock_query = vam_db_query("select products_quantity, products_bundle from " . TABLE_PRODUCTS . " where products_id = '" . (int)$products_id . "'");
     $stock_values = vam_db_fetch_array($stock_query);
-
-    return $stock_values['products_quantity'];
+    if ($stock_values['products_bundle'] == 'yes') {
+      $bundle_query = vam_db_query("select subproduct_id, subproduct_qty from " . TABLE_PRODUCTS_BUNDLES . " where bundle_id = " . (int)$products_id);
+      $bundle_stock = array();
+      while ($bundle_data = vam_db_fetch_array($bundle_query)) {
+        $bundle_stock[] = intval(vam_get_products_stock($bundle_data['subproduct_id']) / $bundle_data['subproduct_qty']);
+      }
+      return min($bundle_stock); // return quantity of least plentiful subproduct
+    } else {
+      return $stock_values['products_quantity'];
+    }
   }
+// EOF Bundled Products
 
  ?>

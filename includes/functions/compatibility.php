@@ -290,3 +290,22 @@
       
       return RTN_GOOD;  //product was found and can be shown
   }    
+  
+  // begin Bundled Products
+  // returns an array of all non-bundle products in the bundle with their quantities including products contained in nested bundles
+  function get_all_bundle_products($bundle_id) {
+    $bundle_query = vam_db_query('select pb.subproduct_id, pb.subproduct_qty, p.products_bundle from ' . TABLE_PRODUCTS_BUNDLES . ' pb, ' . TABLE_PRODUCTS . ' p where p.products_id = pb.subproduct_id and pb.bundle_id = ' . (int)$bundle_id);
+    $product_list = array();
+    while ($bundle = vam_db_fetch_array($bundle_query)) {
+      if ($bundle['products_bundle'] == 'yes') {
+        $bundle_list = get_all_bundle_products($bundle['subproduct_id']);
+        foreach ($bundle_list as $id => $qty) {
+          $product_list[$id] += $qty;
+        }
+      } else {
+        $product_list[$bundle['subproduct_id']] += $bundle['subproduct_qty'];
+      }
+    }
+    return $product_list;
+  }
+  // end Bundled Products  

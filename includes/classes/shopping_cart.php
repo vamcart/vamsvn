@@ -113,6 +113,14 @@ class shoppingCart {
 		global $new_products_id_in_cart;
 
 		$products_id = vam_get_uprid($products_id, $attributes);
+		$attributes_pass_check = true;
+
+      if (is_numeric($products_id) && is_numeric($qty) && ($attributes_pass_check == true)) {
+        $check_product_query = vam_db_query("select products_status, sold_in_bundle_only from " . TABLE_PRODUCTS . " where products_id = '" . (int)$products_id . "'");
+        $check_product = vam_db_fetch_array($check_product_query);
+
+        if (($check_product !== false) && ($check_product['products_status'] == '1') && ($check_product['sold_in_bundle_only'] != 'yes')) {
+        	
 		if ($notify == true) {
 			$_SESSION['new_products_id_in_cart'] = $products_id;
 		}
@@ -159,6 +167,8 @@ class shoppingCart {
 
 		// assign a temporary unique ID to the order contents to prevent hack attempts during the checkout procedure
 		$this->cartID = $this->generate_cart_id();
+	}
+	}
 	}
 
 	function update_quantity($products_id, $quantity = '', $attributes = '') {
@@ -383,7 +393,7 @@ class shoppingCart {
 		$products_array = array ();
 		foreach (array_keys($this->contents) as $products_id) {
 			if($this->contents[$products_id]['qty'] != 0 || $this->contents[$products_id]['qty'] !=''){
-			$products_query = vam_db_query("select p.products_id, pd.products_name,p.products_shippingtime, p.products_image, p.products_quantity, p.products_model, p.products_price, p.products_discount_allowed, p.products_weight, p.products_length, p.products_width, p.products_height, p.products_volume, p.products_tax_class_id from ".TABLE_PRODUCTS." p, ".TABLE_PRODUCTS_DESCRIPTION." pd where p.products_id='".vam_get_prid($products_id)."' and pd.products_id = p.products_id and pd.language_id = '".$_SESSION['languages_id']."'");
+			$products_query = vam_db_query("select p.products_id, pd.products_name,p.products_shippingtime, p.products_bundle, p.sold_in_bundle_only, p.products_image, p.products_quantity, p.products_model, p.products_price, p.products_discount_allowed, p.products_weight, p.products_length, p.products_width, p.products_height, p.products_volume, p.products_tax_class_id from ".TABLE_PRODUCTS." p, ".TABLE_PRODUCTS_DESCRIPTION." pd where p.products_id='".vam_get_prid($products_id)."' and pd.products_id = p.products_id and pd.language_id = '".$_SESSION['languages_id']."'");
 			if ($products = vam_db_fetch_array($products_query)) {
 				$prid = $products['products_id'];
 
@@ -394,6 +404,8 @@ class shoppingCart {
 				'id' => $products_id, 
 				'name' => $products['products_name'], 
 				'model' => $products['products_model'], 
+				'bundle' => $products['products_bundle'],
+				'sold_in_bundle_only' => $products['sold_in_bundle_only'],
 				'image' => $products['products_image'], 
 				'price' => $products_price + $this->attributes_price($products_id), 
 				'quantity' => $this->contents[$products_id]['qty'], 
@@ -574,5 +586,57 @@ class shoppingCart {
 	}
 	// ------------------------ ICW CREDIT CLASS Gift Voucher Addittion-------------------------------End
 	//GV Code End
+	
+	
+// get_products_for_packaging is a special function for bundle support in the class packing
+// begin bundled products
+   function get_products_for_packaging() {
+     global $languages_id;
+      if (!is_array($this->contents)) return false;
+      $products_array = array();
+      // get the list of product information
+      $products = $this->get_products();
+      foreach ($products as $product) {
+        if ($product['bundle'] == 'yes') {
+          // convert bundle product into its individual components
+          $product_list = get_all_bundle_products($product['id']);
+          foreach ($product_list as $id => $qty) {
+            $subprod_query = vam_db_query("select p.products_id, pd.products_name, p.products_model, p.products_image, p.products_bundle, p.sold_in_bundle_only, p.products_price, p.products_weight, p.products_length, p.products_width, p.products_height, p.products_ready_to_ship, p.products_tax_class_id from " . TABLE_PRODUCTS . " p, " . TABLE_PRODUCTS_DESCRIPTION . " pd where p.products_id = '" . (int)$id . "' and pd.products_id = p.products_id and pd.language_id = '" . (int)$_SESSION['languages_id'] . "'");
+            if ($subproduct = vam_db_fetch_array($subprod_query)) {
+              $prid = $subproduct['products_id'];
+              $products_price = $subproduct['products_price'];
+
+              $specials_query = vam_db_query("select specials_new_products_price from " . TABLE_SPECIALS . " where products_id = '" . (int)$prid . "' and status = '1' order by specials_new_products_price");
+              if (vam_db_num_rows($specials_query)) {
+                $specials = vam_db_fetch_array($specials_query);
+                $products_price = $specials['specials_new_products_price'];
+              }
+              $products_array[] = array('id' => $prid,
+                                        'name' => $subproduct['products_name'],
+                                        'model' => $subproduct['products_model'],
+                                        'image' => $subproduct['products_image'],
+                                        'price' => $products_price,
+                                        'quantity' => ($qty * $product['quantity']),
+                                        'bundle' => $subproduct['products_bundle'],
+                                        'sold_in_bundle_only' => $subproduct['sold_in_bundle_only'],
+                                        'weight' => $subproduct['products_weight'],
+                                        'length' => $subproduct['products_length'],
+                                        'width' => $subproduct['products_width'],
+                                        'height' => $subproduct['products_height'],
+                                        'volume' => $subproduct['products_volume'],
+                                        'shipping_time' => $main->getShippingStatusName($subproduct['products_shippingtime']), 
+                                        'final_price' => $products_price,
+                                        'tax_class_id' => $subproduct['products_tax_class_id'],
+                                        'attributes' => '');
+            }
+          } // end foreach product_list
+        } else {
+          // not a bundle, copy directly
+          $products_array[] = $product;
+        }
+      } // end foreach products
+      return $products_array;
+   } // end bundled products
+	
 }
 ?>

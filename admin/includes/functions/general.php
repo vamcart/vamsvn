@@ -2372,4 +2372,17 @@ function vam_draw_customers_pull_down($name, $parameters = '', $exclude = '') {
 	return $select_string;
 } 
 
+  // begin bundled products
+  function bundle_avoid($bundle_id) { // returns an array of bundle_ids containing the specified bundle
+    $avoid_list = array();
+    $check_query = vam_db_query('select bundle_id from ' . TABLE_PRODUCTS_BUNDLES . ' where subproduct_id = ' . (int)$bundle_id);
+    while ($check = vam_db_fetch_array($check_query)) {
+      $avoid_list[] = $check['bundle_id'];
+      $tmp = bundle_avoid($check['bundle_id']);
+      $avoid_list = array_merge($avoid_list, $tmp);
+    }
+    return $avoid_list;
+  }
+  // end bundled products
+
 ?>

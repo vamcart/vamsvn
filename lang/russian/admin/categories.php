@@ -256,4 +256,16 @@ define('TEXT_PRODUCTS_QUANTITY_MAX', 'Макс. количество для за
 
   define ('TEXT_IMAGE_DESCRIPTION', 'Описание картинки: ');
 
+define('TEXT_PRODUCTS_BUNDLE', 'Set Bundles:');
+define('TEXT_ADD_LINE', 'Add a  line');
+define('TEXT_ADD_PRODUCT', 'Add to bundle: ');
+define('TEXT_REMOVE_PRODUCT', 'Remove from bundle');
+define('TEXT_BUNDLE_HEADING', 'Product Name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Qty&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;select product to add from pull down menu below');
+define('TEXT_PRODUCTS_BY_BUNDLE', 'This product contains the following items:');
+define('TEXT_RATE_COSTS', 'Cost of separate parts:');
+define('TEXT_IT_SAVE', 'You save');
+define('ENTRY_AVAILABLE_SEPARATELY', 'This product is available for individual sale.');
+define('ENTRY_IN_BUNDLE_ONLY', 'This product is available for sale only as a part of a bundle.');
+define('TEXT_SOLD_IN_BUNDLE', 'This product may be purchased only as a part of the following bundle(s):');
+
 ?>

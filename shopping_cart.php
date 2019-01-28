@@ -39,6 +39,7 @@ require_once (DIR_FS_INC.'vam_array_to_string.inc.php');
 require_once (DIR_FS_INC.'vam_image_submit.inc.php');
 require_once (DIR_FS_INC.'vam_recalculate_price.inc.php');
 require_once (DIR_FS_INC.'get_cross_sell_name.inc.php');
+require_once (DIR_FS_INC.'vam_get_products_stock.inc.php');
 
 $breadcrumb->add(NAVBAR_TITLE_SHOPPING_CART, vam_href_link(FILENAME_SHOPPING_CART));
 
@@ -94,6 +95,56 @@ if ($_SESSION['cart']->count_contents() > 0) {
 			}
 		}
 	}
+
+    // begin Bundled Products
+    if (STOCK_CHECK == 'true') {
+      $bundle_contents = array();
+      $bundle_values = array();
+      $product_ids_in_bundles = array();
+      $bundle_qty_ordered = array();
+      for ($i=0, $n=sizeof($products); $i<$n; $i++) {
+        if ($products[$i]['bundle'] == "yes") {
+          $tmp = get_all_bundle_products($products[$i]['id']);
+          $bundle_values[$products[$i]['id']] = $products[$i]['final_price'];
+          $bundle_contents[$products[$i]['id']] = $tmp;
+          $bundle_qty_ordered[$products[$i]['id']] = $products[$i]['quantity'];
+          foreach ($tmp as $id => $qty) {
+            if (!in_array($id, $product_ids_in_bundles)) $product_ids_in_bundles[] = $id; // save unique ids
+          }
+        }
+      }
+      if (!empty($bundle_values)) { // if bundles exist in order
+        arsort($bundle_values); // sort array so bundle ids with highest value come first
+        $product_on_hand = array();
+        $bundles_stock_check = array();
+        foreach ($product_ids_in_bundles as $id) {
+          // get quantity on hand for every product contained in bundles in this order
+          $product_on_hand[$id] = vam_get_products_stock($id);
+        }
+        foreach ($bundle_values as $bid => $bprice) {
+          $bundles_available = array();
+          foreach ($bundle_contents[$bid] as $pid => $qty) {
+            $bundles_available[] = intval($product_on_hand[$pid] / $qty);
+          }
+          $available = min($bundles_available); // max number of this bundle we can make with product on hand
+          $bundles_stock_check[$bid] = '';
+          if ($available <= 0) {
+            $bundles_stock_check[$bid] = '<span class="markProductOutOfStock">' . STOCK_MARK_PRODUCT_OUT_OF_STOCK . '<br />' . STOCK_MARK_PRODUCT_OUT_OF_STOCK . TEXT_NOT_AVAILABLEINSTOCK . '</span>';
+          } elseif ($available < $bundle_qty_ordered[$bid]) {
+            $bundles_stock_check[$bid] = '<span class="markProductOutOfStock">' . STOCK_MARK_PRODUCT_OUT_OF_STOCK . '<br />' . STOCK_MARK_PRODUCT_OUT_OF_STOCK . TEXT_ONLY_THIS_AVAILABLEINSTOCK1 . $available . TEXT_ONLY_THIS_AVAILABLEINSTOCK2 . '</span>';
+          }
+          $deduct = min($available, $bundle_qty_ordered[$bid]); // assume we sell as many of the bundle as possible
+          foreach ($bundle_contents[$bid] as $pid => $qty) {
+            // reduce product left on hand by number sold in this bundle before checking next less expensive bundle
+            // also lets us know how many we have left to sell individually
+            $product_on_hand[$pid] -= ($deduct * $qty);
+          }
+        }
+      }
+    }
+    $any_bundle_only = false;
+    // end Bundled Products
+
 
 	$vamTemplate->assign('HIDDEN_OPTIONS', $hidden_options);
 	require (DIR_WS_MODULES.'order_details_cart.php');

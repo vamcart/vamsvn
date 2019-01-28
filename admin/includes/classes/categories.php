@@ -570,7 +570,44 @@ class categories {
 		}
                 
                 // Products URL begin
-		$sql_data_array = array ('products_quantity' => vam_db_prepare_input($products_data['products_quantity']), 'products_quantity_min' => vam_db_prepare_input($products_data['products_quantity_min']), 'products_quantity_max' => vam_db_prepare_input($products_data['products_quantity_max']), 'products_length' => vam_db_prepare_input($products_data['products_length']), 'products_width' => vam_db_prepare_input($products_data['products_width']), 'products_height' => vam_db_prepare_input($products_data['products_height']), 'products_volume' => vam_db_prepare_input($products_data['products_volume']), 'products_to_xml' => vam_db_prepare_input($products_data['products_to_xml']), 'products_model' => vam_db_prepare_input(($products_data['products_model'] != '') ? $products_data['products_model'] : $products_id), 'products_ean' => vam_db_prepare_input($products_data['products_ean']), 'products_price' => vam_db_prepare_input($products_data['products_price']), 'products_sort' => vam_db_prepare_input($products_data['products_sort']), 'products_shippingtime' => vam_db_prepare_input($products_data['shipping_status']), 'products_discount_allowed' => vam_db_prepare_input($products_data['products_discount_allowed']), 'products_date_available' => $products_date_available, 'products_weight' => vam_db_prepare_input($products_data['products_weight']), 'products_status' => vam_db_prepare_input($products_data['products_status']), 'products_startpage' => vam_db_prepare_input($products_data['products_startpage']), 'products_startpage_sort' => vam_db_prepare_input($products_data['products_startpage_sort']), 'products_tax_class_id' => vam_db_prepare_input($products_data['products_tax_class_id']), 'product_template' => vam_db_prepare_input($products_data['info_template']), 'options_template' => vam_db_prepare_input($products_data['options_template']), 'manufacturers_id' => vam_db_prepare_input($products_data['manufacturers_id']), 'label_id' => vam_db_prepare_input($products_data['label_id']), 'products_fsk18' => vam_db_prepare_input($products_data['fsk18']), 'products_vpe_value' => vam_db_prepare_input($products_data['products_vpe_value']), 'products_vpe_status' => vam_db_prepare_input($products_data['products_vpe_status']), 'products_vpe' => vam_db_prepare_input($products_data['products_vpe']), 'yml_bid' => vam_db_prepare_input($products_data['yml_bid']), 'yml_cbid' => vam_db_prepare_input($products_data['yml_cbid']), 'products_page_url' => vam_db_prepare_input($products_page_url), 'products_image_description' => vam_db_prepare_input($products_data['main_pics_descr']));
+		$sql_data_array = array (
+		
+		'products_quantity' => vam_db_prepare_input($products_data['products_quantity']), 
+		'products_bundle' => vam_db_prepare_input($products_data['products_bundle']),
+		'sold_in_bundle_only' => vam_db_prepare_input($products_data['sold_in_bundle_only']),
+		'products_quantity_min' => vam_db_prepare_input($products_data['products_quantity_min']), 
+		'products_quantity_max' => vam_db_prepare_input($products_data['products_quantity_max']), 
+		'products_length' => vam_db_prepare_input($products_data['products_length']), 
+		'products_width' => vam_db_prepare_input($products_data['products_width']), 
+		'products_height' => vam_db_prepare_input($products_data['products_height']), 
+		'products_volume' => vam_db_prepare_input($products_data['products_volume']), 
+		'products_to_xml' => vam_db_prepare_input($products_data['products_to_xml']), 
+		'products_model' => vam_db_prepare_input(($products_data['products_model'] != '') ? $products_data['products_model'] : $products_id), 
+		'products_ean' => vam_db_prepare_input($products_data['products_ean']), 
+		'products_price' => vam_db_prepare_input($products_data['products_price']), 
+		'products_sort' => vam_db_prepare_input($products_data['products_sort']), 
+		'products_shippingtime' => vam_db_prepare_input($products_data['shipping_status']), 
+		'products_discount_allowed' => vam_db_prepare_input($products_data['products_discount_allowed']), 
+		'products_date_available' => $products_date_available, 
+		'products_weight' => vam_db_prepare_input($products_data['products_weight']), 
+		'products_status' => vam_db_prepare_input($products_data['products_status']), 
+		'products_startpage' => vam_db_prepare_input($products_data['products_startpage']), 
+		'products_startpage_sort' => vam_db_prepare_input($products_data['products_startpage_sort']), 
+		'products_tax_class_id' => vam_db_prepare_input($products_data['products_tax_class_id']), 
+		'product_template' => vam_db_prepare_input($products_data['info_template']), 
+		'options_template' => vam_db_prepare_input($products_data['options_template']), 
+		'manufacturers_id' => vam_db_prepare_input($products_data['manufacturers_id']), 
+		'label_id' => vam_db_prepare_input($products_data['label_id']), 
+		'products_fsk18' => vam_db_prepare_input($products_data['fsk18']), 
+		'products_vpe_value' => vam_db_prepare_input($products_data['products_vpe_value']), 
+		'products_vpe_status' => vam_db_prepare_input($products_data['products_vpe_status']), 
+		'products_vpe' => vam_db_prepare_input($products_data['products_vpe']), 
+		'yml_bid' => vam_db_prepare_input($products_data['yml_bid']), 
+		'yml_cbid' => vam_db_prepare_input($products_data['yml_cbid']), 
+		'products_page_url' => vam_db_prepare_input($products_page_url), 
+		'products_image_description' => vam_db_prepare_input($products_data['main_pics_descr'])
+		
+		);
                 // Products URL end
 		$sql_data_array = array_merge($sql_data_array, $permission_array);
 
@@ -689,6 +726,40 @@ class categories {
 			vam_db_perform(TABLE_PRODUCTS, $sql_data_array, 'update', 'products_id = \''.vam_db_input($products_id).'\'');
 		}
 
+      	  // BOF Bundled Products
+          if ($_POST['products_bundle'] == "yes") {
+            $to_avoid = bundle_avoid($products_id);
+            $subprods = array();
+            $subprodqty = array();
+            vam_db_query("DELETE FROM " . TABLE_PRODUCTS_BUNDLES . " WHERE bundle_id = '" . (int)$products_id . "'");
+            for ($i=0, $n=100; $i<$n; $i++) {
+              if (isset($_POST['subproduct_' . $i . '_qty']) && ((int)$_POST['subproduct_' . $i . '_qty'] > 0) && !in_array($_POST['subproduct_' . $i . '_id'], $to_avoid)) {
+                if (in_array($_POST['subproduct_' . $i . '_id'], $subprods)) {
+                  $subprodqty[$_POST['subproduct_' . $i . '_id']] += (int)$_POST['subproduct_' . $i . '_qty'];
+                  vam_db_query('update ' . TABLE_PRODUCTS_BUNDLES . ' set subproduct_qty = ' . (int)$subprodqty[$_POST['subproduct_' . $i . '_id']] . ' where bundle_id = ' . (int)$products_id . ' and subproduct_id = ' . (int)$_POST['subproduct_' . $i . '_id']);
+                } else {
+                  $subprods[] = $_POST['subproduct_' . $i . '_id'];
+                  $subprodqty[$_POST['subproduct_' . $i . '_id']] = (int)$_POST['subproduct_' . $i . '_qty'];
+                  vam_db_query("INSERT INTO " . TABLE_PRODUCTS_BUNDLES . " (bundle_id, subproduct_id, subproduct_qty) VALUES ('" . (int)$products_id . "', '" . (int)$_POST['subproduct_' . $i . '_id'] . "', '" . (int)$_POST['subproduct_' . $i . '_qty'] . "')");
+                }
+       	      }
+            }
+            if (empty($subprods)) { // not a bundle if no subproducts set
+              vam_db_query('update ' . TABLE_PRODUCTS . ' set products_bundle = "no" where products_id = ' . (int)$products_id);
+            } else { // calculate total MSRP and weight from subproducts
+              $msrp = 0;
+              $weight = 0;
+              foreach ($subprodqty as $id => $qty) {
+                $subprod_query = vam_db_query('select products_weight from ' . TABLE_PRODUCTS . ' where products_id = ' . (int)$id);
+                $subprod = vam_db_fetch_array($subprod_query);
+                //$msrp += ($subprod['products_msrp'] * $qty);
+                $weight += ($subprod['products_weight'] * $qty);
+              }
+              vam_db_query('update ' . TABLE_PRODUCTS . ' set products_quantity = 1, products_weight = "' . vam_db_input($weight) . '" where products_id = ' . (int)$products_id);
+            }
+          }
+          // EOF Bundled Products
+
 		/** AJAX Attribute Manager  **/ 
 		  require_once('attributeManager/includes/attributeManagerUpdateAtomic.inc.php'); 
 		/** AJAX Attribute Manager  end **/
@@ -779,7 +850,18 @@ class categories {
 		}
 		foreach ($languages AS $lang) {
 			$language_id = $lang['id'];
-			$sql_data_array = array ('products_name' => vam_db_prepare_input($products_data['products_name'][$language_id]), 'products_description' => vam_db_prepare_input($products_data['products_description_'.$language_id]), 'products_short_description' => vam_db_prepare_input($products_data['products_short_description_'.$language_id]), 'products_keywords' => vam_db_prepare_input($products_data['products_keywords'][$language_id]), 'products_url' => vam_db_prepare_input($products_data['products_url'][$language_id]), 'products_meta_title' => vam_db_prepare_input($products_data['products_meta_title'][$language_id]), 'products_meta_description' => vam_db_prepare_input($products_data['products_meta_description'][$language_id]), 'products_meta_keywords' => vam_db_prepare_input($products_data['products_meta_keywords'][$language_id]));
+			$sql_data_array = array (
+			
+			'products_name' => vam_db_prepare_input($products_data['products_name'][$language_id]), 
+			'products_description' => vam_db_prepare_input($products_data['products_description_'.$language_id]), 
+			'products_short_description' => vam_db_prepare_input($products_data['products_short_description_'.$language_id]), 
+			'products_keywords' => vam_db_prepare_input($products_data['products_keywords'][$language_id]), 
+			'products_url' => vam_db_prepare_input($products_data['products_url'][$language_id]), 
+			'products_meta_title' => vam_db_prepare_input($products_data['products_meta_title'][$language_id]), 
+			'products_meta_description' => vam_db_prepare_input($products_data['products_meta_description'][$language_id]), 
+			'products_meta_keywords' => vam_db_prepare_input($products_data['products_meta_keywords'][$language_id])
+			
+			);
 
 			if ($action == 'insert') {
 				$insert_sql_data = array ('products_id' => $products_id, 'language_id' => $language_id);
@@ -885,6 +967,8 @@ class categories {
 						'products_width'=>$product['products_width'],
 						'products_height'=>$product['products_height'],
 						'products_volume'=>$product['products_volume'],
+                  'products_bundle' => $product['products_bundle'],
+                  'sold_in_bundle_only' => $product['sold_in_bundle_only'],						
 						'products_to_xml'=>$product['products_to_xml'],
 						'products_model'=>$product['products_model'],
 						'products_ean'=>$product['products_ean'],
@@ -921,6 +1005,15 @@ class categories {
 
 		//get duplicate id
 		$dup_products_id = vam_db_insert_id();
+
+            // bundled products begin
+            if ($product['products_bundle'] == 'yes') {
+              $bundle_query = vam_db_query('select subproduct_id, subproduct_qty from ' . TABLE_PRODUCTS_BUNDLES . ' where bundle_id = ' . (int)$products_id);
+              while ($subprod = vam_db_fetch_array($bundle_query)) {
+                vam_db_query('insert into ' . TABLE_PRODUCTS_BUNDLES . " (bundle_id, subproduct_id, subproduct_qty) VALUES ('" . (int)$dup_products_id . "', '" . (int)$subprod['subproduct_id'] . "', '" . (int)$subprod['subproduct_qty'] . "')");
+              }
+            }
+            // bundled products end
 		
 		//duplicate image if there is one
 		if ($product['products_image'] != '') {

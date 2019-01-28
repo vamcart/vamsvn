@@ -46,11 +46,40 @@ $mark_stock = '';
 
 for ($i = 0, $n = sizeof($products); $i < $n; $i ++) {
 
-	if (STOCK_CHECK == 'true') {
-		$mark_stock = vam_check_stock($products[$i]['id'], $products[$i]['quantity']);
-		if ($mark_stock)
-			$_SESSION['any_out_of_stock'] = 1;
-	}
+	//if (STOCK_CHECK == 'true') {
+		//$mark_stock = vam_check_stock($products[$i]['id'], $products[$i]['quantity']);
+		//if ($mark_stock)
+			//$_SESSION['any_out_of_stock'] = 1;
+	//}
+	
+      if (STOCK_CHECK == 'true') {
+        // begin Bundled Products
+        if ($products[$i]['bundle'] == "yes") {
+          $mark_stock = $bundles_stock_check[$products[$i]['id']];
+        } elseif (in_array($products[$i]['id'], $product_ids_in_bundles)) {
+          // if ordering individually product that is also contained in a bundle in this order must be able to cover both quantities
+          // check against product left on hand after bundles have been sold
+          $mark_stock = '';
+          if ($product_on_hand[$products[$i]['id']] <= 0) {
+            $mark_stock = '<span class="markProductOutOfStock">' . STOCK_MARK_PRODUCT_OUT_OF_STOCK . '<br />' . STOCK_MARK_PRODUCT_OUT_OF_STOCK . TEXT_NOT_AVAILABLEINSTOCK . '</span>';
+          } elseif ($product_on_hand[$products[$i]['id']] < $products[$i]['quantity']) {
+            $mark_stock = '<span class="markProductOutOfStock">' . STOCK_MARK_PRODUCT_OUT_OF_STOCK . '<br />' . STOCK_MARK_PRODUCT_OUT_OF_STOCK . TEXT_ONLY_THIS_AVAILABLEINSTOCK1 . $product_on_hand[$products[$i]['id']] . TEXT_ONLY_THIS_AVAILABLEINSTOCK2 . '</span>';
+          }
+        } else {
+          $mark_stock = vam_check_stock($products[$i]['id'], $products[$i]['quantity']);
+        }
+        if (vam_not_null($mark_stock)) {
+          $_SESSION['any_out_of_stock'] = 1;
+
+          $products_name .= $mark_stock;
+        }
+      }
+      if ($products[$i]['sold_in_bundle_only'] == 'yes') {
+        $products_name .= '<br /><span class="markProductOutOfStock">' . TEXT_BUNDLE_ONLY . '</span>';
+        $any_bundle_only = true;
+      }
+      // end Bundled Products	
+	
 
 	$image = '';
 	if ($products[$i]['image'] != '') {
