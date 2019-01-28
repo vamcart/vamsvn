@@ -254,18 +254,20 @@ define('TEXT_PRODUCTS_QUANTITY_MAX', 'Макс. количество для за
   define ('SPECIFICATIONS_TEXT_ALL', 'Все');
 // End Products Specifications
 
-  define ('TEXT_IMAGE_DESCRIPTION', 'Описание картинки: ');
+define('TEXT_IMAGE_DESCRIPTION', 'Описание картинки: ');
 
-define('TEXT_PRODUCTS_BUNDLE', 'Set Bundles:');
-define('TEXT_ADD_LINE', 'Add a  line');
-define('TEXT_ADD_PRODUCT', 'Add to bundle: ');
-define('TEXT_REMOVE_PRODUCT', 'Remove from bundle');
-define('TEXT_BUNDLE_HEADING', 'Product Name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Qty&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;select product to add from pull down menu below');
-define('TEXT_PRODUCTS_BY_BUNDLE', 'This product contains the following items:');
-define('TEXT_RATE_COSTS', 'Cost of separate parts:');
-define('TEXT_IT_SAVE', 'You save');
-define('ENTRY_AVAILABLE_SEPARATELY', 'This product is available for individual sale.');
-define('ENTRY_IN_BUNDLE_ONLY', 'This product is available for sale only as a part of a bundle.');
-define('TEXT_SOLD_IN_BUNDLE', 'This product may be purchased only as a part of the following bundle(s):');
+define('TEXT_PRODUCTS_BUNDLE', 'Добавить комплект:');
+define('TEXT_ADD_LINE', 'Добавить строку');
+define('TEXT_ADD_PRODUCT', 'Добавить к комплекту: ');
+define('TEXT_REMOVE_PRODUCT', 'Удалить из комплекта');
+define('TEXT_BUNDLE_HEADING', 'Название товара&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Количество&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;выберите товар из dropdown меню ниже');
+define('TEXT_PRODUCTS_BY_BUNDLE', 'Данный комплект состоит из следующих товаров:');
+define('TEXT_RATE_COSTS', 'Стоимость товара:');
+define('TEXT_IT_SAVE', 'Вы экономите');
+define('ENTRY_AVAILABLE_SEPARATELY', 'Данный товар может быть оформлен как отдельная единица.');
+define('ENTRY_IN_BUNDLE_ONLY', 'Данный товар может быть оформлен только в составе комплекта.');
+define('TEXT_SOLD_IN_BUNDLE', 'Данный товар может быть оформлен только в составе комплекта:');
+
+define ('TEXT_TAB_BUNDLES', 'Комплекты');
 
 ?>
