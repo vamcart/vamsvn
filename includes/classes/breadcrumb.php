@@ -34,15 +34,17 @@
 
     function trail($separator = ' - ') {
       $trail_string = '';
+      $position = 1;
 
       for ($i=0, $n=sizeof($this->_trail); $i<$n; $i++) {
         if (isset($this->_trail[$i]['link']) && vam_not_null($this->_trail[$i]['link'])) {
-          $trail_string .= '<a href="' . $this->_trail[$i]['link'] . '">' . $this->_trail[$i]['title'] . '</a>';
+          $trail_string .= '<span itemscope itemprop="itemListElement" itemtype="http://schema.org/ListItem"><a itemprop="item" href="' . $this->_trail[$i]['link'] . '"><span itemprop="name">' . $this->_trail[$i]['title'] . '</span></a><meta itemprop="position" content="'.$position.'" /></span>';
         } else {
-          $trail_string .= $this->_trail[$i]['title'];
+          $trail_string .= '<span itemscope itemprop="itemListElement" itemtype="http://schema.org/ListItem"><span itemprop="name">'.$this->_trail[$i]['title'].'</span><meta itemprop="position" content="'.$position.'" /><meta itemprop="item" content="' . HTTP_SERVER . $_SERVER['REQUEST_URI'] . '" /></span>';
         }
 
         if (($i+1) < $n) $trail_string .= $separator;
+        $position++;
       }
 
       return $trail_string;
