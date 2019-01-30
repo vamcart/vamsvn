@@ -14,7 +14,7 @@
 				{if $smarty.const.AJAX_CART == 'true'}
 <form id="update_cart{counter name=1}" class="cart_quantity" action="{$products_data.LINK}/action/update_product" method="post" onsubmit="doDelProduct({counter name=2}); return false;">{$products_data.PRODUCTS_QTY}
 {/if}
-                  <h4 class="media-heading"><a href="{$products_data.LINK}">{$products_data.NAME|vam_truncate:$smarty.const.MAX_DISPLAY_CART:"...":true}</a> {if $smarty.const.AJAX_CART == 'true'}<input type="image" src="images/delete.gif" title="{#text_delete#}" alt="{#text_delete#}" /></form>{/if}</h4>
+                  <span class="media-heading"><a href="{$products_data.LINK}">{$products_data.NAME|vam_truncate:$smarty.const.MAX_DISPLAY_CART:"...":true}</a></span> {if $smarty.const.AJAX_CART == 'true'}<input type="image" src="images/delete.gif" title="{#text_delete#}" alt="{#text_delete#}" /></form>{/if}
 						{if $products_data.ATTRIBUTES!=''} 
 						{foreach key=key_data item=item_data from=$products_data.ATTRIBUTES} 
 						{$item_data.NAME}: {$item_data.VALUE}<br />
