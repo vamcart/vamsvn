@@ -39,7 +39,7 @@ $order = new order($inv_id);
 $order_sum = $order->info['total'];
 
 // checking and handling
-if ($_POST['operation'] == 'approved' && $_POST['status'] == 1) {
+if ($_POST['operation'] == 'approved') {
 //if (number_format($_POST['withdraw_amount'],2) == number_format($order->info['total'],2) && $_POST['codepro'] == 'false' && $_POST['unaccepted'] == 'false') {
   $sql_data_array = array('orders_status' => MODULE_PAYMENT_OPENBANK_ORDER_STATUS_ID);
   vam_db_perform('orders', $sql_data_array, 'update', "orders_id='".$inv_id."'");
