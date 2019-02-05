@@ -331,7 +331,17 @@ $content_meta = vam_db_fetch_array($content_meta_query, true);
 <?php
 
     break;
-    
+
+  case (strstr($PHP_SELF, FILENAME_PRODUCT_REVIEWS)):
+
+?>
+<title><?php echo TEXT_PAGE_PRODUCT_REVIEWS . " " . $product->data['products_name']; ?></title>
+<meta name="description" content="<?php echo TEXT_PAGE_PRODUCT_REVIEWS . ' ' . $product->data['products_name']; ?>" />
+<meta name="keywords" content="<?php echo TEXT_PAGE_PRODUCT_REVIEWS . ' ' . $product->data['products_name']; ?>" />
+<?php
+
+    break;
+        
   case (strstr($PHP_SELF, FILENAME_REVIEWS)):
 
 ?>
@@ -373,7 +383,7 @@ $reviews = vam_db_fetch_array($reviews_query);
 <?php
 
     break;
-    
+
   case (strstr($PHP_SELF, FILENAME_ADVANCED_SEARCH_RESULT)):
 
 ?>
