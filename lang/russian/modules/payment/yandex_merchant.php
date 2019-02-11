@@ -20,7 +20,7 @@
   define('MODULE_PAYMENT_YANDEX_MERCHANT_TEXT_TITLE', 'Яндекс.Касса (Карточки Visa, MasterCard, Яндекс.Деньги)');
   define('MODULE_PAYMENT_YANDEX_MERCHANT_TEXT_PUBLIC_TITLE', 'Яндекс.Касса (Карточки Visa, MasterCard, Яндекс.Деньги)');
   define('MODULE_PAYMENT_YANDEX_MERCHANT_TEXT_DESCRIPTION', 'После нажатия кнопки Подтвердить заказ Вы перейдёте на сайт платёжной системы для оплаты заказа, после оплаты Ваш заказ будет выполнен.');
-  define('MODULE_PAYMENT_YANDEX_MERCHANT_TEXT_ADMIN_DESCRIPTION', 'Модуль оплаты Яндекс.Касса.');
+  define('MODULE_PAYMENT_YANDEX_MERCHANT_TEXT_ADMIN_DESCRIPTION', 'Как правильно настроить модуль оплаты Яндекс.Касса читайте в нашем <a href="http://blog.vamshop.ru/2014/02/20/настройка-модуля-оплаты-яндекс-деньг"><u>блоге</u></a>.');
   
 define('MODULE_PAYMENT_YANDEX_MERCHANT_STATUS_TITLE' , 'Разрешить модуль Яндекс.Касса');
 define('MODULE_PAYMENT_YANDEX_MERCHANT_STATUS_DESC' , 'Вы хотите разрешить использование модуля при оформлении заказов?');
