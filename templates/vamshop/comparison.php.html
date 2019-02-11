@@ -8,8 +8,12 @@
 <div class="header-left">
 <a href="{$mainpage}"><img src="{$tpl_path}img/logo.png" alt="{$store_name}" /></a>
 </div>
-<div class="header-center">
-<h4><a href="tel:{$smarty.const.STORE_TELEPHONE}">{$smarty.const.STORE_TELEPHONE}</a>, <a href="contact_us.html">{#text_contact_us#}</a></h4>
+<div class="header-center" itemscope itemtype="http://schema.org/Organization">
+<span itemprop="name">{$smarty.const.STORE_NAME}</span>
+<div itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
+{$smarty.const.STORE_NAME_ADDRESS}
+</div>
+<h4><a href="tel:{$smarty.const.STORE_TELEPHONE}"><i class="fa fa-phone"></i> <span itemprop="telephone">{$smarty.const.STORE_TELEPHONE}</span></a>, <a href="contact_us.html"><i class="fa fa-pencil"></i> {#text_contact_us#}</a></h4>
 </div>
 <div class="header-right">
 &nbsp;
