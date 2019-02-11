@@ -43,7 +43,6 @@ Disallow: /product_notifications.php
 Disallow: /product_compare.php
 Disallow: /product_reviews_write.php
 Disallow: /shipping.php
-Disallow: /shop_content.php
 Disallow: /export/
 Disallow: /download/
 Disallow: /includes/
