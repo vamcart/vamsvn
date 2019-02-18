@@ -1022,9 +1022,10 @@ class categories {
 			$pname_arr = explode('.', $product['products_image']);
 			$nsuffix = array_pop($pname_arr);
 			$dup_products_image_name = $dup_products_id.'_0'.'.'.$nsuffix;
+			$dup_products_image_description = $product['products_image_description'];
 
 			//write to DB
-			vam_db_query("UPDATE ".TABLE_PRODUCTS." SET products_image = '".$dup_products_image_name."' WHERE products_id = '".$dup_products_id."'");
+			vam_db_query("UPDATE ".TABLE_PRODUCTS." SET products_image = '".$dup_products_image_name."', products_image_description = '".$dup_products_image_description."' WHERE products_id = '".$dup_products_id."'");
 
 			@ copy(DIR_FS_CATALOG_ORIGINAL_IMAGES.'/'.$product['products_image'], DIR_FS_CATALOG_ORIGINAL_IMAGES.'/'.$dup_products_image_name);
 			@ copy(DIR_FS_CATALOG_INFO_IMAGES.'/'.$product['products_image'], DIR_FS_CATALOG_INFO_IMAGES.'/'.$dup_products_image_name);
