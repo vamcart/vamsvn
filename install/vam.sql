@@ -27,7 +27,7 @@
 #         (don't use inline comments)
 #  --------------------------------------------------------------
 
-SET NAMES = "utf8";
+SET NAMES "utf8";
 SET SQL_MODE = "";
 
 DROP TABLE IF EXISTS address_book;
