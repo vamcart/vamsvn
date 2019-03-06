@@ -1,0 +1,49 @@
+<?php
+/* -----------------------------------------------------------------------------------------
+   $Id: vam_display_banner.inc.php 899 2007-02-07 10:51:57 VaM $
+
+   VaM Shop - open source ecommerce solution
+   http://vamshop.ru
+   http://vamshop.com
+
+   Copyright (c) 2007 VaM Shop
+   -----------------------------------------------------------------------------------------
+   based on: 
+   (c) 2000-2001 The Exchange Project  (earlier name of osCommerce)
+   (c) 2002-2003 osCommerce(banner.php,v 1.10 2003/02/11); www.oscommerce.com 
+   (c) 2003	 nextcommerce (vam_display_banner.inc.php,v 1.3 2003/08/1); www.nextcommerce.org
+   (c) 2004 xt:Commerce (vam_display_banner.inc.php,v 1.3 2004/08/25); xt-commerce.com
+
+   Released under the GNU General Public License 
+   ---------------------------------------------------------------------------------------*/
+   
+// Display a banner from the specified group or banner id ($identifier)
+  function vam_display_banners($action, $identifier) {
+
+      $banners_query = vam_db_query("select count(*) as count from " . TABLE_BANNERS . " where status = '1' and banners_group = '" . $identifier . "'");
+      $banners = vam_db_fetch_array($banners_query);
+      if ($banners['count'] > 0) {
+
+
+      $banners_data = vam_db_query("select banners_id, banners_title, banners_image, banners_html_text from " . TABLE_BANNERS . " where status = '1' and banners_group = '" . $identifier . "'");
+
+		$banners_array = array ();
+
+      while ($banner = vam_db_fetch_array($banners_data, true)) {      	
+			$banners_array[] = array (
+			
+			'id' => $banner['banners_id'], 
+			'title' => $banner['banners_title'], 
+			'image' => $banner['banners_image'],
+			'url' => vam_href_link(FILENAME_REDIRECT, 'action=banner&goto=' . $banner['banners_id'])
+			
+			);
+		}
+
+    vam_update_banner_display_count($banner['banners_id']);
+
+      }
+
+    return $banners_array;
+  }
+ ?>
