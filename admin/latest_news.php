@@ -57,9 +57,9 @@
 
           $sql_data_array = array('headline'   => vam_db_prepare_input($_POST['headline']),
                                   'news_page_url'    => vam_db_prepare_input($news_page_url),
-                                  'news_head_title' => vam_db_prepare_input($news_head_title),
-                                  'news_head_desc' => vam_db_prepare_input($news_head_desc),
-                                  'news_head_keys' => vam_db_prepare_input($news_head_keys),
+                                  'news_head_title' => vam_db_prepare_input($_POST['news_head_title']),
+                                  'news_head_desc' => vam_db_prepare_input($_POST['news_head_desc']),
+                                  'news_head_keys' => vam_db_prepare_input($_POST['news_head_keys']),
                                   'content'    => vam_db_prepare_input($_POST['content']),
                                   'date_added' => 'now()', //uses the inbuilt mysql function 'now'
                                   'language'   => vam_db_prepare_input($_POST['item_language']),
