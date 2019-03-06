@@ -214,15 +214,33 @@ $content_meta = vam_db_fetch_array($content_meta_query, true);
 
   case ($_GET['news_id']):
 
-			$news_meta_query = vamDBquery("SELECT headline
+			$news_meta_query = vamDBquery("SELECT headline, news_head_title, news_head_desc, news_head_keys
 			                                            FROM " . TABLE_LATEST_NEWS . "
 			                                            WHERE news_id='" . (int)$_GET['news_id'] . "' and
 			                                            language='" . (int)$_SESSION['languages_id'] . "'");
 			$news_meta = vam_db_fetch_array($news_meta_query, true);
+// shaklov
+		if ($news_meta['news_head_title'] == '') {
+			$news_title = $news_meta['headline'];
+		} else {
+			$news_title = $news_meta['news_head_title'];
+		}
+
+		if ($news_meta['news_head_desc'] == '') {
+			$news_desc = META_DESCRIPTION;
+		} else {
+			$news_desc = $news_meta['news_head_desc'];
+		}
+
+		if ($news_meta['news_head_keys'] == '') {
+			$news_keys = META_KEYWORDS;
+		} else {
+			$news_keys = $news_meta['news_head_keys'];
+		}
 ?>
-<title><?php echo $news_meta['headline']; ?></title>
-<meta name="description" content="<?php echo META_DESCRIPTION; ?>" />
-<meta name="keywords" content="<?php echo META_KEYWORDS; ?>" />
+<title><?php echo $news_title . ' - ' . TITLE; ?></title>
+<meta name="description" content="<?php echo $news_desc; ?>" />
+<meta name="keywords" content="<?php echo $news_keys; ?>" />
 <?php
 
     break;

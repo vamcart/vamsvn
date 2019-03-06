@@ -27,6 +27,10 @@ define('TEXT_DELETE_ITEM_INTRO', 'Вы уверены, что хотите уд�
 define('TEXT_LATEST_NEWS_HEADLINE', 'Заголовок');
 define('TEXT_LATEST_NEWS_CONTENT', 'Новость');
 
+define('TEXT_LATEST_NEWS_META_TITLE', 'Meta Title');
+define('TEXT_LATEST_NEWS_META_DESCRIPTION', 'Meta Description');
+define('TEXT_LATEST_NEWS_META_KEYWORDS', 'Meta Keywords');
+
 define('IMAGE_NEW_NEWS_ITEM', 'Добавить новость');
 define('IMAGE_EDIT_NEWS_ITEM', 'Изменить новость');
 define('TEXT_LATEST_NEWS_LANGUAGE', 'Язык');
