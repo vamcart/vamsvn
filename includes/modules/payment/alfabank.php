@@ -134,7 +134,8 @@
         if ($insert_order == true) {
           $order_totals = array();
           if (is_array($order_total_modules->modules)) {
-            foreach ($order_total_modules->modules as $value) {
+            reset($order_total_modules->modules);
+            while (list(, $value) = each($order_total_modules->modules)) {
               $class = substr($value, 0, strrpos($value, '.'));
               if ($GLOBALS[$class]->enabled) {
                 for ($i=0, $n=sizeof($GLOBALS[$class]->output); $i<$n; $i++) {
@@ -344,63 +345,124 @@ if ($_SERVER["HTTP_X_FORWARDED_FOR"]) {
     			$country = (!isset($order->delivery["country"])) ? null : $order->delivery["country"] . ', ';
     			$ship_address = $postcode . $city . $street_address;
 
-		if (defined('MODULE_PAYMENT_ALFABANK_SEND_CHECK') && constant('MODULE_PAYMENT_ALFABANK_SEND_CHECK') == 'True') {
+        $_sgateway = $this->form_action_url;
+        
+        $send_check = 1;        
+        if ($send_check == 1) {
+            $itemsCnt = 1;
+            $new_amount = 0;
 
-            $receipt = array(
-                'customerContact' => $order->customer['email_address'],
-                'items' => array(),
+            // варианты налогов (если у продукта default rules, то product_tax_id=0)
+            $optionTaxes = array(
+                'Tax',
+                'DATax',
+                'VatTax',
+                'bDBTax',
+                'bMarge'
             );
 
-            foreach ($order->products as $product) {
+            if ($order->products) {
+                foreach ($order->products as $product) {
+                    $price = round(number_format($product['final_price'], 2, '.', '') * 100);
+                    $vat = 0;
 
-                    $id_tax = 1;
+                    // PRODUCT TAX
 
-                $receipt['items'][] = array(
-                    'quantity' => $product['qty'],
-                    'text' => substr($product['name'], 0, 128),
-                    'tax' => $id_tax,
-                    'price' => array(
-                        'amount' => number_format($product['final_price'], 2, '.', ''),
-                        'currency' => 'RUB'
-                    ),
-                );
+                    $item = array();
+
+                    $item['positionId'] = $itemsCnt++;
+                    $item['name'] = mb_substr($product['name'],0,64);
+                    $item['quantity'] = array(
+                        'value' => $product['qty'],
+                        'measure' => "piece"
+                    );
+                    $item['itemAmount'] = round($price * $product['qty']);
+                    $item['itemCode'] = $product['model'];
+
+                    $item['tax'] = array(
+                        'taxType' => $vat,
+                        'taxSum' => 0,
+                    );
+                    $item['itemPrice'] = $price;
+
+                    // FFD 1.05 added
+
+                        $attributes = array();
+                        $attributes[] = array(
+                            "name" => "paymentMethod",
+                            "value" => 1
+                        );
+                        $attributes[] = array(
+                            "name" => "paymentObject",
+                            "value" => 1
+                        );
+
+                        $item['itemAttributes']['attributes'] = $attributes;
+
+                    $orderBundle['cartItems']['items'][] = $item;
+                    $new_amount += round($price * $product['qty']);
+                }
             }
 
-            if ($order->info && $order->info['shipping_cost'] > 0) {
-                $id_tax = 1;
-                $receipt['items'][] = array(
-                    'quantity' => 1,
-                    'text' => substr('Доставка - ' . $order->info['shipping_method'], 0, 128),
-                    'tax' => $id_tax,
-                    'price' => array(
-                        'amount' => number_format($order->info['shipping_cost'], 2, '.', ''),
-                        'currency' => 'RUB'
+
+            // DELIVERY POSITION
+            if ($order->info['shipping_cost'] > 0) {
+
+                $delivery_price = round(number_format($order->info['shipping_cost'], 2, '.', '') * 100);
+
+                $tax = 0;
+                $vat = 0;
+
+                $delivery = array(
+                    'positionId' => $itemsCnt,
+                    'name' => "Доставка",
+                    'quantity' => array(
+                        'value' => 1,
+                        'measure' => "piece"
                     ),
+                    'itemAmount' => $delivery_price,
+                    'itemCode' => "delivery",
+                    'tax' => array(
+                        //todo: some question taxType
+                        'taxType' => 0,
+                        'taxSum' => 0,
+                    ),
+                    'itemPrice' => $delivery_price,
                 );
+
+                // FFD 1.05 added
+
+                    $attributes = array();
+                    $attributes[] = array(
+                        "name" => "paymentMethod",
+                        "value" => 1
+                    );
+                    $attributes[] = array(
+                        "name" => "paymentObject",
+                        "value" => 4
+                    );
+                    $delivery['itemAttributes']['attributes'] = $attributes;
+
+
+                $orderBundle['cartItems']['items'][] = $delivery;
+                $new_amount += $delivery_price;
             }
-        }
 
-      $process_button_string = vam_draw_hidden_field('shopId', MODULE_PAYMENT_ALFABANK_SHOP_ID) .
-                               vam_draw_hidden_field('scid', MODULE_PAYMENT_ALFABANK_SCID) .
-                               vam_draw_hidden_field('sum', $order_sum) . 
-                               vam_draw_hidden_field('customerNumber', $order->customer['id']) .
-                               vam_draw_hidden_field('orderNumber', substr($_SESSION['cart_alfabank_id'], strpos($_SESSION['cart_alfabank_id'], '-')+1)) .
-                               vam_draw_hidden_field('shopSuccessURL', vam_href_link(FILENAME_CHECKOUT_PROCESS, '', 'SSL')) .
-                               vam_draw_hidden_field('shopFailURL', vam_href_link(FILENAME_CHECKOUT, '', 'SSL')) .
-                               vam_draw_hidden_field('cps_email', $order->customer['email_address']) .
-                               vam_draw_hidden_field('cps_phone', $order->customer['telephone']) . 
-                               vam_draw_hidden_field('cms_name', 'vamshop') . 
-                               (defined('MODULE_PAYMENT_ALFABANK_SEND_CHECK') && constant('MODULE_PAYMENT_ALFABANK_SEND_CHECK') == 'True' ? vam_draw_hidden_field1('ym_merchant_receipt', json_encode($receipt, JSON_UNESCAPED_UNICODE)) : '') . "\n" .
-                               vam_draw_hidden_field('paymentType', MODULE_PAYMENT_ALFABANK_PAYMENT_TYPE);
+            $args['taxSystem'] = 0;
+            $args['orderBundle']['orderCreationDate'] = date('c');
+            $args['orderBundle'] = json_encode($orderBundle);
 
-
-        $_sgateway = $this->form_action_url;
+        } //END send_order
+        
+        //echo var_dump($orderBundle);
         
         $_qdata = array(
             'userName' => MODULE_PAYMENT_ALFABANK_API_LOGIN,
             'password' => MODULE_PAYMENT_ALFABANK_API_PASS,
             'orderNumber' => urlencode(substr($_SESSION['cart_alfabank_id'], strpos($_SESSION['cart_alfabank_id'], '-')+1)),
             'amount' => urlencode($order_sum*100),
+            'taxSystem' => 0,
+            'orderBundle' => $args['orderBundle'],
             'returnUrl' => vam_href_link('alfabank.php', '', 'SSL'),
             'failUrl' => vam_href_link(FILENAME_CHECKOUT_SHIPPING, '', 'SSL')
 	);
