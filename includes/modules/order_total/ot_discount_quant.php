@@ -3,7 +3,7 @@
   class ot_discount_quant {
     var $title, $output;
 
-    function ot_discount_quant() {
+    function __construct() {
      $this->code = 'ot_discount_quant';
       $this->title = MODULE_ORDER_TOTAL_DISCOUNT_QUANT_TITLE;
       $this->description = MODULE_ORDER_TOTAL_DISCOUNT_QUANT_DESCRIPTION;

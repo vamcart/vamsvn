@@ -13,7 +13,7 @@
   class ot_discountpayment {
     var $title, $output;
 
-    function ot_discountpayment() {
+	function __construct() {
       $this->code = 'ot_discountpayment';
       $this->title = MODULE_ORDER_TOTAL_DISCOUNTPAYMENT_TITLE;
       $this->description = MODULE_ORDER_TOTAL_DISCOUNTPAYMENT_DESCRIPTION;

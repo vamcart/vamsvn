@@ -13,7 +13,7 @@
   class ot_surchargeshipping {
     var $title, $output;
 
-    function ot_surchargeshipping() {
+    function __construct() {
       $this->code = 'ot_surchargeshipping';
       $this->title = MODULE_ORDER_TOTAL_SURCHARGESHIPPING_TITLE;
       $this->description = MODULE_ORDER_TOTAL_SURCHARGESHIPPING_DESCRIPTION;

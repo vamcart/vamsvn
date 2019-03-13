@@ -13,7 +13,7 @@
   class ot_discountshipping {
     var $title, $output;
 
-    function ot_discountshipping() {
+    function __construct() {
       $this->code = 'ot_discountshipping';
       $this->title = MODULE_ORDER_TOTAL_DISCOUNTSHIPPING_TITLE;
       $this->description = MODULE_ORDER_TOTAL_DISCOUNTSHIPPING_DESCRIPTION;

@@ -13,7 +13,7 @@
   class ot_surcharge {
     var $title, $output;
 
-    function ot_surcharge() {
+    function __construct() {
       $this->code = 'ot_surcharge';
       $this->title = MODULE_PAYMENT_TITLE;
       $this->description = MODULE_PAYMENT_DESCRIPTION;

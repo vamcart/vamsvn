@@ -19,7 +19,7 @@ modified to calc discount correctly when tax is included in discount
   class ot_lev_discount {
     var $title, $output;
 
-    function ot_lev_discount() {
+    function __construct() {
       $this->code = 'ot_lev_discount';
       $this->title = MODULE_ORDER_TOTAL_LEV_DISCOUNT_TITLE;
       $this->description = MODULE_ORDER_TOTAL_LEV_DISCOUNT_DESCRIPTION;
