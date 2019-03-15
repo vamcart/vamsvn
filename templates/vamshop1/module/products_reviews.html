@@ -1,5 +1,8 @@
 {config_load file="$language/lang_$language.conf" section="reviews"}<br />
 <h1>{$PRODUCTS_NAME} {#heading_reviews#}</h1>
+
+{if {$PRODUCTS_REVIEWS_COUNT} > 0}
+
 <div class="row-fluid reviews-title" itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">
 	<div class="span8 title">
 	{#heading_reviews#} <span itemprop="reviewCount">{$PRODUCTS_REVIEWS_COUNT}</span>, {#text_rating#} <span itemprop="ratingValue">{$PRODUCTS_REVIEWS_RATING|number_format:2}</span>
@@ -26,6 +29,8 @@
 </div>
 </div>
 {/foreach}
+
+{/if}
 
 {if $TEXT_FIRST_REVIEW != ''}
 <div class="page">
