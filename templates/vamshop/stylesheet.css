@@ -3290,4 +3290,10 @@ div.CheckoutError
   background-color: transparent;
 }
 
+.img-responsive {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
 /*]]>*/
