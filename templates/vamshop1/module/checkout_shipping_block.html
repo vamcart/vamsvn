@@ -5,18 +5,16 @@
 {$FREE_SHIPPING_DESCRIPTION}
 </p>
 {else}   {foreach name=aussen item=module_data from=$module_content}
-<div class="{cycle values="itemOdd,itemEven"}">   <p>
-{$module_data.icon} <span class="bold">{$module_data.module}</span>
-</p>
-<!-- QIWI Post code begin -->
-{if $module_data.id == 'qiwipost'}
-{$module_data.qiwipost}
-{/if}
-<!-- QIWI Post code end -->
-{if $module_data.error != ''}<p>
+<div class="{cycle values="itemOdd,itemEven"}">   {if $module_data.error != ''}<p>
 {$module_data.error}
 </p>{else} {foreach name=aussen item=method_data from=$module_data.methods} <p>
-<label for="{$method_data.id}">{$method_data.radio_field}&nbsp;{$method_data.title}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{$method_data.price}</label>
+
+<label for="{$method_data.id}">
+{$method_data.radio_field}&nbsp;{$module_data.icon} <span class="bold">{$module_data.module}</span>
+
+{$method_data.title}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{$method_data.price}
+</label>
+
 </p>
 
 {if $method_data.id == "pickpoint"}
