@@ -9,7 +9,7 @@
 
 {if $AUTHOR_IMAGE}
 <p>
-<img src="{$smarty.const.DIR_WS_CATALOG}{$smarty.const.DIR_WS_IMAGES}/articles/{$AUTHOR_IMAGE}" alt="{$AUTHOR_NAME}" />
+<img src="{$smarty.const.DIR_WS_CATALOG}{$smarty.const.DIR_WS_IMAGES}/articles/{$AUTHOR_IMAGE}" class="img-responsive" alt="{$AUTHOR_NAME|htmlentities|strip_tags}" />
 </p>
 {/if}
 
@@ -29,7 +29,7 @@
 
 {if $module_data.ARTICLE_IMAGE}
 <p>
-<a href="{$module_data.ARTICLE_LINK}"><img src="{$smarty.const.DIR_WS_CATALOG}{$smarty.const.DIR_WS_IMAGES}articles/{$module_data.ARTICLE_IMAGE}" alt="{$module_data.ARTICLE_NAME}" /></a>
+<a href="{$module_data.ARTICLE_LINK}"><img src="{$smarty.const.DIR_WS_CATALOG}{$smarty.const.DIR_WS_IMAGES}articles/{$module_data.ARTICLE_IMAGE}" class="img-responsive" alt="{$module_data.ARTICLE_NAME|htmlentities|strip_tags}" /></a>
 </p>
 {/if}
 
