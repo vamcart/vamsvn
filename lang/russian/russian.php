@@ -685,4 +685,19 @@ define('TEXT_BACK', 'Вернуться');
 
 define('PRIVACY_TEXT','Нажимая кнопку, я даю согласие на обработку своих персональных данных. <a href="privacy.html">Подробнее о защите персональной информации.</a>');
 
+//BOF Bundled Products
+
+define('TEXT_PRODUCTS_BY_BUNDLE', 'This product contains the following items:');
+define('TEXT_RATE_COSTS', 'Cost of separate parts:');
+define('TEXT_IT_SAVE', 'You save');
+define('TEXT_SOLD_IN_BUNDLE', 'This product may be purchased only as a part of the following bundle(s):');
+
+define('IMAGE_BUTTON_OUT_OF_STOCK', 'Out of Stock');
+define('TEXT_BUNDLE_ONLY', 'Not Sold Separately');
+//EOF Bundled Products
+
+define('TEXT_POPUP_CART_ADD','Товар добавлен в корзину!');
+define('TEXT_POPUP_CART_CONTINUE','Продолжить покупки');
+define('TEXT_POPUP_CART_CART', 'Перейти в корзину');
+
 ?>

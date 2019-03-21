@@ -33,6 +33,12 @@ img
 	  max-width: 100%;
    }
 
+.img-responsive {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
 h2, h3
    {
      margin: 0 0 0 0;
@@ -3254,47 +3260,98 @@ div.CheckoutError
 		padding: 0.5em;
 	}
 
-#load_status_bg {background: url(img/wind_bg.png) repeat; position: fixed;z-index: 2300;width: 100%;height: 100%;top: 0px;left: 0px;}
-#load_status_bg .load_status_image {background:url(img/ajax-loader.gif);width:100%; margin: 270px auto 0;z-index: 2300;width: 54px;height: 55px;}		
+#load_status_bg
+	{
+		background: url(img/wind_bg.png) repeat; 
+		position: fixed;
+		z-index: 2300;
+		width: 100%;
+		height: 100%;
+		top: 0px;
+		left: 0px;
+	}
 
-#myModal .modal-body {
-	max-height: 400px;
-}   
+#load_status_bg .load_status_image 
+	{
+		background:url(img/ajax-loader.gif);
+		width:100%; 
+		margin: 270px auto 0;
+		z-index: 2300;
+		width: 54px;
+		height: 55px;		
+	}
 
-.label {
-  background-color: #dd2c00;
-  color: #fff;
-  right: 0;
-  padding: 0 15px 0 15px;
-  margin: 0;
-  height: 40px;
-  font-size: 16px;
-  line-height: 40px;
-  text-align: center;
-  vertical-align: middle;
-  border-radius: 0px;
-}
+#myModal .modal-body
+	{
+		max-height: 400px;
+	}
 
-.label.new {
-  background-color: #005685;
-}
+/* Яолыки товара */
+.label
+	{
+		background-color: #dd2c00;
+		color: #fff;
+		right: 0;
+		padding: 0 15px 0 15px;
+		margin: 0;
+		height: 40px;
+		font-size: 16px;
+		line-height: 40px;
+		text-align: center;
+		vertical-align: middle;
+		border-radius: 0px;
+	}
 
-.label.hit {
-  background-color: #d91414;
-}
+.label.new
+	{
+		background-color: #005685;
+	}
 
-.label.sale {
-  background-color: #006100;
-}
+.label.hit
+	{
+		background-color: #d91414;
+	}
 
-.label.html {
-  background-color: transparent;
-}
+.label.sale
+	{
+		background-color: #006100;
+	}
 
-.img-responsive {
-  display: block;
-  max-width: 100%;
-  height: auto;
-}
+.label.html
+	{
+		background-color: transparent;
+	}
+/* /Яолыки товара */
+
+/* Корзина popup */
+.cart_popup
+	{
+		z-index:5000;
+		overflow:hidden;
+		background:#fff;
+		box-shadow: 0 1px 4px 0 rgba(0,0,0,.1);
+		left:50%;
+		line-height:18px;
+		padding:15px;
+		position:fixed;
+		top:50%;
+		transition:all 0.3s ease-in-out 0s;
+		margin-left: -180px;
+		margin-top: -70px;
+		width: 360px
+	}
+
+.cart_popuptext
+	{
+		font-size:18px;
+		padding:0 0 12px;
+		text-align:center
+	}
+
+.cart_popuplink
+	{
+		text-align: center;
+	}
+/* /Корзина popup */
 
 /*]]>*/
