@@ -33,12 +33,6 @@ img
 	  max-width: 100%;
    }
 
-.img-responsive {
-  display: block;
-  max-width: 100%;
-  height: auto;
-}
-
 h2, h3
    {
      margin: 0 0 0 0;
