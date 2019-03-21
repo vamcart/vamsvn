@@ -30,6 +30,7 @@ body
 img
    {
 	  border: 0;
+	  max-width: 100%;
    }
 
 h2, h3
