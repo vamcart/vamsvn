@@ -295,10 +295,10 @@ $content_meta = vam_db_fetch_array($content_meta_query, true);
 
   case ($_GET['articles_id']):
 
-			$articles_meta_query = vamDBquery("SELECT articles_id, articles_description, articles_name, articles_head_title_tag, articles_head_desc_tag, articles_head_keywords_tag
-			                                            FROM " . TABLE_ARTICLES_DESCRIPTION . "
-			                                            WHERE articles_id='" . (int)$_GET['articles_id'] . "' and
-			                                            language_id='" . (int)$_SESSION['languages_id'] . "'");
+			$articles_meta_query = vamDBquery("SELECT a.articles_id, a.articles_image, ad.articles_description, ad.articles_name, ad.articles_head_title_tag, ad.articles_head_desc_tag, ad.articles_head_keywords_tag
+			                                            FROM " . TABLE_ARTICLES . " a left join " . TABLE_ARTICLES_DESCRIPTION . " ad on (ad.articles_id = a.articles_id) 
+			                                            WHERE a.articles_id='" . (int)$_GET['articles_id'] . "' and
+			                                            ad.language_id='" . (int)$_SESSION['languages_id'] . "'");
 			$articles_meta = vam_db_fetch_array($articles_meta_query, true);
 
 		if ($articles_meta['articles_head_title_tag'] == '') {
@@ -327,6 +327,7 @@ $content_meta = vam_db_fetch_array($content_meta_query, true);
 <meta property="og:description" content="<?php echo substr(htmlentities(strip_tags($articles_meta['articles_description'])),0,128); ?>" />    
 <meta property="og:url" content="<?php echo vam_href_link(FILENAME_ARTICLE_INFO, 'articles_id='.$articles_meta['articles_id']); ?>" />  
 <meta property="og:type" content="website" />  
+<?php if ($articles_meta['articles_image'] != '') { ?><meta property="og:image" content="<?php echo HTTP_SERVER.DIR_WS_CATALOG.DIR_WS_IMAGES . 'articles/' . vam_parse_input_field_data($articles_meta['articles_image'], array('"' => '&quot;')); ?>" /><?php } ?>
 <?php
 
     break;
