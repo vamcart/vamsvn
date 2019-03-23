@@ -180,7 +180,7 @@
              <td class="<?php echo $css_class; ?>"><input type="checkbox" name="multi_categories[]" value="<?php echo $categories['categories_id'] . '" '; if (is_array($_POST['multi_categories'])) { if (in_array($categories['categories_id'], $_POST['multi_categories'])) { echo 'checked="checked"'; } } ?>></td>
              <td class="<?php echo $css_class; ?>" style="text-align: left; padding-left: 5px;">
              <?php 
-                echo '<a href="' . vam_href_link(FILENAME_CATEGORIES, vam_get_all_get_params(array('cPath', 'action', 'pID', 'cID')) . vam_get_path($categories['categories_id'])) . '">' . vam_image(DIR_WS_ICONS . 'folder.gif', ICON_FOLDER) . '<a>&nbsp;<b><a href="'.vam_href_link(FILENAME_CATEGORIES, vam_get_all_get_params(array('cPath', 'action', 'pID', 'cID')) . vam_get_path($categories['categories_id'])) .'">' . $categories['categories_name'] . '</a></b>'; 
+                echo '<a href="' . vam_href_link(FILENAME_CATEGORIES, vam_get_all_get_params(array('cPath', 'action', 'pID', 'cID', 'search')) . vam_get_path($categories['categories_id'])) . '">' . vam_image(DIR_WS_ICONS . 'folder.gif', ICON_FOLDER) . '<a>&nbsp;<b><a href="'.vam_href_link(FILENAME_CATEGORIES, vam_get_all_get_params(array('cPath', 'action', 'pID', 'cID', 'search')) . vam_get_path($categories['categories_id'])) .'">' . $categories['categories_name'] . '</a></b>'; 
              ?>
              </td>
         
@@ -195,9 +195,9 @@
              <?php
              //show status icons (green & red circle) with links
              if ($categories['categories_status'] == '1') {
-                 echo vam_image(DIR_WS_IMAGES . 'icon_status_green.gif', IMAGE_ICON_STATUS_GREEN, 10, 10) . '&nbsp;&nbsp;<a href="' . vam_href_link(FILENAME_CATEGORIES, vam_get_all_get_params(array('cPath', 'action', 'pID', 'cID')) . 'action=setcflag&flag=0&cID=' . $categories['categories_id'] . '&cPath=' . $cPath) . '">' . vam_image(DIR_WS_IMAGES . 'icon_status_red_light.gif', IMAGE_ICON_STATUS_RED_LIGHT, 10, 10) . '</a>';
+                 echo vam_image(DIR_WS_IMAGES . 'icon_status_green.gif', IMAGE_ICON_STATUS_GREEN, 10, 10) . '&nbsp;&nbsp;<a href="' . vam_href_link(FILENAME_CATEGORIES, vam_get_all_get_params(array('cPath', 'action', 'pID', 'cID', 'search')) . 'action=setcflag&flag=0&cID=' . $categories['categories_id'] . '&cPath=' . $cPath) . '">' . vam_image(DIR_WS_IMAGES . 'icon_status_red_light.gif', IMAGE_ICON_STATUS_RED_LIGHT, 10, 10) . '</a>';
              } else {
-                 echo '<a href="' . vam_href_link(FILENAME_CATEGORIES, vam_get_all_get_params(array('cPath', 'action', 'pID', 'cID')) . 'action=setcflag&flag=1&cID=' . $categories['categories_id'] . '&cPath=' . $cPath) . '">' . vam_image(DIR_WS_IMAGES . 'icon_status_green_light.gif', IMAGE_ICON_STATUS_GREEN_LIGHT, 10, 10) . '</a>&nbsp;&nbsp;' . vam_image(DIR_WS_IMAGES . 'icon_status_red.gif', IMAGE_ICON_STATUS_RED, 10, 10);
+                 echo '<a href="' . vam_href_link(FILENAME_CATEGORIES, vam_get_all_get_params(array('cPath', 'action', 'pID', 'cID', 'search')) . 'action=setcflag&flag=1&cID=' . $categories['categories_id'] . '&cPath=' . $cPath) . '">' . vam_image(DIR_WS_IMAGES . 'icon_status_green_light.gif', IMAGE_ICON_STATUS_GREEN_LIGHT, 10, 10) . '</a>&nbsp;&nbsp;' . vam_image(DIR_WS_IMAGES . 'icon_status_red.gif', IMAGE_ICON_STATUS_RED, 10, 10);
              }
              ?>
              </td>
@@ -206,9 +206,9 @@
              <?php
              //show status icons (green & red circle) with links
              if ($categories['yml_enable'] == '1') {
-                 echo vam_image(DIR_WS_IMAGES . 'icon_status_green.gif', IMAGE_ICON_STATUS_GREEN, 10, 10) . '&nbsp;&nbsp;<a href="' . vam_href_link(FILENAME_CATEGORIES, vam_get_all_get_params(array('cPath', 'action', 'pID', 'cID')) . 'action=setcxml&flag=0&cID=' . $categories['categories_id'] . '&cPath=' . $cPath) . '">' . vam_image(DIR_WS_IMAGES . 'icon_status_red_light.gif', IMAGE_ICON_STATUS_RED_LIGHT, 10, 10) . '</a>';
+                 echo vam_image(DIR_WS_IMAGES . 'icon_status_green.gif', IMAGE_ICON_STATUS_GREEN, 10, 10) . '&nbsp;&nbsp;<a href="' . vam_href_link(FILENAME_CATEGORIES, vam_get_all_get_params(array('cPath', 'action', 'pID', 'cID', 'search')) . 'action=setcxml&flag=0&cID=' . $categories['categories_id'] . '&cPath=' . $cPath) . '">' . vam_image(DIR_WS_IMAGES . 'icon_status_red_light.gif', IMAGE_ICON_STATUS_RED_LIGHT, 10, 10) . '</a>';
              } else {
-                 echo '<a href="' . vam_href_link(FILENAME_CATEGORIES, vam_get_all_get_params(array('cPath', 'action', 'pID', 'cID')) . 'action=setcxml&flag=1&cID=' . $categories['categories_id'] . '&cPath=' . $cPath) . '">' . vam_image(DIR_WS_IMAGES . 'icon_status_green_light.gif', IMAGE_ICON_STATUS_GREEN_LIGHT, 10, 10) . '</a>&nbsp;&nbsp;' . vam_image(DIR_WS_IMAGES . 'icon_status_red.gif', IMAGE_ICON_STATUS_RED, 10, 10);
+                 echo '<a href="' . vam_href_link(FILENAME_CATEGORIES, vam_get_all_get_params(array('cPath', 'action', 'pID', 'cID', 'search')) . 'action=setcxml&flag=1&cID=' . $categories['categories_id'] . '&cPath=' . $cPath) . '">' . vam_image(DIR_WS_IMAGES . 'icon_status_green_light.gif', IMAGE_ICON_STATUS_GREEN_LIGHT, 10, 10) . '</a>&nbsp;&nbsp;' . vam_image(DIR_WS_IMAGES . 'icon_status_red.gif', IMAGE_ICON_STATUS_RED, 10, 10);
              }
              ?>
              </td>
@@ -217,13 +217,13 @@
              <td class="<?php echo $css_class; ?>">
              <?php
 
-			 	echo '<a href="' . vam_href_link(FILENAME_CATEGORIES, vam_get_all_get_params(array('cPath', 'action', 'pID', 'cID')) . 'cPath=' . $cPath . '&cID=' . $categories['categories_id'] . "&action=edit_category") . '">' . vam_image(DIR_WS_IMAGES . 'icons/edit.gif', BUTTON_EDIT,'16','16') . '</a> ';
+			 	echo '<a href="' . vam_href_link(FILENAME_CATEGORIES, vam_get_all_get_params(array('cPath', 'action', 'pID', 'cID', 'search')) . 'cPath=' . $cPath . '&cID=' . $categories['categories_id'] . "&action=edit_category") . '">' . vam_image(DIR_WS_IMAGES . 'icons/edit.gif', BUTTON_EDIT,'16','16') . '</a> ';
 			 	            
                 //if active category, show arrow, else show symbol with link (action col)
                 if ( (is_object($cInfo)) && ($categories['categories_id'] == $cInfo->categories_id) ) { 
                     echo vam_image(DIR_WS_IMAGES . 'icons/nav_forward.png', ''); 
                 } else { 
-                    echo '<a href="' . vam_href_link(FILENAME_CATEGORIES, vam_get_all_get_params(array('cPath', 'action', 'pID', 'cID')) . 'cPath=' . $cPath . '&cID=' . $categories['categories_id']) . '">' . vam_image(DIR_WS_IMAGES . 'icons/info.png', IMAGE_ICON_INFO) . '</a>'; 
+                    echo '<a href="' . vam_href_link(FILENAME_CATEGORIES, vam_get_all_get_params(array('cPath', 'action', 'pID', 'cID', 'search')) . 'cPath=' . $cPath . '&cID=' . $categories['categories_id']) . '">' . vam_image(DIR_WS_IMAGES . 'icons/info.png', IMAGE_ICON_INFO) . '</a>'; 
                 } 
              ?>
              </td>
@@ -430,7 +430,7 @@ if ($numr>$max_count){
         <input type="checkbox" name="multi_products[]" value="<?php echo $products['products_id']; ?>" <?php echo $is_checked; ?>>
       </td>
       <td class="<?php echo $css_class; ?>" style="text-align: left; padding-left: 8px;">
-        <?php echo '<a href="' . vam_href_link(FILENAME_CATEGORIES, vam_get_all_get_params(array('cPath', 'action', 'pID', 'cID')) . 'cPath=' . $cPath . '&pID=' . $products['products_id'] ) . '">' . vam_image(DIR_WS_ICONS . 'preview.gif', ICON_PREVIEW) . '&nbsp;</a><a href="'.vam_href_link(FILENAME_CATEGORIES, vam_get_all_get_params(array('cPath', 'action', 'pID', 'cID')) . 'cPath=' . $cPath . '&pID=' . $products['products_id']) .'">' . $products['products_name']; ?></a>
+        <?php echo '<a href="' . vam_href_link(FILENAME_CATEGORIES, vam_get_all_get_params(array('cPath', 'action', 'pID', 'cID', 'search')) . 'cPath=' . $cPath . '&pID=' . $products['products_id'] ) . '">' . vam_image(DIR_WS_ICONS . 'preview.gif', ICON_PREVIEW) . '&nbsp;</a><a href="'.vam_href_link(FILENAME_CATEGORIES, vam_get_all_get_params(array('cPath', 'action', 'pID', 'cID', 'search')) . 'cPath=' . $cPath . '&pID=' . $products['products_id']) .'">' . $products['products_name']; ?></a>
       </td>          
       <?php
       // check product and attributes stock
@@ -442,27 +442,27 @@ if ($numr>$max_count){
       <td class="<?php echo $css_class; ?>">
       <?php
             if ($products['products_status'] == '1') {
-                echo vam_image(DIR_WS_IMAGES . 'icon_status_green.gif', IMAGE_ICON_STATUS_GREEN, 10, 10) . '&nbsp;&nbsp;<a href="' . vam_href_link(FILENAME_CATEGORIES, vam_get_all_get_params(array('cPath', 'action', 'pID', 'cID')) . 'action=setpflag&flag=0&pID=' . $products['products_id'] . '&cPath=' . $cPath) . '">' . vam_image(DIR_WS_IMAGES . 'icon_status_red_light.gif', IMAGE_ICON_STATUS_RED_LIGHT, 10, 10) . '</a>';
+                echo vam_image(DIR_WS_IMAGES . 'icon_status_green.gif', IMAGE_ICON_STATUS_GREEN, 10, 10) . '&nbsp;&nbsp;<a href="' . vam_href_link(FILENAME_CATEGORIES, vam_get_all_get_params(array('cPath', 'action', 'pID', 'cID', 'search')) . 'action=setpflag&flag=0&pID=' . $products['products_id'] . '&cPath=' . $cPath) . '">' . vam_image(DIR_WS_IMAGES . 'icon_status_red_light.gif', IMAGE_ICON_STATUS_RED_LIGHT, 10, 10) . '</a>';
             } else {
-                echo '<a href="' . vam_href_link(FILENAME_CATEGORIES, vam_get_all_get_params(array('cPath', 'action', 'pID', 'cID')) . 'action=setpflag&flag=1&pID=' . $products['products_id'] . '&cPath=' . $cPath) . '">' . vam_image(DIR_WS_IMAGES . 'icon_status_green_light.gif', IMAGE_ICON_STATUS_GREEN_LIGHT, 10, 10) . '</a>&nbsp;&nbsp;' . vam_image(DIR_WS_IMAGES . 'icon_status_red.gif', IMAGE_ICON_STATUS_RED, 10, 10);
+                echo '<a href="' . vam_href_link(FILENAME_CATEGORIES, vam_get_all_get_params(array('cPath', 'action', 'pID', 'cID', 'search')) . 'action=setpflag&flag=1&pID=' . $products['products_id'] . '&cPath=' . $cPath) . '">' . vam_image(DIR_WS_IMAGES . 'icon_status_green_light.gif', IMAGE_ICON_STATUS_GREEN_LIGHT, 10, 10) . '</a>&nbsp;&nbsp;' . vam_image(DIR_WS_IMAGES . 'icon_status_red.gif', IMAGE_ICON_STATUS_RED, 10, 10);
             }
       ?>
       </td>
       <td class="<?php echo $css_class; ?>">
       <?php
             if ($products['products_startpage'] == '1') {
-                echo vam_image(DIR_WS_IMAGES . 'icon_status_green.gif', IMAGE_ICON_STATUS_GREEN, 10, 10) . '&nbsp;&nbsp;<a href="' . vam_href_link(FILENAME_CATEGORIES, vam_get_all_get_params(array('cPath', 'action', 'pID', 'cID')) . 'action=setsflag&flag=0&pID=' . $products['products_id'] . '&cPath=' . $cPath) . '">' . vam_image(DIR_WS_IMAGES . 'icon_status_red_light.gif', IMAGE_ICON_STATUS_RED_LIGHT, 10, 10) . '</a>';
+                echo vam_image(DIR_WS_IMAGES . 'icon_status_green.gif', IMAGE_ICON_STATUS_GREEN, 10, 10) . '&nbsp;&nbsp;<a href="' . vam_href_link(FILENAME_CATEGORIES, vam_get_all_get_params(array('cPath', 'action', 'pID', 'cID', 'search')) . 'action=setsflag&flag=0&pID=' . $products['products_id'] . '&cPath=' . $cPath) . '">' . vam_image(DIR_WS_IMAGES . 'icon_status_red_light.gif', IMAGE_ICON_STATUS_RED_LIGHT, 10, 10) . '</a>';
             } else {
-                echo '<a href="' . vam_href_link(FILENAME_CATEGORIES, vam_get_all_get_params(array('cPath', 'action', 'pID', 'cID')) . 'action=setsflag&flag=1&pID=' . $products['products_id'] . '&cPath=' . $cPath) . '">' . vam_image(DIR_WS_IMAGES . 'icon_status_green_light.gif', IMAGE_ICON_STATUS_GREEN_LIGHT, 10, 10) . '</a>&nbsp;&nbsp;' . vam_image(DIR_WS_IMAGES . 'icon_status_red.gif', IMAGE_ICON_STATUS_RED, 10, 10);
+                echo '<a href="' . vam_href_link(FILENAME_CATEGORIES, vam_get_all_get_params(array('cPath', 'action', 'pID', 'cID', 'search')) . 'action=setsflag&flag=1&pID=' . $products['products_id'] . '&cPath=' . $cPath) . '">' . vam_image(DIR_WS_IMAGES . 'icon_status_green_light.gif', IMAGE_ICON_STATUS_GREEN_LIGHT, 10, 10) . '</a>&nbsp;&nbsp;' . vam_image(DIR_WS_IMAGES . 'icon_status_red.gif', IMAGE_ICON_STATUS_RED, 10, 10);
             }
       ?>
       </td>
       <td class="<?php echo $css_class; ?>">
       <?php
             if ($products['products_to_xml'] == '1') {
-                echo vam_image(DIR_WS_IMAGES . 'icon_status_green.gif', IMAGE_ICON_STATUS_GREEN, 10, 10) . '&nbsp;&nbsp;<a href="' . vam_href_link(FILENAME_CATEGORIES, vam_get_all_get_params(array('cPath', 'action', 'pID', 'cID')) . 'action=setxml&flagxml=0&pID=' . $products['products_id'] . '&cPath=' . $cPath) . '">' . vam_image(DIR_WS_IMAGES . 'icon_status_red_light.gif', IMAGE_ICON_STATUS_RED_LIGHT, 10, 10) . '</a>';
+                echo vam_image(DIR_WS_IMAGES . 'icon_status_green.gif', IMAGE_ICON_STATUS_GREEN, 10, 10) . '&nbsp;&nbsp;<a href="' . vam_href_link(FILENAME_CATEGORIES, vam_get_all_get_params(array('cPath', 'action', 'pID', 'cID', 'search')) . 'action=setxml&flagxml=0&pID=' . $products['products_id'] . '&cPath=' . $cPath) . '">' . vam_image(DIR_WS_IMAGES . 'icon_status_red_light.gif', IMAGE_ICON_STATUS_RED_LIGHT, 10, 10) . '</a>';
             } else {
-                echo '<a href="' . vam_href_link(FILENAME_CATEGORIES, vam_get_all_get_params(array('cPath', 'action', 'pID', 'cID')) . 'action=setxml&flagxml=1&pID=' . $products['products_id'] . '&cPath=' . $cPath) . '">' . vam_image(DIR_WS_IMAGES . 'icon_status_green_light.gif', IMAGE_ICON_STATUS_GREEN_LIGHT, 10, 10) . '</a>&nbsp;&nbsp;' . vam_image(DIR_WS_IMAGES . 'icon_status_red.gif', IMAGE_ICON_STATUS_RED, 10, 10);
+                echo '<a href="' . vam_href_link(FILENAME_CATEGORIES, vam_get_all_get_params(array('cPath', 'action', 'pID', 'cID', 'search')) . 'action=setxml&flagxml=1&pID=' . $products['products_id'] . '&cPath=' . $cPath) . '">' . vam_image(DIR_WS_IMAGES . 'icon_status_green_light.gif', IMAGE_ICON_STATUS_GREEN_LIGHT, 10, 10) . '</a>&nbsp;&nbsp;' . vam_image(DIR_WS_IMAGES . 'icon_status_red.gif', IMAGE_ICON_STATUS_RED, 10, 10);
             }
       ?>
       </td>
@@ -484,9 +484,9 @@ if ($numr>$max_count){
       <td class="<?php echo $css_class; ?>">
       <?php 
       
-	  echo '<a href="' . vam_href_link(FILENAME_CATEGORIES, vam_get_all_get_params(array('cPath', 'action', 'pID', 'cID')) . 'cPath=' . $cPath . '&pID=' . $products['products_id']) . '&action=new_product">' . vam_image(DIR_WS_IMAGES . 'icons/edit.gif', BUTTON_EDIT,'16','16') . '</a> ';
+	  echo '<a href="' . vam_href_link(FILENAME_CATEGORIES, vam_get_all_get_params(array('cPath', 'action', 'pID', 'cID', 'search')) . 'cPath=' . $cPath . '&pID=' . $products['products_id']) . '&action=new_product">' . vam_image(DIR_WS_IMAGES . 'icons/edit.gif', BUTTON_EDIT,'16','16') . '</a> ';
 	        
-        if ( (is_object($pInfo)) && ($products['products_id'] == $pInfo->products_id) ) { echo vam_image(DIR_WS_IMAGES . 'icons/nav_forward.png', ''); } else { echo '<a href="' . vam_href_link(FILENAME_CATEGORIES, vam_get_all_get_params(array('cPath', 'action', 'pID', 'cID')) . 'cPath=' . $cPath . '&pID=' . $products['products_id']) . '">' . vam_image(DIR_WS_IMAGES . 'icons/info.png', IMAGE_ICON_INFO) . '</a>'; } 
+        if ( (is_object($pInfo)) && ($products['products_id'] == $pInfo->products_id) ) { echo vam_image(DIR_WS_IMAGES . 'icons/nav_forward.png', ''); } else { echo '<a href="' . vam_href_link(FILENAME_CATEGORIES, vam_get_all_get_params(array('cPath', 'action', 'pID', 'cID', 'search')) . 'cPath=' . $cPath . '&pID=' . $products['products_id']) . '">' . vam_image(DIR_WS_IMAGES . 'icons/info.png', IMAGE_ICON_INFO) . '</a>'; } 
       ?>
       </td>
      </tr>    
@@ -523,7 +523,7 @@ if ($numr>$max_count){
          </td>
          <td align="right" class="smallText">
          <?php
-         	if ($cPath) echo '<a class="button" href="' . vam_href_link(FILENAME_CATEGORIES, vam_get_all_get_params(array('cPath', 'action', 'pID', 'cID')) .  $cPath_back . '&cID=' . $current_category_id) . '"><span>' . vam_image(DIR_WS_IMAGES . 'icons/buttons/back.png', '', '12', '12') . '&nbsp;' . BUTTON_BACK . '</span></a>&nbsp;'; 
+         	if ($cPath) echo '<a class="button" href="' . vam_href_link(FILENAME_CATEGORIES, vam_get_all_get_params(array('cPath', 'action', 'pID', 'cID', 'search')) .  $cPath_back . '&cID=' . $current_category_id) . '"><span>' . vam_image(DIR_WS_IMAGES . 'icons/buttons/back.png', '', '12', '12') . '&nbsp;' . BUTTON_BACK . '</span></a>&nbsp;'; 
             echo '<a class="button" href="javascript:SwitchCheck()"><span>' . vam_image(DIR_WS_IMAGES . 'icons/buttons/reverse.png', '', '12', '12') . '&nbsp;' . BUTTON_REVERSE_SELECTION . '</span></a>&nbsp;';
             echo '<a class="button" href="javascript:SwitchProducts()"><span>' . vam_image(DIR_WS_IMAGES . 'icons/buttons/products.png', '', '12', '12') . '&nbsp;' . BUTTON_SWITCH_PRODUCTS . '</span></a>&nbsp;';
             echo '<a class="button" href="javascript:SwitchCategories()"><span>' . vam_image(DIR_WS_IMAGES . 'icons/buttons/categories.png', '', '12', '12') . '&nbsp;' . BUTTON_SWITCH_CATEGORIES . '</span></a>&nbsp;';                                           
@@ -568,7 +568,7 @@ if ($numr>$max_count){
         }
         $contents[] = array('text' => '<br />' . TEXT_CATEGORIES . '<br />' . vam_draw_pull_down_menu('categories_id', vam_get_category_tree(), $current_category_id));
         $contents[] = array('text' => '<br />' . TEXT_HOW_TO_COPY . '<br />' . vam_draw_radio_field('copy_as', 'link', true) . ' ' . TEXT_COPY_AS_LINK . '<br />' . vam_draw_radio_field('copy_as', 'duplicate') . ' ' . TEXT_COPY_AS_DUPLICATE);
-        $contents[] = array('align' => 'center', 'text' => '<br /><span class="button"><button type="submit" value="' . BUTTON_COPY . '"/>' . vam_image(DIR_WS_IMAGES . 'icons/buttons/submit.png', '', '12', '12') . '&nbsp;' . BUTTON_COPY . '</button></span> <a class="button" href="' . vam_href_link(FILENAME_CATEGORIES, vam_get_all_get_params(array('cPath', 'action', 'pID', 'cID')) . 'cPath=' . $cPath . '&pID=' . $pInfo->products_id) . '"><span>' . vam_image(DIR_WS_IMAGES . 'icons/buttons/cancel.png', '', '12', '12') . '&nbsp;' . BUTTON_CANCEL . '</span></a>');
+        $contents[] = array('align' => 'center', 'text' => '<br /><span class="button"><button type="submit" value="' . BUTTON_COPY . '"/>' . vam_image(DIR_WS_IMAGES . 'icons/buttons/submit.png', '', '12', '12') . '&nbsp;' . BUTTON_COPY . '</button></span> <a class="button" href="' . vam_href_link(FILENAME_CATEGORIES, vam_get_all_get_params(array('cPath', 'action', 'pID', 'cID', 'search')) . 'cPath=' . $cPath . '&pID=' . $pInfo->products_id) . '"><span>' . vam_image(DIR_WS_IMAGES . 'icons/buttons/cancel.png', '', '12', '12') . '&nbsp;' . BUTTON_CANCEL . '</span></a>');
         break;
         
       case 'multi_action':
@@ -610,7 +610,7 @@ if ($numr>$max_count){
             $contents[] = array('text' => '</table>');
             //add current category id, for moving products    
             $contents[] = array('text' => '<input type="hidden" name="src_category_id" value="' . $current_category_id . '">');
-            $contents[] = array('align' => 'center', 'text' => '<span class="button"><button type="submit" name="multi_move_confirm" value="' . BUTTON_MOVE . '">' . vam_image(DIR_WS_IMAGES . 'icons/buttons/move.png', '', '12', '12') . '&nbsp;' . BUTTON_MOVE . '</button></span> <a class="button" href="' . vam_href_link(FILENAME_CATEGORIES, vam_get_all_get_params(array('cPath', 'action', 'pID', 'cID')) . 'cPath=' . $cPath . '&pID=' . $pInfo->products_id . '&cID=' . $cInfo->categories_id) . '"><span>' . vam_image(DIR_WS_IMAGES . 'icons/buttons/cancel.png', '', '12', '12') . '&nbsp;' . BUTTON_CANCEL . '</span></a>');            
+            $contents[] = array('align' => 'center', 'text' => '<span class="button"><button type="submit" name="multi_move_confirm" value="' . BUTTON_MOVE . '">' . vam_image(DIR_WS_IMAGES . 'icons/buttons/move.png', '', '12', '12') . '&nbsp;' . BUTTON_MOVE . '</button></span> <a class="button" href="' . vam_href_link(FILENAME_CATEGORIES, vam_get_all_get_params(array('cPath', 'action', 'pID', 'cID', 'search')) . 'cPath=' . $cPath . '&pID=' . $pInfo->products_id . '&cID=' . $cInfo->categories_id) . '"><span>' . vam_image(DIR_WS_IMAGES . 'icons/buttons/cancel.png', '', '12', '12') . '&nbsp;' . BUTTON_CANCEL . '</span></a>');            
             //close multi-action form
             $contents[] = array('text' => '</form>'); 
         }
@@ -658,7 +658,7 @@ if ($numr>$max_count){
             
             //close list table
             $contents[] = array('text' => '</table>');            
-            $contents[] = array('align' => 'center', 'text' => '<span class="button"><button type="submit" name="multi_delete_confirm" value="' . BUTTON_DELETE . '">' . vam_image(DIR_WS_IMAGES . 'icons/buttons/submit.png', '', '12', '12') . '&nbsp;' . BUTTON_DELETE . '</button></span> <a class="button" href="' . vam_href_link(FILENAME_CATEGORIES, vam_get_all_get_params(array('cPath', 'action', 'pID', 'cID')) . 'cPath=' . $cPath . '&pID=' . $pInfo->products_id . '&cID=' . $cInfo->categories_id) . '"><span>' . vam_image(DIR_WS_IMAGES . 'icons/buttons/cancel.png', '', '12', '12') . '&nbsp;' . BUTTON_CANCEL . '</span></a>');
+            $contents[] = array('align' => 'center', 'text' => '<span class="button"><button type="submit" name="multi_delete_confirm" value="' . BUTTON_DELETE . '">' . vam_image(DIR_WS_IMAGES . 'icons/buttons/submit.png', '', '12', '12') . '&nbsp;' . BUTTON_DELETE . '</button></span> <a class="button" href="' . vam_href_link(FILENAME_CATEGORIES, vam_get_all_get_params(array('cPath', 'action', 'pID', 'cID', 'search')) . 'cPath=' . $cPath . '&pID=' . $pInfo->products_id . '&cID=' . $cInfo->categories_id) . '"><span>' . vam_image(DIR_WS_IMAGES . 'icons/buttons/cancel.png', '', '12', '12') . '&nbsp;' . BUTTON_CANCEL . '</span></a>');
             //close multi-action form
             $contents[] = array('text' => '</form>');            
         }
@@ -711,7 +711,7 @@ if ($numr>$max_count){
             }
             $contents[] = array('text' => '<br />' . TEXT_SINGLECOPY_CATEGORY . '<br />' . vam_draw_pull_down_menu('dest_category_id', vam_get_category_tree(), $current_category_id) . '<br /><hr noshade>');
             $contents[] = array('text' => '<strong>' . TEXT_HOW_TO_COPY . '</strong><br />' . vam_draw_radio_field('copy_as', 'link', true) . ' ' . TEXT_COPY_AS_LINK . '<br />' . vam_draw_radio_field('copy_as', 'duplicate') . ' ' . TEXT_COPY_AS_DUPLICATE . '<br /><hr noshade>');
-            $contents[] = array('align' => 'center', 'text' => '<span class="button"><button type="submit" name="multi_copy_confirm" value="' . BUTTON_COPY . '">' . vam_image(DIR_WS_IMAGES . 'icons/buttons/copy.png', '', '12', '12') . '&nbsp;' . BUTTON_COPY . '</button></span> <a class="button" href="' . vam_href_link(FILENAME_CATEGORIES, vam_get_all_get_params(array('cPath', 'action', 'pID', 'cID')) . 'cPath=' . $cPath . '&pID=' . $pInfo->products_id . '&cID=' . $cInfo->categories_id) . '"><span>' . vam_image(DIR_WS_IMAGES . 'icons/buttons/cancel.png', '', '12', '12') . '&nbsp;' . BUTTON_CANCEL . '</span></a>');            
+            $contents[] = array('align' => 'center', 'text' => '<span class="button"><button type="submit" name="multi_copy_confirm" value="' . BUTTON_COPY . '">' . vam_image(DIR_WS_IMAGES . 'icons/buttons/copy.png', '', '12', '12') . '&nbsp;' . BUTTON_COPY . '</button></span> <a class="button" href="' . vam_href_link(FILENAME_CATEGORIES, vam_get_all_get_params(array('cPath', 'action', 'pID', 'cID', 'search')) . 'cPath=' . $cPath . '&pID=' . $pInfo->products_id . '&cID=' . $cInfo->categories_id) . '"><span>' . vam_image(DIR_WS_IMAGES . 'icons/buttons/cancel.png', '', '12', '12') . '&nbsp;' . BUTTON_CANCEL . '</span></a>');            
             //close multi-action form
             $contents[] = array('text' => '</form>'); 
         }
@@ -730,11 +730,11 @@ if ($numr>$max_count){
             $contents[] = array('text'  => '</form>');
             //Single Element Actions
             $contents[] = array('align' => 'center', 'text' => '<div style="padding-top: 5px; font-weight: bold; width: 90%; margin-top: 5px;">' . TEXT_ACTIVE_ELEMENT . '</div>');
-            $contents[] = array('align' => 'center', 'text' => '<a class="button" href="' . vam_href_link(FILENAME_CATEGORIES, vam_get_all_get_params(array('cPath', 'action', 'pID', 'cID')) . 'cPath=' . $cPath . '&cID=' . $cInfo->categories_id . '&action=edit_category') . '"><span>' . vam_image(DIR_WS_IMAGES . 'icons/buttons/edit.png', '', '12', '12') . '&nbsp;' . BUTTON_EDIT . '</span></a>');
+            $contents[] = array('align' => 'center', 'text' => '<a class="button" href="' . vam_href_link(FILENAME_CATEGORIES, vam_get_all_get_params(array('cPath', 'action', 'pID', 'cID', 'search')) . 'cPath=' . $cPath . '&cID=' . $cInfo->categories_id . '&action=edit_category') . '"><span>' . vam_image(DIR_WS_IMAGES . 'icons/buttons/edit.png', '', '12', '12') . '&nbsp;' . BUTTON_EDIT . '</span></a>');
             //Insert new Element Actions
             $contents[] = array('align' => 'center', 'text' => '<div style="padding-top: 5px; font-weight: bold; width: 90%; margin-top: 5px;">' . TEXT_INSERT_ELEMENT . '</div>');
             if (!$_GET['search']) {
-            	$contents[] = array('align' => 'center', 'text' => '<table border=0><tr><td align="center"><a class="button" href="' . vam_href_link(FILENAME_CATEGORIES, vam_get_all_get_params(array('cPath', 'action', 'pID', 'cID')) . 'cPath=' . $cPath . '&action=new_category') . '"><span>' . vam_image(DIR_WS_IMAGES . 'icons/buttons/categories.png', '', '12', '12') . '&nbsp;' . BUTTON_NEW_CATEGORIES . '</span></a></td></tr><tr><td align="center"><a class="button" href="' . vam_href_link(FILENAME_CATEGORIES, vam_get_all_get_params(array('cPath', 'action', 'pID', 'cID')) . 'cPath=' . $cPath . '&action=new_product') . '"><span>' . vam_image(DIR_WS_IMAGES . 'icons/buttons/products.png', '', '12', '12') . '&nbsp;' . BUTTON_NEW_PRODUCTS . '</span></a></td></tr></table>');            
+            	$contents[] = array('align' => 'center', 'text' => '<table border=0><tr><td align="center"><a class="button" href="' . vam_href_link(FILENAME_CATEGORIES, vam_get_all_get_params(array('cPath', 'action', 'pID', 'cID', 'search')) . 'cPath=' . $cPath . '&action=new_category') . '"><span>' . vam_image(DIR_WS_IMAGES . 'icons/buttons/categories.png', '', '12', '12') . '&nbsp;' . BUTTON_NEW_CATEGORIES . '</span></a></td></tr><tr><td align="center"><a class="button" href="' . vam_href_link(FILENAME_CATEGORIES, vam_get_all_get_params(array('cPath', 'action', 'pID', 'cID', 'search')) . 'cPath=' . $cPath . '&action=new_product') . '"><span>' . vam_image(DIR_WS_IMAGES . 'icons/buttons/products.png', '', '12', '12') . '&nbsp;' . BUTTON_NEW_PRODUCTS . '</span></a></td></tr></table>');            
             }
             //Informations
             $contents[] = array('align' => 'center', 'text' => '<div style="padding-top: 5px; font-weight: bold; width: 90%; margin-top: 5px;">' . TEXT_INFORMATIONS . '</div>');
@@ -751,11 +751,11 @@ if ($numr>$max_count){
             $contents[] = array('text'  => '</form>');            
             //Single Product Actions
             $contents[] = array('align' => 'center', 'text' => '<div style="padding-top: 5px; font-weight: bold; width: 90%; margin-top: 5px;">' . TEXT_ACTIVE_ELEMENT . '</div>');
-            $contents[] = array('align' => 'center', 'text' => '<table border=0><tr><td align="center"><a class="button" href="' . vam_href_link(FILENAME_CATEGORIES, vam_get_all_get_params(array('cPath', 'action', 'pID', 'cID')) . 'cPath=' . $cPath . '&pID=' . $pInfo->products_id . '&action=new_product') . '"><span>' . vam_image(DIR_WS_IMAGES . 'icons/buttons/edit.png', '', '12', '12') . '&nbsp;' . BUTTON_EDIT . '</span></a></td></tr><tr><td align="center"><form action="' . FILENAME_NEW_ATTRIBUTES . '" name="edit_attributes" method="post"><input type="hidden" name="action" value="edit"><input type="hidden" name="current_product_id" value="' . $pInfo->products_id . '"><input type="hidden" name="cpath" value="' . $cPath . '"><span class="button"><button type="submit" value="' . BUTTON_EDIT_ATTRIBUTES . '">' . vam_image(DIR_WS_IMAGES . 'icons/buttons/add.png', '', '12', '12') . '&nbsp;' . BUTTON_EDIT_ATTRIBUTES . '</button></span></form></td></tr><tr><td align="center" style="text-align: center;"><form action="' . FILENAME_CATEGORIES . '" name="edit_crossselling" method="GET"><input type="hidden" name="action" value="edit_crossselling"><input type="hidden" name="current_product_id" value="' . $pInfo->products_id . '"><input type="hidden" name="cpath" value="' . $cPath  . '"><span class="button"><button type="submit" value="' . BUTTON_EDIT_CROSS_SELLING . '">' . vam_image(DIR_WS_IMAGES . 'icons/buttons/add.png', '', '12', '12') . '&nbsp;' . BUTTON_EDIT_CROSS_SELLING . '</button></span></form></td></tr></table>');
+            $contents[] = array('align' => 'center', 'text' => '<table border=0><tr><td align="center"><a class="button" href="' . vam_href_link(FILENAME_CATEGORIES, vam_get_all_get_params(array('cPath', 'action', 'pID', 'cID', 'search')) . 'cPath=' . $cPath . '&pID=' . $pInfo->products_id . '&action=new_product') . '"><span>' . vam_image(DIR_WS_IMAGES . 'icons/buttons/edit.png', '', '12', '12') . '&nbsp;' . BUTTON_EDIT . '</span></a></td></tr><tr><td align="center"><form action="' . FILENAME_NEW_ATTRIBUTES . '" name="edit_attributes" method="post"><input type="hidden" name="action" value="edit"><input type="hidden" name="current_product_id" value="' . $pInfo->products_id . '"><input type="hidden" name="cpath" value="' . $cPath . '"><span class="button"><button type="submit" value="' . BUTTON_EDIT_ATTRIBUTES . '">' . vam_image(DIR_WS_IMAGES . 'icons/buttons/add.png', '', '12', '12') . '&nbsp;' . BUTTON_EDIT_ATTRIBUTES . '</button></span></form></td></tr><tr><td align="center" style="text-align: center;"><form action="' . FILENAME_CATEGORIES . '" name="edit_crossselling" method="GET"><input type="hidden" name="action" value="edit_crossselling"><input type="hidden" name="current_product_id" value="' . $pInfo->products_id . '"><input type="hidden" name="cpath" value="' . $cPath  . '"><span class="button"><button type="submit" value="' . BUTTON_EDIT_CROSS_SELLING . '">' . vam_image(DIR_WS_IMAGES . 'icons/buttons/add.png', '', '12', '12') . '&nbsp;' . BUTTON_EDIT_CROSS_SELLING . '</button></span></form></td></tr></table>');
             //Insert new Element Actions
             $contents[] = array('align' => 'center', 'text' => '<div style="padding-top: 5px; font-weight: bold; width: 90%; margin-top: 5px;">' . TEXT_INSERT_ELEMENT . '</div>');
             if (!$_GET['search']) {
-            	$contents[] = array('align' => 'center', 'text' => '<table border=0><tr><td align="center"><a class="button" href="' . vam_href_link(FILENAME_CATEGORIES, vam_get_all_get_params(array('cPath', 'action', 'pID', 'cID')) . 'cPath=' . $cPath . '&action=new_category') . '"><span>' . vam_image(DIR_WS_IMAGES . 'icons/buttons/categories.png', '', '12', '12') . '&nbsp;' . BUTTON_NEW_CATEGORIES . '</span></a></td></tr><tr><td align="center"><a class="button" href="' . vam_href_link(FILENAME_CATEGORIES, vam_get_all_get_params(array('cPath', 'action', 'pID', 'cID')) . 'cPath=' . $cPath . '&action=new_product') . '"><span>' . vam_image(DIR_WS_IMAGES . 'icons/buttons/products.png', '', '12', '12') . '&nbsp;' . BUTTON_NEW_PRODUCTS . '</span></a></td></tr></table>');            
+            	$contents[] = array('align' => 'center', 'text' => '<table border=0><tr><td align="center"><a class="button" href="' . vam_href_link(FILENAME_CATEGORIES, vam_get_all_get_params(array('cPath', 'action', 'pID', 'cID', 'search')) . 'cPath=' . $cPath . '&action=new_category') . '"><span>' . vam_image(DIR_WS_IMAGES . 'icons/buttons/categories.png', '', '12', '12') . '&nbsp;' . BUTTON_NEW_CATEGORIES . '</span></a></td></tr><tr><td align="center"><a class="button" href="' . vam_href_link(FILENAME_CATEGORIES, vam_get_all_get_params(array('cPath', 'action', 'pID', 'cID', 'search')) . 'cPath=' . $cPath . '&action=new_product') . '"><span>' . vam_image(DIR_WS_IMAGES . 'icons/buttons/products.png', '', '12', '12') . '&nbsp;' . BUTTON_NEW_PRODUCTS . '</span></a></td></tr></table>');            
             }            
             //Informations
             $contents[] = array('align' => 'center', 'text' => '<div style="padding-top: 5px; font-weight: bold; width: 90%; margin-top: 5px;">' . TEXT_INFORMATIONS . '</div>');
@@ -786,7 +786,7 @@ if ($numr>$max_count){
           // create category/product info
           $heading[] = array('text' => '<b>' . EMPTY_CATEGORY . '</b>');
           $contents[] = array('text' => sprintf(TEXT_NO_CHILD_CATEGORIES_OR_PRODUCTS, vam_get_categories_name($current_category_id, $_SESSION['languages_id'])));
-          $contents[] = array('align' => 'center', 'text' => '<table border=0><tr><td align="center"><a class="button" href="' . vam_href_link(FILENAME_CATEGORIES, vam_get_all_get_params(array('cPath', 'action', 'pID', 'cID')) . 'cPath=' . $cPath . '&action=new_category') . '"><span>' . vam_image(DIR_WS_IMAGES . 'icons/buttons/categories.png', '', '12', '12') . '&nbsp;' . BUTTON_NEW_CATEGORIES . '</span></a></td></tr><tr><td align="center"><a class="button" href="' . vam_href_link(FILENAME_CATEGORIES, vam_get_all_get_params(array('cPath', 'action', 'pID', 'cID')) . 'cPath=' . $cPath . '&action=new_product') . '"><span>' . vam_image(DIR_WS_IMAGES . 'icons/buttons/products.png', '', '12', '12') . '&nbsp;' . BUTTON_NEW_PRODUCTS . '</span></a></td></tr></table>');
+          $contents[] = array('align' => 'center', 'text' => '<table border=0><tr><td align="center"><a class="button" href="' . vam_href_link(FILENAME_CATEGORIES, vam_get_all_get_params(array('cPath', 'action', 'pID', 'cID', 'search')) . 'cPath=' . $cPath . '&action=new_category') . '"><span>' . vam_image(DIR_WS_IMAGES . 'icons/buttons/categories.png', '', '12', '12') . '&nbsp;' . BUTTON_NEW_CATEGORIES . '</span></a></td></tr><tr><td align="center"><a class="button" href="' . vam_href_link(FILENAME_CATEGORIES, vam_get_all_get_params(array('cPath', 'action', 'pID', 'cID', 'search')) . 'cPath=' . $cPath . '&action=new_product') . '"><span>' . vam_image(DIR_WS_IMAGES . 'icons/buttons/products.png', '', '12', '12') . '&nbsp;' . BUTTON_NEW_PRODUCTS . '</span></a></td></tr></table>');
         }
         break;
     }
