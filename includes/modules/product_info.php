@@ -117,6 +117,7 @@ if (!is_object($product) || !$product->isProduct() OR !$product->data['products_
       $info->assign('PRODUCTS_PRINT', '<img src="images/icons/buttons/print.png" alt="" />');
 		$info->assign('PRODUCTS_PRINT_LINK', vam_href_link(FILENAME_PRINT_PRODUCT_INFO, 'products_id='.$product->data['products_id']));      
 		$info->assign('PRODUCTS_DESCRIPTION', stripslashes($product->data['products_description']));
+		$info->assign('PRODUCTS_SHORT_DESCRIPTION', stripslashes($product->data['products_short_description']));
 		$image = '';
 
 		$star_rating = '';
