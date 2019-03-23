@@ -42,6 +42,12 @@ $cat_data = vam_db_fetch_array($cat_query, true);
 <title><?php echo $title.' '.$product->data['products_model'] . ' - ' . $cat_data['categories_name']; ?></title>
 <meta name="description" content="<?php echo $description; ?>" />
 <meta name="keywords" content="<?php echo $product->data['products_meta_keywords']; ?>" />
+<meta property="og:title" content="<?php echo vam_parse_input_field_data($product->data['products_name'], array('"' => '&quot;')); ?>" />
+<meta property="og:description" content="<?php echo vam_parse_input_field_data(($product->data['products_short_description'] != '' ? substr($product->data['products_short_description'],0,128) : substr($product->data['products_description'],0,128)), array('"' => '&quot;')); ?>" />    
+<meta property="og:url" content="<?php echo vam_href_link(FILENAME_PRODUCT_INFO, vam_product_link($product->data['products_id'], $product->data['products_name'])); ?>" />  
+<meta property="og:type" content="website" />  
+<?php if ($product->data['products_image'] != '') { ?><meta property="og:image" content="<?php echo HTTP_SERVER.DIR_WS_CATALOG.DIR_WS_THUMBNAIL_IMAGES . vam_parse_input_field_data($product->data['products_image'], array('"' => '&quot;')); ?>" /><?php } ?>
+
 	<?php
 
 	} else {
@@ -70,7 +76,9 @@ $cat_data = vam_db_fetch_array($cat_query, true);
 		$categories_meta_query = vamDBquery("SELECT categories_meta_keywords,
 		                                            categories_meta_description,
 		                                            categories_meta_title,
-		                                            categories_name
+		                                            categories_name,
+		                                            categories_id,
+		                                            categories_description
 		                                            FROM " . TABLE_CATEGORIES_DESCRIPTION . "
 		                                            WHERE categories_id='" . $_cPath . "' and
 		                                            language_id='" . $_SESSION['languages_id'] . "'");
@@ -171,6 +179,10 @@ else {$page= '';}
 <title><?php echo $categories_meta['categories_meta_title'] . $filter.$mName . $page; ?></title>
 <meta name="description" content="<?php echo $categories_meta['categories_meta_title'].$filter.$filter_description.$categories_meta['categories_meta_description'] . $mDesc; ?>" />
 <meta name="keywords" content="<?php echo $categories_meta['categories_meta_keywords'] . $mKey; ?>" />
+<meta property="og:title" content="<?php echo $categories_meta['categories_meta_title'] . $filter.$mName . $page; ?>" />
+<meta property="og:description" content="<?php echo substr($categories_meta['categories_meta_title'].$filter.$filter_description.$categories_meta['categories_meta_description'] . $mDesc,0,128); ?>" />    
+<?php if ($categories_meta['categories_name'] != '') { ?><meta property="og:url" content="<?php echo vam_href_link(FILENAME_DEFAULT, vam_category_link($categories_meta['categories_id'], $categories_meta['categories_name'])); ?>" /><?php } ?>  
+<meta property="og:type" content="website" />  
 <?php
 
 	} else {
@@ -178,7 +190,7 @@ else {$page= '';}
 switch (true) {
   case ($_GET['coID']):
 
-$content_meta_query = vamDBquery("select cm.content_heading, cm.content_meta_title, cm.content_meta_description,  cm.content_meta_keywords from " . TABLE_CONTENT_MANAGER . " cm where cm.content_group = '" . (int)$_GET['coID'] . "' and cm.languages_id = '" . (int)$_SESSION['languages_id'] . "'");
+$content_meta_query = vamDBquery("select cm.content_id, cm.content_heading, cm.content_meta_title, cm.content_meta_description,  cm.content_meta_keywords from " . TABLE_CONTENT_MANAGER . " cm where cm.content_group = '" . (int)$_GET['coID'] . "' and cm.languages_id = '" . (int)$_SESSION['languages_id'] . "'");
 
 if (vam_db_num_rows($content_meta_query, true) > 0) {
 
@@ -208,13 +220,17 @@ $content_meta = vam_db_fetch_array($content_meta_query, true);
 <title><?php echo $content_title; ?></title>
 <meta name="description" content="<?php echo $content_desc; ?>" />
 <meta name="keywords" content="<?php echo $content_key; ?>" />
+<meta property="og:title" content="<?php echo $content_title; ?>" />
+<meta property="og:description" content="<?php echo $content_desc; ?>" />    
+<meta property="og:url" content="<?php echo vam_href_link(FILENAME_CONTENT, 'coID='.$content_meta['content_id']); ?>" />  
+<meta property="og:type" content="website" />  
 <?php
 
     break;
 
   case ($_GET['news_id']):
 
-			$news_meta_query = vamDBquery("SELECT headline, news_head_title, news_head_desc, news_head_keys
+			$news_meta_query = vamDBquery("SELECT news_id, headline, news_head_title, news_head_desc, news_head_keys
 			                                            FROM " . TABLE_LATEST_NEWS . "
 			                                            WHERE news_id='" . (int)$_GET['news_id'] . "' and
 			                                            language='" . (int)$_SESSION['languages_id'] . "'");
@@ -241,13 +257,17 @@ $content_meta = vam_db_fetch_array($content_meta_query, true);
 <title><?php echo $news_title . ' - ' . TITLE; ?></title>
 <meta name="description" content="<?php echo $news_desc; ?>" />
 <meta name="keywords" content="<?php echo $news_keys; ?>" />
+<meta property="og:title" content="<?php echo $news_title; ?>" />
+<meta property="og:description" content="<?php echo substr(htmlentities(strip_tags($news_meta['headline'])),0,128); ?>" />    
+<meta property="og:url" content="<?php echo vam_href_link(FILENAME_NEWS, 'news_id='.$news_meta['news_id']); ?>" />  
+<meta property="og:type" content="website" />  
 <?php
 
     break;
 
   case ($_GET['tPath']):
 
-			$articles_cat_meta_query = vamDBquery("SELECT topics_name, topics_heading_title, topics_description
+			$articles_cat_meta_query = vamDBquery("SELECT topics_id, topics_name, topics_heading_title, topics_description
 			                                            FROM " . TABLE_TOPICS_DESCRIPTION . "
 			                                            WHERE topics_id='" . (int)$current_topic_id . "' and
 			                                            language_id='" . (int)$_SESSION['languages_id'] . "'");
@@ -265,13 +285,17 @@ $content_meta = vam_db_fetch_array($content_meta_query, true);
 <title><?php echo $articles_cat_title; ?></title>
 <meta name="description" content="<?php echo $articles_cat_desc; ?>" />
 <meta name="keywords" content="<?php echo META_KEYWORDS; ?>" />
+<meta property="og:title" content="<?php echo $articles_cat_title; ?>" />
+<meta property="og:description" content="<?php echo substr(htmlentities(strip_tags($articles_cat_meta['topics_description'])),0,128); ?>" />    
+<meta property="og:url" content="<?php echo vam_href_link(FILENAME_ARTICLES, 'tPath='.$articles_cat_meta['topics_id']); ?>" />  
+<meta property="og:type" content="website" />  
 <?php
 
     break;
 
   case ($_GET['articles_id']):
 
-			$articles_meta_query = vamDBquery("SELECT articles_name, articles_head_title_tag, articles_head_desc_tag, articles_head_keywords_tag
+			$articles_meta_query = vamDBquery("SELECT articles_id, articles_description, articles_name, articles_head_title_tag, articles_head_desc_tag, articles_head_keywords_tag
 			                                            FROM " . TABLE_ARTICLES_DESCRIPTION . "
 			                                            WHERE articles_id='" . (int)$_GET['articles_id'] . "' and
 			                                            language_id='" . (int)$_SESSION['languages_id'] . "'");
@@ -299,6 +323,10 @@ $content_meta = vam_db_fetch_array($content_meta_query, true);
 <title><?php echo $articles_title; ?></title>
 <meta name="description" content="<?php echo $articles_desc; ?>" />
 <meta name="keywords" content="<?php echo $articles_key; ?>" />
+<meta property="og:title" content="<?php echo $articles_meta['articles_name']; ?>" />
+<meta property="og:description" content="<?php echo substr(htmlentities(strip_tags($articles_meta['articles_description'])),0,128); ?>" />    
+<meta property="og:url" content="<?php echo vam_href_link(FILENAME_ARTICLE_INFO, 'articles_id='.$articles_meta['articles_id']); ?>" />  
+<meta property="og:type" content="website" />  
 <?php
 
     break;
