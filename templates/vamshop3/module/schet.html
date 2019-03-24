@@ -1,82 +1,0 @@
-{config_load file="$language/lang_$language.conf" section="print_order"} {config_load file="$language/lang_$language.conf" section="product_info"}<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>{#title#} {$oID}</title><meta http-equiv="Content-Type" content="text/html; charset={$charset}" />
-<link rel="stylesheet" type="text/css" href="{$tpl_path}/stylesheet.css" /></head><body onload="window.print()">
-<!-- Информация о заказе -->
-<div class="page">
-
-
-
-{if $smarty.const.MODULE_PAYMENT_SCHET_STATUS == 'True'}
-<p><b>Поставщик</b> {$schet1}<br />
-<b>Адрес</b> {$schet2}<br />
-<b>Телефон</b>&nbsp;{$schet3} <b>Факс</b> {$schet4}<br />
-<b>Р/с</b> 
-{$schet5} <b>в банке</b> {$schet6}<br />
-<b>К/с</b> 
-{$schet7} <b>БИК</b> {$schet8}<br />
-<b>ИНН</b> {$schet9}&nbsp; <b>КПП</b> {$schet10}&nbsp; <b>ОГРН</b> {$schet11} <b>Код по 
-ОКПО</b> {$schet12}<br /></p>
-{/if}
-{if $company_name}
-<p><b>Покупатель</b> {$company_name}</p>
-{/if}
-{if $address_label_shipping!=$address_label_customer}
-<p><b>Доставка:</b> {$address_label_shipping}</p>
-{else}
-<p><b>Доставка:</b> {$address_label_payment}</p>
-{/if}
-<p>
-{if $company_address}<b>Адрес</b> {$company_address}<br />{/if}
-{if $company_rs}<b>Р/с</b> 
-{$company_rs}{/if} {if $company_bank_name}<b>в банке</b> {$company_bank_name}<br />{/if}
-{if $company_ks}<b>К/с</b> 
-{$company_ks}{/if} {if $company_bik}<b>БИК</b> {$company_bik}<br />{/if}
-{if $company_inn}<b>ИНН</b> {$company_inn}{/if}{if $company_kpp}&nbsp; <b>КПП</b> {$company_kpp}{/if}{if $company_ogrn}&nbsp; <b>ОГРН</b> {$company_ogrn}{/if} {if $company_okpo}<b>Код по 
-ОКПО</b> {$company_okpo}{/if}<br /></p>
-{$extra_fields_data}
-{if $COMMENTS}<p>{$COMMENTS}</p>{/if}
-<hr>
-<p><b><font size="5">Счет № {$oID} от {$DATE}</font></b></p>
-<p>&nbsp;</p>
-<table border="0" width="92%" id="table1" cellspacing="0">
-	<tr>
-		<td width="5%" style="border-style: solid; border-width: 1px" align="center"><b>№ п/п</b></td>
-		<td width="17%" style="border-style: solid; border-width: 1px" align="center">
-		Н/номер</td>
-		<td width="48%" style="border-style: solid; border-width: 1px" align="center"><b>Наименование товара, услуг</b></td>
-		<td width="12%" style="border-style: solid; border-width: 1px" align="center"><b>Количество</b></td>
-		<td style="border-style: solid; border-width: 1px" width="6%" align="center"><b>Цена</b></td>
-		<td width="9%" style="border-style: solid; border-width: 1px" align="center"><b>Сумма руб.</b></td>
-	</tr>
-	
-        {foreach name=aussen item=order_values from=$order_data} 
-        <tr> 
-		<td width="5%" style="border-style: solid; border-width: 1px">{counter}.</td>
-		<td width="17%" style="border-style: solid; border-width: 1px">{$order_values.PRODUCTS_MODEL} {$order_values.PRODUCTS_ATTRIBUTES_MODEL}</td>
-		<td width="48%" style="border-style: solid; border-width: 1px">{$order_values.PRODUCTS_NAME} {$order_values.PRODUCTS_ATTRIBUTES}</td>
-		<td width="12%" style="border-style: solid; border-width: 1px">{$order_values.PRODUCTS_QTY}</td>
-		<td style="border-style: solid; border-width: 1px" width="6%">{$order_values.PRODUCTS_SINGLE_PRICE|number_format:2:'.':''}</td>
-		<td width="9%" style="border-style: solid; border-width: 1px">{$order_values.PRODUCTS_PRICE|number_format:2:'.':''}</td>
-        </tr>
-        {/foreach}
-	
-  {foreach name=aussen item=order_total_values from=$order_total}
-	<tr>
-		<td colspan="5" style="border-style: solid; border-width: 1px">
-		<p align="right"><b>{$order_total_values.TITLE}</b></td>
-		<td width="9%" style="border-style: solid; border-width: 1px">{$order_total_values.VALUE|number_format:2:'.':''}</td>
-	</tr>
-  {/foreach} 
-
-</table>
-<p><b>Сумма прописью: {$summa}. Без НДС.</b></p>
-<p>&nbsp;</p>
-<p><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-Директор _____________________________ /Фамилия/</b></p>
-<p><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; МП&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-Главный бухгалтер _________________________/Фамилия/</b></p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-
-</div>
-<!-- /Информация о заказе -->
-</body></html>
