@@ -1,0 +1,25 @@
+{config_load file="$language/lang_$language.conf" section="boxes"}
+<section class="widget inner">
+	<h3 class="widget-title">{#heading_login#}</h3>
+		{$FORM_ACTION}
+			<div class="control-group">
+			<label class="control-label" for="inputEmail">{#text_email#}</label>
+				<div class="controls">
+					<input type="text" name="email_address" id="inputEmail" placeholder="{#text_email#}">
+				</div>
+			</div>
+			<div class="control-group">
+			<label class="control-label" for="inputPassword">{#text_pwd#}</label>
+				<div class="controls">
+					<input type="password" name="password" id="inputPassword" placeholder="{#text_pwd#}" autocomplete="off">
+				</div>
+			</div>
+			<div class="control-group">
+				<div class="controls">
+					<button type="submit" class="btn btn-inverse"><i class="fa fa-check"></i> {#heading_login#}</button>
+				</div>
+			</div>
+		{$FORM_END}
+		<p><a href="{$LINK_NEW_ACCOUNT}">{#text_register#}</a></p>
+		<p><a href="{$LINK_LOST_PASSWORD}">{#text_password_forgotten#}</a></p>
+</section>

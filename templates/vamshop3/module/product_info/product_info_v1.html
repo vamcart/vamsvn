@@ -1,0 +1,176 @@
+{config_load file="$language/lang_$language.conf" section="product_info"}
+
+{if $info_message}
+<div class="contacterror">
+{$info_message}
+</div>
+{/if}
+
+<div itemscope itemtype="http://schema.org/Product">
+
+{$FORM_ACTION}
+
+		<h2 itemprop="name">{$PRODUCTS_NAME}</h2>              
+
+		<div class="row-fluid">
+			<!-- start: Product image -->
+			<div class="span6 product-images">
+				<div class="thumbnail big text-center">
+					{if $PRODUCTS_SPECIAL > 0}<div class="description"><span class="discount">-{$PRODUCTS_SPECIAL|round}%</span></div>{/if}
+					{if $PRODUCTS_POPUP_LINK!=''}<a href="{$PRODUCTS_POPUP_IMAGE}" title="{$PRODUCTS_NAME}" class="lightbox">{/if}<img itemprop="image" id="img" src="{$PRODUCTS_IMAGE}" alt="{if $PRODUCTS_IMAGE_DESCRIPTION !=''}{$PRODUCTS_IMAGE_DESCRIPTION}{else}{$PRODUCTS_NAME}{/if}" />
+					<span class="frame-overlay"></span>
+					{if $LABEL_ID > 0}{$PRODUCT_LABEL}{/if}
+					<span class="zoom"><i class="fa fa-search-plus"></i></span>
+					{if $PRODUCTS_POPUP_LINK!=''}</a>{/if}
+				</div>
+				<div class="row-fluid small">
+				{foreach name=mo_pic item=img_values from=$mo_img}
+					<div class="span4 thumbnail text-center">
+						{if $img_values.PRODUCTS_MO_POPUP_LINK !=''}<a href="{$img_values.PRODUCTS_MO_POPUP_IMAGE}" title="{$PRODUCTS_NAME}" class="lightbox">{/if}<img src="{$img_values.PRODUCTS_MO_IMAGE}" itemprop="image" alt="{if $img_values.PRODUCTS_MO_IMAGE_DESCRIPTION !=''}{$img_values.PRODUCTS_MO_IMAGE_DESCRIPTION}{else}{$PRODUCTS_NAME}{/if}" />
+						<span class="frame-overlay"></span>
+						<span class="zoom"><i class="fa fa-search-plus"></i></span>
+						{if $img_values.PRODUCTS_MO_POPUP_LINK !=''}</a>{/if}
+					</div>
+				{/foreach}
+				</div>
+			</div>
+			<!-- end: Product image -->			<!-- start: Product title -->
+				<div class="span6 product-info">
+
+					<div class="description inner" itemprop="offers" itemscope itemtype="http://schema.org/Offer"><span class="price">{$PRODUCTS_PRICE}</span><meta itemprop="price" content="{$PRODUCTS_PRICE_PLAIN}"><meta itemprop="priceCurrency" content="{$smarty.session.currency}"></div>
+
+          {if $REVIEWS_TOTAL}
+					<div class="inner">
+          {if $REVIEWS_TOTAL}{$smarty.const.TEXT_TOTAL_REVIEWS}: {$REVIEWS_TOTAL}, {/if}
+          {if $REVIEWS_RATING}{$smarty.const.TEXT_REVIEWS_RATING}: {$STAR_RATING}{/if}
+					</div>
+					{/if}
+
+					<div class="inner nobottom product-cart">
+								<label>{$smarty.const.TEXT_PRODUCT_QTY}</label>
+								{$ADD_QTY}
+								<button id="add_to_cart" type="submit" class="btn btn-inverse"><i class="fa fa-shopping-cart"></i> {$smarty.const.IMAGE_BUTTON_IN_CART}</button>
+								{if $KUPI_V_KREDIT_BUTTON}
+								{$KUPI_V_KREDIT_BUTTON}
+								{/if}
+					</div>
+
+					{if $MODULE_product_options !=''}
+					<div class="inner">
+						{$MODULE_product_options}
+					</div>
+					{/if}
+
+					{if $MODULE_graduated_price !=''}
+					<div class="inner">
+						{$MODULE_graduated_price}
+					</div>
+					{/if}
+
+					<div class="inner">
+						<a class="iframe" target="_blank" href="{$ASK_PRODUCT_QUESTION_LINK}">{#question#}</a>&nbsp;{$ASK_PRODUCT_QUESTION}
+					</div>
+
+					{if $SHIPPING_NAME}
+					<div class="inner">
+						{#text_shippingtime#}&nbsp;{if $SHIPPING_IMAGE}<img src="{$SHIPPING_IMAGE}" alt="{$SHIPPING_NAME}" />{/if}&nbsp;&nbsp;{$SHIPPING_NAME}
+					</div>
+					{/if}
+					
+				</div>
+			<!-- end: Product title -->
+		</div>
+
+{$FORM_END}
+
+		<div class="row-fluid">
+
+			<div class="row-fluid product-tabs">
+				<div class="widget">
+
+					<ul class="nav nav-tabs">
+						<li class="active"><a href="#description" data-toggle="tab"><i class="fa fa-thumbs-up"></i> {$smarty.const.TEXT_PRODUCT_DESCRIPTION}</a></li>
+						<li><a href="#reviews" data-toggle="tab"><i class="fa fa-comment"></i> {$smarty.const.TEXT_PRODUCT_REVIEWS}</a></li>
+					</ul>
+
+					<div class="tab-content">
+
+						<div class="tab-pane inner fade in notop active" id="description">
+							<div itemprop="description">{$PRODUCTS_DESCRIPTION}</div>
+
+						{if $specifications}
+						<div class="inner">
+						<!-- Specifications -->
+						{foreach name=outer item=spec_group from=$specifications_data}
+						<br />
+						{foreach key=key_data item=spec from=$spec_group.DATA}
+						<div class="{cycle values="spec-odd,spec-even"}">
+						<span class="spec-name">{$spec.NAME}:</span> <span class="spec-value">{$spec.VALUE}</span><br /> 
+						</div>
+						{/foreach}
+						{/foreach}
+						<!-- /Specifications -->
+						</div>
+						{/if}
+	
+						{if $extra_fields_data}
+						<div class="inner">
+							{foreach name=aussen item=extra_fields from=$extra_fields_data} 
+							{$extra_fields.NAME}: {$extra_fields.VALUE}<br /> 
+							{/foreach}
+						</div>
+						{/if}					
+	
+						{if $PRODUCTS_TAGS}
+						<div class="inner">
+							{#text_tags#}: 
+							{foreach name=tags item=tag from=$tags_data}
+							<a href="{$tag.LINK}">{$tag.NAME}</a> 
+							{/foreach}
+						</div>
+						{/if}
+							
+						{if $MODULE_tpt != ''}
+						<div class="inner">
+							{$MODULE_tpt}
+						</div>
+						{/if}
+							
+						{if $PRODUCTS_URL != ''}
+						<div class="inner">
+							{$PRODUCTS_URL}
+						</div>
+						{/if}
+
+						</div>
+
+						<div class="tab-pane inner fade in notop" id="reviews">
+							{$MODULE_products_reviews}
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+
+		{if $MODULE_bundle != ''}
+		{$MODULE_bundle}
+		{/if}
+		
+		{if $MODULE_products_media != ''}
+		{$MODULE_products_media}
+		{/if}
+		
+		{if $MODULE_cross_selling != ''}
+		{$MODULE_cross_selling}
+		{/if}
+		
+		{if $MODULE_reverse_cross_selling != ''}
+		{$MODULE_reverse_cross_selling}
+		{/if}
+		
+		{if $MODULE_also_purchased != ''}
+		{$MODULE_also_purchased}
+		{/if}
+
+</div>
