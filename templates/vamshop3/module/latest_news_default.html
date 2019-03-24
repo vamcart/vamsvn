@@ -1,0 +1,30 @@
+{config_load file="$language/lang_$language.conf" section="latest_news"} <h1><a href="{$NEWS_LINK}">{#heading_text#}</a></h1>
+<div class="page">
+<div class="pageItem">
+{foreach name=aussen item=module_data from=$module_content}<dl class="itemLatestNewsDefault">
+<dt class="itemNews">
+</dt>
+
+<dd class="itemNews">
+<span class="date">{$module_data.NEWS_DATA}</span>
+</dd>
+
+<dd class="itemNews">
+<strong><a href="{$module_data.NEWS_LINK_MORE}">{$module_data.NEWS_HEADING}</a></strong>
+</dd>
+
+<dd class="itemNews">
+{$module_data.NEWS_CONTENT|vam_truncate:$smarty.const.MAX_DISPLAY_LATEST_NEWS_CONTENT:" ..."}
+</dd>
+
+<dd class="itemNews">
+<a href="{$NEWS_LINK}" class="contents">{#other_news#}</a>
+</dd>
+
+</dl>
+{/foreach} 
+
+<div class="clear"></div>
+</div>
+
+</div>

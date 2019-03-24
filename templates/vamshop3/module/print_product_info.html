@@ -1,0 +1,85 @@
+{config_load file="$language/lang_$language.conf" section="print_product_info"} 
+
+<!-- Информация о товаре -->
+<div class="page">
+
+<p>
+<span class="bold">{$PRODUCTS_NAME}</span>
+</p>
+
+<p>
+{$PRODUCTS_MODEL}
+</p>
+
+<!-- pics -->
+<p>
+{if $PRODUCTS_IMAGE!=''}<img src="{$PRODUCTS_IMAGE}" alt="{$module_data.NAME}" border="0" />{/if}
+</p>
+<!-- more images -->
+{if $PRODUCTS_MO_IMAGES}
+{foreach name=mo_pic item=img_values from=$mo_img}
+<p>
+<img src="{$img_values.PRODUCTS_MO_IMAGE}" alt="{$img_values.PRODUCTS_MO_IMAGE}" border="0" />
+</p>
+{/foreach}
+{/if}
+<!-- more images eof -->
+<!-- pics eof -->
+
+<!-- desc -->
+<p>
+{$PRODUCTS_DESCRIPTION}
+</p>
+
+{if $module_content !=''}
+<p>
+<span class="bold">{#options#}</span>
+</p>
+{foreach name=aussen item=module_data from=$module_content} 
+<p>
+    {$module_data.GROUP}: {$module_data.NAME}
+</p>
+{/foreach}
+{/if}
+
+<p>
+<span class="bold">
+{#price#} {$PRODUCTS_PRICE}
+</span>
+</p>
+
+<p>
+{$PRODUCTS_TAX_INFO}{$PRODUCTS_SHIPPING_LINK}
+</p>
+
+<p>
+{if $PRODUCTS_VPE} {$PRODUCTS_VPE}{/if} 
+</p>
+<!-- desc eof -->
+
+{if $specifications}
+<!-- Specifications -->
+{foreach name=outer item=spec_group from=$specifications_data}
+<strong>{$spec_group.GROUP_NAME}:</strong><br />
+{foreach key=key_data item=spec from=$spec_group.DATA}
+{$spec.NAME}: {$spec.VALUE}<br /> 
+{/foreach}
+{/foreach}
+<!-- /Specifications -->
+{/if}
+
+<p>
+{if $extra_fields_data}
+{foreach name=aussen item=extra_fields from=$extra_fields_data} 
+{$extra_fields.NAME}: {$extra_fields.VALUE}<br /> 
+{/foreach}
+{/if}
+</p>
+
+{$BUTTON_PRINT}
+
+</div>
+<!-- /Информация о товаре -->
+
+</body>
+</html>
