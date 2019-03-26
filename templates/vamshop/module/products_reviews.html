@@ -1,8 +1,14 @@
 {config_load file="$language/lang_$language.conf" section="reviews"}<br />
 <h1>{$PRODUCTS_NAME} {#heading_reviews#}</h1>
 {if {$PRODUCTS_REVIEWS_COUNT} > 0}
-{foreach name=aussen item=module_data from=$module_content} 
 <div class="page">
+<div class="pagecontent">
+<div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">
+<p>
+{#heading_reviews#} <span itemprop="reviewCount">{$PRODUCTS_REVIEWS_COUNT}</span>, {#text_rating#} <span itemprop="ratingValue">{$PRODUCTS_REVIEWS_RATING|number_format:2}</span>
+</p>
+</div>
+{foreach name=aussen item=module_data from=$module_content} 
 <div class="pagecontent" itemprop="review" itemscope itemtype="http://schema.org/Review">
 
 <p>
@@ -18,8 +24,9 @@
 </p>
       
 </div>
-</div>
 {/foreach}
+</div>
+</div>
 {/if}
 {if $TEXT_FIRST_REVIEW != ''}
 <div class="page">
