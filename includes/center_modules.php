@@ -24,6 +24,8 @@
 
   require(DIR_WS_MODULES . FILENAME_NEWS);
 
+  include (DIR_WS_MODULES.FILENAME_REVIEWS_ALL);
+
   require(DIR_WS_MODULES . FILENAME_UPCOMING_PRODUCTS);
   return $module;
 ?>

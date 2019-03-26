@@ -154,5 +154,6 @@ define('FILENAME_SITEMAP', 'sitemap.php');
 define('FILENAME_MANUFACTURERS', 'manufacturers.php');
 
 define('FILENAME_BUNDLE_PRODUCTS', 'bundle_products.php');
+define('FILENAME_REVIEWS_ALL', 'reviews_all.php');
 
 ?>
