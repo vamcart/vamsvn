@@ -103,8 +103,8 @@ ON (cat.categories_id = p2c.categories_id)";
         }
       } // if ($this->current_category_id
       
-      $raw_query_addon_array = vam_get_filter_sql ($filter_class, $specifications_id, $specification, $products_column_name, '1');
-
+      $raw_query_addon_array = vam_get_filter_sql ($filter_class, $specifications_id, $specification, $products_column_name, $this->languages_id);
+      
       $raw_query_from .= $raw_query_addon_array['from'];
       $raw_query_where .= $raw_query_addon_array['where'];
 
