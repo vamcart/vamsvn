@@ -16,6 +16,9 @@
    ---------------------------------------------------------------------------------------*/
 ?>
 <meta name="robots" content="<?php echo META_ROBOTS; ?>" />
+<meta name="twitter:domain" content="<?php echo HTTP_SERVER; ?>" />
+<meta property="og:site_name" content="<?php echo STORE_NAME; ?>" />
+<meta name="twitter:card" content="summary" />
 <?php
 
 if (strstr($PHP_SELF, FILENAME_PRODUCT_INFO)) {
@@ -43,10 +46,17 @@ $cat_data = vam_db_fetch_array($cat_query, true);
 <meta name="description" content="<?php echo $description; ?>" />
 <meta name="keywords" content="<?php echo $product->data['products_meta_keywords']; ?>" />
 <meta property="og:title" content="<?php echo vam_parse_input_field_data($product->data['products_name'], array('"' => '&quot;')); ?>" />
-<meta property="og:description" content="<?php echo vam_parse_input_field_data(($product->data['products_short_description'] != '' ? substr($product->data['products_short_description'],0,128) : substr($product->data['products_description'],0,128)), array('"' => '&quot;')); ?>" />    
-<meta property="og:url" content="<?php echo vam_href_link(FILENAME_PRODUCT_INFO, vam_product_link($product->data['products_id'], $product->data['products_name'])); ?>" />  
-<meta property="og:type" content="website" />  
+<meta property="og:description" content="<?php echo $description; ?>" />
+<meta property="og:url" content="<?php echo vam_href_link(FILENAME_PRODUCT_INFO, vam_product_link($product->data['products_id'], $product->data['products_name'])); ?>" />
+<meta property="og:type" content="website" />
 <?php if ($product->data['products_image'] != '') { ?><meta property="og:image" content="<?php echo HTTP_SERVER.DIR_WS_CATALOG.DIR_WS_THUMBNAIL_IMAGES . vam_parse_input_field_data($product->data['products_image'], array('"' => '&quot;')); ?>" /><?php } ?>
+
+<meta name="twitter:data1" content="<?php echo $vamPrice->GetPrice($product->data['products_id'], false, 1, $product->data['products_tax_class_id'], $product->data['products_price']); ?>" />
+<meta property="product:price:amount"  content="<?php echo $vamPrice->GetPrice($product->data['products_id'], false, 1, $product->data['products_tax_class_id'], $product->data['products_price']); ?>" />
+<meta property="product:price:currency" content="<?php echo $_SESSION['currency']; ?>" />
+
+<meta name="twitter:description" content="<?php echo $description; ?>" />
+<?php if ($product->data['products_image'] != '') { ?><meta name="twitter:image" content="<?php echo HTTP_SERVER.DIR_WS_CATALOG.DIR_WS_THUMBNAIL_IMAGES . vam_parse_input_field_data($product->data['products_image'], array('"' => '&quot;')); ?>" /><?php } ?>
 
 	<?php
 
@@ -55,6 +65,10 @@ $cat_data = vam_db_fetch_array($cat_query, true);
 <title><?php echo TITLE; ?></title>	
 <meta name="description" content="<?php echo META_DESCRIPTION; ?>" />
 <meta name="keywords" content="<?php echo META_KEYWORDS; ?>" />
+<meta property="og:title" content="<?php echo TITLE; ?>" />
+<meta property="og:description" content="<?php echo META_DESCRIPTION; ?>" />
+<meta name="twitter:title" content="<?php echo TITLE; ?>" />
+<meta name="twitter:description" content="<?php echo META_DESCRIPTION; ?>" />
 	<?php
 
 	}
@@ -158,9 +172,11 @@ else {$page= '';}
       // Decode the URL-encoded names, including arrays
       $$var = vam_decode_recursive ($_GET[$var]);
 
-      // Sanitize variables to prevent hacking     //$$var = preg_replace("/^[ а-яА-Я\/]+$/","", $$var);
+      // Sanitize variables to prevent hacking
+     //$$var = preg_replace("/^[ а-яА-Я\/]+$/","", $$var);
        
-      // Get rid of extra values if Select All is selected      $$var = vam_select_all_override ($$var);
+      // Get rid of extra values if Select All is selected
+      $$var = vam_select_all_override ($$var);
       
       $filter_breadcrumbs = vam_get_filter_breadcrumbs ($specs_array, $$var);
       //$specs_array_breadcrumb = array_merge ($specs_array_breadcrumb, (array) $filter_breadcrumbs);
@@ -180,9 +196,12 @@ else {$page= '';}
 <meta name="description" content="<?php echo $categories_meta['categories_meta_title'].$filter.$filter_description.$categories_meta['categories_meta_description'] . $mDesc; ?>" />
 <meta name="keywords" content="<?php echo $categories_meta['categories_meta_keywords'] . $mKey; ?>" />
 <meta property="og:title" content="<?php echo $categories_meta['categories_meta_title'] . $filter.$mName . $page; ?>" />
-<meta property="og:description" content="<?php echo substr($categories_meta['categories_meta_title'].$filter.$filter_description.$categories_meta['categories_meta_description'] . $mDesc,0,128); ?>" />    
-<?php if ($categories_meta['categories_name'] != '') { ?><meta property="og:url" content="<?php echo vam_href_link(FILENAME_DEFAULT, vam_category_link($categories_meta['categories_id'], $categories_meta['categories_name'])); ?>" /><?php } ?>  
-<meta property="og:type" content="website" />  
+<meta property="og:description" content="<?php echo $categories_meta['categories_meta_title'].$filter.$filter_description.$categories_meta['categories_meta_description'] . $mDesc; ?>" />
+<?php if ($categories_meta['categories_name'] != '') { ?><meta property="og:url" content="<?php echo vam_href_link(FILENAME_DEFAULT, vam_category_link($categories_meta['categories_id'], $categories_meta['categories_name'])); ?>" /><?php } ?>
+<meta property="og:type" content="website" />
+<meta name="twitter:title" content="<?php echo $categories_meta['categories_meta_title'] . $filter.$mName . $page; ?>" />
+<meta name="twitter:description" content="<?php echo $categories_meta['categories_meta_title'].$filter.$filter_description.$categories_meta['categories_meta_description'] . $mDesc; ?>" />
+
 <?php
 
 	} else {
@@ -223,7 +242,10 @@ $content_meta = vam_db_fetch_array($content_meta_query, true);
 <meta property="og:title" content="<?php echo $content_title; ?>" />
 <meta property="og:description" content="<?php echo $content_desc; ?>" />    
 <meta property="og:url" content="<?php echo vam_href_link(FILENAME_CONTENT, 'coID='.$content_meta['content_id']); ?>" />  
-<meta property="og:type" content="website" />  
+<meta property="og:type" content="website" />
+<meta name="twitter:title" content="<?php echo $content_title; ?>" />
+<meta name="twitter:description" content="<?php echo $content_desc; ?>" />
+
 <?php
 
     break;
@@ -258,9 +280,11 @@ $content_meta = vam_db_fetch_array($content_meta_query, true);
 <meta name="description" content="<?php echo $news_desc; ?>" />
 <meta name="keywords" content="<?php echo $news_keys; ?>" />
 <meta property="og:title" content="<?php echo $news_title; ?>" />
-<meta property="og:description" content="<?php echo substr(htmlentities(strip_tags($news_meta['headline'])),0,128); ?>" />    
-<meta property="og:url" content="<?php echo vam_href_link(FILENAME_NEWS, 'news_id='.$news_meta['news_id']); ?>" />  
-<meta property="og:type" content="website" />  
+<meta property="og:description" content="<?php echo $news_desc; ?>" />
+<meta property="og:url" content="<?php echo vam_href_link(FILENAME_NEWS, 'news_id='.$news_meta['news_id']); ?>" />
+<meta property="og:type" content="website" />
+<meta name="twitter:title" content="<?php echo $news_title; ?>" />
+<meta name="twitter:description" content="<?php echo $news_desc; ?>" />
 <?php
 
     break;
@@ -286,9 +310,12 @@ $content_meta = vam_db_fetch_array($content_meta_query, true);
 <meta name="description" content="<?php echo $articles_cat_desc; ?>" />
 <meta name="keywords" content="<?php echo META_KEYWORDS; ?>" />
 <meta property="og:title" content="<?php echo $articles_cat_title; ?>" />
-<meta property="og:description" content="<?php echo substr(htmlentities(strip_tags($articles_cat_meta['topics_description'])),0,128); ?>" />    
-<meta property="og:url" content="<?php echo vam_href_link(FILENAME_ARTICLES, 'tPath='.$articles_cat_meta['topics_id']); ?>" />  
-<meta property="og:type" content="website" />  
+<meta property="og:description" content="<?php echo $articles_cat_desc; ?>" />
+<meta property="og:url" content="<?php echo vam_href_link(FILENAME_ARTICLES, 'tPath='.$articles_cat_meta['topics_id']); ?>" />
+<meta property="og:type" content="website" />
+<meta name="twitter:title" content="<?php echo $articles_cat_title; ?>" />
+<meta name="twitter:description" content="<?php echo $articles_cat_desc; ?>" />
+
 <?php
 
     break;
@@ -324,10 +351,14 @@ $content_meta = vam_db_fetch_array($content_meta_query, true);
 <meta name="description" content="<?php echo $articles_desc; ?>" />
 <meta name="keywords" content="<?php echo $articles_key; ?>" />
 <meta property="og:title" content="<?php echo $articles_meta['articles_name']; ?>" />
-<meta property="og:description" content="<?php echo substr(htmlentities(strip_tags($articles_meta['articles_description'])),0,128); ?>" />    
+<meta property="og:description" content="<?php echo $articles_desc; ?>" />
 <meta property="og:url" content="<?php echo vam_href_link(FILENAME_ARTICLE_INFO, 'articles_id='.$articles_meta['articles_id']); ?>" />  
-<meta property="og:type" content="website" />  
+<meta property="og:type" content="website" />
 <?php if ($articles_meta['articles_image'] != '') { ?><meta property="og:image" content="<?php echo HTTP_SERVER.DIR_WS_CATALOG.DIR_WS_IMAGES . 'articles/' . vam_parse_input_field_data($articles_meta['articles_image'], array('"' => '&quot;')); ?>" /><?php } ?>
+
+<meta name="twitter:title" content="<?php echo $articles_meta['articles_name']; ?>" />
+<meta name="twitter:description" content="<?php echo $articles_desc; ?>" />  
+<?php if ($articles_meta['articles_image'] != '') { ?><meta name="twitter:image" content="<?php echo HTTP_SERVER.DIR_WS_CATALOG.DIR_WS_IMAGES . 'articles/' . vam_parse_input_field_data($articles_meta['articles_image'], array('"' => '&quot;')); ?>" /><?php } ?>
 <?php
 
     break;
@@ -480,6 +511,10 @@ $content_meta_default = vam_db_fetch_array($content_meta_default_query,true);
 <title><?php echo $content_default_title . $mName; ?></title>
 <meta name="description" content="<?php echo META_DESCRIPTION . $mDesc; ?>" />
 <meta name="keywords" content="<?php echo META_KEYWORDS . $mKey; ?>" />
+<meta property="og:title" content="<?php echo $content_default_title . $mName; ?>" />
+<meta property="og:description" content="<?php echo META_DESCRIPTION . $mDesc; ?>" />
+<meta name="twitter:title" content="<?php echo $content_default_title . $mName; ?>" />
+<meta name="twitter:description" content="<?php echo META_DESCRIPTION . $mDesc; ?>" />
 <?php
      }
 	}
