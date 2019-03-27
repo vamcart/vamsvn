@@ -1,47 +1,3 @@
-a {
-color: #0F37D9;
-}
-
-.btn-primary {
-background: #0041DF;
-}
-
-
-.jumbotron {
-  padding-top: 3rem;
-  padding-bottom: 3rem;
-  margin-bottom: 0;
-  background-color: #fff;
-}
-@media (min-width: 768px) {
-  .jumbotron {
-    padding-top: 6rem;
-    padding-bottom: 6rem;
-  }
-}
-
-.jumbotron p:last-child {
-  margin-bottom: 0;
-}
-
-.jumbotron-heading {
-  font-weight: 300;
-}
-
-.jumbotron .container {
-  max-width: 40rem;
-}
-
-footer {
-  padding-top: 3rem;
-  padding-bottom: 3rem;
-}
-
-footer p {
-  margin-bottom: .25rem;
-}
-
-
 .sn_menu_open {cursor:pointer;margin:0;} 
 #sn_menu_icon {display:block; width:30px; height:30px; background:#000; position:absolute; right:20px; top:20px; z-index:100020;}
 #sn_menu_panel {width:100%; height:100%; position:fixed; left:-100%; top:0; z-index:100010; transition:0.5s 0.1s; 
@@ -111,3 +67,25 @@ label.modal-close:after {display:block; content:""; width:100%; height:4px; back
 transform:rotate(-45deg);
 }
 
+/*
+#wrapper {
+  background: linear-gradient(to bottom, red 300px, transparent 0);
+}*/
+
+.container { 
+
+background: #fff;
+
+}
+
+.jumbotron { 
+
+background: transparent;
+
+}
+
+
+body {
+  background: linear-gradient(-183deg, #6c757d 234px, #fff 235px) no-repeat;
+
+}
