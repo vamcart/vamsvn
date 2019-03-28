@@ -2560,6 +2560,13 @@ label.payment.selected
 		border: 1px solid #000;
 	}
 
+label
+	{
+		display: block;
+		margin-bottom: 5px;
+	}
+	
+
 .shipping-method,
 .payment-method 
 	{

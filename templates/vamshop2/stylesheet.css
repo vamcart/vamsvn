@@ -1226,6 +1226,11 @@ label.payment.selected
 		border: 1px solid #000;
 	}
 
+label
+	{
+		display: block;
+	}
+
 .shipping-method,
 .payment-method 
 	{
