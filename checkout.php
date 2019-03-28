@@ -63,6 +63,12 @@ function vam_get_sc_titles_number() {
 }
 //END functions specific
 
+	//payment validation
+	if ($_GET['payment_error'] != '') { 
+			$error = true;
+			$messageStack->add('smart_checkout', 'Платёж не пршёл.' . ' ' . vam_db_prepare_input($_GET['payment_error']));
+	}
+
 // Anti spam
 
 		$spam_flag = false;
@@ -2180,7 +2186,7 @@ $module = new vamTemplate;
 	for ($i = 0, $n = sizeof($selection); $i < $n; $i++) {
 
 		$selection[$i]['radio_buttons'] = $radio_buttons;
-		if (($selection[$i]['id'] == $payment) || ($n == 1)) {
+		if (($selection[$i]['id'] == $_SESSION['payment']) || ($n == 1)) {
 			$selection[$i]['checked'] = 1;
 		}
 
