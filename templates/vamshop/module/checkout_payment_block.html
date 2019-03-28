@@ -2,6 +2,11 @@
 {literal}
 $(document).ready(function() {
 
+$(".payment-method").on("click",function(){
+$(".payment-method").parent().removeClass("selected");
+$(this).parent().addClass("selected");
+});
+
 	$("div#qiwi_rest").hide();
 	$("div#schet").hide();
 	$("div#kvitancia").hide();
