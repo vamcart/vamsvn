@@ -2544,12 +2544,27 @@ li.ajaxAddQuickie
 
 .itemOdd 
 	{
-		background: transparent;
+		background: #f4f4f4;
 	}
 	
 .itemEven 
 	{
-		background: #f4f4f4;
+		background: transparent;
+	}
+
+.itemOdd:hover,
+.itemEven:hover, 
+label.shipping.selected,
+label.payment.selected
+	{
+		border: 1px solid #000;
+	}
+
+.shipping-method,
+.payment-method 
+	{
+		border: 1px solid white;
+		padding: 1em;
 	}
 
 div.clear

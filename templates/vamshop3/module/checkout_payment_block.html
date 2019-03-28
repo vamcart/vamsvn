@@ -41,15 +41,23 @@ if ($("input#kvitancia").is(":checked")) {
 });
 {/literal}
 </script>
-{foreach name=aussen item=module_data from=$module_content} <div class="{cycle values="itemOdd,itemEven"}">
-<p>
-<label for="{$module_data.id}">{$module_data.selection} {$module_data.icon} <span class="bold">{$module_data.module}</span> <span class="bold">{$module_data.module_cost}</span></label>
-</p>{if $module_data.description}<p>
+{foreach name=aussen item=module_data from=$module_content}
+<label class="payment {$module_data.id}{if {$module_data.checked} == 1} selected{/if}" for="{$module_data.id}">
+<div class="payment-method {cycle values="itemOdd,itemEven"}">   <p>
+{$module_data.selection}&nbsp;{$module_data.icon} <span class="bold">{$module_data.module}</span> {$module_data.module_cost}
+</p>
+
+{if $module_data.description}<p>
 {$module_data.description}
 </p>{/if}
-{if $module_data.error} <p>
+
+{if $module_data.error != ''}<p>
 {$module_data.error}
-</p>{else} {foreach name=aussen item=method_data from=$module_data.fields} <p>
+</p>{/if} 
+
+{foreach name=aussen item=method_data from=$module_data.fields} <p>
 {$method_data.title}&nbsp;{$method_data.field}
-</p> {/foreach}{/if}
-</div>{/foreach}
+</p> {/foreach}
+
+</div>
+</label> {/foreach}
