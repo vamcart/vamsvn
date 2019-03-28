@@ -2186,7 +2186,7 @@ $module = new vamTemplate;
 	for ($i = 0, $n = sizeof($selection); $i < $n; $i++) {
 
 		$selection[$i]['radio_buttons'] = $radio_buttons;
-		if (($selection[$i]['id'] == $_SESSION['payment']) || ($n == 1)) {
+		if (($selection[$i]['id'] == $payment) || ($n == 1)) {
 			$selection[$i]['checked'] = 1;
 		}
 
