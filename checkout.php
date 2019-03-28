@@ -63,12 +63,6 @@ function vam_get_sc_titles_number() {
 }
 //END functions specific
 
-	//payment validation
-	if ($_GET['payment_error'] != '') { 
-			$error = true;
-			$messageStack->add('smart_checkout', 'Платёж не пршёл.' . ' ' . vam_db_prepare_input($_GET['payment_error']));
-	}
-
 // Anti spam
 
 		$spam_flag = false;
