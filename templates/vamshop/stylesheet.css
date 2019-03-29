@@ -3049,7 +3049,7 @@ label
 .shipping-method,
 .payment-method 
 	{
-		border: 1px solid white;
+		border: 1px solid transparent;
 		padding: 1em;
 	}
 
