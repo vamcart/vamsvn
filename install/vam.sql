@@ -4032,9 +4032,9 @@ CREATE TABLE `site_reviews_description` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 DROP TABLE IF EXISTS products_bundles;
-CREATE TABLE IF NOT EXISTS products_bundles (
+CREATE TABLE IF NOT EXISTS `products_bundles` (
   bundle_id INT unsigned NOT NULL,
   subproduct_id INT unsigned NOT NULL,
   subproduct_qty TINYINT unsigned NOT NULL,
   PRIMARY KEY (bundle_id, subproduct_id)
-);
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
