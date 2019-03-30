@@ -115,7 +115,7 @@ class shoppingCart {
 		$products_id = vam_get_uprid($products_id, $attributes);
 		$attributes_pass_check = true;
 
-      if (is_numeric($products_id) && is_numeric($qty) && ($attributes_pass_check == true)) {
+      if (is_numeric($qty) && ($attributes_pass_check == true)) {
         $check_product_query = vam_db_query("select products_status, sold_in_bundle_only from " . TABLE_PRODUCTS . " where products_id = '" . (int)$products_id . "'");
         $check_product = vam_db_fetch_array($check_product_query);
 
