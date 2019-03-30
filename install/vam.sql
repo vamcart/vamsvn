@@ -4033,8 +4033,8 @@ CREATE TABLE `site_reviews_description` (
 
 DROP TABLE IF EXISTS products_bundles;
 CREATE TABLE `products_bundles` (
-  bundle_id INT unsigned NOT NULL,
-  subproduct_id INT unsigned NOT NULL,
-  subproduct_qty TINYINT unsigned NOT NULL,
+  `bundle_id` int(11) NOT NULL,
+  `subproduct_id` int(11) NOT NULL,
+  `subproduct_qty` tinyint(4) NOT NULL,
   PRIMARY KEY (bundle_id, subproduct_id)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
