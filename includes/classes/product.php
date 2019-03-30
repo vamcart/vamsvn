@@ -135,7 +135,16 @@ class product {
 			$data_reviews = array ();
 			while ($reviews = vam_db_fetch_array($reviews_query)) {
 				$row ++;
-				$data_reviews[] = array ('AUTHOR' => $reviews['customers_name'], 'DATE' => vam_date_short($reviews['date_added']), 'RATING' => vam_image('templates/'.CURRENT_TEMPLATE.'/img/stars_'.$reviews['reviews_rating'].'.gif', sprintf(TEXT_OF_5_STARS, $reviews['reviews_rating'])), 'RATING_TXT' => $reviews['reviews_rating'], 'TEXT' => vam_break_string(nl2br(htmlspecialchars($reviews['reviews_text'])), 60, '-<br />'));
+				$data_reviews[] = array (
+				
+				'AUTHOR' => $reviews['customers_name'], 
+				'DATE' => vam_date_short($reviews['date_added']), 
+				'RATING' => vam_image('templates/'.CURRENT_TEMPLATE.'/img/stars_'.$reviews['reviews_rating'].'.gif', sprintf(TEXT_OF_5_STARS, $reviews['reviews_rating'])), 
+				'RATING_TXT' => $reviews['reviews_rating'], 
+				'TEXT' => $reviews['reviews_text'],
+				'TEXT_BREAK' => vam_break_string(nl2br(htmlspecialchars($reviews['reviews_text'])), 60, '-<br />')
+				
+				);
 				if ($row == PRODUCT_REVIEWS_VIEW)
 					break;
 			}
