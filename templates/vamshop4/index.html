@@ -1,36 +1,3 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Album example · Bootstrap</title>
-
-    <!-- Bootstrap core CSS -->
-<link href="{$tpl_path}css/bootstrap.min.css" rel="stylesheet">
-<link href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" rel="stylesheet">
-
-
-    <style>
-      .bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
-      }
-
-      @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-          font-size: 3.5rem;
-        }
-      }
-    </style>
-    <!-- Custom styles for this template -->
-    <link href="{$tpl_path}css/album.css" rel="stylesheet">
-  </head>
-  <body>
-
 <input type="radio" name="sn_menu" id="sn_menuXX" class="ipXX">
 <input type="radio" name="sn_menu" id="sn_menu_0" class="ip00 ip01">
 <input type="radio" name="sn_menu" id="sn_menu_1" class="ip01">
@@ -47,7 +14,7 @@
 
 <div id="wrapper" onclick="">
 
-<header>
+<header class="pt-2 bg-light">
 <div class="container">
   <div class="row">
     <div class="col-auto mr-auto"><i class="fas fa-map-marker-alt"></i> Ставрополь</div>
@@ -90,10 +57,10 @@
     <div class="right-side d-flex">
     <ul class="navbar-nav">
       <li class="nav-item">
-        <a class="nav-link" href="account.php"><i class="fas fa-user"></i> Мои заказы <span class="sr-only">(current)</span></a>
+        <a class="nav-link text-dark" href="account.php"><i class="fas fa-user"></i> Мои заказы <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="shopping_cart.php"><i class="fas fa-shopping-cart"></i> Корзина</a>
+        <a class="nav-link text-dark" href="shopping_cart.php"><i class="fas fa-shopping-cart"></i> Корзина</a>
       </li>
     </ul>
     </div>
@@ -102,7 +69,7 @@
   </div>
 </nav>
 
-<main role="main">
+<main class="pt-3">
 
 <div class="container">
 
@@ -114,6 +81,49 @@
         <a href="#" class="btn btn-secondary my-2">Secondary action</a>
       </p>
   </section>
+
+
+<div>
+          <div class="owl-carousel owl-theme">
+            <div class="item">
+              <h4>1</h4>
+            </div>
+            <div class="item">
+              <h4>2</h4>
+            </div>
+            <div class="item">
+              <h4>3</h4>
+            </div>
+            <div class="item">
+              <h4>4</h4>
+            </div>
+            <div class="item">
+              <h4>5</h4>
+            </div>
+            <div class="item">
+              <h4>6</h4>
+            </div>
+            <div class="item">
+              <h4>7</h4>
+            </div>
+            <div class="item">
+              <h4>8</h4>
+            </div>
+            <div class="item">
+              <h4>9</h4>
+            </div>
+            <div class="item">
+              <h4>10</h4>
+            </div>
+            <div class="item">
+              <h4>11</h4>
+            </div>
+            <div class="item">
+              <h4>12</h4>
+            </div>
+          </div>
+</div>          
+
   
 
   <div class="album py-5">
@@ -262,7 +272,7 @@
 
 </main>
 
-<footer class="md-5">
+<footer class="p-3 bg-secondary">
   <div class="container">
   <div class="row">
     <div class="col-12 col-md">
@@ -441,9 +451,3 @@
 
 </div>
 
-<script src="{$tpl_path}javascript/jquery-3.3.1.slim.min.js"></script>
-<script src="{$tpl_path}javascript/popper.min.js"></script>
-<script src="{$tpl_path}javascript/bootstrap.min.js"></script>
-
-</body>
-</html>
