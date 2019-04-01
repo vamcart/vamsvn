@@ -2556,10 +2556,10 @@ li.ajaxAddQuickie
 		background: transparent;
 	}
 
-.itemOdd:hover,
-.itemEven:hover, 
-label.shipping.selected,
-label.payment.selected
+#checkout .itemOdd:hover,
+#checkout .itemEven:hover, 
+#checkout label.shipping.selected,
+#checkout label.payment.selected
 	{
 		border: 1px solid #000;
 	}
