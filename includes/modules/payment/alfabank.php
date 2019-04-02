@@ -465,7 +465,7 @@ if ($_SERVER["HTTP_X_FORWARDED_FOR"]) {
             'taxSystem' => 0,
             'orderBundle' => $args['orderBundle'],
             'returnUrl' => vam_href_link('alfabank.php', '', 'SSL'),
-            'failUrl' => 'https://shop.onkron.ru/payment-error.html'
+            'failUrl' => vam_href_link(FILENAME_CHECKOUT_SHIPPING, '', 'SSL')
 	);
         
         $_responce = $this->gateway('register.do', $_qdata, $_sgateway, false);
