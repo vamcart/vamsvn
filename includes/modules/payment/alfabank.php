@@ -336,7 +336,7 @@ if ($_SERVER["HTTP_X_FORWARDED_FOR"]) {
 
       $process_button_string = '';
 
-	    $order_sum = intval($order->info['total']);
+	    $order_sum = round(number_format($order->info["total"], 2, '.', ''));
 
     			$street_address = (!isset($order->delivery["street_address"])) ? null : $order->delivery["street_address"];
     			$city = (!isset($order->delivery["city"])) ? null : $order->delivery["city"] . ', ';
@@ -364,6 +364,7 @@ if ($_SERVER["HTTP_X_FORWARDED_FOR"]) {
             if ($order->products) {
                 foreach ($order->products as $product) {
                     $price = round(number_format($product['final_price'], 2, '.', '') * 100);
+                    $products_price = round(number_format($product['price'], 2, '.', '') * 100);
                     $vat = 0;
 
                     // PRODUCT TAX
@@ -376,14 +377,14 @@ if ($_SERVER["HTTP_X_FORWARDED_FOR"]) {
                         'value' => $product['qty'],
                         'measure' => "piece"
                     );
-                    $item['itemAmount'] = round($price * $product['qty']);
+                    $item['itemAmount'] = round($products_price * $product['qty']);
                     $item['itemCode'] = $product['model'];
 
                     $item['tax'] = array(
                         'taxType' => $vat,
                         'taxSum' => 0,
                     );
-                    $item['itemPrice'] = $price;
+                    $item['itemPrice'] = $products_price;
 
                     // FFD 1.05 added
 
@@ -464,11 +465,14 @@ if ($_SERVER["HTTP_X_FORWARDED_FOR"]) {
             'taxSystem' => 0,
             'orderBundle' => $args['orderBundle'],
             'returnUrl' => vam_href_link('alfabank.php', '', 'SSL'),
-            'failUrl' => vam_href_link(FILENAME_CHECKOUT_SHIPPING, '', 'SSL')
+            'failUrl' => 'https://shop.onkron.ru/payment-error.html'
 	);
         
         $_responce = $this->gateway('register.do', $_qdata, $_sgateway, false);
-        
+
+//echo '<pre>'.var_dump($orderBundle).'</pre>';
+//echo '<br />';
+//echo '<pre>'.urlencode($order_sum*100).'</pre>';        
 
 //echo var_dump($_responce);        
         
