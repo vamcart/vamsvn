@@ -39,10 +39,16 @@ $inv_id = get_var('LMI_PAYMENT_NO');
 $order = new order($inv_id);
 $order_sum = $order->info['total_value'];
 
-$hash = base64_encode(md5($_POST['LMI_MERCHANT_ID'].';'.$_POST['LMI_PAYMENT_NO'].';'.$_POST['LMI_SYS_PAYMENT_ID'].';'.$_POST['LMI_SYS_PAYMENT_DATE'].';'.$_POST['LMI_PAYMENT_AMOUNT'].';'.$_POST['LMI_CURRENCY'].';'.$_POST['LMI_PAID_AMOUNT'].';'. 
-$_POST['LMI_PAID_CURRENCY'].';'.$_POST['LMI_PAYMENT_SYSTEM'].';'.$_POST['LMI_SIM_MODE'].';'.MODULE_PAYMENT_PAYMASTER_SECRET_KEY, true));
+$hash = base64_encode(hash('sha1', $_POST["LMI_MERCHANT_ID"] . ";" . $_POST["LMI_PAYMENT_NO"] . ";" . $_POST["LMI_SYS_PAYMENT_ID"] . ";" . $_POST["LMI_SYS_PAYMENT_DATE"] . ";" . $_POST["LMI_PAYMENT_AMOUNT"] . ";" . $_POST["LMI_CURRENCY"] . ";" . $_POST["LMI_PAID_AMOUNT"] . ";" . $_POST["LMI_PAID_CURRENCY"] . ";" . $_POST["LMI_PAYMENT_SYSTEM"] . ";" . $_POST["LMI_SIM_MODE"] . ";" . MODULE_PAYMENT_PAYMASTER_SECRET_KEY, TRUE));
 
 // checking and handling
+
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            if ($_POST["LMI_PREREQUEST"] == "1" || $_POST["LMI_PREREQUEST"] == "2") {
+                echo "YES";
+                die;
+            } else {
+
 if ($hash == $crc) {
 if (number_format($_POST['LMI_PAYMENT_AMOUNT'],0) == number_format($order->info['total_value'],0)) {
   $sql_data_array = array('orders_status' => MODULE_PAYMENT_PAYMASTER_ORDER_STATUS_ID);
@@ -60,6 +66,9 @@ if (number_format($_POST['LMI_PAYMENT_AMOUNT'],0) == number_format($order->info[
 	//Send answer template
 	vam_send_answer_template($inv_id,MODULE_PAYMENT_PAYMASTER_ORDER_STATUS_ID,'on','on');
   
+}
+}
+
 }
 }
 

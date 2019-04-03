@@ -341,8 +341,35 @@ if ($_SERVER["HTTP_X_FORWARDED_FOR"]) {
                                vam_draw_hidden_field('LMI_MERCHANT_ID', MODULE_PAYMENT_PAYMASTER_ID) .
                                vam_draw_hidden_field('LMI_CURRENCY', 'RUB') .
                                vam_draw_hidden_field('LMI_PAYMENT_DESC', substr($_SESSION['cart_paymaster_id'], strpos($_SESSION['cart_paymaster_id'], '-')+1)) .
+                               vam_draw_hidden_field('LMI_PAYMENT_NOTIFICATION_URL', vam_href_link(FILENAME_CHECKOUT_PROCESS, '', 'SSL')) .
+                               vam_draw_hidden_field('LMI_SUCCESS_URL', vam_href_link(FILENAME_CHECKOUT_PROCESS, '', 'SSL')) .
+                               vam_draw_hidden_field('LMI_FAILURE_URL', vam_href_link(FILENAME_CHECKOUT_PROCESS, '', 'SSL')) .
                                vam_draw_hidden_field('LMI_PAYMENT_AMOUNT', $order_sum) .
+                               vam_draw_hidden_field('SIGN', base64_encode(hash('sha1', $order_sum . substr($_SESSION['cart_paymaster_id'], strpos($_SESSION['cart_paymaster_id'], '-')+1) . MODULE_PAYMENT_PAYMASTER_SECRET_KEY, TRUE))) .
                                vam_draw_hidden_field('LMI_SIM_MODE', '0');
+
+
+        //Добавляем продукты в форму
+        foreach ($order->products as $key => $product) {
+            $fields["LMI_SHOPPINGCART.ITEM[{$key}].NAME"] = $product['name'];
+            $fields["LMI_SHOPPINGCART.ITEM[{$key}].QTY"] = $product['qty'];
+            $fields["LMI_SHOPPINGCART.ITEM[{$key}].PRICE"] = number_format($product['final_price'], 2, '.', '');
+
+            $fields["LMI_SHOPPINGCART.ITEM[{$key}].TAX"] = 'vat0';
+        }
+
+        //Добавляем доставку в форму
+        $key++;
+        if ($order->info['shipping_cost'] > 0) {
+            $fields["LMI_SHOPPINGCART.ITEM[{$key}].NAME"] = 'Доставка заказа №' . substr($_SESSION['cart_paymaster_id'], strpos($_SESSION['cart_paymaster_id'], '-')+1);
+            $fields["LMI_SHOPPINGCART.ITEM[{$key}].QTY"] = 1;
+            $fields["LMI_SHOPPINGCART.ITEM[{$key}].PRICE"] = number_format($order->info['shipping_cost'], 2, '.', '');
+            $fields["LMI_SHOPPINGCART.ITEM[{$key}].TAX"] = 'vat0';
+        }
+
+        foreach ($fields as $key => $value) {
+            $process_button_string .= vam_draw_hidden_field($key, $value);
+        }
 
       return $process_button_string;
     }
