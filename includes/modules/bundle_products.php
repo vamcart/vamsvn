@@ -30,6 +30,6 @@ if (count($data) > 1) {
 	$module->caching = 0;
 	$module = $module->fetch(CURRENT_TEMPLATE.'/module/bundle_products.html');
 
-	$info->assign('MODULE_bundle_products', $module);
+	$info->assign('MODULE_bundle', $module);
 }
 ?>
