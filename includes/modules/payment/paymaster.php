@@ -341,9 +341,9 @@ if ($_SERVER["HTTP_X_FORWARDED_FOR"]) {
                                vam_draw_hidden_field('LMI_MERCHANT_ID', MODULE_PAYMENT_PAYMASTER_ID) .
                                vam_draw_hidden_field('LMI_CURRENCY', 'RUB') .
                                vam_draw_hidden_field('LMI_PAYMENT_DESC', substr($_SESSION['cart_paymaster_id'], strpos($_SESSION['cart_paymaster_id'], '-')+1)) .
-                               vam_draw_hidden_field('LMI_PAYMENT_NOTIFICATION_URL', vam_href_link(FILENAME_CHECKOUT_PROCESS, '', 'SSL')) .
+                               vam_draw_hidden_field('LMI_PAYMENT_NOTIFICATION_URL', vam_href_link('paymaster.php', '', 'SSL')) .
                                vam_draw_hidden_field('LMI_SUCCESS_URL', vam_href_link(FILENAME_CHECKOUT_PROCESS, '', 'SSL')) .
-                               vam_draw_hidden_field('LMI_FAILURE_URL', vam_href_link(FILENAME_CHECKOUT_PROCESS, '', 'SSL')) .
+                               vam_draw_hidden_field('LMI_FAILURE_URL', vam_href_link(FILENAME_CHECKOUT_SHIPPING, '', 'SSL')) .
                                vam_draw_hidden_field('LMI_PAYMENT_AMOUNT', $order_sum) .
                                vam_draw_hidden_field('SIGN', base64_encode(hash('sha1', $order_sum . substr($_SESSION['cart_paymaster_id'], strpos($_SESSION['cart_paymaster_id'], '-')+1) . MODULE_PAYMENT_PAYMASTER_SECRET_KEY, TRUE))) .
                                vam_draw_hidden_field('LMI_SIM_MODE', '0');
