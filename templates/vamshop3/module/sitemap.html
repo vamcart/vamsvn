@@ -1,31 +1,19 @@
+{config_load file="$language/lang_$language.conf" section="sitemap"} 
+<h1>{#heading_sitemap#}</h1>
+<div class="page">
 <div class="pageItem">
-<div class="row-fluid shop-products">
-	<ul class="thumbnails">
-	{foreach name=aussen item=module_data from=$module_content} 
-		<span class="span4 item{if $smarty.foreach.aussen.index % 3 == 0} first{/if}">
-			<div class="thumbnail text-center">
-				<a href="{$module_data.CAT_LINK}" class="image">
-				{if $module_data.CAT_IMAGE}<img src="{$module_data.CAT_IMAGE}" alt="{$module_data.CAT_NAME}" title="{$module_data.CAT_NAME}" />{/if}
-				<span class="frame-overlay"></span>
-				<span class="link">{$smarty.const.TEXT_VIEW_PRODUCTS} <i class="fa fa-chevron-right"></i></span>
-				</a>
-				<div class="inner notop">
-					<div class="description">
-						<h4><a href="{$module_data.CAT_LINK}"><u><i class="fa fa-folder-open"></i> {$module_data.CAT_NAME}</u></a></h4>
-					</div>
-					<div class="description text-left">
-<ul>					
+{foreach name=aussen item=module_data from=$module_content}
+<dl class="itemNewProductsDefault">
+<dt class="itemImage">
+<a href="{$module_data.CAT_LINK}">{$module_data.CAT_NAME}</a>
+</dt>
 {foreach key=key_data item=item_data from=$module_data.SCATS}
-<li>
+<dd class="itemDescription">
 <a href="{$item_data.link}">{$item_data.text}</a>
-</li>
+</dd>
+{/foreach}    
+</dl>
 {/foreach}
-</ul>
-					</div>
-				</div>
-			</div>
-		</span>
-	{/foreach}
-</ul>
-</div>	
-</div>	
+<div class="clear"></div>
+</div>
+</div>
