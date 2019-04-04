@@ -27,5 +27,8 @@
   include (DIR_WS_MODULES.FILENAME_REVIEWS_ALL);
 
   require(DIR_WS_MODULES . FILENAME_UPCOMING_PRODUCTS);
+
+  require(DIR_WS_MODULES . FILENAME_SITEMAP);
+
   return $module;
 ?>
