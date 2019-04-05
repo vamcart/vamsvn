@@ -1,453 +1,180 @@
-<input type="radio" name="sn_menu" id="sn_menuXX" class="ipXX">
-<input type="radio" name="sn_menu" id="sn_menu_0" class="ip00 ip01">
-<input type="radio" name="sn_menu" id="sn_menu_1" class="ip01">
-<input type="radio" name="sn_menu" id="sn_menu_2" class="ip01">
-<input type="radio" name="sn_menu" id="sn_menu_3" class="ip01">
-<input type="radio" name="sn_menu" id="sn_menu_4" class="ip01">
-<input type="radio" name="sn_menu" id="sn_menu_2_1" class="ip01">
-<input type="radio" name="sn_menu" id="sn_menu_2_2" class="ip01">
-<input type="radio" name="sn_menu" id="sn_menu_2_3" class="ip01">
-<input type="radio" name="sn_menu" id="sn_menu_2_1_1" class="ip01">
-<input type="radio" name="sn_menu" id="sn_menu_4_1" class="ip01">
-<input type="radio" name="sn_menu" id="sn_menu_4_2" class="ip01">
-<input type="radio" name="sn_menu" id="sn_menu_4_1_1" class="ip01">
+<div id="wrapper">
 
-<div id="wrapper" onclick="">
+    {include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/header/header.html"}
 
-<header class="pt-2 bg-light">
-<div class="container">
-  <div class="row">
-    <div class="col-auto mr-auto"><i class="fas fa-map-marker-alt"></i> Ставрополь</div>
-    <div class="col-auto"><i class="fas fa-phone"></i> +7 499 123-45-67</div>
-    <div class="col-auto"><i class="fas fa-truck"></i> Быстрая доставка</div>
-    <div class="col-auto"><i class="fas fa-wallet"></i> Удобная оплата</div>
-    <div class="col-auto"><i class="fas fa-percentage"></i> Доступные цены</div>
-  </div>
-</div>
-</header>
+    {include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/navbar/navbar.html"}    
 
-<nav class="navbar navbar-light bg-light navbar-expand-lg">
-<div class="container">
-  <a class="navbar-brand" href="{$mainpage}">
-    <img src="{$tpl_path}img/logo.png" width="150" height="35" alt="logo">
-  </a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-list-8" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse justify-content-between" id="navbar-list-8">
-    <ul class="navbar-nav">
-      <li class="nav-item active">
-        <label class="sn_menu_open btn btn-outline-primary" for="sn_menu_0"><i class="fas fa-bars"></i> Каталог товаров</label>
-      </li>
-    </ul>
-  
-    <div class="right-side d-flex">
-      
-      <form class="form-inline">
-      <div class="input-group">
-            <input type="text" class="form-control" id="search" placeholder="Поиск" />
-            <div class="input-group-append">
-               <button class="btn btn-outline-secondary fas fa-search" type="submit"></button>
-            </div>
-      </div>
-      </form>
-      
-    </div>  
-    
-    <div class="right-side d-flex">
-    <ul class="navbar-nav">
-      <li class="nav-item">
-        <a class="nav-link text-dark" href="account.php"><i class="fas fa-user"></i> Мои заказы <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link text-dark" href="shopping_cart.php"><i class="fas fa-shopping-cart"></i> Корзина</a>
-      </li>
-    </ul>
-    </div>
-    
-  </div>
-  </div>
-</nav>
+
 
 <main class="pt-3">
 
 <div class="container">
 
-  <section class="jumbotron text-center">
-      <h1 class="jumbotron-heading">Album example</h1>
-      <p class="lead text-muted">Something short and leading about the collection below—its contents, the creator, etc. Make it short and sweet, but not too short so folks don’t simply skip over it entirely.</p>
-      <p>
-        <a href="#" class="btn btn-primary my-2">Main call to action</a>
-        <a href="#" class="btn btn-secondary my-2">Secondary action</a>
-      </p>
-  </section>
+    {include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/slider/mainpage-slider.html"}
 
 
 <div>
           <div class="owl-carousel owl-theme">
-            <div class="item">
-              <h4>1</h4>
-            </div>
-            <div class="item">
-              <h4>2</h4>
-            </div>
-            <div class="item">
-              <h4>3</h4>
-            </div>
-            <div class="item">
-              <h4>4</h4>
-            </div>
-            <div class="item">
-              <h4>5</h4>
-            </div>
-            <div class="item">
-              <h4>6</h4>
-            </div>
-            <div class="item">
-              <h4>7</h4>
-            </div>
-            <div class="item">
-              <h4>8</h4>
-            </div>
-            <div class="item">
-              <h4>9</h4>
-            </div>
-            <div class="item">
-              <h4>10</h4>
-            </div>
-            <div class="item">
-              <h4>11</h4>
-            </div>
-            <div class="item">
-              <h4>12</h4>
-            </div>
+
+    {include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/product-card/product-card-simple.html"}
+    {include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/product-card/product-card-simple.html"}
+    {include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/product-card/product-card-simple.html"}
+    {include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/product-card/product-card-simple.html"}
+    {include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/product-card/product-card-simple.html"}
+    {include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/product-card/product-card-simple.html"}
+    {include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/product-card/product-card-simple.html"}
+    {include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/product-card/product-card-simple.html"}
+    {include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/product-card/product-card-simple.html"}
+    {include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/product-card/product-card-simple.html"}
+    {include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/product-card/product-card-simple.html"}
+
+    
           </div>
 </div>          
 
+<div>
+          <div class="owl-carousel owl-theme">
+  
+    {include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/product-card/product-card-details.html"}
+    {include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/product-card/product-card-details.html"}
+    {include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/product-card/product-card-details.html"}
+    {include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/product-card/product-card-details.html"}
+    {include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/product-card/product-card-details.html"}
+    {include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/product-card/product-card-details.html"}
+    {include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/product-card/product-card-details.html"}
+    {include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/product-card/product-card-details.html"}
+    {include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/product-card/product-card-details.html"}
+    {include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/product-card/product-card-details.html"}
+    {include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/product-card/product-card-details.html"}
+
+          </div>
+</div>          
+
+<div>
+          <div class="owl-carousel owl-theme">
+
+    {include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/product-card/product-card-complex.html"}
+    {include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/product-card/product-card-complex.html"}
+    {include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/product-card/product-card-complex.html"}
+    {include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/product-card/product-card-complex.html"}
+    {include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/product-card/product-card-complex.html"}
+    {include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/product-card/product-card-complex.html"}
+    {include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/product-card/product-card-complex.html"}
+    {include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/product-card/product-card-complex.html"}
+    {include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/product-card/product-card-complex.html"}
+    {include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/product-card/product-card-complex.html"}
+    {include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/product-card/product-card-complex.html"}
+
+          </div>
+</div>          
+  
+  
+<div class="row">
+  <div class="col-sm-6">
+    {include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/product-card/bootstrap-card-no-image.html"}
+  </div>
+  <div class="col-sm-6">
+    {include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/product-card/bootstrap-card-no-image.html"}
+  </div>
+</div>  
   
 
-  <div class="album py-5">
+{include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/product-card/product-card-listing.html"}
+{include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/product-card/product-card-listing.html"}
+{include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/product-card/product-card-listing.html"}
+{include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/product-card/product-card-listing.html"}
+{include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/product-card/product-card-listing.html"}
 
-      <div class="row">
-        <div class="col-md-4">
-          <div class="card mb-4 shadow-sm">
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-            <div class="card-body">
-              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                </div>
-                <small class="text-muted">9 mins</small>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card mb-4 shadow-sm">
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-            <div class="card-body">
-              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                </div>
-                <small class="text-muted">9 mins</small>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card mb-4 shadow-sm">
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-            <div class="card-body">
-              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                </div>
-                <small class="text-muted">9 mins</small>
-              </div>
-            </div>
-          </div>
-        </div>
 
-        <div class="col-md-4">
-          <div class="card mb-4 shadow-sm">
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-            <div class="card-body">
-              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                </div>
-                <small class="text-muted">9 mins</small>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card mb-4 shadow-sm">
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-            <div class="card-body">
-              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                </div>
-                <small class="text-muted">9 mins</small>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card mb-4 shadow-sm">
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-            <div class="card-body">
-              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                </div>
-                <small class="text-muted">9 mins</small>
-              </div>
-            </div>
-          </div>
-        </div>
+<div class="row">
+  <div class="col-sm-6 col-md-4 col-lg-3">
+    {include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/product-card/product-card-simple.html"}
+  </div>
+  <div class="col-sm-6 col-md-4 col-lg-3">
+    {include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/product-card/product-card-simple.html"}
+  </div>
+  <div class="col-sm-6 col-md-4 col-lg-3">
+    {include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/product-card/product-card-simple.html"}
+  </div>
+  <div class="col-sm-6 col-md-4 col-lg-3">
+    {include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/product-card/product-card-simple.html"}
+  </div>
+  <div class="col-sm-6 col-md-4 col-lg-3">
+    {include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/product-card/product-card-simple.html"}
+  </div>
+  <div class="col-sm-6 col-md-4 col-lg-3">
+    {include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/product-card/product-card-simple.html"}
+  </div>
+  <div class="col-sm-6 col-md-4 col-lg-3">
+    {include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/product-card/product-card-simple.html"}
+  </div>
+  <div class="col-sm-6 col-md-4 col-lg-3">
+    {include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/product-card/product-card-simple.html"}
+  </div>
+</div>  
 
-        <div class="col-md-4">
-          <div class="card mb-4 shadow-sm">
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-            <div class="card-body">
-              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                </div>
-                <small class="text-muted">9 mins</small>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card mb-4 shadow-sm">
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-            <div class="card-body">
-              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                </div>
-                <small class="text-muted">9 mins</small>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card mb-4 shadow-sm">
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-            <div class="card-body">
-              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                </div>
-                <small class="text-muted">9 mins</small>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
 
-</div>
+<div class="row">
+  <div class="col-sm-6 col-md-4 col-lg-3">
+    {include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/product-card/product-card-details.html"}
+  </div>
+  <div class="col-sm-6 col-md-4 col-lg-3">
+    {include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/product-card/product-card-details.html"}
+  </div>
+  <div class="col-sm-6 col-md-4 col-lg-3">
+    {include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/product-card/product-card-details.html"}
+  </div>
+  <div class="col-sm-6 col-md-4 col-lg-3">
+    {include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/product-card/product-card-details.html"}
+  </div>
+  <div class="col-sm-6 col-md-4 col-lg-3">
+    {include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/product-card/product-card-details.html"}
+  </div>
+  <div class="col-sm-6 col-md-4 col-lg-3">
+    {include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/product-card/product-card-details.html"}
+  </div>
+  <div class="col-sm-6 col-md-4 col-lg-3">
+    {include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/product-card/product-card-details.html"}
+  </div>
+  <div class="col-sm-6 col-md-4 col-lg-3">
+    {include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/product-card/product-card-details.html"}
+  </div>
+</div> 
+
+
+<div class="row">
+  <div class="col-sm-6 col-md-4 col-lg-3">
+    {include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/product-card/product-card-complex.html"}
+  </div>
+  <div class="col-sm-6 col-md-4 col-lg-3">
+    {include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/product-card/product-card-complex.html"}
+  </div>
+  <div class="col-sm-6 col-md-4 col-lg-3">
+    {include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/product-card/product-card-complex.html"}
+  </div>
+  <div class="col-sm-6 col-md-4 col-lg-3">
+    {include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/product-card/product-card-complex.html"}
+  </div>
+  <div class="col-sm-6 col-md-4 col-lg-3">
+    {include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/product-card/product-card-complex.html"}
+  </div>
+  <div class="col-sm-6 col-md-4 col-lg-3">
+    {include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/product-card/product-card-complex.html"}
+  </div>
+  <div class="col-sm-6 col-md-4 col-lg-3">
+    {include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/product-card/product-card-complex.html"}
+  </div>
+  <div class="col-sm-6 col-md-4 col-lg-3">
+    {include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/product-card/product-card-complex.html"}
+  </div>
+</div> 
+
 
 </main>
 
-<footer class="p-3 bg-secondary">
-  <div class="container">
-  <div class="row">
-    <div class="col-12 col-md">
-      <a href=""><img class="mb-2" src="{$tpl_path}img/logo.png" width="150" height="35" alt="{$smarty.const.STORE_NAME}"></a>
-      <small class="d-block mb-3 text-white">&copy; {$smarty.now|date_format:"%Y"} {$smarty.const.STORE_NAME}</small>
-         <ul class="list-inline">
-           <li class="list-inline-item text-white"><a class="text-light" href="" ><i class="fab fa-instagram fa-2x"></i></a></li>
-           <li class="list-inline-item text-white"><a class="text-light" href="" ><i class="fab fa-vk fa-2x"></i></a></li>
-           <li class="list-inline-item text-white"><a class="text-light" href="" ><i class="fab fa-facebook fa-2x"></i></a></li>
-           <li class="list-inline-item text-white"><a class="text-light" href="" ><i class="fab fa-twitter fa-2x"></i></a></li>
-         </ul>
-    </div>
-    <div class="col-6 col-md">
-      <h5 class="text-white">Информация</h5>
-      <ul class="list-unstyled text-small">
-        <li><a class="text-white" href="#">Ссылка</a></li>
-        <li><a class="text-white" href="#">Ссылка</a></li>
-        <li><a class="text-white" href="#">Ссылка</a></li>
-        <li><a class="text-white" href="#">Ссылка</a></li>
-        <li><a class="text-white" href="#">Ссылка</a></li>
-        <li><a class="text-white" href="#">Ссылка</a></li>
-      </ul>
-    </div>
-    <div class="col-6 col-md">
-      <h5 class="text-white">Новости</h5>
-      <ul class="list-unstyled text-small">
-        <li><a class="text-white" href="#">Ссылка</a></li>
-        <li><a class="text-white" href="#">Ссылка</a></li>
-        <li><a class="text-white" href="#">Ссылка</a></li>
-        <li><a class="text-white" href="#">Ссылка</a></li>
-      </ul>
-    </div>
-    <div class="col-6 col-md">
-      <h5 class="text-white">Статьи</h5>
-      <ul class="list-unstyled text-small">
-        <li><a class="text-white" href="#">Ссылка</a></li>
-        <li><a class="text-white" href="#">Ссылка</a></li>
-        <li><a class="text-white" href="#">Ссылка</a></li>
-        <li><a class="text-white" href="#">Ссылка</a></li>
-      </ul>
-    </div>
-  </div>
-  </div>
-</footer> 
- 
-</div>
-
-<div id="sn_menu_panel">
-
-<div id="sn_menu_icon"><label for="sn_menuXX" class="modal-close"></label></div>
-
-	<div id="sn_menu_left">
-		<div class="text-center"><img src="{$tpl_path}img/logo-big.png" width="311" height="76" alt="logo"></div>
-	</div>
-
-
-	<div id="sn_menu_right">
-
-		<div class="menubox sn_menu_0">
-			<p><a href="index.html">Home</a></p>
-			<p><label for="sn_menu_1">Contact Us <i class="fas fa-hand-point-right social"></i></label></p> 
-			<p><label for="sn_menu_2">Resort <i class="fas fa-hand-point-right social"></i></label></p>
-			<p><label for="sn_menu_3">Surrounding Area <i class="fas fa-hand-point-right social"></i></label></p>
-			<p><label for="sn_menu_4">Information <i class="fas fa-hand-point-right social"></i></label></p>
-		</div>
-
-			<div class="menubox sn_menu_1">
-				<p class="back"><label for="sn_menu_0"><i class="fas fa-hand-point-left social"></i> Contact Us</label></p> 
-
-				<p><a href="index.html">Email</a></p>
-				<p><a href="index.html">Telephone</a></p>
-				<p><a href="index.html">Online Form</a></p>
-				<p><a href="index.html">Snail Mail</a></p>
-			</div>
-
-			<div class="menubox sn_menu_2">
-				<p class="back"><label for="sn_menu_0"><i class="fas fa-hand-point-left social"></i> Resort</label></p>
-
-				<p><a href="index.html">Ski Hire Facilities</a></p>
-				<p><label for="sn_menu_2_1">Main Ski Slopes <i class="fas fa-hand-point-right social"></i></label></p>
-				<p><a href="index.html">Night Life</a></p>
-				<p><label for="sn_menu_2_2">Restaurants <i class="fas fa-hand-point-right social"></i></label></p>
-				<p><label for="sn_menu_2_3">Car Hire <i class="fas fa-hand-point-right social"></i></label></p>
-			</div>
-
-				<div class="menubox sn_menu_2_1">
-					<p class="back"><label for="sn_menu_0"><i class="fas fa-hand-point-left social"></i> Resort</label></p>
-					<p class="back"><label for="sn_menu_2"><i class="fas fa-hand-point-left social"></i> Main Ski Slopes</label></p>
-
-					<p><a href="index.html">Beginners Slopes</a></p>
-					<p><a href="index.html">Intermediate Slopes</a></p>
-					<p><label for="sn_menu_2_1_1">Advanced Levels <i class="fas fa-hand-point-right social"></i></label></p>
-					<p><a href="index.html">Expert</a></p>
-				</div>
-
-					<div class="menubox sn_menu_2_1_1">
-						<p class="back"><label for="sn_menu_0"><i class="fas fa-hand-point-left social"></i> Resort</label></p>
-						<p class="back"><label for="sn_menu_2"><i class="fas fa-hand-point-left social"></i> Main Ski Slopes</label></p>
-						<p class="back"><label for="sn_menu_2_1"><i class="fas fa-hand-point-left social"></i> Advanced Levels</label></p>
-
-						<p><a href="index.html">Local</a></p>
-						<p><a href="index.html">Nearby</a></p>
-						<p><a href="index.html">With instructor</a></p>
-						<p><a href="index.html">Snow boarding</a></p>
-					</div>
-
-				<div class="menubox sn_menu_2_2">
-					<p class="back"><label for="sn_menu_0"><i class="fas fa-hand-point-left social"></i> Resort</label></p>
-					<p class="back"><label for="sn_menu_2"><i class="fas fa-hand-point-left social"></i> Restaurants</label></p>
-
-					<p><a href="index.html">Snow Hotel</a></p>
-					<p><a href="index.html">The Snowman</a></p>
-					<p><a href="index.html">Ice Cavern</a></p>
-					<p><a href="index.html">Ski Inn</a></p>
-				</div>
-
-				<div class="menubox sn_menu_2_3">
-					<p class="back"><label for="sn_menu_0"><i class="fas fa-hand-point-left social"></i> Resort</label></p>
-					<p class="back"><label for="sn_menu_2"><i class="fas fa-hand-point-left social"></i> Car Hire</label></p>
-
-					<p><a href="index.html">From Airport</a></p>
-					<p><a href="index.html">In Resort</a></p>
-					<p><a href="index.html">Mutiple Resorts</a></p>
-				</div>
-
-			<div class="menubox sn_menu_3">
-				<p class="back"><label for="sn_menu_0"><i class="fas fa-hand-point-left social"></i> Surrounding Area</label></p>
-
-				<p><a href="index.html">Where to go</a></p>
-				<p><a href="index.html">What to do</a></p>
-				<p><a href="index.html">Places of interest</a></p>
-				<p><a href="index.html">Parks &amp; Museums</a></p>
-			</div>
-
-			<div class="menubox sn_menu_4">
-				<p class="back"><label for="sn_menu_0"><i class="fas fa-hand-point-left social"></i> Information</label></p>
-
-				<p><a href="index.html">Money Exchange</a></p>
-				<p><label for="sn_menu_4_1">Resort Information <i class="fas fa-hand-point-right social"></i></label></p>
-				<p><label for="sn_menu_4_2">Language <i class="fas fa-hand-point-right social"></i></label></p>
-				<p><a href="index.html">Short Breaks</a></p>
-			</div>
-
-				<div class="menubox sn_menu_4_1">
-					<p class="back"><label for="sn_menu_0"><i class="fas fa-hand-point-left social"></i> Information</label></p>
-					<p class="back"><label for="sn_menu_4"><i class="fas fa-hand-point-left social"></i> Resort Information</label></p>
-
-					<p><a href="index.html">Lift Passes</a></p>
-					<p><a href="index.html">Insurance</a></p>
-					<p><label for="sn_menu_4_1_1">Gear Rental <i class="fas fa-hand-point-right social"></i></label></p>
-					<p><a href="index.html">Ski Schools</a></p>
-					<p><a href="index.html">Snow Report</a></p>
-				</div>
-
-					<div class="menubox sn_menu_4_1_1">
-						<p class="back"><label for="sn_menu_0"><i class="fas fa-hand-point-left social"></i> Information</label></p>
-						<p class="back"><label for="sn_menu_4"><i class="fas fa-hand-point-left social"></i> Resort Information</label></p>
-						<p class="back"><label for="sn_menu_4_1"><i class="fas fa-hand-point-left social"></i> Gear Rental</label></p>
-
-						<p><a href="index.html">Boots</a></p>
-						<p><a href="index.html">Skis</a></p>
-						<p><a href="index.html">Ski Wear</a></p>
-						<p><a href="index.html">Goggles</a></p>
-					</div>
-
-				<div class="menubox sn_menu_4_2">
-					<p class="back"><label for="sn_menu_0"><i class="fas fa-hand-point-left social"></i> Information</label></p>
-					<p class="back"><label for="sn_menu_4"><i class="fas fa-hand-point-left social"></i> Language</label></p>
-
-					<p><a href="index.html">Austrian</a></p>
-					<p><a href="index.html">German</a></p>
-					<p><a href="index.html">French</a></p>
-					<p><a href="index.html">English</a></p>
-				</div>
-	</div>
+    {include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/footer/footer.html"}    
 
 </div>
 
+
+    {include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/menu/top-menu.html"}

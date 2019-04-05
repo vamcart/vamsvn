@@ -13,7 +13,7 @@
 
 <script src="jscript/jquery/plugins/owl/owl.carousel.min.js"></script>
 
-<script src="<?php echo 'templates/'.CURRENT_TEMPLATE.'/javascript/all.js.php'; ?>"></script>
+<script src="<?php echo 'templates/'.CURRENT_TEMPLATE.'/javascript/vamshop4.js.php'; ?>"></script>
 
 <?php if (AJAX_CART == 'true') { ?>
 <script src="<?php echo 'templates/'.CURRENT_TEMPLATE.'/javascript/jscript_ajax_cart.js'; ?>"></script>
