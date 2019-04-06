@@ -1,35 +1,26 @@
-{config_load file="$language/lang_$language.conf" section="featured"} 
-
-<script type="text/javascript" src="jscript/jquery/plugins/sequence/jquery.sequence-min.js"></script>
-<script type="text/javascript" src="jscript/jquery/plugins/sequence/sequencejs-options.js"></script>
-
+{config_load file="$language/lang_$language.conf" section="manufacturers"} <h1>{#heading_text#}</h1>
 <div class="page">
 <div class="pageItem">
 
-<div id="slider">
-	<div id="sequence-theme">
-		<div id="sequence">
-			<div class="sequence-prev"><i class="fa fa-chevron-left"></i></div>
-			<div class="sequence-next"><i class="fa fa-chevron-right"></i></div>
-				<ul class="sequence-canvas">
-				{foreach name=aussen item=module_data from=$module_content}
-					<li{if $module_data@first} class="animate-in"{/if}>
-						<div class="text">
-							<h2 class="title"><span><a href="{$module_data.PRODUCTS_LINK}">{$module_data.PRODUCTS_NAME|strip_tags|vam_truncate:80:"...":true}</a></span></h2>
-      				{if $module_data.REVIEWS_TOTAL > 0}<div class="description"><span class="rating">{$module_data.REVIEWS_STAR_RATING}</span> <span class="reviews">{$smarty.const.TEXT_TOTAL_REVIEWS}: {$module_data.REVIEWS_TOTAL}</span></div>{/if}
-							<div class="description">{$module_data.PRODUCTS_SHORT_DESCRIPTION|strip_tags|vam_truncate:120:"...":true}</div>
-							<a href="{$module_data.PRODUCTS_LINK}" class="btn btn-inverse"><i class="fa fa-arrow-right"></i> {$smarty.const.TEXT_READ_MORE}</a>
-						</div>
-						<img class="image" src="{$module_data.PRODUCTS_IMAGE}" alt="{$module_data.PRODUCTS_NAME}" />
-					</li>
-				{/foreach}
-				</ul>
-		</div>
-	</div>
-</div>
-
-</div>
-
-</div>
-
+<!-- start: products listing -->
+<div class="row-fluid shop-products">
+	<ul class="thumbnails">
+		{foreach name=aussen item=module_data from=$module_content}
+		<li class="item span4{if $smarty.foreach.aussen.index % 3 == 0} first{/if}">
+			<div class="thumbnail text-center">
+				<a href="{$module_data.PRODUCTS_LINK}" class="image"><img src="{$module_data.PRODUCTS_IMAGE}" alt="{$module_data.PRODUCTS_NAME}" /></a>
+			<div class="inner notop nobottom text-left">
+				<h4 class="title"><a href="{$module_data.PRODUCTS_LINK}">{$module_data.PRODUCTS_NAME}</a></h4>
+				<div class="description">{$module_data.PRODUCTS_SHORT_DESCRIPTION|strip_tags|vam_truncate:60:"...":true}</div>
+			</div>
+			</div>
+		</li>
+		{/foreach}
+	</ul>
+</div>  
+<!-- end: products listing -->  
+  
 <div class="clear"></div>
+</div>
+
+</div>
