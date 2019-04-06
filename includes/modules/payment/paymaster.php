@@ -351,20 +351,23 @@ if ($_SERVER["HTTP_X_FORWARDED_FOR"]) {
 
         //Добавляем продукты в форму
         foreach ($order->products as $key => $product) {
-            $fields["LMI_SHOPPINGCART.ITEM[{$key}].NAME"] = $product['name'];
-            $fields["LMI_SHOPPINGCART.ITEM[{$key}].QTY"] = $product['qty'];
-            $fields["LMI_SHOPPINGCART.ITEM[{$key}].PRICE"] = number_format($product['final_price'], 2, '.', '');
-
-            $fields["LMI_SHOPPINGCART.ITEM[{$key}].TAX"] = 'vat0';
+            $fields["LMI_SHOPPINGCART.ITEMS[{$key}].NAME"] = $product['name'];
+            $fields["LMI_SHOPPINGCART.ITEMS[{$key}].QTY"] = $product['qty'];
+            $fields["LMI_SHOPPINGCART.ITEMS[{$key}].PRICE"] = number_format($product['final_price'], 2, '.', '');
+            $fields["LMI_SHOPPINGCART.ITEMS[{$key}].TAX"] = 'no_vat';
+            $fields["LMI_SHOPPINGCART.ITEMS[{$key}].METHOD"] = '1';
+            $fields["LMI_SHOPPINGCART.ITEMS[{$key}].SUBJECT"] = '1';
         }
 
         //Добавляем доставку в форму
         $key++;
         if ($order->info['shipping_cost'] > 0) {
-            $fields["LMI_SHOPPINGCART.ITEM[{$key}].NAME"] = 'Доставка заказа №' . substr($_SESSION['cart_paymaster_id'], strpos($_SESSION['cart_paymaster_id'], '-')+1);
-            $fields["LMI_SHOPPINGCART.ITEM[{$key}].QTY"] = 1;
-            $fields["LMI_SHOPPINGCART.ITEM[{$key}].PRICE"] = number_format($order->info['shipping_cost'], 2, '.', '');
-            $fields["LMI_SHOPPINGCART.ITEM[{$key}].TAX"] = 'vat0';
+            $fields["LMI_SHOPPINGCART.ITEMS[{$key}].NAME"] = 'Доставка заказа №' . substr($_SESSION['cart_paymaster_id'], strpos($_SESSION['cart_paymaster_id'], '-')+1);
+            $fields["LMI_SHOPPINGCART.ITEMS[{$key}].SUBJECT"] = '4';
+            $fields["LMI_SHOPPINGCART.ITEMS[{$key}].METHOD"] = '1';
+            $fields["LMI_SHOPPINGCART.ITEMS[{$key}].QTY"] = 1;
+            $fields["LMI_SHOPPINGCART.ITEMS[{$key}].PRICE"] = number_format($order->info['shipping_cost'], 2, '.', '');
+            $fields["LMI_SHOPPINGCART.ITEMS[{$key}].TAX"] = 'no_vat';
         }
 
         foreach ($fields as $key => $value) {

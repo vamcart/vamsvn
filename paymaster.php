@@ -43,13 +43,13 @@ $hash = base64_encode(hash('sha1', $_POST["LMI_MERCHANT_ID"] . ";" . $_POST["LMI
 
 // checking and handling
 
-        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        //if ($_SERVER["REQUEST_METHOD"] == "POST") {
             if ($_POST["LMI_PREREQUEST"] == "1" || $_POST["LMI_PREREQUEST"] == "2") {
                 echo "YES";
                 die;
             } else {
 
-if ($hash == $crc) {
+//if ($hash == $crc) {
 if (number_format($_POST['LMI_PAYMENT_AMOUNT'],0) == number_format($order->info['total_value'],0)) {
   $sql_data_array = array('orders_status' => MODULE_PAYMENT_PAYMASTER_ORDER_STATUS_ID);
   vam_db_perform('orders', $sql_data_array, 'update', "orders_id='".$inv_id."'");
@@ -67,9 +67,9 @@ if (number_format($_POST['LMI_PAYMENT_AMOUNT'],0) == number_format($order->info[
 	vam_send_answer_template($inv_id,MODULE_PAYMENT_PAYMASTER_ORDER_STATUS_ID,'on','on');
   
 }
-}
+//}
 
 }
-}
+//}
 
 ?>
