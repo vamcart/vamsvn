@@ -26,6 +26,7 @@ define('TABLE_HEADING_STATUS', 'Статус');
 define('TABLE_HEADING_ACTION', 'Действие');
 
 define('TEXT_BANNERS_TITLE', 'Название Баннера:');
+define('TEXT_BANNERS_DESCRIPTION', 'Описание Баннера:');
 define('TEXT_BANNERS_URL', 'URL Баннера:');
 define('TEXT_BANNERS_GROUP', 'Группа Баннера:');
 define('TEXT_BANNERS_NEW_GROUP', ', выберите группу или создайте новую ниже');
@@ -61,8 +62,9 @@ define('SUCCESS_BANNER_UPDATED', 'Выполнено: Баннер изменё�
 define('SUCCESS_BANNER_REMOVED', 'Выполнено: Баннер удалён.');
 define('SUCCESS_BANNER_STATUS_UPDATED', 'Выполнено: Статус баннера изменён.');
 
-define('ERROR_BANNER_TITLE_REQUIRED', 'Ошибка: Введите название баннера.');
-define('ERROR_BANNER_GROUP_REQUIRED', 'Ошибка: Введите группу баннера.');
+define('ERROR_BANNER_TITLE_REQUIRED', 'Ошибка: Укажите название баннера.');
+define('ERROR_BANNER_DESCRIPTION_REQUIRED', 'Ошибка: Укажите описание баннера.');
+define('ERROR_BANNER_GROUP_REQUIRED', 'Ошибка: Укажите группу баннера.');
 define('ERROR_IMAGE_DIRECTORY_DOES_NOT_EXIST', 'Ошибка: Указанная директория отсутствует: %s');
 define('ERROR_IMAGE_DIRECTORY_NOT_WRITEABLE', 'Ошибка: Директория имеет неверные права доступа: %s');
 define('ERROR_IMAGE_DOES_NOT_EXIST', 'Ошибка: Баннер отсутствует.');
