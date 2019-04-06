@@ -700,4 +700,7 @@ define('TEXT_POPUP_CART_ADD','Товар добавлен в корзину!');
 define('TEXT_POPUP_CART_CONTINUE','Продолжить покупки');
 define('TEXT_POPUP_CART_CART', 'Перейти в корзину');
 
+define('TITLE_SPECIALS_DEFAULT', 'Скидки');
+define('TITLE_MANUFACTURERS_DEFAULT', 'Брэнды');
+
 ?>
