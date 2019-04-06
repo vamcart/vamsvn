@@ -1,6 +1,6 @@
 <?php
 /* -----------------------------------------------------------------------------------------
-   $Id: featured.php 1292 2007-02-06 20:41:56 VaM $   
+   $Id: specials.php 1292 2007-02-06 20:41:56 VaM $   
 
    VaM Shop - open source ecommerce solution
    http://vamshop.ru
@@ -30,67 +30,48 @@ $fsk_lock = '';
 if ($_SESSION['customers_status']['customers_fsk18_display'] == '0')
 	$fsk_lock = ' and p.products_fsk18!=1';
 
-if ((!isset ($featured_products_category_id)) || ($featured_products_category_id == '0')) {
 	if (GROUP_CHECK == 'true')
 		$group_check = " and p.group_permission_".$_SESSION['customers_status']['customers_status_id']."=1 ";
 
-	$featured_products_query = "SELECT * FROM
-	                                         ".TABLE_PRODUCTS." p left join " . TABLE_PRODUCTS_DESCRIPTION . " pd on pd.products_id = p.products_id,
-	                                         ".TABLE_FEATURED." f where
-	                                         p.products_id=f.products_id ".$group_check."
-	                                         ".$fsk_lock."
-	                                         and p.products_status = '1' and f.status = '1' and pd.language_id = '".(int) $_SESSION['languages_id']."'
-	                                         group by p.products_id order by p.products_id DESC limit ".MAX_DISPLAY_FEATURED_PRODUCTS;
-} else {
+	$special_products_query = "select
+                                           p.*,
+                                           pd.*,
+                                           s.specials_new_products_price
+                                           from ".TABLE_PRODUCTS." p,
+                                           ".TABLE_PRODUCTS_DESCRIPTION." pd,
+                                           ".TABLE_SPECIALS." s where p.products_status = '1'
+                                           and p.products_id = s.products_id
+                                           and pd.products_id = s.products_id
+                                           and pd.language_id = '".$_SESSION['languages_id']."'
+                                           and s.status = '1'
+                                           ".$group_check."
+                                           ".$fsk_lock."                                             
+                                           order by s.specials_date_added
+                                           desc limit ".MAX_DISPLAY_SPECIAL_PRODUCTS;
 
-	if (GROUP_CHECK == 'true')
-		$group_check = "and p.group_permission_".$_SESSION['customers_status']['customers_status_id']."=1 ";
-
-	$featured_products_query = "SELECT * FROM
-	                                         ".TABLE_PRODUCTS." p left join " . TABLE_PRODUCTS_DESCRIPTION . " pd on pd.products_id = p.products_id,
-	                                         ".TABLE_FEATURED." f,
-	                                        ".TABLE_PRODUCTS_TO_CATEGORIES." p2c,
-	                                        ".TABLE_CATEGORIES." c
-	                                        where c.categories_status='1'
-	                                        and p.products_id = p2c.products_id and p.products_id=f.products_id
-	                                        and p2c.categories_id = c.categories_id
-	                                        ".$group_check."
-	                                        ".$fsk_lock."
-	                                        and c.parent_id = '".$featured_products_category_id."'
-	                                        and p.products_status = '1' and f.status = '1' and pd.language_id = '".(int) $_SESSION['languages_id']."'
-	                                        group by p.products_id order by p.products_id DESC limit ".MAX_DISPLAY_FEATURED_PRODUCTS;
-}
 $row = 0;
 $module_content = array ();
-$featured_products_query = vamDBquery($featured_products_query);
-while ($featured_products = vam_db_fetch_array($featured_products_query, true)) {
-	$module_content[] = $product->buildDataArray($featured_products);
+$special_products_query = vamDBquery($special_products_query);
+while ($special_products = vam_db_fetch_array($special_products_query, true)) {
+	$module_content[] = $product->buildDataArray($special_products);
 
 }
 if (sizeof($module_content) >= 1) {
-   $module->assign('FEATURED_LINK', vam_href_link(FILENAME_FEATURED));
+   $module->assign('SPECIALS_LINK', vam_href_link(FILENAME_SPECIALS));
 	$module->assign('language', $_SESSION['language']);
 	$module->assign('module_content', $module_content);
 	
 	// set cache ID
 	 if (!CacheCheck()) {
 		$module->caching = 0;
-		if ((!isset ($featured_products_category_id)) || ($featured_products_category_id == '0')) {
-			$module = $module->fetch(CURRENT_TEMPLATE.'/module/featured_products_default.html');
-		} else {
-			$module = $module->fetch(CURRENT_TEMPLATE.'/module/featured_products_category.html');
-		}
+		$module = $module->fetch(CURRENT_TEMPLATE.'/module/specials_default.html');
 	} else {
 		$module->caching = 1;
 		$module->cache_lifetime = CACHE_LIFETIME;
 		$module->cache_modified_check = CACHE_CHECK;
-		$cache_id = $featured_products_category_id.$_SESSION['language'].$_SESSION['customers_status']['customers_status_name'].$_SESSION['currency'];
-		if ((!isset ($featured_products_category_id)) || ($featured_products_category_id == '0')) {
-			$module = $module->fetch(CURRENT_TEMPLATE.'/module/featured_products_default.html', $cache_id);
-		} else {
-			$module = $module->fetch(CURRENT_TEMPLATE.'/module/featured_products_category.html', $cache_id);
-		}
+		$cache_id = $current_category_id.$_SESSION['language'].$_SESSION['customers_status']['customers_status_name'].$_SESSION['currency'];
+		$module = $module->fetch(CURRENT_TEMPLATE.'/module/specials_default.html', $cache_id);
 	}
-	$default->assign('MODULE_featured_products', $module);
+	$default->assign('MODULE_specials_default', $module);
 }
 ?>
