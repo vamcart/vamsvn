@@ -1,35 +1,55 @@
-{config_load file="$language/lang_$language.conf" section="featured"} 
-
-<script type="text/javascript" src="jscript/jquery/plugins/sequence/jquery.sequence-min.js"></script>
-<script type="text/javascript" src="jscript/jquery/plugins/sequence/sequencejs-options.js"></script>
-
+{config_load file="$language/lang_$language.conf" section="specials"} <h1><a href="{$SPECIALS_LINK}">{#heading_text#}</a></h1>
 <div class="page">
 <div class="pageItem">
+  {foreach name=aussen item=module_data from=$module_content}<dl class="itemNewProductsDefault">
+<dt class="itemImage">
+{if $module_data.PRODUCTS_IMAGE}<a href="{$module_data.PRODUCTS_LINK}"><img src="{$module_data.PRODUCTS_IMAGE}" alt="{$module_data.PRODUCTS_NAME}" title="{$module_data.PRODUCTS_NAME}" /></a><br />{/if}
+{$module_data.PRODUCTS_BUTTON_BUY_NOW}
+</dt>
+<dd class="itemDescription">
+<a href="{$module_data.PRODUCTS_LINK}">{$module_data.PRODUCTS_NAME}</a>
+</dd>
 
-<div id="slider">
-	<div id="sequence-theme">
-		<div id="sequence">
-			<div class="sequence-prev"><i class="fa fa-chevron-left"></i></div>
-			<div class="sequence-next"><i class="fa fa-chevron-right"></i></div>
-				<ul class="sequence-canvas">
-				{foreach name=aussen item=module_data from=$module_content}
-					<li{if $module_data@first} class="animate-in"{/if}>
-						<div class="text">
-							<h2 class="title"><span><a href="{$module_data.PRODUCTS_LINK}">{$module_data.PRODUCTS_NAME|strip_tags|vam_truncate:80:"...":true}</a></span></h2>
-      				{if $module_data.REVIEWS_TOTAL > 0}<div class="description"><span class="rating">{$module_data.REVIEWS_STAR_RATING}</span> <span class="reviews">{$smarty.const.TEXT_TOTAL_REVIEWS}: {$module_data.REVIEWS_TOTAL}</span></div>{/if}
-							<div class="description">{$module_data.PRODUCTS_SHORT_DESCRIPTION|strip_tags|vam_truncate:120:"...":true}</div>
-							<a href="{$module_data.PRODUCTS_LINK}" class="btn btn-inverse"><i class="fa fa-arrow-right"></i> {$smarty.const.TEXT_READ_MORE}</a>
-						</div>
-						<img class="image" src="{$module_data.PRODUCTS_IMAGE}" alt="{$module_data.PRODUCTS_NAME}" />
-					</li>
-				{/foreach}
-				</ul>
-		</div>
-	</div>
-</div>
+{if $module_data.PRODUCTS_LABEL}
+<dd class="itemDescription">
+{$module_data.PRODUCTS_LABEL}
+</dd>
+{/if}
 
-</div>
+{if $module_data.REVIEWS_TOTAL > 0}<dd class="itemDescription"><span class="rating">{$smarty.const.TEXT_REVIEWS_RATING}: {$module_data.REVIEWS_TOTAL_RATING|number_format:2}</span>, <span class="reviews">{$smarty.const.TEXT_TOTAL_REVIEWS}: {$module_data.REVIEWS_TOTAL}</span></dd>{/if}
 
-</div>
+<dd class="itemDescription">
+{$module_data.PRODUCTS_SHORT_DESCRIPTION|vam_truncate:$smarty.const.MAX_DISPLAY_SHORT_DESCRIPTION:"...":true}
+</dd>
+
+<dd class="itemDescriptionPrice">
+{$module_data.PRODUCTS_PRICE}
+</dd>
+
+{if $module_data.PRODUCTS_VPE}
+<dd class="itemDescription">
+{$module_data.PRODUCTS_VPE}
+</dd>
+{/if}
+
+<dd class="itemDescription">
+{$module_data.PRODUCTS_TAX_INFO}{$module_data.PRODUCTS_SHIPPING_LINK}
+</dd>
+
+{if $module_data.PRODUCTS_SHIPPING_NAME}
+<dd class="itemDescription">
+{#text_shippingtime#}&nbsp;
+{if $module_data.PRODUCTS_SHIPPING_IMAGE}
+<img src="{$module_data.PRODUCTS_SHIPPING_IMAGE}" alt="{$module_data.PRODUCTS_SHIPPING_NAME}" />
+{/if}
+{$module_data.PRODUCTS_SHIPPING_NAME}
+</dd>
+{/if}
+
+</dl>
+          {/foreach} 
 
 <div class="clear"></div>
+</div>
+
+</div>
