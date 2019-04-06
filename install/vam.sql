@@ -575,6 +575,7 @@ DROP TABLE IF EXISTS banners;
 CREATE TABLE banners (
   banners_id int NOT NULL auto_increment,
   banners_title varchar(255) NOT NULL,
+  banners_description text NOT NULL,
   banners_url varchar(255) NOT NULL,
   banners_image varchar(255) NOT NULL,
   banners_group varchar(10) NOT NULL,
