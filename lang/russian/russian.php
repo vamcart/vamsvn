@@ -704,5 +704,9 @@ define('TEXT_POPUP_CART_CART', 'Перейти в корзину');
 
 define('TITLE_SPECIALS_DEFAULT', 'Скидки');
 define('TITLE_MANUFACTURERS_DEFAULT', 'Брэнды');
+define('TITLE_BEST_SELLERS_DEFAULT', 'Популярные товары');
+define('TITLE_NEW_PRODUCTS_DEFAULT', 'Новинки');
+define('TITLE_FEATURED_DEFAULT', 'Рекомендуемые товары');
+define('TITLE_SPECIALS_DEFAULT', 'Скидки');
 
 ?>

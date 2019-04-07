@@ -408,8 +408,58 @@ $content_meta = vam_db_fetch_array($content_meta_query, true);
 <meta name="keywords" content="<?php echo NAVBAR_TITLE_SITE_REVIEWS . ' ' . STORE_NAME; ?>" />
 <?php
 
+    break;  
+    
+    case (strstr($PHP_SELF, FILENAME_BEST_SELLERS)):
+
+?>
+<title><?php echo TITLE_BEST_SELLERS_DEFAULT . ' ' . STORE_NAME; ?></title>
+<meta name="description" content="<?php echo TITLE_BEST_SELLERS_DEFAULT . ' ' . STORE_NAME; ?>" />
+<meta name="keywords" content="<?php echo TITLE_BEST_SELLERS_DEFAULT . ' ' . STORE_NAME; ?>" />
+<?php
+
     break;
 
+  case (strstr($PHP_SELF, FILENAME_MANUFACTURERS)):
+
+?>
+<title><?php echo TITLE_MANUFACTURERS_DEFAULT . ' ' . STORE_NAME; ?></title>
+<meta name="description" content="<?php echo TITLE_MANUFACTURERS_DEFAULT . ' ' . STORE_NAME; ?>" />
+<meta name="keywords" content="<?php echo TITLE_MANUFACTURERS_DEFAULT . ' ' . STORE_NAME; ?>" />
+<?php
+
+    break;
+
+  case (strstr($PHP_SELF, FILENAME_PRODUCTS_NEW)):
+
+?>
+<title><?php echo TITLE_NEW_PRODUCTS_DEFAULT . ' ' . STORE_NAME; ?></title>
+<meta name="description" content="<?php echo TITLE_NEW_PRODUCTS_DEFAULT . ' ' . STORE_NAME; ?>" />
+<meta name="keywords" content="<?php echo TITLE_NEW_PRODUCTS_DEFAULT . ' ' . STORE_NAME; ?>" />
+<?php
+
+    break;
+        
+  case (strstr($PHP_SELF, FILENAME_SPECIALS)):
+
+?>
+<title><?php echo TITLE_SPECIALS_DEFAULT . ' ' . STORE_NAME; ?></title>
+<meta name="description" content="<?php echo TITLE_SPECIALS_DEFAULT . ' ' . STORE_NAME; ?>" />
+<meta name="keywords" content="<?php echo TITLE_SPECIALS_DEFAULT . ' ' . STORE_NAME; ?>" />
+<?php
+
+    break;
+        
+  case (strstr($PHP_SELF, FILENAME_FEATURED)):
+
+?>
+<title><?php echo TITLE_FEATURED_DEFAULT . ' ' . STORE_NAME; ?></title>
+<meta name="description" content="<?php echo TITLE_FEATURED_DEFAULT . ' ' . STORE_NAME; ?>" />
+<meta name="keywords" content="<?php echo TITLE_FEATURED_DEFAULT . ' ' . STORE_NAME; ?>" />
+<?php
+
+    break;
+        
   case (strstr($PHP_SELF, FILENAME_PRODUCT_REVIEWS)):
 
 ?>
