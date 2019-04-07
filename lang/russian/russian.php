@@ -146,6 +146,8 @@ define('TEXT_DISPLAY_NUMBER_OF_REVIEWS', 'Показано <span class="bold">%d
 define('TEXT_DISPLAY_NUMBER_OF_PRODUCTS_NEW', 'Показано <span class="bold">%d</span> - <span class="bold">%d</span> (всего новинок: <span class="bold">%d</span>)');
 define('TEXT_DISPLAY_NUMBER_OF_SPECIALS', 'Показано <span class="bold">%d</span> - <span class="bold">%d</span> (всего специальных предложений: <span class="bold">%d</span>)');
 define('TEXT_DISPLAY_NUMBER_OF_FEATURED', 'Показано <span class="bold">%d</span> - <span class="bold">%d</span> (всего рекомендуемых товаров: <span class="bold">%d</span>)');
+define('TEXT_DISPLAY_NUMBER_OF_MANUFACTURERS', 'Показано <span class="bold">%d</span> - <span class="bold">%d</span> (всего брэндов: <span class="bold">%d</span>)');
+define('TEXT_DISPLAY_NUMBER_OF_BEST_SELLERS', 'Показано <span class="bold">%d</span> - <span class="bold">%d</span> (всего популярных товаров: <span class="bold">%d</span>)');
 
 /*
  *
