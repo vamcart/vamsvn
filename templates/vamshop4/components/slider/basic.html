@@ -4,25 +4,22 @@
 
     <div class="seq-screen">
       <ul class="seq-canvas">
-
-{foreach item=banner from=$slider_basic}
+        {foreach item=banner from=$slider_basic}
         <li class="seq-step{counter name=slide1}" id="step{counter name=slide2}">
           <div class="seq-content">
             <h2 data-seq class="seq-title">{$banner.title}</h2>
             <h3 data-seq class="seq-subtitle">{$banner.description}</h3>
-            <a class="seq-button" href="{$banner.url}" target="_blank" tabindex="-1">Перейти →</a>
+            <a class="seq-button" href="{$banner.url}" target="_blank" tabindex="-1">{#text_go#} →</a>
           </div>
         </li>
-{/foreach}
-
+        {/foreach}
       </ul>
     </div>
 
     <ul rel="sequence" class="seq-pagination" role="navigation" aria-label="Pagination">
-
-{foreach item=banner_nav from=$slider_basic}
+      {foreach item=banner_nav from=$slider_basic}
       <li><a href="#step{counter name=nav1}" rel="step{counter name=nav2}" title="Go to slide {counter name=nav3}">{$banner_nav.title}</a></li>
-{/foreach}
+      {/foreach}
     </ul>
   </div>
 
