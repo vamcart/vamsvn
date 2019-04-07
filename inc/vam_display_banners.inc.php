@@ -35,6 +35,7 @@
 			'id' => $banner['banners_id'], 
 			'title' => $banner['banners_title'], 
 			'description' => $banner['banners_description'], 
+			'html' => $banner['banners_html_text'], 
 			'image' => $banner['banners_image'],
 			'url' => vam_href_link(FILENAME_REDIRECT, 'action=banner&goto=' . $banner['banners_id'])
 			
