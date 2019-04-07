@@ -101,10 +101,10 @@ CREATE TABLE affiliate_affiliate (
 DROP TABLE IF EXISTS affiliate_banners;
 CREATE TABLE affiliate_banners (
   affiliate_banners_id int(11) NOT NULL auto_increment,
-  affiliate_banners_title varchar(64) NOT NULL default '',
+  affiliate_banners_title varchar(255) NOT NULL default '',
   affiliate_products_id int(11) NOT NULL default '0',
-  affiliate_banners_image varchar(64) NOT NULL default '',
-  affiliate_banners_group varchar(10) NOT NULL default '',
+  affiliate_banners_image varchar(255) NOT NULL default '',
+  affiliate_banners_group varchar(255) NOT NULL default '',
   affiliate_banners_html_text text,
   affiliate_expires_impressions int(7) default '0',
   affiliate_expires_date datetime default NULL,
@@ -578,7 +578,7 @@ CREATE TABLE banners (
   banners_description text NOT NULL,
   banners_url varchar(255) NOT NULL,
   banners_image varchar(255) NOT NULL,
-  banners_group varchar(10) NOT NULL,
+  banners_group varchar(255) NOT NULL,
   banners_html_text text,
   expires_impressions int(7) DEFAULT '0',
   expires_date datetime DEFAULT NULL,
