@@ -152,6 +152,7 @@ define('FILENAME_SITE_REVIEWS_WRITE', 'site_reviews_write.php');
 
 define('FILENAME_SITEMAP', 'sitemap.php');
 define('FILENAME_MANUFACTURERS', 'manufacturers.php');
+define('FILENAME_BEST_SELLERS', 'best_sellers.php');
 
 define('FILENAME_BUNDLE_PRODUCTS', 'bundle_products.php');
 define('FILENAME_REVIEWS_ALL', 'reviews_all.php');
