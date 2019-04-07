@@ -22,12 +22,6 @@
 
 @import url(http://fonts.googleapis.com/css?family=Ubuntu:500,400,300,700|Montserrat:400,700|Droid+Sans+Mono);
 
-@import url("//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css");
-
-body {
-  background: #F8F8F8;
-}
-
 /* Google Web Font */
 
 .seq {
@@ -1430,8 +1424,8 @@ body {
 
 @media only screen and (min-width: 600px) {
   .seq {
-    height: 100%;
-    min-height: 585px;
+    height: 20%;
+    min-height: 300px;
   }
 
   .seq .seq-instruction {

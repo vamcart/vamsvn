@@ -20,8 +20,6 @@
  * Copyright © 2015 Ian Lunn Design Limited unless otherwise stated.
  */
 
-@import url(http://fonts.googleapis.com/css?family=Roboto:900);
-
 body,
 html,
 .seq {
@@ -386,8 +384,8 @@ html,
     position: relative;
     height: auto;
     height: 100%;
-    max-height: 90vh;
-    min-height: 420px;
+    max-height: 20vh;
+    min-height: 300px;
   }
 
   .seq:before {

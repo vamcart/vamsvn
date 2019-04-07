@@ -34,7 +34,7 @@ html,
 .seq {
   position: relative;
   /* Dimensions */
-  height: 360px;
+  height: 300px;
   width: 100%;
   max-width: 1280px;
   /* Hide anything that goes beyond the boundaries of the Sequence container */
@@ -233,8 +233,8 @@ html,
     /* Make the container 16:9 but no bigger than 90% of the screen height */
     position: relative;
     height: auto;
-    max-height: 90vh;
-    min-height: 360px;
+    max-height: 20vh;
+    min-height: 300px;
   }
 
   .seq:before {

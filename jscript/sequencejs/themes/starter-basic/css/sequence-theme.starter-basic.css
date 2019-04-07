@@ -203,8 +203,8 @@ html,
     position: relative;
     height: auto;
     height: 100%;
-    max-height: 90vh;
-    min-height: 420px;
+    max-height: 20vh;
+    min-height: 300px;
   }
 
   .seq:before {
