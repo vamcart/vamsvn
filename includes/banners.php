@@ -17,11 +17,20 @@
 
   require_once(DIR_FS_INC . 'vam_banner_exists.inc.php');
   require_once(DIR_FS_INC . 'vam_display_banner.inc.php');
+  require_once(DIR_FS_INC . 'vam_display_banners.inc.php');
   require_once(DIR_FS_INC . 'vam_update_banner_display_count.inc.php');
 
 
   if ($banner = vam_banner_exists('dynamic', 'banner')) {
   $vamTemplate->assign('BANNER',vam_display_banner('static', $banner));
-
   }
+  
+  if ($banner = vam_banner_exists('dynamic', 'slider_pop_slide')) {
+  $vamTemplate->assign('slider_pop_slide',vam_display_banners('dynamic', 'slider_pop_slide'));
+  }
+
+  if ($banner = vam_banner_exists('dynamic', 'slider_basic')) {
+  $vamTemplate->assign('slider_basic',vam_display_banners('static', 'slider_basic'));
+  }
+    
 ?>
