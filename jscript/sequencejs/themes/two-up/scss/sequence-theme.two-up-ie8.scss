@@ -1,0 +1,23 @@
+/* Styles for IE8 */
+$sequenceHeight: 400px;
+
+.seq .seq-feature {
+  height: $sequenceHeight;
+}
+
+.seq .seq-nav {
+  top: $sequenceHeight;
+}
+
+.seq .seq-pagination li {
+  background: #999FA2;
+}
+
+.seq .seq-pagination .seq-current {
+  background: white;
+}
+
+.seq .seq-pagination li:before,
+.seq .seq-pagination li:after {
+  content: none;
+}

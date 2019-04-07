@@ -1,0 +1,3 @@
+- [Slide Horizontal Icon](https://thenounproject.com/term/slide-horizontal/112966/) by [Aha-Soft](https://thenounproject.com/ahasoft) from [the Noun Project](https://thenounproject.com/)
+- [Down icon](https://thenounproject.com/term/down/98532/) by [Chris Evans](https://thenounproject.com/evanschris) from [the Noun Project](https://thenounproject.com/)
+- Photos from [Unsplash](https://unsplash.com/) [1](https://download.unsplash.com/uploads/141319062591093cefc09/ad50c1f0) [2](https://download.unsplash.com/photo-1422022098106-b3a9edc463af) [3](https://download.unsplash.com/16/unsplash_525b54bcc32ba_1.JPG)

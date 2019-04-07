@@ -1,0 +1,369 @@
+@charset "UTF-8";
+
+/**
+ * Theme Name: Pop Slide
+ * Version: 1.0.0
+ * Theme URL: http://sequencejs.com/themes/pop-slide/
+ *
+ * A colorful sliding theme for feature images, with highlighted pagination
+ * and drop-in titles.
+ *
+ * This theme is powered by Sequence.js - The
+ * responsive CSS animation framework for creating unique sliders,
+ * presentations, banners, and other step-based applications.
+ *
+ * Author: Ian Lunn
+ * Author URL: http://ianlunn.co.uk/
+ *
+ * Theme License: http://sequencejs.com/licenses/#free-theme
+ * Sequence.js Licenses: http://sequencejs.com/licenses/
+ *
+ * Copyright © 2015 Ian Lunn Design Limited unless otherwise stated.
+ */
+
+@import url(http://fonts.googleapis.com/css?family=Ubuntu:700|Dosis:600,700);
+
+body,
+html,
+.seq {
+  /* Uncomment to make the theme full-screen */
+  /* height: 100% !important; */
+  /* max-height: 100% !important; */
+}
+
+.seq {
+  position: relative;
+  /* Dimensions */
+  height: 360px;
+  width: 100%;
+  max-width: 1280px;
+  /* Hide anything that goes beyond the boundaries of the Sequence container */
+  overflow: hidden;
+  /* Center the Sequence container on the page */
+  margin: 0 auto;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+.seq.seq-active .seq-preloader {
+  background: black;
+}
+
+.seq .seq-preload-circle {
+  fill: #F7DB15;
+}
+
+.seq .seq-pagination {
+  visibility: hidden;
+  position: absolute;
+  z-index: 10;
+  bottom: 10px;
+  left: 0;
+  right: 0;
+  padding: 0;
+  margin: 0;
+  font-size: 0;
+  font-weight: 600;
+  text-align: center;
+}
+
+.seq .seq-pagination > * {
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  margin: 0 1%;
+  cursor: pointer;
+  background: #512A5E;
+  /* Image replacement */
+  border: 0;
+  font: 0/0 a;
+  text-shadow: none;
+  color: transparent;
+  /* Hardware accel */
+  -webkit-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  transform: translateZ(0);
+}
+
+.seq .seq-pagination > *.seq-current {
+  background: #F7DB15;
+}
+
+.seq .seq-pagination > * a {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.seq .seq-screen,
+.seq .seq-canvas,
+.seq .seq-canvas > * {
+  /* Reset the canvas and steps for more browser consistency */
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.seq .seq-canvas {
+  /**
+   * Make the canvas the same dimensions as the container and prevent lines
+   * from wrapping so each step can sit side-by-side
+   */
+  position: absolute;
+  z-index: 1;
+  height: 100%;
+  width: 100%;
+  white-space: nowrap;
+  font-size: 0;
+}
+
+.seq .seq-canvas > * {
+  /* Make the steps the same size as the container and sit side-by-side */
+  overflow: hidden;
+  position: relative;
+  display: inline-block;
+  vertical-align: top;
+  width: 100%;
+  height: 100%;
+  white-space: normal;
+  font-size: 16px;
+  background-size: cover;
+  background-position: 50% 50%;
+  -webkit-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  transform: translateZ(0);
+}
+
+.seq .seq-step1 {
+  background-image: url("../images/kaki-king.jpg");
+}
+
+.seq .seq-step2 {
+  background-image: url("../images/micky-green.jpg");
+}
+
+.seq .seq-step3 {
+  background-image: url("../images/scampi.jpg");
+}
+
+.seq .seq-step4 {
+  background-image: url("../images/puggy.jpg");
+}
+
+.seq .seq-step5 {
+  background-image: url("../images/god-speed-you-black-emperor.jpg");
+}
+
+.seq small {
+  /* Image credits */
+  position: absolute;
+  z-index: 2;
+  top: 10px;
+  right: 10px;
+  color: white;
+}
+
+.seq small a {
+  color: white;
+}
+
+.seq small a:hover {
+  text-decoration: none;
+}
+
+.seq .seq-title {
+  display: inline-block;
+  position: absolute;
+  z-index: 3;
+  bottom: 20px;
+  left: 50%;
+  width: 90%;
+  margin-left: -47%;
+  padding: 0 2%;
+  line-height: 1.2;
+  background: white;
+  text-align: center;
+}
+
+.seq .seq-title h2 {
+  margin: .6em 0 .4em 0;
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 1em;
+}
+
+.seq .seq-title .seq-button {
+  position: relative;
+  bottom: -6px;
+  padding: .2em .6em;
+  background: #F7DB15;
+  color: black;
+  font-family: 'Dosis', sans-serif;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.seq .seq-title .seq-button:focus,
+.seq .seq-title .seq-button:hover {
+  background: #512A5E;
+  color: white;
+}
+
+.seq.seq-active {
+  /* When JS is enabled */
+}
+
+.seq.seq-active .seq-pagination {
+  visibility: visible;
+}
+
+.seq.seq-active .seq-title {
+  bottom: 70px;
+}
+
+@media only screen and (min-width: 480px) {
+  .seq .seq-title {
+    width: 65%;
+    margin-left: -33.5%;
+  }
+}
+
+@media only screen and (min-width: 640px) {
+  .seq {
+    /* Make the container 16:9 but no bigger than 90% of the screen height */
+    position: relative;
+    height: auto;
+    max-height: 90vh;
+    min-height: 360px;
+  }
+
+  .seq:before {
+    /* Make an element a certain aspect ratio */
+    display: block;
+    content: "";
+    width: 100%;
+    padding-top: 56.25%;
+  }
+
+  .seq .seq-screen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+
+  .seq .seq-pagination > * {
+    position: relative;
+    display: inline-block;
+    vertical-align: bottom;
+    list-style: none;
+    width: 14%;
+    height: auto;
+    margin: 0 1%;
+    padding: .625em 1%;
+    cursor: pointer;
+    border-bottom: black solid 4px;
+    font-family: 'Dosis', sans-serif;
+    line-height: 1.4;
+    font-size: 16px;
+    font-weight: bold;
+    background: #512A5E;
+    color: white;
+    -webkit-transition-duration: .35s;
+    transition-duration: .35s;
+    -webkit-transform-origin: 0 100%;
+    -ms-transform-origin: 0 100%;
+    transform-origin: 0 100%;
+    -webkit-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-transition-property: width;
+    transition-property: width;
+  }
+
+  .seq .seq-pagination > * a {
+    /* Overflow text with an ellipsis (...) */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: white;
+    text-decoration: none;
+  }
+
+  .seq .seq-pagination > *.seq-current {
+    width: 22%;
+    background: #512A5E;
+    border-bottom-color: #F7DB15;
+  }
+}
+
+@media only screen and (min-width: 720px) {
+  .seq.seq-active .seq-title {
+    bottom: auto;
+    -webkit-transform: translateY(-200%) translateZ(0);
+    -ms-transform: translateY(-200%) translateZ(0);
+    transform: translateY(-200%) translateZ(0);
+  }
+
+  .seq .seq-title {
+    width: 35%;
+    top: 20px;
+    left: auto;
+    right: 20px;
+    margin-left: auto;
+    bottom: auto;
+    -webkit-transition-duration: .35s;
+    transition-duration: .35s;
+    -webkit-transition-property: -webkit-transform;
+    transition-property: transform;
+    -webkit-transition-timing-function: cubic-bezier(0.230, 1.000, 0.320, 1.000);
+    transition-timing-function: cubic-bezier(0.230, 1.000, 0.320, 1.000);
+  }
+
+  .seq .seq-title .seq-button {
+    position: absolute;
+    right: -10px;
+    bottom: -10px;
+    display: inline-block;
+  }
+
+  .seq .seq-title h2 {
+    margin: .4em 0 .6em 0;
+    padding: .4em;
+    font-size: 1.5em;
+    line-height: 120%;
+    text-align: left;
+  }
+
+  .seq small {
+    top: auto;
+    bottom: 10px;
+  }
+
+  .seq.seq-active small {
+    bottom: 70px;
+  }
+
+  .seq .seq-in {
+    /* Animate in positions for content */
+  }
+
+  .seq .seq-in .seq-title {
+    -webkit-transform: translateY(0) translateZ(0);
+    -ms-transform: translateY(0) translateZ(0);
+    transform: translateY(0) translateZ(0);
+  }
+
+  .seq .seq-out {
+    /* Animate out positions for content */
+  }
+
+  .seq .seq-out .seq-title {
+    -webkit-transform: translateY(0) translateZ(0);
+    -ms-transform: translateY(0) translateZ(0);
+    transform: translateY(0) translateZ(0);
+  }
+}
+
+/*# sourceMappingURL=sequence-theme.pop-slide.css.map */

@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": ";AAGA,iBAAkB;EAChB,MAAM,EAHS,KAAK;;;AAMtB,aAAc;EACZ,GAAG,EAPY,KAAK;;;AAUtB,uBAAwB;EACtB,UAAU,EAAE,OAAO;;;AAGrB,iCAAkC;EAChC,UAAU,EAAE,KAAK;;;AAGnB;6BAC8B;EAC5B,OAAO,EAAE,IAAI",
+"sources": ["../scss/sequence-theme.two-up-ie8.scss"],
+"names": [],
+"file": "sequence-theme.two-up-ie8.css"
+}

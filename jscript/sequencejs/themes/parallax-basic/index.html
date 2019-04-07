@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Parallax Basic - Sequence.js Theme</title>
+  <link href="css/sequence-theme.parallax-basic.css" rel="stylesheet" media="all">
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    small {
+      /* Theme Credits */
+      display: block;
+      margin: 1em;
+      font-family: sans-serif;
+    }
+  </style>
+  <!--[if lt IE 9]>
+    <script src="scripts/respond.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+
+  <div id="sequence" class="seq">
+    <div class="seq-bg"></div>
+    <div class="seq-screen">
+      <ul class="seq-canvas">
+        <li class="seq-in seq-valign">
+          <div class="seq-content">
+            <h2 data-seq class="seq-title">Powered by Sequence.js</h2>
+            <div data-seq class="seq-description">
+              <p>The responsive CSS animation framework</p>
+              <a class="seq-button" href="http://sequencejs.com/">Learn more <span class="seq-next-arrow">&gt;</span></a>
+            </div>
+          </div>
+        </li>
+        <li class="seq-valign">
+          <div class="seq-content">
+            <h2 data-seq class="seq-title">Create Unique Animated Themes</h2>
+            <div data-seq class="seq-description">
+              <p>For sliders, presentations, <br />banners, and other step-based applications</p>
+              <a class="seq-button" href="http://sequencejs.com/">Learn more <span class="seq-next-arrow">&gt;</span></a>
+            </div>
+          </div>
+        </li>
+        <li class="seq-valign">
+          <div class="seq-content">
+            <h2 data-seq class="seq-title">Rapid Development of Step-Based  Applications</h2>
+            <div data-seq class="seq-description">
+              <p>All of the JavaScript functionality you need built-in</p>
+              <a class="seq-button" href="http://sequencejs.com/">Learn more <span class="seq-next-arrow">&gt;</span></a>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <fieldset class="seq-nav" aria-controls="sequence" aria-label="Slider buttons">
+      <button type="button" class="seq-prev" aria-label="Previous">
+        <span class="seq-prev-arrow">&lt;</span>
+      </button>
+
+      <ul role="navigation" aria-label="Pagination" class="seq-pagination">
+        <li><a href="#step1" rel="step1" title="Go to slide 1">1</a></li>
+        <li><a href="#step2" rel="step2" title="Go to slide 2">2</a></li>
+        <li><a href="#step3" rel="step3" title="Go to slide 3">3</a></li>
+      </ul>
+
+      <button type="button" class="seq-next" aria-label="Next">
+        <span class="seq-next-arrow">&gt;</span>
+      </button>
+    </fieldset>
+  </div>
+
+  <small><a href="http://subtlepatterns.com/dark-sharp-edges/" target="_blank">Dark Sharp Edges</a> background pattern by <a href="https://lodyas.com/carlos-aguilar/" target="_blank">Carlos Aguilar</a> made available on <a href="http://subtlepatterns.com" target="_blank">Subtle Patterns</a></small>
+
+  <script src="scripts/imagesloaded.pkgd.min.js"></script>
+  <script src="scripts/hammer.min.js"></script>
+  <script src="scripts/sequence.min.js"></script>
+  <script src="scripts/sequence-theme.parallax-basic.js"></script>
+</body>
+</html>
