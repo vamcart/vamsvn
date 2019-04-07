@@ -44,6 +44,7 @@ $module->assign('tpl_path','templates/'.CURRENT_TEMPLATE.'/');
  // if there's sth -> assign it
  if (sizeof($module_content)>=1)
  {
+ $module->assign('MANUFACTURERS_LINK', vam_href_link(FILENAME_MANUFACTURERS));
  $module->assign('language', $_SESSION['language']);
  $module->assign('module_content',$module_content);
  // set cache ID
