@@ -9,6 +9,8 @@
 
 <link href="<?php echo 'templates/'.CURRENT_TEMPLATE.'/css/bootstrap.min.css'; ?>" rel="stylesheet">
 
+<link href="<?php echo 'templates/'.CURRENT_TEMPLATE.'/css/hover-min.css'; ?>" rel="stylesheet">
+
 <link href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" rel="stylesheet">
 
 <link href="<?php echo 'templates/'.CURRENT_TEMPLATE.'/bootstrap-ecommerce/ui.css'; ?>" rel="stylesheet">
