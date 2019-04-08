@@ -410,7 +410,7 @@ $content_meta = vam_db_fetch_array($content_meta_query, true);
 
     break;  
 
-  case ($_GET['cat']==0 && strstr($PHP_SELF, FILENAME_DEFAULT)):
+  case (isset($_GET['cat']) && $_GET['cat'] == 0 && strstr($PHP_SELF, FILENAME_DEFAULT)):
 
 ?>
 <title><?php echo TEXT_RSS_CATEGORIES . ' ' . STORE_NAME; ?></title>
