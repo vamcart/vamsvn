@@ -4,54 +4,36 @@
     <div class="seq-bg"></div>
     <div class="seq-screen">
       <ul class="seq-canvas">
-        <li class="seq-in seq-valign">
+        {foreach item=slide from=$slider_parallax_basic}
+        <li class="seq-valign{if $slide@first} seq-in{/if}">
           <div class="seq-content">
-            <h2 data-seq class="seq-title">Powered by Sequence.js</h2>
+            <h2 data-seq class="seq-title"><a href="{$slide.url}">{$slide.title}</a></h2>
             <div data-seq class="seq-description">
-              <p>The responsive CSS animation framework</p>
-              <a class="seq-button" href="http://sequencejs.com/">Learn more <span class="seq-next-arrow">&gt;</span></a>
+              <p>{$slide.description}</p>
+              <a class="seq-button" href="{$slide.url}">{#text_more#} <span class="seq-next-arrow">&gt;</span></a>
             </div>
           </div>
         </li>
-        <li class="seq-valign">
-          <div class="seq-content">
-            <h2 data-seq class="seq-title">Create Unique Animated Themes</h2>
-            <div data-seq class="seq-description">
-              <p>For sliders, presentations, <br />banners, and other step-based applications</p>
-              <a class="seq-button" href="http://sequencejs.com/">Learn more <span class="seq-next-arrow">&gt;</span></a>
-            </div>
-          </div>
-        </li>
-        <li class="seq-valign">
-          <div class="seq-content">
-            <h2 data-seq class="seq-title">Rapid Development of Step-Based  Applications</h2>
-            <div data-seq class="seq-description">
-              <p>All of the JavaScript functionality you need built-in</p>
-              <a class="seq-button" href="http://sequencejs.com/">Learn more <span class="seq-next-arrow">&gt;</span></a>
-            </div>
-          </div>
-        </li>
+        {/foreach}
       </ul>
     </div>
 
-    <fieldset class="seq-nav" aria-controls="sequence" aria-label="Slider buttons">
-      <button type="button" class="seq-prev" aria-label="Previous">
+    <fieldset class="seq-nav" aria-controls="sequence" aria-label="{#text_slider_buttons#}">
+      <button type="button" class="seq-prev" aria-label="{#text_previous#}">
         <span class="seq-prev-arrow">&lt;</span>
       </button>
 
-      <ul role="navigation" aria-label="Pagination" class="seq-pagination">
-        <li><a href="#step1" rel="step1" title="Go to slide 1">1</a></li>
-        <li><a href="#step2" rel="step2" title="Go to slide 2">2</a></li>
-        <li><a href="#step3" rel="step3" title="Go to slide 3">3</a></li>
+      <ul role="navigation" aria-label="{#text_slider_pagination#}" class="seq-pagination">
+        {foreach item=nav from=$slider_parallax_basic}
+        <li><a href="#step{counter name=nav1}" rel="step{counter name=nav2}" title="{#text_go_to_slide#} {counter name=nav3}">{counter name=nav4}</a></li>
+        {/foreach}
       </ul>
 
-      <button type="button" class="seq-next" aria-label="Next">
+      <button type="button" class="seq-next" aria-label="{#text_next#}">
         <span class="seq-next-arrow">&gt;</span>
       </button>
     </fieldset>
   </div>
-
-  <small><a href="http://subtlepatterns.com/dark-sharp-edges/" target="_blank">Dark Sharp Edges</a> background pattern by <a href="https://lodyas.com/carlos-aguilar/" target="_blank">Carlos Aguilar</a> made available on <a href="http://subtlepatterns.com" target="_blank">Subtle Patterns</a></small>
 
   <script src="jscript/sequencejs/imagesloaded.pkgd.min.js"></script>
   <script src="jscript/sequencejs/hammer.min.js"></script>
