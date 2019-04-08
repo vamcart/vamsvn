@@ -136,3 +136,17 @@ footer a:hover {
 color: white;
 
 }
+
+#copyright,
+#parseTime {
+color: white;
+text-align:center;
+background: #6c757d;
+}
+
+#copyright a,
+#copyright a:hover,
+#parseTime a,
+#parseTime a:hover {
+color: white;
+}

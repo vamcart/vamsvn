@@ -46,7 +46,7 @@ html,
 }
 
 .seq.seq-active .seq-preloader {
-  background: black;
+  background: white;
 }
 
 .seq .seq-preload-circle {
