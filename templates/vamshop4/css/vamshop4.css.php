@@ -120,3 +120,12 @@ button:focus, button:active {
 }
 */
 
+
+.main {
+    padding: 1rem 1.2rem;
+    display: block;
+    background: #f8f8f8;
+    border-radius: 0.2rem;
+    -webkit-box-shadow: 0 1px 3px rgba(51, 51, 51, 0.2);
+    box-shadow: 0 1px 3px rgba(51, 51, 51, 0.2);
+}
