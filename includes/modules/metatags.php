@@ -409,6 +409,16 @@ $content_meta = vam_db_fetch_array($content_meta_query, true);
 <?php
 
     break;  
+
+  case ($_GET['cat']==0 && strstr($PHP_SELF, FILENAME_DEFAULT)):
+
+?>
+<title><?php echo TEXT_RSS_CATEGORIES . ' ' . STORE_NAME; ?></title>
+<meta name="description" content="<?php echo TEXT_RSS_CATEGORIES . ' ' . STORE_NAME; ?>" />
+<meta name="keywords" content="<?php echo TEXT_RSS_CATEGORIES . ' ' . STORE_NAME; ?>" />
+<?php
+
+    break; 
     
     case (strstr($PHP_SELF, FILENAME_BEST_SELLERS)):
 
