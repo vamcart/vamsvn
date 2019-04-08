@@ -4069,3 +4069,22 @@ INSERT INTO `manufacturers` (`manufacturers_id`, `manufacturers_name`, `manufact
 (6, 'Samsung Galaxy Tab', 'manufacturers/samsung-galaxy-tab.png', '2019-04-06 18:40:46', NULL);
 INSERT INTO `manufacturers_info` (`manufacturers_id`, `languages_id`, `manufacturers_meta_title`, `manufacturers_meta_description`, `manufacturers_meta_keywords`, `manufacturers_url`, `manufacturers_description`, `url_clicked`, `date_last_click`) VALUES
 (6, 1, 'Samsung Galaxy Tab', 'Samsung Galaxy Tab', 'Samsung Galaxy Tab', 'https://samsung.com', 'Товары брэнда Samsung Galaxy Tab', 0, NULL);
+
+INSERT INTO `banners` (`banners_id`, `banners_title`, `banners_description`, `banners_url`, `banners_image`, `banners_group`, `banners_html_text`, `expires_impressions`, `expires_date`, `date_scheduled`, `date_added`, `date_status_change`, `status`) VALUES
+(1, 'Слайд 1', 'Описание слайда 1', 'https://vamshop.ru', 'slide1.jpg', 'slider_pop_slide', '', NULL, NULL, NULL, '2019-04-06 23:31:11', NULL, 1),
+(2, 'Слайд 2', 'Описание слайда 2', 'https://vamshop.ru', 'slide2.jpg', 'slider_pop_slide', '', NULL, NULL, NULL, '2019-04-07 23:02:24', NULL, 1),
+(3, 'Слайд 3', 'Описание слайда 3', 'https://vamshop.ru', 'slide3.jpg', 'slider_pop_slide', '', NULL, NULL, NULL, '2019-04-07 23:02:50', NULL, 1),
+(4, 'Скидки', 'Все товары со скидкой', 'https://vamshop.ru', 'slide4.jpg', 'slider_pop_slide', '', NULL, NULL, NULL, '2019-04-07 23:03:55', NULL, 1),
+(5, 'Популярные', 'Рекомендуемые товары', 'https://vamshop.ru', 'slide5.jpg', 'slider_pop_slide', '', NULL, NULL, NULL, '2019-04-07 23:04:12', NULL, 1),
+(6, 'Скидки', 'Все товары со скидкой', 'https://vamshop.ru', '', 'slider_basic', 'Если не используется картинка, то данное поле надо обязательно заполнить, иначе баннер не сохранится.', NULL, NULL, NULL, '2019-04-07 23:21:15', NULL, 1),
+(7, 'Стоит приглядеться', 'Рекомендуемые товары', 'https://vamshop.ru', '', 'slider_basic', 'Если не используется картинка, то данное поле надо обязательно заполнить, иначе баннер не сохранится.', NULL, NULL, NULL, '2019-04-07 23:32:44', NULL, 1),
+(8, 'Новинки', 'Все самые интересные товары здесь!', 'https://vamshop.ru', '', 'slider_basic', 'Если не используется картинка, то данное поле надо обязательно заполнить, иначе баннер не сохранится.', NULL, NULL, NULL, '2019-04-07 23:37:00', NULL, 1),
+(9, 'Слайд 1', 'Описание слайда 1', 'https://vamshop.ru', 'model1.png', 'slider_modern_slide_in', '', NULL, NULL, NULL, '2019-04-08 09:51:15', NULL, 1),
+(10, 'Слайд 2', 'Описание слайда 2', 'https://vamshop.ru', 'model2.png', 'slider_modern_slide_in', '', NULL, NULL, NULL, '2019-04-08 09:51:42', NULL, 1),
+(11, 'Слайд 3', 'Описание слайда 3', 'https://vamshop.ru', 'model3.png', 'slider_modern_slide_in', '', NULL, NULL, NULL, '2019-04-08 09:51:59', NULL, 1),
+(12, 'Слайд 1', 'Описание слайда 1', 'https://vamshop.ru', '', 'slider_parallax_basic', 'Если не используется картинка, то данное поле надо обязательно заполнить, иначе баннер не сохранится.', NULL, NULL, NULL, '2019-04-08 10:35:46', NULL, 1),
+(13, 'Слайд 2', 'Описание слайда 2', 'https://vamshop.ru', '', 'slider_parallax_basic', 'Если не используется картинка, то данное поле надо обязательно заполнить, иначе баннер не сохранится.', NULL, NULL, NULL, '2019-04-08 10:36:02', NULL, 1),
+(14, 'Слайд 3', 'Описание слайда 3', 'https://vamshop.ru', '', 'slider_parallax_basic', 'Если не используется картинка, то данное поле надо обязательно заполнить, иначе баннер не сохранится.', NULL, NULL, NULL, '2019-04-08 10:36:20', NULL, 1),
+(15, 'Слайд 1', 'Описание слайда 1', 'https://vamshop.ru', '', 'slider_starter_basic', 'Если не используется картинка, то данное поле надо обязательно заполнить, иначе баннер не сохранится.', NULL, NULL, NULL, '2019-04-08 10:37:01', NULL, 1),
+(16, 'Слайд 2', 'Описание слайда 2', 'https://vamshop.ru', '', 'slider_starter_basic', 'Если не используется картинка, то данное поле надо обязательно заполнить, иначе баннер не сохранится.', NULL, NULL, NULL, '2019-04-08 10:37:20', NULL, 1),
+(17, 'Слайд 3', 'Описание слайда 3', 'https://vamshop.ru', '', 'slider_starter_basic', 'Если не используется картинка, то данное поле надо обязательно заполнить, иначе баннер не сохранится.', NULL, NULL, NULL, '2019-04-08 10:37:35', NULL, 1);
