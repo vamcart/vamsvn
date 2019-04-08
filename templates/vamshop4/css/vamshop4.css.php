@@ -129,3 +129,10 @@ button:focus, button:active {
     -webkit-box-shadow: 0 1px 3px rgba(51, 51, 51, 0.2);
     box-shadow: 0 1px 3px rgba(51, 51, 51, 0.2);
 }
+
+footer a,
+footer a:hover {
+
+color: white;
+
+}
