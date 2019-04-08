@@ -31,9 +31,8 @@ if ($_SESSION['customers_status']['customers_fsk18_display'] == '0')
 if (GROUP_CHECK == 'true')
 	$group_check = "and p.group_permission_".$_SESSION['customers_status']['customers_status_id']."=1 ";
 
-$expected_query = vamDBquery("select p.products_id,
-                                  pd.products_name,
-                                  products_date_available as date_expected from ".TABLE_PRODUCTS." p, ".TABLE_PRODUCTS_DESCRIPTION." pd
+$expected_query = vamDBquery("select p.*,
+                                  pd.*, products_date_available as date_expected from ".TABLE_PRODUCTS." p, ".TABLE_PRODUCTS_DESCRIPTION." pd
                                   where to_days(products_date_available) >= to_days(now())
                                   and p.products_id = pd.products_id
                                   ".$group_check."
@@ -46,8 +45,7 @@ if (vam_db_num_rows($expected_query,true) > 0) {
 	$row = 0;
 	while ($expected = vam_db_fetch_array($expected_query,true)) {
 		$row ++;
-		$module_content[] = array ('PRODUCTS_LINK' => vam_href_link(FILENAME_PRODUCT_INFO, vam_product_link($expected['products_id'], $expected['products_name'])), 'PRODUCTS_NAME' => $expected['products_name'], 'PRODUCTS_DATE' => vam_date_short($expected['date_expected']));
-
+	   $module_content[] = $product->buildDataArray($expected);
 	}
 
 	$module->assign('language', $_SESSION['language']);

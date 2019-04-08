@@ -794,6 +794,7 @@ $products_special = 100-($vamPrice->CheckSpecial($array['products_id'])*100/$vam
 				'PRODUCTS_SHIPPING_IMAGE'=>$shipping_status_image, 
 				'PRODUCTS_DESCRIPTION' => $array['products_description'],
 				'PRODUCTS_EXPIRES' => $array['expires_date'],
+				'PRODUCTS_DATE_AVAILABLE' => vam_date_short($array['products_date_available']),
 				'PRODUCTS_CATEGORY_URL'=>$array['cat_url'],
 				'PRODUCTS_SHORT_DESCRIPTION' => $array['products_short_description'], 
 				'PRODUCTS_FSK18' => $array['products_fsk18']);		
