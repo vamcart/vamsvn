@@ -38,7 +38,7 @@ html,
   background-position: 0% 100%;
   background-size: cover;
   /* Dimensions */
-  height: 300px;
+  height: 360px;
   width: 100%;
   max-width: 1280px;
   /* Hide anything that goes beyond the boundaries of the Sequence container */
@@ -298,7 +298,7 @@ html,
     height: auto;
     height: 100%;
     max-height: 20vh;
-    min-height: 300px;
+    min-height: 360px;
     /* Move the background radial to the left */
     background-position: 50% 100%;
   }
