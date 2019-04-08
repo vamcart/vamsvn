@@ -59,7 +59,7 @@ if ($parent_id == 0){ $cPath = ''; } else { $cPath .= $parent_id . '_'; }
  	$group_check = "and c.group_permission_".$_SESSION['customers_status']['customers_status_id']."=1 ";
  }
  
- $categories_query = "select c.categories_image, c.categories_id, cd.categories_name FROM " . TABLE_CATEGORIES . " c left join "
+ $categories_query = "select c.categories_image, c.categories_id, cd.categories_name, cd.categories_description FROM " . TABLE_CATEGORIES . " c left join "
       . TABLE_CATEGORIES_DESCRIPTION ." cd on c.categories_id = cd.categories_id WHERE c.categories_status = '1' and cd.language_id = ".$_SESSION['languages_id']
       ." and c.parent_id = '0' ".$group_check." order by c.sort_order ASC";
 
@@ -71,9 +71,10 @@ if ($parent_id == 0){ $cPath = ''; } else { $cPath .= $parent_id . '_'; }
    $SEF_link = vam_href_link(FILENAME_DEFAULT, vam_category_link($categories['categories_id'],$categories['categories_name']));
  
    $module_content[]=array('ID'  => $categories['categories_id'],
-                           'CAT_NAME'  => $categories['categories_name'],
-                           'CAT_IMAGE' => DIR_WS_IMAGES . 'categories/' . $categories['categories_image'],
-                           'CAT_LINK'  => $SEF_link,
+                           'CATEGORIES_NAME'  => $categories['categories_name'],
+                           'CATEGORIES_DESCRIPTION'  => $categories['categories_description'],
+                           'CATEGORIES_IMAGE' => DIR_WS_IMAGES . 'categories/' . $categories['categories_image'],
+                           'CATEGORIES_LINK'  => $SEF_link,
 			   'SCATS'  => get_category_tree($categories['categories_id'], '',0));
  }
 
