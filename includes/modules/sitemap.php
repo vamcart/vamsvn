@@ -81,6 +81,7 @@ if ($parent_id == 0){ $cPath = ''; } else { $cPath .= $parent_id . '_'; }
  // if there's sth -> assign it
  if (sizeof($module_content)>=1)
  {
+ $module->assign('SITEMAP_LINK', vam_href_link(FILENAME_DEFAULT, 'cat=0'));
  $module->assign('language', $_SESSION['language']);
  $module->assign('module_content',$module_content);
  // set cache ID
