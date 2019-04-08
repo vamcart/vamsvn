@@ -181,6 +181,13 @@ html,
   position: absolute;
 }
 
+.seq .seq-model a,
+.seq .seq-model a:hover,
+.seq .seq-title a,
+.seq .seq-title a:hover {
+  color: #fff;
+}
+
 .seq .seq-title {
   bottom: 5%;
   margin: 0 2.5%;
