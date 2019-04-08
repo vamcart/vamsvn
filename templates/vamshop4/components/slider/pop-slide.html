@@ -1,63 +1,33 @@
   <link href="jscript/sequencejs/themes/pop-slide/css/sequence-theme.pop-slide.css" rel="stylesheet" media="all">
 
+<style>
+{foreach item=bg from=$slider_pop_slide}
+.seq .seq-step{counter name=bg} {
+  background-image: url("images/banner/{$bg.image}");
+}
+{/foreach}
+</style>
+
   <div id="sequence" class="seq">
 
     <div class="seq-screen">
       <ul class="seq-canvas">
-
-        <li class="seq-step1 seq-in">
+        {foreach item=slides from=$slider_pop_slide} 
+        <li class="seq-step{counter name=slides} seq-in">
           <div data-seq class="seq-title">
-            <h2>Powered by Sequence.js</h2>
-            <a class="seq-button" href="http://sequencejs.com/">View Now ></a>
+            <h2>{$slides.title}</h2>
+            <a class="seq-button" href="{$slides.url}">{#text_view_products#} ></a>
           </div>
-
-          <small>Photo by <a href="https://www.flickr.com/photos/frf_kmeron/5709923096">Kmeron</a></small>
         </li>
+        {/foreach}
 
-        <li class="seq-step2">
-          <div data-seq class="seq-title">
-            <h2>Create Unique Animated Themes</h2>
-            <a class="seq-button" href="http://sequencejs.com/">View Now ></a>
-          </div>
-
-          <small>Photo by <a href="https://www.flickr.com/photos/frf_kmeron/4904378820">Kmeron</a></small>
-        </li>
-
-        <li class="seq-step3">
-          <div data-seq class="seq-title">
-            <h2>Rapid Development of Step-Based Applications</h2>
-            <a class="seq-button" href="http://sequencejs.com/">View Now ></a>
-          </div>
-
-          <small>Photo by <a href="https://www.flickr.com/photos/frf_kmeron/4202305377">Kmeron</a></small>
-        </li>
-
-        <li class="seq-step4">
-          <div data-seq class="seq-title">
-            <h2>Your Title Here</h2>
-            <a class="seq-button" href="#">View Now ></a>
-          </div>
-
-          <small>Photo by <a href="https://www.flickr.com/photos/frf_kmeron/5554955749">Kmeron</a></small>
-        </li>
-
-        <li class="seq-step5">
-          <div data-seq class="seq-title">
-            <h2>Your Title Here</h2>
-            <a class="seq-button" href="#">View Now ></a>
-          </div>
-
-          <small>Photo by <a href="https://www.flickr.com/photos/frf_kmeron/5363867810">Kmeron</a></small>
-        </li>
       </ul>
     </div>
 
     <ul role="navigation" aria-label="Pagination" class="seq-pagination">
-      <li><a href="#step1" rel="step1" title="Go to slide 1">Kaki King</a></li>
-      <li><a href="#step2" rel="step2" title="Go to slide 2">Micky Green</a></li>
-      <li><a href="#step3" rel="step3" title="Go to slide 3">Scampi</a></li>
-      <li><a href="#step4" rel="step4" title="Go to slide 4">Puggy</a></li>
-      <li><a href="#step5" rel="step5" title="Go to slide 5">Godspeed You! Black Emperor</a></li>
+      {foreach item=nav from=$slider_pop_slide}
+      <li><a href="#step{counter name=pagination1}" rel="step{counter name=pagination2}" title="{#text_go_to_slide#} {counter name=pagination3}">{$nav.title}</a></li>
+      {/foreach}
     </ul>
   </div>
 
