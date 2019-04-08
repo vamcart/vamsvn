@@ -25,6 +25,7 @@ var sequenceElement = document.getElementById("sequence"),
 // Place your Sequence options here to override defaults
 // See: http://sequencejs.com/documentation/#options
 var options = {
+  autoPlay: true,
   phaseThreshold: 100,
   preloader: true,
   reverseWhenNavigatingBackwards: true,

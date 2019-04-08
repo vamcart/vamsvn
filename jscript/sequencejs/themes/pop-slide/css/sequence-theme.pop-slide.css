@@ -135,6 +135,7 @@ html,
   transform: translateZ(0);
 }
 
+/*
 .seq .seq-step1 {
   background-image: url("../images/kaki-king.jpg");
 }
@@ -154,6 +155,7 @@ html,
 .seq .seq-step5 {
   background-image: url("../images/god-speed-you-black-emperor.jpg");
 }
+*/
 
 .seq small {
   /* Image credits */
