@@ -1,0 +1,23 @@
+	<div class="card card-product">
+		{if $module_data.PRODUCTS_LABEL}<span class="badge-new">{$module_data.PRODUCT.PRODUCTS_LABEL}</span>{/if}
+		{if $module_data.PRODUCTS_SPECIAL > 0}<span class="badge-offer"><b>-{$module_data.PRODUCT.PRODUCTS_SPECIAL|round}%</b></span>{/if}
+		<div class="img-wrap"><a href="{$module_data.PRODUCT.PRODUCTS_LINK}"><img src="{$module_data.PRODUCT.PRODUCTS_IMAGE}" alt="{$module_data.PRODUCT.PRODUCTS_NAME}"></a></div>
+		<div class="info-wrap">
+				<h5 class="title text-truncate"><a href="{$module_data.PRODUCT.PRODUCTS_LINK}">{$module_data.PRODUCT.PRODUCTS_NAME}</a></h5>
+				<p class="desc">{$module_data.REVIEW.TEXT|vam_truncate:$smarty.const.MAX_DISPLAY_SHORT_DESCRIPTION:"...":true}</p>
+				{if $module_data.REVIEWS_TOTAL > 0}
+				<div class="rating-wrap">
+					<ul class="rating-stars">
+						{$module_data.PRODUCT.REVIEWS_STAR_RATING}
+					</ul>
+					<div class="label-rating">{$smarty.const.TEXT_TOTAL_REVIEWS}: {$module_data.PRODUCT.REVIEWS_TOTAL}</div>
+				</div>
+				{/if}
+		</div>
+		<div class="bottom-wrap">
+			<a href="" class="btn btn-sm btn-primary float-right">{$module_data.PRODUCT.PRODUCTS_BUTTON_BUY_NOW_NEW}</a>	
+			<div class="price-wrap h5">
+				{$module_data.PRODUCT.PRODUCTS_PRICE}
+			</div>
+		</div>
+	</div>

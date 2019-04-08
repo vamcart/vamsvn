@@ -1,26 +1,20 @@
 <!-- Product Card Simple -->
 		<div class="card card-sm card-product">
-		<span class="badge-new">Новинка</span>
-		<span class="badge-offer"><b>-50%</b></span>
-			<div class="img-wrap"><a href=""><img src="/images/product_images/thumbnail_images/1_0.png"></a></div>
+		{if $module_data.PRODUCTS_LABEL}<span class="badge-new">{$module_data.PRODUCTS_LABEL}</span>{/if}
+		{if $module_data.PRODUCTS_SPECIAL > 0}<span class="badge-offer"><b>-{$module_data.PRODUCTS_SPECIAL|round}%</b></span>{/if}
+			<div class="img-wrap"><a href="{$module_data.PRODUCTS_LINK}"><img src="{$module_data.PRODUCTS_IMAGE}" alt="{$module_data.PRODUCTS_NAME}"></a></div>
 			<div class="info-wrap text-center">
-				<h5 class="title text-truncate"><a href="">The name of this product goes here and here</a></h5>
+				<h5 class="title text-truncate"><a href="{$module_data.PRODUCTS_LINK}">{$module_data.PRODUCTS_NAME}</a></h5>
+				{if $module_data.REVIEWS_TOTAL > 0}
 				<div class="rating-wrap">
-					<ul class="rating-stars">
-						<li style="width:80%" class="stars-active"> 
-							<i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
-						</li>
-						<li>
-							<i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> 
-						</li>
-					</ul>
-					<div class="label-rating">132 reviews</div>
+					{$module_data.REVIEWS_STAR_RATING}
+					<div class="label-rating">{$smarty.const.TEXT_TOTAL_REVIEWS}: {$module_data.REVIEWS_TOTAL}</div>
 				</div>
+				{/if}
 				<div class="price-wrap h4">
-					<span class="price">$11116</span>	
-					<del class="price-old">$11198</del>
+					{$module_data.PRODUCTS_PRICE}
 				</div>
-					<a href="#" class="btn btn-primary btn-sm">Buy now</a>
+					{$module_data.PRODUCTS_BUTTON_BUY_NOW_NEW}
 			</div>
 		</div>
 <!-- /Product Card Simple -->
