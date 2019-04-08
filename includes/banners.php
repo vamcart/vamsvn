@@ -30,7 +30,27 @@
   }
 
   if ($banner = vam_banner_exists('dynamic', 'slider_basic')) {
-  $vamTemplate->assign('slider_basic',vam_display_banners('static', 'slider_basic'));
+  $vamTemplate->assign('slider_basic',vam_display_banners('dynamic', 'slider_basic'));
   }
     
+  if ($banner = vam_banner_exists('dynamic', 'slider_modern_slide_in')) {
+  $vamTemplate->assign('slider_modern_slide_in',vam_display_banners('dynamic', 'slider_modern_slide_in'));
+  }
+
+  if ($banner = vam_banner_exists('dynamic', 'slider_parallax_basic')) {
+  $vamTemplate->assign('slider_parallax_basic',vam_display_banners('dynamic', 'slider_parallax_basic'));
+  }
+
+  if ($banner = vam_banner_exists('dynamic', 'slider_starter_basic')) {
+  $vamTemplate->assign('slider_starter_basic',vam_display_banners('dynamic', 'slider_starter_basic'));
+  }
+
+  if ($banner = vam_banner_exists('dynamic', 'slider_mono')) {
+  $vamTemplate->assign('slider_mono',vam_display_banners('dynamic', 'slider_mono'));
+  }
+
+  if ($banner = vam_banner_exists('dynamic', 'slider_two_up')) {
+  $vamTemplate->assign('slider_two_up',vam_display_banners('dynamic', 'slider_two_up'));
+  }
+
 ?>
