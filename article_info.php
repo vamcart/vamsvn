@@ -42,6 +42,9 @@ require_once (DIR_FS_INC.'vam_date_short.inc.php');
 
 if ($article_check['total'] > 0) {
 
+    $topics_query = vamDBquery("select t.topics_id, td.topics_name, t.parent_id from " . TABLE_TOPICS . " t, " . TABLE_TOPICS_DESCRIPTION . " td where t.parent_id = '0' and t.topics_id = td.topics_id and td.language_id = '" . (int)$_SESSION['languages_id'] . "' and t.topics_id = '" .$current_topic_id. "' order by sort_order, td.topics_name");
+    $topics_name = vam_db_fetch_array($topics_query, true);
+
 	$vamTemplate->assign('no_article', 'false');
 
 		$SEF_parameter_author = '';
@@ -76,8 +79,15 @@ $article_info['articles_keywords'] = str_replace($value.",","",$article_info['ar
 		$author_reviews_query = vamDBquery("select count(*) as total from ".TABLE_AUTHOR_REVIEWS." au where au.authors_id='".$article_info['authors_id']."'");
 		$author_reviews = vam_db_fetch_array($author_reviews_query, true);
 
+		$SEF_parameter_cat = '';
+		if (SEARCH_ENGINE_FRIENDLY_URLS == 'true')
+			$SEF_parameter_cat = '&category='.vam_cleanName($topics_name['topics_name']);
+
+    $topics_link = vam_href_link(FILENAME_ARTICLES, 'tPath=' . $topics_name['topics_id'] . $SEF_parameter_cat);
 
 	$vamTemplate->assign('ARTICLE_NAME', $article_info['articles_name']);
+	$vamTemplate->assign('TOPICS_NAME', $topics_name['topics_name']);
+	$vamTemplate->assign('TOPICS_LINK', $topics_link);
 	$vamTemplate->assign('ARTICLE_ID', $article_info['articles_id']);
 	$vamTemplate->assign('ARTICLE_REVIEWS', $article_reviews['total']);
 
