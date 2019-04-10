@@ -665,8 +665,12 @@ define('TEXT_COMPARE','Сравнение товара');
 define('TEXT_BUY_BUTTON', 'Купить');
 
 define('TEXT_BEST_BUY', 'успей купить!');
+define('TEXT_BEST_BUY_UP', 'Успей купить!');
 define('TEXT_READ_MORE', 'подробнее');
+define('TEXT_READ_MORE_UP', 'Подробнее');
 define('TEXT_VIEW_PRODUCTS', 'смотреть товары');
+define('TEXT_VIEW_PRODUCTS_UP', 'Смотреть товары');
+define('TEXT_VIEW_PRODUCTS_GO', 'Далее');
 
 define('TEXT_PRODUCT_DESCRIPTION', 'Описание');
 define('TEXT_PRODUCT_REVIEWS', 'Отзывы');
