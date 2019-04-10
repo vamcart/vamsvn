@@ -56,6 +56,12 @@ html,body
 		background-repeat: repeat-x; 
    }
 
+/* Remove outline */
+button:focus, button:active {
+   outline: none;
+}
+/* /Remove outline */
+
 .headerBar {
     background-color: #cccccc; 
     border-color: #000000; 
