@@ -155,4 +155,3 @@ background: #6c757d;
 #parseTime a:hover {
 color: white;
 }
-
