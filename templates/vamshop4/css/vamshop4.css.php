@@ -82,15 +82,13 @@ body {
 
 
 
-
-.owl-carousel .item {
-    height: 10rem;
-    background: #4DC7A0;
-    padding: 1rem;
+/* Remove outline */
+button:focus, button:active {
+   outline: none;
 }
+/* /Remove outline */
 
-
-/* owl nav */
+/* Owl Nav */
 .owl-prev, .owl-next {
   z-index: 9;
   top: 50%;
@@ -105,21 +103,28 @@ body {
 .owl-next {
   right: 0px;
   }
+/* /Owl Nav */
 
-/* removing blue outline from buttons */
-button:focus, button:active {
-   outline: none;
+/* Owl Slides Equal Height */
+.owl-stage {
+  display: flex;
+  flex-wrap: wrap;
 }
 
-
-/*
-.card {
-
-  border: 0px;
-
+.owl-item{
+  display: flex;
+  height: auto !important;
 }
-*/
 
+.owl-item img {
+  margin: 0 auto !important;
+  width: auto !important;
+}	
+
+.card-product {
+  width: 100%;
+}
+/* /Owl Slides Equal Height */
 
 .main {
     padding: 1rem 1.2rem;
@@ -151,25 +156,3 @@ background: #6c757d;
 color: white;
 }
 
-
-
-.owl-stage {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.owl-item{
-  display: flex;
-  height: auto !important;
-}
-
-.owl-item img {
-  margin: 0 auto !important;
-  width: auto !important;
-}	
-
-.card-product {
-
-width: 100%;
-
-}
