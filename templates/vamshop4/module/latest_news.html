@@ -2,9 +2,7 @@
 {if $ONE eq 1}
 {assign var="module_data" value=$module_content[0]}
 <div class="page">
-
 <h1>{$module_data.NEWS_HEADING}</h1>
-
 <div class="pageContent">
 
 <small>{$module_data.NEWS_DATA}</small>
@@ -21,6 +19,7 @@
 
 <div class="page">
 <h1>{#heading_text#}</h1>
+<div class="pageContent">
 
 <div class="row">
 {foreach name=aussen item=module_data from=$module_content}<div class="col-md-6 mb-3">	
@@ -29,11 +28,13 @@
 {/foreach} 
 </div>
 
-<div class="row">
-  <div class="col-auto mr-auto">{$NAVIGATION_BAR_PAGES}</div>
-  <div class="col-auto">{$NAVIGATION_BAR}</div>
+<div class="clear"></div>
+<div class="navigation">
+<span class="right">{$NAVIGATION_BAR}</span>{$NAVIGATION_BAR_PAGES}
 </div>
+<div class="clear"></div>
 
+</div>
 </div>
 
 {/if}
