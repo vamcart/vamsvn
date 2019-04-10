@@ -1054,6 +1054,6 @@ define('COMPANY_PAYMENT_4_MASK_TITLE', 'Шаблон для безналично
 define('COMPANY_PAYMENT_4_MASK_DESC', '');
 
 define('DEFAULT_SLIDER_TITLE', 'Слайдер по умолчанию');
-define('DEFAULT_SLIDER_DESC', 'Выберите вариант слайдера по умолчанию');
+define('DEFAULT_SLIDER_DESC', 'Выберите вариант слайдера по умолчанию. Управление слайдерами в Админке - Разное - Управление баннерами');
 
 ?>
