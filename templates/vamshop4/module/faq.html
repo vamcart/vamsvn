@@ -1,8 +1,8 @@
 {config_load file="$language/lang_$language.conf" section="faq"} 
+<div class="page">
 <h1>{#heading_text#}</h1>
 {if $ONE eq 1}
   {assign var="module_data" value=$module_content[0]}
-<div class="page">
 <div class="pageItem">
 <dl class="itemFaq">
 <dt class="itemFaq">
@@ -25,8 +25,6 @@
 <div class="clear"></div>
 </div>
 
-</div>
-
 <div class="pagecontentfooter">
 <a href="{$FAQ_LINK}" class="contents">{#other_faq#}</a>
 </div>
@@ -39,8 +37,7 @@
 <input type="text" name="akeywords" /><input type="image" src="{$tpl_path}img/box.gif" alt="{#text_search#}" title="{#text_search#}" />
 </fieldset>
 </form>
-  {foreach name=aussen item=module_data from=$module_content}<div class="page">
-<div class="pageItem">
+  {foreach name=aussen item=module_data from=$module_content}<div class="pageItem">
 <dl class="itemFaq">
 <dt class="itemFaq">
 </dt>
@@ -62,7 +59,6 @@
 <div class="clear"></div>
 </div>
 
-</div>
           {/foreach} 
 
 <div class="clear"></div>
