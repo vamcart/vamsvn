@@ -150,3 +150,26 @@ background: #6c757d;
 #parseTime a:hover {
 color: white;
 }
+
+
+
+.owl-stage {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.owl-item{
+  display: flex;
+  height: auto !important;
+}
+
+.owl-item img {
+  margin: 0 auto !important;
+  width: auto !important;
+}	
+
+.card-product {
+
+width: 100%;
+
+}
