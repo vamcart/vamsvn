@@ -98,12 +98,12 @@ function showSelected(suggestion) {
 </script>
 {/literal}
 {/if}
+<div class="page">
 <h1>{#heading_create_account#}</h1>
+<div class="pageContent">
 {$FORM_ACTION}{if $error!=''}
 {$error}
 {/if}
-<div class="page">
-<div class="pagecontent">
 <span class="Requirement">{#text_must#}</span>
 <br />
 <br />
@@ -175,10 +175,8 @@ function showSelected(suggestion) {
 	<strong>Leave this field empty</strong> <span class="required">*</span>
 	<input type="text" name="anti-bot-e-email-url" id="anti-bot-e-email-url" size="30" value=""/>
 </div>
-</div>
-</div>
 
-<div class="pagecontentfooter">
+<div class="pageContentFooter">
 {$BUTTON_SUBMIT}
 </div>
 
@@ -188,3 +186,6 @@ function showSelected(suggestion) {
 </div>
 
 {$FORM_END}
+
+</div>
+</div>

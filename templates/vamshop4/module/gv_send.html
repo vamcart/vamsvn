@@ -1,8 +1,8 @@
 {config_load file="$language/lang_$language.conf" section="gv_send"}
-<h1>{#heading_gvsend#}</h1>
-{if $action eq 'process'}
 <div class="page">
-<div class="pagecontent">
+<h1>{#heading_gvsend#}</h1>
+<div class="pageContent">
+{if $action eq 'process'}
 <p>
 {$LINK_DEFAULT}
 </p>
@@ -20,8 +20,7 @@
 </p>
 {/if}
 {$HIDDEN_FIELDS}
-</div>
-</div>
+
 <div class="clear"></div>
 <div class="navigation">
 <span class="right">{$LINK_SUBMIT}</span>
@@ -31,8 +30,6 @@
 {$FORM_END}
 {elseif $action eq ''}
 {$FORM_ACTION}
-<div class="page">
-<div class="pagecontent">
 
 {#heading_text#}
 <br />
@@ -47,11 +44,10 @@
 </fieldset>
 <!-- /форма -->
 
-</div>
-</div>
-
-<div class="pagecontentfooter">
+<div class="pageContentFooter">
 {$LINK_SUBMIT}
 </div>
 {$FORM_END}
 {/if}
+</div>
+</div>

@@ -1,26 +1,20 @@
 {config_load file="$language/affiliate_lang_$language.conf" section="affiliate_contact"}
 <!-- Заголовок страницы -->
-<h1>{#heading_title#}</h1>
-<!-- /Заголовок страницы -->
-{if $SUMMARY_LINK neq ''}
 <!-- Скругленные углы -->
 <div class="page">
+<h1>{#heading_title#}</h1>
+<!-- /Заголовок страницы -->
 <!-- Содержимое страницы -->
-<div class="pagecontent">
+<div class="pageContent">
+{if $SUMMARY_LINK neq ''}
 {#text_success#}
-</div>
 <!-- /Содержимое страницы -->
 <!-- /Скругленные углы -->
-<div class="pagecontentfooter">
+<div class="pageContentFooter">
 {$SUMMARY_LINK}
-</div>
 </div>
 {else}
 {$FORM_ACTION}
-<!-- Скругленные углы -->
-<div class="page">
-<!-- Содержимое страницы -->
-<div class="pagecontent">
 <!-- форма -->
 <fieldset class="form">
 <legend>{#heading_title#}</legend>
@@ -29,12 +23,12 @@
 	<p>{#entry_enquiry#} {$TEXTAREA_ENQUIRY}</p>
 </fieldset>
 <!-- /форма -->
-</div>
 <!-- /Содержимое страницы -->
 <!-- /Скругленные углы -->
-<div class="pagecontentfooter">
+<div class="pageContentFooter">
 {$BUTTON_SUBMIT}
-</div>
 </div>
 </form>
 {/if}
+</div>
+</div>

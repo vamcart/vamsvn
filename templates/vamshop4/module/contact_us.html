@@ -28,18 +28,18 @@ $(function($){
 });
 {/literal}
 </script>
+<!-- Скругленные углы -->
+<div class="page">
 <!-- Заголовок страницы -->
 <h1>{$CONTACT_HEADING}</h1>
 <!-- /Заголовок страницы -->
+<!-- Содержимое страницы -->
+<div class="pageContent">
 {if $error_message!=''}
 <div class="contacterror">{$error_message}</div>
 {/if}
 {if $success!='1'}
 {$FORM_ACTION}
-<!-- Скругленные углы -->
-<div class="page">
-<!-- Содержимое страницы -->
-<div class="pagecontent">
 {$CONTACT_CONTENT}
 <br />
 <br />
@@ -62,26 +62,19 @@ $(function($){
 </div>
 <!-- /Содержимое страницы -->
 <!-- /Скругленные углы -->
-<div class="pagecontentfooter">
+<div class="pageContentFooter">
 {$BUTTON_SUBMIT}
 </div>
 <br />
 <div>
 {$smarty.const.PRIVACY_TEXT}
 </div>
-</div>
 {$FORM_END}
 {else}
-<!-- Скругленные углы -->
-<div class="page">
-<!-- Содержимое страницы -->
-<div class="pagecontent">
 {#text_success#}
-</div>
-<!-- /Содержимое страницы -->
-<!-- /Скругленные углы -->
-<div class="pagecontentfooter">
+<div class="pageContentFooter">
 {$BUTTON_CONTINUE}
 </div>
-</div>
 {/if}
+</div>
+</div>

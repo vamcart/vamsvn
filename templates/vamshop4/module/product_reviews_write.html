@@ -16,7 +16,9 @@ $(function($){
 });
 {/literal}
 </script>
+<div class="page">
 <h1>{#heading_reviews_write#}</h1>
+<div class="pageContent">
 {if $captcha_error}
 <div class="contacterror">{$captcha_error}</div>
 {/if}
@@ -24,8 +26,6 @@ $(function($){
 <div class="contacterror">{$error}</div>
 {else}
 {$FORM_ACTION}
-<div class="page">
-<div class="pagecontent">
 
 <span class="bold">{#text_product#}</span> {$PRODUCTS_NAME}
 <br />
@@ -61,9 +61,6 @@ function reload(){
 </div>
 <!-- /форма -->
 
-</div>
-</div>
-
 <div class="clear"></div>
 <div class="navigation">
 <span class="right">{$BUTTON_SUBMIT}</span>
@@ -78,3 +75,5 @@ function reload(){
 
 {$FORM_END}
 {/if}
+</div>
+</div>

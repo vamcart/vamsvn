@@ -1,5 +1,7 @@
 {config_load file="$language/lang_$language.conf" section="reviews"}<br />
-<h1>{$PRODUCTS_NAME} {#heading_reviews#}</h1>
+<div class="module">
+<h3>{$PRODUCTS_NAME} {#heading_reviews#}</h3>
+<div class="moduleContent"
 
 {if {$PRODUCTS_REVIEWS_COUNT} > 0}
 
@@ -9,8 +11,8 @@
 	</div>	
 </div>
 {foreach name=aussen item=module_data from=$module_content} 
-<div class="page">
-<div class="pagecontent" itemprop="review" itemscope itemtype="http://schema.org/Review">
+<div class="review">
+<div class="reviewContent" itemprop="review" itemscope itemtype="http://schema.org/Review">
 
 <p>
 <span class="bold">{#text_author#}</span> <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">{$module_data.AUTHOR}</span></span> <span content="{$module_data.DATE|date_format:"%Y-%m-%d"}" itemprop="datePublished">{$module_data.DATE|date_format:"%Y-%m-%d"}</span>
@@ -33,14 +35,13 @@
 {/if}
 
 {if $TEXT_FIRST_REVIEW != ''}
-<div class="page">
-<div class="pagecontent">
 <p>
 {$TEXT_FIRST_REVIEW}
 </p>
-</div>
-</div>
 {/if}
-<div class="pagecontentfooter">
+<div class="pageContentFooter">
 {$BUTTON_WRITE}
+</div>
+
+</div>
 </div>

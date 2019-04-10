@@ -7,10 +7,10 @@
 <!-- /Файлы -->
 {/if}
 
-<h1>{#heading_history_info#}</h1>
-<!-- Информация о заказе -->
 <div class="page">
-<div class="pagecontent">
+<h1>{#heading_history_info#}</h1>
+<div class="pageContent">
+<!-- Информация о заказе -->
 
 <p>
 <span class="bold">{#text_oid#}</span> {$ORDER_NUMBER} ({$ORDER_STATUS})
@@ -83,13 +83,11 @@
 </p>
 {/if}
 
-</div>
-</div>
 <!-- /Информация о заказе -->
 
 <!-- История заказа -->
-<div class="page">
-<div class="pagecontent">
+<div class="module">
+<div class="moduleContent">
 
 <p>
 <span class="bold">{#title_history#}</span>
@@ -102,8 +100,8 @@
 <!-- /История заказа -->
 
 <!-- Заказанные товары -->
-<div class="page">
-<div class="pagecontent">
+<div class="module">
+<div class="moduleContent">
 
 <p>
 <span class="bold">{#heading_products#}</span>
@@ -148,7 +146,7 @@
 </div>
 <div class="clear"></div>
 
-<div class="pagecontentfooter">
+<div class="pageContentFooter">
 <p>
 <span class="bold">{#title_print#}</span>
 </p>
@@ -164,4 +162,7 @@
 <p>
 {$BUTTON_KVITANCIA_PRINT}
 </p>
+</div>
+
+</div>
 </div>

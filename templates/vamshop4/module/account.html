@@ -1,8 +1,9 @@
-{config_load file="$language/lang_$language.conf" section="account"}<h1>{#heading_account#}</h1>
+{config_load file="$language/lang_$language.conf" section="account"}<div class="page">
+<h1>{#heading_account#}</h1>
+<div class="pageContent">
 <!-- Приветствие -->
 {$error_message}
-<div class="page">
-<div class="pagecontent">
+
 <p>
 {#title_welcome#}
 </p>
@@ -14,13 +15,11 @@
 <li class="accountLinks"><a href="{$LINK_LOGIN}">{#text_login#}</a></li>
 </ul>
 {/if}
-</div>
-</div>
 <!-- /Приветствие -->
 
 <!-- Личные данные -->
-<div class="page">
-<div class="pagecontent">
+<div class="module">
+<div class="moduleContent">
 <p>
 {#title_account#}
 </p>
@@ -35,8 +34,8 @@
 
 {if $order_content}
 <!-- Заказы -->
-<div class="page">
-<div class="pagecontent">
+<div class="module">
+<div class="moduleContent">
 <p>
 {#title_orders#}&nbsp;<a href="{$LINK_ALL}">{#text_all#}</a>
 </p>
@@ -51,8 +50,8 @@
 {/if}
 
 <!-- Уведомления -->
-<div class="page">
-<div class="pagecontent">
+<div class="module">
+<div class="moduleContent">
 <p>
 {#title_notification#}
 </p>
@@ -109,3 +108,5 @@
 <div class="clear"></div>
 <!-- /Просмотренные товары -->
 {/if}
+</div>
+</div>

@@ -1,11 +1,11 @@
 {config_load file="$language/lang_$language.conf" section="advanced_search"}
+<div class="page">
 <h1>{#heading_search#}</h1>
+<div class="pageContent">
 {if $error!=''}
 {$error}
 {/if}
 {$FORM_ACTION}
-<div class="page">
-<div class="pagecontent">
 <a href="{$HELP_LINK}">{#text_help#}</a>
 <br />
 <br />
@@ -20,10 +20,10 @@
 <p>{#text_max#} {$SELECT_PTO}</p>
 </fieldset>
 <!-- /форма -->
-</div>
-</div>
 
-<div class="pagecontentfooter">
+<div class="pageContentFooter">
 {$BUTTON_SUBMIT}
 </div>
 {$FORM_END}
+</div>
+</div>

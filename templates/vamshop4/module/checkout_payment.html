@@ -1,9 +1,9 @@
-{config_load file="$language/lang_$language.conf" section="checkout_payment"}<h1>{#heading_payment#}</h1>
+{config_load file="$language/lang_$language.conf" section="checkout_payment"}<div class="page">
+<h1>{#heading_payment#}</h1>
+<div class="pageContent">
 {$FORM_ACTION}{if $error!=''}
 {$error}
-{/if}<div class="page">
-<div class="pagecontent">
-
+{/if}
 {if $BILLING_ADDRESS=='true'} 
 <span class="bold">{#title_address#}</span>
 {/if}
@@ -77,10 +77,10 @@
 <p>
 {#text_continue#}
 </p>
-</div>
-</div>
 
-<div class="pagecontentfooter">
+<div class="pageContentFooter">
 {$BUTTON_CONTINUE}
 </div>
 {$FORM_END}
+</div>
+</div>
