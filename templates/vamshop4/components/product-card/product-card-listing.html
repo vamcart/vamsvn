@@ -11,9 +11,7 @@
 				<h4 class="title text-truncate"><a href="{$module_data.PRODUCTS_LINK}">{$module_data.PRODUCTS_NAME}</a></h4>
 				{if $module_data.REVIEWS_TOTAL > 0}
 				<div class="rating-wrap">
-					<ul class="rating-stars">
-						{$module_data.REVIEWS_STAR_RATING}
-					</ul>
+					{$module_data.REVIEWS_STAR_RATING}
 					<div class="label-rating">{$smarty.const.TEXT_TOTAL_REVIEWS}: {$module_data.REVIEWS_TOTAL}</div>
 				</div>
 				{/if}

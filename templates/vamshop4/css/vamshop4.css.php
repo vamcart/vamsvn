@@ -1118,3 +1118,12 @@ dd.itemCategoriesListing
 #myModal .modal-body {
 	max-height: 400px;
 }   
+
+.rating {
+  background-color: transparent;
+  color: orange;
+  right: 0;
+  padding: 0 1px 0 0;
+  font-size: 14px;
+  text-align: center;
+}
