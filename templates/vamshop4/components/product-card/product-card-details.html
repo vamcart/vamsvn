@@ -1,6 +1,6 @@
 <!-- Product Card Details -->
 	<div class="card card-product">
-		{if $module_data.PRODUCTS_LABEL}<span class="badge-new">{$module_data.PRODUCTS_LABEL}</span>{/if}
+		{if $module_data.PRODUCTS_LABEL}{$module_data.PRODUCTS_LABEL}{/if}
 		{if $module_data.PRODUCTS_SPECIAL > 0}<span class="badge-offer"><b>-{$module_data.PRODUCTS_SPECIAL|round}%</b></span>{/if}
 		<div class="img-wrap"><a href="{$module_data.PRODUCTS_LINK}"><img src="{$module_data.PRODUCTS_IMAGE}" alt="{$module_data.PRODUCTS_NAME}"></a></div>
 		<div class="info-wrap">

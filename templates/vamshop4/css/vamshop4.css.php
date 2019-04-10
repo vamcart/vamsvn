@@ -126,6 +126,8 @@ button:focus, button:active {
 }
 /* /Owl Slides Equal Height */
 
+
+/* Main */
 .main {
     padding: 1rem 1.2rem;
     display: block;
@@ -134,7 +136,43 @@ button:focus, button:active {
     -webkit-box-shadow: 0 1px 3px rgba(51, 51, 51, 0.2);
     box-shadow: 0 1px 3px rgba(51, 51, 51, 0.2);
 }
+/* /Main */
 
+/* Product Labels */
+
+.card-product .label {
+  top: 7px;
+  left: 7px;
+  position: absolute;
+  display: block;
+  z-index: 10;
+  padding: 2px 7px;
+  font-size: 12px;
+  background-color: #dd2c00;
+  color: #fff;
+  border-radius: 4px;
+}
+  
+.card-product .label.new {
+  background-color: #005685;
+}
+
+.card-product .label.hit {
+  background-color: #d91414;
+}
+
+.card-product .label.sale {
+  background-color: #006100;
+}
+
+.card-product .label.html {
+  background-color: transparent;
+}  
+  
+/* /Product Labels */
+
+
+/* Footer */
 footer a,
 footer a:hover {
 
@@ -155,3 +193,4 @@ background: #6c757d;
 #parseTime a:hover {
 color: white;
 }
+/* /Footer */
