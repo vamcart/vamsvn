@@ -3,9 +3,11 @@
 <div class="page">
 <h1>{#heading_text#}</h1>
 
-{$SPECIAL_CATEGORY}
-
 <div class="pageContent">
+
+<div class="specialCategory pb-3">
+{$SPECIAL_CATEGORY}
+</div>
 
 {foreach name=aussen item=module_data from=$module_content}
 {include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/product-card/product-card-listing.html"}

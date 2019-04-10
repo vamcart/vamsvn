@@ -24,7 +24,7 @@ require (DIR_FS_CATALOG.'templates/'.CURRENT_TEMPLATE.'/source/boxes.php');
 
 require_once (DIR_FS_INC.'vam_get_short_description.inc.php');
 
-$breadcrumb->add(NAVBAR_TITLE_PRODUCTS_NEW);
+$breadcrumb->add(TITLE_BEST_SELLERS_DEFAULT);
 
 require (DIR_WS_INCLUDES.'header.php');
 
