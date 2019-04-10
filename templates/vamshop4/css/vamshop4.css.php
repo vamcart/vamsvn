@@ -279,7 +279,7 @@ span.Requirement
 }
 .btn:hover {
     color: #fff;
-    background-color: #363636;
+    background-color: #007bff;
 }
 
 .btn-add-to-cart {
@@ -293,7 +293,7 @@ span.Requirement
 }
 .btn-add-to-cart:hover {
     color: #fff;
-    background-color: #363636;
+    background-color: #007bff;
 }
 
 .btn-secondary {
