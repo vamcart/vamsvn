@@ -1,16 +1,3 @@
-/* -----------------------------------------------------------------------------------------
-   VamShop - open source ecommerce solution
-   http://vamshop.ru
-
-   Copyright (c) 2005-2019 VamShop 
-   -----------------------------------------------------------------------------------------
-   Released under the GNU General Public License 
-   ---------------------------------------------------------------------------------------*/
-
-/*<![CDATA[*/
-
-@import url("local.css");
-
 /* Контейнер */
 #container
    {
@@ -58,15 +45,6 @@
 /* Шапка */
 #header 
 	{
-		display: flex;
-		justify-content: space-between;
-		flex: 0 auto;
-		align-items: center;
-		background-color: #fff;
-		background-image: url(img/vamcart/bg.png);
-		background-position: 0 0;
-		background-repeat: repeat-x; 
-		height: 100px;
 	}
 
 
@@ -205,16 +183,6 @@ color: white;
 
 #menu
 	{
-		display: flex;
-		flex: 0 auto;
-		justify-content: center;		
-		border-top: 3px solid #dd2c00;
-		background-color: #fff;
-		background-image: url(img/vamcart/bg.png);
-		background-position: 0 -100px;
-		background-repeat: repeat-x; 
-		padding: 0;
-		margin: 0;
 	}
 
 #menu ul, #menu ul li 
@@ -2954,10 +2922,10 @@ li.ajaxAddQuickie
 		background: transparent;
 	}
 
-.itemOdd:hover,
-.itemEven:hover, 
-label.shipping.selected,
-label.payment.selected
+#checkout .itemOdd:hover,
+#checkout .itemEven:hover, 
+#checkout label.shipping.selected,
+#checkout label.payment.selected
 	{
 		border: 1px solid #000;
 	}
@@ -3036,8 +3004,8 @@ label
 
 .btn-secondary:hover {
     color: #fff;
-    background-color: #dd2c00;
-    border-color: #dd2c00;
+    background-color: #007bff;
+    border-color: #007bff;
 }
 	
 /* /Buttons */
@@ -3286,5 +3254,3 @@ div.CheckoutError
 		text-align: center;
 	}
 /* /Корзина popup */
-
-/*]]>*/

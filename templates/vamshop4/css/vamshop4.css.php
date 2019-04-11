@@ -1,5 +1,7 @@
 <?php 
 header('Content-Type: text/css');
+
+include('vamshop.css.php');
 ?>
 
 .sn_menu_open {cursor:pointer;margin:0;} 
@@ -138,6 +140,14 @@ button:focus, button:active {
 }
 /* /Main */
 
-<?php 
-include('vamshop.css.php');
-?>
+
+/* Star Rating */
+.rating {
+  background-color: transparent;
+  color: orange;
+  right: 0;
+  padding: 0 1px 0 0;
+  font-size: 14px;
+  text-align: center;
+}
+/* /Star Rating */
