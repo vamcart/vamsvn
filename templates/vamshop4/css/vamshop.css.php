@@ -157,19 +157,13 @@ color: white;
 
 .page p 
    {
-     padding-bottom: 0.5em;
-     padding-top: 0.5em;
    }
 
-.pagecontent 
+.pageContent 
    {
-     display: block;
-     padding-left: 0.5em;
-     padding-right: 0.5em;
-     background: transparent;
    }
 
-.pagecontentfooter 
+.pageContentFooter 
    {
      display: block;
      text-align: right;
@@ -2341,10 +2335,9 @@ form
 .form input, textarea,
 input[type=text]
    {
-		font-size: 1em;
 		border: 1px solid;
 		border-color: #666 #ccc #ccc #666;
-		padding: 2px;
+		padding: .3em;
 		border-top-left-radius: 4px;
 		border-top-right-radius: 4px;
 		border-bottom-left-radius: 4px;
@@ -3167,7 +3160,8 @@ div.CheckoutError
 
 #load_status_bg
 	{
-		background: url(../img/wind_bg.png) repeat; 
+		background: #fff; 
+		opacity: 0.9;
 		position: fixed;
 		z-index: 2300;
 		width: 100%;
