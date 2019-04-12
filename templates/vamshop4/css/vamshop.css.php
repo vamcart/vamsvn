@@ -2907,12 +2907,12 @@ li.ajaxAddQuickie
 
 .itemOdd 
 	{
-		background: #f4f4f4;
+		background: #fff;
 	}
 	
 .itemEven 
 	{
-		background: transparent;
+		background: #f6f4f4;
 	}
 
 #checkout .itemOdd:hover,
