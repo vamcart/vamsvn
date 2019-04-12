@@ -2918,7 +2918,8 @@ li.ajaxAddQuickie
 #checkout .itemOdd:hover,
 #checkout .itemEven:hover, 
 #checkout label.shipping.selected,
-#checkout label.payment.selected
+#checkout label.payment.selected,
+.selected
 	{
 		border: 1px solid #000;
 	}
