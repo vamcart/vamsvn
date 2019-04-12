@@ -256,7 +256,7 @@ if ($error == 1 && $keyerror != 1) {
     $options[] = array('manufacturers_id' => $filterlist['manufacturers_id'], 'manufacturers_name' => $filterlist['manufacturers_name']); 
     }
   
-    $options = super_unique( $options, 'manufacturers_name');
+    if($options) $options = super_unique( $options, 'manufacturers_name');
 
     foreach ($options as $data) {
     $manufacturer_sort .= '<a href="'.vam_href_link(basename($PHP_SELF),vam_get_all_get_params(array ('page','sort', 'direction', 'info','x','y')) . 'manufacturers_id='.$data['manufacturers_id']).'">' . $data['manufacturers_name'] . '</a> ';
