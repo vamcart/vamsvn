@@ -364,7 +364,7 @@ textarea
 		margin: 0;
 		padding: 7px 0 7px 10px;
 		background-color: #f4f4f4;
-		background-image: url(img/vamcart/bg.png);
+		background-image: url(../img/vamcart/bg.png);
 		background-position: 0 -135px;
 		background-repeat: repeat-x; 
 		border-top: 1px solid #c0c1c2;
@@ -383,7 +383,7 @@ textarea
 		margin: 0;
 		padding: .5em;
 		background-color: #fff;
-		background-image: url(img/vamcart/bg.png);
+		background-image: url(../img/vamcart/bg.png);
 		background-position: 0 -602px;
 		background-repeat: repeat-x; 
 		border-top: 0px;
@@ -493,7 +493,7 @@ textarea
 		margin: 0;
 		padding: 7px 0 7px 10px;
 		background-color: #f4f4f4;
-		background-image: url(img/vamcart/bg.png);
+		background-image: url(../img/vamcart/bg.png);
 		background-position: 0 -135px;
 		background-repeat: repeat-x; 
 		border-top: 1px solid #c0c1c2;
@@ -512,7 +512,7 @@ textarea
 		margin: 0;
 		padding: .5em;
 		background-color: #fff;
-		background-image: url(img/vamcart/bg.png);
+		background-image: url(../img/vamcart/bg.png);
 		background-position: 0 -602px;
 		background-repeat: repeat-x; 
 		border-top: 0px;
@@ -577,7 +577,7 @@ textarea
 		margin: 0;
 		padding: 7px 0 7px 10px;
 		background-color: #f4f4f4;
-		background-image: url(img/vamcart/bg.png);
+		background-image: url(../img/vamcart/bg.png);
 		background-position: 0 -135px;
 		background-repeat: repeat-x; 
 		border-top: 1px solid #c0c1c2;
@@ -596,7 +596,7 @@ textarea
 		margin: 0;
 		padding: .5em;
 		background-color: #fff;
-		background-image: url(img/vamcart/bg.png);
+		background-image: url(../img/vamcart/bg.png);
 		background-position: 0 -602px;
 		background-repeat: repeat-x; 
 		border-top: 0px;
@@ -648,7 +648,7 @@ textarea
 		margin: 0;
 		padding: 7px 0 7px 10px;
 		background-color: #f4f4f4;
-		background-image: url(img/vamcart/bg.png);
+		background-image: url(../img/vamcart/bg.png);
 		background-position: 0 -135px;
 		background-repeat: repeat-x; 
 		border-top: 1px solid #c0c1c2;
@@ -667,7 +667,7 @@ textarea
 		margin: 0;
 		padding: .5em;
 		background-color: #fff;
-		background-image: url(img/vamcart/bg.png);
+		background-image: url(../img/vamcart/bg.png);
 		background-position: 0 -602px;
 		background-repeat: repeat-x; 
 		border-top: 0px;
@@ -717,7 +717,7 @@ textarea
 		margin: 0;
 		padding: 7px 0 7px 10px;
 		background-color: #f4f4f4;
-		background-image: url(img/vamcart/bg.png);
+		background-image: url(../img/vamcart/bg.png);
 		background-position: 0 -135px;
 		background-repeat: repeat-x; 
 		border-top: 1px solid #c0c1c2;
@@ -736,7 +736,7 @@ textarea
 		margin: 0;
 		padding: .5em;
 		background-color: #fff;
-		background-image: url(img/vamcart/bg.png);
+		background-image: url(../img/vamcart/bg.png);
 		background-position: 0 -602px;
 		background-repeat: repeat-x; 
 		border-top: 0px;
@@ -793,7 +793,7 @@ textarea
 		margin: 0;
 		padding: 7px 0 7px 10px;
 		background-color: #f4f4f4;
-		background-image: url(img/vamcart/bg.png);
+		background-image: url(../img/vamcart/bg.png);
 		background-position: 0 -135px;
 		background-repeat: repeat-x; 
 		border-top: 1px solid #c0c1c2;
@@ -812,7 +812,7 @@ textarea
 		margin: 0;
 		padding: .5em;
 		background-color: #fff;
-		background-image: url(img/vamcart/bg.png);
+		background-image: url(../img/vamcart/bg.png);
 		background-position: 0 -602px;
 		background-repeat: repeat-x; 
 		border-top: 0px;
@@ -849,7 +849,7 @@ textarea
 		margin: 0;
 		padding: 7px 0 7px 10px;
 		background-color: #f4f4f4;
-		background-image: url(img/vamcart/bg.png);
+		background-image: url(../img/vamcart/bg.png);
 		background-position: 0 -135px;
 		background-repeat: repeat-x; 
 		border-top: 1px solid #c0c1c2;
@@ -868,7 +868,7 @@ textarea
 		margin: 0;
 		padding: .5em;
 		background-color: #fff;
-		background-image: url(img/vamcart/bg.png);
+		background-image: url(../img/vamcart/bg.png);
 		background-position: 0 -602px;
 		background-repeat: repeat-x; 
 		border-top: 0px;
@@ -905,7 +905,7 @@ textarea
 		margin: 0;
 		padding: 7px 0 7px 10px;
 		background-color: #f4f4f4;
-		background-image: url(img/vamcart/bg.png);
+		background-image: url(../img/vamcart/bg.png);
 		background-position: 0 -135px;
 		background-repeat: repeat-x; 
 		border-top: 1px solid #c0c1c2;
@@ -924,7 +924,7 @@ textarea
 		margin: 0;
 		padding: .5em;
 		background-color: #fff;
-		background-image: url(img/vamcart/bg.png);
+		background-image: url(../img/vamcart/bg.png);
 		background-position: 0 -602px;
 		background-repeat: repeat-x; 
 		border-top: 0px;
@@ -961,7 +961,7 @@ textarea
 		margin: 0;
 		padding: 7px 0 7px 10px;
 		background-color: #f4f4f4;
-		background-image: url(img/vamcart/bg.png);
+		background-image: url(../img/vamcart/bg.png);
 		background-position: 0 -135px;
 		background-repeat: repeat-x; 
 		border-top: 1px solid #c0c1c2;
@@ -980,7 +980,7 @@ textarea
 		margin: 0;
 		padding: .5em;
 		background-color: #fff;
-		background-image: url(img/vamcart/bg.png);
+		background-image: url(../img/vamcart/bg.png);
 		background-position: 0 -602px;
 		background-repeat: repeat-x; 
 		border-top: 0px;
@@ -1017,7 +1017,7 @@ textarea
 		margin: 0;
 		padding: 7px 0 7px 10px;
 		background-color: #f4f4f4;
-		background-image: url(img/vamcart/bg.png);
+		background-image: url(../img/vamcart/bg.png);
 		background-position: 0 -135px;
 		background-repeat: repeat-x; 
 		border-top: 1px solid #c0c1c2;
@@ -1036,7 +1036,7 @@ textarea
 		margin: 0;
 		padding: .5em;
 		background-color: #fff;
-		background-image: url(img/vamcart/bg.png);
+		background-image: url(../img/vamcart/bg.png);
 		background-position: 0 -602px;
 		background-repeat: repeat-x; 
 		border-top: 0px;
@@ -1074,7 +1074,7 @@ textarea
 		margin: 0;
 		padding: 7px 0 7px 10px;
 		background-color: #f4f4f4;
-		background-image: url(img/vamcart/bg.png);
+		background-image: url(../img/vamcart/bg.png);
 		background-position: 0 -135px;
 		background-repeat: repeat-x; 
 		border-top: 1px solid #c0c1c2;
@@ -1093,7 +1093,7 @@ textarea
 		margin: 0;
 		padding: .5em;
 		background-color: #fff;
-		background-image: url(img/vamcart/bg.png);
+		background-image: url(../img/vamcart/bg.png);
 		background-position: 0 -602px;
 		background-repeat: repeat-x; 
 		border-top: 0px;
@@ -1131,7 +1131,7 @@ textarea
 		margin: 0;
 		padding: 7px 0 7px 10px;
 		background-color: #f4f4f4;
-		background-image: url(img/vamcart/bg.png);
+		background-image: url(../img/vamcart/bg.png);
 		background-position: 0 -135px;
 		background-repeat: repeat-x; 
 		border-top: 1px solid #c0c1c2;
@@ -1158,7 +1158,7 @@ textarea
 		margin: 0;
 		padding: .5em;
 		background-color: #fff;
-		background-image: url(img/vamcart/bg.png);
+		background-image: url(../img/vamcart/bg.png);
 		background-position: 0 -602px;
 		background-repeat: repeat-x; 
 		border-top: 0px;
@@ -1215,7 +1215,7 @@ textarea
 		margin: 0;
 		padding: 7px 0 7px 10px;
 		background-color: #f4f4f4;
-		background-image: url(img/vamcart/bg.png);
+		background-image: url(../img/vamcart/bg.png);
 		background-position: 0 -135px;
 		background-repeat: repeat-x; 
 		border-top: 1px solid #c0c1c2;
@@ -1242,7 +1242,7 @@ textarea
 		margin: 0;
 		padding: .5em;
 		background-color: #fff;
-		background-image: url(img/vamcart/bg.png);
+		background-image: url(../img/vamcart/bg.png);
 		background-position: 0 -602px;
 		background-repeat: repeat-x; 
 		border-top: 0px;
@@ -1280,7 +1280,7 @@ textarea
 		margin: 0;
 		padding: 7px 0 7px 10px;
 		background-color: #f4f4f4;
-		background-image: url(img/vamcart/bg.png);
+		background-image: url(../img/vamcart/bg.png);
 		background-position: 0 -135px;
 		background-repeat: repeat-x; 
 		border-top: 1px solid #c0c1c2;
@@ -1307,7 +1307,7 @@ textarea
 		margin: 0;
 		padding: .5em;
 		background-color: #fff;
-		background-image: url(img/vamcart/bg.png);
+		background-image: url(../img/vamcart/bg.png);
 		background-position: 0 -602px;
 		background-repeat: repeat-x; 
 		border-top: 0px;
@@ -1345,7 +1345,7 @@ textarea
 		margin: 0;
 		padding: 7px 0 7px 10px;
 		background-color: #f4f4f4;
-		background-image: url(img/vamcart/bg.png);
+		background-image: url(../img/vamcart/bg.png);
 		background-position: 0 -135px;
 		background-repeat: repeat-x; 
 		border-top: 1px solid #c0c1c2;
@@ -1372,7 +1372,7 @@ textarea
 		margin: 0;
 		padding: .5em;
 		background-color: #fff;
-		background-image: url(img/vamcart/bg.png);
+		background-image: url(../img/vamcart/bg.png);
 		background-position: 0 -602px;
 		background-repeat: repeat-x; 
 		border-top: 0px;
@@ -1410,7 +1410,7 @@ textarea
 		margin: 0;
 		padding: 7px 0 7px 10px;
 		background-color: #f4f4f4;
-		background-image: url(img/vamcart/bg.png);
+		background-image: url(../img/vamcart/bg.png);
 		background-position: 0 -135px;
 		background-repeat: repeat-x; 
 		border-top: 1px solid #c0c1c2;
@@ -1437,7 +1437,7 @@ textarea
 		margin: 0;
 		padding: .5em;
 		background-color: #fff;
-		background-image: url(img/vamcart/bg.png);
+		background-image: url(../img/vamcart/bg.png);
 		background-position: 0 -602px;
 		background-repeat: repeat-x; 
 		border-top: 0px;
@@ -1475,7 +1475,7 @@ textarea
 		margin: 0;
 		padding: 7px 0 7px 10px;
 		background-color: #f4f4f4;
-		background-image: url(img/vamcart/bg.png);
+		background-image: url(../img/vamcart/bg.png);
 		background-position: 0 -135px;
 		background-repeat: repeat-x; 
 		border-top: 1px solid #c0c1c2;
@@ -1502,7 +1502,7 @@ textarea
 		margin: 0;
 		padding: .5em;
 		background-color: #fff;
-		background-image: url(img/vamcart/bg.png);
+		background-image: url(../img/vamcart/bg.png);
 		background-position: 0 -602px;
 		background-repeat: repeat-x; 
 		border-top: 0px;
@@ -1583,7 +1583,7 @@ dd.itemFaq
 		margin: 0;
 		padding: 7px 0 7px 10px;
 		background-color: #f4f4f4;
-		background-image: url(img/vamcart/bg.png);
+		background-image: url(../img/vamcart/bg.png);
 		background-position: 0 -135px;
 		background-repeat: repeat-x; 
 		border-top: 1px solid #c0c1c2;
@@ -1600,7 +1600,7 @@ dd.itemFaq
 		margin: 0;
 		padding: .5em;
 		background-color: #fff;
-		background-image: url(img/vamcart/bg.png);
+		background-image: url(../img/vamcart/bg.png);
 		background-position: 0 -602px;
 		background-repeat: repeat-x; 
 		border-top: 0px;
@@ -1685,7 +1685,7 @@ p.CartContentCenter
 		margin: 0;
 		padding: 7px 0 7px 10px;
 		background-color: #f4f4f4;
-		background-image: url(img/vamcart/bg.png);
+		background-image: url(../img/vamcart/bg.png);
 		background-position: 0 -135px;
 		background-repeat: repeat-x; 
 		border-top: 1px solid #c0c1c2;
@@ -1702,7 +1702,7 @@ p.CartContentCenter
 		margin: 0;
 		padding: .5em;
 		background-color: #fff;
-		background-image: url(img/vamcart/bg.png);
+		background-image: url(../img/vamcart/bg.png);
 		background-position: 0 -602px;
 		background-repeat: repeat-x; 
 		border-top: 0px;
@@ -1784,7 +1784,7 @@ p.LoginContentLeft
 		margin: 0;
 		padding: 7px 0 7px 10px;
 		background-color: #f4f4f4;
-		background-image: url(img/vamcart/bg.png);
+		background-image: url(../img/vamcart/bg.png);
 		background-position: 0 -135px;
 		background-repeat: repeat-x; 
 		border-top: 1px solid #c0c1c2;
@@ -1803,7 +1803,7 @@ p.LoginContentLeft
 		margin: 0;
 		padding: .5em;
 		background-color: #fff;
-		background-image: url(img/vamcart/bg.png);
+		background-image: url(../img/vamcart/bg.png);
 		background-position: 0 -602px;
 		background-repeat: repeat-x; 
 		border-top: 0px;
@@ -1841,7 +1841,7 @@ p.LoginContentLeft
 		margin: 0;
 		padding: 7px 0 7px 10px;
 		background-color: #f4f4f4;
-		background-image: url(img/vamcart/bg.png);
+		background-image: url(../img/vamcart/bg.png);
 		background-position: 0 -135px;
 		background-repeat: repeat-x; 
 		border-top: 1px solid #c0c1c2;
@@ -1860,7 +1860,7 @@ p.LoginContentLeft
 		margin: 0;
 		padding: .5em;
 		background-color: #fff;
-		background-image: url(img/vamcart/bg.png);
+		background-image: url(../img/vamcart/bg.png);
 		background-position: 0 -602px;
 		background-repeat: repeat-x; 
 		border-top: 0px;
@@ -1917,7 +1917,7 @@ p.LoginContentLeft
 		margin: 0;
 		padding: 7px 0 7px 10px;
 		background-color: #f4f4f4;
-		background-image: url(img/vamcart/bg.png);
+		background-image: url(../img/vamcart/bg.png);
 		background-position: 0 -135px;
 		background-repeat: repeat-x; 
 		border-top: 1px solid #c0c1c2;
@@ -1936,7 +1936,7 @@ p.LoginContentLeft
 		margin: 0;
 		padding: .5em;
 		background-color: #fff;
-		background-image: url(img/vamcart/bg.png);
+		background-image: url(../img/vamcart/bg.png);
 		background-position: 0 -602px;
 		background-repeat: repeat-x; 
 		border-top: 0px;
@@ -1985,7 +1985,7 @@ p.LoginContentLeft
 		margin: 0;
 		padding: 7px 0 7px 10px;
 		background-color: #f4f4f4;
-		background-image: url(img/vamcart/bg.png);
+		background-image: url(../img/vamcart/bg.png);
 		background-position: 0 -135px;
 		background-repeat: repeat-x; 
 		border-top: 1px solid #c0c1c2;
@@ -2004,7 +2004,7 @@ p.LoginContentLeft
 		margin: 0;
 		padding: .5em;
 		background-color: #fff;
-		background-image: url(img/vamcart/bg.png);
+		background-image: url(../img/vamcart/bg.png);
 		background-position: 0 -602px;
 		background-repeat: repeat-x; 
 		border-top: 0px;
@@ -2047,7 +2047,7 @@ p.LoginContentLeft
 		margin: 0;
 		padding: 7px 0 7px 10px;
 		background-color: #f4f4f4;
-		background-image: url(img/vamcart/bg.png);
+		background-image: url(../img/vamcart/bg.png);
 		background-position: 0 -135px;
 		background-repeat: repeat-x; 
 		border-top: 1px solid #c0c1c2;
@@ -2066,7 +2066,7 @@ p.LoginContentLeft
 		margin: 0;
 		padding: .5em;
 		background-color: #fff;
-		background-image: url(img/vamcart/bg.png);
+		background-image: url(../img/vamcart/bg.png);
 		background-position: 0 -602px;
 		background-repeat: repeat-x; 
 		border-top: 0px;
@@ -2116,7 +2116,7 @@ p.LoginContentLeft
 		margin: 0;
 		padding: 7px 0 7px 10px;
 		background-color: #f4f4f4;
-		background-image: url(img/vamcart/bg.png);
+		background-image: url(../img/vamcart/bg.png);
 		background-position: 0 -135px;
 		background-repeat: repeat-x; 
 		border-top: 1px solid #c0c1c2;
@@ -2135,7 +2135,7 @@ p.LoginContentLeft
 		margin: 0;
 		padding: .5em;
 		background-color: #fff;
-		background-image: url(img/vamcart/bg.png);
+		background-image: url(../img/vamcart/bg.png);
 		background-position: 0 -602px;
 		background-repeat: repeat-x; 
 		border-top: 0px;
@@ -2173,7 +2173,7 @@ p.LoginContentLeft
 		margin: 0;
 		padding: 7px 0 7px 10px;
 		background-color: #f4f4f4;
-		background-image: url(img/vamcart/bg.png);
+		background-image: url(../img/vamcart/bg.png);
 		background-position: 0 -135px;
 		background-repeat: repeat-x; 
 		border-top: 1px solid #c0c1c2;
@@ -2192,7 +2192,7 @@ p.LoginContentLeft
 		margin: 0;
 		padding: .5em;
 		background-color: #fff;
-		background-image: url(img/vamcart/bg.png);
+		background-image: url(../img/vamcart/bg.png);
 		background-position: 0 -602px;
 		background-repeat: repeat-x; 
 		border-top: 0px;
@@ -2242,7 +2242,7 @@ p.LoginContentLeft
 		margin: 0;
 		padding: 7px 0 7px 10px;
 		background-color: #f4f4f4;
-		background-image: url(img/vamcart/bg.png);
+		background-image: url(../img/vamcart/bg.png);
 		background-position: 0 -135px;
 		background-repeat: repeat-x; 
 		border-top: 1px solid #c0c1c2;
@@ -2261,7 +2261,7 @@ p.LoginContentLeft
 		margin: 0;
 		padding: .5em;
 		background-color: #fff;
-		background-image: url(img/vamcart/bg.png);
+		background-image: url(../img/vamcart/bg.png);
 		background-position: 0 -602px;
 		background-repeat: repeat-x; 
 		border-top: 0px;
@@ -3167,7 +3167,7 @@ div.CheckoutError
 
 #load_status_bg
 	{
-		background: url(img/wind_bg.png) repeat; 
+		background: url(../img/wind_bg.png) repeat; 
 		position: fixed;
 		z-index: 2300;
 		width: 100%;
@@ -3178,7 +3178,7 @@ div.CheckoutError
 
 #load_status_bg .load_status_image 
 	{
-		background:url(img/ajax-loader.gif);
+		background:url(../img/ajax-loader.gif);
 		width:100%; 
 		margin: 270px auto 0;
 		z-index: 2300;

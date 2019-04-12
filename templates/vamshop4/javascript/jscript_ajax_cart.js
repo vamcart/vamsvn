@@ -60,12 +60,8 @@ $(document).ajaxStop(function(){
                      data: {q : 'includes/modules/ajax/ajaxCart.php', action : 'cust_order', products_qty : 1, pid : id},
                      type: "GET",   
     	               success: function(msg){ 
+    	               cartPopupOn();
     	               $("#divShoppingCart").html(msg);
-    	               //$('html, body').animate({ scrollTop: 0 }, 'slow');	
-    	               //$(".shopping-cart-widget").addClass( "ajax-cart-hightlight" );
-      $("#navigation .btn.btn-navbar").click();
-      $("#navigation .btn.btn-navbar").focus();    	               
-      $("#navigation .dropdown-toggle.cart").dropdown("toggle");
     	               }       
                    });                     
 
@@ -94,12 +90,8 @@ function doAddProduct() {
 					data : data,
 					type : "GET",
 					success : function(msg) {
+						cartPopupOn();
 						$("#divShoppingCart").html(msg);
-						//$('html, body').animate({ scrollTop: 0 }, 'slow');	
-						//$(".shopping-cart-widget").addClass( "ajax-cart-hightlight" );
-      $("#navigation .btn.btn-navbar").click();
-      $("#navigation .btn.btn-navbar").focus();						
-      $("#navigation .dropdown-toggle.cart").dropdown("toggle");
 					}
 		});
 	}
