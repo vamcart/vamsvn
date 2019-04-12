@@ -151,3 +151,18 @@ button:focus, button:active {
   text-align: center;
 }
 /* /Star Rating */
+
+
+/* Scroll To Top */
+a#scrollup {
+  bottom: 20px;
+  right: 30px;
+  padding: 5px 10px;
+  background: #dd2c00;
+  color: #fff;
+}
+
+a#scrollup i{
+  font-size: 16px;
+}
+/* /Scroll To Top */
