@@ -5,6 +5,7 @@
 <script src="<?php echo 'templates/'.CURRENT_TEMPLATE.'/javascript/bootstrap.min.js'; ?>"></script>
 
 <script src="jscript/jquery/plugins/owl/owl.carousel.min.js"></script>
+<script src="jscript/jquery/plugins/scrollup/jquery.scrollup.min.js"></script>
 
 <script src="<?php echo 'templates/'.CURRENT_TEMPLATE.'/javascript/vamshop4.js.php'; ?>"></script>
 
