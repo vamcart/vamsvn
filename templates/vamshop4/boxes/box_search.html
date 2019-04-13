@@ -1,7 +1,7 @@
 {config_load file="$language/lang_$language.conf" section="boxes"}
 {$FORM_ACTION}
 <div class="input-group">
-      <input type="text" name="keywords" class="form-control" id="quick_find_keyword" placeholder="Поиск" />
+      <input type="text" name="keywords" class="form-control" id="quick_find_keyword" placeholder="{$smarty.const.BOX_HEADING_SEARCH}" />
       <input type="hidden" autocomplete="false" />
       <div class="input-group-append">
          <button class="btn btn-outline-secondary fas fa-search" type="submit"></button>
