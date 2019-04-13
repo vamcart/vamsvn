@@ -145,6 +145,7 @@ color: white;
 
 .pageItem 
    {
+    background: #f8f8f8;
    }
 
 .page h1, .page p 
@@ -159,8 +160,10 @@ color: white;
    {
    }
 
-.pageContent 
+.pageContent,
+.moduleContent 
    {
+    background: #f8f8f8;
    }
 
 .pageContentFooter 

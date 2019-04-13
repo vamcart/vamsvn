@@ -165,4 +165,9 @@ a#scrollup {
 a#scrollup i{
   font-size: 16px;
 }
+
+a#scrollup:hover {
+  background: #d50000;
+}	
+
 /* /Scroll To Top */
