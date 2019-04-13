@@ -85,7 +85,7 @@ body {
 
 
 /* Remove outline */
-button:focus, button:active {
+button:focus, button:active, a, a:hover {
    outline: none;
 }
 /* /Remove outline */
@@ -171,3 +171,12 @@ a#scrollup:hover {
 }	
 
 /* /Scroll To Top */
+
+.dropdown-menu.cart {
+  min-width: 300px; 
+  position: absolute; 
+  transform: translate3d(-90px, 42px, 0px); 
+  top: 0px; 
+  left: 0px; 
+  will-change: transform;
+}

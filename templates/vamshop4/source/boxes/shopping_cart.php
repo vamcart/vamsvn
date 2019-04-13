@@ -104,6 +104,7 @@ if ($_SESSION['customers_status']['customers_status_show_price'] == '1') {
 	if ($_SESSION['customers_status']['customers_status_show_price_tax'] == 0 && $_SESSION['customers_status']['customers_status_add_tax_ot'] == 1) $total-=$discount;
 	if ($_SESSION['customers_status']['customers_status_show_price_tax'] == 1) $total-=$discount;
 	$box->assign('TOTAL', $vamPrice->Format($total, true));
+	$box->assign('TOTAL_QUANTITY', $_SESSION['cart']->count_contents());
 } 
 	
 
