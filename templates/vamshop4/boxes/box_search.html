@@ -1,12 +1,14 @@
 {config_load file="$language/lang_$language.conf" section="boxes"}
-<div class="search">
-	{$FORM_ACTION}
-		<input class="span4" id="quick_find_keyword" name="keywords" type="text" placeholder="{#heading_search#}" />
-		<input class="btn search-bt" type="submit" value="" />
-	{$FORM_END}
-	<div class="ajaxQuickFind" id="ajaxQuickFind" style="text-align: left; position: absolute; z-index: 999; background-color: #fff;"></div>
+{$FORM_ACTION}
+<div class="input-group">
+      <input type="text" name="keywords" class="form-control" id="quick_find_keyword" placeholder="Поиск" />
+      <input type="hidden" autocomplete="false" />
+      <div class="input-group-append">
+         <button class="btn btn-outline-secondary fas fa-search" type="submit"></button>
+      </div>
 </div>
-<br />	
+{$FORM_END}
+<div class="ajaxQuickFind" id="ajaxQuickFind"></div>
 <script>
 // <![CDATA[
 {literal}

@@ -130,7 +130,7 @@ button:focus, button:active {
 
 
 /* Main */
-.main {
+.mainWrapper {
     padding: 1rem 1.2rem;
     display: block;
     background: #f8f8f8;

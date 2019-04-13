@@ -2831,6 +2831,14 @@ span.bold
 
 /* Ajax quick find */
 
+div#ajaxQuickFind {
+  text-align: left; 
+  position: absolute; 
+  z-index: 999; 
+  top: 50px;
+  background-color: #fff;
+}
+
 div.ajaxQuickFind 
    {
      text-align: left;
@@ -2840,12 +2848,11 @@ ul.ajaxQuickFind
    {
      list-style-type: none;
      list-style-image: none;
-     padding-left: 0px;
+     padding: 0.5em;
    }
 
 li.ajaxQuickFind 
    {
-     font-size: 80%;
      padding-left: 0px;
    } 
 
