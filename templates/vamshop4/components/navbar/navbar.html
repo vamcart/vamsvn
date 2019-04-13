@@ -22,10 +22,50 @@
     <div class="right-side d-flex">
     <ul class="navbar-nav">
       <li class="nav-item">
-        <a class="nav-link text-dark" href="account.php"><i class="fas fa-user"></i> Мои заказы <span class="sr-only">(current)</span></a>
+
+		<div class="icontext pr-2">
+			<div class="icon-wrap">
+				<a href="account.php"><i class="icon-xs round bg-primary text-white fas fa-user"></i></a>
+			</div>
+			<div class="text-wrap">
+				<div><a href="account.php">Мои заказы</a></div>
+			</div>
+		</div> <!-- icontext.// -->
+
       </li>
       <li class="nav-item">
-        <a class="nav-link text-dark" href="shopping_cart.php"><i class="fas fa-shopping-cart"></i> Корзина</a>
+
+		<div class="icontext">
+		<div class="icon-wrap">
+		<a href="shopping_cart.php"><i class="icon-xs round bg-primary text-white fas fa-shopping-cart"></i></a>
+		<span class="notify">4</span>
+		</div>
+		<div class="text-wrap dropdown">
+			<a href="#" data-toggle="dropdown" data-offset="20,10" aria-expanded="false"> 
+			 	Корзина  <i class="fa fa-caret-down"></i> 
+			</a>
+			<div class="dropdown-menu dropdown-menu-right" style="min-width: 250px; position: absolute; transform: translate3d(-90px, 42px, 0px); top: 0px; left: 0px; will-change: transform;" x-placement="bottom-end">
+				<article class="p-2">			
+					<figure class="media">
+						<div class="img-wrap"><img src="/images/product_images/thumbnail_images/1_0.png" class="img-thumbnail img-xs"></div>
+						<figcaption class="media-body">
+							<a href="#">Product name</a> <br>
+							<span class="text-muted">USD 260</span>
+						</figcaption>
+					</figure> <!-- media.// -->
+					<hr>
+					<figure class="media">
+						<div class="img-wrap"><img src="/images/product_images/thumbnail_images/1_0.png" class="img-thumbnail img-xs"></div>
+						<figcaption class="media-body">
+							<a href="#">Product name</a> <br>
+							<span class="text-muted">USD 1260</span>
+						</figcaption>
+					</figure> <!-- media.// -->
+				</article>
+			</div> <!--  dropdown-menu .// -->
+		</div> <!-- text-wrap.// -->
+		</div>
+		      
       </li>
     </ul>
     </div>

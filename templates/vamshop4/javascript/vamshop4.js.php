@@ -7,7 +7,7 @@ $(".owl-carousel").owlCarousel({
     nav: true,
     loop:false,
     dots: false,
-    navText: ['<span class="fas fa-chevron-left fa-2x"></span>','<span class="fas fa-chevron-right fa-2x"></span>'],
+    navText: ['<span class="round fas fa-chevron-left fa-2x"></span>','<span class="round fas fa-chevron-right fa-2x"></span>'],
     responsive:{
         0:{
             items:1,
