@@ -180,3 +180,10 @@ a#scrollup:hover {
   left: 0px; 
   will-change: transform;
 }
+
+.btn-group-xs > .btn, .btn-xs {
+    padding  : .25rem .4rem;
+    font-size  : .875rem;
+    line-height  : .5;
+    border-radius : .75rem;
+}
