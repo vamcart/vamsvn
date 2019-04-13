@@ -43,12 +43,6 @@
 </p>
 {/if}
 
-{if $PRODUCT_LABEL}
-<p>
-{$PRODUCT_LABEL}
-</p>
-{/if}
-
 <p>
 <span class="bold">{$PRODUCTS_PRICE}</span>
 <meta itemprop="price" content="{$PRODUCTS_PRICE_PLAIN}"><meta itemprop="priceCurrency" content="{$smarty.session.currency}">
@@ -178,21 +172,6 @@
 {if $PRODUCTS_URL != ''}
 <p align="center">
 {$PRODUCTS_URL}
-</p>
-{/if}
-
-<script type="text/javascript" src="//yandex.st/share/share.js" charset="utf-8"></script>
-<div class="yashare-auto-init" data-yashareType="button" data-yashareQuickServices="yaru,vkontakte,facebook,twitter,odnoklassniki,moimir,friendfeed,lj"></div> 
-
-{if $PRODUCTS_DATE_AVIABLE != ''}
-<p align="center">
-{$PRODUCTS_DATE_AVIABLE}
-</p>
-{/if}
-
-{if $PRODUCTS_ADDED != ''}
-<p align="center">
-{$PRODUCTS_ADDED}
 </p>
 {/if}
 
