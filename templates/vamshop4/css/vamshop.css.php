@@ -141,6 +141,7 @@ color: white;
 /* Скругленные углы */
 .page 
    {
+    background: #f8f8f8;
    }
 
 .pageItem 
