@@ -2,7 +2,7 @@
   <div class="container">
   <div class="row">
     <div class="col-12 col-md">
-      <a href=""><img class="mb-2" src="{$tpl_path}img/logo.png" width="150" height="35" alt="{$smarty.const.STORE_NAME}"></a>
+      <a href=""><img class="mb-2" src="{$tpl_path}img/logo.png" alt="{$smarty.const.STORE_NAME}"></a>
       <small class="d-block mb-3 text-white">&copy; {$smarty.now|date_format:"%Y"} {$smarty.const.STORE_NAME}</small>
          <ul class="list-inline">
            <li class="list-inline-item text-white"><a class="text-light" href="" ><i class="fab fa-instagram fa-2x"></i></a></li>
@@ -12,19 +12,19 @@
          </ul>
     </div>
     <div class="col-6 col-md white">
-      <h5 class="text-white">Информация</h5>
+      <h5 class="text-white">{#heading_infobox#}</h5>
       <ul class="list-unstyled text-small">
         {$box_CONTENT_PULL}
       </ul>
     </div>
     <div class="col-6 col-md">
-      <h5 class="text-white">Новости</h5>
+      <h5 class="text-white">{#heading_news#}</h5>
       <ul class="list-unstyled text-small">
         {$box_LATESTNEWS_DROPDOWN}
       </ul>
     </div>
     <div class="col-6 col-md">
-      <h5 class="text-white">Статьи</h5>
+      <h5 class="text-white">{#heading_articles_new#}</h5>
       <ul class="list-unstyled text-small">
         {$box_ARTICLESNEW_DROPDOWN}
       </ul>
