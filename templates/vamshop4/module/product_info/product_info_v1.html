@@ -1,8 +1,8 @@
 {config_load file="$language/lang_$language.conf" section="product_info"}
-<div itemscope itemtype="http://schema.org/Product">
+<div class="page" itemscope itemtype="http://schema.org/Product">
+<h1 itemprop="name">{$PRODUCTS_NAME}</h1>
+<div class="pageContent">
 {$FORM_ACTION}
-<h1 class="contentBoxHeading" itemprop="name">{$PRODUCTS_NAME}</h1>
-
 {if $info_message}
 <div class="contacterror">
 {$info_message}
@@ -11,66 +11,54 @@
 
 {$PRODUCT_NAVIGATOR}
 
-<div class="page">
-<div class="pagecontent">
+  <div class="card card-product">
+	<div class="card-body">
+	<div class="row">
+		{if $LABEL_ID > 0}{$PRODUCT_LABEL}{/if}
+		{if $PRODUCTS_SPECIAL > 0}<span class="badge-offer"><b>-{$PRODUCTS_SPECIAL|round}%</b></span>{/if}
+		<div class="col-md-5">
 
-<div class="ProductInfoLeft">
-{if $PRODUCTS_IMAGE or $PRODUCTS_MO_IMAGES or $PRODUCTS_IMAGE_LINK!=''}
-{if $PRODUCTS_POPUP_LINK!=''}<a href="{$PRODUCTS_POPUP_IMAGE}" title="{$PRODUCTS_NAME}" class="lightbox" {if $PRODUCTS_MO_IMAGES}rel="group"{/if} target="_blank">{/if}<img id="img" src="{$PRODUCTS_IMAGE}" itemprop="image" alt="{if $PRODUCTS_IMAGE_DESCRIPTION !=''}{$PRODUCTS_IMAGE_DESCRIPTION}{else}{$PRODUCTS_NAME}{/if}" />{if $PRODUCTS_POPUP_LINK!=''}<img src="{$tpl_path}img/zoom.gif" alt="{#text_zoom#}" border="0" /></a>{/if}
-{/if}
+			<div class="gallery-wrap"> 
+			<div class="img text-center">
+			  {if $PRODUCTS_POPUP_LINK!=''}<a href="{$PRODUCTS_POPUP_IMAGE}" title="{$PRODUCTS_NAME}" class="lightbox">{/if}<img itemprop="image" id="img" src="{$PRODUCTS_IMAGE}" alt="{if $PRODUCTS_IMAGE_DESCRIPTION !=''}{$PRODUCTS_IMAGE_DESCRIPTION}{else}{$PRODUCTS_NAME}{/if}" />{if $PRODUCTS_POPUP_LINK!=''}</a>{/if}
+			</div> <!-- slider-product.// -->
+			<div class="img-small-wrap">
+			{foreach name=mo_pic item=img_values from=$mo_img}
+			  <div class="item-gallery">{if $img_values.PRODUCTS_MO_POPUP_LINK !=''}<a href="{$img_values.PRODUCTS_MO_POPUP_IMAGE}" title="{$PRODUCTS_NAME}" class="lightbox">{/if}<img src="{$img_values.PRODUCTS_MO_IMAGE}" itemprop="image" alt="{if $img_values.PRODUCTS_MO_IMAGE_DESCRIPTION !=''}{$img_values.PRODUCTS_MO_IMAGE_DESCRIPTION}{else}{$PRODUCTS_NAME}{/if}" />{if $img_values.PRODUCTS_MO_POPUP_LINK !=''}</a>{/if}</div>
+			{/foreach}
+			</div> <!-- slider-nav.// -->
+			</div> <!-- gallery-wrap .end// -->
 
-{if ($PRODUCTS_FSK18=='true') or ($MODULE_graduated_price !='')}
+		</div>
+		<div class="col-md-7">
+			
+<div class="p-2">
 
-{if $PRODUCTS_FSK18=='true'}
-<p>
-<img src="{$tpl_path}img/fsk18.gif" alt="" />
-</p>
-{/if}
-{if $MODULE_graduated_price !=''}
-{$MODULE_graduated_price}
-{/if}
+<div class="rating-wrap">
 
-{/if}
+ {if $REVIEWS_TOTAL}
+ {if $REVIEWS_TOTAL}{$smarty.const.TEXT_TOTAL_REVIEWS}: {$REVIEWS_TOTAL}, {/if}
+ {if $REVIEWS_RATING}{$smarty.const.TEXT_REVIEWS_RATING}: {$STAR_RATING}{/if}
+ {/if}
 
+</div> <!-- rating-wrap.// -->
+
+<div class="inner">
+	<a class="iframe" target="_blank" href="{$ASK_PRODUCT_QUESTION_LINK}">{#question#}</a>&nbsp;{$ASK_PRODUCT_QUESTION}
 </div>
 
-<div class="ProductInfoRight" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
-
-{if $REVIEWS_TOTAL}
-<p>
-{if $REVIEWS_TOTAL}{$smarty.const.TEXT_TOTAL_REVIEWS}: {$REVIEWS_TOTAL}, {/if}
-{if $REVIEWS_RATING}{$smarty.const.TEXT_REVIEWS_RATING}: {$REVIEWS_RATING|number_format:2}{/if}
-</p>
+{if $SHIPPING_NAME}
+<div class="inner">
+	{#text_shippingtime#}&nbsp;{if $SHIPPING_IMAGE}<img src="{$SHIPPING_IMAGE}" alt="{$SHIPPING_NAME}" />{/if}&nbsp;&nbsp;{$SHIPPING_NAME}
+</div>
 {/if}
 
-<p>
-<span class="bold">{$PRODUCTS_PRICE}</span>
-<meta itemprop="price" content="{$PRODUCTS_PRICE_PLAIN}"><meta itemprop="priceCurrency" content="{$smarty.session.currency}">
-</p>
 
-{if $PRODUCTS_TAX_INFO}
-<p>
-{$PRODUCTS_TAX_INFO}
-</p>
-{/if}
-
-{if $PRODUCTS_SHIPPING_LINK}
-<p>
-{$PRODUCTS_SHIPPING_LINK}
-</p>
-{/if}
-
-{if $PRODUCTS_VPE}
-<p>
-{$PRODUCTS_VPE}
-</p>
-{/if}
-
-{if $PRODUCTS_MODEL!=''}
-<p>
-{#model#} {$PRODUCTS_MODEL}
-</p>
-{/if}
+<div class="mt-3 mb-3"> 
+	<div class="price h3" itemprop="offers" itemscope itemtype="http://schema.org/Offer"> 
+		<span class="price">{$PRODUCTS_PRICE}</span><meta itemprop="price" content="{$PRODUCTS_PRICE_PLAIN}"><meta itemprop="priceCurrency" content="{$smarty.session.currency}">
+	</div> 
+</div> <!-- price-detail-wrap .// -->
 
 {if $PRODUCTS_DISCOUNT}
 <p>
@@ -78,80 +66,79 @@
 </p>
 {/if}
 
-<p>
-<a class="iframe" target="_blank" href="{$PRODUCTS_PRINT_LINK}">{#print#}</a>&nbsp;{$PRODUCTS_PRINT}
-</p>
-<p>
-<a class="iframe" target="_blank" href="{$ASK_PRODUCT_QUESTION_LINK}">{#question#}</a>&nbsp;{$ASK_PRODUCT_QUESTION}
-</p>
-
-{if $SHIPPING_NAME}
-<p>
-{#text_shippingtime#}&nbsp;{if $SHIPPING_IMAGE}<img src="{$SHIPPING_IMAGE}" alt="{$SHIPPING_NAME}" />{/if}&nbsp;&nbsp;{$SHIPPING_NAME}
-</p>
+{if $extra_fields_data}
+<div class="description extra_fields">
+{foreach item=extra_fields from=$extra_fields_data} 
+{if $extra_fields@iteration > 5}{break}{/if} 
+<div class="{cycle values="spec-odd,spec-even"}">
+<span class="spec-name">{$extra_fields.NAME}:</span> <span class="spec-value">{$extra_fields.VALUE}</span><br />
+</div>
+{/foreach}
+</div>
 {/if}
+{if $specifications}
+<div class="description specs">
+<!-- Specifications -->
+{foreach name=outer item=spec_group from=$specifications_data}
+<br />
+{foreach key=key_data item=spec from=$spec_group.DATA}
+{if $spec@iteration > 5}{break}{/if} 
+<div class="{cycle values="spec-odd,spec-even"}">
+<span class="spec-name">{$spec.NAME}:</span> <span class="spec-value">{$spec.VALUE}</span><br />
+</div>
+{/foreach}
+{/foreach}
+<br />
+</div>
+{/if}
+				
 
 {if $MODULE_product_options !=''}
+<div class="inner">
 {$MODULE_product_options}
+</div>
 {/if}
 
+{if $MODULE_graduated_price !=''}
+<div class="inner">
+{$MODULE_graduated_price}
 </div>
+{/if}
 
-<div class="clear"></div>
+<hr>
 
-<p class="CartContentRight">
+<p class="CartContentLeft">
 {$ADD_QTY}
-</p>
-
-<p class="CartContentRight">
 {$ADD_CART_BUTTON}
 </p>
 
 {if $KUPI_V_KREDIT_BUTTON}
-<p class="CartContentRight">
+<p class="CartContentLeft">
 {$KUPI_V_KREDIT_BUTTON}
 </p>
 {/if}
 
-{if $PRODUCTS_DESCRIPTION !=''}
-<p itemprop="description">
-{$PRODUCTS_DESCRIPTION}
-</p>
-{/if}
 
-{if $extra_fields_data}
-{foreach name=aussen item=extra_fields from=$extra_fields_data} 
-{$extra_fields.NAME}: {$extra_fields.VALUE}<br /> 
-{/foreach}
-{/if}
+</div>
+			
+		</div>
 
-{if $specifications}
-<!-- Specifications -->
-{foreach name=outer item=spec_group from=$specifications_data}
-<strong>{$spec_group.GROUP_NAME}:</strong><br />
-{foreach key=key_data item=spec from=$spec_group.DATA}
-{$spec.NAME}: {$spec.VALUE}<br /> 
-{/foreach}
-{/foreach}
-<!-- /Specifications -->
-{/if}
+	</div>
+	
+	
+	</div>
+</div>
 
-{if $PRODUCTS_MO_IMAGES or $PRODUCTS_IMAGE_LINK!=''}
-<p>
-<!-- more images -->
-{if $PRODUCTS_MO_IMAGES}
-{foreach name=mo_pic item=img_values from=$mo_img}
-{if $img_values.PRODUCTS_MO_POPUP_LINK !=''}<a href="{$img_values.PRODUCTS_MO_POPUP_IMAGE}" title="{$PRODUCTS_NAME}" class="lightbox" rel="group" target="_blank">{/if}<img src="{$img_values.PRODUCTS_MO_IMAGE}" itemprop="image" alt="{if $img_values.PRODUCTS_MO_IMAGE_DESCRIPTION !=''}{$img_values.PRODUCTS_MO_IMAGE_DESCRIPTION}{else}{$PRODUCTS_NAME}{/if}" />{if $img_values.PRODUCTS_MO_POPUP_LINK !=''}<img src="{$tpl_path}img/zoom.gif" alt="{#text_zoom#}" border="0" width="16" height="12" /></a>{/if}&nbsp;
-{/foreach}
-{/if}
-<!-- more images eof -->
-</p>
+{$FORM_END}
 
-<p>
-{if $PRODUCTS_IMAGE_LINK!=''}
-  <a href="{$PRODUCTS_IMAGE_LINK}" onclick="window.open(this.href); return false;">{$PRODUCTS_TEXT_ZOOM}</a>
-{/if}
-</p>
+<!-- PRODUCT DETAIL -->
+<div class="module">
+	<div class="moduleContent">
+	   {$PRODUCTS_DESCRIPTION}
+	</div> <!-- card-body.// -->
+	
+{if $MODULE_products_media != ''}
+{$MODULE_products_media}
 {/if}
 
 {if $PRODUCTS_TAGS}
@@ -174,19 +161,10 @@
 {$PRODUCTS_URL}
 </p>
 {/if}
-
+	
 </div>
-</div>
 
-{$FORM_END}
-
-{if $MODULE_bundle != ''}
-{$MODULE_bundle}
-{/if}
-
-{if $MODULE_products_media != ''}
-{$MODULE_products_media}
-{/if}
+<!-- PRODUCT DETAIL .// -->
 
 {if $MODULE_products_reviews != ''}
 {$MODULE_products_reviews}
@@ -204,8 +182,9 @@
 {$MODULE_also_purchased}
 {/if}
 
-{if $MODULE_bundle_products != ''}
-{$MODULE_bundle_products}
+{if $MODULE_bundle != ''}
+{$MODULE_bundle}
 {/if}
 
+</div>
 </div>

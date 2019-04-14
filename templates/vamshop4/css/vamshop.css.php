@@ -3030,7 +3030,7 @@ del.button
     background-color: transparent;
     transition: color .1s ease-in-out,background-color .1s ease-in-out,border-color .1s ease-in-out,box-shadow .1s ease-in-out;
     border: 1px solid transparent;
-    padding: .375rem .75rem;
+    padding: .300rem .75rem;
     font-size: 1rem;
     line-height: 1.5;
     border-radius: .25rem;

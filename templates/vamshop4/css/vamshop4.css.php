@@ -187,3 +187,10 @@ a#scrollup:hover {
     line-height  : .5;
     border-radius : .75rem;
 }
+
+
+.gallery-wrap .img-small-wrap .item-gallery {
+
+  border: 0px !important;
+
+}
