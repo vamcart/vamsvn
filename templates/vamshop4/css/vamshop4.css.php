@@ -188,9 +188,19 @@ a#scrollup:hover {
     border-radius : .75rem;
 }
 
-
+/* Products Gallery */
 .gallery-wrap .img-small-wrap .item-gallery {
-
   border: 0px !important;
-
 }
+/* /Products Gallery */
+
+
+/* Products Filter Collapse On Mobile */
+@media (min-width: 768px) {
+  .collapse.dont-collapse-sm {
+    display: block;
+    height: auto !important;
+    visibility: visible;
+  }
+}
+/* /Products Filter Collapse On Mobile */

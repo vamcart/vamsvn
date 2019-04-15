@@ -41,7 +41,17 @@
 
 <div class="page">
 <div class="pageItem">
-{$FILTERS}
+
+  <button class="btn btn-outline-primary d-md-none mb-2" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+    <i class="fas fa-filter"></i> {#text_product_filters#}
+  </button>
+  
+  <div class="collapse dont-collapse-sm" id="collapseExample">
+    <div class="well">
+      {$FILTERS}
+    </div>
+  </div>
+
 {if $MANUFACTURER_SORT}
 <p>
 {$MANUFACTURER_SORT}
