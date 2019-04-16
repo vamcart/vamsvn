@@ -1,6 +1,7 @@
 {config_load file="$language/lang_$language.conf" section="product_info"}
+<div itemscope itemtype="http://schema.org/Product">
 {$FORM_ACTION}
-<h1 class="contentBoxHeading">{$PRODUCTS_NAME}</h1>
+<h1 class="contentBoxHeading" itemprop="name">{$PRODUCTS_NAME}</h1>
 
 {if $info_message}
 <div class="contacterror">
@@ -15,7 +16,7 @@
 
 <div class="ProductInfoLeft">
 {if $PRODUCTS_IMAGE or $PRODUCTS_MO_IMAGES or $PRODUCTS_IMAGE_LINK!=''}
-{if $PRODUCTS_POPUP_LINK!=''}<a href="{$PRODUCTS_POPUP_IMAGE}" title="{$PRODUCTS_NAME}" class="lightbox" {if $PRODUCTS_MO_IMAGES}rel="group"{/if} target="_blank">{/if}<img id="img" src="{$PRODUCTS_IMAGE}" alt="{if $PRODUCTS_IMAGE_DESCRIPTION !=''}{$PRODUCTS_IMAGE_DESCRIPTION}{else}{$PRODUCTS_NAME}{/if}" />{if $PRODUCTS_POPUP_LINK!=''}<img src="{$tpl_path}img/zoom.gif" alt="{#text_zoom#}" border="0" /></a>{/if}
+{if $PRODUCTS_POPUP_LINK!=''}<a href="{$PRODUCTS_POPUP_IMAGE}" title="{$PRODUCTS_NAME}" class="lightbox" {if $PRODUCTS_MO_IMAGES}rel="group"{/if} target="_blank">{/if}<img id="img" src="{$PRODUCTS_IMAGE}" itemprop="image" alt="{if $PRODUCTS_IMAGE_DESCRIPTION !=''}{$PRODUCTS_IMAGE_DESCRIPTION}{else}{$PRODUCTS_NAME}{/if}" />{if $PRODUCTS_POPUP_LINK!=''}<img src="{$tpl_path}img/zoom.gif" alt="{#text_zoom#}" border="0" /></a>{/if}
 {/if}
 
 {if ($PRODUCTS_FSK18=='true') or ($MODULE_graduated_price !='')}
@@ -33,7 +34,7 @@
 
 </div>
 
-<div class="ProductInfoRight">
+<div class="ProductInfoRight" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
 
 {if $REVIEWS_TOTAL}
 <p>
@@ -50,6 +51,11 @@
 
 <p>
 <span class="bold">{$PRODUCTS_PRICE}</span>
+<meta itemprop="price" content="{$PRODUCTS_PRICE_PLAIN}">
+<meta itemprop="priceCurrency" content="{$smarty.session.currency}">
+<meta itemprop="availability" content="InStock" />
+<meta itemprop="priceValidUntil" content="{$smarty.now + (1200*60*24*7)|date_format:"c"}" />
+<meta itemprop="url" content="{$PRODUCTS_URL}" />
 </p>
 
 {if $PRODUCTS_TAX_INFO}
@@ -118,10 +124,19 @@
 {/if}
 
 {if $PRODUCTS_DESCRIPTION !=''}
-<p>
+<p itemprop="description">
 {$PRODUCTS_DESCRIPTION}
 </p>
 {/if}
+
+{if $MANUFACTURER}
+<p>
+{#text_manufacturer#}: <span itemprop="brand">{$MANUFACTURER}</span>
+</p>
+{/if}
+
+<meta itemprop="sku" content="{$PRODUCTS_MODEL}" />
+<meta itemprop="mpn" content="{$PRODUCTS_MODEL}" />
 
 {if $extra_fields_data}
 {foreach name=aussen item=extra_fields from=$extra_fields_data} 
@@ -145,7 +160,7 @@
 <!-- more images -->
 {if $PRODUCTS_MO_IMAGES}
 {foreach name=mo_pic item=img_values from=$mo_img}
-{if $img_values.PRODUCTS_MO_POPUP_LINK !=''}<a href="{$img_values.PRODUCTS_MO_POPUP_IMAGE}" title="{$PRODUCTS_NAME}" class="lightbox" rel="group" target="_blank">{/if}<img src="{$img_values.PRODUCTS_MO_IMAGE}" alt="{if $img_values.PRODUCTS_MO_IMAGE_DESCRIPTION !=''}{$img_values.PRODUCTS_MO_IMAGE_DESCRIPTION}{else}{$PRODUCTS_NAME}{/if}" />{if $img_values.PRODUCTS_MO_POPUP_LINK !=''}<img src="{$tpl_path}img/zoom.gif" alt="{#text_zoom#}" border="0" width="16" height="12" /></a>{/if}&nbsp;
+{if $img_values.PRODUCTS_MO_POPUP_LINK !=''}<a href="{$img_values.PRODUCTS_MO_POPUP_IMAGE}" title="{$PRODUCTS_NAME}" class="lightbox" rel="group" target="_blank">{/if}<img src="{$img_values.PRODUCTS_MO_IMAGE}" itemprop="image" alt="{if $img_values.PRODUCTS_MO_IMAGE_DESCRIPTION !=''}{$img_values.PRODUCTS_MO_IMAGE_DESCRIPTION}{else}{$PRODUCTS_NAME}{/if}" />{if $img_values.PRODUCTS_MO_POPUP_LINK !=''}<img src="{$tpl_path}img/zoom.gif" alt="{#text_zoom#}" border="0" width="16" height="12" /></a>{/if}&nbsp;
 {/foreach}
 {/if}
 <!-- more images eof -->
@@ -222,3 +237,9 @@
 {if $MODULE_also_purchased != ''}
 {$MODULE_also_purchased}
 {/if}
+
+{if $MODULE_bundle_products != ''}
+{$MODULE_bundle_products}
+{/if}
+
+</div>

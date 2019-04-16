@@ -51,7 +51,11 @@
 
 <p>
 <span class="bold">{$PRODUCTS_PRICE}</span>
-<meta itemprop="price" content="{$PRODUCTS_PRICE_PLAIN}"><meta itemprop="priceCurrency" content="{$smarty.session.currency}">
+<meta itemprop="price" content="{$PRODUCTS_PRICE_PLAIN}">
+<meta itemprop="priceCurrency" content="{$smarty.session.currency}">
+<meta itemprop="availability" content="InStock" />
+<meta itemprop="priceValidUntil" content="{$smarty.now + (1200*60*24*7)|date_format:"c"}" />
+<meta itemprop="url" content="{$PRODUCTS_URL}" />
 </p>
 
 {if $PRODUCTS_TAX_INFO}
@@ -124,6 +128,15 @@
 {$PRODUCTS_DESCRIPTION}
 </p>
 {/if}
+
+{if $MANUFACTURER}
+<p>
+{#text_manufacturer#}: <span itemprop="brand">{$MANUFACTURER}</span>
+</p>
+{/if}
+
+<meta itemprop="sku" content="{$PRODUCTS_MODEL}" />
+<meta itemprop="mpn" content="{$PRODUCTS_MODEL}" />
 
 {if $extra_fields_data}
 {foreach name=aussen item=extra_fields from=$extra_fields_data} 
