@@ -497,6 +497,7 @@ background: #fff;
   border-radius: 0px;
   background-color: #fff;
   border: 1px solid #eee;	
+  right: auto;
 }	
 
 /* Breadcrumbs / Page Header
