@@ -2340,7 +2340,7 @@ form
 input[type=text]
    {
 		border: 1px solid;
-		border-color: #666 #ccc #ccc #666;
+		border-color: #ccc;
 		padding: .3em;
 		border-top-left-radius: 4px;
 		border-top-right-radius: 4px;
