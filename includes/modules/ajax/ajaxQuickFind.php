@@ -60,6 +60,16 @@
 														'text' => $products['products_name']);
 			}
 			$out .= '</ul>' . "\n";
+			$out .= '
+					   <script>
+					   $(document).ready(function() {
+							$("#ajaxQuickFind").show();
+						$(document).click(function (){
+							$("#ajaxQuickFind").hide();
+						});		
+						});		
+						</script>	
+			';
 			if(AJAX_QUICKSEARCH_RESULT == 'dropdown') {
 				$out .= vam_draw_pull_down_menu('AJAX_QUICKSEARCH_pid', $dropdown, '', 'onChange="this.form.submit();" size="' . AJAX_QUICKSEARCH_DROPDOWN_SIZE . '" class="ajaxQuickFind"') . vam_hide_session_id();
 			}
