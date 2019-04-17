@@ -192,6 +192,10 @@ a#scrollup:hover {
 .gallery-wrap .img-small-wrap .item-gallery {
   border: 0px !important;
 }
+
+.card-product .img-wrap {
+  height: auto;
+}
 /* /Products Gallery */
 
 
