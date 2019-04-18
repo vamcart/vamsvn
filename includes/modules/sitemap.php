@@ -61,7 +61,7 @@ if ($parent_id == 0){ $cPath = ''; } else { $cPath .= $parent_id . '_'; }
  
  $categories_query = "select c.categories_image, c.categories_id, cd.categories_name, cd.categories_description FROM " . TABLE_CATEGORIES . " c left join "
       . TABLE_CATEGORIES_DESCRIPTION ." cd on c.categories_id = cd.categories_id WHERE c.categories_status = '1' and cd.language_id = ".$_SESSION['languages_id']
-      ." and c.parent_id = '0' ".$group_check." order by c.sort_order ASC limit ".MAX_DISPLAY_CATEGORIES_PER_ROW."";
+      ." and c.parent_id = '0' ".$group_check." order by c.sort_order ASC, c.categories_id DESC limit ".MAX_DISPLAY_CATEGORIES_PER_ROW."";
 
  // db Cache
  $categories_query = vamDBquery($categories_query);

@@ -54,6 +54,10 @@ button:focus, button:active, a, a:hover {
 .card-product {
   width: 100%;
 }
+
+.card-product .bottom-wrap {
+    border-top: 0;
+}
 /* /Owl Slides Equal Height */
 
 
