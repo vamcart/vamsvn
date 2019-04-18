@@ -105,13 +105,14 @@ if (GROUP_CHECK == 'true') {
           
           $sm=0;        
           
-          if((isset($cPath_array) && in_array($option['value']['id'], $cPath_array))){
+          //if((isset($cPath_array) && in_array($option['value']['id'], $cPath_array))){
                     
-            $sm=1;
+            //$sm=1;
           
-            $categories_tree.='<strong>'.stripslashes($option['value']['name']).'->'.$pic.'</strong>';
+            //$categories_tree.='<strong>'.stripslashes($option['value']['name']).'->'.$pic.'</strong>';
+            //$categories_tree.='<strong>'.stripslashes($option['value']['name']).$pic.'</strong>';
             
-          }else{
+          //}else{
           
             $categories_tree.='<label for="sn_menu'.$option['value']['id'].'">'.stripslashes($option['value']['name']).'</label><label for="sn_menu'.(($option['value']['parent_id'] > 0)?$option['value']['parent_id']:'00').'"></label>'.$pic;
 
@@ -124,7 +125,7 @@ if (GROUP_CHECK == 'true') {
 				$categories_css3.='input[class*="ip'.$option['value']['id'].'"]:checked ~ #sn_menu_panel #sn_menu_right #sn_menu .sn_menu'.$option['value']['id'].' > label,'."\n";
 				$categories_css4.='input[class*="ip'.$option['value']['id'].'"]:checked ~ #sn_menu_panel #sn_menu_right #sn_menu .sn_menu'.$option['value']['id'].' > label::after,'."\n";
 
-          }
+          //}
       
           //$categories_tree.='</a>';
           $categories_tree.='</p>';
