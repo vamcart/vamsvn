@@ -1185,13 +1185,13 @@ background: #fff;
 /* Search Form Widget
 /* ========================================================================== */
 #search {
-  position: relative;
-  margin: 0;
-  width: 100%;
+  /*position: relative;*/
+  /*margin: 0;*/
+  /*width: 100%;*/
 }
 #search input[type="text"] {
   background-color: #ffffff;
-  width: 100%;
+  /*width: 100%;*/
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
   box-shadow: none;
@@ -1210,7 +1210,7 @@ background: #fff;
   transition: all 0.3s ease-out;
   width: 30px;
   height: 30px;
-  position: absolute;
+  /*position: absolute;*/
   right: 0;
   top: 0;
   cursor: pointer;
