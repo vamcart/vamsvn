@@ -2938,7 +2938,7 @@ li.ajaxAddQuickie
 label
 	{
 		display: block;
-		margin-bottom: 5px;
+		margin-bottom: 0px;
 	}
 	
 .shipping-method,
