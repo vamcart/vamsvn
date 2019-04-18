@@ -19,6 +19,7 @@
 
   function vam_draw_categories_tree($drawExpanded=true,$root_id = 0,$mainUlClass='',$submenuUlClass='submenu'){
     global $cPath_array;
+    $categories_tree = '';
 
 
 if (GROUP_CHECK == 'true') {
@@ -66,15 +67,15 @@ if (GROUP_CHECK == 'true') {
     
     $pic=''; //products_in_category string
     
-		$html[]='<ul class="'.$mainUlClass.'">';
+		$categories_tree='<ul class="'.$mainUlClass.'">'."\n";
 		while ( $loop && ( ( $option = each( $children[$parent] ) ) || ( $parent > $root_id ) ) ){
 
 			if ( $option === false ){
 
 				$parent = array_pop( $parent_stack );
 				
-				$html[] = str_repeat( "\t", ( count( $parent_stack ) + 1 ) * 2 ) . '</ul>';
-				$html[] = str_repeat( "\t", ( count( $parent_stack ) + 1 ) * 2 - 1 ) . '</li>';
+				$categories_tree.= str_repeat( "\t", ( count( $parent_stack ) + 1 ) * 2 ) . '</ul>'."\n";
+				$categories_tree.= str_repeat( "\t", ( count( $parent_stack ) + 1 ) * 2 - 1 ) . '</li>'."\n";
 				
 				array_pop( $stack );
 				
@@ -87,7 +88,7 @@ if (GROUP_CHECK == 'true') {
 
 	  			$cpath_new=count($stack)<=0 ? 'cPath='.$rt.$option['value']['id'] : 'cPath='.$rt.implode('_',$stack);        
                     
-          $html[]=$tab.'<li><a href="'.vam_href_link(FILENAME_DEFAULT, $cpath_new).'">';
+          $categories_tree.=$tab.'<li><a href="'.vam_href_link(FILENAME_DEFAULT, $cpath_new).'">';
         
           //if (SHOW_COUNTS == 'true') { //THIS SHOULD BE CHANGED SO NOT TO USE vam_count_products_in_category WHICH IS RECURSIVE
             //$products_in_category = vam_count_products_in_category($option['value']['id']);
@@ -102,17 +103,17 @@ if (GROUP_CHECK == 'true') {
                     
             $sm=1;
           
-            $html[]='<strong>'.stripslashes($option['value']['name']).'->'.$pic.'</strong>';
+            $categories_tree.='<strong>'.stripslashes($option['value']['name']).'->'.$pic.'</strong>';
             
           }else{
           
-            $html[]=stripslashes($option['value']['name']).'->'.$pic;
+            $categories_tree.=stripslashes($option['value']['name']).'->'.$pic;
             
           }
       
-          $html[]='</a>';
+          $categories_tree.='</a>';
 
-				  $html[] = $tab . "\t" . '<ul class="'.$submenuUlClass.'" style="'.($sm!==1 && !$drawExpanded ?'display:none;':'').'">';
+				  $categories_tree.= $tab . "\t" . "\n" . '<ul class="'.$submenuUlClass.'" style="'.($sm!==1 && !$drawExpanded ?'display:none;':'').'">';
 
 				$parent_stack[]=$option['value']['parent_id'];
 				$parent = $option['value']['id'];
@@ -123,7 +124,7 @@ if (GROUP_CHECK == 'true') {
 
 				$cpath_new= count($stack)<=0 ? 'cPath='.$rt.$option['value']['id'] : 'cPath='.$rt.implode('_',$stack).'_'.$option['value']['id'];
   			
-				$html[]=str_repeat( "\t", ( count( $parent_stack ) + 1 ) * 2 - 1 ).'<li><a href="'.vam_href_link(FILENAME_DEFAULT, $cpath_new).'" >';
+				$categories_tree.=str_repeat( "\t", ( count( $parent_stack ) + 1 ) * 2 - 1 ).'<li><a href="'.vam_href_link(FILENAME_DEFAULT, $cpath_new).'" >';
 				
         //if (SHOW_COUNTS == 'true') { //THIS SHOULD BE CHANGED SO NOT TO USE vam_count_products_in_category WHICH IS RECURSIVE
           //$products_in_category = vam_count_products_in_category($option['value']['id']);
@@ -134,24 +135,22 @@ if (GROUP_CHECK == 'true') {
 				
 				if (isset($cPath_array) && in_array($option['value']['id'], $cPath_array)) {
 
-          $html[]='<strong>'.stripslashes($option['value']['name']).$pic.'</strong>';
+          $categories_tree.='<strong>'.stripslashes($option['value']['name']).$pic.'</strong>';
 
         }else{
 
-          $html[]=stripslashes($option['value']['name']).$pic;
+          $categories_tree.=stripslashes($option['value']['name']).$pic;
 
         }
 				
-				$html[]='</a></li>';
+				$categories_tree.='</a></li>'."\n";
 				
 			}
 				
 		}
-    $html[]='</ul>';
+    $categories_tree.='</ul>'."\n";
 
-		//echo implode("\r\n", $html);
-		
-		return implode("\r\n", $html);
+		return $categories_tree;
 
   }  
 
