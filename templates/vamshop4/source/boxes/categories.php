@@ -49,8 +49,14 @@ if (!CacheCheck()) {
 
 if(!$box->isCached(CURRENT_TEMPLATE.'/boxes/box_categories.html', $cache_id) || !$cache){
 
-$box->assign('BOX_CONTENT', vam_draw_categories_tree());
+$categories_tree = vam_draw_categories_tree();
 
+$box->assign('CATEGORIES_TREE', $categories_tree['data']);
+$box->assign('CATEGORIES_INPUT', $categories_tree['inputs']);
+$box->assign('CATEGORIES_CSS1', $categories_tree['css1']);
+$box->assign('CATEGORIES_CSS2', $categories_tree['css2']);
+$box->assign('CATEGORIES_CSS3', $categories_tree['css3']);
+$box->assign('CATEGORIES_CSS4', $categories_tree['css4']);
 }
 
 // set cache ID

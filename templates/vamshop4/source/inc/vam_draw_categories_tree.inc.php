@@ -20,6 +20,11 @@
   function vam_draw_categories_tree($drawExpanded=true,$root_id = 0,$mainUlClass='',$submenuUlClass='submenu'){
     global $cPath_array;
     $categories_tree = '';
+    $categories_inputs = '';
+    $categories_css1 = '';
+    $categories_css2 = '';
+    $categories_css3 = '';
+    $categories_css4 = '';
 
 
 if (GROUP_CHECK == 'true') {
@@ -67,15 +72,15 @@ if (GROUP_CHECK == 'true') {
     
     $pic=''; //products_in_category string
     
-		$categories_tree='<ul class="'.$mainUlClass.'">'."\n";
+		//$categories_tree='<div class="'.$mainUlClass.'">'."\n";
 		while ( $loop && ( ( $option = each( $children[$parent] ) ) || ( $parent > $root_id ) ) ){
 
 			if ( $option === false ){
 
 				$parent = array_pop( $parent_stack );
 				
-				$categories_tree.= str_repeat( "\t", ( count( $parent_stack ) + 1 ) * 2 ) . '</ul>'."\n";
-				$categories_tree.= str_repeat( "\t", ( count( $parent_stack ) + 1 ) * 2 - 1 ) . '</li>'."\n";
+				$categories_tree.= str_repeat( "\t", ( count( $parent_stack ) + 1 ) * 2 ) . '</div>'."\n";
+				//$categories_tree.= str_repeat( "\t", ( count( $parent_stack ) + 1 ) * 2 - 1 ) . '</p>'."\n";
 				
 				array_pop( $stack );
 				
@@ -88,7 +93,8 @@ if (GROUP_CHECK == 'true') {
 
 	  			$cpath_new=count($stack)<=0 ? 'cPath='.$rt.$option['value']['id'] : 'cPath='.$rt.implode('_',$stack);        
                     
-          $categories_tree.=$tab.'<li><a href="'.vam_href_link(FILENAME_DEFAULT, $cpath_new).'">';
+          //$categories_tree.=$tab.'<p class="sn_menu'.$rt.$option['value']['id'].'"><a href="'.vam_href_link(FILENAME_DEFAULT, $cpath_new).'">';
+          $categories_tree.=$tab.'<p class="sn_menu'.$rt.$option['value']['id'].'">';
         
           //if (SHOW_COUNTS == 'true') { //THIS SHOULD BE CHANGED SO NOT TO USE vam_count_products_in_category WHICH IS RECURSIVE
             //$products_in_category = vam_count_products_in_category($option['value']['id']);
@@ -107,13 +113,24 @@ if (GROUP_CHECK == 'true') {
             
           }else{
           
-            $categories_tree.=stripslashes($option['value']['name']).'->'.$pic;
-            
+            $categories_tree.='<label for="sn_menu'.$option['value']['id'].'">'.stripslashes($option['value']['name']).'</label><label for="sn_menu'.(($option['value']['parent_id'] > 0)?$option['value']['parent_id']:'00').'"></label>'.$pic;
+
+            $inputs = str_replace('cPath=','ip',$cpath_new);
+            $inputs = str_replace('_',' ip',$inputs);
+				$categories_inputs.='<input type="radio" name="sn_menu" id="sn_menu'.$option['value']['id'].'" class="ip00 '.$inputs.'">'."\n";
+
+				$categories_css1.='input[class*="ip'.$option['value']['id'].'"]:checked ~ #sn_menu_panel #sn_menu_right #sn_menu .sn_menu'.$option['value']['id'].' + div > p,'."\n";
+				$categories_css2.='#sn_menu'.$option['value']['id'].':checked ~ #sn_menu_panel #sn_menu_right #sn_menu .sn_menu'.$option['value']['id'].' > label:last-child,'."\n";
+				$categories_css3.='input[class*="ip'.$option['value']['id'].'"]:checked ~ #sn_menu_panel #sn_menu_right #sn_menu .sn_menu'.$option['value']['id'].' > label,'."\n";
+				$categories_css4.='input[class*="ip'.$option['value']['id'].'"]:checked ~ #sn_menu_panel #sn_menu_right #sn_menu .sn_menu'.$option['value']['id'].' > label::after,'."\n";
+
           }
       
-          $categories_tree.='</a>';
+          //$categories_tree.='</a>';
+          $categories_tree.='</p>';
 
-				  $categories_tree.= $tab . "\t" . "\n" . '<ul class="'.$submenuUlClass.'" style="'.($sm!==1 && !$drawExpanded ?'display:none;':'').'">';
+				  //$categories_tree.= $tab . "\t" . "\n" . '<div class="'.$submenuUlClass.'" style="'.($sm!==1 && !$drawExpanded ?'display:none;':'').'">'."\n";
+				  $categories_tree.= $tab . "\t" . "\n" . '<div>'."\n";
 
 				$parent_stack[]=$option['value']['parent_id'];
 				$parent = $option['value']['id'];
@@ -124,7 +141,15 @@ if (GROUP_CHECK == 'true') {
 
 				$cpath_new= count($stack)<=0 ? 'cPath='.$rt.$option['value']['id'] : 'cPath='.$rt.implode('_',$stack).'_'.$option['value']['id'];
   			
-				$categories_tree.=str_repeat( "\t", ( count( $parent_stack ) + 1 ) * 2 - 1 ).'<li><a href="'.vam_href_link(FILENAME_DEFAULT, $cpath_new).'" >';
+				$categories_tree.=str_repeat( "\t", ( count( $parent_stack ) + 1 ) * 2 - 1 ).'<p><a href="'.vam_href_link(FILENAME_DEFAULT, $cpath_new).'" >';
+            $inputs = str_replace('cPath=','ip',$cpath_new);
+            $inputs = str_replace('_',' ip',$inputs);
+				$categories_inputs.='<input type="radio" name="sn_menu" id="sn_menu'.$option['value']['id'].'" class="ip00 '.$inputs.'">'."\n";
+
+				$categories_css1.='input[class*="ip'.$option['value']['id'].'"]:checked ~ #sn_menu_panel #sn_menu_right #sn_menu .sn_menu'.$option['value']['id'].' + div > p,'."\n";
+				$categories_css2.='#sn_menu'.$option['value']['id'].':checked ~ #sn_menu_panel #sn_menu_right #sn_menu .sn_menu'.$option['value']['id'].' > label:last-child,'."\n";
+				$categories_css3.='input[class*="ip'.$option['value']['id'].'"]:checked ~ #sn_menu_panel #sn_menu_right #sn_menu .sn_menu'.$option['value']['id'].' > label,'."\n";
+				$categories_css4.='input[class*="ip'.$option['value']['id'].'"]:checked ~ #sn_menu_panel #sn_menu_right #sn_menu .sn_menu'.$option['value']['id'].' > label::after,'."\n";
 				
         //if (SHOW_COUNTS == 'true') { //THIS SHOULD BE CHANGED SO NOT TO USE vam_count_products_in_category WHICH IS RECURSIVE
           //$products_in_category = vam_count_products_in_category($option['value']['id']);
@@ -143,14 +168,26 @@ if (GROUP_CHECK == 'true') {
 
         }
 				
-				$categories_tree.='</a></li>'."\n";
+				//$categories_tree.='</a></li>'."\n";
+				$categories_tree.='</a></p>'."\n";
 				
 			}
 				
 		}
-    $categories_tree.='</ul>'."\n";
+    //$categories_tree.='</div>'."\n";
+    
+    $categories_output = array(
+    
+    'data' => $categories_tree, 
+    'inputs' => $categories_inputs,
+    'css1' => $categories_css1,
+    'css2' => $categories_css2,
+    'css3' => $categories_css3,
+    'css4' => $categories_css4
+    
+    );
 
-		return $categories_tree;
+		return $categories_output;
 
   }  
 

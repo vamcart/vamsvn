@@ -12,9 +12,6 @@
 
 <div class="mainWrapper">
 
-{$box_CATEGORIES}
-
-
 {if $navtrail}
 <div id="navigation" itemscope itemtype="http://schema.org/BreadcrumbList">
 {$navtrail}
@@ -40,4 +37,5 @@
 </div>
 
 
-    {include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/menu/top-menu.html"}
+{$box_CATEGORIES}
+    {*include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/menu/top-menu.html"*}
