@@ -121,6 +121,14 @@ a#scrollup:hover {
   border: 0px !important;
 }
 
+.gallery-wrap .img-main-wrap {
+  text-align:center;
+}
+
+.gallery-wrap .img-main-wrap img {
+  cursor: zoom-in;
+}
+
 .card-product .img-wrap {
   height: auto;
 }
