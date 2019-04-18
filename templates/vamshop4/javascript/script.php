@@ -65,3 +65,7 @@ $(document).ready(function(){
 <?php
  }
 ?>
+
+<?php
+if (file_exists(dirname($_SERVER['SCRIPT_FILENAME']) . '/templates/'.CURRENT_TEMPLATE.'/javascript/local.js.php')) include('templates/'.CURRENT_TEMPLATE.'/javascript/local.js.php');
+?>
