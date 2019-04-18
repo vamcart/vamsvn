@@ -136,3 +136,12 @@ a#scrollup:hover {
   }
 }
 /* /Products Filter Collapse On Mobile */
+
+
+/* Nav Buttons Margin On Mobile */
+@media (max-width: 992px) {
+.nav-item .btn {
+    margin: 7px 0 !important;
+}
+}
+/* /Nav Buttons Margin On Mobile */
