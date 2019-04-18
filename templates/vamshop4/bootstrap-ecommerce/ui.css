@@ -1675,8 +1675,6 @@ article:after,
     cursor: -webkit-zoom-in;
     cursor: zoom-in; }
     .gallery-wrap .img-small-wrap img:hover {
-      -webkit-filter: brightness(1.1);
-              filter: brightness(1.1);
       cursor: -webkit-zoom-in;
       cursor: zoom-in; }
 
