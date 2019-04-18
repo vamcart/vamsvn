@@ -5,74 +5,116 @@ include('vamshop.css.php');
 ?>
 
 .sn_menu_open {cursor:pointer;margin:0;} 
-#sn_menu_icon {display:block; width:30px; height:30px; background:#000; position:absolute; right:20px; top:20px; z-index:100020;}
+#sn_menu_icon .sn_menu_close {display:block; ;color:#333;background:transparent; position:absolute; right:20px; top:20px; z-index:100020;}
+
 #sn_menu_panel {width:100%; height:100%; position:fixed; left:-100%; top:0; z-index:100010; transition:0.5s 0.1s; 
   display:flex; flex-direction:row; flex-wrap:wrap; justify-content:space-between;
 }
-#sn_menu_panel #sn_menu_left {width:50%; height:100%; background:#f8f9fa; background-size:cover;
+#sn_menu_panel #sn_menu_left {width:50%; height:100%; background:#f8f9fa; position:relative; overflow:auto;
   display:flex; flex-direction:column; flex-wrap:nowrap; justify-content:center;
 }
-#sn_menu_panel #sn_menu_left h1 {text-align:center; font:800 100px/130px 'Open Sans', sans-serif; color:#007bff;}
+#sn_menu_panel #sn_menu_left h1 {padding:0; margin:0; text-align:center; color:#790; text-shadow:0 0 3px #fff;}
 #sn_menu_panel #sn_menu_left #social {text-align:center; width:100%;}
-#sn_menu_panel #sn_menu_left .social {color:#aaa; display:inline-block; font-size:20px; margin:5px; transition:0.2s;}
-#sn_menu_panel #sn_menu_left .social:hover {color:#666;}
-#sn_menu_panel #sn_menu_left p {font:300 14px/25px 'Open Sans', sans-serif; color:#999; text-align:center;}
+#sn_menu_panel #sn_menu_left .social {color:#555; display:inline-block; font-size:20px; margin:5px; transition:0.2s;}
+#sn_menu_panel #sn_menu_left .social:hover {color:#000;}
+#sn_menu_panel #sn_menu_left p {color:#333; text-align:center;}
 
-#sn_menu_panel #sn_menu_right {order:2; width:50%; height:100%; background:#fff; font:400 18px/40px 'Open Sans', sans-serif; color:#aaa; overflow-y:auto; -webkit-overflow-scrolling: touch;
+#sn_menu_panel #sn_menu_right {order:2; width:50%; height:100%; background:#fff; color:#aaa; overflow-y:auto; -webkit-overflow-scrolling: touch;
   display:flex; flex-direction:column; flex-wrap:nowrap; justify-content:center;
 }
-#sn_menu_panel #sn_menu_right .social {color:#aaa; display:inline-block; font-size:20px; margin:5px; width:25px; text-align:left;}
+
+#sn_menu_right #sn_menu p {position:relative; padding:0; margin:0;}
+#sn_menu_right #sn_menu p label {display:block; line-height:40px; text-transform:uppercase;}
+#sn_menu_right #sn_menu p label::after {content:""; display:block; width:6px; height:6px; border:2px solid #aaa; border-width:0 2px 2px 0; position:absolute; right:20px; top:15px; transform:rotate(-45deg); transition:0.3s;}
+#sn_menu_right #sn_menu p label:hover {color:#790;}
+#sn_menu_right #sn_menu p label:hover::after {border-color:#790;}
+#sn_menu_right #sn_menu p label:last-child {display:none; position:absolute; left:0; top:0; width:100%; height:40px; background:rgba(0,0,0,0);}
+
+#sn_menu_right #sn_menu p a {line-height:40px; color:#666; text-decoration:none;}
+#sn_menu_right #sn_menu p a:hover {color:#000;}
+
+#sn_menu_right #sn_menu div p {height:0; overflow:hidden; opacity:0; transition:0.75s; position:relative;}
+
+#sn_menu_right div {padding:0; margin:0; list-style:none;}
+
+#sn_menu_right #sn_menu {width:calc(100% - 100px); max-width:400px; min-width:300px; margin:0 auto; max-height:100%;}
+#sn_menu_right #sn_menu > p {text-indent:0;}
+#sn_menu_right #sn_menu div {position:relative;}
+#sn_menu_right #sn_menu div::before {content:""; display:block; width:1px; height:calc(100% - 20px); background:#790; position:absolute; left:5px; top:0;}
+#sn_menu_right #sn_menu div p {text-indent:15px; position:relative;}
+#sn_menu_right #sn_menu div p::before {content:""; display:block; width:8px; height:1px; background:#790; position:absolute; left:5px; top:19px;}
+#sn_menu_right #sn_menu div div::before {left:20px;}
+#sn_menu_right #sn_menu div div p {text-indent:30px;}
+#sn_menu_right #sn_menu div div p::before {left:20px;}
+#sn_menu_right #sn_menu div div div::before {left:35px;}
+#sn_menu_right #sn_menu div div div p {text-indent:45px;}
+#sn_menu_right #sn_menu div div div p::before {left:35px;}
 
 input[id*="sn_menu"] {display:none;}
-#sn_menu_panel #sn_menu_right .menubox {width:98%; max-width:300px; margin:0 auto;}
-#sn_menu_panel #sn_menu_right .menubox p {padding:0 0 0 40px; margin:0; height:0; overflow:hidden; font:300 20px/40px 'Open Sans', sans-serif; transition:0.5s;}
-#sn_menu_panel #sn_menu_right .menubox p.back {padding:0;}
-#sn_menu_panel #sn_menu_right .menubox p label {color:#007bff;}
-#sn_menu_panel #sn_menu_right .menubox p.back label {color:#c00;}
-#sn_menu_panel #sn_menu_right .menubox p a {text-decoration:none; color:#999;}
-#sn_menu_panel #sn_menu_right .menubox p a:hover {color:#000;}
 
-input[class*="ip01"]:checked ~ #wrapper {height:100%; overflow:hidden; transition:0s;}
-input[class*="ip01"]:checked ~ #sn_menu_icon {position:fixed;}
-input[class*="ip01"]:checked ~ #sn_menu_icon .sn_menu_open .bar {background:transparent; transition:0s;}
-input[class*="ip01"]:checked ~ #sn_menu_icon .sn_menu_open .bar::before {transform: rotate(45deg); width:18px; left:3px;}
-input[class*="ip01"]:checked ~ #sn_menu_icon .sn_menu_open .bar::after {transform: rotate(-45deg); width:18px; left:3px;}
-input[class*="ip01"]:checked ~ #sn_menu_icon .sn_menu_close {display:block;}
-input[class*="ip01"]:checked ~ #sn_menu_panel {left:0; transition:0.5s;}
+input[class*="ip00"]:checked ~ #wrapper {overflow:hidden;}
+input[class*="ip00"]:checked ~ #sn_menu_icon {position:fixed;}
+input[class*="ip00"]:checked ~ #sn_menu_icon .sn_menu_close {display:block;}
 
-input[class*="ipXX"]:checked ~ #sn_menu_panel #sn_menu_right .sn_menu_0 p,
-input[class*="ip00"]:checked ~ #sn_menu_panel #sn_menu_right .sn_menu_0 p {height:40px;}
+input[class*="ip00"]:checked ~ #sn_menu_panel {left:0; transition:0.5s;}
 
-input#sn_menu_0:checked ~ #sn_menu_panel #sn_menu_right .sn_menu_0 p,
-input#sn_menu_1:checked ~ #sn_menu_panel #sn_menu_right .sn_menu_1 p,
-input#sn_menu_2:checked ~ #sn_menu_panel #sn_menu_right .sn_menu_2 p,
-input#sn_menu_3:checked ~ #sn_menu_panel #sn_menu_right .sn_menu_3 p,
-input#sn_menu_4:checked ~ #sn_menu_panel #sn_menu_right .sn_menu_4 p,
-input#sn_menu_2_1:checked ~ #sn_menu_panel #sn_menu_right .sn_menu_2_1 p,
-input#sn_menu_2_2:checked ~ #sn_menu_panel #sn_menu_right .sn_menu_2_2 p,
-input#sn_menu_2_3:checked ~ #sn_menu_panel #sn_menu_right .sn_menu_2_3 p,
-input#sn_menu_2_1_1:checked ~ #sn_menu_panel #sn_menu_right .sn_menu_2_1_1 p,
-input#sn_menu_4_1:checked ~ #sn_menu_panel #sn_menu_right .sn_menu_4_1 p,
-input#sn_menu_4_2:checked ~ #sn_menu_panel #sn_menu_right .sn_menu_4_2 p,
-input#sn_menu_4_1_1:checked ~ #sn_menu_panel #sn_menu_right .sn_menu_4_1_1 p {height:40px;}
+input[class*="ip01"]:checked ~ #sn_menu_panel #sn_menu_right #sn_menu .sn_menu01 + div > p,
+input[class*="ip02"]:checked ~ #sn_menu_panel #sn_menu_right #sn_menu .sn_menu02 + div > p,
+input[class*="ip03"]:checked ~ #sn_menu_panel #sn_menu_right #sn_menu .sn_menu03 + div > p,
+input[class*="ip04"]:checked ~ #sn_menu_panel #sn_menu_right #sn_menu .sn_menu04 + div > p,
+input[class*="ip05"]:checked ~ #sn_menu_panel #sn_menu_right #sn_menu .sn_menu05 + div > p,
+input[class*="ip06"]:checked ~ #sn_menu_panel #sn_menu_right #sn_menu .sn_menu06 + div > p,
+input[class*="ip07"]:checked ~ #sn_menu_panel #sn_menu_right #sn_menu .sn_menu07 + div > p,
+input[class*="ip08"]:checked ~ #sn_menu_panel #sn_menu_right #sn_menu .sn_menu08 + div > p,
+input[class*="ip09"]:checked ~ #sn_menu_panel #sn_menu_right #sn_menu .sn_menu09 + div > p,
+input[class*="ip10"]:checked ~ #sn_menu_panel #sn_menu_right #sn_menu .sn_menu10 + div > p,
+input[class*="ip11"]:checked ~ #sn_menu_panel #sn_menu_right #sn_menu .sn_menu11 + div > p {height:40px; opacity:1;}
+
+#sn_menu01:checked ~ #sn_menu_panel #sn_menu_right #sn_menu .sn_menu01 > label:last-child,
+#sn_menu02:checked ~ #sn_menu_panel #sn_menu_right #sn_menu .sn_menu02 > label:last-child,
+#sn_menu03:checked ~ #sn_menu_panel #sn_menu_right #sn_menu .sn_menu03 > label:last-child,
+#sn_menu04:checked ~ #sn_menu_panel #sn_menu_right #sn_menu .sn_menu04 > label:last-child,
+#sn_menu05:checked ~ #sn_menu_panel #sn_menu_right #sn_menu .sn_menu05 > label:last-child,
+#sn_menu06:checked ~ #sn_menu_panel #sn_menu_right #sn_menu .sn_menu06 > label:last-child,
+#sn_menu07:checked ~ #sn_menu_panel #sn_menu_right #sn_menu .sn_menu07 > label:last-child,
+#sn_menu08:checked ~ #sn_menu_panel #sn_menu_right #sn_menu .sn_menu08 > label:last-child,
+#sn_menu09:checked ~ #sn_menu_panel #sn_menu_right #sn_menu .sn_menu09 > label:last-child,
+#sn_menu10:checked ~ #sn_menu_panel #sn_menu_right #sn_menu .sn_menu10 > label:last-child,
+#sn_menu11:checked ~ #sn_menu_panel #sn_menu_right #sn_menu .sn_menu11 > label:last-child {display:block;}
+
+input[class*="ip01"]:checked ~ #sn_menu_panel #sn_menu_right #sn_menu .sn_menu01 > label,
+input[class*="ip02"]:checked ~ #sn_menu_panel #sn_menu_right #sn_menu .sn_menu02 > label,
+input[class*="ip03"]:checked ~ #sn_menu_panel #sn_menu_right #sn_menu .sn_menu03 > label,
+input[class*="ip04"]:checked ~ #sn_menu_panel #sn_menu_right #sn_menu .sn_menu04 > label,
+input[class*="ip05"]:checked ~ #sn_menu_panel #sn_menu_right #sn_menu .sn_menu05 > label,
+input[class*="ip06"]:checked ~ #sn_menu_panel #sn_menu_right #sn_menu .sn_menu06 > label,
+input[class*="ip07"]:checked ~ #sn_menu_panel #sn_menu_right #sn_menu .sn_menu07 > label,
+input[class*="ip08"]:checked ~ #sn_menu_panel #sn_menu_right #sn_menu .sn_menu08 > label,
+input[class*="ip09"]:checked ~ #sn_menu_panel #sn_menu_right #sn_menu .sn_menu09 > label,
+input[class*="ip10"]:checked ~ #sn_menu_panel #sn_menu_right #sn_menu .sn_menu10 > label,
+input[class*="ip11"]:checked ~ #sn_menu_panel #sn_menu_right #sn_menu .sn_menu11 > label {color:#790;}
+
+input[class*="ip01"]:checked ~ #sn_menu_panel #sn_menu_right #sn_menu .sn_menu01 > label::after,
+input[class*="ip02"]:checked ~ #sn_menu_panel #sn_menu_right #sn_menu .sn_menu02 > label::after,
+input[class*="ip03"]:checked ~ #sn_menu_panel #sn_menu_right #sn_menu .sn_menu03 > label::after,
+input[class*="ip04"]:checked ~ #sn_menu_panel #sn_menu_right #sn_menu .sn_menu04 > label::after,
+input[class*="ip05"]:checked ~ #sn_menu_panel #sn_menu_right #sn_menu .sn_menu05 > label::after,
+input[class*="ip06"]:checked ~ #sn_menu_panel #sn_menu_right #sn_menu .sn_menu06 > label::after,
+input[class*="ip07"]:checked ~ #sn_menu_panel #sn_menu_right #sn_menu .sn_menu07 > label::after,
+input[class*="ip08"]:checked ~ #sn_menu_panel #sn_menu_right #sn_menu .sn_menu08 > label::after,
+input[class*="ip09"]:checked ~ #sn_menu_panel #sn_menu_right #sn_menu .sn_menu09 > label::after,
+input[class*="ip10"]:checked ~ #sn_menu_panel #sn_menu_right #sn_menu .sn_menu10 > label::after,
+input[class*="ip11"]:checked ~ #sn_menu_panel #sn_menu_right #sn_menu .sn_menu11 > label::after {transform:rotate(45deg); border-color:#790;}
 
 @media only screen and (max-width: 640px) {
 #header #sn_menu_icon {right:15px;}
+#sn_menu_right #sn_menu {min-width:260px; margin:0 auto;}
 #sn_menu_panel #sn_menu_left {width:0; display:none;}
 #sn_menu_panel #sn_menu_right {width:100%; min-width:320px;}
 }
-
-
-label.modal-close {display:block; width:30px; height:30px; color:#fff; left:0; right:0; top:0; bottom:0; cursor:pointer;}
-label.modal-close:before {display:block; content:""; width:100%; height:4px; background:#fff; position:absolute; left:0; top:50%; margin-top:-2px; 
--webkit-transform:rotate(45deg);
-transform:rotate(45deg);
+@media only screen and (max-width: 480px) {
+#sn_menu_right #sn_menu {margin:0 0 0 10px;}
 }
-label.modal-close:after {display:block; content:""; width:100%; height:4px; background:#fff; position:absolute; left:0; top:50%; margin-top:-2px; 
--webkit-transform:rotate(-45deg);
-transform:rotate(-45deg);
-}
-
 
 
 
