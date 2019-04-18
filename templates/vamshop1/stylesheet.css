@@ -335,6 +335,13 @@ hr.transparent {
   text-shadow:	0 0 0 transparent;
 }
 
+@media (min-width: 1200px) {
+.navbar .container
+{
+  width: 1170px;
+}
+}
+
 .navbar .brand
 {
   font-size: 16px;
