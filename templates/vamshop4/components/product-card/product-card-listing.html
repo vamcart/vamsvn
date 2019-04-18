@@ -3,10 +3,10 @@
 	<div class="row">
 		{if $module_data.PRODUCTS_LABEL}{$module_data.PRODUCTS_LABEL}{/if}
 		{if $module_data.PRODUCTS_SPECIAL > 0}<span class="badge-offer"><b>-{$module_data.PRODUCTS_SPECIAL|round}%</b></span>{/if}
-		<div class="col-sm-3">
+		<div class="col-md-3">
 			<div class="img-wrap"><a href="{$module_data.PRODUCTS_LINK}"><img src="{$module_data.PRODUCTS_IMAGE}" alt="{$module_data.PRODUCTS_NAME}"></a></div>
 		</div>
-		<div class="col-sm-6">
+		<div class="col-md-6">
 			
 				<h4 class="title text-truncate"><a href="{$module_data.PRODUCTS_LINK}">{$module_data.PRODUCTS_NAME}</a></h4>
 				{if $module_data.REVIEWS_TOTAL > 0}
@@ -45,7 +45,7 @@
 				{if $CATEGORIES_NAME}<div class="description"><label><input type="checkbox" id="s_{$module_data.PRODUCTS_ID}" name="products[]" value="{$module_data.PRODUCTS_ID}" /> {#text_compare#}</label></div>{/if}
 
 		</div>
-		<div class="col-sm-3 border-left">
+		<div class="col-md-3 border-left">
 			<div class="action-wrap">
 				<div class="price-wrap h4">
 					{$module_data.PRODUCTS_PRICE}
