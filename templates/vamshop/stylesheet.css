@@ -200,7 +200,8 @@ a:hover
 /* /Навигация */
    
 /* Заголовок страницы */
-#content h1 
+#content h1, 
+#content h3 
    {
 		color: #dd2c00;
 		font-weight: bold;
@@ -220,7 +221,8 @@ a:hover
 		vertical-align: middle;
    }
 
-#content h1 a 
+#content h1 a, 
+#content h3 a 
    {
 		color: #dd2c00;
 		font-weight: bold;
