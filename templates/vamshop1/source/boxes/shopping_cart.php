@@ -23,8 +23,8 @@ $box_price_string = '';
 // include needed files
 require_once (DIR_FS_INC.'vam_recalculate_price.inc.php');
 
-if (strstr($PHP_SELF, FILENAME_CHECKOUT_PAYMENT) or strstr($PHP_SELF, FILENAME_CHECKOUT_CONFIRMATION) or strstr($PHP_SELF, FILENAME_CHECKOUT_SHIPPING))
-	$box->assign('deny_cart', 'true');
+//if (strstr($PHP_SELF, FILENAME_CHECKOUT_PAYMENT) or strstr($PHP_SELF, FILENAME_CHECKOUT_CONFIRMATION) or strstr($PHP_SELF, FILENAME_CHECKOUT_SHIPPING))
+	//$box->assign('deny_cart', 'true');
 
 if ($_SESSION['cart']->count_contents() > 0) {
 	$products = $_SESSION['cart']->get_products();
@@ -40,6 +40,7 @@ if ($_SESSION['cart']->count_contents() > 0) {
 
 		if (isset ($products[$i]['attributes'])) {
 			foreach ($products[$i]['attributes'] as $option => $value) {
+				
 				//$hidden_options .= vam_draw_hidden_field('id['.$products[$i]['id'].']['.$option.']', $value);
 				$attributes = vam_db_query("select popt.products_options_name, popt.products_options_type, poval.products_options_values_name, pa.options_values_price, pa.price_prefix,pa.attributes_stock,pa.products_attributes_id,pa.attributes_model , pa.options_values_id
 				                                      from ".TABLE_PRODUCTS_OPTIONS." popt, ".TABLE_PRODUCTS_OPTIONS_VALUES." poval, ".TABLE_PRODUCTS_ATTRIBUTES." pa
@@ -75,6 +76,7 @@ if ($_SESSION['cart']->count_contents() > 0) {
                             'IMAGE' => (($products[$i]['image'] != '' ? DIR_WS_THUMBNAIL_IMAGES.$products[$i]['image'] : DIR_WS_IMAGES.'product_images/noimage.gif')),
 									 'NAME' => $products[$i]['name']);
 
+
 	
 	}
 	$box->assign('PRODUCTS', $qty);
@@ -104,6 +106,7 @@ if ($_SESSION['customers_status']['customers_status_show_price'] == '1') {
 	if ($_SESSION['customers_status']['customers_status_show_price_tax'] == 0 && $_SESSION['customers_status']['customers_status_add_tax_ot'] == 1) $total-=$discount;
 	if ($_SESSION['customers_status']['customers_status_show_price_tax'] == 1) $total-=$discount;
 	$box->assign('TOTAL', $vamPrice->Format($total, true));
+	$box->assign('TOTAL_QUANTITY', $_SESSION['cart']->count_contents());
 } 
 	
 

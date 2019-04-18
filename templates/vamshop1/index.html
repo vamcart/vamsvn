@@ -52,7 +52,7 @@
                     </form>
                     <ul class="nav pull-right">
                       <li><a href="{$smarty.const.FILENAME_ACCOUNT}"><i class="fa fa-user"></i> {$smarty.const.TEXT_MY_ORDERS}</a></li>
-                      <li id="divShoppingCart">{$box_CART_PULL}</li>
+                      <li id="divShoppingCart">{$box_CART}</li>
                       {if $smarty.session.customers_status.customers_status_id == 0}
                       <li><a href="{$admin_area_link}"><i class="fa fa-gear"></i> {#text_admin#}</a></li>
                       {/if}  
@@ -97,7 +97,6 @@
 		<!-- start: Sidebar -->
 		<aside class="span3 sidebar pull-left">
          {$box_SEARCH}			
-			{$box_CART}
 			{$box_DOWNLOADS}
 			{$box_CATEGORIES}
 			{$box_FILTERS}
