@@ -93,8 +93,8 @@ if (GROUP_CHECK == 'true') {
 
 	  			$cpath_new=count($stack)<=0 ? 'cPath='.$rt.$option['value']['id'] : 'cPath='.$rt.implode('_',$stack);        
                     
-          //$categories_tree.=$tab.'<p class="sn_menu'.$rt.$option['value']['id'].'"><a href="'.vam_href_link(FILENAME_DEFAULT, $cpath_new).'">';
-          $categories_tree.=$tab.'<p class="sn_menu'.$rt.$option['value']['id'].'">';
+          //$categories_tree.=$tab.'<p class="vamshop_menu'.$rt.$option['value']['id'].'"><a href="'.vam_href_link(FILENAME_DEFAULT, $cpath_new).'">';
+          $categories_tree.=$tab.'<p class="vamshop_menu'.$rt.$option['value']['id'].'">';
         
           //if (SHOW_COUNTS == 'true') { //THIS SHOULD BE CHANGED SO NOT TO USE vam_count_products_in_category WHICH IS RECURSIVE
             //$products_in_category = vam_count_products_in_category($option['value']['id']);
@@ -114,16 +114,16 @@ if (GROUP_CHECK == 'true') {
             
           //}else{
           
-            $categories_tree.='<label for="sn_menu'.$option['value']['id'].'">'.stripslashes($option['value']['name']).'</label><label for="sn_menu'.(($option['value']['parent_id'] > 0)?$option['value']['parent_id']:'00').'"></label>'.$pic;
+            $categories_tree.='<label for="vamshop_menu'.$option['value']['id'].'">'.stripslashes($option['value']['name']).'</label><label for="vamshop_menu'.(($option['value']['parent_id'] > 0)?$option['value']['parent_id']:'00').'"></label>'.$pic;
 
             $inputs = str_replace('cPath=','ip',$cpath_new);
             $inputs = str_replace('_',' ip',$inputs);
-				$categories_inputs.='<input type="radio" name="sn_menu" id="sn_menu'.$option['value']['id'].'" class="ip00 '.$inputs.'">'."\n";
+				$categories_inputs.='<input type="radio" name="vamshop_menu" id="vamshop_menu'.$option['value']['id'].'" class="ip00 '.$inputs.'">'."\n";
 
-				$categories_css1.='input[class*="ip'.$option['value']['id'].'"]:checked ~ #sn_menu_panel #sn_menu_right #sn_menu .sn_menu'.$option['value']['id'].' + div > p,'."\n";
-				$categories_css2.='#sn_menu'.$option['value']['id'].':checked ~ #sn_menu_panel #sn_menu_right #sn_menu .sn_menu'.$option['value']['id'].' > label:last-child,'."\n";
-				$categories_css3.='input[class*="ip'.$option['value']['id'].'"]:checked ~ #sn_menu_panel #sn_menu_right #sn_menu .sn_menu'.$option['value']['id'].' > label,'."\n";
-				$categories_css4.='input[class*="ip'.$option['value']['id'].'"]:checked ~ #sn_menu_panel #sn_menu_right #sn_menu .sn_menu'.$option['value']['id'].' > label::after,'."\n";
+				$categories_css1.='input[class*="ip'.$option['value']['id'].'"]:checked ~ #vamshop_menu_panel #vamshop_menu_right #vamshop_menu .vamshop_menu'.$option['value']['id'].' + div > p,'."\n";
+				$categories_css2.='#vamshop_menu'.$option['value']['id'].':checked ~ #vamshop_menu_panel #vamshop_menu_right #vamshop_menu .vamshop_menu'.$option['value']['id'].' > label:last-child,'."\n";
+				$categories_css3.='input[class*="ip'.$option['value']['id'].'"]:checked ~ #vamshop_menu_panel #vamshop_menu_right #vamshop_menu .vamshop_menu'.$option['value']['id'].' > label,'."\n";
+				$categories_css4.='input[class*="ip'.$option['value']['id'].'"]:checked ~ #vamshop_menu_panel #vamshop_menu_right #vamshop_menu .vamshop_menu'.$option['value']['id'].' > label::after,'."\n";
 
           //}
       
@@ -142,15 +142,16 @@ if (GROUP_CHECK == 'true') {
 
 				$cpath_new= count($stack)<=0 ? 'cPath='.$rt.$option['value']['id'] : 'cPath='.$rt.implode('_',$stack).'_'.$option['value']['id'];
   			
-				$categories_tree.=str_repeat( "\t", ( count( $parent_stack ) + 1 ) * 2 - 1 ).'<p><a href="'.vam_href_link(FILENAME_DEFAULT, $cpath_new).'" >';
+  			   $cPath_url=vam_category_link($option['value']['id'],$option['value']['name']);
+				$categories_tree.=str_repeat( "\t", ( count( $parent_stack ) + 1 ) * 2 - 1 ).'<p><a href="'.vam_href_link(FILENAME_DEFAULT, $cPath_url).'" >';
             $inputs = str_replace('cPath=','ip',$cpath_new);
             $inputs = str_replace('_',' ip',$inputs);
-				$categories_inputs.='<input type="radio" name="sn_menu" id="sn_menu'.$option['value']['id'].'" class="ip00 '.$inputs.'">'."\n";
+				$categories_inputs.='<input type="radio" name="vamshop_menu" id="vamshop_menu'.$option['value']['id'].'" class="ip00 '.$inputs.'">'."\n";
 
-				$categories_css1.='input[class*="ip'.$option['value']['id'].'"]:checked ~ #sn_menu_panel #sn_menu_right #sn_menu .sn_menu'.$option['value']['id'].' + div > p,'."\n";
-				$categories_css2.='#sn_menu'.$option['value']['id'].':checked ~ #sn_menu_panel #sn_menu_right #sn_menu .sn_menu'.$option['value']['id'].' > label:last-child,'."\n";
-				$categories_css3.='input[class*="ip'.$option['value']['id'].'"]:checked ~ #sn_menu_panel #sn_menu_right #sn_menu .sn_menu'.$option['value']['id'].' > label,'."\n";
-				$categories_css4.='input[class*="ip'.$option['value']['id'].'"]:checked ~ #sn_menu_panel #sn_menu_right #sn_menu .sn_menu'.$option['value']['id'].' > label::after,'."\n";
+				$categories_css1.='input[class*="ip'.$option['value']['id'].'"]:checked ~ #vamshop_menu_panel #vamshop_menu_right #vamshop_menu .vamshop_menu'.$option['value']['id'].' + div > p,'."\n";
+				$categories_css2.='#vamshop_menu'.$option['value']['id'].':checked ~ #vamshop_menu_panel #vamshop_menu_right #vamshop_menu .vamshop_menu'.$option['value']['id'].' > label:last-child,'."\n";
+				$categories_css3.='input[class*="ip'.$option['value']['id'].'"]:checked ~ #vamshop_menu_panel #vamshop_menu_right #vamshop_menu .vamshop_menu'.$option['value']['id'].' > label,'."\n";
+				$categories_css4.='input[class*="ip'.$option['value']['id'].'"]:checked ~ #vamshop_menu_panel #vamshop_menu_right #vamshop_menu .vamshop_menu'.$option['value']['id'].' > label::after,'."\n";
 				
         //if (SHOW_COUNTS == 'true') { //THIS SHOULD BE CHANGED SO NOT TO USE vam_count_products_in_category WHICH IS RECURSIVE
           //$products_in_category = vam_count_products_in_category($option['value']['id']);
