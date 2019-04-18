@@ -155,6 +155,29 @@
 <meta itemprop="mpn" content="{$PRODUCTS_MODEL}" />
 {/if}
 
+{if $extra_fields_data|@count > 5}
+<div class="description extra_fields">
+{foreach item=extra_fields from=$extra_fields_data} 
+<div class="{cycle values="spec-odd,spec-even"}">
+<span class="spec-name">{$extra_fields.NAME}:</span> <span class="spec-value">{$extra_fields.VALUE}</span><br />
+</div>
+{/foreach}
+</div>
+{/if}
+{if $specifications_count > 5}
+<div class="description specs">
+{foreach name=outer item=spec_group from=$specifications_data}
+<br />
+{foreach key=key_data item=spec from=$spec_group.DATA}
+<div class="{cycle values="spec-odd,spec-even"}">
+<span class="spec-name">{$spec.NAME}:</span> <span class="spec-value">{$spec.VALUE}</span><br />
+</div>
+{/foreach}
+{/foreach}
+<br />
+</div>
+{/if}
+
 {if $PRODUCTS_TAGS}
 <p>
 {#text_tags#}: 

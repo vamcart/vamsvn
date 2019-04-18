@@ -142,6 +142,7 @@ $col = 0;
    
 //echo var_dump($specifications_data);
 
+  $info->assign('specifications_count', $col);
   $info->assign('specifications_data', $specifications_data);
     
    } 
