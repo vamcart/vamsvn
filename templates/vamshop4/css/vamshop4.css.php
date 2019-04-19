@@ -1,18 +1,18 @@
 <?php 
 header('Content-Type: text/css');
 
-include_once(dirname(__FILE__).'/bootstrap.min.css');
+include_once(dirname_r($_SERVER['SCRIPT_FILENAME']).'/bootstrap.min.css');
 echo "\n";
-include_once(dirname(__FILE__,2).'/bootstrap-ecommerce/ui.css');
+include_once(dirname_r($_SERVER['SCRIPT_FILENAME'],2).'/bootstrap-ecommerce/ui.css');
 echo "\n";
-include_once(dirname(__FILE__,2).'/bootstrap-ecommerce/responsive.css');
+include_once(dirname_r($_SERVER['SCRIPT_FILENAME'],2).'/bootstrap-ecommerce/responsive.css');
 echo "\n";
-include_once(dirname(__FILE__,4).'/jscript/jquery/plugins/owl/assets/owl.carousel.min.css');
+include_once(dirname_r($_SERVER['SCRIPT_FILENAME'],4).'/jscript/jquery/plugins/owl/assets/owl.carousel.min.css');
 echo "\n";
-include_once(dirname(__FILE__,4).'/jscript/jquery/plugins/owl/assets/owl.theme.default.min.css');
+include_once(dirname_r($_SERVER['SCRIPT_FILENAME'],4).'/jscript/jquery/plugins/owl/assets/owl.theme.default.min.css');
 echo "\n";
 
-include_once(dirname(__FILE__).'/vamshop.css.php');
+include_once(dirname_r($_SERVER['SCRIPT_FILENAME']).'/vamshop.css.php');
 echo "\n";
 
 ?>
@@ -159,3 +159,18 @@ a#scrollup:hover {
 }
 }
 /* /Nav Buttons Margin On Mobile */
+
+
+<?php 
+
+//PHP < 7 compatibility 
+
+function dirname_r($path, $count=1){
+    if ($count > 1){
+       return dirname(dirname_r($path, --$count));
+    }else{
+       return dirname($path);
+    }
+}
+
+?>

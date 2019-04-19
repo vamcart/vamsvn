@@ -1,17 +1,17 @@
 <?php 
 header('Content-Type: application/javascript');
 
-include_once(dirname(__FILE__,4).'/jscript/jquery/jquery.js');
+include_once(dirname_r($_SERVER['SCRIPT_FILENAME'],4).'/jscript/jquery/jquery.js');
 echo "\n";
-//include_once(dirname(__FILE__).'/jquery-3.3.1.slim.min.js');
+//include_once(dirname($_SERVER['SCRIPT_FILENAME']).'/jquery-3.3.1.slim.min.js');
 echo "\n";
-include_once(dirname(__FILE__).'/popper.min.js');
+include_once(dirname_r($_SERVER['SCRIPT_FILENAME']).'/popper.min.js');
 echo "\n";
-include_once(dirname(__FILE__).'/bootstrap.min.js');
+include_once(dirname_r($_SERVER['SCRIPT_FILENAME']).'/bootstrap.min.js');
 echo "\n";
-include_once(dirname(__FILE__,4).'/jscript/jquery/plugins/owl/owl.carousel.min.js');
+include_once(dirname_r($_SERVER['SCRIPT_FILENAME'],4).'/jscript/jquery/plugins/owl/owl.carousel.min.js');
 echo "\n";
-include_once(dirname(__FILE__,4).'/jscript/jquery/plugins/scrollup/jquery.scrollup.min.js');
+include_once(dirname_r($_SERVER['SCRIPT_FILENAME'],4).'/jscript/jquery/plugins/scrollup/jquery.scrollup.min.js');
 echo "\n";
 
 ?>
@@ -72,3 +72,17 @@ $(".owl-carousel").owlCarousel({
 
 
 });
+
+<?php 
+
+//PHP < 7 compatibility 
+
+function dirname_r($path, $count=1){
+    if ($count > 1){
+       return dirname(dirname_r($path, --$count));
+    }else{
+       return dirname($path);
+    }
+}
+
+?>
