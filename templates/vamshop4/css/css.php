@@ -22,5 +22,5 @@ if ( strstr($PHP_SELF, FILENAME_ADDRESS_BOOK)
 ?>
 
 <?php
-if (file_exists(dirname($_SERVER['SCRIPT_FILENAME']) . '/templates/'.CURRENT_TEMPLATE.'/css/local.css.php')) include('templates/'.CURRENT_TEMPLATE.'/css/local.css.php');
+if (file_exists(dirname(__FILE__) . '/templates/'.CURRENT_TEMPLATE.'/css/local.css.php')) include('templates/'.CURRENT_TEMPLATE.'/css/local.css.php');
 ?>
