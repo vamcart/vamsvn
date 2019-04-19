@@ -450,16 +450,12 @@ hr.transparent {
   min-width: 300px;
 }
 
-#divShoppingCart {
-  color: #000;
-  background-color: transparent;
-}
-
 .nav-collapse .nav > li > a:hover,
 .nav-collapse .nav > li > a:focus,
 .nav-collapse .dropdown-menu a:hover,
 .nav-collapse .dropdown-menu a:focus {
   background-color: #555;
+  color: #fff;
 }
 
 .navbar-toggle:hover, .navbar-toggle:focus {
