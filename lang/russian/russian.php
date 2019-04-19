@@ -705,6 +705,7 @@ define('TEXT_BUNDLE_ONLY', 'Не продаётся отдельно');
 define('TEXT_POPUP_CART_ADD','Товар добавлен в корзину!');
 define('TEXT_POPUP_CART_CONTINUE','Продолжить покупки');
 define('TEXT_POPUP_CART_CART', 'Перейти в корзину');
+define('TEXT_POPUP_CART_CHECKOUT', 'Оформить заказ');
 
 define('TITLE_DEFAULT_PAGE', 'Главная');
 define('TITLE_SPECIALS_DEFAULT', 'Скидки');
