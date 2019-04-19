@@ -106,11 +106,8 @@ a#scrollup:hover {
 
 .dropdown-menu.cart {
   min-width: 300px; 
+  margin: .5em;
   position: absolute; 
-  transform: translate3d(-90px, 42px, 0px); 
-  top: 0px; 
-  left: 0px; 
-  will-change: transform;
 }
 
 .btn-group-xs > .btn, .btn-xs {
