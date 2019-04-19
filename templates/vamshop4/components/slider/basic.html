@@ -18,9 +18,9 @@
       </ul>
     </div>
 
-    <ul rel="sequence" class="seq-pagination" role="navigation" aria-label="{#text_slider_pagination#}">
+    <ul rel="sequence" class="seq-pagination">
       {foreach item=banner_nav from=$slider_basic}
-      <li><a href="#step{counter name=nav1}" rel="step{counter name=nav2}" title="{#text_go_to_slide#} {counter name=nav3}">{$banner_nav.title}</a></li>
+      <li><a href="#step{counter name=nav1}" title="{#text_go_to_slide#} {counter name=nav3}">{$banner_nav.title}</a></li>
       {/foreach}
     </ul>
   </div>

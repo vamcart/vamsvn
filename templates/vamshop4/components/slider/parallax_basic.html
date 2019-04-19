@@ -20,18 +20,18 @@
       </ul>
     </div>
 
-    <fieldset class="seq-nav" aria-controls="sequence" aria-label="{#text_slider_buttons#}">
-      <button type="button" class="seq-prev" aria-label="{#text_previous#}">
+    <fieldset class="seq-nav" aria-controls="sequence">
+      <button type="button" class="seq-prev">
         <span class="seq-prev-arrow">&lt;</span>
       </button>
 
-      <ul role="navigation" aria-label="{#text_slider_pagination#}" class="seq-pagination">
+      <ul class="seq-pagination">
         {foreach item=nav from=$slider_parallax_basic}
-        <li><a href="#step{counter name=nav1}" rel="step{counter name=nav2}" title="{#text_go_to_slide#} {counter name=nav3}">{counter name=nav4}</a></li>
+        <li><a href="#step{counter name=nav1}" title="{#text_go_to_slide#} {counter name=nav3}">{counter name=nav4}</a></li>
         {/foreach}
       </ul>
 
-      <button type="button" class="seq-next" aria-label="{#text_next#}">
+      <button type="button" class="seq-next">
         <span class="seq-next-arrow">&gt;</span>
       </button>
     </fieldset>
