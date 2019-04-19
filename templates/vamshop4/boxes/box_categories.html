@@ -97,7 +97,12 @@ input[class*="ip00"]:checked ~ #vamshop_menu_panel {left:0; transition:0.5s;}
 
 	<div id="vamshop_menu_right">
 		<div id="vamshop_menu">
-			<p><a href="{$mainpage}">{#text_mainpage#}</a></p>		
+			<p><a href="{$mainpage}">{$smarty.const.TITLE_DEFAULT_PAGE}</a></p>		
+			<p><a href="{$smarty.const.FILENAME_SPECIALS}">{$smarty.const.TITLE_SPECIALS_DEFAULT}</a></p>		
+			<p><a href="{$smarty.const.FILENAME_MANUFACTURERS}">{$smarty.const.TITLE_MANUFACTURERS_DEFAULT}</a></p>		
+			<p><a href="{$smarty.const.FILENAME_PRODUCTS_NEW}">{$smarty.const.TITLE_NEW_PRODUCTS_DEFAULT}</a></p>		
+			<p><a href="{$smarty.const.FILENAME_BEST_SELLERS}">{$smarty.const.TITLE_BEST_SELLERS_DEFAULT}</a></p>		
+			<p><a href="{$smarty.const.FILENAME_FEATURED}">{$smarty.const.TITLE_FEATURED_DEFAULT}</a></p>		
 			{$CATEGORIES_TREE}
 		</div>
 	</div>
