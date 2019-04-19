@@ -1,12 +1,3 @@
-<script src="jscript/jquery/jquery.js"></script>
-
-<!--<script src="<?php echo 'templates/'.CURRENT_TEMPLATE.'/javascript/jquery-3.3.1.slim.min.js'; ?>"></script>-->
-<script src="<?php echo 'templates/'.CURRENT_TEMPLATE.'/javascript/popper.min.js'; ?>"></script>
-<script src="<?php echo 'templates/'.CURRENT_TEMPLATE.'/javascript/bootstrap.min.js'; ?>"></script>
-
-<script src="jscript/jquery/plugins/owl/owl.carousel.min.js"></script>
-<script src="jscript/jquery/plugins/scrollup/jquery.scrollup.min.js"></script>
-
 <script src="<?php echo 'templates/'.CURRENT_TEMPLATE.'/javascript/vamshop4.js.php'; ?>"></script>
 
 
@@ -65,7 +56,6 @@ $(document).ready(function(){
 <?php
  }
 ?>
-
 <?php
 if (file_exists(dirname($_SERVER['SCRIPT_FILENAME']) . '/templates/'.CURRENT_TEMPLATE.'/javascript/local.js.php')) include('templates/'.CURRENT_TEMPLATE.'/javascript/local.js.php');
 ?>

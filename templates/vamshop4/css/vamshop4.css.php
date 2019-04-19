@@ -1,7 +1,20 @@
 <?php 
 header('Content-Type: text/css');
 
-include('vamshop.css.php');
+include_once(dirname($_SERVER['SCRIPT_FILENAME']).'/bootstrap.min.css');
+echo "\n";
+include_once(dirname($_SERVER['SCRIPT_FILENAME'],2).'/bootstrap-ecommerce/ui.css');
+echo "\n";
+include_once(dirname($_SERVER['SCRIPT_FILENAME'],2).'/bootstrap-ecommerce/responsive.css');
+echo "\n";
+include_once(dirname($_SERVER['SCRIPT_FILENAME'],4).'/jscript/jquery/plugins/owl/assets/owl.carousel.min.css');
+echo "\n";
+include_once(dirname($_SERVER['SCRIPT_FILENAME'],4).'/jscript/jquery/plugins/owl/assets/owl.theme.default.min.css');
+echo "\n";
+
+include_once(dirname($_SERVER['SCRIPT_FILENAME']).'/vamshop.css.php');
+echo "\n";
+
 ?>
 
 

@@ -1,7 +1,23 @@
 <?php 
 header('Content-Type: application/javascript');
+
+include_once(dirname($_SERVER['SCRIPT_FILENAME'],4).'/jscript/jquery/jquery.js');
+echo "\n";
+//include_once(dirname($_SERVER['SCRIPT_FILENAME']).'/jquery-3.3.1.slim.min.js');
+echo "\n";
+include_once(dirname($_SERVER['SCRIPT_FILENAME']).'/popper.min.js');
+echo "\n";
+include_once(dirname($_SERVER['SCRIPT_FILENAME']).'/bootstrap.min.js');
+echo "\n";
+include_once(dirname($_SERVER['SCRIPT_FILENAME'],4).'/jscript/jquery/plugins/owl/owl.carousel.min.js');
+echo "\n";
+include_once(dirname($_SERVER['SCRIPT_FILENAME'],4).'/jscript/jquery/plugins/scrollup/jquery.scrollup.min.js');
+echo "\n";
+
 ?>
+
 $(document).ready(function(){
+	
 $(".owl-carousel").owlCarousel({
     margin: 10,
     nav: true,
