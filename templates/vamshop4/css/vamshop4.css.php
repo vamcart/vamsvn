@@ -7,6 +7,8 @@ include_once(dirname_r($_SERVER['SCRIPT_FILENAME'],2).'/bootstrap-ecommerce/ui.c
 echo "\n";
 include_once(dirname_r($_SERVER['SCRIPT_FILENAME'],2).'/bootstrap-ecommerce/responsive.css');
 echo "\n";
+include_once(dirname_r($_SERVER['SCRIPT_FILENAME']).'/font-awesome.css');
+echo "\n";
 include_once(dirname_r($_SERVER['SCRIPT_FILENAME'],4).'/jscript/jquery/plugins/owl/assets/owl.carousel.min.css');
 echo "\n";
 include_once(dirname_r($_SERVER['SCRIPT_FILENAME'],4).'/jscript/jquery/plugins/owl/assets/owl.theme.default.min.css');

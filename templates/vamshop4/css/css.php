@@ -1,5 +1,4 @@
 <link rel="stylesheet" type="text/css" href="<?php echo 'templates/'.CURRENT_TEMPLATE.'/css/vamshop4.css.php'; ?>" />
-<link href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" rel="stylesheet">
 
 <?php
 if (strstr($PHP_SELF, FILENAME_PRODUCT_INFO)) {
