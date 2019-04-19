@@ -57,5 +57,5 @@ $(document).ready(function(){
  }
 ?>
 <?php
-if (file_exists(dirname($_SERVER['SCRIPT_FILENAME']) . '/templates/'.CURRENT_TEMPLATE.'/javascript/local.js.php')) include('templates/'.CURRENT_TEMPLATE.'/javascript/local.js.php');
+if (file_exists(dirname(__FILE__) . '/templates/'.CURRENT_TEMPLATE.'/javascript/local.js.php')) include('templates/'.CURRENT_TEMPLATE.'/javascript/local.js.php');
 ?>
