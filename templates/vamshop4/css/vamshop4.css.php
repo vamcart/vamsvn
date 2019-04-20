@@ -13,7 +13,6 @@ include_once(dirname_r(__FILE__,4).'/jscript/jquery/plugins/owl/assets/owl.carou
 echo "\n";
 include_once(dirname_r(__FILE__,4).'/jscript/jquery/plugins/owl/assets/owl.theme.default.min.css');
 echo "\n";
-
 include_once(dirname_r(__FILE__).'/vamshop.css.php');
 echo "\n";
 
