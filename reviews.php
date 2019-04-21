@@ -51,7 +51,8 @@ if ($reviews_split->number_of_rows > 0) {
 if (!is_file($products_image)) $products_image = DIR_WS_THUMBNAIL_IMAGES.'../noimage.gif';
 		$module_data[] = array ('PRODUCTS_IMAGE' => $products_image, $reviews['products_name'], 
 		'PRODUCTS_LINK' => vam_href_link(FILENAME_PRODUCT_INFO, 'products_id='.$reviews['products_id']), 
-		'REVIEWS_LINK' => vam_href_link(FILENAME_PRODUCT_REVIEWS_INFO, 'reviews_id='.$reviews['reviews_id']), 
+		'REVIEWS_LINK' => vam_href_link(FILENAME_PRODUCT_REVIEWS_INFO, 'products_id='.$reviews['products_id'].'&reviews_id='.$reviews['reviews_id']), 
+		'REVIEWS_ALL_LINK' => vam_href_link(FILENAME_PRODUCT_REVIEWS, 'products_id='.$reviews['products_id']), 
 		'PRODUCTS_NAME' => $reviews['products_name'], 
 		'AUTHOR' => $reviews['customers_name'], 
 		'DATE' => vam_date_short($reviews['date_added']), 
