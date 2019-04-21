@@ -106,6 +106,7 @@ if (!is_object($product) || !$product->isProduct() OR !$product->data['products_
 		}
 		$info->assign('PRODUCTS_MODEL', $product->data['products_model']);
 		$info->assign('PRODUCTS_URL_INFO', vam_href_link(FILENAME_PRODUCT_INFO, vam_product_link($product->data['products_id'], $product->data['products_name'])));
+		$info->assign('PRODUCTS_REVIEWS_URL', vam_href_link(FILENAME_PRODUCT_REVIEWS, 'products_id='.$product->data['products_id']));
 		$info->assign('PRODUCTS_EAN', $product->data['products_ean']);
 		$info->assign('PRODUCTS_QUANTITY', $product->data['products_quantity']);
 		$info->assign('PRODUCTS_LENGTH', $product->data['products_length']);

@@ -48,7 +48,7 @@
 
           {if $REVIEWS_TOTAL}
 					<div class="inner">
-          {if $REVIEWS_TOTAL}{$smarty.const.TEXT_TOTAL_REVIEWS}: {$REVIEWS_TOTAL}, {/if}
+          {if $REVIEWS_TOTAL}<a href="{$PRODUCTS_REVIEWS_URL}">{$smarty.const.TEXT_TOTAL_REVIEWS}</a>: {$REVIEWS_TOTAL}, {/if}
           {if $REVIEWS_RATING}{$smarty.const.TEXT_REVIEWS_RATING}: {$STAR_RATING}{/if}
 					</div>
 					{/if}
