@@ -113,7 +113,7 @@ $(function(){
 
 	$('#navigation').affix({
 	      offset: {
-	        top: $('#header').height()
+	        top: $('#navigation').height()
 	      }
 	});	
 
