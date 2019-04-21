@@ -48,7 +48,7 @@ require (DIR_WS_INCLUDES.'header.php');
 $vamTemplate->assign('PRODUCTS_NAME', $product_info['products_name']);
 
 $data_reviews = array ();
-$reviews_query = vam_db_query("select reviews_rating, reviews_id, customers_name, date_added, last_modified, reviews_read from ".TABLE_REVIEWS." where products_id = '".(int) $_GET['products_id']."' order by reviews_id DESC");
+$reviews_query = vam_db_query("select r.reviews_rating, r.reviews_id, r.customers_name, r.date_added, r.last_modified, r.reviews_read, rd.reviews_text from ".TABLE_REVIEWS." as r, ".TABLE_REVIEWS_DESCRIPTION." as rd where rd.reviews_id = r.reviews_id and r.products_id = '".(int) $_GET['products_id']."' order by r.reviews_id DESC");
 if (vam_db_num_rows($reviews_query)) {
 	$row = 0;
 	while ($reviews = vam_db_fetch_array($reviews_query)) {
