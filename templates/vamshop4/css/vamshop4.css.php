@@ -1,6 +1,8 @@
 <?php 
 header('Content-Type: text/css');
 
+include_once(dirname_r(__FILE__).'/mplusrounded1c.css');
+echo "\n";
 include_once(dirname_r(__FILE__).'/bootstrap.min.css');
 echo "\n";
 include_once(dirname_r(__FILE__,2).'/bootstrap-ecommerce/ui.css');
@@ -18,9 +20,10 @@ echo "\n";
 
 ?>
 
-
 body {
   background: linear-gradient(-183deg, #6c757d 234px, #fff 235px) no-repeat;
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+  font-weight: 500;
 
 }
 
