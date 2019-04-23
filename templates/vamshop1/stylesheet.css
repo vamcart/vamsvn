@@ -4,8 +4,9 @@
 /* Global properties (body, common classes, vertical rhythm, structure etc)
 /* ========================================================================== */
 body {
-  font-family: 'MetropolisMedium', sans-serif;
+  font-family: 'M PLUS Rounded 1c', sans-serif;
   font-size: 16px;
+  font-weight: 500;
   background-color: #ffffff;
   color: #000;
   padding: 0;
