@@ -198,7 +198,6 @@ fieldset.form
 fieldset.form legend
 	{
 		font-weight: bold;
-		font-weight: bold;
 	}
 
 .form p label
@@ -209,13 +208,11 @@ fieldset.form legend
 		padding: 0 10px 0 10px; 
 		border: 0px solid black; 
 		color: #545452; 
-		font-weight: normal; 
 		text-align: right;
 	}
 
 .form p
 	{
-		font-weight: normal;
 		margin-bottom: .5em;
 		clear: both;
 	}
