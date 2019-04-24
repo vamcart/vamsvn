@@ -198,8 +198,6 @@ fieldset.form
 fieldset.form legend
 	{
 		font-weight: bold;
-		
-		font: 12pt arial,sans-serif;
 		font-weight: bold;
 	}
 
@@ -217,7 +215,6 @@ fieldset.form legend
 
 .form p
 	{
-		font: 12pt arial,sans-serif;
 		font-weight: normal;
 		margin-bottom: .5em;
 		clear: both;
