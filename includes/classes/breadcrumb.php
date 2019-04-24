@@ -38,7 +38,7 @@
 
       for ($i=0, $n=sizeof($this->_trail); $i<$n; $i++) {
         if (isset($this->_trail[$i]['link']) && vam_not_null($this->_trail[$i]['link'])) {
-          $trail_string .= '<span itemscope itemprop="itemListElement" itemtype="http://schema.org/ListItem"><a itemprop="item" href="' . $this->_trail[$i]['link'] . '"><span itemprop="name">' . $this->_trail[$i]['title'] . '</span></a><meta itemprop="position" content="'.$position.'" /><meta itemprop="item" content="' . HTTP_SERVER . $_SERVER['REQUEST_URI'] . '" /></span>';
+          $trail_string .= '<span itemscope itemprop="itemListElement" itemtype="http://schema.org/ListItem"><a href="' . $this->_trail[$i]['link'] . '"><span itemprop="name">' . $this->_trail[$i]['title'] . '</span></a><meta itemprop="position" content="'.$position.'" /><meta itemprop="item" content="' . HTTP_SERVER . $_SERVER['REQUEST_URI'] . '" /></span>';
         } else {
           $trail_string .= '<span itemscope itemprop="itemListElement" itemtype="http://schema.org/ListItem"><span itemprop="name">'.$this->_trail[$i]['title'].'</span><meta itemprop="position" content="'.$position.'" /><meta itemprop="item" content="' . HTTP_SERVER . $_SERVER['REQUEST_URI'] . '" /></span>';
         }
