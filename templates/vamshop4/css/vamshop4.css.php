@@ -24,7 +24,7 @@ body {
   background: linear-gradient(-183deg, #6c757d 234px, #fff 235px) no-repeat;
   font-family: 'M PLUS Rounded 1c', sans-serif;
   font-weight: 500;
-  font-size: 18px;
+  font-size: 16px;
 }
 
 
