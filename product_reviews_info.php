@@ -25,18 +25,20 @@ require (DIR_FS_CATALOG.'templates/'.CURRENT_TEMPLATE.'/source/boxes.php');
 // include needed functions
 require_once (DIR_FS_INC.'vam_break_string.inc.php');
 require_once (DIR_FS_INC.'vam_date_long.inc.php');
-
+require_once (DIR_FS_INC.'vam_word_count.inc.php');
+require_once (DIR_FS_INC.'vam_date_long.inc.php');
 
 // lets retrieve all $HTTP_GET_VARS keys and values..
 $get_params = vam_get_all_get_params(array ('reviews_id'));
 $get_params = substr($get_params, 0, -1); //remove trailing &
 
-$reviews_query = "select rd.reviews_text, r.reviews_rating, r.reviews_id, r.products_id, r.customers_name, r.date_added, r.last_modified, r.reviews_read, p.products_id, pd.products_name, p.products_image from ".TABLE_REVIEWS." r left join ".TABLE_PRODUCTS." p on (r.products_id = p.products_id) left join ".TABLE_PRODUCTS_DESCRIPTION." pd on (p.products_id = pd.products_id and pd.language_id = '".(int) $_SESSION['languages_id']."'), ".TABLE_REVIEWS_DESCRIPTION." rd where r.reviews_id = '".(int) $_GET['reviews_id']."' and r.reviews_id = rd.reviews_id and p.products_status = '1'";
-$reviews_query = vam_db_query($reviews_query);
+$reviews_query = "select rd.*, r.*, p.*, pd.* from ".TABLE_REVIEWS." r left join ".TABLE_PRODUCTS." p on (r.products_id = p.products_id) left join ".TABLE_PRODUCTS_DESCRIPTION." pd on (p.products_id = pd.products_id and pd.language_id = '".(int) $_SESSION['languages_id']."'), ".TABLE_REVIEWS_DESCRIPTION." rd where r.reviews_id = '".(int) $_GET['reviews_id']."' and rd.languages_id = '".(int) $_SESSION['languages_id']."' and r.reviews_id = rd.reviews_id and p.products_status = '1'";
+
+$reviews_query = vamDBquery($reviews_query);
 
 if (!vam_db_num_rows($reviews_query))
 	vam_redirect(vam_href_link(FILENAME_REVIEWS));
-$reviews = vam_db_fetch_array($reviews_query);
+$reviews = vam_db_fetch_array($reviews_query, true);
 
 $breadcrumb->add(NAVBAR_TITLE_PRODUCT_REVIEWS, vam_href_link(FILENAME_PRODUCT_REVIEWS, $get_params));
 
@@ -46,21 +48,43 @@ $reviews_text = vam_break_string(htmlspecialchars($reviews['reviews_text']), 60,
 
 require (DIR_WS_INCLUDES.'header.php');
 
+		$star_rating = '';
+		for($i=0;$i<number_format($reviews['reviews_rating']);$i++)	{
+		$star_rating .= '<span class="rating"><i class="fa fa-star"></i></span> ';
+		}
+				
+		$module_content[] = array ( 
+		
+		'PRODUCT' => $product->buildDataArray($reviews),
+
+		'REVIEW' => array(
+
+		'PRODUCTS_LINK' => vam_href_link(FILENAME_PRODUCT_INFO, 'products_id='.$reviews['products_id']), 
+		'REVIEWS_LINK' => vam_href_link(FILENAME_PRODUCT_REVIEWS_INFO, 'products_id='.$reviews['products_id'].'&reviews_id='.$reviews['reviews_id']), 
+		'REVIEWS_ALL_LINK' => vam_href_link(FILENAME_PRODUCT_REVIEWS, 'products_id='.$reviews['products_id']), 
+		'PRODUCTS_NAME' => $reviews['products_name'], 
+		'AUTHOR' => $reviews['customers_name'], 
+		'ID' => $reviews['reviews_id'], 
+		'URL' => vam_href_link(FILENAME_PRODUCT_REVIEWS_INFO, 'products_id='.$reviews['products_id'].'&reviews_id='.$reviews['reviews_id']), 
+		'DATE' => vam_date_short($reviews['date_added']), 
+		'TEXT_COUNT' => '('.sprintf(TEXT_REVIEW_WORD_COUNT, vam_word_count($reviews['reviews_text'], ' ')).')<br />'.vam_break_string(htmlspecialchars($reviews['reviews_text']), 60, '-<br />').'..', 
+		'TEXT' => $reviews['reviews_text'], 
+		'RATING' => $reviews['reviews_rating'],
+		'STAR_RATING' => $star_rating,
+		'RATING_IMG' => vam_image('templates/'.CURRENT_TEMPLATE.'/img/stars_'.$reviews['reviews_rating'].'.gif', sprintf(TEXT_OF_5_STARS, $reviews['reviews_rating']))
+		
+		)
+		);	
+
 $vamTemplate->assign('PRODUCTS_NAME', $reviews['products_name']);
-$vamTemplate->assign('AUTHOR', $reviews['customers_name']);
-$vamTemplate->assign('DATE', vam_date_long($reviews['date_added']));
-$vamTemplate->assign('REVIEWS_TEXT', nl2br($reviews_text));
-$vamTemplate->assign('RATING', vam_image('templates/'.CURRENT_TEMPLATE.'/img/stars_'.$reviews['reviews_rating'].'.gif', sprintf(TEXT_OF_5_STARS, $reviews['reviews_rating'])));
-$vamTemplate->assign('PRODUCTS_LINK', vam_href_link(FILENAME_PRODUCT_INFO, vam_product_link($reviews['products_id'], $reviews['products_name'])));
-$vamTemplate->assign('BUTTON_BACK', '<a class="button" href="'.vam_href_link(FILENAME_PRODUCT_REVIEWS, $get_params).'">'.vam_image_button('back.png', IMAGE_BUTTON_BACK).'</a>');
-$vamTemplate->assign('BUTTON_BUY_NOW', '<a class="button" href="'.vam_href_link(FILENAME_DEFAULT, 'action=buy_now&BUYproducts_id='.$reviews['products_id']).'">'.vam_image_button('buy.png', IMAGE_BUTTON_IN_CART) . '</a>');
-
-$products_image = DIR_WS_THUMBNAIL_IMAGES.$reviews['products_image'];
-if (!is_file($products_image)) $products_image = DIR_WS_THUMBNAIL_IMAGES.'../noimage.gif';
-$image = vam_image($products_image, $reviews['products_name'], '', '', 'hspace="5" vspace="5"');
-$vamTemplate->assign('IMAGE', $image);
-
 $vamTemplate->assign('language', $_SESSION['language']);
+
+$vamTemplate->assign('module_content', $module_content);
+
+$vamTemplate->assign('REVIEWS_ALL_LINK', vam_href_link(FILENAME_PRODUCT_REVIEWS, 'products_id='.$reviews['products_id']));
+$vamTemplate->assign('REVIEWS_TOTAL', vam_db_num_rows($reviews_query));
+
+$vamTemplate->assign('BUTTON_BACK', '<a class="btn btn-inverse" href="'.vam_href_link(FILENAME_PRODUCT_REVIEWS, $get_params).'">'.vam_image_button('back.png', IMAGE_BUTTON_BACK).'</a>');
 
 // set cache ID
  if (!CacheCheck()) {
