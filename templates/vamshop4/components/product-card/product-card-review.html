@@ -5,13 +5,14 @@
 			<div class="img-wrap"><a href="{$module_data.PRODUCT.PRODUCTS_LINK}"><img src="{$module_data.PRODUCT.PRODUCTS_IMAGE}" alt="{$module_data.PRODUCT.PRODUCTS_NAME}"></a></div>
 			<div class="info-wrap text-center h-60">
 				<h5 class="title text-truncate"><a href="{$module_data.PRODUCT.PRODUCTS_LINK}">{$module_data.PRODUCT.PRODUCTS_NAME}</a></h5>
-				<p class="desc">{$module_data.REVIEW.TEXT|vam_truncate:$smarty.const.MAX_DISPLAY_SHORT_DESCRIPTION:"...":true}</p>
 				{if $module_data.PRODUCT.REVIEWS_TOTAL > 0}
 				<div class="rating-wrap">
 					{$module_data.PRODUCT.REVIEWS_STAR_RATING}
 					<div class="label-rating">{$smarty.const.TEXT_TOTAL_REVIEWS}: {$module_data.PRODUCT.REVIEWS_TOTAL}</div>
 				</div>
 				{/if}
+				<p class="desc">{$module_data.REVIEW.TEXT|vam_truncate:$smarty.const.MAX_DISPLAY_SHORT_DESCRIPTION:"...":true}</p>
+				<p class="desc"><a class="" href="{$module_data.REVIEW.URL}"><i class="fa fa-comment"></i> {#text_read#}</a></p>
 				<div class="price-wrap h4">
 					{$module_data.PRODUCT.PRODUCTS_PRICE}
 				</div>
