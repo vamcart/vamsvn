@@ -28,7 +28,7 @@ if ($_SESSION['customers_status']['customers_status_read_reviews'] == 0) {
              return;
 }
 
-$reviews_query_raw = "select r.reviews_id, left(rd.reviews_text, 250) as reviews_text, r.reviews_rating, r.date_added, p.*, pd.*, r.customers_name from ".TABLE_REVIEWS." r, ".TABLE_REVIEWS_DESCRIPTION." rd, ".TABLE_PRODUCTS." p, ".TABLE_PRODUCTS_DESCRIPTION." pd where p.products_status = '1' and p.products_id = r.products_id and r.reviews_id = rd.reviews_id and p.products_id = pd.products_id and pd.language_id = '".(int) $_SESSION['languages_id']."' and rd.languages_id = '".(int) $_SESSION['languages_id']."' order by r.reviews_id DESC";
+$reviews_query_raw = "select r.reviews_id, r.products_id, left(rd.reviews_text, 250) as reviews_text, r.reviews_rating, r.date_added, p.*, pd.*, r.customers_name from ".TABLE_REVIEWS." r, ".TABLE_REVIEWS_DESCRIPTION." rd, ".TABLE_PRODUCTS." p, ".TABLE_PRODUCTS_DESCRIPTION." pd where p.products_status = '1' and p.products_id = r.products_id and r.reviews_id = rd.reviews_id and p.products_id = pd.products_id and pd.language_id = '".(int) $_SESSION['languages_id']."' and rd.languages_id = '".(int) $_SESSION['languages_id']."' order by r.reviews_id DESC";
 $reviews_split = new splitPageResults($reviews_query_raw, $_GET['page'], MAX_DISPLAY_NEW_REVIEWS);
 
 if ($reviews_split->number_of_rows > 0) {
@@ -41,6 +41,7 @@ if ($reviews_split->number_of_rows > 0) {
 $module_content = array ();
 if ($reviews_split->number_of_rows > 0) {
 	$reviews_query = vam_db_query($reviews_split->sql_query);
+	$num = 0;
 	while ($reviews = vam_db_fetch_array($reviews_query)) {
 	
 		$module_content[] = array ( 
@@ -50,6 +51,8 @@ if ($reviews_split->number_of_rows > 0) {
 		'REVIEW' => array(
 
 		'AUTHOR' => $reviews['customers_name'], 
+		'ID' => $reviews['customers_name'], 
+		'URL' => vam_href_link(FILENAME_PRODUCT_REVIEWS_INFO, 'products_id='.$reviews['products_id'].'&reviews_id='.$reviews['reviews_id']), 
 		'DATE' => vam_date_short($reviews['date_added']), 
 		'TEXT_COUNT' => '('.sprintf(TEXT_REVIEW_WORD_COUNT, vam_word_count($reviews['reviews_text'], ' ')).')<br />'.vam_break_string(htmlspecialchars($reviews['reviews_text']), 60, '-<br />').'..', 
 		'TEXT' => $reviews['reviews_text'], 
@@ -57,6 +60,8 @@ if ($reviews_split->number_of_rows > 0) {
 		
 		)
 		);
+		
+		$num++;
 
 	}
 
@@ -67,6 +72,7 @@ if ($reviews_split->number_of_rows > 0) {
 	$module->assign('module_content', $module_content);
 
    $module->assign('REVIEWS_ALL_LINK', vam_href_link(FILENAME_REVIEWS));
+   $module->assign('REVIEWS_TOTAL', vam_db_num_rows(vamDBquery($reviews_query_raw,true)));
 	
 	// set cache ID
 	 if (!CacheCheck()) {
