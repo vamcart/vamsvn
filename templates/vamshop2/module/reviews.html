@@ -6,15 +6,15 @@
 
 <dl class="itemNewProducts">
 <dt class="itemImage">
-<a href="{$module_data.PRODUCTS_LINK}"><img src="{$module_data.PRODUCTS_IMAGE}" alt="{$module_data.PRODUCTS_NAME}" border="0" /></a><br />
-{$module_data.PRODUCTS_BUTTON_BUY_NOW}
+<a href="{$module_data.PRODUCT.PRODUCTS_LINK}"><img src="{$module_data.PRODUCT.PRODUCTS_IMAGE}" alt="{$module_data.PRODUCT.PRODUCTS_NAME}" border="0" /></a><br />
+{$module_data.PRODUCT.PRODUCTS_BUTTON_BUY_NOW}
 </dt>
 <dd class="itemDescription">
-<span class="bold">{#text_product#}</span> <span itemprop="itemReviewed"><a href="{$module_data.PRODUCTS_LINK}">{$module_data.PRODUCTS_NAME}</a></span>
+<span class="bold">{#text_product#}</span> <span itemprop="itemReviewed"><a href="{$module_data.PRODUCT.PRODUCTS_LINK}">{$module_data.PRODUCT.PRODUCTS_NAME}</a></span>
 </dd>
 
 <dd class="itemDescription">
-<span class="bold">{#text_author#}</span> <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">{$module_data.AUTHOR}</span></span> - <span content="{$module_data.DATE|date_format:"%Y-%m-%d"}" itemprop="datePublished">{$module_data.DATE}</span>
+<span class="bold">{#text_author#}</span> <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">{$module_data.REVIEW.AUTHOR}</span></span> - <span content="{$module_data.PRODUCT.DATE|date_format:"%Y-%m-%d"}" itemprop="datePublished">{$module_data.REVIEW.DATE}</span>
 </dd>
 
 <dd class="itemDescription">
@@ -22,19 +22,27 @@
 </dd>
 
 <dd class="itemDescription" itemprop="reviewBody">
-{$module_data.TEXT}
+{if $smarty.SERVER.SCRIPT_NAME != '/product_reviews_info.php'}
+{$module_data.REVIEW.TEXT|strip_tags|vam_truncate:240:"...":true}
+{else}
+{$module_data.REVIEW.TEXT|strip_tags}
+{/if}
 </dd>
 
+{if $smarty.SERVER.SCRIPT_NAME != '/product_reviews_info.php'}
 <dd class="itemDescription" itemprop="reviewBody">
-<a href="{$module_data.REVIEWS_LINK}">{#text_read#} {$module_data.PRODUCTS_NAME}</a>
+<a href="{$module_data.REVIEW.REVIEWS_LINK}">{#text_read#} {$module_data.PRODUCT.PRODUCTS_NAME}</a>
 </dd>
+{/if}
 
-<dd class="itemDescription" itemprop="reviewBody">
-<a href="{$module_data.REVIEWS_ALL_LINK}">{#text_all#} {$module_data.PRODUCTS_NAME}</a>
+{if $smarty.SERVER.SCRIPT_NAME != '/product_reviews.php'}
+<dd class="itemDescription">
+<span class="bold">{#text_rating#}</span> <span itemprop="reviewRating" itemscope itemtype="http://schema.org/Rating"><span itemprop="ratingValue">{$module_data.REVIEW.RATING}</span></span>
 </dd>
+{/if}
 
 <dd class="itemDescription">
-<span class="bold">{#text_rating#}</span> <span itemprop="reviewRating" itemscope itemtype="http://schema.org/Rating"><span itemprop="ratingValue" content="{$module_data.RATING_TXT}">{$module_data.RATING}</span></span>
+<span class="bold">{#text_rating#}</span> <span itemprop="reviewRating" itemscope itemtype="http://schema.org/Rating"><span itemprop="ratingValue">{$module_data.REVIEW.RATING}</span></span>
 </dd>
 
 </dl>
