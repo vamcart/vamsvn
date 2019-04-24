@@ -1,39 +1,22 @@
 {config_load file="$language/lang_$language.conf" section="reviews"}<br />
+
 <div class="module">
 <h3>{$PRODUCTS_NAME} {#heading_reviews#}</h3>
-<div class="moduleContent"
-
+<div class="moduleContent">
 {if {$PRODUCTS_REVIEWS_COUNT} > 0}
-
 <div class="row-fluid reviews-title" itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">
-	<div class="span8 title">
-	{#heading_reviews#} <span itemprop="reviewCount">{$PRODUCTS_REVIEWS_COUNT}</span>, {#text_rating#} <span itemprop="ratingValue">{$PRODUCTS_REVIEWS_RATING|number_format:2}</span>
-	</div>	
+<div class="span8 title">
+{#heading_reviews#} <span itemprop="reviewCount">{$PRODUCTS_REVIEWS_COUNT}</span>, {#text_rating#} <span itemprop="ratingValue">{$PRODUCTS_REVIEWS_RATING|number_format:2}</span>
+</div>	
 </div>
-{foreach name=aussen item=module_data from=$module_content} 
-<div class="review">
-<div class="reviewContent" itemprop="review" itemscope itemtype="http://schema.org/Review">
-
-<p>
-<span class="bold">{#text_author#}</span> <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">{$module_data.AUTHOR}</span></span> <span content="{$module_data.DATE|date_format:"%Y-%m-%d"}" itemprop="datePublished">{$module_data.DATE|date_format:"%Y-%m-%d"}</span>
-</p>
-
-<meta itemprop="itemReviewed" content="{$PRODUCTS_NAME}">
-
-<p>
-<span class="bold">{#text_rating#}</span> <span itemprop="reviewRating" itemscope itemtype="http://schema.org/Rating"><span itemprop="ratingValue" content="{$module_data.RATING_TXT}">{$module_data.RATING_TXT}</span></span> {$module_data.RATING}
-</p>
-
-<p itemprop="reviewBody">
-{$module_data.TEXT}
-</p>
-      
-</div>
+<div class="reviewsContent">
+{foreach name=aussen item=module_data from=$module_content}
+<div class="mb-3">	 
+{include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/item/item-reviews.html"}
 </div>
 {/foreach}
-
-{/if}
-
+</div>
+{else}
 {if $TEXT_FIRST_REVIEW != ''}
 <p>
 {$TEXT_FIRST_REVIEW}
@@ -42,6 +25,6 @@
 <div class="pageContentFooter">
 {$BUTTON_WRITE}
 </div>
-
+{/if}
 </div>
 </div>
