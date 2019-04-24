@@ -44,7 +44,7 @@ $breadcrumb->add(NAVBAR_TITLE_PRODUCT_REVIEWS, vam_href_link(FILENAME_PRODUCT_RE
 
 vam_db_query("update ".TABLE_REVIEWS." set reviews_read = reviews_read+1 where reviews_id = '".$reviews['reviews_id']."'");
 
-$reviews_text = vam_break_string(htmlspecialchars($reviews['reviews_text']), 60, '-<br />');
+$module_content = array();
 
 require (DIR_WS_INCLUDES.'header.php');
 

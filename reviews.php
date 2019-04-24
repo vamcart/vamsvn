@@ -43,6 +43,7 @@ if ($reviews_split->number_of_rows > 0) {
 
 }
 
+$module_content = array();
 $module_data = array ();
 if ($reviews_split->number_of_rows > 0) {
 	$reviews_query = vam_db_query($reviews_split->sql_query);
