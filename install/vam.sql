@@ -955,7 +955,7 @@ CREATE TABLE manufacturers_info (
   manufacturers_meta_description varchar(255) NOT NULL,
   manufacturers_meta_keywords varchar(255) NOT NULL,
   manufacturers_url varchar(255) NOT NULL,
-  manufacturers_description varchar(255) NOT NULL,
+  manufacturers_description TEXT NOT NULL,
   url_clicked int(5) NOT NULL default '0',
   date_last_click datetime NULL,
   PRIMARY KEY (manufacturers_id, languages_id)
