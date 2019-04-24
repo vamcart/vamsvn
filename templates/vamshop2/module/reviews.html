@@ -30,14 +30,14 @@
 </dd>
 
 {if $smarty.SERVER.SCRIPT_NAME != '/product_reviews_info.php'}
-<dd class="itemDescription" itemprop="reviewBody">
-<a href="{$module_data.REVIEW.REVIEWS_LINK}">{#text_read#} {$module_data.PRODUCT.PRODUCTS_NAME}</a>
+<dd class="itemDescription">
+<a href="{$module_data.REVIEW.REVIEWS_LINK}"><i class="fa fa-comment"></i> {#text_read#} {$module_data.PRODUCT.PRODUCTS_NAME}</a>
 </dd>
 {/if}
 
 {if $smarty.SERVER.SCRIPT_NAME != '/product_reviews.php'}
 <dd class="itemDescription">
-<span class="bold">{#text_rating#}</span> <span itemprop="reviewRating" itemscope itemtype="http://schema.org/Rating"><span itemprop="ratingValue">{$module_data.REVIEW.RATING}</span></span>
+<a href="{$module_data.REVIEW.REVIEWS_ALL_LINK}"><i class="fa fa-comments"></i> {#text_all#} {$module_data.PRODUCT.PRODUCTS_NAME}</a>
 </dd>
 {/if}
 
