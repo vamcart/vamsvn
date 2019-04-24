@@ -42,8 +42,14 @@ $module_content = array ();
 if ($reviews_split->number_of_rows > 0) {
 	$reviews_query = vam_db_query($reviews_split->sql_query);
 	$num = 0;
+	$star_rating = '';
 	while ($reviews = vam_db_fetch_array($reviews_query)) {
-	
+		
+		$star_rating = '';
+		for($i=0;$i<number_format($reviews['reviews_rating']);$i++)	{
+		$star_rating .= '<span class="rating"><i class="fa fa-star"></i></span> ';
+		}
+			
 		$module_content[] = array ( 
 		
 		'PRODUCT' => $product->buildDataArray($reviews),
@@ -51,11 +57,13 @@ if ($reviews_split->number_of_rows > 0) {
 		'REVIEW' => array(
 
 		'AUTHOR' => $reviews['customers_name'], 
-		'ID' => $reviews['customers_name'], 
+		'ID' => $reviews['reviews_id'], 
 		'URL' => vam_href_link(FILENAME_PRODUCT_REVIEWS_INFO, 'products_id='.$reviews['products_id'].'&reviews_id='.$reviews['reviews_id']), 
 		'DATE' => vam_date_short($reviews['date_added']), 
 		'TEXT_COUNT' => '('.sprintf(TEXT_REVIEW_WORD_COUNT, vam_word_count($reviews['reviews_text'], ' ')).')<br />'.vam_break_string(htmlspecialchars($reviews['reviews_text']), 60, '-<br />').'..', 
 		'TEXT' => $reviews['reviews_text'], 
+		'RATING_TXT' => $reviews['reviews_rating'], 
+		'STAR_RATING' => $star_rating, 
 		'RATING' => vam_image('templates/'.CURRENT_TEMPLATE.'/img/stars_'.$reviews['reviews_rating'].'.gif', sprintf(TEXT_OF_5_STARS, $reviews['reviews_rating']))
 		
 		)
