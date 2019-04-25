@@ -40,7 +40,7 @@ for ($ii=0;$ii<NUMBER_OF_ZONES;$ii++) {
 define('MODULE_SHIPPING_ZONES_COUNTRIES_'.$ii.'_TITLE' , 'Страны зоны '.$ii.'');
 define('MODULE_SHIPPING_ZONES_COUNTRIES_'.$ii.'_DESC' , 'Список стран через запятую для зоны '.$ii.'.');
 define('MODULE_SHIPPING_ZONES_COST_'.$ii.'_TITLE' , 'Стоимость доставки для '.$ii.' зоны');
-define('MODULE_SHIPPING_ZONES_COST_'.$ii.'_DESC' , 'Стоимость доставки для зоны '.$ii.' на базе максимальной стоимость заказа. Например: 3:8.50,7:10.50,... Это значит, что стоимость доставки для заказов, весом до 3 кг. будет стоить 8.50 для покупателей из стран '.$ii.' зоны.');
+define('MODULE_SHIPPING_ZONES_COST_'.$ii.'_DESC' , 'Стоимость доставки для зоны '.$ii.' на базе максимального веса заказа. Например: 3:8.50,7:10.50,... Это значит, что стоимость доставки для заказов, весом до 3 кг. будет стоить 8.50 для покупателей из стран '.$ii.' зоны.');
 define('MODULE_SHIPPING_ZONES_HANDLING_'.$ii.'_TITLE' , 'Стоимость использования модуля для '.$ii.' зоны');
 define('MODULE_SHIPPING_ZONES_HANDLING_'.$ii.'_DESC' , 'Стоимость использования данного способа доставки.');
 }
