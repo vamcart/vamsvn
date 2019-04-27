@@ -32,14 +32,6 @@ require_once (DIR_FS_INC.'vam_date_long.inc.php');
 $get_params = vam_get_all_get_params(array ('reviews_id'));
 $get_params = substr($get_params, 0, -1); //remove trailing &
 
-$reviews_query = "select rd.*, r.*, p.*, pd.* from ".TABLE_REVIEWS." r left join ".TABLE_PRODUCTS." p on (r.products_id = p.products_id) left join ".TABLE_PRODUCTS_DESCRIPTION." pd on (p.products_id = pd.products_id and pd.language_id = '".(int) $_SESSION['languages_id']."'), ".TABLE_REVIEWS_DESCRIPTION." rd where r.reviews_id = '".(int) $_GET['reviews_id']."' and rd.languages_id = '".(int) $_SESSION['languages_id']."' and r.reviews_id = rd.reviews_id and p.products_status = '1'";
-
-$reviews_query = vamDBquery($reviews_query);
-
-if (!vam_db_num_rows($reviews_query))
-	vam_redirect(vam_href_link(FILENAME_REVIEWS));
-$reviews = vam_db_fetch_array($reviews_query, true);
-
 $breadcrumb->add(NAVBAR_TITLE_PRODUCT_REVIEWS, vam_href_link(FILENAME_PRODUCT_REVIEWS, $get_params));
 
 vam_db_query("update ".TABLE_REVIEWS." set reviews_read = reviews_read+1 where reviews_id = '".$reviews['reviews_id']."'");
@@ -47,6 +39,14 @@ vam_db_query("update ".TABLE_REVIEWS." set reviews_read = reviews_read+1 where r
 $module_content = array();
 
 require (DIR_WS_INCLUDES.'header.php');
+
+$reviews_query = "select rd.*, r.*, p.*, pd.* from ".TABLE_REVIEWS." r left join ".TABLE_PRODUCTS." p on (r.products_id = p.products_id) left join ".TABLE_PRODUCTS_DESCRIPTION." pd on (p.products_id = pd.products_id and pd.language_id = '".(int) $_SESSION['languages_id']."'), ".TABLE_REVIEWS_DESCRIPTION." rd where r.reviews_id = '".(int) $_GET['reviews_id']."' and rd.languages_id = '".(int) $_SESSION['languages_id']."' and r.reviews_id = rd.reviews_id and p.products_status = '1'";
+
+$reviews_query = vamDBquery($reviews_query);
+
+if (!vam_db_num_rows($reviews_query))
+	vam_redirect(vam_href_link(FILENAME_REVIEWS));
+$reviews = vam_db_fetch_array($reviews_query, true);
 
 		$star_rating = '';
 		for($i=0;$i<number_format($reviews['reviews_rating']);$i++)	{
