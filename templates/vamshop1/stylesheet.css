@@ -431,7 +431,7 @@ hr.transparent {
 }
 
 #navigation .navbar-search .search-query {
-  border-radius: 0;
+  border-radius: 4px;
 }
 
 #navigation .nav-collapse .navbar-search {
@@ -440,7 +440,6 @@ hr.transparent {
 }
 
 #navigation .nav-collapse .btn {
-  border-radius: 0;
   color: #fff;
 }
 
@@ -936,6 +935,9 @@ background: #fff;
 }
 /* Categories widget
 /* ========================================================================== */
+.shopping-cart-widget {
+  padding: 5px;
+}
 .shopping-cart-widget .products {
   margin: 0 0 20px 0;
 }
@@ -951,15 +953,6 @@ background: #fff;
 .shopping-cart-widget .products .media-heading a:hover {
   color: #dd2c00;
   background: #fff;
-}
-.shopping-cart-widget .buttons {
-  margin-bottom: 0;
-}
-.shopping-cart-widget .buttons .btn {
-  font-size: 16px;
-  padding: 6px 12px;
-  margin-top: 5px;
-  margin-bottom: 5px;
 }
 .shopping-cart-widget .buttons .btn:hover {
   background-color: #dd2c00;
@@ -1200,10 +1193,6 @@ background: #fff;
   border-color: #dd2c00;
 }
 #search .search-bt {
-  -webkit-transition: all 0.3s ease-out;
-  -moz-transition: all 0.3s ease-out;
-  -ms-transition: all 0.3s ease-out;
-  -o-transition: all 0.3s ease-out;
   transition: all 0.3s ease-out;
   width: 30px;
   height: 30px;
@@ -1213,11 +1202,7 @@ background: #fff;
   cursor: pointer;
   border: none !important;
   z-index: 2;
-  -webkit-border-radius: 0;
-  -moz-border-radius: 0;
-  border-radius: 0;
-  -moz-background-clip: padding;
-  -webkit-background-clip: padding-box;
+  border-radius: 4px;
   background-clip: padding-box;
   background: #555555 url('img/button.png') no-repeat center center;
 }
@@ -2164,7 +2149,7 @@ span.Requirement
 
 .btn.btn-inverse {
   font-size: 16px;
-  padding: 6px 12px;
+  padding: 10px 12px;
   margin-top: 5px;
   margin-bottom: 5px;
 }
@@ -2280,7 +2265,7 @@ del.button span
 span.button button, 
 span.button input
 	{
-		padding: 0 10px;
+		padding: 0px 10px;
 		margin: 0;
 		line-height: 2.5; /*Opera need this*/
 	}
@@ -2549,12 +2534,14 @@ li.ajaxAddQuickie
 #checkout label.payment.selected
 	{
 		border: 1px solid #000;
+		border-radius: 4px;
 	}
 
 .shipping-method,
 .payment-method 
 	{
 		border: 1px solid transparent;
+		border-radius: 4px;
 		padding: 1em;
 	}
 
@@ -2807,7 +2794,7 @@ dt.ordersAddress
 dd.ordersAddress
    {
      display: block;
-     margin: 0 0 0 1em;
+     margin: 0 0 0 0;
      padding: 0 0 0 0;
      line-height: normal;
      background: transparent;
@@ -2901,7 +2888,7 @@ dt.Login
 dd.Login
    {
      display: block;
-     margin: 0 0 0 1em;
+     margin: 0 0 0 0;
      padding: 0 0 0 0;
      line-height: normal;
      background: transparent;
@@ -3151,4 +3138,8 @@ dd.itemCategoriesListing
   border-left-color: #cccccc;
   margin-top: 5px;
   margin-right: -10px;
+}
+
+dd {
+  margin-left: 0;
 }
