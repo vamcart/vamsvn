@@ -26,7 +26,7 @@ function init_modified() {
 function set_modified(e) {
 	if (e) {
 		var el = window.event ? window.event.srcElement : e.currentTarget;
-		el.style.border = '2px red inset';
+		el.style.border = '1px #007bff inset';
 	}
 	form_modified = true;
 	var btn_save = document.getElementById('btn_save');
