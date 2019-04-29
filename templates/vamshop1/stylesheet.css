@@ -1305,7 +1305,7 @@ background: #fff;
   border-top: 0px solid #e5e5e5;
   border-bottom: 0px solid #e5e5e5;
   color: #dd2c00;
-  font-size: 16px;
+  font-size: 18px;
   font-weight: bold;
   z-index: 5;
   border-top-right-radius: 0px;
@@ -1702,7 +1702,7 @@ box-shadow: 0 4px 15px #d5d5d5;
   border-top: 0px solid #e5e5e5;
   border-bottom: 0px solid #e5e5e5;
   color: #dd2c00;
-  font-size: 16px;
+  font-size: 18px;
   font-weight: bold;
   z-index: 5;
   border-top-right-radius: 0px;
@@ -1847,8 +1847,7 @@ box-shadow: 0 4px 15px #d5d5d5;
   border-top: 0px solid #e5e5e5;
   border-bottom: 0px solid #e5e5e5;
   color: #dd2c00;
-  font-size: 16px;
-  font-weight: bold;
+  font-size: 20px;
   z-index: 5;
   border-top-right-radius: 0px;
   border-bottom-right-radius: 0px;
@@ -3049,15 +3048,15 @@ dd.itemCategoriesListing
 }
 .thumbnail .price {
   color: #dd2c00;
-  font-size: 16px;
+  font-size: 18px;
   font-weight: bold;
   z-index: 5;
   clear: both;
 }
 .thumbnail .old-price {
   color: gray;
-  font-size: 16px;
-  font-weight: bold;
+  font-size: 18px;
+  font-weight: 400;
   z-index: 5;
   clear: both;
 }
