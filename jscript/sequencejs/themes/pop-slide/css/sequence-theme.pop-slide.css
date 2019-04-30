@@ -29,6 +29,7 @@ html,
   /* Uncomment to make the theme full-screen */
   /* height: 100% !important; */
   /* max-height: 100% !important; */
+  font-family: 'M PLUS Rounded 1c', sans-serif;
 }
 
 .seq {
@@ -42,7 +43,6 @@ html,
   /* Center the Sequence container on the page */
   margin: 0 auto;
   padding: 0;
-  font-family: sans-serif;
 }
 
 .seq.seq-active .seq-preloader {
@@ -78,6 +78,7 @@ html,
   /* Image replacement */
   border: 0;
   font: 0/0 a;
+  font-family: 'M PLUS Rounded 1c', sans-serif;
   text-shadow: none;
   color: transparent;
   /* Hardware accel */
@@ -190,7 +191,6 @@ html,
 
 .seq .seq-title h2 {
   margin: .6em 0 .4em 0;
-  font-family: 'Ubuntu', sans-serif;
   font-size: 1em;
 }
 
@@ -200,7 +200,6 @@ html,
   padding: .2em .6em;
   background: #F7DB15;
   color: black;
-  font-family: 'Dosis', sans-serif;
   font-weight: 700;
   text-decoration: none;
 }
@@ -266,7 +265,6 @@ html,
     padding: .625em 1%;
     cursor: pointer;
     border-bottom: black solid 4px;
-    font-family: 'Dosis', sans-serif;
     line-height: 1.4;
     font-size: 16px;
     font-weight: bold;
