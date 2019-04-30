@@ -37,7 +37,7 @@ $inv_id = $_POST['order_id'];
 
 if ($_POST['order_id'] > 0) {
 	
-$order = new order;
+$order = new order($inv_id);
 
 include_once(DIR_FS_CATALOG.'vendor/stripe/'.'init.php');
 
@@ -57,7 +57,7 @@ $stripe = array(
 		
 		  $charge = \Stripe\Charge::create(array(
 		      'customer' => $customer->id,
-		      'amount'   => number_format($order->info['total_value'],0,'.',',')*100,
+		      'amount'   => number_format($order->info['total'],0,'','')*100,
 		      'currency' => $order->info['currency']
 		  ));
 
