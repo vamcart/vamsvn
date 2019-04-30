@@ -284,7 +284,7 @@
 
       $db = vam_db_fetch_array($db_query);
 
-      if ($db['status'] == 0) {
+      if (vam_db_num_rows($db_query) == 0) {
           return RTN_404;  //in database and may be shown again
       }
       
