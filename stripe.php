@@ -73,7 +73,7 @@ $stripe = array(
 		                          'comments' => 'Stripe accepted this order payment');
 		  vam_db_perform('orders_status_history', $sql_data_arrax);
 		
-		  echo 'OK'.$inv_id;
+		  //echo 'OK'.$inv_id;
   
 
 		}
