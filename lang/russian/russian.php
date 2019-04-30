@@ -38,7 +38,7 @@ define('DATE_TIME_FORMAT', DATE_FORMAT_SHORT . ' %H:%M:%S');
 define('DOB_FORMAT_STRING', 'dd.mm.jjjj');
 
 // if USE_DEFAULT_LANGUAGE_CURRENCY is true, use the following currency, instead of the applications default currency (used when changing language)
-define('LANGUAGE_CURRENCY', 'RUR');
+define('LANGUAGE_CURRENCY', 'RUB');
 
 define('MALE', 'уважаемый');
 define('FEMALE', 'уважаемая');
