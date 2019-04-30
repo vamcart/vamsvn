@@ -33,11 +33,11 @@ require_once (DIR_FS_INC.'vam_send_answer_template.inc.php');
 //fclose($fp);
 // variables prepearing
 
-$inv_id = $_GET['order_id'];
+$inv_id = $_POST['order_id'];
 
-if ($_GET['order_id'] > 0) {
+if ($_POST['order_id'] > 0) {
 	
-$order = new order($_GET['order_id']);
+$order = new order;
 
 include_once(DIR_FS_CATALOG.'vendor/stripe/'.'init.php');
 
@@ -57,7 +57,7 @@ $stripe = array(
 		
 		  $charge = \Stripe\Charge::create(array(
 		      'customer' => $customer->id,
-		      'amount'   => number_format($order->info['total_value'],0,'',''),
+		      'amount'   => number_format($order->info['total_value'],0,'.',',')*100,
 		      'currency' => $order->info['currency']
 		  ));
 
