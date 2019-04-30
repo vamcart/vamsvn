@@ -57,7 +57,7 @@ $stripe = array(
 		
 		  $charge = \Stripe\Charge::create(array(
 		      'customer' => $customer->id,
-		      'amount'   => $order->info['total'],
+		      'amount'   => number_format($order->info['total_value'],0,'',''),
 		      'currency' => $order->info['currency']
 		  ));
 
