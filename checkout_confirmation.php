@@ -270,6 +270,8 @@ if (vam_not_null($order->info['comments'])) {
 
 }
 
+if (!$$_SESSION['payment']->form_action_url) $$_SESSION['payment']->form_action_url = $GLOBALS[$payment]->form_action_url;
+
 if (isset ($$_SESSION['payment']->form_action_url) && !$$_SESSION['payment']->tmpOrders) {
 
 	$form_action_url = $$_SESSION['payment']->form_action_url;
