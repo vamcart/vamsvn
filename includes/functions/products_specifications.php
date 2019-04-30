@@ -614,23 +614,23 @@
               break;
 
             case ($filter['count'] != '' && $filter['count'] < 1 && SPECIFICATIONS_FILTER_NO_RESULT == 'grey'):
-              $box_text .= '<input type="radio" name="0" value="0" disabled="disabled">';
+              $box_text .= '<label><input type="radio" name="0" value="0" disabled="disabled">';
               $box_text .= '<span class="no_results">' . '&nbsp;';
               $box_text .= vam_output_string ($filter['text'] );
               $box_text .= '</span>';
               if (SPECIFICATIONS_FILTER_SHOW_COUNT == 'True' && $filter['count'] != '') {
                 $box_text .= '<span class="filter_count"> (' . $filter['count'] . ')</span>';
               }
-              $box_text .= '<br>' . "\n";
+              $box_text .= '</label>' . "\n";
               break;
 
             default:
-              $box_text .= vam_draw_radio_field ($filter_name, $filter['id'], $checked, 'onClick="this.form.submit();"') . '&nbsp;' . $filter['text'];
+              $box_text .= '<label>'.vam_draw_radio_field ($filter_name, $filter['id'], $checked, 'onClick="this.form.submit();"') . '&nbsp;' . $filter['text'];
 
               if (SPECIFICATIONS_FILTER_SHOW_COUNT == 'True' && $filter['count'] != '') {
                 $box_text .= '<span class="filter_count"> (' . $filter['count'] . ')</span>';
               }
-              $box_text .= '<br>' . "\n";
+              $box_text .= '</label>' . "\n";
               break;
           } // switch (true)
         }
@@ -669,24 +669,24 @@
               break;
 
             case ($filter['count'] < 1 && SPECIFICATIONS_FILTER_NO_RESULT == 'grey'):
-              $box_text .= '<input type="checkbox" name="0" value="0" disabled="disabled">';
+              $box_text .= '<label><input type="checkbox" name="0" value="0" disabled="disabled">';
               $box_text .= '<span class="no_results">' . '&nbsp;';
               $box_text .= vam_output_string ($filter['text'] );
               $box_text .= '</span>';
               if (SPECIFICATIONS_FILTER_SHOW_COUNT == 'True') {
                 $box_text .= '<span class="filter_count"> (' . $filter['count'] . ')</span>';
               }
-              $box_text .= '<br>' . "\n";
+              $box_text .= '</label>' . "\n";
               break;
 
             default:
               //$box_text .= vam_draw_checkbox_field ($filter_name . '[' . $checkbox_id . ']', $filter['id'], $checked, 'onClick="this.form.submit();"') . '&nbsp;' . $filter['text'];
-              $box_text .= vam_draw_checkbox_field ($filter_name . '[' . $checkbox_id . ']', $filter['id'], $checked) . '&nbsp;' . $filter['text'];
+              $box_text .= '<label>'.vam_draw_checkbox_field ($filter_name . '[' . $checkbox_id . ']', $filter['id'], $checked) . '&nbsp;' . $filter['text'];
               
               if (SPECIFICATIONS_FILTER_SHOW_COUNT == 'True') {
                 $box_text .= '<span class="filter_count"> (' . $filter['count'] . ')</span>';
               }
-              $box_text .= '<br>' . "\n";
+              $box_text .= '</label>' . "\n";
               break;
           } // switch (true)
           $checkbox_id++;
@@ -706,9 +706,9 @@
         $box_text .= vam_draw_form('filter', $target, 'get');
         foreach ($filters_select_array as $filter) {
           $checked = ($filter['id'] == $filter_value[$checkbox_id]) ? true : false;
-          $box_text .= vam_draw_checkbox_field($filter_name . '[' . $checkbox_id . ']', $filter['id'], $checked);
+          $box_text .= '<label>'.vam_draw_checkbox_field($filter_name . '[' . $checkbox_id . ']', $filter['id'], $checked);
           $box_text .= '  ' . vam_image(DIR_WS_IMAGES . trim($filter['text']), $filter['text']) . '<br>' . "\n";
-          $box_text .= '<br>' . "\n";
+          $box_text .= '</label>' . "\n";
           $checkbox_id++;
         }
         $box_text .= $additional_variables . vam_hide_session_id();
