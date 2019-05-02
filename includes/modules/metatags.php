@@ -483,9 +483,9 @@ $content_meta = vam_db_fetch_array($content_meta_query, true);
   case (strstr($PHP_SELF, FILENAME_REVIEWS)):
 
 ?>
-<title><?php echo TEXT_PAGE_PRODUCT_REVIEWS; ?></title>
-<meta name="description" content="<?php echo TEXT_PAGE_PRODUCT_REVIEWS . ' ' . META_DESCRIPTION; ?>" />
-<meta name="keywords" content="<?php echo TEXT_PAGE_PRODUCT_REVIEWS . ' ' . META_KEYWORDS; ?>" />
+<title><?php echo STORE_NAME . ' - ' . TEXT_PAGE_PRODUCT_REVIEWS; ?></title>
+<meta name="description" content="<?php echo STORE_NAME . ' - ' . TEXT_PAGE_PRODUCT_REVIEWS . ' ' . META_DESCRIPTION; ?>" />
+<meta name="keywords" content="<?php echo STORE_NAME . ' - ' . TEXT_PAGE_PRODUCT_REVIEWS . ' ' . META_KEYWORDS; ?>" />
 <?php
 
     break;
@@ -498,9 +498,9 @@ $site_reviews_query = vam_db_query($site_reviews_query);
 $site_reviews = vam_db_fetch_array($site_reviews_query);
 
 ?>
-<title><?php echo NAVBAR_TITLE_SITE_REVIEWS . ' ' . STORE_NAME . ' - ' . NAVBAR_TITLE_SITE_REVIEW . ' ' . $site_reviews['reviews_id']; ?></title>
-<meta name="description" content="<?php echo NAVBAR_TITLE_SITE_REVIEWS . ' ' . STORE_NAME . ' ' . NAVBAR_TITLE_SITE_REVIEW . ' ' . $site_reviews['reviews_id']; ?>" />
-<meta name="keywords" content="<?php echo NAVBAR_TITLE_SITE_REVIEWS . ' ' . STORE_NAME . ' ' . NAVBAR_TITLE_SITE_REVIEW . ' ' . $site_reviews['reviews_id']; ?>" />
+<title><?php echo STORE_NAME . ' - ' . NAVBAR_TITLE_SITE_REVIEWS . ' ' . STORE_NAME . ' - ' . NAVBAR_TITLE_SITE_REVIEW . ' ' . $site_reviews['reviews_id']; ?></title>
+<meta name="description" content="<?php echo STORE_NAME . ' - ' . NAVBAR_TITLE_SITE_REVIEWS . ' ' . STORE_NAME . ' ' . NAVBAR_TITLE_SITE_REVIEW . ' ' . $site_reviews['reviews_id']; ?>" />
+<meta name="keywords" content="<?php echo STORE_NAME . ' - ' . NAVBAR_TITLE_SITE_REVIEWS . ' ' . STORE_NAME . ' ' . NAVBAR_TITLE_SITE_REVIEW . ' ' . $site_reviews['reviews_id']; ?>" />
 <?php
 
     break;
@@ -515,9 +515,9 @@ if (!vam_db_num_rows($reviews_query))
 $reviews = vam_db_fetch_array($reviews_query);
 
 ?>
-<title><?php echo NAVBAR_TITLE_SITE_REVIEW . " \"" . $reviews['products_name'] . "\""; ?></title>
-<meta name="description" content="<?php echo NAVBAR_TITLE_SITE_REVIEW . " " . $reviews['products_name']; ?>" />
-<meta name="keywords" content="<?php echo NAVBAR_TITLE_SITE_REVIEW . " " . $reviews['products_name']; ?>" />
+<title><?php echo STORE_NAME . ' - ' . NAVBAR_TITLE_SITE_REVIEW . " \"" . $reviews['products_name'] . "\""; ?></title>
+<meta name="description" content="<?php echo STORE_NAME . ' - ' . NAVBAR_TITLE_SITE_REVIEW . " " . $reviews['products_name']; ?>" />
+<meta name="keywords" content="<?php echo STORE_NAME . ' - ' . NAVBAR_TITLE_SITE_REVIEW . " " . $reviews['products_name']; ?>" />
 <?php
 
     break;
