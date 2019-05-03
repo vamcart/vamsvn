@@ -54,6 +54,8 @@ color: white;
 
 .page p 
    {
+   	margin-top: 0;
+   	margin-bottom: 0;
    }
 
 .pageContent,
