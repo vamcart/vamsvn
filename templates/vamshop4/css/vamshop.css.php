@@ -2703,6 +2703,7 @@ li.ajaxAddQuickie
 .selected
 	{
 		border: 1px solid #000;
+		border-radius: 4px;
 	}
 
 label
@@ -2715,6 +2716,7 @@ label
 .payment-method 
 	{
 		border: 1px solid transparent;
+		border-radius: 4px;
 		padding: 1em;
 	}
 
