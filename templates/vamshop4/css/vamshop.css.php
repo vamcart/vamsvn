@@ -2769,7 +2769,7 @@ del.button
     font-weight: 400;
     color: #fff;
     text-align: center;
-    vertical-align: middle;
+    /*vertical-align: middle;*/
     user-select: none;
     background-color: transparent;
     border: 1px solid transparent;
@@ -2799,7 +2799,7 @@ del.button span
     font-weight: 400;
     color: #fff;
     text-align: center;
-    vertical-align: middle;
+    /*vertical-align: middle;*/
     user-select: none;
     background-color: transparent;
     border: 0;
