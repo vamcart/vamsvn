@@ -2772,7 +2772,6 @@ del.button
     vertical-align: middle;
     user-select: none;
     background-color: transparent;
-    transition: color .1s ease-in-out,background-color .1s ease-in-out,border-color .1s ease-in-out,box-shadow .1s ease-in-out;
     border: 1px solid transparent;
     padding: .300rem .75rem;
     font-size: 1rem;
@@ -2803,7 +2802,6 @@ del.button span
     vertical-align: middle;
     user-select: none;
     background-color: transparent;
-    transition: color .05s ease-in-out,background-color .1s ease-in-out,border-color .1s ease-in-out,box-shadow .1s ease-in-out;
     border: 0;
     padding: 0;
     margin: 0;
