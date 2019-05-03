@@ -68,41 +68,9 @@
 <p>
 {#title_viewed_products#}
 </p>
-{foreach name=history_products item=products from=$products_history} 
-<dl class="itemLastViewed">
-<dt class="itemImage">
-<a href="{$products.PRODUCTS_LINK}"><img src="{$products.PRODUCTS_IMAGE}" alt="{$products.PRODUCTS_NAME}" border="0" /></a>
-</dt>
-<dd class="itemDescription">
-<a href="{$products.PRODUCTS_LINK}">{$products.PRODUCTS_NAME}</a>
-</dd>
-
-{if $products_history.REVIEWS_TOTAL > 0}<dd class="itemDescription"><span class="rating">{$products.REVIEWS_STAR_RATING}</span>, <span class="reviews">{$smarty.const.TEXT_TOTAL_REVIEWS}: {$products.REVIEWS_TOTAL}</span></dd>{/if}
-
-<dd class="itemDescriptionPrice">
-{$products.PRODUCTS_PRICE}
-</dd>
-
-{if $products_history.PRODUCTS_VPE}
-<dd class="itemDescription">
-{$products.PRODUCTS_VPE}
-</dd>
-{/if}
-
-<dd class="itemDescription">
-{$products.PRODUCTS_TAX_INFO}{$products.PRODUCTS_SHIPPING_LINK}
-</dd>
-
-<dd class="itemDescription">
-<a href="{$products.PRODUCTS_LINK}"></a><a href="{$products.PRODUCTS_CATEGORY_URL}">{#text_goto_cat#}</a>
-</dd>
-
-<dd class="itemDescription">
-{$products.PRODUCTS_BUTTON_BUY_NOW}
-</dd>
-
-</dl>
-          {/foreach} 
+{foreach name=history_products item=module_data from=$products_history} 
+{include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/product-card/product-card-listing.html"}
+{/foreach} 
 
 </div>
 <div class="clear"></div>
