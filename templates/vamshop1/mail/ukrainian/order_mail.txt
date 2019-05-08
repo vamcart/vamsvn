@@ -1,0 +1,43 @@
+Шановний (а) {$ NAME}!
+Ви оформили замовлення в нашому інтернет-магазині!
+
+Будь ласка, перевірте правильність такої інформації:
+
+Ви замовили:
+
+{Foreach name = aussen item = order_values ​​from = $ order_data}
+{$ Order_values.PRODUCTS_QTY} x {$ order_values.PRODUCTS_NAME} {if $ order_values.PRODUCTS_MODEL neq ''} ({$ order_values.PRODUCTS_MODEL}) {/ if} {$ order_values.PRODUCTS_PRICE}
+{If $ order_values.PRODUCTS_SHIPPING_TIME neq ''} Час доставки: {$ order_values.PRODUCTS_SHIPPING_TIME} {/ if}
+
+{If $ order_values.PRODUCTS_ATTRIBUTES! = ''} {$ Order_values.PRODUCTS_ATTRIBUTES} {/ if}
+
+{/ Foreach}
+
+{Foreach name = aussen item = order_total_values ​​from = $ order_total}
+{$ Order_total_values.TITLE} {$ order_total_values.TEXT}
+{/ Foreach}
+
+Обраний Вами спосіб оплати: {if $ PAYMENT_METHOD} {$ PAYMENT_METHOD} {/ if}
+
+{$ PAYMENT_INFO_TXT}
+
+{If $ SHIPPING_METHOD}
+Доставка: {$ SHIPPING_METHOD}
+
+Адреса доставки вашого замовлення:
+{$ Address_label_shipping}
+
+{/ If}
+
+{If $ COMMENTS}
+Ваші коментарі до замовлення:
+{$ COMMENTS}
+{/ If}
+
+Номер замовлення: {$ oID}
+Ваш контактний телефон: {$ PHONE}
+Електронна адреса: {$ EMAIL}.
+{If $ customer_extra_fields} {$ customer_extra_fields} {/ if}
+
+У разі, якщо Ви виявите помилку, зроблену при оформленні замовлення -
+повідомте нам про це якомога швидше в листі, чи по телефону, чи у вайбер.
