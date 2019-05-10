@@ -34,7 +34,7 @@ define('SC_PROGRESS_CHECKOUT_PAGE', 'Оформлення замовлення')
 define('SC_PROGRESS_CONFIRMATION_PAGE', 'Подтверження замовлення');
 //progress bar end
 
-define('TEXT_ORIGIN_LOGIN', 'Якщо Ви наш постійний клієнт, <b> <a href='.FILENAME_LOGIN.'> <u> введіть Ваші персональні дані </ u> </a> </ b> для входу. Або Ви можете оформити замовлення прямо зараз, заповнивши форму нижче. ');
+define('TEXT_ORIGIN_LOGIN', 'Якщо Ви наш постійний клієнт, <b> <a href='.FILENAME_LOGIN.'> <u> введіть Ваші персональні дані </u> </a> </b> для входу. Або Ви можете оформити замовлення прямо зараз, заповнивши форму нижче. ');
 
 define('CATEGORY_COMPANY', 'Організація');
 define('CATEGORY_PERSONAL', 'Ваші персональні дані');

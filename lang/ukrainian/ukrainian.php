@@ -526,7 +526,7 @@ define('TEXT_FOOTER_DOWNLOAD', 'Всі доступні завантаження
 define('TEXT_DOWNLOAD_MY_ACCOUNT', 'Історії замовлень');
 
 define('NAVBAR_TITLE_ASK', 'Питання про товар');
-define('TEXT_EMAIL_SUCCESSFUL_SENT', 'Ваше питання про товар <b>%s </ b> успішно відправлене, ми відповімо на нього в самий найближчий час.');
+define('TEXT_EMAIL_SUCCESSFUL_SENT', 'Ваше питання про товар <b>%s </b> успішно відправлене, ми відповімо на нього в самий найближчий час.');
 define('THX_SUCCESSFUL_SENT', 'Дякуємо!');
 define('TEXT_MESSAGE_ERROR', 'Ви не заповнили поле Ваше питання.');
 define('NAVBAR_TITLE_MAINTENANCE', 'Тех. обслуговування');
