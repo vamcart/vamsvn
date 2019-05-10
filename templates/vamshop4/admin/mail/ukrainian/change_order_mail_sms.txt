@@ -1,8 +1,8 @@
-Замовлення {$ ORDER_NR} змінено!
+Замовлення {$ORDER_NR} змінено!
 
-Новий статус: {$ ORDER_STATUS}
+Новий статус: {$ORDER_STATUS}
 
-{If $ NOTIFY_COMMENTS} {$ NOTIFY_COMMENTS} {/ if}
+{if $NOTIFY_COMMENTS} {$NOTIFY_COMMENTS} {/if}
 
-{$ Smarty.const.STORE_OWNER_EMAIL_ADDRESS}
-{$ Smarty.const.STORE_TELEPHONE}
+{$Smarty.const.STORE_OWNER_EMAIL_ADDRESS}
+{$Smarty.const.STORE_TELEPHONE}

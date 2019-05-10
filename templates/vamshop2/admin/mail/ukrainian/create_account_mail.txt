@@ -2,9 +2,9 @@
 
 Ми зареєстрували Вас в нашому інтернет-магазині.
 
-{If $ COMMENTS} Коментарі: {$ COMMENTS} {/ if}
+{if $COMMENTS} Коментарі: {$COMMENTS} {/if}
 
 Дані для входу:
 
-Email: {$ EMAIL}
-Пароль: {$ PASSWORD}
+Email: {$EMAIL}
+Пароль: {$PASSWORD}
