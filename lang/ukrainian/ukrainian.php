@@ -207,7 +207,7 @@ define('ICON_WARNING', 'Увага');
 
 define('TEXT_GREETING_PERSONAL', 'Ласкаво просимо, <span class="greetUser">%s! </span> Ви хочете подивитися які <a href="%s"> нові товари </a> надійшли в наш магазин?' );
 define('TEXT_GREETING_PERSONAL_RELOGON', '<small> Якщо Ви не %s, будь ласка, <a href="%s"> введіть </a> свої дані для входу. </ small>');
-define('TEXT_GREETING_GUEST', 'Ласкаво просимо, <span class="greetUser"> шановний відвідувач </span> <br /> Якщо Ви наш постійний клієнт, <a href="%s"> введіть Ваші персональні дані </ a> для входу. Якщо Ви у нас вперше і хочете зробити покупки, Вам необхідно <a href="%s"> зареєструватися </a>. ');
+define('TEXT_GREETING_GUEST', 'Ласкаво просимо, <span class="greetUser"> шановний відвідувач </span> <br /> Якщо Ви наш постійний клієнт, <a href="%s"> введіть Ваші персональні дані </a> для входу. Якщо Ви у нас вперше і хочете зробити покупки, Вам необхідно <a href="%s"> зареєструватися </a>. ');
 
 define('TEXT_SORT_PRODUCTS', 'Сортувати товар за');
 define('TEXT_DESCENDINGLY', 'спаданням');
