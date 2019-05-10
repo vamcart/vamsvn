@@ -59,9 +59,9 @@ if ($parent_id == 0){ $cPath = ''; } else { $cPath .= $parent_id . '_'; }
  	$group_check = "and c.group_permission_".$_SESSION['customers_status']['customers_status_id']."=1 ";
  }
  
- $categories_query = "select c.categories_image, c.categories_id, cd.categories_name FROM " . TABLE_CATEGORIES . " c left join "
+ $categories_query = "select c.categories_image, c.categories_id, cd.categories_name, cd.categories_description FROM " . TABLE_CATEGORIES . " c left join "
       . TABLE_CATEGORIES_DESCRIPTION ." cd on c.categories_id = cd.categories_id WHERE c.categories_status = '1' and cd.language_id = ".$_SESSION['languages_id']
-      ." and c.parent_id = '0' ".$group_check." order by c.sort_order ASC";
+      ." and c.parent_id = '0' ".$group_check." order by c.sort_order ASC, c.categories_id DESC limit ".MAX_DISPLAY_CATEGORIES_PER_ROW."";
 
  // db Cache
  $categories_query = vamDBquery($categories_query);
@@ -71,27 +71,33 @@ if ($parent_id == 0){ $cPath = ''; } else { $cPath .= $parent_id . '_'; }
    $SEF_link = vam_href_link(FILENAME_DEFAULT, vam_category_link($categories['categories_id'],$categories['categories_name']));
  
    $module_content[]=array('ID'  => $categories['categories_id'],
-                           'CAT_NAME'  => $categories['categories_name'],
-                           'CAT_IMAGE' => DIR_WS_IMAGES . 'categories/' . $categories['categories_image'],
-                           'CAT_LINK'  => $SEF_link,
-			   'SCATS'  => get_category_tree($categories['categories_id'], '',0));
+                           'CATEGORIES_NAME'  => $categories['categories_name'],
+                           'CATEGORIES_DESCRIPTION'  => $categories['categories_description'],
+                           'CATEGORIES_IMAGE' => ($categories['categories_image'] == '' ) ? DIR_WS_IMAGES . 'product_images/noimage.gif' : DIR_WS_IMAGES . 'categories/' . $categories['categories_image'],
+                           'CATEGORIES_LINK'  => $SEF_link
+                           
+			   //'SCATS'  => get_category_tree($categories['categories_id'], '',0)
+			   
+			   );
  }
 
  // if there's sth -> assign it
  if (sizeof($module_content)>=1)
  {
+ $module->assign('SITEMAP_LINK', vam_href_link(FILENAME_DEFAULT, 'cat=0'));
  $module->assign('language', $_SESSION['language']);
  $module->assign('module_content',$module_content);
  // set cache ID
  if (!CacheCheck()) {
  $module->caching = 0;
- echo $module->fetch(CURRENT_TEMPLATE.'/module/sitemap.html');
+ echo $module = $module->fetch(CURRENT_TEMPLATE.'/module/sitemap.html');
  } else {
  $module->caching = 1;
  $module->cache_lifetime=CACHE_LIFETIME;
  $module->cache_modified_check=CACHE_CHECK;
  $cache_id = $GET['cPath'].$_SESSION['language'].$_SESSION['customers_status']['customers_status_name'].$_SESSION['currency'];
- echo $module->fetch(CURRENT_TEMPLATE.'/module/sitemap.html',$cache_id);
+ echo $module = $module->fetch(CURRENT_TEMPLATE.'/module/sitemap.html',$cache_id);
  }
+
  }
 ?>
