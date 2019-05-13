@@ -294,12 +294,12 @@ define('RSS_CONTENT_COPYRIGHT', 'Copyright &copy; ' . date('Y') . ' ' . STORE_OW
 		 if ($random) {
          $products = vam_random_select($sql_products);
          $link = vam_href_link(FILENAME_PRODUCT_INFO, vam_product_link($products['products_id'], $products['products_name']) . (isset($_GET['ref']) ? '&ref=' . $_GET['ref'] : null), 'NONSSL', false);
-         $rss->rss_feed_item($products['products_name'], $link, $link, date('r', strtotime(max($products['products_date_added'], $products['products_last_modified']))), $products['products_description'], $products['products_image'], vam_href_link(FILENAME_PRODUCT_REVIEWS_INFO,vam_product_link($products['products_id'], $products['products_name']) . (isset($_GET['ref']) ? '&ref=' . $_GET['ref'] : null), 'NONSSL', false));
+         $rss->rss_feed_item($products['products_name'], $link, $link, date('r', strtotime(max($products['products_date_added'], $products['products_last_modified']))), $products['products_description'], $products['products_image'], vam_href_link(FILENAME_PRODUCT_REVIEWS,'products_id='.$products['products_id'] . (isset($_GET['ref']) ? '&ref=' . $_GET['ref'] : null), 'NONSSL', false));
       } else {
          $products_query = vam_db_query($sql_products);
          while($products = vam_db_fetch_array($products_query)) {
             $link = vam_href_link(FILENAME_PRODUCT_INFO, vam_product_link($products['products_id'], $products['products_name']) . (isset($_GET['ref']) ? '&ref=' . $_GET['ref'] : null), 'NONSSL', false);
-            $rss->rss_feed_item($products['products_name'], $link, $link, date('r', strtotime(max($products['products_date_added'], $products['products_last_modified']))), $products['products_description'], $products['products_image'], vam_href_link(FILENAME_PRODUCT_REVIEWS_INFO,vam_product_link($products['products_id'], $products['products_name']) . (isset($_GET['ref']) ? '&ref=' . $_GET['ref'] : null), 'NONSSL', false));
+            $rss->rss_feed_item($products['products_name'], $link, $link, date('r', strtotime(max($products['products_date_added'], $products['products_last_modified']))), $products['products_description'], $products['products_image'], vam_href_link(FILENAME_PRODUCT_REVIEWS,'products_id='.$products['products_id'] . (isset($_GET['ref']) ? '&ref=' . $_GET['ref'] : null), 'NONSSL', false));
             if ($random)
                break;
          }
