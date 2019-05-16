@@ -22,7 +22,7 @@
   function vam_get_product_path($products_id) {
     $cPath = '';
 
-    $category_query = "select p2c.categories_id from " . TABLE_PRODUCTS . " p, " . TABLE_PRODUCTS_TO_CATEGORIES . " p2c where p.products_id = '" . (int)$products_id . "' and p.products_status = '1' and p.products_id = p2c.products_id and p2c.categories_id != 0 limit 1";
+    $category_query = "select p2c.categories_id from " . TABLE_PRODUCTS . " p, " . TABLE_PRODUCTS_TO_CATEGORIES . " p2c where p.products_id = '" . (int)$products_id . "' and p.products_status = '1' and p.products_id = p2c.products_id and p2c.categories_id != 0 order by p2c.categories_id desc limit 1";
     $category_query  = vamDBquery($category_query);
     if (vam_db_num_rows($category_query,true)) {
       $category = vam_db_fetch_array($category_query);
