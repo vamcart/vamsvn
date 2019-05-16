@@ -37,4 +37,7 @@ if ((GZIP_COMPRESSION == 'true') && ($ext_zlib_loaded == true) && ($ini_zlib_out
 		vam_gzip_output(GZIP_LEVEL);
 	}
 }
+
+include (DIR_WS_INCLUDES.'footer.php');
+
 ?>
