@@ -70,7 +70,6 @@ if('serviceWorker' in navigator) {
 
 let deferredPrompt;
 const addBtn = document.querySelector('.a2hs-button');
-console.log(addBtn);
 addBtn.style.display = 'none';
 
 window.addEventListener('beforeinstallprompt', (e) => {
