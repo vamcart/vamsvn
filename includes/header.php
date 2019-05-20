@@ -398,12 +398,6 @@ $vamTemplate->assign('admin_area_link', vam_href_link_admin(FILENAME_START,'', '
 
 $vamTemplate->assign('cart_count', $_SESSION['cart']->count_contents());
 $vamTemplate->assign('cart_total', $_SESSION['cart']->show_total());
-
-$kypiru = file('/home/oscommer/data/www/vamshop.ru/stat-kypiru.txt');
-$vamshopru = file('/home/oscommer/data/www/vamshop.ru/stat.txt');
-$stat = $kypiru[0]+$vamshopru[0];
-
-$vamTemplate->assign('stat', $stat);
 	
 // /Метки для закладок
 
