@@ -70,21 +70,6 @@ elseif ($_POST) {
         $pInfo = new objectInfo(array ());
 }
 
-    // BOF Bundled Products
-    $bundle_array = array();
-    if (isset($pInfo->products_bundle) && $pInfo->products_bundle == "yes") {
-      // this product is a bundle so get contents data 
-      $bundle_query = vam_db_query("SELECT pb.subproduct_id, pb.subproduct_qty, pd.products_name FROM " . TABLE_PRODUCTS_DESCRIPTION . " pd INNER JOIN " . TABLE_PRODUCTS_BUNDLES . " pb ON pb.subproduct_id=pd.products_id WHERE pb.bundle_id = '" . (int)$_GET['pID'] . "' and language_id = '" . (int)$_SESSION['languages_id'] . "'");
-      while ($bundle_contents = vam_db_fetch_array($bundle_query)) {
-        $bundle_array[] = array('id' => $bundle_contents['subproduct_id'],
-                                'qty' => $bundle_contents['subproduct_qty'],
-                                'name' => $bundle_contents['products_name']);
-      }
-    }
-    $bundle_count = count($bundle_array);
-    // EOF Bundled Products
-
-
 $manufacturers_array = array (array ('id' => '', 'text' => TEXT_NONE));
 $manufacturers_query = vam_db_query("select manufacturers_id, manufacturers_name from ".TABLE_MANUFACTURERS." order by manufacturers_name");
 while ($manufacturers = vam_db_fetch_array($manufacturers_query)) {
@@ -205,7 +190,6 @@ $manual_link = ($_GET['pID']) ? 'edit-product' : 'add-product';
 ?>
 				<li><a href="#fields"><?php echo vam_image(DIR_WS_IMAGES . 'icons/tabs/other.png', '', '16', '16'); ?>&nbsp;<?php echo strip_tags(BOX_PRODUCT_EXTRA_FIELDS); ?></a></li>
 				<li><a href="#specs"><?php echo vam_image(DIR_WS_IMAGES . 'icons/tabs/filter.png', '', '16', '16'); ?>&nbsp;<?php echo strip_tags(TEXT_TAB_SPECIFICATIONS); ?></a></li>
-				<li><a href="#bundles"><?php echo vam_image(DIR_WS_IMAGES . 'icons/tabs/products.png', '', '16', '16'); ?>&nbsp;<?php echo strip_tags(TEXT_TAB_BUNDLES); ?></a></li>
 			</ul>
 
 <?php for ($i = 0, $n = sizeof($languages); $i < $n; $i++) { ?>
@@ -492,139 +476,6 @@ foreach (array('product_info', 'product_options') as $key) {
                   
         </div>
         
-        
-        <div id="bundles">
-        
-          <table border="0" class="main">
-
-          <tr>
-            <td colspan=2>
-
-<!-- BOF Bundled Products -->
-          <tr>
-            <td></td>
-            <td class="main" valign="top">
-            <?php if ($pInfo->sold_in_bundle_only == 'yes') { $sold_in_bundle_only_checked = true; } else { $sold_in_bundle_only_checked = false; } ?>
-            <?php echo vam_draw_radio_field('sold_in_bundle_only', 'no', !$sold_in_bundle_only_checked) . ENTRY_AVAILABLE_SEPARATELY . '<br />' . vam_draw_radio_field('sold_in_bundle_only', 'yes', $sold_in_bundle_only_checked) . ENTRY_IN_BUNDLE_ONLY; ?>
-            </td>
-          </tr>
-          <tr>
-            <td class="main" valign="top">
-              <?php echo TEXT_PRODUCTS_BUNDLE; ?>
-            </td>
-            <td class="main" valign="top">
-              <table>
-                <tr>
-                  <td class="main" valign="top">
-                    <?php echo vam_draw_separator('pixel_trans.gif', '24', '15') . vam_draw_pull_down_menu('products_bundle', array(array('id'=>'no','text'=>NO),array('id'=>'yes','text'=>YES)), $pInfo->products_bundle) . '<br /><a href="javascript:" onclick="addSubproduct()">' . TEXT_ADD_LINE . '</a><br />'; ?>
-                  </td>
-                  <td class="main" valign="top">
-<script type="text/javascript"><!--
-function fillCodes() {
-  for (var n=0;n<100;n++) {
-    var this_subproduct_id = eval("document.new_product.subproduct_" + n + "_id")
-    var this_subproduct_name = eval("document.new_product.subproduct_" + n + "_name")
-    var this_subproduct_qty = eval("document.new_product.subproduct_" + n + "_qty")
-    if (this_subproduct_id.value == "") {
-      this_subproduct_id.value = document.new_product.subproduct_selector.value
-      this_subproduct_qty.value = "1"
-      var name = document.new_product.subproduct_selector[document.new_product.subproduct_selector.selectedIndex].text
-        this_subproduct_name.value = name
-        document.returnValue = true;
-        return true;
-    }
-  }
-}
-
-function clearSubproduct(n) {
-  var this_subproduct_id = eval("document.new_product.subproduct_" + n + "_id");
-  var this_subproduct_name = eval("document.new_product.subproduct_" + n + "_name");
-  var this_subproduct_qty = eval("document.new_product.subproduct_" + n + "_qty");
-  this_subproduct_id.value = "";
-  this_subproduct_name.value = "";
-  this_subproduct_qty.value = "";
-}
-
-function addSubproduct(){
-  var n = parseInt(document.getElementById('bundled_subproducts_i').value);
-  var HTML = document.getElementById('bundled_subproducts');
-  currentElement = document.createElement("input");
-  currentElement.setAttribute("disabled","");
-  currentElement.setAttribute("size","30");
-  currentElement.setAttribute("type", "text");
-  currentElement.setAttribute("name", 'subproduct_' + n + '_name');
-  currentElement.setAttribute("value", "");
-  HTML.appendChild(currentElement);
-  currentElement = document.createElement("input");
-  currentElement.setAttribute("size","3");
-  currentElement.setAttribute("type", "hidden");
-  currentElement.setAttribute("name", 'subproduct_' + n + '_id');
-  currentElement.setAttribute("value", "");
-  HTML.appendChild(currentElement);
-  currentElement = document.createTextNode(' ');
-  HTML.appendChild(currentElement);
-  currentElement = document.createElement("input");
-  currentElement.setAttribute("size","3");
-  currentElement.setAttribute("type", "text");
-  currentElement.setAttribute("name", 'subproduct_' + n + '_qty');
-  currentElement.setAttribute("value", "");
-  HTML.appendChild(currentElement);
-  document.createTextNode('&nbsp;');
-  HTML.appendChild(currentElement);
-  var myLink = document.createElement('a');
-  var href = document.createAttribute('href');
-  myLink.setAttribute('href','javascript:');
-  myLink.setAttribute('onclick', 'clearSubproduct(' + n + ')');
-  <?php echo "myLink.innerText = ' [x] " . TEXT_REMOVE_PRODUCT . "';\n"; ?>
-  HTML.appendChild(myLink);
-  currentElement = document.createElement("br");
-  HTML.appendChild(currentElement);
-  document.getElementById('bundled_subproducts_i').value = n + 1;
-}
-            //--></script>
-                    <div id="bundled_subproducts">
-<?php
-    echo TEXT_BUNDLE_HEADING . "<br />\n";
-    for ($i=0, $n = $bundle_count ? $bundle_count+1 : 3; $i<$n; $i++) {
-      echo '<input type="text" disabled size="30" name="subproduct_' . $i . '_name" value="' . (isset($bundle_array[$i]['name']) ? vam_output_string($bundle_array[$i]['name']) : '') . '">' . "\n";
-      echo '<input type="hidden" size="3" name="subproduct_' . $i . '_id" value="' . (isset($bundle_array[$i]['id']) ? $bundle_array[$i]['id'] : '') . '">' . "\n";
-      echo '<input type="text" size="3" name="subproduct_' . $i . '_qty" value="' . (isset($bundle_array[$i]['id']) ? $bundle_array[$i]['qty'] : '') . '">' . "\n";
-      echo '<a href="javascript:clearSubproduct(' . $i . ')">[x] ' . TEXT_REMOVE_PRODUCT . "</a><br />\n";
-    }
-?>
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td colspan=2 class="main">
-<?php
-    echo vam_draw_hidden_field('bundled_subproducts_i', $i,'id="bundled_subproducts_i"');
-    echo TEXT_ADD_PRODUCT . '<select name="subproduct_selector" onChange="fillCodes()">';
-    echo '<option name="null" value="" SELECTED></option>';
-    $where_str = '';
-    if (isset($_GET['pID'])) {
-      $bundle_check = bundle_avoid($_GET['pID']);
-      if (!empty($bundle_check)) {
-        $where_str = ' and (not (p.products_id in (' . implode(',', $bundle_check) . ')))';
-      }
-     }
-    $products = vam_db_query("select pd.products_name, p.products_id, p.products_model from " . TABLE_PRODUCTS . " p, " . TABLE_PRODUCTS_DESCRIPTION . " pd where pd.products_id = p.products_id and pd.language_id = '" . (int)$_SESSION['languages_id'] . "' and p.products_id <> " . (int)$_GET['pID'] . $where_str . " order by p.products_model");
-    while($products_values = vam_db_fetch_array($products)) {
-      echo "\n" . '<option name="' . $products_values['products_id'] . '" value="' . $products_values['products_id'] . '">' . $products_values['products_name'] . " (" . $products_values['products_model'] . ')</option>';
-    }
-    echo '</select>';
-?>
-                  </td>
-                </tr>
-              </table>
-            </td>
-          </tr>
-          <!-- EOF Bundled Products -->
-
-
-          </table>
-                  
-        </div>        
 <!-- group check-->
 
 </div>
