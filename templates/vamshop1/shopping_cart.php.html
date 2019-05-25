@@ -94,3 +94,56 @@
 	</div>
 </div>
 <!-- end: Container -->
+
+<!-- start: Footer -->
+<footer id="footer">
+	<div class="container">
+		<div class="row-fluid">
+			<div class="span3 clearfix">
+				<h3 class="widget-title">{#heading_infobox#}</h3>
+				<div class="widget-inner">
+
+					<ul class="unstyled">
+						{$box_CONTENT_PULL}
+					</ul>
+
+				</div>
+			</div>
+			<div class="span3 clearfix">
+				<h3 class="widget-title">{#heading_news#}</h3>
+				<div class="widget-inner">
+
+					<ul class="unstyled">
+						{$box_LATESTNEWS_DROPDOWN}
+					</ul>
+
+				</div>
+			</div>
+
+			<div class="span6 clearfix">
+				<h3 class="widget-title">{#heading_articles_new#}</h3>
+				<div class="widget-inner">
+
+					<ul class="unstyled">
+						{$box_ARTICLESNEW_DROPDOWN}
+					</ul>
+
+				</div>
+			</div>
+		</div>
+	</div>
+</footer>
+<!-- end: Footer -->
+
+<!-- start: Footer menu -->
+<div id="footer-menu">
+
+	{if $BANNER}<div class="text-center">{$BANNER}<br /><br /></div>{/if}
+
+	<div class="text-center">
+   <button class="btn btn-primary a2hs-button" id="a2hs-button">{#text_a2hs#}</button>	
+	<a href="vam_rss2_info.php"><img src="images/rss.png" alt="RSS" /></a>
+	</div>
+
+</div>
+<!-- end: Footer menu -->
