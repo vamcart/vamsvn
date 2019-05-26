@@ -17,17 +17,17 @@ $(function($){
 {/literal}
 </script>
 
-<div class="page">
-<h1>{#heading_text#}</h1>
-<div class="pageContent">
-
 {$FORM_ACTION}
+
+<div id="content">
 
 {if $error!=''}
 <div class="contacterror">
 {$error}
 </div>
 {/if}
+<div class="page">
+<div class="pagecontent">
 <!-- форма -->
 <fieldset class="form">
 <legend>{#title_question#} {$PRODUCTS_NAME}</legend>
@@ -46,8 +46,10 @@ $(function($){
 	<input type="text" name="anti-bot-e-email-url" id="anti-bot-e-email-url" size="30" value=""/>
 </div>
 <!-- /форма -->
+</div>
+</div>
 
-<div class="pageContentFooter">
+<div class="pagecontentfooter">
 {$BUTTON_SUBMIT}
 </div>
 <br />
@@ -56,5 +58,6 @@ $(function($){
 </div>
 {$FORM_END}
 
-</div>
+<br /><button class="btn btn-primary a2hs-button" id="a2hs-button">{#text_a2hs#}</button>	
+
 </div>
