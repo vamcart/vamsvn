@@ -20,3 +20,6 @@ if ( strstr($PHP_SELF, FILENAME_ADDRESS_BOOK)
 <?php
 }
 ?>
+<?php
+if (file_exists(dirname(__FILE__) . '/local.css.php')) include('local.css.php');
+?>

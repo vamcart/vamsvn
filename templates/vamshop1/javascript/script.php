@@ -50,4 +50,7 @@ $(document).ready(function(){
 <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
 <!--[if lt IE 9]>
 <script src="<?php echo 'templates/'.CURRENT_TEMPLATE.'/javascript/html5.js'; ?>"></script>
-<![endif]-->
+<![endif]-->
+<?php
+if (file_exists(dirname(__FILE__) . '/local.js.php')) include('local.js.php');
+?>

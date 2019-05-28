@@ -100,3 +100,6 @@ window.addEventListener('beforeinstallprompt', (e) => {
 });
 
 </script>
+<?php
+if (file_exists(dirname(__FILE__) . '/local.js.php')) include('local.js.php');
+?>
