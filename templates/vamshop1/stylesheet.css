@@ -577,9 +577,6 @@ background: #fff;
 .thumbnail {
   position: relative;
 }
-.thumbnail span.link {
-  display: block;
-}
 .media .frame-overlay,
 .thumbnail .frame-overlay,
 .portfolio article .frame-overlay {
