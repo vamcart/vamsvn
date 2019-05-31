@@ -597,21 +597,47 @@ function addSubproduct(){
                 </tr>
                 <tr>
                   <td colspan=2 class="main">
+
+      <input type="text" name="keywords" class="form-control" id="quick_find_keyword" placeholder="<?php echo HEADING_TITLE_SEARCH; ?>" />
+
+<script>
+// <![CDATA[
+$(document).ready(function(){
+
+  $("#quick_find_keyword").keyup(function(){
+      var searchString = $("#quick_find_keyword").val(); 
+      $.ajax({
+      	url: "<?php echo DIR_WS_CATALOG; ?>index_ajax.php",             
+      	dataType : "html",
+      	type: "POST",
+      	data: "q=admin/includes/modules/ajax/ajaxBundleFind.php&keywords="+searchString,
+      	success: function(msg){$("#ajaxBundleFind").html(msg);}            
+ });     
+                           
+                           
+   });
+
+
+})
+
+// ]]>
+</script>
+
 <?php
     echo vam_draw_hidden_field('bundled_subproducts_i', $i,'id="bundled_subproducts_i"');
-    echo TEXT_ADD_PRODUCT . '<select name="subproduct_selector" onChange="fillCodes()">';
+    echo TEXT_ADD_PRODUCT . '<select name="subproduct_selector" id="ajaxBundleFind" onChange="fillCodes()">';
     echo '<option name="null" value="" SELECTED></option>';
-    $where_str = '';
-    if (isset($_GET['pID'])) {
-      $bundle_check = bundle_avoid($_GET['pID']);
-      if (!empty($bundle_check)) {
-        $where_str = ' and (not (p.products_id in (' . implode(',', $bundle_check) . ')))';
-      }
-     }
-    $products = vam_db_query("select pd.products_name, p.products_id, p.products_model from " . TABLE_PRODUCTS . " p, " . TABLE_PRODUCTS_DESCRIPTION . " pd where pd.products_id = p.products_id and pd.language_id = '" . (int)$_SESSION['languages_id'] . "' and p.products_id <> " . (int)$_GET['pID'] . $where_str . " order by p.products_model");
-    while($products_values = vam_db_fetch_array($products)) {
-      echo "\n" . '<option name="' . $products_values['products_id'] . '" value="' . $products_values['products_id'] . '">' . $products_values['products_name'] . " (" . $products_values['products_model'] . ')</option>';
-    }
+    //$where_str = '';
+    //if (isset($_GET['pID'])) {
+      //$bundle_check = bundle_avoid($_GET['pID']);
+      //if (!empty($bundle_check)) {
+        //$where_str = ' and (not (p.products_id in (' . implode(',', $bundle_check) . ')))';
+      //}
+     //}
+    //$products = vam_db_query("select pd.products_name, p.products_id, p.products_model from " . TABLE_PRODUCTS . " p, " . TABLE_PRODUCTS_DESCRIPTION . " pd where pd.products_id = p.products_id and pd.language_id = '" . (int)$_SESSION['languages_id'] . "' and p.products_id <> " . (int)$_GET['pID'] . $where_str . " order by p.products_model");
+    //while($products_values = vam_db_fetch_array($products)) {
+      //echo "\n" . '<option name="' . $products_values['products_id'] . '" value="' . $products_values['products_id'] . '">' . $products_values['products_name'] . " (" . $products_values['products_model'] . ')</option>';
+    //}
     echo '</select>';
 ?>
                   </td>
