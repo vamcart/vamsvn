@@ -42,7 +42,7 @@ $order_sum = $order->info['total'];
 
 $hash = strtoupper(md5($_POST['action'].';'.$_POST['orderSumAmount'].';'.$_POST['orderSumCurrencyPaycash'].';'.$_POST['orderSumBankPaycash'].';'.$_POST['shopId'].';'.$_POST['invoiceId'].';'.$_POST['customerNumber'].';'.MODULE_PAYMENT_YANDEX_MERCHANT_SECRET_KEY));
 
-if ($_POST['action'] == 'process' or $_POST['action'] == 'checkOrder') {
+if (!$_POST['paymentDatetime'] && $_POST['action'] == 'process') {
 if ($hash == $crc) {
 echo '<?xml version="1.0" encoding="UTF-8"?>
 <checkOrderResponse performedDatetime="'.$_POST['requestDatetime'].'"
@@ -51,7 +51,7 @@ echo '<?xml version="1.0" encoding="UTF-8"?>
 }
 }
 
-if ($_POST['action'] == 'paymentAviso') {
+if ($_POST['paymentDatetime'] != '' && $_POST['action'] == 'process') {
 if ($hash == $crc) {
 echo '<?xml version="1.0" encoding="UTF-8"?>
 <paymentAvisoResponse
@@ -62,7 +62,7 @@ echo '<?xml version="1.0" encoding="UTF-8"?>
 }
 
 // checking and handling
-if ($_POST['action'] == 'paymentAviso') {
+if ($_POST['paymentDatetime'] != '' && $_POST['action'] == 'process') {
 if ($hash == $crc) {
 if (number_format($_POST['orderSumAmount'],0) == number_format($order->info['total'],0)) {
   $sql_data_array = array('orders_status' => MODULE_PAYMENT_YANDEX_MERCHANT_ORDER_STATUS_ID);
