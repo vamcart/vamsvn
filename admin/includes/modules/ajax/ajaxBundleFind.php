@@ -16,7 +16,7 @@
 
 	define("AJAX_QUICKSEARCH_RESULT", 'text'); // dropdown or text
 	define("AJAX_QUICKSEARCH_DROPDOWN_SIZE", 5);
-	define("AJAX_QUICKSEARCH_LIMIT", 15);
+	define("AJAX_QUICKSEARCH_LIMIT", 1000);
 
 	$q = addslashes(preg_replace("%[^0-9a-zA-Zа-яА-Я\s]%iu", "", $_REQUEST['keywords']) );
 
