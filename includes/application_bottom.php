@@ -38,9 +38,9 @@ if ((GZIP_COMPRESSION == 'true') && ($ext_zlib_loaded == true) && ($ini_zlib_out
 	}
 }
 
-include (DIR_WS_INCLUDES.'footer.php');
-
 if (file_exists(dirname($_SERVER['SCRIPT_FILENAME']) . '/templates/'.CURRENT_TEMPLATE.'/css/css_footer.php')) include('templates/'.CURRENT_TEMPLATE.'/css/css_footer.php');
 if (file_exists(dirname($_SERVER['SCRIPT_FILENAME']) . '/templates/'.CURRENT_TEMPLATE.'/javascript/script_footer.php')) include('templates/'.CURRENT_TEMPLATE.'/javascript/script_footer.php');
+
+include (DIR_WS_INCLUDES.'footer.php');
 
 ?>
