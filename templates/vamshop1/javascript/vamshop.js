@@ -50,61 +50,27 @@ $(window).load(function() {
 });
 }
 
-/*
-|--------------------------------------------------------------------------
-| UItoTop jQuery Plugin 1.2 by Matt Varone
-| http://www.mattvarone.com/web-design/uitotop-jquery-plugin/
-|--------------------------------------------------------------------------
-*/
-(function($){
-	$.fn.UItoTop = function(options) {
-
- 		var defaults = {
-    			text: '',
-    			min: 200,
-    			inDelay:600,
-				outDelay:400,
-				containerID: 'toTop',
-    			containerHoverID: 'toTopHover',
-    			scrollSpeed: 1200,
-    			easingType: 'linear'
- 		    },
-            settings = $.extend(defaults, options),
-            containerIDhash = '#' + settings.containerID,
-            containerHoverIDHash = '#'+settings.containerHoverID;
-		
-		$('body').append('<a href="#" id="'+settings.containerID+'">'+settings.text+'</a>');
-		$(containerIDhash).hide().on('click.UItoTop',function(){
-			$('html, body').animate({scrollTop:0}, settings.scrollSpeed, settings.easingType);
-			$('#'+settings.containerHoverID, this).stop().animate({'opacity': 0 }, settings.inDelay, settings.easingType);
-			return false;
-		})
-		.prepend('<span id="'+settings.containerHoverID+'"></span>')
-		.hover(function() {
-				$(containerHoverIDHash, this).stop().animate({
-					'opacity': 1
-				}, 600, 'linear');
-			}, function() { 
-				$(containerHoverIDHash, this).stop().animate({
-					'opacity': 0
-				}, 700, 'linear');
-			});
-					
-		$(window).scroll(function() {
-			var sd = $(window).scrollTop();
-			if(typeof document.body.style.maxHeight === "undefined") {
-				$(containerIDhash).css({
-					'position': 'absolute',
-					'top': sd + $(window).height() - 50
-				});
-			}
-			if ( sd > settings.min ) 
-				$(containerIDhash).fadeIn(settings.inDelay);
-			else 
-				$(containerIDhash).fadeOut(settings.Outdelay);
+$(document).ready(function(){
+// Scroll to top button 
+	$(function () {
+		$.scrollUp({
+	        scrollName: 'scrollup', // Element ID
+	        scrollDistance: 200, // Distance from top/bottom before showing element (px)
+	        scrollFrom: 'top', // 'top' or 'bottom'
+	        scrollSpeed: 500, // Speed back to top (ms)
+	        easingType: 'linear', // Scroll to top easing (see http://easings.net/)
+	        animation: 'fade', // Fade, slide, none
+	        animationSpeed: 500, // Animation in speed (ms)
+	        scrollTrigger: false, // Set a custom triggering element. Can be an HTML string or jQuery object
+					//scrollTarget: false, // Set a custom target element for scrolling to the top
+	        scrollText: '<i class="fa fa-chevron-up"></i>', // Text for element, can contain HTML
+	        scrollTitle: false, // Set a custom <a> title if required.
+	        scrollImg: false, // Set true to use image
+	        activeOverlay: false, // Set CSS color to display scrollUp active point, e.g '#00FFFF'
+	        zIndex: 2147483647 // Z-Index for the overlay
 		});
-};
-})(jQuery);
+	});
+});
 
 // Only apply the fixed stuff to desktop devices
 // -----------------------------------------------------------------------------
@@ -176,13 +142,6 @@ $(document).ready(function(){
     // tooltip
     // -----------------------------------------------------------------------------
     $("a[data-toggle=tooltip]").tooltip();
-
-    
-    // To Top Button
-    // -----------------------------------------------------------------------------
-    $(function(){
-        $().UItoTop({ easingType: 'easeOutQuart' });
-    });
 
     // Placeholder
     // -----------------------------------------------------------------------------

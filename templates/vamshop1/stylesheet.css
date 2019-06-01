@@ -1940,37 +1940,26 @@ box-shadow: 0 4px 15px #d5d5d5;
 .add-review .btn-submit-review:hover {
   background-color: #dd2c00;
 }
-/* Back to Top
-/* ========================================================================== */
-#toTop {
-	display:none;
-	text-decoration:none;
-	position:fixed;
-	bottom:10px;
-	right:10px;
-	overflow:hidden;
-	width:51px;
-	height:51px;
-	border:none;
-	text-indent:100%;
-	background:url(img/up.png) no-repeat left top;
+
+/* Scroll To Top */
+a#scrollup {
+  bottom: 20px;
+  right: 30px;
+  padding: 5px 10px;
+  background: #dd2c00;
+  color: #fff;
 }
 
-#toTopHover {
-	background:url(img/up.png) no-repeat left -51px;
-	width:51px;
-	height:51px;
-	display:block;
-	overflow:hidden;
-	float:left;
-	opacity: 0;
-	-moz-opacity: 0;
-	filter:alpha(opacity=0);
+a#scrollup i{
+  font-size: 16px;
 }
 
-#toTop:active, #toTop:focus {
-	outline:none;
-}
+a#scrollup:hover {
+  background: #d50000;
+}	
+
+/* /Scroll To Top */
+
 /* ========================================================================== */
 /* Helpful Classes
 /* ========================================================================== */
