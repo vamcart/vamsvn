@@ -66,6 +66,33 @@
 </div>
 <!-- end: Main Menu -->
 
+{if {$slider_pop_slide|@count} > 1} 
+{if $smarty.SERVER.REQUEST_URI == '/'}
+<div class="container">
+
+<div id="myCarousel" class="carousel slide">
+  <ol class="carousel-indicators">
+{foreach item=num from=$slider_pop_slide}
+    <li data-target="#myCarousel" data-slide-to="{counter name=slide}"{if $num@first} class="active"{/if}></li>
+{/foreach}
+
+  </ol>
+  <!-- Carousel items -->
+  <div class="carousel-inner">
+
+{foreach item=slides from=$slider_pop_slide}
+    <div class="{if $slides@first}active {/if}item"><a href="{$slides.url}"><img src="images/banner/{$slides.image}" alt="{$slides.title}" title="{$slides.title}" width="1920" height="450" /></a></div>
+{/foreach}
+  </div>
+  <!-- Carousel nav -->
+  <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+  <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
+</div>
+
+</div>
+{/if}
+{/if}
+
 {if $navtrail}
 <!-- start: Page header / Breadcrumbs -->
 <div id="breadcrumbs">
