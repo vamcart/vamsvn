@@ -2450,6 +2450,7 @@ span.bold
 div#ajaxQuickFind {
   text-align: left; 
   position: absolute; 
+  display: inline-block;
   z-index: 999; 
   top: 50px;
   background-color: #fff;
