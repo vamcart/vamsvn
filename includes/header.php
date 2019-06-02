@@ -39,9 +39,9 @@
 <meta name="viewport" content="initial-scale=1.0, width=device-width" />
 <meta name="theme-color" content="#dd2c00"/>
 
-<link rel="shortcut icon" href="favicon.ico"/>
-<link rel="manifest" href="manifest.json">
-<script src="sw.js" defer></script>
+<link rel="shortcut icon" href="<?php echo DIR_WS_CATALOG; ?>favicon.ico"/>
+<link rel="manifest" href="<?php echo DIR_WS_CATALOG; ?>manifest.json">
+<script src="<?php echo DIR_WS_CATALOG; ?>sw.js" defer></script>
 
 <?php include(DIR_WS_MODULES.FILENAME_METATAGS); ?>
 
