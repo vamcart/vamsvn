@@ -27,7 +27,7 @@ define('MINIFY_HTML_KEEP', '<pre(?:\s[^<>]*?)?>[\s\S]*?</pre>|<code(?:\s[^<>]*?)
 
 // by default we minify URLs
 if ( ! defined("HTML_MINIFY_URL_ENABLED")) {
-	define("HTML_MINIFY_URL_ENABLED", true);
+	define("HTML_MINIFY_URL_ENABLED", false);
 }
 
 // by default we minify inline CSS
