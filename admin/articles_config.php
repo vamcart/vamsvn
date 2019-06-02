@@ -43,15 +43,15 @@ $gID = 26;
 <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $_SESSION['language_charset']; ?>"> 
 <title><?php echo TITLE; ?></title>
 <link rel="stylesheet" type="text/css" href="includes/stylesheet.css">
+<link type="text/css" href="../jscript/jquery/plugins/ui/css/smoothness/jquery-ui.css" rel="stylesheet" />	
 		<script type="text/javascript" src="../jscript/jquery/jquery.js"></script>
-		<script type="text/javascript" src="../jscript/jquery/plugins/tooltip/jquery.tooltip.pack.js"></script>
+		<script type="text/javascript" src="../jscript/jquery/plugins/ui/jquery-ui-min.js"></script>
 		<script type="text/javascript">
 			$(function() {
 			$('a.tooltip').tooltip({
-			track: true,
-			delay: 0,
-			showURL: false,
-			fade: 200
+		    content: function () {
+		        return this.getAttribute("title");
+		    }
 			});
 			});
 		</script>
