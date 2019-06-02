@@ -1962,7 +1962,7 @@ box-shadow: 0 4px 15px #d5d5d5;
 
 /* Scroll To Top */
 a#scrollup {
-  bottom: 20px;
+  bottom: 50px;
   right: 30px;
   padding: 5px 10px;
   background: #dd2c00;
