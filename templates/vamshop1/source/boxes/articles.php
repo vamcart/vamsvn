@@ -204,7 +204,7 @@ if (!$box->isCached(CURRENT_TEMPLATE.'/boxes/box_articles.html', $cache_id) || !
   }
 
 
-  $box_content = '<ul>'.$new_articles_string . $all_articles_string . $topics_string.'</ul>';
+  $box_content = $new_articles_string . $all_articles_string . $topics_string;
 
     $box->assign('BOX_CONTENT', $box_content);
 
