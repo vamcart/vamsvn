@@ -66,9 +66,25 @@
 </div>
 <!-- end: Main Menu -->
 
+<!-- start: Container -->
+<div id="container">
+
+	<div class="container">
+
+{if $navtrail}
+<!-- start: Page header / Breadcrumbs -->
+<div id="breadcrumbs">
+		<div class="breadcrumbs" itemscope itemtype="http://schema.org/BreadcrumbList">
+			{$navtrail}
+		</div>
+</div>
+<!-- end: Page header / Breadcrumbs -->
+{/if}
+
+
 {if {$slider_pop_slide|@count} > 1} 
 {if $smarty.SERVER.REQUEST_URI == '/'}
-<div class="container">
+
 
 <div id="myCarousel" class="carousel slide">
   <ol class="carousel-indicators">
@@ -89,25 +105,8 @@
   <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
 </div>
 
-</div>
 {/if}
 {/if}
-
-{if $navtrail}
-<!-- start: Page header / Breadcrumbs -->
-<div id="breadcrumbs">
-	<div class="container">
-		<div class="breadcrumbs" itemscope itemtype="http://schema.org/BreadcrumbList">
-			{$navtrail}
-		</div>
-	</div>
-</div>
-<!-- end: Page header / Breadcrumbs -->
-{/if}
-
-<!-- start: Container -->
-<div id="container">
-	<div class="container">
 
 		<div class="row-fluid">
 

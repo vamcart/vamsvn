@@ -66,42 +66,29 @@
 </div>
 <!-- end: Main Menu -->
 
-{if $navtrail}
-<!-- start: Page header / Breadcrumbs -->
-<div id="breadcrumbs">
-	<div class="container">
-		<div class="breadcrumbs" itemscope itemtype="http://schema.org/BreadcrumbList">
-			{$navtrail}
-		</div>
-	</div>
-</div>
-<!-- end: Page header / Breadcrumbs -->
-{/if}
-
 <!-- start: Container -->
 <div id="container">
 	<div class="container">
 
+{if $navtrail}
+<!-- start: Page header / Breadcrumbs -->
+<div id="breadcrumbs">
+		<div class="breadcrumbs" itemscope itemtype="http://schema.org/BreadcrumbList">
+			{$navtrail}
+		</div>
+</div>
+<!-- end: Page header / Breadcrumbs -->
+{/if}
+
 		<div class="row-fluid">
 
 			<!-- start: Page section -->
-			<div class="span9 page-sidebar pull-right">
+			<div class="span12 page-sidebar pull-right">
 	
 			{$main_content}
 
 			</div>
 			<!-- end: Page section -->
-
-		<!-- start: Sidebar -->
-		<aside class="span3 sidebar pull-left">
-
-			{$box_DOWNLOADS}
-			{$box_CATEGORIES}
-			{$box_CONTENT}
-			{$box_ADMIN}
-
-		</aside>
-		<!-- end: Sidebar -->
 
 		</div>
 
