@@ -564,7 +564,7 @@ background: #fff;
 }
 @media (max-width: 480px) {
   #container > .container {
-    padding: 0 20px;
+    padding: 0 10px;
   }
 }
 #container .row-fluid .page-sidebar.pull-right[class*="span"] {
