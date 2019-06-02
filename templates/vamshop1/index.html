@@ -111,13 +111,15 @@
 		<div class="row-fluid">
 
 			<!-- start: Page section -->
-			<div class="span9 page-sidebar pull-right">
+			<div class="{if {$current_category_id} > 0 && !{$smarty.get.products_id}}span9{else}span12{/if} page-sidebar pull-right">
 	
 			{$main_content}
 
 			</div>
 			<!-- end: Page section -->
+			
 
+		{if {$current_category_id} > 0 && !{$smarty.get.products_id}}
 		<!-- start: Sidebar -->
 		<aside class="span3 sidebar pull-left">
 			{$box_DOWNLOADS}
@@ -149,6 +151,7 @@
 
 		</aside>
 		<!-- end: Sidebar -->
+		{/if}
 
 		</div>
 
