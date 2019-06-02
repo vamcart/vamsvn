@@ -53,6 +53,7 @@
 		if(vam_db_num_rows($products_query)) {
 			$out .= sprintf(TEXT_AJAX_QUICKSEARCH_TOP, AJAX_QUICKSEARCH_LIMIT) . '<br />';
 			$dropdown = array();
+			echo '<option name="null" value="" SELECTED></option>';
 			while($products = vam_db_fetch_array($products_query)) {
 				$out .= '<option name="' . $products['products_id'] . '" value="' . $products['products_id'] . '">'.$products['products_name'].'</option>';
 				$dropdown[] = array('id' => $products['products_id'],
