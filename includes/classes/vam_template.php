@@ -34,6 +34,10 @@ class vamTemplate extends Smarty {
         ));
         
         //$this->caching = Smarty::CACHING_LIFETIME_CURRENT;
+
+        // Minify HTML
+        $this->loadFilter('output', 'minify_html');
+
         
         $this->assign('app_name', 'vamTemplate');
    }
