@@ -1,10 +1,6 @@
 <?php 
 header('Content-Type: application/javascript');
 
-include_once(dirname_r(__FILE__,4).'/jscript/jquery/jquery.js');
-echo "\n";
-//include_once(dirname(__FILE__).'/jquery-3.3.1.slim.min.js');
-echo "\n";
 include_once(dirname_r(__FILE__).'/popper.min.js');
 echo "\n";
 include_once(dirname_r(__FILE__).'/bootstrap.min.js');
