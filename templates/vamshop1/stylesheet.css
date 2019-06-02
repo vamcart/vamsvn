@@ -33,6 +33,10 @@ margin: 0;
   background: linear-gradient(to bottom, rgba(255,255,255,1) 0%, rgba(246,246,246,1) 47%, rgba(237,237,237,1) 100%);
 }
 
+#header .span6.text-center {
+padding-top: 15px;
+}
+
 #container {
   padding-left: .5em;
   padding-right: .5em;
@@ -245,7 +249,7 @@ hr.transparent {
 }
 #header > .container {
   background-color: transparent;
-  padding: 25px 0;
+  padding: 0 0;
 }
 @media (max-width: 767px) {
   #header > .container {
@@ -907,16 +911,12 @@ background: #fff;
   font-weight: bold;
   color: #555555;
   border-bottom-color: #e1e1e1;
-  -webkit-border-radius: 0;
-  -moz-border-radius: 0;
-  border-radius: 0;
-  -moz-background-clip: padding;
-  -webkit-background-clip: padding-box;
+  border-radius: 4px;
   background-clip: padding-box;
 }
 .page-sidebar .nav-tabs > li > a:hover,
 .sidebar .nav-tabs > li > a:hover {
-  background-color: #e9e9e9;
+  background-color: transparent;
   border-color: #e9e9e9;
   color: #dd2c00;
   border-bottom-color: #e1e1e1;
@@ -927,9 +927,9 @@ background: #fff;
 .sidebar .nav-tabs > .active > a:hover,
 .page-sidebar .nav-tabs > .active > a:focus,
 .sidebar .nav-tabs > .active > a:focus {
-  background-color: #e9e9e9;
-  border-color: #ffffff;
-  border-bottom-color: #e1e1e1;
+  background-color: transparent;
+  border-color: #e1e1e1;
+  border-bottom-color: #fff;
 }
 .page-sidebar .tab-content,
 .sidebar .tab-content {
@@ -2164,6 +2164,7 @@ span.Requirement
   padding: 10px 12px;
   margin-top: 5px;
   margin-bottom: 5px;
+  margin-right: 5px;
 }
 .btn:hover {
   background-color: #dd2c00;
