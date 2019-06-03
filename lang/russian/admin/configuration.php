@@ -1056,4 +1056,7 @@ define('COMPANY_PAYMENT_4_MASK_DESC', '');
 define('DEFAULT_SLIDER_TITLE', 'Слайдер по умолчанию');
 define('DEFAULT_SLIDER_DESC', 'Выберите вариант слайдера по умолчанию. Управление слайдерами в Админке - Разное - Управление баннерами');
 
+define('ENABLE_SERVICE_WORKER_TITLE', 'Разрешить установку Service Worker');
+define('ENABLE_SERVICE_WORKER_DESC', 'Разрешить установку Service Worker в браузере.');
+
 ?>

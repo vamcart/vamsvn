@@ -69,6 +69,10 @@ $(".owl-carousel").owlCarousel({
 
 });
 
+<?php
+if (ENABLE_SERVICE_WORKER == 'true') {
+?>
+
 // Register service worker to control making site work offline
 
 $(function(){
@@ -111,6 +115,10 @@ window.addEventListener('beforeinstallprompt', (e) => {
 });
 
 });
+
+<?php
+}
+?>
 
 <?php 
 

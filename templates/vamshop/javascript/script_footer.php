@@ -53,6 +53,9 @@ $(document).ready(function(){
 <?php
  }
 ?>
+<?php
+if (ENABLE_SERVICE_WORKER == 'true') {
+?>
 <script>
 
 // Register service worker to control making site work offline
@@ -99,3 +102,7 @@ window.addEventListener('beforeinstallprompt', (e) => {
 });
 
 </script>
+
+<?php
+ }
+?>
