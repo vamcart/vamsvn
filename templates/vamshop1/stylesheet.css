@@ -2450,15 +2450,19 @@ span.bold
 div#ajaxQuickFind {
   text-align: left; 
   position: absolute; 
-  display: inline-block;
   z-index: 999; 
-  top: 50px;
+  top: 30px;
+  left: 0;
+  width: 300px;
+  color: #000;
   background-color: #fff;
+  border-radius: 4px;
+  padding: 0;
 }
 
-div.ajaxQuickFind 
+form.navbar-search.input-append 
    {
-     text-align: left;
+     font-size: 16px;
    }
 
 ul.ajaxQuickFind 
