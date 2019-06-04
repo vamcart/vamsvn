@@ -3601,21 +3601,21 @@ CREATE TABLE IF NOT EXISTS `specifications` (
 ) ENGINE=MyISAM AUTO_INCREMENT=16 DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
 INSERT INTO `specifications` VALUES
-(1, 1, 0, 'True', 'True', 'True', 'False', '', 'Left', 'exact', 'radio', 'True', 'radio'),
-(2, 1, 0, 'True', 'True', 'True', 'False', '', 'Left', 'exact', 'radio', 'True', 'radio'),
-(3, 1, 0, 'True', 'True', 'True', 'False', '', 'Left', 'exact', 'radio', 'True', 'radio'),
-(4, 1, 0, 'True', 'True', 'True', 'False', '', 'Left', 'exact', 'radio', 'True', 'radio'),
-(5, 1, 0, 'True', 'True', 'True', 'False', '', 'Left', 'exact', 'radio', 'True', 'radio'),
-(6, 2, 0, 'True', 'True', 'True', 'False', '', 'Left', 'exact', 'radio', 'True', 'radio'),
-(7, 2, 0, 'True', 'True', 'True', 'False', '', 'Left', 'exact', 'radio', 'True', 'radio'),
-(8, 2, 0, 'True', 'True', 'True', 'False', '', 'Left', 'exact', 'radio', 'True', 'radio'),
-(9, 2, 0, 'True', 'True', 'True', 'False', '', 'Left', 'exact', 'radio', 'True', 'radio'),
-(10, 2, 0, 'True', 'True', 'True', 'False', '', 'Left', 'exact', 'radio', 'True', 'radio'),
-(11, 3, 0, 'True', 'True', 'True', 'False', '', 'Left', 'exact', 'radio', 'True', 'radio'),
-(12, 3, 0, 'True', 'True', 'True', 'False', '', 'Left', 'exact', 'radio', 'True', 'radio'),
-(13, 3, 0, 'True', 'True', 'True', 'False', '', 'Left', 'exact', 'radio', 'True', 'radio'),
+(1, 1, 0, 'True', 'True', 'True', 'False', '', 'Left', 'exact', 'pulldown', 'True', 'pulldown'),
+(2, 1, 0, 'True', 'True', 'True', 'False', '', 'Left', 'exact', 'pulldown', 'True', 'pulldown'),
+(3, 1, 0, 'True', 'True', 'True', 'False', '', 'Left', 'exact', 'pulldown', 'True', 'pulldown'),
+(4, 1, 0, 'True', 'True', 'True', 'False', '', 'Left', 'exact', 'pulldown', 'True', 'pulldown'),
+(5, 1, 0, 'True', 'True', 'True', 'False', '', 'Left', 'exact', 'pulldown', 'True', 'pulldown'),
+(6, 2, 0, 'True', 'True', 'True', 'False', '', 'Left', 'exact', 'pulldown', 'True', 'pulldown'),
+(7, 2, 0, 'True', 'True', 'True', 'False', '', 'Left', 'exact', 'pulldown', 'True', 'pulldown'),
+(8, 2, 0, 'True', 'True', 'True', 'False', '', 'Left', 'exact', 'pulldown', 'True', 'pulldown'),
+(9, 2, 0, 'True', 'True', 'True', 'False', '', 'Left', 'exact', 'pulldown', 'True', 'pulldown'),
+(10, 2, 0, 'True', 'True', 'True', 'False', '', 'Left', 'exact', 'pulldown', 'True', 'pulldown'),
+(11, 3, 0, 'True', 'True', 'True', 'False', '', 'Left', 'exact', 'pulldown', 'True', 'pulldown'),
+(12, 3, 0, 'True', 'True', 'True', 'False', '', 'Left', 'exact', 'pulldown', 'True', 'pulldown'),
+(13, 3, 0, 'True', 'True', 'True', 'False', '', 'Left', 'exact', 'pulldown', 'True', 'pulldown'),
 (14, 3, 0, 'True', 'True', 'True', 'False', '', 'Left', 'exact', 'links', 'True', 'radio'),
-(15, 3, 0, 'True', 'True', 'True', 'False', '', 'Left', 'exact', 'radio', 'True', 'radio');
+(15, 3, 0, 'True', 'True', 'True', 'False', '', 'Left', 'exact', 'pulldown', 'True', 'pulldown');
 
 ##
 ## Table structure for table `specification_description`
