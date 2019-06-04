@@ -15,6 +15,10 @@ label {
   font-size: 16px;  
 }
 
+form {
+  margin: 0;
+}
+
 p {
 margin: 0;
 }
