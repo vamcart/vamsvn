@@ -1,6 +1,14 @@
 <link rel="stylesheet" type="text/css" href="<?php echo 'templates/'.CURRENT_TEMPLATE.'/stylesheet.css'; ?>" />
 
 <?php
+if (strstr($PHP_SELF, FILENAME_CHECKOUT)) {
+?>
+<link rel="stylesheet" type="text/css" href="jscript/jquery/plugins/chosen/chosen.css" media="screen" />
+<?php 
+} 
+?>
+
+<?php
 if (strstr($PHP_SELF, FILENAME_PRODUCT_INFO)) {
 ?>
 <link rel="stylesheet" type="text/css" href="jscript/jquery/plugins/colorbox/colorbox.css" media="screen" />
