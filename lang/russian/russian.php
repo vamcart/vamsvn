@@ -715,4 +715,6 @@ define('TITLE_NEW_PRODUCTS_DEFAULT', 'Новинки');
 define('TITLE_FEATURED_DEFAULT', 'Рекомендуемые товары');
 define('TITLE_SPECIALS_DEFAULT', 'Скидки');
 
+define('TEXT_NOT_FOUND', 'Не найдено.');
+
 ?>
