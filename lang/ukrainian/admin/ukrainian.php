@@ -641,4 +641,8 @@ define('BOX_MERKETING_14', 'Купоны');
 define('BOX_MERKETING_15', 'Подарочные сертификаты');
 define('BOX_MERKETING_16', 'Партнёрская программа');
 
+// pull down default text
+define('PULL_DOWN_DEFAULT', 'Выберите');
+define('TEXT_NOT_FOUND', 'Не найдено.');
+
 ?>
