@@ -63,29 +63,6 @@ $('#box')
    
 <?php } else { //not logged in javascript ?>
 
-<script src="jscript/jquery/plugins/chosen/chosen.jquery.min.js"></script>
-<script type="text/javascript">
-$(function($){
-
-<?php if (ACCOUNT_STATE == 'true') { ?>
-	  $("#state").chosen({
-	      no_results_text:"<?php echo TEXT_NOT_FOUND; ?>",
-	      search_contains:true,
-	      placeholder_text_single:"<?php echo PULL_DOWN_DEFAULT; ?>"
-	  }); 
-<?php } ?>
-
-<?php if (ACCOUNT_COUNTRY == 'true') { ?>
-	  $("#country").chosen({
-	      no_results_text:"<?php echo TEXT_NOT_FOUND; ?>",
-	      search_contains:true,
-	      placeholder_text_single:"<?php echo PULL_DOWN_DEFAULT; ?>"
-	  }); 
-<?php } ?>
-
-});
-</script>
-
 <script>
 $(document).ready(function() {
 $(hidePay);		
