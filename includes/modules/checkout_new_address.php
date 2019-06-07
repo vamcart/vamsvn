@@ -141,7 +141,7 @@ if (ACCOUNT_COUNTRY == 'true') {
   
   if ($process == true) $entry['entry_country_id'] = (int)$_POST['country'];
 
-   $module->assign('SELECT_COUNTRY', vam_get_country_list('country', $entry['entry_country_id'], 'id="country"') . (vam_not_null(ENTRY_COUNTRY_TEXT) ? '<span class="alert">' . ENTRY_COUNTRY_TEXT . '</span>': ''));
+   $module->assign('SELECT_COUNTRY', vam_get_country_list('country', $entry['entry_country_id'], 'id="country"') . (vam_not_null(ENTRY_COUNTRY_TEXT) ? '&nbsp;<span class="Requirement">' . ENTRY_COUNTRY_TEXT . '</span>': ''));
 
    $module->assign('SELECT_COUNTRY_NOSCRIPT', '<noscript><br />' . vam_image_submit('update.png', IMAGE_BUTTON_UPDATE, 'name=loadStateXML') . '<br />' . ENTRY_STATE_RELOAD . '</noscript>');
 
