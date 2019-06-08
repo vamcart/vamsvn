@@ -2488,6 +2488,15 @@ INSERT INTO `configuration` (`configuration_key`, `configuration_value`, `config
 ('SC_EMAIL_LOGIN_DATA', 'true', 80, 7, '2012-11-01 06:37:14', '2012-11-01 06:37:14', NULL, 'vam_cfg_select_option(array(''true'', ''false''),'),
 ('SC_CONFIRMATION_PAGE', 'false', 80, 8, '2012-11-01 06:37:14', '2012-11-01 06:37:14', NULL, 'vam_cfg_select_option(array(''true'', ''false''),');
 
+INSERT INTO `configuration` (`configuration_key`, `configuration_value`, `configuration_group_id`, `sort_order`, `last_modified`, `date_added`, `use_function`, `set_function`) VALUES
+('GOOGLE_OAUTH_CLIENT_ID', '', '90', '1', NULL, now(), NULL, NULL),
+('GOOGLE_OAUTH_SECRET_KEY', '', '90', '2', NULL, now(), NULL, NULL),
+('VK_OAUTH_CLIENT_ID', '', '90', '3', NULL, now(), NULL, NULL),
+('VK_OAUTH_SECRET_KEY', '', '90', '4', NULL, now(), NULL, NULL),
+('VK_OAUTH_SERVICE_KEY', '', '90', '5', NULL, now(), NULL, NULL),
+('FACEBOOK_OAUTH_CLIENT_ID', '', '90', '6', NULL, now(), NULL, NULL),
+('FACEBOOK_OAUTH_SECRET_KEY', '', '90', '7', NULL, now(), NULL, NULL);
+
 INSERT INTO configuration_group VALUES ('1', 'CG_MY_SHOP', 'My Store', 'General information about my store', '1', '1');
 INSERT INTO configuration_group VALUES ('2', 'CG_MINIMAL_VALUES', 'Minimum Values', 'The minimum values for functions / data', '2', '1');
 INSERT INTO configuration_group VALUES ('3', 'CG_MAXIMAL_VALUES', 'Maximum Values', 'The maximum values for functions / data', '3', '1');
@@ -2520,6 +2529,8 @@ INSERT INTO configuration_group VALUES ('29', 'CG_BOXES', 'Боксы', 'Бок�
 INSERT INTO configuration_group VALUES ('72', 'CG_EDIT_ORDERS', 'Order Editor', 'Order Editor Settings', '1', '1');
 
 INSERT INTO configuration_group VALUES ('80', 'CG_SMART_CHECKOUT', 'Smart Checkout', 'Smart Checkout Options', '1', '1');
+
+INSERT INTO configuration_group VALUES ('90', 'CG_SOCIAL_NETWORKS', 'Social Networks', 'Social Networks Options', '1', '1');
 
 INSERT INTO countries VALUES (1,'Afghanistan','AF','AFG','1','0');
 INSERT INTO countries VALUES (2,'Albania','AL','ALB','1','0');
