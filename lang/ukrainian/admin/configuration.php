@@ -1059,4 +1059,23 @@ define('DEFAULT_SLIDER_DESC', 'Выберите вариант слайдера 
 define('ENABLE_SERVICE_WORKER_TITLE', 'Разрешить установку Service Worker');
 define('ENABLE_SERVICE_WORKER_DESC', 'Разрешить установку Service Worker в браузере.');
 
+define('CG_SOCIAL_NETWORKS', 'Социальные сети');
+define('CG_SOCIAL_NETWORKS_TITLE', 'Социальные сети');
+define('CG_SOCIAL_NETWORKS_DESC', '');
+
+define('GOOGLE_OAUTH_CLIENT_ID_TITLE', 'Google OAuth ID Клиента');
+define('GOOGLE_OAUTH_CLIENT_ID_DESC', 'Укажите Ваш OAuth ID номер.');
+define('GOOGLE_OAUTH_SECRET_KEY_TITLE', 'Google OAuth Секретный Ключ');
+define('GOOGLE_OAUTH_SECRET_KEY_DESC', 'Укажите Ваш секретный ключ Google OAuth.');
+define('VK_OAUTH_CLIENT_ID_TITLE', 'ID номер приложения вконтакте');
+define('VK_OAUTH_CLIENT_ID_DESC', 'Укажите Ваш ID номер приложения вконтакте');
+define('VK_OAUTH_SECRET_KEY_TITLE', 'Защищённый ключ вконтакте');
+define('VK_OAUTH_SECRET_KEY_DESC', 'Укажите Ваш защищённый ключ вконтакте.');
+define('VK_OAUTH_SERVICE_KEY_TITLE', 'Сервисный ключ доступа вконтакте');
+define('VK_OAUTH_SERVICE_KEY_DESC', 'Укажиет Ваш сервисный ключ доступа.');
+define('FACEBOOK_OAUTH_CLIENT_ID_TITLE', 'Facebook OAuth ID приложения');
+define('FACEBOOK_OAUTH_CLIENT_ID_DESC', 'Укажите Ваш OAuth ID номер приложения.');
+define('FACEBOOK_OAUTH_SECRET_KEY_TITLE', 'Facebook OAuth Ключ приложения');
+define('FACEBOOK_OAUTH_SECRET_KEY_DESC', 'Укажитие Ваш OAuth ключ приложения.');
+
 ?>
