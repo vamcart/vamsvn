@@ -11,16 +11,17 @@
 {#text_welcome#}
 </p>
 {if $LINK_LOGIN}
+<ul class="accountLinks">
+<li class="accountLinks"><a href="{$LINK_LOGIN}">{#text_login#}</a></li>
+</ul>
+{/if}
+{if $LINK_LOGIN}
+<br />
 <ul class="inline">
 <li class="accountLinks">{$smarty.const.TEXT_SOCIAL_LOGIN}:</li>
 <li class="accountLinks"><a href="https://oauth.vk.com/authorize?client_id={$smarty.const.VK_OAUTH_CLIENT_ID}&redirect_uri={$smarty.const.HTTP_SERVER}{$smarty.const.DIR_WS_CATALOG}{$smarty.const.FILENAME_CREATE_ACCOUNT}?social_login=vk&response_type=code&display=page&scope=email"><i class="fa fa-vk" title="{$smarty.const.TEXT_SOCIAL_LOGIN_VK}"></i> {$smarty.const.TEXT_SOCIAL_LOGIN_VK}</a></li>
 <li class="accountLinks"><a href="https://oauth.vk.com/authorize?client_id={$smarty.const.VK_OAUTH_CLIENT_ID}&redirect_uri={$smarty.const.HTTP_SERVER}{$smarty.const.DIR_WS_CATALOG}{$smarty.const.FILENAME_CREATE_ACCOUNT}?social_login=vk&response_type=code&display=page&scope=email"><i class="fa fa-google-plus" title="{$smarty.const.TEXT_SOCIAL_LOGIN_GOOGLE}"></i> {$smarty.const.TEXT_SOCIAL_LOGIN_GOOGLE}</a></li>
 <li class="accountLinks"><a href="https://oauth.vk.com/authorize?client_id={$smarty.const.VK_OAUTH_CLIENT_ID}&redirect_uri={$smarty.const.HTTP_SERVER}{$smarty.const.DIR_WS_CATALOG}{$smarty.const.FILENAME_CREATE_ACCOUNT}?social_login=vk&response_type=code&display=page&scope=email"><i class="fa fa-facebook" title="{$smarty.const.TEXT_SOCIAL_LOGIN_FACEBOOK}"></i> {$smarty.const.TEXT_SOCIAL_LOGIN_FACEBOOK}</a></li>
-</ul>
-{/if}
-{if $LINK_LOGIN}
-<ul class="accountLinks">
-<li class="accountLinks"><a href="{$LINK_LOGIN}">{#text_login#}</a></li>
 </ul>
 {/if}
 <!-- /Приветствие -->
