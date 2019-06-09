@@ -10,12 +10,12 @@ $(function () {
 })
 {/literal}
 </script>
-<div class="page">
 <h1>{#heading_login#}</h1>
-<div class="pageContent">
 {$FORM_ACTION}
 {if $info_message!=''}<div class="contacterror">{$info_message}</div>
-{/if}<dl class="Login">
+{/if}<div class="page">
+<div class="pagecontent">
+<dl class="Login">
 <dt class="Login">
 </dt>
 
@@ -71,7 +71,15 @@ function reload(){
 </dd>
 
 </dl>
+
+<ul class="inline">
+<li class="accountLinks">{$smarty.const.TEXT_SOCIAL_LOGIN}:</li>
+<li class="accountLinks"><a href="https://oauth.vk.com/authorize?client_id={$smarty.const.VK_OAUTH_CLIENT_ID}&redirect_uri={$smarty.const.HTTP_SERVER}{$smarty.const.DIR_WS_CATALOG}{$smarty.const.FILENAME_CREATE_ACCOUNT}?social_login=vk&response_type=code&display=page&scope=email"><i class="fa fa-vk" title="{$smarty.const.TEXT_SOCIAL_LOGIN_VK}"></i> {$smarty.const.TEXT_SOCIAL_LOGIN_VK}</a></li>
+<li class="accountLinks"><a href="https://oauth.vk.com/authorize?client_id={$smarty.const.VK_OAUTH_CLIENT_ID}&redirect_uri={$smarty.const.HTTP_SERVER}{$smarty.const.DIR_WS_CATALOG}{$smarty.const.FILENAME_CREATE_ACCOUNT}?social_login=vk&response_type=code&display=page&scope=email"><i class="fa fa-google-plus" title="{$smarty.const.TEXT_SOCIAL_LOGIN_GOOGLE}"></i> {$smarty.const.TEXT_SOCIAL_LOGIN_GOOGLE}</a></li>
+<li class="accountLinks"><a href="https://oauth.vk.com/authorize?client_id={$smarty.const.VK_OAUTH_CLIENT_ID}&redirect_uri={$smarty.const.HTTP_SERVER}{$smarty.const.DIR_WS_CATALOG}{$smarty.const.FILENAME_CREATE_ACCOUNT}?social_login=vk&response_type=code&display=page&scope=email"><i class="fa fa-facebook" title="{$smarty.const.TEXT_SOCIAL_LOGIN_FACEBOOK}"></i> {$smarty.const.TEXT_SOCIAL_LOGIN_FACEBOOK}</a></li>
+</ul>
+
 <div class="clear"></div>
+</div>
+</div>
 {$FORM_END}
-</div>
-</div>
