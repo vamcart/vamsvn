@@ -683,4 +683,9 @@ define('TITLE_SPECIALS_DEFAULT', 'Знижки');
 
 define('TEXT_NOT_FOUND', 'Не найдено.');
 
+define('TEXT_SOCIAL_LOGIN', 'Войти через');
+define('TEXT_SOCIAL_LOGIN_GOOGLE', 'Google');
+define('TEXT_SOCIAL_LOGIN_FACEBOOK', 'Facebook');
+define('TEXT_SOCIAL_LOGIN_VK', 'ВКонтакте');
+
 ?>
