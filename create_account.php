@@ -441,6 +441,439 @@ if (isset ($_SESSION['tracking']['refID'])){
 
 // Social Login
 
+//Facebook
+
+if (isset ($_GET['social_login']) && ($_GET['social_login'] == 'fb')) {
+	
+		$provider = 'fb';
+		
+		$clientId = FACEBOOK_OAUTH_CLIENT_ID; //ID Приложения
+		$clientSecret = FACEBOOK_OAUTH_SECRET_KEY; //Защищённый ключ
+		$redirectUrl = HTTP_SERVER.DIR_WS_CATALOG.FILENAME_CREATE_ACCOUNT.'?social_login=fb';  //return url (url to script)
+		$homeUrl = FULL_BASE_URL.BASE;  //return to home
+
+		if (isset($_REQUEST['code'])) {
+			$result = false;
+			
+		    $params = array(
+		        'client_id' => $clientId,
+		        'client_secret' => $clientSecret,
+		        'code' => $_REQUEST['code'],
+		        'redirect_uri' => $redirectUrl
+		    );
+		
+		  $token = 'https://graph.facebook.com/oauth/access_token' . '?' . urldecode(http_build_query($params));
+
+        // create curl resource
+        $ch = curl_init();
+
+        // set url
+        curl_setopt($ch, CURLOPT_URL, $token);
+
+        //return the transfer as a string
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+
+        // $output contains the output string
+        $output = curl_exec($ch);
+
+        // close curl resource to free up system resources
+        curl_close($ch);  
+
+        $contents = $output;
+        $results = json_decode($contents, true); 
+        
+        //echo var_dump($results);
+
+		    if (count($results) > 0 && isset($results['access_token'])) {
+		        
+				$query = urldecode(http_build_query(array(
+
+					"access_token" => $results['access_token'],
+					"fields"       => "id,name,first_name,last_name,email"
+				)));		        
+		        
+		        $userInfo = json_decode(file_get_contents('https://graph.facebook.com/me' . '?' . $query), true);
+		        if (isset($userInfo['id'])) {
+		            $userInfo = $userInfo;
+		            $result = true;
+		        }
+		    }
+
+        //echo var_dump($userInfo);
+        
+			$_SESSION['fb_token'] = $results['access_token'];
+			$_SESSION['fb_user_id'] = $userInfo['id'];
+			$_SESSION['fb_user_email'] = $userInfo['email'];
+			
+			header('Location: ' . filter_var($redirectUrl, FILTER_SANITIZE_URL));
+
+		}
+
+		if ($_SESSION['fb_token'] && $_SESSION['fb_user_email'] != '' && $_SESSION['fb_user_id'] > 0) {
+
+	$process = true;
+
+	require_once (DIR_FS_INC.'vam_create_password.inc.php');
+	require_once (DIR_FS_INC.'vam_random_charcode.inc.php');
+	
+	$firstname = html_entity_decode($userInfo['name']);
+	$secondname = ''; 
+	$lastname = html_entity_decode($userInfo['name']);
+	$fullname = html_entity_decode($userInfo['name']);
+	$email_address = html_entity_decode($_SESSION['fb_user_email']);
+	$password = vam_RandomString(8);
+	$country = STORE_COUNTRY;
+	$zone_id = STORE_ZONE;
+	$vat = 0;
+
+	$sql_data_array = array (
+	
+	'customers_vat_id' => 0, 
+	'customers_vat_id_status' => 0, 
+	'customers_status' => DEFAULT_CUSTOMERS_STATUS_ID, 
+	'customers_firstname' => $firstname, 
+	'customers_secondname' => $secondname, 
+	'customers_lastname' => $lastname, 
+	'customers_email_address' => $email_address, 
+	'customers_telephone' => '', 
+	'customers_fax' => '', 
+	'orig_reference' => '', 
+	'customers_newsletter' => 1, 
+	'customers_password' => vam_encrypt_password($password),
+	'customers_date_added' => 'now()',
+	'customers_last_modified' => 'now()'
+	
+	);
+
+	$check_email_query = vam_db_query("select * from ".TABLE_CUSTOMERS." where customers_email_address = '".vam_db_input($email_address)."' and account_type = '0' order by customers_id DESC");
+	$check_email = vam_db_fetch_array($check_email_query);
+
+	if (vam_db_num_rows($check_email_query) > 0 && $check_email['customers_status'] != 0) {
+
+	$_SESSION['customer_id'] = $check_email['customers_id'];
+	vam_db_perform(TABLE_CUSTOMERS, $sql_data_array, 'update', "customers_id = '" . (int) $_SESSION['customer_id'] . "'");
+
+	} else {
+
+	vam_db_perform(TABLE_CUSTOMERS, $sql_data_array);
+	$_SESSION['customer_id'] = vam_db_insert_id();
+	vam_db_query("insert into ".TABLE_CUSTOMERS_INFO." (customers_info_id, customers_info_number_of_logons, customers_info_date_account_created) values ('".(int) $_SESSION['customer_id']."', '0', now())");
+		$sql_data_array = array (
+		
+		'customers_id' => $_SESSION['customer_id'], 
+		'entry_firstname' => $firstname, 
+		'entry_secondname' => $secondname, 
+		'entry_lastname' => $lasttname, 
+		'entry_street_address' => '', 
+		'entry_postcode' => '', 
+		'entry_city' => '', 
+		'entry_country_id' => $country,
+		'address_date_added' => 'now()',
+		'address_last_modified' => 'now()'
+		
+		);
+
+		vam_db_perform(TABLE_ADDRESS_BOOK, $sql_data_array);
+		$address_id = vam_db_insert_id();
+		vam_db_query("update ".TABLE_CUSTOMERS." set customers_default_address_id = '".$address_id."' where customers_id = '".(int) $_SESSION['customer_id']."'");
+	}        
+
+		$user_id = $_SESSION['customer_id'];
+		vam_write_user_info($user_id);
+
+		if (SESSION_RECREATE == 'True') {
+			vam_session_recreate();
+		}
+
+		$_SESSION['customer_first_name'] = $firstname;
+		$_SESSION['customer_second_name'] = $secondname;
+		$_SESSION['customer_last_name'] = $lastname;
+		$_SESSION['customer_email_address'] = $email_address;
+		$_SESSION['customer_default_address_id'] = $address_id;
+		$_SESSION['customer_country_id'] = $country;
+		$_SESSION['customer_zone_id'] = $zone_id;
+		$_SESSION['customer_vat_id'] = $vat;
+
+		// restore cart contents
+		$_SESSION['cart']->restore_contents();
+
+		// build the message content
+		$name = $firstname.' '.$lastname;
+
+		// load data into array
+		$module_content = array ();
+		$module_content = array ('MAIL_NAME' => $name, 'MAIL_REPLY_ADDRESS' => EMAIL_SUPPORT_REPLY_ADDRESS, 'MAIL_GENDER' => $gender);
+
+		// assign data to template
+		$vamTemplate->assign('language', $_SESSION['language']);
+		$vamTemplate->assign('logo_path', HTTP_SERVER.DIR_WS_CATALOG.'templates/'.CURRENT_TEMPLATE.'/img/');
+		$vamTemplate->assign('content', $module_content);
+		$vamTemplate->caching = false;
+
+if (isset ($_SESSION['tracking']['refID'])){
+      $campaign_check_query_raw = "SELECT *
+			                            FROM ".TABLE_CAMPAIGNS." 
+			                            WHERE campaigns_refID = '".$_SESSION[tracking][refID]."'";
+			$campaign_check_query = vam_db_query($campaign_check_query_raw);
+		if (vam_db_num_rows($campaign_check_query) > 0) {
+			$campaign = vam_db_fetch_array($campaign_check_query);
+			$refID = $campaign['campaigns_id'];
+			} else {
+			$refID = 0;
+		            }
+			
+			 vam_db_query("update " . TABLE_CUSTOMERS . " set
+                                 refferers_id = '".$refID."'
+                                 where customers_id = '".(int) $_SESSION['customer_id']."'");
+			
+			$leads = $campaign['campaigns_leads'] + 1 ;
+		     vam_db_query("update " . TABLE_CAMPAIGNS . " set
+		                         campaigns_leads = '".$leads."'
+                                 where campaigns_id = '".$refID."'");		
+}
+
+
+		$vamTemplate->caching = 0;
+
+      $vamTemplate->assign('EMAIL_ADDRESS', $email_address);
+      $vamTemplate->assign('PASSWORD', $password);
+		
+    if ($newsletter) {
+      $vlcode = vam_random_charcode(32);
+      $link = vam_href_link(FILENAME_NEWSLETTER, 'action=activate&email='.$email_address.'&key='.$vlcode, 'NONSSL');
+      $sql_data_array = array ('customers_email_address' => vam_db_input($email_address), 'customers_id' => vam_db_input($_SESSION['customer_id']), 'customers_status' => 2, 'customers_firstname' => vam_db_input($firstname), 'customers_lastname' => vam_db_input($lastname), 'mail_status' => '1', 'mail_key' => vam_db_input($vlcode), 'date_added' => 'now()');
+      vam_db_perform(TABLE_NEWSLETTER_RECIPIENTS, $sql_data_array);
+      // assign vars
+      $vamTemplate->assign('LINK', $link);
+    } else {
+      $vamTemplate->assign('LINK', false);
+    }		
+		
+		$html_mail = $vamTemplate->fetch(CURRENT_TEMPLATE.'/mail/'.$_SESSION['language'].'/create_account_mail.html');
+		$vamTemplate->caching = 0;
+		$txt_mail = $vamTemplate->fetch(CURRENT_TEMPLATE.'/mail/'.$_SESSION['language'].'/create_account_mail.txt');
+
+		vam_php_mail(EMAIL_SUPPORT_ADDRESS, EMAIL_SUPPORT_NAME, $email_address, $name, EMAIL_SUPPORT_FORWARDING_STRING, EMAIL_SUPPORT_REPLY_ADDRESS, EMAIL_SUPPORT_REPLY_ADDRESS_NAME, '', '', EMAIL_SUPPORT_SUBJECT, $html_mail, $txt_mail);
+
+		if (!isset ($mail_error)) {
+				if ($_SESSION['nologin']){
+				vam_redirect(vam_href_link(FILENAME_CHECKOUT_SHIPPING, '', 'SSL'));
+				}else{
+				        vam_redirect(vam_href_link(FILENAME_SHOPPING_CART, '', 'SSL'));
+				}
+		} else {
+			echo $mail_error;
+		}
+}
+}	
+
+//Google
+
+if (isset ($_GET['social_login']) && ($_GET['social_login'] == 'google')) {
+	
+		$provider = 'google';
+		
+		$clientId = GOOGLE_OAUTH_CLIENT_ID; //ID Приложения
+		$clientSecret = GOOGLE_OAUTH_SECRET_KEY; //Защищённый ключ
+		$redirectUrl = HTTP_SERVER.DIR_WS_CATALOG.FILENAME_CREATE_ACCOUNT.'?social_login=google';  //return url (url to script)
+		$homeUrl = FULL_BASE_URL.BASE;  //return to home
+
+		require_once (DIR_FS_CATALOG.'vendor/google/Google_Client.php');
+		$gClient = new Google_Client();
+		$gClient->setApplicationName('VamShop');
+		$gClient->setClientId($clientId);
+		$gClient->setClientSecret($clientSecret);
+		$gClient->setRedirectUri($redirectUrl);
+		
+		require_once (DIR_FS_CATALOG.'vendor/google/contrib/Google_Oauth2Service.php');
+		$google_oauthV2 = new Google_Oauth2Service($gClient);
+
+		//print_r($_GET);die;
+		//echo debug($_REQUEST);
+		//echo debug($gClient);
+
+		if(isset($_REQUEST['code'])){
+			$gClient->authenticate();
+			$_SESSION['token'] = $gClient->getAccessToken();
+			header('Location: ' . filter_var($redirectUrl, FILTER_SANITIZE_URL));
+		}
+		
+		if (isset($_SESSION['token'])) {
+			$gClient->setAccessToken($_SESSION['token']);
+		}
+				
+		if ($gClient->getAccessToken()) {
+			$userProfile = $google_oauthV2->userinfo->get();
+			//echo debug($userProfile);
+
+	$process = true;
+
+	require_once (DIR_FS_INC.'vam_create_password.inc.php');
+	require_once (DIR_FS_INC.'vam_random_charcode.inc.php');
+	
+	$firstname = html_entity_decode($userProfile['given_name']);
+	$secondname = ''; 
+	$lastname = html_entity_decode($userProfile['given_name']);
+	$fullname = html_entity_decode($userProfile['given_name']." ".$userProfile['family_name']);
+	$email_address = html_entity_decode($userProfile['email']);
+	$password = vam_RandomString(8);
+	$country = STORE_COUNTRY;
+	$zone_id = STORE_ZONE;
+	$vat = 0;
+
+	$sql_data_array = array (
+	
+	'customers_vat_id' => 0, 
+	'customers_vat_id_status' => 0, 
+	'customers_status' => DEFAULT_CUSTOMERS_STATUS_ID, 
+	'customers_firstname' => $firstname, 
+	'customers_secondname' => $secondname, 
+	'customers_lastname' => $lastname, 
+	'customers_email_address' => $email_address, 
+	'customers_telephone' => '', 
+	'customers_fax' => '', 
+	'orig_reference' => '', 
+	'customers_newsletter' => 1, 
+	'customers_password' => vam_encrypt_password($password),
+	'customers_date_added' => 'now()',
+	'customers_last_modified' => 'now()'
+	
+	);
+
+	$check_email_query = vam_db_query("select * from ".TABLE_CUSTOMERS." where customers_email_address = '".vam_db_input($email_address)."' and account_type = '0' order by customers_id DESC");
+	$check_email = vam_db_fetch_array($check_email_query);
+
+	if (vam_db_num_rows($check_email_query) > 0 && $check_email['customers_status'] != 0) {
+
+	$_SESSION['customer_id'] = $check_email['customers_id'];
+	vam_db_perform(TABLE_CUSTOMERS, $sql_data_array, 'update', "customers_id = '" . (int) $_SESSION['customer_id'] . "'");
+
+	} else {
+
+	vam_db_perform(TABLE_CUSTOMERS, $sql_data_array);
+	$_SESSION['customer_id'] = vam_db_insert_id();
+	vam_db_query("insert into ".TABLE_CUSTOMERS_INFO." (customers_info_id, customers_info_number_of_logons, customers_info_date_account_created) values ('".(int) $_SESSION['customer_id']."', '0', now())");
+		$sql_data_array = array (
+		
+		'customers_id' => $_SESSION['customer_id'], 
+		'entry_firstname' => $firstname, 
+		'entry_secondname' => $secondname, 
+		'entry_lastname' => $lasttname, 
+		'entry_street_address' => '', 
+		'entry_postcode' => '', 
+		'entry_city' => '', 
+		'entry_country_id' => $country,
+		'address_date_added' => 'now()',
+		'address_last_modified' => 'now()'
+		
+		);
+
+		vam_db_perform(TABLE_ADDRESS_BOOK, $sql_data_array);
+		$address_id = vam_db_insert_id();
+		vam_db_query("update ".TABLE_CUSTOMERS." set customers_default_address_id = '".$address_id."' where customers_id = '".(int) $_SESSION['customer_id']."'");
+	}        
+
+		$user_id = $_SESSION['customer_id'];
+		vam_write_user_info($user_id);
+
+		if (SESSION_RECREATE == 'True') {
+			vam_session_recreate();
+		}
+
+		$_SESSION['customer_first_name'] = $firstname;
+		$_SESSION['customer_second_name'] = $secondname;
+		$_SESSION['customer_last_name'] = $lastname;
+		$_SESSION['customer_email_address'] = $email_address;
+		$_SESSION['customer_default_address_id'] = $address_id;
+		$_SESSION['customer_country_id'] = $country;
+		$_SESSION['customer_zone_id'] = $zone_id;
+		$_SESSION['customer_vat_id'] = $vat;
+
+		// restore cart contents
+		$_SESSION['cart']->restore_contents();
+
+		// build the message content
+		$name = $firstname.' '.$lastname;
+
+		// load data into array
+		$module_content = array ();
+		$module_content = array ('MAIL_NAME' => $name, 'MAIL_REPLY_ADDRESS' => EMAIL_SUPPORT_REPLY_ADDRESS, 'MAIL_GENDER' => $gender);
+
+		// assign data to template
+		$vamTemplate->assign('language', $_SESSION['language']);
+		$vamTemplate->assign('logo_path', HTTP_SERVER.DIR_WS_CATALOG.'templates/'.CURRENT_TEMPLATE.'/img/');
+		$vamTemplate->assign('content', $module_content);
+		$vamTemplate->caching = false;
+
+if (isset ($_SESSION['tracking']['refID'])){
+      $campaign_check_query_raw = "SELECT *
+			                            FROM ".TABLE_CAMPAIGNS." 
+			                            WHERE campaigns_refID = '".$_SESSION[tracking][refID]."'";
+			$campaign_check_query = vam_db_query($campaign_check_query_raw);
+		if (vam_db_num_rows($campaign_check_query) > 0) {
+			$campaign = vam_db_fetch_array($campaign_check_query);
+			$refID = $campaign['campaigns_id'];
+			} else {
+			$refID = 0;
+		            }
+			
+			 vam_db_query("update " . TABLE_CUSTOMERS . " set
+                                 refferers_id = '".$refID."'
+                                 where customers_id = '".(int) $_SESSION['customer_id']."'");
+			
+			$leads = $campaign['campaigns_leads'] + 1 ;
+		     vam_db_query("update " . TABLE_CAMPAIGNS . " set
+		                         campaigns_leads = '".$leads."'
+                                 where campaigns_id = '".$refID."'");		
+}
+
+
+		$vamTemplate->caching = 0;
+
+      $vamTemplate->assign('EMAIL_ADDRESS', $email_address);
+      $vamTemplate->assign('PASSWORD', $password);
+		
+    if ($newsletter) {
+      $vlcode = vam_random_charcode(32);
+      $link = vam_href_link(FILENAME_NEWSLETTER, 'action=activate&email='.$email_address.'&key='.$vlcode, 'NONSSL');
+      $sql_data_array = array ('customers_email_address' => vam_db_input($email_address), 'customers_id' => vam_db_input($_SESSION['customer_id']), 'customers_status' => 2, 'customers_firstname' => vam_db_input($firstname), 'customers_lastname' => vam_db_input($lastname), 'mail_status' => '1', 'mail_key' => vam_db_input($vlcode), 'date_added' => 'now()');
+      vam_db_perform(TABLE_NEWSLETTER_RECIPIENTS, $sql_data_array);
+      // assign vars
+      $vamTemplate->assign('LINK', $link);
+    } else {
+      $vamTemplate->assign('LINK', false);
+    }		
+		
+		$html_mail = $vamTemplate->fetch(CURRENT_TEMPLATE.'/mail/'.$_SESSION['language'].'/create_account_mail.html');
+		$vamTemplate->caching = 0;
+		$txt_mail = $vamTemplate->fetch(CURRENT_TEMPLATE.'/mail/'.$_SESSION['language'].'/create_account_mail.txt');
+
+		vam_php_mail(EMAIL_SUPPORT_ADDRESS, EMAIL_SUPPORT_NAME, $email_address, $name, EMAIL_SUPPORT_FORWARDING_STRING, EMAIL_SUPPORT_REPLY_ADDRESS, EMAIL_SUPPORT_REPLY_ADDRESS_NAME, '', '', EMAIL_SUPPORT_SUBJECT, $html_mail, $txt_mail);
+
+		if (!isset ($mail_error)) {
+				if ($_SESSION['nologin']){
+				vam_redirect(vam_href_link(FILENAME_CHECKOUT_SHIPPING, '', 'SSL'));
+				}else{
+				        vam_redirect(vam_href_link(FILENAME_SHOPPING_CART, '', 'SSL'));
+				}
+		} else {
+			echo $mail_error;
+		}
+
+		} else {
+			$authUrl = $gClient->createAuthUrl();
+		}
+		
+		if(isset($authUrl)) {
+			echo vam_redirect($authUrl);
+		} else {
+			//echo '<a href="/site/social_logout">Logout</a>';
+		}
+
+}	
+
+//VK
+
 if (isset ($_GET['social_login']) && ($_GET['social_login'] == 'vk')) {
 	
 		$provider = 'vk';
