@@ -265,6 +265,17 @@ elseif ($category_depth == 'products' || $_GET['manufacturers_id']) {
                                   and pd.language_id = '".(int) $_SESSION['languages_id']."'
                                   and p2c.categories_id = '".(int) $_GET['filter_id']."'".$sorting;
   } else {
+  	
+    // sorting query
+    $sorting_query = vamDBquery("SELECT products_sorting,
+                                                products_sorting2 FROM ".TABLE_CATEGORIES."
+                                                where categories_id='".(int) $_GET['filter_id']."'");
+    $sorting_data = vam_db_fetch_array($sorting_query,true);
+    my_sorting_products($sorting_data);
+    if (!$sorting_data['products_sorting'])
+    $sorting_data['products_sorting'] = 'pd.products_name';
+    $sorting = ' GROUP BY p.products_id ORDER BY '.$sorting_data['products_sorting'].' '.$sorting_data['products_sorting2'].' ';
+      	
     // We show them all
     if (GROUP_CHECK == 'true') {
     $group_check = " and p.group_permission_".$_SESSION['customers_status']['customers_status_id']."=1 ";
@@ -296,7 +307,7 @@ elseif ($category_depth == 'products' || $_GET['manufacturers_id']) {
                             ".$fsk_lock."
                             and pd.language_id = '".(int) $_SESSION['languages_id']."'
                             and p.manufacturers_id = m.manufacturers_id
-                            and m.manufacturers_id = '".(int) $_GET['manufacturers_id']."'";
+                            and m.manufacturers_id = '".(int) $_GET['manufacturers_id']."'".$sorting;
   }
   } else {
   // show the products in a given categorie
