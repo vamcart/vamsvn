@@ -64,6 +64,23 @@
               exit();
             }
           }
+          if (preg_match('/\/manufacturers_id\/(.*)\//', $_SERVER['REQUEST_URI'], $manid)) {
+            $cURL = '';
+            $query = 'select manufacturers_seo_url from ' . TABLE_MANUFACTURERS . ' where manufacturers_id="' . (int)$manid[1] . '"';
+            $result = mysqli_query($db_l, $query);   
+            if (mysqli_num_rows($result) > 0) {
+              $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+              $mURL = $row['manufacturers_seo_url'];
+            }
+            mysqli_free_result($result);
+            mysqli_close($db_l);
+            if (isset($mURL) && $mURL != '') {
+              $url = HTTP_SERVER . DIR_WS_CATALOG . $mURL;
+              header("HTTP/1.1 301 Moved Permanently");
+              header('Location: ' . $url);
+              exit();
+            }
+          }
           $PHP_SELF = '/index.php';
           include('index.php');
           break;
@@ -109,29 +126,6 @@
           $PHP_SELF = '/shop_content.php';
           include('shop_content.php');
           break;
-
-        case 'manufacturers_id':
-          $manufacturersid = array();
-          if (preg_match('/\/manufacturers_id\/(.*)\//', $_SERVER['REQUEST_URI'], $manufacturersid)) {
-            $query = 'select manufacturers_seo_url from ' . TABLE_MANUFACTURERS . ' where manufacturers_id="' . (int)$manufacturersid[1] . '"';
-            $result = mysqli_query($db_l, $query);   
-            if (mysqli_num_rows($result) > 0) {
-              $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
-              $mURL = $row['manufacturers_seo_url'];
-            }
-            mysqli_free_result($result);
-            mysqli_close($db_l);
-            if (isset($mURL) && $mURL != '') {
-              $url = HTTP_SERVER . DIR_WS_CATALOG . $mURL;
-              header("HTTP/1.1 301 Moved Permanently");
-              header('Location: ' . $url);
-              exit();
-            }
-          }
-          $PHP_SELF = '/index.php';
-          include('index.php');
-          break;
-
         case 'article_info':
           $articleid = array();
           if (preg_match('/\/articles_id\/(.*)\//', $_SERVER['REQUEST_URI'], $articleid)) {
@@ -266,9 +260,6 @@
           case 'article_info':
             $URI_elements[0] = 'article_info.php';
             break;
-          case 'manufacturers_id':
-            $URI_elements[0] = 'index.php';
-            break;
           case 'articles':
             $URI_elements[0] = 'articles.php';
             break;
@@ -299,6 +290,23 @@
             mysqli_close($db_l);
             if (isset($cURL) && $cURL != '') {
               $url = HTTP_SERVER . DIR_WS_CATALOG. $cURL;
+              header("HTTP/1.1 301 Moved Permanently");
+              header('Location: ' . $url);
+              exit();
+            }
+          }
+          if (isset($_GET['manufacturers_id']) && $_GET['manufacturers_id'] != '') {
+            $mURL = '';
+            $query = 'select manufacturers_seo_url from ' . TABLE_MANUFACTURERS . ' where manufacturers_id="' . vam_db_prepare_input($_GET['manufacturers_id']) . '"';
+            $result = mysqli_query($db_l, $query);   
+            if (mysqli_num_rows($result) > 0) {
+              $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+              $mURL = $row['manufacturers_seo_url'];
+            }
+            mysqli_free_result($result);
+            mysqli_close($db_l);
+            if (isset($mURL) && $mURL != '') {
+              $url = HTTP_SERVER . DIR_WS_CATALOG. $mURL;
               header("HTTP/1.1 301 Moved Permanently");
               header('Location: ' . $url);
               exit();
@@ -366,26 +374,6 @@
           }
           $PHP_SELF = '/article_info.php';
           include('article_info.php');
-          break;
-        case 'manufacturers_id':
-          if (isset($_GET['manufacturers_id']) && $_GET['manufacturers_id'] != '') {
-            $query = 'select manufacturers_seo_url from ' . TABLE_MANUFACTURERS . ' where manufacturers_id="' . vam_db_prepare_input($_GET['manufacturers_id']) . '"';
-            $result = mysqli_query($db_l, $query);   
-            if (mysqli_num_rows($result) > 0) {
-              $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
-              $mURL = $row['manufacturers_seo_url'];
-            }
-            mysqli_free_result($result);
-            mysqli_close($db_l);
-            if (isset($mURL) && $mURL != '') {
-              $url = HTTP_SERVER . DIR_WS_CATALOG. $mURL;
-              header("HTTP/1.1 301 Moved Permanently");
-              header('Location: ' . $url);
-              exit();
-            }
-          }
-          $PHP_SELF = '/index.php';
-          include('index.php');
           break;
         case 'news':
           if (isset($_GET['news_id']) && $_GET['news_id'] != '') {
