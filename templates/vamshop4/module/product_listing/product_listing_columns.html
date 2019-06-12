@@ -54,11 +54,12 @@
   </div>
   {/if}
 
-{if $MANUFACTURER_SORT}
+{if $MANUFACTURER_DROPDOWN}
 <p>
-{$MANUFACTURER_SORT}
+{$MANUFACTURER_DROPDOWN}
 </p>
 {/if}
+{if $smarty.get.cat}
 <p>
 {#text_sort#}
 <a href="{$LINK_sort_name_asc}">{#text_sort_name_asc#}</a>  
@@ -72,24 +73,25 @@
 <a href="{$LINK_sort_quantity_asc}">{#text_sort_quantity_asc#}</a>  
 <a href="{$LINK_sort_quantity_desc}">{#text_sort_quantity_desc#}</a> 
 </p>
+{/if}
 {if $PRODUCTS_COUNT >= $smarty.const.MAX_DISPLAY_SEARCH_RESULTS}
 <p>
 {#text_products_per_page#}
 
 {if $PRODUCTS_COUNT > 10}
-<a href="{$LINK_PAGE}10">10</a> 
+<a href="{$LINK_PAGE}10">10</a>&nbsp;
 {/if}
 
 {if $PRODUCTS_COUNT > 20}
-<a href="{$LINK_PAGE}20">20</a> 
+<a href="{$LINK_PAGE}20">20</a>&nbsp;
 {/if}
 
 {if $PRODUCTS_COUNT > 50}
-<a href="{$LINK_PAGE}50">50</a> 
+<a href="{$LINK_PAGE}50">50</a>&nbsp; 
 {/if}
 
 {if $PRODUCTS_COUNT > 100}
-<a href="{$LINK_PAGE}100">100</a>
+<a href="{$LINK_PAGE}100">100</a>&nbsp;
 {/if} 
 </p>
 {/if}
