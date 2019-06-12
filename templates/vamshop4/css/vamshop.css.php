@@ -2721,6 +2721,9 @@ label
 
 /* Buttons */
 
+.btn {
+  margin-right: 5px;
+}
 .btn.btn-inverse {
   color: #ffffff;
   background-color: #dd2c00;
