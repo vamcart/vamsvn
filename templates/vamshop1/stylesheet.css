@@ -1474,10 +1474,6 @@ box-shadow: 0 4px 15px #d5d5d5;
   -moz-box-shadow: none;
   box-shadow: none;
 }
-.product-images .span4.thumbnail {
-  padding: .5em;
-  margin: 0;
-}
 .product-images .thumbnail.big {
   margin-bottom: 7px;
 }
