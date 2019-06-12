@@ -30,13 +30,14 @@
     $q = '';
     $price_min = '';
     $price_max = '';
+    $manufacturers_id = '';
     $language = '';
     $currency = '';
     $page_num = '';
     $matches = array();
 
     if ($page == FILENAME_DEFAULT) {
-      if (strpos($parameters, 'cat') === false) {
+      if (strpos($parameters, 'cat') === false && strpos($parameters, 'manufacturers_id') === false) {
         return vam_href_link_original($page, $parameters, $connection, $add_session_id, $search_engine_safe);
       } else {
         $categories_id = -1;
@@ -75,6 +76,8 @@
             $price_min = $parsed_param[1];
           } elseif ($parsed_param[0] === 'price_max') {
             $price_max = $parsed_param[1];
+	       } elseif ($parsed_param[0] === 'manufacturers_id') {
+            $manufacturers_id = $parsed_param[1];            
           } elseif ($parsed_param[0] === 'on_page') {
             if (vam_not_null($parsed_param[1])) {
               $on_page = $parsed_param[1];
@@ -89,6 +92,13 @@
         $categories_url = vamDBquery('select categories_url from ' . TABLE_CATEGORIES . ' where categories_id="' . $categories_id . '"');
         $categories_url = vam_db_fetch_array($categories_url,true);
         $categories_url = $categories_url['categories_url'];
+
+        if ($categories_url == '' && $manufacturers_id > 0) {
+        $categories_url = vamDBquery('select manufacturers_seo_url from ' . TABLE_MANUFACTURERS . ' where manufacturers_id="' . $manufacturers_id . '"');
+        $categories_url = vam_db_fetch_array($categories_url,true);
+        $categories_url = $categories_url['manufacturers_seo_url'];
+        }
+
 
         if ($categories_url == '') {
           return vam_href_link_original($page, $parameters, $connection, $add_session_id, $search_engine_safe);
@@ -150,6 +160,10 @@
 
           if (vam_not_null($price_max)) {
             $params .= '&price_max=' . $price_max;
+          }
+
+          if (vam_not_null($manufacturers_id)) {
+            $params .= '&manufacturers_id=' . $manufacturers_id;
           }
 
           if ($on_page === -1) {

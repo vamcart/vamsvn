@@ -73,6 +73,28 @@
         include('product_info.php');
       } else {
         mysqli_free_result($result);
+
+      $query = 'select manufacturers_id from ' . TABLE_MANUFACTURERS . ' where BINARY manufacturers_seo_url="' . vam_db_prepare_input($URI_elements[0]) . '"';
+      $result = mysqli_query($db_l, $query);
+      if (mysqli_num_rows($result) > 0) {
+        $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+        $mId = $row['manufacturers_id'];
+        $matched = true;
+      } else {
+        $matched = false;
+      }
+      if ($matched) {
+        $HTTP_GET_VARS['manufacturers_id']  = $mId;
+        $_GET['manufacturers_id']  = $mId;
+        
+        mysqli_free_result($result);
+        mysqli_close($db_l);
+        $PHP_SELF = '/index.php';
+        include('index.php');
+      } else {
+        mysqli_free_result($result);
+
+
         $query = 'select content_id from ' . TABLE_CONTENT_MANAGER . ' where BINARY content_page_url="' . vam_db_prepare_input($URI_elements[0]) . '"';
         $result = mysqli_query($db_l, $query);
         if (mysqli_num_rows($result) > 0) {
@@ -183,7 +205,7 @@
         }        
       }
      }
-         
+    }  
         }
       }
     }
