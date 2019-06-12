@@ -226,7 +226,7 @@ elseif ($category_depth == 'products' || $_GET['manufacturers_id']) {
     $sorting_data = vam_db_fetch_array($sorting_query,true);
     my_sorting_products($sorting_data);
     if (!$sorting_data['products_sorting'])
-    $sorting_data['products_sorting'] = 'pd.products_name';
+    $sorting_data['products_sorting'] = 'p.products_price';
     $sorting = ' GROUP BY p.products_id ORDER BY '.$sorting_data['products_sorting'].' '.$sorting_data['products_sorting2'].' ';
     // We are asked to show only a specific category
     if (GROUP_CHECK == 'true') {
@@ -273,7 +273,7 @@ elseif ($category_depth == 'products' || $_GET['manufacturers_id']) {
     $sorting_data = vam_db_fetch_array($sorting_query,true);
     my_sorting_products($sorting_data);
     if (!$sorting_data['products_sorting'])
-    $sorting_data['products_sorting'] = 'pd.products_name';
+    $sorting_data['products_sorting'] = 'p.products_price';
     $sorting = ' GROUP BY p.products_id ORDER BY '.$sorting_data['products_sorting'].' '.$sorting_data['products_sorting2'].' ';
       	
     // We show them all
