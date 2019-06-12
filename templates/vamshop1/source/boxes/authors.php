@@ -58,7 +58,7 @@ if (!$box->isCached(CURRENT_TEMPLATE.'/boxes/box_authors.html', $cache_id) || !$
 
         $authors_name = ((utf8_strlen($authors['authors_name']) > MAX_DISPLAY_AUTHOR_NAME_LEN) ? utf8_substr($authors['authors_name'], 0, MAX_DISPLAY_AUTHOR_NAME_LEN) . '..' : $authors['authors_name']);
         if (isset($_GET['authors_id']) && ($_GET['authors_id'] == $authors['authors_id'])) $authors_name = '<b>' . $authors_name .'</b>';
-        $authors_list .= '<li><a href="' . vam_href_link(FILENAME_ARTICLES, 'authors_id=' . $authors['authors_id'] . $SEF_parameter_author) . '">' . $authors_name . '</a></li>';
+        $authors_list .= '<a href="' . vam_href_link(FILENAME_ARTICLES, 'authors_id=' . $authors['authors_id'] . $SEF_parameter_author) . '">' . $authors_name . '</a><br>';
       }
 
       $authors_list = utf8_substr($authors_list, 0, -4);
@@ -77,7 +77,7 @@ if (!$box->isCached(CURRENT_TEMPLATE.'/boxes/box_authors.html', $cache_id) || !$
                                        'text' => $authors_name);
       }
 
-      $content_string .= vam_draw_form('authors', vam_href_link(FILENAME_ARTICLES, '', 'NONSSL', false), 'get') . vam_draw_pull_down_menu('authors_id', $authors_array, (isset($_GET['authors_id']) ? $_GET['authors_id'] : ''), 'onchange="this.form.submit();" size="' . MAX_AUTHORS_LIST . '"') . vam_hide_session_id().'</form>';
+      $content_string .= vam_draw_form('authors', vam_href_link(FILENAME_ARTICLES, '', 'NONSSL', false), 'get') . vam_draw_pull_down_menu('authors_id', $authors_array, (isset($_GET['authors_id']) ? $_GET['authors_id'] : ''), 'onchange="this.form.submit();" size="' . MAX_AUTHORS_LIST . '" style="width: 100%"') . vam_hide_session_id().'</form>';
 }
 
 ?>
