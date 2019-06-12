@@ -688,4 +688,7 @@ define('TEXT_SOCIAL_LOGIN_GOOGLE', 'Google');
 define('TEXT_SOCIAL_LOGIN_FACEBOOK', 'Facebook');
 define('TEXT_SOCIAL_LOGIN_VK', 'ВКонтакте');
 
+define('TEXT_PRODUCT_SHIPPING', 'Доставка');
+define('TEXT_PRODUCT_PAYMENT', 'Оплата');
+
 ?>

@@ -98,6 +98,8 @@
 					<ul class="nav nav-tabs">
 						<li class="active"><a href="#description" data-toggle="tab"><i class="fa fa-thumbs-up"></i> {$smarty.const.TEXT_PRODUCT_DESCRIPTION}</a></li>
 						<li><a href="#reviews" data-toggle="tab"><i class="fa fa-comment"></i> {$smarty.const.TEXT_PRODUCT_REVIEWS}</a></li>
+						<li><a href="#shipping" data-toggle="tab"><i class="fa fa-truck"></i> {$smarty.const.TEXT_PRODUCT_SHIPPING}</a></li>
+						<li><a href="#payment" data-toggle="tab"><i class="fa fa-credit-card"></i> {$smarty.const.TEXT_PRODUCT_PAYMENT}</a></li>
 					</ul>
 
 					<div class="tab-content">
@@ -166,6 +168,14 @@
 							{$MODULE_products_reviews}
 						</div>
 
+						<div class="tab-pane inner fade in notop" id="shipping">
+							{$text_shipping_info}
+						</div>
+						
+						<div class="tab-pane inner fade in notop" id="payment">
+							{$text_payment_info}
+						</div>
+												
 					</div>
 				</div>
 			</div>

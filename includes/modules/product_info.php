@@ -253,6 +253,36 @@ if (!file_exists(DIR_WS_POPUP_IMAGES.$img['image_name'])) $products_mo_popup_lin
 
   $info->assign('extra_fields_data', $extra_fields_data);
 
+
+  if (GROUP_CHECK == 'true') {
+  $group_check = "and group_ids LIKE '%c_".$_SESSION['customers_status']['customers_status_id']."_group%'";
+  }
+  $shop_content_query_shipping = vamDBquery("SELECT
+                      content_title,
+                      content_heading,
+                      content_text,
+                      content_file
+                      FROM ".TABLE_CONTENT_MANAGER."
+                      WHERE content_group='1'
+                      ".$group_check."
+                      AND languages_id='".$_SESSION['languages_id']."'");
+  $shop_content_data_shipping = vam_db_fetch_array($shop_content_query_shipping,true);
+
+  $info->assign('text_shipping_info', $shop_content_data_shipping['content_text']);
+
+  $shop_content_query_payment = vamDBquery("SELECT
+                      content_title,
+                      content_heading,
+                      content_text,
+                      content_file
+                      FROM ".TABLE_CONTENT_MANAGER."
+                      WHERE content_group='2'
+                      ".$group_check."
+                      AND languages_id='".$_SESSION['languages_id']."'");
+  $shop_content_data_payment = vam_db_fetch_array($shop_content_query_payment,true);
+
+  $info->assign('text_payment_info', $shop_content_data_payment['content_text']);
+
   $info->assign('info_message', $_SESSION['error_cart_msg']);
 
   unset($_SESSION['error_cart_msg']);
