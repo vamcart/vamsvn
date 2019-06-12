@@ -2721,8 +2721,8 @@ label
 
 /* Buttons */
 
-.btn {
-  margin-right: 5px;
+.btn-secondary {
+  margin-right: 0px;
 }
 .btn.btn-inverse {
   color: #ffffff;
@@ -2738,6 +2738,7 @@ label
 .btn-add-to-cart {
   color: #ffffff;
   background-color: #dd2c00;
+  margin-right: 5px;
   margin-top: 5px;
   margin-bottom: 5px;
 }
