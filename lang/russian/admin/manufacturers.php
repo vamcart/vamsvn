@@ -20,6 +20,7 @@
 define('HEADING_TITLE', 'Производители');
 
 define('TABLE_HEADING_MANUFACTURERS', 'Производители');
+define('TABLE_HEADING_SORT_ORDER', 'Порядок сортировки');
 define('TABLE_HEADING_ACTION', 'Действие');
 
 define('TEXT_HEADING_NEW_MANUFACTURER', 'Новый Производитель');
@@ -50,6 +51,9 @@ define('ERROR_DIRECTORY_DOES_NOT_EXIST', 'Ошибка: Директория н�
 define('TEXT_MANUFACTURERS_META_TITLE', 'Meta title:');
 define('TEXT_MANUFACTURERS_META_KEYWORDS', 'Meta keywords:');
 define('TEXT_MANUFACTURERS_META_DESCRIPTION', 'Meta description:');
-define('TEXT_MANUFACTURERS_DESCRIPTION','Описание производителя:')
+define('TEXT_MANUFACTURERS_DESCRIPTION','Описание производителя:');
+
+define('TEXT_MANUFACTURERS_PAGE_URL', 'SEO URL производителя:');
+define('TEXT_MANUFACTURERS_SORT_ORDER', 'Порядок сортировки:');
 
 ?>
