@@ -162,9 +162,9 @@
             $params .= '&price_max=' . $price_max;
           }
 
-          if (vam_not_null($manufacturers_id)) {
-            $params .= '&manufacturers_id=' . $manufacturers_id;
-          }
+          //if (vam_not_null($manufacturers_id)) {
+            //$params .= '&manufacturers_id=' . $manufacturers_id;
+          //}
 
           if ($on_page === -1) {
             $params .= '&on_page=';
