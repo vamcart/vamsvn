@@ -72,9 +72,9 @@ if (isset ($_GET['action']) && $_GET['action'] == 'process' && $spam_flag == fal
 		$customer = vam_db_query("select customers_firstname, customers_lastname from ".TABLE_CUSTOMERS." where customers_id = '".(int) $_SESSION['customer_id']."'");
 		$customer_values = vam_db_fetch_array($customer);
 		$date_now = date('Ymd');
-		if ($customer_values['customers_lastname'] == '')
-			$customer_values['customers_lastname'] = TEXT_GUEST;
-		vam_db_query("insert into ".TABLE_REVIEWS." (products_id, customers_id, customers_name, reviews_rating, date_added) values ('".$product->data['products_id']."', '".(int) $_SESSION['customer_id']."', '".addslashes($customer_values['customers_firstname']).' '.addslashes($customer_values['customers_lastname'])."', '".addslashes($_POST['rating'])."', now())");
+		//if ($customer_values['customers_lastname'] == '')
+			//$customer_values['customers_lastname'] = TEXT_GUEST;
+		vam_db_query("insert into ".TABLE_REVIEWS." (products_id, customers_id, customers_name, reviews_rating, date_added) values ('".$product->data['products_id']."', '".(int) $_SESSION['customer_id']."', '".addslashes($customer_values['customers_firstname'])."', '".addslashes($_POST['rating'])."', now())");
 		$insert_id = vam_db_insert_id();
 		vam_db_query("insert into ".TABLE_REVIEWS_DESCRIPTION." (reviews_id, languages_id, reviews_text) values ('".$insert_id."', '".(int) $_SESSION['languages_id']."', '".addslashes($_POST['review'])."')");
 
@@ -104,11 +104,11 @@ require (DIR_WS_INCLUDES.'header.php');
 if (!$product->isProduct()) {
 	$vamTemplate->assign('error', ERROR_INVALID_PRODUCT);
 } else {
-	$name = $customer_info['customers_firstname'].' '.$customer_info['customers_lastname'];
-	if ($name == ' ')
-		$customer_info['customers_lastname'] = TEXT_GUEST;
+	$name = $customer_info['customers_firstname'];
+	//if ($name == ' ')
+		//$customer_info['customers_lastname'] = TEXT_GUEST;
 	$vamTemplate->assign('PRODUCTS_NAME', $product->data['products_name']);
-	$vamTemplate->assign('AUTHOR', $customer_info['customers_firstname'].' '.$customer_info['customers_lastname']);
+	$vamTemplate->assign('AUTHOR', $customer_info['customers_firstname']);
 	$vamTemplate->assign('INPUT_TEXT', vam_draw_textarea_field('review', 'soft', 60, 15, $_POST['review'], '', false));
 	$vamTemplate->assign('INPUT_RATING', vam_draw_radio_field('rating', '1').' '.vam_draw_radio_field('rating', '2').' '.vam_draw_radio_field('rating', '3').' '.vam_draw_radio_field('rating', '4').' '.vam_draw_radio_field('rating', '5'));
 	$vamTemplate->assign('FORM_ACTION', vam_draw_form('product_reviews_write', vam_href_link(FILENAME_PRODUCT_REVIEWS_WRITE, 'action=process&'.vam_product_link($product->data['products_id'],$product->data['products_name'])), 'post', 'onsubmit="return checkForm();"'));
