@@ -64,6 +64,23 @@
               exit();
             }
           }
+          if (preg_match('/\/manu\/m(.*)_/', $_SERVER['REQUEST_URI'], $manid)) {
+            $cURL = '';
+            $query = 'select manufacturers_seo_url from ' . TABLE_MANUFACTURERS . ' where manufacturers_id="' . (int)$manid[1] . '"';
+            $result = mysqli_query($db_l, $query);   
+            if (mysqli_num_rows($result) > 0) {
+              $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+              $mURL = $row['manufacturers_seo_url'];
+            }
+            mysqli_free_result($result);
+            mysqli_close($db_l);
+            if (isset($mURL) && $mURL != '') {
+              $url = HTTP_SERVER . DIR_WS_CATALOG . $mURL;
+              header("HTTP/1.1 301 Moved Permanently");
+              header('Location: ' . $url);
+              exit();
+            }
+          }
           if (preg_match('/\/manufacturers_id\/(.*)\//', $_SERVER['REQUEST_URI'], $manid)) {
             $cURL = '';
             $query = 'select manufacturers_seo_url from ' . TABLE_MANUFACTURERS . ' where manufacturers_id="' . (int)$manid[1] . '"';
@@ -295,7 +312,7 @@
               exit();
             }
           }
-          if (isset($_GET['manufacturers_id']) && $_GET['manufacturers_id'] != '') {
+          if (isset($_GET['manufacturers_id']) && $_GET['manufacturers_id'] != '' && $_GET['filter_id'] == '') {
             $mURL = '';
             $query = 'select manufacturers_seo_url from ' . TABLE_MANUFACTURERS . ' where manufacturers_id="' . vam_db_prepare_input($_GET['manufacturers_id']) . '"';
             $result = mysqli_query($db_l, $query);   
