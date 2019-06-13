@@ -828,7 +828,9 @@ if ($order->delivery['country']['iso_code_2'] != '') {
   //}
   //} 
 // END - if only 1 shipping method is set ////  
-  
+
+if (isset ($_POST['cot_gv']))
+	$_SESSION['cot_gv'] = true;
  
 //Classes init ##########################################
 $total_count = $_SESSION['cart']->count_contents();  
@@ -2282,6 +2284,9 @@ for ($i = 0, $n = sizeof($order->products); $i < $n; $i++) {
 $data_products .= '</table>';
 $vamTemplate->assign('PRODUCTS_BLOCK', $data_products);
 
+if (ACTIVATE_GIFT_SYSTEM == 'true') {
+	$vamTemplate->assign('module_gift', $order_total_modules->credit_selection());
+}
 
 if (SC_CONFIRMATION_PAGE == 'true') { //got to confimration page
 $vamTemplate->assign('BUTTON_CONTINUE', vam_image_submit('submit.png', IMAGE_BUTTON_CONTINUE));

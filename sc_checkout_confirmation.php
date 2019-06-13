@@ -107,13 +107,32 @@ if ($error == true) {
     $comments = vam_db_prepare_input($_POST['comments']);
   }
 
+//-- TheMedia Begin check if display conditions on checkout page is true
+if (isset ($_POST['cot_gv']))
+	$_SESSION['cot_gv'] = true;
+// if conditions are not accepted, redirect the customer to the payment method selection page
+
+if (DISPLAY_CONDITIONS_ON_CHECKOUT == 'true') {
+
+	if (isset($_POST['conditions'])) {
+		$_SESSION['conditions'] = true;
+	}
+
+	if ($_SESSION['conditions'] == false) {
+		$error = str_replace('\n', '<br />', ERROR_CONDITIONS_NOT_ACCEPTED);
+		vam_redirect(vam_href_link(FILENAME_CHECKOUT_PAYMENT, 'error_message=' . urlencode($error), 'SSL', true, false));
+	}
+}
 
 // load the selected payment module
   require(DIR_WS_CLASSES . 'payment.php');
+if (isset ($_SESSION['credit_covers']))
+	$_SESSION['payment'] = 'no_payment'; // GV Code Start/End ICW added for CREDIT CLASS  
   $payment_modules = new payment($payment);
 
 
-
+// GV Code ICW ADDED FOR CREDIT CLASS SYSTEM
+  require (DIR_WS_CLASSES . 'order_total.php');
   require(DIR_WS_CLASSES . 'order.php');
   $order = new order;
 
@@ -125,6 +144,17 @@ if (!vam_session_is_registered('free_payment')) { //hack for free payment
   }
 }
 
+// GV Code Start
+$order_total_modules = new order_total();
+$order_total_modules->collect_posts();
+$order_total_modules->pre_confirmation_check();
+// GV Code End
+
+// GV Code line changed
+//if ((is_array($payment_modules->modules) && (sizeof($payment_modules->modules) > 1) && (!is_object($$_SESSION['payment'])) && (!isset ($_SESSION['credit_covers']))) || (is_object($$_SESSION['payment']) && ($$_SESSION['payment']->enabled == false))) {
+	//vam_redirect(vam_href_link(FILENAME_CHECKOUT_PAYMENT, 'error_message=' . urlencode(ERROR_NO_PAYMENT_MODULE_SELECTED), 'SSL'));
+//}
+
   if (is_array($payment_modules->modules)) {
     $payment_modules->pre_confirmation_check();
   }
@@ -132,9 +162,6 @@ if (!vam_session_is_registered('free_payment')) { //hack for free payment
 // load the selected shipping module
   require(DIR_WS_CLASSES . 'shipping.php');
   $shipping_modules = new shipping($shipping);
-
-  require(DIR_WS_CLASSES . 'order_total.php');
-  $order_total_modules = new order_total;
 
 // Stock Check
   $any_out_of_stock = false;
