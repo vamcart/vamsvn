@@ -274,6 +274,12 @@ $(function($){
 {$PAYMENT_BLOCK}
 </div> <!--div end payment_options-->
 
+{if $GV_COVER!='true'}
+{$module_gift}
+{else}
+{#text_gccover#}
+{/if}
+
 {if $comments=='1'}
 <div id="comment_box" class="sm_layout_box">
 <h2>{$TITLE_COMMENTS}</h2>
