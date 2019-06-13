@@ -431,7 +431,7 @@ class rss_feed {
 	var $textInput = false;
 	var $item = array();
 
-	function rss_feed($xmlns = array()) {
+	function __constructor($xmlns = array()) {
 		if (is_array($xmlns))
 			$this->xmlns = $xmlns;
 		elseif (is_string($xmlns))
