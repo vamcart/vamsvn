@@ -176,6 +176,16 @@ if (isset ($_POST['action']) && ($_POST['action'] == 'process')) {
 						      }
 						//pickpoint end
 
+						//boxberry start
+								if ($_POST['shipping'] == 'boxberry_boxberry') {
+						       if ($_POST['boxberry_address'] != '') {
+								    $_SESSION['shipping']['title'] = MODULE_SHIPPING_BOXBERRY_TEXT_TITLE . ': ' . MODULE_SHIPPING_BOXBERRY_TEXT_ADDRESS . $_POST['boxberry_address'];
+						       } else {
+								    $_SESSION['shipping']['title'] = 'test';
+						       }
+						      }
+						//boxberry end
+
 						vam_redirect(vam_href_link(FILENAME_CHECKOUT_PAYMENT, '', 'SSL'));
 					}
 				}

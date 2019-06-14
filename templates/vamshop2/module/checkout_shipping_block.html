@@ -72,6 +72,43 @@ var pickpoint_options={};
 
 {/if}
 
+{if $method_data.id == "boxberry"}
+
+<script src="//points.boxberry.ru/js/boxberry.js"> </script>
+	<div id="boxberry_address"></div>
+	<a href="#" class="btn btn-warning" onclick="boxberry.open(callback_function); return false;"><i class="fa fa-check"></i> Выбрать пункт выдачи на карте</a>
+	<input type="hidden" name="boxberry_id" id="boxberry_id" value="" />
+	<input type="hidden" name="boxberry_address" id="boxberry_address" value="" />
+	<span id="boxberry_address_text"></span>
+
+<script>
+
+function callback_function(result){ 
+document.getElementById("boxberry_address").value = result.address;
+//document.getElementById("js-pricedelivery").innerHTML = result.price;
+document.getElementById("to_boxberry_id").innerHTML = result.id;
+
+result.name = encodeURIComponent(result.name) // Что бы избежать проблемы с кириллическими символами, на страницах отличными от UTF8, вы можете использовать функцию encodeURIComponent() 
+
+//document.getElementById("boxberry_name").innerHTML =	result.name;
+document.getElementById("to_boxberry_address").innerHTML =	result.address;
+document.getElementById("boxberry_address_text").innerHTML = "{$smarty.const.MODULE_SHIPPING_BOXBERRY_TEXT_ADDRESS}" + result.address + " ";
+//document.getElementById("workschedule").innerHTML =	result.workschedule;
+//document.getElementById("boxberry_phone").innerHTML = result.phone;
+//document.getElementById("boxberry_period").innerHTML = result.period;
+
+document.getElementById("street_address").value=result.address;
+
+document.getElementById("boxberry").checked="checked";
+
+if (result.prepaid=="1") { 
+alert("Отделение работает только по предоплате!"); 
+} 
+} 
+</script>
+
+{/if}
+
 </div>
 </label> {/foreach}
 {/foreach}

@@ -38,6 +38,16 @@ function init()
 		$('#pickpoint_address_text').before('<input type="hidden" name="pickpoint_address" id="pickpoint_address" value="'+adrr+'">');
 	}
 
+	function boxberry(){
+		var adrr = $('#to_boxberry_address').val();
+		var vall = $('#to_boxberry_id').val();
+		$('#boxberry_address_text').html('Ваш заказ доставят по адресу: '+adrr);
+		$('#shipping_options').find('#boxberry_id').remove();
+		$('#shipping_options').find('#boxberry_address').remove();
+		$('#boxberry_address_text').before('<input type="hidden" name="boxberry_id" id="boxberry_id" value="'+vall+'">');
+		$('#boxberry_address_text').before('<input type="hidden" name="boxberry_address" id="boxberry_address" value="'+adrr+'">');
+	}
+	
 var url='checkout.php';          
 
 function img_loader(){
@@ -105,6 +115,16 @@ function init()
 		$('#pickpoint_address_text').before('<input type="hidden" name="pickpoint_id" id="pickpoint_id" value="'+vall+'">');
 		$('#pickpoint_address_text').before('<input type="hidden" name="pickpoint_address" id="pickpoint_address" value="'+adrr+'">');
 	}
+
+	function boxberry(){
+		var adrr = $('#to_boxberry_address').val();
+		var vall = $('#to_boxberry_id').val();
+		$('#boxberry_address_text').html('Ваш заказ доставят по адресу: '+adrr);
+		$('#shipping_options').find('#boxberry_id').remove();
+		$('#shipping_options').find('#boxberry_address').remove();
+		$('#boxberry_address_text').before('<input type="hidden" name="boxberry_id" id="boxberry_id" value="'+vall+'">');
+		$('#boxberry_address_text').before('<input type="hidden" name="boxberry_address" id="boxberry_address" value="'+adrr+'">');
+	}
 	
 var url='checkout.php';          
 
@@ -116,15 +136,15 @@ function cldiv(){document.getElementById('load_status').innerHTML='';}
 }
 	
 $('#box')
-.on('refresh', '#shipping_modules_box', function(){$('#shipping_options').load(url +' #shipping_options > *', {'country': $('select[name=country]').val(),'state': $('select[name=state]').val(),'postcode': $('input[name=postcode]').val(),'city': $('input[name=city]').val()}),img_loader();point();})
-.on('refresh', '#shipping_modules_box', function(){$('#payment_options').load(url +' #payment_options > *', {'country': $('select[name=country]').val(),'state': $('select[name=state]').val(),'postcode': $('input[name=postcode]').val(),'city': $('input[name=city]').val()}),img_loader();point();})
-.on('refresh', '#shipping_modules_box', function(){$('#order_total_modules').load(url +' #order_total_modules > *', {'shipping': $('input[name=shipping]:checked').val(),'payment': $('input[name=payment]:checked').val()}),img_loader();point();})
+.on('refresh', '#shipping_modules_box', function(){$('#shipping_options').load(url +' #shipping_options > *', {'country': $('select[name=country]').val(),'state': $('select[name=state]').val(),'postcode': $('input[name=postcode]').val(),'city': $('input[name=city]').val()}),img_loader();point();boxberry();})
+.on('refresh', '#shipping_modules_box', function(){$('#payment_options').load(url +' #payment_options > *', {'country': $('select[name=country]').val(),'state': $('select[name=state]').val(),'postcode': $('input[name=postcode]').val(),'city': $('input[name=city]').val()}),img_loader();point();boxberry();})
+.on('refresh', '#shipping_modules_box', function(){$('#order_total_modules').load(url +' #order_total_modules > *', {'shipping': $('input[name=shipping]:checked').val(),'payment': $('input[name=payment]:checked').val()}),img_loader();point();boxberry();})
 
 
 //.on('refresh', '#shipping_modules_box', function(('input[name=checkout_possible]').val());})	
 //.on$('input[name=checkout_possible]').val()
 
-.on('change', 'input[name=shipping], input[name=payment], select[name=country], select[name=state], input[name=postcode], input[name=city]', function(){$('#shipping_country_box').load(url +' #shipping_country', {'shipping': $('input[name=shipping]:checked').val(), 'payment': $('input[name=payment]:checked').val(),'country': $('select[name=country]').val(),'state': $('select[name=state]').val(),'city': $('input[name=city]').val(),'postcode': $('input[name=postcode]').val()}, function(){$('#shipping_modules_box').trigger('refresh'),img_loader();});point();})
+.on('change', 'input[name=shipping], input[name=payment], select[name=country], select[name=state], input[name=postcode], input[name=city]', function(){$('#shipping_country_box').load(url +' #shipping_country', {'shipping': $('input[name=shipping]:checked').val(), 'payment': $('input[name=payment]:checked').val(),'country': $('select[name=country]').val(),'state': $('select[name=state]').val(),'city': $('input[name=city]').val(),'postcode': $('input[name=postcode]').val()}, function(){$('#shipping_modules_box').trigger('refresh'),img_loader();});point();boxberry();})
 //.on('change', 'input[name=shipping], select[name=state]', function(){$('#shipping_state_box').load(url +' #shipping_state', {'shipping': $('input[name=shipping]:checked').val(), 'state': $('select[name=state]').val()}, function(){$('#shipping_state_box').trigger('refresh');});})
 
 .on('change', '#country', function(){
@@ -138,7 +158,8 @@ $('#box')
                      success: function(msg){$("#stateXML").html(msg);}            
                    });
 
-point();                     
+point();  
+boxberry();                   
 
 })
 
@@ -156,6 +177,7 @@ point();
                    });  
 
 point();
+boxberry();
 
 })
 

@@ -790,6 +790,16 @@ if (vam_count_shipping_modules() == 0) {
 						       //}
 						      }
 						//pickpoint end
+
+						//boxberry start
+								if ($_POST['shipping'] == 'boxberry_boxberry') {
+						       //if ($_POST['boxberry_address'] != '') {
+								    $shipping['title'] = MODULE_SHIPPING_BOXBERRY_TEXT_TITLE . ': ' . MODULE_SHIPPING_BOXBERRY_TEXT_ADDRESS . $_POST['boxberry_address'];
+						       //} else {
+								    //$shipping['title'] = 'test';
+						       //}
+						      }
+						//boxberry end
 			
 		} else {
 		  //calculation first time ////////////
@@ -1047,6 +1057,16 @@ if (isset($_POST['shipping']) && vam_not_null($_POST['shipping'])){ //used THAT 
 						       //}
 						      }
 						//pickpoint end
+
+						//boxberry start
+								if ($_POST['shipping'] == 'boxberry_boxberry') {
+						       //if ($_POST['boxberry_address'] != '') {
+								    $shipping['title'] = MODULE_SHIPPING_BOXBERRY_TEXT_TITLE . ': ' . MODULE_SHIPPING_BOXBERRY_TEXT_ADDRESS . $_POST['boxberry_address'];
+						       //} else {
+								    //$shipping['title'] = 'test';
+						       //}
+						      }
+						//boxberry end
 
               //vam_redirect(vam_href_link(FILENAME_CHECKOUT_PAYMENT, '', 'SSL'));
             }
