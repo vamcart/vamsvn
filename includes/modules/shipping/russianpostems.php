@@ -64,11 +64,9 @@ var $code, $title, $description, $icon, $enabled;
 
 		$total_weight = $shipping_weight*1000;      
       
-      $url = "http://tariff.russianpost.ru/tariff/v1/calculate?json&object=7030&from=".$store_zip_code."&to=".$order->delivery['postcode']."&weight=".$total_weight."";
+      $url = file_get_contents("http://tariff.russianpost.ru/tariff/v1/calculate?json&object=7030&from=".$store_zip_code."&to=".$order->delivery['postcode']."&weight=".$total_weight."");
+		$out = json_decode($url);
 
-		$out = Curl_Page($url);
-		$out = json_decode($out);
-		
 		$shipping_cost = 0;
 		
 	    if (isset($out->pay) && $out->pay > 0) {
@@ -118,31 +116,5 @@ var $code, $title, $description, $icon, $enabled;
       return array('MODULE_SHIPPING_RUSSIANPOSTEMS_STATUS', 'MODULE_SHIPPING_RUSSIANPOSTEMS_CITY', 'MODULE_SHIPPING_RUSSIANPOSTEMS_HANDLING','MODULE_SHIPPING_RUSSIANPOSTEMS_ALLOWED', 'MODULE_SHIPPING_RUSSIANPOSTEMS_TAX_CLASS', 'MODULE_SHIPPING_RUSSIANPOSTEMS_ZONE', 'MODULE_SHIPPING_RUSSIANPOSTEMS_SORT_ORDER', 'MODULE_SHIPPING_RUSSIANPOSTEMS_DCVAL_PERCENT');
     }
 }
-
-
-
-function data_encode ( $data , $keyprefix = "" , $keypostfix = "" ) {
-    assert ( is_array ( $data ) );
-            $vars = null ;
-            foreach ( $data as $key => $value ) {
-    if ( is_array ( $value )) $vars .= data_encode ( $value , $keyprefix . $key . $keypostfix . urlencode ( "[" ), urlencode ( "]" ));
-        else $vars .= $keyprefix . $key . $keypostfix . "=" . urlencode ( $value ). "&" ;
-                        }
-        return $vars ;
-}
-
-// функция вывода страницы
-
-function Curl_Page ( $url ) {
-		$ch = curl_init( $url );
-
-		curl_setopt( $ch, CURLOPT_POST, 0 );
-		curl_setopt( $ch, CURLOPT_FOLLOWLOCATION, 0 );
-		curl_setopt( $ch, CURLOPT_HEADER, 0 );
-		curl_setopt( $ch, CURLOPT_RETURNTRANSFER, 1 );
-
-		return curl_exec( $ch );
-}
-
 
 ?>
