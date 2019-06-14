@@ -13,7 +13,6 @@
 			<div class="inner notop nobottom text-left">
 				<h4 class="title"><a href="{$module_data.PRODUCTS_LINK}">{$module_data.PRODUCTS_NAME}</a></h4>
 				{if $module_data.REVIEWS_TOTAL > 0}<div class="description"><span class="rating">{$module_data.REVIEWS_STAR_RATING}</span> <span class="reviews">{$smarty.const.TEXT_TOTAL_REVIEWS}: {$module_data.REVIEWS_TOTAL}</span></div>{/if}
-				<div class="description">{$module_data.PRODUCTS_SHORT_DESCRIPTION|strip_tags|vam_truncate:30:"...":true}</div>
 			</div>
 			</div>
 			<div class="inner darken notop">

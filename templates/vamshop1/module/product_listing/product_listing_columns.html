@@ -101,7 +101,6 @@
 			<div class="inner notop nobottom text-left">
 				<h4 class="title"><a href="{$module_data.PRODUCTS_LINK}">{$module_data.PRODUCTS_NAME}</a></h4>
 				{if $module_data.REVIEWS_TOTAL > 0}<div class="description"><span class="rating">{$module_data.REVIEWS_STAR_RATING}</span> <span class="reviews">{$smarty.const.TEXT_TOTAL_REVIEWS}: {$module_data.REVIEWS_TOTAL}</span></div>{/if}
-				{if $module_data.PRODUCTS_SHORT_DESCRIPTION}<div class="description">{$module_data.PRODUCTS_SHORT_DESCRIPTION|strip_tags|vam_truncate:30:"...":true}</div>{/if}
 				{if $module_data.EXTRA_FIELDS}
 				<div class="description">
 				{foreach item=extra_fields from=$module_data.EXTRA_FIELDS}
