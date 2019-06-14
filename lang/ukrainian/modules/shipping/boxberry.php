@@ -25,7 +25,7 @@ define('MODULE_SHIPPING_BOXBERRY_TEXT_ADDRESS_HELP','(откроется во в
 define('MODULE_SHIPPING_BOXBERRY_TEXT_ADDRESS','Ваш заказ доставят по адресу: ');
 define('MODULE_SHIPPING_BOXBERRY_TEXT_ANOTHER_ADDRESS','Выбрать другой адрес');
 
-define('MODULE_SHIPPING_BOXBERRY_TEXT_WAY', 'Заказ будет доставлен в выбранный постамат');
+define('MODULE_SHIPPING_BOXBERRY_TEXT_WAY', 'Заказ будет доставлен в выбранный пункт выдачи');
 
 define('MODULE_SHIPPING_BOXBERRY_STATUS_TITLE' , 'Разрешить модуль boxberry');
 define('MODULE_SHIPPING_BOXBERRY_STATUS_DESC' , 'Вы хотите разрешить модуль boxberry?');
