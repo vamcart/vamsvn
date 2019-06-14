@@ -10,7 +10,7 @@
 			<div class="thumbnail text-center">
 				{if $module_data.PRODUCT.PRODUCTS_SPECIAL > 0}<div class="description"><span class="discount">-{$module_data.PRODUCT.PRODUCTS_SPECIAL|round}%</span></div>{/if}
 				<a href="{$module_data.PRODUCT.PRODUCTS_LINK}" class="image"><img src="{$module_data.PRODUCT.PRODUCTS_IMAGE}" alt="{$module_data.PRODUCT.PRODUCTS_NAME}" /><span class="frame-overlay"></span><span class="price">{$module_data.PRODUCT.PRODUCTS_PRICE}</span>{if $module_data.PRODUCT.PRODUCTS_LABEL}{$module_data.PRODUCT.PRODUCTS_LABEL}{/if}</a>
-			<div class="inner notop nobottom text-left">
+			<div class="inner notop nobottom text-center">
 				<h4 class="title"><a href="{$module_data.PRODUCT.PRODUCTS_LINK}">{$module_data.PRODUCT.PRODUCTS_NAME}</a></h4>
 				{if $module_data.PRODUCT.REVIEWS_TOTAL > 0}<div class="description"><span class="rating">{$module_data.PRODUCT.REVIEWS_STAR_RATING}</span> <span class="reviews">{$smarty.const.TEXT_TOTAL_REVIEWS}: {$module_data.PRODUCT.REVIEWS_TOTAL}</span></div>{/if}
 				<h4>{#heading_product_reviews#}</h4>
