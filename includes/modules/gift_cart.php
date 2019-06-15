@@ -55,9 +55,9 @@ if (isset ($_SESSION['cc_id'])) {
 	$gift->assign('COUPON_HELP_LINK', '<a style="cursor: pointer" onclick="javascript:window.open(\''.vam_href_link(FILENAME_POPUP_COUPON_HELP, 'cID='.$_SESSION['cc_id']).'\', \'popup\', \'toolbar=0,scrollbars=yes, width=350, height=350\')">');
 
 }
-if (isset ($_SESSION['customer_id'])) {
+//if (isset ($_SESSION['customer_id'])) {
 	$gift->assign('C_FLAG', 'true');
-}
+//}
 $gift->assign('LINK_ACCOUNT', vam_href_link(FILENAME_CREATE_ACCOUNT));
 $gift->assign('FORM_ACTION', vam_draw_form('gift_coupon', vam_href_link(FILENAME_SHOPPING_CART, 'action=check_gift', 'NONSSL'), 'post', 'class="form-inline"'));
 $gift->assign('INPUT_CODE', vam_draw_input_field('gv_redeem_code', '', 'class="input-small"'));
