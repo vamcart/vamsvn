@@ -22,7 +22,7 @@
    Released under the GNU General Public License
    ---------------------------------------------------------------------------------------*/
 $cart_empty = false;
-require ("includes/application_top.php");
+if (!isset($ajax_cart)) require ("includes/application_top.php");
 
 if (isset ($_SESSION['customer_id']))
 {
@@ -31,9 +31,11 @@ $_SESSION['nologin'] = false;
 $_SESSION['nologin'] = true;
 }
 
+if (!$ajax_cart) {
 // create template elements
 $vamTemplate = new vamTemplate;
 require (DIR_FS_CATALOG.'templates/'.CURRENT_TEMPLATE.'/source/boxes.php');
+}
 // include needed functions
 require_once (DIR_FS_INC.'vam_array_to_string.inc.php');
 require_once (DIR_FS_INC.'vam_image_submit.inc.php');
@@ -41,9 +43,10 @@ require_once (DIR_FS_INC.'vam_recalculate_price.inc.php');
 require_once (DIR_FS_INC.'get_cross_sell_name.inc.php');
 require_once (DIR_FS_INC.'vam_get_products_stock.inc.php');
 
+if (!$ajax_cart) {
 $breadcrumb->add(NAVBAR_TITLE_SHOPPING_CART, vam_href_link(FILENAME_SHOPPING_CART));
-
 require (DIR_WS_INCLUDES.'header.php');
+}
 if (ACTIVATE_GIFT_SYSTEM == 'true')
 include (DIR_WS_MODULES.'gift_cart.php');
 
@@ -148,7 +151,9 @@ if ($_SESSION['cart']->count_contents() > 0) {
 
 	$vamTemplate->assign('HIDDEN_OPTIONS', $hidden_options);
 	require (DIR_WS_MODULES.'order_details_cart.php');
+	if (!$ajax_cart) {
 	include (DIR_WS_MODULES.'cross_selling_cart.php');
+	}
 
 $_SESSION['allow_checkout'] = 'true';
 	if (STOCK_CHECK == 'true') {
@@ -218,10 +223,12 @@ $vamTemplate->caching = 0;
 $main_content = $vamTemplate->fetch(CURRENT_TEMPLATE.'/module/shopping_cart.html');
 $vamTemplate->assign('main_content', $main_content);
 
+if (!$ajax_cart)  {
 $vamTemplate->assign('language', $_SESSION['language']);
 $vamTemplate->caching = 0;
 if (!defined(RM)) $vamTemplate->loadFilter('output', 'note');
 $template = (file_exists('templates/'.CURRENT_TEMPLATE.'/'.FILENAME_SHOPPING_CART.'.html') ? CURRENT_TEMPLATE.'/'.FILENAME_SHOPPING_CART.'.html' : CURRENT_TEMPLATE.'/index.html');
 $vamTemplate->display($template);
 include ('includes/application_bottom.php');
+}
 ?>
