@@ -13,7 +13,7 @@
    Released under the GNU General Public License
    ---------------------------------------------------------------------------------------*/
 
-function doBuyNow( id, quantity ) {
+function doBuyNow( id, quantity, update ) {
 
   // Setup the ajax indicator
  $('body').append('<div id="ajaxLoading"><img src="images/loading.gif"></div>');
@@ -57,26 +57,34 @@ $(document).ajaxStop(function(){
       $.ajax({
                      url: "index_ajax.php",             
                      dataType : "html",                       
-                     data: {q : 'includes/modules/ajax/ajaxCart.php', action : 'cust_order', products_qty : 1, pid : id},
-                     type: "GET",   
-    	               success: function(msg){ 
-    	               $("#divShoppingCart").html(msg);
+                     data: {q : 'includes/modules/ajax/ajaxCart.php', action : 'cust_order', products_qty : quantity, pid : id, get_cart : 1, update : update},
+                     type: "GET",
+    	               success: function(msg){
+    	               data=jQuery.parseJSON(msg) ;
+					 $("#divShoppingCart").html(data.cart);
+                     if ($("div").is("#ajax_cart")) {
+					   $("#ajax_cart").empty().append(data.cart3);
+					 }
+
+				if (data.qty!="0")
+				{
     	               //$('html, body').animate({ scrollTop: 0 }, 'slow');	
     	               //$(".shopping-cart-widget").addClass( "ajax-cart-hightlight" );
       $("#navigation .btn.btn-navbar").click();
       $("#navigation .btn.btn-navbar").focus();    	               
       $("#navigation .dropdown-toggle.cart").dropdown("toggle");
+      					 }
     	               }       
                    });                     
 
 }
 
 function doAddProduct() {
-		
-		var forma = $('#cart_quantity input,select,textarea');
+
+		var forma = $('#cart_quantity input,select');
 		var data = 'q=includes/modules/ajax/ajaxCart.php&';
 		var tmp = false;
-		
+
 		forma.each(function(n,element){
 			if (element.type == "radio" || element.type == "checkbox") {
 				if (element.checked)
@@ -84,58 +92,101 @@ function doAddProduct() {
 			} else {
 				tmp = element.name + "=" + element.value + "&";
 			}
-			if (tmp.length > 3) data = data + tmp;
+			 if (tmp.length > 3) data = data + tmp;
 		});
 		data = data + "action=add_product";
-		
+        if ($("div").is("#ajax_cart")) data = data + "&get_cart=1"; 		
 		$.ajax({
 					url : "index_ajax.php",
 					dataType : "html",
 					data : data,
 					type : "GET",
 					success : function(msg) {
-						$("#divShoppingCart").html(msg);
-						//$('html, body').animate({ scrollTop: 0 }, 'slow');	
-						//$(".shopping-cart-widget").addClass( "ajax-cart-hightlight" );
+    	               data=jQuery.parseJSON(msg) ;
+					 $("#divShoppingCart").html(data.cart);
+					 if ($("div").is("#ajax_cart")) {
+					   $("#ajax_cart").empty().append(data.cart3);
+					 }
+
+
+				if (data.qty!="0")
+				{
+		
+		/* $('.shopping-cart').html('<div class="cart"><a class="ic-cart" href="https://premalife.ru/shopping_cart.php"><span class="quantity">0</span></a><span class="amount dropdown-cart"><i class="cart2"></i>0<b class="caret"></b></span></div><div class="cart-dropdown" style="display: none;"></div></div>'); */
+		
       $("#navigation .btn.btn-navbar").click();
       $("#navigation .btn.btn-navbar").focus();						
       $("#navigation .dropdown-toggle.cart").dropdown("toggle");
+		
+					 }
+
+					 //$("#navigation .shopping-cart .cart-dropdown").html(data.cart2);
+					 //$("#navigation .shopping-cart .cart span").html('<i class="cart2"></i> '+data.total+' <b class="caret"></b>');
+					 //$("#navigation .shopping-cart .cart .quantity").html(data.qty);
+    	               }
+		});
+	}
+
+function doDelProduct(id, prod_id) {
+	
+		var data = 'q=includes/modules/ajax/ajaxCart.php&';
+		if (id) {
+			var test1 = "#update_cart"+id+" input";
+			var forma = $(test1);
+			forma.each(function(n,element){
+				if (element.type == "radio" || element.type == "checkbox") {
+					if (element.checked)
+						tmp = element.name + "=" + element.value + "&";
+				} else {
+					tmp = element.name + "=" + element.value + "&";
+				}
+				if (tmp.length > 3) data = data + tmp;
+			});
+		} else {
+			data = data + 'cart_quantity[]=&products_id[]='+prod_id+'&old_qty[]=1&cart_delete[]='+prod_id+'&';
+		}
+		data = data + "action=update_product";
+		if ($("div").is("#ajax_cart")) data = data + "&get_cart=1";
+		$.ajax({
+					url : "index_ajax.php",
+					dataType : "html",
+					data : data,
+					type : "GET",
+					success : function(msg) {
+					 data=jQuery.parseJSON(msg) ;
+					 $("#divShoppingCart").html(data.cart);
+					 if ($("div").is("#ajax_cart")) {
+					   $("#ajax_cart").empty().append(data.cart3);
+					 }
+					 if (data.total=="0")
+  {
+					 //$("#navigation .shopping-cart .cart span").addClass('empty');
+					 //$("#navigation .shopping-cart .cart span").empty().html('<span class="cart0"></span> <span class="cart1"></span>');
+					 //$("#navigation .shopping-cart .cart .quantity").remove();
+                     //$(".cart-dropdown").remove();
+  } else {    	             
+					 data=jQuery.parseJSON(msg) ;
+					 $("#divShoppingCart").html(data.cart);
+
+				if (!$("#navigation .shopping-cart").length)
+				{
+		
+		/* $('.shopping-cart').html('<div class="cart"><a class="ic-cart" href="https://premalife.ru/shopping_cart.php"><span class="quantity">0</span></a><span class="amount dropdown-cart"><i class="cart2"></i>0<b class="caret"></b></span></div><div class="cart-dropdown" style="display: none;"></div></div>'); */
+		
+			    }
+	
+					 /* $("#navigation .shopping-cart .cart-dropdown").html(data.cart2);
+					 $("#navigation .shopping-cart .cart span").html('<i class="cart2"></i> '+data.total+' <b class="caret"></b>');
+					 $("#navigation .shopping-cart .cart .quantity").html(data.qty); */
+    	              }
+      $("#navigation .btn.btn-navbar").click();
+      $("#navigation .btn.btn-navbar").focus();						
+      $("#navigation .dropdown-toggle.cart").dropdown("toggle");
+					
 					}
 		});
 	}
 
-function doDelProduct(id) {
-		var test1 = "#update_cart"+id+" input";
-		var forma = $(test1);
-		
-		var data = 'q=includes/modules/ajax/ajaxCart.php&';
-		forma.each(function(n,element){
-			if (element.type == "radio" || element.type == "checkbox") {
-				if (element.checked)
-					tmp = element.name + "=" + element.value + "&";
-			} else {
-				tmp = element.name + "=" + element.value + "&";
-			}
-			if (tmp.length > 3) data = data + tmp;
-		});
-		data = data + "action=update_product";
-		
-		$.ajax({
-					url : "index_ajax.php",
-					dataType : "html",
-					data : data,
-					type : "GET",
-					success : function(msg) {
-						$("#divShoppingCart").html(msg);
-						//$('html, body').animate({ scrollTop: 0 }, 'slow');	
-						//$(".shopping-cart-widget").addClass( "ajax-cart-hightlight" );
-      $("#navigation .btn.btn-navbar").click();
-      $("#navigation .btn.btn-navbar").focus();						
-      $("#navigation .dropdown-toggle.cart").dropdown("toggle");
-					}
-		});
-	}
-	
 $(document).ready(function(){
 
 	$('body').on('click', '.cart_delete', function(){
@@ -156,4 +207,5 @@ $(document).ready(function(){
        doBuyNow(id,$(this).val(),true);
    });
 
-});	
+});
+
