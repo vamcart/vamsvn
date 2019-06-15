@@ -71,7 +71,7 @@ var pickpoint_options={};
 <input type="hidden" name="pickpoint_id" id="pickpoint_id" value="" />
 <input type="hidden" name="pickpoint_address" id="pickpoint_address" value="" />
 <span id="pickpoint_address_text"></span>
-<u><a href="" onclick="pickpoint_call(this);return false;"><span id="pickpoint_link" style="color:blue;">{$smarty.const.MODULE_SHIPPING_PICKPOINT_TEXT_SELECT_ADDRESS}</span></a></u> <span id="pickpoint_link_help">{$smarty.const.MODULE_SHIPPING_PICKPOINT_TEXT_ADDRESS_HELP}</span>
+<a class="button" href="" onclick="pickpoint_call(this);return false;"><span id="pickpoint_link"><i class="fa fa-check"></i> {$smarty.const.MODULE_SHIPPING_PICKPOINT_TEXT_SELECT_ADDRESS}</span></a> <span id="pickpoint_link_help">{$smarty.const.MODULE_SHIPPING_PICKPOINT_TEXT_ADDRESS_HELP}</span>
 
 {/if}
 
@@ -79,7 +79,7 @@ var pickpoint_options={};
 
 <script src="//points.boxberry.ru/js/boxberry.js"> </script>
 
-	<a href="#" class="btn btn-warning" onclick="boxberry.open(callback_function); return false;"><i class="fa fa-check"></i> Выбрать пункт выдачи на карте</a>
+	<a href="#" class="button" onclick="boxberry.open(callback_function); return false;"><span><i class="fa fa-check"></i> {$smarty.const.MODULE_SHIPPING_BOXBERRY_TEXT_SELECT_ADDRESS}</span></a>
 	<input type="hidden" name="boxberry_id" id="boxberry_id" value="" />
 	<input type="hidden" name="boxberry_address" id="boxberry_address" value="" />
 	<span id="boxberry_address_text"></span>
