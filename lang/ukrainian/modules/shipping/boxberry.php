@@ -39,5 +39,7 @@ define('MODULE_SHIPPING_BOXBERRY_ZONE_TITLE' , 'Зона');
 define('MODULE_SHIPPING_BOXBERRY_ZONE_DESC' , 'Если выбрана зона, то данный модуль доставки будет виден только покупателям из выбранной зоны.');
 define('MODULE_SHIPPING_BOXBERRY_SORT_ORDER_TITLE' , 'Порядок сортировки');
 define('MODULE_SHIPPING_BOXBERRY_SORT_ORDER_DESC' , 'Порядок сортировки модуля.');
+define('MODULE_SHIPPING_BOXBERRY_TOKEN_TITLE' , 'Boxberry токен');
+define('MODULE_SHIPPING_BOXBERRY_TOKEN_DESC' , 'Укажите ваш токен (API ключ).');
 
 ?>

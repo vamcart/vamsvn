@@ -54,12 +54,48 @@
 
 
     function quote($method = '') {
-      global $order;
+      global $order,$shipping_weight;
+
+	    $token = MODULE_SHIPPING_BOXBERRY_TOKEN;
+	    $cost = MODULE_SHIPPING_BOXBERRY_COST;
+	    $shipping_cost = 0;
+	    $total_weight = $shipping_weight*1000;      
+       $to_zip = $order->delivery['postcode'];
+       $total = $order->info['total'];
+       
+       if ($token != '') {
+
+        $url="http://api.boxberry.de/json.php?token=".$token."&method=DeliveryCosts&weight=".$total_weight."&target=&ordersum=".$total."&deliverysum=".$cost."&targetstart=&height=&width=&depth=&zip=".$to_zip."";
+
+        // create curl resource
+        $ch = curl_init();
+
+        // set url
+        curl_setopt($ch, CURLOPT_URL, $url);
+
+        //return the transfer as a string
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+
+        // $output contains the output string
+        $output = curl_exec($ch);
+
+        // close curl resource to free up system resources
+        curl_close($ch);  
+
+        $contents = $output;
+        $results = json_decode($contents, true); 
+
+        //echo var_dump($results);
+                
+        $shipping_cost = $results['price']+$cost;
+        
+      }
+	    
       $this->quotes = array('id' => $this->code,
                             'module' => MODULE_SHIPPING_BOXBERRY_TEXT_TITLE,
                             'methods' => array(array('id' => $this->code,
                                                      'title' => MODULE_SHIPPING_BOXBERRY_TEXT_WAY,
-                                                     'cost' => MODULE_SHIPPING_BOXBERRY_COST)));
+                                                     'cost' => $shipping_cost)));
 
       if ($this->tax_class > 0) {
         $this->quotes['tax'] = vam_get_tax_rate($this->tax_class, $order->delivery['country']['id'], $order->delivery['zone_id']);
@@ -85,6 +121,7 @@
       vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value,  configuration_group_id, sort_order, use_function, set_function, date_added) values ('MODULE_SHIPPING_BOXBERRY_TAX_CLASS', '0', '6', '0', 'vam_get_tax_class_title', 'vam_cfg_pull_down_tax_classes(', now())");
       vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value,  configuration_group_id, sort_order, use_function, set_function, date_added) values ('MODULE_SHIPPING_BOXBERRY_ZONE', '0', '6', '0', 'vam_get_zone_class_title', 'vam_cfg_pull_down_zone_classes(', now())");
       vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value,  configuration_group_id, sort_order, date_added) values ('MODULE_SHIPPING_BOXBERRY_SORT_ORDER', '0', '6', '0', now())");
+      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value,  configuration_group_id, sort_order, date_added) values ('MODULE_SHIPPING_BOXBERRY_TOKEN', '', '7', '0', now())");
     }
 
     function remove() {
@@ -92,7 +129,7 @@
     }
 
     function keys() {
-      return array('MODULE_SHIPPING_BOXBERRY_STATUS', 'MODULE_SHIPPING_BOXBERRY_COST','MODULE_SHIPPING_BOXBERRY_ALLOWED', 'MODULE_SHIPPING_BOXBERRY_TAX_CLASS', 'MODULE_SHIPPING_BOXBERRY_ZONE', 'MODULE_SHIPPING_BOXBERRY_SORT_ORDER');
+      return array('MODULE_SHIPPING_BOXBERRY_STATUS', 'MODULE_SHIPPING_BOXBERRY_COST','MODULE_SHIPPING_BOXBERRY_ALLOWED', 'MODULE_SHIPPING_BOXBERRY_TAX_CLASS', 'MODULE_SHIPPING_BOXBERRY_ZONE', 'MODULE_SHIPPING_BOXBERRY_SORT_ORDER', 'MODULE_SHIPPING_BOXBERRY_TOKEN');
     }
   }
 ?>
