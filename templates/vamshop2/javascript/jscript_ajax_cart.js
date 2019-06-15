@@ -182,11 +182,11 @@ $(document).ready(function(){
        doBuyNow(id,$(this).val());
    });
 
-   $('body').on('focusout', '.input-small', function(){
-       id = $(this).parent().find('input.ajax_qty').val();
-       qty = $(this).val();
-       doBuyNow(id,$(this).val(),true);
-   });
+   //$('body').on('focusout', '.input-small', function(){
+       //id = $(this).parent().find('input.ajax_qty').val();
+       //qty = $(this).val();
+       //doBuyNow(id,$(this).val(),true);
+   //});
 
 });
 
