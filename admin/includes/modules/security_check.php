@@ -63,8 +63,8 @@ if (!strpos(decoct(fileperms(DIR_FS_CATALOG.'media/content/')), '777') and !strp
 
 	}
 
-if (SEND_EMAILS != 'true' && EMAIL_TRANSPORT == '') {
-	$demo_warning = WARNING_VAMSHOP_DEMO;
+if (SEND_EMAILS != 'true') {
+	$demo_warning = WARNING_VAMSHOP_DEMO.'<br />';
 }
 
 if ($file_warning != '' or $folder_warning != '' or $installed_shipping == '' or $installed_payment == '' or $demo_warning != '') {

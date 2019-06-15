@@ -503,7 +503,7 @@ define('VAMSHOP_SUPPORT_KEY_TEXT','<a href="http://vamshop.ru/key.php" target="_
 define('VAMSHOP_REGISTER_SUPPORT_KEY','<a href="http://vamshop.ru/key.php" target="_blank">получить бесплатный ключ</a>.');
 define('VAMSHOP_SUPPORT_KEY',(file_exists(DIR_FS_CATALOG .'vamshop.key') ? implode('', file(DIR_FS_CATALOG .'vamshop.key')) : VAMSHOP_REGISTER_SUPPORT_KEY));
 
-define('WARNING_VAMSHOP_DEMO', 'Демонстрационная версия VamShop. Оформите заказ на полноценную, неограниченнцю версию VamShop с технической поддержкой и обновлениями в официальном магазине <a href="https://vamshop.ru/vamshop.html" target="_blank">https://vamshop.ru/vamshop.html</a>');
+define('WARNING_VAMSHOP_DEMO', 'Демонстрационная версия VamShop. Оформите заказ на полноценную, неограниченную версию VamShop с технической поддержкой и обновлениями в официальном магазине <a href="https://vamshop.ru/vamshop.html" target="_blank">https://vamshop.ru/vamshop.html</a>');
 
 define('TEXT_ACCESS_FORBIDDEN','Нет доступа');
 
