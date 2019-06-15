@@ -66,6 +66,8 @@ var $code, $title, $description, $icon, $enabled;
       
       $url = file_get_contents("http://tariff.russianpost.ru/tariff/v1/calculate?json&object=7030&from=".$store_zip_code."&to=".$order->delivery['postcode']."&weight=".$total_weight."");
 		$out = json_decode($url);
+		
+		//echo var_dump($out);
 
 		$shipping_cost = 0;
 		
