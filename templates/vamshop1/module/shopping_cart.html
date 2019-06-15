@@ -38,7 +38,7 @@
 
 <div class="clear"></div>
 <div class="navigation">
-<span class="right">{$BUTTON_CHECKOUT}</span>
+<span class="right">{$BUTTON_CHECKOUT}</span>{if $smarty.const.AJAX_CART == 'false'}{$BUTTON_RELOAD}{/if}
 </div>
 <div class="clear"></div>
 {$MODULE_cross_selling_cart}
