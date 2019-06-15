@@ -4,18 +4,22 @@
 <p>{$module_data.GROUP}</p><!-- start: products listing -->
 <div class="row-fluid shop-products">
 	<ul class="thumbnails">
-		{foreach name=cross item=products_data from=$module_data.PRODUCTS}
-		<li class="item span4 {if $smarty.foreach.cross.index % 3 == 0}first{/if}">
+		{foreach name=aussen item=module_data from=$module_data.PRODUCTS}
+		{if {$smarty.get.cat} > 0}
+		<li class="item span4{if $smarty.foreach.aussen.index % 3 == 0} first{/if}">
+		{else}
+		<li class="item span3{if $smarty.foreach.aussen.index % 4 == 0} first{/if}">
+		{/if}
 			<div class="thumbnail text-center">
-				{if $products_data.PRODUCTS_SPECIAL > 0}<div class="description"><span class="discount">-{$products_data.PRODUCTS_SPECIAL|round}%</span></div>{/if}
-				<a href="{$products_data.PRODUCTS_LINK}" class="image"><img src="{$products_data.PRODUCTS_IMAGE}" alt="{$products_data.PRODUCTS_NAME}" /><span class="frame-overlay"></span><span class="price">{$products_data.PRODUCTS_PRICE}</span>{if $products_data.PRODUCTS_LABEL}{$products_data.PRODUCTS_LABEL}{/if}</a>
+				{if $module_data.PRODUCTS_SPECIAL > 0}<div class="description"><span class="discount">-{$module_data.PRODUCTS_SPECIAL|round}%</span></div>{/if}
+				<a href="{$module_data.PRODUCTS_LINK}" class="image"><img src="{$module_data.PRODUCTS_IMAGE}" alt="{$module_data.PRODUCTS_NAME}" /><span class="frame-overlay"></span><span class="price">{$module_data.PRODUCTS_PRICE}</span>{if $module_data.PRODUCTS_LABEL}{$module_data.PRODUCTS_LABEL}{/if}</a>
 			<div class="inner notop nobottom text-center">
-				<h4 class="title"><a href="{$products_data.PRODUCTS_LINK}">{$products_data.PRODUCTS_NAME}</a></h4>
-				{if $products_data.REVIEWS_TOTAL > 0}<div class="description"><span class="rating">{$products_data.REVIEWS_STAR_RATING}</span> <span class="reviews">{$smarty.const.TEXT_TOTAL_REVIEWS}: {$products_data.REVIEWS_TOTAL}</span></div>{/if}
+				<h4 class="title"><a href="{$module_data.PRODUCTS_LINK}">{$module_data.PRODUCTS_NAME}</a></h4>
+				{if $module_data.REVIEWS_TOTAL > 0}<div class="description"><span class="rating">{$module_data.REVIEWS_STAR_RATING}</span> <span class="reviews">{$smarty.const.TEXT_TOTAL_REVIEWS}: {$module_data.REVIEWS_TOTAL}</span></div>{/if}
 			</div>
 			</div>
 			<div class="inner darken notop text-center">
-				{$products_data.PRODUCTS_BUTTON_BUY_NOW_NEW}
+				{$module_data.PRODUCTS_BUTTON_BUY_NOW_NEW}
 			</div>
 		</li>
 		{/foreach}
