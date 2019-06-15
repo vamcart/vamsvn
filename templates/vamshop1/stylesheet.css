@@ -481,7 +481,7 @@ hr.transparent {
 .nav-collapse .nav > li > a:focus,
 .nav-collapse .dropdown-menu a:hover,
 .nav-collapse .dropdown-menu a:focus {
-  background-color: #555;
+  background-color: transparent;
   color: #fff;
 }
 
@@ -975,7 +975,7 @@ background: #fff;
 }
 .shopping-cart-widget .products .media-heading a:hover {
   color: #dd2c00;
-  background: #fff;
+  background: transparent;
 }
 .shopping-cart-widget .buttons .btn:hover {
   background-color: #dd2c00;
