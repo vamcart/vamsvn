@@ -558,6 +558,7 @@ define('PRODUCTS_ORDER_QTY_MIN_TEXT_INFO', 'Мінімум одиниць для
 define('PRODUCTS_ORDER_QTY_MAX_TEXT_INFO', 'Максимум одиниць для замовлення:');
 
 define('WARNING_VAMSHOP_KEY', 'Незареєстрована копія VaM Shop. Внести свою копію за адресою <a href="http://vamshop.ru/key.php" target="_blank"> http://vamshop.ru/key. php </a> ');
+define('WARNING_VAMSHOP_DEMO', 'Демонстрационная версия VamShop. Оформите заказ на полноценную, неограниченнцю версию VamShop с технической поддержкой и обновлениями в официальном магазине <a href="https://vamshop.ru/vamshop.html" target="_blank">https://vamshop.ru/vamshop.html</a>');
 
 define('text_zero', 'нуль');
 define('text_three', 'три');

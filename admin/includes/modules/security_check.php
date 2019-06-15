@@ -17,6 +17,7 @@
 defined('_VALID_VAM') or die('Direct Access to this location is not allowed.');
 
 $file_warning = '';
+$demo_warning = '';
 
 //if (!strpos(decoct(fileperms(DIR_FS_CATALOG.'includes/configure.php')), '444')) {
 //	$file_warning .= '<br>'.DIR_FS_CATALOG.'includes/configure.php';
@@ -62,7 +63,11 @@ if (!strpos(decoct(fileperms(DIR_FS_CATALOG.'media/content/')), '777') and !strp
 
 	}
 
-if ($file_warning != '' or $folder_warning != '' or $installed_shipping == '' or $installed_payment == '') {
+if (SEND_EMAILS != 'true' && EMAIL_TRANSPORT == '') {
+	$demo_warning = WARNING_VAMSHOP_DEMO;
+}
+
+if ($file_warning != '' or $folder_warning != '' or $installed_shipping == '' or $installed_payment == '' or $demo_warning != '') {
 ?>
 
 
@@ -82,6 +87,13 @@ if ($file_warning != '' or $folder_warning != '' or $installed_shipping == '' or
 		echo '<b>'.$file_warning.'</b><br>';
 	}
 
+	if ($demo_warning != '') {
+
+		echo '<br />';
+
+		echo '<b>'.$demo_warning.'</b>';
+	}
+	
 	if ($folder_warning != '') {
 
 		echo TEXT_FOLDER_WARNING;

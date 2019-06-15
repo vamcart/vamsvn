@@ -579,7 +579,8 @@ define('TXT_FREE','бесплатно');
 
 define('PRODUCTS_ORDER_QTY_MIN_TEXT_INFO','Минимум единиц для заказа: ');define('PRODUCTS_ORDER_QTY_MAX_TEXT_INFO','Максимум единиц для заказа: ');
 
-define('WARNING_VAMSHOP_KEY', 'Незарегистрированная копия VaM Shop. Зарегистрируйте Вашу копию по адресу <a href="http://vamshop.ru/key.php" target="_blank">http://vamshop.ru/key.php</a>');
+define('WARNING_VAMSHOP_KEY', 'Незарегистрированная копия VamShop. Зарегистрируйте Вашу копию по адресу <a href="https://vamshop.ru/key.php" target="_blank">https://vamshop.ru/key.php</a>');
+define('WARNING_VAMSHOP_DEMO', 'Демонстрационная версия VamShop. Оформите заказ на полноценную, неограниченнцю версию VamShop с технической поддержкой и обновлениями в официальном магазине <a href="https://vamshop.ru/vamshop.html" target="_blank">https://vamshop.ru/vamshop.html</a>');
 
 define('text_zero', 'ноль');
 define('text_three', 'три');
