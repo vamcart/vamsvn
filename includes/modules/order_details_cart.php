@@ -89,14 +89,16 @@ for ($i = 0, $n = sizeof($products); $i < $n; $i ++) {
 	$module_content[$i] = array (
 	
 	'PRODUCTS_NAME' => $products[$i]['name'].$mark_stock, 
-	'PRODUCTS_QTY' => vam_draw_input_field('cart_quantity[]', $products[$i]['quantity'], 'size="2" class="input-small"').vam_draw_hidden_field('products_id[]', $products[$i]['id']).vam_draw_hidden_field('old_qty[]', $products[$i]['quantity']), 
+	'PRODUCTS_QTY' => vam_draw_input_field('cart_quantity[]', $products[$i]['quantity'], 'size="2" id="cart" class="input-small"').vam_draw_hidden_field('products_id[]', $products[$i]['id'],'class="ajax_qty"').vam_draw_hidden_field('old_qty[]', $products[$i]['quantity']), 
 	'PRODUCTS_STOCK' => $products[$i]['stock'],
 	'PRODUCTS_MODEL' => $products[$i]['model'],
 	'PRODUCTS_SHIPPING_TIME'=>$products[$i]['shipping_time'], 
 	'PRODUCTS_TAX' => number_format($products[$i]['tax'], TAX_DECIMAL_PLACES), 
 	'PRODUCTS_IMAGE' => $image, 
 	'IMAGE_ALT' => $products[$i]['name'], 
-	'BOX_DELETE' => vam_draw_checkbox_field('cart_delete[]', $products[$i]['id']), 
+	'BOX_DELETE' => '<button class="cart_delete" type="button" value="'.$products[$i]['id'].'"></button>', 
+   'PLUS' => '<button class="cart_change cart_plus" type="button" value="1"></button>',
+   'MINUS' => '<button class="cart_change cart_minus" type="button" value="-1"></button>',
 	'PRODUCTS_LINK' => vam_href_link(FILENAME_PRODUCT_INFO, vam_product_link($products[$i]['id'], $products[$i]['name'])), 
 	'PRODUCTS_PRICE' => $vamPrice->Format($products[$i]['price'] * $products[$i]['quantity'], true), 
 	'PRODUCTS_SINGLE_PRICE' =>$vamPrice->Format($products[$i]['price'], true), 
