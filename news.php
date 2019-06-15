@@ -55,7 +55,10 @@
   $module_content = array();
   if (!empty($_GET['news_id'])) {
       $query = vam_db_query($one_sql);
-      if (vam_db_num_rows($query) == 0) $_GET['news_id'] = 0;
+      if (vam_db_num_rows($query) == 0) { 
+      $_GET['news_id'] = 0;
+      header("HTTP/1.1 404 Not Found");
+      }
   }
   if (empty($_GET['news_id'])) {
       $split = new splitPageResults($all_sql, $_GET['page'], MAX_DISPLAY_LATEST_NEWS_PAGE, 'news_id');
