@@ -1,8 +1,9 @@
 {config_load file="$language/lang_$language.conf" section="shopping_cart"}
-{$MODULE_gift_cart}
+<div id="ajax_cart">
+<h1>{#heading_cart#}</h1>
 {if $info_message!=''}<div class="contacterror">{$info_message}</div>
 {/if}
-<h1>{#heading_cart#}</h1>
+{$MODULE_gift_cart}
 {if $cart_empty==true}
 <div class="page">
 <div class="pagecontent">
@@ -37,9 +38,10 @@
 
 <div class="clear"></div>
 <div class="navigation">
-<span class="right">{$BUTTON_CHECKOUT}</span>{$BUTTON_RELOAD}
+<span class="right">{$BUTTON_CHECKOUT}</span>{if $smarty.const.AJAX_CART == 'false'}{$BUTTON_RELOAD}{/if}
 </div>
 <div class="clear"></div>
 {$MODULE_cross_selling_cart}
 {$FORM_END}
 {/if}
+</div>

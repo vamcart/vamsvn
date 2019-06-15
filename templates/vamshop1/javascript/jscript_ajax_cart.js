@@ -66,10 +66,8 @@ $(document).ajaxStop(function(){
 					   $("#ajax_cart").empty().append(data.cart3);
 					 }
 
-				if (data.qty!="0")
+				if (data.qty!="0" && $(location).attr('pathname') != '/shopping_cart.php')
 				{
-    	               //$('html, body').animate({ scrollTop: 0 }, 'slow');	
-    	               //$(".shopping-cart-widget").addClass( "ajax-cart-hightlight" );
       $("#navigation .btn.btn-navbar").click();
       $("#navigation .btn.btn-navbar").focus();    	               
       $("#navigation .dropdown-toggle.cart").dropdown("toggle");
@@ -109,10 +107,8 @@ function doAddProduct() {
 					 }
 
 
-				if (data.qty!="0")
+				if (data.qty!="0" && $(location).attr('pathname') != '/shopping_cart.php')
 				{
-		
-		/* $('.shopping-cart').html('<div class="cart"><a class="ic-cart" href="https://premalife.ru/shopping_cart.php"><span class="quantity">0</span></a><span class="amount dropdown-cart"><i class="cart2"></i>0<b class="caret"></b></span></div><div class="cart-dropdown" style="display: none;"></div></div>'); */
 		
       $("#navigation .btn.btn-navbar").click();
       $("#navigation .btn.btn-navbar").focus();						
@@ -120,9 +116,6 @@ function doAddProduct() {
 		
 					 }
 
-					 //$("#navigation .shopping-cart .cart-dropdown").html(data.cart2);
-					 //$("#navigation .shopping-cart .cart span").html('<i class="cart2"></i> '+data.total+' <b class="caret"></b>');
-					 //$("#navigation .shopping-cart .cart .quantity").html(data.qty);
     	               }
 		});
 	}
@@ -160,10 +153,6 @@ function doDelProduct(id, prod_id) {
 					 }
 					 if (data.total=="0")
   {
-					 //$("#navigation .shopping-cart .cart span").addClass('empty');
-					 //$("#navigation .shopping-cart .cart span").empty().html('<span class="cart0"></span> <span class="cart1"></span>');
-					 //$("#navigation .shopping-cart .cart .quantity").remove();
-                     //$(".cart-dropdown").remove();
   } else {    	             
 					 data=jQuery.parseJSON(msg) ;
 					 $("#divShoppingCart").html(data.cart);
@@ -171,13 +160,8 @@ function doDelProduct(id, prod_id) {
 				if (!$("#navigation .shopping-cart").length)
 				{
 		
-		/* $('.shopping-cart').html('<div class="cart"><a class="ic-cart" href="https://premalife.ru/shopping_cart.php"><span class="quantity">0</span></a><span class="amount dropdown-cart"><i class="cart2"></i>0<b class="caret"></b></span></div><div class="cart-dropdown" style="display: none;"></div></div>'); */
-		
 			    }
 	
-					 /* $("#navigation .shopping-cart .cart-dropdown").html(data.cart2);
-					 $("#navigation .shopping-cart .cart span").html('<i class="cart2"></i> '+data.total+' <b class="caret"></b>');
-					 $("#navigation .shopping-cart .cart .quantity").html(data.qty); */
     	              }
       $("#navigation .btn.btn-navbar").click();
       $("#navigation .btn.btn-navbar").focus();						
