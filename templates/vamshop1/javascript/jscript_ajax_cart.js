@@ -1,7 +1,7 @@
 /* -----------------------------------------------------------------------------------------
    $Id: jscript_ajax_cart.js 899 2007-06-30 20:14:56 VaM $   
 
-   VaM Shop - open source ecommerce solution
+   VamShop - open source ecommerce solution
    http://vamshop.ru
    http://vamshop.com
 
