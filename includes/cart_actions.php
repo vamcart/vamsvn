@@ -264,10 +264,8 @@ if (isset ($_GET['action'])) {
 				
 				
 				if (vam_has_product_attributes((int) $_GET['pid'])) {
-				// не понял для чего здесь редирект
 				//vam_redirect(vam_href_link(FILENAME_PRODUCT_INFO, 'products_id=' . (int) $_GET['pid']));
 					 
-			    // разбиение значений атрибута (с помощью регулярки извлекает значение из {}, и создание массива атрибута 	
 				$attribut = preg_split('#{(.*?)}#u', $_GET['pid'], -1, PREG_SPLIT_DELIM_CAPTURE);
 				$attributes = array($attribut[1] => $attribut[2]);
                 
