@@ -36,12 +36,12 @@ $qty = $_SESSION['cart']->show_quantity();
 
 
 if (isset($_POST['get_cart']) && $_POST['get_cart']) {
-   $ajax_cart = true;
+$ajax_cart = true;
 require('shopping_cart.php');
 }
 
 $arr = array("cart" => stripslashes($box_shopping_cart), 'cart2' => $cart2, "total" => $vamPrice->Format($total, true), "qty" => $qty, "cart3" => $main_content);
 
 
-print json_encode($arr);
+print json_encode($arr, JSON_UNESCAPED_UNICODE);
 ?>
