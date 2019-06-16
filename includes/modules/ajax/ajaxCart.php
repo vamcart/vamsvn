@@ -15,8 +15,6 @@
   Released under the GNU General Public License
   --------------------------------------------------------------------------------------- */
 
-header('Content-Type: application/json');
-
 $vamTemplate = new vamTemplate; 
 $box_shopping_cart = false;
  
