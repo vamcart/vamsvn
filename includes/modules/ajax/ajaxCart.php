@@ -15,6 +15,8 @@
   Released under the GNU General Public License
   --------------------------------------------------------------------------------------- */
 
+header('Content-Type: application/json');
+
 $vamTemplate = new vamTemplate; 
  
 foreach ($_REQUEST as $key => $value)
