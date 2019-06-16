@@ -18,6 +18,7 @@
 header('Content-Type: application/json');
 
 $vamTemplate = new vamTemplate; 
+$box_shopping_cart = false;
  
 foreach ($_REQUEST as $key => $value)
     $_POST[$key] = $value;
@@ -30,20 +31,14 @@ if (($i = strpos($box_shopping_cart, '<div id="divShoppingCart">')) !== false) {
     $box_shopping_cart = substr($box_shopping_cart, 0, $i);
 }
 
-$cart2 = str_replace('h3', 'h2', $box_shopping_cart);
-$cart2 = str_replace('widget-title', 'title', $cart2);
-
-$total = (int) ($_SESSION['cart']->show_total());
-$qty = $_SESSION['cart']->show_quantity();
-
-
-if (isset($_POST['get_cart']) && $_POST['get_cart']) {
+if (isset($_POST['get_cart']) && $_POST['get_cart'] or isset($_GET['get_cart']) && $_GET['get_cart']) {
 $ajax_cart = true;
 require('shopping_cart.php');
+$box_shopping_cart = $main_content;
 }
 
-$arr = array("cart" => stripslashes($box_shopping_cart), 'cart2' => $cart2, "total" => $vamPrice->Format($total, true), "qty" => $qty, "cart3" => $main_content);
+$box_shopping_cart;
 
 
-print json_encode($arr, JSON_UNESCAPED_UNICODE);
+print $box_shopping_cart;
 ?>

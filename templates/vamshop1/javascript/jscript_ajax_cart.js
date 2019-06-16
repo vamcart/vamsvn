@@ -13,7 +13,7 @@
    Released under the GNU General Public License
    ---------------------------------------------------------------------------------------*/
 
-function doBuyNow( id, quantity, update ) {
+function doBuyNow( id, quantity, update, get_cart = 0 ) {
 
   // Setup the ajax indicator
  $('body').append('<div id="ajaxLoading"><img src="images/loading.gif"></div>');
@@ -57,22 +57,21 @@ $(document).ajaxStop(function(){
       $.ajax({
                      url: "index_ajax.php",             
                      dataType : "html",                       
-                     data: {q : 'includes/modules/ajax/ajaxCart.php', action : 'cust_order', products_qty : quantity, pid : id, get_cart : 1, update : update},
+                     data: {q : 'includes/modules/ajax/ajaxCart.php', action : 'cust_order', products_qty : quantity, pid : id, get_cart : get_cart, update : update},
                      type: "GET",
     	               success: function(msg){
-    	               data=jQuery.parseJSON(msg) ;
-					 $("#divShoppingCart").html(data.cart);
+					      $("#divShoppingCart").html(msg);
                      if ($("div").is("#ajax_cart")) {
-					   $("#ajax_cart").empty().append(data.cart3);
+					      $("#ajax_cart").empty().html(msg);
 					 }
 
 				//if (data.qty!="0" && $(location).attr('pathname') != '/shopping_cart.php')
 				if ($(location).attr('pathname') != '/shopping_cart.php')
 				{
-      $("#navigation .btn.btn-navbar").click();
-      $("#navigation .btn.btn-navbar").focus();    	               
-      $("#navigation .dropdown-toggle.cart").dropdown("toggle");
-      					 }
+					$("#navigation .btn.btn-navbar").click();
+					$("#navigation .btn.btn-navbar").focus();    	               
+					$("#navigation .dropdown-toggle.cart").dropdown("toggle");
+				}
     	               }       
                    });                     
 
@@ -101,22 +100,19 @@ function doAddProduct() {
 					data : data,
 					type : "GET",
 					success : function(msg) {
-    	               data=jQuery.parseJSON(msg) ;
-					 $("#divShoppingCart").html(data.cart);
+					 $("#divShoppingCart").html(msg);
 					 if ($("div").is("#ajax_cart")) {
-					   $("#ajax_cart").empty().append(data.cart3);
+					   $("#ajax_cart").empty().html(msg);
 					 }
 
 
 				//if (data.qty!="0" && $(location).attr('pathname') != '/shopping_cart.php')
 				if ($(location).attr('pathname') != '/shopping_cart.php')
 				{
-		
-      $("#navigation .btn.btn-navbar").click();
-      $("#navigation .btn.btn-navbar").focus();						
-      $("#navigation .dropdown-toggle.cart").dropdown("toggle");
-		
-					 }
+					$("#navigation .btn.btn-navbar").click();
+					$("#navigation .btn.btn-navbar").focus();						
+					$("#navigation .dropdown-toggle.cart").dropdown("toggle");
+				}
 
     	               }
 		});
@@ -148,33 +144,29 @@ function doDelProduct(id, prod_id) {
 					data : data,
 					type : "GET",
 					success : function(msg) {
-					 data=jQuery.parseJSON(msg) ;
-					 $("#divShoppingCart").html(data.cart);
+					 $("#divShoppingCart").html(msg);
 					 if ($("div").is("#ajax_cart")) {
-					   $("#ajax_cart").empty().append(data.cart3);
+					   $("#ajax_cart").empty().html(msg);
 					 }
 					 if (data.total=="0")
   {
   } else {    	             
-					 data=jQuery.parseJSON(msg) ;
-					 $("#divShoppingCart").html(data.cart);
+					 $("#divShoppingCart").html(msg);
 
 				if (!$("#navigation .shopping-cart").length)
 				{
 		
-			    }
+				}
 	
     	              }
     	              
 				//if (data.qty!="0" && $(location).attr('pathname') != '/shopping_cart.php')
 				if ($(location).attr('pathname') != '/shopping_cart.php')
 				{
-					    	              
-      $("#navigation .btn.btn-navbar").click();
-      $("#navigation .btn.btn-navbar").focus();						
-      $("#navigation .dropdown-toggle.cart").dropdown("toggle");
+					$("#navigation .btn.btn-navbar").click();
+					$("#navigation .btn.btn-navbar").focus();						
+					$("#navigation .dropdown-toggle.cart").dropdown("toggle");
             }					
-					
 					
 					}
 		});
@@ -191,7 +183,7 @@ $(document).ready(function(){
        id = $(this).parent().find('input.ajax_qty').val();
        qty = field.val();
        field.val(parseInt(qty)+parseInt($(this).val()));
-       doBuyNow(id,$(this).val());
+       doBuyNow(id,$(this).val(),'',1);
    });
 
    //$('body').on('focusout', '.input-small', function(){
