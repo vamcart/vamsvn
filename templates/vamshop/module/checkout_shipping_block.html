@@ -103,7 +103,7 @@ document.getElementById("boxberry_address_text").innerHTML = "{$smarty.const.MOD
 {if !$smarty.session.customer_id}  
   document.getElementById("street_address").value=result.address;
 {else}
-  document.getElementById("pickpoint").innerHTML += '<input type="hidden" name="street_address" id="street_address" value="'+result.address+'" />';
+  document.getElementById("boxberry").innerHTML += '<input type="hidden" name="street_address" id="street_address" value="'+result.address+'" />';
 {/if}
 
 document.getElementById("boxberry").checked="checked";
