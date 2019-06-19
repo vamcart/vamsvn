@@ -937,7 +937,11 @@ background: #fff;
 }
 .page-sidebar .tab-content,
 .sidebar .tab-content {
-  padding-top: 0;
+  padding: 10px;
+  border-top: 0;
+  border-right: 1px solid #e1e1e1;
+  border-bottom: 1px solid #e1e1e1;
+  border-left: 1px solid #e1e1e1;
 }
 .page-sidebar .tab-content .tab-pane p,
 .sidebar .tab-content .tab-pane p {
