@@ -137,3 +137,6 @@ window.addEventListener('beforeinstallprompt', (e) => {
 <?php
 }
 ?>
+<?php
+if (file_exists(dirname(__FILE__) . '/local_footer.js.php')) include('local_footer.js.php');
+?>
