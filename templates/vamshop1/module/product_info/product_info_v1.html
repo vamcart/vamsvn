@@ -143,10 +143,12 @@
 	
 						{if $PRODUCTS_TAGS}
 						<div class="inner">
+							<br />
 							{#text_tags#}: 
 							{foreach name=tags item=tag from=$tags_data}
 							<a href="{$tag.LINK}">{$tag.NAME}</a>&nbsp;
 							{/foreach}
+							</p>
 						</div>
 						{/if}
 							
