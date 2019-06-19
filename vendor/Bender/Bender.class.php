@@ -23,14 +23,14 @@ class Bender
     private $version_key = 'v';
     public function __construct()
     {
-        $this->root_dir = WWW_ROOT;
+        $this->root_dir = DIR_FS_CATALOG;
     }
     // Enqueue CSS or Javascript
     public function enqueue( $src )
     {
 
         $src = ltrim( $src, '/' );
-        $src = preg_replace('/'.ltrim(BASE,'/').'/','',$src,1);
+        $src = preg_replace('/'.ltrim(DIR_WS_CATALOG,'/').'/','',$src,1);
 
         global $_javascripts, $_stylesheets;
         if ( !is_array( $src ) )
@@ -54,8 +54,8 @@ class Bender
     protected function minify( $scripts, $ext, $output )
     {
         $path = $this->root_dir();
-        $output = preg_replace('/'.ltrim(BASE,'/').'/','',$output,1);
-        $output = str_replace('/',DS,$output);
+        $output = preg_replace('/'.ltrim(DIR_WS_CATALOG,'/').'/','',$output,1);
+        $output = str_replace('/',DIRECTORY_SEPARATOR,$output);
         $outfile = $path.$output;
 
         if ( file_exists( $outfile ) )
@@ -78,7 +78,7 @@ class Bender
                 switch ( $this->cssmin )
                 {
                     case "cssmin":
-                        require_once realpath( dirname( __file__ ) . DS . "cssmin.php" );
+                        require_once realpath( dirname( __file__ ) . DIRECTORY_SEPARATOR . "cssmin.php" );
                         $compressor = new CSSmin();
                         $compressor->set_memory_limit('256M');
                         $compressor->set_max_execution_time(120);
@@ -92,16 +92,16 @@ class Bender
                 switch ( $this->jsmin )
                 {
                     case "packer":
-                        require_once realpath( dirname( __file__ ) ) . DS . "class.JavaScriptPacker.php";
+                        require_once realpath( dirname( __file__ ) ) . DIRECTORY_SEPARATOR . "class.JavaScriptPacker.php";
                         $packer = new JavaScriptPacker( $str, "Normal", true, false );
                         $packed = $packer->pack();
                         break;
                     case "jshrink":
-                        require_once realpath( dirname( __file__ ) ) . DS . "JShrink.class.php";
+                        require_once realpath( dirname( __file__ ) ) . DIRECTORY_SEPARATOR . "JShrink.class.php";
                         $packed = Minifier::minify( $str );
                         break;
                     case "jsmin":
-                        require_once realpath( dirname( __file__ ) ) . DS . "jsminplus.php";
+                        require_once realpath( dirname( __file__ ) ) . DIRECTORY_SEPARATOR . "jsminplus.php";
                         $packed = JSMinPlus::minify( $str );
                         break;
                     default:
@@ -164,8 +164,8 @@ class Bender
     protected function check_recombine( $output, $files )
     {
         $path = $this->root_dir();
-        $output = preg_replace('/'.ltrim(BASE,'/').'/','',$output,1);
-        $output = str_replace('/',DS,$output);
+        $output = preg_replace('/'.ltrim(DIR_WS_CATALOG,'/').'/','',$output,1);
+        $output = str_replace('/',DIRECTORY_SEPARATOR,$output);
         $outfile = $path.$output;
         if ( !file_exists( $outfile ) || !is_array( $files ) )
         {

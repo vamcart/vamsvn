@@ -2,32 +2,32 @@
  * jQuery.v2p
  * Set css viewport units
  */
-;(function( $ ){
+;(function($){
 
-  function viewportToPixel( val ) {
+  function viewportToPixel(val) {
     var percent = val.match(/\d+/)[0] / 100,
         unit = val.match(/[vwh]+/)[0];
-    return ( unit == 'vh'
+    return (unit == 'vh'
       ? $(window).height() * percent
-      : $(window).width() * percent ) + 'px';
+      : $(window).width() * percent) + 'px';
   }
 
-  function parseProps( props ) {
+  function parseProps(props) {
     var p, prop;
-    for ( p in props ) {
+    for (p in props) {
       prop = props[ p ];
-      if ( /[vwh]$/.test( prop ) ) {
-        props[ p ] = viewportToPixel( prop );
+      if (/[vwh]$/.test(prop)) {
+        props[ p ] = viewportToPixel(prop);
       }
     }
     return props;
   }
 
-  $.fn.v2p = function( props ) {
-    return this.css( parseProps( props ) );
+  $.fn.v2p = function(props) {
+    return this.css(parseProps(props));
   };
 
-}( jQuery ));
+}(jQuery));
 
 $(window).resize(function() {
   $('.cbp-spmenu').v2p({

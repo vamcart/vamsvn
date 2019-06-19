@@ -1,13 +1,16 @@
-<script src="jscript/bootstrap/bootstrap.min.js"></script>
-<script src="jscript/jquery/plugins/easing/jquery.easing.1.3.js"></script>
-<script src="jscript/jquery/plugins/jpushmenu/v2p.js"></script>
-<script src="jscript/jquery/plugins/jpushmenu/jpushmenu.js"></script>
-<script src="jscript/jquery/plugins/scrollup/jquery.scrollup.min.js"></script>
-<script src="<?php echo 'templates/'.CURRENT_TEMPLATE.'/javascript/vamshop.js'; ?>"></script>
+<?php
+$bender->enqueue("jscript/bootstrap/bootstrap.min.js");
+$bender->enqueue("jscript/jquery/plugins/easing/jquery.easing.1.3.js");
+$bender->enqueue("jscript/jquery/plugins/jpushmenu/v2p.js");
+$bender->enqueue("jscript/jquery/plugins/jpushmenu/jpushmenu.js");
+$bender->enqueue("jscript/jquery/plugins/scrollup/jquery.scrollup.min.js");
+$bender->enqueue("templates/".CURRENT_TEMPLATE."/javascript/vamshop.js");
+if (AJAX_CART == 'true') $bender->enqueue("templates/".CURRENT_TEMPLATE."/javascript/jscript_ajax_cart.js"); 
+?>
 
-<?php if (AJAX_CART == 'true') { ?>
-<script src="<?php echo 'templates/'.CURRENT_TEMPLATE.'/javascript/jscript_ajax_cart.js'; ?>"></script>
-<?php } ?>
+<?php
+echo $bender->output("cache/".CURRENT_TEMPLATE."-packed.js");
+?>
 
 <?php
 if ( strstr($PHP_SELF, FILENAME_ADDRESS_BOOK)
@@ -138,3 +141,7 @@ window.addEventListener('beforeinstallprompt', (e) => {
 <!--[if lt IE 9]>
 <script src="<?php echo 'templates/'.CURRENT_TEMPLATE.'/javascript/html5.js'; ?>"></script>
 <![endif]-->
+
+<?php
+if (file_exists(dirname(__FILE__) . '/local_footer.js.php')) include('local_footer.js.php');
+?>
