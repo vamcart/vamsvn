@@ -1,4 +1,20 @@
-<link rel="stylesheet" type="text/css" href="<?php echo 'templates/'.CURRENT_TEMPLATE.'/css/vamshop4.css.php'; ?>" />
+<?php
+require_once(DIR_FS_CATALOG."vendor/Bender/Bender.class.php");
+$bender = new Bender();
+$bender->enqueue("templates/".CURRENT_TEMPLATE."/css/mplusrounded1c.css");
+$bender->enqueue("templates/".CURRENT_TEMPLATE."/css/bootstrap.min.css");
+$bender->enqueue("templates/".CURRENT_TEMPLATE."/bootstrap-ecommerce/ui.css");
+$bender->enqueue("templates/".CURRENT_TEMPLATE."/bootstrap-ecommerce/responsive.css");
+$bender->enqueue("templates/".CURRENT_TEMPLATE."/css/font-awesome.css");
+$bender->enqueue("jscript/jquery/plugins/owl/assets/owl.carousel.min.css");
+$bender->enqueue("jscript/jquery/plugins/owl/assets/owl.theme.default.min.css");
+$bender->enqueue("templates/".CURRENT_TEMPLATE."/css/vamshop.css");
+$bender->enqueue("templates/".CURRENT_TEMPLATE."/css/vamshop4.css");
+?>
+
+<?php
+echo $bender->output("templates/".CURRENT_TEMPLATE."/cache/".CURRENT_TEMPLATE."-packed.css");
+?>
 
 <?php
 if (strstr($PHP_SELF, FILENAME_CHECKOUT)) {

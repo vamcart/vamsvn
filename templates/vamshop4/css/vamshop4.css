@@ -1,32 +1,8 @@
-<?php 
-header('Content-Type: text/css');
-
-include_once(dirname_r(__FILE__).'/mplusrounded1c.css');
-echo "\n";
-include_once(dirname_r(__FILE__).'/bootstrap.min.css');
-echo "\n";
-include_once(dirname_r(__FILE__,2).'/bootstrap-ecommerce/ui.css');
-echo "\n";
-include_once(dirname_r(__FILE__,2).'/bootstrap-ecommerce/responsive.css');
-echo "\n";
-include_once(dirname_r(__FILE__).'/font-awesome.css');
-echo "\n";
-include_once(dirname_r(__FILE__,4).'/jscript/jquery/plugins/owl/assets/owl.carousel.min.css');
-echo "\n";
-include_once(dirname_r(__FILE__,4).'/jscript/jquery/plugins/owl/assets/owl.theme.default.min.css');
-echo "\n";
-include_once(dirname_r(__FILE__).'/vamshop.css.php');
-echo "\n";
-
-?>
-
 body {
   background: linear-gradient(-183deg, #6c757d 234px, #fff 235px) no-repeat;
   font-family: 'M PLUS Rounded 1c', sans-serif;
   font-weight: 500;
 }
-
-
 
 /* Remove outline */
 button:focus, button:active, a, a:hover {
@@ -162,18 +138,3 @@ a#scrollup:hover {
 }
 }
 /* /Nav Buttons Margin On Mobile */
-
-
-<?php 
-
-//PHP < 7 compatibility 
-
-function dirname_r($path, $count=1){
-    if ($count > 1){
-       return dirname(dirname_r($path, --$count));
-    }else{
-       return dirname($path);
-    }
-}
-
-?>
