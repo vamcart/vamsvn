@@ -1,7 +1,19 @@
-<script src="<?php echo 'templates/'.CURRENT_TEMPLATE.'/javascript/vamshop4.js.php'; ?>"></script>
+<?php
+require_once(DIR_FS_CATALOG."vendor/Bender/Bender.class.php");
+$bender = new Bender();
+$bender->enqueue("templates/".CURRENT_TEMPLATE."/javascript/popper.min.js");
+$bender->enqueue("templates/".CURRENT_TEMPLATE."/javascript/bootstrap.min.js");
+$bender->enqueue("jscript/jquery/plugins/owl/owl.carousel.min.js");
+$bender->enqueue("jscript/jquery/plugins/scrollup/jquery.scrollup.min.js");
+$bender->enqueue("templates/".CURRENT_TEMPLATE."/javascript/vamshop4.js");
+if (AJAX_CART == 'true') $bender->enqueue("templates/".CURRENT_TEMPLATE."/javascript/jscript_ajax_cart.js"); 
+?>
+
+<?php
+echo $bender->output("templates/".CURRENT_TEMPLATE."/cache/".CURRENT_TEMPLATE."-packed.js");
+?>
 
 <?php if (AJAX_CART == 'true') { ?>
-<script src="<?php echo 'templates/'.CURRENT_TEMPLATE.'/javascript/jscript_ajax_cart.js'; ?>"></script>
 <script>
 function cartPopupOn(){ 
 $('body').append('<div id="load_status_bg"></div><div class="cart_popup"><div class="cart_popuptext"><?php echo TEXT_POPUP_CART_ADD; ?></div><div class="cart_popuplink"><a href="checkout.php" class="button"><span><img src="<?php echo DIR_WS_CATALOG; ?>images/icons/buttons/buy.png" alt="" title="" width="12" height="12" />&nbsp;<?php echo TEXT_POPUP_CART_CHECKOUT; ?></span></a><br /><br /><a href="javascript:cartPopupOff()" class="button"><span><img src="<?php echo DIR_WS_CATALOG; ?>images/icons/buttons/back.png" alt="" title="" width="12" height="12" />&nbsp;<?php echo TEXT_POPUP_CART_CONTINUE; ?></span></a></div></div>'); 
