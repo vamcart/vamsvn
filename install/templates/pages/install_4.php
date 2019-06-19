@@ -461,6 +461,11 @@ vam_db_query("UPDATE " .TABLE_CONFIGURATION . " SET configuration_value='". (tri
       <li>Установить на директорию /images/product_images/ права доступа 777 и на поддиректории внутри.</li>
       <li>Установить на директорию /images/categories/ права доступа 777.</li>
       <li>Установить на директорию /cache/ права доступа 777.</li>
+      <li>Установить на директорию /templates/vamshop/cache/ права доступа 777.</li>
+      <li>Установить на директорию /templates/vamshop1/cache/ права доступа 777.</li>
+      <li>Установить на директорию /templates/vamshop2/cache/ права доступа 777.</li>
+      <li>Установить на директорию /templates/vamshop3/cache/ права доступа 777.</li>
+      <li>Установить на директорию /templates/vamshop4/cache/ права доступа 777.</li>
       <li>Установить на директорию /import/ права доступа 777.</li>
       <li>Установить на директорию /export/ права доступа 777.</li>
       <li>Установить на директорию /tmp/ права доступа 777.</li>
