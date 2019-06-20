@@ -2044,6 +2044,7 @@ INSERT INTO configuration (configuration_key, configuration_value, configuration
 INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('PHONE_MASK', '(999) 999-9999',  1, 35, NULL, '', NULL, NULL);
 INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('DEFAULT_SLIDER', 'slider_pop_slide', 1, 36, NULL, '', NULL, 'vam_cfg_select_option(array(\'slider_bootstrap\', \'slider_pop_slide\', \'slider_basic\', \'slider_modern_slide_in\', \'slider_parallax_basic\', \'slider_starter_basic\'),');
 INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('ENABLE_SERVICE_WORKER', 'false', 1, 37, NULL, '', NULL, 'vam_cfg_select_option(array(\'true\', \'false\'),');
+INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('DEFAULT_NAVIGATION', 'slide_menu', 1, 38, NULL, '', NULL, 'vam_cfg_select_option(array(\'fullscreen_menu\', \'slide_menu\'),');
 
 # configuration_group_id 2
 INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('ENTRY_FIRST_NAME_MIN_LENGTH', '2',  2, 1, NULL, '', NULL, NULL);

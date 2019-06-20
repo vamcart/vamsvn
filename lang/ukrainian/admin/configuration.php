@@ -1078,4 +1078,7 @@ define('FACEBOOK_OAUTH_CLIENT_ID_DESC', 'Укажите Ваш OAuth ID номе
 define('FACEBOOK_OAUTH_SECRET_KEY_TITLE', 'Facebook OAuth Ключ приложения');
 define('FACEBOOK_OAUTH_SECRET_KEY_DESC', 'Укажитие Ваш OAuth ключ приложения.');
 
+define('DEFAULT_NAVIGATION_TITLE', 'Меню навигации по умолчанию');
+define('DEFAULT_NAVIGATION_DESC', 'Выберите тип навигации по умолчанию.');
+
 ?>
