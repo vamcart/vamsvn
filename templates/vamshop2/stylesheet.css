@@ -1235,7 +1235,7 @@ label
 .payment-method 
 	{
 		border: 1px solid transparent;
-		padding: 1em;
+		padding: 1em 1em 5px 1em;
 	}
 
 #slide-featured 
