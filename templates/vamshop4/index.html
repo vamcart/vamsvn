@@ -4,7 +4,11 @@
 
     {include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/header/header.html"}
 
-    {include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/navbar/navbar.html"}    
+    {if $smarty.const.DEFAULT_NAVIGATION == "slide_menu"}
+    {include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/navbar/navbar_slide_menu.html"}
+    {elseif $smarty.const.DEFAULT_NAVIGATION == "fullscreen_menu"}
+    {include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/navbar/navbar.html"}
+    {/if}    
 
 
 
