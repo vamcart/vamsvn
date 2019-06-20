@@ -1,41 +1,28 @@
-{if {$slider_pop_slide|@count} > 1} 
+{if {$slider_bootstrap|@count} > 0} 
+{if $smarty.SERVER.REQUEST_URI == '/'}
 
-<link href="jscript/sequencejs/themes/pop-slide/css/sequence-theme.pop-slide.css" rel="stylesheet" media="all">
-
-<style>
-{foreach item=bg from=$slider_pop_slide}
-.seq .seq-step{counter name=bg} {
-  background-image: url("images/banner/{$bg.image}");
-}
-{/foreach}
-</style>
-
-  <div id="sequence" class="seq">
-
-    <div class="seq-screen">
-      <ul class="seq-canvas">
-        {foreach item=slides from=$slider_pop_slide} 
-        <li class="seq-step{counter name=slides} seq-in">
-          <div data-seq class="seq-title">
-            <h2>{$slides.description}</h2>
-            <a class="seq-button" href="{$slides.url}">{#text_view_now#} ></a>
-          </div>
-        </li>
-        {/foreach}
-
-      </ul>
-    </div>
-
-    <ul class="seq-pagination">
-      {foreach item=nav from=$slider_pop_slide}
-      <li><a href="#step{counter name=pagination1}" title="{#text_go_to_slide#} {counter name=pagination3}">{$nav.title}</a></li>
+<div id="carouselExampleInterval" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+      {foreach item=num from=$slider_bootstrap}
+      <li data-target="#carouselExampleInterval" data-slide-to="{$num@index}"{if $num@first} class="active"{/if}></li>
       {/foreach}
-    </ul>
+    </ol>
+  <div class="carousel-inner">
+    {foreach item=slides from=$slider_bootstrap}
+    <div class="carousel-item{if $slides@first} active{/if}" data-interval="5000">
+      <a href="{$slides.url}"><img src="images/banner/{$slides.image}" class="d-block w-100" alt="{$slides.title}" /></a>
+    </div>
+    {/foreach}
   </div>
+  <a class="carousel-control-prev" href="#carouselExampleInterval" role="button" data-slide="prev">
+    <span class="fa fa-chevron-circle-left fa-2x" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleInterval" role="button" data-slide="next">
+    <span class="fa fa-chevron-circle-right fa-2x" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
 
-  <script src="jscript/sequencejs/imagesloaded.pkgd.min.js"></script>
-  <script src="jscript/sequencejs/hammer.min.js"></script>
-  <script src="jscript/sequencejs/sequence.min.js"></script>
-  <script src="jscript/sequencejs/themes/pop-slide/scripts/sequence-theme.pop-slide.js"></script>
-  
-{/if}  
+{/if}
+{/if}
