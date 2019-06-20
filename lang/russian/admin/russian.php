@@ -608,6 +608,7 @@ define('TEXT_PRODUCTS_ATTRIBUTES','Атрибуты товара');
 
 define('BOX_ANSWER_TEMPLATES','Шаблоны ответов');
 define('BOX_PRODUCT_LABELS','Ярлыки товаров');
+define('TEXT_LABEL','Ярлык');
 
 define('BOX_COMPANY_REVIEWS', 'Отзывы о производителях');
 

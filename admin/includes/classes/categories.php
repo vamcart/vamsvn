@@ -173,7 +173,20 @@ class categories {
 
 
 		// Categories URL begin
-                $sql_data_array = array ('sort_order' => $sort_order, 'categories_status' => $categories_status, 'products_sorting' => vam_db_prepare_input($categories_data['products_sorting']), 'products_sorting2' => vam_db_prepare_input($categories_data['products_sorting2']), 'categories_template' => vam_db_prepare_input($categories_data['categories_template']), 'listing_template' => vam_db_prepare_input($categories_data['listing_template']), 'yml_bid' => $yml_bid, 'yml_cbid' => $yml_cbid, 'categories_url' => $categories_url);
+                $sql_data_array = array (
+                'sort_order' => $sort_order, 
+                'categories_status' => $categories_status, 
+                'products_sorting' => vam_db_prepare_input($categories_data['products_sorting']), 
+                'products_sorting2' => vam_db_prepare_input($categories_data['products_sorting2']), 
+                'categories_template' => vam_db_prepare_input($categories_data['categories_template']), 
+                'listing_template' => vam_db_prepare_input($categories_data['listing_template']), 
+                'yml_bid' => $yml_bid, 
+                'yml_cbid' => $yml_cbid, 
+                'categories_url' => $categories_url,
+                'label_id' => vam_db_prepare_input($categories_data['label_id']),
+                'icon' => vam_db_prepare_input($categories_data['icon'])
+                
+                );
                 // Categories URL end
 		$sql_data_array = array_merge($sql_data_array,$permission_array);
 		if ($action == 'insert') {
@@ -309,7 +322,11 @@ class categories {
 									'listing_template'=>$ccopy_values['listing_template'],
 									'sort_order'=>$ccopy_values['sort_order'],
 									'products_sorting'=>$ccopy_values['products_sorting'],
-									'products_sorting2'=>$ccopy_values['products_sorting2']);	
+									'products_sorting2'=>$ccopy_values['products_sorting2'],
+									'label_id'=>$ccopy_values['label_id'],
+									'icon'=>$ccopy_values['icon']
+									
+									);	
 			
 			
 					$customers_statuses_array = vam_get_customers_statuses();

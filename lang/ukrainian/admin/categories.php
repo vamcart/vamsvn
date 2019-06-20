@@ -270,4 +270,7 @@ define('TEXT_SOLD_IN_BUNDLE', 'Данный товар может быть оф�
 
 define ('TEXT_TAB_BUNDLES', 'Комплекты');
 
+define('TEXT_EDIT_LABEL', 'Ярлык категории:');
+define('TEXT_EDIT_ICON', 'Иконка категории:');
+
 ?>

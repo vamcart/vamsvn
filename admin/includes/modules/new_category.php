@@ -51,6 +51,13 @@
     $text_new_or_edit = ($_GET['action']=='new_category_ACD') ? TEXT_INFO_HEADING_NEW_CATEGORY : TEXT_INFO_HEADING_EDIT_CATEGORY;
 
     $manual_link = ($_GET['action']=='new_category') ? MANUAL_LINK_NEW_CATEGORY : MANUAL_LINK_EDIT_CATEGORY;
+
+    $labels_array = array (array ('id' => '', 'text' => TEXT_NONE));
+    $labels_query = vam_db_query("select id, name from ".TABLE_PRODUCT_LABELS." order by sort_order asc");
+    while ($labels = vam_db_fetch_array($labels_query)) {
+        $labels_array[] = array ('id' => $labels['id'], 'text' => $labels['name']);
+    }
+
 ?>
 
 <script type="text/javascript" src="includes/javascript/modified.js"></script>
@@ -248,6 +255,20 @@ $order_array=array(array('id' => 'ASC','text'=>'ASC (1 first)'),
             <td class="main"><?php echo vam_draw_selection_field('status', 'checkbox', '1',$cInfo->categories_status==1 ? true : false); ?></td>
           </tr>
 
+          <tr>
+            <td colspan="4"><?php echo vam_draw_separator('pixel_trans.gif', '100%', '1'); ?></td>
+          </tr>
+
+          <tr>
+            <td valign="top" class="main"><?php echo TEXT_EDIT_LABEL; ?></td>
+            <td valign="top" class="main"><?php echo vam_draw_pull_down_menu('label_id', $labels_array, $cInfo->label_id); ?>&nbsp;<a href="<?php echo vam_href_link(FILENAME_PRODUCT_LABELS, '', 'NONSSL', false); ?>"><?php echo TEXT_EDIT; ?></a></td>
+          </tr>
+
+          <tr>
+            <td valign="top" class="main"><?php echo TEXT_EDIT_ICON; ?></td>
+            <td valign="top" class="main"><?php echo vam_draw_input_field('icon', $cInfo->icon, 'size="40"'); ?></td>
+          </tr>
+            
           <tr>
             <td valign="top" colspan="2" class="main"><?php echo TEXT_YANDEX_MARKET; ?></td>
           </tr>
