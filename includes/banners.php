@@ -24,6 +24,10 @@
   if ($banner = vam_banner_exists('dynamic', 'banner')) {
   $vamTemplate->assign('BANNER',vam_display_banner('static', $banner));
   }
+
+  if ($banner = vam_banner_exists('dynamic', 'slider_bootstrap')) {
+  $vamTemplate->assign('slider_bootstrap',vam_display_banners('dynamic', 'slider_bootstrap'));
+  }
   
   if ($banner = vam_banner_exists('dynamic', 'slider_pop_slide')) {
   $vamTemplate->assign('slider_pop_slide',vam_display_banners('dynamic', 'slider_pop_slide'));
