@@ -9,7 +9,7 @@
     </ol>
   <div class="carousel-inner">
     {foreach item=slides from=$slider_bootstrap}
-    <div class="carousel-item{if $slides@first} active{/if}" data-interval="5000">
+    <div class="carousel-item{if $slides@first} active{/if}" data-interval="10000">
       <a href="{$slides.url}"><img src="images/banner/{$slides.image}" class="d-block w-100" alt="{$slides.title}" /></a>
     </div>
     {/foreach}
