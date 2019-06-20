@@ -620,14 +620,16 @@ CREATE TABLE categories (
   yml_cbid varchar(4) NOT NULL DEFAULT '0',
   categories_url varchar(255),
   yml_enable tinyint(1) NOT NULL default '1',
+  label_id int(3) NOT NULL,
+  icon varchar(255),
   PRIMARY KEY (categories_id),
   KEY idx_categories_parent_id (parent_id)
 ) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
 INSERT INTO `categories` VALUES
-(1, '1.png', 0, 1, 'default', 0, 0, 0, 0, 'default', 0, 'p.products_sort', 'ASC', '2014-01-20 10:35:47', '2014-01-20 11:11:52', '', '', 'notebooks.html', 1),
-(2, '2.png', 0, 1, 'default', 0, 0, 0, 0, 'product_listing_list.html', 0, 'p.products_sort', 'ASC', '2014-01-20 10:36:08', '2014-01-20 11:11:57', '', '', 'tablets.html', 1),
-(3, '3.png', 0, 1, 'default', 0, 0, 0, 0, 'default', 0, 'p.products_sort', 'ASC', '2014-01-20 10:36:29', '2014-01-20 11:12:01', '', '', 'smartphones.html', 1);
+(1, '1.png', 0, 1, 'default', 0, 0, 0, 0, 'default', 0, 'p.products_sort', 'ASC', '2014-01-20 10:35:47', '2014-01-20 11:11:52', '', '', 'notebooks.html', 1, 0, 'fas fa-laptop-alt'),
+(2, '2.png', 0, 1, 'default', 0, 0, 0, 0, 'product_listing_list.html', 0, 'p.products_sort', 'ASC', '2014-01-20 10:36:08', '2014-01-20 11:11:57', '', '', 'tablets.html', 1, 3, 'fas fa-tablet-alt'),
+(3, '3.png', 0, 1, 'default', 0, 0, 0, 0, 'default', 0, 'p.products_sort', 'ASC', '2014-01-20 10:36:29', '2014-01-20 11:12:01', '', '', 'smartphones.html', 1, 0, 'fas fa-mobile-alt');
 
 DROP TABLE IF EXISTS categories_description;
 CREATE TABLE categories_description (
