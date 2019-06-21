@@ -431,7 +431,7 @@ video {
   width: 100%;
   display: block;
   position: relative;
-  background-color: #f5f5f5;
+  background-color: #fff;
 }
 
 .wsmenu>.wsmenu-list>li>.wsshoptabing.wtsdepartmentmenu {
@@ -779,7 +779,7 @@ video {
   border-style: solid;
   border-width: 3px;
   content: "";
-  left: -6px;
+  left: -5px;
   margin-top: 0px;
   position: absolute;
   top: 7px;
