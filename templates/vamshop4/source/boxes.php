@@ -18,8 +18,8 @@
 
   if (SET_BOX_SEARCH == 'true') require(DIR_WS_BOXES . 'search.php');
   if (SET_BOX_CATEGORIES == 'true') include(DIR_WS_BOXES . 'categories.php');
-  require(DIR_WS_BOXES . 'categories2.php');
-  require(DIR_WS_BOXES . 'categories3.php');
+  if (DEFAULT_NAVIGATION == 'slide_menu') require(DIR_WS_BOXES . 'categories2.php');
+  if (DEFAULT_NAVIGATION == 'fullscreen_menu') require(DIR_WS_BOXES . 'categories3.php');
   require(DIR_WS_BOXES . 'content_pull.php');
   include(DIR_WS_BOXES . 'news_dropdown.php');
   include(DIR_WS_BOXES . 'articles_new_dropdown.php');

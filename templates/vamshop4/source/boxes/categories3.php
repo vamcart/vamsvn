@@ -15,6 +15,7 @@
 
 require_once (DIR_FS_INC.'vam_has_category_subcategories.inc.php');
 require_once (DIR_FS_INC.'vam_count_products_in_category.inc.php');
+require_once (DIR_FS_INC.'vam_get_label_name.inc.php');
 
 $box = new vamTemplate;
 $split_cPath_array = array();
@@ -48,7 +49,7 @@ function vam_category2_get_category_products( $cat_id )
 }  // function vam_category2_get_category_products( $cat_id )
 
 
-function vam_category2_get_subcategory( $owner_cat_id, $owner_cat_name = '', $owner_cat_image = '', $current_cPath = '', $icon = '', $label = '', $level = 0 )
+function vam_category2_get_subcategory( $owner_cat_id, $owner_cat_name = '', $owner_cat_image = '', $current_cPath = '', $icon = '', $label_id = 0, $level = 0 )
 {
 
     global $categories_string2;
@@ -70,7 +71,7 @@ function vam_category2_get_subcategory( $owner_cat_id, $owner_cat_name = '', $ow
             };
         };
 
-        $categories_string2 .= '<li'.((vam_has_category_subcategories($owner_cat_id)) ? ' class="dropdown-sub '.$level.'"' : ' class="level'.$level.'"').'><a'.((vam_has_category_subcategories($owner_cat_id)) ? ' class="drop" ' : ' ').'href="' . $cPath_new_url . '">' . (($icon != '') ? '<i class="'.$icon.'"></i> ' : false) . $owner_cat_name . $products_count_string . '</a>';
+        $categories_string2 .= '<li'.((vam_has_category_subcategories($owner_cat_id)) ? ' class="dropdown-sub '.$level.'"' : ' class="level'.$level.'"').'><a'.((vam_has_category_subcategories($owner_cat_id)) ? ' class="drop" ' : ' ').'href="' . $cPath_new_url . '">' . (($icon != '') ? '<i class="'.$icon.'"></i> ' : false) . $owner_cat_name . $products_count_string . (($label_id > 0) ? '<span class="wstmenutag orangetag">'.strip_tags(vam_get_label_name($label_id)).'</span>' : false).'</a>';
 
     };  // if ( $owner_cat_id )
 
@@ -102,7 +103,7 @@ function vam_category2_get_subcategory( $owner_cat_id, $owner_cat_name = '', $ow
         $categories_current_level[ $categories[ 'categories_id' ] ] = array (
             'id' => $categories[ 'categories_id' ],
             'name' => $categories[ 'categories_name' ],
-            'label' => $categories[ 'label_id' ],
+            'label_id' => $categories[ 'label_id' ],
             'icon' => $categories[ 'icon' ],
             'image' => $categories[ 'categories_image' ],
             'parent' => $categories[ 'parent_id' ],
@@ -116,7 +117,11 @@ function vam_category2_get_subcategory( $owner_cat_id, $owner_cat_name = '', $ow
 
     if ( $categories_current_level )
     {
-        if ( $owner_cat_id ) $categories_string2 .= '<ul class="dropdown-menu">'."\n";
+        if ( $owner_cat_id ) $categories_string2 .= '<div class="wstitemright clearfix">
+                      <div class="container-fluid">
+                        <div class="row">
+                          <div class="col-lg-6 col-md-12 clearfix">
+                          <ul class="wstliststy02 clearfix">'."\n";
         
         foreach ( $categories_current_level as $v )
         {
@@ -126,7 +131,7 @@ function vam_category2_get_subcategory( $owner_cat_id, $owner_cat_name = '', $ow
                 $v[ 'image' ],
                 $v[ 'path' ],
                 $v[ 'icon' ],
-                $v[ 'label' ],
+                $v[ 'label_id' ],
                 $v[ 'level' ]
             );
             
@@ -135,7 +140,7 @@ function vam_category2_get_subcategory( $owner_cat_id, $owner_cat_name = '', $ow
 // Uncomment this for output products in CSS menu
 //        vam_category2_get_category_products( $owner_cat_id );
 
-        if ( $owner_cat_id ) $categories_string2 .= '</ul>'."\n";
+        if ( $owner_cat_id ) $categories_string2 .= '</ul></div></div></div>'."\n";
 
     }  // if ( $categories_current_level )
 
