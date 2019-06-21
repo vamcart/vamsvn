@@ -15,10 +15,22 @@
   </div>
   <!-- Mobile Header -->
 
-
-
-
-
+  <div class="headtoppart clearfix">
+    <div class="headerwp clearfix" itemscope itemtype="http://schema.org/Organization">
+      <div class="headertopleft clearfix">
+        <div class="address clearfix"> 
+        <i class="fas fa-users"></i> <span itemprop="name">{$smarty.const.STORE_NAME}</span>&nbsp;
+        <i class="fas fa-home"></i> <span itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">{$smarty.const.STORE_NAME_ADDRESS}</span>&nbsp;        
+        </div>
+      </div>
+      <div class="headertopright clearfix">
+	    <a href="tel:{$smarty.const.STORE_TELEPHONE}"><i class="fas fa-phone"></i> <span itemprop="telephone">{$smarty.const.STORE_TELEPHONE}</span></a>&nbsp;
+	    <a href="contact_us.html"><i class="far fa-envelope"></i> {#text_contact_us#}</a> &nbsp;
+	    {if $smarty.session.customers_status.customers_status_id == 0}<a href="{$admin_area_link}"><i class="fas fa-cog"></i> {#text_admin#}</a>&nbsp;{/if}
+	    {if $smarty.session.customer_id}<a href="{$logoff}"><i class="fas fa-power-off"></i> {#link_logoff#}</a>&nbsp;{/if}  
+      </div>
+    </div>
+  </div>
 
   <div class="headerfull">
     <div class="wsmain clearfix">
@@ -34,8 +46,6 @@
               </div>
             </div>
           </li>
-
-
 
           <li class="wssearchbar clearfix">
             <form class="topmenusearch">
