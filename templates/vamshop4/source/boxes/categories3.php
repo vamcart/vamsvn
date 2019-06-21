@@ -49,7 +49,7 @@ function vam_category2_get_category_products( $cat_id )
 }  // function vam_category2_get_category_products( $cat_id )
 
 
-function vam_category2_get_subcategory( $owner_cat_id, $owner_cat_name = '', $owner_cat_image = '', $current_cPath = '', $icon = '', $label_id = 0, $level = 0 )
+function vam_category2_get_subcategory( $owner_cat_id, $owner_cat_name = '', $owner_cat_image = '', $current_cPath = '', $icon = '', $label_id = 0, $level = 0, $count = 0 )
 {
 
     global $categories_string2;
@@ -72,7 +72,7 @@ function vam_category2_get_subcategory( $owner_cat_id, $owner_cat_name = '', $ow
         };
 
         //$categories_string2 .= '<li'.((vam_has_category_subcategories($owner_cat_id)) ? ' class="'.($level == 1 ? 'wstheading clearfix ' : false).'dropdown-sub '.$level.'"' : ' class="'.($level == 1 ? 'wstheading clearfix ' : false).'level'.$level.'"').'><a'.((vam_has_category_subcategories($owner_cat_id)) ? ' class="drop" ' : ' ').'href="' . $cPath_new_url . '">' . (($icon != '') ? '<i class="'.$icon.'"></i> ' : false) . $owner_cat_name . $products_count_string . (($label_id > 0) ? '<span class="wstmenutag orangetag">'.strip_tags(vam_get_label_name($label_id)).'</span>' : false).'</a>';
-        $categories_string2 .= '<li'.((vam_has_category_subcategories($owner_cat_id)) ? ' class="'.($level == 1 ? ' ' : false).'dropdown-sub '.$level.'"' : ' class="'.($level == 1 ? ' ' : false).'level'.$level.'"').'><a'.((vam_has_category_subcategories($owner_cat_id)) ? ' class="drop" ' : ' ').'href="' . $cPath_new_url . '">' . (($icon != '') ? '<i class="'.$icon.'"></i> ' : false) . $owner_cat_name . $products_count_string . (($label_id > 0) ? '<span class="wstmenutag orangetag">'.strip_tags(vam_get_label_name($label_id)).'</span>' : false).'</a>';
+        $categories_string2 .= '<li'.((vam_has_category_subcategories($owner_cat_id)) ? ' class="'.($level == 1 ? 'list-group-item col-sm-12 col-md-6 col-lg-6 ' : false).'dropdown-sub level'.$level.'"' : ' class="'.(($level == 1) ? 'list-group-item col-sm-12 col-md-6 col-lg-6 ' : false).'level'.$level.'"').'><a'.((vam_has_category_subcategories($owner_cat_id)) ? ' class="drop" ' : ' ').'href="' . $cPath_new_url . '">' . (($icon != '') ? '<i class="'.$icon.'"></i> ' : false) . $owner_cat_name . $products_count_string . (($label_id > 0) ? '<span class="wstmenutag orangetag">'.strip_tags(vam_get_label_name($label_id)).'</span>' : false).'</a>';
 
     };  // if ( $owner_cat_id )
 
@@ -98,9 +98,11 @@ function vam_category2_get_subcategory( $owner_cat_id, $owner_cat_name = '', $ow
     $categories_query = vamDBquery( $categories_query );
     
     $categories_current_level = array();
+    $i = 0;
 
     while ( $categories = vam_db_fetch_array( $categories_query, true ) )
     {
+    	  $i++;
         $categories_current_level[ $categories[ 'categories_id' ] ] = array (
             'id' => $categories[ 'categories_id' ],
             'name' => $categories[ 'categories_name' ],
@@ -109,7 +111,8 @@ function vam_category2_get_subcategory( $owner_cat_id, $owner_cat_name = '', $ow
             'image' => $categories[ 'categories_image' ],
             'parent' => $categories[ 'parent_id' ],
             'path' => ( $current_cPath ? $current_cPath . '_' . $categories[ 'categories_id' ] : $categories[ 'categories_id' ] ),
-            'level' => substr_count(vam_get_category_path($categories[ 'categories_id' ]),'_')
+            'level' => substr_count(vam_get_category_path($categories[ 'categories_id' ]),'_'),
+            'count' => $i
         );
 
     };  // while ( $categories = vam_db_fetch_array( $categories_query, true ) )
@@ -121,8 +124,8 @@ function vam_category2_get_subcategory( $owner_cat_id, $owner_cat_name = '', $ow
         if ( $owner_cat_id && $level != 1 ) $categories_string2 .= '<div class="wstitemright clearfix">
                       <div class="container-fluid">
                         <div class="row">
-                          <div class="col-lg-6 col-md-12 clearfix">
-                          <ul class="wstliststy02 clearfix">'."\n";
+                          <div class="col-lg-12 col-md-12 clearfix">
+                          <ul class="row">'."\n";
         if ( $owner_cat_id && $level == 1 ) $categories_string2 .= '<ul>'."\n";
         
         foreach ( $categories_current_level as $v )
@@ -134,7 +137,8 @@ function vam_category2_get_subcategory( $owner_cat_id, $owner_cat_name = '', $ow
                 $v[ 'path' ],
                 $v[ 'icon' ],
                 $v[ 'label_id' ],
-                $v[ 'level' ]
+                $v[ 'level' ],
+                $v[ 'count' ]
             );
             
         };
