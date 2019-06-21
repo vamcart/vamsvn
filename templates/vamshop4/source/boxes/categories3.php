@@ -146,7 +146,7 @@ function vam_category2_get_subcategory( $owner_cat_id, $owner_cat_name = '', $ow
 // Uncomment this for output products in CSS menu
 //        vam_category2_get_category_products( $owner_cat_id );
 
-        if ( $owner_cat_id && $level != 1 ) $categories_string2 .= '</ul></div></div></div>'."\n";
+        if ( $owner_cat_id && $level != 1 ) $categories_string2 .= '</ul></div></div></div></div>'."\n";
         if ( $owner_cat_id && $level == 1 ) $categories_string2 .= '</ul>'."\n";
 
     }  // if ( $categories_current_level )
