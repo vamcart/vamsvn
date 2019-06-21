@@ -17,7 +17,6 @@ require_once (DIR_FS_INC.'vam_has_category_subcategories.inc.php');
 require_once (DIR_FS_INC.'vam_count_products_in_category.inc.php');
 
 $box = new vamTemplate;
-global $cPath;
 $split_cPath_array = array();
 if ( $cPath ) $split_cPath_array = preg_split( '/_/', $cPath );
 $categories_string2 = '';
@@ -55,8 +54,8 @@ function vam_category2_get_subcategory( $owner_cat_id, $owner_cat_name = '', $ow
     global $categories_string2;
     
     $cPath_new = vam_category_link( $owner_cat_id, $owner_cat_name );
+    $cPath = vam_get_category_path($owner_cat_id);
     $cPath_new_url = vam_href_link( FILENAME_DEFAULT, $cPath_new );
-    
 
     if ( $owner_cat_id )
     {
@@ -108,20 +107,19 @@ function vam_category2_get_subcategory( $owner_cat_id, $owner_cat_name = '', $ow
             'image' => $categories[ 'categories_image' ],
             'parent' => $categories[ 'parent_id' ],
             'path' => ( $current_cPath ? $current_cPath . '_' . $categories[ 'categories_id' ] : $categories[ 'categories_id' ] ),
-            'level' => substr_count($current_cPath,'_')
+            'level' => substr_count(vam_get_category_path($categories[ 'categories_id' ]),'_')
         );
 
     };  // while ( $categories = vam_db_fetch_array( $categories_query, true ) )
+
+ //echo var_dump($categories_current_level);
 
     if ( $categories_current_level )
     {
         if ( $owner_cat_id ) $categories_string2 .= '<ul class="dropdown-menu">'."\n";
         
-        $level = 0;
-
         foreach ( $categories_current_level as $v )
         {
-        	$level++;
             vam_category2_get_subcategory(
                 $v[ 'id' ],
                 $v[ 'name' ],
@@ -129,7 +127,7 @@ function vam_category2_get_subcategory( $owner_cat_id, $owner_cat_name = '', $ow
                 $v[ 'path' ],
                 $v[ 'icon' ],
                 $v[ 'label' ],
-                substr_count($current_cPath,'_')
+                $v[ 'level' ]
             );
             
         };
