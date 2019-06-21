@@ -46,7 +46,7 @@ Extra @Media Query
   font: inherit;
   vertical-align: baseline;
   font-weight: normal;
-  font-size: 12px;
+  font-size: 16px;
   line-height: 18px;
   font-family: Helvetica, sans-serif;
   -webkit-font-smoothing: subpixel-antialiased;
@@ -118,10 +118,9 @@ video {
 .wsmenu {
   width: 94%;
   float: left;
-  font-family: Helvetica, sans-serif;
   color: #fff;
   position: relative;
-  font-size: 13px;
+  font-size: 16px;
   padding: 0;
   display: block;
   margin: 0;
@@ -179,7 +178,7 @@ video {
 
 .wsmenu>.wsmenu-list>li>.navtext>span {
   display: block;
-  font-size: 11px;
+  font-size: 16px;
   text-align: left;
   white-space: nowrap;
   width: 100%;
@@ -188,7 +187,7 @@ video {
 
 .wsmenu>.wsmenu-list>li>.navtext>span+span {
   white-space: nowrap;
-  font-size: 12px;
+  font-size: 16px;
   font-weight: bold;
 }
 
@@ -237,7 +236,7 @@ video {
   padding: 0;
   margin: 0;
   text-indent: 15px;
-  font-size: 12px;
+  font-size: 16px;
   height: 42px;
   z-index: 2;
   outline: none;
@@ -319,7 +318,7 @@ video {
   line-height: 22px;
   padding: 8px 12px;
   text-transform: none;
-  font-size: 13px;
+  font-size: 16px;
   letter-spacing: normal;
   border-right: 0px solid;
 }
@@ -330,7 +329,7 @@ video {
 
 .wsmenu>.wsmenu-list>li>ul.sub-menu>li>a>i {
   margin-right: 9px;
-  font-size: 14px;
+  font-size: 16px;
 }
 
 
@@ -351,7 +350,7 @@ video {
 
 .wsmenu>.wsmenu-list>.wsshopmyaccount>a i {
   display: inline-block;
-  font-size: 13px;
+  font-size: 16px;
   line-height: inherit;
   margin-right: 11px;
   vertical-align: middle;
@@ -406,7 +405,7 @@ video {
 
 .wsmenu>.wsmenu-list>li.wscarticon i {
   display: inline-block;
-  font-size: 13px;
+  font-size: 16px;
   line-height: inherit;
   margin-right: 2px;
   color: #7b7b7b;
@@ -444,7 +443,7 @@ video {
   display: block;
   margin: 0px;
   padding: 0px;
-  font-size: 12px;
+  font-size: 16px;
 }
 
 .wsmenu>.wsmenu-list>li>.wsshoptabing>.wsshopwp>.wstabitem>li:before,
@@ -465,7 +464,7 @@ video {
 .wsmenu>.wsmenu-list>li>.wsshoptabing>.wsshopwp>.wstabitem>li>a {
   display: block;
   padding: 15px 11px;
-  font-size: 13px;
+  font-size: 16px;
   color: #606060;
   border-bottom: solid 1px #e5e5e5;
   width: 23%;
@@ -546,7 +545,7 @@ video {
   width: 100%;
   display: block;
   padding: 10px 0px 6px 0px;
-  font-size: 12px;
+  font-size: 16px;
   font-weight: bold;
   color: #333333;
   border-bottom: solid 1px #d9d9d9;
@@ -563,7 +562,7 @@ video {
   width: 33.33%;
   float: left;
   line-height: 23px;
-  font-size: 14px;
+  font-size: 16px;
   list-style: none;
   padding: 0px 0px 0px 0px;
   margin: 0px;
@@ -571,7 +570,7 @@ video {
 
 .wsmenu>.wsmenu-list>li .wstliststy01 li a {
   color: #6e6e6e;
-  font-size: 12px;
+  font-size: 16px;
 }
 
 .wsmenu>.wsmenu-list>li .wstliststy01 li a:hover {
@@ -593,7 +592,7 @@ video {
 
 .wsmenu>.wsmenu-list>li .wstliststy02 li a {
   color: #6e6e6e;
-  font-size: 12px;
+  font-size: 16px;
 }
 
 .wsmenu>.wsmenu-list>li .wstliststy02 li a:hover {
@@ -609,7 +608,7 @@ video {
 }
 
 .wsmenu>.wsmenu-list>li .wstliststy02 li a .wstcount {
-  font-size: 10px;
+  font-size: 16px;
   color: #adadad;
 }
 
@@ -631,7 +630,7 @@ video {
 
 .wsmenu>.wsmenu-list>li .wstliststy06 li a {
   color: #6e6e6e;
-  font-size: 12px;
+  font-size: 16px;
 }
 
 .wsmenu>.wsmenu-list>li .wstliststy06 li a:hover {
@@ -644,7 +643,7 @@ video {
 }
 
 .wsmenu>.wsmenu-list>li .wstliststy06 li a .wstcount {
-  font-size: 10px;
+  font-size: 16px;
   color: #adadad;
 }
 
@@ -658,7 +657,7 @@ video {
   width: 33.33%;
   float: left;
   line-height: 23px;
-  font-size: 14px;
+  font-size: 16px;
   list-style: none;
   padding: 0px 0px 0px 0px;
   margin: 0px;
@@ -666,7 +665,7 @@ video {
 
 .wsmenu>.wsmenu-list>li .wstliststy03 li a {
   color: #6e6e6e;
-  font-size: 12px;
+  font-size: 16px;
 }
 
 .wsmenu>.wsmenu-list>li .wstliststy03 li a:hover {
@@ -687,7 +686,7 @@ video {
 
 .wsmenu>.wsmenu-list>li .wstliststy04 li a {
   color: #6e6e6e;
-  font-size: 12px;
+  font-size: 16px;
 }
 
 .wsmenu>.wsmenu-list>li .wstliststy04 li a:hover {
@@ -699,12 +698,12 @@ video {
   line-height: normal;
   text-align: center;
   padding: 12px 0px;
-  font-size: 13px;
+  font-size: 16px;
   margin-bottom: 12px;
 }
 
 .wsmenu>.wsmenu-list>li .wstliststy04 li a .wstcount {
-  font-size: 10px;
+  font-size: 16px;
   color: #adadad;
 }
 
@@ -726,7 +725,7 @@ video {
 
 .wsmenu>.wsmenu-list>li .wstliststy05 li a {
   color: #6e6e6e;
-  font-size: 12px;
+  font-size: 16px;
 }
 
 .wsmenu>.wsmenu-list>li .wstliststy05 li a:hover {
@@ -739,7 +738,7 @@ video {
 }
 
 .wsmenu>.wsmenu-list>li .wstliststy05 li a .wstcount {
-  font-size: 10px;
+  font-size: 16px;
   color: #adadad;
 }
 
@@ -748,7 +747,7 @@ video {
   color: #9b9b9b;
   display: inline-block;
   float: right;
-  font-size: 10px;
+  font-size: 16px;
   font-weight: normal;
   letter-spacing: 0;
   padding: 1px 7px;
@@ -760,11 +759,10 @@ video {
   height: 18px;
   line-height: 18px;
   text-align: center;
-  font-size: 11px;
+  font-size: 14px;
   color: #fff;
   border-radius: 2px;
   position: relative;
-  font-family: Arial, Helvetica, sans-serif;
   font-weight: normal;
   padding: 1px 6px 1px 6px;
   margin-left: 6px;
@@ -784,7 +782,7 @@ video {
   left: -6px;
   margin-top: 0px;
   position: absolute;
-  top: 4px;
+  top: 7px;
   z-index: 1;
 }
 
@@ -877,7 +875,7 @@ video {
 .wsmenu>.wsmenu-list>li .wstabitem02>li>a {
   display: block;
   padding: 14px 0px;
-  font-size: 13px;
+  font-size: 16px;
   color: #717171;
   background-color: #f5f5f5;
   border-bottom: 1px solid #e5e5e5;
@@ -980,14 +978,14 @@ video {
   margin: 0px;
   text-align: left;
   padding: 14px 5px;
-  font-size: 15px;
+  font-size: 16px;
   border: solid 1px #eeeeee;
   background-color: #fff;
 }
 
 .wsmenu>.wsmenu-list>li>.wsmegamenu .title {
   border-bottom: 1px solid #CCC;
-  font-size: 14px;
+  font-size: 16px;
   padding: 9px 5px 9px 0px;
   font-size: 17px;
   color: #424242;
@@ -1029,7 +1027,7 @@ video {
 }
 
 .wsmenu>.wsmenu-list>li>.wsmegamenu .link-list li i {
-  font-size: 11px;
+  font-size: 16px;
 }
 
 .wsmenu>.wsmenu-list>li>.wsmegamenu li i {
@@ -1049,7 +1047,7 @@ video {
   border: 1px solid #e7e7e7;
   color: #6a6a6a;
   margin: 2px 0px;
-  font-size: 13px;
+  font-size: 16px;
 }
 
 /* ================== Desktop Half Menus CSS  ================== */
@@ -1173,7 +1171,7 @@ video {
 
   .wsmenu>.wsmenu-list>li>a {
     padding: 9px 32px 9px 18px;
-    font-size: 14px;
+    font-size: 16px;
     text-align: left;
     border-right: solid 0px;
     background-color: transparent;
@@ -1202,7 +1200,7 @@ video {
 
   .wsmenu>.wsmenu-list>li.wscarticon a i {
     margin-right: 7px;
-    font-size: 15px;
+    font-size: 16px;
   }
 
   .wsmenu>.wsmenu-list>li>a .wsarrow:after {
@@ -1244,7 +1242,7 @@ video {
 
   .wsmenu>.wsmenu-list>li.wscarticon a {
     text-align: left;
-    font-size: 13px;
+    font-size: 16px;
   }
 
   /* ================== Mobile Dropdown CSS ================== */
@@ -1270,7 +1268,7 @@ video {
 
   .wsmenu>.wsmenu-list>li>ul.sub-menu>li>a {
     line-height: 20px;
-    font-size: 13px;
+    font-size: 16px;
     padding: 13px 0px 13px 16px;
     color: #6e6e6e;
     border-bottom: solid 1px rgba(0, 0, 0, 0.13);
@@ -1327,7 +1325,7 @@ video {
     width: 100%;
     margin: 0px;
     float: none;
-    font-size: 12px;
+    font-size: 16px;
     padding: 14px 11px 14px 11px;
     font-weight: bold;
   }
@@ -1556,7 +1554,7 @@ video {
     color: #777777;
     height: 34px;
     line-height: 36px;
-    font-size: 15px
+    font-size: 16px
   }
 
   .wsmobileheader .wssearchform input {
@@ -1771,11 +1769,11 @@ video {
     border-left: 1px solid #f3f3f3;
     cursor: pointer;
     display: block;
-    height: 45px;
+    height: 52px;
     position: absolute;
     right: 0;
     top: 0;
-    width: 49px;
+    width: 52px;
     z-index: 10;
     background-color: #f5f5f5;
   }
@@ -1810,11 +1808,11 @@ video {
     border-left: 1px solid #f3f3f3;
     cursor: pointer;
     display: block;
-    height: 45px;
+    height: 52px;
     position: absolute;
     right: 0;
     top: 0;
-    width: 49px;
+    width: 52px;
     z-index: 10;
     background-color: #f3f3f3;
   }

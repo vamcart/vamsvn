@@ -10,6 +10,9 @@ $bender->enqueue("jscript/jquery/plugins/owl/assets/owl.carousel.min.css");
 $bender->enqueue("jscript/jquery/plugins/owl/assets/owl.theme.default.min.css");
 $bender->enqueue("templates/".CURRENT_TEMPLATE."/css/vamshop.css");
 $bender->enqueue("templates/".CURRENT_TEMPLATE."/css/vamshop4.css");
+$bender->enqueue("templates/".CURRENT_TEMPLATE."/webslidemenu/dropdown-effects/fade-down.css");
+$bender->enqueue("templates/".CURRENT_TEMPLATE."/webslidemenu/webslidemenu.css");
+$bender->enqueue("templates/".CURRENT_TEMPLATE."/webslidemenu/color-skins/white-blue.css");
 ?>
 
 <?php

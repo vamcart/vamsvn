@@ -6,6 +6,7 @@ $bender->enqueue("templates/".CURRENT_TEMPLATE."/javascript/bootstrap.min.js");
 $bender->enqueue("jscript/jquery/plugins/owl/owl.carousel.min.js");
 $bender->enqueue("jscript/jquery/plugins/scrollup/jquery.scrollup.min.js");
 $bender->enqueue("templates/".CURRENT_TEMPLATE."/javascript/vamshop4.js");
+$bender->enqueue("templates/".CURRENT_TEMPLATE."/webslidemenu/webslidemenu.js");
 if (AJAX_CART == 'true') $bender->enqueue("templates/".CURRENT_TEMPLATE."/javascript/jscript_ajax_cart.js"); 
 ?>
 
