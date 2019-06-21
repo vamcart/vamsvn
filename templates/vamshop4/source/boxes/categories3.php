@@ -118,12 +118,12 @@ function vam_category2_get_subcategory( $owner_cat_id, $owner_cat_name = '', $ow
 
     if ( $categories_current_level )
     {
-        if ( $owner_cat_id && $level != 2 ) $categories_string2 .= '<div class="wstitemright clearfix">
+        if ( $owner_cat_id && $level != 1 ) $categories_string2 .= '<div class="wstitemright clearfix">
                       <div class="container-fluid">
                         <div class="row">
                           <div class="col-lg-6 col-md-12 clearfix">
                           <ul class="wstliststy02 clearfix">'."\n";
-        if ( $owner_cat_id && $level == 2 ) $categories_string2 .= '<ul>'."\n";
+        if ( $owner_cat_id && $level == 1 ) $categories_string2 .= '<ul>'."\n";
         
         foreach ( $categories_current_level as $v )
         {
@@ -142,8 +142,8 @@ function vam_category2_get_subcategory( $owner_cat_id, $owner_cat_name = '', $ow
 // Uncomment this for output products in CSS menu
 //        vam_category2_get_category_products( $owner_cat_id );
 
-        if ( $owner_cat_id && $level != 2 ) $categories_string2 .= '</ul></div></div></div>'."\n";
-        if ( $owner_cat_id && $level == 2 ) $categories_string2 .= '</ul>'."\n";
+        if ( $owner_cat_id && $level != 1 ) $categories_string2 .= '</ul></div></div></div>'."\n";
+        if ( $owner_cat_id && $level == 1 ) $categories_string2 .= '</ul>'."\n";
 
     }  // if ( $categories_current_level )
 
