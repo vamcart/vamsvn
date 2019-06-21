@@ -2604,6 +2604,7 @@ span.bold
 
 div#ajaxQuickFind {
   text-align: left; 
+  color: #000;
   position: absolute; 
   z-index: 999; 
   top: 50px;

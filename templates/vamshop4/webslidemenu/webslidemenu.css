@@ -96,10 +96,10 @@ video {
 }
 
 .smllogo {
-  padding: 9px 0px 0 16px;
+  width: 170px;
+  padding: 12px 0px 0 8px;
   margin: 0;
   float: left;
-  width: 6%;
 }
 
 .smllogo a {
@@ -111,12 +111,12 @@ video {
 .wsmain {
   width: 100%;
   margin: 0 auto;
-  padding: 0 25px;
+  padding: 0 0;
   max-width: 1140px;
 }
 
 .wsmenu {
-  width: 94%;
+  width: calc(100% - 170px);
   float: left;
   color: #fff;
   position: relative;
@@ -1097,7 +1097,7 @@ video {
 
   /* ================== Mobile Base CSS ================== */
   html {
-    overflow: hidden;
+    /*overflow: hidden;*/
     height: 100%;
     -webkit-overflow-scrolling: touch;
   }
@@ -1852,13 +1852,6 @@ video {
     width: 21%;
   }
 
-  .smllogo {
-    width: 7%;
-  }
-
-  .wsmenu {
-    width: 93%
-  }
 }
 
 
