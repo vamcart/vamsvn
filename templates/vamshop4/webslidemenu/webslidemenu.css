@@ -112,7 +112,7 @@ video {
   width: 100%;
   margin: 0 auto;
   padding: 0 25px;
-  max-width: 1300px;
+  max-width: 1140px;
 }
 
 .wsmenu {
@@ -1491,8 +1491,8 @@ video {
 
   .wsmobileheader>.smllogo {
     display: block;
-    width: 80px;
-    margin: 7px auto 0px auto;
+    width: 150px;
+    margin: 4px auto 0px auto;
     float: none;
     padding-left: 0px;
   }
@@ -1531,7 +1531,7 @@ video {
 
   .wsmobileheader .wssearch.wsopensearch {
     width: 100%;
-    background-color: #000;
+    background-color: #f5f5f5;
   }
 
   .wsmobileheader .wssearch.wsopensearch .wssearchform {
@@ -1558,13 +1558,13 @@ video {
   }
 
   .wsmobileheader .wssearchform input {
-    width: 100%;
-    height: 34px;
+    width: auto;
+    height: 32px;
     -webkit-border-radius: 2px;
     -moz-border-radius: 2px;
     border-radius: 2px;
     border: solid 0px;
-    text-indent: 33px;
+    text-indent: 10px;
     margin: 0px;
     line-height: 18px;
     padding: 0px;
