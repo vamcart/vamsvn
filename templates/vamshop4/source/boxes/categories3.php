@@ -71,7 +71,8 @@ function vam_category2_get_subcategory( $owner_cat_id, $owner_cat_name = '', $ow
             };
         };
 
-        $categories_string2 .= '<li'.((vam_has_category_subcategories($owner_cat_id)) ? ' class="dropdown-sub '.$level.'"' : ' class="level'.$level.'"').'><a'.((vam_has_category_subcategories($owner_cat_id)) ? ' class="drop" ' : ' ').'href="' . $cPath_new_url . '">' . (($icon != '') ? '<i class="'.$icon.'"></i> ' : false) . $owner_cat_name . $products_count_string . (($label_id > 0) ? '<span class="wstmenutag orangetag">'.strip_tags(vam_get_label_name($label_id)).'</span>' : false).'</a>';
+        //$categories_string2 .= '<li'.((vam_has_category_subcategories($owner_cat_id)) ? ' class="'.($level == 1 ? 'wstheading clearfix ' : false).'dropdown-sub '.$level.'"' : ' class="'.($level == 1 ? 'wstheading clearfix ' : false).'level'.$level.'"').'><a'.((vam_has_category_subcategories($owner_cat_id)) ? ' class="drop" ' : ' ').'href="' . $cPath_new_url . '">' . (($icon != '') ? '<i class="'.$icon.'"></i> ' : false) . $owner_cat_name . $products_count_string . (($label_id > 0) ? '<span class="wstmenutag orangetag">'.strip_tags(vam_get_label_name($label_id)).'</span>' : false).'</a>';
+        $categories_string2 .= '<li'.((vam_has_category_subcategories($owner_cat_id)) ? ' class="'.($level == 1 ? ' ' : false).'dropdown-sub '.$level.'"' : ' class="'.($level == 1 ? ' ' : false).'level'.$level.'"').'><a'.((vam_has_category_subcategories($owner_cat_id)) ? ' class="drop" ' : ' ').'href="' . $cPath_new_url . '">' . (($icon != '') ? '<i class="'.$icon.'"></i> ' : false) . $owner_cat_name . $products_count_string . (($label_id > 0) ? '<span class="wstmenutag orangetag">'.strip_tags(vam_get_label_name($label_id)).'</span>' : false).'</a>';
 
     };  // if ( $owner_cat_id )
 
@@ -117,11 +118,12 @@ function vam_category2_get_subcategory( $owner_cat_id, $owner_cat_name = '', $ow
 
     if ( $categories_current_level )
     {
-        if ( $owner_cat_id ) $categories_string2 .= '<div class="wstitemright clearfix">
+        if ( $owner_cat_id && $level != 2 ) $categories_string2 .= '<div class="wstitemright clearfix">
                       <div class="container-fluid">
                         <div class="row">
                           <div class="col-lg-6 col-md-12 clearfix">
                           <ul class="wstliststy02 clearfix">'."\n";
+        if ( $owner_cat_id && $level == 2 ) $categories_string2 .= '<ul>'."\n";
         
         foreach ( $categories_current_level as $v )
         {
@@ -140,7 +142,8 @@ function vam_category2_get_subcategory( $owner_cat_id, $owner_cat_name = '', $ow
 // Uncomment this for output products in CSS menu
 //        vam_category2_get_category_products( $owner_cat_id );
 
-        if ( $owner_cat_id ) $categories_string2 .= '</ul></div></div></div>'."\n";
+        if ( $owner_cat_id && $level != 2 ) $categories_string2 .= '</ul></div></div></div>'."\n";
+        if ( $owner_cat_id && $level == 2 ) $categories_string2 .= '</ul>'."\n";
 
     }  // if ( $categories_current_level )
 
