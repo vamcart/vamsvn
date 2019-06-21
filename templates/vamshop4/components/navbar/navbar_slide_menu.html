@@ -16,12 +16,44 @@
     </div>
   </div>
 
+<div class="header-logo pt-2 pb-3">
+<div class="container">
+  <div class="row align-items-center">
+    <div class="col-2 d-none d-lg-block">
+	  <a href="{$mainpage}">
+	    <img src="{$tpl_path}img/logo.png" alt="{$smarty.const.STORE_NAME}" title="{$smarty.const.STORE_NAME}" />
+	  </a>
+    </div>
+    <div class="col-9 text-center">
+    <ul class="list-inline">
+      <li class="list-inline-item">
+			<a href="{$smarty.const.FILENAME_SPECIALS}"><i class="fas fa-percentage"></i> {$smarty.const.TITLE_SPECIALS_DEFAULT}</a>
+      </li>
+      <li class="list-inline-item">
+			<a href="{$smarty.const.FILENAME_MANUFACTURERS}"><i class="fas fa-tag"></i> {$smarty.const.TITLE_MANUFACTURERS_DEFAULT}</a>
+      </li>
+      <li class="list-inline-item">
+			<a href="{$smarty.const.FILENAME_PRODUCTS_NEW}"><i class="fas fa-lightbulb"></i> {$smarty.const.TITLE_NEW_PRODUCTS_DEFAULT}</a>
+      </li>
+      <li class="list-inline-item">
+			<a href="{$smarty.const.FILENAME_FEATURED}"><i class="fas fa-exclamation-circle"></i> {$smarty.const.TITLE_FEATURED_DEFAULT}</a>
+      </li>
+      <li class="list-inline-item">
+			<a href="{$smarty.const.FILENAME_REVIEWS}"><i class="fas fa-comments"></i> {$smarty.const.TEXT_PRODUCT_REVIEWS}</a>
+      </li>
+    </ul>
+    </div>
+    <div class="col-1 text-right">
+    </div>
+  </div>
+</div>
+</div>
+
   <div class="headerfull">
     <div class="wsmain clearfix">
-      <div class="smllogo"><a href="{$mainpage}"><img src="{$tpl_path}img/logo.png" alt="{$smarty.const.STORE_NAME}" /></a></div>
       <nav class="wsmenu clearfix">
         <ul class="wsmenu-list">
-          <li aria-haspopup="true"><a href="#" class="navtext"><span>Каталог</span> <span>товаров</span></a>
+          <li aria-haspopup="true" class="wsshopcatalog"><a href="#"><i class="fas fa-bars"></i>{#text_catalog#}</a>
             <div class="wsshoptabing wtsdepartmentmenu clearfix">
               <div class="wsshopwp clearfix">
                 <ul class="wstabitem clearfix">
@@ -41,7 +73,7 @@
           </li>
 
 
-          <li aria-haspopup="true" class="wsshopmyaccount"><a href="#"><i class="fas fa-align-justify"></i>My&nbsp;Account</a>
+          <li aria-haspopup="true" class="wsshopmyaccount"><a href="#"><i class="fas fa-user"></i>{$smarty.const.TEXT_MY_ORDERS}</a>
             <ul class="sub-menu">
               <li><a href="#"><i class="fas fa-user-tie"></i>View Profile</a></li>
               <li><a href="#"><i class="fas fa-heart"></i>My Wishlist</a></li>
