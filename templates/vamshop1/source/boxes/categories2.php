@@ -17,7 +17,7 @@ require_once (DIR_FS_INC.'vam_has_category_subcategories.inc.php');
 require_once (DIR_FS_INC.'vam_count_products_in_category.inc.php');
 
 $box = new vamTemplate;
-
+global $cPath;
 $split_cPath_array = array();
 if ( $cPath ) $split_cPath_array = preg_split( '/_/', $cPath );
 $categories_string2 = '';
@@ -49,7 +49,7 @@ function vam_category2_get_category_products( $cat_id )
 }  // function vam_category2_get_category_products( $cat_id )
 
 
-function vam_category2_get_subcategory( $owner_cat_id, $owner_cat_name = '', $owner_cat_image = '', $current_cPath = '' )
+function vam_category2_get_subcategory( $owner_cat_id, $owner_cat_name = '', $owner_cat_image = '', $current_cPath = '', $level = 0 )
 {
 
     global $categories_string2;
@@ -103,7 +103,8 @@ function vam_category2_get_subcategory( $owner_cat_id, $owner_cat_name = '', $ow
             'name' => $categories[ 'categories_name' ],
             'image' => $categories[ 'categories_image' ],
             'parent' => $categories[ 'parent_id' ],
-            'path' => ( $current_cPath ? $current_cPath . '_' . $categories[ 'categories_id' ] : $categories[ 'categories_id' ] )
+            'path' => ( $current_cPath ? $current_cPath . '_' . $categories[ 'categories_id' ] : $categories[ 'categories_id' ] ),
+            'level' => substr_count($current_cPath,'_')
         );
 
     };  // while ( $categories = vam_db_fetch_array( $categories_query, true ) )
@@ -111,14 +112,18 @@ function vam_category2_get_subcategory( $owner_cat_id, $owner_cat_name = '', $ow
     if ( $categories_current_level )
     {
         if ( $owner_cat_id ) $categories_string2 .= '<ul class="dropdown-menu">';
+        
+        $level = 0;
 
         foreach ( $categories_current_level as $v )
         {
+        	$level++;
             vam_category2_get_subcategory(
                 $v[ 'id' ],
                 $v[ 'name' ],
                 $v[ 'image' ],
-                $v[ 'path' ]
+                $v[ 'path' ],
+                substr_count($current_cPath,'_')
             );
             
         };
@@ -170,6 +175,7 @@ if( !$box->isCached( CURRENT_TEMPLATE . '/boxes/box_categories2.html', $cache_id
 
   vam_category2_get_subcategory( 0 );
   
+  //echo var_dump($categories_string2); 
 
 
 $box->assign( 'BOX_CONTENT', '<ul class="dropdown-menu">' . $categories_string2 . '</ul>' );
