@@ -120,6 +120,7 @@ jQuery(function () {
   jQuery(window).on("load", function () {
     jQuery('.wsmobileheader .wssearch').on("click", function () {
       jQuery(this).toggleClass("wsopensearch");
+      jQuery("input:text:visible:first").focus();
     });
     jQuery("body, .wsopensearch .wsclosesearch").on("click", function () {
       jQuery(".wssearch").removeClass('wsopensearch');
