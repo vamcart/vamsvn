@@ -1,17 +1,4 @@
 
-  <!-- Mobile Header -->
-  <div class="wsmobileheader clearfix">
-    <a id="wsnavtoggle" class="wsanimated-arrow"><span></span></a>
-    <span class="smllogo"><img src="{$tpl_path}img/logo.png" alt="" /></span>
-    <div class="wssearch clearfix">
-      <i class="wsopensearch fas fa-search"></i>
-      <div class="wssearchform clearfix">
-        {$box_SEARCH}
-      </div>
-    </div>
-  </div>
-  <!-- Mobile Header -->
-
   <div class="headtoppart clearfix">
     <div class="headerwp clearfix" itemscope itemtype="http://schema.org/Organization">
       <div class="headertopleft clearfix">
@@ -31,7 +18,7 @@
 
   <div class="headerfull">
     <div class="wsmain clearfix">
-      <div class="smllogo"><a href="#"><img src="{$tpl_path}img/logo.png" width="80" alt="" /></a></div>
+      <div class="smllogo"><a href="{$mainpage}"><img src="{$tpl_path}img/logo.png" alt="{$smarty.const.STORE_NAME}" /></a></div>
       <nav class="wsmenu clearfix">
         <ul class="wsmenu-list">
           <li aria-haspopup="true"><a href="#" class="navtext"><span>Каталог</span> <span>товаров</span></a>
@@ -45,10 +32,7 @@
           </li>
 
           <li class="wssearchbar clearfix">
-            <form class="topmenusearch">
-              <input placeholder="Search Product By Name, Category...">
-              <button class="btnstyle"><i class="searchicon fas fa-search"></i></button>
-            </form>
+            {$box_SEARCH}
           </li>
 
           <li class="wscarticon clearfix">
@@ -72,3 +56,17 @@
       </nav>
     </div>
   </div>  
+  
+  <!-- Mobile Header -->
+  <div class="wsmobileheader clearfix">
+    <a id="wsnavtoggle" class="wsanimated-arrow"><span></span></a>
+    <span class="smllogo"><a href="{$mainpage}"><img src="{$tpl_path}img/logo.png" alt="{$smarty.const.STORE_NAME}" /></a></span>
+    <div class="wssearch clearfix">
+      <i class="wsopensearch fas fa-search"></i>
+      <div class="wssearchform clearfix">
+        {$box_SEARCH}
+      </div>
+    </div>
+  </div>
+  <!-- Mobile Header -->
+  
