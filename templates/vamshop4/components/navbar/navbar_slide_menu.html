@@ -40,20 +40,24 @@
     <div class="headerwp clearfix" itemscope itemtype="http://schema.org/Organization">
       <div class="headertopleft clearfix">
         <div class="address clearfix"> 
-        <i class="fas fa-users"></i> <span itemprop="name">{$smarty.const.STORE_NAME}</span>&nbsp;
-        <i class="fas fa-home"></i> <span itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">{$smarty.const.STORE_NAME_ADDRESS}</span>&nbsp;        
+        <ul class="list-inline">
+          <li class="list-inline-item"><i class="fas fa-users"></i> <span itemprop="name">{$smarty.const.STORE_NAME}</span></li>
+          <li class="list-inline-item"><i class="fas fa-home"></i> <span itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">{$smarty.const.STORE_NAME_ADDRESS}</span></li>
+        </ul>        
         </div>
       </div>
       <div class="headertopright clearfix">
-	    <a href="tel:{$smarty.const.STORE_TELEPHONE}"><i class="fas fa-phone"></i> <span itemprop="telephone">{$smarty.const.STORE_TELEPHONE}</span></a>&nbsp;
-	    <a href="contact_us.html"><i class="far fa-envelope"></i> {#text_contact_us#}</a> &nbsp;
-	    {if $smarty.session.customers_status.customers_status_id == 0}<a href="{$admin_area_link}"><i class="fas fa-cog"></i> {#text_admin#}</a>&nbsp;{/if}
-	    {if $smarty.session.customer_id}<a href="{$logoff}"><i class="fas fa-power-off"></i> {#link_logoff#}</a>&nbsp;{/if}  
+      <ul class="list-inline">
+	     <li class="list-inline-item"><a href="tel:{$smarty.const.STORE_TELEPHONE}"><i class="fas fa-phone"></i> <span itemprop="telephone">{$smarty.const.STORE_TELEPHONE}</span></a></li>
+	     <li class="list-inline-item"><a href="contact_us.html"><i class="far fa-envelope"></i> {#text_contact_us#}</a></li>
+	     {if $smarty.session.customers_status.customers_status_id == 0}<li class="list-inline-item"><a href="{$admin_area_link}"><i class="fas fa-cog"></i> {#text_admin#}</a></li>{/if}
+	     {if $smarty.session.customer_id}<li class="list-inline-item"><a href="{$logoff}"><i class="fas fa-power-off"></i> {#link_logoff#}</a></li>{/if}
+	   </ul>  
       </div>
     </div>
   </div>
 
-<div class="header-logo pt-2 pb-3">
+<div class="header-logo pt-1 pb-2">
 <div class="container">
   <div class="row align-items-center">
     <div class="col-2 d-none d-lg-block">
