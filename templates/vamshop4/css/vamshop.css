@@ -2602,28 +2602,33 @@ span.bold
 
 /* Ajax quick find */
 
-div#ajaxQuickFind {
+div#ajaxQuickFind,
+div#ajaxQuickFindHeader {
   text-align: left; 
   color: #000;
   position: absolute; 
   z-index: 999; 
   top: 50px;
   background-color: #fff;
+  border-radius: 4px;
 }
 
-div.ajaxQuickFind 
+div.ajaxQuickFind, 
+div.ajaxQuickFindHeader 
    {
      text-align: left;
    }
 
-ul.ajaxQuickFind 
+ul.ajaxQuickFind, 
+ul.ajaxQuickFindHeader 
    {
      list-style-type: none;
      list-style-image: none;
      padding: 0.5em;
    }
 
-li.ajaxQuickFind 
+li.ajaxQuickFind, 
+li.ajaxQuickFindHeader 
    {
      padding-left: 0px;
    } 
@@ -2654,7 +2659,6 @@ ul.ajaxAddQuickie
 
 li.ajaxAddQuickie 
    {
-     font-size: 80%;
      padding-left: 0px;
    } 
 

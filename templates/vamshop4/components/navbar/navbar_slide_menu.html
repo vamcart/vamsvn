@@ -1,4 +1,41 @@
 
+  <!-- Mobile Header -->
+  <div class="wsmobileheader clearfix">
+    <a id="wsnavtoggle" class="wsanimated-arrow"><span></span></a>
+    <span class="smllogo"><a href="{$mainpage}"><img src="{$tpl_path}img/logo.png" alt="{$smarty.const.STORE_NAME}" /></a></span>
+    <div class="wssearch clearfix">
+      <i class="wsopensearch fas fa-search"></i>
+      <div class="wssearchform clearfix">
+		<form name="search" id="searchheader" action="http://vamshop.loc/advanced_search_result.php" method="get" class="form-inline topmenusearch" autocomplete="off">
+		<div class="input-group">
+		      <input type="text" name="keywords" class="form-control" id="quick_find_keyword_header" placeholder="Поиск" />
+		      <div class="input-group-append">
+		         <button class="btn btn-primary fas fa-search" type="submit"></button>
+		      </div>
+		</div>
+		</form>
+		<div class="ajaxQuickFindHeader" id="ajaxQuickFindHeader"></div>
+		<script>
+		{literal}
+		$(document).ready(function(){
+		  $("#quick_find_keyword_header").keyup(function(){
+		      var searchString = $("#quick_find_keyword_header").val(); 
+		      $.ajax({
+		      	url: "index_ajax.php",             
+		      	dataType : "html",
+		      	type: "POST",
+		      	data: "q=includes/modules/ajax/ajaxQuickFind.php&keywords="+searchString,
+		      	success: function(msg){$("#ajaxQuickFindHeader").html(msg);}            
+		 });     
+		   });
+		})
+		{/literal}
+		</script>
+      </div>
+    </div>
+  </div>
+  <!-- Mobile Header -->
+
   <div class="headtoppart clearfix">
     <div class="headerwp clearfix" itemscope itemtype="http://schema.org/Organization">
       <div class="headertopleft clearfix">
@@ -88,17 +125,3 @@
       </nav>
     </div>
   </div>  
-  
-  <!-- Mobile Header -->
-  <div class="wsmobileheader clearfix">
-    <a id="wsnavtoggle" class="wsanimated-arrow"><span></span></a>
-    <span class="smllogo"><a href="{$mainpage}"><img src="{$tpl_path}img/logo.png" alt="{$smarty.const.STORE_NAME}" /></a></span>
-    <div class="wssearch clearfix">
-      <i class="wsopensearch fas fa-search"></i>
-      <div class="wssearchform clearfix">
-        {$box_SEARCH}
-      </div>
-    </div>
-  </div>
-  <!-- Mobile Header -->
-  
