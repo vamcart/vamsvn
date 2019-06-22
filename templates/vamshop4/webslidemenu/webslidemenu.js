@@ -130,4 +130,14 @@ jQuery(function () {
     });
   });
 
+  /* Top Fixed */
+  jQuery(window).scroll(function () {
+    var sticky = jQuery('.wsmain');
+    var header = jQuery('header').height();
+      scroll = jQuery(window).scrollTop();
+    if (scroll >= header) sticky.addClass('wsfixed');
+    else sticky.removeClass('wsfixed');
+  });
+  /* End Top Fixed */
+  
 }());
