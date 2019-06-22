@@ -50,8 +50,6 @@
       <ul class="list-inline">
 	     <li class="list-inline-item"><a href="tel:{$smarty.const.STORE_TELEPHONE}"><i class="fas fa-phone"></i> <span itemprop="telephone">{$smarty.const.STORE_TELEPHONE}</span></a></li>
 	     <li class="list-inline-item"><a href="contact_us.html"><i class="far fa-envelope"></i> {#text_contact_us#}</a></li>
-	     {if $smarty.session.customers_status.customers_status_id == 0}<li class="list-inline-item"><a href="{$admin_area_link}"><i class="fas fa-cog"></i> {#text_admin#}</a></li>{/if}
-	     {if $smarty.session.customer_id}<li class="list-inline-item"><a href="{$logoff}"><i class="fas fa-power-off"></i> {#link_logoff#}</a></li>{/if}
 	   </ul>  
       </div>
     </div>
@@ -101,22 +99,16 @@
               </div>
             </div>
           </li>
-
           <li class="wssearchbar clearfix">
             {$box_SEARCH}
           </li>
-
           {if !$cart_current}
           <li aria-haspopup="true" class="wscarticon clearfix" id="divShoppingCart">
             {$box_CART}
           </li>
           {/if}
-
-
-          <li class="wsshopmyaccount"><a href="{$smarty.const.FILENAME_ACCOUNT}"><i class="fas fa-user"></i>{$smarty.const.TEXT_MY_ORDERS}</a>
-          </li>
-
-
+          <li class="wsshopmyaccount"><a href="{$smarty.const.FILENAME_ACCOUNT}"><i class="fas fa-user"></i>{$smarty.const.TEXT_MY_ORDERS}</a></li>
+          {if $smarty.session.customers_status.customers_status_id == 0}<li class="wsshopmyaccount"><a href="{$admin_area_link}"><i class="fas fa-cog"></i> {#text_admin#}</a></li>{/if}
         </ul>
       </nav>
     </div>
