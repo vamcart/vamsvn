@@ -2730,6 +2730,7 @@ label
   color: #ffffff;
   background-color: #363636;
   margin-top: 5px;
+  margin-right: 5px;
   margin-bottom: 5px;
 }
 .btn.btn-inverse.checkout {
