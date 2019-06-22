@@ -79,7 +79,7 @@ button:focus, button:active, a, a:hover {
 
 /* Scroll To Top */
 a#scrollup {
-  bottom: 20px;
+  bottom: 50px;
   right: 30px;
   padding: 5px 10px;
   background: #dd2c00;
