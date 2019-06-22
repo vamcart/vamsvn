@@ -205,7 +205,7 @@ video {
 
 /* Main Search Bar CSS*/
 .wsmenu>.wsmenu-list>li.wssearchbar {
-  width: 25%;
+  width: 20%;
   float: left;
   padding-left: 15px;
 }
@@ -1928,7 +1928,7 @@ video {
 /* Extra @Media Query*/
 @media only screen and (min-width: 992px) and (max-width:1262px) {
   .wsmenu>.wsmenu-list>li.wssearchbar {
-    width: 21%;
+    width: 20%;
   }
 
 }
