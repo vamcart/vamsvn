@@ -56,13 +56,13 @@
 <div class="header-logo pt-2 pb-3">
 <div class="container">
   <div class="row align-items-center">
-    <div class="col-1 d-none d-lg-block">
+    <div class="col-2 d-none d-lg-block">
 	  <a href="{$mainpage}">
 	    <img src="{$tpl_path}img/logo.png" alt="{$smarty.const.STORE_NAME}" title="{$smarty.const.STORE_NAME}" />
 	  </a>
     </div>
-    <div class="col-11 text-center">
-    <ul class="list-inline">
+    <div class="col-10 text-left">
+    <ul class="list-inline pl-3">
       <li class="list-inline-item">
 			<a href="{$smarty.const.FILENAME_SPECIALS}"><i class="fas fa-percentage"></i> {$smarty.const.TITLE_SPECIALS_DEFAULT}</a>
       </li>
@@ -102,9 +102,11 @@
             {$box_SEARCH}
           </li>
 
-          <li class="wscarticon clearfix">
-            <a href="{$smarty.const.FILENAME_SHOPPING_CART}"><em class="roundpoint">8</em><i class="fas fa-shopping-basket"></i> <span class="hidetxt">{$smarty.const.NAVBAR_TITLE_SHOPPING_CART}</span></a>
+          {if !$cart_current}
+          <li aria-haspopup="true" class="wscarticon clearfix" id="divShoppingCart">
+            {$box_CART}
           </li>
+          {/if}
 
 
           <li class="wsshopmyaccount"><a href="{$smarty.const.FILENAME_ACCOUNT}"><i class="fas fa-user"></i>{$smarty.const.TEXT_MY_ORDERS}</a>

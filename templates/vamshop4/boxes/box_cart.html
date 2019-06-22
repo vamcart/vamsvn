@@ -1,48 +1,36 @@
 {config_load file="$language/lang_$language.conf" section="boxes"}
 {config_load file="$language/lang_$language.conf" section="index"}
 {if $deny_cart neq 'true'}
-<div class="icontext">
-<div class="icon-wrap">
-<a class="btn btn-outline-primary" href="{$smarty.const.FILENAME_SHOPPING_CART}"><i class="fas fa-shopping-cart"></i></a>
-{if $TOTAL_QUANTITY > 0}
-<span class="notify">{$TOTAL_QUANTITY}</span>
-{/if}
-</div>
-<div class="text-wrap dropdown">
-	<a href="#" data-toggle="dropdown" data-offset="20,10" aria-expanded="false"> 
-	 	{$smarty.const.NAVBAR_TITLE_SHOPPING_CART}  <i class="fa fa-caret-down"></i> 
-	</a>
-	<div class="dropdown-menu cart">
-
-	<div class="p-3">
-
+<a class="cart-link" href="{$smarty.const.FILENAME_SHOPPING_CART}"><em class="roundpoint">{if $TOTAL_QUANTITY > 0}{$TOTAL_QUANTITY}{else}0{/if}</em><i class="fas fa-shopping-basket"></i> <span class="hidetxt">{$smarty.const.NAVBAR_TITLE_SHOPPING_CART}</span></a>
+            <div class="wsmegamenu halfdiv">
+              <div class="container-fluid">
+                <div class="row">
+                  <div class="col-lg-12">
+                  
+<div class="cart">
 {if $empty=='false'}
-
-
+<div class="widget inner shopping-cart-widget">
+	<div class="cart-dropdown">
 			<div class="content">
 				<div class="products">
 					{foreach name=aussen item=products_data from=$products}
-					
-		<div class="itemside mb-3">
-			<div class="aside"><a class="pull-right" href="{$products_data.LINK}"><img class="media-object" class="img-sm" src="{$products_data.IMAGE}" alt="" title="" width="40" height="40" /></a></div>
-			<div class="text-wrap">
-				{if $smarty.const.AJAX_CART == 'true'}<form id="update_cart{counter name=1}" class="cart_quantity" action="{$products_data.LINK}/action/update_product" method="post" onsubmit="doDelProduct({counter name=2}); return false;">{$products_data.PRODUCTS_QTY}{/if}
-				<p class="title">
-				<a class="pull-right" href="{$products_data.LINK}">{$products_data.NAME|vam_truncate:$smarty.const.MAX_DISPLAY_CART:"...":true}</a>
-            {if $smarty.const.AJAX_CART == 'true'}<button class="btn btn-primary btn-xs circle"><i class="fas fa-times"></i></button></form>{/if}				
-				</p>
-				<p class="desc">
-				{if $products_data.ATTRIBUTES!=''} 
-				{foreach key=key_data item=item_data from=$products_data.ATTRIBUTES} 
-				{$item_data.NAME}: {$item_data.VALUE}<br />
-				{/foreach} 
-				{/if}
-            </p>
-			<div class="price-wrap">
-			<span class="price-new b">{$products_data.QTY} x {$products_data.PRICE}</span>
-			</div>			
-			</div>
-		</div>
+						<div class="media p-2">
+							<a class="pull-right" href="{$products_data.LINK}">
+								<img class="media-object p-1" src="{$products_data.IMAGE}" alt="" title="" width="40" height="40" />
+							</a>
+						<div class="media-body">
+						{if $smarty.const.AJAX_CART == 'true'}
+		<form id="update_cart{counter name=1}" class="cart_quantity" action="{$products_data.LINK}/action/update_product" method="post" onsubmit="doDelProduct({counter name=2}); return false;">{$products_data.PRODUCTS_QTY}
+		{/if}
+		                  <span class="media-heading"><a href="{$products_data.LINK}">{$products_data.NAME|vam_truncate:$smarty.const.MAX_DISPLAY_CART:"...":true}</a></span> {if $smarty.const.AJAX_CART == 'true'}<input type="image" src="images/delete.gif" title="{#text_delete#}" alt="{#text_delete#}" /></form>{/if}
+								{if $products_data.ATTRIBUTES!=''} 
+								{foreach key=key_data item=item_data from=$products_data.ATTRIBUTES} 
+								{$item_data.NAME}: {$item_data.VALUE}<br />
+								{/foreach} 
+								{/if}
+							{$products_data.QTY} x {$products_data.PRICE}
+						</div>
+						</div>
 					{/foreach}
 				</div>
 				{if $DISCOUNT}
@@ -56,21 +44,26 @@
 					<span class="amount">{$TOTAL}</span>
 				</p>
 				<p class="buttons">
-					<a class="btn btn-secondary viewcart" href="{$LINK_CART}"><i class="fa fa-shopping-cart"></i> {#link_cart#}</a>
+					<a class="btn btn-inverse viewcart" href="{$LINK_HOME}"><i class="fa fa-arrow-left"></i> {$smarty.const.TEXT_BACK}</a>
+					<a class="btn btn-inverse viewcart" href="{$LINK_CART}"><i class="fa fa-shopping-cart"></i> {#link_cart#}</a>
 					<a class="btn btn-inverse checkout" href="{$LINK_CHECKOUT}"><i class="fa fa-check"></i> {#text_checkout#} &rarr;</a>
 				</p>
 			</div>
-
-
+	</div>
+</div>
 {else}
+<div class="widget inner shopping-cart-widget">
+	<div class="cart-dropdown">
 			<div class="content">
            {#text_empty_cart#} 
 			</div>
-{/if}
-
 	</div>
-	
-	</div> <!--  dropdown-menu .// -->
-</div> <!-- text-wrap.// -->
 </div>
+{/if}
+</div>
+
+                  </div>
+                </div>
+              </div>
+            </div>
 {/if}

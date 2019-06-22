@@ -2728,9 +2728,16 @@ label
 
 .btn.btn-inverse {
   color: #ffffff;
-  background-color: #dd2c00;
+  background-color: #363636;
   margin-top: 5px;
   margin-bottom: 5px;
+}
+.btn.btn-inverse.checkout {
+  background-color: #dd2c00;
+}
+.btn.btn-inverse:hover {
+    color: #fff;
+    background-color: #dd2c00;
 }
 .btn:hover {
     color: #fff;

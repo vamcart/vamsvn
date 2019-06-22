@@ -393,14 +393,14 @@ video {
   /*display: none;*/
 }
 
-.wsmenu>.wsmenu-list>li.wscarticon a {
+.wsmenu>.wsmenu-list>li.wscarticon a.cart-link {
   padding: 0 27px 0 23px;
   text-align: center;
   border-left: 1px solid rgba(0, 0, 0, 0.1);
   border-right: 1px solid rgba(0, 0, 0, 0.1);
 }
 
-.wsmenu>.wsmenu-list>li.wscarticon a i {
+.wsmenu>.wsmenu-list>li.wscarticon a.cart-link i {
   font-size: 16px;
 }
 
@@ -423,7 +423,7 @@ video {
   color: #fff;
 }
 
-.wsmenu>.wsmenu-list>li.wscarticon i {
+.wsmenu>.wsmenu-list>li.wscarticon i.cart {
   display: inline-block;
   font-size: 16px;
   line-height: inherit;
@@ -1205,7 +1205,7 @@ video {
     padding-left: 18px;
   }
 
-  .wsmenu>.wsmenu-list>li.wscarticon a {
+  .wsmenu>.wsmenu-list>li.wscarticon a.cart-link {
     padding-left: 18px;
   }
 
@@ -1218,7 +1218,7 @@ video {
     color: #bfbfbf;
   }
 
-  .wsmenu>.wsmenu-list>li.wscarticon a i {
+  .wsmenu>.wsmenu-list>li.wscarticon a.cart-link i {
     margin-right: 7px;
     font-size: 16px;
   }
@@ -1260,7 +1260,7 @@ video {
     float: none;
   }
 
-  .wsmenu>.wsmenu-list>li.wscarticon a {
+  .wsmenu>.wsmenu-list>li.wscarticon a.cart-link {
     text-align: left;
     font-size: 16px;
   }
@@ -1331,6 +1331,66 @@ video {
 
   .wsmenu>.wsmenu-list>li>.wsmegamenu.halfmenu {
     width: 100%;
+    margin: 0px;
+    padding: 5px 0px 10px 0px;
+  }
+
+  .wsmenu>.wsmenu-list>li>.wsmegamenu .title {
+    color: #666666;
+    font-size: 15px;
+    padding: 10px 8px 10px 0px;
+  }
+
+  .wsmenu>.wsmenu-list>li>.wsmegamenu>ul {
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+    font-size: 13px;
+  }
+
+  .wsmenu>.wsmenu-list>li>.wsmegamenu>ul>li>a {
+    padding: 9px 14px;
+    line-height: normal;
+    font-size: 13px;
+    background-color: #e7e7e7;
+    color: #666666;
+  }
+
+  .wsmenu>.wsmenu-list>li>.wsmegamenu>ul>li>a:hover {
+    background-color: #000000;
+  }
+
+  .wsmenu>.wsmenu-list>li>.wsmegamenu ul li.title {
+    line-height: 26px;
+    color: #666666;
+    margin: 0px;
+    font-size: 15px;
+    padding: 7px 0px;
+    background-color: transparent;
+  }
+
+  .wsmenu>.wsmenu-list>li>.wsmegamenu.halfdiv {
+    width: 100%;
+  }
+
+  .wsmenu>.wsmenu-list>li>.wsmegamenu .menu_form {
+    padding: 5px 0px 62px 0px;
+  }
+
+  .wsmenu>.wsmenu-list>li>.wsmegamenu .show-grid div {
+    margin: 0px;
+  }
+
+  .wsmenu>.wsmenu-list>li>.wsmegamenu .menu_form input[type="button"] {
+    width: 46%;
+  }
+
+  .wsmenu>.wsmenu-list>li>.wsmegamenu .menu_form input[type="submit"] {
+    width: 46%;
+  }
+
+  .wsmenu>.wsmenu-list>li>.wsmegamenu .menu_form textarea {
+    min-height: 100px;
   }
 
   .wstabitem02>.wsshoplink-active>a:after {
