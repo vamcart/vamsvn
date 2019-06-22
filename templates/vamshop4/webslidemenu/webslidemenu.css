@@ -390,7 +390,7 @@ video {
 }
 
 .wsmenu>.wsmenu-list>li.wscarticon .hidetxt {
-  display: none;
+  /*display: none;*/
 }
 
 .wsmenu>.wsmenu-list>li.wscarticon a {
@@ -407,7 +407,9 @@ video {
 .wsmenu>.wsmenu-list>li.wscarticon em.roundpoint {
   position: absolute;
   top: 14px;
-  right: 21px;
+  /*right: 21px;*/
+  left: 12px;
+  right: auto;
   width: 17px;
   height: 17px;
   background-color: #DA4B38;
