@@ -3165,3 +3165,8 @@ dd.itemCategoriesListing
 dd {
   margin-left: 0;
 }
+
+.item-quantity.input-small {
+  margin-bottom: 0;
+  width: 20px;
+}
