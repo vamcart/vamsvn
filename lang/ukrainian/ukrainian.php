@@ -681,6 +681,7 @@ define('TITLE_MANUFACTURERS_DEFAULT', 'Бренди');
 define('TITLE_BEST_SELLERS_DEFAULT', 'Популярні товари');
 define('TITLE_NEW_PRODUCTS_DEFAULT', 'Новинки');
 define('TITLE_FEATURED_DEFAULT', 'Рекомендовані товари');
+define('TITLE_FEATURED_DEFAULT_SHORT', 'Рекомендовані');
 define('TITLE_SPECIALS_DEFAULT', 'Знижки');
 
 define('TEXT_NOT_FOUND', 'Не найдено.');
