@@ -11,7 +11,7 @@ if (AJAX_CART == 'true') $bender->enqueue("templates/".CURRENT_TEMPLATE."/javasc
 ?>
 
 <?php
-echo $bender->output("cache/".CURRENT_TEMPLATE."-packed.js");
+echo $bender->output("templates/".CURRENT_TEMPLATE."/cache/".CURRENT_TEMPLATE."-packed.js");
 ?>
 
 <?php
