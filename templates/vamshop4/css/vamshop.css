@@ -2764,12 +2764,14 @@ label
     background-color: #007bff;
 }
 
-.btn-secondary {
+.btn-secondary,
+.btn-primary {
     color: #fff;
     background-color: #363636;
     border-color: #363636;
 }
 
+.btn-secondary:hover,
 .btn-secondary:hover {
     color: #fff;
     background-color: #007bff;
