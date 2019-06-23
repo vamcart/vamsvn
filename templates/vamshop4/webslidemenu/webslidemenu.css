@@ -115,7 +115,7 @@ video {
   max-width: 1140px;
   float: none;
   margin: 0 auto;
-  animation: smoothScroll .5s forwards;
+  /*animation: smoothScroll .5s forwards;*/
 }
 
 /* Top Fixed Effects */
