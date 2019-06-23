@@ -46,6 +46,23 @@ if ($d = opendir($dir)) {
     closedir($d);
 }
 
+$dir_template_cache = DIR_FS_CATALOG . 'templates/' . CURRENT_TEMPLATE . '/cache/';
+
+if ($d_t = opendir($dir_template_cache)) {
+
+  $i_t=0;
+    while (false !== ($file_template = readdir($d_t))) {
+      if ($file_template != "." && $file_template != ".." && $file_template !="index.html") {
+  $i_t++;
+          if ($_GET['action'] == 'unlink') {
+            vam_delete_file($dir_template_cache . $file_template);
+          }
+      }
+    }
+
+    closedir($d_t);
+}
+
 if (isset($_GET['action'])) {
   if ($_GET['action'] == 'unlink') {
     vam_redirect(vam_href_link(FILENAME_CACHE));
