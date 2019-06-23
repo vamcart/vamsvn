@@ -79,7 +79,7 @@ $(function(){
 
 	$('#navigation').affix({
 	      offset: {
-	        top: $('#header').height()
+	        top: $('#header').height()-$('#navigation').height()
 	      }
 	});	
 
