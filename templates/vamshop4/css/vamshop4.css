@@ -4,6 +4,10 @@ body {
   font-weight: 500;
 }
 
+p {
+  margin-bottom: .7rem;
+}
+
 /* Remove outline */
 button:focus, button:active, a, a:hover {
    outline: none;
