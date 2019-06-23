@@ -2174,6 +2174,19 @@ span.Requirement
   background-color: #dd2c00;
 }
 
+.btn-secondary,
+.btn-primary {
+    color: #fff;
+    background-color: #363636;
+    border-color: #363636;
+}
+
+.btn-secondary:hover,
+.btn-secondary:hover {
+    color: #fff;
+    background-color: #007bff;
+    border-color: #007bff;
+}
 /* /Buttons */
 
 /* Buttons */
