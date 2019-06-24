@@ -444,10 +444,10 @@ elseif ($category_depth == 'products' || $_GET['manufacturers_id']) {
     global $current_category_id;
     while ($filterlist = vam_db_fetch_array($filterlist_query, true)) {
     $options[] = array ('id' => $filterlist['id'], 'text' => $filterlist['name']);
-	if (isset($current_category_id)) {
+	if ($current_category_id > 0) {
     $manufacturer_sort .= '<a href="'.vam_href_link(FILENAME_DEFAULT, 'cat='.$current_category_id.'&filter_id='.$filterlist['id']).'">' . $filterlist['name'] . '</a> ';
     } else {
-    $manufacturer_sort .= '<a href="'.vam_href_link(FILENAME_DEFAULT, 'filter_id='.$filterlist['id']).'">' . $filterlist['name'] . '</a> ';
+    $manufacturer_sort .= '<a href="'.vam_href_link(FILENAME_DEFAULT, 'filter_id='.$filterlist['id']).'&manufacturers_id='.(int)$_GET['manufacturers_id'].'">' . $filterlist['name'] . '</a> ';
     }
     }
     $manufacturer_sort .= '<a href="'.vam_href_link(FILENAME_DEFAULT, 'cat='.$current_category_id).'">' . TEXT_ALL_MANUFACTURERS . '</a> ';
