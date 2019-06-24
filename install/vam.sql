@@ -1547,10 +1547,24 @@ CREATE TABLE featured (
   PRIMARY KEY (featured_id)
 ) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
+DROP TABLE IF EXISTS featured;
+CREATE TABLE featured (
+  featured_id int NOT NULL auto_increment,
+  products_id int NOT NULL,
+  featured_quantity int(4) NOT NULL,
+  featured_date_added datetime,
+  featured_last_modified datetime,
+  expires_date datetime,
+  date_status_change datetime,
+  status int(1) NOT NULL DEFAULT '1',
+  PRIMARY KEY (featured_id)
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+
 INSERT INTO `featured` VALUES
-(1, 4, 1000000, '2014-01-20 22:08:34', NULL, '0000-00-00 00:00:00', NULL, 1),
-(2, 5, 1000000, '2014-01-20 22:08:46', NULL, '0000-00-00 00:00:00', NULL, 1),
-(3, 6, 1000000, '2014-01-20 22:08:50', NULL, '0000-00-00 00:00:00', NULL, 1);
+(1, 1, 1000000, '2014-01-20 22:08:34', NULL, '0000-00-00 00:00:00', NULL, 1),
+(2, 4, 1000000, '2014-01-20 22:08:34', NULL, '0000-00-00 00:00:00', NULL, 1),
+(3, 5, 1000000, '2014-01-20 22:08:46', NULL, '0000-00-00 00:00:00', NULL, 1),
+(4, 6, 1000000, '2014-01-20 22:08:50', NULL, '0000-00-00 00:00:00', NULL, 1);
 
 DROP TABLE IF EXISTS tax_class;
 CREATE TABLE tax_class (
