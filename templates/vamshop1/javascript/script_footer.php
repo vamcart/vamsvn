@@ -78,7 +78,7 @@ if (file_exists(DIR_FS_CATALOG.'jscript/jquery/plugins/colorbox/i18n/jquery.colo
 	
 $(document).ready(function(){
   $(".lightbox").colorbox({rel:"lightbox", title: false});
-  $(".iframe").colorbox({iframe:true, width:"30%", height:"80%"});
+  $(".iframe").colorbox({iframe:true, width:"70%", height:"80%"});
 });
 </script>
 <?php
