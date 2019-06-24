@@ -135,7 +135,6 @@ jQuery(function () {
     var sticky = jQuery('.wsmain');
     var header = jQuery('header').height();
     var menu = jQuery('.headerfull').height();
-    console.log(header-menu);
       scroll = jQuery(window).scrollTop();
     if (scroll >= header-menu) sticky.addClass('wsfixed');
     else sticky.removeClass('wsfixed');
