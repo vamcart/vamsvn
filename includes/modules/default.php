@@ -440,7 +440,6 @@ elseif ($category_depth == 'products' || $_GET['manufacturers_id']) {
     $options = array (array ('text' => TEXT_ALL_MANUFACTURERS));
     }
     $manufacturer_dropdown .= vam_draw_hidden_field('sort', $_GET['sort']);
-    $manufacturer_dropdown .= vam_draw_hidden_field(vam_session_name(), vam_session_id());
     global $current_category_id;
     while ($filterlist = vam_db_fetch_array($filterlist_query, true)) {
     $options[] = array ('id' => $filterlist['id'], 'text' => $filterlist['name']);
