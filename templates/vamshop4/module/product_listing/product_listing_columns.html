@@ -54,9 +54,9 @@
   </div>
   {/if}
 
-{if $MANUFACTURER_DROPDOWN}
+{if $MANUFACTURER_SORT}
 <p>
-{$MANUFACTURER_DROPDOWN}
+{$MANUFACTURER_SORT}
 </p>
 {/if}
 <p>
@@ -101,9 +101,13 @@
 {if $CATEGORIES_NAME}
 <form action="{$smarty.const.FILENAME_COMPARISON}">{/if}
 
+<div class="card-group">
 {foreach name=aussen item=module_data from=$module_content}
-{include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/product-card/product-card-listing.html"}
+<div class="pb-4 card-group col-sm-12 col-md-6 col-lg-4 col-xl-3">
+{include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/product-card/product-card-simple.html"}
+</div>
 {/foreach}
+</div>﻿
 
 {if $CATEGORIES_NAME}
 <input type="hidden" name="cat" value="{$smarty.get.cat}" />
