@@ -44,8 +44,7 @@ if (GROUP_CHECK == 'true') {
                          where mi.languages_id = '".$_SESSION['languages_id']."' 
                          ".$group_check." 
                          ".$fsk_lock." 
-                         order by m.manufacturers_id  
-                         desc ";
+                         order by m.sort_order, m.manufacturers_name asc";
 $manufacturers_split = new splitPageResults($manufacturers_query_raw, $_GET['page'], MAX_DISPLAY_SEARCH_RESULTS);
 
 $module_content = array();

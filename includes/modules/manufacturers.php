@@ -24,8 +24,7 @@ $module->assign('tpl_path','templates/'.CURRENT_TEMPLATE.'/');
                          left join ".TABLE_MANUFACTURERS_INFO." as mi 
                          on mi.manufacturers_id = m.manufacturers_id 
                          where mi.languages_id = '".$_SESSION['languages_id']."' 
-                         order by m.sort_order, m.manufacturers_name  
-                         desc limit ".MAX_DISPLAY_SEARCH_RESULTS."
+                         order by m.sort_order, m.manufacturers_name asc limit ".MAX_DISPLAY_SEARCH_RESULTS."
                          ";
 
  // db Cache
