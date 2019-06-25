@@ -35,11 +35,15 @@ button:focus, button:active, a, a:hover {
 .owl-stage {
   display: flex;
   flex-wrap: wrap;
+  padding: 1em 0;
+  padding-right: 0;
+  padding-left: 0;
 }
 
 .owl-item{
   display: flex;
   height: auto !important;
+  padding-right: 5px;
 }
 
 .owl-item img {
