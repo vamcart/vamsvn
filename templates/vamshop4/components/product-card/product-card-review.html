@@ -1,9 +1,10 @@
 <!-- Product Card Simple -->
-		<div class="card card-sm card-product">
+		<div class="card card-sm card-product h-100">
+      <div class="card-body">
 		{if $module_data.PRODUCT.PRODUCTS_LABEL}{$module_data.PRODUCT.PRODUCTS_LABEL}{/if}
 		{if $module_data.PRODUCT.PRODUCTS_SPECIAL > 0}<span class="badge-offer"><b>-{$module_data.PRODUCT.PRODUCTS_SPECIAL|round}%</b></span>{/if}
 			<div class="img-wrap"><a href="{$module_data.PRODUCT.PRODUCTS_LINK}"><img src="{$module_data.PRODUCT.PRODUCTS_IMAGE}" alt="{$module_data.PRODUCT.PRODUCTS_NAME}"></a></div>
-			<div class="info-wrap text-center h-60">
+			<div class="info-wrap text-center">
 				<h5 class="title text-truncate"><a href="{$module_data.PRODUCT.PRODUCTS_LINK}">{$module_data.PRODUCT.PRODUCTS_NAME}</a></h5>
 				{if $module_data.REVIEW.RATING > 0}
 				<div class="rating-wrap">
@@ -16,6 +17,9 @@
 					{$module_data.PRODUCT.PRODUCTS_PRICE}
 				</div>
 			</div>
+      </div>
+      <div class="card-footer text-center">
+      </div>
 		</div>
 <!-- /Product Card Simple -->
 		

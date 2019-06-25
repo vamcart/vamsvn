@@ -72,11 +72,36 @@ button:focus, button:active, a, a:hover {
   padding-right: 0;
 }
 
-.col-sm-12,
-.col-md-6,
-.col-lg-4,
-.col.xl-3 {
+.card-deck .card {
+  margin-left: 0;
+}
+
+.card-footer {
+  background: transparent;
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.category.card-body {
+  padding-bottom: 0;
+}
+
+.category.card-footer {
+  padding: 0 .5em 1em .5em;
+}
+
+.card-deck {
+  padding-left: 15px;
+}
+
+.card-deck .col-xs-12,
+.card-deck .col-sm-6,
+.card-deck .col-md-4,
+.card-deck .col-lg-4,
+.card-deck .col.xl-3 {
   padding-left: 0;
+  padding-right: 15px;
   padding-bottom: 15px;
 }
 /* /Main */

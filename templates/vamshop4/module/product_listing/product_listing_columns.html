@@ -101,9 +101,9 @@
 {if $CATEGORIES_NAME}
 <form action="{$smarty.const.FILENAME_COMPARISON}">{/if}
 
-<div class="card-group">
+<div class="card-deck">
 {foreach name=aussen item=module_data from=$module_content}
-<div class="card-group col-sm-12 col-md-6 col-lg-4 col-xl-3">
+<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 col-xl-3">
 {include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/product-card/product-card-simple.html"}
 </div>
 {/foreach}

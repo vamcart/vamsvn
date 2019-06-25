@@ -639,7 +639,7 @@ define('BUTTON_PRINT_KVITANCIA', 'Роздрукувати квитанцію');
 define('TEXT_NO_PRODUCTS_AVAILABLE', 'Товари для порівняння не знайдені.');
 define('TEXT_NO_COMPARISON_AVAILABLE', 'Адміністратором були задані специфікації товару для порівняння. <a href="http://vamshop.ru/manual/ch06.html" target="_blank"> Налаштування специфікацій </a>.') ;
 define('TEXT_COMPARE', 'Порівняння товару');
-define('TEXT_BUY_BUTTON', 'Купити');
+define('TEXT_BUY_BUTTON', 'В кошик');
 define('TEXT_BEST_BUY', 'встигни придбати!');
 define('TEXT_BEST_BUY_UP', 'Встигни прибдати!');
 define('TEXT_READ_MORE', 'докладніше');
