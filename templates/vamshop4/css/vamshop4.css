@@ -125,6 +125,10 @@ button:focus, button:active, a, a:hover {
   -o-transition: all 0.3s ease-out;
   transition: all 0.3s ease-out;
 }
+
+.card.card-product .info-wrap {
+  padding: 0;
+}
 /* /Main */
 
 
