@@ -93,7 +93,7 @@ function vam_category2_get_subcategory( $owner_cat_id, $owner_cat_name = '', $ow
                        " . $group_check . "
                        and c.categories_id = cd.categories_id
                        and cd.language_id='" . (int)$_SESSION[ 'languages_id' ] . "'
-                       order by sort_order, cd.categories_name";
+                       order by c.sort_order, cd.categories_name asc";
 
     $categories_query = vamDBquery( $categories_query );
     
