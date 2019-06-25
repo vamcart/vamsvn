@@ -628,7 +628,7 @@ CREATE TABLE categories (
 
 INSERT INTO `categories` VALUES
 (1, '1.png', 0, 1, 'default', 0, 0, 0, 0, 'default', 3, 'p.products_sort', 'ASC', '2014-01-20 10:35:47', '2014-01-20 11:11:52', '', '', 'notebooks.html', 1, 0, 'fas fa-laptop'),
-(2, '2.png', 0, 1, 'default', 0, 0, 0, 0, 'product_listing_list.html', 2, 'p.products_sort', 'ASC', '2014-01-20 10:36:08', '2014-01-20 11:11:57', '', '', 'tablets.html', 1, 3, 'fas fa-tablet-alt'),
+(2, '2.png', 0, 1, 'default', 0, 0, 0, 0, 'default', 2, 'p.products_sort', 'ASC', '2014-01-20 10:36:08', '2014-01-20 11:11:57', '', '', 'tablets.html', 1, 3, 'fas fa-tablet-alt'),
 (3, '3.png', 0, 1, 'default', 0, 0, 0, 0, 'default', 1, 'p.products_sort', 'ASC', '2014-01-20 10:36:29', '2014-01-20 11:12:01', '', '', 'smartphones.html', 1, 0, 'fas fa-mobile-alt'),
 (4, '4.png', 0, 1, 'default', 0, 0, 0, 0, 'default', 4, 'p.products_sort', 'ASC', '2014-01-20 10:36:29', '2014-01-20 11:12:01', '', '', 'monitors.html', 1, 0, 'fas fa-tv');
 
