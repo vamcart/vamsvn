@@ -1,0 +1,28 @@
+<!-- Product Card Simple -->
+		<div class="card card-product card-sm h-100">
+      <div class="card-body">
+		{if $module_data.PRODUCTS_LABEL}{$module_data.PRODUCTS_LABEL}{/if}
+		{if $module_data.PRODUCTS_SPECIAL > 0}<span class="badge-offer"><b>-{$module_data.PRODUCTS_SPECIAL|round}%</b></span>{/if}
+			<div class="img-wrap"><a href="{$module_data.PRODUCTS_LINK}"><img src="{$module_data.PRODUCTS_IMAGE}" alt="{$module_data.PRODUCTS_NAME}"></a></div>
+			<div class="info-wrap text-center">
+				<h5 class="title text-truncate"><a href="{$module_data.PRODUCTS_LINK}">{$module_data.PRODUCTS_NAME}</a></h5>
+				{if $module_data.REVIEWS_TOTAL > 0}
+				<div class="rating-wrap">
+					{$module_data.REVIEWS_STAR_RATING}
+					<div class="label-rating">{$smarty.const.TEXT_TOTAL_REVIEWS}: {$module_data.REVIEWS_TOTAL}</div>
+				</div>
+				{/if}
+				<div class="price-wrap h4">
+					{$module_data.PRODUCTS_PRICE}
+				</div>
+				{if $CATEGORIES_NAME}<div class="desc"><label><input type="checkbox" id="s_{$module_data.PRODUCTS_ID}" name="products[]" value="{$module_data.PRODUCTS_ID}" /> {#text_compare#}</label></div>{/if}
+			</div>
+      </div>
+      <div class="card-footer text-center">
+			<div class="btn-group btn-group-justified">{$module_data.PRODUCTS_BUTTON_BUY_NOW_NEW}</div>
+			<a href="{$module_data.PRODUCTS_LINK}" class="btn btn-secondary"><i class="fas fa-info-circle"></i> {$smarty.const.TEXT_VIEW_PRODUCTS_GO}</a>
+      </div>
+    			
+		</div>
+<!-- /Product Card Simple -->
+		
