@@ -98,7 +98,7 @@
 </div>
 {/if}
 
-{if $CATEGORIES_NAME}
+{if $CATEGORIES_NAME && SPECIFICATIONS_BOX_COMPARISON == "True"}
 <h1>{$smarty.const.BOX_ENTRY_PRODUCTS}</h1>
 <form action="{$smarty.const.FILENAME_COMPARISON}">{/if}
 
@@ -173,7 +173,7 @@
 </dd>
 {/if}
 
-{if $CATEGORIES_NAME}
+{if $CATEGORIES_NAME && SPECIFICATIONS_BOX_COMPARISON == "True"}
 <dd class="itemDescription">
 <labeL><input type="checkbox" id="s_{$module_data.PRODUCTS_ID}" name="products[]" value="{$module_data.PRODUCTS_ID}" /> {#text_compare#}</label>
 </dd>
@@ -189,7 +189,7 @@
 {/foreach} 
 <div class="clear"></div>
 
-{if $CATEGORIES_NAME}
+{if $CATEGORIES_NAME && SPECIFICATIONS_BOX_COMPARISON == "True"}
 <input type="hidden" name="cat" value="{$smarty.get.cat}" />
 {$BUTTON_COMPARE}</form>
 {/if}
