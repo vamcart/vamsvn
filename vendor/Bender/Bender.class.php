@@ -29,8 +29,8 @@ class Bender
     public function enqueue( $src )
     {
 
-        $src = ltrim( $src, '/' );
-        $src = preg_replace('/'.ltrim(DIR_WS_CATALOG,'/').'/','',$src,1);
+        //$src = ltrim( $src, '/' );
+        //$src = preg_replace('/'.ltrim(DIR_WS_CATALOG,'/').'/','',$src,1);
 
         global $_javascripts, $_stylesheets;
         if ( !is_array( $src ) )
@@ -54,8 +54,8 @@ class Bender
     protected function minify( $scripts, $ext, $output )
     {
         $path = $this->root_dir();
-        $output = preg_replace('/'.ltrim(DIR_WS_CATALOG,'/').'/','',$output,1);
-        $output = str_replace('/',DIRECTORY_SEPARATOR,$output);
+        //$output = preg_replace('/'.ltrim(DIR_WS_CATALOG,'/').'/','',$output,1);
+        //$output = str_replace('/',DIRECTORY_SEPARATOR,$output);
         $outfile = $path.$output;
 
         if ( file_exists( $outfile ) )
@@ -114,7 +114,7 @@ class Bender
     // Print output for CSS or Javascript
     public function output( $output )
     {
-        $output = ltrim( $output, './' );
+        //$output = ltrim( $output, './' );
         global $_javascripts, $_stylesheets;
         switch ( $this->get_ext( $output ) )
         {
@@ -164,8 +164,8 @@ class Bender
     protected function check_recombine( $output, $files )
     {
         $path = $this->root_dir();
-        $output = preg_replace('/'.ltrim(DIR_WS_CATALOG,'/').'/','',$output,1);
-        $output = str_replace('/',DIRECTORY_SEPARATOR,$output);
+        //$output = preg_replace('/'.ltrim(DIR_WS_CATALOG,'/').'/','',$output,1);
+        //$output = str_replace('/',DIRECTORY_SEPARATOR,$output);
         $outfile = $path.$output;
         if ( !file_exists( $outfile ) || !is_array( $files ) )
         {
@@ -195,7 +195,8 @@ class Bender
     protected function get_src( $output )
     {
         $path = $this->root_dir();
-        return '/' . $output ;
+        //return '/' . $output ;
+        return $output ;
     }
 
 }
