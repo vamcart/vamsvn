@@ -98,7 +98,7 @@
 
 </div>
 
-{if $CATEGORIES_NAME}
+{if $CATEGORIES_NAME && SPECIFICATIONS_BOX_COMPARISON == "True"}
 <form action="{$smarty.const.FILENAME_COMPARISON}">{/if}
 
 <div class="card-deck">
@@ -109,7 +109,7 @@
 {/foreach}
 </div>
 
-{if $CATEGORIES_NAME}
+{if $CATEGORIES_NAME && SPECIFICATIONS_BOX_COMPARISON == "True"}
 <input type="hidden" name="cat" value="{$smarty.get.cat}" />
 {$BUTTON_COMPARE}</form>
 {/if}

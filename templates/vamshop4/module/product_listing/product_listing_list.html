@@ -98,14 +98,14 @@
 
 </div>
 
-{if $CATEGORIES_NAME}
+{if $CATEGORIES_NAME && SPECIFICATIONS_BOX_COMPARISON == "True"}
 <form action="{$smarty.const.FILENAME_COMPARISON}">{/if}
 
 {foreach name=aussen item=module_data from=$module_content}
 {include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/product-card/product-card-listing.html"}
 {/foreach}
 
-{if $CATEGORIES_NAME}
+{if $CATEGORIES_NAME && SPECIFICATIONS_BOX_COMPARISON == "True"}
 <input type="hidden" name="cat" value="{$smarty.get.cat}" />
 {$BUTTON_COMPARE}</form>
 {/if}
