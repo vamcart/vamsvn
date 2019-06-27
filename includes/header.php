@@ -99,13 +99,6 @@ if (isset($_GET['faq_id']) && strstr($PHP_SELF, FILENAME_FAQ)) {
 <?php
  }
 ?>
-<link rel="alternate" type="application/rss+xml" title="<?php echo TEXT_RSS_NEWS; ?>" href="<?php echo HTTP_SERVER . DIR_WS_CATALOG . FILENAME_RSS2. '?feed=news'; ?>" />
-<link rel="alternate" type="application/rss+xml" title="<?php echo TEXT_RSS_ARTICLES; ?>" href="<?php echo HTTP_SERVER . DIR_WS_CATALOG . FILENAME_RSS2. '?feed=articles'; ?>" />
-<link rel="alternate" type="application/rss+xml" title="<?php echo TEXT_RSS_CATEGORIES; ?>" href="<?php echo HTTP_SERVER . DIR_WS_CATALOG . FILENAME_RSS2. '?feed=categories'; ?>" />
-<link rel="alternate" type="application/rss+xml" title="<?php echo TEXT_RSS_NEW_PRODUCTS; ?>" href="<?php echo HTTP_SERVER . DIR_WS_CATALOG . FILENAME_RSS2. '?feed=new_products&amp;limit=10'; ?>" />
-<link rel="alternate" type="application/rss+xml" title="<?php echo TEXT_RSS_FEATURED_PRODUCTS; ?>" href="<?php echo HTTP_SERVER . DIR_WS_CATALOG . FILENAME_RSS2. '?feed=featured&amp;limit=10'; ?>" />
-<link rel="alternate" type="application/rss+xml" title="<?php echo TEXT_RSS_BEST_SELLERS; ?>" href="<?php echo HTTP_SERVER . DIR_WS_CATALOG . FILENAME_RSS2. '?feed=best_sellers&amp;limit=10'; ?>" />
-
 </head>
 <body>
 <?php
