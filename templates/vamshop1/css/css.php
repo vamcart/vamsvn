@@ -7,11 +7,9 @@ $bender->enqueue("templates/".CURRENT_TEMPLATE."/sequencejs.css");
 $bender->enqueue("templates/".CURRENT_TEMPLATE."/jpushmenu.css");
 $bender->enqueue("templates/".CURRENT_TEMPLATE."/stylesheet.css");
 ?>
-
 <?php
 echo $bender->output("templates/".CURRENT_TEMPLATE."/cache/".CURRENT_TEMPLATE."-packed.css");
 ?>
-
 <?php
 if (strstr($PHP_SELF, FILENAME_PRODUCT_INFO)) {
 ?>
@@ -33,7 +31,6 @@ if ( strstr($PHP_SELF, FILENAME_ADDRESS_BOOK)
 <?php
 }
 ?>
-
 <?php
 if (file_exists(dirname(__FILE__) . '/local.css.php')) include('local.css.php');
 ?>

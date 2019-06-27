@@ -132,13 +132,10 @@ window.addEventListener('beforeinstallprompt', (e) => {
 });
 
 });
-
 </script>
-
 <?php
  }
 ?>
-
 <?php
 if (file_exists(dirname(__FILE__) . '/local_footer.js.php')) include('local_footer.js.php');
 ?>

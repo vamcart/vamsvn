@@ -14,11 +14,9 @@ $bender->enqueue("templates/".CURRENT_TEMPLATE."/webslidemenu/dropdown-effects/f
 $bender->enqueue("templates/".CURRENT_TEMPLATE."/webslidemenu/webslidemenu.css");
 $bender->enqueue("templates/".CURRENT_TEMPLATE."/webslidemenu/color-skins/white-blue.css");
 ?>
-
 <?php
 echo $bender->output("templates/".CURRENT_TEMPLATE."/cache/".CURRENT_TEMPLATE."-packed.css");
 ?>
-
 <?php
 if (strstr($PHP_SELF, FILENAME_CHECKOUT)) {
 ?>
@@ -26,7 +24,6 @@ if (strstr($PHP_SELF, FILENAME_CHECKOUT)) {
 <?php 
 } 
 ?>
-
 <?php
 if (strstr($PHP_SELF, FILENAME_PRODUCT_INFO)) {
 ?>
@@ -48,7 +45,6 @@ if ( strstr($PHP_SELF, FILENAME_ADDRESS_BOOK)
 <?php
 }
 ?>
-
 <?php
 if (file_exists(dirname(__FILE__) . '/local.css.php')) include('local.css.php');
 ?>

@@ -9,11 +9,9 @@ $bender->enqueue("templates/".CURRENT_TEMPLATE."/javascript/vamshop4.js");
 $bender->enqueue("templates/".CURRENT_TEMPLATE."/webslidemenu/webslidemenu.js");
 if (AJAX_CART == 'true') $bender->enqueue("templates/".CURRENT_TEMPLATE."/javascript/jscript_ajax_cart.js"); 
 ?>
-
 <?php
 echo $bender->output("templates/".CURRENT_TEMPLATE."/cache/".CURRENT_TEMPLATE."-packed.js");
 ?>
-
 <?php
 if ( strstr($PHP_SELF, FILENAME_ADDRESS_BOOK)
 	or strstr($PHP_SELF, FILENAME_ADDRESS_BOOK_PROCESS)
@@ -26,7 +24,6 @@ if ( strstr($PHP_SELF, FILENAME_ADDRESS_BOOK)
 <script src="jscript/jquery/plugins/chosen/chosen.jquery.min.js"></script>
 <script type="text/javascript">
 $(function($){
-
 <?php if (ACCOUNT_STATE == 'true') { ?>
 	  $("#state").chosen({
 	      no_results_text:"<?php echo TEXT_NOT_FOUND; ?>",
@@ -34,7 +31,6 @@ $(function($){
 	      placeholder_text_single:"<?php echo PULL_DOWN_DEFAULT; ?>"
 	  }); 
 <?php } ?>
-
 <?php if (ACCOUNT_COUNTRY == 'true') { ?>
 	  $("#country").chosen({
 	      no_results_text:"<?php echo TEXT_NOT_FOUND; ?>",
@@ -42,7 +38,6 @@ $(function($){
 	      placeholder_text_single:"<?php echo PULL_DOWN_DEFAULT; ?>"
 	  }); 
 <?php } ?>
-
 });
 </script>
 <?php } ?>

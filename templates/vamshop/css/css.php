@@ -1,5 +1,4 @@
 <link rel="stylesheet" type="text/css" href="<?php echo 'templates/'.CURRENT_TEMPLATE.'/stylesheet.css'; ?>" />
-
 <?php
 if (strstr($PHP_SELF, FILENAME_CHECKOUT)) {
 ?>
@@ -7,7 +6,6 @@ if (strstr($PHP_SELF, FILENAME_CHECKOUT)) {
 <?php 
 } 
 ?>
-
 <?php
 if (strstr($PHP_SELF, FILENAME_PRODUCT_INFO)) {
 ?>

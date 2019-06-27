@@ -9,11 +9,9 @@ $bender->enqueue("jscript/jquery/plugins/scrollup/jquery.scrollup.min.js");
 $bender->enqueue("templates/".CURRENT_TEMPLATE."/javascript/vamshop.js");
 if (AJAX_CART == 'true') $bender->enqueue("templates/".CURRENT_TEMPLATE."/javascript/jscript_ajax_cart.js"); 
 ?>
-
 <?php
 echo $bender->output("templates/".CURRENT_TEMPLATE."/cache/".CURRENT_TEMPLATE."-packed.js");
 ?>
-
 <?php
 if ( strstr($PHP_SELF, FILENAME_ADDRESS_BOOK)
 	or strstr($PHP_SELF, FILENAME_ADDRESS_BOOK_PROCESS)
@@ -46,7 +44,6 @@ $(function($){
 });
 </script>
 <?php } ?>
-
 <?php
 if (strstr($PHP_SELF, FILENAME_PRODUCT_INFO)) {
 ?>
@@ -84,7 +81,6 @@ $(document).ready(function(){
 <?php
  }
 ?>
-
 <?php
 if (ENABLE_SERVICE_WORKER == 'true') {
 ?>
@@ -132,13 +128,10 @@ window.addEventListener('beforeinstallprompt', (e) => {
 });
 
 });
-
 </script>
-
 <?php
  }
 ?>
-
 <?php
 if (file_exists(dirname(__FILE__) . '/local_footer.js.php')) include('local_footer.js.php');
 ?>

@@ -39,7 +39,6 @@ $(document).ready(function(){
 <?php
  }
 ?>
-
 <?php
 if (ENABLE_SERVICE_WORKER == 'true') {
 ?>
@@ -87,7 +86,6 @@ window.addEventListener('beforeinstallprompt', (e) => {
 });
 
 });
-
 </script>
 <?php
  }

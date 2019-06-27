@@ -18,7 +18,6 @@
    ---------------------------------------------------------------------------------------*/
 
 ?>
-
 <?php
 // require theme based javascript
 require('templates/'.CURRENT_TEMPLATE.'/javascript/general.js.php');
@@ -137,10 +136,8 @@ function popupWindow(url) {
 //--></script>
 <?php
 }
-
 if (strstr($PHP_SELF, FILENAME_PRODUCT_REVIEWS_WRITE )) {
 ?>
-
 <script><!--
 function checkForm() {
   var error = 0;
@@ -181,6 +178,5 @@ if (!strstr($PHP_SELF, FILENAME_CHECKOUT_SUCCESS)) {
 require(DIR_WS_INCLUDES.'google_conversiontracking.js.php');
 }
 ?>
-
 </body>
 </html>

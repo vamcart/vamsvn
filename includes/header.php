@@ -35,10 +35,8 @@
 <html lang="<?php echo $_SESSION['language_code']; ?>">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $_SESSION['language_charset']; ?>" />
-
 <meta name="viewport" content="initial-scale=1.0, width=device-width" />
 <meta name="theme-color" content="#dd2c00"/>
-
 <link rel="shortcut icon" href="<?php echo DIR_WS_CATALOG; ?>favicon.ico"/>
 <link rel="manifest" href="<?php echo DIR_WS_CATALOG; ?>manifest.json">
 <?php
@@ -48,15 +46,12 @@ if (ENABLE_SERVICE_WORKER == 'true') {
 <?php
  }
 ?>
-
 <?php include(DIR_WS_MODULES.FILENAME_METATAGS); ?>
-
 <base href="<?php echo (($request_type == 'SSL') ? HTTPS_SERVER : HTTP_SERVER) . DIR_WS_CATALOG; ?>" />
 <?php
 if (file_exists(dirname($_SERVER['SCRIPT_FILENAME']) . '/templates/'.CURRENT_TEMPLATE.'/css/css.php')) include('templates/'.CURRENT_TEMPLATE.'/css/css.php');
 if (file_exists(dirname($_SERVER['SCRIPT_FILENAME']) . '/templates/'.CURRENT_TEMPLATE.'/javascript/script.php')) include('templates/'.CURRENT_TEMPLATE.'/javascript/script.php');
 ?>
-
 <?php
 if (isset($_GET['products_id']) && strstr($PHP_SELF, FILENAME_PRODUCT_INFO)) {
 ?>
@@ -102,7 +97,6 @@ if (isset($_GET['faq_id']) && strstr($PHP_SELF, FILENAME_FAQ)) {
 </head>
 <body>
 <?php
-
   // include needed functions
   require_once(DIR_FS_INC.'vam_output_warning.inc.php');
   require_once(DIR_FS_INC.'vam_image.inc.php');
