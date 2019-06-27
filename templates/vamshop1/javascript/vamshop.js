@@ -166,4 +166,18 @@ $(document).ready(function(){
             })
         });
 
+// Ajax quick search
+  $("#quick_find_keyword").keyup(function(){
+      var searchString = $("#quick_find_keyword").val(); 
+      $.ajax({
+      	url: "index_ajax.php",             
+      	dataType : "html",
+      	type: "POST",
+      	data: "q=includes/modules/ajax/ajaxQuickFind.php&keywords="+searchString,
+      	success: function(msg){$("#ajaxQuickFind").html(msg);}            
+ });     
+                           
+                           
+   });
+
 });
