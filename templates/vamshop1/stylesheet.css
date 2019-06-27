@@ -472,6 +472,7 @@ hr.transparent {
 /* Shopping Cart Widget
 /* ========================================================================== */
 .dropdown-menu.cart {
+  width: 300px;
   min-width: 300px;
 }
 
@@ -526,7 +527,7 @@ background: #fff;
   background-color: #fff;
   border: 1px solid #eee;	
   /*right: auto;*/ /* Открывать корзину вправо */ 
-  left: auto; /* Открывать корзину вправо */ 
+  left: auto; /* Открывать корзину влево */ 
 }	
 
 /* Breadcrumbs / Page Header
