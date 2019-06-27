@@ -64,6 +64,34 @@ $(".owl-carousel").owlCarousel({
     window.location.hash = this.hash;
     //$('html,body').scrollTop(scrollmem);
   });
-  
+
+// Ajax quick search top
+	  $("#quick_find_keyword_header").keyup(function(){
+	      var searchString = $("#quick_find_keyword_header").val(); 
+	      $.ajax({
+	      	url: "index_ajax.php",             
+	      	dataType : "html",
+	      	type: "POST",
+	      	data: "q=includes/modules/ajax/ajaxQuickFind.php&keywords="+searchString,
+	      	success: function(msg){$("#ajaxQuickFindHeader").html(msg);}            
+	 });     
+	   });
+
+
+// Ajax quick search
+  $("#quick_find_keyword").keyup(function(){
+      var searchString = $("#quick_find_keyword").val(); 
+      $.ajax({
+      	url: "index_ajax.php",             
+      	dataType : "html",
+      	type: "POST",
+      	data: "q=includes/modules/ajax/ajaxQuickFind.php&keywords="+searchString,
+      	success: function(msg){$("#ajaxQuickFind").html(msg);}            
+ });     
+                           
+                           
+   });
+
+
 });
 

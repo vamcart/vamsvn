@@ -8,25 +8,3 @@
 </div>
 {$FORM_END}
 <div class="ajaxQuickFind" id="ajaxQuickFind"></div>
-<script>
-{literal}
-$(document).ready(function(){
-
-  $("#quick_find_keyword").keyup(function(){
-      var searchString = $("#quick_find_keyword").val(); 
-      $.ajax({
-      	url: "index_ajax.php",             
-      	dataType : "html",
-      	type: "POST",
-      	data: "q=includes/modules/ajax/ajaxQuickFind.php&keywords="+searchString,
-      	success: function(msg){$("#ajaxQuickFind").html(msg);}            
- });     
-                           
-                           
-   });
-
-
-})
-
-{/literal}
-</script>
