@@ -50,11 +50,9 @@ $cat_data = vam_db_fetch_array($cat_query, true);
 <meta property="og:url" content="<?php echo vam_href_link(FILENAME_PRODUCT_INFO, vam_product_link($product->data['products_id'], $product->data['products_name'])); ?>" />
 <meta property="og:type" content="website" />
 <?php if ($product->data['products_image'] != '') { ?><meta property="og:image" content="<?php echo HTTP_SERVER.DIR_WS_CATALOG.DIR_WS_THUMBNAIL_IMAGES . vam_parse_input_field_data($product->data['products_image'], array('"' => '&quot;')); ?>" /><?php } ?>
-
 <meta name="twitter:data1" content="<?php echo $vamPrice->GetPrice($product->data['products_id'], false, 1, $product->data['products_tax_class_id'], $product->data['products_price']); ?>" />
 <meta property="product:price:amount"  content="<?php echo $vamPrice->GetPrice($product->data['products_id'], false, 1, $product->data['products_tax_class_id'], $product->data['products_price']); ?>" />
 <meta property="product:price:currency" content="<?php echo $_SESSION['currency']; ?>" />
-
 <meta name="twitter:description" content="<?php echo $description; ?>" />
 <?php if ($product->data['products_image'] != '') { ?><meta name="twitter:image" content="<?php echo HTTP_SERVER.DIR_WS_CATALOG.DIR_WS_THUMBNAIL_IMAGES . vam_parse_input_field_data($product->data['products_image'], array('"' => '&quot;')); ?>" /><?php } ?>
 
@@ -201,7 +199,6 @@ else {$page= '';}
 <meta property="og:type" content="website" />
 <meta name="twitter:title" content="<?php echo $categories_meta['categories_meta_title'] . $filter.$mName . $page; ?>" />
 <meta name="twitter:description" content="<?php echo $categories_meta['categories_meta_title'].$filter.$filter_description.$categories_meta['categories_meta_description'] . $mDesc; ?>" />
-
 <?php
 
 	} else {
@@ -245,7 +242,6 @@ $content_meta = vam_db_fetch_array($content_meta_query, true);
 <meta property="og:type" content="website" />
 <meta name="twitter:title" content="<?php echo $content_title; ?>" />
 <meta name="twitter:description" content="<?php echo $content_desc; ?>" />
-
 <?php
 
     break;
@@ -315,7 +311,6 @@ $content_meta = vam_db_fetch_array($content_meta_query, true);
 <meta property="og:type" content="website" />
 <meta name="twitter:title" content="<?php echo $articles_cat_title; ?>" />
 <meta name="twitter:description" content="<?php echo $articles_cat_desc; ?>" />
-
 <?php
 
     break;
@@ -355,7 +350,6 @@ $content_meta = vam_db_fetch_array($content_meta_query, true);
 <meta property="og:url" content="<?php echo vam_href_link(FILENAME_ARTICLE_INFO, 'articles_id='.$articles_meta['articles_id']); ?>" />  
 <meta property="og:type" content="website" />
 <?php if ($articles_meta['articles_image'] != '') { ?><meta property="og:image" content="<?php echo HTTP_SERVER.DIR_WS_CATALOG.DIR_WS_IMAGES . 'articles/' . vam_parse_input_field_data($articles_meta['articles_image'], array('"' => '&quot;')); ?>" /><?php } ?>
-
 <meta name="twitter:title" content="<?php echo $articles_meta['articles_name']; ?>" />
 <meta name="twitter:description" content="<?php echo $articles_desc; ?>" />  
 <?php if ($articles_meta['articles_image'] != '') { ?><meta name="twitter:image" content="<?php echo HTTP_SERVER.DIR_WS_CATALOG.DIR_WS_IMAGES . 'articles/' . vam_parse_input_field_data($articles_meta['articles_image'], array('"' => '&quot;')); ?>" /><?php } ?>
