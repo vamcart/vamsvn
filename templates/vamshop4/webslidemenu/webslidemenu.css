@@ -150,7 +150,7 @@ video {
 
 .wsmenu {
   width: 100%;
-  float: left;
+  /*float: left;*/
   color: #fff;
   position: relative;
   font-size: 16px;
