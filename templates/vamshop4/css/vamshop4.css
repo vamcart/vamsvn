@@ -1,7 +1,11 @@
 body {
-  background: linear-gradient(-183deg, #6c757d 234px, #f3f3f3 235px) no-repeat;
+  background: #f3f3f3;
   font-family: 'M PLUS Rounded 1c', sans-serif;
   font-weight: 500;
+}
+
+header {
+  background: #6c757d;
 }
 
 p {
