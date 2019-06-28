@@ -472,7 +472,6 @@ hr.transparent {
 /* Shopping Cart Widget
 /* ========================================================================== */
 .dropdown-menu.cart {
-  width: 300px;
   min-width: 300px;
 }
 
@@ -480,7 +479,7 @@ hr.transparent {
 .nav-collapse .nav > li > a:focus,
 .nav-collapse .dropdown-menu a:hover,
 .nav-collapse .dropdown-menu a:focus {
-  background-color: transparent;
+  background-color: #555;
   color: #fff;
 }
 
@@ -526,8 +525,8 @@ background: #fff;
   border-radius: 0px;
   background-color: #fff;
   border: 1px solid #eee;	
-  /*right: auto;*/ /* Открывать корзину вправо */ 
-  left: auto; /* Открывать корзину влево */ 
+  right: auto; /* Открывать корзину вправо */ 
+  /*left: auto;*/ /* Открывать корзину влево */ 
 }	
 
 /* Breadcrumbs / Page Header
