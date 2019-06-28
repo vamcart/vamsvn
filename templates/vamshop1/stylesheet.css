@@ -525,8 +525,8 @@ background: #fff;
   border-radius: 0px;
   background-color: #fff;
   border: 1px solid #eee;	
-  right: auto; /* Открывать корзину вправо */ 
-  /*left: auto;*/ /* Открывать корзину влево */ 
+  /*right: auto;/* /* Открывать корзину вправо */ 
+  left: -100%%; /* Открывать корзину влево */ 
 }	
 
 /* Breadcrumbs / Page Header
