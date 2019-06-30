@@ -135,7 +135,7 @@ jQuery(function () {
     var sticky = jQuery('.wsmain');
     var header = jQuery('header').height();
     var menu = jQuery('.headerfull').height();
-      scroll = jQuery(window).scrollTop();
+    var scroll = jQuery(window).scrollTop();
     if (scroll >= header-menu) sticky.addClass('wsfixed');
     else sticky.removeClass('wsfixed');
   });
