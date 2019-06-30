@@ -1060,7 +1060,7 @@ define('ENABLE_SERVICE_WORKER_TITLE', 'Разрешить установку Ser
 define('ENABLE_SERVICE_WORKER_DESC', 'Разрешить установку Service Worker в браузере.');
 
 define('SOCIAL_LOGIN_TITLE', 'Разрешить вход через соц. сети');
-define('SOCIAL_LOGIN_DESC', 'Разрешить вход  магазин через соц. сети.');
+define('SOCIAL_LOGIN_DESC', 'Разрешить вход в магазин через соц. сети.');
 
 define('CG_SOCIAL_NETWORKS', 'Социальные сети');
 define('CG_SOCIAL_NETWORKS_TITLE', 'Социальные сети');
