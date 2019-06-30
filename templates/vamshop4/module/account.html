@@ -16,6 +16,7 @@
 </ul>
 {/if}
 {if $LINK_LOGIN}
+{if {$smarty.const.SOCIAL_LOGIN} == "true"}
 <br />
 <ul class="list-inline">
 <li class="list-inline-item">{$smarty.const.TEXT_SOCIAL_LOGIN}:</li>
@@ -24,6 +25,7 @@
 <li class="list-inline-item"><a href="https://www.facebook.com/dialog/oauth?client_id={$smarty.const.FACEBOOK_OAUTH_CLIENT_ID}&redirect_uri={$smarty.const.HTTP_SERVER}{$smarty.const.DIR_WS_CATALOG}{$smarty.const.FILENAME_CREATE_ACCOUNT}?social_login=fb&response_type=code&display=page&scope=public_profile,email"><i class="fab fa-facebook" title="{$smarty.const.TEXT_SOCIAL_LOGIN_FACEBOOK}"></i> {$smarty.const.TEXT_SOCIAL_LOGIN_FACEBOOK}</a></li>
 </ul>
 <br />
+{/if}
 {/if}
 <!-- /Приветствие -->
 

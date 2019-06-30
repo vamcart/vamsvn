@@ -1059,6 +1059,9 @@ define('DEFAULT_SLIDER_DESC', 'Выберите вариант слайдера 
 define('ENABLE_SERVICE_WORKER_TITLE', 'Разрешить установку Service Worker');
 define('ENABLE_SERVICE_WORKER_DESC', 'Разрешить установку Service Worker в браузере.');
 
+define('ENABLE_SOCIAL_LOGIN_TITLE', 'Разрешить вход через соц. сети');
+define('ENABLE_SOCIAL_LOGIN_DESC', 'Разрешить вход  магазин через соц. сети.');
+
 define('CG_SOCIAL_NETWORKS', 'Социальные сети');
 define('CG_SOCIAL_NETWORKS_TITLE', 'Социальные сети');
 define('CG_SOCIAL_NETWORKS_DESC', '');
