@@ -13,7 +13,7 @@
    Released under the GNU General Public License
    ---------------------------------------------------------------------------------------*/
 
-function doBuyNow( id, quantity, update, get_cart = 0 ) {
+function doBuyNow( id, quantity, update, get_cart ) {
 
   // Setup the ajax indicator
  $('body').append('<div id="ajaxLoading"><img src="images/loading.gif"></div>');
