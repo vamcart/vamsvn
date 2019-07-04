@@ -82,13 +82,13 @@
 {/if}
 
 
-{if {$slider_pop_slide|@count} > 1} 
+{if {$slider_bootstrap|@count} > 1} 
 {if $smarty.SERVER.REQUEST_URI == '/'}
 
 
 <div id="myCarousel" class="carousel slide">
   <ol class="carousel-indicators">
-{foreach item=num from=$slider_pop_slide}
+{foreach item=num from=$slider_bootstrap}
     <li data-target="#myCarousel" data-slide-to="{counter name=slide}"{if $num@first} class="active"{/if}></li>
 {/foreach}
 
@@ -96,7 +96,7 @@
   <!-- Carousel items -->
   <div class="carousel-inner">
 
-{foreach item=slides from=$slider_pop_slide}
+{foreach item=slides from=$slider_bootstrap}
     <div class="{if $slides@first}active {/if}item"><a href="{$slides.url}"><img src="images/banner/{$slides.image}" alt="{$slides.title}" title="{$slides.title}" /></a></div>
 {/foreach}
   </div>
