@@ -117,7 +117,8 @@
           }
 
           if ($connection == 'SSL' && ENABLE_SSL == 'true') {
-            $link .= DIR_WS_HTTPS_CATALOG;
+            //$link .= DIR_WS_HTTPS_CATALOG;
+            $link .= DIR_WS_CATALOG;
           } else {
             $link .= DIR_WS_CATALOG;
           }
@@ -236,7 +237,8 @@
           }
 
           if ($connection == 'SSL' && ENABLE_SSL == 'true') {
-            $link .= DIR_WS_HTTPS_CATALOG;
+            //$link .= DIR_WS_HTTPS_CATALOG;
+            $link .= DIR_WS_CATALOG;
           } else {
             $link .= DIR_WS_CATALOG;
           }
@@ -293,7 +295,8 @@
           }
 
           if ($connection == 'SSL' && ENABLE_SSL == 'true') {
-            $link .= DIR_WS_HTTPS_CATALOG;
+            //$link .= DIR_WS_HTTPS_CATALOG;
+            $link .= DIR_WS_CATALOG;
           } else {
             $link .= DIR_WS_CATALOG;
           }
@@ -346,7 +349,8 @@
           }
 
           if ($connection == 'SSL' && ENABLE_SSL == 'true') {
-            $link .= DIR_WS_HTTPS_CATALOG;
+            //$link .= DIR_WS_HTTPS_CATALOG;
+            $link .= DIR_WS_CATALOG;
           } else {
             $link .= DIR_WS_CATALOG;
           }
@@ -399,7 +403,8 @@
           }
 
           if ($connection == 'SSL' && ENABLE_SSL == 'true') {
-            $link .= DIR_WS_HTTPS_CATALOG;
+            //$link .= DIR_WS_HTTPS_CATALOG;
+            $link .= DIR_WS_CATALOG;
           } else {
             $link .= DIR_WS_CATALOG;
           }
@@ -471,7 +476,8 @@
           }
 
           if ($connection == 'SSL' && ENABLE_SSL == 'true') {
-            $link .= DIR_WS_HTTPS_CATALOG;
+            //$link .= DIR_WS_HTTPS_CATALOG;
+            $link .= DIR_WS_CATALOG;
           } else {
             $link .= DIR_WS_CATALOG;
           }
@@ -542,7 +548,8 @@
           }
 
           if ($connection == 'SSL' && ENABLE_SSL == 'true') {
-            $link .= DIR_WS_HTTPS_CATALOG;
+            //$link .= DIR_WS_HTTPS_CATALOG;
+            $link .= DIR_WS_CATALOG;
           } else {
             $link .= DIR_WS_CATALOG;
           }
