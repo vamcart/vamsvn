@@ -168,8 +168,8 @@ $(document).ready(function(){
    });
 
    $('body').on('click', '.cart_change', function(){
-       field = $(this).parent().find('input[type=text]');
-       id = $(this).parent().find('input.ajax_qty').val();
+       field = $(this).parent().parent().find('input[type=text]');
+       id = $(this).parent().parent().find('input.ajax_qty').val();
        qty = field.val();
        field.val(parseInt(qty)+parseInt($(this).val()));
        doBuyNow(id,$(this).val(),'',1);
