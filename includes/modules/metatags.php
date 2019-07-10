@@ -48,6 +48,7 @@ $cat_data = vam_db_fetch_array($cat_query, true);
 <meta property="og:title" content="<?php echo vam_parse_input_field_data($product->data['products_name'], array('"' => '&quot;')); ?>" />
 <meta property="og:description" content="<?php echo $description; ?>" />
 <meta property="og:url" content="<?php echo vam_href_link(FILENAME_PRODUCT_INFO, vam_product_link($product->data['products_id'], $product->data['products_name'])); ?>" />
+<link rel="canonical" href="<?php echo vam_href_link(FILENAME_PRODUCT_INFO, vam_product_link($product->data['products_id'], $product->data['products_name'])); ?>"/>
 <meta property="og:type" content="website" />
 <?php if ($product->data['products_image'] != '') { ?><meta property="og:image" content="<?php echo HTTP_SERVER.DIR_WS_CATALOG.DIR_WS_THUMBNAIL_IMAGES . vam_parse_input_field_data($product->data['products_image'], array('"' => '&quot;')); ?>" /><?php } ?>
 <meta name="twitter:data1" content="<?php echo $vamPrice->GetPrice($product->data['products_id'], false, 1, $product->data['products_tax_class_id'], $product->data['products_price']); ?>" />
@@ -196,6 +197,7 @@ else {$page= '';}
 <meta property="og:title" content="<?php echo $categories_meta['categories_meta_title'] . $filter.$mName . $page; ?>" />
 <meta property="og:description" content="<?php echo $categories_meta['categories_meta_title'].$filter.$filter_description.$categories_meta['categories_meta_description'] . $mDesc; ?>" />
 <?php if ($categories_meta['categories_name'] != '') { ?><meta property="og:url" content="<?php echo vam_href_link(FILENAME_DEFAULT, vam_category_link($categories_meta['categories_id'], $categories_meta['categories_name'])); ?>" /><?php } ?>
+<?php if ($categories_meta['categories_name'] != '') { ?><link rel="canonical" href="<?php echo vam_href_link(FILENAME_DEFAULT, vam_category_link($categories_meta['categories_id'], $categories_meta['categories_name'])); ?>"/><?php } ?>
 <meta property="og:type" content="website" />
 <meta name="twitter:title" content="<?php echo $categories_meta['categories_meta_title'] . $filter.$mName . $page; ?>" />
 <meta name="twitter:description" content="<?php echo $categories_meta['categories_meta_title'].$filter.$filter_description.$categories_meta['categories_meta_description'] . $mDesc; ?>" />
@@ -239,6 +241,7 @@ $content_meta = vam_db_fetch_array($content_meta_query, true);
 <meta property="og:title" content="<?php echo $content_title; ?>" />
 <meta property="og:description" content="<?php echo $content_desc; ?>" />    
 <meta property="og:url" content="<?php echo vam_href_link(FILENAME_CONTENT, 'coID='.$content_meta['content_id']); ?>" />  
+<link rel="canonical" href="<?php echo vam_href_link(FILENAME_CONTENT, 'coID='.$content_meta['content_id']); ?>" />
 <meta property="og:type" content="website" />
 <meta name="twitter:title" content="<?php echo $content_title; ?>" />
 <meta name="twitter:description" content="<?php echo $content_desc; ?>" />
@@ -278,6 +281,7 @@ $content_meta = vam_db_fetch_array($content_meta_query, true);
 <meta property="og:title" content="<?php echo $news_title; ?>" />
 <meta property="og:description" content="<?php echo $news_desc; ?>" />
 <meta property="og:url" content="<?php echo vam_href_link(FILENAME_NEWS, 'news_id='.$news_meta['news_id']); ?>" />
+<link rel="canonical" href="<?php echo vam_href_link(FILENAME_NEWS, 'news_id='.$news_meta['news_id']); ?>" />
 <meta property="og:type" content="website" />
 <meta name="twitter:title" content="<?php echo $news_title; ?>" />
 <meta name="twitter:description" content="<?php echo $news_desc; ?>" />
@@ -308,6 +312,7 @@ $content_meta = vam_db_fetch_array($content_meta_query, true);
 <meta property="og:title" content="<?php echo $articles_cat_title; ?>" />
 <meta property="og:description" content="<?php echo $articles_cat_desc; ?>" />
 <meta property="og:url" content="<?php echo vam_href_link(FILENAME_ARTICLES, 'tPath='.$articles_cat_meta['topics_id']); ?>" />
+<link rel="canonical" href="<?php echo vam_href_link(FILENAME_ARTICLES, 'tPath='.$articles_cat_meta['topics_id']); ?>" />
 <meta property="og:type" content="website" />
 <meta name="twitter:title" content="<?php echo $articles_cat_title; ?>" />
 <meta name="twitter:description" content="<?php echo $articles_cat_desc; ?>" />
@@ -348,6 +353,7 @@ $content_meta = vam_db_fetch_array($content_meta_query, true);
 <meta property="og:title" content="<?php echo $articles_meta['articles_name']; ?>" />
 <meta property="og:description" content="<?php echo $articles_desc; ?>" />
 <meta property="og:url" content="<?php echo vam_href_link(FILENAME_ARTICLE_INFO, 'articles_id='.$articles_meta['articles_id']); ?>" />  
+<link rel="canonical" href="<?php echo vam_href_link(FILENAME_ARTICLE_INFO, 'articles_id='.$articles_meta['articles_id']); ?>" />
 <meta property="og:type" content="website" />
 <?php if ($articles_meta['articles_image'] != '') { ?><meta property="og:image" content="<?php echo HTTP_SERVER.DIR_WS_CATALOG.DIR_WS_IMAGES . 'articles/' . vam_parse_input_field_data($articles_meta['articles_image'], array('"' => '&quot;')); ?>" /><?php } ?>
 <meta name="twitter:title" content="<?php echo $articles_meta['articles_name']; ?>" />
@@ -565,6 +571,7 @@ $content_meta_default = vam_db_fetch_array($content_meta_default_query,true);
 <title><?php echo $content_default_title . $mName; ?></title>
 <meta name="description" content="<?php echo META_DESCRIPTION . $mDesc; ?>" />
 <meta name="keywords" content="<?php echo META_KEYWORDS . $mKey; ?>" />
+<link rel="canonical" href="<?php echo HTTP_SERVER; ?>" />
 <meta property="og:title" content="<?php echo $content_default_title . $mName; ?>" />
 <meta property="og:description" content="<?php echo META_DESCRIPTION . $mDesc; ?>" />
 <meta name="twitter:title" content="<?php echo $content_default_title . $mName; ?>" />
