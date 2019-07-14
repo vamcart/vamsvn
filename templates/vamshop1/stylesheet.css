@@ -2470,7 +2470,7 @@ div#ajaxQuickFind {
   z-index: 999; 
   top: 30px;
   left: 0;
-  width: 300px;
+  width: auto;
   color: #000;
   background-color: #fff;
   border-radius: 4px;
