@@ -5,27 +5,6 @@
 {if $CATEGORIES_NAME}
 <h1>{$CATEGORIES_NAME}{if $MANUFACTURERS_NAME} {$MANUFACTURERS_NAME}{/if}{$FILTER}</h1>
 {/if}
-{if $CATEGORIES_HEADING_TITLE or $CATEGORIES_DESCRIPTION}
-<div class="page">
-<div class="pageItem">
-
-{if $CATEGORIES_HEADING_TITLE}
-<p>
-{$CATEGORIES_HEADING_TITLE}
-</p>
-{/if}
-{if ($CATEGORIES_DESCRIPTION or $FILTER_DESCRIPTION) and !$smarty.get.page}
-<p>
-{$CATEGORIES_DESCRIPTION}
-{$FILTER_DESCRIPTION}
-</p>
-{/if}
-
-<div class="clear"></div>
-</div>
-
-</div>
-{/if}
 
 {if $MANUFACTURERS_DESCRIPTION and !$smarty.get.page}
 <div class="page">
@@ -90,6 +69,12 @@
 <form action="{$smarty.const.FILENAME_COMPARISON}">
 {/if}
 
+<div class="clear"></div>
+<div class="navigation">
+<span class="right">{$NAVIGATION}</span>{$NAVIGATION_PAGES}
+</div>
+<div class="clear"></div>
+
 <!-- start: products listing -->
 <div class="row-fluid shop-products">
 	<ul class="thumbnails">
@@ -148,3 +133,25 @@
 <span class="right">{$NAVIGATION}</span>{$NAVIGATION_PAGES}
 </div>
 <div class="clear"></div>
+
+{if $CATEGORIES_HEADING_TITLE or $CATEGORIES_DESCRIPTION}
+<div class="page">
+<div class="pageItem">
+
+{if $CATEGORIES_HEADING_TITLE}
+<p>
+{$CATEGORIES_HEADING_TITLE}
+</p>
+{/if}
+{if ($CATEGORIES_DESCRIPTION or $FILTER_DESCRIPTION) and !$smarty.get.page}
+<p>
+{$CATEGORIES_DESCRIPTION}
+{$FILTER_DESCRIPTION}
+</p>
+{/if}
+
+<div class="clear"></div>
+</div>
+
+</div>
+{/if}
