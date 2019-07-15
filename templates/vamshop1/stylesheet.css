@@ -348,7 +348,6 @@ hr.transparent {
   color: #fff;
   border: 0;
   border-radius: 0;
-  z-index: 1000;
 }
 
 
@@ -454,8 +453,6 @@ hr.transparent {
 .navbar .btn-navbar:hover
 {
   background: transparent;
-  z-index: 2000;
-  position: relative;
 }
 
 #navigation .navbar-search .search-query {
