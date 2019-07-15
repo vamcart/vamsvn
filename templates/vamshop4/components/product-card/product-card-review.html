@@ -13,9 +13,11 @@
 				{/if}
 				<p class="desc">{$module_data.REVIEW.TEXT|vam_truncate:$smarty.const.MAX_DISPLAY_SHORT_DESCRIPTION:"...":true}</p>
 				<p class="desc"><a class="" href="{$module_data.REVIEW.URL}"><i class="far fa-comment"></i> {#text_read#}</a></p>
+				{if $module_data.PRODUCT.PRODUCTS_PRICE_PLAIN > 0}
 				<div class="price-wrap h4">
 					{$module_data.PRODUCT.PRODUCTS_PRICE}
 				</div>
+				{/if}
 			</div>
       </div>
 		</div>
