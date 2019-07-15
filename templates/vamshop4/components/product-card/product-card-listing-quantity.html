@@ -54,8 +54,19 @@
 				<br />
 				{/if}
 				<p>
-					{$module_data.PRODUCTS_BUTTON_BUY_NOW_NEW}
-					<a href="{$module_data.PRODUCTS_LINK}" class="btn btn-secondary"><i class="fas fa-info-circle"></i> {$smarty.const.TEXT_VIEW_PRODUCTS_GO}</a>
+	         <form id="cart_quantity{$module_data.PRODUCTS_ID}" class="form-inline justify-content-center" action="{$module_data.PRODUCTS_LINK}/products_id/{$module_data.PRODUCTS_ID}/action/add_product" method="post" {if $smarty.const.AJAX_CART == 'true'}onsubmit="doAddProduct(this.products_id.value); return false;"{/if}>
+	         <div class="input-group justify-content-center">
+	         <div class="input-group-prepend">
+		       <span class="btn btn-dark value-control" data-action="minus" data-target="quantity{$module_data.PRODUCTS_ID}"><i class="fa fa-minus"></i></span>
+	         </div>
+	         <input name="products_qty" type="text" value="1" class="col-sm-3 form-control text-center" id="quantity{$module_data.PRODUCTS_ID}">
+	         <div class="input-group-append">
+		       <span class="btn btn-dark value-control" data-action="plus" data-target="quantity{$module_data.PRODUCTS_ID}"><i class="fa fa-plus"></i></span>
+	         </div>
+	         </div>
+	         <input type="hidden" name="products_id" value="{$module_data.PRODUCTS_ID}" />
+				<button class="btn btn-add-to-cart"><i class="fas fa-shopping-cart"></i> {$smarty.const.ICON_CART}</button>
+	         </form>
 				</p>
 			</div>
 		</div>
