@@ -81,7 +81,7 @@ if (!is_object($product) || !$product->isProduct() OR !$product->data['products_
 			$info->assign('SHIPPING_IMAGE', $main->getShippingStatusImage($product->data['products_shippingtime']));
 		}
 		if (AJAX_CART == 'true') {
-		$info->assign('FORM_ACTION', vam_draw_form('cart_quantity', vam_href_link(FILENAME_PRODUCT_INFO, vam_get_all_get_params(array ('action')).'action=add_product'), 'post', 'onsubmit="doAddProduct(this); return false;" class="form-inline"'));
+		$info->assign('FORM_ACTION', vam_draw_form('cart_quantity', vam_href_link(FILENAME_PRODUCT_INFO, vam_get_all_get_params(array ('action')).'action=add_product'), 'post', 'onsubmit="doAddProduct(\'\'); return false;" class="form-inline"'));
 		} else {
 		$info->assign('FORM_ACTION', vam_draw_form('cart_quantity', vam_href_link(FILENAME_PRODUCT_INFO, vam_get_all_get_params(array ('action')).'action=add_product'), 'post', 'class="form-inline"'));
 		}
