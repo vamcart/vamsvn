@@ -111,6 +111,7 @@
 
 <hr>
 
+{if {$PRODUCTS_PRICE_PLAIN} > 0}
 <p class="CartContentLeft">
 <div class="input-group product-info justify-content-center">
 <div class="input-group-prepend">
@@ -123,13 +124,7 @@
 &nbsp;{$ADD_CART_BUTTON}
 </div>
 </p>
-
-{if $KUPI_V_KREDIT_BUTTON}
-<p class="CartContentLeft">
-{$KUPI_V_KREDIT_BUTTON}
-</p>
 {/if}
-
 
 </div>
 			
