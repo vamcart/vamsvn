@@ -21,7 +21,7 @@
 			</div>
       </div>
       <div class="card-footer text-center">
-			<div class="btn-group btn-group-justified">{$module_data.PRODUCTS_BUTTON_BUY_NOW_NEW}</div>
+			{if $module_data.PRODUCTS_PRICE_PLAIN > 0}<div class="btn-group btn-group-justified">{$module_data.PRODUCTS_BUTTON_BUY_NOW_NEW}</div>{/if}
 			<a href="{$module_data.PRODUCTS_LINK}" class="btn btn-secondary"><i class="fas fa-info-circle"></i> {$smarty.const.TEXT_VIEW_PRODUCTS_GO}</a>
       </div>
     			
