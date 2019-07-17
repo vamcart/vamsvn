@@ -1,7 +1,7 @@
 {config_load file="$language/lang_$language.conf" section="boxes"}
 {config_load file="$language/lang_$language.conf" section="index"}
 {if $deny_cart neq 'true'}
-<!-- Бокс корзина -->
+
 <div id="divShoppingCart">
 <div id="boxCart">
 <div class="boxheader">
@@ -23,7 +23,7 @@
 <br />
 {if $products_data.ATTRIBUTES!=''} 
 {foreach key=key_data item=item_data from=$products_data.ATTRIBUTES} 
-{$item_data.NAME}: {$item_data.VALUE}<br />
+{if $item_data.NAME != ''}{$item_data.NAME}:{/if} {if $item_data.VALUE != ''}{$item_data.VALUE}<br />{/if}
 {/foreach} 
 {/if}
 
@@ -43,7 +43,7 @@
 <p class="CartContentCenter">
 <a href="{$LINK_CHECKOUT}">{#text_checkout#}</a>
 </p>
-{else} <!-- Пустая корзина --> 
+{else} 
 <p>
 {#text_empty_cart#}
 </p>
@@ -52,5 +52,5 @@
 </div>
 </div>
 </div>
-<!-- /Бокс корзина -->
+
 {/if}

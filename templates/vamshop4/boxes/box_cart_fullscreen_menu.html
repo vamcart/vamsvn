@@ -34,7 +34,7 @@
 				<p class="desc">
 				{if $products_data.ATTRIBUTES!=''} 
 				{foreach key=key_data item=item_data from=$products_data.ATTRIBUTES} 
-				{$item_data.NAME}: {$item_data.VALUE}<br />
+				{if $item_data.NAME != ''}{$item_data.NAME}:{/if} {if $item_data.VALUE != ''}{$item_data.VALUE}<br />{/if}
 				{/foreach} 
 				{/if}
             </p>
