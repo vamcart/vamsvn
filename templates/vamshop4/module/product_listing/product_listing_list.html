@@ -87,7 +87,7 @@
 <div class="clear"></div>
 
 {foreach name=aussen item=module_data from=$module_content}
-{include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/product-card/product-card-listing-quantity.html"}
+{include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/product-card/product-card-listing.html"}
 {/foreach}
 
 {if $CATEGORIES_NAME && SPECIFICATIONS_BOX_COMPARISON == "True"}
