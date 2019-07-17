@@ -17,6 +17,90 @@
 				{/if}
 				{if {$module_data.PRODUCTS_SHORT_DESCRIPTION}}<p>{$module_data.PRODUCTS_SHORT_DESCRIPTION|strip_tags|vam_truncate:240:"...":true}</p>{/if}
 
+            <!-- Attributes Start -->
+				<div class="description attributes">
+				<br />
+				{if $module_data.attrib!=''}
+				{foreach name=attrib item=module_attrib from=$module_data.attrib}
+				{if $module_attrib.TYPE eq '1'}
+				<!-- select -->
+				<p>
+				<strong>{$module_attrib.NAME}:</strong>
+				<select name="id[{$module_attrib.ID}]">
+				{foreach key=key_data item=item_data from=$module_attrib.DATA}
+				<option value="{$item_data.ID}">{$item_data.TEXT} {if $item_data.MODEL}({$item_data.MODEL}){/if} {if $item_data.PRICE_PLAIN != 0}({$item_data.PREFIX}{$item_data.PRICE}){/if}</option>
+				{/foreach}
+				</select>
+				</p>
+				<!-- /select -->
+				{elseif $module_attrib.TYPE eq '2'}
+				<!-- text -->
+				<p>
+				<strong>{$module_attrib.NAME}:</strong>
+				{foreach key=key_data item=item_data from=$module_attrib.DATA}
+				<strong>{$item_data.TEXT}</strong>
+				<input name="id[{$module_attrib.ID}]" type="hidden" value="{$item_data.ID}" />
+				<input name="id[txt_{$module_attrib.ID}_{$item_data.ID}]" type="text" size="{$module_attrib.SIZE}" maxlength="{$module_attrib.LENGTH}" />{if $item_data.MODEL}({$item_data.MODEL}){/if} {if $item_data.PRICE_PLAIN != 0}({$item_data.PREFIX}{$item_data.PRICE}){/if}
+				{if $item_data.DESCRIPTION}<br />{$item_data.DESCRIPTION}{/if}<br />
+				{/foreach}
+				</p>
+				<!-- /text -->
+				{elseif $module_attrib.TYPE eq '3'}
+				<!-- textarea -->
+				<p>
+				<strong>{$module_attrib.NAME}:</strong>
+				{foreach key=key_data item=item_data from=$module_attrib.DATA}
+				<strong>{$item_data.TEXT}</strong>
+				<input name="id[{$module_attrib.ID}]" type="hidden" value="{$item_data.ID}" />
+				<textarea name="id[txt_{$module_attrib.ID}_{$item_data.ID}]" cols="20" rows="{$module_attrib.ROWS}"></textarea>
+				{if $item_data.MODEL}({$item_data.MODEL}){/if} {if $item_data.PRICE_PLAIN != 0}({$item_data.PREFIX}{$item_data.PRICE}){/if}
+				{if $item_data.DESCRIPTION}<br />{$item_data.DESCRIPTION}{/if}<br />
+				{/foreach}
+				</p>
+				<!-- /textarea -->
+				{elseif $module_attrib.TYPE eq '4'}
+				<!-- radio -->
+				<p>
+				<strong>{$module_attrib.NAME}:</strong>
+				{foreach key=key_data item=item_data from=$module_attrib.DATA}
+				<!-- changed by mosq // -->
+				<input type="radio" name="id[{$module_attrib.ID}]" value="{$item_data.ID}" {$item_data.CHECKED} />
+				{$item_data.TEXT} {if $item_data.PRICE_PLAIN != 0}({$item_data.PREFIX}{$item_data.PRICE}){/if}
+				{if $item_data.DESCRIPTION}<br />{$item_data.DESCRIPTION}<br />{/if}
+				{if $item_data.SHORT_DESCRIPTION}{$item_data.SHORT_DESCRIPTION}<br />{/if}
+				{if $item_data.IMAGE}<img src="{$image_dir}thumbs/{$item_data.IMAGE}" border="0" alt="{$item_data.TEXT}" />{/if}
+				{if $item_data.LINK}<a align="right" href="http://{$item_data.LINK}" target="_blank"><img src="{$tpl_path}img/info.gif" border="0" alt="{$item_data.TEXT}" /></a>{/if}<br />
+				{/foreach}
+				</p>
+				<!-- /radio -->
+				{elseif $module_attrib.TYPE eq '5'}
+				<!-- checkbox -->
+				<p>
+				<strong>{$module_attrib.NAME}:</strong>
+				{foreach key=key_data item=item_data from=$module_attrib.DATA}
+				<input type="checkbox" name="id[{$module_attrib.ID}]" value="{$item_data.ID}" />
+				{$item_data.TEXT} {if $item_data.PRICE_PLAIN != 0}({$item_data.PREFIX}{$item_data.PRICE}){/if}
+				{if $item_data.DESCRIPTION}<br />{$item_data.DESCRIPTION}{/if}<br />
+				{/foreach}
+				</p>
+				<!-- /checkbox -->
+				{elseif $module_attrib.TYPE eq '6'}
+				<!-- readonly -->
+				<p>
+				<strong>{$module_attrib.NAME}:</strong>
+				{foreach key=key_data item=item_data from=$module_attrib.DATA}
+				<input type="hidden" name="id[{$module_attrib.ID}]" value="{$item_data.ID}" />
+				{if $item_data.MODEL}({$item_data.MODEL}){/if} {$item_data.TEXT} {if $item_data.PRICE_PLAIN != 0}({$item_data.PREFIX}{$item_data.PRICE}){/if}
+				{if $item_data.DESCRIPTION}<br />{$item_data.DESCRIPTION}{/if}<br />
+				{/foreach}
+				</p>
+				<!-- /readonly -->
+				{/if}
+				{/foreach}
+				{/if}	
+				</div>
+            <!-- /Attributes End -->	
+            
 				{if $module_data.EXTRA_FIELDS}
 				<div class="description extra_fields">
 				{foreach item=extra_fields from=$module_data.EXTRA_FIELDS}
