@@ -197,7 +197,7 @@
 			</div>
 			</div>
 			<div class="inner darken notop text-center">
-         <form id="cart_quantity{$module_data.PRODUCTS_ID}" class="form-inline justify-content-center" action="{$module_data.PRODUCTS_LINK}/products_id/{$module_data.PRODUCTS_ID}/action/add_product" method="post" {if $smarty.const.AJAX_CART == 'true'}onsubmit="doAddProduct(this.products_id.value); return false;"{/if}>
+         <form id="cart_quantity{$module_data.PRODUCTS_ID}" class="form-inline justify-content-center" action="{$module_data.PRODUCTS_LINK}/products_id/{$module_data.PRODUCTS_ID}/action/add_product" method="post" {if $smarty.const.AJAX_CART == 'true'}onsubmit="doAddProduct({$module_data.PRODUCTS_ID}); return false;"{/if}>
          <div class="btn-group">
          <div class="input-prepend">
 	       <span class="btn btn-dark value-control" data-action="minus" data-target="quantity{$module_data.PRODUCTS_ID}"><i class="fa fa-minus"></i></span>
