@@ -17,10 +17,10 @@
 				{/if}
 				{if {$module_data.PRODUCTS_SHORT_DESCRIPTION}}<p>{$module_data.PRODUCTS_SHORT_DESCRIPTION|strip_tags|vam_truncate:240:"...":true}</p>{/if}
 
+				{if $module_data.attrib!=''}
             <!-- Attributes Start -->
 				<div class="description attributes">
 				<br />
-				{if $module_data.attrib!=''}
 				{foreach name=attrib item=module_attrib from=$module_data.attrib}
 				{if $module_attrib.TYPE eq '1'}
 				<!-- select -->
@@ -97,9 +97,9 @@
 				<!-- /readonly -->
 				{/if}
 				{/foreach}
-				{/if}	
 				</div>
             <!-- /Attributes End -->	
+				{/if}	
             
 				{if $module_data.EXTRA_FIELDS}
 				<div class="description extra_fields">

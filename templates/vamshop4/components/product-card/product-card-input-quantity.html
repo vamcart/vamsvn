@@ -18,9 +18,9 @@
 				</div>
 				{/if}
 				{if $CATEGORIES_NAME && SPECIFICATIONS_BOX_COMPARISON == "True"}<div class="desc"><label><input type="checkbox" id="s_{$module_data.PRODUCTS_ID}" name="products[]" value="{$module_data.PRODUCTS_ID}" /> {#text_compare#}</label></div>{/if}
-
-            <!-- Attributes Start -->
 				{if $module_data.attrib!=''}
+            <!-- Attributes Start -->
+            <div class="description attributes">
 				{foreach name=attrib item=module_attrib from=$module_data.attrib}
 				{if $module_attrib.TYPE eq '1'}
 				<!-- select -->
@@ -97,9 +97,9 @@
 				<!-- /readonly -->
 				{/if}
 				{/foreach}
-				{/if}	
+				</div>
             <!-- /Attributes End -->
-
+				{/if}	
 			</div>
       </div>
       {if $module_data.PRODUCTS_PRICE_PLAIN > 0}
