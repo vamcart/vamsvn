@@ -1,6 +1,6 @@
 <!-- Product Card Simple -->
+		<form id="cart_quantity{$module_data.PRODUCTS_ID}" class="form-inline justify-content-center h-100" action="{$module_data.PRODUCTS_LINK}/products_id/{$module_data.PRODUCTS_ID}/action/add_product" method="post" {if $smarty.const.AJAX_CART == 'true'}onsubmit="doAddProduct({$module_data.PRODUCTS_ID}); return false;"{/if}>
 		<div class="card card-product card-sm h-100">
-		<form id="cart_quantity{$module_data.PRODUCTS_ID}" class="form-inline justify-content-center" action="{$module_data.PRODUCTS_LINK}/products_id/{$module_data.PRODUCTS_ID}/action/add_product" method="post" {if $smarty.const.AJAX_CART == 'true'}onsubmit="doAddProduct({$module_data.PRODUCTS_ID}); return false;"{/if}>
       <div class="card-body">
 		{if $module_data.PRODUCTS_LABEL}{$module_data.PRODUCTS_LABEL}{/if}
 		{if $module_data.PRODUCTS_SPECIAL > 0}<span class="badge-offer"><b>-{$module_data.PRODUCTS_SPECIAL|round}%</b></span>{/if}
@@ -118,6 +118,6 @@
 			<button class="btn btn-add-to-cart"><i class="fas fa-shopping-cart"></i> {$smarty.const.ICON_CART}</button>
       </div>
       {/if}
-		</form>
 		</div>
+		</form>
 <!-- /Product Card Simple -->
