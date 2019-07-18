@@ -1,5 +1,5 @@
-<form id="cart_quantity{$module_data.PRODUCTS_ID}" class="form-inline justify-content-center" action="{$module_data.PRODUCTS_LINK}/products_id/{$module_data.PRODUCTS_ID}/action/add_product" method="post" {if $smarty.const.AJAX_CART == 'true'}onsubmit="doAddProduct({$module_data.PRODUCTS_ID}); return false;"{/if}>
   <div class="card card-product h-100">
+  <form id="cart_quantity{$module_data.PRODUCTS_ID}" class="form-inline justify-content-center" action="{$module_data.PRODUCTS_LINK}/products_id/{$module_data.PRODUCTS_ID}/action/add_product" method="post" {if $smarty.const.AJAX_CART == 'true'}onsubmit="doAddProduct({$module_data.PRODUCTS_ID}); return false;"{/if}>
 	<div class="card-body">
 	<div class="row">
 		{if $module_data.PRODUCTS_LABEL}{$module_data.PRODUCTS_LABEL}{/if}
@@ -154,5 +154,5 @@
 		</div>
 	</div>
 	</div>
-</div>
 </form>
+</div>
