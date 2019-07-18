@@ -1,4 +1,5 @@
 <!-- Product Card Simple -->
+<form id="cart_quantity{$module_data.PRODUCTS_ID}" class="form-inline justify-content-center" action="{$module_data.PRODUCTS_LINK}/products_id/{$module_data.PRODUCTS_ID}/action/add_product" method="post" {if $smarty.const.AJAX_CART == 'true'}onsubmit="doAddProduct({$module_data.PRODUCTS_ID}); return false;"{/if}>
 		<div class="card card-product card-sm h-100">
       <div class="card-body">
 		{if $module_data.PRODUCTS_LABEL}{$module_data.PRODUCTS_LABEL}{/if}
@@ -104,7 +105,6 @@
       </div>
       {if $module_data.PRODUCTS_PRICE_PLAIN > 0}
       <div class="card-footer text-center">
-         <form id="cart_quantity{$module_data.PRODUCTS_ID}" class="form-inline justify-content-center" action="{$module_data.PRODUCTS_LINK}/products_id/{$module_data.PRODUCTS_ID}/action/add_product" method="post" {if $smarty.const.AJAX_CART == 'true'}onsubmit="doAddProduct(this.products_id.value); return false;"{/if}>
          <div class="input-group justify-content-center">
          <div class="input-group-prepend">
 	       <span class="btn btn-dark value-control" data-action="minus" data-target="quantity{$module_data.PRODUCTS_ID}"><i class="fa fa-minus"></i></span>
@@ -116,10 +116,9 @@
          </div>
          <input type="hidden" name="products_id" value="{$module_data.PRODUCTS_ID}" />
 			<button class="btn btn-add-to-cart"><i class="fas fa-shopping-cart"></i> {$smarty.const.ICON_CART}</button>
-         </form>
       </div>
       {/if}
     			
 		</div>
+</form>
 <!-- /Product Card Simple -->
-		
