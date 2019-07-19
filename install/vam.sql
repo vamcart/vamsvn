@@ -4115,3 +4115,24 @@ INSERT INTO `banners` (`banners_id`, `banners_title`, `banners_description`, `ba
 (20, 'Слайд 3', 'Описание слайда 3', 'https://vamshop.ru', 'slide3.jpg', 'slider_bootstrap', '', NULL, NULL, NULL, '2019-04-07 23:02:50', NULL, 1),
 (21, 'Скидки', 'Все товары со скидкой', 'https://vamshop.ru', 'slide4.jpg', 'slider_bootstrap', '', NULL, NULL, NULL, '2019-04-07 23:03:55', NULL, 1),
 (22, 'Популярные', 'Рекомендуемые товары', 'https://vamshop.ru', 'slide5.jpg', 'slider_bootstrap', '', NULL, NULL, NULL, '2019-04-07 23:04:12', NULL, 1);
+
+INSERT INTO `products_options` (`products_options_id`, `language_id`, `products_options_name`, `products_options_length`, `products_options_size`, `products_options_rows`, `products_options_type`, `sortorder`) VALUES
+(1, 1, 'Цвет', 64, 32, 1, 1, 1);
+
+INSERT INTO `products_options_values` (`products_options_values_id`, `language_id`, `products_options_values_name`, `products_options_values_description`, `products_options_values_text`, `products_options_values_image`, `products_options_values_link`) VALUES
+(1, 1, 'Белый', '', '', '', ''),
+(2, 1, 'Синий', '', '', '', ''),
+(3, 1, 'Красный', '', '', '', '');
+
+INSERT INTO `products_options_values_to_products_options` (`products_options_values_to_products_options_id`, `products_options_id`, `products_options_values_id`) VALUES
+(1, 1, 1),
+(2, 1, 2),
+(3, 1, 3);
+
+INSERT INTO `products_attributes` (`products_attributes_id`, `products_id`, `options_id`, `options_values_id`, `options_values_price`, `price_prefix`, `attributes_model`, `attributes_stock`, `options_values_weight`, `weight_prefix`, `sortorder`) VALUES
+(1, 7, 1, 1, '100.0000', '+', '', 10000, '0.0000', '+', 0),
+(2, 7, 1, 2, '200.0000', '+', '', 10000, '0.0000', '+', 0),
+(3, 7, 1, 3, '300.0000', '+', '', 10000, '0.0000', '+', 0),
+(4, 4, 1, 1, '100.0000', '+', '', 10000, '0.0000', '+', 0),
+(5, 4, 1, 2, '200.0000', '+', '', 10000, '0.0000', '+', 0),
+(6, 4, 1, 3, '300.0000', '+', '', 10000, '0.0000', '+', 0);
