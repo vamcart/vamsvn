@@ -2751,9 +2751,7 @@ label
 .btn-add-to-cart {
   color: #ffffff;
   background-color: #dd2c00;
-  margin-right: 5px;
-  margin-top: 5px;
-  margin-bottom: 5px;
+  margin: 5px;
 }
 .btn-add-to-cart i {
   margin-left: 0;
