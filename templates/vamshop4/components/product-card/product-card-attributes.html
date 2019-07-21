@@ -1,5 +1,5 @@
 <!-- Product Card Simple -->
-		<form id="cart_quantity{$module_data.PRODUCTS_ID}" class="form-inline justify-content-center h-100" action="{$module_data.PRODUCTS_LINK}/products_id/{$module_data.PRODUCTS_ID}/action/add_product" method="post" {if $smarty.const.AJAX_CART == 'true'}onsubmit="doAddProduct({$module_data.PRODUCTS_ID}); return false;"{/if}>
+		<form id="cart_quantity{$module_data.PRODUCTS_ID}" class="justify-content-center h-100" action="{$module_data.PRODUCTS_LINK}/products_id/{$module_data.PRODUCTS_ID}/action/add_product" method="post" {if $smarty.const.AJAX_CART == 'true'}onsubmit="doAddProduct({$module_data.PRODUCTS_ID}); return false;"{/if}>
 		<div class="card card-product card-sm h-100">
       <div class="card-body">
 		{if $module_data.PRODUCTS_LABEL}{$module_data.PRODUCTS_LABEL}{/if}
@@ -29,7 +29,7 @@
          <div class="input-group-prepend">
 	       <span class="btn btn-dark value-control" data-action="minus" data-target="quantity{$module_data.PRODUCTS_ID}"><i class="fa fa-minus"></i></span>
          </div>
-         <input name="products_qty" type="text" value="1" class="form-control col-sm-3 text-center" id="quantity{$module_data.PRODUCTS_ID}">
+         <input name="products_qty" type="text" value="1" class="form-control text-center" id="quantity{$module_data.PRODUCTS_ID}">
          <div class="input-group-append">
 	       <span class="btn btn-dark value-control" data-action="plus" data-target="quantity{$module_data.PRODUCTS_ID}"><i class="fa fa-plus"></i></span>
          </div>
