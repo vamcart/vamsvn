@@ -1,0 +1,693 @@
+<style>
+
+.vamshop-block {
+background: #d5d5d5;
+background: linear-gradient(to bottom, #d5d5d5 0%,#e3e3e3 100%);
+margin-bottom: 1em;
+}
+
+
+.vamshop-block h5.line {
+    display: flex;
+    width: 30%;
+    margin: 0 auto;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.vamshop-block h5.line:before,
+.vamshop-block h5.line:after {
+    content: '';
+    border-top: 2px solid;
+    margin: 0 20px 0 0;
+    flex: 1 0 20px;
+}
+
+.vamshop-block h5.line:after {
+    margin: 0 0 0 20px;
+}
+
+
+.vamshop-block .jumbotron {
+background: rgba(54,54,54,1);
+background: -moz-linear-gradient(top, rgba(54,54,54,1) 0%, rgba(31,27,20,1) 100%);
+background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(54,54,54,1)), color-stop(100%, rgba(31,27,20,1)));
+background: -webkit-linear-gradient(top, rgba(54,54,54,1) 0%, rgba(31,27,20,1) 100%);
+background: -o-linear-gradient(top, rgba(54,54,54,1) 0%, rgba(31,27,20,1) 100%);
+background: -ms-linear-gradient(top, rgba(54,54,54,1) 0%, rgba(31,27,20,1) 100%);
+background: linear-gradient(to bottom, rgba(54,54,54,1) 0%, rgba(31,27,20,1) 100%);
+padding: 2rem 1rem;
+border-radius: .3rem .3rem 0 0;
+margin-bottom: 0;
+}
+
+.vamshop-block .card.card-product {
+transition: .5s;
+box-shadow: 0px 10px 16px -8px rgba(173,173,173,0.43);
+}
+
+.vamshop-block .card.card-product:hover {
+box-shadow: 0 4px 15px rgba(153,153,153,.3);
+}
+
+
+.vamshop-block .card.card-product .card-header.orange {
+  background: rgb(221,44,0);
+  background: linear-gradient(180deg, rgba(221,44,0,1) 0%, rgba(228,82,3,1) 100%);
+}
+
+.vamshop-block .card.card-product .card-header.white {
+  background: rgba(255,255,255,1);
+  background: linear-gradient(to bottom, rgba(255,255,255,1) 0%, rgba(246,246,246,1) 47%, rgba(237,237,237,1) 100%);
+}
+
+.vamshop-block .jumbotron.orange {
+  background: rgb(221,44,0);
+  background: linear-gradient(180deg, rgba(221,44,0,1) 0%, rgba(228,82,3,1) 100%);
+}
+
+.vamshop-block .jumbotron.red {
+  background: transparent;
+}
+
+.vamshop-block .jumbotron.ellipse {
+  position: relative;
+  height: 220px;
+  margin-bottom: 150px;
+  background-image: linear-gradient(#ff9d2f, #ff6126);
+  border-bottom-left-radius: 50% 40%;
+  border-bottom-right-radius: 50% 40%;
+}
+ 
+#chevron {
+  position: relative;
+  text-align: center;
+  padding: 12px;
+  margin-bottom: 6px;
+  height: 200px;
+  width: 100%;
+}
+
+#chevron:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 51%;
+  background: linear-gradient(180deg, rgba(221,44,0,1) 0%, rgba(228,82,3,1) 100%);
+  transform: skew(0deg, 6deg);
+}
+
+#chevron:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 50%;
+  background: linear-gradient(180deg, rgba(221,44,0,1) 0%, rgba(228,82,3,1) 100%);
+  transform: skew(0deg, -6deg);
+}
+
+.vamshop-block.block-1 .card-body,
+.vamshop-block.block-1 .card-footer,
+.vamshop-block.block-2 .card-body,
+.vamshop-block.block-2 .card-footer,
+.vamshop-block.block-3 .card-body,
+.vamshop-block.block-3 .card-footer,
+.vamshop-block.block-5 .card-body,
+.vamshop-block.block-5 .card-footer,
+.vamshop-block.block-4 .card-footer {
+padding: 0;
+margin: 0;
+}
+
+.vamshop-block.block-1 .card-header,
+.vamshop-block.block-2 .card-header,
+.vamshop-block.block-5 .card-header,
+.vamshop-block.block-3 .card-header {
+border-radius: 4px;
+}
+
+.vamshop-block.block-2 .card-body,
+.vamshop-block.block-3 .card-body,
+.vamshop-block.block-5 .card-body,
+.vamshop-block.block-4 .card-body {
+border-radius: 4px;
+}
+
+</style>
+
+<div class="vamshop-block block-1">
+
+  <!-- Main jumbotron for a primary marketing message or call to action -->
+  <div class="jumbotron black">
+    <div class="container text-center">
+    <a href="http://vamshop.com/template"><img src="images/icons/vamshop-box-256.png" alt="VamShop"></a>
+      <h4 class="line text-light">VamShop eCommerce HTML Template</h4>
+      <h5 class="line text-light">Thank you!</h5>
+      <div class="text-light">
+      </div>
+      <div class="text-light pt-2">
+      </div>
+    </div>
+    
+  <div class="container p-3">
+
+<div class="card-deck">
+<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-4">
+<div class="card card-product card-sm h-100 text-center">
+  <div class="card-header">
+    <h5 class="title text-danger text-truncate">Main Page</h5>
+    <p><a href="template/index.html"><img src="templates/vamshop4/img/codecanyon/template/main-page-thumb.png" class="position-relative img-thumbnail" alt="VamShop"></a></p>
+    <p><a class="btn btn-primary btn-lg" target="_blank" href="template/index.html" role="button">Browse &raquo;</a></p>
+  </div>
+  <div class="card-body">
+  </div>
+  <div class="card-footer text-muted">
+  </div>
+</div>
+</div><!-- col // -->
+<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-4">
+<div class="card card-product card-sm h-100 text-center">
+  <div class="card-header">
+    <h5 class="title text-danger text-truncate">Product Listing Page</h5>
+    <p><a href="template/product-listing.html"><img src="templates/vamshop4/img/codecanyon/template/product-listing-thumb.png" class="position-relative img-thumbnail" alt="VamShop"></a></p>
+    <p><a class="btn btn-primary btn-lg" target="_blank" href="template/product-listing.html" role="button">Browse &raquo;</a></p>
+  </div>
+  <div class="card-body">
+  </div>
+  <div class="card-footer text-muted">
+  </div>
+</div>
+</div><!-- col // -->
+<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-4">
+<div class="card card-product card-sm h-100 text-center">
+  <div class="card-header">
+    <h5 class="title text-danger text-truncate">Product Info Page</h5>
+    <p><a href="template/product-card.html"><img src="templates/vamshop4/img/codecanyon/template/product-card-thumb.png" class="position-relative img-thumbnail" alt="VamShop"></a></p>
+    <p><a class="btn btn-primary btn-lg" target="_blank" href="template/product-card.html" role="button">Browse &raquo;</a></p>
+  </div>
+  <div class="card-body">
+  </div>
+  <div class="card-footer text-muted">
+  </div>
+</div>
+</div><!-- col // -->
+<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-4">
+<div class="card card-product card-sm h-100 text-center">
+  <div class="card-header">
+    <h5 class="title text-danger text-truncate">Shopping Cart Page</h5>
+    <p><a href="template/shopping-cart.html"><img src="templates/vamshop4/img/codecanyon/template/shopping-cart-thumb.png" class="position-relative img-thumbnail" alt="VamShop"></a></p>
+    <p><a class="btn btn-primary btn-lg" target="_blank" href="template/shopping-cart.html" role="button">Browse &raquo;</a></p>
+  </div>
+  <div class="card-body">
+  </div>
+  <div class="card-footer text-muted">
+  </div>
+</div>
+</div><!-- col // -->
+<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-4">
+<div class="card card-product card-sm h-100 text-center">
+  <div class="card-header">
+    <h5 class="title text-danger text-truncate">Contact Us Page</h5>
+    <p><a href="template/contact-us.html"><img src="templates/vamshop4/img/codecanyon/template/contact-us-thumb.png" class="position-relative img-thumbnail" alt="VamShop"></a></p>
+    <p><a class="btn btn-primary btn-lg" target="_blank" href="template/contact-us.html" role="button">Browse &raquo;</a></p>
+  </div>
+  <div class="card-body">
+  </div>
+  <div class="card-footer text-muted">
+  </div>
+</div>
+</div><!-- col // -->
+<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-4">
+<div class="card card-product card-sm h-100 text-center">
+  <div class="card-header">
+    <h5 class="title text-danger text-truncate">Checkout Page</h5>
+    <p><a href="template/checkout.html"><img src="templates/vamshop4/img/codecanyon/template/checkout-thumb.png" class="position-relative img-thumbnail" alt="VamShop"></a></p>
+    <p><a class="btn btn-primary btn-lg" target="_blank" href="template/checkout.html" role="button">Browse &raquo;</a></p>
+  </div>
+  <div class="card-body">
+  </div>
+  <div class="card-footer text-muted">
+  </div>
+</div>
+</div><!-- col // -->
+</div><!-- card-deck // -->
+  </div>
+      
+  </div>
+
+</div>
+
+<div class="vamshop-block block-5">
+
+  <!-- Main jumbotron for a primary marketing message or call to action -->
+  <div class="jumbotron orange">
+    <div class="container text-center">
+      <h4 class="line text-light text-uppercase">Product Description</h4>
+      <h5 class="line text-light">key features</h5>
+    </div>
+  </div>
+
+  <div class="container p-3">
+<div class="card-deck">
+<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-4">
+<div class="card card-product card-sm h-100 text-center">
+  <div class="card-header orange">
+    <h5 class="title text-light text-truncate">Fast and Simple</h5>
+  </div>
+  <div class="card-body">
+  </div>
+  <div class="card-footer text-muted">
+  </div>
+</div>
+</div><!-- col // -->
+<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-4">
+<div class="card card-product card-sm h-100 text-center">
+  <div class="card-header orange">
+    <h5 class="title text-light text-truncate">CSS Smooth Animations</h5>
+  </div>
+  <div class="card-body">
+  </div>
+  <div class="card-footer text-muted">
+  </div>
+</div>
+</div><!-- col // -->
+<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-4">
+<div class="card card-product card-sm h-100 text-center">
+  <div class="card-header orange">
+    <h5 class="title text-light text-truncate">Google PageSpeed Optimized</h5>
+  </div>
+  <div class="card-body">
+  </div>
+  <div class="card-footer text-muted">
+  </div>
+</div>
+</div>
+<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-4">
+<div class="card card-product card-sm h-100 text-center">
+  <div class="card-header orange">
+    <h5 class="title text-light text-truncate">Product & Discount Labels</h5>
+  </div>
+  <div class="card-body">
+  </div>
+  <div class="card-footer text-muted">
+  </div>
+</div>
+</div><!-- col // -->
+<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-4">
+<div class="card card-product card-sm h-100 text-center">
+  <div class="card-header orange">
+    <h5 class="title text-light text-truncate">Multi-Level Responsive Menu</h5>
+  </div>
+  <div class="card-body">
+  </div>
+  <div class="card-footer text-muted">
+  </div>
+</div>
+</div><!-- col // -->
+<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-4">
+<div class="card card-product card-sm h-100 text-center">
+  <div class="card-header orange">
+    <h5 class="title text-light text-truncate">Structured Data Markup</h5>
+  </div>
+  <div class="card-body">
+  </div>
+  <div class="card-footer text-muted">
+  </div>
+</div>
+</div><!-- col // -->
+<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-4">
+<div class="card card-product card-sm h-100 text-center">
+  <div class="card-header orange">
+    <h5 class="title text-light text-truncate">Responsive Template</h5>
+  </div>
+  <div class="card-body">
+  </div>
+  <div class="card-footer text-muted">
+  </div>
+</div>
+</div><!-- col // -->
+<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-4">
+<div class="card card-product card-sm h-100 text-center">
+  <div class="card-header orange">
+    <h5 class="title text-light text-truncate">Responsive Sliders</h5>
+  </div>
+  <div class="card-body">
+  </div>
+  <div class="card-footer text-muted">
+  </div>
+</div>
+</div><!-- col // --><div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-4">
+<div class="card card-product card-sm h-100 text-center">
+  <div class="card-header orange">
+    <h5 class="title text-light text-truncate">20+ Ready to Use Components</h5>
+  </div>
+  <div class="card-body">
+  </div>
+  <div class="card-footer text-muted">
+  </div>
+</div>
+</div><!-- col // -->
+</div><!-- card-deck // -->
+  </div>
+
+</div>
+
+<div class="vamshop-block block-4">
+
+  <!-- Main jumbotron for a primary marketing message or call to action -->
+  <div class="jumbotron red">
+    <div class="container text-center">
+      <h4 class="line text-uppercase">Google PageSpeed Insights</h4>
+      <h5 class="line">VamShop Results</h5>
+      <div id="chevron"></div>
+      <ul class="list-inline">
+      <li class="list-inline-item"><a href="templates/vamshop4/img/codecanyon/pagespeed/vamshop4-1.png"><img src="templates/vamshop4/img/codecanyon/pagespeed/vamshop4-1-thumb.png" class="position-relative img-thumbnail" alt="VamShop"></a></li>
+      <li class="list-inline-item"><a href="templates/vamshop4/img/codecanyon/pagespeed/vamshop4-2.png"><img src="templates/vamshop4/img/codecanyon/pagespeed/vamshop4-2-thumb.png" class="position-relative img-thumbnail" alt="VamShop"></a></li>
+      </ul>
+      <h5>92/100, 99/100.</h5>
+    </div>
+
+  </div>
+
+
+  <div class="container p-3">
+<div class="card-deck">
+<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-4">
+<div class="card card-product card-sm h-100 text-center">
+  <div class="card-header orange">
+    <span class="my-2 icon-wrap rounded icon-lg"><i class="fab fa-html5 white"></i></span>
+    <h5 class="title text-light text-truncate">HTML</h5>
+  </div>
+  <div class="card-body">
+    <p class="text-muted">HTML Code minified.</p>
+  </div>
+  <div class="card-footer text-muted">
+  </div>
+</div>
+</div><!-- col // -->
+<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-4">
+<div class="card card-product card-sm h-100 text-center">
+  <div class="card-header orange">
+    <span class="my-2 icon-wrap rounded icon-lg"><i class="fab fa-css3 white"></i></span>
+    <h5 class="title text-light text-truncate">CSS</h5>
+  </div>
+  <div class="card-body">
+    <p class="text-muted">CSS code minified and combined into one file.</p>
+  </div>
+  <div class="card-footer text-muted">
+  </div>
+</div>
+</div><!-- col // -->
+<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-4">
+<div class="card card-product card-sm h-100 text-center">
+  <div class="card-header orange">
+    <span class="my-2 icon-wrap rounded icon-lg"><i class="fab fa-js white"></i></span>
+    <h5 class="title text-light text-truncate">JavaScript</h5>
+  </div>
+  <div class="card-body">
+    <p class="text-muted">JS code minified and combined into one file.</p>
+  </div>
+  <div class="card-footer text-muted">
+  </div>
+</div>
+</div>
+</div><!-- card-deck // -->
+  </div>
+
+</div>
+
+<div class="vamshop-block block-3">
+
+  <!-- Main jumbotron for a primary marketing message or call to action -->
+  <div class="jumbotron ellipse">
+    <div class="container text-center">
+      <h4 class="line text-light text-uppercase">Page Templates Included</h4>
+      <h5 class="line text-light">Complete Solution</h5>
+    <img src="images/icons/vamshop-box-256.png" alt="VamShop">
+    </div>
+  </div>
+
+  <div class="container p-3">
+<div class="card-deck">
+<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-4">
+<div class="card card-product card-sm h-100 text-center">
+  <div class="card-header orange">
+    <h5 class="title text-light text-truncate">Main Page</h5>
+  </div>
+  <div class="card-body">
+  </div>
+  <div class="card-footer text-muted">
+  </div>
+</div>
+</div><!-- col // -->
+<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-4">
+<div class="card card-product card-sm h-100 text-center">
+  <div class="card-header orange">
+    <h5 class="title text-light text-truncate">Product Listing Page</h5>
+  </div>
+  <div class="card-body">
+  </div>
+  <div class="card-footer text-muted">
+  </div>
+</div>
+</div><!-- col // -->
+<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-4">
+<div class="card card-product card-sm h-100 text-center">
+  <div class="card-header orange">
+    <h5 class="title text-light text-truncate">Product Info Page</h5>
+  </div>
+  <div class="card-body">
+  </div>
+  <div class="card-footer text-muted">
+  </div>
+</div>
+</div>
+<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-4">
+<div class="card card-product card-sm h-100 text-center">
+  <div class="card-header orange">
+    <h5 class="title text-light text-truncate">Shopping Cart Page</h5>
+  </div>
+  <div class="card-body">
+  </div>
+  <div class="card-footer text-muted">
+  </div>
+</div>
+</div>
+<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-4">
+<div class="card card-product card-sm h-100 text-center">
+  <div class="card-header orange">
+    <h5 class="title text-light text-truncate">Contact Us Page</h5>
+  </div>
+  <div class="card-body">
+  </div>
+  <div class="card-footer text-muted">
+  </div>
+</div>
+</div>
+<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-4">
+<div class="card card-product card-sm h-100 text-center">
+  <div class="card-header orange">
+    <h5 class="title text-light text-truncate">Checkout Form Page</h5>
+  </div>
+  <div class="card-body">
+  </div>
+  <div class="card-footer text-muted">
+  </div>
+</div>
+</div>
+</div><!-- card-deck // -->
+  </div>
+
+</div>
+
+<div class="vamshop-block block-5">
+
+  <!-- Main jumbotron for a primary marketing message or call to action -->
+  <div class="jumbotron orange">
+    <div class="container text-center">
+      <h4 class="line text-light text-uppercase">Product Listing Templates Included</h4>
+      <h5 class="line text-light">fast, responsive</h5>
+    </div>
+  </div>
+
+  <div class="container p-3">
+
+<div class="card-deck">
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+<div class="card card-product card-sm h-100 text-center">
+  <div class="card-header">
+    <h5 class="title text-danger text-truncate">Product Listing Columns</h5>
+    <a href="templates/vamshop4/img/codecanyon/template/product-listing-columns.png"><img src="templates/vamshop4/img/codecanyon/template/product-listing-columns-thumb.png" class="position-relative img-thumbnail" alt="VamShop"></a>
+  </div>
+  <div class="card-body">
+  </div>
+  <div class="card-footer text-muted">
+  </div>
+</div>
+</div><!-- col // -->
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+<div class="card card-product card-sm h-100 text-center">
+  <div class="card-header">
+    <h5 class="title text-danger text-truncate">Product Listing List</h5>
+    <a href="templates/vamshop4/img/codecanyon/template/product-listing-list.png"><img src="templates/vamshop4/img/codecanyon/template/product-listing-list-thumb.png" class="position-relative img-thumbnail" alt="VamShop"></a>
+  </div>
+  <div class="card-body">
+  </div>
+  <div class="card-footer text-muted">
+  </div>
+</div>
+</div><!-- col // -->
+</div><!-- card-deck // -->
+  </div>
+
+</div>
+
+<div class="vamshop-block block-5">
+
+  <!-- Main jumbotron for a primary marketing message or call to action -->
+  <div class="jumbotron orange">
+    <div class="container text-center">
+      <h4 class="line text-light text-uppercase">Product Item Templates Included</h4>
+      <h5 class="line text-light">css animations</h5>
+    </div>
+  </div>
+
+  <div class="container p-3">
+
+<div class="card-deck">
+<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-4">
+<div class="card card-product card-sm h-100 text-center">
+  <div class="card-header">
+    <h5 class="title text-danger text-truncate">Product Item Simple</h5>
+    <a href="templates/vamshop4/img/codecanyon/template/product-card-simple.png"><img src="templates/vamshop4/img/codecanyon/template/product-card-simple-thumb.png" class="position-relative img-thumbnail" alt="VamShop"></a>
+  </div>
+  <div class="card-body">
+  </div>
+  <div class="card-footer text-muted">
+  </div>
+</div>
+</div><!-- col // -->
+<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-4">
+<div class="card card-product card-sm h-100 text-center">
+  <div class="card-header">
+    <h5 class="title text-danger text-truncate">Product Item Complex</h5>
+    <a href="templates/vamshop4/img/codecanyon/template/product-card-complex.png"><img src="templates/vamshop4/img/codecanyon/template/product-card-complex-thumb.png" class="position-relative img-thumbnail" alt="VamShop"></a>
+  </div>
+  <div class="card-body">
+  </div>
+  <div class="card-footer text-muted">
+  </div>
+</div>
+</div><!-- col // -->
+<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-4">
+<div class="card card-product card-sm h-100 text-center">
+  <div class="card-header">
+    <h5 class="title text-danger text-truncate">Product Item Details</h5>
+    <a href="templates/vamshop4/img/codecanyon/template/product-card-details.png"><img src="templates/vamshop4/img/codecanyon/template/product-card-details-thumb.png" class="position-relative img-thumbnail" alt="VamShop"></a>
+  </div>
+  <div class="card-body">
+  </div>
+  <div class="card-footer text-muted">
+  </div>
+</div>
+</div>
+<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-4">
+<div class="card card-product card-sm h-100 text-center">
+  <div class="card-header">
+    <h5 class="title text-danger text-truncate">Product Item Input Quantity</h5>
+    <a href="templates/vamshop4/img/codecanyon/template/product-card-input-quantity.png"><img src="templates/vamshop4/img/codecanyon/template/product-card-input-quantity-thumb.png" class="position-relative img-thumbnail" alt="VamShop"></a>
+  </div>
+  <div class="card-body">
+  </div>
+  <div class="card-footer text-muted">
+  </div>
+</div>
+</div><!-- col // -->
+<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-4">
+<div class="card card-product card-sm h-100 text-center">
+  <div class="card-header">
+    <h5 class="title text-danger text-truncate">Product Item Attributes</h5>
+    <a href="templates/vamshop4/img/codecanyon/template/product-card-attributes.png"><img src="templates/vamshop4/img/codecanyon/template/product-card-attributes-thumb.png" class="position-relative img-thumbnail" alt="VamShop"></a>
+  </div>
+  <div class="card-body">
+  </div>
+  <div class="card-footer text-muted">
+  </div>
+</div>
+</div><!-- col // -->
+<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-4">
+<div class="card card-product card-sm h-100 text-center">
+  <div class="card-header">
+    <h5 class="title text-danger text-truncate">Product Item Attributes Qty</h5>
+    <a href="templates/vamshop4/img/codecanyon/template/product-card-attributes-quantity.png"><img src="templates/vamshop4/img/codecanyon/template/product-card-attributes-quantity-thumb.png" class="position-relative img-thumbnail" alt="VamShop"></a>
+  </div>
+  <div class="card-body">
+  </div>
+  <div class="card-footer text-muted">
+  </div>
+</div>
+</div>
+</div><!-- card-deck // -->
+  </div>
+
+</div>
+
+<div class="vamshop-block block-5">
+
+  <!-- Main jumbotron for a primary marketing message or call to action -->
+  <div class="jumbotron orange">
+    <div class="container text-center">
+      <h4 class="line text-light text-uppercase">Product Labels & Discount Labels</h4>
+      <h5 class="line text-light">custom labels</h5>
+    </div>
+  </div>
+
+  <div class="container p-3">
+
+<div class="card-deck">
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+<div class="card card-product card-sm h-100 text-center">
+  <div class="card-header">
+    <h5 class="title text-danger text-truncate">Product Label</h5>
+    <a href="templates/vamshop4/img/codecanyon/template/product-label.png"><img src="templates/vamshop4/img/codecanyon/template/product-label-thumb.png" class="position-relative img-thumbnail" alt="VamShop"></a>
+  </div>
+  <div class="card-body">
+  </div>
+  <div class="card-footer text-muted">
+  </div>
+</div>
+</div><!-- col // -->
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+<div class="card card-product card-sm h-100 text-center">
+  <div class="card-header">
+    <h5 class="title text-danger text-truncate">Discount Label</h5>
+    <a href="templates/vamshop4/img/codecanyon/template/discount-label.png"><img src="templates/vamshop4/img/codecanyon/template/discount-label-thumb.png" class="position-relative img-thumbnail" alt="VamShop"></a>
+  </div>
+  <div class="card-body">
+  </div>
+  <div class="card-footer text-muted">
+  </div>
+</div>
+</div><!-- col // -->
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+<div class="card card-product card-sm h-100 text-center">
+  <div class="card-header">
+    <h5 class="title text-danger text-truncate">Product & Discount Label</h5>
+    <a href="templates/vamshop4/img/codecanyon/templates/product-discount-label.png"><img src="templates/vamshop4/img/codecanyon/template/product-discount-label.png" class="position-relative img-thumbnail" alt="VamShop"></a>
+  </div>
+  <div class="card-body">
+  </div>
+  <div class="card-footer text-muted">
+  </div>
+</div>
+</div>
+</div><!-- card-deck // -->
+  </div>
+
+</div>
+
