@@ -4,11 +4,11 @@
 <table width="100%" border="0" cellspacing="0" cellpadding="3">
   <tr> 
     <td>&nbsp;</td>
-    <td align="center" width="150"><strong>{#text_qty#}</strong></td>
-    <td><strong>&nbsp;&nbsp;{#text_article#}</strong></td>
-    <td align="right"><strong>{#text_single#}</strong></td>
-    <td align="right"><strong>{#text_total#}</strong></td>
-    <td align="center"><strong>&nbsp;{#text_remove#}&nbsp;</strong></td>
+    <td align="left" width="150"><strong>{#text_qty#}</strong></td>
+    <td><strong>{#text_article#}</strong></td>
+    <td align="left"><strong>{#text_single#}</strong></td>
+    <td align="left"><strong>{#text_total#}</strong></td>
+    <td align="left"><strong>{#text_remove#}</strong></td>
   </tr>
   {foreach name=aussen item=module_data from=$module_content} 
   <tr> 
@@ -16,7 +16,23 @@
   </tr>
   <tr> 
     <td>{if $module_data.PRODUCTS_IMAGE!=''}<img src="{$module_data.PRODUCTS_IMAGE}" width="100" alt="{$module_data.IMAGE_ALT}" />{/if}</td>
-    <td valign="middle" align="center" width="150">{if $smarty.const.AJAX_CART == 'true'}{$module_data.MINUS}{/if}{$module_data.PRODUCTS_QTY}{if $smarty.const.AJAX_CART == 'true'}{$module_data.PLUS}{/if}</td>
+
+    <td valign="middle" align="center">
+      {if $smarty.const.AJAX_CART == 'true'}
+        <div class="input-group">
+          <div class="input-group-prepend">
+    	    {$module_data.MINUS}
+          </div>
+      {/if}
+          {$module_data.PRODUCTS_QTY}
+      {if $smarty.const.AJAX_CART == 'true'}
+          <div class="input-group-append">
+      	    {$module_data.PLUS}
+          </div>
+        </div>
+      {/if}
+    </td>
+
     <td valign="middle"><strong><a href="{$module_data.PRODUCTS_LINK}">{$module_data.PRODUCTS_NAME}</a></strong><br />
       {if $module_data.PRODUCTS_SHIPPING_TIME neq ""}{#text_shippingtime#}&nbsp;{$module_data.PRODUCTS_SHIPPING_TIME}{/if}
       {if $module_data.ATTRIBUTES!=''} 
@@ -30,10 +46,10 @@
       </table>
       {else}
       {/if} </td>
-    <td valign="middle" align="right">{$module_data.PRODUCTS_SINGLE_PRICE}</td>
-    <td valign="middle" align="right">{$module_data.PRODUCTS_PRICE}&nbsp; 
+    <td valign="middle" align="left">{$module_data.PRODUCTS_SINGLE_PRICE}</td>
+    <td valign="middle" align="left">{$module_data.PRODUCTS_PRICE}&nbsp; 
     </td>
-    <td width="10" align="center" valign="middle">{$module_data.BOX_DELETE}</td>
+    <td width="10" align="left" valign="middle">{$module_data.BOX_DELETE}</td>
   </tr>
   {/foreach} 
   <tr> 
