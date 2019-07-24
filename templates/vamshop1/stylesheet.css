@@ -2402,7 +2402,7 @@ div.filter
 
 .sm_layout_box 
 	{
-		padding-left: 1em;
+		padding-left: 0;
 	}
 
 div.CheckoutError 
