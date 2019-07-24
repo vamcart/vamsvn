@@ -165,6 +165,7 @@ $cat_data = vam_db_fetch_array($cat_query, true);
 		$info->assign('CATEGORY_ID', $current_category_id);
       $info->assign('MANUFACTURER_ID',$manufacturer['manufacturers_id']);
       $info->assign('MANUFACTURER_IMAGE',$manufacturer['manufacturers_image']);
+      $info->assign('MANUFACTURER_LINK',vam_href_link(FILENAME_DEFAULT, 'manufacturers_id='.$manufacturer['manufacturers_id']));
       $info->assign('MANUFACTURER',$manufacturer['manufacturers_name']);
 
 		if ($product->data['products_image'] != '')
