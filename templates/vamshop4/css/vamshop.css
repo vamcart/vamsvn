@@ -2141,13 +2141,13 @@ fieldset.form legend
 
 .form p label
 	{
-		display: inline-block; 
+		display: block; 
 		/*float: left;*/ 
-		margin: 5px 0 0; 
-		padding: 0 10px 0 10px; 
+		margin: 0; 
+		padding: 0; 
 		border: 0px solid black; 
 		color: #545452; 
-		text-align: right;
+		text-align: left;
 	}
 
 .form p
@@ -2916,7 +2916,7 @@ div.filter
 
 .sm_layout_box 
 	{
-		padding-left: 1em;
+		padding-left: 0em;
 	}
 
 div.CheckoutError 
