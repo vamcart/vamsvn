@@ -5,7 +5,7 @@
   <tr> 
     <td>&nbsp;</td>
     <td align="left" width="150"><strong>{#text_qty#}</strong></td>
-    <td><strong>{#text_article#}</strong></td>
+    <td align="left"><strong>{#text_article#}</strong></td>
     <td align="left"><strong>{#text_single#}</strong></td>
     <td align="left"><strong>{#text_total#}</strong></td>
     <td align="left"><strong>{#text_remove#}</strong></td>
@@ -17,7 +17,7 @@
   <tr> 
     <td>{if $module_data.PRODUCTS_IMAGE!=''}<img src="{$module_data.PRODUCTS_IMAGE}" width="100" alt="{$module_data.IMAGE_ALT}" />{/if}</td>
 
-    <td valign="middle" align="center">
+    <td valign="middle" align="left">
       {if $smarty.const.AJAX_CART == 'true'}
         <div class="input-group">
           <div class="input-group-prepend">
@@ -33,7 +33,7 @@
       {/if}
     </td>
 
-    <td valign="middle"><strong><a href="{$module_data.PRODUCTS_LINK}">{$module_data.PRODUCTS_NAME}</a></strong><br />
+    <td valign="middle" align="left"><strong><a href="{$module_data.PRODUCTS_LINK}">{$module_data.PRODUCTS_NAME}</a></strong><br />
       {if $module_data.PRODUCTS_SHIPPING_TIME neq ""}{#text_shippingtime#}&nbsp;{$module_data.PRODUCTS_SHIPPING_TIME}{/if}
       {if $module_data.ATTRIBUTES!=''} 
       <table border="0" cellspacing="0" cellpadding="0">
