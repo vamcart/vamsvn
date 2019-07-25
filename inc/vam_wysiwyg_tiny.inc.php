@@ -25,35 +25,28 @@ $js_src = DIR_WS_INCLUDES .'javascript/tinymce/tinymce.min.js';
                         $val ='<script type="text/javascript" src="'.$js_src.'"></script>
 <script type="text/javascript">
 tinymce.init({
-    selector : "textarea:not(.notinymce)",
-    plugins: [
-	    "advlist autolink autosave link image lists charmap print preview hr anchor pagebreak spellchecker",
-	    "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media responsivefilemanager nonbreaking",
-	    "table contextmenu directionality emoticons template textcolor paste textcolor colorpicker textpattern"
-	  ],
-	
-    toolbar1: "newdocument | bold italic underline strikethrough | alignleft aligncenter alignright alignjustify | styleselect formatselect fontselect fontsizeselect",
-    toolbar2: "cut copy paste | searchreplace | bullist numlist | outdent indent blockquote | undo redo | link unlink anchor image media code | insertdatetime preview | forecolor backcolor",
-    toolbar3: "table | hr removeformat | subscript superscript | charmap emoticons | print fullscreen | ltr rtl | spellchecker | visualchars visualblocks nonbreaking template pagebreak restoredraft",
-    menubar: false,
-    toolbar_items_size: "small",    
-    extended_valid_elements : "script[language|type|src],iframe[src|width|height|name|align|class]",
-    image_advtab: true ,
-    external_filemanager_path: "'.HTTP_SERVER . DIR_WS_CATALOG.'admin/filemanager/",
-    filemanager_title:"VamShop" ,
-    filemanager_access_key:"'. vam_session_name() .'" ,
-    external_plugins: { "filemanager" : "'.HTTP_SERVER . DIR_WS_CATALOG.'admin/filemanager/plugin.min.js"},
-    autosave_ask_before_unload: false,
-    max_height: 200,
-    forced_root_block : false,
-    min_height: 160,
-    height : 180,
-    image_class_list: [
-      {title: "img-responsive", value: "img-responsive"}
-    ],					
-    convert_urls : false,
-    language : "'.$lang.'"
+  selector: "textarea:not(.notinymce)",
+  height: 500,
+  extended_valid_elements : "script[language|type|src],iframe[src|width|height|name|align|class]",
+  image_advtab: true ,
+  convert_urls : false,
+  external_filemanager_path: "'.HTTP_SERVER . DIR_WS_CATALOG.'admin/filemanager/",
+  filemanager_title:"VamShop" ,
+  filemanager_access_key:"'. session_name() .'" ,
+  external_plugins: { "filemanager" : "'.HTTP_SERVER . DIR_WS_CATALOG.'admin/filemanager/plugin.min.js"},
+  autosave_ask_before_unload: false,
+  language : "'.$lang.'",
+  image_class_list: [
+    {title: "img-responsive", value: "img-responsive"}
+  ],	
+  plugins: [
+    "advlist autolink lists link image charmap print preview anchor textcolor",
+    "searchreplace visualblocks code help fullscreen",
+    "insertdatetime media table paste imagetools wordcount responsivefilemanager"
+  ],
+  toolbar: "insertfile undo redo | styleselect | bold italic underline forecolor backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | help"
 });
+
 
 function toggleHTMLEditor(id) {
 	if (!tinymce.get(id))
@@ -70,35 +63,28 @@ function toggleHTMLEditor(id) {
                         $val ='<script type="text/javascript" src="'.$js_src.'"></script>
 <script type="text/javascript">
 tinymce.init({
-    selector : "textarea:not(.notinymce)",
-    plugins: [
-	    "advlist autolink autosave link image lists charmap print preview hr anchor pagebreak spellchecker",
-	    "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media responsivefilemanager nonbreaking",
-	    "table contextmenu directionality emoticons template textcolor paste textcolor colorpicker textpattern"
-	  ],
-	
-    toolbar1: "newdocument | bold italic underline strikethrough | alignleft aligncenter alignright alignjustify | styleselect formatselect fontselect fontsizeselect",
-    toolbar2: "cut copy paste | searchreplace | bullist numlist | outdent indent blockquote | undo redo | link unlink anchor image media code | insertdatetime preview | forecolor backcolor",
-    toolbar3: "table | hr removeformat | subscript superscript | charmap emoticons | print fullscreen | ltr rtl | spellchecker | visualchars visualblocks nonbreaking template pagebreak restoredraft",
-    menubar: false,
-    toolbar_items_size: "small",    
-    extended_valid_elements : "script[language|type|src],iframe[src|width|height|name|align|class]",
-    image_advtab: true ,
-    external_filemanager_path: "'.HTTP_SERVER . DIR_WS_CATALOG.'admin/filemanager/",
-    filemanager_title:"VamShop" ,
-    filemanager_access_key:"'. vam_session_name() .'" ,
-    external_plugins: { "filemanager" : "'.HTTP_SERVER . DIR_WS_CATALOG.'admin/filemanager/plugin.min.js"},
-    autosave_ask_before_unload: false,
-    max_height: 200,
-    forced_root_block : false,
-    min_height: 160,
-    height : 180,
-    image_class_list: [
-      {title: "img-responsive", value: "img-responsive"}
-    ],					
-    convert_urls : false,
-    language : "'.$lang.'"
+  selector: "textarea:not(.notinymce)",
+  height: 500,
+  extended_valid_elements : "script[language|type|src],iframe[src|width|height|name|align|class]",
+  image_advtab: true ,
+  convert_urls : false,
+  external_filemanager_path: "'.HTTP_SERVER . DIR_WS_CATALOG.'admin/filemanager/",
+  filemanager_title:"VamShop" ,
+  filemanager_access_key:"'. session_name() .'" ,
+  external_plugins: { "filemanager" : "'.HTTP_SERVER . DIR_WS_CATALOG.'admin/filemanager/plugin.min.js"},
+  autosave_ask_before_unload: false,
+  language : "'.$lang.'",
+  image_class_list: [
+    {title: "img-responsive", value: "img-responsive"}
+  ],	
+  plugins: [
+    "advlist autolink lists link image charmap print preview anchor textcolor",
+    "searchreplace visualblocks code help fullscreen",
+    "insertdatetime media table paste imagetools wordcount responsivefilemanager"
+  ],
+  toolbar: "insertfile undo redo | styleselect | bold italic underline forecolor backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | help"
 });
+
 
 function toggleHTMLEditor(id) {
 	if (!tinymce.get(id))
@@ -115,35 +101,28 @@ function toggleHTMLEditor(id) {
                         $val ='<script type="text/javascript" src="'.$js_src.'"></script>
 <script type="text/javascript">
 tinymce.init({
-    selector : "textarea:not(.notinymce)",
-    plugins: [
-	    "advlist autolink autosave link image lists charmap print preview hr anchor pagebreak spellchecker",
-	    "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media responsivefilemanager nonbreaking",
-	    "table contextmenu directionality emoticons template textcolor paste textcolor colorpicker textpattern"
-	  ],
-	
-    toolbar1: "newdocument | bold italic underline strikethrough | alignleft aligncenter alignright alignjustify | styleselect formatselect fontselect fontsizeselect",
-    toolbar2: "cut copy paste | searchreplace | bullist numlist | outdent indent blockquote | undo redo | link unlink anchor image media code | insertdatetime preview | forecolor backcolor",
-    toolbar3: "table | hr removeformat | subscript superscript | charmap emoticons | print fullscreen | ltr rtl | spellchecker | visualchars visualblocks nonbreaking template pagebreak restoredraft",
-    menubar: false,
-    toolbar_items_size: "small",    
-    extended_valid_elements : "script[language|type|src],iframe[src|width|height|name|align|class]",
-    image_advtab: true ,
-    external_filemanager_path: "'.HTTP_SERVER . DIR_WS_CATALOG.'admin/filemanager/",
-    filemanager_title:"VamShop" ,
-    filemanager_access_key:"'. vam_session_name() .'" ,
-    external_plugins: { "filemanager" : "'.HTTP_SERVER . DIR_WS_CATALOG.'admin/filemanager/plugin.min.js"},
-    autosave_ask_before_unload: false,
-    max_height: 200,
-    forced_root_block : false,
-    min_height: 160,
-    height : 180,
-    image_class_list: [
-      {title: "img-responsive", value: "img-responsive"}
-    ],					
-    convert_urls : false,
-    language : "'.$lang.'"
+  selector: "textarea:not(.notinymce)",
+  height: 500,
+  extended_valid_elements : "script[language|type|src],iframe[src|width|height|name|align|class]",
+  image_advtab: true ,
+  convert_urls : false,
+  external_filemanager_path: "'.HTTP_SERVER . DIR_WS_CATALOG.'admin/filemanager/",
+  filemanager_title:"VamShop" ,
+  filemanager_access_key:"'. session_name() .'" ,
+  external_plugins: { "filemanager" : "'.HTTP_SERVER . DIR_WS_CATALOG.'admin/filemanager/plugin.min.js"},
+  autosave_ask_before_unload: false,
+  language : "'.$lang.'",
+  image_class_list: [
+    {title: "img-responsive", value: "img-responsive"}
+  ],	
+  plugins: [
+    "advlist autolink lists link image charmap print preview anchor textcolor",
+    "searchreplace visualblocks code help fullscreen",
+    "insertdatetime media table paste imagetools wordcount responsivefilemanager"
+  ],
+  toolbar: "insertfile undo redo | styleselect | bold italic underline forecolor backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | help"
 });
+
 
 function toggleHTMLEditor(id) {
 	if (!tinymce.get(id))
@@ -160,35 +139,28 @@ function toggleHTMLEditor(id) {
                         $val ='<script type="text/javascript" src="'.$js_src.'"></script>
 <script type="text/javascript">
 tinymce.init({
-    selector : "textarea:not(.notinymce)",
-    plugins: [
-	    "advlist autolink autosave link image lists charmap print preview hr anchor pagebreak spellchecker",
-	    "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media responsivefilemanager nonbreaking",
-	    "table contextmenu directionality emoticons template textcolor paste textcolor colorpicker textpattern"
-	  ],
-	
-    toolbar1: "newdocument | bold italic underline strikethrough | alignleft aligncenter alignright alignjustify | styleselect formatselect fontselect fontsizeselect",
-    toolbar2: "cut copy paste | searchreplace | bullist numlist | outdent indent blockquote | undo redo | link unlink anchor image media code | insertdatetime preview | forecolor backcolor",
-    toolbar3: "table | hr removeformat | subscript superscript | charmap emoticons | print fullscreen | ltr rtl | spellchecker | visualchars visualblocks nonbreaking template pagebreak restoredraft",
-    menubar: false,
-    toolbar_items_size: "small",    
-    extended_valid_elements : "script[language|type|src],iframe[src|width|height|name|align|class]",
-    image_advtab: true ,
-    external_filemanager_path: "'.HTTP_SERVER . DIR_WS_CATALOG.'admin/filemanager/",
-    filemanager_title:"VamShop" ,
-    filemanager_access_key:"'. vam_session_name() .'" ,
-    external_plugins: { "filemanager" : "'.HTTP_SERVER . DIR_WS_CATALOG.'admin/filemanager/plugin.min.js"},
-    autosave_ask_before_unload: false,
-    max_height: 200,
-    forced_root_block : false,
-    min_height: 160,
-    height : 180,
-    image_class_list: [
-      {title: "img-responsive", value: "img-responsive"}
-    ],					
-    convert_urls : false,
-    language : "'.$lang.'"
+  selector: "textarea:not(.notinymce)",
+  height: 500,
+  extended_valid_elements : "script[language|type|src],iframe[src|width|height|name|align|class]",
+  image_advtab: true ,
+  convert_urls : false,
+  external_filemanager_path: "'.HTTP_SERVER . DIR_WS_CATALOG.'admin/filemanager/",
+  filemanager_title:"VamShop" ,
+  filemanager_access_key:"'. session_name() .'" ,
+  external_plugins: { "filemanager" : "'.HTTP_SERVER . DIR_WS_CATALOG.'admin/filemanager/plugin.min.js"},
+  autosave_ask_before_unload: false,
+  language : "'.$lang.'",
+  image_class_list: [
+    {title: "img-responsive", value: "img-responsive"}
+  ],	
+  plugins: [
+    "advlist autolink lists link image charmap print preview anchor textcolor",
+    "searchreplace visualblocks code help fullscreen",
+    "insertdatetime media table paste imagetools wordcount responsivefilemanager"
+  ],
+  toolbar: "insertfile undo redo | styleselect | bold italic underline forecolor backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | help"
 });
+
 
 function toggleHTMLEditor(id) {
 	if (!tinymce.get(id))
@@ -205,35 +177,28 @@ function toggleHTMLEditor(id) {
                         $val ='<script type="text/javascript" src="'.$js_src.'"></script>
 <script type="text/javascript">
 tinymce.init({
-    selector : "textarea:not(.notinymce)",
-    plugins: [
-	    "advlist autolink autosave link image lists charmap print preview hr anchor pagebreak spellchecker",
-	    "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media responsivefilemanager nonbreaking",
-	    "table contextmenu directionality emoticons template textcolor paste textcolor colorpicker textpattern"
-	  ],
-	
-    toolbar1: "newdocument | bold italic underline strikethrough | alignleft aligncenter alignright alignjustify | styleselect formatselect fontselect fontsizeselect",
-    toolbar2: "cut copy paste | searchreplace | bullist numlist | outdent indent blockquote | undo redo | link unlink anchor image media code | insertdatetime preview | forecolor backcolor",
-    toolbar3: "table | hr removeformat | subscript superscript | charmap emoticons | print fullscreen | ltr rtl | spellchecker | visualchars visualblocks nonbreaking template pagebreak restoredraft",
-    menubar: false,
-    toolbar_items_size: "small",    
-    extended_valid_elements : "script[language|type|src],iframe[src|width|height|name|align|class]",
-    image_advtab: true ,
-    external_filemanager_path: "'.HTTP_SERVER . DIR_WS_CATALOG.'admin/filemanager/",
-    filemanager_title:"VamShop" ,
-    filemanager_access_key:"'. session_name() .'" ,
-    external_plugins: { "filemanager" : "'.HTTP_SERVER . DIR_WS_CATALOG.'admin/filemanager/plugin.min.js"},
-    autosave_ask_before_unload: false,
-    max_height: 200,
-    forced_root_block : false,
-    min_height: 160,
-    height : 180,
-    image_class_list: [
-      {title: "img-responsive", value: "img-responsive"}
-    ],					
-    convert_urls : false,
-    language : "'.$lang.'"
+  selector: "textarea:not(.notinymce)",
+  height: 500,
+  extended_valid_elements : "script[language|type|src],iframe[src|width|height|name|align|class]",
+  image_advtab: true ,
+  convert_urls : false,
+  external_filemanager_path: "'.HTTP_SERVER . DIR_WS_CATALOG.'admin/filemanager/",
+  filemanager_title:"VamShop" ,
+  filemanager_access_key:"'. session_name() .'" ,
+  external_plugins: { "filemanager" : "'.HTTP_SERVER . DIR_WS_CATALOG.'admin/filemanager/plugin.min.js"},
+  autosave_ask_before_unload: false,
+  language : "'.$lang.'",
+  image_class_list: [
+    {title: "img-responsive", value: "img-responsive"}
+  ],	
+  plugins: [
+    "advlist autolink lists link image charmap print preview anchor textcolor",
+    "searchreplace visualblocks code help fullscreen",
+    "insertdatetime media table paste imagetools wordcount responsivefilemanager"
+  ],
+  toolbar: "insertfile undo redo | styleselect | bold italic underline forecolor backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | help"
 });
+
 
 function toggleHTMLEditor(id) {
 	if (!tinymce.get(id))
@@ -250,35 +215,28 @@ function toggleHTMLEditor(id) {
                         $val ='<script type="text/javascript" src="'.$js_src.'"></script>
 <script type="text/javascript">
 tinymce.init({
-    selector : "textarea:not(.notinymce)",
-    plugins: [
-	    "advlist autolink autosave link image lists charmap print preview hr anchor pagebreak spellchecker",
-	    "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media responsivefilemanager nonbreaking",
-	    "table contextmenu directionality emoticons template textcolor paste textcolor colorpicker textpattern"
-	  ],
-	
-    toolbar1: "newdocument | bold italic underline strikethrough | alignleft aligncenter alignright alignjustify | styleselect formatselect fontselect fontsizeselect",
-    toolbar2: "cut copy paste | searchreplace | bullist numlist | outdent indent blockquote | undo redo | link unlink anchor image media code | insertdatetime preview | forecolor backcolor",
-    toolbar3: "table | hr removeformat | subscript superscript | charmap emoticons | print fullscreen | ltr rtl | spellchecker | visualchars visualblocks nonbreaking template pagebreak restoredraft",
-    menubar: false,
-    toolbar_items_size: "small",    
-    extended_valid_elements : "script[language|type|src],iframe[src|width|height|name|align|class]",
-    image_advtab: true ,
-    external_filemanager_path: "'.HTTP_SERVER . DIR_WS_CATALOG.'admin/filemanager/",
-    filemanager_title:"VamShop" ,
-    filemanager_access_key:"'. vam_session_name() .'" ,
-    external_plugins: { "filemanager" : "'.HTTP_SERVER . DIR_WS_CATALOG.'admin/filemanager/plugin.min.js"},
-    autosave_ask_before_unload: false,
-    max_height: 200,
-    forced_root_block : false,
-    min_height: 160,
-    height : 180,
-    image_class_list: [
-      {title: "img-responsive", value: "img-responsive"}
-    ],					
-    convert_urls : false,
-    language : "'.$lang.'"
+  selector: "textarea:not(.notinymce)",
+  height: 500,
+  extended_valid_elements : "script[language|type|src],iframe[src|width|height|name|align|class]",
+  image_advtab: true ,
+  convert_urls : false,
+  external_filemanager_path: "'.HTTP_SERVER . DIR_WS_CATALOG.'admin/filemanager/",
+  filemanager_title:"VamShop" ,
+  filemanager_access_key:"'. session_name() .'" ,
+  external_plugins: { "filemanager" : "'.HTTP_SERVER . DIR_WS_CATALOG.'admin/filemanager/plugin.min.js"},
+  autosave_ask_before_unload: false,
+  language : "'.$lang.'",
+  image_class_list: [
+    {title: "img-responsive", value: "img-responsive"}
+  ],	
+  plugins: [
+    "advlist autolink lists link image charmap print preview anchor textcolor",
+    "searchreplace visualblocks code help fullscreen",
+    "insertdatetime media table paste imagetools wordcount responsivefilemanager"
+  ],
+  toolbar: "insertfile undo redo | styleselect | bold italic underline forecolor backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | help"
 });
+
 
 function toggleHTMLEditor(id) {
 	if (!tinymce.get(id))
@@ -295,35 +253,28 @@ function toggleHTMLEditor(id) {
                         $val ='<script type="text/javascript" src="'.$js_src.'"></script>
 <script type="text/javascript">
 tinymce.init({
-    selector : "textarea:not(.notinymce)",
-    plugins: [
-	    "advlist autolink autosave link image lists charmap print preview hr anchor pagebreak spellchecker",
-	    "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media responsivefilemanager nonbreaking",
-	    "table contextmenu directionality emoticons template textcolor paste textcolor colorpicker textpattern"
-	  ],
-	
-    toolbar1: "newdocument | bold italic underline strikethrough | alignleft aligncenter alignright alignjustify | styleselect formatselect fontselect fontsizeselect",
-    toolbar2: "cut copy paste | searchreplace | bullist numlist | outdent indent blockquote | undo redo | link unlink anchor image media code | insertdatetime preview | forecolor backcolor",
-    toolbar3: "table | hr removeformat | subscript superscript | charmap emoticons | print fullscreen | ltr rtl | spellchecker | visualchars visualblocks nonbreaking template pagebreak restoredraft",
-    menubar: false,
-    toolbar_items_size: "small",    
-    extended_valid_elements : "script[language|type|src],iframe[src|width|height|name|align|class]",
-    image_advtab: true ,
-    external_filemanager_path: "'.HTTP_SERVER . DIR_WS_CATALOG.'admin/filemanager/",
-    filemanager_title:"VamShop" ,
-    filemanager_access_key:"'. vam_session_name() .'" ,
-    external_plugins: { "filemanager" : "'.HTTP_SERVER . DIR_WS_CATALOG.'admin/filemanager/plugin.min.js"},
-    autosave_ask_before_unload: false,
-    max_height: 200,
-    forced_root_block : false,
-    min_height: 160,
-    height : 180,
-    image_class_list: [
-      {title: "img-responsive", value: "img-responsive"}
-    ],					
-    convert_urls : false,
-    language : "'.$lang.'"
+  selector: "textarea:not(.notinymce)",
+  height: 500,
+  extended_valid_elements : "script[language|type|src],iframe[src|width|height|name|align|class]",
+  image_advtab: true ,
+  convert_urls : false,
+  external_filemanager_path: "'.HTTP_SERVER . DIR_WS_CATALOG.'admin/filemanager/",
+  filemanager_title:"VamShop" ,
+  filemanager_access_key:"'. session_name() .'" ,
+  external_plugins: { "filemanager" : "'.HTTP_SERVER . DIR_WS_CATALOG.'admin/filemanager/plugin.min.js"},
+  autosave_ask_before_unload: false,
+  language : "'.$lang.'",
+  image_class_list: [
+    {title: "img-responsive", value: "img-responsive"}
+  ],	
+  plugins: [
+    "advlist autolink lists link image charmap print preview anchor textcolor",
+    "searchreplace visualblocks code help fullscreen",
+    "insertdatetime media table paste imagetools wordcount responsivefilemanager"
+  ],
+  toolbar: "insertfile undo redo | styleselect | bold italic underline forecolor backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | help"
 });
+
 
 function toggleHTMLEditor(id) {
 	if (!tinymce.get(id))
@@ -340,35 +291,28 @@ function toggleHTMLEditor(id) {
                         $val ='<script type="text/javascript" src="'.$js_src.'"></script>
 <script type="text/javascript">
 tinymce.init({
-    selector : "textarea:not(.notinymce)",
-    plugins: [
-	    "advlist autolink autosave link image lists charmap print preview hr anchor pagebreak spellchecker",
-	    "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media responsivefilemanager nonbreaking",
-	    "table contextmenu directionality emoticons template textcolor paste textcolor colorpicker textpattern"
-	  ],
-	
-    toolbar1: "newdocument | bold italic underline strikethrough | alignleft aligncenter alignright alignjustify | styleselect formatselect fontselect fontsizeselect",
-    toolbar2: "cut copy paste | searchreplace | bullist numlist | outdent indent blockquote | undo redo | link unlink anchor image media code | insertdatetime preview | forecolor backcolor",
-    toolbar3: "table | hr removeformat | subscript superscript | charmap emoticons | print fullscreen | ltr rtl | spellchecker | visualchars visualblocks nonbreaking template pagebreak restoredraft",
-    menubar: false,
-    toolbar_items_size: "small",    
-    extended_valid_elements : "script[language|type|src],iframe[src|width|height|name|align|class]",
-    image_advtab: true ,
-    external_filemanager_path: "'.HTTP_SERVER . DIR_WS_CATALOG.'admin/filemanager/",
-    filemanager_title:"VamShop" ,
-    filemanager_access_key:"'. vam_session_name() .'" ,
-    external_plugins: { "filemanager" : "'.HTTP_SERVER . DIR_WS_CATALOG.'admin/filemanager/plugin.min.js"},
-    autosave_ask_before_unload: false,
-    max_height: 200,
-    forced_root_block : false,
-    min_height: 160,
-    height : 180,
-    image_class_list: [
-      {title: "img-responsive", value: "img-responsive"}
-    ],					
-    convert_urls : false,
-    language : "'.$lang.'"
+  selector: "textarea:not(.notinymce)",
+  height: 500,
+  extended_valid_elements : "script[language|type|src],iframe[src|width|height|name|align|class]",
+  image_advtab: true ,
+  convert_urls : false,
+  external_filemanager_path: "'.HTTP_SERVER . DIR_WS_CATALOG.'admin/filemanager/",
+  filemanager_title:"VamShop" ,
+  filemanager_access_key:"'. session_name() .'" ,
+  external_plugins: { "filemanager" : "'.HTTP_SERVER . DIR_WS_CATALOG.'admin/filemanager/plugin.min.js"},
+  autosave_ask_before_unload: false,
+  language : "'.$lang.'",
+  image_class_list: [
+    {title: "img-responsive", value: "img-responsive"}
+  ],	
+  plugins: [
+    "advlist autolink lists link image charmap print preview anchor textcolor",
+    "searchreplace visualblocks code help fullscreen",
+    "insertdatetime media table paste imagetools wordcount responsivefilemanager"
+  ],
+  toolbar: "insertfile undo redo | styleselect | bold italic underline forecolor backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | help"
 });
+
 
 function toggleHTMLEditor(id) {
 	if (!tinymce.get(id))
@@ -385,35 +329,28 @@ function toggleHTMLEditor(id) {
                         $val ='<script type="text/javascript" src="'.$js_src.'"></script>
 <script type="text/javascript">
 tinymce.init({
-    selector : "textarea:not(.notinymce)",
-    plugins: [
-	    "advlist autolink autosave link image lists charmap print preview hr anchor pagebreak spellchecker",
-	    "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media responsivefilemanager nonbreaking",
-	    "table contextmenu directionality emoticons template textcolor paste textcolor colorpicker textpattern"
-	  ],
-	
-    toolbar1: "newdocument | bold italic underline strikethrough | alignleft aligncenter alignright alignjustify | styleselect formatselect fontselect fontsizeselect",
-    toolbar2: "cut copy paste | searchreplace | bullist numlist | outdent indent blockquote | undo redo | link unlink anchor image media code | insertdatetime preview | forecolor backcolor",
-    toolbar3: "table | hr removeformat | subscript superscript | charmap emoticons | print fullscreen | ltr rtl | spellchecker | visualchars visualblocks nonbreaking template pagebreak restoredraft",
-    menubar: false,
-    toolbar_items_size: "small",    
-    extended_valid_elements : "script[language|type|src],iframe[src|width|height|name|align|class]",
-    image_advtab: true ,
-    external_filemanager_path: "'.HTTP_SERVER . DIR_WS_CATALOG.'admin/filemanager/",
-    filemanager_title:"VamShop" ,
-    filemanager_access_key:"'. vam_session_name() .'" ,
-    external_plugins: { "filemanager" : "'.HTTP_SERVER . DIR_WS_CATALOG.'admin/filemanager/plugin.min.js"},
-    autosave_ask_before_unload: false,
-    max_height: 200,
-    forced_root_block : false,
-    min_height: 160,
-    height : 180,
-    image_class_list: [
-      {title: "img-responsive", value: "img-responsive"}
-    ],					
-    convert_urls : false,
-    language : "'.$lang.'"
+  selector: "textarea:not(.notinymce)",
+  height: 500,
+  extended_valid_elements : "script[language|type|src],iframe[src|width|height|name|align|class]",
+  image_advtab: true ,
+  convert_urls : false,
+  external_filemanager_path: "'.HTTP_SERVER . DIR_WS_CATALOG.'admin/filemanager/",
+  filemanager_title:"VamShop" ,
+  filemanager_access_key:"'. session_name() .'" ,
+  external_plugins: { "filemanager" : "'.HTTP_SERVER . DIR_WS_CATALOG.'admin/filemanager/plugin.min.js"},
+  autosave_ask_before_unload: false,
+  language : "'.$lang.'",
+  image_class_list: [
+    {title: "img-responsive", value: "img-responsive"}
+  ],	
+  plugins: [
+    "advlist autolink lists link image charmap print preview anchor textcolor",
+    "searchreplace visualblocks code help fullscreen",
+    "insertdatetime media table paste imagetools wordcount responsivefilemanager"
+  ],
+  toolbar: "insertfile undo redo | styleselect | bold italic underline forecolor backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | help"
 });
+
 
 function toggleHTMLEditor(id) {
 	if (!tinymce.get(id))
@@ -430,35 +367,28 @@ function toggleHTMLEditor(id) {
                         $val ='<script type="text/javascript" src="'.$js_src.'"></script>
 <script type="text/javascript">
 tinymce.init({
-    selector : "textarea:not(.notinymce)",
-    plugins: [
-	    "advlist autolink autosave link image lists charmap print preview hr anchor pagebreak spellchecker",
-	    "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media responsivefilemanager nonbreaking",
-	    "table contextmenu directionality emoticons template textcolor paste textcolor colorpicker textpattern"
-	  ],
-	
-    toolbar1: "newdocument | bold italic underline strikethrough | alignleft aligncenter alignright alignjustify | styleselect formatselect fontselect fontsizeselect",
-    toolbar2: "cut copy paste | searchreplace | bullist numlist | outdent indent blockquote | undo redo | link unlink anchor image media code | insertdatetime preview | forecolor backcolor",
-    toolbar3: "table | hr removeformat | subscript superscript | charmap emoticons | print fullscreen | ltr rtl | spellchecker | visualchars visualblocks nonbreaking template pagebreak restoredraft",
-    menubar: false,
-    toolbar_items_size: "small",    
-    extended_valid_elements : "script[language|type|src],iframe[src|width|height|name|align|class]",
-    image_advtab: true ,
-    external_filemanager_path: "'.HTTP_SERVER . DIR_WS_CATALOG.'admin/filemanager/",
-    filemanager_title:"VamShop" ,
-    filemanager_access_key:"'. vam_session_name() .'" ,
-    external_plugins: { "filemanager" : "'.HTTP_SERVER . DIR_WS_CATALOG.'admin/filemanager/plugin.min.js"},
-    autosave_ask_before_unload: false,
-    max_height: 200,
-    forced_root_block : false,
-    min_height: 160,
-    height : 180,
-    image_class_list: [
-      {title: "img-responsive", value: "img-responsive"}
-    ],					
-    convert_urls : false,
-    language : "'.$lang.'"
+  selector: "textarea:not(.notinymce)",
+  height: 500,
+  extended_valid_elements : "script[language|type|src],iframe[src|width|height|name|align|class]",
+  image_advtab: true ,
+  convert_urls : false,
+  external_filemanager_path: "'.HTTP_SERVER . DIR_WS_CATALOG.'admin/filemanager/",
+  filemanager_title:"VamShop" ,
+  filemanager_access_key:"'. session_name() .'" ,
+  external_plugins: { "filemanager" : "'.HTTP_SERVER . DIR_WS_CATALOG.'admin/filemanager/plugin.min.js"},
+  autosave_ask_before_unload: false,
+  language : "'.$lang.'",
+  image_class_list: [
+    {title: "img-responsive", value: "img-responsive"}
+  ],	
+  plugins: [
+    "advlist autolink lists link image charmap print preview anchor textcolor",
+    "searchreplace visualblocks code help fullscreen",
+    "insertdatetime media table paste imagetools wordcount responsivefilemanager"
+  ],
+  toolbar: "insertfile undo redo | styleselect | bold italic underline forecolor backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | help"
 });
+
 
 function toggleHTMLEditor(id) {
 	if (!tinymce.get(id))
@@ -475,35 +405,28 @@ function toggleHTMLEditor(id) {
                         $val ='<script type="text/javascript" src="'.$js_src.'"></script>
 <script type="text/javascript">
 tinymce.init({
-    selector : "textarea:not(.notinymce)",
-    plugins: [
-	    "advlist autolink autosave link image lists charmap print preview hr anchor pagebreak spellchecker",
-	    "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media responsivefilemanager nonbreaking",
-	    "table contextmenu directionality emoticons template textcolor paste textcolor colorpicker textpattern"
-	  ],
-	
-    toolbar1: "newdocument | bold italic underline strikethrough | alignleft aligncenter alignright alignjustify | styleselect formatselect fontselect fontsizeselect",
-    toolbar2: "cut copy paste | searchreplace | bullist numlist | outdent indent blockquote | undo redo | link unlink anchor image media code | insertdatetime preview | forecolor backcolor",
-    toolbar3: "table | hr removeformat | subscript superscript | charmap emoticons | print fullscreen | ltr rtl | spellchecker | visualchars visualblocks nonbreaking template pagebreak restoredraft",
-    menubar: false,
-    toolbar_items_size: "small",    
-    extended_valid_elements : "script[language|type|src],iframe[src|width|height|name|align|class]",
-    image_advtab: true ,
-    external_filemanager_path: "'.HTTP_SERVER . DIR_WS_CATALOG.'admin/filemanager/",
-    filemanager_title:"VamShop" ,
-    filemanager_access_key:"'. vam_session_name() .'" ,
-    external_plugins: { "filemanager" : "'.HTTP_SERVER . DIR_WS_CATALOG.'admin/filemanager/plugin.min.js"},
-    autosave_ask_before_unload: false,
-    max_height: 200,
-    forced_root_block : false,
-    min_height: 160,
-    height : 180,
-    image_class_list: [
-      {title: "img-responsive", value: "img-responsive"}
-    ],					
-    convert_urls : false,
-    language : "'.$lang.'"
+  selector: "textarea:not(.notinymce)",
+  height: 500,
+  extended_valid_elements : "script[language|type|src],iframe[src|width|height|name|align|class]",
+  image_advtab: true ,
+  convert_urls : false,
+  external_filemanager_path: "'.HTTP_SERVER . DIR_WS_CATALOG.'admin/filemanager/",
+  filemanager_title:"VamShop" ,
+  filemanager_access_key:"'. session_name() .'" ,
+  external_plugins: { "filemanager" : "'.HTTP_SERVER . DIR_WS_CATALOG.'admin/filemanager/plugin.min.js"},
+  autosave_ask_before_unload: false,
+  language : "'.$lang.'",
+  image_class_list: [
+    {title: "img-responsive", value: "img-responsive"}
+  ],	
+  plugins: [
+    "advlist autolink lists link image charmap print preview anchor textcolor",
+    "searchreplace visualblocks code help fullscreen",
+    "insertdatetime media table paste imagetools wordcount responsivefilemanager"
+  ],
+  toolbar: "insertfile undo redo | styleselect | bold italic underline forecolor backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | help"
 });
+
 
 function toggleHTMLEditor(id) {
 	if (!tinymce.get(id))
