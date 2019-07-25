@@ -20,8 +20,8 @@
 // Display a banner from the specified group or banner id ($identifier)
   function vam_display_banner($action, $identifier) {
     if ($action == 'dynamic') {
-      $banners_query = vam_db_query("select count(*) as count from " . TABLE_BANNERS . " where status = '1' and banners_group = '" . $identifier . "'");
-      $banners = vam_db_fetch_array($banners_query);
+      $banners_query = vamDBquery("select count(*) as count from " . TABLE_BANNERS . " where status = '1' and banners_group = '" . $identifier . "'");
+      $banners = vam_db_fetch_array($banners_query,true);
       if ($banners['count'] > 0) {
         $banner = vam_random_select("select banners_id, banners_title, banners_description, banners_image, banners_html_text from " . TABLE_BANNERS . " where status = '1' and banners_group = '" . $identifier . "'");
       } else {
@@ -31,9 +31,9 @@
       if (is_array($identifier)) {
         $banner = $identifier;
       } else {
-        $banner_query = vam_db_query("select banners_id, banners_title, banners_description, banners_image, banners_html_text from " . TABLE_BANNERS . " where status = '1' and banners_id = '" . $identifier . "'");
-        if (vam_db_num_rows($banner_query)) {
-          $banner = vam_db_fetch_array($banner_query);
+        $banner_query = vamDBquery("select banners_id, banners_title, banners_description, banners_image, banners_html_text from " . TABLE_BANNERS . " where status = '1' and banners_id = '" . $identifier . "'");
+        if (vam_db_num_rows($banner_query,true)) {
+          $banner = vam_db_fetch_array($banner_query,true);
         } else {
           return '<b>VaM Shop ERROR! (vam_display_banner(' . $action . ', ' . $identifier . ') -> Banner with ID \'' . $identifier . '\' not found, or status inactive</b>';
         }
