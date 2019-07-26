@@ -55,8 +55,8 @@ function reload(){
 <fieldset class="form">
 <legend>{#title_returning#}</legend>
 {if $CAPTCHA_IMG !=''}<p>{$CAPTCHA_IMG} <a href="javascript:void(0)" title="{#text_update#}" onclick="reload()">{#text_update#}</a> {$CAPTCHA_INPUT}</p>{/if}
-<p>{#text_email#} {$INPUT_MAIL}</p>
-<p>{#text_password#} {$INPUT_PASSWORD}</p>
+<p><label>{#text_email#}</label> {$INPUT_MAIL}</p>
+<p><label>{#text_password#}</label> {$INPUT_PASSWORD}</p>
 </fieldset>
 <!-- /форма -->
 
