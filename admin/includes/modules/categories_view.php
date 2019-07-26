@@ -174,7 +174,7 @@
         if ( (is_object($cInfo)) && ($categories['categories_id'] == $cInfo->categories_id) ) {
             echo '<tr class="dataTableRowSelected" onmouseover="this.style.cursor=\'hand\'">' . "\n";
         } else {
-            echo '<tr class="dataTableRow" onmouseover="this.className=\'dataTableRowOver\';this.style.cursor=\'hand\'" onmouseout="this.className=\'dataTableRow\'">' . "\n";
+            echo '<tr class="dataTableRow '.$css_class.'" onmouseover="this.className=\'dataTableRowOver '.$css_class.'\';this.style.cursor=\'hand\'" onmouseout="this.className=\'dataTableRow '.$css_class.'\'">' . "\n";
         }
     ?>              
              <td class="<?php echo $css_class; ?>"><input type="checkbox" name="multi_categories[]" value="<?php echo $categories['categories_id'] . '" '; if (is_array($_POST['multi_categories'])) { if (in_array($categories['categories_id'], $_POST['multi_categories'])) { echo 'checked="checked"'; } } ?>></td>
@@ -402,17 +402,17 @@ if ($numr>$max_count){
         $pInfo = new objectInfo($pInfo_array);
       }
 
-      if ( (is_object($pInfo)) && ($products['products_id'] == $pInfo->products_id) ) {
-        echo '<tr class="dataTableRowSelected" onmouseover="this.style.cursor=\'hand\'" >' . "\n";
-      } else {
-        echo '<tr class="dataTableRow" onmouseover="this.className=\'dataTableRowOver\';this.style.cursor=\'hand\'" onmouseout="this.className=\'dataTableRow\'" >' . "\n";
-      }
-
         if (($rows/2) == floor($rows/2)) {
           $css_class = 'categories_view_data_even';
         } else {
           $css_class = 'categories_view_data_odd';
         }
+
+      if ( (is_object($pInfo)) && ($products['products_id'] == $pInfo->products_id) ) {
+        echo '<tr class="dataTableRowSelected" onmouseover="this.style.cursor=\'hand\'" >' . "\n";
+      } else {
+        echo '<tr class="dataTableRow '.$css_class.'" onmouseover="this.className=\'dataTableRowOver '.$css_class.'\';this.style.cursor=\'hand\'" onmouseout="this.className=\'dataTableRow '.$css_class.'\'" >' . "\n";
+      }
 
       ?>
       
