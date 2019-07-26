@@ -14,7 +14,7 @@
 		</div>
 		<div class="col-md-6">
 				<h4 class="title text-truncate"><a href="{$module_data.PRODUCTS_LINK}" title="{$module_data.PRODUCTS_NAME}">{$module_data.PRODUCTS_NAME}</a></h4>
-				{if {$module_data.PRODUCTS_SHORT_DESCRIPTION}}<p>{$module_data.PRODUCTS_SHORT_DESCRIPTION|strip_tags|vam_truncate:240:"...":true}</p>{/if}
+				{if {$module_data.PRODUCTS_SHORT_DESCRIPTION}}<div>{$module_data.PRODUCTS_SHORT_DESCRIPTION|strip_tags|vam_truncate:240:"...":true}</div>{/if}
 				{if $module_data.EXTRA_FIELDS}
 				<div class="description extra_fields">
 				{foreach item=extra_fields from=$module_data.EXTRA_FIELDS}
@@ -49,10 +49,9 @@
 				<div class="price-wrap h4 text-center">
 					{$module_data.PRODUCTS_PRICE}
 				</div>
-				<br />
 				{/if}
 				{if $module_data.PRODUCTS_PRICE_PLAIN > 0}
-				<p>
+				<div>
 	         <form id="cart_quantity{$module_data.PRODUCTS_ID}" class="justify-content-center" action="{$module_data.PRODUCTS_LINK}/products_id/{$module_data.PRODUCTS_ID}/action/add_product" method="post" {if $smarty.const.AJAX_CART == 'true'}onsubmit="doAddProduct(this.products_id.value); return false;"{/if}>
 	         <div class="input-group justify-content-center">
 	         <div class="input-group-prepend">
@@ -66,7 +65,7 @@
 	         <input type="hidden" name="products_id" value="{$module_data.PRODUCTS_ID}" />
 				<button class="btn btn-inverse checkout btn-block"><i class="fas fa-shopping-cart"></i> {$smarty.const.ICON_CART}</button>
 	         </form>
-				</p>
+				</div>
 				{/if}
 			</div>
 		</div>
