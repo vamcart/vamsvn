@@ -598,7 +598,7 @@
     switch ($display_type) {
       case 'pulldown':
         $box_text .= vam_draw_form('filter', $target, 'get');
-        $box_text .= vam_draw_pull_down_menu ($filter_name, $filters_select_array, $filter_value, 'onChange="this.form.submit();"');
+        $box_text .= vam_draw_pull_down_menu ($filter_name, $filters_select_array, $filter_value, 'class="form-control" onChange="this.form.submit();"');
         $box_text .= $additional_variables . vam_hide_session_id();
         $box_text .= '<noscript>' . vam_image_submit('submit.png', TEXT_FIND_PRODUCTS) . '</noscript>';
         $box_text .= '</form>';
@@ -643,7 +643,7 @@
         $value = ($filter_value != 0) ? $filter_value : '';
         $box_text .= vam_draw_form ('filter', $target, 'get');
 		$box_text .= '<div class="for_sliter_box">';
-        $box_text .= vam_draw_input_field($filter_name, $value,'id="amount" style="border:0; text-align:center; color:#81807E; font-weight:bold;"');
+        $box_text .= vam_draw_input_field($filter_name, $value,'id="amount" class="form-control"');
 		$box_text .= '<div id="slider-range"></div>';
 		$box_text .= '</div>';
         $box_text .= $additional_variables . vam_hide_session_id();
@@ -653,7 +653,7 @@
 
       case 'multi':
         $box_text .= vam_draw_form ('filter', $target, 'get');
-        $box_text .= vam_draw_multi_pull_down_menu ($filter_name . '[]', $filters_select_array, $filter_value, 'multiple="' . $filter_name . 'f"');
+        $box_text .= vam_draw_multi_pull_down_menu ($filter_name . '[]', $filters_select_array, $filter_value, 'class="form-control" multiple="' . $filter_name . 'f"');
         $box_text .= $additional_variables . vam_hide_session_id();
         $box_text .= vam_image_submit ('submit.png', TEXT_FIND_PRODUCTS);
         $box_text .= '</form>';
