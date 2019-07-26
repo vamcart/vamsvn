@@ -14,7 +14,7 @@
 			<div class="content">
 				<div class="products">
 					{foreach name=aussen item=products_data from=$products}
-						<div class="media p-2">
+						<div class="media p-2{cycle values=" bg-light, bg-transparent"}">
 							<a class="pull-right" href="{$products_data.LINK}">
 								<img class="media-object p-1" src="{$products_data.IMAGE}" alt="" title="" width="40" height="40" />
 							</a>
@@ -40,7 +40,7 @@
 				</p>
 				{/if}
 				<p class="subtotal">
-					<strong>{$UST}{#text_total#}</strong>
+					<strong>{$UST}{#text_total#}</strong> 
 					<span class="amount">{$TOTAL}</span>
 				</p>
 				<p class="buttons">

@@ -23,7 +23,7 @@
 				<div class="products">
 					{foreach name=aussen item=products_data from=$products}
 					
-		<div class="itemside mb-3">
+		<div class="itemside mb-3{cycle values=" bg-light, bg-transparent"}">
 			<div class="aside"><a class="pull-right" href="{$products_data.LINK}"><img class="media-object" class="img-sm" src="{$products_data.IMAGE}" alt="" title="" width="40" height="40" /></a></div>
 			<div class="text-wrap">
 				{if $smarty.const.AJAX_CART == 'true'}<form id="update_cart{counter name=1}" class="cart_quantity" action="{$products_data.LINK}/action/update_product" method="post" onsubmit="doDelProduct({counter name=2}); return false;">{$products_data.PRODUCTS_QTY}{/if}
