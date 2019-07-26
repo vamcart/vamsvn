@@ -18,7 +18,9 @@
 				{/if}
 				{if {$module_data.PRODUCTS_SHORT_DESCRIPTION}}<p>{$module_data.PRODUCTS_SHORT_DESCRIPTION|strip_tags|vam_truncate:240:"...":true}</p>{/if}
 				{assign var=options value=$module_data.attrib}
+				<div class="col-6 p-0">
 				{include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}module/product_options/multi_options.html"}
+				</div>
 				{if $module_data.EXTRA_FIELDS}
 				<div class="description extra_fields">
 				{foreach item=extra_fields from=$module_data.EXTRA_FIELDS}
