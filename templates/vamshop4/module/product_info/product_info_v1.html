@@ -113,7 +113,7 @@
 
 {if {$PRODUCTS_PRICE_PLAIN} > 0}
 <p class="CartContentLeft">
-<div class="input-group product-info justify-content-center">
+<div class="input-group product-info">
 <div class="input-group-prepend">
  <span class="btn btn-dark value-control" data-action="minus" data-target="quantity{$PRODUCTS_ID}"><i class="fa fa-minus"></i></span>
 </div>
@@ -157,7 +157,12 @@
 
   <div class="tab-pane fade show active" id="description" role="tabpanel" aria-labelledby="description-tab">
 
-   <div itemprop="description">{$PRODUCTS_DESCRIPTION}</div>
+   <div itemprop="description">
+   
+   {$PRODUCTS_DESCRIPTION}
+   
+   
+   </div>
 
 	{if $MODULE_products_media != ''}
 	{$MODULE_products_media}
