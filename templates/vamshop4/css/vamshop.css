@@ -2763,16 +2763,16 @@ label
 
 .btn-secondary,
 .btn-dark {
-    color: #fff;
+    /*color: #fff;
     background-color: #363636;
-    border-color: #363636;
+    border-color: #363636;*/
 }
 
 .btn-secondary:hover,
 .btn-dark:hover {
-    color: #fff;
+    /*color: #fff;
     background-color: #007bff;
-    border-color: #007bff;
+    border-color: #007bff;*/
 }
 	
 /* /Buttons */

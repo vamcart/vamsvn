@@ -22,24 +22,24 @@
 				{include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}module/product_options/multi_options.html"}
 				</div>
 				{if $module_data.EXTRA_FIELDS}
-				<div class="description extra_fields">
+				<div class="description extra_fields text-muted">
 				{foreach item=extra_fields from=$module_data.EXTRA_FIELDS}
 				{if $extra_fields@iteration > 5}{break}{/if} 
 				<div class="{cycle values="spec-odd,spec-even"}">
-				<span class="spec-name">{$extra_fields.NAME}:</span> <span class="spec-value">{$extra_fields.VALUE}</span><br />
+				<span class="spec-name">{$extra_fields.NAME}:</span> <span class="spec-value font-weight-bold">{$extra_fields.VALUE}</span><br />
 				</div>
 				{/foreach}
 				</div>
 				{/if}
 				{if $module_data.SPECS}
-				<div class="description specs">
+				<div class="description specs text-muted">
 				<!-- Specifications -->
 				{foreach name=outer item=spec_group from=$module_data.SPECS}
 				<br />
 				{foreach key=key_data item=spec from=$spec_group.DATA}
 				{if $spec@iteration > 5}{break}{/if} 
 				<div class="{cycle values="spec-odd,spec-even"}">
-				<span class="spec-name">{$spec.NAME}:</span> <span class="spec-value">{$spec.VALUE}</span><br />
+				<span class="spec-name">{$spec.NAME}:</span> <span class="spec-value font-weight-bold">{$spec.VALUE}</span><br />
 				</div>
 				{/foreach}
 				{/foreach}
