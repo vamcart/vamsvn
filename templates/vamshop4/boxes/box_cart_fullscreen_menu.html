@@ -34,12 +34,12 @@
 				<p class="desc">
 				{if $products_data.ATTRIBUTES!=''} 
 				{foreach key=key_data item=item_data from=$products_data.ATTRIBUTES} 
-				{if $item_data.NAME != ''}{$item_data.NAME}:{/if} {if $item_data.VALUE != ''}{$item_data.VALUE}<br />{/if}
+				{if $item_data.NAME != ''}{$item_data.NAME}:{/if} {if $item_data.VALUE != ''}<strong>{$item_data.VALUE}</strong><br />{/if}
 				{/foreach} 
 				{/if}
             </p>
 			<div class="price-wrap">
-			<span class="price-new b">{$products_data.QTY} x {$products_data.PRICE}</span>
+			<span class="price-new b font-weight-bold text-muted">{$products_data.QTY} x {$products_data.PRICE}</span>
 			</div>			
 			</div>
 		</div>
@@ -52,8 +52,8 @@
 				</p>
 				{/if}
 				<p class="subtotal">
-					<strong>{$UST}{#text_total#}</strong>
-					<span class="amount">{$TOTAL}</span>
+					<strong>{$UST}{#text_total#}:</strong>
+					<span class="amount font-weight-bold text-danger">{$TOTAL}</span>
 				</p>
 				<p class="buttons">
 					<a class="btn btn-secondary viewcart" href="{$LINK_CART}"><i class="fa fa-shopping-cart"></i> {#link_cart#}</a>

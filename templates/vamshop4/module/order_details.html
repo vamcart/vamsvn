@@ -37,20 +37,20 @@
     </td>
 
     <td valign="middle" align="left"><strong><a href="{$module_data.PRODUCTS_LINK}">{$module_data.PRODUCTS_NAME}</a></strong><br />
-      {if $module_data.PRODUCTS_SHIPPING_TIME neq ""}{#text_shippingtime#}&nbsp;{$module_data.PRODUCTS_SHIPPING_TIME}{/if}
+      {if $module_data.PRODUCTS_SHIPPING_TIME neq ""}<span class="text-muted">{#text_shippingtime#}&nbsp;<strong>{$module_data.PRODUCTS_SHIPPING_TIME}</strong></span>{/if}
       {if $module_data.ATTRIBUTES!=''} 
       <table border="0" cellspacing="0" cellpadding="0">
         {foreach key=key_data item=item_data from=$module_data.ATTRIBUTES} 
         <tr> 
           <td>{$item_data.NAME}:</td>
-          <td align="left">{$item_data.VALUE_NAME}</td>
+          <td align="left" class="font-weight-bold">{$item_data.VALUE_NAME}</td>
         </tr>
         {/foreach} 
       </table>
       {else}
       {/if} </td>
-    <td valign="middle" align="left">{$module_data.PRODUCTS_SINGLE_PRICE}</td>
-    <td valign="middle" align="left">{$module_data.PRODUCTS_PRICE}&nbsp; 
+    <td valign="middle" align="left" class="font-weight-bold">{$module_data.PRODUCTS_SINGLE_PRICE}</td>
+    <td valign="middle" align="left" class="font-weight-bold">{$module_data.PRODUCTS_PRICE}&nbsp; 
     </td>
     <td width="10" align="left" valign="middle">{$module_data.BOX_DELETE}</td>
   </tr>
