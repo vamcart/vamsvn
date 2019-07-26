@@ -2728,7 +2728,7 @@ label
 
 .btn.btn-inverse {
   color: #ffffff;
-  background-color: #363636;
+  background-color: #6c757d;
   margin-top: 5px;
   margin-right: 5px;
   margin-bottom: 5px;
@@ -2761,20 +2761,6 @@ label
     background-color: #007bff;
 }
 
-.btn-secondary,
-.btn-dark {
-    /*color: #fff;
-    background-color: #363636;
-    border-color: #363636;*/
-}
-
-.btn-secondary:hover,
-.btn-dark:hover {
-    /*color: #fff;
-    background-color: #007bff;
-    border-color: #007bff;*/
-}
-	
 /* /Buttons */
 
 /* Buttons */
@@ -2805,7 +2791,7 @@ span.button button,
 span.button input, 
 del.button span
 	{
-		background-color: #363636;
+		background-color: #6c757d;
 	}
 
 a.button span, 
