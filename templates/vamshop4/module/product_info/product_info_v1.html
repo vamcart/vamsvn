@@ -157,12 +157,7 @@
 
   <div class="tab-pane fade show active" id="description" role="tabpanel" aria-labelledby="description-tab">
 
-   <div itemprop="description">
-   
-   {$PRODUCTS_DESCRIPTION}
-   
-   
-   </div>
+   <div itemprop="description">{$PRODUCTS_DESCRIPTION}</div>
 
 	{if $MODULE_products_media != ''}
 	{$MODULE_products_media}
@@ -205,9 +200,9 @@
 	{if $PRODUCTS_TAGS}
 	<div>
 	{#text_tags#}: 
-   <ul class="d-inline-block list-inline">
+	<ul class="d-inline-block list-inline">
 	{foreach name=tags item=tag from=$tags_data}
-   <li class="list-inline-item">	
+	<li class="list-inline-item">	
 	<a href="{$tag.LINK}"><span class="btn btn-outline-primary">{$tag.NAME}</span></a>
 	</li>
 	{/foreach}
