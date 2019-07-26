@@ -203,12 +203,16 @@
 	{/if}
 	
 	{if $PRODUCTS_TAGS}
-	<p>
+	<div>
 	{#text_tags#}: 
+   <ul class="d-inline-block list-inline">
 	{foreach name=tags item=tag from=$tags_data}
-	<a href="{$tag.LINK}">{$tag.NAME}</a>&nbsp;
+   <li class="list-inline-item">	
+	<a href="{$tag.LINK}"><span class="btn btn-outline-primary">{$tag.NAME}</span></a>
+	</li>
 	{/foreach}
-	</p>
+	</ul>
+	</div>
 	{/if}
 	
 	{if $MODULE_tpt != ''}
