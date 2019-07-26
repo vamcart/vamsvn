@@ -44,7 +44,7 @@ tinymce.init({
     "searchreplace visualblocks code help fullscreen",
     "insertdatetime media table paste imagetools wordcount responsivefilemanager"
   ],
-  toolbar: "insertfile undo redo | styleselect | bold italic underline forecolor backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | help"
+  toolbar: "insertfile undo redo | styleselect | bold italic underline forecolor backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image code | help"
 });
 
 
@@ -82,7 +82,7 @@ tinymce.init({
     "searchreplace visualblocks code help fullscreen",
     "insertdatetime media table paste imagetools wordcount responsivefilemanager"
   ],
-  toolbar: "insertfile undo redo | styleselect | bold italic underline forecolor backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | help"
+  toolbar: "insertfile undo redo | styleselect | bold italic underline forecolor backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image code | help"
 });
 
 
@@ -120,7 +120,7 @@ tinymce.init({
     "searchreplace visualblocks code help fullscreen",
     "insertdatetime media table paste imagetools wordcount responsivefilemanager"
   ],
-  toolbar: "insertfile undo redo | styleselect | bold italic underline forecolor backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | help"
+  toolbar: "insertfile undo redo | styleselect | bold italic underline forecolor backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image code | help"
 });
 
 
@@ -158,7 +158,7 @@ tinymce.init({
     "searchreplace visualblocks code help fullscreen",
     "insertdatetime media table paste imagetools wordcount responsivefilemanager"
   ],
-  toolbar: "insertfile undo redo | styleselect | bold italic underline forecolor backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | help"
+  toolbar: "insertfile undo redo | styleselect | bold italic underline forecolor backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image code | help"
 });
 
 
@@ -196,7 +196,7 @@ tinymce.init({
     "searchreplace visualblocks code help fullscreen",
     "insertdatetime media table paste imagetools wordcount responsivefilemanager"
   ],
-  toolbar: "insertfile undo redo | styleselect | bold italic underline forecolor backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | help"
+  toolbar: "insertfile undo redo | styleselect | bold italic underline forecolor backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image code | help"
 });
 
 
@@ -234,7 +234,7 @@ tinymce.init({
     "searchreplace visualblocks code help fullscreen",
     "insertdatetime media table paste imagetools wordcount responsivefilemanager"
   ],
-  toolbar: "insertfile undo redo | styleselect | bold italic underline forecolor backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | help"
+  toolbar: "insertfile undo redo | styleselect | bold italic underline forecolor backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image code | help"
 });
 
 
@@ -272,7 +272,7 @@ tinymce.init({
     "searchreplace visualblocks code help fullscreen",
     "insertdatetime media table paste imagetools wordcount responsivefilemanager"
   ],
-  toolbar: "insertfile undo redo | styleselect | bold italic underline forecolor backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | help"
+  toolbar: "insertfile undo redo | styleselect | bold italic underline forecolor backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image code | help"
 });
 
 
@@ -310,7 +310,7 @@ tinymce.init({
     "searchreplace visualblocks code help fullscreen",
     "insertdatetime media table paste imagetools wordcount responsivefilemanager"
   ],
-  toolbar: "insertfile undo redo | styleselect | bold italic underline forecolor backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | help"
+  toolbar: "insertfile undo redo | styleselect | bold italic underline forecolor backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image code | help"
 });
 
 
@@ -348,7 +348,7 @@ tinymce.init({
     "searchreplace visualblocks code help fullscreen",
     "insertdatetime media table paste imagetools wordcount responsivefilemanager"
   ],
-  toolbar: "insertfile undo redo | styleselect | bold italic underline forecolor backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | help"
+  toolbar: "insertfile undo redo | styleselect | bold italic underline forecolor backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image code | help"
 });
 
 
@@ -386,7 +386,7 @@ tinymce.init({
     "searchreplace visualblocks code help fullscreen",
     "insertdatetime media table paste imagetools wordcount responsivefilemanager"
   ],
-  toolbar: "insertfile undo redo | styleselect | bold italic underline forecolor backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | help"
+  toolbar: "insertfile undo redo | styleselect | bold italic underline forecolor backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image code | help"
 });
 
 
@@ -424,7 +424,7 @@ tinymce.init({
     "searchreplace visualblocks code help fullscreen",
     "insertdatetime media table paste imagetools wordcount responsivefilemanager"
   ],
-  toolbar: "insertfile undo redo | styleselect | bold italic underline forecolor backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | help"
+  toolbar: "insertfile undo redo | styleselect | bold italic underline forecolor backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image code | help"
 });
 
 
