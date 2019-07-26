@@ -32,16 +32,14 @@
 		</div>
 		<div class="col-md-7">
 			
-<div class="p-2">
+<div class="product-info p-2">
 
+{if $REVIEWS_TOTAL > 0}
 <div class="rating-wrap">
-
- {if $REVIEWS_TOTAL}
- {if $REVIEWS_TOTAL}<a href="{$PRODUCTS_REVIEWS_URL}">{$smarty.const.TEXT_TOTAL_REVIEWS}</a>: {$REVIEWS_TOTAL}, {/if}
- {if $REVIEWS_RATING}{$smarty.const.TEXT_REVIEWS_RATING}: {$STAR_RATING}{/if}
- {/if}
-
+{$STAR_RATING} <span class="text-muted" title="{$smarty.const.TEXT_REVIEWS_RATING}">{$REVIEWS_RATING|number_format:1}</span>
+<div class="label-rating"><span class="text-muted"><i class="far fa-comments"></i> <a href="{$PRODUCTS_REVIEWS_URL}">{$smarty.const.TEXT_TOTAL_REVIEWS}</a>: {$REVIEWS_TOTAL}</span></div>
 </div>
+{/if}
 
 <div class="inner">
 	<a class="iframe" target="_blank" href="{$ASK_PRODUCT_QUESTION_LINK}">{#question#}</a>&nbsp;{$ASK_PRODUCT_QUESTION}
