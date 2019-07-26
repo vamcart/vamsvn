@@ -106,7 +106,7 @@ while ($cat = vam_db_fetch_array($cat_specials_query,true)) {
     );
 }
 
-$vamTemplate->assign('SPECIAL_CATEGORY', vam_draw_pull_down_menu('categories_id', $cat_array, $categories_id, 'onChange="location.href=\''.vam_href_link(FILENAME_SPECIALS, "categories_id='+this.value+'").'\'"'));
+$vamTemplate->assign('SPECIAL_CATEGORY', vam_draw_pull_down_menu('categories_id', $cat_array, $categories_id, 'class="form-control col-3" onChange="location.href=\''.vam_href_link(FILENAME_SPECIALS, "categories_id='+this.value+'").'\'"'));
 
 
 $vamTemplate->assign('language', $_SESSION['language']);
