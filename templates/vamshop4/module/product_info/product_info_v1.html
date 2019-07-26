@@ -48,8 +48,8 @@
 </div>
 
 {if $SHIPPING_NAME}
-<div class="inner">
-	{#text_shippingtime#}&nbsp;{if $SHIPPING_IMAGE}<img src="{$SHIPPING_IMAGE}" alt="{$SHIPPING_NAME}" />{/if}&nbsp;&nbsp;{$SHIPPING_NAME}
+<div class="inner text-muted">
+	{#text_shippingtime#}&nbsp;{if $SHIPPING_IMAGE}<img src="{$SHIPPING_IMAGE}" alt="{$SHIPPING_NAME}" />{/if}&nbsp;&nbsp;<span class="font-weight-bold">{$SHIPPING_NAME}</span>
 </div>
 {/if}
 
@@ -72,23 +72,23 @@
 {/if}
 
 {if $extra_fields_data}
-<div class="description extra_fields">
+<div class="description extra_fields text-muted">
 {foreach item=extra_fields from=$extra_fields_data} 
 {if $extra_fields@iteration > 5}{break}{/if} 
 <div class="{cycle values="spec-odd,spec-even"}">
-<span class="spec-name">{$extra_fields.NAME}:</span> <span class="spec-value">{$extra_fields.VALUE}</span><br />
+<span class="spec-name">{$extra_fields.NAME}:</span> <span class="spec-value font-weight-bold">{$extra_fields.VALUE}</span><br />
 </div>
 {/foreach}
 </div>
 {/if}
 {if $specifications}
-<div class="description specs">
+<div class="description specs text-muted">
 {foreach name=outer item=spec_group from=$specifications_data}
 <br />
 {foreach key=key_data item=spec from=$spec_group.DATA}
 {if $spec@iteration > 5}{break}{/if} 
 <div class="{cycle values="spec-odd,spec-even"}">
-<span class="spec-name">{$spec.NAME}:</span> <span class="spec-value">{$spec.VALUE}</span><br />
+<span class="spec-name">{$spec.NAME}:</span> <span class="spec-value font-weight-bold">{$spec.VALUE}</span><br />
 </div>
 {/foreach}
 {/foreach}
@@ -175,21 +175,21 @@
 	{/if}
 	
 	{if $extra_fields_data|@count > 5}
-	<div class="description extra_fields">
+	<div class="description extra_fields text-muted">
 	{foreach item=extra_fields from=$extra_fields_data} 
 	<div class="{cycle values="spec-odd,spec-even"}">
-	<span class="spec-name">{$extra_fields.NAME}:</span> <span class="spec-value">{$extra_fields.VALUE}</span><br />
+	<span class="spec-name">{$extra_fields.NAME}:</span> <span class="spec-value font-weight-bold">{$extra_fields.VALUE}</span><br />
 	</div>
 	{/foreach}
 	</div>
 	{/if}
 	{if $specifications_count > 5}
-	<div class="description specs">
+	<div class="description specs text-muted">
 	{foreach name=outer item=spec_group from=$specifications_data}
 	<br />
 	{foreach key=key_data item=spec from=$spec_group.DATA}
 	<div class="{cycle values="spec-odd,spec-even"}">
-	<span class="spec-name">{$spec.NAME}:</span> <span class="spec-value">{$spec.VALUE}</span><br />
+	<span class="spec-name">{$spec.NAME}:</span> <span class="spec-value font-weight-bold">{$spec.VALUE}</span><br />
 	</div>
 	{/foreach}
 	{/foreach}
