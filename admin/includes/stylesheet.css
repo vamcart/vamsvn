@@ -1235,3 +1235,25 @@ mg.image_filter {
 	0% { opacity: 0; }
 	100% { opacity: 100%; }
 }
+
+/* Scroll To Top */
+a#scrollup {
+  bottom: 50px;
+  right: 30px;
+  padding: 5px 10px;
+  background: #dd2c00;
+  color: #fff;
+  text-decoration: none;
+}
+
+a#scrollup i{
+  font-size: 16px;
+  text-decoration: none;
+}
+
+a#scrollup:hover {
+  background: #d50000;
+  text-decoration: none;
+}	
+
+/* /Scroll To Top */

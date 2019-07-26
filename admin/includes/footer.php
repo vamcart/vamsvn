@@ -46,3 +46,6 @@ osCommerce provides no warranty and is redistributable under the <a href="http:/
   </td>
   </tr>
 </table>
+
+<script src="<?php echo DIR_WS_CATALOG; ?>jscript/jquery/plugins/scrollup/jquery.scrollup.min.js"></script>
+<script src="<?php echo DIR_WS_ADMIN; ?>includes/javascript/vamshop.js"></script>
