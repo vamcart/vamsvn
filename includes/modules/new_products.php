@@ -75,6 +75,121 @@ while ($new_products = vam_db_fetch_array($new_products_query, true)) {
 	$module_content[] = $product->buildDataArray($new_products);
 
 }
+
+// Attributes start
+foreach($module_content as $k => $m)
+{
+$pID = $module_content[$k]['PRODUCTS_ID'];
+if (vam_has_product_attributes($pID)) {
+$products_options_name_query = vamDBquery("select distinct popt.products_options_id, popt.products_options_name,popt.products_options_type,popt.products_options_length,popt.products_options_rows,popt.products_options_size from ".TABLE_PRODUCTS_OPTIONS." popt, ".TABLE_PRODUCTS_ATTRIBUTES." patrib where patrib.products_id='".$pID."' and patrib.options_id = popt.products_options_id and popt.language_id = '".(int) $_SESSION['languages_id']."' order by popt.products_options_name");
+	$row = 0;
+	$col = 0;
+	$products_options_data = array ();
+	while ($products_options_name = vam_db_fetch_array($products_options_name_query,true)) {
+		$selected = 0;
+		$products_options_array = array ();
+
+		$products_options_data[$row] = array (
+		
+		'NAME' => $products_options_name['products_options_name'],
+		'TYPE'=>$products_options_name['products_options_type'],
+		'ROWS'=>$products_options_name['products_options_rows'],
+		'LENGTH'=>$products_options_name['products_options_length'],
+		'SIZE'=>$products_options_name['products_options_size'], 
+		'ID' => $products_options_name['products_options_id'], 
+		//'DATA' => ''
+		
+		);
+
+		$products_options_query = vamDBquery("select pov.products_options_values_id,
+		                                                 pov.products_options_values_name,
+		                                                 pov.products_options_values_description,
+		                                                 pov.products_options_values_text,
+		                                                 pov.products_options_values_image,
+		                                                 pov.products_options_values_link,
+		                                                 pa.attributes_model,
+		                                                 pa.options_values_price,
+		                                                 pa.price_prefix,
+		                                                 pa.attributes_stock,
+		                                                 pa.attributes_model
+		                                                 from ".TABLE_PRODUCTS_ATTRIBUTES." pa,
+		                                                 ".TABLE_PRODUCTS_OPTIONS_VALUES." pov
+		                                                 where pa.products_id = '".$pID."'
+		                                                 and pa.options_id = '".$products_options_name['products_options_id']."'
+		                                                 and pa.options_values_id = pov.products_options_values_id
+		                                                 and pov.language_id = '".(int) $_SESSION['languages_id']."'
+		                                                 order by pa.sortorder");
+		$col = 0;
+        // added by mosq
+        $checked = 'checked="checked"';
+		while ($products_options = vam_db_fetch_array($products_options_query,true)) {
+			$price = '';
+			if ($_SESSION['customers_status']['customers_status_show_price'] == '0') {
+				//$products_options_data[$row]['DATA'] = array();
+				$products_options_data[$row]['DATA'][$col] = array (
+				
+				'ID' => $products_options['products_options_values_id'], 
+				'TEXT' => $products_options['products_options_values_name'],
+				'DESCRIPTION' => $products_options['products_options_values_description'], 
+				'SHORT_DESCRIPTION' => $products_options['products_options_values_text'], 
+				'IMAGE' => $products_options['products_options_values_image'], 
+				'LINK' => $products_options['products_options_values_link'], 
+				'MODEL' => $products_options['attributes_model'], 
+				'STOCK' => $products_options['attributes_stock'], 
+				'PRICE' => '', 
+				'FULL_PRICE' => '', 
+				'PREFIX' => $products_options['price_prefix'],
+				// added by mosq
+                'CHECKED' => $checked,
+				);
+			
+				$price = '';
+				$full_price = '';
+			} else {
+				if ($products_options['options_values_price'] != '0.00') {
+//					$price = $vamPrice->Format($products_options['options_values_price'], false, $module_content[$k]['PRODUCTS_TAX_INFO']);
+					$price = $vamPrice->GetOptionPrice($pID, $products_options_name['products_options_id'], $products_options['products_options_values_id']);
+					$price = $price['price'];
+				}
+				$products_price = $vamPrice->GetPrice($pID, $format = false, 1, $module_content[$k]['PRODUCTS_TAX_INFO'], $module_content[$k]['PRODUCTS_PRICE']);
+				if ($_SESSION['customers_status']['customers_status_discount_attributes'] == 1 && $products_options['price_prefix'] == '+')
+					$price -= $price / 100 * $discount;				
+					$attr_price=$price;
+					//if ($products_options['price_prefix']=="-") { $attr_price=$price*(-1); $price=$attr_price; }
+					$full_price = $products_price + $attr_price;
+					$price_plain = $vamPrice->Format($price, false);
+					$price = $vamPrice->Format($price, true);
+					$full_price = $vamPrice->Format($full_price, true);
+			}
+			
+			//$products_options_data[$row]['DATA'] = array();
+			$products_options_data[$row]['DATA'][$col] = array (
+			
+			'ID' => $products_options['products_options_values_id'], 
+			'TEXT' => $products_options['products_options_values_name'],
+			'DESCRIPTION' => $products_options['products_options_values_description'], 
+			'SHORT_DESCRIPTION' => $products_options['products_options_values_text'], 
+			'IMAGE' => $products_options['products_options_values_image'], 
+			'LINK' => $products_options['products_options_values_link'], 
+			'MODEL' => $products_options['attributes_model'], 
+			'STOCK' => $products_options['attributes_stock'], 
+			'PRICE' => $price, 
+			'PRICE_PLAIN' => $price_plain, 
+			'FULL_PRICE' => $full_price, 'PREFIX' => $products_options['price_prefix'],
+			// added by mosq
+            'CHECKED' => $checked,
+			);
+			
+			$checked = '';
+			$col ++;
+		}
+		$row ++;
+	}
+$module_content[$k]['attrib'] = $products_options_data;
+}
+}
+// Attributes end
+
 if (sizeof($module_content) >= 1) {
    $module->assign('NEW_PRODUCTS_LINK', vam_href_link(FILENAME_PRODUCTS_NEW));
 	$module->assign('language', $_SESSION['language']);
