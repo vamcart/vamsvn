@@ -95,7 +95,8 @@ if ($error == 1 && $keyerror != 1) {
 	 */
 
 	//$breadcrumb->add(NAVBAR_TITLE1_ADVANCED_SEARCH, vam_href_link(FILENAME_ADVANCED_SEARCH));
-	$breadcrumb->add(NAVBAR_TITLE2_ADVANCED_SEARCH, vam_href_link(FILENAME_ADVANCED_SEARCH_RESULT, 'keywords='.htmlspecialchars(vam_db_input($_GET['keywords'])).'&search_in_description='.vam_db_input($_GET['search_in_description']).'&categories_id='.(int)$_GET['categories_id'].'&inc_subcat='.vam_db_input($_GET['inc_subcat']).'&manufacturers_id='.(int)$_GET['manufacturers_id'].'&pfrom='.vam_db_input($_GET['pfrom']).'&pto='.vam_db_input($_GET['pto']).'&dfrom='.vam_db_input($_GET['dfrom']).'&dto='.vam_db_input($_GET['dto'])));
+	//$breadcrumb->add(NAVBAR_TITLE2_ADVANCED_SEARCH, vam_href_link(FILENAME_ADVANCED_SEARCH_RESULT, 'keywords='.htmlspecialchars(vam_db_input($_GET['keywords'])).'&search_in_description='.vam_db_input($_GET['search_in_description']).'&categories_id='.(int)$_GET['categories_id'].'&inc_subcat='.vam_db_input($_GET['inc_subcat']).'&manufacturers_id='.(int)$_GET['manufacturers_id'].'&pfrom='.vam_db_input($_GET['pfrom']).'&pto='.vam_db_input($_GET['pto']).'&dfrom='.vam_db_input($_GET['dfrom']).'&dto='.vam_db_input($_GET['dto'])));
+	$breadcrumb->add(NAVBAR_TITLE2_ADVANCED_SEARCH);
 
 	require (DIR_WS_INCLUDES.'header.php');
 

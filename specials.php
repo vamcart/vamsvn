@@ -26,7 +26,7 @@ require_once (DIR_FS_INC.'vam_get_short_description.inc.php');
 require_once (DIR_FS_INC.'vam_get_categories.inc.php');
 require_once (DIR_FS_INC.'vam_special_categories_menu.inc.php');
 
-$breadcrumb->add(NAVBAR_TITLE_SPECIALS, vam_href_link(FILENAME_SPECIALS));
+$breadcrumb->add(NAVBAR_TITLE_SPECIALS);
 
 require (DIR_WS_INCLUDES.'header.php');
 

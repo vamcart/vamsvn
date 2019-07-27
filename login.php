@@ -161,7 +161,7 @@ if (isset ($_GET['action']) && ($_GET['action'] == 'process')) {
 	}
 }
 
-$breadcrumb->add(NAVBAR_TITLE_LOGIN, vam_href_link(FILENAME_LOGIN, '', 'SSL'));
+$breadcrumb->add(NAVBAR_TITLE_LOGIN);
 require (DIR_WS_INCLUDES.'header.php');
 
 if ($_GET['info_message']) $info_message = $_GET['info_message'];

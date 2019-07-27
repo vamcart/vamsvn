@@ -31,7 +31,7 @@ require_once (DIR_FS_INC.'vam_get_product_path.inc.php');
 require_once (DIR_FS_INC.'vam_get_products_name.inc.php');
 require_once (DIR_FS_INC.'vam_get_products_image.inc.php');
 
-$breadcrumb->add(NAVBAR_TITLE_ACCOUNT, vam_href_link(FILENAME_ACCOUNT, '', 'SSL'));
+$breadcrumb->add(NAVBAR_TITLE_ACCOUNT);
 
 require (DIR_WS_INCLUDES.'header.php');
 

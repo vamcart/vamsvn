@@ -1095,7 +1095,7 @@ if (isset ($_SESSION['tracking']['refID'])){
 
 
 
-$breadcrumb->add(NAVBAR_TITLE_CREATE_ACCOUNT, vam_href_link(FILENAME_CREATE_ACCOUNT, '', 'SSL'));
+$breadcrumb->add(NAVBAR_TITLE_CREATE_ACCOUNT);
 
 require (DIR_WS_INCLUDES.'header.php');
 

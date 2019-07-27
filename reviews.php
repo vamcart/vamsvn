@@ -25,7 +25,7 @@ require (DIR_FS_CATALOG.'templates/'.CURRENT_TEMPLATE.'/source/boxes.php');
 require_once (DIR_FS_INC.'vam_word_count.inc.php');
 require_once (DIR_FS_INC.'vam_date_long.inc.php');
 
-$breadcrumb->add(NAVBAR_TITLE_REVIEWS, vam_href_link(FILENAME_REVIEWS));
+$breadcrumb->add(NAVBAR_TITLE_REVIEWS);
 
 require (DIR_WS_INCLUDES.'header.php');
 
