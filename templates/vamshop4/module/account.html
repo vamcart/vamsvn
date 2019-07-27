@@ -51,11 +51,13 @@
 <p>
 {#title_orders#}&nbsp;<a href="{$LINK_ALL}">{#text_all#}</a>
 </p>
-{foreach name=aussen item=order_data from=$order_content} <p>
+{foreach name=aussen item=order_data from=$order_content} <div class="p-2 {cycle values="bg-white,bg-transparent"}">
+<p>
 <a href="{$order_data.ORDER_LINK}">{$order_data.ORDER_DATE}</a>&nbsp;&nbsp;{#order_nr#} {$order_data.ORDER_ID}
 </p><p>
 {#order_total#} {$order_data.ORDER_TOTAL}&nbsp;&nbsp;{#order_status#} {$order_data.ORDER_STATUS} </p><p>
-{$order_data.ORDER_BUTTON}</p>{/foreach} 
+{$order_data.ORDER_BUTTON}</p>
+</div>{/foreach} 
 </div>
 </div>
 <!-- /Заказы -->
