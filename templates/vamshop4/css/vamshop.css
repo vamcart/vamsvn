@@ -2511,7 +2511,7 @@ div.navigation
    {
      display: block;
      width: 100%;
-     padding-top: 1em;
+     padding-top: 0;
    }
 
 span.right
