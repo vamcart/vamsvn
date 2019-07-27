@@ -160,7 +160,7 @@ $manual_link = 'article-settings';
     <td valign="top" class="dataTableContent">
     <table width="100%"  border="0" cellspacing="0" cellpadding="2">
       <tr>
-        <td class="main"><label>'.$value_field.'</label></td>
+        <td class="main">'.$value_field.'</td>
       </tr>
     </table>
 </td>
