@@ -18,12 +18,13 @@
 			<div class="price-wrap h5 text-center">
 				{$module_data.PRODUCTS_PRICE}
 			</div>
-			<div class="buy-button text-center">
-				{$module_data.PRODUCTS_BUTTON_BUY_NOW_NEW}
-			</div>
 			{/if}
 			{if $CATEGORIES_NAME && SPECIFICATIONS_BOX_COMPARISON == "True"}<div class="desc text-center"><label><input type="checkbox" id="s_{$module_data.PRODUCTS_ID}" name="products[]" value="{$module_data.PRODUCTS_ID}" /> {#text_compare#}</label></div>{/if}
 		</div>
+      </div>
+      <div class="card-footer text-center">
+			{if $module_data.PRODUCTS_PRICE_PLAIN > 0}{$module_data.PRODUCTS_BUTTON_BUY_NOW_NEW}{/if}
+			<a href="{$module_data.PRODUCTS_LINK}" class="btn btn-secondary"><i class="fas fa-info-circle"></i> {$smarty.const.TEXT_VIEW_PRODUCTS_GO}</a>
       </div>
 	</div>
 <!-- /Product Card Details -->
