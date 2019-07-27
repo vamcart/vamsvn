@@ -183,7 +183,7 @@
     <td valign="top" class="dataTableContent-'.$class.'">
     <table width="100%"  border="0" cellspacing="0" cellpadding="2">
       <tr>
-        <td class="main">'.$value_field.'</td>
+        <td class="main"><label>'.$value_field.'</label></td>
       </tr>
     </table>
 </td>
