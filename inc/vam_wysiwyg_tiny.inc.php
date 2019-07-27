@@ -40,7 +40,7 @@ tinymce.init({
     {title: "img-responsive", value: "img-responsive"}
   ],	
   plugins: [
-    "advlist autolink lists link image charmap print preview anchor textcolor",
+    "advlist autolink lists link image charmap print preview anchor",
     "searchreplace visualblocks code help fullscreen",
     "insertdatetime media table paste imagetools wordcount responsivefilemanager"
   ],
@@ -78,7 +78,7 @@ tinymce.init({
     {title: "img-responsive", value: "img-responsive"}
   ],	
   plugins: [
-    "advlist autolink lists link image charmap print preview anchor textcolor",
+    "advlist autolink lists link image charmap print preview anchor",
     "searchreplace visualblocks code help fullscreen",
     "insertdatetime media table paste imagetools wordcount responsivefilemanager"
   ],
@@ -116,7 +116,7 @@ tinymce.init({
     {title: "img-responsive", value: "img-responsive"}
   ],	
   plugins: [
-    "advlist autolink lists link image charmap print preview anchor textcolor",
+    "advlist autolink lists link image charmap print preview anchor",
     "searchreplace visualblocks code help fullscreen",
     "insertdatetime media table paste imagetools wordcount responsivefilemanager"
   ],
@@ -154,7 +154,7 @@ tinymce.init({
     {title: "img-responsive", value: "img-responsive"}
   ],	
   plugins: [
-    "advlist autolink lists link image charmap print preview anchor textcolor",
+    "advlist autolink lists link image charmap print preview anchor",
     "searchreplace visualblocks code help fullscreen",
     "insertdatetime media table paste imagetools wordcount responsivefilemanager"
   ],
@@ -192,7 +192,7 @@ tinymce.init({
     {title: "img-responsive", value: "img-responsive"}
   ],	
   plugins: [
-    "advlist autolink lists link image charmap print preview anchor textcolor",
+    "advlist autolink lists link image charmap print preview anchor",
     "searchreplace visualblocks code help fullscreen",
     "insertdatetime media table paste imagetools wordcount responsivefilemanager"
   ],
@@ -230,7 +230,7 @@ tinymce.init({
     {title: "img-responsive", value: "img-responsive"}
   ],	
   plugins: [
-    "advlist autolink lists link image charmap print preview anchor textcolor",
+    "advlist autolink lists link image charmap print preview anchor",
     "searchreplace visualblocks code help fullscreen",
     "insertdatetime media table paste imagetools wordcount responsivefilemanager"
   ],
@@ -268,7 +268,7 @@ tinymce.init({
     {title: "img-responsive", value: "img-responsive"}
   ],	
   plugins: [
-    "advlist autolink lists link image charmap print preview anchor textcolor",
+    "advlist autolink lists link image charmap print preview anchor",
     "searchreplace visualblocks code help fullscreen",
     "insertdatetime media table paste imagetools wordcount responsivefilemanager"
   ],
@@ -306,7 +306,7 @@ tinymce.init({
     {title: "img-responsive", value: "img-responsive"}
   ],	
   plugins: [
-    "advlist autolink lists link image charmap print preview anchor textcolor",
+    "advlist autolink lists link image charmap print preview anchor",
     "searchreplace visualblocks code help fullscreen",
     "insertdatetime media table paste imagetools wordcount responsivefilemanager"
   ],
@@ -344,7 +344,7 @@ tinymce.init({
     {title: "img-responsive", value: "img-responsive"}
   ],	
   plugins: [
-    "advlist autolink lists link image charmap print preview anchor textcolor",
+    "advlist autolink lists link image charmap print preview anchor",
     "searchreplace visualblocks code help fullscreen",
     "insertdatetime media table paste imagetools wordcount responsivefilemanager"
   ],
@@ -382,7 +382,7 @@ tinymce.init({
     {title: "img-responsive", value: "img-responsive"}
   ],	
   plugins: [
-    "advlist autolink lists link image charmap print preview anchor textcolor",
+    "advlist autolink lists link image charmap print preview anchor",
     "searchreplace visualblocks code help fullscreen",
     "insertdatetime media table paste imagetools wordcount responsivefilemanager"
   ],
@@ -420,7 +420,7 @@ tinymce.init({
     {title: "img-responsive", value: "img-responsive"}
   ],	
   plugins: [
-    "advlist autolink lists link image charmap print preview anchor textcolor",
+    "advlist autolink lists link image charmap print preview anchor",
     "searchreplace visualblocks code help fullscreen",
     "insertdatetime media table paste imagetools wordcount responsivefilemanager"
   ],
