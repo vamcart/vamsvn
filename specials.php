@@ -69,7 +69,7 @@ $specials_query_raw = "select distinct p.products_id,
                                   
 $specials_split = new splitPageResults($specials_query_raw, $_GET['page'], MAX_DISPLAY_SPECIAL_PRODUCTS);
 
-$module_content = [];
+$module_content = array();
 $row = 0;
 $specials_query = vam_db_query($specials_split->sql_query);
 while ($specials = vam_db_fetch_array($specials_query)) {
