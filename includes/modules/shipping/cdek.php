@@ -77,7 +77,7 @@
 	    $senderCityId = $senderCity["geonames"][0]["id"];
 	
 	    $curl = curl_init();
-	    curl_setopt($curl, CURLOPT_URL, "http://api.cdek.ru/city/getListByTerm/json.php?q=".$order->delivery['city']);
+	    curl_setopt($curl, CURLOPT_URL, "http://api.cdek.ru/city/getListByTerm/json.php?q=".urlencode($order->delivery['city']));
 	    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 	    $data = curl_exec($curl);
 	    
