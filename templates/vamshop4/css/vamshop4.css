@@ -52,7 +52,7 @@ button:focus, button:active, a, a:hover {
 .owl-item{
   display: flex;
   height: auto !important;
-  padding-right: 0px;
+  padding-right: 1px;
   padding-left: 0;
   margin-right: 0;
 }
