@@ -1,7 +1,7 @@
 <footer class="p-3 bg-secondary">
   <div class="container">
   <div class="row">
-    <div class="col-12 col-md">
+    <div class="col-auto mr-auto">
       <a href=""><img class="mb-2" src="{$tpl_path}img/logo.png" alt="{$smarty.const.STORE_NAME}"></a>
       <span class="d-block mb-3 text-white">&copy; {$smarty.now|date_format:"%Y"} {$smarty.const.STORE_NAME}</span>
          <ul class="list-inline">
@@ -15,19 +15,19 @@
       {if $smarty.const.ENABLE_SERVICE_WORKER == 'true'}	<small class="d-block mt-3 text-white"><button class="btn btn-primary btn-sm a2hs-button" id="a2hs-button">{#text_a2hs#}</button></small>{/if}
       
     </div>
-    <div class="col-6 col-md white">
+    <div class="col-auto mr-auto white">
       <h5 class="text-white font-weight-bold">{#heading_infobox#}</h5>
       <ul class="list-unstyled text-small">
         {$box_CONTENT_PULL}
       </ul>
     </div>
-    <div class="col-6 col-md">
+    <div class="col-auto mr-auto">
       <h5 class="text-white font-weight-bold">{#heading_news#}</h5>
       <ul class="list-unstyled text-small">
         {$box_LATESTNEWS_DROPDOWN}
       </ul>
     </div>
-    <div class="col-6 col-md">
+    <div class="col-auto mr-auto">
       <h5 class="text-white font-weight-bold">{#heading_articles_new#}</h5>
       <ul class="list-unstyled text-small">
         {$box_ARTICLESNEW_DROPDOWN}

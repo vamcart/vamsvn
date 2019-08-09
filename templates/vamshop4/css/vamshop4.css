@@ -110,6 +110,7 @@ button:focus, button:active, a, a:hover {
   padding-right: 0;
 }
 
+footer .container,
 .header-logo .container {
   padding-left: 15px;
   padding-right: 15px;
