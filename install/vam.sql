@@ -4065,32 +4065,32 @@ CREATE TABLE `products_bundles` (
 INSERT INTO `manufacturers` (`manufacturers_id`, `manufacturers_name`, `manufacturers_image`, `date_added`, `last_modified`, `manufacturers_seo_url`, `sort_order`) VALUES
 (1, 'Samsung', 'manufacturers/samsung.png', '2019-04-06 18:40:46', NULL, 'samsung.html', 1);
 INSERT INTO `manufacturers_info` (`manufacturers_id`, `languages_id`, `manufacturers_meta_title`, `manufacturers_meta_description`, `manufacturers_meta_keywords`, `manufacturers_url`, `manufacturers_description`, `url_clicked`, `date_last_click`) VALUES
-(1, 1, 'Samsung', 'Samsung', 'Samsung', 'https://samsung.com', 'Товары брэнда Samsung', 0, NULL);
+(1, 1, 'Samsung', 'Samsung', 'Samsung', 'https://samsung.com', 'Товары бренда Samsung', 0, NULL);
 
 INSERT INTO `manufacturers` (`manufacturers_id`, `manufacturers_name`, `manufacturers_image`, `date_added`, `last_modified`, `manufacturers_seo_url`, `sort_order`) VALUES
 (2, 'Samsung Mobile', 'manufacturers/samsung-mobile.png', '2019-04-06 18:40:46', NULL, 'samsung-mobile.html', 2);
 INSERT INTO `manufacturers_info` (`manufacturers_id`, `languages_id`, `manufacturers_meta_title`, `manufacturers_meta_description`, `manufacturers_meta_keywords`, `manufacturers_url`, `manufacturers_description`, `url_clicked`, `date_last_click`) VALUES
-(2, 1, 'Samsung Mobile', 'Samsung Mobile', 'Samsung Mobile', 'https://samsung.com', 'Товары брэнда Samsung Mobile', 0, NULL);
+(2, 1, 'Samsung Mobile', 'Samsung Mobile', 'Samsung Mobile', 'https://samsung.com', 'Товары бренда Samsung Mobile', 0, NULL);
 
 INSERT INTO `manufacturers` (`manufacturers_id`, `manufacturers_name`, `manufacturers_image`, `date_added`, `last_modified`, `manufacturers_seo_url`, `sort_order`) VALUES
 (3, 'Samsung Ativ', 'manufacturers/samsung-ativ.png', '2019-04-06 18:40:46', NULL, 'samsung-ativ.html', 3);
 INSERT INTO `manufacturers_info` (`manufacturers_id`, `languages_id`, `manufacturers_meta_title`, `manufacturers_meta_description`, `manufacturers_meta_keywords`, `manufacturers_url`, `manufacturers_description`, `url_clicked`, `date_last_click`) VALUES
-(3, 1, 'Samsung Ativ', 'Samsung Ativ', 'Samsung Ativ', 'https://samsung.com', 'Товары брэнда Samsung Ativ', 0, NULL);
+(3, 1, 'Samsung Ativ', 'Samsung Ativ', 'Samsung Ativ', 'https://samsung.com', 'Товары бренда Samsung Ativ', 0, NULL);
 
 INSERT INTO `manufacturers` (`manufacturers_id`, `manufacturers_name`, `manufacturers_image`, `date_added`, `last_modified`, `manufacturers_seo_url`, `sort_order`) VALUES
 (4, 'Samsung Galaxy', 'manufacturers/samsung-galaxy.png', '2019-04-06 18:40:46', NULL, 'samsung-galaxy.html', 4);
 INSERT INTO `manufacturers_info` (`manufacturers_id`, `languages_id`, `manufacturers_meta_title`, `manufacturers_meta_description`, `manufacturers_meta_keywords`, `manufacturers_url`, `manufacturers_description`, `url_clicked`, `date_last_click`) VALUES
-(4, 1, 'Samsung Galaxy', 'Samsung Galaxy', 'Samsung Galaxy', 'https://samsung.com', 'Товары брэнда Samsung Galaxy', 0, NULL);
+(4, 1, 'Samsung Galaxy', 'Samsung Galaxy', 'Samsung Galaxy', 'https://samsung.com', 'Товары бренда Samsung Galaxy', 0, NULL);
 
 INSERT INTO `manufacturers` (`manufacturers_id`, `manufacturers_name`, `manufacturers_image`, `date_added`, `last_modified`, `manufacturers_seo_url`, `sort_order`) VALUES
 (5, 'Samsung Galaxy Note', 'manufacturers/samsung-galaxy-note.png', '2019-04-06 18:40:46', NULL, 'samsung-note.html', 5);
 INSERT INTO `manufacturers_info` (`manufacturers_id`, `languages_id`, `manufacturers_meta_title`, `manufacturers_meta_description`, `manufacturers_meta_keywords`, `manufacturers_url`, `manufacturers_description`, `url_clicked`, `date_last_click`) VALUES
-(5, 1, 'Samsung Galaxy Note', 'Samsung Galaxy Note', 'Samsung Galaxy Note', 'https://samsung.com', 'Товары брэнда Samsung Galaxy Note', 0, NULL);
+(5, 1, 'Samsung Galaxy Note', 'Samsung Galaxy Note', 'Samsung Galaxy Note', 'https://samsung.com', 'Товары бренда Samsung Galaxy Note', 0, NULL);
 
 INSERT INTO `manufacturers` (`manufacturers_id`, `manufacturers_name`, `manufacturers_image`, `date_added`, `last_modified`, `manufacturers_seo_url`, `sort_order`) VALUES
 (6, 'Samsung Galaxy Tab', 'manufacturers/samsung-galaxy-tab.png', '2019-04-06 18:40:46', NULL, 'samsung-galaxy-tab.html', 6);
 INSERT INTO `manufacturers_info` (`manufacturers_id`, `languages_id`, `manufacturers_meta_title`, `manufacturers_meta_description`, `manufacturers_meta_keywords`, `manufacturers_url`, `manufacturers_description`, `url_clicked`, `date_last_click`) VALUES
-(6, 1, 'Samsung Galaxy Tab', 'Samsung Galaxy Tab', 'Samsung Galaxy Tab', 'https://samsung.com', 'Товары брэнда Samsung Galaxy Tab', 0, NULL);
+(6, 1, 'Samsung Galaxy Tab', 'Samsung Galaxy Tab', 'Samsung Galaxy Tab', 'https://samsung.com', 'Товары бренда Samsung Galaxy Tab', 0, NULL);
 
 INSERT INTO `banners` (`banners_id`, `banners_title`, `banners_description`, `banners_url`, `banners_image`, `banners_group`, `banners_html_text`, `expires_impressions`, `expires_date`, `date_scheduled`, `date_added`, `date_status_change`, `status`) VALUES
 (1, 'Слайд 1', 'Описание слайда 1', 'https://vamshop.ru', 'slide1.jpg', 'slider_pop_slide', '', NULL, NULL, NULL, '2019-04-06 23:31:11', NULL, 1),
