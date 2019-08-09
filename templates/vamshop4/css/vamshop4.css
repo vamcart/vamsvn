@@ -1,5 +1,5 @@
 body {
-  background: #f3f3f3;
+  background: #f1f1f1;
   font-family: 'M PLUS Rounded 1c', sans-serif;
   font-weight: 500;
 }
@@ -97,15 +97,12 @@ button:focus, button:active, a, a:hover {
 
 /* Main */
 .mainWrapper {
-    /*padding: 1rem 1.2rem;*/
-    padding-bottom: 1rem;  
+    padding-bottom: 1rem; 
+    padding-left: 15px;
+    padding-right: 15px;
     display: block;
     background: transparent;
     border-radius: 0;
-    /*-webkit-box-shadow: 0 1px 3px rgba(51, 51, 51, 0.2);
-    box-shadow: 0 1px 3px rgba(51, 51, 51, 0.2);*/
-    /*border-left: 1px solid rgba(0,0,0,.13);
-    border-right: 1px solid rgba(0,0,0,.13);*/
 }
 
 .container {
