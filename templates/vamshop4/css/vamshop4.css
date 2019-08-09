@@ -110,6 +110,11 @@ button:focus, button:active, a, a:hover {
   padding-right: 0;
 }
 
+.header-logo .container {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
 .card-deck .card {
   margin-left: 0;
 }
