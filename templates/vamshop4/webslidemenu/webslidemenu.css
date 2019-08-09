@@ -1977,6 +1977,7 @@ video {
 .headerwp {
   max-width: 1111px;
   margin: 0 auto;
+  padding: 0 10px;
 }
 
 .headtoppart {
@@ -2001,7 +2002,7 @@ video {
 .headertopright a {
   line-height: 39px;
   color: #9e9e9e;
-  padding: 0 0;
+  padding: 0;
   display: inline-block;
   float: left;
 }
