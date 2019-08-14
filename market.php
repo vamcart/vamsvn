@@ -247,7 +247,7 @@ while ($products = vam_db_fetch_array($products_query)) {
 		$mo_images = vam_get_products_mo_images($products['products_id']);
         if ($mo_images != false) {
             foreach ($mo_images as $img) {
-                vam_yml_out('  <picture>' . HTTP_SERVER . DIR_WS_CATALOG . DIR_WS_ORIGINAL_IMAGES . urldecode($img['image_name']) . '</picture>');
+                vam_yml_out('  <picture>' . HTTP_SERVER . DIR_WS_CATALOG . DIR_WS_POPUP_IMAGES . urldecode($img['image_name']) . '</picture>');
             }
         }
 

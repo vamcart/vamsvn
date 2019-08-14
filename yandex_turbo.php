@@ -318,7 +318,7 @@
       $lang_param = ($product_data['code'] != DEFAULT_LANGUAGE) ? '&language='.$product_data['code'] : '';
       $date = ($product_data['products_last_modified'] != NULL) ? $product_data['products_last_modified'] : $product_data['products_date_added'];
       
-      $string = sprintf(SITEMAP_ENTRY, htmlspecialchars(utf8_encode(vam_href_link(FILENAME_PRODUCT_INFO, vam_product_link($product_data['products_id'], $product_data['products_name']), 'NONSSL', false, SEARCH_ENGINE_FRIENDLY_URLS))) , HTTP_SERVER . DIR_WS_CATALOG . DIR_WS_ORIGINAL_IMAGES . $product_data['products_image'], $product_data['products_name'], $product_data['products_name'], htmlspecialchars(utf8_encode(vam_href_link(FILENAME_PRODUCT_INFO, vam_product_link($product_data['products_id'], $product_data['products_name']), 'NONSSL', false, SEARCH_ENGINE_FRIENDLY_URLS))));
+      $string = sprintf(SITEMAP_ENTRY, htmlspecialchars(utf8_encode(vam_href_link(FILENAME_PRODUCT_INFO, vam_product_link($product_data['products_id'], $product_data['products_name']), 'NONSSL', false, SEARCH_ENGINE_FRIENDLY_URLS))) , HTTP_SERVER . DIR_WS_CATALOG . DIR_WS_POPUP_IMAGES . $product_data['products_image'], $product_data['products_name'], $product_data['products_name'], htmlspecialchars(utf8_encode(vam_href_link(FILENAME_PRODUCT_INFO, vam_product_link($product_data['products_id'], $product_data['products_name']), 'NONSSL', false, SEARCH_ENGINE_FRIENDLY_URLS))));
       
       output($string);
       $strlen += strlen($string);
