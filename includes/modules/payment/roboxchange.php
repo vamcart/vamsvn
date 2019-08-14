@@ -337,8 +337,60 @@ if ($_SERVER["HTTP_X_FORWARDED_FOR"]) {
 
       $process_button_string = '';
 
-                               $order_sum = $order->info['total'];
-                               $crc  = md5(MODULE_PAYMENT_ROBOXCHANGE_LOGIN.':'.$order_sum.':'.substr($_SESSION['cart_roboxchange_id'], strpos($_SESSION['cart_roboxchange_id'], '-')+1).':'.MODULE_PAYMENT_ROBOXCHANGE_PASSWORD1);
+      $order_sum = $order->info['total'];
+      
+      if (MODULE_PAYMENT_ROBOXCHANGE_RECEIPT == 'true') {
+
+			$receipt = array();
+
+			$items = array();
+
+			foreach ($order->products as $product) {
+
+				$items[] = array(
+					'name' => utf8_substr(trim(htmlspecialchars($product['name'])), 0, 63),
+					//'name'     => htmlspecialchars($product['name']),
+					'sum' => number_format($product['final_price'], 2, '.', ''),
+					'quantity' => $product['name'],
+					'payment_method' => 'full_prepayment',
+					'payment_object' => 'commodity',
+					'tax' => 'none'
+				);
+			}
+
+			if ($order->info['shipping_cost'] > 0) {
+				$shipping_name = substr('Доставка - ' . $order->info['shipping_method'], 0, 128);
+				$shipping_price = number_format($order->info['shipping_cost'], 2, '.', '');
+
+				if ($shipping_price > 0) {
+
+					$items[] = array(
+						'name' => substr('Доставка - ' . $order->info['shipping_method'], 0, 128),
+						'sum' => number_format($order->info['shipping_cost'], 2, '.', ''),
+						'quantity' => 1,
+						'tax' => $tax,
+						'payment_method' => 'full_prepayment',
+						'payment_object' => 'commodity',
+					);
+
+				}
+			}
+
+			$data['receipt'] = $receipt[] = json_encode(array(
+				'sno' => 'usn_income',
+				'items' => $items
+
+			));
+
+			$data['receipt'] = urlencode($data['receipt']);
+      
+      $crc  = md5(MODULE_PAYMENT_ROBOXCHANGE_LOGIN.':'.$order_sum.':'.substr($_SESSION['cart_roboxchange_id'], strpos($_SESSION['cart_roboxchange_id'], '-')+1).':'.$data['receipt'].':'.MODULE_PAYMENT_ROBOXCHANGE_PASSWORD1);
+      
+      } else {
+      
+      $crc  = md5(MODULE_PAYMENT_ROBOXCHANGE_LOGIN.':'.$order_sum.':'.substr($_SESSION['cart_roboxchange_id'], strpos($_SESSION['cart_roboxchange_id'], '-')+1).':'.MODULE_PAYMENT_ROBOXCHANGE_PASSWORD1);
+      
+      }
 
       $process_button_string = vam_draw_hidden_field('InvId', substr($_SESSION['cart_roboxchange_id'], strpos($_SESSION['cart_roboxchange_id'], '-')+1)) .
                                vam_draw_hidden_field('MrchLogin', MODULE_PAYMENT_ROBOXCHANGE_LOGIN) .
@@ -548,6 +600,7 @@ $vamTemplate = new vamTemplate;
       vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, use_function, set_function, date_added) values ('MODULE_PAYMENT_ROBOXCHANGE_ZONE', '0', '6', '7', 'vam_get_zone_class_title', 'vam_cfg_pull_down_zone_classes(', now())");
       vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, set_function, use_function, date_added) values ('MODULE_PAYMENT_ROBOXCHANGE_ORDER_STATUS_ID', '0', '6', '8', 'vam_cfg_pull_down_order_statuses(', 'vam_get_order_status_name', now())");
       vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, set_function, date_added) values ('MODULE_PAYMENT_ROBOXCHANGE_TEST', 'test', '6', '9', 'vam_cfg_select_option(array(\'test\', \'production\'), ', now())");
+      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, set_function, date_added) values ('MODULE_PAYMENT_ROBOXCHANGE_RECEIPT', 'false', '6', '10', 'vam_cfg_select_option(array(\'true\', \'false\'), ', now())");
     }
 
     function remove() {
@@ -555,7 +608,7 @@ $vamTemplate = new vamTemplate;
     }
 
     function keys() {
-      return array('MODULE_PAYMENT_ROBOXCHANGE_STATUS', 'MODULE_PAYMENT_ROBOXCHANGE_ALLOWED', 'MODULE_PAYMENT_ROBOXCHANGE_LOGIN', 'MODULE_PAYMENT_ROBOXCHANGE_PASSWORD1', 'MODULE_PAYMENT_ROBOXCHANGE_PASSWORD2',  'MODULE_PAYMENT_ROBOXCHANGE_SORT_ORDER', 'MODULE_PAYMENT_ROBOXCHANGE_ZONE', 'MODULE_PAYMENT_ROBOXCHANGE_ORDER_STATUS_ID', 'MODULE_PAYMENT_ROBOXCHANGE_TEST');
+      return array('MODULE_PAYMENT_ROBOXCHANGE_STATUS', 'MODULE_PAYMENT_ROBOXCHANGE_ALLOWED', 'MODULE_PAYMENT_ROBOXCHANGE_LOGIN', 'MODULE_PAYMENT_ROBOXCHANGE_PASSWORD1', 'MODULE_PAYMENT_ROBOXCHANGE_PASSWORD2',  'MODULE_PAYMENT_ROBOXCHANGE_SORT_ORDER', 'MODULE_PAYMENT_ROBOXCHANGE_ZONE', 'MODULE_PAYMENT_ROBOXCHANGE_ORDER_STATUS_ID', 'MODULE_PAYMENT_ROBOXCHANGE_TEST', 'MODULE_PAYMENT_ROBOXCHANGE_RECEIPT');
     }
 
   }

@@ -14,8 +14,8 @@
    Released under the GNU General Public License 
    ---------------------------------------------------------------------------------------*/
 
-  define('MODULE_PAYMENT_ROBOXCHANGE_TEXT_TITLE', 'RoboKassa (Яндекс.Деньги, WebMoney, карточки Visa, MasterCard)');
-  define('MODULE_PAYMENT_ROBOXCHANGE_TEXT_DESCRIPTION', 'RoboKassa (Яндекс.Деньги, WebMoney, карточки Visa, MasterCard)');
+  define('MODULE_PAYMENT_ROBOXCHANGE_TEXT_TITLE', 'RoboKassa (карточки Visa, MasterCard, МИР, Яндекс.Деньги, WebMoney и т.д.)');
+  define('MODULE_PAYMENT_ROBOXCHANGE_TEXT_DESCRIPTION', 'RoboKassa (карточки Visa, MasterCard, МИР, Яндекс.Деньги, WebMoney и т.д.)');
   
   define('MODULE_PAYMENT_ROBOXCHANGE_STATUS_TITLE','Разрешить модуль roboxchange');
   define('MODULE_PAYMENT_ROBOXCHANGE_STATUS_DESC','Установка<br />
@@ -47,5 +47,8 @@
 
   define('MODULE_PAYMENT_ROBOXCHANGE_TEST_TITLE','Режим работы');
   define('MODULE_PAYMENT_ROBOXCHANGE_TEST_DESC','test - для тестирования работы модуля, production - для полноценного приёма оплаты.');
+
+  define('MODULE_PAYMENT_ROBOXCHANGE_RECEIPT_TITLE','54 ФЗ - Онлайн-чеки');
+  define('MODULE_PAYMENT_ROBOXCHANGE_RECEIPT_DESC','Включить передачу данных корзины в робокассу.');
   
 ?>
