@@ -348,10 +348,10 @@ if ($_SERVER["HTTP_X_FORWARDED_FOR"]) {
 			foreach ($order->products as $product) {
 
 				$items[] = array(
-					'name' => utf8_substr(trim(htmlspecialchars($product['name'])), 0, 63),
+					'name' => substr(trim(htmlspecialchars($product['name'])), 0, 63),
 					//'name'     => htmlspecialchars($product['name']),
 					'sum' => number_format($product['final_price'], 2, '.', ''),
-					'quantity' => $product['name'],
+					'quantity' => $product['qty'],
 					'payment_method' => 'full_prepayment',
 					'payment_object' => 'commodity',
 					'tax' => 'none'
@@ -365,12 +365,12 @@ if ($_SERVER["HTTP_X_FORWARDED_FOR"]) {
 				if ($shipping_price > 0) {
 
 					$items[] = array(
-						'name' => substr('Доставка - ' . $order->info['shipping_method'], 0, 128),
+						'name' => substr('Доставка', 0, 128),
 						'sum' => number_format($order->info['shipping_cost'], 2, '.', ''),
 						'quantity' => 1,
-						'tax' => $tax,
 						'payment_method' => 'full_prepayment',
 						'payment_object' => 'commodity',
+						'tax' => 'none'
 					);
 
 				}
@@ -379,11 +379,10 @@ if ($_SERVER["HTTP_X_FORWARDED_FOR"]) {
 			$data['receipt'] = $receipt[] = json_encode(array(
 				'sno' => 'usn_income',
 				'items' => $items
-
 			));
 
 			$data['receipt'] = urlencode($data['receipt']);
-      
+
       $crc  = md5(MODULE_PAYMENT_ROBOXCHANGE_LOGIN.':'.$order_sum.':'.substr($_SESSION['cart_roboxchange_id'], strpos($_SESSION['cart_roboxchange_id'], '-')+1).':'.$data['receipt'].':'.MODULE_PAYMENT_ROBOXCHANGE_PASSWORD1);
       
       } else {
