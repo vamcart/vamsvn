@@ -379,7 +379,7 @@ if ($_SERVER["HTTP_X_FORWARDED_FOR"]) {
 			$data['receipt'] = $receipt[] = json_encode(array(
 				'sno' => 'usn_income',
 				'items' => $items
-			));
+			), JSON_UNESCAPED_UNICODE);
 
 			$data['receipt'] = urlencode($data['receipt']);
 
