@@ -383,6 +383,8 @@ if ($_SERVER["HTTP_X_FORWARDED_FOR"]) {
 
 			$data['receipt'] = urlencode($data['receipt']);
 
+      //echo var_dump($data['receipt']);			
+
       $crc  = md5(MODULE_PAYMENT_ROBOXCHANGE_LOGIN.':'.$order_sum.':'.substr($_SESSION['cart_roboxchange_id'], strpos($_SESSION['cart_roboxchange_id'], '-')+1).':'.$data['receipt'].':'.MODULE_PAYMENT_ROBOXCHANGE_PASSWORD1);
       
       } else {
