@@ -349,7 +349,6 @@ if ($_SERVER["HTTP_X_FORWARDED_FOR"]) {
 
 				$items[] = array(
 					'name' => substr(trim(htmlspecialchars($product['name'])), 0, 63),
-					//'name'     => htmlspecialchars($product['name']),
 					'sum' => number_format($product['final_price'], 2, '.', ''),
 					'quantity' => $product['qty'],
 					'payment_method' => 'full_prepayment',
@@ -397,6 +396,7 @@ if ($_SERVER["HTTP_X_FORWARDED_FOR"]) {
                                vam_draw_hidden_field('MrchLogin', MODULE_PAYMENT_ROBOXCHANGE_LOGIN) .
                                vam_draw_hidden_field('Desc', substr($_SESSION['cart_roboxchange_id'], strpos($_SESSION['cart_roboxchange_id'], '-')+1)) .
                                vam_draw_hidden_field('OutSum', $order_sum) .
+                               vam_draw_hidden_field('Receipt', $data['receipt']) .
                                vam_draw_hidden_field('SignatureValue', $crc) . 
                                vam_draw_hidden_field('IsTest', $this->is_test);	
 
