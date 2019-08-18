@@ -347,10 +347,14 @@ if ($_SERVER["HTTP_X_FORWARDED_FOR"]) {
     			$country = (!isset($order->delivery["country"])) ? null : $order->delivery["country"] . ', ';
     			$ship_address = $postcode . $city . $street_address;
 
-		if (defined('MODULE_PAYMENT_YANDEX_KASSA_SEND_CHECK') && constant('MODULE_PAYMENT_YANDEX_KASSA_SEND_CHECK') == 'True') {
+		//if (defined('MODULE_PAYMENT_YANDEX_KASSA_SEND_CHECK') && constant('MODULE_PAYMENT_YANDEX_KASSA_SEND_CHECK') == 'True') {
 
             $receipt = array(
-                'customerContact' => $order->customer['email_address'],
+                'customer' => array(
+                                'full_name' => $order->customer['firstname'] . ' ' . $order->customer['lastname'],
+                                'phone' => str_replace(array("(",")","-"," ","+"), "", $order->customer['telephone'])
+                              ),
+
                 'items' => array(),
             );
 
@@ -359,33 +363,33 @@ if ($_SERVER["HTTP_X_FORWARDED_FOR"]) {
                     $id_tax = 1;
 
                 $receipt['items'][] = array(
+                    'description' => substr($product['name'], 0, 128),
                     'quantity' => $product['qty'],
-                    'text' => substr($product['name'], 0, 128),
-                    'paymentMethodType' => 'full_prepayment',
-                    'paymentSubjectType' => 'commodity',
-                    'tax' => $id_tax,
-                    'price' => array(
-                        'amount' => number_format($product['final_price'], 2, '.', ''),
+                    'amount' => array(
+                        'value' => number_format($product['final_price'], 2, '.', ''),
                         'currency' => 'RUB'
                     ),
+                    'payment_mode' => 'full_prepayment',
+                    'payment_subject' => 'commodity',
+                    'vat_code' => $id_tax
                 );
             }
 
             if ($order->info && $order->info['shipping_cost'] > 0) {
                 $id_tax = 1;
                 $receipt['items'][] = array(
+                    'description' => substr('Доставка - ' . $order->info['shipping_method'], 0, 128),
                     'quantity' => 1,
-                    'text' => substr('Доставка - ' . $order->info['shipping_method'], 0, 128),
-                    'paymentMethodType' => 'full_prepayment',
-                    'paymentSubjectType' => 'commodity',
-                    'tax' => $id_tax,
-                    'price' => array(
-                        'amount' => number_format($order->info['shipping_cost'], 2, '.', ''),
+                    'amount' => array(
+                        'value' => number_format($order->info['shipping_cost'], 2, '.', ''),
                         'currency' => 'RUB'
                     ),
+                    'payment_mode' => 'full_prepayment',
+                    'payment_subject' => 'commodity',
+                    'vat_code' => $id_tax
                 );
             }
-        }
+        //}
 
 // Создаём платёж
 
@@ -401,6 +405,7 @@ include_once(DIR_FS_CATALOG.'vendor/yandex-checkout-sdk-php/lib/autoload.php');
                 'value' => number_format($order_sum, 2, '.', ''),
                 'currency' => 'RUB',
             ),
+            'receipt' => $receipt,
             'confirmation' => array(
                 'type' => 'redirect',
                 'return_url' => vam_href_link(FILENAME_CHECKOUT_PROCESS, '', 'SSL'),
