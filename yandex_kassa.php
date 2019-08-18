@@ -14,66 +14,40 @@
   Released under the GNU General Public License
 ------------------------------------------------------------------------------*/
 
-function get_var($name, $default = 'none') {
-  return (isset($_GET[$name])) ? $_GET[$name] : ((isset($_POST[$name])) ? $_POST[$name] : $default);
-}
-
 require('includes/application_top.php');
 require (DIR_WS_CLASSES.'order.php');
 require_once (DIR_FS_INC.'vam_send_answer_template.inc.php');
 
-header('Content-type: text/xml; charset=utf-8');
-
 // logging
-$fp = fopen('yandex.log', 'a+');
-$str=date('Y-m-d H:i:s').' - ';
-foreach ($_POST as $vn=>$vv) {
-  $str.=$vn.'='.$vv.';';
-}
+//$fp = fopen('yandex.log', 'a+');
+//$str=date('Y-m-d H:i:s').' - ';
+//foreach ($_POST as $vn=>$vv) {
+  //$str.=$vn.'='.$vv.';';
+//}
 
-fwrite($fp, $str."\n");
-fclose($fp);
+//fwrite($fp, $str."\n");
+//fclose($fp);
 
-$crc = $_POST['md5'];
+$data = file_get_contents('php://input');
+$json = json_decode($data, true);
 
-$inv_id = $_POST['orderNumber'];
+$inv_id = $json['object']['description'];
 $order = new order($inv_id);
 $order_sum = $order->info['total'];
 
-$hash = strtoupper(md5($_POST['action'].';'.$_POST['orderSumAmount'].';'.$_POST['orderSumCurrencyPaycash'].';'.$_POST['orderSumBankPaycash'].';'.$_POST['shopId'].';'.$_POST['invoiceId'].';'.$_POST['customerNumber'].';'.MODULE_PAYMENT_YANDEX_KASSA_SECRET_KEY));
-
-if (!$_POST['paymentDatetime'] && $_POST['action'] == 'process') {
-if ($hash == $crc) {
-echo '<?xml version="1.0" encoding="UTF-8"?>
-<checkOrderResponse performedDatetime="'.$_POST['requestDatetime'].'"
-                    code="0" invoiceId="'.$_POST['invoiceId'].'"
-                    shopId="'.MODULE_PAYMENT_YANDEX_KASSA_SHOP_ID.'"/>';
-}
-}
-
-if ($_POST['paymentDatetime'] != '' && $_POST['action'] == 'process') {
-if ($hash == $crc) {
-echo '<?xml version="1.0" encoding="UTF-8"?>
-<paymentAvisoResponse
-    performedDatetime="'.$_POST['requestDatetime'].'"
-    code="0" invoiceId="'.$_POST['invoiceId'].'"
-    shopId="'.MODULE_PAYMENT_YANDEX_KASSA_SHOP_ID.'"/>';
-}
-}
-
 // checking and handling
-if ($_POST['paymentDatetime'] != '' && $_POST['action'] == 'process') {
-if ($hash == $crc) {
-if (number_format($_POST['orderSumAmount'],0) == number_format($order->info['total'],0)) {
+if ($json['event'] == 'payment.succeeded' && $json['object']['status'] == 'succeeded') {
+if ($json['object']['paid'] == 'true') {
+if (number_format($json['object']['amount']['value'],0) == number_format($order->info['total'],0)) {
   $sql_data_array = array('orders_status' => MODULE_PAYMENT_YANDEX_KASSA_ORDER_STATUS_ID);
   vam_db_perform('orders', $sql_data_array, 'update', "orders_id='".$inv_id."'");
 
-  $sql_data_arrax = array('orders_id' => $inv_id,
+  $sql_data_array = array('orders_id' => $inv_id,
                           'orders_status_id' => MODULE_PAYMENT_YANDEX_KASSA_ORDER_STATUS_ID,
                           'date_added' => 'now()',
                           'customer_notified' => '0',
-                          'comments' => 'Yandex Money accepted this order payment');
-  vam_db_perform('orders_status_history', $sql_data_arrax);
+                          'comments' => 'Yandex.Kassa accepted this order payment');
+  vam_db_perform('orders_status_history', $sql_data_array);
 
 	//Send answer template
 	vam_send_answer_template($inv_id,MODULE_PAYMENT_YANDEX_KASSA_ORDER_STATUS_ID,'on','on');
