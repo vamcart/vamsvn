@@ -1,0 +1,383 @@
+<style>
+
+.vamshop-block {
+background: #d5d5d5;
+background: linear-gradient(to bottom, #d5d5d5 0%,#e3e3e3 100%);
+margin-bottom: 1em;
+}
+
+
+.vamshop-block h5.line {
+    display: flex;
+    width: 30%;
+    margin: 0 auto;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.vamshop-block h5.line:before,
+.vamshop-block h5.line:after {
+    content: '';
+    border-top: 2px solid;
+    margin: 0 20px 0 0;
+    flex: 1 0 20px;
+}
+
+.vamshop-block h5.line:after {
+    margin: 0 0 0 20px;
+}
+
+
+.vamshop-block .jumbotron {
+background: rgba(54,54,54,1);
+background: -moz-linear-gradient(top, rgba(54,54,54,1) 0%, rgba(31,27,20,1) 100%);
+background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(54,54,54,1)), color-stop(100%, rgba(31,27,20,1)));
+background: -webkit-linear-gradient(top, rgba(54,54,54,1) 0%, rgba(31,27,20,1) 100%);
+background: -o-linear-gradient(top, rgba(54,54,54,1) 0%, rgba(31,27,20,1) 100%);
+background: -ms-linear-gradient(top, rgba(54,54,54,1) 0%, rgba(31,27,20,1) 100%);
+background: linear-gradient(to bottom, rgba(54,54,54,1) 0%, rgba(31,27,20,1) 100%);
+padding: 2rem 1rem;
+border-radius: .3rem .3rem 0 0;
+margin-bottom: 0;
+}
+
+.vamshop-block .card.card-product {
+transition: .5s;
+box-shadow: 0px 10px 16px -8px rgba(173,173,173,0.43);
+}
+
+.vamshop-block .card.card-product:hover {
+box-shadow: 0 4px 15px rgba(153,153,153,.3);
+}
+
+
+.vamshop-block .card.card-product .card-header.orange {
+  background: rgb(221,44,0);
+  background: linear-gradient(180deg, rgba(221,44,0,1) 0%, rgba(228,82,3,1) 100%);
+}
+
+.vamshop-block .card.card-product .card-header.white {
+  background: rgba(255,255,255,1);
+  background: linear-gradient(to bottom, rgba(255,255,255,1) 0%, rgba(246,246,246,1) 47%, rgba(237,237,237,1) 100%);
+}
+
+.vamshop-block .jumbotron.orange {
+  background: rgb(221,44,0);
+  background: linear-gradient(180deg, rgba(221,44,0,1) 0%, rgba(228,82,3,1) 100%);
+}
+
+.vamshop-block .jumbotron.red {
+  background: transparent;
+}
+
+.vamshop-block .jumbotron.ellipse {
+  position: relative;
+  height: 220px;
+  margin-bottom: 150px;
+  background-image: linear-gradient(#ff9d2f, #ff6126);
+  border-bottom-left-radius: 50% 40%;
+  border-bottom-right-radius: 50% 40%;
+}
+ 
+#chevron {
+  position: relative;
+  text-align: center;
+  padding: 12px;
+  margin-bottom: 6px;
+  height: 200px;
+  width: 100%;
+}
+
+#chevron:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 51%;
+  background: linear-gradient(180deg, rgba(221,44,0,1) 0%, rgba(228,82,3,1) 100%);
+  transform: skew(0deg, 6deg);
+}
+
+#chevron:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 50%;
+  background: linear-gradient(180deg, rgba(221,44,0,1) 0%, rgba(228,82,3,1) 100%);
+  transform: skew(0deg, -6deg);
+}
+
+.vamshop-block.block-1 .card-body,
+.vamshop-block.block-1 .card-footer,
+.vamshop-block.block-2 .card-body,
+.vamshop-block.block-2 .card-footer,
+.vamshop-block.block-3 .card-body,
+.vamshop-block.block-3 .card-footer,
+.vamshop-block.block-5 .card-body,
+.vamshop-block.block-5 .card-footer,
+.vamshop-block.block-4 .card-footer {
+padding: 0;
+margin: 0;
+}
+
+.vamshop-block.block-1 .card-header,
+.vamshop-block.block-2 .card-header,
+.vamshop-block.block-5 .card-header,
+.vamshop-block.block-3 .card-header {
+border-radius: 4px;
+}
+
+.vamshop-block.block-2 .card-body,
+.vamshop-block.block-3 .card-body,
+.vamshop-block.block-5 .card-body,
+.vamshop-block.block-4 .card-body {
+border-radius: 4px;
+}
+
+</style>
+
+<div class="vamshop-block block-1">
+
+  <!-- Main jumbotron for a primary marketing message or call to action -->
+  <div class="jumbotron black">
+    <div class="container text-center">
+    <img src="templates/vamshop4/img/codecanyon/icons/vamshop-box-256.png" alt="VamShop">
+      <h4 class="line text-light">VamShop - React Shopping Cart CMS</h4>
+      <h5 class="line text-light">PWA/SPA eCommerce App</h5>
+      <div class="text-light">
+      <ul class="list-inline text-light">
+      <li class="list-inline-item">
+      <i class="fab fa-react fa-3x"></i>
+      </li>
+      <li class="list-inline-item">
+      <i class="fab fa-js fa-3x"></i>
+      </li>
+      <li class="list-inline-item">
+      <i class="fab fa-html5 fa-3x"></i>
+      </li>
+      <li class="list-inline-item">
+      <i class="fab fa-css3 fa-3x"> </i>
+      </li>
+      </ul>
+      </div>
+      <div class="text-light pt-2">
+      <ul class="list-inline text-light">
+      <li class="list-inline-item">
+      <a class="btn btn-primary btn-lg" target="_blank" href="https://vamcart.com" role="button">Online Demo</a>
+      </li>
+      </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="container p-3">
+
+  <h5 class="line text-dark">Table Of Contents</h5>
+
+  <ol class="text-dark">
+  <li class=""><a href="pwa-install.html#system">System Requirements</a></li>
+  <li class=""><a href="pwa-install.html#demo">Online Demo</a></li>
+  <li class=""><a href="pwa-install.html#features">Features</a></li>
+  <li class=""><a href="pwa-install.html#install">Installation</a></li>
+  <li class=""><a href="pwa-install.html#support">Customer Support</a></li>
+  </ol>      
+
+  <h5 class="line text-dark" id="demo">Online Demo</h5>
+      
+  <ul class="text-dark">
+  <li class=""><a class="" target="_blank" href="https://vamcart.com" role="button">Store App Demo</a></li>
+  <li class=""><a class="" target="_blank" href="https://admin.vamcart.com" role="button">Dashboard App Demo</a></li>
+  <li class=""><a class="" target="_blank" href="https://vamcart.com/api/v1/settings" role="button">Backend App Demo</a></li>
+  </ul>
+
+  <h5 class="line text-dark" id="system">System Requirements</h5>
+      
+  <ul class="text-dark">
+  <li class="">NodeJS: <strong>8.x-11.x</strong></li>
+  <li class="">NPM: <strong>>=6.3.0</strong></li>
+  <li class="">PM2: <strong>>=3.0.3</strong></li>
+  <li class="">MongoDB: <strong>>=4.0</strong></li>
+  </ul>        
+
+  <h5 class="line text-dark" id="features">Features</h5>
+      
+<ul class="text-dark">
+<li>Products (options, variants, attributes)</li>
+<li>Product categories</li>
+<li>Inventory and stock management</li>
+<li>Customers</li>
+<li>Customer groups</li>
+<li>Orders</li>
+<li>Order custom statuses</li>
+<li>Pages</li>
+<li>File manager</li>
+<li>Shipping and payment methods</li>
+<li>Custom shipping fields</li>
+<li>Payment Gateways</li>
+<li>Checkout options</li>
+<li>Access Tokens</li>
+<li>Export theme to zip archive</li>
+<li>Install theme from zip archive</li>
+<li>Theme Settings</li>
+<li>Apps Store</li>
+<li>Server-side rendering (SEO friendly)</li>
+<li>Passwordless</li>
+</ul> 
+
+  <h5 class="line text-dark" id="install">Installation</h5>
+
+  <ul class="text-dark">
+  <li class="">Unzip vamshop archive.</li>
+  </ul>   
+
+<article class="markdown-body entry-content p-3 p-md-6" itemprop="text">
+<h3><a id="user-content-a-vamshop-backend-api-installation" class="anchor" aria-hidden="true" href="#a-vamshop-backend-api-installation"></a>A) Backend (API) Installation</h3>
+Go to <strong>vamshop-api</strong> directory.
+<ul>
+<li><strong>Change settings at config/server.js</strong></li>
+<li>
+<p><strong>Open <code>server.js</code> and change</strong></p>
+<ul>
+<li><strong>MongoDB Creditionals</strong> - you can use default values for the first time.</li>
+<li><strong>SMTP Settings</strong> - you can use default values for the first time.</li>
+<li><strong>JWT and Cookie Secret Key</strong> - you can use default values for the first time.</li>
+</ul>
+<p>Save file and go back to root app direcotry</p>
+<div class="highlight highlight-source-shell"><pre>cd ../</pre></div>
+</li>
+<li>
+<p><strong>Install dependencies</strong></p>
+<div class="highlight highlight-source-shell"><pre>npm i</pre></div>
+</li>
+</ul>
+<ul>
+<li><strong>Setup database</strong></li>
+</ul>
+<ul>
+<li>
+<p>Prepare database at this setup our database is empty. To add default data, indexes and access token we need to run:</p>
+<div class="highlight highlight-source-shell"><pre>npm run setup <email> <domain></pre></div>
+</li></ul>
+<ul>
+<li>
+<p>We don't have real domain, so we'll use our local domain:</p>
+<div class="highlight highlight-source-shell"><pre>npm run setup admin@example.com http://localhost:3000</pre></div>
+</li>
+<li>
+<p>This script will add token with email <a href="mailto:admin@example.com">admin@example.com</a> and my domain to <a href="http://localhost" rel="nofollow">http://localhost</a></p>
+</li>
+<li>
+<p><strong>Start application in the background</strong></p>
+<div class="highlight highlight-source-shell"><pre>pm2 start process.json</pre></div>
+</li>
+</ul>
+<ul>
+<li>
+<p><strong>or you can start app in your terminal (you will see debug information, that is useful for debug):</strong></p>
+<div class="highlight highlight-source-shell"><pre>npm start</pre></div>
+</li>
+</ul>
+<ul>
+<li>
+<p>At this setup, we have api running on port 3001 and available at <strong><a href="http://localhost:3001" rel="nofollow">http://localhost:3001</a></strong></p>
+</li>
+<li>
+<p>For example, we can open in browser default store settings: <strong><a href="http://localhost:3001/api/v1/settings" rel="nofollow">http://localhost:3001/api/v1/settings</a></strong></p>
+<div class="highlight highlight-source-shell"><pre>info: API running at http://localhost:3001
+info: MongoDB connected successfully</pre></div>
+</li>
+</ul>
+<h3><a id="user-content-b-vamshop-frontend-store-installation" class="anchor" aria-hidden="true" href="#b-vamshop-frontend-store-installation"></a>B) Frontend (Store) Installation</h3>
+<ul>
+<li>
+<p><strong>Change settings</strong></p>
+<div class="highlight highlight-source-shell"><pre>cd vamshop-storefront/config</pre></div>
+</li>
+</ul>
+<ul>
+<li>
+<p><strong>Open store.js and change</strong></p>
+<ul>
+<li><strong>JWT and Cookie Secret Key</strong> - you can use default values for the first time.</li>
+</ul>
+<p>Save file and go back to root app direcotry</p>
+<div class="highlight highlight-source-shell"><pre>cd ../</pre></div>
+</li>
+<li>
+<p><strong>Install dependencies</strong></p>
+<div class="highlight highlight-source-shell"><pre>npm i</pre></div>
+</li>
+</ul>
+<ul>
+<li>
+<p><strong>Build project</strong></p>
+<div class="highlight highlight-source-shell"><pre>npm run build</pre></div>
+</li>
+</ul>
+<ul>
+<li>
+<p><strong>Start vamshop store frontend application in the background</strong></p>
+<div class="highlight highlight-source-shell"><pre>pm2 start process.json</pre></div>
+</li>
+</ul>
+<ul>
+<li>
+<p>or you can start app in your terminal (you will see debug information, that is useful for debug):</p>
+<div class="highlight highlight-source-shell"><pre>npm start</pre></div>
+</li>
+</ul>
+<ul>
+<li>At this setup your vamshop store is now connected to api and available in browser at <strong><a href="http://localhost:3000" rel="nofollow">http://localhost:3000</a></strong></li>
+<li>
+<p><strong>P.S. Your backend (api) must be online. Don't forget to start backend before you starting storefront app.</strong></p>
+<div class="highlight highlight-source-shell"><pre>info: Store running at http://localhost:3000</pre></div>
+</li>
+</ul>
+<h3><a id="user-content-c-vamshop-admin-dashboard-installation" class="anchor" aria-hidden="true" href="#c-vamshop-admin-dashboard-installation"></a>C) Admin Dashboard Installation</h3>
+<ul>
+<li>
+<p><strong>Go to vamshop-dashboard app folder</strong></p>
+<div class="highlight highlight-source-shell"><pre>cd vamshop-dashboard</pre></div>
+</li>
+</ul>
+<ul>
+<li>
+<p><strong>Install dependencies</strong></p>
+<div class="highlight highlight-source-shell"><pre>npm i</pre></div>
+</li>
+</ul>
+<ul>
+<li><p><strong>Build project</strong></p>
+<div class="highlight highlight-source-shell"><pre>npm run build</pre></div>
+</li>
+</ul>
+<ul>
+<li><p><strong>Start vamshop store frontend application in the background</strong></p>
+<div class="highlight highlight-source-shell"><pre>pm2 start process.json</pre></div>
+</li>
+</ul>
+<ul>
+<li><p>or:</p>
+<div class="highlight highlight-source-shell"><pre>pm2 serve ./dist 3002</pre></div>
+</li>
+</ul>
+<ul>
+<li>At this setup your vamshop admin dashboard app is now connected to api and available in browser at <strong><a href="http://localhost:3002" rel="nofollow">http://localhost:3002</a></strong></li>
+<li><strong>P.S. Your backend (api) must be online. Don't forget to start backend before you starting admin dashboard app.</strong></li>
+</ul>
+</article>
+
+      
+  <h5 class="line text-dark" id="support">Customer Support</h5>
+      
+  <ul class="text-dark">
+  <li class=""><a href="https://codecanyon.net/user/vamshop" target="_blank">Contact Form</a></li>
+  </ul>   
+  </div>
+
+</div>
+
