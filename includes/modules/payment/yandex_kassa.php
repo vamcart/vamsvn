@@ -412,6 +412,7 @@ include_once(DIR_FS_CATALOG.'vendor/yandex-checkout-sdk-php/lib/autoload.php');
             ),
             'capture' => true,
             'description' => $order_id,
+            'cms_name' => 'vamshop'
         ),
         uniqid('', true)
     );
