@@ -84,7 +84,7 @@ require ('includes/application_top.php');
     $report_desc = REPORT_TYPE_YEARLY;
   }
 
-  $report_desc = $report_desc . ' ' . REPORT_TYPE_MONTHLY;
+    $report_desc = BOX_SALES_REPORT . ' ' . $report_desc;
 
   // check start and end Date
   $startDate = "";
@@ -142,7 +142,7 @@ $data_date[] = $report->info[$i]['text'];
         var plot1 = $.jqplot("chart1", [l1, l2],  {
           animate: true,
           animateReplot: true,         	
-          title: "<?php echo $report_descl ?>",
+          title: "<?php echo $report_desc; ?>",
           legend:{show:true,location:"se",labels:["<?php echo TABLE_HEADING_STAT_ORDERS; ?>'","<?php echo TABLE_HEADING_CONVERSION; ?>"]},
           series:[
           {color:"#0077cc"},
