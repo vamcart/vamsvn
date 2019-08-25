@@ -138,7 +138,7 @@
                     $tick_interval = 'week';
                 break;
                 case '4':
-                    $tick_format = '%Y-%m';
+                    $tick_format = '%m';
                     $tick_interval = 'month';
                 break;
                 case '5':
