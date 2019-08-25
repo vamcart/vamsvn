@@ -126,27 +126,22 @@
             switch ($_GET['report'])
             {
                 case '1':
-                    $options['stamp_dat'] = date("Y-m-d H:i:s",time()-(24*3600));
                     $tick_format = '%H:%i';
                     $tick_interval = 'hour';
                 break;
                 case '2':
-                    $options['stamp_dat'] = date("Y-m-d H:i:s",time()-(14*24*3600));
                     $tick_format = '%m-%d-%Y';
                     $tick_interval = 'day';
                 break;
                 case '3':
-                    $options['stamp_dat'] = date("Y-m-d H:i:s",time()-(7*24*3600));
                     $tick_format = '%l';
                     $tick_interval = 'week';
                 break;
                 case '4':
-                    $options['stamp_dat'] = date("Y-m-d H:i:s",time()-(365*24*3600));
                     $tick_format = '%Y-%m';
                     $tick_interval = 'month';
                 break;
                 case '5':
-                    $options['stamp_dat'] = date("Y-m-d H:i:s",time()-(10*365*24*3600));
                     $tick_format = '%Y';
                     $tick_interval = 'year';
                 break;

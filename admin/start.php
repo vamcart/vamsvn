@@ -283,7 +283,7 @@ $data_date[] = $report->info[$i]['text'];
           tickInterval: "1 month",
 
           tickOptions: {
-              //formatString: "%Y/%m"
+              formatString: "%m"
           }
            
         },
