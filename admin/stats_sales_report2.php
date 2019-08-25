@@ -107,6 +107,111 @@
 			});
 		</script>
 <?php } ?>
+
+		<script type="text/javascript" src="../jscript/jquery/plugins/jqplot/jquery.jqplot.js"></script>
+		<script type="text/javascript" src="../jscript/jquery/plugins/jqplot/plugins/jqplot.highlighter.min.js"></script>
+		<script type="text/javascript" src="../jscript/jquery/plugins/jqplot/plugins/jqplot.canvasTextRenderer.min.js"></script>
+		<script type="text/javascript" src="../jscript/jquery/plugins/jqplot/plugins/jqplot.barRenderer.min.js"></script>
+		<script type="text/javascript" src="../jscript/jquery/plugins/jqplot/plugins/jqplot.dateAxisRenderer.min.js"></script>
+		<link type="text/css" href="../jscript/jquery/plugins/jqplot/jquery.jqplot.min.css" rel="stylesheet" />	
+
+
+<script>
+<?php
+
+  include_once(DIR_FS_ADMIN.'chart_data.php');
+
+  $report_desc = BOX_SALES_REPORT . ' ' . $report_desc;
+
+            switch ($_GET['report'])
+            {
+                case '1':
+                    $options['stamp_dat'] = date("Y-m-d H:i:s",time()-(24*3600));
+                    $tick_format = '%H:%i';
+                    $tick_interval = 'hour';
+                break;
+                case '2':
+                    $options['stamp_dat'] = date("Y-m-d H:i:s",time()-(14*24*3600));
+                    $tick_format = '%m-%d-%Y';
+                    $tick_interval = 'day';
+                break;
+                case '3':
+                    $options['stamp_dat'] = date("Y-m-d H:i:s",time()-(7*24*3600));
+                    $tick_format = '%l';
+                    $tick_interval = 'week';
+                break;
+                case '4':
+                    $options['stamp_dat'] = date("Y-m-d H:i:s",time()-(365*24*3600));
+                    $tick_format = '%Y-%m';
+                    $tick_interval = 'month';
+                break;
+                case '5':
+                    $options['stamp_dat'] = date("Y-m-d H:i:s",time()-(10*365*24*3600));
+                    $tick_format = '%Y';
+                    $tick_interval = 'year';
+                break;
+                default :
+                break;
+            }
+            
+?>
+    $(document).ready(function() {
+        $.jqplot.config.enablePlugins = true;
+
+        var l1 = [<?php echo implode(",",$data_number); ?>];
+        var l2 = [<?php echo implode(",",$data_total); ?>];
+        
+        var plot1 = $.jqplot("report", [l1, l2],  {
+          animate: true,
+          animateReplot: true,         	
+          title: "<?php echo $report_desc; ?>",
+          legend:{show:true,location:"se",labels:["<?php echo TABLE_HEADING_STAT_ORDERS; ?>'","<?php echo TABLE_HEADING_CONVERSION; ?>"]},
+          series:[
+          {color:"#0077cc"},
+          {yaxis:"y2axis",color:"#ff9900"} 
+          ],
+          axesDefaults:{padMin: 1.5,useSeriesColor:true, rendererOptions: { alignTicks: true}},
+
+      axes: {
+        xaxis: {
+          renderer: $.jqplot.DateAxisRenderer,
+          labelRenderer: $.jqplot.CanvasAxisLabelRenderer,
+          tickRenderer: $.jqplot.CanvasAxisTickRenderer,
+          tickInterval: "1 <?php echo $tick_interval; ?>",
+
+          tickOptions: {
+              formatString: "<?php echo $tick_format; ?>"
+          }
+           
+        },
+        y2axis: {
+          tickOptions: {
+              formatString: "%01.0f"
+          }
+           
+        }
+      },
+
+          highlighter: {
+          show: true,
+          sizeAdjust: 7.5,
+          tooltipLocation: "ne"
+          },
+          
+          cursor: {
+          show: false
+          }          
+        });
+
+$('a[href="#chart"]').on('shown', function(e) {
+            if (plot1._drawCount === 0) {
+                plot1.replot();
+            }
+});
+
+});
+</script>
+
 </head>
 <body marginwidth="0" marginheight="0" topmargin="0" bottommargin="0" leftmargin="0" rightmargin="0" bgcolor="#FFFFFF">
 <!-- header //-->
@@ -161,11 +266,7 @@
 			<table border="0" width="95%" cellspacing="0" cellpadding="0">
 			    <tr>
 					<td valign="top" width="100%" align="center">
-
-<?php
-include(DIR_WS_CLASSES . 'ofc-library/open_flash_chart_object.php');
-open_flash_chart_object( '100%', 250, vam_href_link('chart_data.php', vam_get_all_get_params(), 'NONSSL'), false );
-?>
+                 <div id="report"></div>
 					</td>
 				</tr>
 <?php
