@@ -37,6 +37,277 @@ require ('includes/application_top.php');
 			});
 		</script>
 <?php } ?>
+
+		<script type="text/javascript" src="../jscript/jquery/plugins/jqplot/jquery.jqplot.js"></script>
+		<script type="text/javascript" src="../jscript/jquery/plugins/jqplot/plugins/jqplot.highlighter.min.js"></script>
+		<script type="text/javascript" src="../jscript/jquery/plugins/jqplot/plugins/jqplot.canvasTextRenderer.min.js"></script>
+		<script type="text/javascript" src="../jscript/jquery/plugins/jqplot/plugins/jqplot.barRenderer.min.js"></script>
+		<script type="text/javascript" src="../jscript/jquery/plugins/jqplot/plugins/jqplot.dateAxisRenderer.min.js"></script>
+		<link type="text/css" href="../jscript/jquery/plugins/jqplot/jquery.jqplot.min.css" rel="stylesheet" />	
+
+
+<script>
+<?php
+
+  $report = isset($_GET['report']) ? $_GET['report'] : null;
+  $report_type = isset($_GET['report_type']) ? $_GET['report_type'] : null;
+
+  require_once(DIR_FS_LANGUAGES . $_SESSION['language'] . '/admin/'.FILENAME_STATS_SALES_REPORT2);
+
+  require_once(DIR_WS_CLASSES . 'currencies.php');
+  $currencies = new currencies();
+
+  // default view (daily)
+  $sales_report_default_view = 2;
+  // report views (1: hourly 2: daily 3: weekly 4: monthly 5: yearly)
+  $sales_report_view = $sales_report_default_view;
+  if ( ($_GET['report']) && (vam_not_null($_GET['report'])) ) {
+    $sales_report_view = $_GET['report'];
+  }
+  if ($sales_report_view > 5) {
+    $sales_report_view = $sales_report_default_view;
+  }
+
+  if ($sales_report_view == 2) {
+    $report = 2;
+  }
+
+  if ($report == 1) {
+    $report_desc = REPORT_TYPE_HOURLY;
+  } else if ($report == 2) {
+    $report_desc = REPORT_TYPE_DAILY;
+  } else if ($report == 3) {
+    $report_desc = REPORT_TYPE_WEEKLY;
+  } else if ($report == 4) {
+    $report_desc = REPORT_TYPE_MONTHLY;
+  } else if ($report == 5) {
+    $report_desc = REPORT_TYPE_YEARLY;
+  }
+
+  $report_desc = $report_desc . ' ' . REPORT_TYPE_MONTHLY;
+
+  // check start and end Date
+  $startDate = "";
+  if ( ($_GET['startDate']) && (vam_not_null($_GET['startDate'])) ) {
+    $startDate = $_GET['startDate'];
+  }
+  $endDate = "";
+  if ( ($_GET['endDate']) && (vam_not_null($_GET['endDate'])) ) {
+    $endDate = $_GET['endDate'];
+  }
+
+  // check filters
+  if (($_GET['filter']) && (vam_not_null($_GET['filter']))) {
+    $sales_report_filter = $_GET['filter'];
+    $sales_report_filter_link = "&filter=$sales_report_filter";
+  }
+
+  require_once(DIR_WS_CLASSES . 'sales_report2.php');
+  $report = new sales_report($sales_report_view, $startDate, $endDate, $sales_report_filter);
+
+  if (strlen($sales_report_filter) == 0) {
+    $sales_report_filter = $report->filter;
+    $sales_report_filter_link = "";
+  }
+
+$data_count = array();
+$data_avg = array();
+$data_sum = array();
+$data_total = array();
+$data_number = array();
+for ($i = 0; $i < $report->size; $i++) { 
+
+$data_count[] = $report->info[$i]['count'];
+//$data_avg[] = $report->info[$i]['avg'];
+$data_sum[] = number_format($report->info[$i]['sum'],0,'','');
+$data_total[] = '["'.$report->info[$i]['text']. '",'.number_format($report->info[$i]['sum'],0,'','').']';
+$data_number[] = '["'.$report->info[$i]['text']. '",'.number_format($report->info[$i]['count'],0,'','').']';
+									
+}
+
+$data_date = array();
+for ($i = 0; $i < $report->size; $i++) { 
+
+$data_date[] = $report->info[$i]['text'];
+									
+}
+
+?>
+    $(document).ready(function() {
+        $.jqplot.config.enablePlugins = true;
+
+        var l1 = [<?php echo implode(",",$data_total); ?>];
+        var l2 = [<?php echo implode(",",$data_number); ?>];
+
+        var plot1 = $.jqplot("chart1", [l1, l2],  {
+          animate: true,
+          animateReplot: true,         	
+          title: "<?php echo $report_descl ?>",
+          legend:{show:true,location:"se",labels:["<?php echo TABLE_HEADING_STAT_ORDERS; ?>'","<?php echo TABLE_HEADING_CONVERSION; ?>"]},
+          series:[
+          {color:"#0077cc"},
+          {yaxis:"y2axis",color:"#ff9900"} 
+          ],
+          axesDefaults:{padMin: 1.5,useSeriesColor:true, rendererOptions: { alignTicks: true}},
+
+      axes: {
+        xaxis: {
+          renderer: $.jqplot.DateAxisRenderer,
+          labelRenderer: $.jqplot.CanvasAxisLabelRenderer,
+          tickRenderer: $.jqplot.CanvasAxisTickRenderer,
+          tickInterval: "1 day",
+
+          tickOptions: {
+              formatString: "%m/%d"
+          }
+           
+        },
+        y2axis: {
+          tickOptions: {
+              formatString: "%01.0f"
+          }
+           
+        }
+      },
+
+          highlighter: {
+          show: true,
+          sizeAdjust: 7.5,
+          tooltipLocation: "ne"
+          },
+          
+          cursor: {
+          show: false
+          }          
+        });
+
+});
+<?php 
+
+  require_once(DIR_FS_LANGUAGES . $_SESSION['language'] . '/admin/'.FILENAME_STATS_SALES_REPORT2);
+
+  require_once(DIR_WS_CLASSES . 'currencies.php');
+  $currencies = new currencies();
+
+  // default view (daily)
+  $sales_report_default_view = 2;
+  // report views (1: hourly 2: daily 3: weekly 4: monthly 5: yearly)
+  $sales_report_view = $sales_report_default_view;
+  if ( ($_GET['report']) && (vam_not_null($_GET['report'])) ) {
+    $sales_report_view = $_GET['report'];
+  }
+  if ($sales_report_view > 5) {
+    $sales_report_view = $sales_report_default_view;
+  }
+
+  if ($sales_report_view == 2) {
+    $report = 2;
+  }
+
+    $report_desc = BOX_SALES_REPORT . ' ' . REPORT_TYPE_MONTHLY;
+
+  require_once(DIR_WS_CLASSES . 'sales_report2.php');
+  $report = new sales_report(4, $startDate, $endDate, $sales_report_filter);
+
+$data_count = array();
+$data_sum = array();
+$data_total = array();
+$data_number = array();
+for ($i = 0; $i < $report->size; $i++) { 
+
+$data_count[] = $report->info[$i]['count'];
+$data_sum[] = number_format($report->info[$i]['sum'],0,'','');
+$data_total[] = '["'.$report->info[$i]['text']. '",'.number_format($report->info[$i]['sum'],0,'','').']';
+$data_number[] = '["'.$report->info[$i]['text']. '",'.number_format($report->info[$i]['count'],0,'','').']';
+									
+}
+
+$data_date = array();
+for ($i = 0; $i < $report->size; $i++) { 
+
+$data_date[] = $report->info[$i]['text'];
+									
+}
+
+?>
+    $(document).ready(function() {
+        $.jqplot.config.enablePlugins = true;
+
+        var l1 = [<?php echo implode(",",$data_total); ?>];
+        var l2 = [<?php echo implode(",",$data_number); ?>];
+
+        var plot2 = $.jqplot("chart2", [l2, l1],  {
+          animate: true,
+          animateReplot: true,         	
+          title: "<?php echo $report_desc; ?>",
+          legend:{show:true,location:"se",labels:["<?php echo TABLE_HEADING_STAT_ORDERS; ?>'","<?php echo TABLE_HEADING_CONVERSION; ?>"]},
+
+          series:[
+          {
+          	color:"#0077cc"
+          },
+          {yaxis:"y2axis",color:"#ff9900",
+          
+          renderer: $.jqplot.BarRenderer,
+          
+          
+          rendererOptions: { 
+          
+          
+          alignTicks: true,
+	       animation: {
+	           speed: 2500
+	       },
+	       barWidth: 20,
+	       barPadding: -20,
+	       barMargin: 0,
+	       highlightMouseOver: false          
+          
+          }
+           
+          }, 
+          {
+            color: "gray",     
+            linePattern: "dashed",
+            shadow: false                  
+     
+          } 
+          ],
+          axesDefaults:{padMin: 1.5,useSeriesColor:true, rendererOptions: { alignTicks: true}},
+
+      axes: {
+        xaxis: {
+          renderer: $.jqplot.DateAxisRenderer,
+          labelRenderer: $.jqplot.CanvasAxisLabelRenderer,
+          tickRenderer: $.jqplot.CanvasAxisTickRenderer,
+          tickInterval: "1 month",
+
+          tickOptions: {
+              //formatString: "%Y/%m"
+          }
+           
+        },
+        y2axis: {
+          tickOptions: {
+              formatString: "%01.0f"
+          }
+           
+        }
+      },
+
+          highlighter: {
+          show: true,
+          sizeAdjust: 7.5,
+          tooltipLocation: "ne"
+          },
+          
+          cursor: {
+          show: false
+          }          
+        });
+});
+</script>
+
 		<script type="text/javascript" src="includes/css/bootstrap/bootstrap.min.js"></script>
 
 <link rel="stylesheet" type="text/css" href="includes/css/bootstrap/bootstrap.css">

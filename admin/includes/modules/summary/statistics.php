@@ -29,17 +29,12 @@ defined('_VALID_VAM') or die('Direct Access to this location is not allowed.');
 				  
               <tr>
                 <td class="dataTableContentRss" valign="top" width="50%">
-<?php
-include(DIR_WS_CLASSES . 'ofc-library/open_flash_chart_object.php');
-open_flash_chart_object( '100%', 300, vam_href_link('chart_data.php', 'NONSSL'), false );
-?>
+                <div id="chart1"></div>
                 </td>
               </tr>
               <tr>
                 <td class="dataTableContentRss" valign="top" width="50%">
-<?php
-open_flash_chart_object( '100%', 300, vam_href_link('chart_data.php', 'report_type=orders', 'NONSSL'), false );
-?>
+                <div id="chart2"></div>
                 </td>
               </tr>
 </table>
