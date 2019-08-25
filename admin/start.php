@@ -158,8 +158,11 @@ $data_date[] = $report->info[$i]['text'];
           tickInterval: "1 day",
 
           tickOptions: {
-              formatString: "%m/%d"
-          }
+             formatString: "%e %b",
+             angle: -30,
+             textColor: '#000'
+          },
+
            
         },
         y2axis: {
@@ -236,56 +239,69 @@ $data_date[] = $report->info[$i]['text'];
         var l1 = [<?php echo implode(",",$data_total); ?>];
         var l2 = [<?php echo implode(",",$data_number); ?>];
 
-        var plot2 = $.jqplot("chart2", [l2, l1],  {
-          animate: true,
-          animateReplot: true,         	
-          title: "<?php echo $report_desc; ?>",
-          legend:{show:true,location:"se",labels:["<?php echo TABLE_HEADING_STAT_ORDERS; ?>'","<?php echo TABLE_HEADING_CONVERSION; ?>"]},
-
-          series:[
-          {
-          	color:"#0077cc"
-          },
-          {yaxis:"y2axis",color:"#ff9900",
-          
-          renderer: $.jqplot.BarRenderer,
-          
-          
-          rendererOptions: { 
-          
-          
-          alignTicks: true,
-	       animation: {
-	           speed: 2500
-	       },
-	       barWidth: 20,
-	       barPadding: -20,
-	       barMargin: 0,
-	       highlightMouseOver: false          
-          
-          }
-           
-          }, 
-          {
-            color: "gray",     
-            linePattern: "dashed",
-            shadow: false                  
-     
-          } 
-          ],
-          axesDefaults:{padMin: 1.5,useSeriesColor:true, rendererOptions: { alignTicks: true}},
-
+    plot2 = $.jqplot("chart2", [l1, l2], {
+        legend: {
+            show: true,
+            location:"se"
+        },
+        // Turns on animatino for all series in this plot.
+        animate: true,
+        // Will animate plot on calls to plot1.replot({resetAxes:true})
+        animateReplot: true,         	
+        title: "<?php echo $report_desc; ?>",
+        cursor: {
+            show: true,
+            zoom: true,
+            looseZoom: true,
+            showTooltip: false
+        },
+        seriesColors:['#ff9900','#0077cc'],
+        series:[
+            {
+                label: '<?php echo TABLE_HEADING_CONVERSION; ?>',
+                pointLabels: {
+                    show: true
+                },
+                renderer: $.jqplot.BarRenderer,
+                showHighlight: true,
+                yaxis: 'y2axis',
+                rendererOptions: {
+                    // Speed up the animation a little bit.
+                    // This is a number of milliseconds.  
+                    // Default for bar series is 3000.  
+                    animation: {
+                        speed: 2500
+                    },
+                    barWidth: 20,
+                    barPadding: -20,
+                    barMargin: 0,
+                    highlightMouseOver: false
+                }
+            }, 
+            {
+                label: '<?php echo TABLE_HEADING_STAT_ORDERS; ?>',
+                rendererOptions: {
+                    // speed up the animation a little bit.
+                    // This is a number of milliseconds.
+                    // Default for a line series is 2500.
+                    animation: {
+                        speed: 2000
+                    }
+                }
+            }
+        ],
+        axesDefaults:{padMin: 1.5,useSeriesColor:true, rendererOptions: { alignTicks: true}},
       axes: {
         xaxis: {
           renderer: $.jqplot.DateAxisRenderer,
           labelRenderer: $.jqplot.CanvasAxisLabelRenderer,
           tickRenderer: $.jqplot.CanvasAxisTickRenderer,
           tickInterval: "1 month",
-
           tickOptions: {
-              formatString: "%m"
-          }
-           
+             formatString: "%b",
+             angle: -30,
+             textColor: '#000',
+          },
         },
         y2axis: {
           tickOptions: {
@@ -294,17 +310,18 @@ $data_date[] = $report->info[$i]['text'];
            
         }
       },
-
-          highlighter: {
-          show: true,
-          sizeAdjust: 7.5,
-          tooltipLocation: "ne"
-          },
-          
-          cursor: {
-          show: false
-          }          
-        });
+        highlighter: {
+            show: true, 
+            showLabel: true, 
+            tooltipOffset: 5,
+            tooltipAxes: 'y2',
+            sizeAdjust: 7.5, 
+            tooltipLocation : 'ne'
+        }
+    });
+    
+    $('.jqplot-highlighter-tooltip').addClass('panel');
+   
 });
 </script>
 

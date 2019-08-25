@@ -130,7 +130,7 @@
                     $tick_interval = 'hour';
                 break;
                 case '2':
-                    $tick_format = '%m-%d-%Y';
+                    $tick_format = '%d %Y';
                     $tick_interval = 'day';
                 break;
                 case '3':
@@ -138,7 +138,7 @@
                     $tick_interval = 'week';
                 break;
                 case '4':
-                    $tick_format = '%m';
+                    $tick_format = '%b';
                     $tick_interval = 'month';
                 break;
                 case '5':
