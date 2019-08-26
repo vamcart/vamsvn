@@ -86,31 +86,31 @@
 
 .jqplot-xaxis-label {
     margin-top: 10px;
-    font-size: 11pt;
+    font-size: 12pt;
     position: absolute;
 }
 
 .jqplot-x2axis-label {
     margin-bottom: 10px;
-    font-size: 11pt;
+    font-size: 12pt;
     position: absolute;
 }
 
 .jqplot-yaxis-label {
     margin-right: 10px;
 /*    text-align: center;*/
-    font-size: 11pt;
+    font-size: 12pt;
     position: absolute;
 }
 
 .jqplot-yMidAxis-label {
-    font-size: 11pt;
+    font-size: 12pt;
     position: absolute;
 }
 
 .jqplot-y2axis-label, .jqplot-y3axis-label, .jqplot-y4axis-label, .jqplot-y5axis-label, .jqplot-y6axis-label, .jqplot-y7axis-label, .jqplot-y8axis-label, .jqplot-y9axis-label {
 /*    text-align: center;*/
-    font-size: 11pt;
+    font-size: 12pt;
     margin-left: 10px;
     position: absolute;
 }

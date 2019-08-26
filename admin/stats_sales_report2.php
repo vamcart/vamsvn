@@ -160,7 +160,7 @@
           animate: true,
           animateReplot: true,         	
           title: "<?php echo $report_desc; ?>",
-          legend:{show:true,location:"se",labels:["<?php echo TABLE_HEADING_STAT_ORDERS; ?>'","<?php echo TABLE_HEADING_CONVERSION; ?>"]},
+          legend:{show:true,location:"se",labels:["<?php echo TABLE_HEADING_STAT_ORDERS; ?>","<?php echo TABLE_HEADING_CONVERSION; ?>"]},
           series:[
           {color:"#0077cc"},
           {yaxis:"y2axis",color:"#ff9900"} 
@@ -187,16 +187,21 @@
         }
       },
 
-          highlighter: {
-          show: true,
-          sizeAdjust: 7.5,
-          tooltipLocation: "ne"
-          },
+        highlighter: {
+            show: true, 
+            showLabel: true, 
+            tooltipOffset: 5,
+            tooltipAxes: 'y2',
+            sizeAdjust: 7.5, 
+            tooltipLocation : 'ne'
+        },
           
           cursor: {
           show: false
           }          
         });
+
+    $('.jqplot-highlighter-tooltip').addClass('panel');
 
 $('a[href="#chart"]').on('shown', function(e) {
             if (plot1._drawCount === 0) {

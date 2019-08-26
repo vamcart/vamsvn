@@ -143,7 +143,7 @@ $data_date[] = $report->info[$i]['text'];
           animate: true,
           animateReplot: true,         	
           title: "<?php echo $report_desc; ?>",
-          legend:{show:true,location:"se",labels:["<?php echo TABLE_HEADING_STAT_ORDERS; ?>'","<?php echo TABLE_HEADING_CONVERSION; ?>"]},
+          legend:{show:true,location:"se",labels:["<?php echo TABLE_HEADING_STAT_ORDERS; ?>","<?php echo TABLE_HEADING_CONVERSION; ?>"]},
           series:[
           {color:"#0077cc"},
           {yaxis:"y2axis",color:"#ff9900"} 
