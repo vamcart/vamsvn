@@ -272,8 +272,8 @@ $data_date[] = $report->info[$i]['text'];
                     animation: {
                         speed: 2500
                     },
-                    barWidth: 20,
-                    barPadding: -20,
+                    barWidth: 40,
+                    barPadding: 0,
                     barMargin: 0,
                     highlightMouseOver: false
                 }
