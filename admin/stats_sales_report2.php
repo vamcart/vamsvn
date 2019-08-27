@@ -163,7 +163,7 @@
           legend:{show:true,location:"se",labels:["<?php echo TABLE_HEADING_STAT_ORDERS; ?>","<?php echo TABLE_HEADING_CONVERSION; ?>"]},
           series:[
           {color:"#0077cc"},
-          {yaxis:"y2axis",color:"#ff9900"} 
+          {yaxis:"y2axis",color:"#ffb82e"} 
           ],
           axesDefaults:{padMin: 1.5,useSeriesColor:true, rendererOptions: { alignTicks: true}},
 
