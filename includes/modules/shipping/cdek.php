@@ -75,9 +75,13 @@
 	    
 	    $senderCity = json_decode($data, $assoc=true);
 	    $senderCityId = $senderCity["geonames"][0]["id"];
+	    
+	    $dev_city = str_replace('г. ','',$order->delivery['city']);
+	    $dev_city = str_replace('г.','',$dev_city);
+	    $dev_city = str_replace('г ','',$dev_city);
 	
 	    $curl = curl_init();
-	    curl_setopt($curl, CURLOPT_URL, "http://api.cdek.ru/city/getListByTerm/json.php?q=".urlencode($order->delivery['city']));
+	    curl_setopt($curl, CURLOPT_URL, "http://api.cdek.ru/city/getListByTerm/json.php?q=".urlencode($dev_city));
 	    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 	    $data = curl_exec($curl);
 	    
