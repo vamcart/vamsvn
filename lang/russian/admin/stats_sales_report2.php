@@ -18,7 +18,7 @@ define('HEADING_TITLE', 'Статистика продаж');
 
 define('TABLE_HEADING_CONVERSION', 'Сумма');
 define('TABLE_HEADING_CONV_PER_ORDER', 'Средняя стоимость заказа');
-define('TABLE_HEADING_STAT_ORDERS', 'Количество заказов');
+define('TABLE_HEADING_STAT_ORDERS', 'Заказы');
 define('TEXT_MONTH', 'Месяц');
 define('TEXT_WEEK', 'Неделя');
 
