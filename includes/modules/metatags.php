@@ -515,9 +515,9 @@ if (!vam_db_num_rows($reviews_query))
 $reviews = vam_db_fetch_array($reviews_query);
 
 ?>
-<title><?php echo STORE_NAME . ' - ' . NAVBAR_TITLE_SITE_REVIEW . " \"" . $reviews['products_name'] . "\""; ?></title>
-<meta name="description" content="<?php echo STORE_NAME . ' - ' . NAVBAR_TITLE_SITE_REVIEW . " " . $reviews['products_name']; ?>" />
-<meta name="keywords" content="<?php echo STORE_NAME . ' - ' . NAVBAR_TITLE_SITE_REVIEW . " " . $reviews['products_name']; ?>" />
+<title><?php echo STORE_NAME . ' - ' . NAVBAR_TITLE_SITE_REVIEW . " ".$reviews['reviews_id']." - \"" . $reviews['products_name'] . "\""; ?></title>
+<meta name="description" content="<?php echo STORE_NAME . ' - ' . NAVBAR_TITLE_SITE_REVIEW . " ".$reviews['reviews_id']." - \"" . $reviews['products_name']; ?>" />
+<meta name="keywords" content="<?php echo STORE_NAME . ' - ' . NAVBAR_TITLE_SITE_REVIEW . " ".$reviews['reviews_id']." - \"" . $reviews['products_name']; ?>" />
 <?php
 
     break;
