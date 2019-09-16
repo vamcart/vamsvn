@@ -320,7 +320,7 @@ $content_meta = vam_db_fetch_array($content_meta_query, true);
 
     break;
 
-  case ($_GET['articles_id']):
+  case (strstr($PHP_SELF, FILENAME_ARTICLE_INFO) && $_GET['articles_id']):
 
 			$articles_meta_query = vamDBquery("SELECT a.articles_id, a.articles_image, ad.articles_description, ad.articles_name, ad.articles_head_title_tag, ad.articles_head_desc_tag, ad.articles_head_keywords_tag
 			                                            FROM " . TABLE_ARTICLES . " a left join " . TABLE_ARTICLES_DESCRIPTION . " ad on (ad.articles_id = a.articles_id) 
@@ -470,22 +470,63 @@ $content_meta = vam_db_fetch_array($content_meta_query, true);
 
     break;
         
-  case (strstr($PHP_SELF, FILENAME_PRODUCT_REVIEWS)):
-
+  case (strstr($PHP_SELF, '/'.FILENAME_REVIEWS)):
+$title_is_done = true;
 ?>
-<title><?php echo TEXT_PAGE_PRODUCT_REVIEWS . " " . $product->data['products_name']; ?></title>
-<meta name="description" content="<?php echo TEXT_PAGE_PRODUCT_REVIEWS . ' ' . $product->data['products_name']; ?>" />
-<meta name="keywords" content="<?php echo TEXT_PAGE_PRODUCT_REVIEWS . ' ' . $product->data['products_name']; ?>" />
+<title><?php echo TEXT_PAGE_PRODUCT_REVIEWS . ' - ' . TITLE; ?></title>
+<meta name="description" content="<?php echo TEXT_PAGE_PRODUCT_REVIEWS . ' ' . META_DESCRIPTION; ?>" />
+<meta name="keywords" content="<?php echo TEXT_PAGE_PRODUCT_REVIEWS . ' ' . META_KEYWORDS; ?>" />
 <?php
 
     break;
-        
-  case (strstr($PHP_SELF, FILENAME_REVIEWS)):
+
+  case (strstr($PHP_SELF, FILENAME_PRODUCT_REVIEWS)):
+
+$reviews_query = "select rd.reviews_text, r.reviews_rating, r.reviews_id, r.products_id, r.customers_name, r.date_added, r.last_modified, r.reviews_read, p.products_id, pd.products_name, p.products_image from ".TABLE_REVIEWS." r left join ".TABLE_PRODUCTS." p on (r.products_id = p.products_id) left join ".TABLE_PRODUCTS_DESCRIPTION." pd on (p.products_id = pd.products_id and pd.language_id = '".(int) $_SESSION['languages_id']."'), ".TABLE_REVIEWS_DESCRIPTION." rd where r.products_id = '".(int) $_GET['products_id']."' and r.reviews_id = rd.reviews_id and p.products_status = '1'";
+$reviews_query = vam_db_query($reviews_query);
+
+if (!vam_db_num_rows($reviews_query))
+	vam_redirect(vam_href_link(FILENAME_REVIEWS));
+$reviews = vam_db_fetch_array($reviews_query);
 
 ?>
-<title><?php echo STORE_NAME . ' - ' . TEXT_PAGE_PRODUCT_REVIEWS; ?></title>
-<meta name="description" content="<?php echo STORE_NAME . ' - ' . TEXT_PAGE_PRODUCT_REVIEWS . ' ' . META_DESCRIPTION; ?>" />
-<meta name="keywords" content="<?php echo STORE_NAME . ' - ' . TEXT_PAGE_PRODUCT_REVIEWS . ' ' . META_KEYWORDS; ?>" />
+<title><?php echo TEXT_PRODUCT_REVIEWS . ' - ' . $reviews['products_name']; ?></title>
+<meta name="description" content="<?php echo TEXT_PRODUCT_REVIEWS . ' - ' . $reviews['products_name']; ?>" />
+<meta name="keywords" content="<?php echo TEXT_PRODUCT_REVIEWS . ' - ' . $reviews['products_name']; ?>" />
+<?php
+
+    break;
+
+  case (strstr($PHP_SELF, FILENAME_ARTICLE_REVIEWS)):
+
+$reviews_query = "select rd.reviews_text, r.reviews_rating, r.reviews_id, r.reviews_id, r.customers_name, r.date_added, r.last_modified, r.reviews_read, p.articles_id, pd.articles_name, p.articles_image from ".TABLE_ARTICLE_REVIEWS." r left join ".TABLE_ARTICLES." p on (r.articles_id = p.articles_id) left join ".TABLE_ARTICLES_DESCRIPTION." pd on (p.articles_id = pd.articles_id and pd.language_id = '".(int) $_SESSION['languages_id']."'), ".TABLE_ARTICLE_REVIEWS_DESCRIPTION." rd where r.articles_id = '".(int) $_GET['articles_id']."' and r.reviews_id = rd.reviews_id and p.articles_status = '1'";
+$reviews_query = vam_db_query($reviews_query);
+
+if (!vam_db_num_rows($reviews_query))
+	vam_redirect(vam_href_link(FILENAME_REVIEWS));
+$reviews = vam_db_fetch_array($reviews_query);
+
+?>
+<title><?php echo TEXT_PRODUCT_REVIEWS . ' - ' . $reviews['articles_name']; ?></title>
+<meta name="description" content="<?php echo TEXT_PRODUCT_REVIEWS . ' - ' . $reviews['articles_name']; ?>" />
+<meta name="keywords" content="<?php echo TEXT_PRODUCT_REVIEWS . ' - ' . $reviews['articles_name']; ?>" />
+<?php
+
+    break;
+
+  case (strstr($PHP_SELF, FILENAME_ARTICLE_REVIEWS_INFO)):
+
+$reviews_query = "select rd.reviews_text, r.reviews_rating, r.reviews_id, r.reviews_id, r.customers_name, r.date_added, r.last_modified, r.reviews_read, p.articles_id, pd.articles_name, p.articles_image from ".TABLE_ARTICLE_REVIEWS." r left join ".TABLE_ARTICLES." p on (r.articles_id = p.articles_id) left join ".TABLE_ARTICLES_DESCRIPTION." pd on (p.articles_id = pd.articles_id and pd.language_id = '".(int) $_SESSION['languages_id']."'), ".TABLE_ARTICLE_REVIEWS_DESCRIPTION." rd where r.articles_id = '".(int) $_GET['articles_id']."' and r.reviews_id = rd.reviews_id and p.articles_status = '1'";
+$reviews_query = vam_db_query($reviews_query);
+
+if (!vam_db_num_rows($reviews_query))
+	vam_redirect(vam_href_link(FILENAME_REVIEWS));
+$reviews = vam_db_fetch_array($reviews_query);
+
+?>
+<title><?php echo $reviews['articles_name'] . ' - ' . NAVBAR_TITLE_SITE_REVIEW . ' - ' . $reviews['reviews_id']; ?></title>
+<meta name="description" content="<?php echo $reviews['articles_name'] . ' - ' . NAVBAR_TITLE_SITE_REVIEW . ' - ' . $reviews['reviews_id']; ?>" />
+<meta name="keywords" content="<?php echo $reviews['articles_name'] . ' - ' . NAVBAR_TITLE_SITE_REVIEW . ' - ' . $reviews['reviews_id']; ?>" />
 <?php
 
     break;
