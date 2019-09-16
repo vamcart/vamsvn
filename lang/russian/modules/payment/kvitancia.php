@@ -17,7 +17,7 @@
    ---------------------------------------------------------------------------------------*/
 
   define('MODULE_PAYMENT_KVITANCIA_TEXT_TITLE', 'Квитанция СБ РФ');
-  define('MODULE_PAYMENT_KVITANCIA_TEXT_DESCRIPTION', '<br /><strong>Квитанцию для оплаты Вы сможете распечатать на следующей странице.</strong><br /><br />Информация для оплаты:<br />' .
+  define('MODULE_PAYMENT_KVITANCIA_TEXT_DESCRIPTION', '<br />Информация для оплаты:<br />' .
                                                          '<br />Название банка: ' . MODULE_PAYMENT_KVITANCIA_1 .
                                                          '<br />Расчётный счёт: ' . MODULE_PAYMENT_KVITANCIA_2 .
                                                          '<br />БИК: ' . MODULE_PAYMENT_KVITANCIA_3 .
