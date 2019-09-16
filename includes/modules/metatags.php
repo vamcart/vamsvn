@@ -421,11 +421,14 @@ $content_meta = vam_db_fetch_array($content_meta_query, true);
     break; 
     
     case (strstr($PHP_SELF, FILENAME_BEST_SELLERS)):
-
+        $zzz = '';
+        if (isset($_GET['page']) && intval($_GET['page']) > 1) {
+            $zzz = ' - ' . TEXT_PAGE_IN_CAT . ' ' . intval($_GET['page']);
+        }
 ?>
-<title><?php echo TITLE_BEST_SELLERS_DEFAULT . ' ' . STORE_NAME; ?></title>
-<meta name="description" content="<?php echo TITLE_BEST_SELLERS_DEFAULT . ' ' . STORE_NAME; ?>" />
-<meta name="keywords" content="<?php echo TITLE_BEST_SELLERS_DEFAULT . ' ' . STORE_NAME; ?>" />
+<title><?php echo TITLE_BEST_SELLERS_DEFAULT . $zzz; ?></title>
+<meta name="description" content="<?php echo TITLE_BEST_SELLERS_DEFAULT . $zzz; ?>" />
+<meta name="keywords" content="<?php echo TITLE_BEST_SELLERS_DEFAULT . $zzz; ?>" />
 <?php
 
     break;
