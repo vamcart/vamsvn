@@ -472,8 +472,13 @@ $content_meta = vam_db_fetch_array($content_meta_query, true);
         
   case (strstr($PHP_SELF, FILENAME_REVIEWS)):
 $title_is_done = true;
+
+        $zzz = '';
+        if (isset($_GET['page']) && intval($_GET['page']) > 1) {
+            $zzz = ' - ' . TEXT_PAGE_IN_CAT . ' ' . intval($_GET['page']);
+        }
 ?>
-<title><?php echo TEXT_PAGE_PRODUCT_REVIEWS . ' - ' . TITLE; ?></title>
+<title><?php echo TEXT_PAGE_PRODUCT_REVIEWS . $zzz . ' - ' . TITLE; ?></title>
 <meta name="description" content="<?php echo TEXT_PAGE_PRODUCT_REVIEWS . ' ' . META_DESCRIPTION; ?>" />
 <meta name="keywords" content="<?php echo TEXT_PAGE_PRODUCT_REVIEWS . ' ' . META_KEYWORDS; ?>" />
 <?php
