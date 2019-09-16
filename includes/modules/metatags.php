@@ -470,7 +470,7 @@ $content_meta = vam_db_fetch_array($content_meta_query, true);
 
     break;
         
-  case (strstr($PHP_SELF, '/'.FILENAME_REVIEWS)):
+  case (strstr($PHP_SELF, FILENAME_REVIEWS)):
 $title_is_done = true;
 ?>
 <title><?php echo TEXT_PAGE_PRODUCT_REVIEWS . ' - ' . TITLE; ?></title>
