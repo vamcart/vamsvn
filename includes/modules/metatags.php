@@ -372,15 +372,15 @@ $content_meta = vam_db_fetch_array($content_meta_query, true);
 		    $manufacturer_query = vam_db_query("select m.manufacturers_name, mi.manufacturers_meta_title, mi.manufacturers_meta_description, mi.manufacturers_meta_keywords from " . TABLE_MANUFACTURERS . " m left join " . TABLE_MANUFACTURERS_INFO . " mi on mi.manufacturers_id = m.manufacturers_id where m.manufacturers_id = '" . $_GET['manufacturers_id'] . "'");
 		      $manufacturer = vam_db_fetch_array($manufacturer_query);		
 
-   $mName = (isset($manufacturer['manufacturers_meta_title']) ? ' - ' . $manufacturer['manufacturers_meta_title'] : ' - ' . $manufacturer['manufacturers_name']);
-   $mDesc = (isset($manufacturer['manufacturers_meta_description']) ? ' ' . $manufacturer['manufacturers_meta_description'] : null);
-   $mKey = (isset($manufacturer['manufacturers_meta_keywords']) ? ' ' . $manufacturer['manufacturers_meta_keywords'] : null);
+   $mName = (isset($manufacturer['manufacturers_meta_title']) ? $manufacturer['manufacturers_meta_title'] : ' - ' . $manufacturer['manufacturers_name']);
+   $mDesc = (isset($manufacturer['manufacturers_meta_description']) ? $manufacturer['manufacturers_meta_description'] : null);
+   $mKey = (isset($manufacturer['manufacturers_meta_keywords']) ? $manufacturer['manufacturers_meta_keywords'] : null);
 
 
 ?>
-<title><?php echo $manufacturer['manufacturers_name'] . ' ' . TITLE . (isset($_GET['page']) && $_GET['page'] > 0 ? ' - ' . sprintf(PREVNEXT_TITLE_PAGE_NO, $_GET['page']) . $_GET['page'] : null); ?></title>
-<meta name="description" content="<?php echo META_DESCRIPTION; ?>" />
-<meta name="keywords" content="<?php echo META_KEYWORDS; ?>" />
+<title><?php echo $mName . ' ' . TITLE . (isset($_GET['page']) && $_GET['page'] > 0 ? ' - ' . sprintf(PREVNEXT_TITLE_PAGE_NO, $_GET['page']) . $_GET['page'] : null); ?></title>
+<meta name="description" content="<?php echo $mDesc; ?>" />
+<meta name="keywords" content="<?php echo $mKey; ?>" />
 <?php
 
 		}	
