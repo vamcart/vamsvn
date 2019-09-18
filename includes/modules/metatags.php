@@ -532,9 +532,9 @@ if (!vam_db_num_rows($reviews_query))
 $reviews = vam_db_fetch_array($reviews_query);
 
 ?>
-<title><?php echo $reviews['articles_name'] . ' - ' . NAVBAR_TITLE_SITE_REVIEW . ' - ' . (int) $_GET['articles_id']; ?></title>
-<meta name="description" content="<?php echo $reviews['articles_name'] . ' - ' . NAVBAR_TITLE_SITE_REVIEW . ' - ' . (int) $_GET['articles_id']; ?>" />
-<meta name="keywords" content="<?php echo $reviews['articles_name'] . ' - ' . NAVBAR_TITLE_SITE_REVIEW . ' - ' . (int) $_GET['articles_id']; ?>" />
+<title><?php echo $reviews['articles_name'] . ' - ' . NAVBAR_TITLE_SITE_REVIEW . ' - ' . (int) $_GET['reviews_id']; ?></title>
+<meta name="description" content="<?php echo $reviews['articles_name'] . ' - ' . NAVBAR_TITLE_SITE_REVIEW . ' - ' . (int) $_GET['reviews_id']; ?>" />
+<meta name="keywords" content="<?php echo $reviews['articles_name'] . ' - ' . NAVBAR_TITLE_SITE_REVIEW . ' - ' . (int) $_GET['reviews_id']; ?>" />
 <?php
 
     break;
