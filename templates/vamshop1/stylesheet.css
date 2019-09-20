@@ -472,11 +472,9 @@ hr.transparent {
 /* Shopping Cart Widget
 /* ========================================================================== */
 .dropdown-menu.cart {
+  width: 260px;
   min-width: 260px;
-}
-
-.cbp-spmenu-left.cbp-spmenu-open .dropdown-menu.cart {
-  min-width: auto;
+  margin: 0;
 }
 
 .nav-collapse .nav > li > a:hover,
