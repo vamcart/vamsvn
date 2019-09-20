@@ -508,7 +508,7 @@ background: #fff;
 }
 .shopping-cart-widget.dropdown .products .media-heading a:hover {
   color: #dd2c00;
-  background: #fff;
+  background: transparent;
 }
 .shopping-cart-widget.dropdown p.buttons {
   padding-bottom: 5px;
