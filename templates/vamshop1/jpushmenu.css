@@ -30,7 +30,7 @@
   }
   /* Orientation-dependent styles for the content of the menu */
   .cbp-spmenu-vertical {
-    width: 360px;
+    width: 260px;
     height: 100%;
     top: 0;
     z-index: 9000;
@@ -55,10 +55,10 @@
   }
   /* Vertical menu that slides from the left or right */
   .cbp-spmenu-left {
-    left: -360px;
+    left: -260px;
   }
   .cbp-spmenu-right {
-    right: -360px;
+    right: -260px;
   }
   .cbp-spmenu-left.cbp-spmenu-open,
   .cbp-spmenu-push-toright .navbar-fixed-top .cbp-spmenu-left.cbp-spmenu-open {
@@ -90,11 +90,11 @@
   }
   .cbp-spmenu-push-toright,
   .cbp-spmenu-push-toright .navbar-fixed-top {
-    left: 360px;
+    left: 260px;
   }
   .cbp-spmenu-push-toleft,
   .cbp-spmenu-push-toleft .navbar-fixed-top {
-    left: -360px;
+    left: -260px;
   }
   /* Transitions */
   .cbp-spmenu,
