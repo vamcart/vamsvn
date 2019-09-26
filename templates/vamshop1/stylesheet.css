@@ -1041,34 +1041,33 @@ background: #fff;
 
 ul#CatNavi {
 border-top: 1px transparent; 
-border-right: 1px solid #dedede; 
-border-bottom: 1px solid #dedede; 
-border-left: 1px solid #dedede; 
+border-right: 1px solid #c0c1c2; 
+border-bottom: 1px solid #c0c1c2; 
+border-left: 1px solid #c0c1c2; 
 }
 
 ul#CatNavi li {
-border-top: 1px solid #dedede; 
+border-top: 1px solid #c0c1c2; 
 }
 
 ul#CatNavi li.CatLevel0.Current {
 }
 
 ul#CatNavi li.CatLevel1 {
-border: 0px solid #dedede; 
+border: 0px solid #c0c1c2; 
 }
 
 ul#CatNavi li.CatLevel2 {
-border: 0px solid #dedede; 
+border: 0px solid #c0c1c2; 
 }
 
 #categoriesBoxMenu #CatNavi li a
    { 
      display: block; 
      padding: .5em 0;
-     color: #000;
+     color: #525b5a;
      text-indent: 0.4em;
      background-color: #fff; 
-     border-left: 0 solid transparent; 
      text-decoration: none;
      margin: 0; 
    }
@@ -1076,25 +1075,20 @@ border: 0px solid #dedede;
 #categoriesBoxMenu #CatNavi li a:hover
    { 
      color: #222; 
-     border-left: 0; 
+     padding-left: 0.8em;
      background-color: #fff;
    }
 
-#categoriesBoxMenu #CatNavi li.CatLevel0,
-#categoriesBoxMenu #CatNavi li.CatLevel1,
-#categoriesBoxMenu #CatNavi li.CatLevel2
+#categoriesBoxMenu #CatNavi li
    { 
      color: #222; 
-     border-left: 0.4em solid transparent; 
      background-color: #fff;
    }
 
-#categoriesBoxMenu #CatNavi li.CatLevel0:hover,
-#categoriesBoxMenu #CatNavi li.CatLevel1:hover,
-#categoriesBoxMenu #CatNavi li.CatLevel2:hover
+#categoriesBoxMenu #CatNavi li:hover
    { 
      color: #222; 
-     border-left: 0.4em solid #dedede; 
+     border-left: 0.4em solid #c0c1c2; 
      background-color: #fff;
    }
 
@@ -1154,7 +1148,7 @@ border: 0px solid #dedede;
 
 #categoriesBoxMenu #CatNavi li.Current
    { 
-     border-left: 0.4em solid #dedede; 
+     border-left: 0.4em solid #c0c1c2; 
      background-color: #fff;
    }
 /*- /Список разделов */

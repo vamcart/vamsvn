@@ -540,7 +540,6 @@ border: 0px solid #c0c1c2;
      color: #000;
      text-indent: 0.4em;
      background-color: #fff; 
-     border-left: 0 solid transparent; 
      text-decoration: none;
      margin: 0; 
    }
@@ -548,22 +547,17 @@ border: 0px solid #c0c1c2;
 #categoriesBoxMenu #CatNavi li a:hover
    { 
      color: #222; 
-     border-left: 0; 
      background-color: #fff;
    }
 
-#categoriesBoxMenu #CatNavi li.CatLevel0,
-#categoriesBoxMenu #CatNavi li.CatLevel1,
-#categoriesBoxMenu #CatNavi li.CatLevel2
+#categoriesBoxMenu #CatNavi li
    { 
      color: #222; 
      border-left: 0.4em solid transparent; 
      background-color: #fff;
    }
 
-#categoriesBoxMenu #CatNavi li.CatLevel0:hover,
-#categoriesBoxMenu #CatNavi li.CatLevel1:hover,
-#categoriesBoxMenu #CatNavi li.CatLevel2:hover
+#categoriesBoxMenu #CatNavi li:hover
    { 
      color: #222; 
      border-left: 0.4em solid #c0c1c2; 
