@@ -1025,59 +1025,139 @@ background: #fff;
   color: #dd2c00;
 }
 
-#CatNavi .CatLevel0 
+/*- Список разделов */
+#categoriesBoxMenu 
+   {
+     padding: 0;
+     margin: 0;
+   }
+
+#categoriesBoxMenu #CatNavi, #CatNavi ul, #CatNavi li 
+   { 
+     margin: 0; 
+     padding: 0; 
+     list-style-type: none; 
+   }
+
+ul#CatNavi {
+border-top: 1px transparent; 
+border-right: 1px solid #dedede; 
+border-bottom: 1px solid #dedede; 
+border-left: 1px solid #dedede; 
+}
+
+ul#CatNavi li {
+border-top: 1px solid #dedede; 
+}
+
+ul#CatNavi li.CatLevel0.Current {
+}
+
+ul#CatNavi li.CatLevel1 {
+border: 0px solid #dedede; 
+}
+
+ul#CatNavi li.CatLevel2 {
+border: 0px solid #dedede; 
+}
+
+#categoriesBoxMenu #CatNavi li a
+   { 
+     display: block; 
+     padding: .5em 0;
+     color: #000;
+     text-indent: 0.4em;
+     background-color: #fff; 
+     border-left: 0 solid transparent; 
+     text-decoration: none;
+     margin: 0; 
+   }
+
+#categoriesBoxMenu #CatNavi li a:hover
+   { 
+     color: #222; 
+     border-left: 0; 
+     background-color: #fff;
+   }
+
+#categoriesBoxMenu #CatNavi li.CatLevel0,
+#categoriesBoxMenu #CatNavi li.CatLevel1,
+#categoriesBoxMenu #CatNavi li.CatLevel2
+   { 
+     color: #222; 
+     border-left: 0.4em solid transparent; 
+     background-color: #fff;
+   }
+
+#categoriesBoxMenu #CatNavi li.CatLevel0:hover,
+#categoriesBoxMenu #CatNavi li.CatLevel1:hover,
+#categoriesBoxMenu #CatNavi li.CatLevel2:hover
+   { 
+     color: #222; 
+     border-left: 0.4em solid #dd2c00; 
+     background-color: #fff;
+   }
+
+
+#categoriesBoxMenu #CatNavi .CatLevel0 
+   {
+     padding-left: 0px;
+   }
+
+#categoriesBoxMenu #CatNavi .CatLevel1 a
+   {
+     padding-left: 10px;
+   }
+
+#categoriesBoxMenu #CatNavi .CatLevel2 
    {
      padding-left: 20px;
    }
 
-#CatNavi .CatLevel1 
+#categoriesBoxMenu #CatNavi .CatLevel3
    {
      padding-left: 30px;
    }
 
-#CatNavi .CatLevel2 
+#categoriesBoxMenu #CatNavi .CatLevel4
    {
      padding-left: 40px;
    }
 
-#CatNavi .CatLevel3
+#categoriesBoxMenu #CatNavi .CatLevel5
    {
      padding-left: 50px;
    }
 
-#CatNavi .CatLevel4
+#categoriesBoxMenu #CatNavi .CatLevel6
    {
      padding-left: 60px;
    }
 
-#CatNavi .CatLevel5
-   {
-     padding-left: 70px;
+#categoriesBoxMenu #CatNavi .CurrentParent a 
+   { 
+
    }
 
-#CatNavi .CatLevel6
-   {
-     padding-left: 80px;
+#categoriesBoxMenu #CatNavi li a,
+#categoriesBoxMenu #CatNavi .Current li a,
+#categoriesBoxMenu #CatNavi .CurrentParent li a,
+#categoriesBoxMenu #CatNavi .CurrentParent .Current li a 
+   { 
+     color: #525b5a;
    }
 
-#CatNavi .CurrentParent a 
+#categoriesBoxMenu #CatNavi .Current a 
    { 
      font-weight: bold; 
    }
 
-#CatNavi li a,
-#CatNavi .Current li a,
-#CatNavi .CurrentParent li a,
-#CatNavi .CurrentParent .Current li a 
+#categoriesBoxMenu #CatNavi li.Current
    { 
-     font-weight: normal; 
+     border-left: 0.4em solid #dd2c00; 
+     background-color: #fff;
    }
-
-#CatNavi .Current a,
-#CatNavi .CurrentParent .Current a 
-   { 
-     font-weight: bold; 
-   }
+/*- /Список разделов */
 
 
 /* Animation KEYFRAMES
