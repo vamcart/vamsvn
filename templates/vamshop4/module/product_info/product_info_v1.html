@@ -16,11 +16,18 @@
 	<div class="row">
 		{if $LABEL_ID > 0}{$PRODUCT_LABEL}{/if}
 		{if $PRODUCTS_SPECIAL > 0}<span class="badge-offer"><b>-{$PRODUCTS_SPECIAL|round}%</b></span>{/if}
-		<div class="col-md-5">
+		<div class="col-md-7">
 
 
 <div id="carouselExampleInterval" class="carousel slide text-center" data-interval="10000000" data-ride="false" data-wrap="true">
-
+{if {$mo_img}}      
+  <ol class="carousel-indicators">
+    <li data-target="#carouselExampleInterval" data-slide-to="0" class="active"></li>
+    {foreach name=slide item=slides from=$mo_img}
+    <li data-target="#carouselExampleInterval" data-slide-to="{counter}"></li>
+    {/foreach}
+  </ol>
+{/if}  
   <div class="carousel-inner">
 
     <div class="carousel-item active" data-interval="10000000" data-ride="false" data-wrap="true">
@@ -48,7 +55,7 @@
 
 
 		</div>
-		<div class="col-md-7">
+		<div class="col-md-5">
 			
 <div class="product-info p-2">
 
