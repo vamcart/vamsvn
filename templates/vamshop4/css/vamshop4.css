@@ -337,3 +337,7 @@ li.level3 {
 .card.card-product .carousel-control-next:hover {
 	color: #494f4d;
 }
+
+.card.card-product .carousel-indicators li {
+    background-color: #6c757d;
+}
