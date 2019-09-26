@@ -166,6 +166,24 @@ $(document).ready(function(){
             })
         });
 
+// Bootstrap carousel equal heights
+function normalizeSlideHeights() {
+    $('.carousel').each(function(){
+      var items = $('.item', this);
+      // reset the height
+      items.css('min-height', 0);
+      // set the height
+      var maxHeight = Math.max.apply(null, 
+          items.map(function(){
+              return $(this).outerHeight()}).get() );
+      items.css('min-height', maxHeight + 'px');
+    })
+}
+
+$(window).on(
+    'load resize orientationchange', 
+    normalizeSlideHeights);
+
 // Ajax quick search
   $("#quick_find_keyword").keyup(function(){
       var searchString = $("#quick_find_keyword").val(); 
