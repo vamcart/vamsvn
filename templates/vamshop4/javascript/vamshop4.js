@@ -77,6 +77,15 @@ $(".owl-carousel").owlCarousel({
 	 });     
 	   });
 
+// Animate bootstrap carousel slide
+$(document).ready(function () {
+    $('.carousel').carousel({
+        interval: 5000
+    }).on('slide.bs.carousel', function (e) {
+        var nextH = $(e.relatedTarget).height();
+        $(this).find('.active').parent().animate({ height: nextH }, 500);
+    });
+});
 
 // Ajax quick search
   $("#quick_find_keyword").keyup(function(){

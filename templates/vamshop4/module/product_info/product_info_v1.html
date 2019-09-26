@@ -18,16 +18,34 @@
 		{if $PRODUCTS_SPECIAL > 0}<span class="badge-offer"><b>-{$PRODUCTS_SPECIAL|round}%</b></span>{/if}
 		<div class="col-md-5">
 
-			<div class="gallery-wrap"> 
-			<div class="img-wrap">
+
+<div id="carouselExampleInterval" class="carousel slide text-center" data-ride="carousel">
+
+  <div class="carousel-inner">
+
+    <div class="carousel-item active" data-interval="10000">
 			  {if $PRODUCTS_POPUP_LINK!=''}<a href="{$PRODUCTS_POPUP_IMAGE}" title="{$PRODUCTS_NAME}" class="lightbox">{/if}<img itemprop="image" src="{$PRODUCTS_IMAGE}" alt="{if $PRODUCTS_IMAGE_DESCRIPTION !=''}{$PRODUCTS_IMAGE_DESCRIPTION}{else}{$PRODUCTS_NAME}{/if}" />{if $PRODUCTS_POPUP_LINK!=''}</a>{/if}
-			</div>
-			<div class="img-small-wrap">
-			{foreach name=mo_pic item=img_values from=$mo_img}
-			  <div class="item-gallery">{if $img_values.PRODUCTS_MO_POPUP_LINK !=''}<a href="{$img_values.PRODUCTS_MO_POPUP_IMAGE}" title="{$PRODUCTS_NAME}" class="lightbox">{/if}<img itemprop="image" src="{$img_values.PRODUCTS_MO_IMAGE}" alt="{if $img_values.PRODUCTS_MO_IMAGE_DESCRIPTION !=''}{$img_values.PRODUCTS_MO_IMAGE_DESCRIPTION}{else}{$PRODUCTS_NAME}{/if}" />{if $img_values.PRODUCTS_MO_POPUP_LINK !=''}</a>{/if}</div>
-			{/foreach}
-			</div>
-			</div>
+    </div>
+
+    {foreach name=slide item=slides from=$mo_img}
+    <div class="carousel-item{if $slides@first} active{/if}" data-interval="10000">
+      {if $slides.PRODUCTS_MO_POPUP_LINK !=''}<a href="{$slides.PRODUCTS_MO_POPUP_IMAGE}" title="{$PRODUCTS_NAME}" class="lightbox">{/if}<img itemprop="image" src="{$slides.PRODUCTS_MO_IMAGE}" alt="{if $slides.PRODUCTS_MO_IMAGE_DESCRIPTION !=''}{$slides.PRODUCTS_MO_IMAGE_DESCRIPTION}{else}{$PRODUCTS_NAME}{/if}" />{if $slides.PRODUCTS_MO_POPUP_LINK !=''}</a>{/if}
+    </div>
+    {/foreach}
+    
+      </div>
+{if {$mo_img}}      
+  <a class="carousel-control-prev" href="#carouselExampleInterval" role="button" data-slide="prev">
+    <span class="fas fa-chevron-left fa-2x" aria-hidden="true"></span>
+    <span class="sr-only">{$smarty.const.PREVNEXT_BUTTON_PREV}</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleInterval" role="button" data-slide="next">
+    <span class="fas fa-chevron-right fa-2x" aria-hidden="true"></span>
+    <span class="sr-only">{$smarty.const.PREVNEXT_BUTTON_NEXT}</span>
+  </a>
+{/if}  
+</div>
+
 
 		</div>
 		<div class="col-md-7">

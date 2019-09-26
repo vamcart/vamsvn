@@ -327,3 +327,13 @@ li.level3 {
 .label-rating {
   display: block;
 }
+
+.card.card-product .carousel-control-prev span,
+.card.card-product .carousel-control-next span {
+	color: #000;
+}
+
+.card.card-product .carousel-control-prev:hover,
+.card.card-product .carousel-control-next:hover {
+	color: #494f4d;
+}
