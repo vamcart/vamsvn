@@ -1075,13 +1075,13 @@ border: 0px solid #c0c1c2;
 #categoriesBoxMenu #CatNavi li a:hover
    { 
      color: #222; 
-     padding-left: 0.8em;
      background-color: #fff;
    }
 
 #categoriesBoxMenu #CatNavi li
    { 
      color: #222; 
+     border-left: 0.4em solid transparent; 
      background-color: #fff;
    }
 
