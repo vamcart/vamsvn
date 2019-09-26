@@ -3191,3 +3191,26 @@ dd {
 .input-prepend {
   margin-bottom: 0;
 }
+
+.text-center {
+    text-align: center !important;
+}
+
+.product-images .carousel-inner>.item>img, .carousel-inner>.item>a>img {
+    display: inline !important;
+    line-height: 1;
+}
+
+.product-images .carousel-control,
+.product-images .carousel-control a {
+	color: #000;
+	background: transparent;
+	font-size: 30px;
+	border: 0;
+}
+
+.product-images .carousel-control:hover,
+.product-images .carousel-control:focus,
+.product-images .carousel-control:active {
+	color: #494f4d;
+}
