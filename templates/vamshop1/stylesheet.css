@@ -1094,7 +1094,7 @@ border: 0px solid #dedede;
 #categoriesBoxMenu #CatNavi li.CatLevel2:hover
    { 
      color: #222; 
-     border-left: 0.4em solid #dd2c00; 
+     border-left: 0.4em solid #dedede; 
      background-color: #fff;
    }
 
@@ -1154,7 +1154,7 @@ border: 0px solid #dedede;
 
 #categoriesBoxMenu #CatNavi li.Current
    { 
-     border-left: 0.4em solid #dd2c00; 
+     border-left: 0.4em solid #dedede; 
      background-color: #fff;
    }
 /*- /Список разделов */
