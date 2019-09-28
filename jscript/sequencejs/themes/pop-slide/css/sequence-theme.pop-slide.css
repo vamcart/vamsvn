@@ -71,10 +71,10 @@ html,
   position: relative;
   display: inline-block;
   width: 40px;
-  height: 40px;
+  height: 0;
   margin: 0 1%;
   cursor: pointer;
-  background: #512A5E;
+  background: transparent;
   /* Image replacement */
   border: 0;
   font: 0/0 a;
@@ -88,7 +88,7 @@ html,
 }
 
 .seq .seq-pagination > *.seq-current {
-  background: #F7DB15;
+  background: rgba(108,117,125,0.6);
 }
 
 .seq .seq-pagination > * a {
@@ -185,7 +185,7 @@ html,
   margin-left: -47%;
   padding: 0 2%;
   line-height: 1.2;
-  background: white;
+  background: rgba(255,255,255,0.6);
   text-align: center;
 }
 
@@ -197,16 +197,18 @@ html,
 .seq .seq-title .seq-button {
   position: relative;
   bottom: -6px;
+  font-size: 0.875rem;
+  font-weight: bold;
   padding: .2em .6em;
-  background: #F7DB15;
-  color: black;
-  font-weight: 700;
+  background-color: rgba(0,0,0,0.6);
+  color: white;
+  text-transform: lowercase;
   text-decoration: none;
 }
 
 .seq .seq-title .seq-button:focus,
 .seq .seq-title .seq-button:hover {
-  background: #512A5E;
+  /*background: transparent;*/
   color: white;
 }
 
@@ -259,16 +261,16 @@ html,
     display: inline-block;
     vertical-align: bottom;
     list-style: none;
-    width: 14%;
-    height: auto;
-    margin: 0 1%;
-    padding: .625em 1%;
+    width: 30px;
+    height: 0;
+    margin: 0 5px;
+    padding: 10px 5px;
     cursor: pointer;
-    border-bottom: black solid 4px;
+    border-bottom: rgb(255,255,255,0.6) solid 4px;
     line-height: 1.4;
     font-size: 16px;
     font-weight: bold;
-    background: #512A5E;
+    background: transparent;
     color: white;
     -webkit-transition-duration: .35s;
     transition-duration: .35s;
@@ -292,9 +294,9 @@ html,
   }
 
   .seq .seq-pagination > *.seq-current {
-    width: 22%;
-    background: #512A5E;
-    border-bottom-color: #F7DB15;
+    width: 30px;
+    background: transparent;
+    border-bottom-color: rgba(108,117,125,0.6);
   }
 }
 
