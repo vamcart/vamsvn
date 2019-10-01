@@ -37,12 +37,9 @@ tinymce.init({
   external_plugins: { "filemanager" : "'.HTTP_SERVER . DIR_WS_CATALOG.'admin/filemanager/plugin.min.js"},
   autosave_ask_before_unload: false,
   image_class_list: [
-      {title: "img-responsive", value: "img-responsive"}
+      {title: "img-fluid", value: "img-fluid"}
   ],		  
   language : "'.$lang.'",
-  image_class_list: [
-    {title: "img-responsive", value: "img-responsive"}
-  ],	
   plugins: [
     "advlist autolink lists link image charmap print preview anchor",
     "searchreplace visualblocks code help fullscreen",
@@ -79,12 +76,9 @@ tinymce.init({
   external_plugins: { "filemanager" : "'.HTTP_SERVER . DIR_WS_CATALOG.'admin/filemanager/plugin.min.js"},
   autosave_ask_before_unload: false,
   image_class_list: [
-      {title: "img-responsive", value: "img-responsive"}
+      {title: "img-fluid", value: "img-fluid"}
   ],		  
   language : "'.$lang.'",
-  image_class_list: [
-    {title: "img-responsive", value: "img-responsive"}
-  ],	
   plugins: [
     "advlist autolink lists link image charmap print preview anchor",
     "searchreplace visualblocks code help fullscreen",
@@ -121,12 +115,9 @@ tinymce.init({
   external_plugins: { "filemanager" : "'.HTTP_SERVER . DIR_WS_CATALOG.'admin/filemanager/plugin.min.js"},
   autosave_ask_before_unload: false,
   image_class_list: [
-      {title: "img-responsive", value: "img-responsive"}
+      {title: "img-fluid", value: "img-fluid"}
   ],		  
   language : "'.$lang.'",
-  image_class_list: [
-    {title: "img-responsive", value: "img-responsive"}
-  ],	
   plugins: [
     "advlist autolink lists link image charmap print preview anchor",
     "searchreplace visualblocks code help fullscreen",
@@ -163,12 +154,9 @@ tinymce.init({
   external_plugins: { "filemanager" : "'.HTTP_SERVER . DIR_WS_CATALOG.'admin/filemanager/plugin.min.js"},
   autosave_ask_before_unload: false,
   image_class_list: [
-      {title: "img-responsive", value: "img-responsive"}
+      {title: "img-fluid", value: "img-fluid"}
   ],		  
   language : "'.$lang.'",
-  image_class_list: [
-    {title: "img-responsive", value: "img-responsive"}
-  ],	
   plugins: [
     "advlist autolink lists link image charmap print preview anchor",
     "searchreplace visualblocks code help fullscreen",
@@ -205,12 +193,9 @@ tinymce.init({
   external_plugins: { "filemanager" : "'.HTTP_SERVER . DIR_WS_CATALOG.'admin/filemanager/plugin.min.js"},
   autosave_ask_before_unload: false,
   image_class_list: [
-      {title: "img-responsive", value: "img-responsive"}
+      {title: "img-fluid", value: "img-fluid"}
   ],		  
   language : "'.$lang.'",
-  image_class_list: [
-    {title: "img-responsive", value: "img-responsive"}
-  ],	
   plugins: [
     "advlist autolink lists link image charmap print preview anchor",
     "searchreplace visualblocks code help fullscreen",
@@ -247,12 +232,9 @@ tinymce.init({
   external_plugins: { "filemanager" : "'.HTTP_SERVER . DIR_WS_CATALOG.'admin/filemanager/plugin.min.js"},
   autosave_ask_before_unload: false,
   image_class_list: [
-      {title: "img-responsive", value: "img-responsive"}
+      {title: "img-fluid", value: "img-fluid"}
   ],		  
   language : "'.$lang.'",
-  image_class_list: [
-    {title: "img-responsive", value: "img-responsive"}
-  ],	
   plugins: [
     "advlist autolink lists link image charmap print preview anchor",
     "searchreplace visualblocks code help fullscreen",
@@ -289,12 +271,9 @@ tinymce.init({
   external_plugins: { "filemanager" : "'.HTTP_SERVER . DIR_WS_CATALOG.'admin/filemanager/plugin.min.js"},
   autosave_ask_before_unload: false,
   image_class_list: [
-      {title: "img-responsive", value: "img-responsive"}
+      {title: "img-fluid", value: "img-fluid"}
   ],		  
   language : "'.$lang.'",
-  image_class_list: [
-    {title: "img-responsive", value: "img-responsive"}
-  ],	
   plugins: [
     "advlist autolink lists link image charmap print preview anchor",
     "searchreplace visualblocks code help fullscreen",
@@ -331,12 +310,9 @@ tinymce.init({
   external_plugins: { "filemanager" : "'.HTTP_SERVER . DIR_WS_CATALOG.'admin/filemanager/plugin.min.js"},
   autosave_ask_before_unload: false,
   image_class_list: [
-      {title: "img-responsive", value: "img-responsive"}
+      {title: "img-fluid", value: "img-fluid"}
   ],		  
   language : "'.$lang.'",
-  image_class_list: [
-    {title: "img-responsive", value: "img-responsive"}
-  ],	
   plugins: [
     "advlist autolink lists link image charmap print preview anchor",
     "searchreplace visualblocks code help fullscreen",
@@ -373,12 +349,9 @@ tinymce.init({
   external_plugins: { "filemanager" : "'.HTTP_SERVER . DIR_WS_CATALOG.'admin/filemanager/plugin.min.js"},
   autosave_ask_before_unload: false,
   image_class_list: [
-      {title: "img-responsive", value: "img-responsive"}
+      {title: "img-fluid", value: "img-fluid"}
   ],		  
   language : "'.$lang.'",
-  image_class_list: [
-    {title: "img-responsive", value: "img-responsive"}
-  ],	
   plugins: [
     "advlist autolink lists link image charmap print preview anchor",
     "searchreplace visualblocks code help fullscreen",
@@ -415,12 +388,9 @@ tinymce.init({
   external_plugins: { "filemanager" : "'.HTTP_SERVER . DIR_WS_CATALOG.'admin/filemanager/plugin.min.js"},
   autosave_ask_before_unload: false,
   image_class_list: [
-      {title: "img-responsive", value: "img-responsive"}
+      {title: "img-fluid", value: "img-fluid"}
   ],		  
   language : "'.$lang.'",
-  image_class_list: [
-    {title: "img-responsive", value: "img-responsive"}
-  ],	
   plugins: [
     "advlist autolink lists link image charmap print preview anchor",
     "searchreplace visualblocks code help fullscreen",
@@ -457,12 +427,9 @@ tinymce.init({
   external_plugins: { "filemanager" : "'.HTTP_SERVER . DIR_WS_CATALOG.'admin/filemanager/plugin.min.js"},
   autosave_ask_before_unload: false,
   image_class_list: [
-      {title: "img-responsive", value: "img-responsive"}
+      {title: "img-fluid", value: "img-fluid"}
   ],		  
   language : "'.$lang.'",
-  image_class_list: [
-    {title: "img-responsive", value: "img-responsive"}
-  ],	
   plugins: [
     "advlist autolink lists link image charmap print preview anchor",
     "searchreplace visualblocks code help fullscreen",
