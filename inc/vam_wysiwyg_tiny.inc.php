@@ -36,6 +36,9 @@ tinymce.init({
   filemanager_access_key:"'. session_name() .'" ,
   external_plugins: { "filemanager" : "'.HTTP_SERVER . DIR_WS_CATALOG.'admin/filemanager/plugin.min.js"},
   autosave_ask_before_unload: false,
+  image_class_list: [
+      {title: "img-responsive", value: "img-responsive"}
+  ],		  
   language : "'.$lang.'",
   image_class_list: [
     {title: "img-responsive", value: "img-responsive"}
@@ -75,6 +78,9 @@ tinymce.init({
   filemanager_access_key:"'. session_name() .'" ,
   external_plugins: { "filemanager" : "'.HTTP_SERVER . DIR_WS_CATALOG.'admin/filemanager/plugin.min.js"},
   autosave_ask_before_unload: false,
+  image_class_list: [
+      {title: "img-responsive", value: "img-responsive"}
+  ],		  
   language : "'.$lang.'",
   image_class_list: [
     {title: "img-responsive", value: "img-responsive"}
@@ -114,6 +120,9 @@ tinymce.init({
   filemanager_access_key:"'. session_name() .'" ,
   external_plugins: { "filemanager" : "'.HTTP_SERVER . DIR_WS_CATALOG.'admin/filemanager/plugin.min.js"},
   autosave_ask_before_unload: false,
+  image_class_list: [
+      {title: "img-responsive", value: "img-responsive"}
+  ],		  
   language : "'.$lang.'",
   image_class_list: [
     {title: "img-responsive", value: "img-responsive"}
@@ -153,6 +162,9 @@ tinymce.init({
   filemanager_access_key:"'. session_name() .'" ,
   external_plugins: { "filemanager" : "'.HTTP_SERVER . DIR_WS_CATALOG.'admin/filemanager/plugin.min.js"},
   autosave_ask_before_unload: false,
+  image_class_list: [
+      {title: "img-responsive", value: "img-responsive"}
+  ],		  
   language : "'.$lang.'",
   image_class_list: [
     {title: "img-responsive", value: "img-responsive"}
@@ -192,6 +204,9 @@ tinymce.init({
   filemanager_access_key:"'. session_name() .'" ,
   external_plugins: { "filemanager" : "'.HTTP_SERVER . DIR_WS_CATALOG.'admin/filemanager/plugin.min.js"},
   autosave_ask_before_unload: false,
+  image_class_list: [
+      {title: "img-responsive", value: "img-responsive"}
+  ],		  
   language : "'.$lang.'",
   image_class_list: [
     {title: "img-responsive", value: "img-responsive"}
@@ -231,6 +246,9 @@ tinymce.init({
   filemanager_access_key:"'. session_name() .'" ,
   external_plugins: { "filemanager" : "'.HTTP_SERVER . DIR_WS_CATALOG.'admin/filemanager/plugin.min.js"},
   autosave_ask_before_unload: false,
+  image_class_list: [
+      {title: "img-responsive", value: "img-responsive"}
+  ],		  
   language : "'.$lang.'",
   image_class_list: [
     {title: "img-responsive", value: "img-responsive"}
@@ -270,6 +288,9 @@ tinymce.init({
   filemanager_access_key:"'. session_name() .'" ,
   external_plugins: { "filemanager" : "'.HTTP_SERVER . DIR_WS_CATALOG.'admin/filemanager/plugin.min.js"},
   autosave_ask_before_unload: false,
+  image_class_list: [
+      {title: "img-responsive", value: "img-responsive"}
+  ],		  
   language : "'.$lang.'",
   image_class_list: [
     {title: "img-responsive", value: "img-responsive"}
@@ -309,6 +330,9 @@ tinymce.init({
   filemanager_access_key:"'. session_name() .'" ,
   external_plugins: { "filemanager" : "'.HTTP_SERVER . DIR_WS_CATALOG.'admin/filemanager/plugin.min.js"},
   autosave_ask_before_unload: false,
+  image_class_list: [
+      {title: "img-responsive", value: "img-responsive"}
+  ],		  
   language : "'.$lang.'",
   image_class_list: [
     {title: "img-responsive", value: "img-responsive"}
@@ -348,6 +372,9 @@ tinymce.init({
   filemanager_access_key:"'. session_name() .'" ,
   external_plugins: { "filemanager" : "'.HTTP_SERVER . DIR_WS_CATALOG.'admin/filemanager/plugin.min.js"},
   autosave_ask_before_unload: false,
+  image_class_list: [
+      {title: "img-responsive", value: "img-responsive"}
+  ],		  
   language : "'.$lang.'",
   image_class_list: [
     {title: "img-responsive", value: "img-responsive"}
@@ -387,6 +414,9 @@ tinymce.init({
   filemanager_access_key:"'. session_name() .'" ,
   external_plugins: { "filemanager" : "'.HTTP_SERVER . DIR_WS_CATALOG.'admin/filemanager/plugin.min.js"},
   autosave_ask_before_unload: false,
+  image_class_list: [
+      {title: "img-responsive", value: "img-responsive"}
+  ],		  
   language : "'.$lang.'",
   image_class_list: [
     {title: "img-responsive", value: "img-responsive"}
@@ -426,6 +456,9 @@ tinymce.init({
   filemanager_access_key:"'. session_name() .'" ,
   external_plugins: { "filemanager" : "'.HTTP_SERVER . DIR_WS_CATALOG.'admin/filemanager/plugin.min.js"},
   autosave_ask_before_unload: false,
+  image_class_list: [
+      {title: "img-responsive", value: "img-responsive"}
+  ],		  
   language : "'.$lang.'",
   image_class_list: [
     {title: "img-responsive", value: "img-responsive"}
