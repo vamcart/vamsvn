@@ -3288,3 +3288,8 @@ dd {
 .product-images .carousel-control:active {
 	color: #494f4d;
 }
+
+.img-fluid {
+  max-width: 100%;
+  height: auto;
+}
