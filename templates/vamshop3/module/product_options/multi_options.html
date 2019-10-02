@@ -4,8 +4,8 @@
 
 <!-- select -->
 <p>
-<strong>{$options_data.NAME}:</strong>
-<select name="id[{$options_data.ID}]">
+<strong>{$options_data.NAME}:</strong>&nbsp;
+<select name="id[{$options_data.ID}]" class="form-control">
 {foreach key=key_data item=item_data from=$options_data.DATA}
 <option value="{$item_data.ID}">{$item_data.TEXT}   {if $item_data.MODEL}({$item_data.MODEL}){/if} {if $item_data.PRICE_PLAIN != 0}({$item_data.PREFIX}{$item_data.PRICE}){/if}</option>
 {/foreach}
@@ -20,9 +20,9 @@
 
 <strong>{$options_data.NAME}:</strong>
 {foreach key=key_data item=item_data from=$options_data.DATA}
-<strong>{$item_data.TEXT}</strong>
+<strong>{$item_data.TEXT}</strong>&nbsp;
 <input name="id[{$options_data.ID}]" type="hidden" value="{$item_data.ID}" />
-<input name="id[txt_{$options_data.ID}_{$item_data.ID}]" type="text" size="{$options_data.SIZE}" maxlength="{$options_data.LENGTH}" />{if $item_data.MODEL}({$item_data.MODEL}){/if} {if $item_data.PRICE_PLAIN != 0}({$item_data.PREFIX}{$item_data.PRICE}){/if}
+<input name="id[txt_{$options_data.ID}_{$item_data.ID}]" type="text" size="{$options_data.SIZE}" maxlength="{$options_data.LENGTH}" class="form-control col-3" />{if $item_data.MODEL}({$item_data.MODEL}){/if} {if $item_data.PRICE_PLAIN != 0}({$item_data.PREFIX}{$item_data.PRICE}){/if}
 {if $item_data.DESCRIPTION}<br />{$item_data.DESCRIPTION}{/if}<br />
 {/foreach}
 </p>
@@ -33,11 +33,10 @@
 <!-- textarea -->
 <p>
 <strong>{$options_data.NAME}:</strong>
-
 {foreach key=key_data item=item_data from=$options_data.DATA}
-<strong>{$item_data.TEXT}</strong>
+<strong>{$item_data.TEXT}</strong>&nbsp;
 <input name="id[{$options_data.ID}]" type="hidden" value="{$item_data.ID}" />
-<textarea name="id[txt_{$options_data.ID}_{$item_data.ID}]" cols="20" rows="{$options_data.ROWS}"></textarea>
+<textarea name="id[txt_{$options_data.ID}_{$item_data.ID}]" cols="20" rows="{$options_data.ROWS}" class="form-control"></textarea>
 {if $item_data.MODEL}({$item_data.MODEL}){/if} {if $item_data.PRICE_PLAIN != 0}({$item_data.PREFIX}{$item_data.PRICE}){/if}
 {if $item_data.DESCRIPTION}<br />{$item_data.DESCRIPTION}{/if}<br />
 {/foreach}
@@ -49,16 +48,17 @@
 <!-- radio -->
 <p>
 <strong>{$options_data.NAME}:</strong>
-
 {foreach key=key_data item=item_data from=$options_data.DATA}
-<!-- changed by mosq // -->
-<input type="radio" name="id[{$options_data.ID}]" value="{$item_data.ID}" {$item_data.CHECKED} />
-
+<div>
+<label>
+<input type="radio" name="id[{$options_data.ID}]" value="{$item_data.ID}" {$item_data.CHECKED} />&nbsp;
 {$item_data.TEXT} {if $item_data.PRICE_PLAIN != 0}({$item_data.PREFIX}{$item_data.PRICE}){/if}
 {if $item_data.DESCRIPTION}<br />{$item_data.DESCRIPTION}<br />{/if}
 {if $item_data.SHORT_DESCRIPTION}{$item_data.SHORT_DESCRIPTION}<br />{/if}
 {if $item_data.IMAGE}<img src="{$image_dir}thumbs/{$item_data.IMAGE}" border="0" alt="{$item_data.TEXT}" />{/if}
 {if $item_data.LINK}<a align="right" href="http://{$item_data.LINK}" target="_blank"><img src="{$tpl_path}img/info.gif" border="0" alt="{$item_data.TEXT}" /></a>{/if}<br />
+</label>
+</div>
 {/foreach}
 </p>
 <!-- /radio -->
@@ -68,11 +68,12 @@
 <!-- checkbox -->
 <p>
 <strong>{$options_data.NAME}:</strong>
-
 {foreach key=key_data item=item_data from=$options_data.DATA}
-<input type="checkbox" name="id[{$options_data.ID}]" value="{$item_data.ID}" />
+<label>
+<input type="checkbox" name="id[{$options_data.ID}]" value="{$item_data.ID}" />&nbsp;
 {$item_data.TEXT} {if $item_data.PRICE_PLAIN != 0}({$item_data.PREFIX}{$item_data.PRICE}){/if}
 {if $item_data.DESCRIPTION}<br />{$item_data.DESCRIPTION}{/if}<br />
+</label>
 {/foreach}
 </p>
 <!-- /checkbox -->
@@ -86,7 +87,6 @@
 <input type="hidden" name="id[{$options_data.ID}]" value="{$item_data.ID}" />
 {if $item_data.MODEL}({$item_data.MODEL}){/if} {$item_data.TEXT} {if $item_data.PRICE_PLAIN != 0}({$item_data.PREFIX}{$item_data.PRICE}){/if}
 {if $item_data.DESCRIPTION}<br />{$item_data.DESCRIPTION}{/if}<br />
-
 {/foreach}
 </p>
 <!-- /readonly -->
