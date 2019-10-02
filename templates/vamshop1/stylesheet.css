@@ -1041,24 +1041,24 @@ background: #fff;
 
 ul#CatNavi {
 border-top: 1px transparent; 
-border-right: 1px solid #c0c1c2; 
-border-bottom: 1px solid #c0c1c2; 
-border-left: 1px solid #c0c1c2; 
+border-right: 1px solid transparent; 
+border-bottom: 1px solid transparent; 
+border-left: 1px solid transparent; 
 }
 
 ul#CatNavi li {
-border-top: 1px solid #c0c1c2; 
+border-top: 1px solid transparent; 
 }
 
 ul#CatNavi li.CatLevel0.Current {
 }
 
 ul#CatNavi li.CatLevel1 {
-border: 0px solid #c0c1c2; 
+border: 0px solid transparent; 
 }
 
 ul#CatNavi li.CatLevel2 {
-border: 0px solid #c0c1c2; 
+border: 0px solid transparent; 
 }
 
 #categoriesBoxMenu #CatNavi li a
@@ -1088,7 +1088,7 @@ border: 0px solid #c0c1c2;
 #categoriesBoxMenu #CatNavi li:hover
    { 
      color: #222; 
-     border-left: 0.4em solid #c0c1c2; 
+     border-left: 0.4em solid #c0c1c2;
      background-color: #fff;
    }
 
@@ -1148,7 +1148,7 @@ border: 0px solid #c0c1c2;
 
 #categoriesBoxMenu #CatNavi li.Current
    { 
-     border-left: 0.4em solid #c0c1c2; 
+     border-left: 0.4em solid #c0c1c2;
      background-color: #fff;
    }
 /*- /Список разделов */
