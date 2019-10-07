@@ -23,7 +23,7 @@
 
 <dd class="itemDescription" itemprop="reviewBody">
 {if $smarty.SERVER.SCRIPT_NAME != '/product_reviews_info.php'}
-{$module_data.REVIEW.TEXT|strip_tags|vam_truncate:240:"...":true}
+{$module_data.REVIEW.TEXT|strip_tags|vam_truncate:$smarty.const.MAX_DISPLAY_SHORT_DESCRIPTION:"...":true}
 {else}
 {$module_data.REVIEW.TEXT|strip_tags}
 {/if}

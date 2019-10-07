@@ -18,7 +18,7 @@
 				<h4 class="title"><a href="{$module_data.PRODUCT.PRODUCTS_LINK}">{$module_data.PRODUCT.PRODUCTS_NAME}</a></h4>
 				{if $module_data.PRODUCT.REVIEWS_TOTAL > 0}<div class="description"><span class="rating">{$module_data.PRODUCT.REVIEWS_STAR_RATING}</span> <span class="reviews">{$smarty.const.TEXT_TOTAL_REVIEWS}: {$module_data.PRODUCT.REVIEWS_TOTAL}</span></div>{/if}
 				<h4>{#heading_product_reviews#}</h4>
-				<div class="description">{$module_data.REVIEW.TEXT|strip_tags|vam_truncate:256:"...":true}</div>
+				<div class="description">{$module_data.REVIEW.TEXT|strip_tags|vam_truncate:$smarty.const.MAX_DISPLAY_SHORT_DESCRIPTION:"...":true}</div>
 				<p class="desc text-center"><a class="" href="{$module_data.REVIEW.URL}"><i class="fa fa-comment"></i> {#text_read#}</a></p>
 			</div>
 			</div>
