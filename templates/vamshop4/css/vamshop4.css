@@ -358,3 +358,7 @@ li.level3 {
     color: #0051A8;
     border-color: #0051A8;
 }
+
+.bg-secondary {
+    background-color: #575757 !important;
+}
