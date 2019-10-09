@@ -5,7 +5,15 @@ body {
 }
 
 header {
-  background: #6c757d;
+  background: #575757;
+}
+
+a {
+  color: #0654A7;
+}
+
+a:hover {
+  color: #004A99;
 }
 
 p {
@@ -316,7 +324,7 @@ li.level3 {
 }
 
 .header-logo a {
-  color: #858585;
+  color: #575757;
 }
 
 .input-group.product-info .input-group-append .btn {
@@ -339,5 +347,14 @@ li.level3 {
 }
 
 .card.card-product .carousel-indicators li {
-    background-color: #6c757d;
+    background-color: #575757;
+}
+
+.text-muted {
+    color: #575757 !important;
+}
+
+.btn-outline-primary {
+    color: #0051A8;
+    border-color: #0051A8;
 }

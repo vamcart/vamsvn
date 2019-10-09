@@ -154,18 +154,8 @@ textarea
 /*- Список разделов */
 #categoriesBoxMenu 
    {
-		margin: 0;
-		padding: .5em;
-		background-color: #fff;
-		background-image: url(../img/vamcart/bg.png);
-		background-position: 0 -602px;
-		background-repeat: repeat-x; 
-		border-top: 0px;
-		border-left: 1px solid #c0c1c2;
-		border-right: 1px solid #c0c1c2;
-		border-bottom: 1px solid #c0c1c2;
-		border-bottom-left-radius: 8px;
-		border-bottom-right-radius: 8px;
+     padding: 0;
+     margin: 0;
    }
 
 #categoriesBoxMenu #CatNavi, #CatNavi ul, #CatNavi li 
@@ -175,62 +165,98 @@ textarea
      list-style-type: none; 
    }
 
+ul#CatNavi {
+border-top: 1px transparent; 
+border-right: 1px solid #c0c1c2; 
+border-bottom: 1px solid #c0c1c2; 
+border-left: 1px solid #c0c1c2; 
+}
+
+ul#CatNavi li {
+border-top: 1px solid #c0c1c2; 
+}
+
+ul#CatNavi li.CatLevel0.Current {
+}
+
+ul#CatNavi li.CatLevel1 {
+border: 0px solid #c0c1c2; 
+}
+
+ul#CatNavi li.CatLevel2 {
+border: 0px solid #c0c1c2; 
+}
+
 #categoriesBoxMenu #CatNavi li a
    { 
-     width: 95%;
      display: block; 
-     padding: 0.1em 0;
-     color: #000;
+     padding: .5em 0;
+     color: #525b5a;
      text-indent: 0.4em;
-     background-color: transparent; 
+     background-color: #fff; 
      text-decoration: none;
-     margin: 0.2em 0; 
+     margin: 0; 
    }
 
 #categoriesBoxMenu #CatNavi li a:hover
    { 
-     color: #f00; 
-     background-color: transparent;
+     color: #222; 
+     background-color: #fff;
    }
 
+#categoriesBoxMenu #CatNavi li
+   { 
+     color: #222; 
+     border-left: 0.4em solid transparent; 
+     background-color: #fff;
+   }
+
+#categoriesBoxMenu #CatNavi li:hover
+   { 
+     color: #222; 
+     border-left: 0.4em solid #c0c1c2; 
+     background-color: #fff;
+   }
+
+
 #categoriesBoxMenu #CatNavi .CatLevel0 
+   {
+     padding-left: 0px;
+   }
+
+#categoriesBoxMenu #CatNavi .CatLevel1 a
    {
      padding-left: 10px;
    }
 
-#categoriesBoxMenu #CatNavi .CatLevel1 
+#categoriesBoxMenu #CatNavi .CatLevel2 
    {
      padding-left: 20px;
    }
 
-#categoriesBoxMenu #CatNavi .CatLevel2 
+#categoriesBoxMenu #CatNavi .CatLevel3
    {
      padding-left: 30px;
    }
 
-#categoriesBoxMenu #CatNavi .CatLevel3
+#categoriesBoxMenu #CatNavi .CatLevel4
    {
      padding-left: 40px;
    }
 
-#categoriesBoxMenu #CatNavi .CatLevel4
+#categoriesBoxMenu #CatNavi .CatLevel5
    {
      padding-left: 50px;
    }
 
-#categoriesBoxMenu #CatNavi .CatLevel5
+#categoriesBoxMenu #CatNavi .CatLevel6
    {
      padding-left: 60px;
    }
 
-#categoriesBoxMenu #CatNavi .CatLevel6
-   {
-     padding-left: 70px;
-   }
-
 #categoriesBoxMenu #CatNavi .CurrentParent a 
    { 
-     font-weight: bold; 
+
    }
 
 #categoriesBoxMenu #CatNavi li a,
@@ -238,15 +264,19 @@ textarea
 #categoriesBoxMenu #CatNavi .CurrentParent li a,
 #categoriesBoxMenu #CatNavi .CurrentParent .Current li a 
    { 
-     font-weight: normal; 
+     color: #525b5a;
    }
 
-#categoriesBoxMenu #CatNavi .Current a,
-#categoriesBoxMenu #CatNavi .CurrentParent .Current a 
+#categoriesBoxMenu #CatNavi .Current a 
    { 
      font-weight: bold; 
    }
-   
+
+#categoriesBoxMenu #CatNavi li.Current
+   { 
+     border-left: 0.4em solid #c0c1c2; 
+     background-color: #fff;
+   }
 /*- /Список разделов */
 
 /*- /Бокс разделы */
@@ -2063,7 +2093,7 @@ p.LoginContentLeft
 div#parseTime
    {
      clear: left;
-     background: #6c757d;
+     background: #575757;
      width: 100%;
      text-align: center;
      color: #fff;
@@ -2076,7 +2106,7 @@ div#parseTime
 div#copyright
    {
      clear: left;
-     background: #6c757d;
+     background: #575757;
      width: 100%;
      text-align: center;
      color: #fff;
@@ -2095,7 +2125,7 @@ div#copyright a:visited
 div.copyright
    {
      clear: left;
-     background: #6c757d;
+     background: #575757;
      width: 100%;
      text-align: center;
      color: #fff;
@@ -2728,7 +2758,7 @@ label
 
 .btn.btn-inverse {
   color: #ffffff;
-  background-color: #6c757d;
+  background-color: #575757;
   margin-top: 5px;
   margin-right: 5px;
   margin-bottom: 5px;
@@ -2791,7 +2821,7 @@ span.button button,
 span.button input, 
 del.button span
 	{
-		background-color: #6c757d;
+		background-color: #575757;
 	}
 
 a.button span, 
