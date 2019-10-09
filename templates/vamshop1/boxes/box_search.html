@@ -1,7 +1,7 @@
 {config_load file="$language/lang_$language.conf" section="boxes"}
 <div class="search">
 	<form class="navbar-search pull-left input-append" id="search" action="advanced_search_result.php" method="get" autocomplete="off">
-		<input class="search-query span2" id="quick_find_keyword" autocomplete="off" name="keywords" type="text" placeholder="{#heading_search#}" />
+		<input class="search-query span2" id="quick_find_keyword" autocomplete="off" name="keywords" type="text" placeholder="{#heading_search#}" aria-label="{$smarty.const.BOX_HEADING_SEARCH}" />
 		<input class="btn search-bt" type="submit" value="">
 		<div class="ajaxQuickFind" id="ajaxQuickFind"></div>
 	</form>

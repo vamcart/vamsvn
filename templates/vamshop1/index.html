@@ -28,13 +28,13 @@
             <div class="navbar">
               <div class="navbar-inner">
                 <div class="container">
-				      <button type="button" class="btn btn-navbar navbar-toggle toggle-menu menu-left" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+				      <button type="button" class="btn btn-navbar navbar-toggle toggle-menu menu-left" data-toggle="collapse" data-target=".navbar-responsive-collapse" aria-label="navbar">
 				        <span class="sr-only"></span>                
 				        <span class="icon-bar"></span>
 				        <span class="icon-bar"></span>
 				        <span class="icon-bar"></span>
 				      </button>
-					     <a class="brand" href="{$smarty.const.FILENAME_DEFAULT}">
+					     <a class="brand" href="{$smarty.const.FILENAME_DEFAULT}" aria-label="home">
 					         <i class="fa fa-home"></i>
 					     </a>                  
 					     <div class="nav-collapse collapse navbar-responsive-collapse cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left">
@@ -50,7 +50,7 @@
                     {$box_SEARCH}
                     <ul class="nav pull-right">
                       <li><a href="{$smarty.const.FILENAME_ACCOUNT}"><i class="fa fa-user"></i> {$smarty.const.TEXT_MY_ORDERS}</a></li>
-                      {if !$cart_current}<li class="dropdown" id="divShoppingCart">{$box_CART}</li>{/if}
+                      {if !$cart_current}<li class="visible-phone dropdown" id="divShoppingCart">{$box_CART}</li>{/if}
                       {if $smarty.session.customers_status.customers_status_id == 0}
                       <li><a href="{$admin_area_link}"><i class="fa fa-gear"></i> {#text_admin#}</a></li>
                       {/if}  
