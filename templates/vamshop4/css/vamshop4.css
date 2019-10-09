@@ -359,6 +359,13 @@ li.level3 {
     border-color: #0051A8;
 }
 
+.btn-secondary,
 .bg-secondary {
     background-color: #575757 !important;
+}
+
+.btn-secondary:hover {
+    color: #fff;
+    background-color: #6c757d !important;
+    border-color: #545b62 !important;
 }
