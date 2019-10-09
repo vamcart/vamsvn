@@ -350,7 +350,8 @@ li.level3 {
     background-color: #575757;
 }
 
-.text-muted {
+.text-muted,
+.address {
     color: #575757 !important;
 }
 
