@@ -446,14 +446,7 @@ elseif ($category_depth == 'products' || $_GET['manufacturers_id']) {
 	if ($current_category_id > 0) {
     $manufacturer_sort .= '<a href="'.vam_href_link(FILENAME_DEFAULT, 'cat='.$current_category_id.'&filter_id='.$filterlist['id']).'">' . $filterlist['name'] . '</a> ';
     } else {
-    if (SEARCH_ENGINE_FRIENDLY_URLS == 'true') { 
-    $get_separator = '/';
-    $get_value_separator = '/';
-    } else {
-    $get_separator = '&';
-    $get_value_separator = '=';
-    }
-    $manufacturer_sort .= '<a href="'.vam_href_link(FILENAME_DEFAULT, 'filter_id='.$filterlist['id']).$get_separator.'manufacturers_id'.$get_value_separator.(int)$_GET['manufacturers_id'].'">' . $filterlist['name'] . '</a> ';
+    $manufacturer_sort .= '<a href="'.vam_href_link(FILENAME_DEFAULT, 'filter_id='.$filterlist['id'].'&manufacturers_id='.(int)$_GET['manufacturers_id']).'">' . $filterlist['name'] . '</a> ';
     }
     }
     $manufacturer_sort .= '<a href="'.vam_href_link(FILENAME_DEFAULT, 'cat='.$current_category_id).'">' . TEXT_ALL_MANUFACTURERS . '</a> ';
