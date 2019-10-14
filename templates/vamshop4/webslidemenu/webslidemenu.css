@@ -871,11 +871,11 @@ video {
 }
 
 .wsmenu>.wsmenu-list>li .wstmenutag.orangetag {
-  background-color: #FE7000;
+  background-color: #dd2c00;
 }
 
 .wsmenu>.wsmenu-list>li .wstmenutag.orangetag:after {
-  border-color: transparent #FE7000 transparent transparent;
+  border-color: transparent #dd2c00 transparent transparent;
 }
 
 .wsmenu>.wsmenu-list>li .kitchenmenuimg {
