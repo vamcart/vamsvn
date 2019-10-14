@@ -24,6 +24,7 @@ class schet {
 		$this->code = 'schet';
 		$this->title = MODULE_PAYMENT_SCHET_TEXT_TITLE;
 		$this->description = MODULE_PAYMENT_SCHET_TEXT_DESCRIPTION;
+		$this->icon = DIR_WS_ICONS . 'schet.png';
 		$this->sort_order = MODULE_PAYMENT_SCHET_SORT_ORDER;
 		$this->info = MODULE_PAYMENT_SCHET_TEXT_INFO;
 		$this->enabled = ((MODULE_PAYMENT_SCHET_STATUS == 'True') ? true : false);
@@ -65,11 +66,14 @@ class schet {
 	function selection() {
       global $order;
 
+		if (vam_not_null($this->icon)) $icon = vam_image($this->icon, $this->title);		
+		
 		$payment_query = vam_db_query("select * from ".TABLE_COMPANIES." where customers_id = '" . (int)$order->customer['id'] . "'");
 		$payment_data = vam_db_fetch_array($payment_query);
 
       $selection = array('id' => $this->code,
                          'module' => $this->title,
+                         'icon' => $icon,
                          'description'=>$this->info,
       	                 'fields' => array(array('title' => '<div id="schet">'.MODULE_PAYMENT_SCHET_J_NAME_TITLE,
       	                                         'field' => MODULE_PAYMENT_SCHET_J_NAME_DESC),
