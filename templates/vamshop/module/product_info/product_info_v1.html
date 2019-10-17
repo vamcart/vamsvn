@@ -244,6 +244,65 @@
 {$MODULE_also_purchased}
 {/if}
 
+{if $products_history}
+<h1>{#title_viewed_products#}</h1>
+<div class="page">
+<div class="pageItem">
+{foreach name=aussen item=module_data from=$products_history} 
+<dl class="itemNewProductsDefault">
+<dt class="itemImage">
+{if $module_data.PRODUCTS_IMAGE}<a href="{$module_data.PRODUCTS_LINK}"><img src="{$module_data.PRODUCTS_IMAGE}" border="0" alt="{$module_data.PRODUCTS_NAME}" /></a><br />{/if}
+{$module_data.PRODUCTS_BUTTON_BUY_NOW}
+</dt>
+<dd class="itemDescription">
+<a href="{$module_data.PRODUCTS_LINK}">{$module_data.PRODUCTS_NAME}</a>
+</dd>
+
+{if $module_data.PRODUCTS_LABEL}
+<dd class="itemDescription">
+{$module_data.PRODUCTS_LABEL}
+</dd>
+{/if}
+
+{if $module_data.REVIEWS_TOTAL > 0}<dd class="itemDescription"><p>{$smarty.const.TEXT_REVIEWS_RATING}: {$module_data.REVIEWS_TOTAL_RATING|number_format:2}, {$smarty.const.TEXT_TOTAL_REVIEWS}: {$module_data.REVIEWS_TOTAL}</p></dd>{/if}
+
+<dd class="itemDescription">
+{$module_data.PRODUCTS_SHORT_DESCRIPTION|vam_truncate:256:"...":true}
+</dd>
+
+<dd class="itemDescriptionPrice">
+{$module_data.PRODUCTS_PRICE}
+</dd>
+
+{if $module_data.PRODUCTS_VPE}
+<dd class="itemDescription">
+{$module_data.PRODUCTS_VPE}
+</dd>
+{/if}
+
+<dd class="itemDescription">
+{$module_data.PRODUCTS_TAX_INFO}{$module_data.PRODUCTS_SHIPPING_LINK}
+</dd>
+
+{if $module_data.PRODUCTS_SHIPPING_NAME}
+<dd class="itemDescription">
+{#text_shippingtime#}&nbsp;
+{if $module_data.PRODUCTS_SHIPPING_IMAGE}
+<img src="{$module_data.PRODUCTS_SHIPPING_IMAGE}" alt="{$module_data.PRODUCTS_SHIPPING_NAME}" />
+{/if}
+{$module_data.PRODUCTS_SHIPPING_NAME}
+</dd>
+{/if}
+
+</dl>
+          {/foreach} 
+
+<div class="clear"></div>
+</div>
+
+</div>
+{/if}
+
 {if $MODULE_bundle_products != ''}
 {$MODULE_bundle_products}
 {/if}

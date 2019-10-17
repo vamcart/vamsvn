@@ -120,6 +120,27 @@ if (!is_object($product) || !$product->isProduct() OR !$product->data['products_
 		$info->assign('PRODUCTS_PRINT_LINK', vam_href_link(FILENAME_PRINT_PRODUCT_INFO, 'products_id='.$product->data['products_id']));      
 		$info->assign('PRODUCTS_DESCRIPTION', stripslashes($product->data['products_description']));
 		$info->assign('PRODUCTS_SHORT_DESCRIPTION', stripslashes($product->data['products_short_description']));
+
+      $i = 0;
+      $max = count($_SESSION['tracking']['products_history']);
+      
+      while ($i < $max) {
+      
+      	
+      	$product_history_query = vamDBquery("select * from ".TABLE_PRODUCTS." p, ".TABLE_PRODUCTS_DESCRIPTION." pd where p.products_id=pd.products_id and pd.language_id='".(int) $_SESSION['languages_id']."' and p.products_status = '1' and p.products_id = '".$_SESSION['tracking']['products_history'][$i]."'");
+      	$history_product = vam_db_fetch_array($product_history_query, true);
+      $cpath = vam_get_product_path($_SESSION['tracking']['products_history'][$i]);
+      	if ($history_product['products_status'] != 0) {
+      
+      		$history_product = array_merge($history_product,array('cat_url' => vam_href_link(FILENAME_DEFAULT, 'cat='.$cpath)));
+      		$products_history[] = $product->buildDataArray($history_product);
+      	}
+      	$i ++;
+      }
+      
+      
+      $info->assign('products_history', $products_history);
+
 		$image = '';
 
 		$star_rating = '';
