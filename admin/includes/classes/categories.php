@@ -1198,7 +1198,7 @@ class categories {
 		if ($duplicate_check['total'] < 1) {
 			vam_db_query("UPDATE ".TABLE_PRODUCTS_TO_CATEGORIES."
 						    		                 SET categories_id = '".vam_db_input($dest_category_id)."'
-						    		                 WHERE products_id   = '".vam_db_input($src_products_id)."' and categories_id = '" . (int)$src_category_id . "'");
+						    		                 WHERE products_id   = '".vam_db_input($src_products_id)."'");
 
 						    		           
 		if ($dest_category_id == 0) {			
