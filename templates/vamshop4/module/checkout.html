@@ -155,10 +155,21 @@ $(function($){
 <div id="shipping_country"><p><label for="country">{#text_country#}</label> {$SELECT_COUNTRY}</p>
 </div><!--div end shipping_country -->
 </div><!--div end shipping_country_box -->
+{else}
+<div id="shipping_country_box">
+<div id="shipping_country">
+<input type="hidden" name="country" id="country" value="{$smarty.const.STORE_COUNTRY}" />
+</div><!--div end shipping_country -->
+</div><!--div end shipping_country_box -->
 {/if}
 {if $state=='1'}
 <div id="shipping_state_box">
 <div id="shipping_state"><p><label for="state">{#text_state#}</label> <span id="stateXML">{$INPUT_STATE}</span></p>
+</div><!--div end shipping_state -->
+</div><!--div end shipping_state_box -->
+{else}
+<div id="shipping_state_box">
+<div id="shipping_state"><input type="hidden" name="state" id="state" value="{$smarty.const.STORE_STATE}" />
 </div><!--div end shipping_state -->
 </div><!--div end shipping_state_box -->
 {/if}
