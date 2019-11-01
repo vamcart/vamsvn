@@ -15,12 +15,6 @@
 
 <div class="mainWrapper">
 
-{if $navtrail}
-<div id="navigation" class="text-muted" itemscope itemtype="http://schema.org/BreadcrumbList">
-{$navtrail}
-</div>
-{/if}
-
 {$box_DOWNLOADS}
 
 {if $smarty.SERVER.REQUEST_URI == '/'}
@@ -28,6 +22,13 @@
 {/if}
 
 <div class="mainContent">
+
+{if $navtrail}
+<div id="navigation" class="text-muted" itemscope itemtype="http://schema.org/BreadcrumbList">
+{$navtrail}
+</div>
+{/if}
+
 {$main_content}
 </div>
 

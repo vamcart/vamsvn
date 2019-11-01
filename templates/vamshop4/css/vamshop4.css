@@ -129,7 +129,7 @@ footer .container,
 }
 
 .card-footer {
-  background: transparent;
+  background: #f1f1f1;
 }
 
 .category.card-body {
@@ -373,7 +373,7 @@ li.level3 {
 }
 
 .module,
-.page {
+.mainContent {
   padding: .5em;
   margin: 0 0 .5em 0;
   background-color: #fff;
