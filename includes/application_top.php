@@ -60,7 +60,7 @@ if (defined('DIR_WS_INCLUDES') === false) header('Location: install');
 $php4_3_10 = (0 == version_compare(phpversion(), "4.3.10"));
 define('PHP4_3_10', $php4_3_10);
 // define the project version
-define('PROJECT_VERSION', 'VamShop 1.99.8');
+define('PROJECT_VERSION', 'VamShop 1.99.7');
 
 // set the type of request (secure or not)
 $request_type = (getenv('HTTPS') == '1' || getenv('HTTPS') == 'on') ? 'SSL' : 'NONSSL';
@@ -523,7 +523,7 @@ if (vam_not_null($cPath)) {
 require (DIR_WS_CLASSES.'breadcrumb.php');
 $breadcrumb = new breadcrumb;
 
-if ($current_category_id > 0 or !strstr($PHP_SELF, FILENAME_DEFAULT)) $breadcrumb->add(TITLE_DEFAULT_PAGE, HTTP_SERVER);
+//if ($current_category_id > 0 or !strstr($PHP_SELF, FILENAME_DEFAULT)) $breadcrumb->add(TITLE_DEFAULT_PAGE, HTTP_SERVER);
 //$breadcrumb->add(HEADER_TITLE_CATALOG, HTTP_SERVER . DIR_WS_CATALOG);
 
 // add category names or the manufacturer name to the breadcrumb trail
