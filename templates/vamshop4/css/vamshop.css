@@ -36,12 +36,12 @@ color: white;
 /* Скругленные углы */
 .page 
    {
-    background: #f1f1f1;
+    background: transparent;
    }
 
 .pageItem 
    {
-    background: #f1f1f1;
+    background: transparent;
    }
 
 .page h1, .page p 
