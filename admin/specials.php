@@ -316,7 +316,7 @@
     }
 ?>
               <tr>
-                <td colspan="4"><table border="0" width="100%" cellpadding="0"cellspacing="2">
+                <td colspan="6"><table border="0" width="100%" cellpadding="0"cellspacing="2">
                   <tr>
                     <td class="smallText" valign="top"><?php echo $specials_split->display_count($specials_query_numrows, MAX_DISPLAY_ADMIN_PAGE, $_GET['page'], TEXT_DISPLAY_NUMBER_OF_SPECIALS); ?></td>
                     <td class="smallText" align="right"><?php echo $specials_split->display_links($specials_query_numrows, MAX_DISPLAY_ADMIN_PAGE, MAX_DISPLAY_PAGE_LINKS, $_GET['page']); ?></td>
