@@ -19,6 +19,8 @@
 
 define('HEADING_TITLE', 'Скидки');
 
+define('TABLE_HEADING_IMAGE', 'Картинка');
+define('TABLE_HEADING_MODEL', 'Артикул');
 define('TABLE_HEADING_PRODUCTS', 'Товары');
 define('TABLE_HEADING_PRODUCTS_PRICE', 'Цена');
 define('TABLE_HEADING_STATUS', 'Состояние');
