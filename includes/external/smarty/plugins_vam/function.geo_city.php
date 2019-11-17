@@ -13,7 +13,7 @@ function smarty_function_geo_city($params, $template)
   $SxGeo= new SxGeo('vendor/GeoCity/SxGeo.dat');
   $city = $SxGeo->get($_SERVER['REMOTE_ADDR']);
   
-  $city_name = ($_SESSION['language'] == 'ru') ? $city['city']['name_ru'] : $city['city']['name_en'];
+  $city_name = ($_SESSION['language'] == 'russian') ? $city['city']['name_ru'] : $city['city']['name_en'];
 
 	return $city_name;
 }
