@@ -34,7 +34,7 @@
       </div>
       <div class="headertopright clearfix">
       <ul class="list-inline">
-	     <li class="list-inline-item pr-2"><a href="" data-toggle="modal" data-target="#myModal" aria-label="{$smarty.const.TEXT_CITY}"><i class="fa fa-map-marker"></i> <span class="link">{if {cookie name="vamshop-city"}}{cookie name="vamshop-city"}{else}<span class="userCity">{geo_city}</span>{/if}</span></a></li>
+	     <li class="list-inline-item pr-2"><a href="" data-toggle="modal" data-target="#myModal" aria-label="{$smarty.const.TEXT_CITY}"><i class="fas fa-map-marker-alt"></i> <span class="link">{if {cookie name="vamshop-city"}}{cookie name="vamshop-city"}{else}<span class="userCity">{geo_city}</span>{/if}</span></a></li>
 	     {if {$smarty.const.STORE_TELEPHONE} != ""}<li class="list-inline-item pr-2"><a href="tel:{$smarty.const.STORE_TELEPHONE}"><i class="fas fa-phone"></i> <span itemprop="telephone">{$smarty.const.STORE_TELEPHONE}</span></a></li>{/if}
 	     <li class="list-inline-item pr-2"><a href="contact_us.html"><i class="far fa-envelope"></i> {#text_contact_us#}</a></li>
 	   </ul>  
