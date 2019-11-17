@@ -8,6 +8,7 @@ $bender->enqueue("templates/".CURRENT_TEMPLATE."/bootstrap-ecommerce/responsive.
 $bender->enqueue("templates/".CURRENT_TEMPLATE."/css/font-awesome.css");
 $bender->enqueue("jscript/jquery/plugins/owl/assets/owl.carousel.min.css");
 $bender->enqueue("jscript/jquery/plugins/owl/assets/owl.theme.default.min.css");
+$bender->enqueue("jscript/jquery/plugins/ui/css/smoothness/jquery-ui.css");
 $bender->enqueue("templates/".CURRENT_TEMPLATE."/css/vamshop.css");
 $bender->enqueue("templates/".CURRENT_TEMPLATE."/css/vamshop4.css");
 $bender->enqueue("templates/".CURRENT_TEMPLATE."/webslidemenu/dropdown-effects/fade-down.css");

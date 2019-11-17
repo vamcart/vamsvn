@@ -728,4 +728,10 @@ define('TEXT_SOCIAL_LOGIN_VK', 'ВКонтакте');
 define('TEXT_PRODUCT_SHIPPING', 'Доставка');
 define('TEXT_PRODUCT_PAYMENT', 'Оплата');
 
+define('TEXT_CITY', 'Город');
+define('TEXT_CITY_LOCATION', 'Ваш город');
+define('TEXT_CITY_NAME', 'Город');
+define('TEXT_CITY_CLOSE', 'Закрыть');
+define('TEXT_CITY_SAVE', 'Сохранить');
+
 ?>

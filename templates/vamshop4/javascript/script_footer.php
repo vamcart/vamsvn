@@ -4,6 +4,8 @@ $bender = new Bender();
 $bender->enqueue("templates/".CURRENT_TEMPLATE."/javascript/popper.min.js");
 $bender->enqueue("templates/".CURRENT_TEMPLATE."/javascript/bootstrap.min.js");
 $bender->enqueue("jscript/jquery/plugins/owl/owl.carousel.min.js");
+$bender->enqueue("jscript/jquery/plugins/ui/jquery-ui-min.js");
+$bender->enqueue("jscript/jquery/plugins/cookie/jquery.cookie.js");
 $bender->enqueue("jscript/jquery/plugins/scrollup/jquery.scrollup.min.js");
 $bender->enqueue("templates/".CURRENT_TEMPLATE."/javascript/vamshop4.js");
 $bender->enqueue("templates/".CURRENT_TEMPLATE."/webslidemenu/webslidemenu.js");
