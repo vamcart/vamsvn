@@ -1084,4 +1084,7 @@ define('FACEBOOK_OAUTH_SECRET_KEY_DESC', 'Укажитие Ваш OAuth ключ
 define('DEFAULT_NAVIGATION_TITLE', 'Меню навигации по умолчанию');
 define('DEFAULT_NAVIGATION_DESC', 'Выберите тип навигации по умолчанию.');
 
+define('ENABLE_COOKIE_ALERT_TITLE', 'Показывать cookie уведомление');
+define('ENABLE_COOKIE_ALERT_DESC', 'Показывать уведомление об использовании cookie файлов на сайте.');
+
 ?>

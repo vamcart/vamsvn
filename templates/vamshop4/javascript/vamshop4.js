@@ -168,3 +168,9 @@ $("#submit-modal1").on("click", function(e) {
     location.reload();
 });
 });           
+
+//Cookie alert
+$('#cookie-alert').on('closed.bs.alert', function (e) {
+    e.preventDefault();
+   $.cookie("cookie-alert", 1, { expires : 365, path: "/" });
+})

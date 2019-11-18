@@ -700,4 +700,8 @@ define('TEXT_CITY_NAME', 'Город');
 define('TEXT_CITY_CLOSE', 'Закрыть');
 define('TEXT_CITY_SAVE', 'Сохранить');
 
+define('TEXT_ALERT_COOKIE', 'Мы используем файлы cookie для обеспечения работоспособности и улучшения качества обслуживания, используя наш сайт вы соглашаетесь с использованием файлов cookie.');
+define('TEXT_COOKIE_CLOSE', 'Закрыть');
+define('TEXT_COOKIE_OK', 'Разрешаю');
+
 ?>

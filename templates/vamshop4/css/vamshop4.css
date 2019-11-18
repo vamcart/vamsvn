@@ -382,3 +382,11 @@ li.level3 {
   box-shadow: 0 4px 15px rgba(153,153,153,.3);
   transition: .5s;
 }
+
+.cookie-alert{
+    position: fixed;
+    z-index: 9999999;
+    bottom: 0px;
+    left:2%;
+    width: 96%;
+}

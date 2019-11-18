@@ -64,3 +64,15 @@
     </div>
   </div>
 </div>
+
+{if $smarty.const.ENABLE_COOKIE_ALERT == 'true' && {cookie name="cookie-alert"} != 1}
+<div class="alert alert-secondary fade show cookie-alert" id="cookie-alert" role="alert">
+  {$smarty.const.TEXT_ALERT_COOKIE}
+  <button type="button" class="btn btn-primary btn-sm" data-dismiss="alert" aria-label="{$smarty.const.TEXT_COOKIE_CLOSE}">{$smarty.const.TEXT_COOKIE_OK}</button>
+</div>
+{/if}
+
+
+
+
+
