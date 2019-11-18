@@ -30,7 +30,6 @@
 
     $path_elements = explode("/", $URI_elements[0]);
     //$URI_elements[0] = $path_elements[sizeof($path_elements) - 1];
-    $URI_elements[0] = $path_elements[sizeof($path_elements) - 1];
     
     $db_l = mysqli_connect(DB_SERVER, DB_SERVER_USERNAME, DB_SERVER_PASSWORD, DB_DATABASE);
 
