@@ -29,7 +29,7 @@
       $this->title = MODULE_SHIPPING_FLAT_TEXT_TITLE;
       $this->description = MODULE_SHIPPING_FLAT_TEXT_DESCRIPTION;
       $this->sort_order = MODULE_SHIPPING_FLAT_SORT_ORDER;
-      $this->icon = '';
+      $this->icon = DIR_WS_ICONS . 'flat.png';
       $this->tax_class = MODULE_SHIPPING_FLAT_TAX_CLASS;
       $this->enabled = ((MODULE_SHIPPING_FLAT_STATUS == 'True') ? true : false);
 

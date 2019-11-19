@@ -28,6 +28,7 @@ class cod {
 		$this->title = MODULE_PAYMENT_COD_TEXT_TITLE;
 		$this->description = MODULE_PAYMENT_COD_TEXT_DESCRIPTION;
 		$this->sort_order = MODULE_PAYMENT_COD_SORT_ORDER;
+      $this->icon = DIR_WS_ICONS . 'cod.png';
 		$this->enabled = ((MODULE_PAYMENT_COD_STATUS == 'True') ? true : false);
 		$this->info = MODULE_PAYMENT_COD_TEXT_INFO;
 		$this->cost;
@@ -148,8 +149,14 @@ class cod {
         
       }
 		
-		
-		return array ('id' => $this->code, 'module' => $this->title, 'description' => $this->info,'module_cost'=>$this->cost);
+
+      if (vam_not_null($this->icon)) $icon = vam_image($this->icon, $this->title);
+
+      return array('id' => $this->code,
+      				'icon' => $icon,
+      				'module' => $this->title,
+      				'description' => $this->info,
+      				'module_cost'=>$this->cost);
 	}
 
 	function pre_confirmation_check() {
