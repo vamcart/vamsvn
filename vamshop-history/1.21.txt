@@ -1,0 +1,216 @@
+Опубликовано 19 июня, 2007 (изменено)
+Выпустил версию VaM Shop 1.21.
+
+Скачать можно в своих заказах в магазине.
+
+Патч для обновления VaM Shop 1.2 до VaM Shop 1.21 можно скачать в файлах - http://vamshop.ru/support/modules/wfdownloads/singlefile.php?cid=13&lid=33
+
+Основные изменения:
+
+1. В модули оплаты по счёту и квитанция сб рф добавлена возможность указания зоны и статуса заказа.
+
+2. Не изменялось название товара в модуле Изменение цен (Quick price updates).
+
+3. Не записывалось в таблицу значение entry_zone_id пре регистрации покупателя, что вызавало ошибку при расчёте налогов.
+
+4. Добавлена возможность выбора стиля навигации в админке, либо drop-down меню сверху, либо стандартное меню слева. Опция в Админке - Настройки - Основные - Мой магазин - Всплывающее меню навигации в админке.
+
+5. Добавлена каптча на страницу добавления отзывов к товарам и добавлена проверка, заполнена ли форма. Теперь роботы не смогу создавать мысячи "пустых отзывов".
+
+6. HTML-редактор FCKEditor заменён на TinyMCE.
+
+7. Стандартный менеджер резервного копирования заменён на Sypex Dumper Lite 1.0.8.
+
+Вот весь список изменений с 3 мая 2007 года (выхода 1.2 версии):
+
+Revision 1058 - Directory Listing
+
+Версия 1.21
+
+Revision 1057 - Directory Listing
+
+Появилась возможность выбора стиля навигациия в админке, опция Админка - Настройки - Основные - Мой магазин - Всплывающее меню навигации в админке
+
+Revision 1056 - Directory Listing
+
+Корректировка в переводе
+
+Revision 1055 - Directory Listing
+
+Добавлен комментарий к файлу local_modules.php
+
+Revision 1054 - Directory Listing
+
+Корректировка в выводе RSS канала новинки
+
+Revision 1053 - Directory Listing
+
+Корректировка в переводе
+
+Revision 1052 - Directory Listing
+
+Добавлена отсутствовавшая текстовая константа ENTRY_STATE_ERROR_SELECT в установке
+
+Revision 1051 - Directory Listing
+
+Корректировка в коде страницы добавления отзыва
+
+Revision 1050 - Directory Listing
+
+Добавлена проверка, заполнена ли была форма при создании отзыва
+
+Revision 1049 - Directory Listing
+
+HTML-редактор включён по умолчанию
+
+Revision 1048 - Directory Listing
+
+Добавлена недостающая текстовая константа в перевод
+
+Revision 1047 - Directory Listing
+
+Корректировка в коде скрипта резервного копирования, не было перевода каретки на новую строку
+
+Revision 1046 - Directory Listing
+
+Неправильно отображался путь до картинке товара в файле для Яндекс-Маркета, исправлено
+
+Revision 1045 - Directory Listing
+
+Корректировка в переводе
+
+Revision 1044 - Directory Listing
+
+При отсутствии отзывов на странице карточки товара выводится кнопка добавить отзыв
+
+Revision 1043 - Directory Listing
+
+Добавлена недостающая текстовая константа на страницу отзывов в админке
+
+Revision 1042 - Directory Listing
+
+Изменена транслит-транскрипция буквы я в чпу адресах
+
+Revision 1041 - Directory Listing
+
+Корректировка в html-коде dumper'а
+
+Revision 1040 - Directory Listing
+
+Стандартный менеджер резервного копирования заменён на Sypex Dumper Lite 1.0.8
+
+Revision 1039 - Directory Listing
+
+Корректировка в отображении html-редактора TinyMCE на некоторых страницах админки
+
+Revision 1038 - Directory Listing
+
+Исправлена небольшая ошибка с разбивкой товара на страницы в админке
+
+Revision 1037 - Directory Listing
+
+Редактор в админке переключён на TinyMCE
+
+Revision 1036 - Directory Listing
+
+Удалён неиспользуемый файл xtc_wysiwyg.inc.php
+
+Revision 1035 - Directory Listing
+
+HTML-редактор заменён на TinyMCE
+
+Revision 1034 - Directory Listing
+
+Корректировка в тексте главной страницы по умолчанию
+
+Revision 1033 - Directory Listing
+
+Удалён неиспользуемый js код из шаблона vamshop
+
+Revision 1032 - Directory Listing
+
+Javascript код вынесен из общего файла в файл шаблона
+
+Revision 1031 - Directory Listing
+
+Добавлен каптча на страницу добавления отзывов к товарам
+
+Revision 1030 - Directory Listing
+
+Исправлено небольшая ошибка в меню, в админке
+
+Revision 1029 - Directory Listing
+
+Корректировка в переводе
+
+Revision 1028 - Directory Listing
+
+Исправлена ошибка в выводе заголовка на странице настройки атрибутов
+
+Revision 1027 - Directory Listing
+
+Добавлена возможность выбора стиля навигации в админке
+
+Revision 1026 - Directory Listing
+
+Добавлена возможность выбора стиля навигации в админке, либо drop-down меню сверху, либо стандартное меню слева
+
+Revision 1025 - Directory Listing
+
+Не записывалось в таблицу значение entry_zone_id пре регистрации покупателя
+
+Revision 1024 - Directory Listing
+
+Не записывалось в таблицу значение entry_zone_id пре регистрации покупателя
+
+Revision 1023 - Directory Listing
+
+Не записывалось в таблицу значение entry_zone_id пре регистрации покупателя
+
+Revision 1022 - Directory Listing
+
+Не изменялось название товара в модуле Изменение цен (Quick price updates)
+
+Revision 1021 - Directory Listing
+
+Константа с указанием пути до папки с модулями вынесена из базы в файл
+
+Revision 1020 - Directory Listing
+
+Исправлена небольшая ошибка в коде модуля Easypopulate
+
+Revision 1019 - Directory Listing
+
+В модули оплаты по счёту и квитанция сб рф добавлена возможность указания зоны и статуса заказа
+
+Revision 1018 - Directory Listing
+
+Убран двойной заголовок на странице новости в админке
+
+Revision 1017 - Directory Listing
+
+Корректировка кода в шаблоне письма с информацией о заказе
+
+Revision 1016 - Directory Listing
+
+Добавлен перенос строки meta content-style-type
+
+Revision 1015 - Directory Listing
+
+Исправлена ошибка в переводе
+
+Revision 1014 - Directory Listing
+
+Добавлена ссылка на xt-commerce в установку
+
+Revision 1013 - Directory Listing
+
+Корректировка в стиле
+
+Revision 1012 - Directory Listing
+
+Корректировка в стиле
+
+Revision 1011 - Directory Listing
+
+Добавлен новый css класс copyright
