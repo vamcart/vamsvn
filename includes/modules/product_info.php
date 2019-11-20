@@ -123,6 +123,7 @@ if (!is_object($product) || !$product->isProduct() OR !$product->data['products_
 
       $i = 0;
       $max = count($_SESSION['tracking']['products_history']);
+      $_SESSION['tracking']['products_history'] = array_reverse($_SESSION['tracking']['products_history']);
       
       while ($i < $max) {
       
