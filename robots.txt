@@ -76,4 +76,7 @@ Disallow: /specials.php/action/buy_now
 Disallow: /comparison.php
 Disallow: /vam_rss2_info.php
 Disallow: /print_product_info.php
+Disallow: /faq.php
+Disallow: /key.php
+Disallow: /site_reviews_write.php
 Disallow: /404.html
