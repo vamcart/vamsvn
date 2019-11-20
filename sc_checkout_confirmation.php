@@ -449,9 +449,9 @@ if (SHOW_IP_LOG == 'true') {
 if ($show_account_data == true) {
 $vamTemplate->assign('DELIVERY_LABEL', vam_address_format($order->delivery['format_id'], $order->delivery, 1, ' ', '<br />'));
 }
-if ($_SESSION['credit_covers'] != '1') {
-	$vamTemplate->assign('BILLING_LABEL', vam_address_format($order->billing['format_id'], $order->billing, 1, ' ', '<br />'));
-}
+//if ($_SESSION['credit_covers'] != '1') {
+	$vamTemplate->assign('BILLING_LABEL', vam_address_format($order->delivery['format_id'], $order->delivery, 1, ' ', '<br />'));
+//}
 $vamTemplate->assign('PRODUCTS_EDIT', vam_href_link(FILENAME_SHOPPING_CART, '', 'SSL'));
 $vamTemplate->assign('SHIPPING_ADDRESS_EDIT', vam_href_link(FILENAME_CHECKOUT_SHIPPING_ADDRESS, '', 'SSL'));
 $vamTemplate->assign('BILLING_ADDRESS_EDIT', vam_href_link(FILENAME_CHECKOUT_PAYMENT_ADDRESS, '', 'SSL'));
