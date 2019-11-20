@@ -289,6 +289,46 @@ $content_meta = vam_db_fetch_array($content_meta_query, true);
 
     break;
 
+  case ($_GET['faq_id']):
+
+			$faq_meta_query = vamDBquery("SELECT faq_id, question
+			                                            FROM " . TABLE_FAQ . "
+			                                            WHERE faq_id='" . (int)$_GET['faq_id'] . "' and
+			                                            language='" . (int)$_SESSION['languages_id'] . "'");
+			$faq_meta = vam_db_fetch_array($faq_meta_query, true);
+// shaklov
+		if ($faq_meta['question'] == '') {
+			$faq_title = html($faq_meta['question']);
+		} else {
+			$faq_title = htmlentities($faq_meta['question']);
+		}
+
+		if ($faq_meta['question'] == '') {
+			$faq_desc = META_DESCRIPTION;
+		} else {
+			$faq_desc = htmlentities($faq_meta['question']);
+		}
+
+		if ($faq_meta['question'] == '') {
+			$faq_keys = META_KEYWORDS;
+		} else {
+			$faq_keys = htmlentities($faq_meta['question']);
+		}
+?>
+<title><?php echo $faq_title . ' - ' . TITLE; ?></title>
+<meta name="description" content="<?php echo $faq_desc; ?>" />
+<meta name="keywords" content="<?php echo $faq_keys; ?>" />
+<meta property="og:title" content="<?php echo $faq_title; ?>" />
+<meta property="og:description" content="<?php echo $faq_desc; ?>" />
+<meta property="og:url" content="<?php echo vam_href_link(FILENAME_FAQ, 'faq_id='.$faq_meta['faq_id']); ?>" />
+<link rel="canonical" href="<?php echo vam_href_link(FILENAME_FAQ, 'faq_id='.$faq_meta['faq_id']); ?>" />
+<meta property="og:type" content="website" />
+<meta name="twitter:title" content="<?php echo $faq_title; ?>" />
+<meta name="twitter:description" content="<?php echo $faq_desc; ?>" />
+<?php
+
+    break;
+    
   case ($_GET['tPath']):
 
 			$articles_cat_meta_query = vamDBquery("SELECT topics_id, topics_name, topics_heading_title, topics_description
