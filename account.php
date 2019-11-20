@@ -40,7 +40,6 @@ if ($messageStack->size('account') > 0)
 
 $i = 0;
 $max = count($_SESSION['tracking']['products_history']);
-$_SESSION['tracking']['products_history'] = array_reverse($_SESSION['tracking']['products_history']);
 
 while ($i < $max) {
 

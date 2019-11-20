@@ -123,7 +123,6 @@ if (!is_object($product) || !$product->isProduct() OR !$product->data['products_
 
       $i = 0;
       $max = count($_SESSION['tracking']['products_history']);
-      $_SESSION['tracking']['products_history'] = array_reverse($_SESSION['tracking']['products_history']);
       
       while ($i < $max) {
       
@@ -335,9 +334,11 @@ $i = count($_SESSION['tracking']['products_history']);
 		array_shift($_SESSION['tracking']['products_history']);
 		$_SESSION['tracking']['products_history'][6] = $product->data['products_id'];
 		$_SESSION['tracking']['products_history'] = array_unique($_SESSION['tracking']['products_history']);
+		$_SESSION['tracking']['products_history'] = array_reverse($_SESSION['tracking']['products_history']);
 	} else {
 		$_SESSION['tracking']['products_history'][$i] = $product->data['products_id'];
 		$_SESSION['tracking']['products_history'] = array_unique($_SESSION['tracking']['products_history']);
+		$_SESSION['tracking']['products_history'] = array_reverse($_SESSION['tracking']['products_history']);
 	}
 	
 	$info->assign('language', $_SESSION['language']);
