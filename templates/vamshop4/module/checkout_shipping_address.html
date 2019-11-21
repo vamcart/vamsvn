@@ -7,13 +7,13 @@
 {$error}
 {/if}
 
-{if $SHIPPING_ADDRESS=='true'} 
+
+<p>{$BUTTON_NEW}</p>
+
 <p>
 <span class="bold">{#title_current_address#}</span>
 </p>
-{/if}
 
-{if $SHIPPING_ADDRESS=='true'} 
 <!-- Адрес -->
 <dl class="AddressBook">
 <dt class="AddressBook">
@@ -41,7 +41,6 @@
 </dl>
 <!-- /Адрес по умолчанию -->
 <div class="clear"></div>
-{/if}
 
 {if $BLOCK_ADDRESS}
 <p>

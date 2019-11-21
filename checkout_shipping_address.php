@@ -286,6 +286,12 @@ if ($process == true) {
 	$vamTemplate->assign('BUTTON_BACK', '<a class="button" href="'.vam_href_link(FILENAME_CHECKOUT_SHIPPING_ADDRESS, '', 'SSL').'">'.vam_image_button('back.png', IMAGE_BUTTON_BACK).'</a>');
 
 }
+
+if (vam_count_customer_address_book_entries() < MAX_ADDRESS_BOOK_ENTRIES) {
+
+	$vamTemplate->assign('BUTTON_NEW', '<a class="button" href="'.vam_href_link(FILENAME_ADDRESS_BOOK_PROCESS, '', 'SSL').'">'.vam_image_button('add.png', IMAGE_BUTTON_ADD_ADDRESS).'</a>');
+}
+
 $vamTemplate->assign('FORM_END', '</form>');
 $vamTemplate->assign('language', $_SESSION['language']);
 
