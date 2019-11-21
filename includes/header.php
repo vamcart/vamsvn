@@ -37,8 +37,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $_SESSION['language_charset']; ?>" />
 <meta name="viewport" content="initial-scale=1.0, width=device-width" />
 <meta name="theme-color" content="#dd2c00"/>
-<link rel="shortcut icon" href="<?php echo DIR_WS_CATALOG; ?>favicon.ico"/>
-<link rel="manifest" href="<?php echo DIR_WS_CATALOG; ?>manifest.json">
+<link rel="apple-touch-icon" href="<?php echo DIR_WS_CATALOG; ?>images/icons/vamshop-box-apple.png" />
+<link rel="shortcut icon" href="<?php echo DIR_WS_CATALOG; ?>favicon.ico" />
+<link rel="manifest" href="<?php echo DIR_WS_CATALOG; ?>manifest.json" />
 <?php
 if (ENABLE_SERVICE_WORKER == 'true') {
 ?>
