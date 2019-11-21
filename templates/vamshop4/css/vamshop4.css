@@ -41,6 +41,10 @@ button:focus, button:active, a, a:hover {
 .owl-next {
   right: 0px;
   }
+  
+.owl-carousel .owl-nav button.owl-next, .owl-carousel .owl-nav button.owl-prev {
+    padding: 0 .6em !important;
+}
 /* /Owl Nav */
 
 /* Owl Slides Equal Height */
