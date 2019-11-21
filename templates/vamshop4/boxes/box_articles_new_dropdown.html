@@ -1,4 +1,4 @@
 {config_load file="$language/lang_$language.conf" section="boxes"}
 {foreach name=aussen item=articles from=$articles_content}
-<li><a href="{$articles.ARTICLES_URL}">{$articles.ARTICLES_NAME}</a></li>
+<li class="py-1"><a href="{$articles.ARTICLES_URL}">{$articles.ARTICLES_NAME}</a></li>
 {/foreach}  

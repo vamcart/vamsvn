@@ -59,9 +59,9 @@ if (!$box->isCached(CURRENT_TEMPLATE.'/boxes/box_content_pull.html', $cache_id) 
 			$SEF_parameter = '&content='.vam_cleanName($content_data['content_title']);
 
 if ($content_data['content_url'] != '') {
-	$link = '<li><a href="'.$content_data['content_url'].'" target="_blank">';
+	$link = '<li class="py-1"><a href="'.$content_data['content_url'].'" target="_blank">';
 } else {
-	$link = '<li><a href="'.vam_href_link(FILENAME_CONTENT, 'coID='.$content_data['content_group'].$SEF_parameter).'">';
+	$link = '<li class="py-1"><a href="'.vam_href_link(FILENAME_CONTENT, 'coID='.$content_data['content_group'].$SEF_parameter).'">';
 }
 
 		$content_string .= $link.$content_data['content_title'].'</a></li>' . "\n";
