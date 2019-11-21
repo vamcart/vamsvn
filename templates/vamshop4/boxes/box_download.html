@@ -13,7 +13,7 @@
 
 {foreach name=aussen item=dl_data from=$dl}
 <p>
-{if $dl_data.pic_link}<a href="{$dl_data.pic_link}"><img src="{$tpl_path}img/img_download.jpg" alt="" border="0" /></a>{else}<img src="{$tpl_path}img/img_download_locked.jpg" alt="" />{/if}
+{if $dl_data.pic_link}<a href="{$dl_data.pic_link}"><img src="{$tpl_path}img/img_download.jpg" alt="download" border="0" /></a>{else}<img src="{$tpl_path}img/img_download_locked.jpg" alt="" />{/if}
 &nbsp;&nbsp;&nbsp;{$dl_data.download_link}
 &nbsp;&nbsp;&nbsp;{#table_heading_download_date#}&nbsp;{$dl_data.date}
 &nbsp;&nbsp;&nbsp;<span class="bold">{$dl_data.count}</span>&nbsp;{#table_heading_download_count#}
