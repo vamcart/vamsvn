@@ -1,16 +1,7 @@
 // proper initialization
 if( 'function' === typeof importScripts) {
-importScripts('https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js');
 
-workbox.routing.registerRoute(
-  // Cache pages.
-  /\//,
-  // Use cache but update in the background.
-  new workbox.strategies.NetworkFirst({
-    // Use a custom cache name.
-    cacheName: 'page-cache',
-  })
-);
+importScripts('https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js');
 
 workbox.routing.registerRoute(
   // Cache JS files.
@@ -51,4 +42,15 @@ workbox.routing.registerRoute(
     cacheName: 'font-cache',
   })
 );
+
+workbox.routing.registerRoute(
+  // Cache pages.
+  /\//,
+  // Use cache but update in the background.
+  new workbox.strategies.NetworkFirst({
+    // Use a custom cache name.
+    cacheName: 'page-cache',
+  })
+);
+
 }
