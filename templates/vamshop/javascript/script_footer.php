@@ -104,6 +104,7 @@ if('serviceWorker' in navigator) {
 
 let deferredPrompt;
 const addBtn = document.querySelector('.a2hs-button');
+if (addBtn != null) {
 addBtn.style.display = 'none';
 
 window.addEventListener('beforeinstallprompt', (e) => {
@@ -130,7 +131,7 @@ window.addEventListener('beforeinstallprompt', (e) => {
       });
   });
 });
-
+}
 });
 </script>
 <?php
