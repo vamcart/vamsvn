@@ -3,7 +3,7 @@
 {if $options_data.TYPE eq '1'}
 
 <!-- select -->
-<div class="form-group">
+<div class="form-group py-1">
 <label for="id[{$options_data.ID}]"><strong>{$options_data.NAME}:</strong>&nbsp;</label>
 <select name="id[{$options_data.ID}]" id="id[{$options_data.ID}]" class="form-control">
 {foreach key=key_data item=item_data from=$options_data.DATA}
@@ -16,7 +16,7 @@
 {elseif $options_data.TYPE eq '2'}
 
 <!-- text -->
-<div class="form-group">
+<div class="form-group py-1">
 
 <strong>{$options_data.NAME}:</strong>
 {foreach key=key_data item=item_data from=$options_data.DATA}
@@ -31,7 +31,7 @@
 {elseif $options_data.TYPE eq '3'}
 
 <!-- textarea -->
-<div class="form-group">
+<div class="form-group py-1">
 <strong>{$options_data.NAME}:</strong>
 {foreach key=key_data item=item_data from=$options_data.DATA}
 <label for="id[{$options_data.ID}]"><strong>{$item_data.TEXT}</strong>&nbsp;</label>
@@ -46,7 +46,7 @@
 {elseif $options_data.TYPE eq '4'}
 
 <!-- radio -->
-<div class="form-group">
+<div class="form-group py-1">
 <strong>{$options_data.NAME}:</strong>
 {foreach key=key_data item=item_data from=$options_data.DATA}
 <div>
@@ -66,7 +66,7 @@
 {elseif $options_data.TYPE eq '5'}
 
 <!-- checkbox -->
-<div class="form-group">
+<div class="form-group py-1">
 <strong>{$options_data.NAME}:</strong>
 {foreach key=key_data item=item_data from=$options_data.DATA}
 <label for="id[{$options_data.ID}]">
@@ -81,7 +81,7 @@
 {elseif $options_data.TYPE eq '6'}
 
 <!-- readonly -->
-<div class="form-group">
+<div class="form-group py-1">
 <label for="id[{$options_data.ID}]"><strong>{$options_data.NAME}:</strong></label>
 {foreach key=key_data item=item_data from=$options_data.DATA}
 <input type="hidden" name="id[{$options_data.ID}]" id="id[{$options_data.ID}]" value="{$item_data.ID}" />
