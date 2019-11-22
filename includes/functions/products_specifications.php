@@ -143,7 +143,7 @@
           $field .= vam_output_string ($link_data['text'] );
           $field .= '</span>';
           if ($link_data['count'] != '' && SPECIFICATIONS_FILTER_SHOW_COUNT == 'True') {
-            $field .= '<span class="filter_count"> (' . $link_data['count'] . ')</span>';
+            $field .= ' (' . $link_data['count'] . ')';
           }
           $field .= '<br>';
           break;
@@ -162,7 +162,7 @@
           }
             
           if ($link_data['count'] != '' && SPECIFICATIONS_FILTER_SHOW_COUNT == 'True') {
-            $field .= '<span class="filter_count"> (' . $link_data['count'] . ')</span>';
+            $field .= ' (' . $link_data['count'] . ')';
           }
           $field .= '<br>';
           break;
@@ -251,7 +251,7 @@
           ));
             
           if ($link_data['count'] != '' && SPECIFICATIONS_FILTER_SHOW_COUNT == 'True') {
-            $field .= '<span class="filter_count"> (' . $link_data['count'] . ')</span>';
+            $field .= ' (' . $link_data['count'] . ')';
           }
           $field .= '</option>';
           break;
@@ -619,7 +619,7 @@
               $box_text .= vam_output_string ($filter['text'] );
               $box_text .= '</span>';
               if (SPECIFICATIONS_FILTER_SHOW_COUNT == 'True' && $filter['count'] != '') {
-                $box_text .= '<span class="filter_count"> (' . $filter['count'] . ')</span>';
+                $box_text .= ' (' . $filter['count'] . ')';
               }
               $box_text .= '</label>' . "\n";
               break;
@@ -628,7 +628,7 @@
               $box_text .= '<label>'.vam_draw_radio_field ($filter_name, $filter['id'], $checked, 'onClick="this.form.submit();"') . '&nbsp;' . $filter['text'];
 
               if (SPECIFICATIONS_FILTER_SHOW_COUNT == 'True' && $filter['count'] != '') {
-                $box_text .= '<span class="filter_count"> (' . $filter['count'] . ')</span>';
+                $box_text .= ' (' . $filter['count'] . ')';
               }
               $box_text .= '</label>' . "\n";
               break;
@@ -674,7 +674,7 @@
               $box_text .= vam_output_string ($filter['text'] );
               $box_text .= '</span>';
               if (SPECIFICATIONS_FILTER_SHOW_COUNT == 'True') {
-                $box_text .= '<span class="filter_count"> (' . $filter['count'] . ')</span>';
+                $box_text .= ' (' . $filter['count'] . ')';
               }
               $box_text .= '</label>' . "\n";
               break;
@@ -684,7 +684,7 @@
               $box_text .= '<label>'.vam_draw_checkbox_field ($filter_name . '[' . $checkbox_id . ']', $filter['id'], $checked) . '&nbsp;' . $filter['text'];
               
               if (SPECIFICATIONS_FILTER_SHOW_COUNT == 'True') {
-                $box_text .= '<span class="filter_count"> (' . $filter['count'] . ')</span>';
+                $box_text .= ' (' . $filter['count'] . ')';
               }
               $box_text .= '</label>' . "\n";
               break;

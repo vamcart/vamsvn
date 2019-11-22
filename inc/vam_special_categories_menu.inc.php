@@ -39,7 +39,7 @@
           ));
             
           //if (SPECIFICATIONS_FILTER_SHOW_COUNT == 'True' && $link_data['count'] != '') {
-            //$field .= '<span class="filter_count"> (' . $link_data['count'] . ')</span>';
+            //$field .= ' (' . $link_data['count'] . ')';
           //}
           $field .= '</a></li>';
           break;
