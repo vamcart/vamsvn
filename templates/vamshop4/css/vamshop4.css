@@ -395,3 +395,7 @@ li.level3 {
     width: 96%;
     opacity: 0.9;
 }
+
+.inner {
+	padding: .4em 0;
+}

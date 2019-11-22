@@ -61,11 +61,11 @@ if (!is_object($product) || !$product->isProduct() OR !$product->data['products_
 			// fsk18
 			if ($_SESSION['customers_status']['customers_fsk18'] == '1') {
 				if ($product->data['products_fsk18'] == '0') {
-					$info->assign('ADD_QTY', vam_draw_input_field('products_qty', $product->data['products_quantity_min'], 'class="col-sm-1 form-control text-center" id="quantity'.$product->data['products_id'].'" size="3"').' '.vam_draw_hidden_field('products_id', $product->data['products_id']));
+					$info->assign('ADD_QTY', vam_draw_input_field('products_qty', $product->data['products_quantity_min'], 'class="form-control text-center" id="quantity'.$product->data['products_id'].'" size="3"').' '.vam_draw_hidden_field('products_id', $product->data['products_id']));
 					$info->assign('ADD_CART_BUTTON', vam_image_submit('buy.png', IMAGE_BUTTON_IN_CART, 'id="add_to_cart"'));
 				}
 			} else {
-				$info->assign('ADD_QTY', vam_draw_input_field('products_qty', $product->data['products_quantity_min'], 'class="col-sm-1 form-control text-center" id="quantity'.$product->data['products_id'].'" size="3"').' '.vam_draw_hidden_field('products_id', $product->data['products_id']));
+				$info->assign('ADD_QTY', vam_draw_input_field('products_qty', $product->data['products_quantity_min'], 'class="form-control text-center" id="quantity'.$product->data['products_id'].'" size="3"').' '.vam_draw_hidden_field('products_id', $product->data['products_id']));
 				$info->assign('ADD_CART_BUTTON', vam_image_submit('buy.png', IMAGE_BUTTON_IN_CART, 'id="add_to_cart"'));
 			}
 

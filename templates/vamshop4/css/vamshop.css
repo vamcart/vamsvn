@@ -2235,12 +2235,12 @@ span.markProductOutOfStock
 
 span.productSpecialPrice 
    {
-     color: #ff0000;
+     color: #A0131C;
    }
 
 span.productOldPrice 
    {
-	  color: #ff0000;
+	  color: #A0131C;
 	  text-decoration: line-through;
    }
 

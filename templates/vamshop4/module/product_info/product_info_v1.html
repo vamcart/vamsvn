@@ -135,18 +135,18 @@
 <hr>
 
 {if {$PRODUCTS_PRICE_PLAIN} > 0}
-<p class="CartContentLeft">
+<div class="CartContentLeft">
 <div class="input-group product-info">
 <div class="input-group-prepend">
  <span class="btn btn-secondary value-control" data-action="minus" data-target="quantity{$PRODUCTS_ID}"><i class="fa fa-minus"></i></span>
 </div>
-{$ADD_QTY}
+<label for="quantity{$PRODUCTS_ID}">{$ADD_QTY}</label>
 <div class="input-group-append">
  <span class="btn btn-secondary value-control" data-action="plus" data-target="quantity{$PRODUCTS_ID}"><i class="fa fa-plus"></i></span>
 </div>
 &nbsp;{$ADD_CART_BUTTON}
 </div>
-</p>
+</div>
 {/if}
 
 </div>
@@ -161,20 +161,21 @@
 
 {$FORM_END}
 
-<ul class="nav nav-tabs" id="myTab" role="tablist">
+<ul class="nav nav-tabs">
   <li class="nav-item">
-    <a class="nav-link active" id="description-tab" data-toggle="tab" href="#description" role="tab" aria-controls="description" aria-selected="true"><i class="fa fa-thumbs-up"></i> {$smarty.const.TEXT_PRODUCT_DESCRIPTION}</a>
+    <a class="nav-link active" id="description-tab" data-toggle="tab" href="#description" ><i class="fa fa-thumbs-up"></i> {$smarty.const.TEXT_PRODUCT_DESCRIPTION}</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" id="reviews-tab" data-toggle="tab" href="#reviews" role="tab" aria-controls="reviews" aria-selected="false"><i class="fa fa-comment"></i> {$smarty.const.TEXT_PRODUCT_REVIEWS}</a>
+    <a class="nav-link" id="reviews-tab" data-toggle="tab" href="#reviews" ><i class="fa fa-comment"></i> {$smarty.const.TEXT_PRODUCT_REVIEWS}</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" id="shipping-tab" data-toggle="tab" href="#shipping" role="tab" aria-controls="shipping" aria-selected="false"><i class="fa fa-truck"></i> {$smarty.const.TEXT_PRODUCT_SHIPPING}</a>
+    <a class="nav-link" id="shipping-tab" data-toggle="tab" href="#shipping" ><i class="fa fa-truck"></i> {$smarty.const.TEXT_PRODUCT_SHIPPING}</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" id="payment-tab" data-toggle="tab" href="#payment" role="tab" aria-controls="payment" aria-selected="false"><i class="fa fa-credit-card"></i> {$smarty.const.TEXT_PRODUCT_PAYMENT}</a>
+    <a class="nav-link" id="payment-tab" data-toggle="tab" href="#payment" ><i class="fa fa-credit-card"></i> {$smarty.const.TEXT_PRODUCT_PAYMENT}</a>
   </li>
 </ul>
+
 
 <div class="tab-content" id="myTabContent">
 
