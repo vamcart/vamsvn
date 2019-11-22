@@ -163,7 +163,7 @@ if (!is_object($product) || !$product->isProduct() OR !$product->data['products_
           	foreach ($products_tags as $tags) {
                 $tags_data[] = array(
                 'NAME' => trim($tags),
-                'LINK' => vam_href_link(FILENAME_ADVANCED_SEARCH_RESULT, 'keywords='.trim($tags)));
+                'LINK' => vam_href_link(FILENAME_ADVANCED_SEARCH_RESULT, 'keywords='.rawurlencode(trim($tags))));
         $info->assign('tags_data', $tags_data);
             }
 
