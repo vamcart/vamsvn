@@ -138,8 +138,7 @@ if('serviceWorker' in navigator) {
 
 // Code to handle install prompt on desktop
 
-let deferredPrompt;
-const addBtn = document.querySelector('.a2hs-button');
+addBtn = document.querySelector('.a2hs-button');
 if (addBtn != null) {
 addBtn.style.display = 'none';
 
