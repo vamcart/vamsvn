@@ -28,7 +28,7 @@
 
         $authorsImg = '';
         $authors_image = new upload('authors_image');
-        $authors_image->set_destination(DIR_FS_CATALOG_IMAGES .'articles/');
+        $authors_image->set_destination(DIR_FS_CATALOG_IMAGES .'articles/authors/');
 
         if ($authors_image->parse() && $authors_image->save()) {
             $authorsImg = vam_db_input($authors_image->filename);

@@ -61,7 +61,7 @@ $vamTemplate->assign('BUTTON_BUY_NOW', '<a class="button" href="'.vam_href_link(
 
 $vamTemplate->assign('BUTTON_WRITE', '<a class="button" href="'.vam_href_link(FILENAME_AUTHOR_REVIEWS_WRITE, $get_params).'">'.vam_image_button('add.png', IMAGE_BUTTON_WRITE_REVIEW).'</a>');
 
-$products_image = DIR_FS_CATALGO.DIR_WS_IMAGES.'articles/'.$reviews['authors_image'];
+$products_image = DIR_WS_IMAGES.'articles/authors/'.$reviews['authors_image'];
 if (!is_file($products_image)) $products_image = DIR_WS_THUMBNAIL_IMAGES.'../noimage.gif';
 $image = vam_image($products_image, $reviews['authors_name'], '', '', 'hspace="5" vspace="5"');
 $vamTemplate->assign('IMAGE', $image);
