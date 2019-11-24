@@ -7,10 +7,10 @@
 <table class="table table-hover table-borderless table-striped">
   <thead>
     <tr>
-      <th scope="col">&nbsp;</th>
+      <th scope="col" class="d-none d-lg-block">&nbsp;</th>
       <th scope="col">{#text_qty#}</th>
       <th scope="col">{#text_article#}</th>
-      <th scope="col">{#text_single#}</th>
+      <th scope="col" class="d-none d-md-block">{#text_single#}</th>
       <th scope="col">{#text_total#}</th>
       <th scope="col">{#text_remove#}</th>
     </tr>
@@ -18,7 +18,7 @@
   <tbody>
   {foreach name=aussen item=module_data from=$module_content} 
     <tr>
-    <td class="align-middle">{if $module_data.PRODUCTS_IMAGE!=''}<img src="{$module_data.PRODUCTS_IMAGE}" width="100" alt="{$module_data.IMAGE_ALT}" />{/if}</td>
+    <td class="align-middle d-none d-lg-block">{if $module_data.PRODUCTS_IMAGE!=''}<img src="{$module_data.PRODUCTS_IMAGE}" width="100" alt="{$module_data.IMAGE_ALT}" />{/if}</td>
 
     <td class="align-middle">
       {if $smarty.const.AJAX_CART == 'true'}
@@ -49,7 +49,7 @@
       </table>
       {else}
       {/if} </td>
-    <td class="align-middle">{$module_data.PRODUCTS_SINGLE_PRICE}</td>
+    <td class="align-middle" class="d-none d-md-block">{$module_data.PRODUCTS_SINGLE_PRICE}</td>
     <td class="align-middle">{$module_data.PRODUCTS_PRICE}&nbsp; 
     </td>
     <td class="align-middle">{$module_data.BOX_DELETE}</td>
