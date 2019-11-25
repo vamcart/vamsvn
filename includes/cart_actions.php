@@ -266,10 +266,12 @@ if (isset ($_GET['action'])) {
 				if (vam_has_product_attributes((int) $_GET['pid'])) {
 				//vam_redirect(vam_href_link(FILENAME_PRODUCT_INFO, 'products_id=' . (int) $_GET['pid']));
 					 
-				$attribut = preg_split('#{(.*?)}#u', $_GET['pid'], -1, PREG_SPLIT_DELIM_CAPTURE);
-				$attributes = array($attribut[1] => $attribut[2]);
+				//$attribut = preg_split('#{(.*?)}#u', $_GET['pid'], -1, PREG_SPLIT_DELIM_CAPTURE);
+				//$attributes = array($attribut[1] => $attribut[2]);
 
 				$attribut1 = str_replace('id['.$_GET['pid'].']','',$_GET['attributes']);
+				
+				//echo var_dump($attribut1);
 
 				foreach($attribut1 as $v){
     				preg_match("/\[(.*)\]:(.*)/",$v,$matches);

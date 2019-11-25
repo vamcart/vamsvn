@@ -170,12 +170,17 @@ $(document).ready(function(){
    $('body').on('click', '.cart_change', function(){
        field = $(this).parent().parent().find('input[type=text]');
        id = $(this).parent().parent().find('input.ajax_qty').val();
+       perem = $(this).parent().parent().find('input.ajax_qty').val();
+
        //console.log(id);
 
        attributes = [];
-       $("form#cart_quantity input[name^='id']").each(function(){
+       
+       $("form#cart_quantity input[name^='id["+id+"']").each(function(){
            attributes.push($(this).attr("name")+":"+$(this).val()+"");
        });
+       
+       //console.log(attributes);
        
        //jQuery.each(attributes, function( index, value ) {
            //console.log( "index", index, "value", value );
