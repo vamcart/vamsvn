@@ -13,7 +13,7 @@
    Released under the GNU General Public License
    ---------------------------------------------------------------------------------------*/
 
-function doBuyNow( id, quantity, update ) {
+function doBuyNow( id, quantity, update, get_cart, attributes = false ) {
 
   // Setup the ajax indicator
  $('body').append('<div id="ajaxLoading"><img src="images/loading.gif"></div>');
@@ -175,11 +175,27 @@ $(document).ready(function(){
    });
 
    $('body').on('click', '.cart_change', function(){
-       field = $(this).parent().find('input[type=text]');
-       id = $(this).parent().find('input.ajax_qty').val();
+       field = $(this).parent().parent().find('input[type=text]');
+       id = $(this).parent().parent().find('input.ajax_qty').val();
+       perem = $(this).parent().parent().find('input.ajax_qty').val();
+
+       //console.log(id);
+
+       attributes = [];
+       
+       $("form#cart_quantity input[name^='id["+id+"']").each(function(){
+           attributes.push($(this).attr("name")+":"+$(this).val()+"");
+       });
+       
+       //console.log(attributes);
+       
+       //jQuery.each(attributes, function( index, value ) {
+           //console.log( "index", index, "value", value );
+       //});
+
        qty = field.val();
        field.val(parseInt(qty)+parseInt($(this).val()));
-       doBuyNow(id,$(this).val());
+       doBuyNow(id,$(this).val(),'',1,attributes);
    });
 
    //$('body').on('focusout', '.input-small', function(){
