@@ -268,8 +268,15 @@ if (isset ($_GET['action'])) {
 					 
 				$attribut = preg_split('#{(.*?)}#u', $_GET['pid'], -1, PREG_SPLIT_DELIM_CAPTURE);
 				$attributes = array($attribut[1] => $attribut[2]);
-                
-				$_SESSION['cart']->add_cart((int)$_GET['pid'], (isset($_GET['update']) && $_GET['update']!='' ? $qty : $_SESSION['cart']->get_quantity($_GET['pid']) + $qty), $attributes);
+
+				$attribut1 = str_replace('id['.$_GET['pid'].']','',$_GET['attributes']);
+
+				foreach($attribut1 as $v){
+    				preg_match("/\[(.*)\]:(.*)/",$v,$matches);
+    				$attributes1[$matches[1]] = $matches[2];
+				}
+
+				$_SESSION['cart']->add_cart((int)$_GET['pid'], (isset($_GET['update']) && $_GET['update']!='' ? $qty : $_SESSION['cart']->get_quantity($_GET['pid']) + $qty), $attributes1);
 				
 				} else {
 					$_SESSION['cart']->add_cart((int)$_GET['pid'], (isset($_GET['update']) && $_GET['update']!='' ? $qty : $_SESSION['cart']->get_quantity((int) $_GET['pid']) + $qty));
