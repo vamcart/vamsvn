@@ -383,7 +383,7 @@ switch ($_GET['action']) {
 				$vamTemplate->assign('ORDER_NR', $oID);
 				$vamTemplate->assign('ORDER_LINK', vam_catalog_href_link(FILENAME_CATALOG_ACCOUNT_HISTORY_INFO, 'order_id='.$oID, 'SSL'));
 				$vamTemplate->assign('ORDER_DATE', vam_date_long($check_status['date_purchased']));
-				$vamTemplate->assign('NOTIFY_COMMENTS', nl2br($notify_comments));
+				$vamTemplate->assign('NOTIFY_COMMENTS', $notify_comments);
 				$vamTemplate->assign('ORDER_STATUS', $orders_status_array[$status]);
 
 				$vamTemplate->assign('DELIVERY_NAME', $check_status['delivery_name']);
