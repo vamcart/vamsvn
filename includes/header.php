@@ -53,48 +53,6 @@ if (ENABLE_SERVICE_WORKER == 'true') {
 if (file_exists(dirname($_SERVER['SCRIPT_FILENAME']) . '/templates/'.CURRENT_TEMPLATE.'/css/css.php')) include('templates/'.CURRENT_TEMPLATE.'/css/css.php');
 if (file_exists(dirname($_SERVER['SCRIPT_FILENAME']) . '/templates/'.CURRENT_TEMPLATE.'/javascript/script.php')) include('templates/'.CURRENT_TEMPLATE.'/javascript/script.php');
 ?>
-<?php
-if (isset($_GET['products_id']) && strstr($PHP_SELF, FILENAME_PRODUCT_INFO)) {
-?>
-<link rel="canonical" href="<?php echo CanonicalUrl(); ?>" />
-<?php
- }
-?>
-<?php
-if (isset($_GET['cat']) && isset($current_category_id) && strstr($PHP_SELF, FILENAME_DEFAULT)) {
-?>
-<link rel="canonical" href="<?php echo CanonicalUrl(); ?>" />
-<?php
- }
-?>
-<?php
-if (isset($_GET['articles_id']) && strstr($PHP_SELF, FILENAME_ARTICLE_INFO)) {
-?>
-<link rel="canonical" href="<?php echo CanonicalUrl(); ?>" />
-<?php
- }
-?>
-<?php
-if (isset($tPath) && strstr($PHP_SELF, FILENAME_ARTICLES)) {
-?>
-<link rel="canonical" href="<?php echo CanonicalUrl(); ?>" />
-<?php
- }
-?>
-<?php
-if (isset($_GET['news_id']) && strstr($PHP_SELF, FILENAME_NEWS)) {
-?>
-<link rel="canonical" href="<?php echo CanonicalUrl(); ?>" />
-<?php
- }
-?>
-<?php
-if (isset($_GET['faq_id']) && strstr($PHP_SELF, FILENAME_FAQ)) {
-?>
-<link rel="canonical" href="<?php echo CanonicalUrl(); ?>" />
-<?php
- }
-?>
 </head>
 <body>
 <?php
