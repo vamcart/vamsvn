@@ -39,18 +39,18 @@
 </div>
 {/if}
 
-<div class="btn-group flex-wrap py-2">
-<span class="btn btn-secondary">{#text_sort#}</span>
-<a class="btn btn-secondary{if {$smarty.get.sort == "name"} && {$smarty.get.direction == "asc"}} active{/if}" href="{$LINK_sort_name_asc}">{#text_sort_name_asc#}</a>  
-<a class="btn btn-secondary{if {$smarty.get.sort == "name"} && {$smarty.get.direction == "desc"}} active{/if}" href="{$LINK_sort_name_desc}">{#text_sort_name_desc#}</a>
-<a class="btn btn-secondary{if {$smarty.get.sort == "price"} && {$smarty.get.direction == "asc"}} active{/if}" href="{$LINK_sort_price_asc}">{#text_sort_price_asc#}</a>  
-<a class="btn btn-secondary{if {$smarty.get.sort == "price"} && {$smarty.get.direction == "desc"}} active{/if}" href="{$LINK_sort_price_desc}">{#text_sort_price_desc#}</a>
-<a class="btn btn-secondary{if {$smarty.get.sort == "ordered"} && {$smarty.get.direction == "asc"}} active{/if}" href="{$LINK_sort_ordered_asc}">{#text_sort_ordered_asc#}</a>
-<a class="btn btn-secondary{if {$smarty.get.sort == "ordered"} && {$smarty.get.direction == "desc"}} active{/if}" href="{$LINK_sort_ordered_desc}">{#text_sort_ordered_desc#}</a>
-<a class="btn btn-secondary{if {$smarty.get.sort == "id"} && {$smarty.get.direction == "asc"}} active{/if}" href="{$LINK_sort_id_asc}">{#text_sort_id_asc#}</a>  
-<a class="btn btn-secondary{if {$smarty.get.sort == "id"} && {$smarty.get.direction == "desc"}} active{/if}" href="{$LINK_sort_id_desc}">{#text_sort_id_desc#}</a>
-<a class="btn btn-secondary{if {$smarty.get.sort == "quantity"} && {$smarty.get.direction == "asc"}} active{/if}" href="{$LINK_sort_quantity_asc}">{#text_sort_quantity_asc#}</a>
-<a class="btn btn-secondary{if {$smarty.get.sort == "quantity"} && {$smarty.get.direction == "desc"}} active{/if}" href="{$LINK_sort_quantity_desc}">{#text_sort_quantity_desc#}</a>
+<div class="btn-group flex-wrap py-2 mb-2">
+<span class="btn btn-secondary mt-1">{#text_sort#}</span>
+<a class="btn btn-secondary{if {$smarty.get.sort == "name"} && {$smarty.get.direction == "asc"}} active{/if} mt-1" href="{$LINK_sort_name_asc}">{#text_sort_name_asc#}</a>  
+<a class="btn btn-secondary{if {$smarty.get.sort == "name"} && {$smarty.get.direction == "desc"}} active{/if} mt-1" href="{$LINK_sort_name_desc}">{#text_sort_name_desc#}</a>
+<a class="btn btn-secondary{if {$smarty.get.sort == "price"} && {$smarty.get.direction == "asc"}} active{/if} mt-1" href="{$LINK_sort_price_asc}">{#text_sort_price_asc#}</a>  
+<a class="btn btn-secondary{if {$smarty.get.sort == "price"} && {$smarty.get.direction == "desc"}} active{/if} mt-1" href="{$LINK_sort_price_desc}">{#text_sort_price_desc#}</a>
+<a class="btn btn-secondary{if {$smarty.get.sort == "ordered"} && {$smarty.get.direction == "asc"}} active{/if} mt-1" href="{$LINK_sort_ordered_asc}">{#text_sort_ordered_asc#}</a>
+<a class="btn btn-secondary{if {$smarty.get.sort == "ordered"} && {$smarty.get.direction == "desc"}} active{/if} mt-1" href="{$LINK_sort_ordered_desc}">{#text_sort_ordered_desc#}</a>
+<a class="btn btn-secondary{if {$smarty.get.sort == "id"} && {$smarty.get.direction == "asc"}} active{/if} mt-1" href="{$LINK_sort_id_asc}">{#text_sort_id_asc#}</a>  
+<a class="btn btn-secondary{if {$smarty.get.sort == "id"} && {$smarty.get.direction == "desc"}} active{/if} mt-1" href="{$LINK_sort_id_desc}">{#text_sort_id_desc#}</a>
+<a class="btn btn-secondary{if {$smarty.get.sort == "quantity"} && {$smarty.get.direction == "asc"}} active{/if} mt-1" href="{$LINK_sort_quantity_asc}">{#text_sort_quantity_asc#}</a>
+<a class="btn btn-secondary{if {$smarty.get.sort == "quantity"} && {$smarty.get.direction == "desc"}} active{/if} mt-1" href="{$LINK_sort_quantity_desc}">{#text_sort_quantity_desc#}</a>
 </div>
 
 {if $PRODUCTS_COUNT >= $smarty.const.MAX_DISPLAY_SEARCH_RESULTS}
