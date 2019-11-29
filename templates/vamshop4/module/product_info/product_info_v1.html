@@ -140,16 +140,23 @@
 
 {if {$PRODUCTS_PRICE_PLAIN} > 0}
 <div class="CartContentLeft">
-<div class="input-group product-info">
-<div class="input-group-prepend">
- <span class="btn btn-secondary value-control" data-action="minus" data-target="quantity{$PRODUCTS_ID}"><i class="fa fa-minus"></i></span>
-</div>
-<label for="quantity{$PRODUCTS_ID}">{$ADD_QTY}</label>
-<div class="input-group-append">
- <span class="btn btn-secondary value-control" data-action="plus" data-target="quantity{$PRODUCTS_ID}"><i class="fa fa-plus"></i></span>
-</div>
-&nbsp;{$ADD_CART_BUTTON}
-</div>
+  <div class="form-row align-items-center">
+    <div class="col-auto mt-1">
+      <label class="sr-only" for="quantity{$PRODUCTS_ID}">{#quantity#}</label>
+      <div class="input-group">
+         <div class="input-group-prepend">
+	       <span class="btn btn-secondary value-control" data-action="minus" data-target="quantity{$PRODUCTS_ID}"><i class="fa fa-minus"></i></span>
+         </div>
+        {$ADD_QTY}
+         <div class="input-group-append">
+	       <span class="btn btn-secondary value-control" data-action="plus" data-target="quantity{$PRODUCTS_ID}"><i class="fa fa-plus"></i></span>
+         </div>
+      </div>
+    </div>
+    <div class="col-auto mt-1">
+         <button class="btn btn-inverse checkout btn-block"><i class="fas fa-shopping-cart"></i> {$smarty.const.IMAGE_BUTTON_IN_CART}</button>
+    </div>
+  </div>
 </div>
 {/if}
 
