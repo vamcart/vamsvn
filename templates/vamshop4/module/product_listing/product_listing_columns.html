@@ -39,7 +39,7 @@
 </div>
 {/if}
 
-<div class="btn-group flex-wrap py-2 mb-2">
+<div class="btn-group flex-wrap py-2">
 <span class="btn btn-secondary mt-1">{#text_sort#}</span>
 <a class="btn btn-secondary{if {$smarty.get.sort == "name"} && {$smarty.get.direction == "asc"}} active{/if} mt-1" href="{$LINK_sort_name_asc}">{#text_sort_name_asc#}</a>  
 <a class="btn btn-secondary{if {$smarty.get.sort == "name"} && {$smarty.get.direction == "desc"}} active{/if} mt-1" href="{$LINK_sort_name_desc}">{#text_sort_name_desc#}</a>
