@@ -30,7 +30,7 @@ $sql = "
     WHERE
          status = '1'
          and language = '" . (int)$_SESSION['languages_id'] . "'
-    ORDER BY news_id DESC
+    ORDER BY date_added DESC
     LIMIT " . MAX_DISPLAY_LATEST_NEWS . "
     ";
 
