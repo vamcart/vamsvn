@@ -365,11 +365,7 @@ switch ($_GET['action']) {
 				$notify_comments = '';
 				if ($_POST['notify_comments'] == 'on') {
 					//$notify_comments = sprintf(EMAIL_TEXT_COMMENTS_UPDATE, $comments)."\n\n";
-					if (EMAIL_USE_HTML == 'true') {
-					$notify_comments = nl2br($comments);
-					} else {
 					$notify_comments = $comments;
-					}
 				} else {
 					$notify_comments = '';
 				}
@@ -450,6 +446,7 @@ switch ($_GET['action']) {
               } else {
               $customer_id2 = $customer['customers_id'];
               }
+              if ($customer_id2 > 0) {
               $statuses_groups_query = vam_db_query("select orders_status_id from " . TABLE_CUSTOMERS_STATUS_ORDERS_STATUS . " where customers_status_id = " . (int)$groups['customers_status_id']);
               $purchase_query = "select sum(ot.value) as total from " . TABLE_ORDERS_TOTAL . " as ot, " . TABLE_ORDERS . " as o where ot.orders_id = o.orders_id and o.customers_id = " . (int)$customer_id2 . " and ot.class = 'ot_total' and (";
               $statuses = vam_db_fetch_array($statuses_groups_query);
@@ -487,6 +484,7 @@ switch ($_GET['action']) {
                  vam_db_query("update " . TABLE_CUSTOMERS . " set customers_status = " . (int)$customers_groups_id . " where customers_id = " . (int)$customer_id2);
                  $changed = true;
              }
+           }
            }
            $groups_query = vam_db_query("select cg.* from " . TABLE_CUSTOMERS_STATUS . " as cg, " . TABLE_CUSTOMERS . " as c where c.customers_status = cg.customers_status_id and c.customers_id = " . $customer_id2);
            $customers_groups_id = @mysqli_result($groups_query, 0, "customers_status_id");
