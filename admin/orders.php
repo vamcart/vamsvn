@@ -365,7 +365,11 @@ switch ($_GET['action']) {
 				$notify_comments = '';
 				if ($_POST['notify_comments'] == 'on') {
 					//$notify_comments = sprintf(EMAIL_TEXT_COMMENTS_UPDATE, $comments)."\n\n";
+					if (EMAIL_USE_HTML == 'true') {
+					$notify_comments = nl2br($comments);
+					} else {
 					$notify_comments = $comments;
+					}
 				} else {
 					$notify_comments = '';
 				}
