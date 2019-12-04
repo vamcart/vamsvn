@@ -100,7 +100,9 @@ if ($listing_split->number_of_rows > 0) {
 		$module_content[] =  $product->buildDataArray($listing);		
 	}
 	
-	
+
+if (PRODUCT_LISTING_ATTRIBUTES == 'true') {
+		
 // Attributes start
 foreach($module_content as $k => $m)
 {
@@ -214,6 +216,8 @@ $module_content[$k]['attrib'] = $products_options_data;
 }
 }
 // Attributes end
+
+}
 	
 	$module->assign('BUTTON_COMPARE', vam_image_submit('view.png', TEXT_PRODUCT_COMPARE));
 	$module->assign('PRODUCTS_COUNT', $listing_split->number_of_rows);

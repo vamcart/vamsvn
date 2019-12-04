@@ -738,4 +738,6 @@ define('TEXT_ALERT_COOKIE', 'Мы используем файлы cookie для 
 define('TEXT_COOKIE_CLOSE', 'Закрыть');
 define('TEXT_COOKIE_OK', 'Разрешаю');
 
+define('TEXT_SELECT_OPTIONS','Выбрать опции');
+
 ?>

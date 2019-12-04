@@ -1,0 +1,62 @@
+  <div class="card card-product h-100">
+	<div class="card-body">
+	<div class="row">
+		{if $module_data.PRODUCTS_LABEL}{$module_data.PRODUCTS_LABEL}{/if}
+		{if $module_data.PRODUCTS_SPECIAL > 0}<span class="badge-offer"><b>-{$module_data.PRODUCTS_SPECIAL|round}%</b></span>{/if}
+		<div class="col-md-3">
+			<div class="img-wrap"><a href="{$module_data.PRODUCTS_LINK}" title="{$module_data.PRODUCTS_NAME}"><img src="{$module_data.PRODUCTS_IMAGE}" alt="{$module_data.PRODUCTS_NAME}"></a></div>
+				{if $module_data.REVIEWS_TOTAL > 0}
+				<div class="rating-wrap text-center">
+					{$module_data.REVIEWS_STAR_RATING} <span class="text-muted" title="{$smarty.const.TEXT_REVIEWS_RATING}">{$module_data.REVIEWS_TOTAL_RATING|number_format:1}</span>
+					<div class="label-rating"><span class="text-muted"><i class="far fa-comments"></i> {$smarty.const.TEXT_TOTAL_REVIEWS}: {$module_data.REVIEWS_TOTAL}</span></div>
+				</div>
+				{/if}
+		</div>
+		<div class="col-md-6">
+				<h4 class="title text-truncate"><a href="{$module_data.PRODUCTS_LINK}" title="{$module_data.PRODUCTS_NAME}">{$module_data.PRODUCTS_NAME}</a></h4>
+				{if {$module_data.PRODUCTS_SHORT_DESCRIPTION}}<div>{$module_data.PRODUCTS_SHORT_DESCRIPTION|strip_tags|vam_truncate:240:"...":true}</div>{/if}
+				{if $module_data.EXTRA_FIELDS}
+				<div class="description extra_fields">
+				{foreach item=extra_fields from=$module_data.EXTRA_FIELDS}
+				{if $extra_fields@iteration > 5}{break}{/if} 
+				<div class="{cycle values="spec-odd,spec-even"}">
+				<span class="spec-name">{$extra_fields.NAME}:</span> <span class="spec-value">{$extra_fields.VALUE}</span><br />
+				</div>
+				{/foreach}
+				</div>
+				{/if}
+				{if $module_data.SPECS}
+				<div class="description specs">
+				<!-- Specifications -->
+				{foreach name=outer item=spec_group from=$module_data.SPECS}
+				<br />
+				{foreach key=key_data item=spec from=$spec_group.DATA}
+				{if $spec@iteration > 5}{break}{/if} 
+				<div class="{cycle values="spec-odd,spec-even"}">
+				<span class="spec-name">{$spec.NAME}:</span> <span class="spec-value">{$spec.VALUE}</span><br />
+				</div>
+				{/foreach}
+				{/foreach}
+				<br />
+				</div>
+				{/if}
+				{if $CATEGORIES_NAME && SPECIFICATIONS_BOX_COMPARISON == "True"}<div class="description"><label><input type="checkbox" id="s_{$module_data.PRODUCTS_ID}" name="products[]" value="{$module_data.PRODUCTS_ID}" /> {#text_compare#}</label></div>{/if}
+
+		</div>
+		<div class="col-md-3 border-left">
+			<div class="action-wrap text-center">
+				{if $module_data.PRODUCTS_PRICE_PLAIN > 0}
+				<div class="price-wrap h4 text-center">
+					{$module_data.PRODUCTS_PRICE}
+				</div>
+				{/if}
+				{if $module_data.PRODUCTS_PRICE_PLAIN > 0}
+				<div>
+	         {$module_data.PRODUCTS_BUTTON_BUY_NOW_NEW}
+				</div>
+				{/if}
+			</div>
+		</div>
+	</div>
+	</div>
+</div>

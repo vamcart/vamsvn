@@ -53,27 +53,6 @@
 <a class="btn btn-secondary{if {$smarty.get.sort == "quantity"} && {$smarty.get.direction == "desc"}} active{/if} mt-1" href="{$LINK_sort_quantity_desc}">{#text_sort_quantity_desc#}</a>
 </div>
 
-{if $PRODUCTS_COUNT >= $smarty.const.MAX_DISPLAY_SEARCH_RESULTS}
-<div class="py-2">
-{#text_products_per_page#}
-
-{if $PRODUCTS_COUNT > 10}
-<a class="btn btn-outline-primary font-weight-bold{if {$smarty.get.on_page} == "10"} active{/if}" href="{$LINK_PAGE}10">10</a>&nbsp;
-{/if}
-
-{if $PRODUCTS_COUNT > 20}
-<a class="btn btn-outline-primary font-weight-bold{if {$smarty.get.on_page} == "20"} active{/if}" href="{$LINK_PAGE}20">20</a>&nbsp;
-{/if}
-
-{if $PRODUCTS_COUNT > 50}
-<a class="btn btn-outline-primary font-weight-bold{if {$smarty.get.on_page} == "50"} active{/if}" href="{$LINK_PAGE}50">50</a>&nbsp; 
-{/if}
-
-{if $PRODUCTS_COUNT > 100}
-<a class="btn btn-outline-primary font-weight-bold{if {$smarty.get.on_page} == "100"} active{/if}" href="{$LINK_PAGE}100">100</a>&nbsp;
-{/if} 
-</div>
-{/if}
 <div class="clear"></div>
 </div>
 
@@ -89,12 +68,15 @@
 <div class="clear"></div>
 
 {foreach name=aussen item=module_data from=$module_content}
-{include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/product-card/product-card-listing-attributes.html"}
+{include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/product-card/product-card-listing-buy-button.html"}
 {/foreach}
 
 {if $CATEGORIES_NAME && SPECIFICATIONS_BOX_COMPARISON == "True"}
+<div class="pt-2">
 <input type="hidden" name="cat" value="{$smarty.get.cat}" />
-{$BUTTON_COMPARE}</form>
+{$BUTTON_COMPARE}
+</form>
+</div>
 {/if}
 
 <div class="navigation">
