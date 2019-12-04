@@ -68,7 +68,11 @@
 <div class="clear"></div>
 
 {foreach name=aussen item=module_data from=$module_content}
+{if $smarty.const.PRODUCT_LISTING_ATTRIBUTES == 'true'}
+{include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/product-card/product-card-listing-attributes.html"}
+{else}
 {include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/product-card/product-card-listing-buy-button.html"}
+{/if}
 {/foreach}
 
 {if $CATEGORIES_NAME && SPECIFICATIONS_BOX_COMPARISON == "True"}
