@@ -1087,4 +1087,7 @@ define('DEFAULT_NAVIGATION_DESC', 'Выберите тип навигации п
 define('ENABLE_COOKIE_ALERT_TITLE', 'Показывать cookie уведомление');
 define('ENABLE_COOKIE_ALERT_DESC', 'Показывать уведомление об использовании cookie файлов на сайте.');
 
+define('PRODUCT_LISTING_ATTRIBUTES_TITLE' , 'Показывать атрибуты товара в списке товара внутри категорий');
+define('PRODUCT_LISTING_ATTRIBUTES_DESC', 'В списке товара внутри категории выводить атрибуты товара.');
+
 ?>
