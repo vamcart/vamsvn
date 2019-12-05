@@ -24,6 +24,7 @@
   include(DIR_WS_BOXES . 'news_dropdown.php');
   include(DIR_WS_BOXES . 'articles_new_dropdown.php');
   if (SET_BOX_DOWNLOADS == 'true') include(DIR_WS_BOXES . 'download.php');
+  if ($_SESSION['customers_status']['customers_status_show_price'] == 1) { if (SET_BOX_CART == 'true') include(DIR_WS_BOXES . 'shopping_cart.php'); }
 
 $vamTemplate->assign('tpl_path','templates/'.CURRENT_TEMPLATE.'/');
 ?>
