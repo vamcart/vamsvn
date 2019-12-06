@@ -100,7 +100,7 @@ require_once (DIR_FS_INC.'vam_date_short.inc.php');
 
   if ($_GET['akeywords'] != ""){
   
-  $_GET['akeywords'] = urldecode($_GET['akeywords']);
+  $_GET['akeywords'] = urldecode(vam_db_input($_GET['akeywords']));
   
   if (isset($_GET['description'])) {
     $listing_sql = "select ad.articles_name, a.articles_date_added, a.articles_image, a.articles_keywords, a.articles_date_available, a.articles_id, ad.articles_viewed, ad.articles_description from " . TABLE_ARTICLES_DESCRIPTION . " ad inner join " . TABLE_ARTICLES . " a on ad.articles_id = a.articles_id where a.articles_status = '1' and ad.language_id = '" . (int)$_SESSION['languages_id'] . "' and (ad.articles_name like '%" . $_GET['akeywords'] . "%' or ad.articles_description like '%" . $_GET['akeywords'] . "%' or ad.articles_head_desc_tag like '%" . $_GET['akeywords'] . "%' or ad.articles_head_keywords_tag like '%" . $_GET['akeywords'] . "%' or ad.articles_head_title_tag like '%" . $_GET['akeywords'] . "%' or a.articles_keywords like '%" . $_GET['akeywords'] . "%') order by ad.articles_name ASC";
