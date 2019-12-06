@@ -1,0 +1,35 @@
+	<div class="box h-100 bg-light">
+			<div class="itemside">
+				<div class="aside align-top">
+						{if $module_data.PRODUCTS_IMAGE!=''}<img class="img-sm" src="{$module_data.PRODUCTS_IMAGE}" width="100" alt="{$module_data.IMAGE_ALT}" />{/if}
+				</div>
+				<div class="text-wrap">
+					<ul class="list-inline">
+					  <li class="list-inline-item"><h6 class="title"><a href="{$module_data.PRODUCTS_LINK}">{$module_data.PRODUCTS_NAME}</a></h6></li>
+					  <li class="list-inline-item">{$module_data.BOX_DELETE}</li>
+					</ul>
+					{if $module_data.PRODUCTS_SHIPPING_TIME neq ""}<p><span class="text-muted">{#text_shippingtime#}&nbsp;{$module_data.PRODUCTS_SHIPPING_TIME}</span></p>{/if}
+					{if $module_data.ATTRIBUTES!=''}
+					{foreach key=key_data item=item_data from=$module_data.ATTRIBUTES} 
+					<p>{$item_data.NAME}: {$item_data.VALUE_NAME}</p>
+					{/foreach}
+					{/if} 					
+					{#text_qty#}:
+			      {if $smarty.const.AJAX_CART == 'true'}
+			        <div class="input-group">
+			          <div class="input-group-prepend">
+			    	    {$module_data.MINUS}
+			          </div>
+			      {/if}
+			          {$module_data.PRODUCTS_QTY}
+			      {if $smarty.const.AJAX_CART == 'true'}
+			          <div class="input-group-append">
+			      	    {$module_data.PLUS}
+			          </div>
+			        </div>
+			      {/if}
+			      <hr />
+					<p><strong class="text-danger">{$module_data.PRODUCTS_PRICE}</strong></p>
+				</div>
+			</div>
+	</div>
