@@ -51,7 +51,7 @@
           answer,
           date_added
       FROM " . TABLE_FAQ . "
-      WHERE status = '1' and language = '" . (int)$_SESSION['languages_id'] . "' and (question like '%" . $_GET['akeywords'] . "%' or answer like '%" . $_GET['akeywords'] . "%') order by date_added DESC";
+      WHERE status = '1' and language = '" . (int)$_SESSION['languages_id'] . "' and (question like '%" . vam_db_input($_GET['akeywords']) . "%' or answer like '%" . vam_db_input($_GET['akeywords']) . "%') order by date_added DESC";
 
  }      
       
