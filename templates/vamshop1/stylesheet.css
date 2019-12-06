@@ -3302,3 +3302,7 @@ dd {
   max-width: 100%;
   height: auto;
 }
+
+.py-1 {
+  padding-top: .5em;
+}
