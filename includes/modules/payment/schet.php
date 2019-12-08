@@ -33,6 +33,8 @@ class schet {
 			$this->order_status = MODULE_PAYMENT_SCHET_ORDER_STATUS_ID;
 		}
 
+		if (is_object($order))
+			$this->update_status();
 	}
 	
 	function update_status() {
@@ -40,7 +42,7 @@ class schet {
 
 		if (($this->enabled == true) && ((int) MODULE_PAYMENT_SCHET_ZONE > 0)) {
 			$check_flag = false;
-			$check_query = vam_db_query("select zone_id from ".TABLE_ZONES_TO_GEO_ZONES." where geo_zone_id = '".MODULE_PAYMENT_SCHET_ZONE."' and zone_country_id = '".$order->billing['country']['id']."' order by zone_id");
+			$check_query = vam_db_query("select zone_id from ".TABLE_ZONES_TO_GEO_ZONES." where geo_zone_id = '".MODULE_PAYMENT_SCHET_ZONE."' and zone_country_id = '".$order->delivery['country']['id']."' order by zone_id");
 			while ($check = vam_db_fetch_array($check_query)) {
 				if ($check['zone_id'] < 1) {
 					$check_flag = true;
