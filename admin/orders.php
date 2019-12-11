@@ -450,7 +450,6 @@ switch ($_GET['action']) {
               } else {
               $customer_id2 = $customer['customers_id'];
               }
-              if ($customer_id2 > 0) {
               $statuses_groups_query = vam_db_query("select orders_status_id from " . TABLE_CUSTOMERS_STATUS_ORDERS_STATUS . " where customers_status_id = " . (int)$groups['customers_status_id']);
               $purchase_query = "select sum(ot.value) as total from " . TABLE_ORDERS_TOTAL . " as ot, " . TABLE_ORDERS . " as o where ot.orders_id = o.orders_id and o.customers_id = " . (int)$customer_id2 . " and ot.class = 'ot_total' and (";
               $statuses = vam_db_fetch_array($statuses_groups_query);
@@ -488,7 +487,6 @@ switch ($_GET['action']) {
                  vam_db_query("update " . TABLE_CUSTOMERS . " set customers_status = " . (int)$customers_groups_id . " where customers_id = " . (int)$customer_id2);
                  $changed = true;
              }
-           }
            }
            $groups_query = vam_db_query("select cg.* from " . TABLE_CUSTOMERS_STATUS . " as cg, " . TABLE_CUSTOMERS . " as c where c.customers_status = cg.customers_status_id and c.customers_id = " . $customer_id2);
            $customers_groups_id = @mysqli_result($groups_query, 0, "customers_status_id");
@@ -1020,46 +1018,115 @@ if (($_GET['action'] == 'edit') && ($order_exists)) {
         }
         
     </script>
-    <script src="https://api-maps.yandex.ru/1.1/index.xml?key=<?php echo MAP_API_KEY; ?>&onerror=apifault" type="text/javascript"></script>
+    <script src="https://api-maps.yandex.ru/2.1/?apikey=<?php echo MAP_API_KEY; ?>&lang=ru_RU" type="text/javascript"></script>
     <script type="text/javascript">
 
 	$(document).ready(function(){
 			$("#getmap").click(function() {
 			
 			
-        if (!flagApiFault) {
-        // Создает обработчик события window.onLoad
-        YMaps.jQuery(function () {
-            // Создает экземпляр карты и привязывает его к созданному контейнеру
-            var map = new YMaps.Map(YMaps.jQuery("#YMapsID")[0]);
 
-                    map.addControl(new YMaps.TypeControl());
-                    map.addControl(new YMaps.ToolBar());
-                    map.addControl(new YMaps.Zoom());
-                    map.addControl(new YMaps.ScaleLine());
-                    
-            var geocoder = new YMaps.Geocoder("<?php echo $ship_address; ?>");
-            
-            map.addOverlay(geocoder);
-				
-            // По завершению геокодирования инициализируем карту первым результатом
-            YMaps.Events.observe(geocoder, geocoder.Events.Load, function (geocoder) {
-                if (geocoder.length()) {
-                    map.setBounds(geocoder.get(0).getBounds());
-                }
+ymaps.ready(init);
+
+function init() {
+    var myMap = new ymaps.Map('YMapsID', {
+        center: [55.753994, 37.622093],
+        zoom: 9
+    });
+
+    // Поиск координат центра Нижнего Новгорода.
+    ymaps.geocode('<?php echo $ship_address; ?>', {
+        /**
+         * Опции запроса
+         * @see https://api.yandex.ru/maps/doc/jsapi/2.1/ref/reference/geocode.xml
+         */
+        // Сортировка результатов от центра окна карты.
+        // boundedBy: myMap.getBounds(),
+        // strictBounds: true,
+        // Вместе с опцией boundedBy будет искать строго внутри области, указанной в boundedBy.
+        // Если нужен только один результат, экономим трафик пользователей.
+        results: 1
+    }).then(function (res) {
+            // Выбираем первый результат геокодирования.
+            var firstGeoObject = res.geoObjects.get(0),
+                // Координаты геообъекта.
+                coords = firstGeoObject.geometry.getCoordinates(),
+                // Область видимости геообъекта.
+                bounds = firstGeoObject.properties.get('boundedBy');
+
+            firstGeoObject.options.set('preset', 'islands#darkBlueDotIconWithCaption');
+            // Получаем строку с адресом и выводим в иконке геообъекта.
+            firstGeoObject.properties.set('iconCaption', firstGeoObject.getAddressLine());
+
+            // Добавляем первый найденный геообъект на карту.
+            myMap.geoObjects.add(firstGeoObject);
+            // Масштабируем карту на область видимости геообъекта.
+            myMap.setBounds(bounds, {
+                // Проверяем наличие тайлов на данном масштабе.
+                checkZoomRange: true
             });
 
+            /**
+             * Все данные в виде javascript-объекта.
+             */
+            console.log('Все данные геообъекта: ', firstGeoObject.properties.getAll());
+            /**
+             * Метаданные запроса и ответа геокодера.
+             * @see https://api.yandex.ru/maps/doc/geocoder/desc/reference/GeocoderResponseMetaData.xml
+             */
+            console.log('Метаданные ответа геокодера: ', res.metaData);
+            /**
+             * Метаданные геокодера, возвращаемые для найденного объекта.
+             * @see https://api.yandex.ru/maps/doc/geocoder/desc/reference/GeocoderMetaData.xml
+             */
+            console.log('Метаданные геокодера: ', firstGeoObject.properties.get('metaDataProperty.GeocoderMetaData'));
+            /**
+             * Точность ответа (precision) возвращается только для домов.
+             * @see https://api.yandex.ru/maps/doc/geocoder/desc/reference/precision.xml
+             */
+            console.log('precision', firstGeoObject.properties.get('metaDataProperty.GeocoderMetaData.precision'));
+            /**
+             * Тип найденного объекта (kind).
+             * @see https://api.yandex.ru/maps/doc/geocoder/desc/reference/kind.xml
+             */
+            console.log('Тип геообъекта: %s', firstGeoObject.properties.get('metaDataProperty.GeocoderMetaData.kind'));
+            console.log('Название объекта: %s', firstGeoObject.properties.get('name'));
+            console.log('Описание объекта: %s', firstGeoObject.properties.get('description'));
+            console.log('Полное описание объекта: %s', firstGeoObject.properties.get('text'));
+            /**
+            * Прямые методы для работы с результатами геокодирования.
+            * @see https://tech.yandex.ru/maps/doc/jsapi/2.1/ref/reference/GeocodeResult-docpage/#getAddressLine
+            */
+            console.log('\nГосударство: %s', firstGeoObject.getCountry());
+            console.log('Населенный пункт: %s', firstGeoObject.getLocalities().join(', '));
+            console.log('Адрес объекта: %s', firstGeoObject.getAddressLine());
+            console.log('Наименование здания: %s', firstGeoObject.getPremise() || '-');
+            console.log('Номер здания: %s', firstGeoObject.getPremiseNumber() || '-');
 
-            
-        })
-        }
+            /**
+             * Если нужно добавить по найденным геокодером координатам метку со своими стилями и контентом балуна, создаем новую метку по координатам найденной и добавляем ее на карту вместо найденной.
+             */
+            /**
+             var myPlacemark = new ymaps.Placemark(coords, {
+             iconContent: 'моя метка',
+             balloonContent: 'Содержимое балуна <strong>моей метки</strong>'
+             }, {
+             preset: 'islands#violetStretchyIcon'
+             });
+
+             myMap.geoObjects.add(myPlacemark);
+             */
+        });
+}
+
+
         		})
         		
         	});
     </script>
 
     <div id="error" style="display:none"></div>
-    <div id="YMapsID" style="width:100%;height:350px"></div>
+    <div id="YMapsID" style="width:100%;height:500px"></div>
     			
 			</div>
 
