@@ -43,7 +43,7 @@
   // Set the level of error reporting
   error_reporting(0);
   //ini_set('display_errors',1);
-  //error_reporting(E_ERROR);
+  //error_reporting(E_ALL);
 
   // Disable use_trans_sid as vam_href_link() does this manually
   if (function_exists('ini_set')) {
