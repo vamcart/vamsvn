@@ -15,7 +15,7 @@
 
 {if $ARTICLE_IMAGE}
 <p itemprop="image" itemscope itemtype="https://schema.org/ImageObject">
-<img src="{$smarty.const.HTTP_SERVER}{$smarty.const.DIR_WS_CATALOG}{$smarty.const.DIR_WS_IMAGES}articles/{$ARTICLE_IMAGE}" alt="{$ARTICLE_NAME}" />
+<img class="img-fluid" src="{$smarty.const.HTTP_SERVER}{$smarty.const.DIR_WS_CATALOG}{$smarty.const.DIR_WS_IMAGES}articles/{$ARTICLE_IMAGE}" alt="{$ARTICLE_NAME}" />
 <meta itemprop="url" content="{$smarty.const.HTTP_SERVER}{$smarty.const.DIR_WS_CATALOG}{$smarty.const.DIR_WS_IMAGES}articles/{$ARTICLE_IMAGE}" />
 </p>
 {/if}
@@ -36,7 +36,7 @@
 <p>
 Тэги:
 {foreach item=article_tags from=$ARTICLE_KEYWORDS_ARRAY_TAGS}
-<a href="{$article_tags.LINK}">{$article_tags.NAME}</a> 
+<a href="{$article_tags.LINK}">{$article_tags.NAME}</a> | 
 {/foreach}
 </p>
 {/if}
