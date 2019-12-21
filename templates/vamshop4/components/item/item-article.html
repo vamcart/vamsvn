@@ -66,6 +66,12 @@
 				</div>
 				{/if}				
 
+				{if $module_data.ARTICLE_CATEGORY_NAME != ''}
+				<div class="desc">
+				{#text_category#} <a href="{$module_data.ARTICLE_CATEGORY_LINK}">{$module_data.ARTICLE_CATEGORY_NAME}</a>
+				</div>
+				{/if}				
+
 		</div>
 		<div class="col-md-3 border-left">
 			<div class="action-wrap text-center">
