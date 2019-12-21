@@ -115,6 +115,9 @@ $article_info['articles_keywords'] = str_replace($value.",","",$article_info['ar
 	$vamTemplate->assign('AUTHOR_ID', $article_info['authors_id']);
 	$vamTemplate->assign('AUTHOR_REVIEWS', $author_reviews['total']);
 
+	$vamTemplate->assign('ARTICLE_CATEGORY_NAME', $topics_name['topics_name']);
+	$vamTemplate->assign('ARTICLE_CATEGORY_LINK', $topics_link);
+
 	$author_rating_query = vam_db_query("select count(*) as total, TRUNCATE(SUM(reviews_rating),2) as rating from ".TABLE_AUTHOR_REVIEWS." r, ".TABLE_AUTHOR_REVIEWS_DESCRIPTION." rd where r.authors_id = '".(int)$article_info['authors_id']."' and r.reviews_id = rd.reviews_id and rd.languages_id = '".$_SESSION['languages_id']."' and rd.reviews_text !=''");
 	$author_rating = vam_db_fetch_array($author_rating_query);
 	if ($author_rating['total'] > 0 && $author_rating['rating'] > 0) {
