@@ -17,7 +17,7 @@
 <div class="pageItem" itemprop="articleBody">
 
 {if $ARTICLE_IMAGE}
-<p itemprop="image" itemscope itemtype="https://schema.org/ImageObject">
+<p itemprop="image" class="text-center" itemscope itemtype="https://schema.org/ImageObject">
 <img class="img-fluid" src="{$smarty.const.HTTP_SERVER}{$smarty.const.DIR_WS_CATALOG}{$smarty.const.DIR_WS_IMAGES}articles/{$ARTICLE_IMAGE}" alt="{$ARTICLE_NAME}" />
 <meta itemprop="url" content="{$smarty.const.HTTP_SERVER}{$smarty.const.DIR_WS_CATALOG}{$smarty.const.DIR_WS_IMAGES}articles/{$ARTICLE_IMAGE}" />
 </p>
@@ -29,6 +29,8 @@
 </p>
 {/if}
 
+<meta itemprop="author" content="{$AUTHOR_NAME}" />
+				
 <meta itemprop="datePublished" content="{$ARTICLE_DATE|date_format:"c"}" />
 <meta itemprop="dateModified" content="{$ARTICLE_DATE|date_format:"c"}" />
 
