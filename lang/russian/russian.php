@@ -740,4 +740,15 @@ define('TEXT_COOKIE_OK', 'Разрешаю');
 
 define('TEXT_SELECT_OPTIONS','Выбрать опции');
 
+define('TEXT_TAGS','Тэги');
+
+define('TEXT_AUTHOR_COMMENTS','Отзывы об авторе');
+define('TEXT_AUTHOR_RATING','Рейтинг автора');
+define('TEXT_ARTICLE_COMMENTS','Отзывы о статье');
+define('TEXT_ARTICLE_RATING','Рейтинг статьи');
+define('TEXT_ARTICLE_REVIEWS_READ','читать все отзывы о статье');
+define('TEXT_ARTICLE_REVIEWS_ADD','добавить отзыв о статье');
+define('TEXT_AUTHOR_REVIEWS_READ','читать все отзывы об авторе');
+define('TEXT_AUTHOR_REVIEWS_ADD','добавить отзыв об авторе');
+
 ?>

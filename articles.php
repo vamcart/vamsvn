@@ -132,9 +132,8 @@ if (($articles_split->number_of_rows > 0)) {
 
   $tags_list_sql = "select articles_keywords, articles_id from ".TABLE_ARTICLES."";
 
-  $tags_list_query = vamDBquery($tags_list_sql);
-  if (vam_db_num_rows($tags_list_query, true) > 1) {
-
+  $tags_list_query = vamDBquery($tags_list_sql, true);
+  if (vam_db_num_rows($tags_list_query, true) >= 1) {
 
     while ($tags_list = vam_db_fetch_array($tags_list_query, true)) {
 
@@ -180,6 +179,8 @@ foreach($keys as $k) {
                 'NAME' => trim($tags_all),
                 'LINK' => vam_href_link(FILENAME_ARTICLES, 'akeywords='.trim($tags_all)));
             }
+
+//echo var_dump($all_tags_data);
 
 	$vamTemplate->assign('ARTICLE_KEYWORDS', $articles['articles_keywords']);
 	$vamTemplate->assign('ARTICLE_KEYWORDS_ARRAY_TAGS', $all_tags_data);

@@ -1,73 +1,75 @@
   <div class="card card-product h-100">
 	<div class="card-body">
 	<div class="row">
-		{if $module_data.PRODUCTS_LABEL}{$module_data.PRODUCTS_LABEL}{/if}
-		{if $module_data.PRODUCTS_SPECIAL > 0}<span class="badge-offer"><b>-{$module_data.PRODUCTS_SPECIAL|round}%</b></span>{/if}
 		<div class="col-md-3">
-			<div class="img-wrap"><a href="{$module_data.PRODUCTS_LINK}" title="{$module_data.PRODUCTS_NAME}"><img src="{$module_data.PRODUCTS_IMAGE}" alt="{$module_data.PRODUCTS_NAME}"></a></div>
-				{if $module_data.REVIEWS_TOTAL > 0}
+			<div class="img-wrap"><a href="{$module_data.ARTICLE_LINK}" title="{$module_data.ARTICLE_NAME}"><img src="{if $module_data.ARTICLE_IMAGE != ''}{$smarty.const.DIR_WS_CATALOG}{$smarty.const.DIR_WS_IMAGES}articles/{$module_data.ARTICLE_IMAGE}{else}{$smarty.const.DIR_WS_CATALOG}{$smarty.const.DIR_WS_IMAGES}product_images/noimage.gif{/if}" alt="{$module_data.ARTICLE_NAME}"></a></div>
+				{if {$module_data.ARTICLE_RATING} > 0 }
 				<div class="rating-wrap text-center">
-					{$module_data.REVIEWS_STAR_RATING} <span class="text-muted" title="{$smarty.const.TEXT_REVIEWS_RATING}">{$module_data.REVIEWS_TOTAL_RATING|number_format:1}</span>
-					<div class="label-rating"><span class="text-muted"><i class="far fa-comments"></i> {$smarty.const.TEXT_TOTAL_REVIEWS}: {$module_data.REVIEWS_TOTAL}</span></div>
+					{$module_data.ARTICLE_STAR_RATING} <span class="text-muted" title="{$smarty.const.TEXT_REVIEWS_RATING}">{$module_data.ARTICLE_RATING|number_format:1}</span>
+					<div class="label-rating"><span class="text-muted"><i class="far fa-comments"></i> {$smarty.const.TEXT_TOTAL_REVIEWS}: <a href="{$smarty.const.FILENAME_ARTICLE_REVIEWS}?articles_id={$module_data.ARTICLE_ID}">{$module_data.ARTICLE_REVIEWS}</a></span></div>
 				</div>
 				{/if}
 		</div>
 		<div class="col-md-6">
 			
-				<h4 class="title text-truncate"><a href="{$module_data.PRODUCTS_LINK}" title="{$module_data.PRODUCTS_NAME}">{$module_data.PRODUCTS_NAME}</a></h4>
-				{if {$module_data.PRODUCTS_SHORT_DESCRIPTION}}<div>{$module_data.PRODUCTS_SHORT_DESCRIPTION|strip_tags|vam_truncate:240:"...":true}</div>{/if}
-				{assign var=options value=$module_data.attrib}
-				<div class="col-6 p-0">
-				{include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}module/product_options/multi_options.html"}
-				</div>
-				{if $module_data.EXTRA_FIELDS}
-				<div class="description extra_fields text-muted">
-				{foreach item=extra_fields from=$module_data.EXTRA_FIELDS}
-				{if $extra_fields@iteration > 5}{break}{/if} 
-				<div class="{cycle values="spec-odd,spec-even"}">
-				<span class="spec-name">{$extra_fields.NAME}:</span> <span class="spec-value font-weight-bold">{$extra_fields.VALUE}</span><br />
-				</div>
-				{/foreach}
+				<h4 class="title text-truncate"><a href="{$module_data.ARTICLE_LINK}" title="{$module_data.ARTICLE_NAME}">{$module_data.ARTICLE_NAME}</a></h4>
+
+				{if {$module_data.ARTICLE_DESCRIPTION}}
+				<div class="desc py-2">
+				{$module_data.ARTICLE_DESCRIPTION|strip_tags|vam_truncate:{$smarty.const.MAX_DISPLAY_ARTICLES_CONTENT}:"...":true}
 				</div>
 				{/if}
-				{if $module_data.SPECS}
-				<div class="description specs text-muted">
-				<!-- Specifications -->
-				{foreach name=outer item=spec_group from=$module_data.SPECS}
-				<br />
-				{foreach key=key_data item=spec from=$spec_group.DATA}
-				{if $spec@iteration > 5}{break}{/if} 
-				<div class="{cycle values="spec-odd,spec-even"}">
-				<span class="spec-name">{$spec.NAME}:</span> <span class="spec-value font-weight-bold">{$spec.VALUE}</span><br />
+
+				{if $module_data.ARTICLE_KEYWORDS}
+				<div>
+				<ul class="d-inline-block list-inline">
+				{foreach name=tags item=tag from=$module_data.ARTICLE_KEYWORDS_ARRAY_TAGS}
+				<li class="list-inline-item">	
+				<a href="{$tag.LINK}"><span class="btn btn-outline-primary">{$tag.NAME}</span></a>
+				</li>
+				{/foreach}
+				</ul>
 				</div>
-				{/foreach}
-				{/foreach}
-				<br />
+				{/if}				
+
+				{if {$module_data.ARTICLE_ID} > 0}
+				<div class="desc pt-2">
+				{$smarty.const.TEXT_ARTICLE_COMMENTS}: <a href="{$smarty.const.FILENAME_ARTICLE_REVIEWS}?articles_id={$module_data.ARTICLE_ID}">{$module_data.ARTICLE_REVIEWS}</a> (<a href="{$smarty.const.FILENAME_ARTICLE_REVIEWS}?articles_id={$module_data.ARTICLE_ID}">{$smarty.const.TEXT_ARTICLE_REVIEWS_READ}</a>, <a href="{$smarty.const.FILENAME_ARTICLE_REVIEWS_WRITE}?articles_id={$module_data.ARTICLE_ID}">{$smarty.const.TEXT_ARTICLE_REVIEWS_ADD}</a>)
+				</div>
+				{if {$module_data.ARTICLE_RATING} > 0 }
+				<div class="desc pb-2">
+				{$smarty.const.TEXT_ARTICLE_RATING}: {$module_data.ARTICLE_STAR_RATING}
 				</div>
 				{/if}
-				{if $CATEGORIES_NAME && SPECIFICATIONS_BOX_COMPARISON == "True"}<div class="description"><label><input type="checkbox" id="s_{$module_data.PRODUCTS_ID}" name="products[]" value="{$module_data.PRODUCTS_ID}" /> {#text_compare#}</label></div>{/if}
+				{/if}
+
+				{if $module_data.AUTHOR_NAME}
+				<div class="desc pt-2">
+				{#text_author#} <a href="{$module_data.AUTHOR_LINK}">{$module_data.AUTHOR_NAME}</a>
+				</div>
+				{/if}
+
+				{if {$module_data.AUTHOR_ID} > 0}
+				<div class="desc">
+				{$smarty.const.TEXT_AUTHOR_COMMENTS}: <a href="{$smarty.const.FILENAME_AUTHOR_REVIEWS}?authors_id={$module_data.AUTHOR_ID}">{$module_data.AUTHOR_REVIEWS}</a> (<a href="{$smarty.const.FILENAME_AUTHOR_REVIEWS}?authors_id={$module_data.AUTHOR_ID}">{$smarty.const.TEXT_AUTHOR_REVIEWS_READ}</a> , <a href="{$smarty.const.FILENAME_AUTHOR_REVIEWS_WRITE}?authors_id={$module_data.AUTHOR_ID}">{$smarty.const.TEXT_AUTHOR_REVIEWS_ADD}</a>)
+				</div>
+				{if {$module_data.AUTHOR_RATING} > 0 }
+				<div class="desc pb-2">
+				{$smarty.const.TEXT_AUTHOR_RATING}: {$module_data.AUTHOR_STAR_RATING}
+				</div>
+				{/if}
+				{/if}
+
+				{if $module_data.ARTICLE_DATE}
+				<div class="desc">
+				{#text_date#} {$module_data.ARTICLE_DATE}
+				</div>
+				{/if}				
 
 		</div>
 		<div class="col-md-3 border-left">
 			<div class="action-wrap text-center">
-				{if $module_data.PRODUCTS_PRICE_PLAIN > 0}
-				<div class="price-wrap h4 text-center">
-					{$module_data.PRODUCTS_PRICE}
-				</div>
-				{/if}
-			{if $module_data.PRODUCTS_PRICE_PLAIN > 0}
-         <div class="input-group justify-content-center">
-         <div class="input-group-prepend">
-	       <span class="btn btn-secondary value-control" data-action="minus" data-target="quantity{$module_data.PRODUCTS_ID}"><i class="fa fa-minus"></i></span>
-         </div>
-         <input name="products_qty" type="text" value="1" class="form-control text-center" id="quantity{$module_data.PRODUCTS_ID}">
-         <div class="input-group-append">
-	       <span class="btn btn-secondary value-control" data-action="plus" data-target="quantity{$module_data.PRODUCTS_ID}"><i class="fa fa-plus"></i></span>
-         </div>
-         </div>
-         <input type="hidden" name="products_id" value="{$module_data.PRODUCTS_ID}" />
-			<button class="btn btn-inverse checkout btn-block"><i class="fas fa-shopping-cart"></i> {$smarty.const.ICON_CART}</button>
-			{/if}
+           <a class="btn btn-add-to-cart btn-block" href="{$module_data.ARTICLE_LINK}"><i class="fa fa-newspaper"></i> {$smarty.const.TEXT_VIEW_PRODUCTS_GO}</a>
 			</div>
 		</div>
 	</div>
