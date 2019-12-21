@@ -7,6 +7,19 @@
 </p>
 {else}
 
+<form name="articles_search" id="articles_search" action="articles.php" method="get" class="form-inline" autocomplete="off">
+<input type="hidden" name="description" value="1" />
+<div class="input-group">
+<input type="text" name="akeywords" class="form-control" id="quick_find_keyword" placeholder="{#text_search#}" aria-label="{#text_search#}">
+<div class="input-group-append">
+<button class="btn btn-primary fas fa-search" type="submit" aria-label="{#text_search#}">
+</button>
+</div>
+</div>
+</form>
+
+<hr />
+
 {if $AUTHOR_IMAGE}
 <p>
 <img class="img-fluid" src="{$smarty.const.DIR_WS_CATALOG}{$smarty.const.DIR_WS_IMAGES}/articles/{$AUTHOR_IMAGE}" class="img-responsive" alt="{$AUTHOR_NAME|htmlentities|strip_tags}" />
@@ -14,83 +27,21 @@
 {/if}
 
 {if $ARTICLE_KEYWORDS_ARRAY_TAGS}
-<h4>Теги:</h4> 
+<h4>{$smarty.const.TEXT_TAGS}:</h4> 
 <p>
-{foreach item=tags from=$ARTICLE_KEYWORDS_ARRAY_TAGS}
-<a href="{$tags.LINK}">{$tags.NAME}</a> 
+{foreach name=tags item=tag from=$ARTICLE_KEYWORDS_ARRAY_TAGS}
+{if {$tag.NAME} != ''}
+<li class="list-inline-item">	
+<a href="{$tag.LINK}"><span class="btn btn-outline-primary">{$tag.NAME}</span></a>
+</li>
+{/if}
 {/foreach}
 </p>
 {/if}
-<hr />
 
 {foreach name=aussen item=module_data from=$module_content} 
-<div class="page">
-<div class="pageItem">
-
-{if $module_data.ARTICLE_IMAGE}
-<p>
-<a href="{$module_data.ARTICLE_LINK}"><img class="img-fluid" src="{$smarty.const.DIR_WS_CATALOG}{$smarty.const.DIR_WS_IMAGES}articles/{$module_data.ARTICLE_IMAGE}" class="img-responsive" alt="{$module_data.ARTICLE_NAME|htmlentities|strip_tags}" /></a>
-</p>
-{/if}
-
-<p>
-<a href="{$module_data.ARTICLE_LINK}">{$module_data.ARTICLE_NAME}</a>
-</p>
-
-{if $module_data.AUTHOR_NAME}
-<p>
-{#text_author#} <a href="{$module_data.AUTHOR_LINK}">{$module_data.AUTHOR_NAME}</a>
-</p>
-{/if}
-
-{if {$module_data.ARTICLE_ID} > 0}
-<p>
-Отзывы о статье: <a href="{$smarty.const.FILENAME_ARTICLE_REVIEWS}?articles_id={$module_data.ARTICLE_ID}">{$module_data.ARTICLE_REVIEWS}</a> (<a href="{$smarty.const.FILENAME_ARTICLE_REVIEWS}?articles_id={$module_data.ARTICLE_ID}">читать все отзывы о статье</a>, <a href="{$smarty.const.FILENAME_ARTICLE_REVIEWS_WRITE}?articles_id={$module_data.ARTICLE_ID}">добавить отзыв о статье</a>)
-</p>
-{if {$module_data.ARTICLE_RATING} > 0 }
-<p>
-Рейтинг статьи: {$module_data.ARTICLE_STAR_RATING}
-</p>
-{/if}
-{/if}
-
-{if {$module_data.AUTHOR_ID} > 0}
-<p>
-Отзывы об авторе: <a href="{$smarty.const.FILENAME_AUTHOR_REVIEWS}?authors_id={$module_data.AUTHOR_ID}">{$module_data.AUTHOR_REVIEWS}</a> (<a href="{$smarty.const.FILENAME_AUTHOR_REVIEWS}?authors_id={$module_data.AUTHOR_ID}">читать все отзывы автора</a> , <a href="{$smarty.const.FILENAME_AUTHOR_REVIEWS_WRITE}?authors_id={$module_data.AUTHOR_ID}">добавить отзыв об авторе</a>)
-</p>
-{if {$module_data.AUTHOR_RATING} > 0 }
-<p>
-Рейтинг автора: {$module_data.AUTHOR_STAR_RATING}
-</p>
-{/if}
-{/if}
-
-{if $module_data.ARTICLE_SHORT_DESCRIPTION}
-<p>
-{$module_data.ARTICLE_SHORT_DESCRIPTION}
-</p>
-{/if}
-
-{if $module_data.ARTICLE_KEYWORDS}
-<p>
-Тэги:
-{foreach item=article_tags from=$module_data.ARTICLE_KEYWORDS_ARRAY_TAGS}
-<a href="{$article_tags.LINK}">{$article_tags.NAME}</a> | 
+{include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/item/item-article.html"}
 {/foreach}
-</p>
-{/if}
-
-{if $module_data.ARTICLE_DATE}
-<p>
-{#text_date#} {$module_data.ARTICLE_DATE}
-</p>
-{/if}
-
-<div class="clear"></div>
-</div>
-
-</div>
-          {/foreach} 
 
 <div class="clear"></div>
 <div class="navigation">
