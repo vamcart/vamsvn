@@ -4,6 +4,9 @@
 
 <h1 itemprop="headline">{$ARTICLE_NAME}</h1>
 
+<div class="card card-product">
+<div class="card-body">
+
 {if $no_article=='true'}
 <p>
 {#text_no_article#}
@@ -23,59 +26,6 @@
 {if $ARTICLE_DESCRIPTION}
 <p>
 {$ARTICLE_DESCRIPTION}
-</p>
-{/if}
-
-{if $ARTICLE_VIEWED}
-<p>
-{#text_viewed#} {$ARTICLE_VIEWED}
-</p>
-{/if}
-
-{if $ARTICLE_KEYWORDS}
-<p>
-Тэги:
-{foreach item=article_tags from=$ARTICLE_KEYWORDS_ARRAY_TAGS}
-<a href="{$article_tags.LINK}">{$article_tags.NAME}</a> | 
-{/foreach}
-</p>
-{/if}
-
-
-{if $AUTHOR_NAME}
-<p itemprop="author" itemscope itemtype="http://schema.org/Person">
-{#text_author#} <a href="{$AUTHOR_LINK}"><span itemprop="name">{$AUTHOR_NAME}</span></a>
-</p>
-{/if}
-
-{if {$ARTICLE_ID} > 0}
-<p>
-Отзывы о статье: <a href="{$smarty.const.FILENAME_ARTICLE_REVIEWS}?articles_id={$ARTICLE_ID}">{$ARTICLE_REVIEWS}</a> (<a href="{$smarty.const.FILENAME_ARTICLE_REVIEWS}?articles_id={$ARTICLE_ID}">читать все отзывы о статье</a>, <a href="{$smarty.const.FILENAME_ARTICLE_REVIEWS_WRITE}?articles_id={$ARTICLE_ID}">добавить отзыв о статье</a>)
-</p>
-{if {$ARTICLE_RATING} > 0 }
-<p>
-Рейтинг статьи: {$ARTICLE_STAR_RATING}
-</p>
-{/if}
-{/if}
-
-{if {$AUTHOR_ID} > 0}
-<p>
-Отзывы об авторе: <a href="{$smarty.const.FILENAME_AUTHOR_REVIEWS}?authors_id={$AUTHOR_ID}">{$AUTHOR_REVIEWS}</a> (<a href="{$smarty.const.FILENAME_AUTHOR_REVIEWS}?authors_id={$AUTHOR_ID}">читать все отзывы автора</a>, <a href="{$smarty.const.FILENAME_AUTHOR_REVIEWS_WRITE}?authors_id={$AUTHOR_ID}">добавить отзыв об авторе</a>)
-</p>
-{if {$AUTHOR_RATING} > 0 }
-<p>
-Рейтинг автора: {$AUTHOR_STAR_RATING}
-</p>
-{/if}
-{/if}
-
-
-<p><a href="{$smarty.const.FILENAME_ARTICLE_REVIEWS_WRITE}?articles_id={$ARTICLE_ID}">Добавить отзыв</a></p> 
-
-{if $ARTICLE_DATE}
-<p>
-{#text_date#} {$ARTICLE_DATE}
 </p>
 {/if}
 
@@ -102,10 +52,89 @@
 
 </div>
 
+<div class="clear"></div>
+{/if}
+</div>
+</div>
+</article>
+
+  <div class="card card-product h-100">
+	<div class="card-body">
+	<div class="row">
+		<div class="col-md-3">
+			<div class="img-wrap"><img src="{if $ARTICLE_IMAGE != ''}{$smarty.const.DIR_WS_CATALOG}{$smarty.const.DIR_WS_IMAGES}articles/{$ARTICLE_IMAGE}{else}{$smarty.const.DIR_WS_CATALOG}{$smarty.const.DIR_WS_IMAGES}product_images/noimage.gif{/if}" alt="{$ARTICLE_NAME}"></div>
+		</div>
+		<div class="col-md-6">
+			
+				{if {$ARTICLE_ID} > 0}
+				<div class="desc pt-2">
+				{$smarty.const.TEXT_ARTICLE_COMMENTS}: <a href="{$smarty.const.FILENAME_ARTICLE_REVIEWS}?articles_id={$ARTICLE_ID}">{$ARTICLE_REVIEWS}</a> (<a href="{$smarty.const.FILENAME_ARTICLE_REVIEWS}?articles_id={$ARTICLE_ID}">{$smarty.const.TEXT_ARTICLE_REVIEWS_READ}</a>, <a href="{$smarty.const.FILENAME_ARTICLE_REVIEWS_WRITE}?articles_id={$ARTICLE_ID}">{$smarty.const.TEXT_ARTICLE_REVIEWS_ADD}</a>)
+				</div>
+				{if {$ARTICLE_RATING} > 0 }
+				<div class="desc pb-2">
+				{$smarty.const.TEXT_ARTICLE_RATING}: {$ARTICLE_STAR_RATING}
+				</div>
+				{/if}
+				{/if}
+
+				{if $AUTHOR_NAME}
+				<div class="desc pt-2">
+				{#text_author#} <a href="{$AUTHOR_LINK}">{$AUTHOR_NAME}</a>
+				</div>
+				{/if}
+
+				{if {$AUTHOR_ID} > 0}
+				<div class="desc">
+				{$smarty.const.TEXT_AUTHOR_COMMENTS}: <a href="{$smarty.const.FILENAME_AUTHOR_REVIEWS}?authors_id={$AUTHOR_ID}">{$AUTHOR_REVIEWS}</a> (<a href="{$smarty.const.FILENAME_AUTHOR_REVIEWS}?authors_id={$AUTHOR_ID}">{$smarty.const.TEXT_AUTHOR_REVIEWS_READ}</a> , <a href="{$smarty.const.FILENAME_AUTHOR_REVIEWS_WRITE}?authors_id={$AUTHOR_ID}">{$smarty.const.TEXT_AUTHOR_REVIEWS_ADD}</a>)
+				</div>
+				{if {$AUTHOR_RATING} > 0 }
+				<div class="desc pb-2">
+				{$smarty.const.TEXT_AUTHOR_RATING}: {$AUTHOR_STAR_RATING}
+				</div>
+				{/if}
+				{/if}
+
+				{if $ARTICLE_DATE}
+				<div class="desc">
+				{#text_date#} {$ARTICLE_DATE}
+				</div>
+				{/if}				
+
+				{if $ARTICLE_CATEGORY_NAME != ''}
+				<div class="desc">
+				{#text_category#} <a href="{$ARTICLE_CATEGORY_LINK}">{$ARTICLE_CATEGORY_NAME}</a>
+				</div>
+				{/if}	
+
+				{if $ARTICLE_VIEWED}
+				<p>
+				{#text_viewed#} {$ARTICLE_VIEWED}
+				</p>
+				{/if}
+							
+
+		</div>
+		<div class="col-md-3 border-left">
+			<div class="action-wrap text-center">
+
+				{if $ARTICLE_KEYWORDS}
+				<div>
+				<ul class="d-inline-block list-inline">
+				{foreach name=tags item=tag from=$ARTICLE_KEYWORDS_ARRAY_TAGS}
+				<li class="list-inline-item pb-2">	
+				<a href="{$tag.LINK}"><span class="btn btn-outline-primary">{$tag.NAME}</span></a>
+				</li>
+				{/foreach}
+				</ul>
+				</div>
+				{/if}				
+
+			</div>
+		</div>
+	</div>
+	</div>
+</div>
+
 {if $MODULE_articles_xsell != ''}
 {$MODULE_articles_xsell}
 {/if}
-
-<div class="clear"></div>
-{/if}
-</article>
