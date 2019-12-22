@@ -102,18 +102,17 @@
 				</div>
 				{/if}				
 
-				{if $ARTICLE_CATEGORY_NAME != ''}
-				<div class="desc">
-				{#text_category#} <a href="{$ARTICLE_CATEGORY_LINK}">{$ARTICLE_CATEGORY_NAME}</a>
-				</div>
-				{/if}	
-
 				{if $ARTICLE_VIEWED}
 				<p>
 				{#text_viewed#} {$ARTICLE_VIEWED}
 				</p>
 				{/if}
-							
+
+				{if $ARTICLE_CATEGORY_NAME != ''}
+				<div class="desc">
+				{#text_category#} <a href="{$ARTICLE_CATEGORY_LINK}">{$ARTICLE_CATEGORY_NAME}</a>
+				</div>
+				{/if}	
 
 		</div>
 		<div class="col-md-3 border-left">

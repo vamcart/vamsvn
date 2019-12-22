@@ -66,6 +66,12 @@
 				</div>
 				{/if}				
 
+				{if $module_data.ARTICLE_VIEWS}
+				<p>
+				{#text_viewed#} {$module_data.ARTICLE_VIEWS}
+				</p>
+				{/if}
+
 				{if $module_data.ARTICLE_CATEGORY_NAME != ''}
 				<div class="desc">
 				{#text_category#} <a href="{$module_data.ARTICLE_CATEGORY_LINK}">{$module_data.ARTICLE_CATEGORY_NAME}</a>
