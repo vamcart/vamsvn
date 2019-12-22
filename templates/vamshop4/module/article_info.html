@@ -74,7 +74,7 @@
 				</div>
 				{if {$ARTICLE_RATING} > 0 }
 				<div class="desc pb-2">
-				{$smarty.const.TEXT_ARTICLE_RATING}: {$ARTICLE_STAR_RATING}
+				{$smarty.const.TEXT_ARTICLE_RATING}: {$ARTICLE_STAR_RATING} {$ARTICLE_RATING|number_format:1}
 				</div>
 				{/if}
 				{/if}
@@ -91,7 +91,7 @@
 				</div>
 				{if {$AUTHOR_RATING} > 0 }
 				<div class="desc pb-2">
-				{$smarty.const.TEXT_AUTHOR_RATING}: {$AUTHOR_STAR_RATING}
+				{$smarty.const.TEXT_AUTHOR_RATING}: {$AUTHOR_STAR_RATING} {$AUTHOR_RATING|number_format:1}
 				</div>
 				{/if}
 				{/if}
