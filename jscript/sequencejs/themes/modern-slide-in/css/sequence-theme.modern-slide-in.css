@@ -40,7 +40,7 @@ html,
   /* Dimensions */
   height: 360px;
   width: 100%;
-  max-width: 1280px;
+  /*max-width: 1280px;*/
   /* Hide anything that goes beyond the boundaries of the Sequence container */
   overflow: hidden;
   /* Center the Sequence container on the page */
