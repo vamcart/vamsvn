@@ -37,7 +37,7 @@ html,
   /* Dimensions */
   height: 360px;
   width: 100%;
-  max-width: 1280px;
+  /*max-width: 1280px;*/
   /* Hide anything that goes beyond the boundaries of the Sequence container */
   overflow: hidden;
   /* Center the Sequence container on the page */
@@ -237,7 +237,7 @@ html,
     position: relative;
     height: auto;
     max-height: 20vh;
-    min-height: 360px;
+    min-height: 500px;
   }
 
   .seq:before {
