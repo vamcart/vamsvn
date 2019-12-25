@@ -4,7 +4,7 @@
 		{if $module_data.PRODUCTS_SPECIAL > 0}<span class="badge-offer"><b>-{$module_data.PRODUCTS_SPECIAL|round}%</b></span>{/if}
 		<div class="img-wrap"><a href="{$module_data.PRODUCTS_LINK}" title="{$module_data.PRODUCTS_NAME}"><img src="{$module_data.PRODUCTS_IMAGE}" alt="{$module_data.PRODUCTS_NAME}"></a></div>
 		<div class="info-wrap">
-				<h5 class="title text-truncate"><a href="{$module_data.PRODUCTS_LINK}" title="{$module_data.PRODUCTS_NAME}">{$module_data.PRODUCTS_NAME}</a></h5>
+				<h5 class="title"><a href="{$module_data.PRODUCTS_LINK}" title="{$module_data.PRODUCTS_NAME}">{$module_data.PRODUCTS_NAME}</a></h5>
 				<p class="desc">{$module_data.PRODUCTS_SHORT_DESCRIPTION|strip_tags|vam_truncate:120:"...":true}</p>
 				{if $module_data.REVIEWS_TOTAL > 0}
 				<div class="rating-wrap">
