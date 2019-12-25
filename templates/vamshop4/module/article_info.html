@@ -70,7 +70,7 @@
 			
 				{if {$ARTICLE_ID} > 0}
 				<div class="desc pt-2">
-				{$smarty.const.TEXT_ARTICLE_COMMENTS}: <a href="{$smarty.const.FILENAME_ARTICLE_REVIEWS}?articles_id={$ARTICLE_ID}">{$ARTICLE_REVIEWS}</a> (<a href="{$smarty.const.FILENAME_ARTICLE_REVIEWS}?articles_id={$ARTICLE_ID}">{$smarty.const.TEXT_ARTICLE_REVIEWS_READ}</a>, <a href="{$smarty.const.FILENAME_ARTICLE_REVIEWS_WRITE}?articles_id={$ARTICLE_ID}">{$smarty.const.TEXT_ARTICLE_REVIEWS_ADD}</a>)
+				{$smarty.const.TEXT_ARTICLE_COMMENTS}: {if {$module_data.ARTICLE_REVIEWS} > 0}<a href="{$smarty.const.FILENAME_ARTICLE_REVIEWS}?articles_id={$ARTICLE_ID}">{$ARTICLE_REVIEWS}</a>{else}0{/if} ({if {$module_data.ARTICLE_REVIEWS} > 0}<a href="{$smarty.const.FILENAME_ARTICLE_REVIEWS}?articles_id={$ARTICLE_ID}">{$smarty.const.TEXT_ARTICLE_REVIEWS_READ}</a>, {/if}<a href="{$smarty.const.FILENAME_ARTICLE_REVIEWS_WRITE}?articles_id={$ARTICLE_ID}">{$smarty.const.TEXT_ARTICLE_REVIEWS_ADD}</a>)
 				</div>
 				{if {$ARTICLE_RATING} > 0 }
 				<div class="desc pb-2">
@@ -87,7 +87,7 @@
 
 				{if {$AUTHOR_ID} > 0}
 				<div class="desc">
-				{$smarty.const.TEXT_AUTHOR_COMMENTS}: <a href="{$smarty.const.FILENAME_AUTHOR_REVIEWS}?authors_id={$AUTHOR_ID}">{$AUTHOR_REVIEWS}</a> (<a href="{$smarty.const.FILENAME_AUTHOR_REVIEWS}?authors_id={$AUTHOR_ID}">{$smarty.const.TEXT_AUTHOR_REVIEWS_READ}</a> , <a href="{$smarty.const.FILENAME_AUTHOR_REVIEWS_WRITE}?authors_id={$AUTHOR_ID}">{$smarty.const.TEXT_AUTHOR_REVIEWS_ADD}</a>)
+				{$smarty.const.TEXT_AUTHOR_COMMENTS}: {if {$module_data.AUTHOR_REVIEWS} > 0}<a href="{$smarty.const.FILENAME_AUTHOR_REVIEWS}?authors_id={$AUTHOR_ID}">{$AUTHOR_REVIEWS}</a>{else}0{/if} ({if {$module_data.AUTHOR_REVIEWS} > 0}<a href="{$smarty.const.FILENAME_AUTHOR_REVIEWS}?authors_id={$AUTHOR_ID}">{$smarty.const.TEXT_AUTHOR_REVIEWS_READ}</a>, {/if}<a href="{$smarty.const.FILENAME_AUTHOR_REVIEWS_WRITE}?authors_id={$AUTHOR_ID}">{$smarty.const.TEXT_AUTHOR_REVIEWS_ADD}</a>)
 				</div>
 				{if {$AUTHOR_RATING} > 0 }
 				<div class="desc pb-2">
