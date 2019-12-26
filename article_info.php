@@ -63,12 +63,14 @@ $article_info['articles_keywords'] = str_replace($value.",","",$article_info['ar
 //$products_tags = explode (",", $article_info['articles_keywords']);
 
 		$tags_data = array();
+		$i = 0;
 
           	foreach ($products_tags as $tags) {
                 $tags_data[] = array(
                 'NAME' => trim($tags),
                 'LINK' => vam_href_link(FILENAME_ARTICLES, 'akeywords='.trim($tags)));
         //$info->assign('tags_data', $tags_data);
+            $i++;
             }
 
 //echo var_dump($tags_data);
@@ -103,6 +105,7 @@ $article_info['articles_keywords'] = str_replace($value.",","",$article_info['ar
 	$vamTemplate->assign('ARTICLE_LINK', vam_href_link(FILENAME_ARTICLE_INFO, 'articles_id=' . $article_info['articles_id'] . $SEF_parameter));
 	$vamTemplate->assign('ARTICLE_IMAGE', $article_info['articles_image']);
 	$vamTemplate->assign('ARTICLE_KEYWORDS', $article_info['articles_keywords']);
+	$vamTemplate->assign('ARTICLE_KEYWORDS_NUM', $i);
 	$vamTemplate->assign('ARTICLE_KEYWORDS_ARRAY_TAGS', $tags_data);
 	$vamTemplate->assign('ARTICLE_KEYWORDS_ARRAY', array($article_info['articles_keywords']));
 	//$vamTemplate->assign('ARTICLE_KEYWORDS_ARRAY', explode(",", $article_info['articles_keywords']));

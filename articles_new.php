@@ -91,14 +91,17 @@ foreach($keys as $k) {
 
 		$all_tags = $manufacturer_sort;
 		$all_tags_data = array();
+		$i = 0;
 
           	foreach ($all_tags as $tags_all) {
                 $all_tags_data[] = array(
                 'NAME' => trim($tags_all),
                 'LINK' => vam_href_link(FILENAME_ARTICLES, 'akeywords='.trim($tags_all)));
+            $i++;
             }
 
 	$vamTemplate->assign('ARTICLE_KEYWORDS', $articles['articles_keywords']);
+	$vamTemplate->assign('ARTICLE_KEYWORDS_NUM', $i);
 	$vamTemplate->assign('ARTICLE_KEYWORDS_ARRAY_TAGS', $all_tags_data);
 
 if ($_GET['authors_id'] && $_GET['authors_id'] > 0) {
