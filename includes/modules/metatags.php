@@ -426,20 +426,44 @@ $content_meta = vam_db_fetch_array($content_meta_query, true);
 		}	
     break;
 
-  case ($_GET['authors_id']):
+  case (strstr($PHP_SELF, FILENAME_AUTHOR_REVIEWS)):
 
 			$authors_meta_query = vamDBquery("SELECT authors_name
 			                                            FROM " . TABLE_AUTHORS . "
 			                                            WHERE authors_id='" . (int)$_GET['authors_id'] . "'");
 			$authors_meta = vam_db_fetch_array($authors_meta_query, true);
 ?>
-<title><?php echo $authors_meta['authors_name']; ?></title>
-<meta name="description" content="<?php echo META_DESCRIPTION; ?>" />
-<meta name="keywords" content="<?php echo META_KEYWORDS; ?>" />
+<title><?php echo TEXT_AUTHOR_COMMENTS . ' - ' . $authors_meta['authors_name']; ?></title>
+<meta name="description" content="<?php echo TEXT_AUTHOR_COMMENTS . ' - ' . $authors_meta['authors_name']; ?>" />
+<meta name="keywords" content="<?php echo TEXT_AUTHOR_COMMENTS . ' - ' . $authors_meta['authors_name']; ?>" />
 <?php
 
     break;
 
+  case (strstr($PHP_SELF, FILENAME_ARTICLES) && $_GET['authors_id']):
+
+			$authors_meta_query = vamDBquery("SELECT authors_name
+			                                            FROM " . TABLE_AUTHORS . "
+			                                            WHERE authors_id='" . (int)$_GET['authors_id'] . "'");
+			$authors_meta = vam_db_fetch_array($authors_meta_query, true);
+?>
+<title><?php echo ARTICLES_BY . "" . $authors_meta['authors_name']; ?></title>
+<meta name="description" content="<?php echo ARTICLES_BY . "" . $authors_meta['authors_name']; ?>" />
+<meta name="keywords" content="<?php echo ARTICLES_BY . "" . $authors_meta['authors_name']; ?>" />
+<?php
+
+    break;
+
+  case (strstr($PHP_SELF, FILENAME_ARTICLES) && !isset($_GET['akeywords'])):
+
+?>
+<title><?php echo NAVBAR_TITLE_DEFAULT . ' - ' . STORE_NAME; ?></title>
+<meta name="description" content="<?php echo NAVBAR_TITLE_DEFAULT . ' - ' . STORE_NAME; ?>" />
+<meta name="keywords" content="<?php echo NAVBAR_TITLE_DEFAULT . ' - ' . STORE_NAME; ?>" />
+<?php
+
+    break;  
+        
   case (strstr($PHP_SELF, FILENAME_SITE_REVIEWS)):
 
 ?>
@@ -562,6 +586,41 @@ $reviews = vam_db_fetch_array($reviews_query);
 
     break;
 
+  case (strstr($PHP_SELF, FILENAME_ARTICLE_REVIEWS_WRITE)):
+
+$reviews_query = "select p.*, pd.* from ".TABLE_ARTICLES." p left join ".TABLE_ARTICLES_DESCRIPTION." pd on (pd.articles_id = p.articles_id and pd.language_id = '".(int) $_SESSION['languages_id']."') where p.articles_id = '".(int) $_GET['articles_id']."' and p.articles_status = '1'";
+$reviews_query = vam_db_query($reviews_query);
+
+if (!vam_db_num_rows($reviews_query))
+	vam_redirect(vam_href_link(FILENAME_REVIEWS));
+$reviews = vam_db_fetch_array($reviews_query);
+
+?>
+<title><?php echo TEXT_PRODUCT_REVIEWS . ' - ' . TEXT_ARTICLE_REVIEWS_ADD . ' - ' . $reviews['articles_name']; ?></title>
+<meta name="description" content="<?php echo TEXT_PRODUCT_REVIEWS . ' - ' . TEXT_ARTICLE_REVIEWS_ADD . ' - ' . $reviews['articles_name']; ?>" />
+<meta name="keywords" content="<?php echo TEXT_PRODUCT_REVIEWS . ' - ' . TEXT_ARTICLE_REVIEWS_ADD . ' - ' . $reviews['articles_name']; ?>" />
+<?php
+
+    break;
+
+  case (strstr($PHP_SELF, FILENAME_AUTHOR_REVIEWS_WRITE)):
+
+			$reviews_query = vamDBquery("SELECT authors_name
+			                                            FROM " . TABLE_AUTHORS . "
+			                                            WHERE authors_id='" . (int)$_GET['authors_id'] . "'");
+			
+if (!vam_db_num_rows($reviews_query))
+	vam_redirect(vam_href_link(FILENAME_REVIEWS));
+$reviews = vam_db_fetch_array($reviews_query, true);
+
+?>
+<title><?php echo TEXT_AUTHOR_COMMENTS . ' - ' . TEXT_AUTHOR_REVIEWS_ADD . ' - ' . $reviews['authors_name']; ?></title>
+<meta name="description" content="<?php echo TEXT_AUTHOR_COMMENTS . ' - ' . TEXT_AUTHOR_REVIEWS_ADD . ' - ' . $reviews['authors_name']; ?>" />
+<meta name="keywords" content="<?php echo TEXT_AUTHOR_COMMENTS . ' - ' . TEXT_AUTHOR_REVIEWS_ADD . ' - ' . $reviews['authors_name']; ?>" />
+<?php
+
+    break;
+
   case (strstr($PHP_SELF, FILENAME_ARTICLE_REVIEWS_INFO)):
 
 $reviews_query = "select rd.reviews_text, r.reviews_rating, r.reviews_id, r.reviews_id, r.customers_name, r.date_added, r.last_modified, r.reviews_read, p.articles_id, pd.articles_name, p.articles_image from ".TABLE_ARTICLE_REVIEWS." r left join ".TABLE_ARTICLES." p on (r.articles_id = p.articles_id) left join ".TABLE_ARTICLES_DESCRIPTION." pd on (p.articles_id = pd.articles_id and pd.language_id = '".(int) $_SESSION['languages_id']."'), ".TABLE_ARTICLE_REVIEWS_DESCRIPTION." rd where r.articles_id = '".(int) $_GET['articles_id']."' and r.reviews_id = rd.reviews_id and p.articles_status = '1'";
@@ -620,7 +679,17 @@ $reviews = vam_db_fetch_array($reviews_query);
 <?php
 
     break;
-    
+
+  case (strstr($PHP_SELF, FILENAME_ARTICLES) && isset($_GET['akeywords'])):
+
+?>
+<title><?php echo NAVBAR_TITLE_DEFAULT . " " . str_replace('+',' ', mb_convert_case($_GET['akeywords'], MB_CASE_TITLE, "UTF-8")) . (isset($_GET['page']) && $_GET['page'] > 0 ? ' - ' . TEXT_PAGE_IN_CAT . ' ' . $_GET['page'] : null); ?></title>	
+<meta name="description" content="<?php echo NAVBAR_TITLE_DEFAULT . " " . str_replace('+',' ', mb_convert_case($_GET['akeywords'], MB_CASE_TITLE, "UTF-8")) . (isset($_GET['page']) && $_GET['page'] > 0 ? ' - ' . TEXT_PAGE_IN_CAT . ' ' . $_GET['page'] : null); ?>" />
+<meta name="keywords" content="<?php echo NAVBAR_TITLE_DEFAULT . " " . str_replace('+',' ', mb_convert_case($_GET['akeywords'], MB_CASE_TITLE, "UTF-8")) . (isset($_GET['page']) && $_GET['page'] > 0 ? ' - ' . TEXT_PAGE_IN_CAT . ' ' . $_GET['page'] : null); ?>>" />
+<?php
+
+    break;
+        
 default:
 
 if (strstr($PHP_SELF, FILENAME_DEFAULT) && !isset($_GET['cat'])) {
