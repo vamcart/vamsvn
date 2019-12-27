@@ -34,6 +34,13 @@ $get_params = substr($get_params, 0, -1); //remove trailing &
 
 $breadcrumb->add(NAVBAR_TITLE_PRODUCT_REVIEWS, vam_href_link(FILENAME_PRODUCT_REVIEWS, $get_params));
 
+if (!is_object($product) || !$product->isProduct() OR !$product->data['products_id'] ) { // product not found in database
+
+	$error = TEXT_PRODUCT_NOT_FOUND;
+	include (DIR_WS_MODULES.FILENAME_ERROR_HANDLER);
+
+} 
+
 vam_db_query("update ".TABLE_REVIEWS." set reviews_read = reviews_read+1 where reviews_id = '".$reviews['reviews_id']."'");
 
 $module_content = array();
