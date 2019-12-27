@@ -96,6 +96,8 @@ $vamTemplate->assign('error', $messageStack->output('ask_a_question'));
 
 		if ($error == false) {
 		$vamTemplate->assign('PRODUCTS_NAME', $product_info['products_name']);
+      $products_price = $vamPrice->GetPrice($product_info['products_id'], $format = true, 1, $product_info['products_tax_class_id'], $product_info['products_price'], 1);
+		$vamTemplate->assign('PRODUCTS_PRICE', $products_price['formated']);
 		$vamTemplate->assign('PRODUCTS_MODEL', $product_info['products_model']);
 		$vamTemplate->assign('TEXT_MESSAGE', $_POST['message_body']);
 		$vamTemplate->assign('TEXT_FIRSTNAME', $firstname);
@@ -166,6 +168,8 @@ include ('includes/header.php');
 $breadcrumb->add(NAVBAR_TITLE_ASK, vam_href_link(FILENAME_ASK_PRODUCT_QUESTION, 'products_id='.$product->data['products_id'], 'SSL'));
 
 $vamTemplate->assign('PRODUCTS_NAME', $product_info['products_name']);
+$products_price = $vamPrice->GetPrice($product_info['products_id'], $format = true, 1, $product_info['products_tax_class_id'], $product_info['products_price'], 1);
+$vamTemplate->assign('PRODUCTS_PRICE', $products_price['formated']);
 $vamTemplate->assign('PRODUCTS_MODEL', $product_info['products_model']);
 
 $vamTemplate->assign('FORM_ACTION', vam_draw_form('ask_a_question', vam_href_link(FILENAME_ASK_PRODUCT_QUESTION, 'products_id='.$_GET['products_id'].'')).vam_draw_hidden_field('action', 'process').vam_draw_hidden_field('products_id', $_GET['products_id']));
