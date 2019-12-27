@@ -1,0 +1,45 @@
+{if {$slider_parallax_basic|@count} > 1} 
+
+  <link href="jscript/sequencejs/themes/parallax-basic/css/sequence-theme.parallax-basic.css" rel="stylesheet" media="all">
+
+  <div id="sequence" class="seq">
+    <div class="seq-bg"></div>
+    <div class="seq-screen">
+      <ul class="seq-canvas">
+        {foreach item=slide from=$slider_parallax_basic}
+        <li class="seq-valign{if $slide@first} seq-in{/if}">
+          <div class="seq-content">
+            <h2 data-seq class="seq-title"><a href="{$slide.url}">{$slide.title}</a></h2>
+            <div data-seq class="seq-description">
+              <p>{$slide.description}</p>
+              <a class="seq-button" href="{$slide.url}">{#text_more#} <span class="seq-next-arrow">&gt;</span></a>
+            </div>
+          </div>
+        </li>
+        {/foreach}
+      </ul>
+    </div>
+
+    <fieldset class="seq-nav" aria-controls="sequence">
+      <button type="button" class="seq-prev">
+        <span class="seq-prev-arrow">&lt;</span>
+      </button>
+
+      <ul class="seq-pagination">
+        {foreach item=nav from=$slider_parallax_basic}
+        <li><a href="#step{counter name=nav1}" title="{#text_go_to_slide#} {counter name=nav3}">{counter name=nav4}</a></li>
+        {/foreach}
+      </ul>
+
+      <button type="button" class="seq-next">
+        <span class="seq-next-arrow">&gt;</span>
+      </button>
+    </fieldset>
+  </div>
+
+  <script src="jscript/sequencejs/imagesloaded.pkgd.min.js"></script>
+  <script src="jscript/sequencejs/hammer.min.js"></script>
+  <script src="jscript/sequencejs/sequence.min.js"></script>
+  <script src="jscript/sequencejs/themes/parallax-basic/scripts/sequence-theme.parallax-basic.js"></script>
+  
+{/if}  
