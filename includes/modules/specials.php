@@ -46,8 +46,7 @@ if ($_SESSION['customers_status']['customers_fsk18_display'] == '0')
                                            and s.status = '1'
                                            ".$group_check."
                                            ".$fsk_lock."                                             
-                                           order by s.specials_date_added
-                                           desc limit ".MAX_DISPLAY_SPECIAL_PRODUCTS;
+                                           order by p.products_startpage_sort ASC, p.products_id DESC limit ".MAX_DISPLAY_SPECIAL_PRODUCTS;
 
 $row = 0;
 $module_content = array ();
