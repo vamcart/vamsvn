@@ -1,6 +1,5 @@
 {config_load file="$language/lang_$language.conf" section="product_info"}
 <div class="page" itemscope itemtype="http://schema.org/Product">
-<h1 itemprop="name">{$PRODUCTS_NAME}</h1>
 <div class="pageContent">
 {$FORM_ACTION}
 {if $info_message}
@@ -62,6 +61,8 @@
 		<div class="col-md-5">
 			
 <div class="product-info p-2">
+
+<h1 itemprop="name">{$PRODUCTS_NAME}</h1>
 
 {if $REVIEWS_TOTAL > 0}
 <div class="rating-wrap">
