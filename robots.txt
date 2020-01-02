@@ -42,6 +42,9 @@ Disallow: /privacy.php
 Disallow: /product_notifications.php
 Disallow: /product_compare.php
 Disallow: /product_reviews_write.php
+Disallow: /article_reviews_write.php
+Disallow: /author_reviews_write.php
+Disallow: /site_reviews_write.php
 Disallow: /shipping.php
 Disallow: /export/
 Disallow: /download/
@@ -78,5 +81,4 @@ Disallow: /vam_rss2_info.php
 Disallow: /print_product_info.php
 Disallow: /faq.php
 Disallow: /key.php
-Disallow: /site_reviews_write.php
 Disallow: /404.html
