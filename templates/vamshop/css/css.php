@@ -2,7 +2,8 @@
 <?php
 if (strstr($PHP_SELF, FILENAME_CHECKOUT)) {
 ?>
-<link rel="stylesheet" type="text/css" href="jscript/jquery/plugins/chosen/chosen.css" media="screen" />
+<link rel="stylesheet" type="text/css" href="jscript/jquery/plugins/select2/select2.css" media="screen" />
+<link rel="stylesheet" type="text/css" href="jscript/jquery/plugins/select2/select2-bootstrap.css" media="screen" />
 <?php 
 } 
 ?>
@@ -22,7 +23,8 @@ if ( strstr($PHP_SELF, FILENAME_ADDRESS_BOOK)
 	or strstr($PHP_SELF, FILENAME_CHECKOUT_SHIPPING_ADDRESS)
 	or strstr($PHP_SELF, FILENAME_CREATE_ACCOUNT) ) {
 ?>
-<link rel="stylesheet" type="text/css" href="jscript/jquery/plugins/chosen/chosen.css" media="screen" />
+<link rel="stylesheet" type="text/css" href="jscript/jquery/plugins/select2/select2.css" media="screen" />
+<link rel="stylesheet" type="text/css" href="jscript/jquery/plugins/select2/select2-bootstrap.css" media="screen" />
 <link rel="stylesheet" type="text/css" href="templates/<?php echo CURRENT_TEMPLATE; ?>/suggestions.css" media="all" />
 <?php
 }

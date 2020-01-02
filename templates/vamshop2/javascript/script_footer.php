@@ -7,24 +7,23 @@ if ( strstr($PHP_SELF, FILENAME_ADDRESS_BOOK)
 	or strstr($PHP_SELF, FILENAME_CHECKOUT_SHIPPING_ADDRESS)
 	or strstr($PHP_SELF, FILENAME_CREATE_ACCOUNT) ) {
 ?>
-<script src="jscript/jquery/plugins/chosen/chosen.jquery.min.js"></script>
+<script src="jscript/jquery/plugins/select2/select2.js"></script>
+<script src="jscript/jquery/plugins/select2/i18n/<?php echo $_SESSION['language_code']; ?>.js"></script>
 <script type="text/javascript">
 $(function($){
 
 <?php if (ACCOUNT_STATE == 'true') { ?>
-	  $("#state").chosen({
-	      no_results_text:"<?php echo TEXT_NOT_FOUND; ?>",
-	      search_contains:true,
-	      placeholder_text_single:"<?php echo PULL_DOWN_DEFAULT; ?>"
-	  }); 
+	  $("#state").select2({
+            theme: "bootstrap",
+            language: "<?php echo $_SESSION['language_code']; ?>"
+     });     
 <?php } ?>
 
 <?php if (ACCOUNT_COUNTRY == 'true') { ?>
-	  $("#country").chosen({
-	      no_results_text:"<?php echo TEXT_NOT_FOUND; ?>",
-	      search_contains:true,
-	      placeholder_text_single:"<?php echo PULL_DOWN_DEFAULT; ?>"
-	  }); 
+	  $("#country").select2({
+            theme: "bootstrap",
+            language: "<?php echo $_SESSION['language_code']; ?>"
+     });     
 <?php } ?>
 
 });

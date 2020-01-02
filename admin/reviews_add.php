@@ -76,9 +76,9 @@
 <script type="text/javascript" src="includes/javascript/jquery/plugins/ui/jquery-ui-min.js"></script><script type="text/javascript" src="includes/javascript/jquery/plugins/ui/datepicker-ru.js"></script>
 <script type="text/javascript" src="/jscript/jquery/plugins/maskedinput/jquery.maskedinput.min.js"></script>
 <script type="text/javascript" src="/jscript/modified.js"></script>
-<script type="text/javascript" src="/admin/includes/javascript/chosen/chosen.jquery.js"></script>
-<link rel="stylesheet" type="text/css" href="/admin/includes/javascript/chosen/bootstrap-chosen.css">
-
+<script type="text/javascript" src="/jscript/jquery/plugins/select2/select2.js"></script>
+<link rel="stylesheet" type="text/css" href="/jscript/jquery/plugins/select2/select2.css">
+<link rel="stylesheet" type="text/css" href="/jscript/jquery/plugins/select2/select2-bootstrap.css">
 
 <script type="text/javascript"><!--
 
@@ -89,11 +89,8 @@ $( "#date-added" ).datepicker({ dateFormat: "dd-mm-yy" }).val();
    });
    
     $(document).ready(function() {
-        $(".chosen-select").chosen({
-            no_results_text:"Ничего не найдено",
-            search_contains:true,
-            placeholder_text_single:"Выберите",
-            width: "350px"
+        $(".select2").select2({
+            theme: "bootstrap"
         });        
     });    
    
@@ -141,7 +138,7 @@ $( "#date-added" ).datepicker({ dateFormat: "dd-mm-yy" }).val();
       
 <?php
 
-echo vam_draw_products_pull_down_review('products_id'); 
+echo vam_draw_products_pull_down_review('products_id','class="select2"'); 
 
 ?>
 
@@ -154,7 +151,7 @@ echo vam_draw_products_pull_down_review('products_id');
       <tr>
         <td><table witdh="100%" border="0" cellspacing="0" cellpadding="0">
           <tr>
-            <td class="main" valign="top"><b><?php echo ENTRY_FIRST_NAME; ?></b> <?php echo vam_draw_customers_pull_down("customers_name_select"); ?> <b><?php echo ENTRY_NAME; ?></b> <?php echo vam_draw_input_field('customers_name', ''); ?></td>
+            <td class="main" valign="top"><b><?php echo ENTRY_FIRST_NAME; ?></b> <?php echo vam_draw_customers_pull_down("customers_name_select",'class="select2"'); ?> <b><?php echo ENTRY_NAME; ?></b> <?php echo vam_draw_input_field('customers_name', ''); ?></td>
           </tr>
         </table></td>
       </tr>

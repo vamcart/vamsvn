@@ -45,11 +45,12 @@
 <title><?php echo TITLE; ?></title>
 <link rel="stylesheet" type="text/css" href="includes/stylesheet.css">
 <link rel="stylesheet" type="text/css" href="../jscript/jquery/plugins/ui/css/smoothness/jquery-ui.css" />	
-<link rel="stylesheet" type="text/css" href="../jscript/jquery/plugins/chosen/chosen.css" media="screen" />
+<link rel="stylesheet" type="text/css" href="../jscript/jquery/plugins/select2/select2.css" media="screen" />
+<link rel="stylesheet" type="text/css" href="../jscript/jquery/plugins/select2/select2-bootstrap.css" media="screen" />
 <script src="includes/general.js"></script>
 <script src="includes/javascript/modified.js"></script>
 <script src="../jscript/jquery/jquery.js"></script>
-<script src="../jscript/jquery/plugins/ui/jquery-ui-min.js"></script><script src="../jscript/jquery/plugins/chosen/chosen.jquery.min.js"></script>
+<script src="../jscript/jquery/plugins/ui/jquery-ui-min.js"></script><script src="../jscript/jquery/plugins/select2/select2.js"></script>
 <script type="text/javascript">
 	$(function() {
 	$('a.tooltip').tooltip({
@@ -58,17 +59,13 @@
     }
 	});
 	
-	  $("select[name='STORE_COUNTRY']").chosen({
-	      no_results_text:"<?php echo TEXT_NOT_FOUND; ?>",
-	      search_contains:true,
-	      placeholder_text_single:"<?php echo PULL_DOWN_DEFAULT; ?>"
-	  }); 
+	  $("select[name='STORE_COUNTRY']").select2({
+            theme: "bootstrap"
+     });        
 
-	  $("select[name='STORE_ZONE']").chosen({
-	      no_results_text:"<?php echo TEXT_NOT_FOUND; ?>",
-	      search_contains:true,
-	      placeholder_text_single:"<?php echo PULL_DOWN_DEFAULT; ?>"
-	  }); 
+	  $("select[name='STORE_ZONE']").select2({
+            theme: "bootstrap"
+     });        
 
 	});
 </script>

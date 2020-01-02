@@ -2259,7 +2259,7 @@ function vam_draw_products_pull_down_review($name, $parameters = '', $exclude = 
 	if ($exclude == '') {
 		$exclude = array ();
 	}
-	$select_string = '<select class="chosen-select" name="'.$name.'"';
+	$select_string = '<select name="'.$name.'"';
 	if ($parameters) {
 		$select_string .= ' '.$parameters;
 	}
@@ -2286,7 +2286,7 @@ function vam_draw_products_pull_down_article_review($name, $parameters = '', $ex
 	if ($exclude == '') {
 		$exclude = array ();
 	}
-	$select_string = '<select class="chosen-select" name="'.$name.'"';
+	$select_string = '<select name="'.$name.'"';
 	if ($parameters) {
 		$select_string .= ' '.$parameters;
 	}
@@ -2309,7 +2309,7 @@ function vam_draw_products_pull_down_author_review($name, $parameters = '', $exc
 	if ($exclude == '') {
 		$exclude = array ();
 	}
-	$select_string = '<select class="chosen-select" name="'.$name.'"';
+	$select_string = '<select name="'.$name.'"';
 	if ($parameters) {
 		$select_string .= ' '.$parameters;
 	}
@@ -2332,7 +2332,7 @@ function vam_draw_products_pull_down_company_review($name, $parameters = '', $ex
 	if ($exclude == '') {
 		$exclude = array ();
 	}
-	$select_string = '<select class="chosen-select" name="'.$name.'"';
+	$select_string = '<select name="'.$name.'"';
 	if ($parameters) {
 		$select_string .= ' '.$parameters;
 	}
@@ -2355,7 +2355,7 @@ function vam_draw_customers_pull_down($name, $parameters = '', $exclude = '') {
 	if ($exclude == '') {
 		$exclude = array ();
 	}
-	$select_string = '<select class="chosen-select" name="'.$name.'"';
+	$select_string = '<select name="'.$name.'"';
 	if ($parameters) {
 		$select_string .= ' '.$parameters;
 	}
