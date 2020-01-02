@@ -264,13 +264,13 @@ $content_meta = vam_db_fetch_array($content_meta_query, true);
 		}
 
 		if ($news_meta['news_head_desc'] == '') {
-			$news_desc = META_DESCRIPTION;
+			$news_desc = $news_meta['headline'];
 		} else {
 			$news_desc = $news_meta['news_head_desc'];
 		}
 
 		if ($news_meta['news_head_keys'] == '') {
-			$news_keys = META_KEYWORDS;
+			$news_keys = $news_meta['headline'];
 		} else {
 			$news_keys = $news_meta['news_head_keys'];
 		}
@@ -484,6 +484,26 @@ $content_meta = vam_db_fetch_array($content_meta_query, true);
 
     break;  
 
+  case (strstr($PHP_SELF, FILENAME_NEWS) && !isset($_GET['news_id'])):
+
+?>
+<title><?php echo NAVBAR_TITLE_NEWS . ' - ' . STORE_NAME; ?></title>
+<meta name="description" content="<?php echo NAVBAR_TITLE_NEWS . ' - ' . STORE_NAME; ?>" />
+<meta name="keywords" content="<?php echo NAVBAR_TITLE_NEWS . ' - ' . STORE_NAME; ?>" />
+<?php
+
+    break;  
+
+  case (strstr($PHP_SELF, FILENAME_FAQ) && !isset($_GET['faq_id'])):
+
+?>
+<title><?php echo NAVBAR_TITLE_FAQ . ' - ' . STORE_NAME; ?></title>
+<meta name="description" content="<?php echo NAVBAR_TITLE_FAQ . ' - ' . STORE_NAME; ?>" />
+<meta name="keywords" content="<?php echo NAVBAR_TITLE_FAQ . ' - ' . STORE_NAME; ?>" />
+<?php
+
+    break;  
+    
   case (isset($_GET['cat']) && $_GET['cat'] == 0 && strstr($PHP_SELF, FILENAME_DEFAULT)):
 
 ?>
