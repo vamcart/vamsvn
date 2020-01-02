@@ -32,9 +32,16 @@
 </p>
 {/if}
 
+{if $TOPICS}
+<h5>{#text_categories#}:</h5> 
+<ul class="list-inline pb-2">
+{$TOPICS}
+</ul>
+{/if}
+
 {if $ARTICLE_KEYWORDS_NUM > 1}
 <h5>{$smarty.const.TEXT_TAGS}:</h5> 
-<p>
+<ul class="list-inline pb-2">
 {foreach name=tags item=tag from=$ARTICLE_KEYWORDS_ARRAY_TAGS}
 {if {$tag.NAME} != ''}
 <li class="list-inline-item">	
@@ -42,7 +49,7 @@
 </li>
 {/if}
 {/foreach}
-</p>
+</ul>
 {/if}
 
 {if $no_articles=='true'}

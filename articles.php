@@ -309,6 +309,7 @@ $articles['articles_keywords'] = str_replace($value.",","",$articles['articles_k
 
 include_once(DIR_WS_BOXES . 'articles.php');
 
+$vamTemplate->assign('TOPICS', $box_content);
 
 require (DIR_WS_INCLUDES.'header.php');
 

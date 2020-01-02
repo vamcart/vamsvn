@@ -41,10 +41,10 @@ if (!$box->isCached(CURRENT_TEMPLATE.'/boxes/box_articles.html', $cache_id) || !
     global $tree, $topics_string, $tPath_array;
 
     for ($i=0; $i<$tree[$counter]['level']; $i++) {
-      $topics_string .= "&nbsp;&nbsp;";
+      //$topics_string .= "&nbsp;&nbsp;";
     }
 
-    $topics_string .= '<li class="topic-'.$tree[$counter]['level'].'"><a href="';
+    $topics_string .= '<li class="list-inline-item topic-'.$tree[$counter]['level'].'"><a href="';
 
     if ($tree[$counter]['parent'] == 0) {
       $tPath_new = 'tPath=' . $counter;
@@ -56,7 +56,7 @@ if (!$box->isCached(CURRENT_TEMPLATE.'/boxes/box_articles.html', $cache_id) || !
 		if (SEARCH_ENGINE_FRIENDLY_URLS == 'true')
 			$SEF_parameter_cat = '&category='.vam_cleanName($tree[$counter]['name']);
 
-    $topics_string .= vam_href_link(FILENAME_ARTICLES, $tPath_new . $SEF_parameter_cat) . '">';
+    $topics_string .= vam_href_link(FILENAME_ARTICLES, $tPath_new . $SEF_parameter_cat) . '"><span class="btn btn-outline-primary">';
 
     if (isset($tPath_array) && in_array($counter, $tPath_array)) {
       $topics_string .= '<b>';
@@ -73,14 +73,14 @@ if (!$box->isCached(CURRENT_TEMPLATE.'/boxes/box_articles.html', $cache_id) || !
       $topics_string .= ' -&gt;';
     }
 
-    $topics_string .= '</a>';
-
     if (SHOW_ARTICLE_COUNTS == 'true') {
       $articles_in_topic = vam_count_articles_in_topic($counter);
       if ($articles_in_topic > 0) {
         $topics_string .= '&nbsp;(' . $articles_in_topic . ')';
       }
     }
+    
+    $topics_string .= '</span></a>';
 
     $topics_string .= '</li>';
 
@@ -167,13 +167,13 @@ if (!$box->isCached(CURRENT_TEMPLATE.'/boxes/box_articles.html', $cache_id) || !
       $new_articles_string = '<b>';
     }
 
-    $new_articles_string .= '<li><a href="' . vam_href_link(FILENAME_ARTICLES_NEW, '', 'NONSSL') . '">' . BOX_NEW_ARTICLES . '</a>';
+    $new_articles_string .= '<li class="list-inline-item"><a href="' . vam_href_link(FILENAME_ARTICLES_NEW, '', 'NONSSL') . '"><span class="btn btn-outline-primary">' . BOX_NEW_ARTICLES . (($articles_new_count > 0) ? " " . $articles_new_count : "") . '</span></a>';
 
     if (strstr($PHP_SELF,FILENAME_ARTICLES_NEW) or strstr($PHP_SELF,FILENAME_ARTICLES_NEW)) {
       $new_articles_string .= '</b>';
     }
 
-    $new_articles_string .= $articles_new_count . '</li>' . "\n";
+    $new_articles_string .= '</li>' . "\n";
 
   }
 
@@ -190,13 +190,13 @@ if (!$box->isCached(CURRENT_TEMPLATE.'/boxes/box_articles.html', $cache_id) || !
       $all_articles_string = '<b>';
     }
 
-    $all_articles_string .= '<li><a href="' . vam_href_link(FILENAME_ARTICLES, '', 'NONSSL') . '">' . BOX_ALL_ARTICLES . '</a>';
+    $all_articles_string .= '<li class="list-inline-item"><a href="' . vam_href_link(FILENAME_ARTICLES, '', 'NONSSL') . '"><span class="btn btn-outline-primary">' . BOX_ALL_ARTICLES . (($articles_all_count > 0) ? " " . $articles_all_count : "") . '</span></a>';
 
     if ($topic_depth == 'top') {
       $all_articles_string .= '</b>';
     }
 
-    $all_articles_string .= $articles_all_count . '</li>' . "\n";
+    $all_articles_string .= '</li>' . "\n";
 
   }
 
