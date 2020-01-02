@@ -258,6 +258,7 @@ a#scrollup:hover {
 }
 
 .card-product .img-wrap {
+  height: auto;
   min-height: 30vh;
 }
 /* /Products Gallery */
