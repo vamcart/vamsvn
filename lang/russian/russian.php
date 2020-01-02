@@ -751,4 +751,6 @@ define('TEXT_ARTICLE_REVIEWS_ADD','добавить отзыв о статье')
 define('TEXT_AUTHOR_REVIEWS_READ','читать все отзывы об авторе');
 define('TEXT_AUTHOR_REVIEWS_ADD','добавить отзыв об авторе');
 
+define('VOICE_SEARCH','Голосовой поиск');
+
 ?>
