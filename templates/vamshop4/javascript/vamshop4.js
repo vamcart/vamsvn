@@ -187,10 +187,17 @@ $('#cookie-alert').on('closed.bs.alert', function (e) {
 
 //Voice Search
 /* setup vars for our trigger, form, text input and result elements */
+if ($(window).width() >= 992 ) {
 var $voiceTrigger = $("#voice-trigger");
 var $searchForm = $("#search");
 var $searchInput = $("#quick_find_keyword");
 var $result = $("#result");
+} else {
+var $voiceTrigger = $("#voice-trigger-header");
+var $searchForm = $("#searchheader");
+var $searchInput = $("#quick_find_keyword_header");
+var $result = $("#result-header");
+}
 
 /*  set Web Speech API for Chrome or Firefox */
 window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
