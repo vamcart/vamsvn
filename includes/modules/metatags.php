@@ -463,6 +463,16 @@ $content_meta = vam_db_fetch_array($content_meta_query, true);
 <?php
 
     break;  
+
+  case (strstr($PHP_SELF, FILENAME_ARTICLES_NEW)):
+
+?>
+<title><?php echo BOX_NEW_ARTICLES . ' - ' . STORE_NAME; ?></title>
+<meta name="description" content="<?php echo BOX_NEW_ARTICLES . ' - ' . STORE_NAME; ?>" />
+<meta name="keywords" content="<?php echo BOX_NEW_ARTICLES . ' - ' . STORE_NAME; ?>" />
+<?php
+
+    break;  
         
   case (strstr($PHP_SELF, FILENAME_SITE_REVIEWS)):
 
