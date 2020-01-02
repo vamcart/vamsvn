@@ -77,7 +77,6 @@ Disallow: /index.php?action=buy_now
 Disallow: /*authors_id*
 Disallow: /specials.php/action/buy_now
 Disallow: /comparison.php
-Disallow: /vam_rss2_info.php
 Disallow: /print_product_info.php
 Disallow: /faq.php
 Disallow: /key.php
