@@ -1681,8 +1681,6 @@ video {
     height: 34px;
     -webkit-border-radius: 2px;
     -moz-border-radius: 2px;
-    border-radius: 2px;
-    border: solid 0px;
     text-indent: 10px;
     margin: 0px;
     line-height: 18px;
