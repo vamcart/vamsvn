@@ -242,7 +242,7 @@ function listenStart(e){
 
 /* Parse voice input */
 function _parseTranscript(e) {
-    return Array.from(e.results).map(result => result[0]).map(result => result.transcript).join('')
+    return Array.from(e.results).map(function (result) { return result[0] }).map(function (result) { return result.transcript }).join('')
 }
 
 /* Convert our voice input into text and submit the form */
