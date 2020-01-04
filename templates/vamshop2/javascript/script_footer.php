@@ -10,22 +10,25 @@ if ( strstr($PHP_SELF, FILENAME_ADDRESS_BOOK)
 <script src="jscript/jquery/plugins/select2/select2.js"></script>
 <script src="jscript/jquery/plugins/select2/i18n/<?php echo $_SESSION['language_code']; ?>.js"></script>
 <script type="text/javascript">
-$(function($){
-
+function initialise(){
 <?php if (ACCOUNT_STATE == 'true') { ?>
 	  $("#state").select2({
             theme: "bootstrap",
             language: "<?php echo $_SESSION['language_code']; ?>"
      });     
 <?php } ?>
-
 <?php if (ACCOUNT_COUNTRY == 'true') { ?>
 	  $("#country").select2({
             theme: "bootstrap",
             language: "<?php echo $_SESSION['language_code']; ?>"
      });     
 <?php } ?>
-
+};
+$(document).ready(function(){
+    initialise();
+});
+$(document).ajaxComplete(function () {
+    initialise();
 });
 </script>
 <?php } ?>
