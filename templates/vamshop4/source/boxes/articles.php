@@ -44,7 +44,7 @@ if (!$box->isCached(CURRENT_TEMPLATE.'/boxes/box_articles.html', $cache_id) || !
       //$topics_string .= "&nbsp;&nbsp;";
     }
 
-    $topics_string .= '<li class="list-inline-item topic-'.$tree[$counter]['level'].'"><a href="';
+    $topics_string .= '<li class="list-inline-item pb-2 topic-'.$tree[$counter]['level'].'"><a href="';
 
     if ($tree[$counter]['parent'] == 0) {
       $tPath_new = 'tPath=' . $counter;
@@ -56,7 +56,11 @@ if (!$box->isCached(CURRENT_TEMPLATE.'/boxes/box_articles.html', $cache_id) || !
 		if (SEARCH_ENGINE_FRIENDLY_URLS == 'true')
 			$SEF_parameter_cat = '&category='.vam_cleanName($tree[$counter]['name']);
 
+    if ($counter > 0) {
     $topics_string .= vam_href_link(FILENAME_ARTICLES, $tPath_new . $SEF_parameter_cat) . '"><span class="btn btn-outline-primary">';
+    } else {
+    $topics_string .= vam_href_link(FILENAME_ARTICLES, $tPath_new . $SEF_parameter_cat) . '">';
+    }
 
     if (isset($tPath_array) && in_array($counter, $tPath_array)) {
       $topics_string .= '<b>';
@@ -80,7 +84,11 @@ if (!$box->isCached(CURRENT_TEMPLATE.'/boxes/box_articles.html', $cache_id) || !
       }
     }
     
+    if ($counter > 0) {
     $topics_string .= '</span></a>';
+    } else {
+    $topics_string .= '</a>';
+    }
 
     $topics_string .= '</li>';
 
@@ -167,7 +175,7 @@ if (!$box->isCached(CURRENT_TEMPLATE.'/boxes/box_articles.html', $cache_id) || !
       $new_articles_string = '<b>';
     }
 
-    $new_articles_string .= '<li class="list-inline-item"><a href="' . vam_href_link(FILENAME_ARTICLES_NEW, '', 'NONSSL') . '"><span class="btn btn-outline-primary">' . BOX_NEW_ARTICLES . (($articles_new_count > 0) ? " " . $articles_new_count : "") . '</span></a>';
+    $new_articles_string .= '<li class="list-inline-item pb-2"><a href="' . vam_href_link(FILENAME_ARTICLES_NEW, '', 'NONSSL') . '"><span class="btn btn-outline-primary">' . BOX_NEW_ARTICLES . (($articles_new_count > 0) ? " " . $articles_new_count : "") . '</span></a>';
 
     if (strstr($PHP_SELF,FILENAME_ARTICLES_NEW) or strstr($PHP_SELF,FILENAME_ARTICLES_NEW)) {
       $new_articles_string .= '</b>';
@@ -190,7 +198,7 @@ if (!$box->isCached(CURRENT_TEMPLATE.'/boxes/box_articles.html', $cache_id) || !
       $all_articles_string = '<b>';
     }
 
-    $all_articles_string .= '<li class="list-inline-item"><a href="' . vam_href_link(FILENAME_ARTICLES, '', 'NONSSL') . '"><span class="btn btn-outline-primary">' . BOX_ALL_ARTICLES . (($articles_all_count > 0) ? " " . $articles_all_count : "") . '</span></a>';
+    $all_articles_string .= '<li class="list-inline-item pb-2"><a href="' . vam_href_link(FILENAME_ARTICLES, '', 'NONSSL') . '"><span class="btn btn-outline-primary">' . BOX_ALL_ARTICLES . (($articles_all_count > 0) ? " " . $articles_all_count : "") . '</span></a>';
 
     if ($topic_depth == 'top') {
       $all_articles_string .= '</b>';

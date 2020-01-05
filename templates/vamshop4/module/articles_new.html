@@ -27,21 +27,21 @@
 {/if}
 
 <h5>{#text_categories#}:</h5> 
-<ul class="list-inline pb-2">
+<ul class="list-inline">
 {$TOPICS}
 </ul>
 
 {if $ARTICLE_KEYWORDS_NUM > 1}
 <h5>{$smarty.const.TEXT_TAGS}:</h5> 
-<p>
+<ul class="list-inline">
 {foreach name=tags item=tag from=$ARTICLE_KEYWORDS_ARRAY_TAGS}
 {if {$tag.NAME} != ''}
-<li class="list-inline-item">	
+<li class="list-inline-item pb-2">	
 <a href="{$tag.LINK}"><span class="btn btn-outline-primary">{$tag.NAME}</span></a>
 </li>
 {/if}
 {/foreach}
-</p>
+</ul>
 {/if}
 
 {foreach name=aussen item=module_data from=$module_content} 
