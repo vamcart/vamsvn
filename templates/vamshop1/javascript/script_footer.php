@@ -5,6 +5,8 @@ $bender->enqueue("jscript/bootstrap/bootstrap.min.js");
 $bender->enqueue("jscript/jquery/plugins/easing/jquery.easing.1.3.js");
 $bender->enqueue("jscript/jquery/plugins/jpushmenu/v2p.js");
 $bender->enqueue("jscript/jquery/plugins/jpushmenu/jpushmenu.js");
+$bender->enqueue("jscript/jquery/plugins/select2/select2.js");
+$bender->enqueue("jscript/jquery/plugins/select2/i18n/" . $_SESSION['language_code'] . ".js");
 $bender->enqueue("jscript/jquery/plugins/scrollup/jquery.scrollup.min.js");
 $bender->enqueue("templates/".CURRENT_TEMPLATE."/javascript/vamshop.js");
 if (AJAX_CART == 'true') $bender->enqueue("templates/".CURRENT_TEMPLATE."/javascript/jscript_ajax_cart.js"); 
@@ -21,8 +23,6 @@ if ( strstr($PHP_SELF, FILENAME_ADDRESS_BOOK)
 	or strstr($PHP_SELF, FILENAME_CHECKOUT_SHIPPING_ADDRESS)
 	or strstr($PHP_SELF, FILENAME_CREATE_ACCOUNT) ) {
 ?>
-<script src="jscript/jquery/plugins/select2/select2.js"></script>
-<script src="jscript/jquery/plugins/select2/i18n/<?php echo $_SESSION['language_code']; ?>.js"></script>
 <script type="text/javascript">
 function initialise(){
 <?php if (ACCOUNT_STATE == 'true') { ?>

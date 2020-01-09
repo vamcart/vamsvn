@@ -3,6 +3,8 @@ require_once(DIR_FS_CATALOG."vendor/Bender/Bender.class.php");
 $bender = new Bender();
 $bender->enqueue("templates/".CURRENT_TEMPLATE."/bootstrap/bootstrap.css");
 $bender->enqueue("templates/".CURRENT_TEMPLATE."/font-awesome.min.css");
+$bender->enqueue("jscript/jquery/plugins/select2/select2.css");
+$bender->enqueue("jscript/jquery/plugins/select2/select2-bootstrap.css");
 $bender->enqueue("templates/".CURRENT_TEMPLATE."/sequencejs.css");
 $bender->enqueue("templates/".CURRENT_TEMPLATE."/jpushmenu.css");
 $bender->enqueue("templates/".CURRENT_TEMPLATE."/stylesheet.css");
@@ -26,8 +28,6 @@ if ( strstr($PHP_SELF, FILENAME_ADDRESS_BOOK)
 	or strstr($PHP_SELF, FILENAME_CHECKOUT_SHIPPING_ADDRESS)
 	or strstr($PHP_SELF, FILENAME_CREATE_ACCOUNT) ) {
 ?>
-<link rel="stylesheet" type="text/css" href="jscript/jquery/plugins/select2/select2.css" media="screen" />
-<link rel="stylesheet" type="text/css" href="jscript/jquery/plugins/select2/select2-bootstrap.css" media="screen" />
 <link rel="stylesheet" type="text/css" href="templates/<?php echo CURRENT_TEMPLATE; ?>/suggestions.css" media="all" />
 <?php
 }
