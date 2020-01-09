@@ -9,6 +9,8 @@ $bender->enqueue("templates/".CURRENT_TEMPLATE."/css/font-awesome.css");
 $bender->enqueue("jscript/jquery/plugins/owl/assets/owl.carousel.min.css");
 $bender->enqueue("jscript/jquery/plugins/owl/assets/owl.theme.default.min.css");
 $bender->enqueue("jscript/jquery/plugins/ui/css/smoothness/jquery-ui.css");
+$bender->enqueue("jscript/jquery/plugins/select2/select2.css");
+$bender->enqueue("jscript/jquery/plugins/select2/select2-bootstrap.css");
 $bender->enqueue("templates/".CURRENT_TEMPLATE."/css/vamshop.css");
 $bender->enqueue("templates/".CURRENT_TEMPLATE."/css/vamshop4.css");
 $bender->enqueue("templates/".CURRENT_TEMPLATE."/webslidemenu/dropdown-effects/fade-down.css");
@@ -17,14 +19,6 @@ $bender->enqueue("templates/".CURRENT_TEMPLATE."/webslidemenu/color-skins/white-
 ?>
 <?php
 echo $bender->output("templates/".CURRENT_TEMPLATE."/cache/".CURRENT_TEMPLATE."-packed.css");
-?>
-<?php
-if (strstr($PHP_SELF, FILENAME_CHECKOUT)) {
-?>
-<link rel="stylesheet" type="text/css" href="jscript/jquery/plugins/select2/select2.css" media="screen" />
-<link rel="stylesheet" type="text/css" href="jscript/jquery/plugins/select2/select2-bootstrap.css" media="screen" />
-<?php 
-} 
 ?>
 <?php
 if (strstr($PHP_SELF, FILENAME_PRODUCT_INFO)) {
