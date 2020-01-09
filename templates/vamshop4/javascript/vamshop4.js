@@ -254,3 +254,36 @@ function _transcriptHandler(e) {
         $searchForm.submit();
     }
 }
+
+// Select2 added
+$(function() {
+
+var customSorter = function(data) {
+     return data.sort(function(a,b){
+         a = a.text.toLowerCase();
+         b = b.text.toLowerCase();
+         if(a > b) {
+             return 1;
+         } else if (a < b) {
+             return -1;
+         }
+         return 0;
+     });
+};
+	
+	  $(".select2").select2({
+	      theme: "bootstrap",
+	      sorter: customSorter
+	  });        
+});    	 
+
+// Fix select2 width
+$(window).on('resize', function() {
+    $('.form-group').each(function() {
+        var formGroup = $(this),
+            formgroupWidth = formGroup.outerWidth();
+
+        formGroup.find('.select2-container').css('width', formgroupWidth);
+
+    });
+}); 
