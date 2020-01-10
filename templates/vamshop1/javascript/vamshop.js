@@ -252,7 +252,7 @@ var customSorter = function(data) {
 $(window).on('resize', function() {
     $('.form-group').each(function() {
         var formGroup = $(this),
-            formgroupWidth = formGroup.outerWidth();
+            formgroupWidth = "auto";
 
         formGroup.find('.select2-container').css('width', formgroupWidth);
 
