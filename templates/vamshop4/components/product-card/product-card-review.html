@@ -16,16 +16,11 @@
 				</div>
 				{/if}
 				{/if}
-				<p class="desc">{$module_data.REVIEW.TEXT|vam_truncate:$smarty.const.MAX_DISPLAY_SHORT_DESCRIPTION:"...":true}</p>
+				<p>{$module_data.REVIEW.TEXT|vam_truncate:$smarty.const.MAX_DISPLAY_SHORT_DESCRIPTION:"...":true}</p>
 			</div>
       </div>
 		<div class="category card-footer text-center">
-				<p class="desc"><a class="btn btn-outline-primary btn-block" href="{$module_data.REVIEW.URL}"><i class="far fa-comment"></i> {#text_read#}</a></p>
-				{if $module_data.PRODUCT.PRODUCTS_PRICE_PLAIN > 0}
-				<div>
-					{$module_data.PRODUCT.PRODUCTS_BUTTON_BUY_NOW_NEW}
-				</div>
-				{/if}
+		<a class="btn btn-outline-primary btn-block" href="{$module_data.REVIEW.URL}"><i class="far fa-comment"></i> {#text_read#}</a>
 		</div>
 		</div>
 <!-- /Product Card Simple -->
