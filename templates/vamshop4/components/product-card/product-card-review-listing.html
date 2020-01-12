@@ -41,17 +41,18 @@
 				{/if}
 
 		</div>
-		<div class="col-md-3 border-left">
+		<div class="col-md-3 border-left text-center">
 			<div class="action-wrap">
 				{if $module_data.PRODUCT.PRODUCTS_PRICE_PLAIN > 0}
 				<div class="price-wrap h4">
 					{$module_data.PRODUCT.PRODUCTS_PRICE}
 				</div>
-				<br />
 				{/if}
-				<p>
-					{if $module_data.PRODUCTS_PRICE_PLAIN > 0}{$module_data.PRODUCT.PRODUCTS_BUTTON_BUY_NOW_NEW}{/if}
-				</p>
+				{if $module_data.PRODUCTS_PRICE_PLAIN > 0 or $module_data.PRODUCT.PRODUCTS_PRICE_PLAIN > 0}
+				<div>
+					{$module_data.PRODUCT.PRODUCTS_BUTTON_BUY_NOW_NEW}
+				</div>
+				{/if}
 			</div>
 		</div>
 	</div>
