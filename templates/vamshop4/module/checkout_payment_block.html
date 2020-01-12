@@ -16,7 +16,7 @@ $(this).addClass("selected");
   <div class="card-header d-flex justify-content-between">
     <div>{$module_data.selection}</div>
     <div>{$module_data.module}</div>
-    <div>{$module_data.module_cost}</div>
+    <div class="font-weight-bolder">{if $module_data.module_cost}<span class="badge badge-secondary font-weight-bold">{$module_data.module_cost}</span>{/if}</div>
   </div>
   <div class="card-body">
     <h5 class="card-title">{$module_data.icon}</h5>

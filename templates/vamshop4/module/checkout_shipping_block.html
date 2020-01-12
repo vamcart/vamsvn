@@ -2,8 +2,8 @@
 {literal}
 $(document).ready(function() {
 $(".shipping-method").on("click",function(){
-$(".shipping-method").parent().removeClass("selected");
-$(this).parent().addClass("selected");
+$(".shipping-method").removeClass("selected");
+$(this).addClass("selected");
 });
 });
 {/literal}
@@ -15,18 +15,24 @@ $(this).parent().addClass("selected");
 {$FREE_SHIPPING_DESCRIPTION}
 </p>
 {else} 
-{foreach name=aussen item=module_data from=$module_content}
-
-{foreach name=aussen item=method_data from=$module_data.methods} <label class="shipping {$method_data.id}{if {$method_data.checked} == 1} selected{/if}" for="{$method_data.id}">
-<div class="shipping-method {cycle values="itemOdd,itemEven"}">   
-<p>
-{$method_data.radio_field}&nbsp;{$module_data.icon} <span class="bold">{$module_data.module}</span>
-{$method_data.title}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{$method_data.price}
-</p>
-
-{if $module_data.error != ''}<p>
-{$module_data.error}
-</p>{/if} 
+<div class="card-deck shipping-methods">
+{foreach name=aussen item=module_data from=$module_content}
+{foreach name=aussen item=method_data from=$module_data.methods} 
+<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-4">
+<div class="shipping-method card card-product card-sm text-center h-100{if {$method_data.checked} == 1} selected{/if}">
+<label class="shipping {$method_data.id}" for="{$method_data.id}">
+  <div class="card-header d-flex justify-content-between">
+    <div>{$method_data.radio_field}</div>
+    <div>{$module_data.module}</div>
+    <div class="font-weight-bolder"></div>
+  </div>
+  <div class="card-body">
+    {if {$method_data.price}}<p class="card-text"><span class="btn btn-secondary font-weight-bold">{$method_data.price}</span></p>{/if}
+    <h5 class="card-title">{$module_data.icon}</h5>
+    {if $method_data.title != ''}<p class="card-text">{$method_data.title}</p>{/if}
+    {if $module_data.error != ''}<p class="card-text">{$module_data.error}</p>{/if}
+  </div>
+  <div class="card-footer align-bottom">
 
 {if $method_data.id == "pickpoint"}
 
@@ -116,7 +122,11 @@ alert("Отделение работает только по предоплат�
 
 {/if}
 
+  </div>
+</label>  
 </div>
-</label> {/foreach}
-{/foreach}
+</div>
+{/foreach}
+{/foreach}
+</div>
 {/if}
