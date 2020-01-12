@@ -27,7 +27,7 @@ $(this).addClass("selected");
     <div class="font-weight-bolder"></div>
   </div>
   <div class="card-body">
-    {if {$method_data.price}}<p class="card-text"><span class="btn btn-secondary font-weight-bold">{$method_data.price}</span></p>{/if}
+    {if {$method_data.cost} > 0}<p class="card-text"><span class="btn btn-secondary font-weight-bold">{$method_data.price}</span></p>{/if}
     <h5 class="card-title">{$module_data.icon}</h5>
     {if $method_data.title != ''}<p class="card-text">{$method_data.title}</p>{/if}
     {if $module_data.error != ''}<p class="card-text">{$module_data.error}</p>{/if}
