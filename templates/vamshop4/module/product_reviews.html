@@ -1,6 +1,75 @@
 {config_load file="$language/lang_$language.conf" section="reviews"}
-<div class="page">
 <h1>{#heading_text#} {$PRODUCTS_NAME}</h1>
+
+<div class="row-fluid reviews-title" itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">
+  <div class="card card-product h-100">
+	<div class="card-body">
+	<div class="row">
+		<div class="col-md-3">
+			<div class="text-center">
+			<div class="display-4 font-weight-bolder"><span itemprop="ratingValue">{$module_content[0].PRODUCT.REVIEWS_TOTAL_RATING|number_format:1}</span></div>
+			{$module_content[0].PRODUCT.REVIEWS_STAR_RATING}
+			</div>
+				{if {$module_content[0].PRODUCT.REVIEWS_TOTAL} > 0}
+				<div class="rating-wrap text-center">
+             {#text_total#}: <span itemprop="reviewCount">{$module_content[0].PRODUCT.REVIEWS_TOTAL}</span>
+				</div>
+				{/if}
+		</div>
+		<div class="col-md-6">
+		<div class="line pb-2">
+		<span class="progress-label">5</span>
+		<div class="progress">
+		  <div class="progress-bar font-weight-bolder{if $PRODUCTS_RATING_FIVE == 0} text-dark{/if}" role="progressbar" style="width: {$PRODUCTS_RATING_FIVE_PERCENT}%" aria-valuenow="{$PRODUCTS_RATING_FIVE_PERCENT}" aria-valuemin="0" aria-valuemax="100">
+		  {$PRODUCTS_RATING_FIVE_PERCENT}%
+		  </div>
+		</div>		
+		</div>		
+		<div class="line pb-2">
+		<span class="progress-label">4</span>
+		<div class="progress">
+		  <div class="progress-bar font-weight-bolder{if $PRODUCTS_RATING_FOUR == 0} text-dark{/if}" role="progressbar" style="width: {$PRODUCTS_RATING_FOUR_PERCENT}%" aria-valuenow="{$PRODUCTS_RATING_FOUR_PERCENT}" aria-valuemin="0" aria-valuemax="100">
+		  {$PRODUCTS_RATING_FOUR_PERCENT}%
+		  </div>
+		</div>
+		</div>		
+		<div class="line pb-2">
+		<span class="progress-label">3</span>
+		<div class="progress">
+		  <div class="progress-bar font-weight-bolder{if $PRODUCTS_RATING_THREE == 0} text-dark{/if}" role="progressbar" style="width: {$PRODUCTS_RATING_THREE_PERCENT}%" aria-valuenow="{$PRODUCTS_RATING_THREE_PERCENT}" aria-valuemin="0" aria-valuemax="100">
+		  {$PRODUCTS_RATING_THREE_PERCENT}%
+		  </div>
+		</div>
+		</div>		
+		<div class="line pb-2">
+		<span class="progress-label">2</span>
+		<div class="progress">
+		  <div class="progress-bar font-weight-bolder{if $PRODUCTS_RATING_TWO == 0} text-dark{/if}" role="progressbar" style="width: {$PRODUCTS_RATING_TWO_PERCENT}%" aria-valuenow="{$PRODUCTS_RATING_TWO_PERCENT}" aria-valuemin="0" aria-valuemax="100">
+		  {$PRODUCTS_RATING_TWO_PERCENT}%
+		  </div>
+		</div>
+		</div>		
+		<div class="line pb-2">
+		<span class="progress-label">1</span>
+		<div class="progress">
+		  <div class="progress-bar font-weight-bolder{if $PRODUCTS_RATING_ONE == 0} text-dark{/if}" role="progressbar" style="width: {$PRODUCTS_RATING_ONE_PERCENT}%" aria-valuenow="{$PRODUCTS_RATING_ONE_PERCENT}" aria-valuemin="0" aria-valuemax="100">
+		  {$PRODUCTS_RATING_ONE_PERCENT}%
+		  </div>
+		</div>
+		</div>
+
+		</div>
+		<div class="col-md-3 my-auto">
+			<div class="action-wrap text-center">
+           {$BUTTON_WRITE}	
+			</div>
+		</div>
+	</div>
+	</div>
+</div>
+</div>
+				
+<div class="page">
 <div class="pageContent">
 {foreach name=aussen item=module_data from=$module_content}
 {include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/product-card/product-card-review-listing.html"}
