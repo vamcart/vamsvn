@@ -4,10 +4,10 @@
 						{if $module_data.PRODUCTS_IMAGE!=''}<img class="img-sm" src="{$module_data.PRODUCTS_IMAGE}" width="100" alt="{$module_data.IMAGE_ALT}" />{/if}
 				</div>
 				<div class="text-wrap w-100">
-					<ul class="list-inline">
-					  <li class="list-inline-item"><h6 class="title"><a href="{$module_data.PRODUCTS_LINK}">{$module_data.PRODUCTS_NAME}</a></h6></li>
-					  <li class="list-inline-item">{$module_data.BOX_DELETE}</li>
-					</ul>
+				  <div class="d-flex justify-content-between">
+				    <div class="my-auto align-center"><span class="title"><a href="{$module_data.PRODUCTS_LINK}">{$module_data.PRODUCTS_NAME}</a></span></div>
+				    <div class="my-auto align-center">{$module_data.BOX_DELETE}</div>
+				  </div>				
 					{if $module_data.PRODUCTS_SHIPPING_TIME neq ""}<p><span class="text-muted">{#text_shippingtime#}&nbsp;{$module_data.PRODUCTS_SHIPPING_TIME}</span></p>{/if}
 					{if $module_data.ATTRIBUTES!=''}
 					{foreach key=key_data item=item_data from=$module_data.ATTRIBUTES} 
