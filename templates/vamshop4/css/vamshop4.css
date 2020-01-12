@@ -483,6 +483,8 @@ li.level3 {
   border-right: 1px solid #dd2c00;
   border-bottom: 1px solid #dd2c00;
   border-radius: 0px;
+  -webkit-transition: .2s;
+  transition: .2s;
 }
 
 .shipping-method:hover .shipping-fields,
@@ -492,6 +494,8 @@ li.level3 {
   border-right: 1px solid #dd2c00;
   border-bottom: 1px solid #dd2c00;
   border-radius: 0px;
+  -webkit-transition: .5s;
+  transition: .5s;
 }
 
 .selected {
