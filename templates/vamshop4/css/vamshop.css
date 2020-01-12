@@ -2731,29 +2731,6 @@ li.ajaxAddQuickie
 		background: #f6f4f4;
 	}
 
-#checkout .itemOdd:hover,
-#checkout .itemEven:hover, 
-#checkout label.shipping.selected,
-#checkout label.payment.selected,
-.selected
-	{
-		border: 1px solid #000;
-		border-radius: 4px;
-	}
-
-label
-	{
-		display: block;
-	}
-	
-.shipping-method,
-.payment-method 
-	{
-		border: 1px solid transparent;
-		border-radius: 4px;
-		padding: 1em 1em 5px 1em;
-	}
-
 /* Buttons */
 
 .btn.btn-inverse {

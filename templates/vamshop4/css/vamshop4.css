@@ -159,8 +159,8 @@ button:focus, button:active, a, a:hover {
 }
 
 .card-deck {
-  padding-left: 15px;
-  padding-right: 15px;
+  padding-left: 0px;
+  padding-right: 0px;
 }
 
 .card-deck .col-xs-12,
@@ -168,9 +168,7 @@ button:focus, button:active, a, a:hover {
 .card-deck .col-md-4,
 .card-deck .col-lg-4,
 .card-deck .col.xl-3 {
-  padding-left: 0;
-  padding-right: 0;
-  padding-bottom: 0;
+  padding-bottom: 20px;
 }
 
 .card.card-product:hover .img-wrap img {
@@ -423,3 +421,86 @@ li.level3 {
   float: left;
   margin-right: 1em;
 }
+
+.payment-methods .payment-method .payment-fields {
+    display: none;
+}
+
+.payment-method.card.card-product .card-footer {
+  padding: 0;
+  margin: 0;
+}
+
+.payment-methods .payment-method.card {
+	border-radius: 0;
+}
+
+.payment-methods .payment-method.card .card-footer {
+  border-top: 0px;
+}
+
+.payment-method.selected .payment-fields,
+.payment-method:hover .payment-fields {
+  display: block;
+  width: auto;
+  position: absolute;
+  overflow: hidden;
+  padding: 0;
+  z-index: 100;
+  margin-left: -1px;
+  margin-right: -1px;
+  background: #fff;
+  border-left: 1px solid rgba(0,0,0,.125);
+  border-right: 1px solid rgba(0,0,0,.125);
+  border-top: 0px solid rgba(0,0,0,.125);
+  border-bottom: 1px solid rgba(0,0,0,.125);
+  webkit-box-shadow: 0 14px 15px rgba(153,153,153,.3);
+  box-shadow: 0 14px 15px rgba(153,153,153,.3);
+  -webkit-transition: .5s;
+  transition: .5s;
+}
+
+.payment-method.selected {
+  webkit-box-shadow: 0 14px 15px rgba(153,153,153,.3);
+  box-shadow: 0 14px 15px rgba(153,153,153,.3);
+  -webkit-transition: .5s;
+  transition: .5s;
+}
+
+.payment-method:hover {
+  border-top: 1px solid #dd2c00;
+  border-left: 1px solid #dd2c00;
+  border-right: 1px solid #dd2c00;
+  border-bottom: 1px solid #dd2c00;
+  border-radius: 0px;
+}
+
+.payment-method:hover .payment-fields {
+  border-top: 0px solid #dd2c00;
+  border-left: 1px solid #dd2c00;
+  border-right: 1px solid #dd2c00;
+  border-bottom: 1px solid #dd2c00;
+  border-radius: 0px;
+}
+
+.selected {
+  border-top: 1px solid #dd2c00;
+  border-left: 1px solid #dd2c00;
+  border-right: 1px solid #dd2c00;
+  border-bottom: 1px solid #dd2c00;
+  border-radius: 0px;
+}
+
+.payment-method.selected .payment-fields {
+  border-top: 0px;
+  border-left: 1px solid #dd2c00;
+  border-right: 1px solid #dd2c00;
+  border-bottom: 1px solid #dd2c00;
+  border-radius: 0px;
+}
+
+label {
+  display: block;
+}
+
+
