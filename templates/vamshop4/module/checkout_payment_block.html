@@ -1,3 +1,13 @@
+<script>
+{literal}
+$(document).ready(function() {
+$(".payment-method").on("click",function(){
+$(".payment-method").removeClass("selected");
+$(this).addClass("selected");
+});
+});
+{/literal}
+</script>
 <div class="card-deck payment-methods">
 {foreach name=aussen item=module_data from=$module_content}
 <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-4">
