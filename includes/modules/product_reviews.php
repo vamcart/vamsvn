@@ -41,8 +41,54 @@ $module->assign('PRODUCTS_NAME', $product->data['products_name']);
 $module->assign('PRODUCTS_REVIEWS_COUNT', $product->getReviewsCount());
 $module->assign('PRODUCTS_REVIEWS_RATING', $product->getReviewsRating());
 
+$rating_count = 0;
+
 if ($product->getReviewsCount() > 0) {
 
+$star_rating = '';
+for($i=0;$i<number_format($product->getReviewsRating());$i++)	{
+$star_rating .= '<span class="rating"><i class="fa fa-star"></i></span> ';
+}
+
+$module->assign('PRODUCTS_STAR_RATING', $star_rating);
+
+$rating_count = $product->getReviewsCount();
+
+$one_star_query = vamDBquery("select count(*) as total from ".TABLE_REVIEWS." r, ".TABLE_REVIEWS_DESCRIPTION." rd where r.products_id = '".(int)$product->data['products_id']."' and r.reviews_rating = 1 and r.reviews_id = rd.reviews_id and rd.languages_id = '".$_SESSION['languages_id']."'");
+$one_star = vam_db_fetch_array($one_star_query,true);
+$one_star_count = $one_star['total'];
+
+$module->assign('PRODUCTS_RATING_ONE', $one_star_count);
+$module->assign('PRODUCTS_RATING_ONE_PERCENT', number_format(($one_star_count*100)/$rating_count));
+
+$two_star_query = vamDBquery("select count(*) as total from ".TABLE_REVIEWS." r, ".TABLE_REVIEWS_DESCRIPTION." rd where r.products_id = '".(int)$product->data['products_id']."' and r.reviews_rating = 2 and r.reviews_id = rd.reviews_id and rd.languages_id = '".$_SESSION['languages_id']."'");
+$two_star = vam_db_fetch_array($two_star_query,true);
+$two_star_count = $two_star['total'];
+
+$module->assign('PRODUCTS_RATING_TWO', $two_star_count);
+$module->assign('PRODUCTS_RATING_TWO_PERCENT', number_format(($two_star_count*100)/$rating_count));
+
+$three_star_query = vamDBquery("select count(*) as total from ".TABLE_REVIEWS." r, ".TABLE_REVIEWS_DESCRIPTION." rd where r.products_id = '".(int)$product->data['products_id']."' and r.reviews_rating = 3 and r.reviews_id = rd.reviews_id and rd.languages_id = '".$_SESSION['languages_id']."'");
+$three_star = vam_db_fetch_array($three_star_query,true);
+$three_star_count = $three_star['total'];
+
+$module->assign('PRODUCTS_RATING_THREE', $three_star_count);
+$module->assign('PRODUCTS_RATING_THREE_PERCENT', number_format(($three_star_count*100)/$rating_count));
+
+$four_star_query = vamDBquery("select count(*) as total from ".TABLE_REVIEWS." r, ".TABLE_REVIEWS_DESCRIPTION." rd where r.products_id = '".(int)$product->data['products_id']."' and r.reviews_rating = 4 and r.reviews_id = rd.reviews_id and rd.languages_id = '".$_SESSION['languages_id']."'");
+$four_star = vam_db_fetch_array($four_star_query,true);
+$four_star_count = $four_star['total'];
+
+$module->assign('PRODUCTS_RATING_FOUR', $four_star_count);
+$module->assign('PRODUCTS_RATING_FOUR_PERCENT', number_format(($four_star_count*100)/$rating_count));
+
+$five_star_query = vamDBquery("select count(*) as total from ".TABLE_REVIEWS." r, ".TABLE_REVIEWS_DESCRIPTION." rd where r.products_id = '".(int)$product->data['products_id']."' and r.reviews_rating = 5 and r.reviews_id = rd.reviews_id and rd.languages_id = '".$_SESSION['languages_id']."'");
+$five_star = vam_db_fetch_array($five_star_query,true);
+$five_star_count = $five_star['total'];
+		
+$module->assign('PRODUCTS_RATING_FIVE', $five_star_count);
+$module->assign('PRODUCTS_RATING_FIVE_PERCENT', number_format(($five_star_count*100)/$rating_count));
+		
 if ($_SESSION['customers_status']['customers_status_write_reviews'] != 0) {
 	$module->assign('BUTTON_WRITE', '<a class="button" href="'.vam_href_link(FILENAME_PRODUCT_REVIEWS_WRITE, vam_product_link($product->data['products_id'],$product->data['products_name'])).'">'.vam_image_button('add.png', IMAGE_BUTTON_WRITE_REVIEW).'</a>');
 }

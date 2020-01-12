@@ -410,3 +410,12 @@ li.level3 {
 .inner {
 	padding: .4em 0 0 0;
 }
+
+.progress-bar {
+  background: #0051A8;
+}
+
+.progress-label {
+  float: left;
+  margin-right: 1em;
+}
