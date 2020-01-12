@@ -147,6 +147,10 @@ button:focus, button:active, a, a:hover {
   padding-bottom: 0;
 }
 
+.card-body {
+  padding: .5em;
+}
+
 .category.card-footer {
   background: transparent;
   border: 0;
