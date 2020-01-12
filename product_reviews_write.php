@@ -71,6 +71,9 @@ if (isset ($_GET['action']) && $_GET['action'] == 'process' && $spam_flag == fal
     if ($error == false) {
 		$customer = vam_db_query("select customers_firstname, customers_lastname from ".TABLE_CUSTOMERS." where customers_id = '".(int) $_SESSION['customer_id']."'");
 		$customer_values = vam_db_fetch_array($customer);
+		if ($customer_values['customers_firstname'] == '') {
+			$customer_values['customers_firstname'] = TEXT_GUEST;
+		}		
 		$date_now = date('Ymd');
 		//if ($customer_values['customers_lastname'] == '')
 			//$customer_values['customers_lastname'] = TEXT_GUEST;
@@ -105,8 +108,10 @@ if (!$product->isProduct()) {
 	$vamTemplate->assign('error', ERROR_INVALID_PRODUCT);
 } else {
 	$name = $customer_info['customers_firstname'];
-	//if ($name == ' ')
-		//$customer_info['customers_lastname'] = TEXT_GUEST;
+	if ($name == '') {
+		$customer_info['customers_firstname'] = TEXT_GUEST;
+		$customer_info['customers_lastname'] = TEXT_GUEST;
+	}
 	$vamTemplate->assign('PRODUCTS_NAME', $product->data['products_name']);
 	$vamTemplate->assign('AUTHOR', $customer_info['customers_firstname']);
 	$vamTemplate->assign('INPUT_TEXT', vam_draw_textarea_field('review', 'soft', 60, 15, $_POST['review'], '', false));
