@@ -20,7 +20,7 @@ $(this).addClass("selected");
 {foreach name=aussen item=method_data from=$module_data.methods} 
 <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-4">
 <div class="shipping-method card card-product card-sm text-center h-100{if {$method_data.checked} == 1} selected{/if}">
-<label class="shipping {$method_data.id}" for="{$method_data.id}">
+<label class="h-100 shipping {$method_data.id}" for="{$method_data.id}">
   <div class="card-header d-flex justify-content-between">
     <div>{$method_data.radio_field}</div>
     <div>{$module_data.module}</div>
