@@ -94,7 +94,7 @@
       	                 'fields' => array(array('title' => '<div id="qiwi_rest">'.MODULE_PAYMENT_QIWI_REST_NAME_TITLE,
       	                                         'field' => MODULE_PAYMENT_QIWI_REST_NAME_DESC),
       	                                   array('title' => MODULE_PAYMENT_QIWI_REST_TELEPHONE,
-      	                                         'field' => vam_draw_input_field('qiwi_telephone',$order->customer['telephone'], 'id="qiwi_telephone"') . MODULE_PAYMENT_QIWI_REST_TELEPHONE_HELP.'</div>',
+      	                                         'field' => vam_draw_input_field('qiwi_telephone',$order->customer['telephone'], 'class="form-control" id="qiwi_telephone"') . MODULE_PAYMENT_QIWI_REST_TELEPHONE_HELP.'</div>',
       	                                   )));
 
     }

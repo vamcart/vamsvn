@@ -80,7 +80,7 @@ class schet {
       	                 'fields' => array(array('title' => '<div id="schet">'.MODULE_PAYMENT_SCHET_J_NAME_TITLE,
       	                                         'field' => MODULE_PAYMENT_SCHET_J_NAME_DESC),
       	                                   array('title' => MODULE_PAYMENT_SCHET_J_NAME,
-      	                                         'field' => vam_draw_input_field('s_name', $payment_data['name']) . MODULE_PAYMENT_SCHET_J_NAME_IP),
+      	                                         'field' => vam_draw_input_field('s_name', $payment_data['name'], 'class="form-control"') . MODULE_PAYMENT_SCHET_J_NAME_IP),
       	                                   array('title' => MODULE_PAYMENT_SCHET_J_INN,
       	                                         'field' => vam_draw_input_field('s_inn')),
 //      	                                   array('title' => MODULE_PAYMENT_SCHET_J_KPP,
@@ -104,7 +104,7 @@ class schet {
 //      	                                   array('title' => MODULE_PAYMENT_SCHET_J_FAKT_ADDRESS,
 //      	                                         'field' => vam_draw_input_field('s_fakt_address')),
       	                                   array('title' => MODULE_PAYMENT_SCHET_J_TELEPHONE,
-      	                                         'field' => vam_draw_input_field('s_telephone', $order->customer['telephone']).'</div>')
+      	                                         'field' => vam_draw_input_field('s_telephone', $order->customer['telephone'], 'class="form-control"').'</div>')
 //      	                                   array('title' => MODULE_PAYMENT_SCHET_J_FAX,
 //      	                                         'field' => vam_draw_input_field('s_fax')),
 //      	                                   array('title' => MODULE_PAYMENT_SCHET_J_EMAIL,

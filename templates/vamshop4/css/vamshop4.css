@@ -450,13 +450,12 @@ li.level3 {
 .payment-method.selected .payment-fields,
 .payment-method:hover .payment-fields {
   display: block;
-  width: auto;
+  width: calc(100% + 2px);
   position: absolute;
   overflow: hidden;
-  padding: 0;
+  padding: 0 .5em;
   z-index: 100;
   margin-left: -1px;
-  margin-right: -1px;
   background: #fff;
   border-left: 1px solid rgba(0,0,0,.125);
   border-right: 1px solid rgba(0,0,0,.125);
