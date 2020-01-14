@@ -31,7 +31,6 @@ Disallow: /info_shopping_cart.php
 Disallow: /shopping_cart.php
 Disallow: /login.php
 Disallow: /logoff.php
-Disallow: /news.php
 Disallow: /newsletter.php
 Disallow: /products_new.php
 Disallow: /password_double_opt.php
@@ -78,6 +77,5 @@ Disallow: /*authors_id*
 Disallow: /specials.php/action/buy_now
 Disallow: /comparison.php
 Disallow: /print_product_info.php
-Disallow: /faq.php
 Disallow: /key.php
 Disallow: /404.html
