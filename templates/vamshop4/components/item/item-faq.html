@@ -5,9 +5,13 @@
 						<i class="fa fa-lightbulb white"></i>
 					</span>
 				</div>
-				<div class="text-wrap">
-					<h5 class="title">{$module_data.FAQ_DATA} - <a href="{$module_data.FAQ_LINK_MORE}">{$module_data.FAQ_QUESTION}</a></h5>
-					<p>{$module_data.FAQ_ANSWER|vam_truncate:$smarty.const.MAX_DISPLAY_LATEST_FAQ_CONTENT:" ..."}</p>
+				<div class="text-wrap" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+					<h5 class="title">{$module_data.FAQ_DATA} - <a href="{$module_data.FAQ_LINK_MORE}"><span itemprop="name">{$module_data.FAQ_QUESTION}</span></a></h5>
+					<div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+					<div itemprop="text">
+					{$module_data.FAQ_ANSWER|vam_truncate:$smarty.const.MAX_DISPLAY_FAQ_ANSWER:" ..."}
+					</div>
+					</div>
 				</div>
 			</div>
 	</div>
