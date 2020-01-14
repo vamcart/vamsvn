@@ -5,10 +5,12 @@
     <span class="smllogo"><a href="{$mainpage}"><img src="{$tpl_path}img/logo.png" class="img-fluid" alt="{$smarty.const.STORE_NAME}" /></a></span>
     <div class="wssearch clearfix">
       <i class="wsopensearch fas fa-search"></i>
-      <div class="wssearchform clearfix">
-		<form name="search" id="searchheader" action="advanced_search_result.php" method="get" class="form-inline topmenusearch" autocomplete="off">
+      <div class="wssearchform clearfix" itemscope itemtype="https://schema.org/WebSite">
+      <meta itemprop="url" content="{$smarty.const.HTTP_SERVER}{$smarty.const.DIR_WS_CATALOG}"/>
+		<form name="search" id="searchheader" action="advanced_search_result.php" method="get" class="form-inline topmenusearch" autocomplete="off" itemprop="potentialAction" itemscope itemtype="https://schema.org/SearchAction">
+		<meta itemprop="target" content="{$smarty.const.HTTP_SERVER}{$smarty.const.DIR_WS_CATALOG}{$smarty.const.FILENAME_ADVANCED_SEARCH_RESULT}?keywords={literal}{keywords}{/literal}"/>
 		<div class="input-group">
-		      <input type="text" name="keywords" class="form-control border-right-0" id="quick_find_keyword_header" placeholder="{$smarty.const.BOX_HEADING_SEARCH}" />
+		      <input itemprop="query-input" type="text" name="keywords" class="form-control border-right-0" id="quick_find_keyword_header" placeholder="{$smarty.const.BOX_HEADING_SEARCH}" />
 		      <div class="input-group-append">
 		         <span class="input-group-text microphone bg-white" id="voice-trigger-header"><i class="fas fa-microphone text-secondary"></i></span>
 		      </div>
