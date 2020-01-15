@@ -2926,7 +2926,7 @@ div.CheckoutError
 #load_status_bg
 	{
 		background: #fff; 
-		opacity: 0.4;
+		opacity: 0.8;
 		position: fixed;
 		z-index: 2300;
 		width: 100%;

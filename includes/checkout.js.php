@@ -80,7 +80,6 @@ $('#box')
 				'payment': $('input[name=payment]:checked').val()
 			}
 		)
-		,img_loader();
 	}
 )	
 
@@ -91,7 +90,6 @@ $('#box')
 				'shipping': $('input[name=shipping]:checked').val()
 			}
 		)
-		,img_loader();
 	}
 )		
 
@@ -105,8 +103,8 @@ $('#box')
 			function(){
 				$('#shipping_modules_box').trigger('refresh');
 			}
-		)
-		,img_loader();
+		),
+		img_loader();
 	}
 )
 
@@ -202,9 +200,8 @@ $('#box')
 			'state': $('select[name=state]').val(),
 			'postcode': $('input[name=postcode]').val(),
 			'city': $('input[name=city]').val()
-		})
-		
-	,img_loader();
+		}
+	),
 	point();
 	boxberry();
 	}
@@ -219,19 +216,24 @@ $('#box')
 				'postcode': $('input[name=postcode]').val(),
 				'city': $('input[name=city]').val()
 			}
-		)
-	,img_loader();
+		),
 	point();
 	boxberry();
 	}
 )
 
-.on('refresh', '#shipping_modules_box', function(){
-	$('#order_total_modules').load(url +' #order_total_modules > *', {'shipping': $('input[name=shipping]:checked').val(),'payment': $('input[name=payment]:checked').val()})
-	,img_loader();
+.on('refresh', '#shipping_modules_box', 
+	function(){
+		$('#order_total_modules').load(
+			url +' #order_total_modules > *', {
+				'shipping': $('input[name=shipping]:checked').val(),
+				'payment': $('input[name=payment]:checked').val()
+				}
+		),
 	point();
 	boxberry();
-})
+	}
+)
 
 
 //.on('refresh', '#shipping_modules_box', function(('input[name=checkout_possible]').val());})	
@@ -250,9 +252,9 @@ $('#box')
 		}, 
 		function(){
 			$('#shipping_modules_box').trigger('refresh')
-				,img_loader();
 		}
 	);
+	img_loader();
 	point();
 	boxberry();
 	}
