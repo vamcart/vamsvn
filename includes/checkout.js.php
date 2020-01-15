@@ -51,19 +51,64 @@ function init()
 var url='checkout.php';          
 
 function img_loader(){
-$.statusElem = document.getElementById('load_status');
-setTimeout(cldiv, 1500);
-$.statusElem.innerHTML = '<div id="load_status_bg"><div class="load_status_image"></div></div>';     
-function cldiv(){document.getElementById('load_status').innerHTML='';}    
+
+// Setup the ajax indicator
+$('body').append('<div id="load_status_bg"><div class="load_status_image"></div></div>');
+
+// Ajax activity indicator bound to ajax start/success/stop document events
+$(document).ajaxSend(function(){
+  $('#load_status_bg').show();
+});
+
+$(document).ajaxSuccess(function(){
+  $('#load_status_bg').hide();
+});
+
+$(document).ajaxStop(function(){
+  $('#load_status_bg').remove();
+});
+
 }
 	
 $('#box')
 
-.on('refresh', '#shipping_modules_box', function(){$('#order_total_modules').load(url +' #order_total_modules > *', {'shipping': $('input[name=shipping]:checked').val(),'payment': $('input[name=payment]:checked').val()}),img_loader();})	
+.on('refresh', '#shipping_modules_box', 
+	function(){
+		$('#order_total_modules').load(
+			url +' #order_total_modules > *', {
+				'shipping': $('input[name=shipping]:checked').val(),
+				'payment': $('input[name=payment]:checked').val()
+			}
+		)
+		,img_loader();
+	}
+)	
 
-.on('refresh', '#shipping_modules_box', function(){$('#payment_options').load(url +' #payment_options > *', {'shipping': $('input[name=shipping]:checked').val()}),img_loader();})		
+.on('refresh', '#shipping_modules_box', 
+	function(){
+		$('#payment_options').load(
+			url +' #payment_options > *', {
+				'shipping': $('input[name=shipping]:checked').val()
+			}
+		)
+		,img_loader();
+	}
+)		
 
-.on('change', 'input[name=shipping],input[name=payment]', function(){$('#shipping_options').load(url +' #shipping_options > *', {'shipping': $('input[name=shipping]:checked').val(),'payment': $('input[name=payment]:checked').val()}, function(){$('#shipping_modules_box').trigger('refresh');}),img_loader();})
+.on('change', 'input[name=shipping],input[name=payment]', 
+	function(){
+		$('#shipping_options').load(
+			url +' #shipping_options > *', {
+				'shipping': $('input[name=shipping]:checked').val(),
+				'payment': $('input[name=payment]:checked').val()
+			}, 
+			function(){
+				$('#shipping_modules_box').trigger('refresh');
+			}
+		)
+		,img_loader();
+	}
+)
 
 ;}
 
@@ -129,22 +174,89 @@ function init()
 var url='checkout.php';          
 
 function img_loader(){
-$.statusElem = document.getElementById('load_status');
-setTimeout(cldiv, 1500);
-$.statusElem.innerHTML = '<div id="load_status_bg"><div class="load_status_image"></div></div>';     
-function cldiv(){document.getElementById('load_status').innerHTML='';}    
+
+// Setup the ajax indicator
+$('body').append('<div id="load_status_bg"><div class="load_status_image"></div></div>');
+
+// Ajax activity indicator bound to ajax start/success/stop document events
+$(document).ajaxSend(function(){
+  $('#load_status_bg').show();
+});
+
+$(document).ajaxSuccess(function(){
+  $('#load_status_bg').hide();
+});
+
+$(document).ajaxStop(function(){
+  $('#load_status_bg').remove();
+});
+
 }
 	
 $('#box')
-.on('refresh', '#shipping_modules_box', function(){$('#shipping_options').load(url +' #shipping_options > *', {'country': $('select[name=country]').val(),'state': $('select[name=state]').val(),'postcode': $('input[name=postcode]').val(),'city': $('input[name=city]').val()}),img_loader();point();boxberry();})
-.on('refresh', '#shipping_modules_box', function(){$('#payment_options').load(url +' #payment_options > *', {'country': $('select[name=country]').val(),'state': $('select[name=state]').val(),'postcode': $('input[name=postcode]').val(),'city': $('input[name=city]').val()}),img_loader();point();boxberry();})
-.on('refresh', '#shipping_modules_box', function(){$('#order_total_modules').load(url +' #order_total_modules > *', {'shipping': $('input[name=shipping]:checked').val(),'payment': $('input[name=payment]:checked').val()}),img_loader();point();boxberry();})
+.on('refresh', '#shipping_modules_box', 
+	function(){
+	$('#shipping_options').load(
+		url +' #shipping_options > *', {
+			'country': $('select[name=country]').val(),
+			'state': $('select[name=state]').val(),
+			'postcode': $('input[name=postcode]').val(),
+			'city': $('input[name=city]').val()
+		})
+		
+	,img_loader();
+	point();
+	boxberry();
+	}
+)
+
+.on('refresh', '#shipping_modules_box', 
+	function(){
+		$('#payment_options').load(
+			url +' #payment_options > *', {
+				'country': $('select[name=country]').val(),
+				'state': $('select[name=state]').val(),
+				'postcode': $('input[name=postcode]').val(),
+				'city': $('input[name=city]').val()
+			}
+		)
+	,img_loader();
+	point();
+	boxberry();
+	}
+)
+
+.on('refresh', '#shipping_modules_box', function(){
+	$('#order_total_modules').load(url +' #order_total_modules > *', {'shipping': $('input[name=shipping]:checked').val(),'payment': $('input[name=payment]:checked').val()})
+	,img_loader();
+	point();
+	boxberry();
+})
 
 
 //.on('refresh', '#shipping_modules_box', function(('input[name=checkout_possible]').val());})	
 //.on$('input[name=checkout_possible]').val()
 
-.on('change', 'input[name=shipping], input[name=payment], select[name=country], select[name=state], input[name=postcode], input[name=city]', function(){$('#shipping_country_box').load(url +' #shipping_country', {'shipping': $('input[name=shipping]:checked').val(), 'payment': $('input[name=payment]:checked').val(),'country': $('select[name=country]').val(),'state': $('select[name=state]').val(),'city': $('input[name=city]').val(),'postcode': $('input[name=postcode]').val()}, function(){$('#shipping_modules_box').trigger('refresh'),img_loader();});point();boxberry();})
+.on('change', 'input[name=shipping], input[name=payment], select[name=country], select[name=state], input[name=postcode], input[name=city]', 
+	function(){
+	$('#shipping_country_box').load(
+		url +' #shipping_country', {
+			'shipping': $('input[name=shipping]:checked').val(), 
+			'payment': $('input[name=payment]:checked').val(),
+			'country': $('select[name=country]').val(),
+			'state': $('select[name=state]').val(),
+			'city': $('input[name=city]').val(),
+			'postcode': $('input[name=postcode]').val()
+		}, 
+		function(){
+			$('#shipping_modules_box').trigger('refresh')
+				,img_loader();
+		}
+	);
+	point();
+	boxberry();
+	}
+)
 //.on('change', 'input[name=shipping], select[name=state]', function(){$('#shipping_state_box').load(url +' #shipping_state', {'shipping': $('input[name=shipping]:checked').val(), 'state': $('select[name=state]').val()}, function(){$('#shipping_state_box').trigger('refresh');});})
 
 .on('change', '#country', function(){
