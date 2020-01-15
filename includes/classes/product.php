@@ -124,8 +124,8 @@ class product {
 		$reviews_query = vamDBquery("select o.customers_id
 						 from  ".TABLE_ORDERS." o left join ".TABLE_ORDERS_PRODUCTS." op on op.orders_id = o.orders_id
 						 where 
-						 o.customers_id = ".$customer_id."
-						 and op.products_id = ".$products_id."
+						 o.customers_id = ".(int)$customer_id."
+						 and op.products_id = ".(int)$products_id."
 						 limit 1");
 		if (vam_db_num_rows($reviews_query)) {
 		$reviews_customer = true;
