@@ -51,7 +51,7 @@ $vamTemplate->assign('PRODUCTS_NAME', $product_info['products_name']);
 
 $data_reviews = array ();
 $module_content = array();
-$reviews_query = vam_db_query("select r.reviews_id, r.products_id, left(rd.reviews_text, 250) as reviews_text, r.reviews_rating, r.date_added, p.*, pd.*, r.customers_name from ".TABLE_REVIEWS." r, ".TABLE_REVIEWS_DESCRIPTION." rd, ".TABLE_PRODUCTS." p, ".TABLE_PRODUCTS_DESCRIPTION." pd where r.products_id = '".(int) $_GET['products_id']."' and p.products_status = '1' and p.products_id = r.products_id and r.reviews_id = rd.reviews_id and p.products_id = pd.products_id and pd.language_id = '".(int) $_SESSION['languages_id']."' and rd.languages_id = '".(int) $_SESSION['languages_id']."' order by r.reviews_id DESC");
+$reviews_query = vam_db_query("select r.reviews_id, r.products_id, left(rd.reviews_text, 250) as reviews_text, r.reviews_rating, r.date_added, p.*, pd.*, r.customers_name, r.customers_id from ".TABLE_REVIEWS." r, ".TABLE_REVIEWS_DESCRIPTION." rd, ".TABLE_PRODUCTS." p, ".TABLE_PRODUCTS_DESCRIPTION." pd where r.products_id = '".(int) $_GET['products_id']."' and p.products_status = '1' and p.products_id = r.products_id and r.reviews_id = rd.reviews_id and p.products_id = pd.products_id and pd.language_id = '".(int) $_SESSION['languages_id']."' and rd.languages_id = '".(int) $_SESSION['languages_id']."' order by r.reviews_id DESC");
 if (vam_db_num_rows($reviews_query)) {
 
 	$star_rating = '';
@@ -73,6 +73,7 @@ if (vam_db_num_rows($reviews_query)) {
 		'REVIEWS_ALL_LINK' => vam_href_link(FILENAME_PRODUCT_REVIEWS, 'products_id='.$reviews['products_id']), 
 		'PRODUCTS_NAME' => $reviews['products_name'], 
 		'AUTHOR' => $reviews['customers_name'], 
+		'CUSTOMER' => $product->getReviewsCustomer((int)$reviews['products_id'],(int)$reviews['customers_id']), 
 		'ID' => $reviews['reviews_id'], 
 		'URL' => vam_href_link(FILENAME_PRODUCT_REVIEWS_INFO, 'products_id='.$reviews['products_id'].'&reviews_id='.$reviews['reviews_id']), 
 		'DATE' => vam_date_short($reviews['date_added']), 

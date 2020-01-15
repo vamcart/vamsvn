@@ -753,4 +753,6 @@ define('TEXT_AUTHOR_REVIEWS_ADD','добавить отзыв об авторе'
 
 define('VOICE_SEARCH','Голосовой поиск');
 
+define('TEXT_BADGE_CUSTOMER','Реальный покупатель');
+
 ?>

@@ -107,6 +107,33 @@ class product {
 		return $reviews['total'];
 	}
 
+
+	/**
+	 * 
+	 * Query for reviews count
+	 * 
+	 */
+
+	function getReviewsCustomer($products_id = 0, $customer_id = 0) {
+
+	  if ($products_id == 0) $products_id = $this->pID;
+	  $reviews_customer = false;
+	  
+	  if ($customer_id > 0) {
+
+		$reviews_query = vamDBquery("select o.customers_id
+						 from  ".TABLE_ORDERS." o left join ".TABLE_ORDERS_PRODUCTS." op on op.orders_id = o.orders_id
+						 where 
+						 o.customers_id = ".$customer_id."
+						 and op.products_id = ".$products_id."
+						 limit 1");
+		if (vam_db_num_rows($reviews_query)) {
+		$reviews_customer = true;
+		}
+	  }
+	   return $reviews_customer;
+	}
+	
 	/**
 	 * 
 	 * select reviews
@@ -120,6 +147,7 @@ class product {
 									                                 r.reviews_rating,
 									                                 r.reviews_id,
 									                                 r.customers_name,
+									                                 r.customers_id,
 									                                 r.date_added,
 									                                 r.last_modified,
 									                                 r.reviews_read,
@@ -148,6 +176,7 @@ class product {
 				'REVIEWS_LINK' => vam_href_link(FILENAME_PRODUCT_REVIEWS_INFO, 'products_id='.$reviews['products_id'].'&reviews_id='.$reviews['reviews_id']), 
 				'REVIEWS_ALL_LINK' => vam_href_link(FILENAME_PRODUCT_REVIEWS, 'products_id='.$reviews['products_id']), 
 				'AUTHOR' => $reviews['customers_name'], 
+				'CUSTOMER' => $this->getReviewsCustomer((int)$reviews['products_id'],(int)$reviews['customers_id']), 
 				'ID' => $reviews['reviews_id'], 
 				'URL' => vam_href_link(FILENAME_PRODUCT_REVIEWS_INFO, 'products_id='.$reviews['products_id'].'&reviews_id='.$reviews['reviews_id']), 
 				'DATE' => vam_date_short($reviews['date_added']), 
@@ -163,6 +192,7 @@ class product {
 					break;
 			}
 		}
+		
 		return $data_reviews;
 
 	}

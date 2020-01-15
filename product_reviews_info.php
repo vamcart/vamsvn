@@ -71,6 +71,7 @@ $reviews = vam_db_fetch_array($reviews_query, true);
 		'REVIEWS_ALL_LINK' => vam_href_link(FILENAME_PRODUCT_REVIEWS, 'products_id='.$reviews['products_id']), 
 		'PRODUCTS_NAME' => $reviews['products_name'], 
 		'AUTHOR' => $reviews['customers_name'], 
+		'CUSTOMER' => $product->getReviewsCustomer((int)$reviews['products_id'],(int)$reviews['customers_id']), 
 		'ID' => $reviews['reviews_id'], 
 		'URL' => vam_href_link(FILENAME_PRODUCT_REVIEWS_INFO, 'products_id='.$reviews['products_id'].'&reviews_id='.$reviews['reviews_id']), 
 		'DATE' => vam_date_short($reviews['date_added']), 

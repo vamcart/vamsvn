@@ -95,6 +95,7 @@ if ($_SESSION['customers_status']['customers_status_write_reviews'] != 0) {
 
 	$module->assign('language', $_SESSION['language']);
 	$module->assign('module_content', $product->getReviews());
+	
 	$module->caching = 0;
 	$module = $module->fetch(CURRENT_TEMPLATE.'/module/products_reviews.html');
 
