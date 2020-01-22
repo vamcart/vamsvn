@@ -298,7 +298,7 @@ $content_meta = vam_db_fetch_array($content_meta_query, true);
 			$faq_meta = vam_db_fetch_array($faq_meta_query, true);
 // shaklov
 		if ($faq_meta['question'] == '') {
-			$faq_title = html($faq_meta['question']);
+			$faq_title = STORE_NAME;
 		} else {
 			$faq_title = htmlentities($faq_meta['question']);
 		}
