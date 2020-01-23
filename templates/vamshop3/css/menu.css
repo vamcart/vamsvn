@@ -38,8 +38,6 @@ body {
 }
 
 #menuapp-wrapper {
-    background: #eef1f6;
-    color: #7e7e7e;
     margin: 0;
     padding: 0;
     width: 100%;
@@ -47,7 +45,6 @@ body {
     position: relative;
     direction: ltr;
     line-height: 20px;
-    font-size: 13px;
     overflow-x: hidden;
     overflow-y: hidden;
     width: 100%;
@@ -70,7 +67,7 @@ body {
 }
 
 .menu-left-header {
-    background: #3498db;
+    background: #fff;
     font-size: 16px;
     font-weight: 500;
     line-height: 50px;
@@ -257,7 +254,7 @@ body {
 
 #menu-left-panel .profile-box h5 {
     font-size: 14px;
-    font-weight: 400;
+    font-weight: 500;
     margin: 0px;
 }
 
@@ -271,7 +268,7 @@ body {
     border-top: 1px solid #efefef;
     display: block;
     width: 100%;
-    font-size: 12px;
+    font-size: 16px;
     font-weight: 500;
 }
 
@@ -293,8 +290,8 @@ body {
     border-top: 1px solid #efefef;
     color: #7e7e7e;
     display: block;
-    font-size: 13px;
-    font-weight: 400;
+    font-size: 16px;
+    font-weight: 500;
     padding: 10px 10px;
     position: relative;
 }
@@ -384,8 +381,8 @@ body {
     border-top: 1px solid #efefef;
     color: #7e7e7e;
     display: block;
-    font-size: 13px;
-    font-weight: 400;
+    font-size: 16px;
+    font-weight: 500;
     padding: 10px 10px;
     position: relative;
 }
@@ -475,7 +472,7 @@ body {
     font-family: "Font Awesome 5 Free";
     font-weight: 900;
     content: "\f0da";
-    font-size: 12px;
+    font-size: 16px;
     position: relative;
     float: left;
     left: 15px;
@@ -495,7 +492,7 @@ body {
     font-family: "Font Awesome 5 Free";
     font-weight: 900;
     content: "\f0da";
-    font-size: 12px;
+    font-size: 16px;
     position: relative;
     float: left;
     left: 30px;

@@ -4,13 +4,22 @@
     <div id="menuapp-wrapper" class="menu-hide-lpanel" menu-device-type="desktop">
         <header id="menu-header" menu-lpanel-effect="shrink">
             <div class="menu-left-header">
-                <a href="#"><i class="fa fa-graduation-cap"></i> <span> Navigation Menu</span></a>
+                <a href="{$mainpage}"><i class="fa fa-shopping-basket"></i> <span class="text-dark">{if $smarty.const.STORE_TELEPHONE}{$smarty.const.STORE_TELEPHONE}{else}{$smarty.const.STORE_NAME}{/if}</span></a>
                 <span class="menu-sidebar-toggle"><a href="#"></a></span>
             </div>
 
             <div class="menu-right-header" menu-position-type="relative">
-                <span class="menu-sidebar-toggle"><a href="#"></a></span>
+                <span class="menu-sidebar-toggle"><a href="javascript:void(0)"></a></span>
                 <ul class="left-navbar">
+                    <li>
+                        <form method="post" class="menu-searchbar">
+                            <input type="text" placeholder="Search..." name="keyword" class="form-control">
+                            <span class="search-icon"><i class="fa fa-search"></i></span>
+                        </form>
+                    </li>
+                </ul>
+
+                <ul class="right-navbar">
                     <li class="dropdown menu-rheader-submenu message-notification">
                         <a href="#" class="dropdown-toggle icon-circle" data-toggle="dropdown">
                             <i class="fa fa-envelope"></i>
@@ -62,153 +71,9 @@
                             </li>
                         </ul>
                     </li>
-                    <li class="dropdown menu-rheader-submenu message-notification left-min-30">
-                        <a href="#" class="dropdown-toggle icon-circle" data-toggle="dropdown">
-                            <i class="fa fa-bell"></i>
-                            <span class="badge badge-success">6</span>
-                        </a>
-                        <ul class="dropdown-menu ">
-                            <li class="menu-submenu-label">
-                                <h3><span class="bold">6 pending</span> Notification <a href="#">view all</a></h3>
-                            </li>
-                            <li>
-                                <a href="#" class="clearfix">
-                                    <i class="fa fa-database red-text"></i>
-                                    <span class="notification-title">Database overload- Sav3090</span>
-                                    <span class="notification-ago  ">3 min ago</span>
-                                    <p class="notification-message">Database overload due to incorrect queries</p>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="clearfix">
-                                    <i class="fa fa-exchange green-text"></i>
-                                    <span class="notification-title">Installing App v1.2.1</span>
-                                    <span class="notification-ago  ">60 % Done</span>
-                                    <p class="notification-message">
-                                        <div class="progress">
-                                            <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:60%"> 60%
-                                            </div>
-                                        </div>
-                                    </p>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="clearfix">
-                                    <i class="fa fa-exclamation-triangle red-text"></i>
-                                    <span class="notification-title">Application Error - Sav3085</span>
-                                    <span class="notification-ago  ">10 min ago</span>
-                                    <p class="notification-message">failed to initialize the application due to error weblogic.application.moduleexception</p>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="clearfix">
-                                    <i class="fa fa-server yellow-text"></i>
-                                    <span class="notification-title">Server Status - Sav3080</span>
-                                    <span class="notification-ago  ">30GB Free Space</span>
-                                    <p class="notification-message">
-                                        <div class="progress">
-                                            <div class="progress-bar progress-bar-success" role="progressbar" style="width:40%">
-
-                                            </div>
-                                            <div class="progress-bar progress-bar-warning" role="progressbar" style="width:10%">
-
-                                            </div>
-                                            <div class="progress-bar progress-bar-danger" role="progressbar" style="width:20%">
-
-                                            </div>
-                                        </div>
-                                    </p>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="clearfix">
-                                    <i class="fa fa-cogs green-text"></i>
-                                    <span class="notification-title">Application Configured</span>
-                                    <span class="notification-ago  ">30 min ago</span>
-                                    <p class="notification-message">Your setting is updated on server Sav3060</p>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="clearfix">
-                                    <i class="fa fa-server blue-text"></i>
-                                    <span class="notification-title">Server Status</span>
-                                    <span class="notification-ago  ">300GB Free Space</span>
-                                    <p class="notification-message">
-                                        <div class="progress">
-                                            <div class="progress-bar progress-bar-info" role="progressbar" style="width:80%">
-                                                Free Space
-                                            </div>
-                                        </div>
-                                    </p>
-                                </a>
-                            </li>
-
-                        </ul>
-                    </li>
-                    <li class="dropdown menu-rheader-submenu message-notification left-min-65">
-                        <a href="#" class="dropdown-toggle icon-circle" data-toggle="dropdown">
-                            <i class="fa fa-tasks"></i>
-                            <span class="badge badge-danger">4</span>
-                        </a>
-                        <ul class="dropdown-menu ">
-                            <li class="menu-submenu-label">
-                                <h3> You have <span class="bold">4 </span>pending Task <a href="#">view all</a></h3>
-                            </li>
-                            <li>
-                                <a href="#" class="clearfix">
-                                    <img alt="Avatar" class="img-circle notification-avatar" src="{$tpl_path}img/avatar.jpg">
-                                    <span class="notification-title"> Smith Doe Assigned new task </span>
-                                    <span class="notification-ago-1 ">5 min ago</span>
-                                    <p class="notification-message">Provide an Overview key mention characteristics for selected Keyword.</p>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="clearfix">
-                                    <img alt="Avatar" class="img-circle notification-avatar" src="{$tpl_path}img/avatar.jpg">
-                                    <span class="notification-title"> Polly Paton Done his work</span>
-                                    <span class="notification-ago-1 ">10 min ago</span>
-                                    <p class="notification-message">Polly Paton has completed his work. please assign her new task. </p>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="clearfix">
-                                    <img alt="Avatar" class="img-circle notification-avatar" src="{$tpl_path}img/avatar.jpg">
-                                    <span class="notification-title">Alan Installing App v1.2.1</span>
-                                    <span class="notification-ago-1 ">15 min ago</span>
-                                    <p class="notification-message">
-                                        Alan Installing App v1.2.1 on server Sav3080
-                                        <div class="progress">
-                                            <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:60%"> 60%
-                                            </div>
-                                        </div>
-                                    </p>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="clearfix">
-                                    <img alt="Avatar" class="img-circle notification-avatar" src="{$tpl_path}img/avatar.jpg">
-                                    <span class="notification-title"> Zoey Lombardo like your task</span>
-                                    <span class="notification-ago-1 ">20 min ago</span>
-                                    <p class="notification-message">Zoey Lombardo like your server installation task.</p>
-                                </a>
-                            </li>
-
-                        </ul>
-                    </li>
-                    <li>
-                        <form method="post" class="menu-searchbar">
-                            <input type="text" placeholder="Search..." name="keyword" class="form-control">
-                            <span class="search-icon"><i class="fa fa-search"></i></span>
-                        </form>
-                    </li>
-
-                </ul>
-
-                <ul class="right-navbar">
                     <li class="dropdown menu-rheader-submenu menu-header-profile">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             <span><img class="rounded" src="{$tpl_path}img/avatar.jpg"></span>
-                            <span>James <b>Bond</b> <i class=" fa fa-angle-down"></i></span>
                         </a>
                         <ul class="dropdown-menu ">
                             <li><a href="#"><i class="fa fa-user"></i>My Profile</a></li>
@@ -230,20 +95,52 @@
         </header>
         <div id="menuapp-container" menu-color-type="lpanel-bg2" menu-lpanel-effect="shrink">
             <aside id="menu-left-panel" menu-position-type="absolute">
-                <div class="profile-box">
-                    <div class="media">
-                        <a class="pull-left" href="user-profile.html">
-                            <img class="rounded" src="{$tpl_path}img/avatar.jpg">
-                        </a>
-                        <div class="media-body">
-                            <h5 class="media-heading">Welcome <span>James</span></h5>
-                            <small>UX Designer</small>
-
-                        </div>
-                    </div>
-                </div>
                 <ul class="nav panel-list">
-                    <li class="nav-level">Navigation</li>
+                    <li>
+                        <a href="{$smarty.const.FILENAME_SPECIALS}">
+                            <i class="fas fa-percentage"></i>
+                            <span class="menu-text">
+                            {$smarty.const.TITLE_SPECIALS_DEFAULT}
+                            </span>
+                            <span class="selected"></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{$smarty.const.FILENAME_MANUFACTURERS}">
+                            <i class="fas fa-tag"></i>
+                            <span class="menu-text">
+                            {$smarty.const.TITLE_MANUFACTURERS_DEFAULT}
+                            </span>
+                            <span class="selected"></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{$smarty.const.FILENAME_PRODUCTS_NEW}">
+                            <i class="fas fa-lightbulb"></i>
+                            <span class="menu-text">
+                            {$smarty.const.TITLE_NEW_PRODUCTS_DEFAULT}
+                            </span>
+                            <span class="selected"></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{$smarty.const.FILENAME_FEATURED}">
+                            <i class="fas fa-exclamation-circle"></i>
+                            <span class="menu-text">
+                            {$smarty.const.TITLE_FEATURED_DEFAULT_SHORT}
+                            </span>
+                            <span class="selected"></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{$smarty.const.FILENAME_REVIEWS}">
+                            <i class="fas fa-comments"></i>
+                            <span class="menu-text">
+                            {$smarty.const.TEXT_PRODUCT_REVIEWS}
+                            </span>
+                            <span class="selected"></span>
+                        </a>
+                    </li>
                     <li class="active">
                         <a href="javascript:void(0)">
                             <i class="fa fa-tachometer"></i>
@@ -472,216 +369,32 @@
                     </li>
                 </ul>
             </aside>
-            <section id="main-content">
-                <div class="content-title">
-                    <h3 class="main-title">Sidebar Menu</h3>
-                    <span>Sidebar Features</span>
+            <div id="main-content">
+
+					{if $navtrail}
+					<div class="content-title">
+					<div id="navigation" class="text-muted" itemscope itemtype="http://schema.org/BreadcrumbList">
+					{$navtrail}
+					</div>
+					</div>
+					{/if}
+
+                <div class="mainWrapper">
+
+{$box_DOWNLOADS}
+
+{if $smarty.SERVER.REQUEST_URI == '/'}
+{include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/slider/{$smarty.const.DEFAULT_SLIDER}.html"}
+{/if}
+
+<div class="mainContent">
+{$main_content}
+</div>                
+
                 </div>
-                <div class="inner-content">
-                    <div class="card theme-panel">
-                        <div class="panel-heading">
-                            <span class="card-title">
-								SideBar Menu Feature <i class="fa fa-bullhorn"></i>
-							</span>
-                        </div>
-                        <div class="card-body">
-                            <div class="row clearfix">
-                                <div class="col-md-3 column">
-                                    <div class="feature-box">
-                                        <span class="feature-icon"><i class="fa fa-code"></i></span>
-                                        <h4>One Code for All Device </h4>
-                                        <span>One code used for all device</span>
-                                    </div>
-                                </div>
-                                <div class="col-md-3 column">
-                                    <div class="feature-box">
-                                        <span class="feature-icon"><i class="fa fa-mobile"></i></span>
-                                        <h4>Fully Responsive</h4>
-                                        <span>Desktops, Tablets and Mobile</span>
-                                    </div>
-                                </div>
-                                <div class="col-md-3 column">
-                                    <div class="feature-box">
-                                        <span class="feature-icon"><i class="fa fa-th-list"></i></span>
-                                        <h4>Minimized Menu </h4>
-                                        <span>Minimized Menu on Toggle</span>
-                                    </div>
-                                </div>
-                                <div class="col-md-3 column">
-                                    <div class="feature-box">
-                                        <span class="feature-icon"><i class="fa fa-list-alt"></i></span>
-                                        <h4>Responsive SubMenu</h4>
-                                        <span>4 level SubMenu added</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row clearfix">
-                                <div class="col-md-3 column">
-                                    <div class="feature-box">
-                                        <span class="feature-icon"><i class="fa fa-file-code-o"></i></span>
-                                        <h4>Light weight</h4>
-                                        <span>Using Minified CSS File </span>
-                                    </div>
-                                </div>
-                                <div class="col-md-3 column">
-                                    <div class="feature-box">
-                                        <span class="feature-icon"><i class="fa fa-css3"></i></span>
-                                        <h4>Jquery/CSS3 animations</h4>
-                                        <span>Using Jquery,CSS3,Animation</span>
-                                    </div>
-                                </div>
-                                <div class="col-md-3 column">
-                                    <div class="feature-box">
-                                        <span class="feature-icon"><i class="fa fa-flag"></i></span>
-                                        <h4>Vector icons</h4>
-                                        <span>Using Font Awesome Web font</span>
-                                    </div>
-                                </div>
-                                <div class="col-md-3 column">
-                                    <div class="feature-box">
-                                        <span class="feature-icon"><i class="fa fa-angellist"></i></span>
-                                        <h4>Collapsible menu</h4>
-                                        <span>Collapsible menu in Tablets </span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row clearfix">
-                                <div class="col-md-3 column">
-                                    <div class="feature-box">
-                                        <span class="feature-icon"><i class="fa fa-file-text"></i></span>
-                                        <h4>Well documentation</h4>
-                                        <span>Step by step instructions to use menu</span>
-                                    </div>
-                                </div>
-                                <div class="col-md-3 column">
-                                    <div class="feature-box">
-                                        <span class="feature-icon"><i class="fa fa-life-ring"></i></span>
-                                        <h4>Free Support</h4>
-                                        <span>you Can contact me in my profile</span>
-                                    </div>
-                                </div>
-                                <div class="col-md-3 column">
-                                    <div class="feature-box">
-                                        <span class="feature-icon"><i class="fa fa-pencil-square-o"></i></span>
-                                        <h4>Easy to use/customizable</h4>
-                                        <span>Well coded Easy to use in website</span>
-                                    </div>
-                                </div>
-                                <div class="col-md-3 column">
-                                    <div class="feature-box">
-                                        <span class="feature-icon"><i class="fa fa-eye"></i></span>
-                                        <h4>Coming Soon</h4>
-                                        <span>Theme Option Coming Soon</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <div id="styleSelector">
-                <div class="selector-toggle">
-                    <a href="javascript:void(0)"></a>
-                </div>
-                <ul>
-                    <li>
-                        <p class="selector-title">Style Selector</p>
-                    </li>
-                    <li class="theme-option">
-                        <span class="sub-title">Header BG Color Option</span>
-                        <div id="theme-color">
-                            <a href="#" class="header-bg" menu-color-type="header-bg1">&nbsp;</a>
-                            <a href="#" class="header-bg" menu-color-type="header-bg2">&nbsp;</a>
-                            <a href="#" class="header-bg" menu-color-type="header-bg3">&nbsp;</a>
-                            <a href="#" class="header-bg" menu-color-type="header-bg4">&nbsp;</a>
-                            <a href="#" class="header-bg" menu-color-type="header-bg5">&nbsp;</a>
-                            <a href="#" class="header-bg" menu-color-type="header-bg6">&nbsp;</a>
-                            <a href="#" class="header-bg" menu-color-type="header-bg7">&nbsp;</a>
-                            <a href="#" class="header-bg" menu-color-type="header-bg8">&nbsp;</a>
-                            <a href="#" class="header-bg" menu-color-type="header-bg9">&nbsp;</a>
-                        </div>
-                    </li>
-                    <li class="theme-option">
-                        <span class="sub-title">Left Panel BG Color Option</span>
-                        <div id="theme-color">
-                            <a href="#" class="lpanel-bg" menu-color-type="lpanel-bg1">&nbsp;</a>
-                            <a href="#" class="lpanel-bg" menu-color-type="lpanel-bg2">&nbsp;</a>
-                            <a href="#" class="lpanel-bg" menu-color-type="lpanel-bg3">&nbsp;</a>
-                            <a href="#" class="lpanel-bg" menu-color-type="lpanel-bg4">&nbsp;</a>
-                            <a href="#" class="lpanel-bg" menu-color-type="lpanel-bg5">&nbsp;</a>
-                            <a href="#" class="lpanel-bg" menu-color-type="lpanel-bg6">&nbsp;</a>
-                            <a href="#" class="lpanel-bg" menu-color-type="lpanel-bg7">&nbsp;</a>
-                            <a href="#" class="lpanel-bg" menu-color-type="lpanel-bg8">&nbsp;</a>
-                            <a href="#" class="lpanel-bg" menu-color-type="lpanel-bg9">&nbsp;</a>
-                        </div>
-                    </li>
-                    <li class="theme-option">
-                        <span class="sub-title">Logo Color BG Option</span>
-                        <div id="theme-color">
-                            <a href="#" class="logo-bg" menu-color-type="logo-bg1">&nbsp;</a>
-                            <a href="#" class="logo-bg" menu-color-type="logo-bg2">&nbsp;</a>
-                            <a href="#" class="logo-bg" menu-color-type="logo-bg3">&nbsp;</a>
-                            <a href="#" class="logo-bg" menu-color-type="logo-bg4">&nbsp;</a>
-                            <a href="#" class="logo-bg" menu-color-type="logo-bg5">&nbsp;</a>
-                            <a href="#" class="logo-bg" menu-color-type="logo-bg6">&nbsp;</a>
-                            <a href="#" class="logo-bg" menu-color-type="logo-bg7">&nbsp;</a>
-                            <a href="#" class="logo-bg" menu-color-type="logo-bg8">&nbsp;</a>
-                            <a href="#" class="logo-bg" menu-color-type="logo-bg9">&nbsp;</a>
-                        </div>
-                    </li>
-                    <li class="theme-option">
-                        <span class="sub-title">Theme Background BG Option</span>
-                        <div id="theme-color">
-                            <a href="#" class="theme-bg" menu-themebg-type="bg1">&nbsp;</a>
-                            <a href="#" class="theme-bg" menu-themebg-type="bg2">&nbsp;</a>
-                            <a href="#" class="theme-bg" menu-themebg-type="bg3">&nbsp;</a>
-                            <a href="#" class="theme-bg" menu-themebg-type="bg4">&nbsp;</a>
-                            <a href="#" class="theme-bg" menu-themebg-type="bg5">&nbsp;</a>
-                            <a href="#" class="theme-bg" menu-themebg-type="bg6">&nbsp;</a>
-                            <a href="#" class="theme-bg" menu-themebg-type="bg7">&nbsp;</a>
-                            <a href="#" class="theme-bg" menu-themebg-type="bg8">&nbsp;</a>
-                            <a href="#" class="theme-bg" menu-themebg-type="bg9">&nbsp;</a>
-                        </div>
-                    </li>
-                    <li class="theme-option">
-                        <span class="sub-title">Theme Layout</span>
-                        <select id="theme-layout" class="form-control minimal input-sm">
-                            <option name="theme-layout" value="wide-layout">Wide Layout</option>
-                            <option name="theme-layout" value="box-layout">Boxed Layout</option> 
-                        </select>
-                    </li>
-                    <li class="theme-option">
-                        <span class="sub-title">SideBar Effect</span>
-                        <select id="leftpanel-effect" class="form-control minimal input-sm">
-                            <option name="lpanel-effect" value="shrink">Default</option>
-                            <option name="lpanel-effect" value="overlay">Overlay</option>
-                            <option name="lpanel-effect" value="push">Push</option>
-                        </select>
-                    </li>
-                    <li class="theme-option">
-                        <span class="sub-title">Navigation Type</span>
-                        <select id="navigation-type" class="form-control minimal input-sm">
-                            <option name="navigation-type" value="vertical">Vertical</option>
-							<option name="navigation-type" value="vertical-compact">Vertical Compact</option>
-                            <option name="navigation-type" value="horizontal">Horizontal</option>
-							<option name="navigation-type" value="horizontal-compact">Horizontal compact</option>
-                        </select>
-                    </li>
-                    <li class="theme-option">
-                        <span class="sub-title">Navigation Side</span>
-                        <select id="navigation-side" class="form-control minimal input-sm">
-                            <option name="navigation-side" value="leftside">Left</option>
-							<option name="navigation-side" value="rightside">Right</option>
-                        </select>
-                    </li>
-                    <li class="theme-option">
-                        <span class="sub-title">Sidebar Position</span>
-                        <select id="sidebar-position" class="form-control minimal input-sm">
-                            <option name="sidebar-position" value="default">Default</option>
-                            <option name="sidebar-position" value="fixed">Fixed</option>
-                        </select>
-                    </li>
-                </ul>
             </div>
+
+            {include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/theme-selector/index.html"}    
+
         </div>
     </div>

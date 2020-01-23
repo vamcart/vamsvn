@@ -1,6 +1,6 @@
 body {
-  background: #f1f1f1;
-  font-family: 'M PLUS Rounded 1c', sans-serif;
+  background: #fff;
+  font-family: sans-serif;
   font-weight: 500;
 }
 
@@ -131,7 +131,7 @@ button:focus, button:active, a, a:hover {
     padding-left: 0px;
     padding-right: 0px;
     display: block;
-    background: transparent;
+    background: #fff;
     border-radius: 0;
 }
 
@@ -393,11 +393,6 @@ li.level3 {
 .module,
 .mainContent {
   padding: .5em;
-  margin: 0 0 .5em 0;
-  background-color: #fff;
-  border: 0px solid rgba(0,0,0,.125);
-  border-radius: .25rem;
-  box-shadow: 0 4px 15px rgba(153,153,153,.3);
   transition: .5s;
 }
 
