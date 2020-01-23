@@ -28,6 +28,36 @@ $(".owl-carousel").owlCarousel({
             items:4,
             nav:true,
             loop:false
+        },
+        1200:{
+            items:4,
+            nav:true,
+            loop:false
+        },
+        1440:{
+            items:5,
+            nav:true,
+            loop:false
+        },
+        1920:{
+            items:6,
+            nav:true,
+            loop:false
+        },
+        2560:{
+            items:8,
+            nav:true,
+            loop:false
+        },
+        4096:{
+            items:12,
+            nav:true,
+            loop:false
+        },
+        7680:{
+            items:16,
+            nav:true,
+            loop:false
         }
     }
 })

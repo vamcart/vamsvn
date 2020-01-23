@@ -63,11 +63,10 @@ body {
     height: 50px;
     z-index: 10;
     position: relative;
-    box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.2);
 }
 
 .menu-left-header {
-    background: #1967d2;
+    background: #dd2c00;
     font-size: 16px;
     font-weight: 500;
     line-height: 50px;
@@ -102,6 +101,7 @@ body {
     z-index: 101;
     margin-left: 230px;
     position: relative;
+    box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.2);
 }
 
 .menu-right-header>ul {
@@ -128,7 +128,7 @@ body {
 
 .menu-right-header a i {
     color: #7e7e7e;
-    font-size: 14px;
+    font-size: 16px;
 }
 
 .right-navbar {
@@ -137,7 +137,7 @@ body {
 }
 
 .right-navbar li a i {
-    font-size: 14px;
+    font-size: 16px;
 }
 
 .left-navbar>li:first-child {
@@ -155,7 +155,7 @@ body {
     font-weight: 900;
     content: "\f0c9";
     font-family: "Font Awesome 5 Free";
-    font-size: 14px;
+    font-size: 16px;
     line-height: 50px;
     padding: 0px 17px;
     position: absolute;
@@ -253,7 +253,7 @@ body {
 }
 
 #menu-left-panel .profile-box h5 {
-    font-size: 14px;
+    font-size: 16px;
     font-weight: 500;
     margin: 0px;
 }
@@ -322,7 +322,7 @@ body {
 
 #menu-left-panel .panel-list>li>a>i {
     display: inline;
-    font-size: 14px;
+    font-size: 16px;
     padding-right: 6px;
 }
 
@@ -462,7 +462,7 @@ body {
     font-family: "Font Awesome 5 Free";
     font-weight: 900;
     content: "\f0da";
-    font-size: 14px;
+    font-size: 16px;
     position: relative;
     float: left;
     left: 4px;
@@ -482,7 +482,7 @@ body {
     font-family: "Font Awesome 5 Free";
     font-weight: 900;
     content: "\f0da";
-    font-size: 14px;
+    font-size: 16px;
     position: relative;
     float: left;
     left: 18px;
@@ -839,9 +839,9 @@ body {
     top: 3px;
     z-index: 1000;
     display: block !important;
-    color: #003c70;
+    color: #fff;
     border: 0px solid #003c70;
-    font-size: 14px;
+    font-size: 16px;
 }
 
 #menuapp-wrapper[menu-device-type="phone"].menu-hide-lpanel #menuapp-container[menu-lpanel-effect="shrink"] #main-content {

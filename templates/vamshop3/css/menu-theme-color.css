@@ -807,7 +807,7 @@
  /*#####################navigation panel with lpanel-bg8 theme Color Start################*/
  
  #menuapp-container[menu-color-type="lpanel-bg8"] #menu-left-panel {
-     background: #384b5f none repeat scroll 0 0;
+     background: #575757 none repeat scroll 0 0;
      color: #ced4d7;
      box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.2);
  }
@@ -825,9 +825,9 @@
  }
  
  #menuapp-container[menu-color-type="lpanel-bg8"] #menu-left-panel .panel-list>li>a {
-     background: #384b5f;
+     background: #575757;
      border-top: 1px solid #455769;
-     color: #ced4d7;
+     color: #fff;
      border-right: 1px solid #455769;
  }
  
@@ -842,17 +842,17 @@
  #menuapp-container[menu-color-type="lpanel-bg8"] #menu-left-panel .panel-list>li>a:hover,
  #menuapp-container[menu-color-type="lpanel-bg8"] #menu-left-panel .panel-list>li>a:focus {
      color: #fff;
-     background: #2c3e50;
+     background: #dd2c00;
  }
  
  #menuapp-container[menu-color-type="lpanel-bg8"] #menu-left-panel .panel-list>li.active>a {
-     background: #2c3e50;
+     background: #dd2c00;
      border-top: 1px solid #455769;
      color: #fff;
  }
  
  #menuapp-container[menu-color-type="lpanel-bg8"] #menu-left-panel .panel-list>li.menu-has-menu.opened>a {
-     background: #384b5f;
+     background: #dd2c00;
      color: #fff;
  }
  
@@ -886,23 +886,23 @@
  }
  
  #menuapp-container[menu-color-type="lpanel-bg8"].menu-minimized-lpanel #menu-left-panel {
-     background: #384b5f;
+     background: #575757;
      color: #ced4d7;
  }
  
  #menuapp-container[menu-color-type="lpanel-bg8"].menu-minimized-lpanel #menu-left-panel .panel-list>li.menu-has-menu:hover>a,
  #menuapp-container[menu-color-type="lpanel-bg8"].menu-minimized-lpanel #menu-left-panel .panel-list>li.menu-has-menu:focus>a {
      border-radius: 0px 4px 0px 0px;
-     background: #2c3e50;
+     background: #dd2c00;
  }
  
  #menuapp-container[menu-color-type="lpanel-bg8"].menu-minimized-lpanel #menu-left-panel .panel-list>li.menu-has-menu.opened>a {
-     background: #384b5f;
+     background: #575757;
      color: #ced4d7;
  }
  
  #menuapp-container[menu-color-type="lpanel-bg8"].menu-minimized-lpanel #menu-left-panel .panel-list>li.menu-has-menu.opened>a:hover {
-     background: #2c3e50;
+     background: #dd2c00;
      color: #fff;
  }
  

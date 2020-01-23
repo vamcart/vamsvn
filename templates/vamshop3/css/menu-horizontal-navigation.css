@@ -115,20 +115,20 @@ body[menu-navigation-type="horizontal"] #menuapp-wrapper[menu-device-type="deskt
 body[menu-navigation-type="horizontal"] #menuapp-wrapper[menu-device-type="desktop"] #menu-left-panel .panel-list > li.menu-has-menu > ul.menu-sub-menu > li > a span.menu-text:before {
     content: "\f105";
     font-weight: 900;
-    font-size: 14px;
+    font-size: 16px;
     float: left;
     left: 4px;
 }
 body[menu-navigation-type="horizontal"] #menuapp-wrapper[menu-device-type="desktop"] #menu-left-panel .panel-list > li.menu-has-menu > ul.menu-sub-menu > li.menu-has-menu > ul.menu-sub-menu > li > a span.menu-text:before {
     content: "\f105";
     font-weight: 900;
-    font-size: 14px;
+    font-size: 16px;
     left: 4px;
 }
 body[menu-navigation-type="horizontal"] #menuapp-wrapper[menu-device-type="desktop"] #menu-left-panel .panel-list > li.menu-has-menu > ul.menu-sub-menu > li.menu-has-menu > ul.menu-sub-menu > li.menu-has-menu > ul.menu-sub-menu > li > a span.menu-text:before {
     content: "\f105";
     font-weight: 900;
-    font-size: 14px;
+    font-size: 16px;
     float: left;
     left: 4px;
 }

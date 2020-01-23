@@ -1,11 +1,12 @@
 {config_load file="$language/lang_$language.conf" section="index"}
 {config_load file="$language/lang_$language.conf" section="boxes"}
+<div id="contentWrapper">
 
     <div id="menuapp-wrapper" class="menu-hide-lpanel" menu-device-type="desktop">
         <header id="menu-header" menu-lpanel-effect="shrink" class="menu-minimized-lpanel">
             <div class="menu-left-header" menu-position-type="fixed">
                 <a href="{$mainpage}"><i class="fa fa-shopping-basket"></i> <span>{if $smarty.const.STORE_TELEPHONE}{$smarty.const.STORE_TELEPHONE}{else}{$smarty.const.STORE_NAME}{/if}</span></a>
-                <span class="menu-sidebar-toggle"><a href="#"></a></span>
+                <span class="menu-sidebar-toggle"><a href="javascript:void(0)"></a></span>
             </div>
 
             <div class="menu-right-header" menu-position-type="fixed">
@@ -21,7 +22,7 @@
 
                 <ul class="right-navbar">
                     <li class="dropdown menu-rheader-submenu message-notification">
-                        <a href="#" class="dropdown-toggle icon-circle" data-toggle="dropdown">
+                        <a href="javascript:void(0)" class="dropdown-toggle icon-circle" data-toggle="dropdown">
                             <i class="fa fa-envelope"></i>
                             <span class="badge badge-danger">5</span>
                         </a>
@@ -93,7 +94,7 @@
 
             </div>
         </header>
-        <div id="menuapp-container" menu-color-type="lpanel-bg2" menu-lpanel-effect="shrink" class="menu-minimized-lpanel">
+        <div id="menuapp-container" menu-color-type="lpanel-bg8" menu-lpanel-effect="shrink" class="menu-minimized-lpanel">
             <aside id="menu-left-panel" menu-position-type="fixed">
                 <ul class="nav panel-list">
                     <li>
@@ -114,7 +115,7 @@
                             <span class="selected"></span>
                         </a>
                     </li>
-                    <li>
+                    <li class="active">
                         <a href="{$smarty.const.FILENAME_PRODUCTS_NEW}">
                             <i class="fas fa-lightbulb"></i>
                             <span class="menu-text">
@@ -141,7 +142,7 @@
                             <span class="selected"></span>
                         </a>
                     </li>
-                    <li class="active">
+                    <li>
                         <a href="javascript:void(0)">
                             <i class="fa fa-tachometer"></i>
                             <span class="menu-text">Dashboard</span>
@@ -391,10 +392,18 @@
 {$main_content}
 </div>                
 
+    
                 </div>
+
+    {include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/footer/footer.html"}    
+
             </div>
 
             {include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/theme-selector/index.html"}    
 
         </div>
     </div>
+    
+    
+    
+    </div>    

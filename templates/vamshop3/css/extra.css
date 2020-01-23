@@ -29,7 +29,7 @@
     border-bottom: 1px solid #e3e3e3;
     text-align: center;
     padding: 10px 0px;
-    font-size: 14px;
+    font-size: 16px;
 }
 
 .theme-panel .panel-heading .panel-title {
@@ -64,7 +64,7 @@
 .feature-box h6 {
     margin-bottom: 2px;
     margin-top: 2px;
-    font-size: 14px;
+    font-size: 16px;
     font-weight: 500;
 }
 
@@ -319,7 +319,7 @@
 }
 
 #theme-color a[menu-color-type="header-bg8"] {
-    background: #384b5f;
+    background: #575757;
 }
 
 #theme-color a[menu-color-type="header-bg9"] {
@@ -403,7 +403,7 @@
 }
 
 #theme-color a[menu-color-type="lpanel-bg8"] {
-    background: #384b5f;
+    background: #575757;
 }
 
 #theme-color a[menu-color-type="lpanel-bg9"] {
@@ -952,7 +952,7 @@
 /*Header color with theme color bg8  Start*/
 
 .menu-right-header[menu-color-type="header-bg8"] {
-    background: #384b5f;
+    background: #575757;
 }
 
 .menu-right-header[menu-color-type="header-bg8"] a i {
