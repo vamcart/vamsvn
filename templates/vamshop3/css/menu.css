@@ -67,7 +67,7 @@ body {
 }
 
 .menu-left-header {
-    background: #3498db;
+    background: #1967d2;
     font-size: 16px;
     font-weight: 500;
     line-height: 50px;
@@ -79,12 +79,12 @@ body {
 }
 
 .menu-left-header a {
-    color: #FFF;
+    color: #fff;
 }
 
 .menu-left-header a:hover,
 .menu-left-header a:focus {
-    color: #FFF;
+    color: #fff;
     text-decoration: none;
 }
 
@@ -216,7 +216,7 @@ body {
 /************************* 4.1 Theme Left Panel Style Start Here *********************************/
 
 #menu-left-panel {
-    background: #FFF none repeat scroll 0 0;
+    background: #fff none repeat scroll 0 0;
     color: #7e7e7e;
     width: 230px;
     top: 0;
@@ -286,7 +286,7 @@ body {
 }
 
 #menu-left-panel .panel-list>li>a {
-    background: #FFF;
+    background: #fff;
     border-top: 1px solid #efefef;
     color: #7e7e7e;
     display: block;

@@ -23,7 +23,7 @@
 }
 
 .menu-rheader-submenu>.dropdown-menu:after {
-    border-bottom: 8px solid #FFF;
+    border-bottom: 8px solid #fff;
     border-left: 8px solid transparent;
     border-right: 8px solid transparent;
     bottom: 100%;
@@ -51,7 +51,7 @@
 }
 
 .right-navbar .menu-rheader-submenu>ul.dropdown-menu:after {
-    border-bottom: 8px solid #FFF;
+    border-bottom: 8px solid #fff;
     border-left: 8px solid transparent;
     border-right: 8px solid transparent;
     bottom: 100%;
@@ -142,7 +142,7 @@
 }
 
 .badge-danger {
-    background-color: #e7604a;
+    background-color: #dd2c00;
     background-image: none;
 }
 
@@ -230,7 +230,7 @@
 }
 
 .red-text {
-    color: #e7604a !important;
+    color: #dd2c00 !important;
 }
 
 .yellow-text {

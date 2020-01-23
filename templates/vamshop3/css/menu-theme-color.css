@@ -35,14 +35,14 @@
  
  #menuapp-container[menu-color-type="lpanel-bg1"] #menu-left-panel .panel-list>li>a:hover,
  #menuapp-container[menu-color-type="lpanel-bg1"] #menu-left-panel .panel-list>li>a:focus {
-     color: #FFF;
+     color: #fff;
      background: #62bc55;
  }
  
  #menuapp-container[menu-color-type="lpanel-bg1"] #menu-left-panel .panel-list>li.active>a {
      background: #62bc55;
      border-top: 1px solid #96cd69;
-     color: #FFF;
+     color: #fff;
  }
  
  #menuapp-container[menu-color-type="lpanel-bg1"] #menu-left-panel .panel-list>li.menu-has-menu.opened>a {
@@ -63,16 +63,16 @@
  
  #menuapp-container[menu-color-type="lpanel-bg1"] #menu-left-panel .panel-list li.menu-has-menu>ul.menu-sub-menu li>a:hover,
  #menuapp-container[menu-color-type="lpanel-bg1"] #menu-left-panel .panel-list li.menu-has-menu>ul.menu-sub-menu li>a:focus {
-     color: #FFF;
+     color: #fff;
      background: #52ac45;
  }
  
  #menuapp-container[menu-color-type="lpanel-bg1"] #menu-left-panel .panel-list li.active>a .selected {
-     border-right: 7px solid #FFF;
+     border-right: 7px solid #fff;
  }
  
  #menuapp-container[menu-color-type="lpanel-bg1"] #menu-left-panel .panel-list li a .label {
-     color: #FFF;
+     color: #fff;
  }
  
  #menuapp-container[menu-color-type="lpanel-bg1"] .sul {
@@ -97,7 +97,7 @@
  
  #menuapp-container[menu-color-type="lpanel-bg1"].menu-minimized-lpanel #menu-left-panel .panel-list>li.menu-has-menu.opened>a:hover {
      background: #62bc55;
-     color: #FFF;
+     color: #fff;
  }
  
  #menuapp-container[menu-color-type="lpanel-bg1"].menu-minimized-lpanel #menu-left-panel .panel-list>li.menu-has-menu:hover>ul.menu-sub-menu,
@@ -116,13 +116,13 @@
  /*#####################navigation panel with lpanel-bg2 theme Color Start################*/
  
  #menuapp-container[menu-color-type="lpanel-bg2"] #menu-left-panel {
-     background: #3498DB none repeat scroll 0 0;
-     color: #d7e9fc;
+     background: #1967d2 none repeat scroll 0 0;
+     color: #fff;
      box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.2);
  }
  
  #menuapp-container[menu-color-type="lpanel-bg2"] #menu-left-panel .profile-box {
-     border-bottom: 1px solid #3ea2e5;
+     border-bottom: 1px solid #1967d2;
  }
  
  #menuapp-container[menu-color-type="lpanel-bg2"].menu-minimized-lpanel #menu-left-panel .profile-box {
@@ -130,39 +130,39 @@
  }
  
  #menuapp-container[menu-color-type="lpanel-bg2"] #menu-left-panel .profile-box .media a>img {
-     border: 1px solid #3ea2e5;
+     border: 1px solid #1967d2;
  }
  
  #menuapp-container[menu-color-type="lpanel-bg2"] #menu-left-panel .panel-list>li>a {
-     background: #3498DB;
-     border-top: 1px solid #3ea2e5;
-     color: #d7e9fc;
-     border-right: 1px solid #3ea2e5;
+     background: #1967d2;
+     border-top: 1px solid #1967d2;
+     color: #fff;
+     border-right: 1px solid #1967d2;
  }
  
  #menuapp-container[menu-color-type="lpanel-bg2"] #menu-left-panel .panel-list>li:last-child>a {
-     border-bottom: 1px solid #3ea2e5;
+     border-bottom: 1px solid #1967d2;
  }
  
  #menuapp-container[menu-color-type="lpanel-bg2"] #menu-left-panel .panel-list>li:first-child>a {
-     border-top: 0px solid #3ea2e5;
+     border-top: 0px solid #1967d2;
  }
  
  #menuapp-container[menu-color-type="lpanel-bg2"] #menu-left-panel .panel-list>li>a:hover,
  #menuapp-container[menu-color-type="lpanel-bg2"] #menu-left-panel .panel-list>li>a:focus {
-     color: #FFF;
+     color: #fff;
      background: #278bce;
  }
  
  #menuapp-container[menu-color-type="lpanel-bg2"] #menu-left-panel .panel-list>li.active>a {
-     background: #278bce;
-     border-top: 1px solid #3ea2e5;
-     color: #FFF;
+     background: #1967d2;
+     border-top: 1px solid #1967d2;
+     color: #fff;
  }
  
  #menuapp-container[menu-color-type="lpanel-bg2"] #menu-left-panel .panel-list>li.menu-has-menu.opened>a {
-     background: #3498DB;
-     color: #d7e9fc;
+     background: #1e82c5;
+     color: #fff;
  }
  
  #menuapp-container[menu-color-type="lpanel-bg2"] #menu-left-panel .panel-list ul {
@@ -173,21 +173,21 @@
  #menuapp-container[menu-color-type="lpanel-bg2"] #menu-left-panel .panel-list ul.menu-sub-menu li>a {
      background: #1e82c5;
      border-top: 1px solid #2c90d3;
-     color: #d7e9fc;
+     color: #fff;
  }
  
  #menuapp-container[menu-color-type="lpanel-bg2"] #menu-left-panel .panel-list li.menu-has-menu>ul.menu-sub-menu li>a:hover,
  #menuapp-container[menu-color-type="lpanel-bg2"] #menu-left-panel .panel-list li.menu-has-menu>ul.menu-sub-menu li>a:focus {
-     color: #FFF;
+     color: #fff;
      background: #1074b7;
  }
  
  #menuapp-container[menu-color-type="lpanel-bg2"] #menu-left-panel .panel-list li.active>a .selected {
-     border-right: 12px solid #FFF;
+     border-right: 12px solid #fff;
  }
  
  #menuapp-container[menu-color-type="lpanel-bg2"] #menu-left-panel .panel-list li a .label {
-     color: #d7e9fc;
+     color: #fff;
  }
  
  #menuapp-container[menu-color-type="lpanel-bg2"] .sul {
@@ -195,37 +195,37 @@
  }
  
  #menuapp-container[menu-color-type="lpanel-bg2"].menu-minimized-lpanel #menu-left-panel {
-     background: #3498DB;
-     color: #d7e9fc;
+     background: #1967d2;
+     color: #fff;
  }
  
  #menuapp-container[menu-color-type="lpanel-bg2"].menu-minimized-lpanel #menu-left-panel .panel-list>li.menu-has-menu:hover>a,
  #menuapp-container[menu-color-type="lpanel-bg2"].menu-minimized-lpanel #menu-left-panel .panel-list>li.menu-has-menu:focus>a {
      border-radius: 0px 4px 0px 0px;
-     background: #278bce;
+     background: #1e82c5;
  }
  
  #menuapp-container[menu-color-type="lpanel-bg2"].menu-minimized-lpanel #menu-left-panel .panel-list>li.menu-has-menu.opened>a {
-     background: #3498DB;
-     color: #d7e9fc;
+     background: #1967d2;
+     color: #fff;
  }
  
  #menuapp-container[menu-color-type="lpanel-bg2"].menu-minimized-lpanel #menu-left-panel .panel-list>li.menu-has-menu.opened>a:hover {
-     background: #278bce;
-     color: #FFF;
+     background: #1967d2;
+     color: #fff;
  }
  
  #menuapp-container[menu-color-type="lpanel-bg2"].menu-minimized-lpanel #menu-left-panel .panel-list>li.menu-has-menu:hover>ul.menu-sub-menu,
  #menuapp-container[menu-color-type="lpanel-bg2"].menu-minimized-lpanel #menu-left-panel .panel-list>li.menu-has-menu:focus>ul.menu-sub-menu {
-     border-right: 1px solid #3ea2e5;
+     border-right: 1px solid #1967d2;
  }
  
  #menuapp-container[menu-color-type="lpanel-bg2"] #menu-left-panel .nav-level {
-     border-top: 1px solid #3ea2e5;
+     border-top: 1px solid #1967d2;
  }
  
  #menuapp-container[menu-color-type="lpanel-bg2"] #menu-left-panel .nav-level:first-child {
-     border-top: 0px solid #3ea2e5;
+     border-top: 0px solid #1967d2;
  }
  /*#####################navigation panel with lpanel-bg2 theme Color close*################*/
  /*#####################navigation panel with lpanel-bg3 theme Color Start################*/
@@ -265,14 +265,14 @@
  
  #menuapp-container[menu-color-type="lpanel-bg3"] #menu-left-panel .panel-list>li>a:hover,
  #menuapp-container[menu-color-type="lpanel-bg3"] #menu-left-panel .panel-list>li>a:focus {
-     color: #FFF;
+     color: #fff;
      background: #3c4fb1;
  }
  
  #menuapp-container[menu-color-type="lpanel-bg3"] #menu-left-panel .panel-list>li.active>a {
      background: #3c4fb1;
      border-top: 1px solid #576acc;
-     color: #FFF;
+     color: #fff;
  }
  
  #menuapp-container[menu-color-type="lpanel-bg3"] #menu-left-panel .panel-list>li.menu-has-menu.opened>a {
@@ -293,12 +293,12 @@
  
  #menuapp-container[menu-color-type="lpanel-bg3"] #menu-left-panel .panel-list li.menu-has-menu>ul.menu-sub-menu li>a:hover,
  #menuapp-container[menu-color-type="lpanel-bg3"] #menu-left-panel .panel-list li.menu-has-menu>ul.menu-sub-menu li>a:focus {
-     color: #FFF;
+     color: #fff;
      background: #2b3ea0;
  }
  
  #menuapp-container[menu-color-type="lpanel-bg3"] #menu-left-panel .panel-list li.active>a .selected {
-     border-right: 7px solid #FFF;
+     border-right: 7px solid #fff;
  }
  
  #menuapp-container[menu-color-type="lpanel-bg3"] #menu-left-panel .panel-list li a .label {
@@ -327,7 +327,7 @@
  
  #menuapp-container[menu-color-type="lpanel-bg3"].menu-minimized-lpanel #menu-left-panel .panel-list>li.menu-has-menu.opened>a:hover {
      background: #3c4fb1;
-     color: #FFF;
+     color: #fff;
  }
  
  #menuapp-container[menu-color-type="lpanel-bg3"].menu-minimized-lpanel #menu-left-panel .panel-list>li.menu-has-menu:hover>ul.menu-sub-menu,
@@ -346,7 +346,7 @@
  /*#####################navigation panel with lpanel-bg4 theme Color Start################*/
  
  #menuapp-container[menu-color-type="lpanel-bg4"] #menu-left-panel {
-     background: #e7604a none repeat scroll 0 0;
+     background: #dd2c00 none repeat scroll 0 0;
      color: #ecd5d5;
      box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.2);
  }
@@ -364,7 +364,7 @@
  }
  
  #menuapp-container[menu-color-type="lpanel-bg4"] #menu-left-panel .panel-list>li>a {
-     background: #e7604a;
+     background: #dd2c00;
      border-top: 1px solid #ed6853;
      color: #ecd5d5;
      border-right: 1px solid #ed6853;
@@ -380,18 +380,18 @@
  
  #menuapp-container[menu-color-type="lpanel-bg4"] #menu-left-panel .panel-list>li>a:hover,
  #menuapp-container[menu-color-type="lpanel-bg4"] #menu-left-panel .panel-list>li>a:focus {
-     color: #FFF;
+     color: #fff;
      background: #d95944;
  }
  
  #menuapp-container[menu-color-type="lpanel-bg4"] #menu-left-panel .panel-list>li.active>a {
      background: #d95944;
      border-top: 1px solid #ed6853;
-     color: #FFF;
+     color: #fff;
  }
  
  #menuapp-container[menu-color-type="lpanel-bg4"] #menu-left-panel .panel-list>li.menu-has-menu.opened>a {
-     background: #e7604a;
+     background: #dd2c00;
      color: #ecd5d5;
  }
  
@@ -408,12 +408,12 @@
  
  #menuapp-container[menu-color-type="lpanel-bg4"] #menu-left-panel .panel-list li.menu-has-menu>ul.menu-sub-menu li>a:hover,
  #menuapp-container[menu-color-type="lpanel-bg4"] #menu-left-panel .panel-list li.menu-has-menu>ul.menu-sub-menu li>a:focus {
-     color: #FFF;
+     color: #fff;
      background: #ba3b26;
  }
  
  #menuapp-container[menu-color-type="lpanel-bg4"] #menu-left-panel .panel-list li.active>a .selected {
-     border-right: 7px solid #FFF;
+     border-right: 7px solid #fff;
  }
  
  #menuapp-container[menu-color-type="lpanel-bg4"] #menu-left-panel .panel-list li a .label {
@@ -425,7 +425,7 @@
  }
  
  #menuapp-container[menu-color-type="lpanel-bg4"].menu-minimized-lpanel #menu-left-panel {
-     background: #e7604a;
+     background: #dd2c00;
      color: #ecd5d5;
  }
  
@@ -436,13 +436,13 @@
  }
  
  #menuapp-container[menu-color-type="lpanel-bg4"].menu-minimized-lpanel #menu-left-panel .panel-list>li.menu-has-menu.opened>a {
-     background: #e7604a;
+     background: #dd2c00;
      color: #ecd5d5;
  }
  
  #menuapp-container[menu-color-type="lpanel-bg4"].menu-minimized-lpanel #menu-left-panel .panel-list>li.menu-has-menu.opened>a:hover {
      background: #d95944;
-     color: #FFF;
+     color: #fff;
  }
  
  #menuapp-container[menu-color-type="lpanel-bg4"].menu-minimized-lpanel #menu-left-panel .panel-list>li.menu-has-menu:hover>ul.menu-sub-menu,
@@ -495,14 +495,14 @@
  
  #menuapp-container[menu-color-type="lpanel-bg5"] #menu-left-panel .panel-list>li>a:hover,
  #menuapp-container[menu-color-type="lpanel-bg5"] #menu-left-panel .panel-list>li>a:focus {
-     color: #FFF;
+     color: #fff;
      background: #1f1f2a;
  }
  
  #menuapp-container[menu-color-type="lpanel-bg5"] #menu-left-panel .panel-list>li.active>a {
      background: #1f1f2a;
      border-top: 1px solid #1f1f2a;
-     color: #FFF;
+     color: #fff;
  }
  
  #menuapp-container[menu-color-type="lpanel-bg5"] #menu-left-panel .panel-list>li.menu-has-menu.opened>a {
@@ -523,16 +523,16 @@
  
  #menuapp-container[menu-color-type="lpanel-bg5"] #menu-left-panel .panel-list li.menu-has-menu>ul.menu-sub-menu li>a:hover,
  #menuapp-container[menu-color-type="lpanel-bg5"] #menu-left-panel .panel-list li.menu-has-menu>ul.menu-sub-menu li>a:focus {
-     color: #FFF;
+     color: #fff;
      background: #0e0e19;
  }
  
  #menuapp-container[menu-color-type="lpanel-bg5"] #menu-left-panel .panel-list li.active>a .selected {
-     border-right: 7px solid #FFF;
+     border-right: 7px solid #fff;
  }
  
  #menuapp-container[menu-color-type="lpanel-bg5"] #menu-left-panel .panel-list li a .label {
-     color: #FFF;
+     color: #fff;
  }
  
  #menuapp-container[menu-color-type="lpanel-bg5"] .sul {
@@ -557,7 +557,7 @@
  
  #menuapp-container[menu-color-type="lpanel-bg5"].menu-minimized-lpanel #menu-left-panel .panel-list>li.menu-has-menu.opened>a:hover {
      background: #1f1f2a;
-     color: #FFF;
+     color: #fff;
  }
  
  #menuapp-container[menu-color-type="lpanel-bg5"].menu-minimized-lpanel #menu-left-panel .panel-list>li.menu-has-menu:hover>ul.menu-sub-menu,
@@ -610,14 +610,14 @@
  
  #menuapp-container[menu-color-type="lpanel-bg6"] #menu-left-panel .panel-list>li>a:hover,
  #menuapp-container[menu-color-type="lpanel-bg6"] #menu-left-panel .panel-list>li>a:focus {
-     color: #FFF;
+     color: #fff;
      background: #554378;
  }
  
  #menuapp-container[menu-color-type="lpanel-bg6"] #menu-left-panel .panel-list>li.active>a {
      background: #554378;
      border-top: 1px solid #6b598e;
-     color: #FFF;
+     color: #fff;
  }
  
  #menuapp-container[menu-color-type="lpanel-bg6"] #menu-left-panel .panel-list>li.menu-has-menu.opened>a {
@@ -638,12 +638,12 @@
  
  #menuapp-container[menu-color-type="lpanel-bg6"] #menu-left-panel .panel-list li.menu-has-menu>ul.menu-sub-menu li>a:hover,
  #menuapp-container[menu-color-type="lpanel-bg6"] #menu-left-panel .panel-list li.menu-has-menu>ul.menu-sub-menu li>a:focus {
-     color: #FFF;
+     color: #fff;
      background: #453468;
  }
  
  #menuapp-container[menu-color-type="lpanel-bg6"] #menu-left-panel .panel-list li.active>a .selected {
-     border-right: 7px solid #FFF;
+     border-right: 7px solid #fff;
  }
  
  #menuapp-container[menu-color-type="lpanel-bg6"] #menu-left-panel .panel-list li a .label {
@@ -672,7 +672,7 @@
  
  #menuapp-container[menu-color-type="lpanel-bg6"].menu-minimized-lpanel #menu-left-panel .panel-list>li.menu-has-menu.opened>a:hover {
      background: #554378;
-     color: #FFF;
+     color: #fff;
  }
  
  #menuapp-container[menu-color-type="lpanel-bg6"].menu-minimized-lpanel #menu-left-panel .panel-list>li.menu-has-menu:hover>ul.menu-sub-menu,
@@ -691,7 +691,7 @@
  /*navigation panel with lpanel-bg7 theme Color Start*/
  
  #menuapp-container[menu-color-type="lpanel-bg7"] #menu-left-panel {
-     background: #FFF none repeat scroll 0 0;
+     background: #fff none repeat scroll 0 0;
      color: #7e7e7e;
      box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.2);
  }
@@ -709,7 +709,7 @@
  }
  
  #menuapp-container[menu-color-type="lpanel-bg7"] #menu-left-panel .panel-list>li>a {
-     background: #FFF;
+     background: #fff;
      border-top: 1px solid #efefef;
      color: #7e7e7e;
      border-right: 1px solid #efefef;
@@ -771,7 +771,7 @@
  }
  
  #menuapp-container[menu-color-type="lpanel-bg7"].menu-minimized-lpanel #menu-left-panel {
-     background: #FFF;
+     background: #fff;
      color: #7e7e7e;
  }
  
@@ -782,7 +782,7 @@
  }
  
  #menuapp-container[menu-color-type="lpanel-bg7"].menu-minimized-lpanel #menu-left-panel .panel-list>li.menu-has-menu.opened>a {
-     background: #FFF;
+     background: #fff;
      color: #7e7e7e;
  }
  
@@ -841,19 +841,19 @@
  
  #menuapp-container[menu-color-type="lpanel-bg8"] #menu-left-panel .panel-list>li>a:hover,
  #menuapp-container[menu-color-type="lpanel-bg8"] #menu-left-panel .panel-list>li>a:focus {
-     color: #FFF;
+     color: #fff;
      background: #2c3e50;
  }
  
  #menuapp-container[menu-color-type="lpanel-bg8"] #menu-left-panel .panel-list>li.active>a {
      background: #2c3e50;
      border-top: 1px solid #455769;
-     color: #FFF;
+     color: #fff;
  }
  
  #menuapp-container[menu-color-type="lpanel-bg8"] #menu-left-panel .panel-list>li.menu-has-menu.opened>a {
      background: #384b5f;
-     color: #FFF;
+     color: #fff;
  }
  
  #menuapp-container[menu-color-type="lpanel-bg8"] #menu-left-panel .panel-list ul {
@@ -869,12 +869,12 @@
  
  #menuapp-container[menu-color-type="lpanel-bg8"] #menu-left-panel .panel-list li.menu-has-menu>ul.menu-sub-menu li>a:hover,
  #menuapp-container[menu-color-type="lpanel-bg8"] #menu-left-panel .panel-list li.menu-has-menu>ul.menu-sub-menu li>a:focus {
-     color: #FFF;
+     color: #fff;
      background: #2c3e50;
  }
  
  #menuapp-container[menu-color-type="lpanel-bg8"] #menu-left-panel .panel-list li.active>a .selected {
-     border-right: 7px solid #FFF;
+     border-right: 7px solid #fff;
  }
  
  #menuapp-container[menu-color-type="lpanel-bg8"] #menu-left-panel .panel-list li a .label {
@@ -903,7 +903,7 @@
  
  #menuapp-container[menu-color-type="lpanel-bg8"].menu-minimized-lpanel #menu-left-panel .panel-list>li.menu-has-menu.opened>a:hover {
      background: #2c3e50;
-     color: #FFF;
+     color: #fff;
  }
  
  #menuapp-container[menu-color-type="lpanel-bg8"].menu-minimized-lpanel #menu-left-panel .panel-list>li.menu-has-menu:hover>ul.menu-sub-menu,
@@ -956,19 +956,19 @@
  
  #menuapp-container[menu-color-type="lpanel-bg9"] #menu-left-panel .panel-list>li>a:hover,
  #menuapp-container[menu-color-type="lpanel-bg9"] #menu-left-panel .panel-list>li>a:focus {
-     color: #FFF;
+     color: #fff;
      background: #4884b8;
  }
  
  #menuapp-container[menu-color-type="lpanel-bg9"] #menu-left-panel .panel-list>li.active>a {
      background: #4884b8;
      border-top: 1px solid #5d99cd;
-     color: #FFF;
+     color: #fff;
  }
  
  #menuapp-container[menu-color-type="lpanel-bg9"] #menu-left-panel .panel-list>li.menu-has-menu.opened>a {
      background: #578ebe;
-     color: #FFF;
+     color: #fff;
  }
  
  #menuapp-container[menu-color-type="lpanel-bg9"] #menu-left-panel .panel-list ul {
@@ -984,12 +984,12 @@
  
  #menuapp-container[menu-color-type="lpanel-bg9"] #menu-left-panel .panel-list li.menu-has-menu>ul.menu-sub-menu li>a:hover,
  #menuapp-container[menu-color-type="lpanel-bg9"] #menu-left-panel .panel-list li.menu-has-menu>ul.menu-sub-menu li>a:focus {
-     color: #FFF;
+     color: #fff;
      background: #276397;
  }
  
  #menuapp-container[menu-color-type="lpanel-bg9"] #menu-left-panel .panel-list li.active>a .selected {
-     border-right: 7px solid #FFF;
+     border-right: 7px solid #fff;
  }
  
  #menuapp-container[menu-color-type="lpanel-bg9"] #menu-left-panel .panel-list li a .label {
@@ -1018,7 +1018,7 @@
  
  #menuapp-container[menu-color-type="lpanel-bg9"].menu-minimized-lpanel #menu-left-panel .panel-list>li.menu-has-menu.opened>a:hover {
      background: #4884b8;
-     color: #FFF;
+     color: #fff;
  }
  
  #menuapp-container[menu-color-type="lpanel-bg9"].menu-minimized-lpanel #menu-left-panel .panel-list>li.menu-has-menu:hover>ul.menu-sub-menu,
