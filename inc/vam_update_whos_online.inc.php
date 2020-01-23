@@ -21,7 +21,7 @@
     if (isset($_SESSION['customer_id'])) {
       $wo_customer_id = $_SESSION['customer_id'];
 
-      $wo_full_name = addslashes($_SESSION['customer_first_name'] . ' ' . $_SESSION['customer_last_name']);
+      $wo_full_name = addslashes($_SESSION['customer_first_name']);
     } else {
       $wo_customer_id = 0;
       $wo_full_name = TEXT_GUEST;
