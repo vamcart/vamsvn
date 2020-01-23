@@ -1,68 +1,0 @@
-<script type="text/javascript">
-{literal}
-$(document).ready(function() {
-
-$(".payment-method").on("click",function(){
-$(".payment-method").parent().removeClass("selected");
-$(this).parent().addClass("selected");
-});
-
-	$("div#qiwi_rest").hide();
-	$("div#schet").hide();
-	$("div#kvitancia").hide();
-
-	$("input#qiwi_rest").click(function (){
-		$("div#qiwi_rest").toggle();
-	});
-	$("input#schet").click(function (){
-		$("div#schet").toggle();
-	});
-	$("input#kvitancia").click(function (){
-		$("div#kvitancia").toggle();
-	});
-
-});
-
-$(document).ajaxStop(function() {
-
-if ($("input#qiwi_rest").is(":checked")) {
-  $("div#qiwi_rest").show();
-} else {
-  $("div#qiwi_rest").hide();
-}
-
-if ($("input#schet").is(":checked")) {
-  $("div#schet").show();
-} else {
-  $("div#schet").hide();
-}
-
-if ($("input#kvitancia").is(":checked")) {
-  $("div#kvitancia").show();
-} else {
-  $("div#kvitancia").hide();
-}
-
-});
-{/literal}
-</script>
-{foreach name=aussen item=module_data from=$module_content}
-<label class="payment {$module_data.id}{if {$module_data.checked} == 1} selected{/if}" for="{$module_data.id}">
-<div class="payment-method {cycle values="itemOdd,itemEven"}">   <p>
-{$module_data.selection}&nbsp;{$module_data.icon} <span class="bold">{$module_data.module}</span> {$module_data.module_cost}
-</p>
-
-{if $module_data.description}<p>
-{$module_data.description}
-</p>{/if}
-
-{if $module_data.error != ''}<p>
-{$module_data.error}
-</p>{/if} 
-
-{foreach name=aussen item=method_data from=$module_data.fields} <p>
-{$method_data.title}&nbsp;{$method_data.field}
-</p> {/foreach}
-
-</div>
-</label> {/foreach}

@@ -1,23 +1,0 @@
-{config_load file="$language/lang_$language.conf" section="manufacturers"} <h1><a href="{$MANUFACTURERS_LINK}">{#heading_text#}</a></h1>
-<div class="page">
-<div class="pageItem">
-  {foreach name=aussen item=module_data from=$module_content}<dl class="itemNewProductsDefault">
-<dt class="itemImage">
-{if $module_data.PRODUCTS_IMAGE}<a href="{$module_data.PRODUCTS_LINK}"><img src="{$module_data.PRODUCTS_IMAGE}" alt="{$module_data.PRODUCTS_NAME}" title="{$module_data.PRODUCTS_NAME}" /></a><br />{/if}
-{$module_data.PRODUCTS_BUTTON_BUY_NOW}
-</dt>
-<dd class="itemDescription">
-<a href="{$module_data.PRODUCTS_LINK}">{$module_data.PRODUCTS_NAME}</a>
-</dd>
-
-<dd class="itemDescription">
-{$module_data.PRODUCTS_SHORT_DESCRIPTION|vam_truncate:$smarty.const.MAX_DISPLAY_SHORT_DESCRIPTION:"...":true}
-</dd>
-
-</dl>
-          {/foreach} 
-
-<div class="clear"></div>
-</div>
-
-</div>
