@@ -67,7 +67,7 @@ body {
 }
 
 .menu-left-header {
-    background: #fff;
+    background: #3498db;
     font-size: 16px;
     font-weight: 500;
     line-height: 50px;
@@ -89,7 +89,7 @@ body {
 }
 
 .menu-left-header a i {
-    color: #003c70;
+    color: #fff;
     font-size: 22px;
     position: relative;
     top: 3px;
@@ -784,7 +784,7 @@ body {
 #menuapp-wrapper[menu-device-type="phone"] .menu-right-header {
     width: 100%;
     padding-left: 0px !important;
-    position: relative;
+    /*position: relative;*/
     z-index: 999;
     top: 50px;
 }

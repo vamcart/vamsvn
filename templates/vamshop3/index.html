@@ -2,13 +2,13 @@
 {config_load file="$language/lang_$language.conf" section="boxes"}
 
     <div id="menuapp-wrapper" class="menu-hide-lpanel" menu-device-type="desktop">
-        <header id="menu-header" menu-lpanel-effect="shrink">
-            <div class="menu-left-header">
-                <a href="{$mainpage}"><i class="fa fa-shopping-basket"></i> <span class="text-dark">{if $smarty.const.STORE_TELEPHONE}{$smarty.const.STORE_TELEPHONE}{else}{$smarty.const.STORE_NAME}{/if}</span></a>
+        <header id="menu-header" menu-lpanel-effect="shrink" class="menu-minimized-lpanel">
+            <div class="menu-left-header" menu-position-type="fixed">
+                <a href="{$mainpage}"><i class="fa fa-shopping-basket"></i> <span>{if $smarty.const.STORE_TELEPHONE}{$smarty.const.STORE_TELEPHONE}{else}{$smarty.const.STORE_NAME}{/if}</span></a>
                 <span class="menu-sidebar-toggle"><a href="#"></a></span>
             </div>
 
-            <div class="menu-right-header" menu-position-type="relative">
+            <div class="menu-right-header" menu-position-type="fixed">
                 <span class="menu-sidebar-toggle"><a href="javascript:void(0)"></a></span>
                 <ul class="left-navbar">
                     <li>
@@ -93,8 +93,8 @@
 
             </div>
         </header>
-        <div id="menuapp-container" menu-color-type="lpanel-bg2" menu-lpanel-effect="shrink">
-            <aside id="menu-left-panel" menu-position-type="absolute">
+        <div id="menuapp-container" menu-color-type="lpanel-bg2" menu-lpanel-effect="shrink" class="menu-minimized-lpanel">
+            <aside id="menu-left-panel" menu-position-type="fixed">
                 <ul class="nav panel-list">
                     <li>
                         <a href="{$smarty.const.FILENAME_SPECIALS}">
