@@ -1,0 +1,14 @@
+{config_load file="$language/lang_$language.conf" section="boxes"} {config_load file="$language/lang_$language.conf" section="reviews"} <div class="module">
+<h3><a href="{$REVIEWS_ALL_LINK}">{#heading_text#}</a></h3>
+<div class="moduleContent">
+<div class="owl-carousel owl-theme">
+{foreach name=aussen item=module_data from=$module_content}
+{include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/product-card/product-card-review.html"}
+{/foreach}
+</div>
+{#text_total#}: <strong>{$REVIEWS_TOTAL}</strong>
+<div class="reviewsAll">
+<a class="btn btn-outline-primary" href="{$REVIEWS_ALL_LINK}"><i class="far fa-comments"></i> {#text_all#}</a>
+</div>
+</div>
+</div>

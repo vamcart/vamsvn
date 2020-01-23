@@ -1,0 +1,96 @@
+{config_load file="$language/affiliate_lang_$language.conf" section="affiliate_account_details"}
+<script type="text/javascript" src="jscript/modified.js"></script>
+<script type="text/javascript">
+{literal}
+$(document).ready(function(){
+
+$(function () {
+    $('#affiliate_signup :input:text:visible:enabled:first').focus();
+})
+
+  $("#country").change(function(){
+      var searchString = $(this).val();
+      $.ajax({
+                     url: "index_ajax1.php",             
+                     dataType : "html",                       
+                     data: "q=includes/modules/ajax/loadStateXML.php&country_id="+searchString,
+                     type: "POST",   
+                     success: function(msg){$("#stateXML").html(msg);}            
+                   });                     
+                           
+                           
+   });
+
+
+})
+
+{/literal}
+</script>
+<!-- форма -->
+<fieldset class="form">
+<legend>{#category_personal#}</legend>
+{if $smarty.const.ACCOUNT_GENDER == 'true'}
+<p>{#entry_gender#} {$gender_male}&nbsp;{$gender_female}</p>
+{/if}
+<p>{#entry_first_name#} {$firstname_content}</p>
+<p>{#entry_lastname#} {$lastname_content}</p>
+{if $smarty.const.ACCOUNT_DOB == 'true'} 
+<p>{#entry_date_of_birth#} {$dob_content}</p>
+{/if}
+<p>{#entry_email_address#} {$email_content}</p>
+</fieldset>
+{if $smarty.const.ACCOUNT_COMPANY == 'true'}<fieldset class="form">
+<legend>{#category_company#}</legend>
+<p>{#entry_affiliate_company#} {$company_content}</p>
+<p>{#entry_affiliate_company_taxid#} {$company_taxid_content}</p>
+</fieldset>
+{/if}
+<fieldset class="form">
+<legend>{#category_payment_details#}</legend>
+{if $AFFILIATE_USE_CHECK == 'true'} 
+<p>{#entry_affiliate_payment_check#} {$payment_check_content}</p>
+{/if}
+{if $AFFILIATE_USE_PAYPAL == 'true'} 
+<p>{#entry_affiliate_payment_paypal#} {$payment_paypal_content}</p>
+{/if}
+{if $AFFILIATE_USE_BANK == 'true'} 
+<p>{#entry_affiliate_payment_bank_name#} {$payment_bank_name_content}</p>
+<p>{#entry_affiliate_payment_bank_branch_number#} {$payment_bank_branch_number_content}</p>
+<p>{#entry_affiliate_payment_bank_swift_code#} {$payment_bank_swift_code_content}</p>
+<p>{#entry_affiliate_payment_bank_account_name#} {$payment_bank_account_name_content}</p>
+<p>{#entry_affiliate_payment_bank_account_number#} {$payment_bank_account_number_content}</p>
+{/if}
+</fieldset>
+<fieldset class="form">
+<legend>{#category_address#}</legend>
+{if $smarty.const.ACCOUNT_STREET_ADDRESS == 'true'}<p>{#entry_street_address#} {$street_address_content}</p>
+{/if}
+{if $smarty.const.ACCOUNT_SUBURB == 'true'}<p>{#entry_suburb#} {$suburb_content}</p>
+{/if}
+{if $smarty.const.ACCOUNT_POSTCODE == 'true'}<p>{#entry_post_code#} {$postcode_content}</p>
+{/if}
+{if $smarty.const.ACCOUNT_CITY == 'true'}<p>{#entry_city#} {$city_content}</p>
+{/if}
+{if $smarty.const.ACCOUNT_COUNTRY == 'true'}<p>{#entry_country#} {$country_id_content}</p>
+{/if}
+{if $smarty.const.ACCOUNT_STATE == 'true'}<p>{#entry_state#} <span id="stateXML">{$state_content}</span></p>
+{/if}
+</fieldset>
+<fieldset class="form">
+{if $smarty.const.ACCOUNT_TELE == 'true'}<legend>{#category_contact#}</legend>
+{/if}
+{if $smarty.const.ACCOUNT_TELE == 'true'}<p>{#entry_telephone_number#} {$telephone_content}</p>
+{/if}
+{if $smarty.const.ACCOUNT_FAX == 'true'}<p>{#entry_fax_number#} {$fax_content}</p>
+{/if}
+<p>{#entry_affiliate_homepage#} {$homepage_content}</p>
+</fieldset>
+{if $PASSWORD_READONLY == 'false'}
+<fieldset class="form">
+<legend>{#category_password#}</legend>
+<p>{#entry_password#} {$password_content}</p>
+<p>{#entry_password_confirmation#} {$password_confirmation_content}</p>
+</fieldset>
+{/if}
+<p>{$agb_content}</p>
+<!-- /форма -->

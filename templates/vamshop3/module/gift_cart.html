@@ -1,0 +1,40 @@
+{config_load file="$language/lang_$language.conf" section="gift_cart"}
+
+{if $ACTIVATE_GIFT=='true'}
+{$FORM_ACTION}
+{if $GV_AMOUNT neq ''}
+{#text_info#}
+<br />
+{#voucher_balance#} <span class="bold">{$GV_AMOUNT}</span>
+<br />
+{#text_send_to_friend#} <a href="{$GV_SEND_TO_FRIEND_LINK}">{#box_send_to_friend#}</a>
+<br />
+{/if}
+{if $COUPON_AMOUNT2 neq ''}
+{#voucher_redeemed#}
+<br />
+{$COUPON_AMOUNT2}
+<br />
+{/if}
+{if $COUPON_HELP_LINK neq ''}
+{#cart_coupon#} {$COUPON_HELP_LINK} {#cart_coupon_info#}</a>
+<br />
+{/if}
+{if $C_FLAG == 'true'}
+<!-- форма -->
+<br />
+<fieldset class="form">
+<legend>{#text_gift#}</legend>
+<p>{#text_code#} {$INPUT_CODE} {$BUTTON_SUBMIT}</p>
+</fieldset>
+<!-- /форма -->
+{else}
+<p>
+{#create_account#}
+</p>
+<p>
+<a href="{$LINK_ACCOUNT}"><span class="bold">{#text_create_account#}</span></a>
+</p>
+{/if}
+{$FORM_END}
+{/if}

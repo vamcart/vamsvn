@@ -1,0 +1,28 @@
+{if {$slider_bootstrap|@count} > 0} 
+{if $smarty.SERVER.REQUEST_URI == '/'}
+
+<div id="carouselExampleInterval" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+      {foreach item=num from=$slider_bootstrap}
+      <li data-target="#carouselExampleInterval" data-slide-to="{$num@index}"{if $num@first} class="active"{/if}></li>
+      {/foreach}
+    </ol>
+  <div class="carousel-inner">
+    {foreach item=slides from=$slider_bootstrap}
+    <div class="carousel-item{if $slides@first} active{/if}" data-interval="10000">
+      <a href="{$slides.url}"><img src="images/banner/{$slides.image}" class="d-block w-100" alt="{$slides.title}" /></a>
+    </div>
+    {/foreach}
+  </div>
+  <a class="carousel-control-prev" href="#carouselExampleInterval" role="button" data-slide="prev">
+    <span class="fa fa-chevron-circle-left fa-2x" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleInterval" role="button" data-slide="next">
+    <span class="fa fa-chevron-circle-right fa-2x" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+
+{/if}
+{/if}

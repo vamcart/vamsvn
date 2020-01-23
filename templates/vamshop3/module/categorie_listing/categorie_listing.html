@@ -1,0 +1,46 @@
+{config_load file="$language/lang_$language.conf" section="categorie_listing"}
+<div class="page">
+<h1>{$CATEGORIES_NAME}</h1>
+<div class="pageItem">
+<div class="clear"></div>
+</div>
+
+</div>
+	  
+	  
+	  
+{if $module_content !=''}
+<div class="page">
+<div class="pageItem">
+
+<div class="module">
+<div class="moduleContent">
+<div class="owl-carousel owl-theme">
+{foreach name=aussen item=module_data from=$module_content}
+{include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/box/box-card-category.html"}
+{/foreach}
+</div>
+</div>
+</div>
+
+		  {/if}
+<div class="clear"></div>
+</div>
+
+</div>
+
+<div class="page">
+<div class="pageItem">
+
+{if $CATEGORIES_DESCRIPTION}
+<p>
+{$CATEGORIES_DESCRIPTION}
+</p>
+{/if}
+
+<div class="clear"></div>
+</div>
+
+</div>
+{$MODULE_featured_products}
+{$MODULE_new_products}

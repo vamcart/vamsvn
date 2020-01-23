@@ -1,0 +1,37 @@
+/*################ Theme Header With shrink Effect Start #####################*/
+#menu-header[menu-lpanel-effect="shrink"] .menu-right-header[menu-position-type="relative"] {
+  margin-left: 230px;
+   padding-right: 0;
+}
+#menu-header[menu-lpanel-effect="shrink"].menu-minimized-lpanel .menu-right-header[menu-position-type="relative"] {
+  margin-left: 50px;
+  padding-right: 0;
+}
+#menu-header[menu-lpanel-effect="shrink"] .menu-right-header[menu-position-type="fixed"] {
+	padding-right: 230px;
+	margin-left: 230px;
+}
+#menu-header[menu-lpanel-effect="shrink"].menu-minimized-lpanel .menu-right-header[menu-position-type="fixed"] {
+padding-right: 50px;
+	margin-left: 50px;
+}
+#menu-header[menu-lpanel-effect="shrink"] .menu-right-header[menu-position-type="relative"] .menu-sidebar-toggle a:after {
+    margin-left: 0px;
+}
+#menu-header.menu-minimized-lpanel[menu-lpanel-effect="shrink"] .menu-right-header[menu-position-type="relative"] .menu-sidebar-toggle a:after {
+    margin-left: 0px;
+}
+#menu-header[menu-lpanel-effect="shrink"] .menu-right-header[menu-position-type="fixed"] .menu-sidebar-toggle a:after {
+    left: 0px;
+}
+#menu-header.menu-minimized-lpanel[menu-lpanel-effect="shrink"] .menu-right-header[menu-position-type="fixed"] .menu-sidebar-toggle a:after {
+    left: 0px;
+}
+
+#menuapp-container[menu-lpanel-effect="shrink"] #main-content{
+	margin-left: 230px;
+}
+#menuapp-container[menu-lpanel-effect="shrink"].menu-minimized-lpanel #main-content{
+	margin-left: 50px;
+}
+/*################ Theme Header With shrink Effect Close #####################*/

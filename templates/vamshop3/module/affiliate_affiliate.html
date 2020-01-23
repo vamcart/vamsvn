@@ -1,0 +1,64 @@
+{config_load file="$language/affiliate_lang_$language.conf" section="affiliate_affiliate"}
+<div class="page">
+<h1>{#heading_title#}</h1>
+<div class="pageContent">
+{$FORM_ACTION}
+{if $info_message neq 'false'}<div class="contacterror">{$info_message_text}</div>
+{/if}<dl class="Login">
+<dt class="Login">
+</dt>
+
+<dd class="Login">
+<span class="bold">{#heading_new_affiliate#}</span>
+</dd>
+
+<dd>
+{#text_new_affiliate#}
+</dd>
+
+<dd>
+{#text_affiliate_introduction#}
+</dd>
+
+<dd>
+{$LINK_TERMS}{#text_new_affiliate_terms#}</a>
+</dd>
+
+<dd>
+{$LINK_SIGNUP}
+</dd>
+
+</dl>
+<dl class="Login">
+<dt class="Login">
+</dt>
+
+<dd>
+{#text_returning#}
+</dd>
+
+<dd>
+<!-- форма -->
+<fieldset class="form">
+<legend>{#heading_returning_affiliate#}</legend>
+<p>{#text_affiliate_id#} {$INPUT_AFFILIATE_USERNAME}</p>
+<p>{#text_affiliate_password#} {$INPUT_AFFILIATE_PASSWORD}</p>
+</fieldset>
+<!-- /форма -->
+
+<p>
+{$LINK_PASSWORD_FORGOTTEN}{#text_affiliate_password_forgotten#}</a>
+</p>
+<p>
+{$BUTTON_LOGIN}
+</p>
+
+</dd>
+
+</dl>
+<div class="clear"></div>
+
+</form>
+
+</div>
+</div>

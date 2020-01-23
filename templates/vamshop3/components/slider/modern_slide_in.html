@@ -1,0 +1,35 @@
+{if {$slider_modern_slide_in|@count} > 1} 
+
+  <link href="jscript/sequencejs/themes/modern-slide-in/css/sequence-theme.modern-slide-in.css" rel="stylesheet" media="all">
+
+  <div id="sequence" class="seq">
+    <div class="seq-screen">
+      <ul class="seq-canvas">
+        {foreach item=slide from=$slider_modern_slide_in}
+        <li{if $slide@first} class="seq-in"{/if}>
+          <div class="seq-model">
+            <a href="{$slide.url}"><img data-seq src="images/banner/{$slide.image}" alt="{$slide.title}" /></a>
+          </div>
+
+          <div class="seq-title">
+            <h2 data-seq><a href="{$slide.url}">{$slide.title}</a></h2>
+            <h3 data-seq>{$slide.description}</h3>
+          </div>
+        </li>
+        {/foreach}
+      </ul>
+    </div>
+
+    <fieldset class="seq-nav" aria-controls="sequence">
+      <button type="button" class="seq-prev">{#text_previous#}</button>
+      <button type="button" class="seq-next">{#text_next#}</button>
+    </fieldset>
+
+  </div>
+
+  <script src="jscript/sequencejs/imagesloaded.pkgd.min.js"></script>
+  <script src="jscript/sequencejs/hammer.min.js"></script>
+  <script src="jscript/sequencejs/sequence.min.js"></script>
+  <script src="jscript/sequencejs/themes/modern-slide-in/scripts/sequence-theme.modern-slide-in.js"></script>
+
+{/if}  

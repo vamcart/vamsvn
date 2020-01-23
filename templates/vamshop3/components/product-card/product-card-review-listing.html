@@ -1,0 +1,61 @@
+  <div class="card card-product h-100" itemprop="review" itemscope itemtype="http://schema.org/Review">
+	<div class="card-body">
+	<div class="row">
+		{if $module_data.PRODUCT.PRODUCTS_LABEL}{$module_data.PRODUCT.PRODUCTS_LABEL}{/if}
+		{if $module_data.PRODUCT.PRODUCTS_SPECIAL > 0}<span class="badge-offer"><b>-{$module_data.PRODUCT.PRODUCTS_SPECIAL|round}%</b></span>{/if}
+		<div class="col-md-3">
+			<div class="img-wrap"><a href="{$module_data.PRODUCT.PRODUCTS_LINK}"><img src="{$module_data.PRODUCT.PRODUCTS_IMAGE}" alt="{$module_data.PRODUCT.PRODUCTS_NAME}"></a></div>
+		</div>
+		<div class="col-md-6">
+			
+				<h4 class="title" itemprop="itemReviewed"><a href="{$module_data.PRODUCT.PRODUCTS_LINK}">{$module_data.PRODUCT.PRODUCTS_NAME}</a></h4>
+				{if $module_data.PRODUCT.REVIEWS_TOTAL > 0}
+				<div class="rating-wrap">
+					<div class="label-rating"><span class="bold">{#text_rating#}</span> <span itemprop="reviewRating" itemscope itemtype="http://schema.org/Rating"><span itemprop="ratingValue" content="{$module_data.REVIEW.RATING}">{$module_data.REVIEW.STAR_RATING}</span></span></div>
+					<div class="label-rating"><span class="bold">{#text_date#}</span> <span content="{$module_data.REVIEW.DATE|date_format:"%Y-%m-%d"}" itemprop="datePublished">{$module_data.REVIEW.DATE}</span></div>
+					<div class="desc"><span class="bold">{#text_author#}</span> <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">{$module_data.REVIEW.AUTHOR}</span></span></div>
+					{if $module_data.REVIEW.CUSTOMER}<div class="desc"><span class="btn btn-outline-primary btn-sm"><i class="fas fa-user-check"></i> {$smarty.const.TEXT_BADGE_CUSTOMER}</span></div>{/if}
+				</div>
+				{/if}
+				{if {$module_data.REVIEW.TEXT}}
+				<div class="desc" itemprop="reviewBody">
+				<br />
+            {if $smarty.SERVER.SCRIPT_NAME != '/product_reviews_info.php'}
+				{$module_data.REVIEW.TEXT|strip_tags|vam_truncate:$smarty.const.MAX_DISPLAY_SHORT_DESCRIPTION:"...":true}
+				{else}
+				{$module_data.REVIEW.TEXT|strip_tags}
+				{/if}
+				</div>
+				<br />
+				{/if}
+
+            {if $smarty.SERVER.SCRIPT_NAME != '/product_reviews_info.php'}
+				<div class="desc">
+				<a class="btn btn-outline-primary" href="{$module_data.REVIEW.REVIEWS_LINK}"><i class="far fa-comment"></i> {#text_read#} {$module_data.PRODUCT.PRODUCTS_NAME}</a>
+				</div>
+				{/if}
+
+            {if $smarty.SERVER.SCRIPT_NAME != '/product_reviews.php'}
+				<div class="desc pt-2">
+				<a class="btn btn-outline-primary" href="{$module_data.REVIEW.REVIEWS_ALL_LINK}"><i class="far fa-comments"></i> {#text_all#} {$module_data.PRODUCT.PRODUCTS_NAME}</a>
+				</div>
+				{/if}
+
+		</div>
+		<div class="col-md-3 border-left text-center">
+			<div class="action-wrap">
+				{if $module_data.PRODUCT.PRODUCTS_PRICE_PLAIN > 0}
+				<div class="price-wrap h4">
+					{$module_data.PRODUCT.PRODUCTS_PRICE}
+				</div>
+				{/if}
+				{if $module_data.PRODUCTS_PRICE_PLAIN > 0 or $module_data.PRODUCT.PRODUCTS_PRICE_PLAIN > 0}
+				<div>
+					{$module_data.PRODUCT.PRODUCTS_BUTTON_BUY_NOW_NEW}
+				</div>
+				{/if}
+			</div>
+		</div>
+	</div>
+	</div>
+</div>

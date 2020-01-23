@@ -1,0 +1,39 @@
+<script>
+{literal}
+$(document).ready(function() {
+$(".payment-method").on("click",function(){
+$(".payment-method").removeClass("selected");
+$(this).addClass("selected");
+});
+});
+{/literal}
+</script>
+<div class="card-deck payment-methods">
+{foreach name=aussen item=module_data from=$module_content}
+<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-4">
+<div class="payment-method card card-product card-sm text-center h-100{if {$module_data.checked} == 1} selected{/if}">
+<label class="h-100 payment {$module_data.id}" for="{$module_data.id}">
+  <div class="card-header d-flex justify-content-between">
+    <div>{$module_data.selection}</div>
+    <div>{$module_data.module}</div>
+    <div class="font-weight-bolder">{if $module_data.module_cost}<span class="badge badge-secondary font-weight-bold">{$module_data.module_cost}</span>{/if}</div>
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">{$module_data.icon}</h5>
+    {if $module_data.description}<p class="card-text">{$module_data.description}</p>{/if}
+    {if $module_data.error != ''}<p class="card-text">{$module_data.error}</p>{/if}
+  </div>
+  <div class="card-footer">
+    {if {$module_data.fields}}
+    <div class="payment-fields">
+    {foreach name=aussen item=method_data from=$module_data.fields}     <p>
+    {$method_data.title}&nbsp;{$method_data.field}
+    </p>     {/foreach}
+    </div>
+    {/if}
+  </div>
+</label>  
+</div>
+</div>
+{/foreach}
+</div>

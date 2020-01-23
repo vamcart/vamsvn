@@ -1,0 +1,14 @@
+{config_load file="$language/lang_$language.conf" section="reviews"}
+<div class="page">
+<h1>{#heading_reviews#}</h1>
+<div class="pageContent">
+{foreach name=aussen item=module_data from=$module_content}
+{include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/product-card/product-card-review-listing.html"}
+{/foreach}
+<div class="clear"></div>
+<div class="navigation">
+<span class="right">{$NAVBAR}</span>{$NAVBAR_PAGES}
+</div>
+<div class="clear"></div>
+</div>
+</div>

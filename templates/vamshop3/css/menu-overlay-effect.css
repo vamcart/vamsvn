@@ -1,0 +1,37 @@
+/*################ Theme Header With Content Overlay Effect Start #####################*/
+#menu-header[menu-lpanel-effect="overlay"] .menu-right-header[menu-position-type="fixed"] {
+  margin-left:  0px;
+  padding-right: 0px;
+}
+#menu-header[menu-lpanel-effect="overlay"].menu-minimized-lpanel .menu-right-header[menu-position-type="fixed"] {
+    margin-left:  50px;
+    padding-right: 50px;
+}
+#menu-header[menu-lpanel-effect="overlay"] .menu-right-header[menu-position-type="relative"] {
+  margin-left: 0px;
+}
+#menu-header.menu-minimized-lpanel[menu-lpanel-effect="overlay"] .menu-right-header[menu-position-type="relative"] {
+  margin-left: 50px;   
+}
+#menu-header[menu-lpanel-effect="overlay"] .menu-right-header[menu-position-type="relative"] .menu-sidebar-toggle a:after {
+    margin-left:  230px;
+	
+}
+#menu-header.menu-minimized-lpanel[menu-lpanel-effect="overlay"] .menu-right-header[menu-position-type="relative"] .menu-sidebar-toggle a:after {
+     margin-left: 0px;
+}
+#menu-header[menu-lpanel-effect="overlay"] .menu-right-header[menu-position-type="fixed"] .menu-sidebar-toggle a:after {
+  margin-left:  230px;
+}
+#menu-header.menu-minimized-lpanel[menu-lpanel-effect="overlay"] .menu-right-header[menu-position-type="fixed"] .menu-sidebar-toggle a:after {
+    margin-left:  0px; 
+}
+
+
+#menuapp-container[menu-lpanel-effect="overlay"] #main-content{
+	 margin-left: 50px;
+}
+#menuapp-container[menu-lpanel-effect="overlay"].menu-minimized-lpanel #main-content{
+	 margin-left: 50px;
+}
+/*################ Theme Header With Content Overlay Effect Close #####################*/

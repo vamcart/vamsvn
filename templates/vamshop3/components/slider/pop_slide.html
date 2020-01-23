@@ -1,0 +1,41 @@
+{if {$slider_pop_slide|@count} > 1} 
+
+<link href="jscript/sequencejs/themes/pop-slide/css/sequence-theme.pop-slide.css" rel="stylesheet" media="all">
+
+<style>
+{foreach item=bg from=$slider_pop_slide}
+.seq .seq-step{counter name=bg} {
+  background-image: url("images/banner/{$bg.image}");
+}
+{/foreach}
+</style>
+
+  <div id="sequence" class="seq">
+
+    <div class="seq-screen">
+      <ul class="seq-canvas">
+        {foreach item=slides from=$slider_pop_slide} 
+        <li class="seq-step{counter name=slides} seq-in">
+          <div data-seq class="seq-title">
+            <h2>{$slides.description}</h2>
+            <a class="seq-button" href="{$slides.url}">{#text_view_now#} ></a>
+          </div>
+        </li>
+        {/foreach}
+
+      </ul>
+    </div>
+
+    <ul class="seq-pagination">
+      {foreach item=nav from=$slider_pop_slide}
+      <li><a href="#step{counter name=pagination1}" title="{#text_go_to_slide#} {counter name=pagination3}">{$nav.title}</a></li>
+      {/foreach}
+    </ul>
+  </div>
+
+  <script src="jscript/sequencejs/imagesloaded.pkgd.min.js"></script>
+  <script src="jscript/sequencejs/hammer.min.js"></script>
+  <script src="jscript/sequencejs/sequence.min.js"></script>
+  <script src="jscript/sequencejs/themes/pop-slide/scripts/sequence-theme.pop-slide.js"></script>
+  
+{/if}  

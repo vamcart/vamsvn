@@ -1,0 +1,24 @@
+	<section class="reviews reviewsCompany">
+		<div class="wrapper">
+			<div class="titleIndex">
+				<h3>Отзывы <i class="fa fa-angle-up"></i></h3>
+			</div>
+			<div class="reviews_content colapse">
+				<div class="owl-carousel owl-theme" id="reviews">
+{foreach name=aussen item=module_data from=$module_content_reviews_company}
+					<div class="item modalReview">
+						<div class="autorBlock">
+							<img src="{$module_data.REVIEWS_AVATAR}" alt="Отзыв">
+							<p class="nameReview">{$module_data.REVIEWS_NAME}</p>
+							<p class="revData">{$module_data.REVIEWS_DATE}</p>
+							<a href="{$module_data.REVIEWS_LINK}"><u>Читать отзыв</u></a>
+						</div>
+						<p>{$module_data.REVIEWS_TEXT|strip_tags|vam_truncate:300:"...":true}</p>
+					</div>
+{/foreach}
+
+				</div>
+				<a href="company_reviews.php?manufacturers_id={$smarty.get.manufacturers_id}" class="show_all">Все отзывы <i class="fa fa-angle-right"></i></a>
+			</div>
+		</div>
+	</section>

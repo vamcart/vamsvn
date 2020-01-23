@@ -1,0 +1,109 @@
+{config_load file="$language/lang_$language.conf" section="index"}
+<style>
+{literal}
+.vamshop_menu_open {cursor:pointer;margin:0;} 
+#vamshop_menu_icon .vamshop_menu_close {display:block; ;color:#333;background:transparent; position:absolute; right:20px; top:20px; z-index:100020;}
+
+#vamshop_menu_panel {width:100%; height:100%; position:fixed; left:-100%; top:0; z-index:100010; transition:0.3s 0.1s; 
+  display:flex; flex-direction:row; flex-wrap:wrap; justify-content:space-between;
+}
+#vamshop_menu_panel #vamshop_menu_left {width:50%; height:100%; background:#f8f9fa; position:relative; overflow:auto;
+  display:flex; flex-direction:column; flex-wrap:nowrap; justify-content:center;
+}
+#vamshop_menu_panel #vamshop_menu_left h1 {padding:0; margin:0; text-align:center; color:#007bff; text-shadow:0 0 3px #fff;}
+#vamshop_menu_panel #vamshop_menu_left #social {text-align:center; width:100%;}
+#vamshop_menu_panel #vamshop_menu_left .social {color:#555; display:inline-block; font-size:20px; margin:5px; transition:0.2s;}
+#vamshop_menu_panel #vamshop_menu_left .social:hover {color:#000;}
+#vamshop_menu_panel #vamshop_menu_left p {color:#333; text-align:center;}
+
+#vamshop_menu_panel #vamshop_menu_right {order:2; width:50%; height:100%; background:#fff; color:#aaa; overflow-y:auto; -webkit-overflow-scrolling: touch;
+  display:flex; flex-direction:column; flex-wrap:nowrap; justify-content:center;
+}
+
+#vamshop_menu_right #vamshop_menu p {position:relative; padding:0; margin:0;}
+#vamshop_menu_right #vamshop_menu p label {display:block; color: #4e4e4e; font-size: 18px; font-weight: 400; line-height:40px;}
+#vamshop_menu_right #vamshop_menu p label::after {content:""; display:block; width:6px; height:6px; border:2px solid #aaa; border-width:0 2px 2px 0; position:absolute; right:20px; top:15px; transform:rotate(-45deg); transition:0.2s;}
+#vamshop_menu_right #vamshop_menu p label:hover {color:#007bff;}
+#vamshop_menu_right #vamshop_menu p label:hover::after {border-color:#007bff;}
+#vamshop_menu_right #vamshop_menu p label:last-child {display:none; position:absolute; left:0; top:0; width:100%; height:40px; background:rgba(0,0,0,0);}
+
+#vamshop_menu_right #vamshop_menu p a {line-height:40px; color:#4e4e4e; font-size: 18px; font-weight: 400; text-decoration:none;}
+#vamshop_menu_right #vamshop_menu p a:hover {color:#000;}
+
+#vamshop_menu_right #vamshop_menu div p {height:0; overflow:hidden; opacity:0; transition:0.45s; position:relative;}
+
+#vamshop_menu_right div {padding:0; margin:0; list-style:none;}
+
+#vamshop_menu_right #vamshop_menu {width:calc(100% - 100px); max-width:400px; min-width:300px; margin:0 auto; max-height:100%;}
+#vamshop_menu_right #vamshop_menu > p {text-indent:0;}
+#vamshop_menu_right #vamshop_menu div {position:relative;}
+#vamshop_menu_right #vamshop_menu div::before {content:""; display:block; width:1px; height:calc(100% - 20px); background:#007bff; position:absolute; left:5px; top:0;}
+#vamshop_menu_right #vamshop_menu div p {text-indent:15px; position:relative;}
+#vamshop_menu_right #vamshop_menu div p::before {content:""; display:block; width:8px; height:1px; background:#007bff; position:absolute; left:5px; top:19px;}
+#vamshop_menu_right #vamshop_menu div div::before {left:20px;}
+#vamshop_menu_right #vamshop_menu div div p {text-indent:30px;}
+#vamshop_menu_right #vamshop_menu div div p::before {left:20px;}
+#vamshop_menu_right #vamshop_menu div div div::before {left:35px;}
+#vamshop_menu_right #vamshop_menu div div div p {text-indent:45px;}
+#vamshop_menu_right #vamshop_menu div div div p::before {left:35px;}
+
+input[id*="vamshop_menu"] {display:none;}
+
+input[class*="ip00"]:checked ~ #wrapper {overflow:hidden;}
+input[class*="ip00"]:checked ~ #vamshop_menu_icon {position:fixed;}
+input[class*="ip00"]:checked ~ #vamshop_menu_icon .vamshop_menu_close {display:block;}
+
+input[class*="ip00"]:checked ~ #vamshop_menu_panel {left:0; transition:0.5s;}
+
+
+
+{/literal}
+
+{$CATEGORIES_CSS1}{literal}input[class*="ipyy"]:checked ~ #vamshop_menu_panel #vamshop_menu_right #vamshop_menu .vamshop_menuyy + div > p {height:40px; opacity:1;}{/literal}
+
+{$CATEGORIES_CSS2}{literal}#vamshop_menuyy:checked ~ #vamshop_menu_panel #vamshop_menu_right #vamshop_menu .vamshop_menuyy > label:last-child {display:block;}{/literal}
+
+{$CATEGORIES_CSS3}{literal}input[class*="ipyy"]:checked ~ #vamshop_menu_panel #vamshop_menu_right #vamshop_menu .vamshop_menuyy > label {color:#007bff;}{/literal}
+
+{$CATEGORIES_CSS4}{literal}input[class*="ipyy"]:checked ~ #vamshop_menu_panel #vamshop_menu_right #vamshop_menu .vamshop_menuyy > label::after {transform:rotate(45deg); border-color:#007bff;}{/literal}
+
+
+{literal}
+@media only screen and (max-width: 640px) {
+#header #vamshop_menu_icon {right:15px;}
+#vamshop_menu_right #vamshop_menu {min-width:260px; margin:0 auto;}
+#vamshop_menu_panel #vamshop_menu_left {width:0; display:none;}
+#vamshop_menu_panel #vamshop_menu_right {width:100%; min-width:320px;}
+}
+@media only screen and (max-width: 480px) {
+#vamshop_menu_right #vamshop_menu {margin:0 0 0 10px;}
+}
+
+{/literal}
+</style>
+
+<input type="radio" name="vamshop_menu" id="vamshop_menuXX" class="ipXX">
+<input type="radio" name="vamshop_menu" id="vamshop_menu00" class="ip00">
+
+{$CATEGORIES_INPUT}
+
+<div id="vamshop_menu_panel">
+
+<div id="vamshop_menu_icon"><label for="vamshop_menuXX" class="vamshop_menu_close modal-close"><i class="fas fa-times-circle fa-2x"></i></label></div>
+
+	<div id="vamshop_menu_left">
+		<div class="text-center"><img src="{$tpl_path}img/logo-big.png" width="311" height="76" alt="logo"></div>
+	</div>
+
+	<div id="vamshop_menu_right">
+		<div id="vamshop_menu">
+			<p><a href="{$mainpage}">{$smarty.const.TITLE_DEFAULT_PAGE}</a></p>		
+			<p><a href="{$smarty.const.FILENAME_SPECIALS}">{$smarty.const.TITLE_SPECIALS_DEFAULT}</a></p>		
+			<p><a href="{$smarty.const.FILENAME_MANUFACTURERS}">{$smarty.const.TITLE_MANUFACTURERS_DEFAULT}</a></p>		
+			<p><a href="{$smarty.const.FILENAME_PRODUCTS_NEW}">{$smarty.const.TITLE_NEW_PRODUCTS_DEFAULT}</a></p>		
+			<p><a href="{$smarty.const.FILENAME_BEST_SELLERS}">{$smarty.const.TITLE_BEST_SELLERS_DEFAULT}</a></p>		
+			<p><a href="{$smarty.const.FILENAME_FEATURED}">{$smarty.const.TITLE_FEATURED_DEFAULT}</a></p>		
+			{$CATEGORIES_TREE}
+		</div>
+	</div>
+</div>

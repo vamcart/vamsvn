@@ -1,0 +1,59 @@
+{config_load file="$language/lang_$language.conf" section="account_edit"} 
+<!-- Скругленные углы -->
+<div class="page">
+<!-- Содержимое страницы -->
+<div class="pageContent">
+<!-- Заголовок страницы -->
+<h1>{#heading_account#}</h1>
+<!-- /Заголовок страницы -->
+{if $error!=''}
+{$error}
+{/if}
+{$FORM_ACTION}
+<span class="Requirement">{#text_must#}</span>
+<br />
+<br />
+<!-- форма -->
+<fieldset class="form">
+<legend>{#title_personal#}</legend>
+{if $csID}
+<p><label for="csid">{#csID#}</label> {$csID}</p>
+{/if}
+{if $gender=='1'} 
+<p><label for="gender">{#text_gender#}</label> {$INPUT_MALE}&nbsp;{$INPUT_FEMALE}</p>
+{/if}
+<p><label for="firstname">{#text_firstname#}</label> {$INPUT_FIRSTNAME}</p>
+{if $secondname=='1'}<p><label for="secondname">{#text_secondname#}</label> {$INPUT_SECONDNAME}</p>
+{/if}
+<p><label for="lastname">{#text_lastname#}</label> {$INPUT_LASTNAME}</p>
+{if $birthdate=='1'} 
+<p><label for="dob">{#text_birthdate#}</label> {$INPUT_DOB}</p>
+{/if}
+<p><label for="email">{#text_email#}</label> {$INPUT_EMAIL}</p>
+{if $telephone=='1'} 
+<p><label for="telephone">{#text_tel#}</label> {$INPUT_TEL}</p>
+{/if}
+{if $fax=='1'} 
+<p><label for="fax">{#text_fax#}</label> {$INPUT_FAX}</p>
+{/if}
+{if $vat=='1'}
+<p><label for="vat">{#text_ustid#}</label> {$INPUT_VAT}</p>
+{/if}
+</fieldset>
+{if $INPUT_CUSTOMERS_EXTRA_FIELDS}
+<fieldset class="form">
+<legend>{#title_options#}</legend>
+{foreach item=customers_extra_filelds from=$INPUT_CUSTOMERS_EXTRA_FIELDS}<p><label>{$customers_extra_filelds.NAME}:</label> {$customers_extra_filelds.VALUE}</p>
+{/foreach}
+</fieldset>
+{/if}
+<!-- /форма -->
+
+<div class="pageContentFooter">
+{$BUTTON_BACK}&nbsp;{$BUTTON_SUBMIT}
+</div>
+{$FORM_END}
+</div>
+<!-- /Содержимое страницы -->
+<!-- /Скругленные углы -->
+</div>

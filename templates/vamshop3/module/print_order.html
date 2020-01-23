@@ -1,0 +1,105 @@
+{config_load file="$language/lang_$language.conf" section="print_order"} {config_load file="$language/lang_$language.conf" section="product_info"}<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>{#title#} {$oID}</title><meta http-equiv="Content-Type" content="text/html; charset={$charset}" />
+<link rel="stylesheet" type="text/css" href="{$tpl_path}/stylesheet.css" /></head><body onload="window.print()">
+<!-- Информация о заказе -->
+<div class="page">
+
+<p>
+{$address_label_customer}
+</p>
+
+<p>
+{if $csID}<span class="bold">{#csID#}</span> {$csID}{/if}
+</p>
+
+{if $PAYMENT_METHOD}
+<p>
+<span class="bold">{#payment#}</span> {$PAYMENT_METHOD}
+</p>
+{/if}
+
+{if $SHIPPING_METHOD}
+<p>
+<span class="bold">{#shipping#}</span> {$SHIPPING_METHOD}
+</p>
+{/if}
+
+<p>
+<span class="bold">{#order#}</span> {$oID}
+</p>
+
+<p>
+<span class="bold">{#date#}</span> {$DATE}
+</p>
+
+<!-- Адрес доставки -->
+<dl class="ordersAddress">
+<dt class="ordersAddress">
+</dt>
+
+<dd class="ordersAddress">
+<span class="bold">{#shipping_address#}</span>
+</dd>
+
+<dd class="ordersAddress">
+{$address_label_shipping}
+</dd>
+
+</dl>
+<!-- /Адрес доставки -->
+
+{if $address_label_payment}
+<!-- Адрес клиента -->
+<dl class="ordersAddress">
+<dt class="ordersAddress">
+</dt>
+
+<dd class="ordersAddress">
+<span class="bold">{#payment_address#}</span>
+</dd>
+
+<dd class="ordersAddress">
+{$address_label_payment}
+</dd>
+
+</dl>
+<!-- /Адрес клиента -->
+{/if}
+<div class="clear"></div>
+<!-- Заказанные товары -->
+
+<p>
+<span class="bold">{#heading_products#}</span>
+</p>
+
+	<table width="100%" border="0" cellpadding="3" cellspacing="0">
+        <tr> 
+          <td colspan="2"><span class="bold">{#head_units#}</span></td>
+          <td><span class="bold">{#head_products#}</span></td>
+          <td><span class="bold">{#head_artnr#}</span></td>
+          <td><span class="bold">{#head_single_price#}</span></td>
+          <td width="150"><span class="bold">{#head_price#}</span></td>
+        </tr>
+        {foreach name=aussen item=order_values from=$order_data} 
+        <tr> 
+          <td width="20"><span class="bold">{$order_values.PRODUCTS_QTY}</span></td>
+          <td width="20"><span class="bold">x</span></td>
+          <td><span class="bold">{$order_values.PRODUCTS_NAME}</span><em>{$order_values.PRODUCTS_ATTRIBUTES}</em>{if $order_values.PRODUCTS_SHIPPING_TIME neq ''}<br />
+            {#text_shippingtime#} {$order_values.PRODUCTS_SHIPPING_TIME}<br />{/if}</td>
+          <td>{$order_values.PRODUCTS_MODEL}<em>{$order_values.PRODUCTS_ATTRIBUTES_MODEL}</em></td>
+          <td>{$order_values.PRODUCTS_SINGLE_PRICE}</td>
+          <td width="150"><span class="bold">{$order_values.PRODUCTS_PRICE}</span></td>
+        </tr>
+        {/foreach} </table>
+	<table width="100%" border="0" cellpadding="3" cellspacing="0">
+  {foreach name=aussen item=order_total_values from=$order_total}
+  <tr> 
+    <td nowrap="nowrap" width="100%"><div align="right">{$order_total_values.TITLE} 
+              {$order_total_values.TEXT}</div></td>
+  </tr>
+  {/foreach} 
+</table>
+<!-- /Заказанные товары -->
+
+</div>
+<!-- /Информация о заказе -->
+</body></html>

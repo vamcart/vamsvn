@@ -1,0 +1,1000 @@
+/*
+[TABLE OF CONTENTS]
+
+1.  IMPORTS
+2.  RESET STYLES
+3.  HEADER STYLES
+4.  MAIN THEME CONTAINER STYLES
+    4.1 LEFT PANEL STYLES
+    4.2 CONTENT SECTION STYLES
+	4.3 MINIMIZED LEFT PANEL STYLE
+	4.4 THEME STYLE ACCORDING PHONE
+5.	Boxed Theme Layout Style
+6.	Theme Background Color Style
+*/
+
+
+/********** 1. IMPORTS **********/
+
+
+/********************************/
+
+
+/********** 2. RESET STYLES **********/
+
+
+/*************************************/
+
+
+/* ********** Default Theme Style************* */
+
+/*
+body {
+    position: relative;
+}*/
+
+#menuapp-wrapper a:focus {
+    outline: none;
+}
+
+#menuapp-wrapper {
+    background: #eef1f6;
+    color: #7e7e7e;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    direction: ltr;
+    line-height: 20px;
+    font-size: 13px;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+
+/************** 3. Theme Header Style Start Here ********************/
+
+#menu-header {
+    background: #fff none repeat scroll 0 0;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 50px;
+    z-index: 10;
+    position: relative;
+    box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.2);
+}
+
+.menu-left-header {
+    background: #3498db;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 50px;
+    position: absolute;
+    float: left;
+    text-align: center;
+    width: 230px;
+    z-index: 999;
+}
+
+.menu-left-header a {
+    color: #FFF;
+}
+
+.menu-left-header a:hover,
+.menu-left-header a:focus {
+    color: #FFF;
+    text-decoration: none;
+}
+
+.menu-left-header a i {
+    color: #003c70;
+    font-size: 22px;
+    position: relative;
+    top: 3px;
+}
+
+.menu-right-header {
+    background: #fff none repeat scroll 0 0;
+    height: 50px;
+    line-height: 50px;
+    z-index: 101;
+    margin-left: 230px;
+    position: relative;
+}
+
+.menu-right-header>ul {
+    display: block;
+    margin: 0;
+    padding: 0;
+}
+
+.menu-right-header li {
+    display: inline;
+    float: left;
+}
+
+.menu-right-header>li a {
+    color: #7e7e7e;
+    padding: 17px 15px;
+}
+
+.menu-right-header li a:hover,
+.menu-right-header li a:focus {
+    background: #efefef;
+    text-decoration: none;
+}
+
+.menu-right-header a i {
+    color: #7e7e7e;
+    font-size: 14px;
+}
+
+.right-navbar {
+    float: right;
+    padding-right: 7px !important;
+}
+
+.right-navbar li a i {
+    font-size: 14px;
+}
+
+.left-navbar>li:first-child {
+    padding-left: 50px;
+}
+
+.menu-right-header .left-navbar .dropdown-toggle::after,
+.menu-right-header .right-navbar .dropdown-toggle::after {
+    display: none;
+}
+
+.menu-sidebar-toggle a:after {
+    background: transparent;
+    border: 0px solid #efefef;
+    font-weight: 900;
+    content: "\f0c9";
+    font-family: "Font Awesome 5 Free";
+    font-size: 14px;
+    line-height: 50px;
+    padding: 0px 17px;
+    position: absolute;
+    color: #7e7e7e;
+    z-index: 1000;
+}
+
+.menu-sidebar-toggle a:hover:after {
+    background: #efefef;
+}
+
+.menu-left-header>.menu-sidebar-toggle>a {
+    display: none
+}
+
+#menu-header .menu-left-header[menu-position-type="relative"] {
+    position: relative;
+}
+
+#menu-header .menu-left-header[menu-position-type="absolute"] {
+    position: absolute;
+}
+
+#menu-header .menu-left-header[menu-position-type="fixed"] {
+    position: fixed;
+}
+
+#menu-header .menu-right-header[menu-position-type="relative"] {
+    position: relative;
+}
+
+#menu-header .menu-right-header[menu-position-type="absolute"] {
+    position: absolute;
+}
+
+#menu-header .menu-right-header[menu-position-type="fixed"] {
+    padding-right: 230px;
+    position: fixed;
+    width: 100%;
+}
+
+
+/*******************************Theme Header Style Close Here ***********************************/
+
+
+/******************************* 4. main container Style start Here ***********************************/
+
+#menuapp-container {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    clear: both;
+}
+
+
+/************************* 4.1 Theme Left Panel Style Start Here *********************************/
+
+#menu-left-panel {
+    background: #FFF none repeat scroll 0 0;
+    color: #7e7e7e;
+    width: 230px;
+    top: 0;
+    position: absolute;
+    float: left;
+    min-height: 100%;
+    z-index: 100;
+    box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.2);
+}
+
+#menu-left-panel .profile-box {
+    border-bottom: 1px solid #efefef;
+    min-height: 50px;
+    padding: 5px 15px;
+    position: relative;
+}
+
+#menu-left-panel .profile-box .media a img {
+    width: 40px;
+    height: 40px;
+}
+
+#menu-left-panel .profile-box .media {
+    position: relative;
+}
+
+#menu-left-panel .profile-box .media a {
+    margin-top: 2px;
+    padding-right: 5px;
+}
+
+#menu-left-panel .profile-box .media a>img {
+    border: 1px solid #efefef;
+}
+
+#menu-left-panel .profile-box h5 {
+    font-size: 14px;
+    font-weight: 400;
+    margin: 0px;
+}
+
+#menu-left-panel ul {
+    margin: 0;
+    padding: 0;
+}
+
+#menu-left-panel .nav-level {
+    padding: 5px 15px;
+    border-top: 1px solid #efefef;
+    display: block;
+    width: 100%;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+#menu-left-panel .nav.panel-list {
+    display: block;
+    width: 100%;
+}
+
+#menu-left-panel .panel-list>li.menu-has-menu>ul.menu-sub-menu {
+    list-style: none;
+}
+
+#menu-left-panel .nav-level:first-child {
+    border-top: 0px solid #efefef;
+}
+
+#menu-left-panel .panel-list>li>a {
+    background: #FFF;
+    border-top: 1px solid #efefef;
+    color: #7e7e7e;
+    display: block;
+    font-size: 13px;
+    font-weight: 400;
+    padding: 10px 10px;
+    position: relative;
+}
+
+#menu-left-panel .panel-list>li>a:hover {
+    text-decoration: none;
+}
+
+#menu-left-panel .panel-list>li:last-child>a {
+    border-bottom: 1px solid #efefef;
+}
+
+#menu-left-panel .panel-list>li:first-child>a {
+    border-top: 0px solid #efefef;
+}
+
+#menu-left-panel .panel-list>li>a:hover,
+#menu-left-panel .panel-list>li>a:focus {
+    color: #000;
+    background: #f1f1f1;
+}
+
+#menu-left-panel .panel-list>li.active>a {
+    background: #f1f1f1;
+    border-top: 1px solid #efefef;
+    color: #000;
+}
+
+#menu-left-panel .panel-list>li>a>i {
+    display: inline;
+    font-size: 14px;
+    padding-right: 6px;
+}
+
+#menu-left-panel .panel-list>li>a span.menu-text {
+    display: inline-block;
+}
+
+#menu-left-panel .panel-list>li.menu-has-menu>a:after {
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    content: "\f078";
+    font-size: 15px;
+    position: relative;
+    float: right;
+}
+
+#menu-left-panel .panel-list>li.menu-has-menu.opened>a {
+    background: #f1f1f1;
+    color: #000;
+}
+
+#menu-left-panel .panel-list>li.menu-has-menu.opened>a:after {
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    content: "\f106" !important;
+    font-size: 15px;
+    float: right;
+    position: relative;
+}
+
+#menu-left-panel .panel-list>li.menu-has-menu li.menu-has-menu>a:after {
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    content: "\f103";
+    font-size: 15px;
+    position: relative;
+    float: right;
+}
+
+#menu-left-panel .panel-list>li.menu-has-menu li.menu-has-menu.opened>a:after {
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    content: "\f102";
+    font-size: 15px;
+    position: relative;
+    float: right;
+}
+
+#menu-left-panel .panel-list ul {
+    background: #fafafa;
+    box-shadow: -1px 2px 3px 0px rgba(0, 0, 0, 0.2);
+}
+
+#menu-left-panel .panel-list ul.menu-sub-menu li>a {
+    background: transparent;
+    border-top: 1px solid #efefef;
+    color: #7e7e7e;
+    display: block;
+    font-size: 13px;
+    font-weight: 400;
+    padding: 10px 10px;
+    position: relative;
+}
+
+#menu-left-panel .panel-list>li.menu-has-menu>ul.menu-sub-menu {
+    display: none;
+}
+
+#menu-left-panel .panel-list li.menu-has-menu>ul.menu-sub-menu li>a:hover,
+#menu-left-panel .panel-list li.menu-has-menu>ul.menu-sub-menu li>a:focus {
+    text-decoration: none;
+    color: #000;
+    background: #f1f1f1;
+}
+
+#menu-left-panel .panel-list>li.menu-has-menu>ul ul {
+    display: none;
+}
+
+#menu-left-panel .panel-list>li.menu-has-menu.opened>ul {
+    display: block;
+}
+
+#menu-left-panel .panel-list>li.menu-has-menu.opened>ul>li.menu-has-menu.opened>ul {
+    display: block;
+}
+
+#menu-left-panel .panel-list>li.menu-has-menu.opened>ul>li.menu-has-menu.opened>ul>li.menu-has-menu.opened>ul {
+    display: block;
+}
+
+#menu-left-panel .panel-list>li.menu-has-menu.active>ul {
+    display: block;
+}
+
+#menu-left-panel .panel-list>li.menu-has-menu.active>ul>li.menu-has-menu.active>ul {
+    display: block;
+}
+
+#menu-left-panel .panel-list>li.menu-has-menu.active>ul>li.menu-has-menu.active>ul>li.menu-has-menu.active>ul {
+    display: block;
+}
+
+#menu-left-panel .panel-list>li.menu-has-menu>ul>li>a span.menu-text {
+    padding-left: 15px;
+    position: relative;
+}
+
+#menu-left-panel .panel-list>li.menu-has-menu>ul.menu-sub-menu {
+    list-style: outside none none;
+}
+
+#menu-left-panel .panel-list>li.menu-has-menu li.menu-has-menu>ul.menu-sub-menu {
+    list-style: outside none none;
+}
+
+#menu-left-panel .panel-list>li.menu-has-menu>ul.menu-sub-menu {
+    list-style: outside none none;
+}
+
+#menu-left-panel .panel-list>li.menu-has-menu>ul>li.menu-has-menu>ul>li>a span.menu-text {
+    padding-left: 25px;
+    position: relative;
+}
+
+#menu-left-panel .panel-list>li.menu-has-menu>ul>li.menu-has-menu>ul>li>ul>li>a span.menu-text {
+    padding-left: 35px;
+    position: relative;
+}
+
+#menu-left-panel .panel-list>li.menu-has-menu>ul>li.menu-has-menu>ul>li>ul>li>ul>li>a span.menu-text {
+    padding-left: 40px;
+    position: relative;
+}
+
+#menu-left-panel .panel-list>li.menu-has-menu>ul.menu-sub-menu>li>a span.menu-text:before {
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    content: "\f0da";
+    font-size: 14px;
+    position: relative;
+    float: left;
+    left: 4px;
+}
+
+#menu-left-panel .panel-list>li.menu-has-menu>ul.menu-sub-menu>li.menu-has-menu>ul.menu-sub-menu>li>a span.menu-text:before {
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    content: "\f0da";
+    font-size: 12px;
+    position: relative;
+    float: left;
+    left: 15px;
+}
+
+#menu-left-panel .panel-list>li.menu-has-menu>ul.menu-sub-menu>li.menu-has-menu>ul.menu-sub-menu>li>a span.menu-text:before {
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    content: "\f0da";
+    font-size: 14px;
+    position: relative;
+    float: left;
+    left: 18px;
+}
+
+#menu-left-panel .panel-list>li.menu-has-menu>ul.menu-sub-menu>li.menu-has-menu>ul.menu-sub-menu>li.menu-has-menu>ul.menu-sub-menu>li>a span.menu-text:before {
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    content: "\f0da";
+    font-size: 12px;
+    position: relative;
+    float: left;
+    left: 30px;
+}
+
+#menu-left-panel .panel-list li.active>a .selected {
+    border-bottom: 15px solid transparent;
+    border-right: 7px solid #7e7e7e;
+    border-top: 15px solid transparent;
+    display: inline-block;
+    height: 0;
+    position: absolute;
+    right: -1px;
+    top: 5px;
+    vertical-align: middle;
+    width: 0;
+}
+
+#menu-left-panel .panel-list li.menu-has-menu.active>a .selected {
+    display: none;
+}
+
+#menu-left-panel .panel-list li a .label {
+    border-radius: 0.25em;
+    color: #7e7e7e;
+    display: inline;
+    font-size: 75%;
+    font-weight: 700;
+    line-height: 1;
+    padding: 4px 3px;
+    position: absolute;
+    right: 10px;
+    text-align: center;
+    vertical-align: baseline;
+    white-space: nowrap;
+}
+
+.sul {
+    background-color: #ebebeb;
+}
+
+#menu-left-panel[menu-position-type="relative"] {
+    position: relative;
+}
+
+#menu-left-panel[menu-position-type="absolute"] {
+    position: absolute;
+}
+
+#menu-left-panel[menu-position-type="fixed"] {
+    position: fixed;
+    top: 50px;
+}
+
+
+/********************************** Theme Left Panel Style Close Here ******************************/
+
+
+/*************************** 4.2 Theme Content Section Style Start Here ********************************/
+
+#main-content {
+    margin-left: 230px;
+    position: relative;
+}
+
+
+/******************* Theme Content Section Style Close Here *******************************/
+
+
+/****************** 4.3 Minimized Left Panel Style Start Here *********************************/
+
+#menu-header.menu-minimized-lpanel>.menu-right-header[menu-position-type="fixed"] {
+    margin-left: 50px;
+    padding-right: 50px;
+}
+
+#menu-header.menu-minimized-lpanel>.menu-left-header {
+    width: 50px;
+}
+
+#menu-header.menu-minimized-lpanel>.menu-left-header>a>span {
+    display: none;
+}
+
+#menu-header.menu-minimized-lpanel>.menu-right-header {
+    margin-left: 50px;
+    padding-right: 0px;
+}
+
+.menu-minimized-lpanel #menu-left-panel {
+    width: 50px;
+}
+
+.menu-minimized-lpanel #menu-left-panel .profile-box {
+    border-bottom: 0px solid #efefef;
+}
+
+.menu-minimized-lpanel #menu-left-panel .media-body {
+    display: none;
+}
+
+.menu-minimized-lpanel #menu-left-panel .profile-box {
+    padding: 5px;
+}
+
+.menu-minimized-lpanel #menu-left-panel .nav-level {
+    display: none;
+}
+
+.menu-minimized-lpanel #menu-left-panel .panel-list>li>a span.menu-text {
+    display: none;
+}
+
+.menu-minimized-lpanel #menu-left-panel .panel-list>li.menu-has-menu>a:after {
+    display: none;
+}
+
+.menu-minimized-lpanel #menu-left-panel .panel-list>li>a>i {
+    display: inline;
+    font-size: 15px;
+    padding-left: 6px;
+    padding-right: 6px;
+}
+
+.menu-minimized-lpanel #menu-left-panel .panel-list>li:hover>a,
+.menu-minimized-lpanel #menu-left-panel .panel-list>li:focus>a {
+    display: block;
+    position: relative;
+    width: 230px;
+    margin-bottom: -1px;
+    border-radius: 0px 4px 4px 0px;
+}
+
+.menu-minimized-lpanel #menu-left-panel .panel-list>li:hover>a,
+.menu-minimized-lpanel #menu-left-panel .panel-list>li:focus>a {
+    border-radius: 0px 4px 4px 0px;
+}
+
+.menu-minimized-lpanel #menu-left-panel .panel-list>li.menu-has-menu:hover>a,
+.menu-minimized-lpanel #menu-left-panel .panel-list>li.menu-has-menu:focus>a {
+    border-radius: 0px 4px 0px 0px;
+    background: #f1f1f1;
+}
+
+.menu-minimized-lpanel #menu-left-panel .panel-list>li:hover>a span.menu-text,
+.menu-minimized-lpanel #menu-left-panel .panel-list>li:focus>a span.menu-text {
+    display: inline-block;
+    position: absolute;
+    left: 52px;
+}
+
+.menu-minimized-lpanel #menu-left-panel .panel-list ul.menu-sub-menu li {
+    list-style: none;
+}
+
+.menu-minimized-lpanel #menu-left-panel .panel-list>li.menu-has-menu>ul.menu-sub-menu {
+    display: none !important;
+    position: absolute;
+    left: 50px;
+    width: 180px;
+}
+
+.menu-minimized-lpanel #menu-left-panel .panel-list>li.menu-has-menu:hover>ul.menu-sub-menu,
+.menu-minimized-lpanel #menu-left-panel .panel-list>li.menu-has-menu:focus>ul.menu-sub-menu {
+    display: block !important;
+    border-right: 1px solid #efefef;
+    width: 180px;
+    left: 50px;
+}
+
+.menu-minimized-lpanel #menu-left-panel .panel-list>li.menu-has-menu>ul.menu-sub-menu ul.menu-sub-menu {
+    display: none !important;
+    position: absolute;
+    width: 180px;
+    left: 0;
+}
+
+.menu-minimized-lpanel #menu-left-panel .panel-list>li.menu-has-menu:hover>ul.menu-sub-menu ul.menu-sub-menu,
+.menu-minimized-lpanel #menu-left-panel .panel-list>li.menu-has-menu:focus>ul.menu-sub-menu ul.menu-sub-menu {
+    display: none !important;
+    left: 0px;
+}
+
+.menu-minimized-lpanel #menu-left-panel .panel-list>li.menu-has-menu>ul.menu-sub-menu>li.menu-has-menu:hover>ul.menu-sub-menu,
+.menu-minimized-lpanel #menu-left-panel .panel-list>li.menu-has-menu>ul.menu-sub-menu>li.menu-has-menu:focus>ul.menu-sub-menu {
+    display: block !important;
+    position: relative;
+    left: 0px;
+}
+
+.menu-minimized-lpanel #menu-left-panel .panel-list>li.menu-has-menu>ul.menu-sub-menu>li.menu-has-menu>ul.menu-sub-menu>li.menu-has-menu:hover>ul.menu-sub-menu,
+.menu-minimized-lpanel #menu-left-panel .panel-list>li.menu-has-menu>ul.menu-sub-menu>li.menu-has-menu>ul.menu-sub-menu>li.menu-has-menu:focus>ul.menu-sub-menu {
+    display: block !important;
+    position: relative;
+    left: 0px;
+}
+
+.menu-minimized-lpanel #menu-left-panel .panel-list>li.menu-has-menu li.menu-has-menu>a:after {
+    display: none;
+}
+
+.menu-minimized-lpanel #menu-left-panel .panel-list>li.menu-has-menu li.menu-has-menu>a:after {
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    content: "\f103";
+    font-size: 15px;
+    position: relative;
+    float: right;
+    display: block;
+}
+
+.menu-minimized-lpanel #menu-left-panel .panel-list>li.menu-has-menu li.menu-has-menu:hover>a:after,
+.menu-minimized-lpanel #menu-left-panel .panel-list>li.menu-has-menu li.menu-has-menu:focus>a:after {
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    content: "\f102";
+    font-size: 15px;
+    position: relative;
+    float: right;
+    display: block;
+}
+
+.menu-minimized-lpanel #menu-left-panel .panel-list li.menu-has-menu.active>li.active a .selected {
+    display: block;
+}
+
+.menu-minimized-lpanel #menu-left-panel .panel-list>li.active:hover>a .selected,
+.menu-minimized-lpanel #menu-left-panel .panel-list>li.active:focus>a .selected {
+    display: none;
+}
+
+.menu-minimized-lpanel #menu-left-panel .panel-list>li.menu-has-menu>ul.menu-sub-menu>li.menu-has-menu>ul.menu-sub-menu li>a span.menu-text {
+    padding-left: 15px;
+    position: relative;
+}
+
+.menu-minimized-lpanel #menu-left-panel .panel-list>li.menu-has-menu>ul.menu-sub-menu>li.menu-has-menu>ul.menu-sub-menu>li>a span.menu-text:before {
+    left: 4px;
+}
+
+.menu-minimized-lpanel #menu-left-panel .panel-list>li.menu-has-menu>ul.menu-sub-menu>li.menu-has-menu>ul.menu-sub-menu>li.menu-has-menu>ul.menu-sub-menu>li>a span.menu-text:before {
+    left: 4px;
+}
+
+.menu-minimized-lpanel #menu-left-panel .panel-list li .label {
+    display: none;
+}
+
+.menu-minimized-lpanel #menu-left-panel .panel-list li:hover a .label {
+    display: block;
+    position: absolute;
+    right: 5px;
+    top: 10px;
+}
+
+.menu-minimized-lpanel #menu-left-panel .panel-list>li.menu-has-menu.opened>a {
+    background: #f1f1f1;
+    color: #000;
+}
+
+.menu-minimized-lpanel #main-content {
+    margin-left: 50px;
+}
+
+
+/****************** Minimized Left Panel Style Start Here *********************************/
+
+
+/******************* 4.4 Theme Style for Phone start here***************************************/
+
+#menuapp-wrapper[menu-device-type="phone"].menu-hide-lpanel #menu-left-panel {
+    display: none;
+}
+
+#menuapp-wrapper[menu-device-type="phone"] #menu-header {
+    position: none;
+    height: 100px;
+}
+
+#menuapp-wrapper[menu-device-type="phone"] .menu-left-header {
+    width: 100%;
+    float: none;
+}
+
+#menuapp-wrapper[menu-device-type="phone"] #menu-left-panel[menu-position-type="fixed"] {
+    top: 100px;
+}
+
+#menuapp-wrapper[menu-device-type="phone"] .menu-right-header {
+    width: 100%;
+    padding-left: 0px !important;
+    position: relative;
+    z-index: 999;
+    top: 50px;
+}
+
+#menuapp-wrapper[menu-device-type="phone"].menu-hide-lpanel #menu-left-panel {
+    display: none;
+}
+
+#menuapp-wrapper[menu-device-type="phone"].menu-hide-lpanel .menu-right-header {
+    margin-left: 0px;
+}
+
+#menuapp-wrapper[menu-device-type="phone"] .menu-right-header {
+    margin-left: 0px;
+}
+
+#menuapp-wrapper[menu-device-type="phone"] #menu-left-panel {
+    display: block;
+    z-index: 1024;
+}
+
+#menuapp-wrapper[menu-device-type="phone"] #main-content {
+    margin-left: 0px;
+}
+
+#menuapp-wrapper[menu-device-type="phone"] .menu-left-header>.menu-sidebar-toggle>a {
+    display: block;
+}
+
+#menuapp-wrapper[menu-device-type="phone"] #menu-header>.menu-right-header .menu-sidebar-toggle a:after {
+    display: none !important;
+}
+
+#menuapp-wrapper[menu-device-type="desktop"] .menu-left-header .menu-sidebar-toggle a:after {
+    display: none !important;
+}
+
+#menuapp-wrapper[menu-device-type="tablet"] .menu-left-header .menu-sidebar-toggle a:after {
+    display: none !important;
+}
+
+#menuapp-wrapper[menu-device-type="phone"] .menu-left-header .menu-sidebar-toggle a:after {
+    background: transparent;
+    border-radius: 4px;
+    content: "";
+    font-family: "Font Awesome 5 Free";
+    font-size: 16px;
+    left: 5px;
+    line-height: 39px;
+    padding: 1px 13px;
+    position: absolute;
+    top: 3px;
+    z-index: 1000;
+    display: block !important;
+    color: #003c70;
+    border: 0px solid #003c70;
+    font-size: 14px;
+}
+
+#menuapp-wrapper[menu-device-type="phone"].menu-hide-lpanel #menuapp-container[menu-lpanel-effect="shrink"] #main-content {
+    margin-left: 0px;
+}
+
+#menuapp-wrapper[menu-device-type="phone"] #menuapp-container[menu-lpanel-effect="shrink"] #main-content {
+    margin-left: 230px;
+}
+
+#menuapp-wrapper[menu-device-type="phone"].menu-hide-lpanel #menuapp-container[menu-lpanel-effect="overlay"] #main-content {
+    margin-left: 0px;
+}
+
+#menuapp-wrapper[menu-device-type="phone"] #menuapp-container[menu-lpanel-effect="overlay"] #main-content {
+    margin-left: 0px;
+}
+
+#menuapp-wrapper[menu-device-type="phone"].menu-hide-lpanel #menuapp-container[menu-lpanel-effect="push"] #main-content {
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
+#menuapp-wrapper[menu-device-type="phone"] #menuapp-container[menu-lpanel-effect="push"] #main-content {
+    margin-left: 230px;
+    margin-right: -230px;
+}
+
+#menuapp-wrapper[menu-device-type="phone"].menu-hide-lpanel #menu-header[menu-lpanel-effect="shrink"] .menu-right-header[menu-position-type="relative"] {
+    margin-left: 0px;
+    padding-right: 0;
+}
+
+#menuapp-wrapper[menu-device-type="phone"].menu-hide-lpanel #menu-header[menu-lpanel-effect="shrink"] .menu-right-header[menu-position-type="fixed"] {
+    margin-left: 0px;
+    padding-right: 0;
+}
+
+#menuapp-wrapper[menu-device-type="phone"] #menu-header[menu-lpanel-effect="shrink"] .menu-right-header[menu-position-type="relative"] {
+    margin-left: 0px;
+    padding-right: 0;
+}
+
+#menuapp-wrapper[menu-device-type="phone"] #menu-header[menu-lpanel-effect="shrink"] .menu-right-header[menu-position-type="fixed"] {
+    margin-left: 0px;
+    padding-right: 0;
+}
+
+#menuapp-wrapper[menu-device-type="phone"].menu-hide-lpanel #menu-header[menu-lpanel-effect="overlay"] .menu-right-header[menu-position-type="relative"] {
+    margin-left: 0px;
+    padding-right: 0;
+}
+
+#menuapp-wrapper[menu-device-type="phone"].menu-hide-lpanel #menu-header[menu-lpanel-effect="overlay"] .menu-right-header[menu-position-type="fixed"] {
+    margin-left: 0px;
+    padding-right: 0;
+}
+
+#menuapp-wrapper[menu-device-type="phone"]#menu-header[menu-lpanel-effect="overlay"] .menu-right-header[menu-position-type="relative"] {
+    margin-left: 0px;
+    padding-right: 0;
+}
+
+#menuapp-wrapper[menu-device-type="phone"] #menu-header[menu-lpanel-effect="overlay"] .menu-right-header[menu-position-type="fixed"] {
+    margin-left: 0px;
+    padding-right: 0;
+}
+
+#menuapp-wrapper[menu-device-type="phone"].menu-hide-lpanel #menu-header[menu-lpanel-effect="push"] .menu-right-header[menu-position-type="relative"] {
+    margin-left: 0px;
+    padding-right: 0;
+}
+
+#menuapp-wrapper[menu-device-type="phone"].menu-hide-lpanel #menu-header[menu-lpanel-effect="push"] .menu-right-header[menu-position-type="fixed"] {
+    margin-left: 0px;
+    padding-right: 0;
+}
+
+#menuapp-wrapper[menu-device-type="phone"] #menu-header[menu-lpanel-effect="push"] .menu-right-header[menu-position-type="relative"] {
+    margin-left: 0px;
+    padding-right: 0;
+}
+
+#menuapp-wrapper[menu-device-type="phone"] #menu-header[menu-lpanel-effect="push"] .menu-right-header[menu-position-type="fixed"] {
+    margin-left: 0px;
+    padding-right: 0;
+}
+
+
+/****************************** Theme Style for Phone Close here **********************************/
+
+
+/*******************************main container Style Close Here ***********************************/
+
+
+/****************************** Default Theme Style Close ******************************************/
+
+
+/*Boxed Theme Layout Style Start*/
+
+body[theme-layout="box-layout"] #menuapp-wrapper[menu-device-type="desktop"] {
+    width: 96%;
+    margin: 0 auto;
+}
+
+
+/*Boxed Theme Layout Style Close*/
+
+
+/*Theme Background Color in Start */
+
+body[theme-layout="box-layout"] [menu-nav-placement="right"] #menuapp-wrapper[menu-device-type="desktop"] {
+    margin: 0 auto;
+}
+
+body[theme-bg="bg1"] {
+    background-image: url("../images/bg1.png");
+}
+
+body[theme-bg="bg2"] {
+    background-image: url("../images/bg2.png");
+}
+
+body[theme-bg="bg3"] {
+    background-image: url("../images/bg3.png");
+}
+
+body[theme-bg="bg4"] {
+    background-image: url("../images/bg4.png");
+}
+
+body[theme-bg="bg5"] {
+    background-image: url("../images/bg5.png");
+}
+
+body[theme-bg="bg6"] {
+    background-image: url("../images/bg6.png");
+}
+
+body[theme-bg="bg7"] {
+    background-image: url("../images/bg7.png");
+}
+
+body[theme-bg="bg8"] {
+    background-image: url("../images/bg8.png");
+}
+
+body[theme-bg="bg9"] {
+    background-image: url("../images/bg9.png");
+}
+
+
+/*Theme Background Color in Close */

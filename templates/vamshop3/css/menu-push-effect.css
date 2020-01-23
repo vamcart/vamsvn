@@ -1,0 +1,42 @@
+/*################ Theme Header With Content Push Effect Start #####################*/
+#menu-header[menu-lpanel-effect="push"] .menu-right-header[menu-position-type="fixed"] {
+    margin-left: 230px;
+    margin-right: -230px;
+	padding-right:0px
+}
+#menu-header.menu-minimized-lpanel[menu-lpanel-effect="push"] .menu-right-header[menu-position-type="fixed"] {
+     margin-left: 50px;
+	margin-right: 0px;
+	padding-right:50px
+}
+#menu-header[menu-lpanel-effect="push"] .menu-right-header[menu-position-type="relative"] {
+    margin-left: 230px;
+    margin-right: -230px;
+}
+#menu-header[menu-lpanel-effect="push"].menu-minimized-lpanel .menu-right-header[menu-position-type="relative"] {
+    margin-left: 50px;
+	margin-right: 0px;
+}
+#menu-header[menu-lpanel-effect="push"] .menu-right-header[menu-position-type="relative"] .menu-sidebar-toggle a:after {
+ margin-left:  0px;
+}
+#menu-header.menu-minimized-lpanel[menu-lpanel-effect="push"] .menu-right-header[menu-position-type="relative"] .menu-sidebar-toggle a:after {
+ margin-left:  0px;
+}
+#menu-header[menu-lpanel-effect="push"] .menu-right-header[menu-position-type="fixed"] .menu-sidebar-toggle a:after {
+    margin-left:  0px;
+}
+#menu-header.menu-minimized-lpanel[menu-lpanel-effect="push"] .menu-right-header[menu-position-type="fixed"] .menu-sidebar-toggle a:after {
+    margin-left:  0px;
+}
+
+#menuapp-container[menu-lpanel-effect="push"] #main-content{
+	margin-left: 230px;
+	margin-right: -230px;
+}
+#menuapp-container[menu-lpanel-effect="push"].menu-minimized-lpanel #main-content{
+	 margin-left: 50px;
+     margin-right: 0px;	 
+}
+
+/*################ Theme Header With Content Push Effect Close #####################*/

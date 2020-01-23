@@ -1,0 +1,109 @@
+{config_load file="$language/lang_$language.conf" section="address_book_process"}
+{if $smarty.const.DADATA_API_KEY != "" and $smarty.session.language == "russian"}
+<!--[if lt IE 10]>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-ajaxtransport-xdomainrequest/1.0.1/jquery.xdomainrequest.min.js"></script>
+<![endif]-->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery.suggestions/16.5.2/js/jquery.suggestions.min.js"></script>
+<script type="text/javascript">
+{literal}
+$(function () {
+
+var token = {/literal}"{$smarty.const.DADATA_API_KEY}"{literal};
+
+$("#firstname").suggestions({
+  serviceUrl: "https://suggestions.dadata.ru/suggestions/api/4_1/rs",
+  partner: "VAMSHOP",
+  token: token,
+  type: "NAME",
+  params: {
+    parts: ["NAME"]
+  }
+});
+
+$("#lastname").suggestions({
+  serviceUrl: "https://suggestions.dadata.ru/suggestions/api/4_1/rs",
+  partner: "VAMSHOP",
+  token: token,
+  type: "NAME",
+  params: {
+    parts: ["SURNAME"]
+  }
+});
+
+$("#email_address").suggestions({
+  serviceUrl: "https://suggestions.dadata.ru/suggestions/api/4_1/rs",
+  partner: "VAMSHOP",
+  token: token,
+  type: "EMAIL",
+  params: {
+    parts: ["SURNAME"]
+  }
+});
+      
+$("#street_address").suggestions({
+  serviceUrl: "https://suggestions.dadata.ru/suggestions/api/4_1/rs",
+  partner: "VAMSHOP",
+  token: token,
+  type: "ADDRESS",
+  geoLocation: true,
+  onSelect: showSelected
+});
+
+function join(arr /*, separator */) {
+  var separator = arguments.length > 1 ? arguments[1] : " ";
+  return arr.filter(function(n){return n}).join(separator);
+}
+
+function showSelected(suggestion) {
+  var address = suggestion.data;
+  $("#postcode").val(address.postal_code);
+  if (address.region == "Москва" || address.region == "Санкт-Петербург" || address.region == "Севастополь") {
+  $("#state").val(address.region);
+  } else {
+  $("#state").val(join([
+    join([address.region, address.region_type_full], " ")
+    //join([address.region, address.region_type], " "),
+    //join([address.area_type, address.area], " ")
+  ]));
+  }
+  $("#city").val(join([
+    join([address.city_type, address.city], " "),
+    join([address.settlement_type, address.settlement], " ")
+  ]));
+  //$("#street_address").val(
+    //join([address.street_type, address.street], " "),
+    //join([address.house_type, address.house], " "),
+    //join([address.block_type, address.block], " "),
+    //join([address.flat_type, address.flat], " ")
+  //);
+}
+  
+});
+</script>
+{/literal}
+{/if}
+<div class="module">
+<div class="moduleContent">
+<span class="Requirement">{#text_must#}</span>
+<br />
+<br />
+<!-- форма -->
+<fieldset class="form">
+<legend>{#title_address#}</legend>
+{if $gender=='1'}<p><label for="gender">{#text_gender#}</label> {$INPUT_MALE}&nbsp;{$INPUT_FEMALE}</p>{/if} 
+<p><label for="firstname">{#text_firstname#}</label> {$INPUT_FIRSTNAME}</p>
+{if $secondname=='1'}<p><label for="secondname">{#text_secondname#}</label> {$INPUT_SECONDNAME}</p>
+{/if}
+<p><label for="lastname">{#text_lastname#}</label> {$INPUT_LASTNAME}</p>
+{if $company=='1'}<p><label for="company">{#text_company#}</label> {$INPUT_COMPANY}</p>{/if}
+{if $street_address=='1'}<p><label for="address">{#text_street#}</label> {$INPUT_STREET}</p>{/if}
+{if $suburb=='1'}<p><label for="suburb">{#text_suburb#}</label> {$INPUT_SUBURB}</p>{/if}
+{if $postcode=='1'}<p><label for="postcode">{#text_code#}</label> {$INPUT_CODE}</p>{/if}
+{if $city=='1'}<p><label for="city">{#text_city#}</label> {$INPUT_CITY}</p>{/if}
+{if $country=='1'}<p><label for="country">{#text_country#}</label> {$SELECT_COUNTRY}{$SELECT_COUNTRY_NOSCRIPT}</p>{/if}
+{if $state=='1'}<p><label for="state">{#text_state#}</label> <span id="stateXML">{$INPUT_STATE}</span></p>{/if}
+{if $new=='1'}<p>{$CHECKBOX_PRIMARY} {#text_standard#}</p>{/if}
+</fieldset>
+<!-- /форма -->
+</div>
+</div>

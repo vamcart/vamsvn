@@ -1,0 +1,13 @@
+{config_load file="$language/lang_$language.conf" section="reverse_cross_selling"} 
+<div class="module">
+<h3>{#heading_text#}</h3>
+<div class="moduleContent">
+<div class="owl-carousel owl-theme">
+{foreach name=aussen item=module_data from=$module_content}
+{include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/product-card/product-card-details.html"}
+{/foreach}
+</div>
+<div class="clear"></div>
+</div>
+
+</div>

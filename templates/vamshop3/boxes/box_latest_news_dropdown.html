@@ -1,0 +1,4 @@
+{config_load file="$language/lang_$language.conf" section="boxes"}
+{foreach name=aussen item=module_data from=$module_content}
+<li class="py-1"><a href="{$module_data.NEWS_LINK_MORE}">{$module_data.NEWS_HEADING}</a></li>
+{/foreach}  
