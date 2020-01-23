@@ -829,7 +829,7 @@ body {
 #menuapp-wrapper[menu-device-type="phone"] .menu-left-header .menu-sidebar-toggle a:after {
     background: transparent;
     border-radius: 4px;
-    content: "";
+    content: "\f0c9";
     font-family: "Font Awesome 5 Free";
     font-size: 16px;
     left: 5px;
