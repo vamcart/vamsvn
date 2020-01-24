@@ -89,14 +89,13 @@ body {
 
 .menu-left-header a i {
     color: #fff;
-    font-size: 22px;
+    font-size: 16px;
     position: relative;
-    top: 3px;
 }
 
 .menu-right-header {
     background: #fff none repeat scroll 0 0;
-    height: 50px;
+    /*height: 50px;*/
     line-height: 50px;
     z-index: 101;
     margin-left: 230px;
@@ -149,18 +148,7 @@ body {
     display: none;
 }
 
-.menu-sidebar-toggle a:after {
-    background: transparent;
-    border: 0px solid #efefef;
-    font-weight: 900;
-    content: "\f0c9";
-    font-family: "Font Awesome 5 Free";
-    font-size: 16px;
-    line-height: 50px;
-    padding: 0px 17px;
-    position: absolute;
-    color: #7e7e7e;
-    z-index: 1000;
+#menuapp-wrapper[menu-device-type="phone"] .menu-left-header .menu-sidebar-toggle a:after {
 }
 
 .menu-sidebar-toggle a:hover:after {
@@ -334,7 +322,7 @@ body {
     font-family: "Font Awesome 5 Free";
     font-weight: 900;
     content: "\f078";
-    font-size: 15px;
+    font-size: 16px;
     position: relative;
     float: right;
 }
@@ -348,7 +336,7 @@ body {
     font-family: "Font Awesome 5 Free";
     font-weight: 900;
     content: "\f106" !important;
-    font-size: 15px;
+    font-size: 16px;
     float: right;
     position: relative;
 }
@@ -357,7 +345,7 @@ body {
     font-family: "Font Awesome 5 Free";
     font-weight: 900;
     content: "\f103";
-    font-size: 15px;
+    font-size: 16px;
     position: relative;
     float: right;
 }
@@ -366,7 +354,7 @@ body {
     font-family: "Font Awesome 5 Free";
     font-weight: 900;
     content: "\f102";
-    font-size: 15px;
+    font-size: 16px;
     position: relative;
     float: right;
 }
@@ -612,7 +600,7 @@ body {
 
 .menu-minimized-lpanel #menu-left-panel .panel-list>li>a>i {
     display: inline;
-    font-size: 15px;
+    font-size: 16px;
     padding-left: 6px;
     padding-right: 6px;
 }
@@ -698,7 +686,7 @@ body {
     font-family: "Font Awesome 5 Free";
     font-weight: 900;
     content: "\f103";
-    font-size: 15px;
+    font-size: 16px;
     position: relative;
     float: right;
     display: block;
@@ -709,7 +697,7 @@ body {
     font-family: "Font Awesome 5 Free";
     font-weight: 900;
     content: "\f102";
-    font-size: 15px;
+    font-size: 16px;
     position: relative;
     float: right;
     display: block;
@@ -814,19 +802,19 @@ body {
     display: block;
 }
 
-#menuapp-wrapper[menu-device-type="phone"] #menu-header>.menu-right-header .menu-sidebar-toggle a:after {
+#menuapp-wrapper[menu-device-type="phone"] #menu-header>.menu-right-header .menu-sidebar-toggle a {
     display: none !important;
 }
 
-#menuapp-wrapper[menu-device-type="desktop"] .menu-left-header .menu-sidebar-toggle a:after {
+#menuapp-wrapper[menu-device-type="desktop"] .menu-left-header .menu-sidebar-toggle a {
     display: none !important;
 }
 
-#menuapp-wrapper[menu-device-type="tablet"] .menu-left-header .menu-sidebar-toggle a:after {
+#menuapp-wrapper[menu-device-type="tablet"] .menu-left-header .menu-sidebar-toggle a {
     display: none !important;
 }
 
-#menuapp-wrapper[menu-device-type="phone"] .menu-left-header .menu-sidebar-toggle a:after {
+#menuapp-wrapper[menu-device-type="phone"] .menu-left-header .menu-sidebar-toggle a {
     background: transparent;
     border-radius: 4px;
     content: "\f0c9";
