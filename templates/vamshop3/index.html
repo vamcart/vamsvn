@@ -10,90 +10,34 @@
             </div>
 
             <div class="menu-right-header" menu-position-type="fixed">
-                <ul class="list-inline">
-                <li class="list-inline-item menu-sidebar-toggle"><a href="javascript:void(0)"><i class="fas fa-bars"></i> {#text_catalog#}</a></li>
-                <li class="list-inline-item">Test</li>
-                </ul>
-                <ul class="left-navbar">
-                    <li>
-                        <form method="post" class="menu-searchbar">
-                            <input type="text" placeholder="Search..." name="keyword" class="form-control">
-                            <span class="search-icon"><i class="fa fa-search"></i></span>
-                        </form>
-                    </li>
-                </ul>
-                <ul class="right-navbar">
-                    <li class="dropdown menu-rheader-submenu message-notification">
-                        <a href="javascript:void(0)" class="dropdown-toggle icon-circle" data-toggle="dropdown">
-                            <i class="fa fa-envelope"></i>
-                            <span class="badge badge-danger">5</span>
-                        </a>
-                        <ul class="dropdown-menu ">
-                            <li class="menu-submenu-label">
-                                <h3>You have <span class="bold">5</span> New Messages <a href="#">view all</a></h3>
-                            </li>
-                            <li>
-                                <a href="#" class="clearfix">
-                                    <img src="{$tpl_path}img/avatar.jpg" class="rounded notification-avatar" alt="Avatar">
-                                    <span class="notification-title">Nanterey Reslaba</span>
-                                    <span class="notification-ago  ">3 min ago</span>
-                                    <p class="notification-message">Hi James, Don't go anywhere, i will be coming soon. </p>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="clearfix">
-                                    <img src="{$tpl_path}img/avatar.jpg" class="rounded notification-avatar" alt="Avatar">
-                                    <span class="notification-title">Polly Paton</span>
-                                    <span class="notification-ago  ">5 min ago</span>
-                                    <p class="notification-message">Hi James, Everything is working just fine here. </p>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="clearfix">
-                                    <img src="{$tpl_path}img/avatar.jpg" class="rounded notification-avatar" alt="Avatar">
-                                    <span class="notification-title">Smith Doe</span>
-                                    <span class="notification-ago  ">8 min ago</span>
-                                    <p class="notification-message">Please mail me the all files when you complete your task.</p>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="clearfix">
-                                    <img src="{$tpl_path}img/avatar.jpg" class="rounded notification-avatar" alt="Avatar">
-                                    <span class="notification-title">Zoey Lombardo</span>
-                                    <span class="notification-ago  ">15 min ago</span>
-                                    <p class="notification-message">Hi James, How are you?</p>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="clearfix">
-                                    <img src="{$tpl_path}img/avatar.jpg" class="rounded notification-avatar" alt="Avatar">
-                                    <span class="notification-title">Alan Doyle</span>
-                                    <span class="notification-ago  ">30 min ago</span>
-                                    <p class="notification-message">Call me when you complete your work.</p>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="dropdown menu-rheader-submenu menu-header-profile">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            <span><img class="rounded" src="{$tpl_path}img/avatar.jpg"></span>
-                        </a>
-                        <ul class="dropdown-menu ">
-                            <li><a href="#"><i class="fa fa-user"></i>My Profile</a></li>
-                            <li><a href="#"><i class="fa fa-calendar"></i>My Calendar</a></li>
-                            <li><a href="#"><i class="fa fa-envelope"></i>My Inbox  <span class="badge badge-danger">
-							3 </span></a></li>
-                            <li><a href="#"><i class="fa fa-rocket"></i>My Tasks <span class="badge badge-success">
-							7 </span></a></li>
-                            <li><a href="#"><i class="fa fa-lock"></i>Lock Screen</a></li>
-                            <li><a href="#"><i class="fa fa-power-off"></i>Logout</a></li>
-                        </ul>
-                    </li>
-                    <!-- <li class="dropdown menu-rheader-submenu">
-                        <a href="#" class="dropdown-toggle icon-circle" data-toggle="dropdown"><i class="fa fa-ellipsis-h"></i></a>
-                    </li> -->
-                </ul>
 
+<div class="d-flex">
+<div class="d-none d-md-block">
+<ul class="nav">
+  <li class="nav-item menu-sidebar-toggle">
+    <a class="nav-link" href="javascript:void(0)"><i class="fas fa-bars"></i> {#text_catalog#}</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link active" href="#">Информация</a>
+  </li>
+</ul>
+</div>
+<div class="my-auto">
+{$box_SEARCH}
+</div>
+<div class="ml-auto">
+<ul class="nav">
+  <li class="nav-item"><a class="nav-link" href="{$smarty.const.FILENAME_ACCOUNT}" title="{$smarty.const.TEXT_MY_ORDERS}"><i class="fa fa-user"></i></a></li>
+  {if !$cart_current}<li class="nav-item dropdown" id="divShoppingCart">{$box_CART}</li>{/if}
+  {if $smarty.session.customers_status.customers_status_id == 0}
+  <li class="nav-item"><a class="nav-link" href="{$admin_area_link}" title="{#text_admin#}"><i class="fa fa-cog"></i></a></li>
+  {/if}  
+  {if $smarty.session.customer_id}
+  <li class="nav-item"><a class="nav-link" href="{$logoff}" title="{#link_logoff#}"><i class="fa fa-power-off"></i></a></li>
+  {/if}  
+</ul>
+</div>
+</div>
             </div>
         </header>
         <div id="menuapp-container" menu-color-type="lpanel-bg8" menu-lpanel-effect="shrink" class="menu-minimized-lpanel">

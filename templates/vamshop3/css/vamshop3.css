@@ -1,6 +1,6 @@
 body {
   background: #fff;
-  font-family: sans-serif;
+  font-family: 'M PLUS Rounded 1c', sans-serif;
   font-weight: 500;
 }
 
@@ -513,4 +513,8 @@ label {
   display: block;
 }
 
+.nav-link {
+    display: block;
+    padding: 0 .5rem;
+}
 

@@ -311,10 +311,10 @@
     border-radius: 30px;
     box-shadow: none;
     float: right;
-    font-size: 16px;
-    height: 35px;
+    font-size: 14px;
+
     margin: 7px 4px 0;
-    width: calc(100% - 252px);
+    width: 100px;
     position: absolute;
     padding-left: 22px;
     z-index: 100;
@@ -328,7 +328,7 @@
 .menu-searchbar input:focus {
     box-shadow: none;
     border-color: #eff0f4;
-    width: 50%;
+    width: 210px;
     position: absolute;
 }
 
@@ -337,14 +337,15 @@
     position: relative;
 }
 
+/*
 #menuapp-wrapper[menu-device-type="phone"] .menu-searchbar input {
     background: transparent none repeat scroll 0 0;
     border: 1px solid #ccc;
     border-radius: 30px;
     box-shadow: none;
     float: right;
-    height: 33px;
-    margin: 8px 3px 0;
+    font-size: 14px;
+    margin: 9px 3px 0;
     padding-left: 21px;
     position: absolute;
     width: 6px;
@@ -359,7 +360,8 @@
 #menuapp-wrapper[menu-device-type="phone"] .menu-searchbar input:focus {
     box-shadow: none;
     border-color: #eff0f4;
-    width: calc(100% - 10px);
+    width: 210px;
     position: absolute;
     background: #f3f3f3 none repeat scroll 0 0;
 }
+*/
