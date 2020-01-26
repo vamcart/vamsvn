@@ -371,9 +371,9 @@ vam_db_query("UPDATE " .TABLE_CONFIGURATION . " SET configuration_value='". (tri
 'php_value mbstring.internal_encoding UTF-8'. "\n" .
 '</IfModule>    '. "\n" .
 '<IfModule mod_deflate.c>'. "\n" .
-'    AddOutputFilterByType DEFLATE text/html text/plain text/css text/javascript application/x-javascript application/font-woff application/font-woff2'. "\n" .
+'    AddOutputFilterByType DEFLATE text/html text/plain text/css text/javascript text/json application/json application/x-javascript application/font-woff application/font-woff2'. "\n" .
 '' . "\n" .
-'<FilesMatch "\\\.(js|css|woff|woff2|ttf|eot|otf)$">'. "\n" .
+'<FilesMatch "\\\.(js|json|css|woff|woff2|ttf|eot|otf)$">'. "\n" .
 '  SetOutputFilter DEFLATE'. "\n" .
 '</FilesMatch>'. "\n" .
 '</IfModule>'. "\n" .
@@ -389,6 +389,8 @@ vam_db_query("UPDATE " .TABLE_CONFIGURATION . " SET configuration_value='". (tri
 '  ExpiresByType text/css "access plus 10 years"'. "\n" .
 '  ExpiresByType text/js "access plus 10 years"'. "\n" .
 '  ExpiresByType text/javascript "access plus 10 years"'. "\n" .
+'  ExpiresByType text/json "access plus 10 years"'. "\n" .
+'  ExpiresByType application/json "access plus 10 years"'. "\n" .
 '  ExpiresByType application/x-javascript "access plus 10 years"'. "\n" .
 '  ExpiresByType application/javascript "access plus 10 years"'. "\n" .
 '  ExpiresByType application/font-woff "access plus 10 years"'. "\n" .
