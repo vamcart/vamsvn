@@ -40,13 +40,6 @@
 <link rel="apple-touch-icon" href="<?php echo DIR_WS_CATALOG; ?>images/icons/vamshop-box-apple.png" />
 <link rel="shortcut icon" href="<?php echo DIR_WS_CATALOG; ?>favicon.ico" />
 <link rel="manifest" href="<?php echo DIR_WS_CATALOG; ?>manifest.json" />
-<?php
-if (ENABLE_SERVICE_WORKER == 'true') {
-?>
-<script src="<?php echo DIR_WS_CATALOG; ?>sw.js" defer></script>
-<?php
- }
-?>
 <?php include(DIR_WS_MODULES.FILENAME_METATAGS); ?>
 <base href="<?php echo (($request_type == 'SSL') ? HTTPS_SERVER : HTTP_SERVER) . DIR_WS_CATALOG; ?>" />
 <?php
