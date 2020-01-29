@@ -1,7 +1,10 @@
 {config_load file="$language/lang_$language.conf" section="boxes"}
-<section class="widget inner">
-	<h3 class="widget-title">{#heading_filters#}</h3>
-			<div class="text-left">
-					{$BOX_CONTENT}
-			</div>
-</section>
+  <button class="btn btn-outline-primary d-md-none mb-2" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+    <i class="fas fa-filter"></i> {#text_product_filters#}
+  </button>
+  
+  <div class="collapse dont-collapse-sm" id="collapseExample">
+    <div class="well">
+      {$BOX_CONTENT}
+    </div>
+  </div>

@@ -91,6 +91,7 @@ $box_content='';
 
     $first = true;
     while ($specs_array = vam_db_fetch_array ($specs_query, true) ) {
+    $box_text .= '<div class="filter">';
       // Retrieve the GET vars, sanitize, and assign to variables
       // Variable names are the letter "f" followed by the specifications_id for that spec.
       $var = 'f' . $specs_array['specifications_id'];
@@ -124,14 +125,14 @@ $box_content='';
       if ($count_filters >= SPECIFICATIONS_FILTER_MINIMUM) {
         $filters_array = array();
         if ($first == false) {
-          $box_text .=  "<br>\n";        
+          //$box_text .=  "<br>\n";        
         }
         $first = false;
         
         if (isset ($_GET[$var]) && $_GET[$var] != '') {
-        $box_text .=  '<b>' . $specs_array['specification_name'] . '</b> <a href="'.vam_href_link (FILENAME_PRODUCTS_FILTERS, vam_get_all_get_params (array ('f' . $specs_array['specifications_id']) ) ).'"><span class="close-box">[X]</span></a><br /><br />';
+        $box_text .=  '<b>' . $specs_array['specification_name'] . '</b> <a href="'.vam_href_link (FILENAME_PRODUCTS_FILTERS, vam_get_all_get_params (array ('f' . $specs_array['specifications_id']) ) ).'"><span class="close-box">[X]</span></a><br />';
         } else {
-        $box_text .=  '<b>' . $specs_array['specification_name'] . '</b><br /><br />';
+        $box_text .=  '<b>' . $specs_array['specification_name'] . '</b><br />';
         }
 
         $filter_index = 0;
@@ -204,7 +205,9 @@ $box_content='';
 
         $box_text .= vam_get_filter_string ($specs_array['filter_display'], $filters_select_array, FILENAME_PRODUCTS_FILTERS, $var, $$var);
       } // if ($count_filters
+    $box_text .= '</div>';
     } // while ($specs_array
+    $box_text .= '<div class="clear"></div>';
 if (vam_db_num_rows ($specs_query, true) > 0) {
 
     $box->assign('BOX_CONTENT', $box_text);
