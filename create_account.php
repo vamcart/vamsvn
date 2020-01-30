@@ -450,7 +450,7 @@ if (isset ($_GET['social_login']) && ($_GET['social_login'] == 'fb')) {
 		$clientId = FACEBOOK_OAUTH_CLIENT_ID; //ID Приложения
 		$clientSecret = FACEBOOK_OAUTH_SECRET_KEY; //Защищённый ключ
 		$redirectUrl = HTTP_SERVER.DIR_WS_CATALOG.FILENAME_CREATE_ACCOUNT.'?social_login=fb';  //return url (url to script)
-		$homeUrl = FULL_BASE_URL.BASE;  //return to home
+		$homeUrl = HTTP_SERVER.DIR_WS_CATALOG;  //return to home
 
 		if (isset($_REQUEST['code'])) {
 			$result = false;
@@ -676,7 +676,7 @@ if (isset ($_GET['social_login']) && ($_GET['social_login'] == 'google')) {
 		$clientId = GOOGLE_OAUTH_CLIENT_ID; //ID Приложения
 		$clientSecret = GOOGLE_OAUTH_SECRET_KEY; //Защищённый ключ
 		$redirectUrl = HTTP_SERVER.DIR_WS_CATALOG.FILENAME_CREATE_ACCOUNT.'?social_login=google';  //return url (url to script)
-		$homeUrl = FULL_BASE_URL.BASE;  //return to home
+		$homeUrl = HTTP_SERVER.DIR_WS_CATALOG;  //return to home
 
 		require_once (DIR_FS_CATALOG.'vendor/google/Google_Client.php');
 		$gClient = new Google_Client();
@@ -882,7 +882,7 @@ if (isset ($_GET['social_login']) && ($_GET['social_login'] == 'vk')) {
 		$clientSecret = VK_OAUTH_SECRET_KEY; //Защищённый ключ
 		$clientServiceKey = VK_OAUTH_SERVICE_KEY; //Сервисный ключ доступа
 		$redirectUrl = HTTP_SERVER.DIR_WS_CATALOG.FILENAME_CREATE_ACCOUNT.'?social_login=vk';  //return url (url to script)
-		$homeUrl = FULL_BASE_URL.BASE;  //return to home
+		$homeUrl = HTTP_SERVER.DIR_WS_CATALOG;  //return to home
 
 		if (isset($_REQUEST['code'])) {
 			$result = false;
