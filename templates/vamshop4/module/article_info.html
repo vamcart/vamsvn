@@ -38,9 +38,9 @@
 <span itemprop="logo" itemscope itemtype="https://schema.org/ImageObject">
 <meta itemprop="url" content="{$smarty.const.HTTP_SERVER}{$smarty.const.DIR_WS_CATALOG}{$tpl_path}img/logo.png" />
 </span>
-<meta itemprop="telephone" content="{$smarty.const.STORE_TELEPHONE}" />
+<meta itemprop="telephone" content="{$smarty.const.STORE_TELEPHONE|strip_tags}" />
 <meta itemprop="address" content="{$smarty.const.STORE_NAME_ADDRESS|strip_tags}" />
-<meta itemprop="name" content="{$smarty.const.STORE_NAME}" />
+<meta itemprop="name" content="{$smarty.const.STORE_NAME|strip_tags}" />
 </div>
 
 {if $ARTICLE_URL}
