@@ -365,7 +365,7 @@
   height: 32px;
   line-height: 1.42857143;
   margin-top: 0;
-  min-width: 5em;
+  min-width: 15em;
 }
 
 .select2-container--bootstrap .select2-selection--multiple .select2-selection__choice__remove {
