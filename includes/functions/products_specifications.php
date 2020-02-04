@@ -658,7 +658,7 @@
 
       case 'multi':
         $box_text .= vam_draw_form ('filter', $target, 'get');
-        $box_text .= vam_draw_multi_pull_down_menu ($filter_name . '[]', $filters_select_array, $filter_value, 'class="select2 form-control" multiple="' . $filter_name . 'f"');
+        $box_text .= vam_draw_multi_pull_down_menu ($filter_name . '[]', $filters_select_array, $filter_value, 'class="select2 form-control" data-placeholder="'.PULL_DOWN_DEFAULT.'" multiple="' . $filter_name . 'f"');
         $box_text .= $additional_variables . vam_hide_session_id();
         $box_text .= vam_image_submit ('submit.png', TEXT_FIND_PRODUCTS);
         $box_text .= '</form>';
