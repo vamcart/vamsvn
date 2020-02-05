@@ -65,8 +65,8 @@
   "affiliation": "' . STORE_NAME . '",
   "value": ' . $analytics_total . ',
   "currency": "' . $order->info['currency'] . '",
-  "tax": ' . (($analytics_tax > 0) ? 0 : 0) . ',
-  "shipping": ' . $analytics_shipping . ',
+  "tax": ' . (($analytics_tax > 0) ? $analytics_tax : 0) . ',
+  "shipping": ' . (($analytics_shipping > 0) ? $analytics_shipping : 0) . ',
 	
 	';
 
