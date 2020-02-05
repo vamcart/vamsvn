@@ -57,26 +57,16 @@
      }
 
 
-// Get products info for Analytics "Item lines"
-
-	$item_string = '';
-    $items_query = vam_db_query("select products_id, products_model, products_name, final_price, products_quantity from " . TABLE_ORDERS_PRODUCTS . " where orders_id = '" . $order_id . "' order by products_name");
-    while ($items = vam_db_fetch_array($items_query)) {
-		$category_query = vam_db_query("select p2c.categories_id, cd.categories_name from " . TABLE_PRODUCTS_TO_CATEGORIES . " p2c, " . TABLE_CATEGORIES_DESCRIPTION . " cd where p2c.products_id = '" . $items['products_id'] . "' AND cd.categories_id = p2c.categories_id AND cd.language_id = '" . (int)$_SESSION['languages_id'] . "'");
-		$category = vam_db_fetch_array($category_query);
-		
-	  $item_string .=  '_gaq.push([\'_addItem\','."\n".'\'' . $order_id . '\','."\n".'\'' . $items['products_id'] . '\','."\n".'\'' . htmlspecialchars($items['products_name']) . '\','."\n".'\'' . htmlspecialchars($category['categories_name']) . '\','."\n".'\'' . $items['final_price'] . '\','."\n".'\'' . $items['products_quantity'] . '\''."\n".']);'."\n";
-    }
-
 // Prepare the Analytics "Transaction line" string
 
 	$transaction_string = '
 	
-    \'id\': \'' . $order_id . '\','."\n".
-    '\'affiliation\': \'' . STORE_NAME . '\','."\n".
-    '\'revenue\': \'' . $analytics_total . '\','."\n".
-    '\'shipping\': \'' . $analytics_shipping . '\','."\n".
-    '\'tax\': \'' . $analytics_tax . '\'
+  "transaction_id": "' . $order_id . '",
+  "affiliation": "' . STORE_NAME . '",
+  "value": ' . $analytics_total . ',
+  "currency": "' . $order->info['currency'] . '",
+  "tax": ' . (($analytics_tax > 0) ? 0 : 0) . ',
+  "shipping": ' . $analytics_shipping . ',
 	
 	';
 
@@ -90,16 +80,15 @@
 		
 	  $item_string .=  
 	  
-  'ga(\'ecommerce:addItem\', {'."\n".
+  '{'."\n".'
 	  
-    '\'id\': \'' . $order_id . '\','."\n".
-    '\'name\': \'' . htmlspecialchars($items['products_name']) . '\','."\n".
-    '\'sku\': \'' . htmlspecialchars($items['products_model']) . '\','."\n".
-    '\'category\': \'' . htmlspecialchars($category['categories_name']) . '\','."\n".
-    '\'price\': \'' . $items['final_price'] . '\','."\n".
-    '\'quantity\': \'' . $items['products_quantity'] . '\''."\n".
+      "id": "' . htmlspecialchars($items['products_model']) . '",
+      "name": "' . htmlspecialchars($items['products_name']) . '",
+      "category": "' . htmlspecialchars($category['categories_name']) . '",
+      "quantity": ' . $items['products_quantity'] . ',
+      "price": \'' . $items['final_price'] . '\'
 	  
-  '});'."\n";
+  },'."\n";
 
 
     }
