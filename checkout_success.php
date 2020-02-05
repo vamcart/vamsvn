@@ -162,7 +162,7 @@ $vamTemplate->assign('KUPIVKREDIT_CODE', $kupi_v_kredit);
 
 
 // Google Conversion tracking
-if (GOOGLE_CONVERSION == 'true') {
+if (GOOGLE_CONVERSION == 'true' or GOOGLE_TAG_MANAGER == 'true') {
 
 include(DIR_WS_MODULES . 'analytics/analytics.php');
 
