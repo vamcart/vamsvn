@@ -605,7 +605,8 @@ define('YANDEX_METRIKA_ID_TITLE','Ваш ID в Яндекс Метрике');
 define('YANDEX_METRIKA_ID_DESC','ID номер Вашего сайта в Яндекс Метрике.');
 define('YANDEX_METRIKA_TITLE','Включить статистику Яндекс Метрика');
 define('YANDEX_METRIKA_DESC','Включить Яндекс Метрику.');
-
+define('GOOGLE_TAG_MANAGER_TITLE','Включить Google Tag Manager');define('GOOGLE_TAG_MANAGER_DESC','Включить Google Tag Manager.');
+define('GOOGLE_TAG_MANAGER_CONTAINER_ID_TITLE','Укажите Ваш ID номер контейнера GTM');define('GOOGLE_TAG_MANAGER_CONTAINER_ID_DESC','Укажите Ваш ID номер контейнера GTM.');
 // Afterbuy
 define('AFTERBUY_ACTIVATED_TITLE','Активировать');
 define('AFTERBUY_ACTIVATED_DESC','Активировать модуль afterbuy');
