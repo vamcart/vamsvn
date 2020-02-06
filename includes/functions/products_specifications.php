@@ -131,7 +131,7 @@
   function vam_draw_links_menu ($name, $values, $target, $default = '') {
     $field = '';
 
-    $field .= '<ul class="list-group">';
+    $field .= '<ul class="list-inline">';
 
     foreach ($values as $link_data) {
 
@@ -140,7 +140,7 @@
           break;
         
         case ($link_data['count'] != '' && $link_data['count'] < 1 && SPECIFICATIONS_FILTER_NO_RESULT == 'grey'):
-          $field .= '<li class="list-group-item">';
+          $field .= '<li class="list-inline-item">';
           $field .= '<span class="no_results">';
           $field .= vam_output_string ($link_data['text'] );
           $field .= '</span>';
@@ -151,21 +151,22 @@
           break;
         
         default:
-          $field .= '<li class="list-group-item list-group-item-action'.(($default == $link_data['id']) ? ' active' : '').'">';
+          $field .= '<li class="list-inline-item'.(($default == $link_data['id']) ? ' active' : '').'">';
+          $field .= '<a class="rounded-pill btn btn-outline-primary'.(($default == $link_data['id']) ? ' btn-primary text-white' : '').'" href="' . vam_href_link ($target, vam_get_array_get_params (array ( $name, 'page') ) . ($link_data['id'] == '0' ? '' : $name . '=' . vam_output_string($link_data['id']))) . '">';
+
           if ($default == $link_data['id']) {
             $field .= '<b>';
           }
-          $field .= '<a href="' . vam_href_link ($target, vam_get_array_get_params (array ( $name, 'page') ) . ($link_data['id'] == '0' ? '' : $name . '=' . vam_output_string($link_data['id']))) . '">';
-          $field .= vam_output_string ($link_data['text'] );
-          $field .= '</a>';
 
-          if ($default == $link_data['id']) {
-            $field .= '</b>';
-          }
-            
+          $field .= vam_output_string ($link_data['text'] );
+
           if ($link_data['count'] != '' && SPECIFICATIONS_FILTER_SHOW_COUNT == 'True') {
             $field .= ' (' . $link_data['count'] . ')';
           }
+          if ($default == $link_data['id']) {
+            $field .= '</b>';
+          }
+          $field .= '</a>';
           $field .= '</li>';
           break;
       } // switch (true)
