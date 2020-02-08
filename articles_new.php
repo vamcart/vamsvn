@@ -221,7 +221,7 @@ $articles_new['articles_keywords'] = str_replace($value.",","",$articles_new['ar
 
 include_once(DIR_WS_BOXES . 'articles.php');
 
-$vamTemplate->assign('TOPICS', $box_content);
+$vamTemplate->assign('TOPICS', $box_content_articles);
 
 require (DIR_WS_INCLUDES.'header.php');
 

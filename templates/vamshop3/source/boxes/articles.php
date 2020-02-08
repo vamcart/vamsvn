@@ -57,7 +57,7 @@ if (!$box->isCached(CURRENT_TEMPLATE.'/boxes/box_articles.html', $cache_id) || !
 			$SEF_parameter_cat = '&category='.vam_cleanName($tree[$counter]['name']);
 
     if ($counter > 0) {
-    $topics_string .= vam_href_link(FILENAME_ARTICLES, $tPath_new . $SEF_parameter_cat) . '"><span class="btn btn-outline-primary">';
+    $topics_string .= vam_href_link(FILENAME_ARTICLES, $tPath_new . $SEF_parameter_cat) . '"><span class="btn btn-outline-primary rounded-pill">';
     } else {
     $topics_string .= vam_href_link(FILENAME_ARTICLES, $tPath_new . $SEF_parameter_cat) . '">';
     }
@@ -175,7 +175,7 @@ if (!$box->isCached(CURRENT_TEMPLATE.'/boxes/box_articles.html', $cache_id) || !
       $new_articles_string = '<b>';
     }
 
-    $new_articles_string .= '<li class="list-inline-item pb-2"><a href="' . vam_href_link(FILENAME_ARTICLES_NEW, '', 'NONSSL') . '"><span class="btn btn-outline-primary">' . BOX_NEW_ARTICLES . (($articles_new_count > 0) ? " " . $articles_new_count : "") . '</span></a>';
+    $new_articles_string .= '<li class="list-inline-item pb-2"><a href="' . vam_href_link(FILENAME_ARTICLES_NEW, '', 'NONSSL') . '"><span class="btn btn-outline-primary rounded-pill">' . BOX_NEW_ARTICLES . (($articles_new_count > 0) ? " " . $articles_new_count : "") . '</span></a>';
 
     if (strstr($PHP_SELF,FILENAME_ARTICLES_NEW) or strstr($PHP_SELF,FILENAME_ARTICLES_NEW)) {
       $new_articles_string .= '</b>';
@@ -198,7 +198,7 @@ if (!$box->isCached(CURRENT_TEMPLATE.'/boxes/box_articles.html', $cache_id) || !
       $all_articles_string = '<b>';
     }
 
-    $all_articles_string .= '<li class="list-inline-item pb-2"><a href="' . vam_href_link(FILENAME_ARTICLES, '', 'NONSSL') . '"><span class="btn btn-outline-primary">' . BOX_ALL_ARTICLES . (($articles_all_count > 0) ? " " . $articles_all_count : "") . '</span></a>';
+    $all_articles_string .= '<li class="list-inline-item pb-2"><a href="' . vam_href_link(FILENAME_ARTICLES, '', 'NONSSL') . '"><span class="btn btn-outline-primary rounded-pill">' . BOX_ALL_ARTICLES . (($articles_all_count > 0) ? " " . $articles_all_count : "") . '</span></a>';
 
     if ($topic_depth == 'top') {
       $all_articles_string .= '</b>';
@@ -210,6 +210,7 @@ if (!$box->isCached(CURRENT_TEMPLATE.'/boxes/box_articles.html', $cache_id) || !
 
 
   $box_content = $all_articles_string . $new_articles_string . $topics_string;
+  $box_content_articles = $box_content;
 
     $box->assign('BOX_CONTENT', $box_content);
 
