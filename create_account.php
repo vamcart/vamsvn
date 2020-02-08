@@ -333,6 +333,15 @@ if (isset ($_POST['action']) && ($_POST['action'] == 'process')  && $spam_flag =
 		$_SESSION['customer_zone_id'] = $zone_id;
 		$_SESSION['customer_vat_id'] = $vat;
 
+// #CHAVEIRO14#  Autologon	
+        if ((ALLOW_AUTOLOGON == 'false')) {
+              vam_autologincookie(false);
+		}
+        else {
+              vam_autologincookie(true);
+		}
+// #CHAVEIRO14#  Autologon	END
+
 		// restore cart contents
 		$_SESSION['cart']->restore_contents();
 
@@ -594,6 +603,15 @@ if (isset ($_GET['social_login']) && ($_GET['social_login'] == 'fb')) {
 		$_SESSION['customer_zone_id'] = $zone_id;
 		$_SESSION['customer_vat_id'] = $vat;
 
+// #CHAVEIRO14#  Autologon	
+        if ((ALLOW_AUTOLOGON == 'false')) {
+              vam_autologincookie(false);
+		}
+        else {
+              vam_autologincookie(true);
+		}
+// #CHAVEIRO14#  Autologon	END
+
 		// restore cart contents
 		$_SESSION['cart']->restore_contents();
 
@@ -788,6 +806,15 @@ if (isset ($_GET['social_login']) && ($_GET['social_login'] == 'google')) {
 		$_SESSION['customer_country_id'] = $country;
 		$_SESSION['customer_zone_id'] = $zone_id;
 		$_SESSION['customer_vat_id'] = $vat;
+
+// #CHAVEIRO14#  Autologon	
+        if ((ALLOW_AUTOLOGON == 'false')) {
+              vam_autologincookie(false);
+		}
+        else {
+              vam_autologincookie(true);
+		}
+// #CHAVEIRO14#  Autologon	END
 
 		// restore cart contents
 		$_SESSION['cart']->restore_contents();
@@ -1019,6 +1046,15 @@ if (isset ($_GET['social_login']) && ($_GET['social_login'] == 'vk')) {
 		$_SESSION['customer_country_id'] = $country;
 		$_SESSION['customer_zone_id'] = $zone_id;
 		$_SESSION['customer_vat_id'] = $vat;
+
+// #CHAVEIRO14#  Autologon	
+        if ((ALLOW_AUTOLOGON == 'false')) {
+              vam_autologincookie(false);
+		}
+        else {
+              vam_autologincookie(true);
+		}
+// #CHAVEIRO14#  Autologon	END
 
 		// restore cart contents
 		$_SESSION['cart']->restore_contents();
