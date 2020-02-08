@@ -58,6 +58,19 @@ unset ($_SESSION['ccard']);
 unset ($_SESSION['gv_id']);
 unset ($_SESSION['cc_id']);
 // GV Code End
+
+// HMCS: Begin Autologon	**************************************************************
+  $cookie_url_array = parse_url((ENABLE_SSL == true ? HTTPS_SERVER : HTTP_SERVER) . substr(DIR_WS_CATALOG, 0, -1));
+  $cookie_path = $cookie_url_array['path'];
+
+unset ($_SESSION['autologon_executed']);
+unset ($_SESSION['autologon_link']);
+
+vam_setcookie("email_address", "", time() - 3600, $cookie_path); // Delete email_address cookie
+vam_setcookie("password", "", time() - 3600, $cookie_path);	 // Delete password cookie 
+
+// HMCS: End Autologon		**************************************************************
+
 $_SESSION['cart']->reset();
 // write customers status guest in session again
 require (DIR_WS_INCLUDES.'write_customers_status.php');

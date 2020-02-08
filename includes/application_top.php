@@ -279,6 +279,16 @@ require (DIR_WS_FUNCTIONS.'sessions.php');
 session_name('sid');
 session_save_path(SESSION_WRITE_DIRECTORY);
 
+// HMCS: Begin Autologon	******************************************************************
+  // Determine if cookies are enabled
+  vam_setcookie("TEMPCOOKIE", "CookieOn", time() + 60 * 60);
+  $cookieinfo = $_COOKIE["TEMPCOOKIE"];
+  if ($cookieinfo == "CookieOn") {
+    global $cookies_on;
+    $cookies_on = true;
+  }
+// HMCS: End Autologon
+
 // set the session cookie parameters
 if (function_exists('session_set_cookie_params')) {
 	session_set_cookie_params(0, $cookie_info['cookie_path'], $cookie_info['cookie_domain']);
@@ -814,4 +824,19 @@ if (strpos($PHP_SELF, FILENAME_PRODUCT_INFO) !== FALSE || strpos($PHP_SELF, FILE
 // include composer autoload
   require(DIR_FS_CATALOG . '/vendor/autoload.php');
 
+  // HMCS: Begin Autologon	******************************************************************
+  if ($cookies_on == true) {
+    if (ALLOW_AUTOLOGON == 'true') {                                // Is Autologon enabled?
+      if (basename($_SERVER['PHP_SELF']) != FILENAME_LOGIN) {                  // yes
+        if (!isset ($_SESSION['customer_id'])) {
+          include(DIR_WS_MODULES.FILENAME_AUTOLOGON);
+    	}
+      }
+    } else {
+      vam_setcookie("email_address", "", time() - 3600, $cookie_path);  //no, delete email_address cookie
+      vam_setcookie("password", "", time() - 3600, $cookie_path);       //no, delete password cookie
+    }
+  }
+  // HMCS: End Autologon		******************************************************************
+  
 ?>

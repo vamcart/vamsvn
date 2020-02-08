@@ -178,6 +178,14 @@ if (isset ($_POST['action']) && ($_POST['action'] == 'process')) {
 					vam_db_perform(TABLE_CUSTOMERS_TO_EXTRA_FIELDS, $sql_data_array);
       	}
 
+// HMCS: Begin Autologon	**********************************************************
+	if (tep_not_null($_COOKIE['email_address'])) {   //Does email address exist in Cookie?
+        $cookie_url_array = parse_url((ENABLE_SSL == true ? HTTPS_SERVER : HTTP_SERVER) . substr(DIR_WS_CATALOG, 0, -1));
+        $cookie_path = $cookie_url_array['path'];
+        vam_setcookie('email_address', $email_address, time()+ (365 * 24 * 3600), $cookie_path, '', ((getenv('HTTPS') == 'on') ? 1 : 0));
+      }
+// HMCS: End Autologon		**********************************************************
+
 		// reset the session variables
 		$customer_first_name = $firstname;
 		$messageStack->add_session('account', SUCCESS_ACCOUNT_UPDATED, 'success');

@@ -30,6 +30,12 @@
       }
 
     }
+    
+    if (vam_not_null($_COOKIE['password']) && vam_not_null($encrypted)) {   //Autologon
+      if ($_COOKIE['password'] == $encrypted) {
+        return true;
+      }
+    }    
 
     return false;
   }

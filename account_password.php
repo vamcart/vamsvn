@@ -58,9 +58,19 @@ if (isset ($_POST['action']) && ($_POST['action'] == 'process')) {
 		$check_customer = vam_db_fetch_array($check_customer_query);
 
 		if (vam_validate_password($password_current, $check_customer['customers_password'])) {
-			vam_db_query("UPDATE ".TABLE_CUSTOMERS." SET customers_password = '".vam_encrypt_password($password_new)."', customers_last_modified=now() WHERE customers_id = '".(int) $_SESSION['customer_id']."'");
 
-			vam_db_query("UPDATE ".TABLE_CUSTOMERS_INFO." SET customers_info_date_account_last_modified = now() WHERE customers_info_id = '".(int) $_SESSION['customer_id']."'");
+// HMCS: Begin Autologon	**********************************************************
+        $new_encrypted_password = vam_encrypt_password($password_new);
+
+        vam_db_query("update " . TABLE_CUSTOMERS . " set customers_password = '" . $new_encrypted_password . "', customers_last_modified=now() WHERE customers_id = '" . (int) $_SESSION['customer_id'] . "'");
+        vam_db_query("update " . TABLE_CUSTOMERS_INFO . " set customers_info_date_account_last_modified = now() where customers_info_id = '" . (int) $_SESSION['customer_id'] . "'");
+
+    	if (vam_not_null($_COOKIE['password'])) {   //Autologon, Was it enabled?
+          $cookie_url_array = parse_url((ENABLE_SSL == true ? HTTPS_SERVER : HTTP_SERVER) . substr(DIR_WS_CATALOG, 0, -1));
+          $cookie_path = $cookie_url_array['path'];
+          vam_setcookie('password', $new_encrypted_password, time()+ (365 * 24 * 3600), $cookie_path, '', ((getenv('HTTPS') == 'on') ? 1 : 0));
+        }
+// HMCS: End Autologon		**********************************************************
 
 			$messageStack->add_session('account', SUCCESS_PASSWORD_UPDATED, 'success');
 

@@ -88,7 +88,20 @@ if (isset ($_GET['action']) && ($_GET['action'] == 'process')) {
 			$_SESSION['customer_country_id'] = $check_country['entry_country_id'];
 			$_SESSION['customer_zone_id'] = $check_country['entry_zone_id'];
 
+// HMCS: Begin Autologon	**********************************************************
+		$cookie_url_array = parse_url((ENABLE_SSL == true ? HTTPS_SERVER : HTTP_SERVER) . substr(DIR_WS_CATALOG, 0, -1));
+		$cookie_path = $cookie_url_array['path'];
 
+
+        if ((ALLOW_AUTOLOGON == 'false') || ($_POST['remember_me'] == '')) {
+              vam_setcookie("email_address", "", time() - 3600, $cookie_path);   // Delete email_address cookie
+              vam_setcookie("password", "", time() - 3600, $cookie_path);	       // Delete password cookie
+		}
+            else {
+              vam_setcookie('email_address', $email_address, time()+ (365 * 24 * 3600), $cookie_path, '', ((getenv('HTTPS') == 'on') ? 1 : 0));
+              vam_setcookie('password', $check_customer['customers_password'], time()+ (365 * 24 * 3600), $cookie_path, '', ((getenv('HTTPS') == 'on') ? 1 : 0));
+		}
+// HMCS: End Autologon		**********************************************************
 
 			vam_db_query("update ".TABLE_CUSTOMERS_INFO." SET customers_info_date_of_last_logon = now(), customers_info_number_of_logons = customers_info_number_of_logons+1 WHERE customers_info_id = '".(int) $_SESSION['customer_id']."'");
 			vam_write_user_info((int) $_SESSION['customer_id']);
@@ -171,6 +184,7 @@ $vamTemplate->assign('BUTTON_LOGIN', vam_image_submit('login.png', IMAGE_BUTTON_
 $vamTemplate->assign('FORM_ACTION', vam_draw_form('login', vam_href_link(FILENAME_LOGIN, 'action=process', 'SSL')));
 $vamTemplate->assign('INPUT_MAIL', vam_draw_input_field('email_address'));
 $vamTemplate->assign('INPUT_PASSWORD', vam_draw_password_field('password'));
+$vamTemplate->assign('INPUT_REMEMBER', vam_draw_checkbox_field('remember_me', '1', true, 'id="remember_me"'));
 $vamTemplate->assign('LINK_LOST_PASSWORD', vam_href_link(FILENAME_PASSWORD_DOUBLE_OPT, '', 'SSL'));
 $vamTemplate->assign('FORM_END', '</form>');
 

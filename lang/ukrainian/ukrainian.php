@@ -719,4 +719,6 @@ define('VOICE_SEARCH','Голосовой поиск');
 
 define('TEXT_BADGE_CUSTOMER','Реальный покупатель');
 
+define('ENTRY_REMEMBER_ME', 'Запомнить');
+
 ?>
