@@ -88,20 +88,14 @@ if (isset ($_GET['action']) && ($_GET['action'] == 'process')) {
 			$_SESSION['customer_country_id'] = $check_country['entry_country_id'];
 			$_SESSION['customer_zone_id'] = $check_country['entry_zone_id'];
 
-// HMCS: Begin Autologon	**********************************************************
-		$cookie_url_array = parse_url((ENABLE_SSL == true ? HTTPS_SERVER : HTTP_SERVER) . substr(DIR_WS_CATALOG, 0, -1));
-		$cookie_path = $cookie_url_array['path'];
-
-
+// #CHAVEIRO14#  Autologon	
         if ((ALLOW_AUTOLOGON == 'false') || ($_POST['remember_me'] == '')) {
-              vam_setcookie("email_address", "", time() - 3600, $cookie_path);   // Delete email_address cookie
-              vam_setcookie("password", "", time() - 3600, $cookie_path);	       // Delete password cookie
+              vam_autologincookie(false);
 		}
-            else {
-              vam_setcookie('email_address', $email_address, time()+ (365 * 24 * 3600), $cookie_path, '', ((getenv('HTTPS') == 'on') ? 1 : 0));
-              vam_setcookie('password', $check_customer['customers_password'], time()+ (365 * 24 * 3600), $cookie_path, '', ((getenv('HTTPS') == 'on') ? 1 : 0));
+        else {
+              vam_autologincookie(true);
 		}
-// HMCS: End Autologon		**********************************************************
+// #CHAVEIRO14#  Autologon	END
 
 			vam_db_query("update ".TABLE_CUSTOMERS_INFO." SET customers_info_date_of_last_logon = now(), customers_info_number_of_logons = customers_info_number_of_logons+1 WHERE customers_info_id = '".(int) $_SESSION['customer_id']."'");
 			vam_write_user_info((int) $_SESSION['customer_id']);
@@ -152,7 +146,14 @@ if (isset ($_GET['action']) && ($_GET['action'] == 'process')) {
 			$_SESSION['customer_country_id'] = $check_country['entry_country_id'];
 			$_SESSION['customer_zone_id'] = $check_country['entry_zone_id'];
 
-
+// #CHAVEIRO14#  Autologon	
+        if ((ALLOW_AUTOLOGON == 'false') || ($_POST['remember_me'] == '')) {
+              vam_autologincookie(false);
+		}
+        else {
+              vam_autologincookie(true);
+		}
+// #CHAVEIRO14#  Autologon	END
 
 			vam_db_query("update ".TABLE_CUSTOMERS_INFO." SET customers_info_date_of_last_logon = now(), customers_info_number_of_logons = customers_info_number_of_logons+1 WHERE customers_info_id = '".(int) $_SESSION['customer_id']."'");
 			vam_write_user_info((int) $_SESSION['customer_id']);

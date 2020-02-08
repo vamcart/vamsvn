@@ -158,6 +158,7 @@ define('FILENAME_BUNDLE_PRODUCTS', 'bundle_products.php');
 define('FILENAME_REVIEWS_ALL', 'reviews_all.php');
 
 define('FILENAME_AUTOLOGON', 'autologon.php');
+define('FILENAME_AUTOLOGIN', 'autologin.php');
 define('FILENAME_INFO_AUTOLOGON', 'info_autologon.php');
   
 ?>

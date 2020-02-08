@@ -279,15 +279,8 @@ require (DIR_WS_FUNCTIONS.'sessions.php');
 session_name('sid');
 session_save_path(SESSION_WRITE_DIRECTORY);
 
-// HMCS: Begin Autologon	******************************************************************
-  // Determine if cookies are enabled
-  vam_setcookie("TEMPCOOKIE", "CookieOn", time() + 60 * 60);
-  $cookieinfo = $_COOKIE["TEMPCOOKIE"];
-  if ($cookieinfo == "CookieOn") {
-    global $cookies_on;
-    $cookies_on = true;
-  }
-// HMCS: End Autologon
+// include composer autoload
+  require(DIR_FS_CATALOG . '/vendor/autoload.php');
 
 // set the session cookie parameters
 if (function_exists('session_set_cookie_params')) {
@@ -458,6 +451,21 @@ require (DIR_WS_INCLUDES.FILENAME_CART_ACTIONS);
 if (!is_object($_SESSION['cart'])) {
 	$_SESSION['cart'] = new shoppingCart();
 }
+
+// #CHAVEIRO14# Autologon
+require_once(DIR_WS_FUNCTIONS . FILENAME_AUTOLOGIN);
+if ($session_started == true) {
+	if (ALLOW_AUTOLOGON == 'true') {                                // Is Autologon enabled?
+	  if (!strstr($PHP_SELF,FILENAME_LOGIN)) {                  // yes
+		if (!isset($_SESSION['customer_id'])) {
+		  vam_doautologin();
+		}
+	  }
+	} else {
+		vam_autologincookie(false);
+	}
+}
+// #CHAVEIRO14# Autologon END
 
 // include the who's online functions
 vam_update_whos_online();
@@ -820,23 +828,5 @@ if($_SERVER['REQUEST_URI'] != DIR_WS_CATALOG && $PHP_SELF == DIR_WS_CATALOG.'ind
 if (strpos($PHP_SELF, FILENAME_PRODUCT_INFO) !== FALSE || strpos($PHP_SELF, FILENAME_PRODUCT_REVIEWS) !== FALSE) {
     require('includes/modules/headerstatushandler.php');
 }
-
-// include composer autoload
-  require(DIR_FS_CATALOG . '/vendor/autoload.php');
-
-  // HMCS: Begin Autologon	******************************************************************
-  if ($cookies_on == true) {
-    if (ALLOW_AUTOLOGON == 'true') {                                // Is Autologon enabled?
-      if (basename($_SERVER['PHP_SELF']) != FILENAME_LOGIN) {                  // yes
-        if (!isset ($_SESSION['customer_id'])) {
-          include(DIR_WS_MODULES.FILENAME_AUTOLOGON);
-    	}
-      }
-    } else {
-      vam_setcookie("email_address", "", time() - 3600, $cookie_path);  //no, delete email_address cookie
-      vam_setcookie("password", "", time() - 3600, $cookie_path);       //no, delete password cookie
-    }
-  }
-  // HMCS: End Autologon		******************************************************************
   
 ?>
