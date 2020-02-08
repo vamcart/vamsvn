@@ -1091,4 +1091,7 @@ define('ENABLE_COOKIE_ALERT_DESC', 'Показывать уведомление 
 define('PRODUCT_LISTING_ATTRIBUTES_TITLE' , 'Показывать атрибуты товара в списке товара внутри категорий');
 define('PRODUCT_LISTING_ATTRIBUTES_DESC', 'В списке товара внутри категории выводить атрибуты товара.');
 
+define('ALLOW_AUTOLOGON_TITLE' , 'Разрешить автологин');
+define('ALLOW_AUTOLOGON_DESC', 'Разрешить зарегистрированным пользователям сохранять информацию в cookie и автоматически авторизоваться в магазине при входе.');
+
 ?>

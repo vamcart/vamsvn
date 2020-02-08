@@ -2302,6 +2302,7 @@ INSERT INTO configuration (configuration_key, configuration_value, configuration
 INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('SESSION_RECREATE', 'False',  15, 7, NULL, '', NULL, 'vam_cfg_select_option(array(\'True\', \'False\'),');
 INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('SESSION_TIMEOUT_ADMIN', '14400',  15, 8, NULL, '', NULL, NULL);
 INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('SESSION_TIMEOUT_CATALOG', '1440',  15, 9, NULL, '', NULL, NULL);
+INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('ALLOW_AUTOLOGON', 'true', '15', '10', NULL , '0000-00-00 00:00:00', NULL , 'vam_cfg_select_option(array(\'true\', \'false\'),');
 
 # configuration_group_id 16
 INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('META_ROBOTS', 'index,follow',  16, 10, NULL, '', NULL, NULL);
