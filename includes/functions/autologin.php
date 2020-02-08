@@ -49,8 +49,8 @@ function vam_doautologin ()
         if (vam_db_num_rows($session_match_query) > 0)
         {
 
-            //$check_customer_query = vam_db_query("customers_id, customers_vat_id, customers_firstname,customers_lastname, customers_gender, customers_password, customers_email_address, login_tries, login_time, customers_default_address_id from " . TABLE_CUSTOMERS . " where md5(CONCAT(customers_id,customers_email_address,customers_password,'" . $ip_address . "'))= '" . $_COOKIE['autologin'] . "'");
-            $check_customer_query = vam_db_query("customers_id, customers_vat_id, customers_firstname,customers_lastname, customers_gender, customers_password, customers_email_address, login_tries, login_time, customers_default_address_id from " . TABLE_CUSTOMERS . " where md5(CONCAT(customers_id,customers_email_address,customers_password))= '" . $_COOKIE['autologin'] . "'");
+            //$check_customer_query = vam_db_query("select customers_id, customers_vat_id, customers_firstname,customers_lastname, customers_gender, customers_password, customers_email_address, login_tries, login_time, customers_default_address_id from " . TABLE_CUSTOMERS . " where md5(CONCAT(customers_id,customers_email_address,customers_password,'" . $ip_address . "'))= '" . $_COOKIE['autologin'] . "'");
+            $check_customer_query = vam_db_query("select customers_id, customers_vat_id, customers_firstname,customers_lastname, customers_gender, customers_password, customers_email_address, login_tries, login_time, customers_default_address_id from " . TABLE_CUSTOMERS . " where md5(CONCAT(customers_id,customers_email_address,customers_password))= '" . $_COOKIE['autologin'] . "'");
             $check_customer = vam_db_fetch_array($check_customer_query);
 
             if (SESSION_RECREATE == 'True')
