@@ -1397,6 +1397,16 @@ if (isset($_POST['action']) && (($_POST['action'] == 'not_logged_on') && ($creat
       vam_session_register('customer_default_address_id');
       vam_session_register('customer_country_id');
       vam_session_register('customer_zone_id');
+      
+// #CHAVEIRO14#  Autologon	
+        if ((ALLOW_AUTOLOGON == 'false')) {
+              vam_autologincookie(false);
+		}
+        else {
+              vam_autologincookie(true);
+		}
+// #CHAVEIRO14#  Autologon	END
+      
 	  // Customers Data are stored into to DB table "customers" and "Adress_book"
 ############################# create_account End process #######################################
 
