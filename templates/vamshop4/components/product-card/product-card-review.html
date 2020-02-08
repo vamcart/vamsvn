@@ -6,7 +6,7 @@
 			<div class="img-wrap"><a href="{$module_data.PRODUCT.PRODUCTS_LINK}"><img src="{$module_data.PRODUCT.PRODUCTS_IMAGE}" alt="{$module_data.PRODUCT.PRODUCTS_NAME}"></a></div>
 			<div class="info-wrap text-center">
 				<h5 class="title"><a href="{$module_data.PRODUCT.PRODUCTS_LINK}">{$module_data.PRODUCT.PRODUCTS_NAME}</a></h5>
-				{if $module_data.REVIEW.CUSTOMER}<div class="desc"><span class="btn btn-outline-primary btn-sm"><i class="fas fa-user-check"></i> {$smarty.const.TEXT_BADGE_CUSTOMER}</span></div>{/if}
+				{if $module_data.REVIEW.CUSTOMER}<div class="desc"><span class="btn btn-outline-primary rounded-pill btn-sm"><i class="fas fa-user-check"></i> {$smarty.const.TEXT_BADGE_CUSTOMER}</span></div>{/if}
 				{if $module_data.REVIEW.RATING > 0}
 				<div class="rating-wrap">
 					{$module_data.REVIEW.STAR_RATING}
@@ -21,7 +21,7 @@
 			</div>
       </div>
 		<div class="category card-footer text-center">
-		<a class="btn btn-outline-primary btn-block" href="{$module_data.REVIEW.URL}"><i class="far fa-comment"></i> {#text_read#}</a>
+		<a class="btn btn-outline-primary rounded-pill btn-block" href="{$module_data.REVIEW.URL}"><i class="far fa-comment"></i> {#text_read#}</a>
 		</div>
 		</div>
 <!-- /Product Card Simple -->

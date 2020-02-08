@@ -14,7 +14,7 @@
 					<div class="label-rating"><span class="bold">{#text_rating#}</span> <span itemprop="reviewRating" itemscope itemtype="http://schema.org/Rating"><span itemprop="ratingValue" content="{$module_data.REVIEW.RATING}">{$module_data.REVIEW.STAR_RATING}</span></span></div>
 					<div class="label-rating"><span class="bold">{#text_date#}</span> <span content="{$module_data.REVIEW.DATE|date_format:"%Y-%m-%d"}" itemprop="datePublished">{$module_data.REVIEW.DATE}</span></div>
 					<div class="desc"><span class="bold">{#text_author#}</span> <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">{$module_data.REVIEW.AUTHOR}</span></span></div>
-					{if $module_data.REVIEW.CUSTOMER}<div class="desc"><span class="btn btn-outline-primary btn-sm"><i class="fas fa-user-check"></i> {$smarty.const.TEXT_BADGE_CUSTOMER}</span></div>{/if}
+					{if $module_data.REVIEW.CUSTOMER}<div class="desc"><span class="btn btn-outline-primary rounded-pill btn-sm"><i class="fas fa-user-check"></i> {$smarty.const.TEXT_BADGE_CUSTOMER}</span></div>{/if}
 				</div>
 				{/if}
 				{if {$module_data.REVIEW.TEXT}}
@@ -31,13 +31,13 @@
 
             {if $smarty.SERVER.SCRIPT_NAME != '/product_reviews_info.php'}
 				<div class="desc">
-				<a class="btn btn-outline-primary" href="{$module_data.REVIEW.REVIEWS_LINK}"><i class="far fa-comment"></i> {#text_read#} {$module_data.PRODUCT.PRODUCTS_NAME}</a>
+				<a class="btn btn-outline-primary rounded-pill" href="{$module_data.REVIEW.REVIEWS_LINK}"><i class="far fa-comment"></i> {#text_read#} {$module_data.PRODUCT.PRODUCTS_NAME}</a>
 				</div>
 				{/if}
 
             {if $smarty.SERVER.SCRIPT_NAME != '/product_reviews.php'}
 				<div class="desc pt-2">
-				<a class="btn btn-outline-primary" href="{$module_data.REVIEW.REVIEWS_ALL_LINK}"><i class="far fa-comments"></i> {#text_all#} {$module_data.PRODUCT.PRODUCTS_NAME}</a>
+				<a class="btn btn-outline-primary rounded-pill" href="{$module_data.REVIEW.REVIEWS_ALL_LINK}"><i class="far fa-comments"></i> {#text_all#} {$module_data.PRODUCT.PRODUCTS_NAME}</a>
 				</div>
 				{/if}
 
