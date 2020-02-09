@@ -26,6 +26,9 @@
       Предупреждение: Данный E-Mail адрес был получен нами от клиента. Если Вы нигде не указывали данный E-Mail адрес, свяжитесь с нами:
       {$content.MAIL_REPLY_ADDRESS}
       <br>
+      
+{if $customer_extra_fields}{$customer_extra_fields}{/if}      
+      
     <br>
     {if $SEND_GIFT==true}
       <br>
