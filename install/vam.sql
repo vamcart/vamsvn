@@ -2045,7 +2045,7 @@ INSERT INTO configuration (configuration_key, configuration_value, configuration
 INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('AJAX_CART', 'true', 1, 31, NULL, '', NULL, 'vam_cfg_select_option(array(\'true\', \'false\'),');
 INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('ENABLE_TABS', 'true', 1, 32, NULL, '', NULL, 'vam_cfg_select_option(array(\'true\', \'false\'),');
 INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('MASTER_PASS', '', 1, 33, NULL, '', NULL, '');
-INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('DADATA_API_KEY', '',  1, 34, NULL, '', NULL, NULL);
+INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('DADATA_API_KEY', 'd54b2e521766960e89c4c5f871483b33eae9a364',  1, 34, NULL, '', NULL, NULL);
 INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('PHONE_MASK', '(999) 999-9999',  1, 35, NULL, '', NULL, NULL);
 INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('DEFAULT_SLIDER', 'slider_bootstrap', 1, 36, NULL, '', NULL, 'vam_cfg_select_option(array(\'slider_bootstrap\', \'slider_pop_slide\', \'slider_basic\', \'slider_modern_slide_in\', \'slider_parallax_basic\', \'slider_starter_basic\'),');
 INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('ENABLE_SERVICE_WORKER', 'true', 1, 37, NULL, '', NULL, 'vam_cfg_select_option(array(\'true\', \'false\'),');
@@ -3626,21 +3626,21 @@ CREATE TABLE IF NOT EXISTS `specifications` (
 ) ENGINE=MyISAM AUTO_INCREMENT=16 DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
 INSERT INTO `specifications` VALUES
-(1, 1, 0, 'True', 'True', 'True', 'False', '', 'Left', 'exact', 'pulldown', 'True', 'pulldown'),
-(2, 1, 0, 'True', 'True', 'True', 'False', '', 'Left', 'exact', 'pulldown', 'True', 'pulldown'),
-(3, 1, 0, 'True', 'True', 'True', 'False', '', 'Left', 'exact', 'pulldown', 'True', 'pulldown'),
-(4, 1, 0, 'True', 'True', 'True', 'False', '', 'Left', 'exact', 'pulldown', 'True', 'pulldown'),
-(5, 1, 0, 'True', 'True', 'True', 'False', '', 'Left', 'exact', 'pulldown', 'True', 'pulldown'),
+(1, 1, 0, 'True', 'True', 'True', 'False', '', 'Left', 'multiple', 'multi', 'True', 'pulldown'),
+(2, 1, 0, 'True', 'True', 'True', 'False', '', 'Left', 'multiple', 'multi', 'True', 'pulldown'),
+(3, 1, 0, 'True', 'True', 'True', 'False', '', 'Left', 'multiple', 'multi', 'True', 'pulldown'),
+(4, 1, 0, 'True', 'True', 'True', 'False', '', 'Left', 'multiple', 'multi', 'True', 'pulldown'),
+(5, 1, 0, 'True', 'True', 'True', 'False', '', 'Left', 'multiple', 'multi', 'True', 'pulldown'),
 (6, 2, 0, 'True', 'True', 'True', 'False', '', 'Left', 'exact', 'pulldown', 'True', 'pulldown'),
 (7, 2, 0, 'True', 'True', 'True', 'False', '', 'Left', 'exact', 'pulldown', 'True', 'pulldown'),
 (8, 2, 0, 'True', 'True', 'True', 'False', '', 'Left', 'exact', 'pulldown', 'True', 'pulldown'),
 (9, 2, 0, 'True', 'True', 'True', 'False', '', 'Left', 'exact', 'pulldown', 'True', 'pulldown'),
 (10, 2, 0, 'True', 'True', 'True', 'False', '', 'Left', 'exact', 'pulldown', 'True', 'pulldown'),
-(11, 3, 0, 'True', 'True', 'True', 'False', '', 'Left', 'exact', 'pulldown', 'True', 'pulldown'),
-(12, 3, 0, 'True', 'True', 'True', 'False', '', 'Left', 'exact', 'pulldown', 'True', 'pulldown'),
-(13, 3, 0, 'True', 'True', 'True', 'False', '', 'Left', 'exact', 'pulldown', 'True', 'pulldown'),
-(14, 3, 0, 'True', 'True', 'True', 'False', '', 'Left', 'exact', 'pulldown', 'True', 'pulldown'),
-(15, 3, 0, 'True', 'True', 'True', 'False', '', 'Left', 'exact', 'pulldown', 'True', 'pulldown');
+(11, 3, 0, 'True', 'True', 'True', 'False', '', 'Left', 'exact', 'links', 'True', 'pulldown'),
+(12, 3, 0, 'True', 'True', 'True', 'False', '', 'Left', 'exact', 'links', 'True', 'pulldown'),
+(13, 3, 0, 'True', 'True', 'True', 'False', '', 'Left', 'exact', 'links', 'True', 'pulldown'),
+(14, 3, 0, 'True', 'True', 'True', 'False', '', 'Left', 'exact', 'links', 'True', 'pulldown'),
+(15, 3, 0, 'True', 'True', 'True', 'False', '', 'Left', 'exact', 'links', 'True', 'pulldown');
 
 ##
 ## Table structure for table `specification_description`
