@@ -2639,7 +2639,7 @@ div#ajaxQuickFindHeader {
   position: absolute; 
   z-index: 999; 
   top: 50px;
-  background-color: #fff;
+  background-color: transparent;
   border-radius: 4px;
 }
 

@@ -518,4 +518,12 @@ label {
   display: block;
 }
 
+#searchPreview table {
+    border: 1px solid #e5e5e5;
+    box-shadow: 0 1px 4px 0 rgba(0,0,0,.1);
+    background: #fff; 
+    height: 300px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
 

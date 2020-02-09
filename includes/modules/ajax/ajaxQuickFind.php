@@ -16,7 +16,7 @@
 
 	define("AJAX_QUICKSEARCH_RESULT", 'text'); // dropdown or text
 	define("AJAX_QUICKSEARCH_DROPDOWN_SIZE", 5);
-	define("AJAX_QUICKSEARCH_LIMIT", 15);
+	define("AJAX_QUICKSEARCH_LIMIT", 10);
 
 	$q = addslashes(preg_replace("%[^0-9a-zA-Zа-яА-Я\s]%iu", "", $_REQUEST['keywords']) );
 
@@ -37,7 +37,7 @@
 		}
 		$q = implode(" ",$searchwords);
 
-		$products_query = vam_db_query("select distinct pd.products_id, pd.products_name, pd.products_keywords, p.products_model
+		$products_query = vam_db_query("select distinct pd.products_id, pd.products_name, pd.products_keywords, p.products_image, p.products_tax_class_id, p.products_model
 							from " . TABLE_PRODUCTS_DESCRIPTION . " pd
 							inner join " . TABLE_PRODUCTS . " p
 							on (p.products_id = pd.products_id) LEFT JOIN products_to_categories as p2c2 ON (p2c2.products_id=p.products_id) LEFT JOIN categories as c ON (c.categories_id=p2c2.categories_id) 
@@ -51,15 +51,50 @@
 							limit " . AJAX_QUICKSEARCH_LIMIT);
 
 		if(vam_db_num_rows($products_query)) {
-			$out .= sprintf(TEXT_AJAX_QUICKSEARCH_TOP, AJAX_QUICKSEARCH_LIMIT) . '<br />';
 			$dropdown = array();
-			$out .= '<ul class="ajaxQuickFind">';
+			$out .= '
+<div id="searchPreview">
+<table class="table table-sm table-striped table-hover">
+  <thead>
+	<tr>
+		<th colspan="3">'.sprintf(TEXT_AJAX_QUICKSEARCH_TOP, AJAX_QUICKSEARCH_LIMIT).'</th>
+	</tr>
+	</thead>
+  <tbody>			
+			
+			';
 			while($products = vam_db_fetch_array($products_query)) {
-				$out .= '<li class="ajaxQuickFind"><a href="' . vam_href_link(FILENAME_PRODUCT_INFO, vam_product_link($products['products_id'], $products['products_name']), 'NONSSL', false) . '">' . $products['products_name'] . '</a></li>' . "\n";
+
+		$quick_find_products_price = $vamPrice->GetPrice($products['products_id'], $format = true, 1, $products['product_tax_class_id'], $products['products_price'], 1);
+		$quick_find_price = $quick_find_products_price['formated'];
+
+		if ($products['products_image'] != '')
+			$image = DIR_WS_INFO_IMAGES.$products['products_image'];
+	   
+	   if (!file_exists($image)) $image = DIR_WS_IMAGES.'product_images/noimage.gif';
+
+				$out .= '
+				
+	<tr>
+		<td class="text-center"><img class="media-object" src="'.$image.'" alt="'.$products['products_name'].'" width="40" height="40" /></td>
+		<td><a href="' . vam_href_link(FILENAME_PRODUCT_INFO, vam_product_link($products['products_id'], $products['products_name']), 'NONSSL', false) . '">' . $products['products_name'] . '</a></td>
+		<td>'.$quick_find_price.'</td>
+	</tr>
+				
+				
+				' . "\n";
 				$dropdown[] = array('id' => $products['products_id'],
 														'text' => $products['products_name']);
 			}
-			$out .= '</ul>' . "\n";
+			$out .= '
+			
+	<tr>
+      <td colspan="3" class="text-center"><a href="'.DIR_WS_CATALOG.FILENAME_ADVANCED_SEARCH_RESULT.'?keywords='.htmlspecialchars(vam_db_input($_REQUEST['keywords'])).'">'.TEXT_SHOW_ALL.'</a></td>
+	</tr>
+  </tbody>
+</table>			
+</div>			
+			' . "\n";
 			$out .= '
 					   <script>
 					   $(document).ready(function() {
