@@ -2554,6 +2554,10 @@ div#ajaxQuickFind {
   padding: 0;
 }
 
+div#ajaxQuickFind img {
+  max-width: initial;
+}
+
 form.navbar-search.input-append 
    {
      font-size: 16px;
