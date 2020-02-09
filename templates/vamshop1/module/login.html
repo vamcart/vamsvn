@@ -60,6 +60,12 @@ function reload(){
 </fieldset>
 <!-- /форма -->
 
+{if {$smarty.const.ALLOW_AUTOLOGON} == 'true'}
+<label>
+{$INPUT_REMEMBER} {$smarty.const.ENTRY_REMEMBER_ME}
+</label>
+{/if}
+
 <p>
 <a href="{$LINK_LOST_PASSWORD}">{#text_lost_password#}</a>
 </p>
