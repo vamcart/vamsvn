@@ -3,7 +3,37 @@
 <h1>{#heading_reviews#}</h1>
 <div class="pageContent">
 {foreach name=aussen item=module_data from=$module_content}
+<div itemscope itemtype="http://schema.org/Product">
+
+	<meta itemprop="name" content="{$module_data.PRODUCT.PRODUCTS_NAME}" />
+
+	<span itemprop="offers" itemscope itemtype="http://schema.org/Offer"> 
+		<meta itemprop="price" content="{$module_data.PRODUCT.PRODUCTS_PRICE_PLAIN}">
+		<meta itemprop="priceCurrency" content="{$smarty.session.currency}" />
+		<meta itemprop="availability" content="InStock" />
+		<meta itemprop="priceValidUntil" content="{$smarty.now + (1200*60*24*7)|date_format:"c"}" />
+		<meta itemprop="url" content="{$module_data.PRODUCT.PRODUCTS_LINK}" />
+	</span> 
+
+	<span itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">
+		<meta itemprop="ratingValue" content="{$module_data.PRODUCT.REVIEWS_TOTAL_RATING|number_format:1}" />
+		<meta itemprop="reviewCount" content="{$module_data.PRODUCT.RODUCT.REVIEWS_TOTAL}" />
+	</span>
+
+	<meta itemprop="image" content="{$module_data.PRODUCT.PRODUCTS_IMAGE}" />
+	<meta itemprop="description" content="{$module_data.PRODUCT.PRODUCTS_SHORT_DESCRIPTION|vam_truncate:$smarty.const.MAX_DISPLAY_SHORT_DESCRIPTION:"...":true}" />
+	
+	{if $module_data.PRODUCT.MANUFACTURER}
+	<meta itemprop="brand" content="{$module_data.PRODUCT.MANUFACTURER}" />
+	{/if}
+	
+	{if $module_data.PRODUCT.PRODUCTS_MODEL}
+	<meta itemprop="sku" content="{$module_data.PRODUCT.PRODUCTS_MODEL}" />
+	<meta itemprop="mpn" content="{$module_data.PRODUCT.PRODUCTS_MODEL}" />
+	{/if}
+
 {include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/product-card/product-card-review-listing.html"}
+</div>
 {/foreach}
 <div class="clear"></div>
 <div class="navigation">

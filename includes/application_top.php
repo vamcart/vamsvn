@@ -60,7 +60,7 @@ if (defined('DIR_WS_INCLUDES') === false) header('Location: install');
 $php4_3_10 = (0 == version_compare(phpversion(), "4.3.10"));
 define('PHP4_3_10', $php4_3_10);
 // define the project version
-define('PROJECT_VERSION', 'VamShop 1.99.13');
+define('PROJECT_VERSION', 'VamShop 1.99.12');
 
 // set the type of request (secure or not)
 $request_type = (getenv('HTTPS') == '1' || getenv('HTTPS') == 'on') ? 'SSL' : 'NONSSL';
@@ -126,6 +126,7 @@ require_once (DIR_FS_INC.'vam_php_mail.inc.php');
 require_once (DIR_FS_INC.'vam_product_link.inc.php');
 require_once (DIR_FS_INC.'vam_category_link.inc.php');
 require_once (DIR_FS_INC.'vam_manufacturer_link.inc.php');
+require_once (DIR_FS_INC.'vam_get_manufacturers_name.inc.php');
 
 // html functions
 require_once (DIR_FS_INC.'vam_draw_checkbox_field.inc.php');
