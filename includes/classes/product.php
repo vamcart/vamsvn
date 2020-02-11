@@ -831,6 +831,7 @@ $products_special = 100-($vamPrice->CheckSpecial($array['products_id'])*100/$vam
 				'PRODUCTS_SPECIAL' => $products_special, 
 				'PRODUCTS_PRICE_PLAIN' => $products_price['plain'], 
 				'PRODUCTS_TAX_INFO' => $main->getTaxInfo($tax_rate), 
+				'MANUFACTURER' => vam_get_manufacturers_name($array['manufacturers_id']), 
 				'PRODUCTS_SHIPPING_LINK' => $main->getShippingLink(), 
 				'PRODUCTS_BUTTON_BUY_NOW' => $buy_now,
 				'PRODUCTS_BUTTON_BUY_NOW_NEW' => $buy_now_new,
