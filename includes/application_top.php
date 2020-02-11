@@ -453,21 +453,6 @@ if (!is_object($_SESSION['cart'])) {
 	$_SESSION['cart'] = new shoppingCart();
 }
 
-// #CHAVEIRO14# Autologon
-require_once(DIR_WS_FUNCTIONS . FILENAME_AUTOLOGIN);
-if ($session_started == true) {
-	if (ALLOW_AUTOLOGON == 'true') {                                // Is Autologon enabled?
-	  if (!strstr($PHP_SELF,FILENAME_LOGIN)) {                  // yes
-		if (!isset($_SESSION['customer_id'])) {
-		  vam_doautologin();
-		}
-	  }
-	} else {
-		vam_autologincookie(false);
-	}
-}
-// #CHAVEIRO14# Autologon END
-
 // include the who's online functions
 vam_update_whos_online();
 
@@ -657,6 +642,21 @@ define('WARN_CONFIG_WRITEABLE', 'false');
 define('WARN_SESSION_DIRECTORY_NOT_WRITEABLE', 'true');
 define('WARN_SESSION_AUTO_START', 'true');
 define('WARN_DOWNLOAD_DIRECTORY_NOT_READABLE', 'true');
+
+// #CHAVEIRO14# Autologon
+require_once(DIR_WS_FUNCTIONS . FILENAME_AUTOLOGIN);
+if ($session_started == true) {
+	if (ALLOW_AUTOLOGON == 'true') {                                // Is Autologon enabled?
+	  if (!strstr($PHP_SELF,FILENAME_LOGIN)) {                  // yes
+		if (!isset($_SESSION['customer_id'])) {
+		  vam_doautologin();
+		}
+	  }
+	} else {
+		vam_autologincookie(false);
+	}
+}
+// #CHAVEIRO14# Autologon END
 
 if (isset ($_SESSION['customer_id'])) {
 	$account_type_query = vam_db_query("SELECT
