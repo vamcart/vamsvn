@@ -1,7 +1,33 @@
 {config_load file="$language/lang_$language.conf" section="reviews"}
 {config_load file="$language/lang_$language.conf" section="reviews"}
-<div class="page">
-<h1>{#heading_product_reviews#}{if {$smarty.get.reviews_id} > 0} {$smarty.get.reviews_id}{/if}: {$PRODUCTS_NAME}</h1>
+<div class="page" itemscope itemtype="http://schema.org/Product">
+<h1 itemprop="name">{#heading_product_reviews#}{if {$smarty.get.reviews_id} > 0} {$smarty.get.reviews_id}{/if}: <span itemprop="name">{$PRODUCTS_NAME}</span></h1>
+
+	<span itemprop="offers" itemscope itemtype="http://schema.org/Offer"> 
+		<meta itemprop="price" content="{$PRODUCTS_PRICE_PLAIN}">
+		<meta itemprop="priceCurrency" content="{$smarty.session.currency}" />
+		<meta itemprop="availability" content="InStock" />
+		<meta itemprop="priceValidUntil" content="{$smarty.now + (1200*60*24*7)|date_format:"c"}" />
+		<meta itemprop="url" content="{$PRODUCTS_URL_INFO}" />
+	</span> 
+
+	<span itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">
+		<meta itemprop="ratingValue" content="{$module_content[0].PRODUCT.REVIEWS_TOTAL_RATING|number_format:1}" />
+		<meta itemprop="reviewCount" content="{$module_content[0].PRODUCT.REVIEWS_TOTAL}" />
+	</span>
+
+	<meta itemprop="image" content="{$PRODUCTS_IMAGE}" />
+	<meta itemprop="description" content="{$PRODUCTS_SHORT_DESCRIPTION|vam_truncate:$smarty.const.MAX_DISPLAY_SHORT_DESCRIPTION:"...":true}" />
+	
+	{if $MANUFACTURER}
+	<meta itemprop="brand" content="{$MANUFACTURER}" />
+	{/if}
+	
+	{if $PRODUCTS_MODEL}
+	<meta itemprop="sku" content="{$PRODUCTS_MODEL}" />
+	<meta itemprop="mpn" content="{$PRODUCTS_MODEL}" />
+	{/if}
+
 <div class="pageContent">
 {foreach name=aussen item=module_data from=$module_content}
 {include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/product-card/product-card-review-listing.html"}
