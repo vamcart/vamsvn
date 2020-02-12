@@ -26,6 +26,7 @@ class yandex {
 		$this->code = 'yandex';
 		$this->title = MODULE_PAYMENT_YANDEX_TEXT_TITLE;
 		$this->description = MODULE_PAYMENT_YANDEX_TEXT_DESCRIPTION;
+      $this->icon = DIR_WS_ICONS . 'visa.png';
 		$this->sort_order = MODULE_PAYMENT_YANDEX_SORT_ORDER;
 		$this->enabled = ((MODULE_PAYMENT_YANDEX_STATUS == 'True') ? true : false);
 		$this->info = MODULE_PAYMENT_YANDEX_TEXT_INFO;
@@ -67,8 +68,16 @@ class yandex {
 	}
 
 	function selection() {
-		return array ('id' => $this->code, 'module' => $this->title, 'description' => $this->info);
+
+      if (vam_not_null($this->icon)) $icon = vam_image($this->icon, $this->title);
+
+      return array('id' => $this->code,
+      				'icon' => $icon,
+                   'module' => $this->title,
+                   'description' => $this->info                   
+                   );
 	}
+
 
 	function pre_confirmation_check() {
 		return false;
