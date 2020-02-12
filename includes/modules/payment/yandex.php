@@ -26,7 +26,7 @@ class yandex {
 		$this->code = 'yandex';
 		$this->title = MODULE_PAYMENT_YANDEX_TEXT_TITLE;
 		$this->description = MODULE_PAYMENT_YANDEX_TEXT_DESCRIPTION;
-      $this->icon = DIR_WS_ICONS . 'visa.png';
+		$this->icon = DIR_WS_ICONS . 'visa.png';
 		$this->sort_order = MODULE_PAYMENT_YANDEX_SORT_ORDER;
 		$this->enabled = ((MODULE_PAYMENT_YANDEX_STATUS == 'True') ? true : false);
 		$this->info = MODULE_PAYMENT_YANDEX_TEXT_INFO;
