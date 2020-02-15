@@ -86,15 +86,20 @@ $cat_data = vam_db_fetch_array($cat_query, true);
 				$_cPath = str_replace('c', '', $cID);
 			}
 		}
-		$categories_meta_query = vamDBquery("SELECT categories_meta_keywords,
-		                                            categories_meta_description,
-		                                            categories_meta_title,
-		                                            categories_name,
-		                                            categories_id,
-		                                            categories_description
-		                                            FROM " . TABLE_CATEGORIES_DESCRIPTION . "
-		                                            WHERE categories_id='" . $_cPath . "' and
-		                                            language_id='" . $_SESSION['languages_id'] . "'");
+		$categories_meta_query = vamDBquery("select
+                                      cd.categories_meta_keywords,
+                                      cd.categories_meta_description,
+                                      cd.categories_meta_title,
+                                      cd.categories_name,
+                                      c.categories_id,
+                                      cd.categories_description,
+                                      cd.categories_heading_title,
+                                      c.categories_template,
+                                      c.categories_image from ".TABLE_CATEGORIES." c, ".TABLE_CATEGORIES_DESCRIPTION." cd
+                                      where c.categories_id = '".$current_category_id."'
+                                      and cd.categories_id = '".$current_category_id."'
+                                      ".$group_check."
+                                      and cd.language_id = '".(int) $_SESSION['languages_id']."'");
 		$categories_meta = vam_db_fetch_array($categories_meta_query, true);
 		if ($categories_meta['categories_meta_keywords'] == '') {
 			$categories_meta['categories_meta_keywords'] = META_KEYWORDS;
@@ -198,6 +203,7 @@ else {$page= '';}
 <meta property="og:description" content="<?php echo $categories_meta['categories_meta_title'].$filter.$filter_description.$categories_meta['categories_meta_description'] . $mDesc; ?>" />
 <?php if ($categories_meta['categories_name'] != '') { ?><meta property="og:url" content="<?php echo vam_href_link(FILENAME_DEFAULT, vam_category_link($categories_meta['categories_id'], $categories_meta['categories_name'])); ?>" /><?php } ?>
 <?php if ($categories_meta['categories_name'] != '') { ?><link rel="canonical" href="<?php echo vam_href_link(FILENAME_DEFAULT, vam_category_link($categories_meta['categories_id'], $categories_meta['categories_name'])); ?>"/><?php } ?>
+<?php if ($categories_meta['categories_image'] != '') { ?><meta property="og:image" content="<?php echo HTTP_SERVER.DIR_WS_CATALOG.DIR_WS_IMAGES . 'categories/' . vam_parse_input_field_data($categories_meta['categories_image'], array('"' => '&quot;')); ?>" /><?php } ?>
 <meta property="og:type" content="website" />
 <meta name="twitter:title" content="<?php echo $categories_meta['categories_meta_title'] . $filter.$mName . $page; ?>" />
 <meta name="twitter:description" content="<?php echo $categories_meta['categories_meta_title'].$filter.$filter_description.$categories_meta['categories_meta_description'] . $mDesc; ?>" />
