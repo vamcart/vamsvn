@@ -36,5 +36,7 @@
 
   require(DIR_WS_MODULES . FILENAME_SITEMAP);
 
+  require (DIR_WS_MODULES.FILENAME_BANNER_MAINPAGE);
+
   return $module;
 ?>

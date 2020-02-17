@@ -161,4 +161,6 @@ define('FILENAME_AUTOLOGON', 'autologon.php');
 define('FILENAME_AUTOLOGIN', 'autologin.php');
 define('FILENAME_INFO_AUTOLOGON', 'info_autologon.php');
   
+define('FILENAME_BANNER_MAINPAGE', 'banners_mainpage.php');
+
 ?>
