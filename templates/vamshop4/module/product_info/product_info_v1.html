@@ -65,8 +65,8 @@
 <h1 itemprop="name">{$PRODUCTS_NAME}</h1>
 
 {if $REVIEWS_TOTAL > 0}
-<div class="rating-wrap">
-{$STAR_RATING} <span class="text-muted" title="{$smarty.const.TEXT_REVIEWS_RATING}">{$REVIEWS_RATING|number_format:1}</span>
+<div class="rating-wrap small">
+{$STAR_RATING} <span class="text-muted pr-2" title="{$smarty.const.TEXT_REVIEWS_RATING}">{$REVIEWS_RATING|number_format:1}</span>
 <div class="label-rating"><span class="text-muted"><i class="far fa-comments"></i> <a href="{$PRODUCTS_REVIEWS_URL}">{$smarty.const.TEXT_TOTAL_REVIEWS}</a>: {$REVIEWS_TOTAL}</span></div>
 </div>
 {/if}
