@@ -6,6 +6,11 @@
 		<div class="img-wrap"><a href="{$module_data.PRODUCTS_LINK}" title="{$module_data.PRODUCTS_NAME}"><img src="{$module_data.PRODUCTS_IMAGE}" alt="{$module_data.PRODUCTS_NAME}"></a></div>
 		<div class="info-wrap">
 			<h5 class="title"><a href="{$module_data.PRODUCTS_LINK}" title="{$module_data.PRODUCTS_NAME}">{$module_data.PRODUCTS_NAME}</a></h5>
+			{if $module_data.PRODUCTS_PRICE_PLAIN > 0}
+			<div class="price-wrap h5 text-center">
+				{$module_data.PRODUCTS_PRICE}
+			</div>
+			{/if}
 			{if $module_data.REVIEWS_TOTAL > 0}
 			<div class="rating-wrap">
 				{$module_data.REVIEWS_STAR_RATING} <span class="text-muted" title="{$smarty.const.TEXT_REVIEWS_RATING}">{$module_data.REVIEWS_TOTAL_RATING|number_format:1}</span>
@@ -14,11 +19,6 @@
 			{/if}
 		</div>
 		<div class="bottom-wrap">
-			{if $module_data.PRODUCTS_PRICE_PLAIN > 0}
-			<div class="price-wrap h5 text-center">
-				{$module_data.PRODUCTS_PRICE}
-			</div>
-			{/if}
 			{if $CATEGORIES_NAME && SPECIFICATIONS_BOX_COMPARISON == "True"}<div class="desc text-center"><label><input type="checkbox" id="s_{$module_data.PRODUCTS_ID}" name="products[]" value="{$module_data.PRODUCTS_ID}" /> {#text_compare#}</label></div>{/if}
 		</div>
       </div>

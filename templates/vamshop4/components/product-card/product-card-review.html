@@ -6,16 +6,16 @@
 			<div class="img-wrap"><a href="{$module_data.PRODUCT.PRODUCTS_LINK}"><img src="{$module_data.PRODUCT.PRODUCTS_IMAGE}" alt="{$module_data.PRODUCT.PRODUCTS_NAME}"></a></div>
 			<div class="info-wrap text-center">
 				<h5 class="title"><a href="{$module_data.PRODUCT.PRODUCTS_LINK}">{$module_data.PRODUCT.PRODUCTS_NAME}</a></h5>
-				{if $module_data.REVIEW.CUSTOMER}<div class="desc"><span class="btn btn-outline-primary rounded-pill btn-sm"><i class="fas fa-user-check"></i> {$smarty.const.TEXT_BADGE_CUSTOMER}</span></div>{/if}
-				{if $module_data.REVIEW.RATING > 0}
-				<div class="rating-wrap">
-					{$module_data.REVIEW.STAR_RATING}
-				</div>
 				{if $module_data.PRODUCT.PRODUCTS_PRICE_PLAIN > 0}
 				<div class="price-wrap h4">
 					{$module_data.PRODUCT.PRODUCTS_PRICE}
 				</div>
 				{/if}
+				{if $module_data.REVIEW.CUSTOMER}<div class="desc"><span class="btn btn-outline-primary rounded-pill btn-sm"><i class="fas fa-user-check"></i> {$smarty.const.TEXT_BADGE_CUSTOMER}</span></div>{/if}
+				{if $module_data.REVIEW.RATING > 0}
+				<div class="rating-wrap">
+					{$module_data.REVIEW.STAR_RATING}
+				</div>
 				{/if}
 				<p>{$module_data.REVIEW.TEXT|vam_truncate:$smarty.const.MAX_DISPLAY_SHORT_DESCRIPTION:"...":true}</p>
 			</div>

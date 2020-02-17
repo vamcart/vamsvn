@@ -5,6 +5,11 @@
 		<div class="img-wrap"><a href="{$module_data.PRODUCTS_LINK}" title="{$module_data.PRODUCTS_NAME}"><img src="{$module_data.PRODUCTS_IMAGE}" alt="{$module_data.PRODUCTS_NAME}"></a></div>
 		<div class="info-wrap">
 				<h5 class="title"><a href="{$module_data.PRODUCTS_LINK}" title="{$module_data.PRODUCTS_NAME}">{$module_data.PRODUCTS_NAME}</a></h5>
+				{if $module_data.PRODUCTS_PRICE_PLAIN > 0}
+				<div class="price-wrap h5 text-center">
+					{$module_data.PRODUCTS_PRICE}
+				</div>
+				{/if}
 				<p class="desc">{$module_data.PRODUCTS_SHORT_DESCRIPTION|strip_tags|vam_truncate:120:"...":true}</p>
 				{if $module_data.REVIEWS_TOTAL > 0}
 				<div class="rating-wrap">
@@ -15,9 +20,6 @@
 		</div>
 		<div class="bottom-wrap">
 				{if $module_data.PRODUCTS_PRICE_PLAIN > 0}
-				<div class="price-wrap h5 text-center">
-					{$module_data.PRODUCTS_PRICE}
-				</div>
 				<div class="buy-button text-center">
 					{$module_data.PRODUCTS_BUTTON_BUY_NOW_NEW}
 				</div>
