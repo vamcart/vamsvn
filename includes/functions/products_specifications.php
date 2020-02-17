@@ -152,7 +152,7 @@
         
         default:
           $field .= '<li class="list-inline-item'.(($default == $link_data['id']) ? ' active' : '').'">';
-          $field .= '<a class="rounded-pill btn btn-outline-primary'.(($default == $link_data['id']) ? ' btn-primary text-white' : '').'" href="' . vam_href_link ($target, vam_get_array_get_params (array ( $name, 'page') ) . ($link_data['id'] == '0' ? '' : $name . '=' . vam_output_string($link_data['id']))) . '">';
+          $field .= '<a class="rounded-pill btn btn-outline-primary'.(($default == $link_data['id']) ? ' border border-danger' : '').'" href="' . vam_href_link ($target, vam_get_array_get_params (array ( $name, 'page') ) . ($link_data['id'] == '0' ? '' : $name . '=' . vam_output_string($link_data['id']))) . '">';
 
           if ($default == $link_data['id']) {
             $field .= '<b>';
