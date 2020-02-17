@@ -140,7 +140,9 @@ button:focus, button:active, a, a:hover {
 }
 
 .card-footer {
-  background: #f1f1f1;
+  background: #fff;
+  border-top: 0px;
+  padding: .5em;
 }
 
 .category.card-body {
@@ -261,7 +263,7 @@ a#scrollup:hover {
 
 .card-product .img-wrap {
   height: auto;
-  min-height: 30vh;
+  /*min-height: 30vh;*/
 }
 /* /Products Gallery */
 
@@ -350,7 +352,12 @@ li.level3 {
 }
 
 .label-rating {
-  display: block;
+  display: inline-block;
+  padding-left: .5em;
+}
+
+.rating-wrap {
+  padding-bottom: .5em; 
 }
 
 .card.card-product .carousel-control-prev span,
