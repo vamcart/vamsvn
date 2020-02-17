@@ -1,5 +1,5 @@
 body {
-  background: #f1f1f1;
+  background: #fff;
   font-family: 'M PLUS Rounded 1c', sans-serif;
   font-weight: 500;
 }
@@ -353,7 +353,7 @@ li.level3 {
 
 .label-rating {
   display: inline-block;
-  padding-left: .5em;
+  padding-left: 0em;
 }
 
 .rating-wrap {
@@ -399,12 +399,12 @@ li.level3 {
 
 .module,
 .mainContent {
-  padding: .5em;
+  padding: 0;
   margin: 0 0 .5em 0;
   background-color: #fff;
   border: 0px solid rgba(0,0,0,.125);
   border-radius: .25rem;
-  box-shadow: 0 4px 15px rgba(153,153,153,.3);
+  /*box-shadow: 0 4px 15px rgba(153,153,153,.3);*/
   transition: .5s;
 }
 
