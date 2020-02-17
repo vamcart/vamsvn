@@ -350,7 +350,7 @@ li.level3 {
 }
 
 .label-rating {
-  display: inline-block;
+  display: block;
 }
 
 .card.card-product .carousel-control-prev span,
