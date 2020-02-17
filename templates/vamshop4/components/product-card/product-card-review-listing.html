@@ -8,9 +8,9 @@
 		</div>
 		<div class="col-md-6">
 			
-				<h4 class="title" itemprop="itemReviewed"><a href="{$module_data.PRODUCT.PRODUCTS_LINK}">{$module_data.PRODUCT.PRODUCTS_NAME}</a></h4>
+				<h5 class="title" itemprop="itemReviewed"><a href="{$module_data.PRODUCT.PRODUCTS_LINK}">{$module_data.PRODUCT.PRODUCTS_NAME}</a></h5>
 				{if $module_data.PRODUCT.REVIEWS_TOTAL > 0}
-				<div class="rating-wrap">
+				<div class="rating-wrap small">
 					<div class="label-rating"><span class="bold">{#text_rating#}</span> <span itemprop="reviewRating" itemscope itemtype="http://schema.org/Rating"><span itemprop="ratingValue" content="{$module_data.REVIEW.RATING}">{$module_data.REVIEW.STAR_RATING}</span></span></div>
 					<div class="label-rating"><span class="bold">{#text_date#}</span> <span content="{$module_data.REVIEW.DATE|date_format:"%Y-%m-%d"}" itemprop="datePublished">{$module_data.REVIEW.DATE}</span></div>
 					<div class="desc"><span class="bold">{#text_author#}</span> <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">{$module_data.REVIEW.AUTHOR}</span></span></div>
@@ -45,7 +45,7 @@
 		<div class="col-md-3 my-auto text-center my-auto">
 			<div class="action-wrap">
 				{if $module_data.PRODUCT.PRODUCTS_PRICE_PLAIN > 0}
-				<div class="price-wrap h4">
+				<div class="price-wrap h6 font-weight-bold">
 					{$module_data.PRODUCT.PRODUCTS_PRICE}
 				</div>
 				{/if}

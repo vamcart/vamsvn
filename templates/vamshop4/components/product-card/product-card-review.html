@@ -4,16 +4,16 @@
 		{if $module_data.PRODUCT.PRODUCTS_LABEL}{$module_data.PRODUCT.PRODUCTS_LABEL}{/if}
 		{if $module_data.PRODUCT.PRODUCTS_SPECIAL > 0}<span class="badge-offer"><b>-{$module_data.PRODUCT.PRODUCTS_SPECIAL|round}%</b></span>{/if}
 			<div class="img-wrap"><a href="{$module_data.PRODUCT.PRODUCTS_LINK}"><img src="{$module_data.PRODUCT.PRODUCTS_IMAGE}" alt="{$module_data.PRODUCT.PRODUCTS_NAME}"></a></div>
-			<div class="info-wrap text-center">
+			<div class="info-wrap text-left">
 				<h5 class="title"><a href="{$module_data.PRODUCT.PRODUCTS_LINK}">{$module_data.PRODUCT.PRODUCTS_NAME}</a></h5>
 				{if $module_data.PRODUCT.PRODUCTS_PRICE_PLAIN > 0}
-				<div class="price-wrap h4">
+				<div class="price-wrap h6 font-weight-bold">
 					{$module_data.PRODUCT.PRODUCTS_PRICE}
 				</div>
 				{/if}
 				{if $module_data.REVIEW.CUSTOMER}<div class="desc"><span class="btn btn-outline-primary rounded-pill btn-sm"><i class="fas fa-user-check"></i> {$smarty.const.TEXT_BADGE_CUSTOMER}</span></div>{/if}
 				{if $module_data.REVIEW.RATING > 0}
-				<div class="rating-wrap">
+				<div class="rating-wrap small">
 					{$module_data.REVIEW.STAR_RATING}
 				</div>
 				{/if}

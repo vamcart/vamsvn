@@ -3,16 +3,16 @@
 		{if $module_data.PRODUCTS_LABEL}{$module_data.PRODUCTS_LABEL}{/if}
 		{if $module_data.PRODUCTS_SPECIAL > 0}<span class="badge-offer"><b>-{$module_data.PRODUCTS_SPECIAL|round}%</b></span>{/if}
 		<div class="img-wrap"><a href="{$module_data.PRODUCTS_LINK}" title="{$module_data.PRODUCTS_NAME}"><img src="{$module_data.PRODUCTS_IMAGE}" alt="{$module_data.PRODUCTS_NAME}"></a></div>
-		<div class="info-wrap">
+		<div class="info-wrap text-left">
 				<h5 class="title"><a href="{$module_data.PRODUCTS_LINK}" title="{$module_data.PRODUCTS_NAME}">{$module_data.PRODUCTS_NAME}</a></h5>
 				{if $module_data.PRODUCTS_PRICE_PLAIN > 0}
-				<div class="price-wrap h5 text-center">
+				<div class="price-wrap h6 font-weight-bold">
 					{$module_data.PRODUCTS_PRICE}
 				</div>
 				{/if}
 				<p class="desc">{$module_data.PRODUCTS_SHORT_DESCRIPTION|strip_tags|vam_truncate:120:"...":true}</p>
 				{if $module_data.REVIEWS_TOTAL > 0}
-				<div class="rating-wrap">
+				<div class="rating-wrap small">
 					{$module_data.REVIEWS_STAR_RATING} <span class="text-muted" title="{$smarty.const.TEXT_REVIEWS_RATING}">{$module_data.REVIEWS_TOTAL_RATING|number_format:1}</span>
 					<div class="label-rating"><span class="text-muted"><i class="far fa-comments"></i> {$smarty.const.TEXT_TOTAL_REVIEWS}: {$module_data.REVIEWS_TOTAL}</span></div>
 				</div>
