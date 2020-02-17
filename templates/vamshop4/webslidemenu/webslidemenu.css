@@ -489,14 +489,15 @@ video {
   width: 100%;
   display: block;
   position: relative;
-  background-color: #fff;
+  background-color: transparent;
 }
 
 .wsmenu>.wsmenu-list>li>.wsshoptabing.wtsdepartmentmenu {
-  background: #fff;
-  border-bottom: solid 1px #d1d3d4;
-  /*border-left: solid 1px #d1d3d4;
-  border-right: solid 1px #d1d3d4;*/
+  background: transparent;
+  border-top: solid 0px #d1d3d4;
+  border-bottom: solid 0px #d1d3d4;
+  border-left: solid 0px #d1d3d4;
+  border-right: solid 0px #d1d3d4;
 }
 
 .wsmenu>.wsmenu-list>li>.wsshoptabing>.wsshopwp>.wstabitem {
