@@ -5,7 +5,7 @@
 			<div class="img-wrap"><a href="{$module_data.ARTICLE_LINK}" title="{$module_data.ARTICLE_NAME}"><img src="{if $module_data.ARTICLE_IMAGE != ''}{$smarty.const.DIR_WS_CATALOG}{$smarty.const.DIR_WS_IMAGES}articles/{$module_data.ARTICLE_IMAGE}{else}{$smarty.const.DIR_WS_CATALOG}{$smarty.const.DIR_WS_IMAGES}product_images/noimage.gif{/if}" alt="{$module_data.ARTICLE_NAME}"></a></div>
 				{if {$module_data.ARTICLE_RATING} > 0 }
 				<div class="rating-wrap text-center">
-					{$module_data.ARTICLE_STAR_RATING} <span class="text-muted" title="{$smarty.const.TEXT_REVIEWS_RATING}">{$module_data.ARTICLE_RATING|number_format:1}</span>
+					{$module_data.ARTICLE_STAR_RATING} <span class="text-muted pr-2" title="{$smarty.const.TEXT_REVIEWS_RATING}">{$module_data.ARTICLE_RATING|number_format:1}</span>
 					<div class="label-rating"><span class="text-muted"><i class="far fa-comments"></i> {$smarty.const.TEXT_TOTAL_REVIEWS}: <a href="{$smarty.const.FILENAME_ARTICLE_REVIEWS}?articles_id={$module_data.ARTICLE_ID}">{$module_data.ARTICLE_REVIEWS}</a></span></div>
 				</div>
 				{/if}
