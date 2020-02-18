@@ -3,7 +3,7 @@
 	<h3 class="widget-title">{#heading_articles_new#}</h3>
 		<ul class="icons clearfix">
 			{foreach name=aussen item=articles from=$articles_content}
-			<li><a href="{$articles.ARTICLES_URL}">{$articles.ARTICLES_NAME}</a><br />
+			<li class="py-1"><a href="{$articles.ARTICLES_URL}">{$articles.ARTICLES_NAME}</a><br />
 			{$articles.ARTICLES_CONTENT|vam_truncate:$smarty.const.MAX_DISPLAY_ARTICLES_CONTENT:" ..."}</li>
 			{/foreach}  
 		</ul>

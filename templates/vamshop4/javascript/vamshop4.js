@@ -322,3 +322,22 @@ $(window).on('resize', function() {
 
     });
 }); 
+
+$(function() {
+ // footer widget hide/show on mobile devices
+ // -----------------------------------------------------------------------------
+ function doFooter (){
+     if ($(window).width() > 576) {
+         $('#footer .widget-inner').slideDown("slow").removeClass("do");
+         $('#footer .widget-title').removeClass("do");
+     } else {
+         $('#footer .widget-inner').slideUp("fast").addClass("do");
+         $('#footer .widget-title').addClass("do");
+     }
+ }
+ $(window).on('resize', function(){ doFooter(); });
+ $(window).on('load', function(){ doFooter(); });
+ $('#footer .widget-title').click(function(){
+     $(this).next('.widget-inner.do').toggle("slow");
+ });
+});     

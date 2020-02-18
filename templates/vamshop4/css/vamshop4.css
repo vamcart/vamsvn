@@ -534,14 +534,36 @@ label {
   overflow-x: hidden;
 }
 
-.vamshop-block.block-1 {
-  background: rgb(221,44,0);
-  background: linear-gradient(180deg, rgba(221,44,0,1) 0%, rgba(228,82,3,1) 100%);
+#footer [class^="fa fa-"],
+#footer [class*=" icon-"] {
+  color: #fff
 }
-
-.elements-content {
-
-padding: 5em;
-
+#footer .widget-title {
+  font-weight: bold;
+  margin-top: 0;
+  color: #ffffff;
+}
+#footer .widget-title .text-info {
+  color: #fff;
+}
+#footer .widget-title.do {
+  cursor: pointer;
+  position: relative;
+}
+#footer .widget-title.do:after {
+  font-family: "Font Awesome 5 Free";
+  color: #fff;
+  content: "\f0c9";
+  position: absolute;
+  right: 0px;
+  top: 0px;
+}
+#footer .widget-title.do:hover:after {
+  color: #fff;
+}
+#footer .widget-title.do:hover .text-info {
+  color: #fff;
+}
+#footer .widget-inner {
 
 }

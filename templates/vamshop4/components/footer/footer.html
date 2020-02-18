@@ -1,38 +1,47 @@
-<footer class="p-3 bg-secondary">
+<footer id="footer" class="py-3 bg-secondary">
   <div class="container">
-  <div class="row">
-    <div class="col-auto mr-auto">
-      <span class="d-block mb-3 text-white">&copy; {$smarty.now|date_format:"%Y"} {$smarty.const.STORE_NAME}</span>
-         <ul class="list-inline">
-           <li class="list-inline-item text-white px-1"><a class="text-light" href="https://vk.com/your-account" aria-label="vk"><i class="fab fa-vk"></i></a></li>
-           <li class="list-inline-item text-white px-1"><a class="text-light" href="https://facebook.com/your-account" aria-label="facebook"><i class="fab fa-facebook"></i></a></li>
-           <li class="list-inline-item text-white px-1"><a class="text-light" href="https://tmtr.me/your-account" aria-label="telegram"><i class="fab fa-telegram"></i></a></li>
-           <li class="list-inline-item text-white px-1"><a class="text-light" href="https://instagram.com/your-account" aria-label="instagram"><i class="fab fa-instagram"></i></a></li>
-           <li class="list-inline-item text-white px-1"><a class="text-light" href="https://twitter.com/your-account" aria-label="twitter"><i class="fab fa-twitter"></i></a></li>
-           <li class="list-inline-item text-white px-1"><a class="text-light" href="https://youtube.com/your-account" aria-label="youtube"><i class="fab fa-youtube"></i></a></li>
-           <li class="list-inline-item text-white px-1"><a class="text-light" href="vam_rss2_info.php" aria-label="rss"><i class="fas fa-rss"></i></a></li>
-         </ul>
-    {if $smarty.const.ENABLE_SERVICE_WORKER == 'true'}<div class="d-block mt-3 text-white"><button class="btn btn-primary btn-sm a2hs-button" id="a2hs-button">{#text_a2hs#}</button></div>{/if}
-    </div>
-    <div class="col-auto mr-auto white">
-      <h5 class="text-white font-weight-bold">{#heading_infobox#}</h5>
-      <ul class="list-unstyled text-small">
-        {$box_CONTENT_PULL}
-      </ul>
-    </div>
-    <div class="col-auto mr-auto">
-      <h5 class="text-white font-weight-bold">{#heading_news#}</h5>
-      <ul class="list-unstyled text-small">
-        {$box_LATESTNEWS_DROPDOWN}
-      </ul>
-    </div>
-    <div class="col-auto mr-auto">
-      <h5 class="text-white font-weight-bold">{#heading_articles_new#}</h5>
-      <ul class="list-unstyled text-small">
-        {$box_ARTICLESNEW_DROPDOWN}
-      </ul>
-    </div>
-  </div>
+
+<div class="row">
+	<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 col-xl-3 text-left">
+		<span class="d-block mb-3 text-white">&copy; {$smarty.now|date_format:"%Y"} {$smarty.const.STORE_NAME}</span>
+			<ul class="list-inline">
+				<li class="list-inline-item text-white px-1"><a class="text-light" href="https://vk.com/your-account" aria-label="vk"><i class="fab fa-vk"></i></a></li>
+				<li class="list-inline-item text-white px-1"><a class="text-light" href="https://facebook.com/your-account" aria-label="facebook"><i class="fab fa-facebook"></i></a></li>
+				<li class="list-inline-item text-white px-1"><a class="text-light" href="https://tmtr.me/your-account" aria-label="telegram"><i class="fab fa-telegram"></i></a></li>
+				<li class="list-inline-item text-white px-1"><a class="text-light" href="https://instagram.com/your-account" aria-label="instagram"><i class="fab fa-instagram"></i></a></li>
+				<li class="list-inline-item text-white px-1"><a class="text-light" href="https://twitter.com/your-account" aria-label="twitter"><i class="fab fa-twitter"></i></a></li>
+				<li class="list-inline-item text-white px-1"><a class="text-light" href="https://youtube.com/your-account" aria-label="youtube"><i class="fab fa-youtube"></i></a></li>
+				<li class="list-inline-item text-white px-1"><a class="text-light" href="vam_rss2_info.php" aria-label="rss"><i class="fas fa-rss"></i></a></li>
+			</ul>
+	{if $smarty.const.ENABLE_SERVICE_WORKER == 'true'}<div class="d-block mt-3 mb-3 text-white"><button class="btn btn-inverse checkout btn-sm a2hs-button" id="a2hs-button">{#text_a2hs#}</button></div>{/if}
+	</div>
+	<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 col-xl-3">
+		<h5 class="text-white text-left font-weight-bold widget-title">{#heading_infobox#}</h5>
+		<div class="widget-inner text-left">
+			<ul class="list-unstyled text-small">
+				{$box_CONTENT_PULL}
+			</ul>
+		</div>
+	</div>
+	<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 col-xl-3">
+		<h5 class="text-white text-left font-weight-bold widget-title">{#heading_news#}</h5>
+		<div class="widget-inner text-left">
+			<ul class="list-unstyled text-small">
+				{$box_LATESTNEWS_DROPDOWN}
+			</ul>
+		</div>
+	</div>
+
+	<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 col-xl-3">
+		<h5 class="text-white text-left font-weight-bold widget-title">{#heading_articles_new#}</h5>
+		<div class="widget-inner text-left">
+			<ul class="list-unstyled text-small">
+				{$box_ARTICLESNEW_DROPDOWN}
+			</ul>
+		</div>
+	</div>
+</div>
+		  
   </div>
   
 </footer> 
