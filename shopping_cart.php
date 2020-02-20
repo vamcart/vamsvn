@@ -61,6 +61,7 @@ if ($_SESSION['cart']->count_contents() > 0) {
 	$_SESSION['any_out_of_stock'] = 0;
 
 	$products = $_SESSION['cart']->get_products();
+	sort($products);
 	for ($i = 0, $n = sizeof($products); $i < $n; $i ++) {
 		// Push all attributes information in an array
 		if (isset ($products[$i]['attributes'])) {

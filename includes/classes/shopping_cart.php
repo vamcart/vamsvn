@@ -393,7 +393,7 @@ class shoppingCart {
 		$products_array = array ();
 		foreach (array_keys($this->contents) as $products_id) {
 			if($this->contents[$products_id]['qty'] != 0 || $this->contents[$products_id]['qty'] !=''){
-			$products_query = vam_db_query("select p.products_id, pd.products_name,p.products_shippingtime, p.products_bundle, p.sold_in_bundle_only, p.products_image, p.products_quantity, p.products_model, p.products_price, p.products_discount_allowed, p.products_weight, p.products_length, p.products_width, p.products_height, p.products_volume, p.products_tax_class_id from ".TABLE_PRODUCTS." p, ".TABLE_PRODUCTS_DESCRIPTION." pd where p.products_id='".vam_get_prid($products_id)."' and pd.products_id = p.products_id and pd.language_id = '".$_SESSION['languages_id']."'");
+			$products_query = vam_db_query("select p.products_id, c.sort_order, p2c.categories_id, pd.products_name,p.products_shippingtime, p.products_bundle, p.sold_in_bundle_only, p.products_image, p.products_quantity, p.products_model, p.products_price, p.products_discount_allowed, p.products_weight, p.products_length, p.products_width, p.products_height, p.products_volume, p.products_tax_class_id from ".TABLE_PRODUCTS." p, ".TABLE_PRODUCTS_DESCRIPTION." pd, ".TABLE_PRODUCTS_TO_CATEGORIES." p2c, ".TABLE_CATEGORIES." c where p2c.products_id = p.products_id and c.categories_id = p2c.categories_id and p.products_id='".vam_get_prid($products_id)."' and pd.products_id = p.products_id and pd.language_id = '".$_SESSION['languages_id']."'");
 			if ($products = vam_db_fetch_array($products_query)) {
 				$prid = $products['products_id'];
 
@@ -401,8 +401,10 @@ class shoppingCart {
 
 				$products_array[] = array (
 				
-				'id' => $products_id, 
+				'categories_sort_order' => $products['sort_order'], 
+				'categories_id' => $products['categories_id'], 
 				'name' => $products['products_name'], 
+				'id' => $products_id, 
 				'model' => $products['products_model'], 
 				'bundle' => $products['products_bundle'],
 				'sold_in_bundle_only' => $products['sold_in_bundle_only'],

@@ -89,6 +89,8 @@ for ($i = 0, $n = sizeof($products); $i < $n; $i ++) {
 	$module_content[$i] = array (
 	
 	'PRODUCTS_NAME' => $products[$i]['name'].$mark_stock, 
+	'PRODUCTS_CATEGORIES_ID' => $products[$i]['categories_id'], 
+	'PRODUCTS_CATEGORIES_SORT_ORDER' => $products[$i]['categories_sort_order'], 
 	'PRODUCTS_QTY' => vam_draw_input_field('cart_quantity[]', $products[$i]['quantity'], 'size="2" id="cart" class="form-control col-sm-4 text-center item-quantity input-small"').vam_draw_hidden_field('products_id[]', $products[$i]['id'],'class="ajax_qty"').vam_draw_hidden_field('old_qty[]', $products[$i]['quantity']), 
 	'PRODUCTS_STOCK' => $products[$i]['stock'],
 	'PRODUCTS_MODEL' => $products[$i]['model'],
