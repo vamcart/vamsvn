@@ -311,9 +311,6 @@ a#scrollup:hover {
   padding: .5em;
   -webkit-box-shadow: 0 0 0 1px rgba(13,35,67,.07), 0 5px 15px -4px rgba(13,35,67,.4);
   box-shadow: 0 0 0 1px rgba(13,35,67,.07), 0 5px 15px -4px rgba(13,35,67,.4);
-  -webkit-transition: .5s;
-  transition: .5s;
-
 }
 .tab-content {
   margin-bottom: 1em;
