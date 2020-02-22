@@ -173,6 +173,20 @@ button:focus, button:active, a, a:hover {
   padding-bottom: 20px;
 }
 
+.card-product {
+    -webkit-box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16), 0 2px 10px 0 rgba(0,0,0,0.12);
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16), 0 2px 10px 0 rgba(0,0,0,0.12);
+    -webkit-transition: .5s;
+    transition: .5s;
+}
+
+.card-product:hover {
+    -webkit-box-shadow: 0 8px 17px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    box-shadow: 0 8px 17px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    -webkit-transition: .5s;
+    transition: .5s;
+}
+
 .card.card-product:hover .img-wrap img {
   -webkit-transform: scale(1.1);
   -moz-transform: scale(1.1);
