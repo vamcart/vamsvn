@@ -309,6 +309,11 @@ a#scrollup:hover {
   border-bottom: 1px solid #dee2e6;
   background: #fff;
   padding: .5em;
+  -webkit-box-shadow: 0 0 0 1px rgba(13,35,67,.07), 0 5px 15px -4px rgba(13,35,67,.4);
+  box-shadow: 0 0 0 1px rgba(13,35,67,.07), 0 5px 15px -4px rgba(13,35,67,.4);
+  -webkit-transition: .5s;
+  transition: .5s;
+
 }
 .tab-content {
   margin-bottom: 1em;
@@ -599,3 +604,58 @@ label {
 @-moz-keyframes pulse {to {box-shadow: 0 0 0 45px rgba(232, 76, 61, 0);}}
 @-ms-keyframes pulse {to {box-shadow: 0 0 0 45px rgba(232, 76, 61, 0);}}
 @keyframes pulse {to {box-shadow: 0 0 0 45px rgba(232, 76, 61, 0);}}
+
+.chip {
+    display: inline-block;
+    height: 32px;
+    padding: 0 12px;
+    margin-right: 1rem;
+    margin-bottom: 1rem;
+    font-weight: 500;
+    line-height: 32px;
+    cursor: pointer;
+    border-radius: 16px;
+    -webkit-transition: all 0.3s linear;
+    transition: all 0.3s linear;
+}
+
+.chip.chip-md {
+    height: 42px;
+    line-height: 42px;
+    border-radius: 21px;
+}
+
+.chip.chip-lg {
+    height: 52px;
+    line-height: 52px;
+    border-radius: 26px;
+}
+
+.chip.chip-md img {
+    height: 42px;
+    width: 42px;
+}
+
+.chip.chip-lg img {
+    height: 52px;
+    width: 52px;
+}
+
+.chip img {
+    float: left;
+    width: 32px;
+    height: 32px;
+    margin: 0 8px 0 -12px;
+    border-radius: 50%;
+}
+
+.waves-effect {
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+}
