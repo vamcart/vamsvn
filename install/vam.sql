@@ -3679,26 +3679,27 @@ CREATE TABLE IF NOT EXISTS `specification_description` (
   `specification_description` varchar(255) NOT NULL,
   `specification_prefix` varchar(255) NOT NULL DEFAULT '',
   `specification_suffix` varchar(255) NOT NULL DEFAULT '',
+  `specification_seo_url` varchar(255) NOT NULL,
   PRIMARY KEY (`specification_description_id`,`language_id`),
   KEY `specifications_id` (`specifications_id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=16 DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
 INSERT INTO `specification_description` VALUES
-(1, 1, 1, 'Экран', '', '', ''),
-(2, 2, 1, 'Батарея', '', '', ''),
-(3, 3, 1, 'Вес', '', '', ''),
-(4, 4, 1, 'Память', '', '', ''),
-(5, 5, 1, 'Размеры', '', '', ''),
-(6, 6, 1, 'Экран', '', '', ''),
-(7, 7, 1, 'Батарея', '', '', ''),
-(8, 8, 1, 'Вес', '', '', ''),
-(9, 9, 1, 'Память', '', '', ''),
-(10, 10, 1, 'Размеры', '', '', ''),
-(11, 11, 1, 'Экран', '', '', ''),
-(12, 12, 1, 'Батарея', '', '', ''),
-(13, 13, 1, 'Вес', '', '', ''),
-(14, 14, 1, 'Память', 'Отфильтрованные смартфоны с выбранным объёмом памяти.', '', ''),
-(15, 15, 1, 'Размеры', '', '', '');
+(1, 1, 1, 'Экран', '', '', '', 'display.html'),
+(2, 2, 1, 'Батарея', '', '', '', 'battery.html'),
+(3, 3, 1, 'Вес', '', '', '', 'weight.html'),
+(4, 4, 1, 'Память', '', '', '', 'memory.html'),
+(5, 5, 1, 'Размеры', '', '', '', 'dimensions.html'),
+(6, 6, 1, 'Экран', '', '', '', 'display.html'),
+(7, 7, 1, 'Батарея', '', '', '', 'battery.html'),
+(8, 8, 1, 'Вес', '', '', '', 'weight.html'),
+(9, 9, 1, 'Память', '', '', '', 'memory.html'),
+(10, 10, 1, 'Размеры', '', '', '', 'dimensions.html'),
+(11, 11, 1, 'Экран', '', '', '', 'display.html'),
+(12, 12, 1, 'Батарея', '', '', '', 'battery.html'),
+(13, 13, 1, 'Вес', '', '', '', 'weight.html'),
+(14, 14, 1, 'Память', 'Отфильтрованные смартфоны с выбранным объёмом памяти.', '', '', 'memory.html'),
+(15, 15, 1, 'Размеры', '', '', '', 'dimensions.html');
 
 ##
 ## Table structure for table `specification_filters`
