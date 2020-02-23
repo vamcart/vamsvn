@@ -3631,16 +3631,16 @@ INSERT INTO `specifications` VALUES
 (3, 1, 0, 'True', 'True', 'True', 'False', '', 'Left', 'multiple', 'multi', 'True', 'pulldown'),
 (4, 1, 0, 'True', 'True', 'True', 'False', '', 'Left', 'multiple', 'multi', 'True', 'pulldown'),
 (5, 1, 0, 'True', 'True', 'True', 'False', '', 'Left', 'multiple', 'multi', 'True', 'pulldown'),
-(6, 2, 0, 'True', 'True', 'True', 'False', '', 'Left', 'exact', 'pulldown', 'True', 'pulldown'),
-(7, 2, 0, 'True', 'True', 'True', 'False', '', 'Left', 'exact', 'pulldown', 'True', 'pulldown'),
-(8, 2, 0, 'True', 'True', 'True', 'False', '', 'Left', 'exact', 'pulldown', 'True', 'pulldown'),
-(9, 2, 0, 'True', 'True', 'True', 'False', '', 'Left', 'exact', 'pulldown', 'True', 'pulldown'),
-(10, 2, 0, 'True', 'True', 'True', 'False', '', 'Left', 'exact', 'pulldown', 'True', 'pulldown'),
-(11, 3, 0, 'True', 'True', 'True', 'False', '', 'Left', 'exact', 'links', 'True', 'pulldown'),
-(12, 3, 0, 'True', 'True', 'True', 'False', '', 'Left', 'exact', 'links', 'True', 'pulldown'),
-(13, 3, 0, 'True', 'True', 'True', 'False', '', 'Left', 'exact', 'links', 'True', 'pulldown'),
-(14, 3, 0, 'True', 'True', 'True', 'False', '', 'Left', 'exact', 'links', 'True', 'pulldown'),
-(15, 3, 0, 'True', 'True', 'True', 'False', '', 'Left', 'exact', 'links', 'True', 'pulldown');
+(6, 2, 0, 'True', 'True', 'True', 'False', '', 'Left', 'exact', 'links', 'True', 'pulldown'),
+(7, 2, 0, 'True', 'True', 'True', 'False', '', 'Left', 'exact', 'links', 'True', 'pulldown'),
+(8, 2, 0, 'True', 'True', 'True', 'False', '', 'Left', 'exact', 'links', 'True', 'pulldown'),
+(9, 2, 0, 'True', 'True', 'True', 'False', '', 'Left', 'exact', 'links', 'True', 'pulldown'),
+(10, 2, 0, 'True', 'True', 'True', 'False', '', 'Left', 'exact', 'links', 'True', 'pulldown'),
+(11, 3, 0, 'True', 'True', 'True', 'False', '', 'Left', 'exact', 'pulldown', 'True', 'pulldown'),
+(12, 3, 0, 'True', 'True', 'True', 'False', '', 'Left', 'exact', 'pulldown', 'True', 'pulldown'),
+(13, 3, 0, 'True', 'True', 'True', 'False', '', 'Left', 'exact', 'pulldown', 'True', 'pulldown'),
+(14, 3, 0, 'True', 'True', 'True', 'False', '', 'Left', 'exact', 'pulldown', 'True', 'pulldown'),
+(15, 3, 0, 'True', 'True', 'True', 'False', '', 'Left', 'exact', 'pulldown', 'True', 'pulldown');
 
 ##
 ## Table structure for table `specification_description`
