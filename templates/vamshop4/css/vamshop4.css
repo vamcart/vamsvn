@@ -1,5 +1,5 @@
 body {
-  background: #fff;
+  background: #f1f3f4;
   font-family: 'M PLUS Rounded 1c', sans-serif;
   font-weight: 500;
 }
@@ -417,7 +417,7 @@ li.level3 {
 .mainContent {
   padding: 0;
   margin: 0 0 .5em 0;
-  background-color: #fff;
+  background-color: transprent;
   border: 0px solid rgba(0,0,0,.125);
   border-radius: .25rem;
   /*box-shadow: 0 4px 15px rgba(153,153,153,.3);*/
