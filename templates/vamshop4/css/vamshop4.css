@@ -174,15 +174,15 @@ button:focus, button:active, a, a:hover {
 }
 
 .card-product {
-    -webkit-box-shadow: 0 0 0 1px rgba(13,35,67,.07), 0 5px 15px -4px rgba(13,35,67,.4);
-    box-shadow: 0 0 0 1px rgba(13,35,67,.07), 0 5px 15px -4px rgba(13,35,67,.4);
+    -webkit-box-shadow: 0 3px 5px 0 rgba(0,0,0,.1);
+    box-shadow: 0 3px 5px 0 rgba(0,0,0,.1);
     -webkit-transition: .5s;
     transition: .5s;
 }
 
 .card-product:hover {
-    -webkit-box-shadow: 0 8px 17px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
-    box-shadow: 0 8px 17px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    -webkit-box-shadow: 0 0 0 1px rgba(13,35,67,.07), 0 5px 15px -4px rgba(13,35,67,.4);
+    box-shadow: 0 0 0 1px rgba(13,35,67,.07), 0 5px 15px -4px rgba(13,35,67,.4);
     -webkit-transition: .5s;
     transition: .5s;
 }
@@ -309,8 +309,8 @@ a#scrollup:hover {
   border-bottom: 1px solid #dee2e6;
   background: #fff;
   padding: .5em;
-  -webkit-box-shadow: 0 0 0 1px rgba(13,35,67,.07), 0 5px 15px -4px rgba(13,35,67,.4);
-  box-shadow: 0 0 0 1px rgba(13,35,67,.07), 0 5px 15px -4px rgba(13,35,67,.4);
+  -webkit-box-shadow: 0 3px 5px 0 rgba(0,0,0,.1);
+  box-shadow: 0 3px 5px 0 rgba(0,0,0,.1);
 }
 .tab-content {
   margin-bottom: 1em;
