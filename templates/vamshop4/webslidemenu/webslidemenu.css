@@ -243,7 +243,7 @@ video {
 
 /* Main Search Bar CSS*/
 .wsmenu>.wsmenu-list>li.wssearchbar {
-  width: 30%;
+  width: 25%;
   float: left;
   padding-left: 15px;
 }
