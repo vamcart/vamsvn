@@ -1982,7 +1982,7 @@ video {
 .headtoppart {
   display: block;
   width: 100%;
-  background-color: #f8f8f8;
+  background-color: transparent;
   height: 39px;
   margin: 0 auto;
   padding: 0;
@@ -2055,7 +2055,6 @@ video {
   .headtoppart {
     margin-top: 60px;
     height: auto;
-    background-color: rgba(0, 0, 0, 0.2);
   }
 
   .headerright {
@@ -2099,7 +2098,6 @@ video {
 
   .headertopright a {
     width: auto;
-    color: #fff;
     text-align: center;
   }
 

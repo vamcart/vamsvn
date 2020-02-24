@@ -23,7 +23,7 @@ h3 a:hover {
 }
 
 header {
-  background: #575757;
+  background: transparent;
 }
 
 a {
@@ -660,7 +660,7 @@ label {
 .orange {
   cursor: pointer;
   background: transparent;
-  color: #dd2c00;
+  color: #007bff;
 }
 
 .orange:hover {

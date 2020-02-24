@@ -47,41 +47,14 @@
     </div>
   </div>
 
-<div class="header-logo pt-1 pb-2">
-<div class="container">
-  <div class="row">
-    <div class="col-auto d-none d-lg-block">
-	  <a href="{$mainpage}">
-	    <img src="{$tpl_path}img/logo.png" alt="{$smarty.const.STORE_NAME}" title="{$smarty.const.STORE_NAME}" class="img-fluid" />
-	  </a>
-    </div>
-    <div class="col-auto text-left my-auto">
-    <ul class="list-inline">
-      <li class="list-inline-item pr-2">
-			<a href="{$smarty.const.FILENAME_SPECIALS}"><i class="fas fa-percentage"></i> {$smarty.const.TITLE_SPECIALS_DEFAULT}</a>
-      </li>
-      <li class="list-inline-item pr-2">
-			<a href="{$smarty.const.FILENAME_MANUFACTURERS}"><i class="fas fa-tag"></i> {$smarty.const.TITLE_MANUFACTURERS_DEFAULT}</a>
-      </li>
-      <li class="list-inline-item pr-2">
-			<a href="{$smarty.const.FILENAME_PRODUCTS_NEW}"><i class="fas fa-lightbulb"></i> {$smarty.const.TITLE_NEW_PRODUCTS_DEFAULT}</a>
-      </li>
-      <li class="list-inline-item pr-2">
-			<a href="{$smarty.const.FILENAME_FEATURED}"><i class="fas fa-exclamation-circle"></i> {$smarty.const.TITLE_FEATURED_DEFAULT_SHORT}</a>
-      </li>
-      <li class="list-inline-item pr-2">
-			<a href="{$smarty.const.FILENAME_REVIEWS}"><i class="fas fa-comments"></i> {$smarty.const.TEXT_PRODUCT_REVIEWS}</a>
-      </li>
-    </ul>
-    </div>
-  </div>
-</div>
-</div>
 
   <div class="headerfull">
     <div class="wsmain clearfix">
       <nav class="wsmenu clearfix">
         <ul class="wsmenu-list">
+          <li class="d-none d-lg-block">
+			  <a href="{$mainpage}"><img src="{$tpl_path}img/logo-small.png" class="img-fluid" alt="{$smarty.const.STORE_NAME}" /></a>
+          </li>
           <li aria-haspopup="true" class="wsshopcatalog"><a href="{$mainpage}"><i class="fas fa-bars"></i>{#text_catalog#}</a>
             <div class="wsshoptabing wtsdepartmentmenu clearfix">
               <div class="wsshopwp clearfix">
@@ -105,6 +78,9 @@
         </ul>
       </nav>
     </div>
-  </div>  
+    
+   
+  </div>
+
   
 </header>  
