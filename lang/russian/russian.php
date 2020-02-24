@@ -689,6 +689,8 @@ define('TEXT_REVIEWS_RATING', 'Рейтинг');
 define('TEXT_CHECKOUT_PROCESS_PAYMENT', 'Оплатить заказ');
 
 define('TEXT_MY_ORDERS', 'Мои заказы');
+define('TEXT_MY_PROFILE', 'Профиль');
+define('TEXT_MY_ACCOUNT', 'Аккаунт');
 define('TEXT_BACK', 'Вернуться');
 
 define('PRIVACY_TEXT','Нажимая кнопку, я даю согласие на обработку своих персональных данных. <a href="privacy.html">Подробнее о защите персональной информации.</a>');

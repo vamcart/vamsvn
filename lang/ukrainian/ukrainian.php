@@ -658,6 +658,8 @@ define('TEXT_TOTAL_REVIEWS', 'Відгуки');
 define('TEXT_REVIEWS_RATING', 'Рейтинг');
 define('TEXT_CHECKOUT_PROCESS_PAYMENT', 'Оплатити замовлення');
 define('TEXT_MY_ORDERS', 'Мої замовлення');
+define('TEXT_MY_PROFILE', 'Профиль');
+define('TEXT_MY_ACCOUNT', 'Аккаунт');
 define('TEXT_BACK', 'Повернутися');
 define('PRIVACY_TEXT', 'Натискаючи кнопку, я даю згоду на обробку своїх персональних даних. <a href="privacy.html"> Детальніше про захист персональної інформації. </a>');
 

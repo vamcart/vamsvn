@@ -42,6 +42,11 @@
 	     <li class="list-inline-item pr-2"><a href="" data-toggle="modal" data-target="#myModal" aria-label="{$smarty.const.TEXT_CITY}"><i class="fas fa-map-marker-alt"></i> <span class="link">{if {cookie name="vamshop-city"}}{cookie name="vamshop-city"}{else}<span class="userCity">{geo_city}</span>{/if}</span></a></li>
 	     {if {$smarty.const.STORE_TELEPHONE} != ""}<li class="list-inline-item pr-2"><a href="tel:{$smarty.const.STORE_TELEPHONE}"><i class="fas fa-phone"></i> <span itemprop="telephone">{$smarty.const.STORE_TELEPHONE}</span></a></li>{/if}
 	     <li class="list-inline-item pr-2"><a href="contact_us.html"><i class="far fa-envelope"></i> {#text_contact_us#}</a></li>
+	     <li class="list-inline-item pr-2"><a href="{$smarty.const.FILENAME_SPECIALS}">{$smarty.const.TITLE_SPECIALS_DEFAULT}</a></li>
+	     <li class="list-inline-item pr-2"><a href="{$smarty.const.FILENAME_MANUFACTURERS}">{$smarty.const.TITLE_MANUFACTURERS_DEFAULT}</a></li>
+	     <li class="list-inline-item pr-2"><a href="{$smarty.const.FILENAME_PRODUCTS_NEW}">{$smarty.const.TITLE_NEW_PRODUCTS_DEFAULT}</a></li>
+	     <li class="list-inline-item pr-2"><a href="{$smarty.const.FILENAME_FEATURED}">{$smarty.const.TITLE_FEATURED_DEFAULT_SHORT}</a></li>
+	     <li class="list-inline-item pr-2"><a href="{$smarty.const.FILENAME_REVIEWS}">{$smarty.const.TEXT_PRODUCT_REVIEWS}</a></li>
 	   </ul>  
       </div>
     </div>
@@ -72,7 +77,7 @@
             {$box_CART}
           </li>
           {/if}
-          <li class="wsshopmyaccount"><a href="{$smarty.const.FILENAME_ACCOUNT}"><i class="fas fa-user"></i>{$smarty.const.TEXT_MY_ORDERS}</a></li>
+          <li class="wsshopmyaccount"><a href="{$smarty.const.FILENAME_ACCOUNT}"><i class="fas fa-user"></i>{$smarty.const.TEXT_MY_PROFILE}</a></li>
           {if $smarty.session.customer_id}<li class="wsshopmyaccount"><a href="{$logoff}"><i class="fa fa-power-off"></i> {#link_logoff#}</a></li>{/if}  
           {if $smarty.session.customers_status.customers_status_id == 0}<li class="wsshopmyaccount"><a href="{$admin_area_link}"><i class="fas fa-cog"></i> {#text_admin#}</a></li>{/if}
         </ul>
