@@ -3,8 +3,15 @@
 
 <div class="row">
 	<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 col-xl-3 text-left">
-		<span class="d-block mb-3 text-white">&copy; {$smarty.now|date_format:"%Y"} {$smarty.const.STORE_NAME}</span>
-			<ul class="list-inline">
+		<span class="d-block mb-3 text-white">&copy; {$smarty.now|date_format:"%Y"}</span>
+		<div class="mb-3" itemscope itemtype="http://schema.org/Organization">
+        <ul class="list-unstyled">
+          {if {$smarty.const.STORE_TELEPHONE} != ""}<li class="list-item py-1"><a href="tel:{$smarty.const.STORE_TELEPHONE}"><i class="fas fa-phone"></i> <span itemprop="telephone">{$smarty.const.STORE_TELEPHONE}</span></a></li>{/if}
+          {if {$smarty.const.STORE_NAME} != ""}<li class="list-item text-white py-1"><i class="fas fa-users"></i> <span itemprop="name">{$smarty.const.STORE_NAME}</span></li>{/if}
+          {if {$smarty.const.STORE_NAME_ADDRESS} != ""}<li class="list-item text-white py-1"><i class="fas fa-home"></i> <span itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">{$smarty.const.STORE_NAME_ADDRESS}</span></li>{/if}
+        </ul>        
+		</div>
+			<ul class="list-inline pt-1">
 				<li class="list-inline-item text-white px-1"><a class="text-light" href="https://vk.com/your-account" aria-label="vk"><i class="fab fa-vk"></i></a></li>
 				<li class="list-inline-item text-white px-1"><a class="text-light" href="https://facebook.com/your-account" aria-label="facebook"><i class="fab fa-facebook"></i></a></li>
 				<li class="list-inline-item text-white px-1"><a class="text-light" href="https://tmtr.me/your-account" aria-label="telegram"><i class="fab fa-telegram"></i></a></li>
