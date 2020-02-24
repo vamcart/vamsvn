@@ -721,4 +721,7 @@ define('TEXT_BADGE_CUSTOMER','Реальный покупатель');
 
 define('ENTRY_REMEMBER_ME', 'Запомнить');
 
+define('TEXT_LIKE', 'Нравится');
+define('TEXT_DISLIKE', 'Не нравится');
+
 ?>

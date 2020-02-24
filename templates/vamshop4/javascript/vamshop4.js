@@ -341,3 +341,9 @@ $(function() {
      $(this).next('.widget-inner.do').toggle("slow");
  });
 });     
+
+// Tooltips
+
+$(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})

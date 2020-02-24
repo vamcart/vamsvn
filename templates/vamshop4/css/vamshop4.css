@@ -656,3 +656,15 @@ label {
     user-select: none;
     -webkit-tap-highlight-color: transparent;
 }
+
+.orange {
+  cursor: pointer;
+  background: transparent;
+  color: #dd2c00;
+}
+
+.orange:hover {
+  cursor: pointer;
+  background: transparent;
+  color: #333;
+}
