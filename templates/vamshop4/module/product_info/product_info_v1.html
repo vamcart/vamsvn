@@ -56,15 +56,12 @@
 {/if}  
 </div>
 
-{if {$smarty.const.DISPLAY_LIKES} == "false" && {$smarty.const.DISPLAY_DISLIKES} == "false"}
 <div class="text-center">
     	<ul class="list-inline">
 			{if {$smarty.const.DISPLAY_LIKES} == "true"}<li class="list-inline-item"><span id="like" onclick="doLike('{$PRODUCTS_ID}'); return false;" class="btn btn-link btn-lg orange" data-toggle="tooltip" title="{$smarty.const.TEXT_LIKE}"><i class="far fa-thumbs-up"></i></span><span id="likes">{if {$PRODUCT_LIKES} > 0}{$PRODUCT_LIKES}{/if}</span></li>{/if}
 			{if {$smarty.const.DISPLAY_DISLIKES} == "true"}<li class="list-inline-item"><span id="dislike" onclick="doDislike('{$PRODUCTS_ID}'); return false;" class="btn btn-link btn-lg orange" data-toggle="tooltip" title="{$smarty.const.TEXT_DISLIKE}"><i class="far fa-thumbs-down"></i></span><span id="dislikes">{if {$PRODUCT_DISLIKES} > 0}{$PRODUCT_DISLIKES}{/if}</span></li>{/if}
 		</ul>
 </div>
-{/if}
-
 
 		</div>
 		<div class="col-md-5">
