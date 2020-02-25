@@ -347,3 +347,31 @@ $(function() {
 $(function () {
   $('[data-toggle="tooltip"]').tooltip()
 })
+
+// Like
+function doLike(id) {
+		var data = 'q=includes/modules/ajax/ajaxLike.php&products_id='+id;
+		$.ajax({
+					url : "index_ajax.php",
+					dataType : "html",
+					data : data,
+					type : "GET",
+					success : function(msg) {
+					 $("#likes").html(msg);
+               }
+		});
+	}
+	
+// Dislike
+function doDislike(id) {
+		var data = 'q=includes/modules/ajax/ajaxDislike.php&products_id='+id;
+		$.ajax({
+					url : "index_ajax.php",
+					dataType : "html",
+					data : data,
+					type : "GET",
+					success : function(msg) {
+					 $("#dislikes").html(msg);
+               }
+		});
+	}	

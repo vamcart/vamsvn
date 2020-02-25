@@ -122,6 +122,10 @@ if (!is_object($product) || !$product->isProduct() OR !$product->data['products_
 		$info->assign('PRODUCTS_DESCRIPTION', stripslashes($product->data['products_description']));
 		$info->assign('PRODUCTS_SHORT_DESCRIPTION', stripslashes($product->data['products_short_description']));
 
+		$info->assign('PRODUCT_LIKES', $product->data['likes']);
+		$info->assign('PRODUCT_DISLIKES', $product->data['dislikes']);
+
+
       $i = 0;
       $max = count($_SESSION['tracking']['products_history']);
       

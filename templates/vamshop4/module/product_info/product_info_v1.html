@@ -56,12 +56,14 @@
 {/if}  
 </div>
 
+{if {$smarty.const.SHOW_LIKES} == "False" && {$smarty.const.SHOW_DISLIKES} == "False"}
 <div class="text-center">
     	<ul class="list-inline">
-			<li class="list-inline-item"><span id="like" class="btn btn-link btn-lg orange" href="{$PRODUCTS_REVIEWS_URL}" data-toggle="tooltip" title="{$smarty.const.TEXT_LIKE}"><i class="far fa-thumbs-up"></i></span>22</li>
-			<li class="list-inline-item"><span id="dislike" class="btn btn-link btn-lg orange" href="{$PRODUCTS_REVIEWS_URL}" data-toggle="tooltip" title="{$smarty.const.TEXT_DISLIKE}"><i class="far fa-thumbs-down"></i></span>2</li>
+			{if {$smarty.const.SHOW_LIKES} == "True"}<li class="list-inline-item"><span id="like" onclick="doLike('{$PRODUCTS_ID}'); return false;" class="btn btn-link btn-lg orange" data-toggle="tooltip" title="{$smarty.const.TEXT_LIKE}"><i class="far fa-thumbs-up"></i></span><span id="likes">{if {$PRODUCT_LIKES} > 0}{$PRODUCT_LIKES}{/if}</span></li>{/if}
+			{if {$smarty.const.SHOW_DISLIKES} == "True"}<li class="list-inline-item"><span id="dislike" onclick="doDislike('{$PRODUCTS_ID}'); return false;" class="btn btn-link btn-lg orange" data-toggle="tooltip" title="{$smarty.const.TEXT_DISLIKE}"><i class="far fa-thumbs-down"></i></span><span id="dislikes">{if {$PRODUCT_DISLIKES} > 0}{$PRODUCT_DISLIKES}{/if}</span></li>{/if}
 		</ul>
 </div>
+{/if}
 
 
 		</div>
