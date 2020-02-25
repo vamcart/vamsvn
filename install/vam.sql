@@ -2074,6 +2074,8 @@ INSERT INTO configuration (configuration_key, configuration_value, configuration
 INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('DEFAULT_NAVIGATION', 'slide_menu', 1, 38, NULL, '', NULL, 'vam_cfg_select_option(array(\'fullscreen_menu\', \'slide_menu\'),');
 INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('SOCIAL_LOGIN', 'true', 1, 39, NULL, '', NULL, 'vam_cfg_select_option(array(\'true\', \'false\'),');
 INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('ENABLE_COOKIE_ALERT', 'false', 1, 40, NULL, '', NULL, 'vam_cfg_select_option(array(\'true\', \'false\'),');
+INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('DISPLAY_LIKES', 'true', 1, 41, NULL, '', NULL, 'vam_cfg_select_option(array(\'true\', \'false\'),');
+INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('DISPLAY_DISLIKES', 'true', 1, 42, NULL, '', NULL, 'vam_cfg_select_option(array(\'true\', \'false\'),');
 
 # configuration_group_id 2
 INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('ENTRY_FIRST_NAME_MIN_LENGTH', '2',  2, 1, NULL, '', NULL, NULL);

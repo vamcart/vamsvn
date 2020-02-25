@@ -1094,4 +1094,9 @@ define('PRODUCT_LISTING_ATTRIBUTES_DESC', 'В списке товара внут
 define('ALLOW_AUTOLOGON_TITLE' , 'Разрешить автологин');
 define('ALLOW_AUTOLOGON_DESC', 'Разрешить зарегистрированным пользователям сохранять информацию в cookie и автоматически авторизоваться в магазине при входе.');
 
+define('DISPLAY_LIKES_TITLE' , 'Показывать лайки');
+define('DISPLAY_LIKES_DESC', 'Показывать лайки.');
+define('DISPLAY_DISLIKES_TITLE' , 'Показывать дизлайки');
+define('DISPLAY_DISLIKES_DESC', 'Показывать дизлайки.');
+
 ?>
