@@ -358,6 +358,7 @@ function doLike(id) {
 					type : "GET",
 					success : function(msg) {
 					 $("#likes").html(msg);
+					 $("#like").removeAttr("onclick");
                }
 		});
 	}
@@ -372,6 +373,7 @@ function doDislike(id) {
 					type : "GET",
 					success : function(msg) {
 					 $("#dislikes").html(msg);
+					 $("#dislike").removeAttr("onclick");
                }
 		});
 	}	
