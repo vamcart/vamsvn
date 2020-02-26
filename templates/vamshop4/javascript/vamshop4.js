@@ -359,6 +359,7 @@ function doLike(id) {
 					success : function(msg) {
 					 $("#likes").html(msg);
 					 $("#like").removeAttr("onclick");
+					 $("#like").addClass("rounded-circle border border-primary");
                }
 		});
 	}
@@ -374,6 +375,7 @@ function doDislike(id) {
 					success : function(msg) {
 					 $("#dislikes").html(msg);
 					 $("#dislike").removeAttr("onclick");
+					 $("#dislike").addClass("rounded-circle border border-danger text-danger");
                }
 		});
 	}	
