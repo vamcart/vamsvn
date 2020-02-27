@@ -46,7 +46,7 @@
 {elseif $options_data.TYPE eq '4'}
 
 <!-- radio -->
-<div class="form-group py-1">
+<div class="py-1">
 <strong>{$options_data.NAME}:</strong>
 <br />
 {foreach key=key_data item=item_data from=$options_data.DATA}
@@ -60,6 +60,7 @@
 {if $item_data.LINK}<a align="right" href="http://{$item_data.LINK}" target="_blank"><img src="{$tpl_path}img/info.gif" border="0" alt="{$item_data.TEXT}" /></a>{/if}<br />
 </label>
 </div>
+<br />
 {/foreach}
 </div>
 <!-- /radio -->
@@ -83,7 +84,7 @@
 
 <!-- readonly -->
 <div class="form-group py-1">
-<label for="id[{$options_data.ID}]"><strong>{$options_data.NAME}:</strong></label>
+<strong>{$options_data.NAME}:</strong>&nbsp;
 {foreach key=key_data item=item_data from=$options_data.DATA}
 <input type="hidden" name="id[{$options_data.ID}]" id="id[{$options_data.ID}]" value="{$item_data.ID}" />
 {if $item_data.MODEL}({$item_data.MODEL}){/if} {$item_data.TEXT} {if $item_data.PRICE_PLAIN != 0}({$item_data.PREFIX}{$item_data.PRICE}){/if}
