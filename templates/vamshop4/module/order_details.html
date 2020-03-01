@@ -4,13 +4,19 @@
 <div class="card card-product">
 <div class="card-body">
 
+{foreach from=$module_content key=category_name item=cart_data}
+<h5>{$category_name}</h5>
 <div class="row">
-{foreach name=aussen item=module_data from=$module_content}
+
+{foreach name=aussen item=module_data from=$cart_data}
+
 <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-4 pb-4">
 {include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/item/item-cart.html"}
 </div>
+
 {/foreach}
 </div>
+{/foreach}
 
 <div class="text-right">
 {$UST_CONTENT}<strong>{$TOTAL_CONTENT}</strong>

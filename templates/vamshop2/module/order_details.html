@@ -10,7 +10,11 @@
     <td align="left"><strong>{#text_total#}</strong></td>
     <td align="left"><strong>{#text_remove#}</strong></td>
   </tr>
-  {foreach name=aussen item=module_data from=$module_content} 
+{foreach from=$module_content key=category_name item=cart_data}
+  <tr> 
+    <td colspan="6">{$category_name}</td>
+  </tr>
+{foreach name=aussen item=module_data from=$cart_data}  
   <tr> 
     <td colspan="6"></td>
   </tr>
@@ -36,6 +40,7 @@
     <td width="10" align="left" valign="middle">{$module_data.BOX_DELETE}</td>
   </tr>
   {/foreach} 
+  {/foreach}
   <tr> 
     <td colspan="6"></td>
   </tr>
