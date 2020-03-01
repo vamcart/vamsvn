@@ -397,7 +397,7 @@ this.options)});b._afterUpdate&&b._afterUpdate(a,b._groups)};b._update=function(
 // Responsive equal height
 if ($(window).width() > 767) {
 $(window).on('load', function () {
-    $('.card-body .img-wrap img').matchHeight();
+    $('.card-body .img-wrap').matchHeight();
     $('.card-body .info-wrap .title').matchHeight();
 });
 }	
