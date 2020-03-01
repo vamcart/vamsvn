@@ -20,7 +20,23 @@
   </tr>
   <tr> 
     <td>{if $module_data.PRODUCTS_IMAGE!=''}<img src="{$module_data.PRODUCTS_IMAGE}" width="100" alt="{$module_data.IMAGE_ALT}" />{/if}</td>
-    <td valign="middle" align="left" width="150">{if $smarty.const.AJAX_CART == 'true'}{$module_data.MINUS}{/if}{$module_data.PRODUCTS_QTY}{if $smarty.const.AJAX_CART == 'true'}{$module_data.PLUS}{/if}</td>
+
+    <td valign="middle" align="left">
+      {if $smarty.const.AJAX_CART == 'true'}
+        <div class="input-group">
+          <div class="input-prepend">
+    	    {$module_data.MINUS}
+          </div>
+      {/if}
+          {$module_data.PRODUCTS_QTY}
+      {if $smarty.const.AJAX_CART == 'true'}
+          <div class="input-append">
+      	    {$module_data.PLUS}
+          </div>
+        </div>
+      {/if}
+    </td>
+
     <td valign="middle" align="left"><strong><a href="{$module_data.PRODUCTS_LINK}">{$module_data.PRODUCTS_NAME}</a></strong><br />
       {if $module_data.PRODUCTS_SHIPPING_TIME neq ""}{#text_shippingtime#}&nbsp;{$module_data.PRODUCTS_SHIPPING_TIME}{/if}
       {if $module_data.ATTRIBUTES!=''} 
