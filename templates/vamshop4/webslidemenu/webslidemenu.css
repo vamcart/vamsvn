@@ -482,7 +482,7 @@ video {
   left: 0;
   border-bottom: solid 2px #376cb7;
   border-top: solid 0px;
-  z-index: 101;
+  z-index: 999999;
 }
 
 .wsmenu>.wsmenu-list>li>.wsshoptabing>.wsshopwp {
