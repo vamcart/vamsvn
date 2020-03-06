@@ -29,7 +29,7 @@
 
   define('SITEMAP_HEADER', "<rss xmlns:yandex='http://news.yandex.ru' xmlns:media='http://search.yahoo.com/mrss/' xmlns:turbo='http://turbo.yandex.ru' version='2.0'>"."\n".'<channel>'."\n".'<turbo:cms_plugin>vamshop</turbo:cms_plugin>'."\n");
   define('SITEMAP_FOOTER', '</channel>'."\n".'</rss>');
-  define('SITEMAP_ENTRY', "\t".'<item turbo="true">'."\n\t\t".'<link>%s</link>'."\n\t\t".'<turbo:content><![CDATA['."\n\t\t".'<figure><img src="%s" /><figcaption>%s</figcaption></figure>'."\n\t\t".'<header><h1>%s</h1></header>'."\n\t\t".'<button formaction="%s" data-background-color="orange" data-color="white" data-primary="true">Перейти в магазин</button> '."\n\t".']]></turbo:content></item>'."\n");
+  define('SITEMAP_ENTRY', "\t".'<item turbo="true">'."\n\t\t".'<link>%s</link>'."\n\t\t".'<turbo:content><![CDATA['."\n\t\t".'<figure><img src="%s" /><figcaption>%s</figcaption></figure>'."\n\t\t".'<header><h1>%s</h1></header>'."\n\t\t".'<button formaction="%s" data-background-color="orange" data-turbo="false" data-color="white" data-primary="true">Перейти в магазин</button> '."\n\t".']]></turbo:content></item>'."\n");
 
 
   $usegzip        = false;
