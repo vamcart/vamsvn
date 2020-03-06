@@ -1035,7 +1035,7 @@ video {
   position: absolute;
   top: 60px;
   color: #000;
-  z-index: 1000;
+  z-index: 999999;
   margin: 0px;
   text-align: left;
   padding: 14px 5px;
