@@ -78,7 +78,7 @@ if (!is_file($avatar)) $avatar = false;
 
 	if ($reviews_split->number_of_rows > 0) {
 
-	$vamTemplate->assign('REVIEWS_TOTAL', vam_db_num_rows($reviews_query));
+	$vamTemplate->assign('REVIEWS_TOTAL', $reviews_split->number_of_rows);
 
 	$reviews_stat_query = vam_db_query("select count(*) as total, TRUNCATE(SUM(reviews_rating),2) as rating from ".TABLE_SITE_REVIEWS." r, ".TABLE_SITE_REVIEWS_DESCRIPTION." rd where r.products_id = '".(int)$products_id."' and r.reviews_id = rd.reviews_id and rd.languages_id = '".$_SESSION['languages_id']."'");
 	$reviews_stat = vam_db_fetch_array($reviews_stat_query);
