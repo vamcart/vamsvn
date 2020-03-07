@@ -108,7 +108,7 @@ $( "#date_added" ).datepicker({ dateFormat: "dd-mm-yy" }).val();
     $reviews_query = vam_db_query("select r.reviews_id, r.products_id, r.customers_name, r.customers_avatar, r.date_added, r.last_modified, r.reviews_read, rd.reviews_text, r.reviews_rating from " . TABLE_SITE_REVIEWS . " r, " . TABLE_SITE_REVIEWS_DESCRIPTION . " rd where r.reviews_id = '" . vam_db_input($rID) . "' and r.reviews_id = rd.reviews_id");
     $reviews = vam_db_fetch_array($reviews_query);
 
-    $rInfo_array = vam_array_merge($reviews);
+    $rInfo_array = $reviews;
     $rInfo = new objectInfo($rInfo_array);
 ?>
       <tr><?php echo vam_draw_form('review', FILENAME_SITE_REVIEWS, 'page=' . $_GET['page'] . '&rID=' . $_GET['rID'] . '&action=preview', 'post', 'enctype="multipart/form-data"'); ?>
