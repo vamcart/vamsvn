@@ -1,27 +1,37 @@
 {config_load file="$language/lang_$language.conf" section="reviews"}
 <div class="page">
-<h1>{#heading_reviews#}</h1>
+<h1>{#heading_product_reviews#} {$REVIEWS_ID}</h1>
 <div class="pageContent">
 
-<p>
-<span class="bold">{#text_date#}</span> {$REVIEWS_DATE}
-</p>
+  <div class="card card-product h-100">
+	<div class="card-body">
+	<div class="row">
+		<div class="col-md-3 my-auto">
+			<div class="img-wrap">
+			<span class="icon-wrap icon-md round bg-warning">
+				<i class="fa fa-lightbulb white"></i>
+			</span>
+			</div>
+		</div>
+		<div class="col-md-9">
+			
+				<div class="rating-wrap small">
+					<div class="label-rating"><span class="bold">{#text_rating#}</span> <span><span>{$REVIEWS_STAR_RATING}</span></span></div>
+					<div class="label-rating"><span class="bold">{#text_date#}</span> <span>{$REVIEWS_DATE|date_format:"%Y-%m-%d"}</span></div>
+					<div class="desc"><span class="bold">{#text_author#}</span> <span><span>{$REVIEWS_AUTHOR}</span></span></div>
+				</div>
+				{if {$REVIEWS_TEXT}}
+				<div class="desc">
+				<br />
+				{$REVIEWS_TEXT}
+				</div>
+				<br />
+				{/if}
 
-<p>
-<span class="bold">{#text_author#}</span> {$REVIEWS_AUTHOR}
-</p>
-
-<p>
-<span class="bold">{#text_text#}</span>
-</p>
-
-<p>
-{$REVIEWS_TEXT}
-</p>
-
-<p>
-<span class="bold">{#text_rating#}</span> {$RATING}
-</p>
+		</div>
+	</div>
+	</div>
+</div>
 
 {$ADD_REVIEW}
 

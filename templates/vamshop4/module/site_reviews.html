@@ -1,29 +1,86 @@
 {config_load file="$language/lang_$language.conf" section="reviews"}
-		<div class="company_tabs">
-			<div class="reviews_content">
-			
-				<div class="review_items reviews">
-{foreach name=aussen item=module_data from=$module_content} 
-<p itemprop="review" itemscope itemtype="http://schema.org/Review">
-<meta itemprop="itemReviewed" content="{$content_name}">
-{$module_data.ID}&nbsp;&nbsp;&nbsp;<span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">{$module_data.AUTHOR}</span></span>&nbsp;&nbsp;&nbsp;<span itemprop="reviewRating" itemscope itemtype="http://schema.org/Rating"><span itemprop="ratingValue" content="{$module_data.RATING_TXT}">{$module_data.RATING}</span></span>&nbsp;&nbsp;&nbsp;<span content="{$module_data.DATE|date_format:"%Y-%m-%d"}" itemprop="datePublished">{$module_data.DATE|date_format:"%Y-%m-%d"}</span>&nbsp;&nbsp;&nbsp;<span itemprop="reviewBody">{$module_data.TEXT}</span>
-</p>
-<a href="{$module_data.LINK}"><u>Читать отзыв</u></a>
-{/foreach} 
-
-				</div>
-
-			</div>
-
 <div>
-<br />
-{$ADD_REVIEW}
-</div>
+<h1>{$smarty.const.NAVBAR_TITLE_SITE_REVIEWS}</h1>
 
+<div class="row-fluid reviews-title" itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">
+  <div class="card card-product h-100">
+	<div class="card-body">
+	<div class="row">
+		<div class="col-md-3">
+			<div class="text-center">
+			<div class="display-4 font-weight-bolder"><span itemprop="ratingValue">{$REVIEWS_TOTAL_RATING|number_format:1}</span></div>
+			{$REVIEWS_STAR_RATING}
+			</div>
+				{if {$REVIEWS_TOTAL} > 0}
+				<div class="rating-wrap text-center">
+             {#text_total#}: <span itemprop="reviewCount">{$REVIEWS_TOTAL}</span>
+				</div>
+				{/if}
+		</div>
+		<div class="col-md-6">
+		<div class="line pb-2">
+		<span class="progress-label">5</span>
+		<div class="progress">
+		  <div class="progress-bar font-weight-bolder{if $RATING_FIVE == 0} text-dark{/if}" role="progressbar" style="width: {$RATING_FIVE_PERCENT}%" aria-valuenow="{$RATING_FIVE_PERCENT}" aria-valuemin="0" aria-valuemax="100">
+		  {$RATING_FIVE_PERCENT}%
+		  </div>
+		</div>		
+		</div>		
+		<div class="line pb-2">
+		<span class="progress-label">4</span>
+		<div class="progress">
+		  <div class="progress-bar font-weight-bolder{if $RATING_FOUR == 0} text-dark{/if}" role="progressbar" style="width: {$RATING_FOUR_PERCENT}%" aria-valuenow="{$RATING_FOUR_PERCENT}" aria-valuemin="0" aria-valuemax="100">
+		  {$RATING_FOUR_PERCENT}%
+		  </div>
+		</div>
+		</div>		
+		<div class="line pb-2">
+		<span class="progress-label">3</span>
+		<div class="progress">
+		  <div class="progress-bar font-weight-bolder{if $RATING_THREE == 0} text-dark{/if}" role="progressbar" style="width: {$RATING_THREE_PERCENT}%" aria-valuenow="{$RATING_THREE_PERCENT}" aria-valuemin="0" aria-valuemax="100">
+		  {$RATING_THREE_PERCENT}%
+		  </div>
+		</div>
+		</div>		
+		<div class="line pb-2">
+		<span class="progress-label">2</span>
+		<div class="progress">
+		  <div class="progress-bar font-weight-bolder{if $RATING_TWO == 0} text-dark{/if}" role="progressbar" style="width: {$RATING_TWO_PERCENT}%" aria-valuenow="{$RATING_TWO_PERCENT}" aria-valuemin="0" aria-valuemax="100">
+		  {$RATING_TWO_PERCENT}%
+		  </div>
+		</div>
+		</div>		
+		<div class="line pb-2">
+		<span class="progress-label">1</span>
+		<div class="progress">
+		  <div class="progress-bar font-weight-bolder{if $RATING_ONE == 0} text-dark{/if}" role="progressbar" style="width: {$RATING_ONE_PERCENT}%" aria-valuenow="{$RATING_ONE_PERCENT}" aria-valuemin="0" aria-valuemax="100">
+		  {$RATING_ONE_PERCENT}%
+		  </div>
+		</div>
+		</div>
+
+		</div>
+		<div class="col-md-3 my-auto">
+			<div class="action-wrap text-center">
+           {$ADD_REVIEW}
+			</div>
+		</div>
 	</div>
+	</div>
+</div>
+</div>
+				
+<div class="page">
+<div class="pageContent">
+{foreach name=aussen item=module_data from=$module_content}
+{include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/item/item-site-reviews.html"}
+{/foreach}
+</div>
+</div>
 	
 <div class="clear"></div>
 <div class="navigation">
 <span class="right">{$NAVBAR}</span>{$NAVBAR_PAGES}
 </div>
 <div class="clear"></div>	
+</div>
