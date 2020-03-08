@@ -74,7 +74,7 @@ if (!is_file($avatar)) $avatar = false;
 
 }
 
-	$vamTemplate->assign('ADD_REVIEW', '<a class="button" href="'.vam_href_link(FILENAME_SITE_REVIEWS_WRITE, $get_params).'">'.vam_image_button('add.png', IMAGE_BUTTON_WRITE_REVIEW).'</a>');
+	$vamTemplate->assign('ADD_REVIEW', '<a class="button btn btn-block" href="'.vam_href_link(FILENAME_SITE_REVIEWS_WRITE, $get_params).'">'.vam_image_button('add.png', IMAGE_BUTTON_WRITE_REVIEW).'</a>');
 
 	if ($reviews_split->number_of_rows > 0) {
 

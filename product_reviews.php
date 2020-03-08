@@ -95,7 +95,7 @@ $vamTemplate->assign('REVIEWS_ALL_LINK', vam_href_link(FILENAME_REVIEWS));
 $vamTemplate->assign('REVIEWS_TOTAL', vam_db_num_rows($reviews_query));
 
 $vamTemplate->assign('BUTTON_BACK', '<a class="btn btn-inverse" href="'.vam_href_link(FILENAME_PRODUCT_INFO, $get_params_back).'">'.vam_image_button('back.png', IMAGE_BUTTON_BACK).'</a>');
-$vamTemplate->assign('BUTTON_WRITE', '<a class="btn btn-inverse" href="'.vam_href_link(FILENAME_PRODUCT_REVIEWS_WRITE, $get_params).'">'.vam_image_button('add.png', IMAGE_BUTTON_WRITE_REVIEW).'</a>');
+$vamTemplate->assign('BUTTON_WRITE', '<a class="btn btn-inverse btn-block" href="'.vam_href_link(FILENAME_PRODUCT_REVIEWS_WRITE, $get_params).'">'.vam_image_button('add.png', IMAGE_BUTTON_WRITE_REVIEW).'</a>');
 
 if ($_GET['products_id'] > 0) {
 
