@@ -668,3 +668,7 @@ label {
   background: transparent;
   color: #333;
 }
+
+.bg-orange {
+  background: #dd2c00;
+}
