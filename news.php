@@ -19,10 +19,6 @@
   // create template elements
   $vamTemplate = new vamTemplate;
 
-  // include boxes
-  require(DIR_FS_CATALOG .'templates/'.CURRENT_TEMPLATE. '/source/boxes.php'); 
-  require(DIR_WS_INCLUDES . 'header.php');
-
   $_GET['news_id'] = (int)$_GET['news_id']; if ($_GET['news_id']<1) $_GET['news_id'] = 0;
 
   $all_sql = "
@@ -101,6 +97,10 @@ if ($qI=strpos($one['content'],'src="')) {
   } else {
       $vamTemplate->assign('NAVIGATION_BAR', TEXT_NO_NEWS);
   }
+
+  // include boxes
+  require(DIR_FS_CATALOG .'templates/'.CURRENT_TEMPLATE. '/source/boxes.php'); 
+  require(DIR_WS_INCLUDES . 'header.php');
 
   $vamTemplate->assign('NEWS_LINK', vam_href_link(FILENAME_NEWS));
   $vamTemplate->assign('language', $_SESSION['language']);

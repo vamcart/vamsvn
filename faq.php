@@ -24,8 +24,6 @@
 
   $breadcrumb->add(NAVBAR_TITLE_FAQ, vam_href_link(FILENAME_FAQ));
 
-  require(DIR_WS_INCLUDES . 'header.php');
-
   $_GET['faq_id'] = (int)$_GET['faq_id']; if ($_GET['faq_id']<1) $_GET['faq_id'] = 0;
 
   $all_sql = "
@@ -109,6 +107,8 @@
   } else {
       $vamTemplate->assign('NAVIGATION_BAR', TEXT_NO_FAQ);
   }
+
+  require(DIR_WS_INCLUDES . 'header.php');
 
   $vamTemplate->assign('FAQ_LINK', vam_href_link(FILENAME_FAQ));
   $vamTemplate->assign('language', $_SESSION['language']);
