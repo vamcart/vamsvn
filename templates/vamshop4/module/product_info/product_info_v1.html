@@ -10,8 +10,10 @@
 
 {$PRODUCT_NAVIGATOR}
 
+{if $smarty.session.customers_status.customers_status_id == 0}
 {if $PRODUCTS_EDIT_LINK}
 <a class="btn btn-inverse" href="{$PRODUCTS_EDIT_LINK}"><i class="fa fa-pencil-alt"></i> {#text_product_edit#}</a>
+{/if}
 {/if}
 
   <div class="card card-product">
