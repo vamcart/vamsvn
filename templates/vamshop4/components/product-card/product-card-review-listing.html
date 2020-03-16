@@ -20,11 +20,7 @@
 				{if {$module_data.REVIEW.TEXT}}
 				<div class="desc" itemprop="reviewBody">
 				<br />
-            {if $smarty.SERVER.SCRIPT_NAME != '/product_reviews_info.php'}
-				{$module_data.REVIEW.TEXT|strip_tags|vam_truncate:$smarty.const.MAX_DISPLAY_SHORT_DESCRIPTION:"...":true}
-				{else}
 				{$module_data.REVIEW.TEXT|strip_tags}
-				{/if}
 				</div>
 				<br />
 				{/if}
