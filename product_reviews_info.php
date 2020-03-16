@@ -34,25 +34,25 @@ $get_params = substr($get_params, 0, -1); //remove trailing &
 
 $breadcrumb->add(NAVBAR_TITLE_PRODUCT_REVIEWS, vam_href_link(FILENAME_PRODUCT_REVIEWS, $get_params));
 
-if (!is_object($product) || !$product->isProduct() OR !$product->data['products_id'] ) { // product not found in database
+//if (!is_object($product) || !$product->isProduct() OR !$product->data['products_id'] ) { // product not found in database
 
-	$error = TEXT_PRODUCT_NOT_FOUND;
-	include (DIR_WS_MODULES.FILENAME_ERROR_HANDLER);
+	//$error = TEXT_PRODUCT_NOT_FOUND;
+	//include (DIR_WS_MODULES.FILENAME_ERROR_HANDLER);
 
-} 
+//} 
 
 vam_db_query("update ".TABLE_REVIEWS." set reviews_read = reviews_read+1 where reviews_id = '".$reviews['reviews_id']."'");
 
 $module_content = array();
 
-require (DIR_WS_INCLUDES.'header.php');
-
 $reviews_query = "select rd.*, r.*, p.*, pd.* from ".TABLE_REVIEWS." r left join ".TABLE_PRODUCTS." p on (r.products_id = p.products_id) left join ".TABLE_PRODUCTS_DESCRIPTION." pd on (p.products_id = pd.products_id and pd.language_id = '".(int) $_SESSION['languages_id']."'), ".TABLE_REVIEWS_DESCRIPTION." rd where r.reviews_id = '".(int) $_GET['reviews_id']."' and rd.languages_id = '".(int) $_SESSION['languages_id']."' and r.reviews_id = rd.reviews_id and p.products_status = '1'";
 
 $reviews_query = vamDBquery($reviews_query);
 
-if (!vam_db_num_rows($reviews_query))
-	vam_redirect(vam_href_link(FILENAME_REVIEWS));
+if (!vam_db_num_rows($reviews_query)) {
+//header("HTTP/1.1 404 Not Found");
+vam_redirect(vam_href_link(FILENAME_REVIEWS));
+}
 $reviews = vam_db_fetch_array($reviews_query, true);
 
 		$star_rating = '';
@@ -85,7 +85,7 @@ $reviews = vam_db_fetch_array($reviews_query, true);
 		);	
 
 $products_price = $vamPrice->GetPrice($product->data['products_id'], $format = true, 1, $product->data['products_tax_class_id'], $product->data['products_price'], 1);
-		
+
 $vamTemplate->assign('PRODUCTS_PRICE', $products_price['formated']);
 $vamTemplate->assign('PRODUCTS_PRICE_PLAIN', $products_price['plain']);
 if ($product->data['products_vpe_status'] == 1 && $product->data['products_vpe_value'] != 0.0 && $products_price['plain'] > 0)
@@ -160,6 +160,8 @@ $vamTemplate->assign('BUTTON_BACK', '<a class="btn btn-inverse" href="'.vam_href
 	$cache_id = $_SESSION['language'].$reviews['reviews_id'];
 	$main_content = $vamTemplate->fetch(CURRENT_TEMPLATE.'/module/product_reviews_info.html', $cache_id);
 }
+
+require (DIR_WS_INCLUDES.'header.php');
 
 $vamTemplate->assign('language', $_SESSION['language']);
 $vamTemplate->assign('main_content', $main_content);
