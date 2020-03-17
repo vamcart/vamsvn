@@ -15,45 +15,6 @@
 
 function doBuyNow( id, quantity, update, get_cart, attributes ) {
 
-  // Setup the ajax indicator
- $('body').append('<div id="ajaxLoading"><img src="images/loading.gif"></div>');
-
-$(document).click(function(e) {
-
-$('#ajaxLoading').css('top', function() {
-  return e.pageY-30+"px";
-});      
-
-$('#ajaxLoading').css('left', function() {
-  return e.pageX-10+"px";
-});      
-
-  $('#ajaxLoading').css({
-    margin:"0px auto",
-    paddingLeft:"0px",
-    paddingRight:"0px",
-    paddingTop:"0px",
-    paddingBottom:"0px",
-    position:"absolute",
-    width:"30px"
-  });
-
-      
-})
-
-// Ajax activity indicator bound to ajax start/success/stop document events
-$(document).ajaxSend(function(){
-  $('#ajaxLoading').show();
-});
-
-$(document).ajaxSuccess(function(){
-  $('#ajaxLoading').hide();
-});
-
-$(document).ajaxStop(function(){
-  $('#ajaxLoading').remove();
-});
-
       $.ajax({
                      url: "index_ajax.php",             
                      dataType : "html",                       
@@ -71,7 +32,8 @@ $(document).ajaxStop(function(){
 					cartPopupOn();
 				}
     	               }       
-                   });                     
+                   });
+            img_loader();                     
 
 }
 
@@ -112,6 +74,7 @@ function doAddProduct(id) {
 
     	               }
 		});
+      img_loader();
 	}
 
 function doDelProduct(id, prod_id) {
@@ -159,12 +122,14 @@ function doDelProduct(id, prod_id) {
 					
 					}
 		});
+		img_loader();
 	}
 
 $(document).ready(function(){
 
 	$('body').on('click', '.cart_delete', function(){
        doDelProduct('',$(this).val());
+       img_loader();
    });
 
    $('body').on('click', '.cart_change', function(){
@@ -189,6 +154,7 @@ $(document).ready(function(){
        qty = field.val();
        field.val(parseInt(qty)+parseInt($(this).val()));
        doBuyNow(id,$(this).val(),'',1,attributes);
+       img_loader();
    });
 
    //$('body').on('focusout', '.input-small', function(){
@@ -212,3 +178,23 @@ function cartPopupOff(){
 $('.cart_popup').hide(); 
 $('#load_status_bg').remove('#load_status_bg'); 
 };
+
+function img_loader(){
+
+// Setup the ajax indicator
+$('body').append('<div id="load_status_bg"><div class="load_status_image"></div></div>');
+
+// Ajax activity indicator bound to ajax start/success/stop document events
+$(document).ajaxSend(function(){
+  $('#load_status_bg').show();
+});
+
+$(document).ajaxSuccess(function(){
+  $('#load_status_bg').hide();
+});
+
+$(document).ajaxStop(function(){
+  $('#load_status_bg').remove();
+});
+
+}
