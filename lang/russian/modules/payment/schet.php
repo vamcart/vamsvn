@@ -17,7 +17,7 @@
    ---------------------------------------------------------------------------------------*/
 
   define('MODULE_PAYMENT_SCHET_TEXT_TITLE', 'Оплата по счёту');
-  define('MODULE_PAYMENT_SCHET_TEXT_DESCRIPTION', '<br /><strong>Счёт Вы сможете распечатать на следующей странице.</strong><br /><br />Информация для оплаты:<br />' .
+  define('MODULE_PAYMENT_SCHET_TEXT_DESCRIPTION', '<br />Информация для оплаты:<br />' .
                                                          '<br />Поставщик: ' . MODULE_PAYMENT_SCHET_1 .
                                                          '<br />Адрес: ' . MODULE_PAYMENT_SCHET_2 .
                                                          '<br />Телефон: ' . MODULE_PAYMENT_SCHET_3 .
