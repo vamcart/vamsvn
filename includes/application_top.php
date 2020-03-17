@@ -527,7 +527,11 @@ if (vam_not_null($cPath)) {
 require (DIR_WS_CLASSES.'breadcrumb.php');
 $breadcrumb = new breadcrumb;
 
-if ($current_category_id > 0 or !strstr($PHP_SELF, FILENAME_DEFAULT)) $breadcrumb->add(TITLE_DEFAULT_PAGE, HTTP_SERVER);
+if ($current_category_id > 0 or !strstr($PHP_SELF, FILENAME_DEFAULT)) { 
+if (!strstr($PHP_SELF, FILENAME_CONTENT)) {
+$breadcrumb->add(TITLE_DEFAULT_PAGE, HTTP_SERVER);
+}
+}
 //$breadcrumb->add(HEADER_TITLE_CATALOG, HTTP_SERVER . DIR_WS_CATALOG);
 
 // add category names or the manufacturer name to the breadcrumb trail
