@@ -337,6 +337,24 @@ defined( '_VALID_VAM' ) or die( 'Direct Access to this location is not allowed.'
     return $topic['topics_heading_title'];
   }
 
+  function vam_get_topic_meta_title($topic_id, $language_id) {
+    $topic_query = vam_db_query("select topics_meta_title from " . TABLE_TOPICS_DESCRIPTION . " where topics_id = '" . $topic_id . "' and language_id = '" . $language_id . "'");
+    $topic = vam_db_fetch_array($topic_query);
+    return $topic['topics_meta_title'];
+  }
+
+  function vam_get_topic_meta_description($topic_id, $language_id) {
+    $topic_query = vam_db_query("select topics_meta_description from " . TABLE_TOPICS_DESCRIPTION . " where topics_id = '" . $topic_id . "' and language_id = '" . $language_id . "'");
+    $topic = vam_db_fetch_array($topic_query);
+    return $topic['topics_meta_description'];
+  }
+
+  function vam_get_topic_meta_keywords($topic_id, $language_id) {
+    $topic_query = vam_db_query("select topics_meta_keywords from " . TABLE_TOPICS_DESCRIPTION . " where topics_id = '" . $topic_id . "' and language_id = '" . $language_id . "'");
+    $topic = vam_db_fetch_array($topic_query);
+    return $topic['topics_meta_keywords'];
+  }
+
   function vam_get_topic_description($topic_id, $language_id) {
     $topic_query = vam_db_query("select topics_description from " . TABLE_TOPICS_DESCRIPTION . " where topics_id = '" . $topic_id . "' and language_id = '" . $language_id . "'");
     $topic = vam_db_fetch_array($topic_query);

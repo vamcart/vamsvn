@@ -102,6 +102,9 @@
 
           $sql_data_array = array('topics_name' => vam_db_prepare_input($_POST['topics_name'][$language_id]),
                                   'topics_heading_title' => vam_db_prepare_input($_POST['topics_heading_title'][$language_id]),
+                                  'topics_meta_title' => vam_db_prepare_input($_POST['topics_meta_title'][$language_id]),
+                                  'topics_meta_description' => vam_db_prepare_input($_POST['topics_meta_description'][$language_id]),
+                                  'topics_meta_keywords' => vam_db_prepare_input($_POST['topics_meta_keywords'][$language_id]),
                                   'topics_description' => vam_db_prepare_input($_POST['topics_description'][$language_id]));
 
           if ($action == 'insert_topic') {
@@ -456,7 +459,7 @@ $authorsImg = $_POST['articles_image'];
    //----- new_topic / edit_topic  -----
   if ($_GET['action'] == 'new_topic_ACD' || $_GET['action'] == 'edit_topic_ACD') {
     if ( ($_GET['tID']) && (!$_POST) ) {
-      $topics_query = vam_db_query("select t.topics_id, td.topics_name, td.topics_heading_title, td.topics_description, t.parent_id, t.sort_order, t.date_added, t.last_modified, t.topics_page_url from " . TABLE_TOPICS . " t, " . TABLE_TOPICS_DESCRIPTION . " td where t.topics_id = '" . $_GET['tID'] . "' and t.topics_id = td.topics_id and td.language_id = '" . (int)$_SESSION['languages_id'] . "' order by t.sort_order, td.topics_name");
+      $topics_query = vam_db_query("select t.topics_id, td.topics_name, td.topics_heading_title, td.topics_meta_title, td.topics_meta_description, td.topics_meta_keywords, td.topics_description, t.parent_id, t.sort_order, t.date_added, t.last_modified, t.topics_page_url from " . TABLE_TOPICS . " t, " . TABLE_TOPICS_DESCRIPTION . " td where t.topics_id = '" . $_GET['tID'] . "' and t.topics_id = td.topics_id and td.language_id = '" . (int)$_SESSION['languages_id'] . "' order by t.sort_order, td.topics_name");
       $topic = vam_db_fetch_array($topics_query);
 
       $tInfo = new objectInfo($topic);
@@ -464,6 +467,9 @@ $authorsImg = $_POST['articles_image'];
       $tInfo = new objectInfo($_POST);
       $topics_name = $_POST['topics_name'];
       $topics_heading_title = $_POST['topics_heading_title'];
+      $topics_meta_title = $_POST['topics_meta_title'];
+      $topics_meta_description = $_POST['topics_meta_description'];
+      $topics_meta_keywords = $_POST['topics_meta_keywords'];
       $topics_description = $_POST['topics_description'];
       $topics_url = $_POST['topics_url'];
     } else {
@@ -533,6 +539,100 @@ $manual_link = 'add-topic';
           </tr>
 
           <tr>
+            <td class="main"><?php echo TEXT_ARTICLES_HEAD_TITLE_TAG; ?></td>
+            <td class="main"><?php echo vam_draw_textarea_field('topics_meta_title[' . $languages[$i]['id'] . ']', 'soft', '70', '5', (isset($topics_meta_title[$languages[$i]['id']]) ? $topics_meta_title[$languages[$i]['id']] : vam_get_topic_meta_title($tInfo->topics_id, $languages[$i]['id'])),'class="notinymce"'); ?>
+				<div id="title-result"></div>            
+<script>
+				function wordCount( val ){
+    var wom = val.match(/\S+/g);
+    return {
+        charactersNoSpaces : val.replace(/\s+/g, '').length,
+        characters         : val.length,
+        words              : wom ? wom.length : 0,
+        lines              : val.split(/\r*\n/).length
+    };
+}
+
+
+var textarea = document.getElementById("topics_meta_title[1]");
+var result_title   = document.getElementById("title-result");
+
+textarea.addEventListener("input", function(){
+  var v = wordCount( this.value );
+  result_title.innerHTML = (
+      //"<br>Characters (no spaces):  "+ v.charactersNoSpaces +
+      + v.characters
+      //"<br>Words: "+ v.words +
+      //"<br>Lines: "+ v.lines
+  );
+}, false);
+</script>
+            </td>
+          </tr>
+
+          <tr>
+            <td colspan="2"><?php echo vam_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
+          </tr>
+
+          <tr>
+            <td class="main" valign="top"><?php echo TEXT_ARTICLES_HEAD_DESC_TAG; ?></td>
+            <td><table border="0" cellspacing="0" cellpadding="0">
+              <tr>
+                <td class="main"><?php echo vam_draw_textarea_field('topics_meta_description[' . $languages[$i]['id'] . ']', 'soft', '70', '5', (isset($topics_meta_description[$languages[$i]['id']]) ? $topics_meta_description[$languages[$i]['id']] : vam_get_topic_meta_description($tInfo->topics_id, $languages[$i]['id'])),'class="notinymce"'); ?></td>
+              </tr>
+            </table>
+				<div id="desc-result"></div>            
+<script>
+var textarea = document.getElementById("topics_meta_description[1]");
+var result_desc   = document.getElementById("desc-result");
+
+textarea.addEventListener("input", function(){
+  var v = wordCount( this.value );
+  result_desc.innerHTML = (
+      //"<br>Characters (no spaces):  "+ v.charactersNoSpaces +
+      + v.characters
+      //"<br>Words: "+ v.words +
+      //"<br>Lines: "+ v.lines
+  );
+}, false);
+</script>
+            </td>            
+          </tr>
+
+          <tr>
+            <td colspan="2"><?php echo vam_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
+          </tr>
+
+          <tr>
+            <td class="main" valign="top"><?php echo TEXT_ARTICLES_HEAD_KEYWORDS_TAG; ?></td>
+            <td><table border="0" cellspacing="0" cellpadding="0">
+              <tr>
+                <td class="main"><?php echo vam_draw_textarea_field('topics_meta_keywords[' . $languages[$i]['id'] . ']', 'soft', '70', '5', (isset($topics_meta_keywords[$languages[$i]['id']]) ? $topics_meta_keywords[$languages[$i]['id']] : vam_get_topic_meta_keywords($tInfo->topics_id, $languages[$i]['id'])),'class="notinymce"'); ?></td>
+              </tr>
+            </table>
+				<div id="key-result"></div>            
+<script>
+var textarea = document.getElementById("topics_meta_keywords[1]");
+var result_key   = document.getElementById("key-result");
+
+textarea.addEventListener("input", function(){
+  var v = wordCount( this.value );
+  result_key.innerHTML = (
+      //"<br>Characters (no spaces):  "+ v.charactersNoSpaces +
+      + v.characters
+      //"<br>Words: "+ v.words +
+      //"<br>Lines: "+ v.lines
+  );
+}, false);
+</script>
+            </td>             
+          </tr>
+
+          <tr>
+            <td colspan="2"><?php echo vam_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
+          </tr>
+          
+          <tr>
             <td class="main" valign="top"><?php echo TEXT_EDIT_TOPICS_DESCRIPTION; ?></td>
             <td><table border="0" cellspacing="0" cellpadding="0">
               <tr>
@@ -592,9 +692,12 @@ $manual_link = 'add-topic';
       $tInfo = new objectInfo($_POST);
       $topics_name = $_POST['topics_name'];
       $topics_heading_title = $_POST['topics_heading_title'];
+      $topics_meta_title = $_POST['topics_meta_title'];
+      $topics_meta_description = $_POST['topics_meta_description'];
+      $topics_meta_keywords = $_POST['topics_meta_keywords'];
       $topics_description = $_POST['topics_description'];
     } else {
-      $topic_query = vam_db_query("select t.topics_id, td.language_id, td.topics_name, td.topics_heading_title, td.topics_description, t.sort_order, t.date_added, t.last_modified, t.topics_page_url from " . TABLE_TOPICS . " t, " . TABLE_TOPICS_DESCRIPTION . " td where t.topics_id = td.topics_id and t.topics_id = '" . $_GET['tID'] . "'");
+      $topic_query = vam_db_query("select t.topics_id, td.language_id, td.topics_name, td.topics_heading_title, td.topics_meta_title, td.topics_meta_description, td.topics_meta_keywords, td.topics_description, t.sort_order, t.date_added, t.last_modified, t.topics_page_url from " . TABLE_TOPICS . " t, " . TABLE_TOPICS_DESCRIPTION . " td where t.topics_id = td.topics_id and t.topics_id = '" . $_GET['tID'] . "'");
       $topic = vam_db_fetch_array($topic_query);
 
       $tInfo = new objectInfo($topic);
@@ -609,10 +712,16 @@ $manual_link = 'add-topic';
       if ($_GET['read'] == 'only') {
         $tInfo->topics_name = vam_get_topic_name($tInfo->topics_id, $languages[$i]['id']);
         $tInfo->topics_heading_title = vam_get_topic_heading_title($tInfo->topics_id, $languages[$i]['id']);
+        $tInfo->topics_meta_title = vam_get_topic_meta_title($tInfo->topics_id, $languages[$i]['id']);
+        $tInfo->topics_meta_description = vam_get_topic_meta_description($tInfo->topics_id, $languages[$i]['id']);
+        $tInfo->topics_meta_keywords = vam_get_topic_meta_keywords($tInfo->topics_id, $languages[$i]['id']);
         $tInfo->topics_description = vam_get_topic_description($tInfo->topics_id, $languages[$i]['id']);
       } else {
         $tInfo->topics_name = vam_db_prepare_input($topics_name[$languages[$i]['id']]);
         $tInfo->topics_heading_title = vam_db_prepare_input($topics_heading_title[$languages[$i]['id']]);
+        $tInfo->topics_meta_title = vam_db_prepare_input($topics_meta_title[$languages[$i]['id']]);
+        $tInfo->topics_meta_description = vam_db_prepare_input($topics_meta_description[$languages[$i]['id']]);
+        $tInfo->topics_meta_keywords = vam_db_prepare_input($topics_meta_keywords[$languages[$i]['id']]);
         $tInfo->topics_description = vam_db_prepare_input($topics_description[$languages[$i]['id']]);
       }
 ?>
@@ -669,6 +778,9 @@ $manual_link = 'add-topic';
       for ($i=0; $i<sizeof($languages); $i++) {
         echo vam_draw_hidden_field('topics_name[' . $languages[$i]['id'] . ']', htmlspecialchars(stripslashes($topics_name[$languages[$i]['id']])));
         echo vam_draw_hidden_field('topics_heading_title[' . $languages[$i]['id'] . ']', htmlspecialchars(stripslashes($topics_heading_title[$languages[$i]['id']])));
+        echo vam_draw_hidden_field('topics_meta_title[' . $languages[$i]['id'] . ']', htmlspecialchars(stripslashes($topics_meta_title[$languages[$i]['id']])));
+        echo vam_draw_hidden_field('topics_meta_description[' . $languages[$i]['id'] . ']', htmlspecialchars(stripslashes($topics_meta_description[$languages[$i]['id']])));
+        echo vam_draw_hidden_field('topics_meta_keywords[' . $languages[$i]['id'] . ']', htmlspecialchars(stripslashes($topics_meta_keywords[$languages[$i]['id']])));
         echo vam_draw_hidden_field('topics_description[' . $languages[$i]['id'] . ']', htmlspecialchars(stripslashes($topics_description[$languages[$i]['id']])));
       }
 
