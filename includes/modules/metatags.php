@@ -337,24 +337,33 @@ $content_meta = vam_db_fetch_array($content_meta_query, true);
     
   case ($_GET['tPath']):
 
-			$articles_cat_meta_query = vamDBquery("SELECT topics_id, topics_name, topics_heading_title, topics_description
+			$articles_cat_meta_query = vamDBquery("SELECT topics_id, topics_name, topics_heading_title, topics_meta_title, topics_meta_description, topics_meta_keywords, topics_description
 			                                            FROM " . TABLE_TOPICS_DESCRIPTION . "
 			                                            WHERE topics_id='" . (int)$current_topic_id . "' and
 			                                            language_id='" . (int)$_SESSION['languages_id'] . "'");
 			$articles_cat_meta = vam_db_fetch_array($articles_cat_meta_query, true);
 
+		if ($articles_cat_meta['topics_meta_title'] == '') {
 			$articles_cat_title = $articles_cat_meta['topics_name'];
-
-		if ($articles_cat_meta['topics_description'] == '') {
-			$articles_cat_desc = META_DESCRIPTION;
 		} else {
-			$articles_cat_desc = $articles_cat_meta['topics_heading_title'];
+			$articles_cat_title = $articles_cat_meta['topics_meta_title'];
 		}
 
+		if ($articles_cat_meta['topics_meta_description'] == '') {
+			$articles_cat_desc = META_DESCRIPTION;
+		} else {
+			$articles_cat_desc = $articles_cat_meta['topics_meta_description'];
+		}
+
+		if ($articles_cat_meta['topics_meta_keywords'] == '') {
+			$articles_cat_keys = META_KEYWORDS;
+		} else {
+			$articles_cat_keys = $articles_cat_meta['topics_meta_keywords'];
+		}
 ?>
 <title><?php echo $articles_cat_title; ?></title>
 <meta name="description" content="<?php echo $articles_cat_desc; ?>" />
-<meta name="keywords" content="<?php echo META_KEYWORDS; ?>" />
+<meta name="keywords" content="<?php echo $articles_cat_keys; ?>" />
 <meta property="og:title" content="<?php echo $articles_cat_title; ?>" />
 <meta property="og:description" content="<?php echo $articles_cat_desc; ?>" />
 <meta property="og:url" content="<?php echo vam_href_link(FILENAME_ARTICLES, 'tPath='.$articles_cat_meta['topics_id']); ?>" />
