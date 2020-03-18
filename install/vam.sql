@@ -226,6 +226,9 @@ CREATE TABLE topics_description (
   topics_name varchar(255) NOT NULL default '',
   topics_heading_title varchar(255) default NULL,
   topics_description text,
+  topics_meta_title text,
+  topics_meta_description text,
+  topics_meta_keywords text,
   PRIMARY KEY  (topics_id,language_id),
   KEY idx_topics_name (topics_name)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
