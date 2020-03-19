@@ -194,7 +194,7 @@ $(document).ready(function(){
 });
 
 function cartPopupOn(){ 
-$('body').append('<div id="load_status_bg"></div><div class="cart_popup"><div class="cart_popuptext">Товар добавлен в корзину!</div><div class="cart_popuplink"><a href="checkout.php" class="button"><span><img src="/images/icons/buttons/buy.png" alt="" title="" width="12" height="12" />&nbsp;Оформить заказ</span></a><br /><br /><a href="javascript:cartPopupOff()" class="button"><span><img src="/images/icons/buttons/back.png" alt="" title="" width="12" height="12" />&nbsp;Продолжить покупки</span></a></div></div>'); 
+$('body').append('<div id="load_status_bg"></div><div class="cart_popup"><div class="cart_popuptext">Товар добавлен в корзину!</div><div class="cart_popuplink"><a href="shopping_cart.php" class="button"><span><img src="/images/icons/buttons/buy.png" alt="" title="" width="12" height="12" />&nbsp;Перейти в корзину</span></a><br /><br /><a href="javascript:cartPopupOff()" class="button"><span><img src="/images/icons/buttons/back.png" alt="" title="" width="12" height="12" />&nbsp;Продолжить покупки</span></a></div></div>'); 
 $('#load_status_bg').show().css({'filter' : 'alpha(opacity=80)'}); 
 $('.cart_popup').show(); 
 $(document).click(function (){
