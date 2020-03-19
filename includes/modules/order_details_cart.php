@@ -108,7 +108,7 @@ for ($i = 0, $n = sizeof($productss[$key]['products']); $i < $n; $i ++) {
 	'PRODUCTS_CATEGORIES_ID' => $productss[$key]['products'][$i]['categories_id'], 
 	'PRODUCTS_CATEGORIES_NAME' => $productss[$key]['products'][$i]['categories_name'], 
 	'PRODUCTS_CATEGORIES_SORT_ORDER' => $productss[$key]['products'][$i]['categories_sort_order'], 
-	'PRODUCTS_QTY' => vam_draw_input_field('cart_quantity[]', $productss[$key]['products'][$i]['quantity'], 'size="2" id="cart" class="form-control col-sm-4 text-center item-quantity input-small"').vam_draw_hidden_field('products_id[]', $productss[$key]['products'][$i]['id'],'class="ajax_qty"').vam_draw_hidden_field('old_qty[]', $productss[$key]['products'][$i]['quantity']), 
+	'PRODUCTS_QTY' => vam_draw_input_field('cart_quantity[]', $productss[$key]['products'][$i]['quantity'], 'size="2" id="cart" class="form-control text-center item-quantity input-small"').vam_draw_hidden_field('products_id[]', $productss[$key]['products'][$i]['id'],'class="ajax_qty"').vam_draw_hidden_field('old_qty[]', $productss[$key]['products'][$i]['quantity']), 
 	'PRODUCTS_STOCK' => $productss[$key]['products'][$i]['stock'],
 	'PRODUCTS_MODEL' => $productss[$key]['products'][$i]['model'],
 	'PRODUCTS_SHIPPING_TIME'=>$productss[$key]['products'][$i]['shipping_time'], 

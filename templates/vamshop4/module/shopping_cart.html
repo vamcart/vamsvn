@@ -1,13 +1,11 @@
 {config_load file="$language/lang_$language.conf" section="shopping_cart"}
-<div class="">
-<div class="row">
-<div {if $MODULE_cross_selling_cart}class="col-xl-9"{else}class="col-xl-12"{/if}>
 <div id="ajax_cart">
 <div class="page">
 <h1>{#heading_cart#}</h1>
 <div class="pageСontent">
 {if $info_message!=''}<div class="contacterror">{$info_message}</div>
 {/if}
+{$MODULE_gift_cart}
 {if $cart_empty==true}
 
 <p>
@@ -31,11 +29,9 @@
 </div>
 {/if}
 
-{$MODULE_gift_cart}
-
 <div class="clear"></div>
 <div class="navigation">
-<span class="right">{$BUTTON_CHECKOUT}</span>{if $smarty.const.AJAX_CART == 'false'}{$BUTTON_RELOAD}{/if}
+{if $smarty.const.AJAX_CART == 'false'}{$BUTTON_RELOAD}{/if}
 </div>
 <div class="clear"></div>
 {$FORM_END}
@@ -43,12 +39,4 @@
 </div>
 </div>
 </div>
-
-</div>
-{if $MODULE_cross_selling_cart}
-<div class="col-xl-3">
 {$MODULE_cross_selling_cart}
-</div>
-{/if}
-</div>
-</div>

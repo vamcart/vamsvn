@@ -1,16 +1,14 @@
 {config_load file="$language/lang_$language.conf" section="shopping_cart"}
 {config_load file="$language/lang_$language.conf" section="product_info"}
 
-<div class="card card-product">
-<div class="card-body">
+<div class="row">
+<div class="col-xl-9">
 
 {foreach from=$module_content key=category_name item=cart_data}
 <h5>{$category_name}</h5>
-<div class="row">
-
+<div class="card-deck">
 {foreach name=aussen item=module_data from=$cart_data}
-
-<div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-4 pb-4">
+<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 col-xl-4">
 {include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/item/item-cart.html"}
 </div>
 
@@ -18,10 +16,29 @@
 </div>
 {/foreach}
 
-<div class="text-right">
-{$UST_CONTENT}<strong>{$TOTAL_CONTENT}</strong>
-{if $SHIPPING_INFO}{$SHIPPING_INFO}{/if}
-</div>	
+</div>
+
+<div class="col-xl-3">
+
+<h5>{$smarty.const.TEXT_CHECKOUT_ALTERNATIVE}</h5>
+
+<div class="card card-product card-sm">
+<div class="card-body">
+<div class="info-wrap text-left">
+   {if $UST_CONTENT}<div>{$UST_CONTENT}</div>{/if}
+	<div>{$TOTAL_CONTENT}</div>
+	{if $SHIPPING_INFO}<div><span class="text-muted">{$SHIPPING_INFO}</span></div>{/if}
+</div>
+</div>
+<div class="card-footer text-center">
+<a class="btn btn-add-to-cart btn-block" href="{$smarty.const.FILENAME_CHECKOUT}"><i class="fa fa-shopping-cart"></i> {$smarty.const.IMAGE_BUTTON_CHECKOUT}</a></div>
+</div>
+
+
+{if $MODULE_cross_selling_cart}
+{$MODULE_cross_selling_cart}
+{/if}
+</div>
 
 </div>
-</div>
+

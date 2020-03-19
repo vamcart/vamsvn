@@ -1,37 +1,36 @@
-	<div class="box h-100 bg-light">
-			<div class="itemside">
-				<div class="aside align-top">
-						{if $module_data.PRODUCTS_IMAGE!=''}<img class="img-sm" src="{$module_data.PRODUCTS_IMAGE}" width="100" alt="{$module_data.IMAGE_ALT}" />{/if}
+<!-- Product Card Simple -->
+		<div class="card card-product card-sm h-100">
+      <div class="card-body">
+		<span class="badge-offer pt-2">{$module_data.BOX_DELETE}</span>
+			<div class="img-wrap"><a href="{$module_data.PRODUCTS_LINK}" title="{$module_data.PRODUCTS_NAME}"><img class="img-md" src="{$module_data.PRODUCTS_IMAGE}" alt="{$module_data.PRODUCTS_NAME}"></a></div>
+			<div class="info-wrap text-left">
+				<h5 class="title"><a href="{$module_data.PRODUCTS_LINK}" title="{$module_data.PRODUCTS_NAME}">{$module_data.PRODUCTS_NAME}</a></h5>
+				<div class="price-wrap h6 font-weight-bold">
+					<strong class="text-danger">{$module_data.PRODUCTS_PRICE}</strong>
 				</div>
-				<div class="text-wrap w-100">
-				  <div class="d-flex justify-content-between">
-				    <div class="my-auto align-center"><span class="title"><a href="{$module_data.PRODUCTS_LINK}">{$module_data.PRODUCTS_NAME}</a></span></div>
-				    <div class="my-auto align-center">{$module_data.BOX_DELETE}</div>
-				  </div>				
-					{if $module_data.PRODUCTS_SHIPPING_TIME neq ""}<p><span class="text-muted">{#text_shippingtime#}&nbsp;{$module_data.PRODUCTS_SHIPPING_TIME}</span></p>{/if}
-					{if $module_data.ATTRIBUTES!=''}
-					{foreach key=key_data item=item_data from=$module_data.ATTRIBUTES} 
-					<p>{$item_data.NAME}: {$item_data.VALUE_NAME}</p>
-					{/foreach}
-					{/if} 					
-			      {if $smarty.const.AJAX_CART == 'true'}
-			      <div class="text-left">
-					{#text_qty#}:
-			        <div class="input-group">
-			          <div class="input-group-prepend">
-			    	    {$module_data.MINUS}
-			          </div>
-			      {/if}
-			          {$module_data.PRODUCTS_QTY}
-			      {if $smarty.const.AJAX_CART == 'true'}
-			          <div class="input-group-append">
-			      	    {$module_data.PLUS}
-			          </div>
-			        </div>
-			      </div>
-			      {/if}
-			      <hr />
-					<p><strong class="text-danger">{$module_data.PRODUCTS_PRICE}</strong></p>
-				</div>
+				{if $module_data.PRODUCTS_SHIPPING_TIME neq ""}<p><span class="text-muted">{#text_shippingtime#}&nbsp;{$module_data.PRODUCTS_SHIPPING_TIME}</span></p>{/if}
+				<div class="attributes">
+				{if $module_data.ATTRIBUTES!=''}
+				{foreach key=key_data item=item_data from=$module_data.ATTRIBUTES} 
+				<p>{$item_data.NAME}: {$item_data.VALUE_NAME}</p>
+				{/foreach}
+				{/if}
+				</div> 					
 			</div>
-	</div>
+      </div>
+      <div class="card-footer text-left">
+      {#text_qty#}:
+         <div class="input-group">
+         <div class="input-group-prepend">
+	       {$module_data.MINUS}
+         </div>
+         {$module_data.PRODUCTS_QTY}
+         <div class="input-group-append">
+	       {$module_data.PLUS}
+         </div>
+         </div>
+      </div>
+    			
+		</div>
+<!-- /Product Card Simple -->
+			
