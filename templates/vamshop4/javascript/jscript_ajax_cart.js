@@ -157,6 +157,31 @@ $(document).ready(function(){
        img_loader();
    });
 
+   $('body').on('change', 'form#cart_quantity .item-quantity', function(){
+       field = $(this).val();
+       id = $(this).parent().parent().find('input.ajax_qty').val();
+       perem = $(this).parent().parent().find('input.ajax_qty').val();
+
+       //console.log(id);
+
+       attributes = [];
+       
+       $("form#cart_quantity input[name^='id["+id+"']").each(function(){
+           attributes.push($(this).attr("name")+":"+$(this).val()+"");
+       });
+       
+       //console.log(attributes);
+       
+       //jQuery.each(attributes, function( index, value ) {
+           //console.log( "index", index, "value", value );
+       //});
+       
+       //console.log($("input[name^='old_qty[]'").val());
+       
+       doBuyNow(id,$(this).val(),'1',1,attributes);
+       img_loader();
+   });
+   
    //$('body').on('focusout', '.input-small', function(){
        //id = $(this).parent().find('input.ajax_qty').val();
        //qty = $(this).val();
