@@ -32,6 +32,16 @@ if (($i = strpos($box_shopping_cart, '<div id="divShoppingCart">')) !== false) {
 if (isset($_POST['get_cart']) && $_POST['get_cart'] or isset($_GET['get_cart']) && $_GET['get_cart']) {
 $ajax_cart = true;
 require('shopping_cart.php');
+
+if (($i = strpos($main_content, '<div id="ajax_cart">')) !== false) {
+    $main_content = substr($main_content, $i + 20);
+    $i = strrpos($main_content, '</div>');
+    $main_content = substr($main_content, 0, $i);
+}
+
+
+$box_shopping_cart = $main_content;
+
 $box_shopping_cart = $main_content;
 }
 
