@@ -159,8 +159,8 @@ $(document).ready(function(){
 
    $('body').on('change', 'form#cart_quantity .item-quantity', function(){
        field = $(this).val();
-       id = $(this).parent().parent().find('input.ajax_qty').val();
-       perem = $(this).parent().parent().find('input.ajax_qty').val();
+       id = $(this).parent().find('input.ajax_qty').val();
+       perem = $(this).parent().find('input.ajax_qty').val();
 
        //console.log(id);
 
