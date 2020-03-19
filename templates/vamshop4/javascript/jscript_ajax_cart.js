@@ -28,7 +28,7 @@ function doBuyNow( id, quantity, update, get_cart, attributes ) {
 			if ($(location).attr('pathname') == '/shopping_cart.php') {
 				$("#ajax_cart").empty().html(msg);
 			} else {
-		      $("#divCart").html(msg);
+		      $("#divShoppingCart").html(msg);
 			}
 	 
 			if ($(location).attr('pathname') != '/shopping_cart.php')	{
