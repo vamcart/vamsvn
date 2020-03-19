@@ -96,7 +96,7 @@ function doDelProduct(id, prod_id) {
 				if (tmp.length > 3) data = data + tmp;
 			});
 		} else {
-			data = data + 'cart_quantity[]=&products_id[]='+prod_id+'&old_qty[]=1&cart_delete[]='+prod_id+'&';
+			data = data + 'cart_quantity[]=&products_id[]='+prod_id+'&old_qty[]=&cart_delete[]='+prod_id+'&';
 		}
 		data = data + "action=update_product";
 		if ($("div").is("#ajax_cart")) data = data + "&get_cart=1";
