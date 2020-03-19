@@ -15,26 +15,29 @@
 
 function doBuyNow( id, quantity, update, get_cart, attributes ) {
 
+		if ($(location).attr('pathname') == '/shopping_cart.php') {
+			get_cart = 1;
+		} 
+		
       $.ajax({
-                     url: "index_ajax.php",             
-                     dataType : "html",                       
-                     data: {q : 'includes/modules/ajax/ajaxCart.php', action : 'cust_order', products_qty : quantity, pid : id, get_cart : get_cart, update : update, attributes : attributes},
-                     type: "GET",
-    	               success: function(msg){
-					      $("#divShoppingCart").html(msg);
-                     if ($("div").is("#ajax_cart")) {
-					      $("#ajax_cart").empty().html(msg);
-					 }
-
-				//if (data.qty!="0" && $(location).attr('pathname') != '/shopping_cart.php')
-				if ($(location).attr('pathname') != '/shopping_cart.php')
-				{
-					cartPopupOn();
-				}
-    	               }       
-                   });
-            img_loader();                     
-
+			url: "index_ajax.php",             
+			dataType : "html",                       
+			data: {q : 'includes/modules/ajax/ajaxCart.php', action : 'cust_order', products_qty : quantity, pid : id, get_cart : get_cart, update : update, attributes : attributes},
+			type: "GET",
+			success: function(msg){
+			if ($(location).attr('pathname') == '/shopping_cart.php') {
+				$("#ajax_cart").empty().html(msg);
+			} else {
+		      $("#divCart").html(msg);
+			}
+	 
+			if ($(location).attr('pathname') != '/shopping_cart.php')	{
+				cartPopupOn();
+			}
+		
+			}   
+			});
+			img_loader();                     
 }
 
 function doAddProduct(id) {
