@@ -389,7 +389,7 @@ $orders_query = "select
 																								                                            and p.products_id = pd.products_id and xp.products_xsell_grp_name_id='".$cross_sells['products_xsell_grp_name_id']."'
 																								                                            and pd.language_id = '".$_SESSION['languages_id']."'
 																								                                            and p.products_status = '1'
-																								                                            order by xp.sort_order asc";
+																								                                            order by xp.sort_order asc limit ".MAX_DISPLAY_ALSO_PURCHASED;
 
 			$cross_query = vamDBquery($cross_query);
 			if (vam_db_num_rows($cross_query, true) > 0)
@@ -441,7 +441,7 @@ $orders_query = "select
 																                                            and p.products_id = pd.products_id
 																                                            and pd.language_id = '".$_SESSION['languages_id']."'
 																                                            and p.products_status = '1'
-																                                            order by xp.sort_order asc");
+																                                            order by xp.sort_order asc limit '".MAX_DISPLAY_ALSO_PURCHASED."'");
 
 
 			while ($xsell = vam_db_fetch_array($cross_query, true)) {
@@ -502,7 +502,7 @@ $orders_query = "select
 																								                                            and p.products_id = pd.products_id and xp.products_xsell_grp_name_id='".$cross_sells['products_xsell_grp_name_id']."'
 																								                                            and pd.language_id = '".$_SESSION['languages_id']."'
 																								                                            and p.products_status = '1'
-																								                                            order by xp.sort_order asc";
+																								                                            order by xp.sort_order asc limit ".MAX_DISPLAY_ALSO_PURCHASED;
 
 			$cross_query = vamDBquery($cross_query);
 			if (vam_db_num_rows($cross_query, true) > 0)
