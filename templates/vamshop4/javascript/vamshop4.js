@@ -1,4 +1,36 @@
 $(document).ready(function(){
+
+$(".owl-carousel-reverse").owlCarousel({
+    margin: 0,
+    nav: true,
+    loop:false,
+    dots: false,
+    navText: ['<span class="fas fa-chevron-left fa-3x"></span>','<span class="fas fa-chevron-right fa-3x"></span>'],
+    responsive:{
+        0:{
+            items:1,
+            nav:true
+        },
+        576:{
+            items:2,
+            nav:true
+        },
+        768:{
+            items:3,
+            nav:true
+        },
+        992:{
+            items:4,
+            nav:true,
+            loop:false
+        },
+        1200:{
+            items:1,
+            nav:true,
+            loop:false
+        }
+    }
+})
 	
 $(".owl-carousel").owlCarousel({
     margin: 0,

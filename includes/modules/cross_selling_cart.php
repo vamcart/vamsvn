@@ -27,7 +27,7 @@ if (count($data) > 0) {
     $module->assign('module_content', $data);
     // set cache ID
     $module->caching = 0;
-    $module = $module->fetch(CURRENT_TEMPLATE.'/module/cross_selling.html');
+    $module = $module->fetch(CURRENT_TEMPLATE.'/module/cross_selling_cart.html');
     $vamTemplate->assign('MODULE_cross_selling_cart', $module);
 }
 }
