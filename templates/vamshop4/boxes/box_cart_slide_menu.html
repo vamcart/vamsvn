@@ -19,10 +19,7 @@
 								<img class="media-object p-1" src="{$products_data.IMAGE}" alt="" title="" width="40" height="40" />
 							</a>
 						<div class="media-body">
-						{if $smarty.const.AJAX_CART == 'true'}
-		<form id="update_cart{counter name=1}" class="cart_quantity" action="{$products_data.LINK}/action/update_product" method="post" onsubmit="doDelProduct({counter name=2}); return false;">{$products_data.PRODUCTS_QTY}
-		{/if}
-		                  <span class="media-heading"><a href="{$products_data.LINK}">{$products_data.NAME|vam_truncate:$smarty.const.MAX_DISPLAY_CART:"...":true}</a></span> {if $smarty.const.AJAX_CART == 'true'}&nbsp;<button class="btn btn-outline-light circle text-danger"><i class="fas fa-times"></i></button></form>{/if}
+		                  <span class="media-heading"><a href="{$products_data.LINK}">{$products_data.NAME|vam_truncate:$smarty.const.MAX_DISPLAY_CART:"...":true}</a></span> {if $smarty.const.AJAX_CART == 'true'}&nbsp;<button class="btn btn-outline-light circle text-danger cart_delete" value="{$products_data.ID}"><i class="fas fa-times"></i></button><br />{/if}
 								{if $products_data.ATTRIBUTES!=''} 
 								{foreach key=key_data item=item_data from=$products_data.ATTRIBUTES} 
 								{if $item_data.NAME != ''}{$item_data.NAME}:{/if} {if $item_data.VALUE != ''}<strong>{$item_data.VALUE}</strong><br />{/if}
