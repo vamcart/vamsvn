@@ -1,7 +1,7 @@
 {config_load file="$language/lang_$language.conf" section="shopping_cart"}
 <div class="">
 <div class="row">
-<div class="col-xl-9">
+<div {if $MODULE_cross_selling_cart}class="col-xl-9"{else}class="col-xl-12"{/if}>
 <div id="ajax_cart">
 <div class="page">
 <h1>{#heading_cart#}</h1>
@@ -45,10 +45,10 @@
 </div>
 
 </div>
+{if $MODULE_cross_selling_cart}
 <div class="col-xl-3">
-
 {$MODULE_cross_selling_cart}
-
 </div>
+{/if}
 </div>
 </div>
