@@ -5,7 +5,7 @@
 <div class="col-xl-9">
 
 {foreach from=$module_content key=category_name item=cart_data}
-<h5>{$category_name}</h5>
+<h3>{$category_name}</h3>
 <div class="card-deck">
 {foreach name=aussen item=module_data from=$cart_data}
 <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 col-xl-4">
@@ -20,7 +20,7 @@
 
 <div class="col-xl-3">
 
-<h5>{$smarty.const.TEXT_CHECKOUT_ALTERNATIVE}</h5>
+<h3>{$smarty.const.TEXT_CHECKOUT_ALTERNATIVE}</h3>
 
 <div class="card card-product card-sm">
 <div class="card-body">
