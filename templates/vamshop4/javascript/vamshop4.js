@@ -432,4 +432,8 @@ $(window).on('load', function () {
     $('.card-body .img-wrap').matchHeight();
     $('.card-body .info-wrap .title').matchHeight();
 });
+$(document).ajaxComplete(function () {
+    $('.card-body .img-wrap').matchHeight();
+    $('.card-body .info-wrap .title').matchHeight();
+});
 }	
