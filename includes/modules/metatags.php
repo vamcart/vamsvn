@@ -262,7 +262,7 @@ $content_meta = vam_db_fetch_array($content_meta_query, true);
 			                                            WHERE news_id='" . (int)$_GET['news_id'] . "' and
 			                                            language='" . (int)$_SESSION['languages_id'] . "'");
 			$news_meta = vam_db_fetch_array($news_meta_query, true);
-// shaklov
+
 		if ($news_meta['news_head_title'] == '') {
 			$news_title = $news_meta['headline'];
 		} else {
@@ -281,7 +281,7 @@ $content_meta = vam_db_fetch_array($content_meta_query, true);
 			$news_keys = $news_meta['news_head_keys'];
 		}
 ?>
-<title><?php echo $news_title . ' - ' . TITLE; ?></title>
+<title><?php echo $news_title . ' - ' . NAVBAR_TITLE_NEWS; ?></title>
 <meta name="description" content="<?php echo $news_desc; ?>" />
 <meta name="keywords" content="<?php echo $news_keys; ?>" />
 <meta property="og:title" content="<?php echo $news_title; ?>" />
@@ -297,31 +297,31 @@ $content_meta = vam_db_fetch_array($content_meta_query, true);
 
   case ($_GET['faq_id']):
 
-			$faq_meta_query = vamDBquery("SELECT faq_id, question
+			$faq_meta_query = vamDBquery("SELECT faq_id, question, faq_head_title, faq_head_desc, faq_head_keys
 			                                            FROM " . TABLE_FAQ . "
 			                                            WHERE faq_id='" . (int)$_GET['faq_id'] . "' and
 			                                            language='" . (int)$_SESSION['languages_id'] . "'");
 			$faq_meta = vam_db_fetch_array($faq_meta_query, true);
-// shaklov
-		if ($faq_meta['question'] == '') {
-			$faq_title = STORE_NAME;
-		} else {
+
+		if ($faq_meta['faq_head_title'] == '') {
 			$faq_title = htmlentities($faq_meta['question']);
+		} else {
+			$faq_title = $faq_meta['faq_head_title'];
 		}
 
-		if ($faq_meta['question'] == '') {
-			$faq_desc = META_DESCRIPTION;
-		} else {
+		if ($faq_meta['faq_head_desc'] == '') {
 			$faq_desc = htmlentities($faq_meta['question']);
+		} else {
+			$faq_desc = $faq_meta['faq_head_desc'];
 		}
 
-		if ($faq_meta['question'] == '') {
-			$faq_keys = META_KEYWORDS;
-		} else {
+		if ($faq_meta['faq_head_keys'] == '') {
 			$faq_keys = htmlentities($faq_meta['question']);
+		} else {
+			$faq_keys = $faq_meta['faq_head_keys'];
 		}
 ?>
-<title><?php echo $faq_title . ' - ' . TITLE; ?></title>
+<title><?php echo $faq_title . ' - ' . NAVBAR_TITLE_FAQ; ?></title>
 <meta name="description" content="<?php echo $faq_desc; ?>" />
 <meta name="keywords" content="<?php echo $faq_keys; ?>" />
 <meta property="og:title" content="<?php echo $faq_title; ?>" />
@@ -499,7 +499,7 @@ $content_meta = vam_db_fetch_array($content_meta_query, true);
 
     break;  
 
-  case (strstr($PHP_SELF, FILENAME_NEWS) && !isset($_GET['news_id'])):
+  case (strstr($PHP_SELF, FILENAME_NEWS)):
 
 ?>
 <title><?php echo NAVBAR_TITLE_NEWS . ' - ' . STORE_NAME; ?></title>
@@ -509,7 +509,7 @@ $content_meta = vam_db_fetch_array($content_meta_query, true);
 
     break;  
 
-  case (strstr($PHP_SELF, FILENAME_FAQ) && !isset($_GET['faq_id'])):
+  case (strstr($PHP_SELF, FILENAME_FAQ)):
 
 ?>
 <title><?php echo NAVBAR_TITLE_FAQ . ' - ' . STORE_NAME; ?></title>
