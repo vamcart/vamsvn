@@ -1,7 +1,7 @@
 /* -----------------------------------------------------------------------------------------
    $Id: jscript_ajax_cart.js 899 2007-06-30 20:14:56 VaM $   
 
-   VaM Shop - open source ecommerce solution
+   VamShop - open source ecommerce solution
    http://vamshop.ru
    http://vamshop.com
 
@@ -15,65 +15,29 @@
 
 function doBuyNow( id, quantity, update, get_cart, attributes ) {
 
-  // Setup the ajax indicator
- $('body').append('<div id="ajaxLoading"><img src="images/loading.gif"></div>');
-
-$(document).click(function(e) {
-
-$('#ajaxLoading').css('top', function() {
-  return e.pageY-30+"px";
-});      
-
-$('#ajaxLoading').css('left', function() {
-  return e.pageX-10+"px";
-});      
-
-  $('#ajaxLoading').css({
-    margin:"0px auto",
-    paddingLeft:"0px",
-    paddingRight:"0px",
-    paddingTop:"0px",
-    paddingBottom:"0px",
-    position:"absolute",
-    width:"30px"
-  });
-
-      
-})
-
-// Ajax activity indicator bound to ajax start/success/stop document events
-$(document).ajaxSend(function(){
-  $('#ajaxLoading').show();
-});
-
-$(document).ajaxSuccess(function(){
-  $('#ajaxLoading').hide();
-});
-
-$(document).ajaxStop(function(){
-  $('#ajaxLoading').remove();
-});
-
+		if ($(location).attr('pathname') == '/shopping_cart.php') {
+			get_cart = 1;
+		} 
+		
       $.ajax({
-                     url: "index_ajax.php",             
-                     dataType : "html",                       
-                     data: {q : 'includes/modules/ajax/ajaxCart.php', action : 'cust_order', products_qty : quantity, pid : id, get_cart : 1, update : update, attributes : attributes},
-                     type: "GET",
-    	               success: function(msg){
-    	               data=jQuery.parseJSON(msg) ;
-					 $("#divShoppingCart").html(data.cart);
-                     if ($("div").is("#ajax_cart")) {
-					   $("#ajax_cart").empty().append(data.cart3);
-					 }
-
-				if (data.qty!="0" && $(location).attr('pathname') != '/shopping_cart.php')
-				{
-					//console.log($(location));
-    	               //cartPopupOn();
-      					 }
-    	               }       
-                   });                     
-
+			url: "index_ajax.php",             
+			dataType : "html",                       
+			data: {q : 'includes/modules/ajax/ajaxCart.php', action : 'cust_order', products_qty : quantity, pid : id, get_cart : get_cart, update : update, attributes : attributes},
+			type: "GET",
+			success: function(msg){
+			if ($(location).attr('pathname') == '/shopping_cart.php') {
+				$("#ajax_cart").empty().html(msg);
+			} else {
+		      $("#divShoppingCart").html(msg);
+			}
+	 
+			if ($(location).attr('pathname') != '/shopping_cart.php')	{
+				cartPopupOn();
+			}
+		
+			}   
+			});
+			img_loader();                     
 }
 
 function doAddProduct(id) {
@@ -99,22 +63,21 @@ function doAddProduct(id) {
 					data : data,
 					type : "GET",
 					success : function(msg) {
-    	               data=jQuery.parseJSON(msg) ;
-					 $("#divShoppingCart").html(data.cart);
+					 $("#divShoppingCart").html(msg);
 					 if ($("div").is("#ajax_cart")) {
-					   $("#ajax_cart").empty().append(data.cart3);
+					   $("#ajax_cart").empty().html(msg);
 					 }
 
 
-				if (data.qty!="0" && $(location).attr('pathname') != '/shopping_cart.php')
+				//if (data.qty!="0" && $(location).attr('pathname') != '/shopping_cart.php')
+				if ($(location).attr('pathname') != '/shopping_cart.php')
 				{
-		
-               //cartPopupOn();
-		
-					 }
+					cartPopupOn();
+				}
 
     	               }
 		});
+      img_loader();
 	}
 
 function doDelProduct(id, prod_id) {
@@ -133,7 +96,7 @@ function doDelProduct(id, prod_id) {
 				if (tmp.length > 3) data = data + tmp;
 			});
 		} else {
-			data = data + 'cart_quantity[]=&products_id[]='+prod_id+'&old_qty[]=1&cart_delete[]='+prod_id+'&';
+			data = data + 'cart_quantity[]=&products_id[]='+prod_id+'&old_qty[]=&cart_delete[]='+prod_id+'&';
 		}
 		data = data + "action=update_product";
 		if ($("div").is("#ajax_cart")) data = data + "&get_cart=1";
@@ -143,35 +106,33 @@ function doDelProduct(id, prod_id) {
 					data : data,
 					type : "GET",
 					success : function(msg) {
-					 data=jQuery.parseJSON(msg) ;
-					 $("#divShoppingCart").html(data.cart);
+					 $("#divShoppingCart").html(msg);
 					 if ($("div").is("#ajax_cart")) {
-					   $("#ajax_cart").empty().append(data.cart3);
+					   $("#ajax_cart").empty().html(msg);
 					 }
 					 if (data.total=="0")
   {
-
   } else {    	             
-					 data=jQuery.parseJSON(msg) ;
-					 $("#divShoppingCart").html(data.cart);
-
-				if (!$("#navigation .shopping-cart").length)
-				{
-		
-		
-			    }
+					 $("#divShoppingCart").html(msg);
 	
     	              }
+    	              
+				//if (data.qty!="0" && $(location).attr('pathname') != '/shopping_cart.php')
+				if ($(location).attr('pathname') != '/shopping_cart.php')
+				{
 
+            }					
 					
 					}
 		});
+		img_loader();
 	}
 
 $(document).ready(function(){
 
 	$('body').on('click', '.cart_delete', function(){
        doDelProduct('',$(this).val());
+       img_loader();
    });
 
    $('body').on('click', '.cart_change', function(){
@@ -196,8 +157,34 @@ $(document).ready(function(){
        qty = field.val();
        field.val(parseInt(qty)+parseInt($(this).val()));
        doBuyNow(id,$(this).val(),'',1,attributes);
+       img_loader();
    });
 
+   $('body').on('change', 'form#cart_quantity .item-quantity', function(){
+       field = $(this).val();
+       id = $(this).parent().find('input.ajax_qty').val();
+       perem = $(this).parent().find('input.ajax_qty').val();
+
+       //console.log(id);
+
+       attributes = [];
+       
+       $("form#cart_quantity input[name^='id["+id+"']").each(function(){
+           attributes.push($(this).attr("name")+":"+$(this).val()+"");
+       });
+       
+       //console.log(attributes);
+       
+       //jQuery.each(attributes, function( index, value ) {
+           //console.log( "index", index, "value", value );
+       //});
+       
+       //console.log($("input[name^='old_qty[]'").val());
+       
+       doBuyNow(id,$(this).val(),'1',1,attributes);
+       img_loader();
+   });
+   
    //$('body').on('focusout', '.input-small', function(){
        //id = $(this).parent().find('input.ajax_qty').val();
        //qty = $(this).val();
@@ -206,3 +193,22 @@ $(document).ready(function(){
 
 });
 
+function img_loader(){
+
+// Setup the ajax indicator
+$('body').append('<div id="load_status_bg"><div class="load_status_image"></div></div>');
+
+// Ajax activity indicator bound to ajax start/success/stop document events
+$(document).ajaxSend(function(){
+  $('#load_status_bg').show();
+});
+
+$(document).ajaxSuccess(function(){
+  $('#load_status_bg').hide();
+});
+
+$(document).ajaxStop(function(){
+  $('#load_status_bg').remove();
+});
+
+}
