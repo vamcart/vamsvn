@@ -31,9 +31,9 @@ function doBuyNow( id, quantity, update, get_cart, attributes ) {
 		      $("#divShoppingCart").html(msg);
 			}
 	 
-			if ($(location).attr('pathname') != '/shopping_cart.php')	{
+			//if ($(location).attr('pathname') != '/shopping_cart.php')	{
 				cartPopupOn();
-			}
+			//}
 		
 			}   
 			});
