@@ -21,7 +21,7 @@
 
   $_GET['news_id'] = (int)$_GET['news_id']; if ($_GET['news_id']<1) $_GET['news_id'] = 0;
 
-  $all_sql = "
+  $all_news_sql = "
       SELECT
           news_id,
           headline,
@@ -33,7 +33,7 @@
           and language = '" . (int)$_SESSION['languages_id'] . "'
       ORDER BY date_added DESC
       ";
-  $one_sql = "
+  $one_news_sql = "
       SELECT
           news_id,
           headline,
@@ -48,16 +48,16 @@
       LIMIT 1
       ";
 
-  $module_content = array();
+  $module_news_content = array();
   if (!empty($_GET['news_id'])) {
-      $query = vam_db_query($one_sql);
+      $query = vam_db_query($one_news_sql);
       if (vam_db_num_rows($query) == 0) { 
       $_GET['news_id'] = 0;
       header("HTTP/1.1 404 Not Found");
       }
   }
   if (empty($_GET['news_id'])) {
-      $split = new splitPageResults($all_sql, $_GET['page'], MAX_DISPLAY_LATEST_NEWS_PAGE, 'news_id');
+      $split = new splitPageResults($all_news_sql, $_GET['page'], MAX_DISPLAY_LATEST_NEWS_PAGE, 'news_id');
       $query = vam_db_query($split->sql_query);
       if (($split->number_of_rows > 0)) {
           $vamTemplate->assign('NAVIGATION_BAR', TEXT_RESULT_PAGE.' '.$split->display_links(MAX_DISPLAY_PAGE_LINKS, vam_get_all_get_params(array ('page', 'info', 'x', 'y'))));
@@ -85,7 +85,7 @@ if ($qI=strpos($one['content'],'src="')) {
 		if (SEARCH_ENGINE_FRIENDLY_URLS == 'true')
 			$SEF_parameter = '&headline='.vam_cleanName($one['headline']);
 
-    $module_content[]=array(
+    $module_news_content[]=array(
               'NEWS_ICON' => $qIcon,
               'NEWS_HEADING' => $one['headline'],
               'NEWS_CONTENT' => $one['content'],
@@ -105,7 +105,7 @@ if ($qI=strpos($one['content'],'src="')) {
   $vamTemplate->assign('NEWS_LINK', vam_href_link(FILENAME_NEWS));
   $vamTemplate->assign('language', $_SESSION['language']);
   $vamTemplate->caching = 0;
-  $vamTemplate->assign('module_content',$module_content);
+  $vamTemplate->assign('module_content',$module_news_content);
   $main_content=$vamTemplate->fetch(CURRENT_TEMPLATE . '/module/latest_news.html');
 
   $vamTemplate->assign('main_content',$main_content);
