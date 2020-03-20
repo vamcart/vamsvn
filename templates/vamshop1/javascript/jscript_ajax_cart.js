@@ -15,6 +15,10 @@
 
 function doBuyNow( id, quantity, update, get_cart, attributes ) {
 
+		if ($(location).attr('pathname') == '/shopping_cart.php') {
+			get_cart = 1;
+		} 
+		
   // Setup the ajax indicator
  $('body').append('<div id="ajaxLoading"><img src="images/loading.gif"></div>');
 
@@ -134,7 +138,7 @@ function doDelProduct(id, prod_id) {
 				if (tmp.length > 3) data = data + tmp;
 			});
 		} else {
-			data = data + 'cart_quantity[]=&products_id[]='+prod_id+'&old_qty[]=1&cart_delete[]='+prod_id+'&';
+			data = data + 'cart_quantity[]=&products_id[]='+prod_id+'&old_qty[]=&cart_delete[]='+prod_id+'&';
 		}
 		data = data + "action=update_product";
 		if ($("div").is("#ajax_cart")) data = data + "&get_cart=1";
@@ -202,6 +206,31 @@ $(document).ready(function(){
        doBuyNow(id,$(this).val(),'',1,attributes);
    });
 
+   $('body').on('change', 'form#cart_quantity .item-quantity', function(){
+       field = $(this).val();
+       id = $(this).parent().find('input.ajax_qty').val();
+       perem = $(this).parent().find('input.ajax_qty').val();
+
+       //console.log(id);
+
+       attributes = [];
+       
+       $("form#cart_quantity input[name^='id["+id+"']").each(function(){
+           attributes.push($(this).attr("name")+":"+$(this).val()+"");
+       });
+       
+       //console.log(attributes);
+       
+       //jQuery.each(attributes, function( index, value ) {
+           //console.log( "index", index, "value", value );
+       //});
+       
+       //console.log($("input[name^='old_qty[]'").val());
+       
+       doBuyNow(id,$(this).val(),'1',1,attributes);
+       img_loader();
+   });
+   
    //$('body').on('focusout', '.input-small', function(){
        //id = $(this).parent().find('input.ajax_qty').val();
        //qty = $(this).val();
