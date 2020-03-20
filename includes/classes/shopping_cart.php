@@ -492,6 +492,34 @@ class shoppingCart {
 		}
 	}
 
+	function show_tax_name() {
+		global $vamPrice;
+		$this->calculate();
+		$output = "";
+		$val=0;
+		foreach ($this->tax as $key => $value) {
+			if ($this->tax[$key]['value'] > 0 ) {
+			$output .= $this->tax[$key]['desc'];
+			$val = $this->tax[$key]['value'];
+			}
+		}
+		return $output;
+	}
+
+	function show_tax_value() {
+		global $vamPrice;
+		$this->calculate();
+		$output = "";
+		$val=0;
+		foreach ($this->tax as $key => $value) {
+			if ($this->tax[$key]['value'] > 0 ) {
+			$output .= $vamPrice->Format($this->tax[$key]['value'], true);
+			$val = $this->tax[$key]['value'];
+			}
+		}
+		return $output;
+	}
+		
 	function generate_cart_id($length = 5) {
 		return vam_create_random_value($length, 'digits');
 	}

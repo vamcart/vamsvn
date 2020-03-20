@@ -1779,21 +1779,39 @@ article:after,
   vertical-align: middle; }
 
 /* --------- description list --------*/
+dl[class="row"] {
+  margin-bottom: 0; 
+}
+
 [class*="dlist-"] {
-  margin-bottom: 5px; }
-  [class*="dlist-"] dd {
-    margin-bottom: 0; }
+  margin-bottom: 5px; 
+}
+
+[class*="dlist-"] dd {
+    margin-bottom: 0; 
+}
 
 .dlist-inline dt, .dlist-inline dd {
-  display: inline-block; }
+  display: inline-block; 
+}
+
+.dlist-align {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex; 
+}
 
 .dlist-align dt {
-  width: 90px;
-  float: left;
-  word-wrap: break-word; }
+    width: 50%;
+    word-wrap: break-word;
+    font-weight: normal; 
+}
+
 .dlist-align dd {
-  margin-left: 120px;
-  vertical-align: baseline; }
+    -webkit-box-flex: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1; 
+}
 
 /* -------------------- list.row--------------------- */
 ul.row, ul.row-sm {

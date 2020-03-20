@@ -20,14 +20,30 @@
 
 <div class="col-xl-3">
 
-<h3>{$smarty.const.TEXT_CHECKOUT_ALTERNATIVE}</h3>
+<h3>{$smarty.const.TEXT_PRODUCTS_IN_CART}: <span class="font-weight-bold">{$TOTAL_QUANTITY}</span></h3>
 
 <div class="card card-product card-sm">
 <div class="card-body">
-<div class="info-wrap text-left">
-   {if $UST_CONTENT}<div>{$UST_CONTENT}</div>{/if}
-	<div>{$TOTAL_CONTENT}</div>
-	{if $SHIPPING_INFO}<div><span class="text-muted">{$SHIPPING_INFO}</span></div>{/if}
+<div class="info-wrap">
+{if $UST_CONTENT}
+<dl class="dlist-align">
+  <dt>{$UST_CONTENT_NAME}:</dt>
+  <dd class="text-right">{$UST_CONTENT_VALUE}</dd>
+</dl>
+{/if}
+{if $TOTAL_DISCOUNT_VALUE}
+<dl class="dlist-align">
+  <dt>{$TOTAL_DISCOUNT_NAME}</dt>
+  <dd class="text-right text-danger">-{$TOTAL_DISCOUNT_VALUE}</dd>
+</dl>
+{/if}
+{if $TOTAL_SUBTOTAL_VALUE}
+<dl class="dlist-align">
+  <dt>{$TOTAL_SUBTOTAL_NAME}</dt>
+  <dd class="text-right text-dark b"><strong>{$TOTAL_SUBTOTAL_VALUE}</strong></dd>
+</dl>
+{/if}
+<hr />
 </div>
 </div>
 <div class="card-footer text-center">

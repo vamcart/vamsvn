@@ -154,6 +154,12 @@ for ($i = 0, $n = sizeof($productss[$key]['products']); $i < $n; $i ++) {
 //echo var_dump($module_content);
 
 $total_content = '';
+$total_content_text = '';
+$total_content_value = '';
+$total_subtotal_text = '';
+$total_subtotal_value = '';
+$total_discount_text = '';
+$total_discount_value = '';
 $total =$_SESSION['cart']->show_total();
 if ($_SESSION['customers_status']['customers_status_ot_discount_flag'] == '1' && $_SESSION['customers_status']['customers_status_ot_discount'] != '0.00') {
 	if ($_SESSION['customers_status']['customers_status_show_price_tax'] == 0 && $_SESSION['customers_status']['customers_status_add_tax_ot'] == 1) {
@@ -163,6 +169,8 @@ if ($_SESSION['customers_status']['customers_status_ot_discount_flag'] == '1' &&
 	}
 	$discount = $vamPrice->GetDC($price, $_SESSION['customers_status']['customers_status_ot_discount']);
 	$total_content = $_SESSION['customers_status']['customers_status_ot_discount'].' % '.SUB_TITLE_OT_DISCOUNT.' -'.vam_format_price($discount, $price_special = 1, $calculate_currencies = false).'<br />';
+	$total_discount_name = SUB_TITLE_OT_DISCOUNT . " " . $_SESSION['customers_status']['customers_status_ot_discount'].'%';
+	$total_discount_value = vam_format_price($discount, $price_special = 1, $calculate_currencies = false);
 }
 
 if ($_SESSION['customers_status']['customers_status_show_price'] == '1') {
@@ -170,8 +178,12 @@ if ($_SESSION['customers_status']['customers_status_show_price'] == '1') {
 	if ($_SESSION['customers_status']['customers_status_show_price_tax'] == 0 && $_SESSION['customers_status']['customers_status_add_tax_ot'] == 1) $total-=$discount;
 	if ($_SESSION['customers_status']['customers_status_show_price_tax'] == 1) $total-=$discount;
 	$total_content .= SUB_TITLE_SUB_TOTAL.' ' .$vamPrice->Format($total, true).'<br />';
+	$total_subtotal_name = SUB_TITLE_SUB_TOTAL;
+	$total_subtotal_value = $vamPrice->Format($total, true);
 } else {
 	$total_content .= TEXT_INFO_SHOW_PRICE_NO.'<br />';
+	$total_subtotal_name = TEXT_INFO_SHOW_PRICE_NO;
+	$total_subtotal_value = '';
 }
 // display only if there is an ot_discount
 if ($customer_status_value['customers_status_ot_discount'] != 0) {
@@ -182,7 +194,16 @@ if (SHOW_SHIPPING == 'true') {
 }
 
 $module->assign('UST_CONTENT', $_SESSION['cart']->show_tax());
+$module->assign('UST_CONTENT_NAME', $_SESSION['cart']->show_tax_name());
+$module->assign('UST_CONTENT_VALUE', $_SESSION['cart']->show_tax_value());
 $module->assign('TOTAL_CONTENT', $total_content);
+$module->assign('TOTAL_QUANTITY', $_SESSION['cart']->count_contents());
+$module->assign('TOTAL_NAME', $total_content_name);
+$module->assign('TOTAL_VALUE', $total_content_value);
+$module->assign('TOTAL_SUBTOTAL_NAME', $total_subtotal_name);
+$module->assign('TOTAL_SUBTOTAL_VALUE', $total_subtotal_value);
+$module->assign('TOTAL_DISCOUNT_NAME', $total_discount_name);
+$module->assign('TOTAL_DISCOUNT_VALUE', $total_discount_value);
 $module->assign('language', $_SESSION['language']);
 $module->assign('module_content', $module_content);
 $module->assign('new_array', $new_array);
