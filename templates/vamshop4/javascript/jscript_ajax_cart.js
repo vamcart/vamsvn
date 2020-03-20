@@ -13,7 +13,7 @@
    Released under the GNU General Public License
    ---------------------------------------------------------------------------------------*/
 
-function doBuyNow( id, quantity, update, get_cart, attributes ) {
+function doBuyNow( id, quantity, update, get_cart, attributes, popup = 1 ) {
 
 		if ($(location).attr('pathname') == '/shopping_cart.php') {
 			get_cart = 1;
@@ -32,7 +32,9 @@ function doBuyNow( id, quantity, update, get_cart, attributes ) {
 			}
 	 
 			//if ($(location).attr('pathname') != '/shopping_cart.php')	{
+			if (popup == 1)	{
 				cartPopupOn();
+			}
 			//}
 		
 			}   
@@ -156,7 +158,7 @@ $(document).ready(function(){
 
        qty = field.val();
        field.val(parseInt(qty)+parseInt($(this).val()));
-       doBuyNow(id,$(this).val(),'',1,attributes);
+       doBuyNow(id,$(this).val(),'',1,attributes,0);
        img_loader();
    });
 
@@ -181,7 +183,7 @@ $(document).ready(function(){
        
        //console.log($("input[name^='old_qty[]'").val());
        
-       doBuyNow(id,$(this).val(),'1',1,attributes);
+       doBuyNow(id,$(this).val(),'1',1,attributes,0);
        img_loader();
    });
    
