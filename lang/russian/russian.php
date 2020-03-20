@@ -764,4 +764,6 @@ define('TEXT_DISLIKE', 'Не нравится');
 
 define('TEXT_READ_REVIEW', 'Читать отзыв');
 
+define('TEXT_BUTTON_SUBMIT', 'Применить');
+
 ?>

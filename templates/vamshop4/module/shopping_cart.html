@@ -5,7 +5,14 @@
 <div class="pageСontent">
 {if $info_message!=''}<div class="contacterror">{$info_message}</div>
 {/if}
+{if $info_message_1!=''}
+<div class="contacterror">
+{$info_message_1}{$min_order}{$info_message_2}{$order_amount}
+</div>
+{/if}
+
 {$MODULE_gift_cart}
+
 {if $cart_empty==true}
 
 <p>
@@ -22,12 +29,6 @@
 {$HIDDEN_OPTIONS}
 
 {$MODULE_order_details}
-
-{if $info_message_1!=''}
-<div class="contacterror">
-{$info_message_1}{$min_order}{$info_message_2}{$order_amount}
-</div>
-{/if}
 
 <div class="clear"></div>
 <div class="navigation">
