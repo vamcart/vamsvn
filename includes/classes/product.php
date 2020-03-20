@@ -441,7 +441,7 @@ $orders_query = "select
 																                                            and p.products_id = pd.products_id
 																                                            and pd.language_id = '".$_SESSION['languages_id']."'
 																                                            and p.products_status = '1'
-																                                            order by xp.sort_order asc limit '".MAX_DISPLAY_ALSO_PURCHASED."'");
+																                                            order by xp.sort_order asc limit ".MAX_DISPLAY_ALSO_PURCHASED."");
 
 
 			while ($xsell = vam_db_fetch_array($cross_query, true)) {
