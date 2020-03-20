@@ -731,5 +731,6 @@ define('TEXT_READ_REVIEW', 'Читать отзыв');
 define('TEXT_BUTTON_SUBMIT', 'Применить');
 define('TEXT_PRODUCTS_IN_CART', 'Товаров в корзине');
 define('TEXT_PRODUCTS_TOTAL', 'Всего товаров');
+define('TEXT_PIECE', 'шт.');
 
 ?>

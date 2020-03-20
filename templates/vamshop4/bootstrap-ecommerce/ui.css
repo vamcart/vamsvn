@@ -1922,8 +1922,8 @@ ul.row, ul.row-sm {
     padding: 15px;
     border-top: 0px solid #eee; }
   .card-product .action-wrap {
-    padding-top: 4px;
-    margin-top: 4px; }
+    padding-top: 0px;
+    margin-top: 0px; }
   .card-product .bottom-wrap {
     padding: 15px;
     border-top: 1px solid #eee; }

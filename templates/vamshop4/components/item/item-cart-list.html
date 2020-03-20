@@ -3,14 +3,11 @@
 	<div class="row">
 		{if $module_data.PRODUCTS_LABEL}{$module_data.PRODUCTS_LABEL}{/if}
 		<span class="badge-offer pt-2">{$module_data.BOX_DELETE}</span>
-		<div class="col-md-3">
+		<div class="col-md-2">
 			<div class="img-wrap"><a href="{$module_data.PRODUCTS_LINK}" title="{$module_data.IMAGE_ALT}"><img class="img-sm" src="{$module_data.PRODUCTS_IMAGE}" alt="{$module_data.IMAGE_ALT}"></a></div>
 		</div>
-		<div class="col-md-6">
+		<div class="col-md-5">
 				<h5 class="title"><a href="{$module_data.PRODUCTS_LINK}" title="{$module_data.PRODUCTS_NAME}">{$module_data.PRODUCTS_NAME}</a></h5>
-				<div class="price-wrap h6 font-weight-bold text-dark b">
-					<strong>{$module_data.PRODUCTS_PRICE}</strong>
-				</div>
 				{if $module_data.PRODUCTS_SHIPPING_TIME neq ""}<p><span class="text-muted">{#text_shippingtime#}&nbsp;{$module_data.PRODUCTS_SHIPPING_TIME}</span></p>{/if}
 				<div class="attributes">
 				{if $module_data.ATTRIBUTES!=''}
@@ -20,9 +17,14 @@
 				{/if}
 				</div> 					
 		</div>
-		<div class="col-md-3 my-auto my-auto">
+		<div class="col-md-2">
+				<div class="price-wrap h6 font-weight-bold text-dark b">
+					<div><strong>{$module_data.PRODUCTS_PRICE}</strong></div>
+					{if $module_data.PRODUCTS_QUANTITY > 1}<div><span class="text-muted small">{$module_data.PRODUCTS_SINGLE_PRICE} / {$smarty.const.TEXT_PIECE}</span></div>{/if}
+				</div>
+		</div>
+		<div class="col-md-2">
 			<div class="action-wrap text-center">
-      {#text_qty#}:
          <div class="input-group">
          <div class="input-group-prepend">
 	       {$module_data.MINUS}
