@@ -13,7 +13,7 @@
    Released under the GNU General Public License
    ---------------------------------------------------------------------------------------*/
 
-function doBuyNow( id, quantity, update, get_cart, attributes, popup = 1 ) {
+function doBuyNow( id, quantity, update, get_cart, attributes, popup ) {
 
 		if ($(location).attr('pathname') == '/shopping_cart.php') {
 			get_cart = 1;
@@ -32,7 +32,7 @@ function doBuyNow( id, quantity, update, get_cart, attributes, popup = 1 ) {
 			}
 	 
 			//if ($(location).attr('pathname') != '/shopping_cart.php')	{
-			if (popup == 1)	{
+			if (popup != 0)	{
 				cartPopupOn();
 			}
 			//}
