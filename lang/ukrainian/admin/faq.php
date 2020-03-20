@@ -27,6 +27,10 @@ define('TEXT_DELETE_ITEM_INTRO', 'Вы уверены, что хотите уд�
 define('TEXT_FAQ_QUESTION', 'Вопрос');
 define('TEXT_FAQ_ANSWER', 'Ответ');
 
+define('TEXT_FAQ_META_TITLE', 'Meta Title');
+define('TEXT_FAQ_META_DESCRIPTION', 'Meta Description');
+define('TEXT_FAQ_META_KEYWORDS', 'Meta Keywords');
+
 define('IMAGE_NEW_FAQ_ITEM', 'Добавить вопрос');
 define('IMAGE_EDIT_FAQ_ITEM', 'Изменить вопрос');
 define('TEXT_FAQ_LANGUAGE', 'Язык');
