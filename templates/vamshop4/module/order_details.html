@@ -1,9 +1,7 @@
 {config_load file="$language/lang_$language.conf" section="shopping_cart"}
 {config_load file="$language/lang_$language.conf" section="product_info"}
-
 <div class="row">
 <div class="col-xl-9">
-
 {foreach from=$module_content key=category_name item=cart_data}
 <h3>{$category_name}</h3>
 <div class="card-deck">
@@ -11,11 +9,9 @@
 <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 col-xl-4">
 {include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/item/item-cart.html"}
 </div>
-
 {/foreach}
 </div>
 {/foreach}
-
 </div>
 
 <div class="col-xl-3">
