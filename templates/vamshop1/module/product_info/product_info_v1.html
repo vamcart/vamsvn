@@ -215,6 +215,7 @@
 		{$MODULE_also_purchased}
 		{/if}
 
+{if $smarty.const.DISPLAY_LAST_VIEWED =='true'}
 {if $products_history}
 <h3>{#title_viewed_products#}</h3>
 <div class="page">
@@ -247,6 +248,7 @@
 <div class="clear"></div>
 </div>
 </div>
+{/if}
 {/if}
 
 </div>

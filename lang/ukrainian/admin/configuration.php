@@ -1099,4 +1099,7 @@ define('DISPLAY_LIKES_DESC', 'Показывать лайки.');
 define('DISPLAY_DISLIKES_TITLE' , 'Показывать дизлайки');
 define('DISPLAY_DISLIKES_DESC', 'Показывать дизлайки.');
 
+define('DISPLAY_LAST_VIEWED_TITLE' , 'Показывать последние просмотренные товары');
+define('DISPLAY_LAST_VIEWED_DESC', 'Показывать последние просмотренные товары.');
+
 ?>
