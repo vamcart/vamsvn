@@ -49,27 +49,6 @@ function init()
 	}
 	
 var url='checkout.php';          
-
-
-function img_loader(){
-
-// Setup the ajax indicator
-$('body').append('<div id="load_status_bg"><div class="load_status_image"></div></div>');
-
-// Ajax activity indicator bound to ajax start/success/stop document events
-$(document).ajaxSend(function(){
-  $('#load_status_bg').show();
-});
-
-$(document).ajaxSuccess(function(){
-  $('#load_status_bg').hide();
-});
-
-$(document).ajaxStop(function(){
-  $('#load_status_bg').remove();
-});
-
-}
 	
 $('#box')
 
@@ -105,7 +84,6 @@ $('#box')
 				$('#shipping_modules_box').trigger('refresh');
 			}
 		)
-		img_loader();
 	}
 )
 
@@ -173,27 +151,6 @@ function init()
 var url='checkout.php';          
 
 
-function img_loader(){
-
-// Setup the ajax indicator
-$('body').append('<div id="load_status_bg"><div class="load_status_image"></div></div>');
-
-// Ajax activity indicator bound to ajax start/success/stop document events
-$(document).ajaxSend(function(){
-  $('#load_status_bg').show();
-});
-
-$(document).ajaxSuccess(function(){
-  $('#load_status_bg').hide();
-});
-
-$(document).ajaxStop(function(){
-  $('#load_status_bg').remove();
-});
-
-}
-
-
 $('#box')
 .on('refresh', '#shipping_modules_box', 
 	function(){
@@ -257,7 +214,6 @@ $('#box')
 			$('#shipping_modules_box').trigger('refresh')
 		}
 	);
-	img_loader();
 	point();
 	boxberry();
 	}

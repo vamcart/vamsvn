@@ -228,7 +228,7 @@ $(document).ready(function(){
        //console.log($("input[name^='old_qty[]'").val());
        
        doBuyNow(id,$(this).val(),'1',1,attributes);
-       img_loader();
+       //img_loader();
    });
    
    //$('body').on('focusout', '.input-small', function(){

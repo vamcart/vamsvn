@@ -39,7 +39,7 @@ function doBuyNow( id, quantity, update, get_cart, attributes, popup ) {
 		
 			}   
 			});
-			img_loader();                     
+			//img_loader();                     
 }
 
 function doAddProduct(id) {
@@ -79,7 +79,7 @@ function doAddProduct(id) {
 
     	               }
 		});
-      img_loader();
+      //img_loader();
 	}
 
 function doDelProduct(id, prod_id) {
@@ -127,14 +127,14 @@ function doDelProduct(id, prod_id) {
 					
 					}
 		});
-		img_loader();
+		//img_loader();
 	}
 
 $(document).ready(function(){
 
 	$('body').on('click', '.cart_delete', function(){
        doDelProduct('',$(this).val());
-       img_loader();
+       //img_loader();
    });
 
    $('body').on('click', '.cart_change', function(){
@@ -159,7 +159,7 @@ $(document).ready(function(){
        qty = field.val();
        field.val(parseInt(qty)+parseInt($(this).val()));
        doBuyNow(id,$(this).val(),'',1,attributes,0);
-       img_loader();
+       //img_loader();
    });
 
    $('body').on('change', 'form#cart_quantity .item-quantity', function(){
@@ -184,7 +184,7 @@ $(document).ready(function(){
        //console.log($("input[name^='old_qty[]'").val());
        
        doBuyNow(id,$(this).val(),'1',1,attributes,0);
-       img_loader();
+       //img_loader();
    });
    
    //$('body').on('focusout', '.input-small', function(){
