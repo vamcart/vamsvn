@@ -45,7 +45,7 @@ define('RTN_GOOD', '100');
 // set the level of error reporting
 error_reporting(0);
 //ini_set('display_errors',1);
-//error_reporting(E_ALL);
+//error_reporting(E_ERROR);
 
 // Set the local configuration parameters - mainly for developers - if exists else the mainconfigure
 if (file_exists('includes/local/configure.php')) {
@@ -60,7 +60,7 @@ if (defined('DIR_WS_INCLUDES') === false) header('Location: install');
 $php4_3_10 = (0 == version_compare(phpversion(), "4.3.10"));
 define('PHP4_3_10', $php4_3_10);
 // define the project version
-define('PROJECT_VERSION', 'VamShop 1.99.14');
+define('PROJECT_VERSION', 'VamShop 1.99.15');
 
 // set the type of request (secure or not)
 $request_type = (getenv('HTTPS') == '1' || getenv('HTTPS') == 'on') ? 'SSL' : 'NONSSL';
