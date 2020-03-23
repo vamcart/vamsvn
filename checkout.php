@@ -2101,7 +2101,7 @@ $vamTemplate->assign('PASSWORD_CHECKBOX', vam_draw_checkbox_field('password_chec
 $vamTemplate->assign('shipping', true);     
 if ($sc_shipping_modules_show == true) { //hide shipping modules - used for virtual products
 
-if ((SC_HIDE_SHIPPING == 'true') && (vam_count_shipping_modules() < 1)) { 
+if ((SC_HIDE_SHIPPING == 'true') && (vam_count_shipping_modules() <= 1)) { 
 //if 0 or 1 shipping method and in admin hide shipping is set to true, hide shipping box 
 //but we still need the divs in order to work with jquery update
 
