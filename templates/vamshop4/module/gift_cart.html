@@ -22,12 +22,11 @@
 {if $C_FLAG == 'true'}
 <!-- форма -->
 {$FORM_ACTION}
-<div class="input-group">
-<input type="text" name="gv_redeem_code" class="form-control border-right-0" placeholder="{#text_promo_code#}" aria-label="Ваш e-mail">
-<div class="input-group-append">
-<button class="btn btn-primary fas fa-check" type="submit" data-toggle="tooltip" data-original-title="{$smarty.const.TEXT_BUTTON_SUBMIT}" aria-label="{$smarty.const.TEXT_BUTTON_SUBMIT}">
-</button>
-</div>
+<div class="input-group mb-3">
+  <input type="text" name="gv_redeem_code" class="form-control" placeholder="{#text_promo_code#}" aria-label="{#text_promo_code#}" aria-describedby="button-apply">
+  <div class="input-group-append">
+    <button class="btn btn-primary" type="submit" id="button-apply"><i class="fas fa-check"></i> {$smarty.const.TEXT_BUTTON_SUBMIT}</button>
+  </div>
 </div>
 {$FORM_END}
 <br />
