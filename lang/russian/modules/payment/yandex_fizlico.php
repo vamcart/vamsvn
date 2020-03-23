@@ -17,8 +17,8 @@
    Released under the GNU General Public License 
    ---------------------------------------------------------------------------------------*/
 
-define('MODULE_PAYMENT_YANDEX_FIZLICO_TEXT_TITLE', 'Яндекс.Деньги (Карточки Visa, MasterCard, Яндекс.Деньги)');
-define('MODULE_PAYMENT_YANDEX_FIZLICO_TEXT_PUBLIC_TITLE', 'Яндекс.Деньги (Карточки Visa, MasterCard, Яндекс.Деньги)');
+define('MODULE_PAYMENT_YANDEX_FIZLICO_TEXT_TITLE', 'Яндекс.Касса (Visa, MasterCard, МИР)');
+define('MODULE_PAYMENT_YANDEX_FIZLICO_TEXT_PUBLIC_TITLE', 'Яндекс.Касса (Visa, MasterCard, МИР)');
 define('MODULE_PAYMENT_YANDEX_FIZLICO_TEXT_DESCRIPTION', '');
 define('MODULE_PAYMENT_YANDEX_FIZLICO_TEXT_ADMIN_DESCRIPTION', 'Модуль приёма оплаты Яндекс.Деньги для физ. лиц.');
   
