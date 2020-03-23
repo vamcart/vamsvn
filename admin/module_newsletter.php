@@ -231,7 +231,7 @@ function make_translit ($alias)
    break;
    case 'send':
    // max email package  -> should be in admin area!
-   $package_size='30';
+   $package_size='300';
    vam_redirect(vam_href_link(FILENAME_MODULE_NEWSLETTER,'send=0,'.$package_size.'&ID='.(int)$_GET['ID']));
    }
 // action for sending mails!
@@ -261,7 +261,7 @@ $email_data[]=array('id' => $email_query_data['id'],
                         'key'=>$email_query_data['mail_key']);
 }
 // ok lets send the mails in package of 30 mails, to prevent php timeout
-$package_size='30';
+$package_size='300';
 $break='0';
 if ($limit_data['count']<$limit_up) {
         $limit_up=$limit_data['count'];
