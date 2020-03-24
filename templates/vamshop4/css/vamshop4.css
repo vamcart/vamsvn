@@ -302,6 +302,28 @@ a#scrollup:hover {
 /* /Nav Buttons Margin On Mobile */
 
 /* Tabs */
+
+.nav-tabs .nav-link.active, .nav-tabs .nav-item.show .nav-link {
+    color: #0056B3;
+    border: 2px solid #0056B3;
+    background: #fff;
+}
+.nav-tabs .nav-link {
+    color: #575757;
+    border: 2px solid #dee2e6;
+    border-radius: 50rem;
+}
+.nav-item {
+    padding-right: .5em;
+    padding-bottom: .5em;
+}
+
+.nav-tabs .nav-link:hover, .nav-tabs .nav-link:focus {
+    color: #0056B3;
+    border-color: #0056B3;
+    background: #fff;
+}
+
 .tab-pane {
   border-top: 0;	
   border-left: 1px solid #dee2e6;
