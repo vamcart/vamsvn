@@ -283,7 +283,7 @@ a#scrollup:hover {
 
 
 /* Products Filter Collapse On Mobile */
-@media (min-width: 768px) {
+@media (min-width: 1200px) {
   .collapse.dont-collapse-sm {
     display: block;
     height: auto !important;
