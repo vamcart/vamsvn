@@ -706,7 +706,7 @@
           if ($specification['products_column_name'] == 'manufacturers_id') {
             $specifications_uri_parts[] = $specifications_values;
           } else {
-            $specifications_uri_parts[] = $specification['specification_seo_url'] . '-' . $specifications_values;
+            $specifications_uri_parts[] = str_replace(".html","",$specification['specification_seo_url']) . '-' . $specifications_values;
           }
         }
 //error_log(__LINE__ . ': ' . ' $specifications_uri_parts=' . var_export($specifications_uri_parts, true) . "\n", 3, __FILE__.'.log');
