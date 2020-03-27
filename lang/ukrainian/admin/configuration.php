@@ -1102,4 +1102,11 @@ define('DISPLAY_DISLIKES_DESC', 'Показывать дизлайки.');
 define('DISPLAY_LAST_VIEWED_TITLE' , 'Показывать последние просмотренные товары');
 define('DISPLAY_LAST_VIEWED_DESC', 'Показывать последние просмотренные товары.');
 
+define('SPECIFICATIONS_FILTERS_SEO_MAX_FILTER_IDS_TITLE', 'Максимум фильтров для SEO');
+define('SPECIFICATIONS_FILTERS_SEO_MAX_FILTER_IDS_DESC', 'Максимальное количество фильтров, используемое для генерации статической страницы');
+define('SPECIFICATIONS_FILTERS_SEO_MAX_FILTER_VALUES_TITLE', 'Максимум значений фильтра для SEO');
+define('SPECIFICATIONS_FILTERS_SEO_MAX_FILTER_VALUES_DESC', 'Максимальное количество значений фильтра, используемое для генерации статической страницы');
+define('SPECIFICATIONS_FILTERS_HIDE_EMPTY_FILTERS_GROUP_TITLE', 'Скрывать группы характеристик без самих характеристик');
+define('SPECIFICATIONS_FILTERS_HIDE_EMPTY_FILTERS_GROUP_DESC', '');
+
 ?>

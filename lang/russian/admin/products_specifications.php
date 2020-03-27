@@ -132,6 +132,13 @@
   define ('TEXT_NEW_SPECIFICATION_INTRO', 'Пожалуйста, заполните форму для создания новой спецификации в данном разделе.');
   define ('TEXT_SPECIFICATION_NAME', 'Название спецификации:');
   define ('TEXT_SPECIFICATION_DESCRIPTION', 'Описание спецификации:');
+
+  define ('TEXT_SPECIFICATION_SEO_ACTIVE', 'Создавать автоматически SEO URL из названия спецификации');
+  define ('TEXT_SPECIFICATION_SEO_ACTIVE_YES', 'Да');
+  define ('TEXT_SPECIFICATION_SEO_ACTIVE_NO', 'Нет');
+  define ('TEXT_SPECIFICATION_SEO_NAME', 'Задать уникальное SEO Название спецификации:');
+  define ('TEXT_SPECIFICATION_SEO_URL', 'SEO URL:');
+
   define ('TEXT_SPECIFICATION_PREFIX', 'Префикс спецификации:');
   define ('TEXT_SPECIFICATION_SUFFIX', 'Суффикс спецификации:');
   define ('TEXT_EXISTING_FIELD', 'Использовать существующее в базе данных поле:');

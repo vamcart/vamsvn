@@ -562,6 +562,9 @@
                                  'filter_display' => vam_db_prepare_input ($_POST['filter_display']),
                                  'enter_values' => vam_db_prepare_input ($_POST['enter_values'])
                                 );
+// BOF products_filters_seo
+        $sql_data_array['specification_seo_active'] = vam_db_prepare_input($_POST['specification_seo_active']);
+// EOF products_filters_seo
 
         switch ($action) {
           case 'new_specification_confirm':
@@ -580,6 +583,10 @@
         $specification_description_array = $_POST['specification_description'];
         $specification_prefix_array = $_POST['specification_prefix'];
         $specification_suffix_array = $_POST['specification_suffix'];
+// BOF products_filters_seo
+        $specification_seo_url_array = $_POST['specification_seo_url'];
+        $specification_seo_name_array = $_POST['specification_seo_name'];
+// EOF products_filters_seo
 
         $languages = vam_get_languages();
         for ($i=0, $n=sizeof($languages); $i<$n; $i++) {
@@ -590,6 +597,10 @@
                                    'specification_prefix' => vam_db_prepare_input ($specification_prefix_array[$language_id]),
                                    'specification_suffix' => vam_db_prepare_input ($specification_suffix_array[$language_id])
                                   );
+// BOF products_filters_seo
+          $sql_data_array['specification_seo_url'] = vam_db_prepare_input($specification_seo_url_array[$language_id]);
+          $sql_data_array['specification_seo_name'] = vam_db_prepare_input($specification_seo_name_array[$language_id]);
+// EOF products_filters_seo
 
           switch ($action) {
             case 'new_specification_confirm':
@@ -644,6 +655,9 @@
                                       from " . TABLE_SPECIFICATION . " 
                                       where specifications_id = '" . $specification_id . "'
                                      ";
+// BOF products_filters_seo
+          $specification_query_raw = str_replace('products_column_name,', 'products_column_name, specification_seo_active,', $specification_query_raw);
+// EOF products_filters_seo
           $specification_query = vam_db_query ($specification_query_raw);
           $specification_array = vam_db_fetch_array ($specification_query);
 
@@ -660,6 +674,9 @@
                                    'filter_display' => $specification_array['filter_display'],
                                    'enter_values' => $specification_array['enter_values']
                                   );
+// BOF products_filters_seo
+        $sql_data_array['specification_seo_active'] = vam_db_prepare_input($_POST['specification_seo_active']);
+// EOF products_filters_seo
           vam_db_perform (TABLE_SPECIFICATION, $sql_data_array);
           $specification_id_copy = vam_db_insert_id();
           
@@ -675,6 +692,9 @@
                                         where specifications_id = '" . $specification_id . "'
                                           and language_id = '" . $language_id . "'
                                        ";
+// BOF products_filters_seo
+            $specification_query_raw = str_replace('specification_name,', 'specification_name, specification_seo_name, specification_seo_url,', $specification_query_raw);
+// EOF products_filters_seo
             $specification_query = vam_db_query ($specification_query_raw);
             $specification_array = vam_db_fetch_array ($specification_query);
 
@@ -685,6 +705,10 @@
                                      'specification_prefix' => $specification_array['specification_prefix'],
                                      'specification_suffix' => $specification_array['specification_suffix']
                                     );
+// BOF products_filters_seo
+            $sql_data_array['specification_seo_url'] = $specification_array['specification_seo_url'];
+            $sql_data_array['specification_seo_name'] = $specification_array['specification_seo_name'];
+// EOF products_filters_seo
             vam_db_perform (TABLE_SPECIFICATION_DESCRIPTION, $sql_data_array);
           } // for ($i=0
         } // if ($specification_id
@@ -1873,6 +1897,9 @@
                                 order by sp.specification_sort_order,
                                          sd.specification_name
                                ";
+// BOF products_filters_seo
+    $specifications_query_raw = str_replace('sd.specification_name,', 'sd.specification_name, sd.specification_seo_name, sd.specification_seo_url, specification_seo_active,', $specifications_query_raw);
+// EOF products_filters_seo
     // print $specifications_query_raw . "<br />\n";
     $specifications_query = vam_db_query ($specifications_query_raw);
 
@@ -2369,6 +2396,16 @@
         for ($i = 0, $n = sizeof($languages); $i < $n; $i++) {
           $specification_description_string .= '<br />' . $languages[$i]['name'] . ':&nbsp;' . vam_draw_textarea_field ('specification_description[' . $languages[$i]['id'] . ']', 'soft', '40', '5');
         }
+// BOF products_filters_seo
+        $specification_seo_name_string = '';
+        for ($i = 0, $n = sizeof($languages); $i < $n; $i++) {
+          $specification_seo_name_string .= '<br />' . $languages[$i]['name'] . ':&nbsp;' . vam_draw_input_field ('specification_seo_name[' . $languages[$i]['id'] . ']');
+        }
+        $specification_seo_url_string = '';
+        for ($i = 0, $n = sizeof($languages); $i < $n; $i++) {
+          $specification_seo_url_string .= '<br />' . $languages[$i]['name'] . ':&nbsp;' . vam_draw_input_field ('specification_seo_url[' . $languages[$i]['id'] . ']');
+        }
+// EOF products_filters_seo
 
         $specification_prefix_string = '';
         for ($i = 0, $n = sizeof($languages); $i < $n; $i++) {
@@ -2382,6 +2419,11 @@
 
         $contents[] = array ('text' => '<br />' . TEXT_SPECIFICATION_NAME . $specification_name_string);
         $contents[] = array ('text' => '<br />' . TEXT_SPECIFICATION_DESCRIPTION . $specification_description_string);
+// BOF products_filters_seo
+        $contents[] = array ('text' => '<br />' . TEXT_SPECIFICATION_SEO_ACTIVE . '<br />' . vam_draw_radio_field('specification_seo_active', '1', true) . '&nbsp;' . TEXT_SPECIFICATION_SEO_ACTIVE_YES . '<br />' . vam_draw_radio_field('specification_seo_active', '0', false) . '&nbsp;' . TEXT_SPECIFICATION_SEO_ACTIVE_NO);
+        $contents[] = array ('text' => '<br />' . TEXT_SPECIFICATION_SEO_NAME . $specification_seo_name_string);
+//        $contents[] = array ('text' => '<br />' . TEXT_SPECIFICATION_SEO_URL . $specification_seo_url_string);
+// EOF products_filters_seo
         $contents[] = array ('text' => '<br />' . TEXT_SPECIFICATION_PREFIX . $specification_prefix_string);
         $contents[] = array ('text' => '<br />' . TEXT_SPECIFICATION_SUFFIX . $specification_suffix_string);
         $contents[] = array ('text' => '<br />' . TEXT_EDIT_SORT_ORDER . '<br />' . vam_draw_input_field ('specification_sort_order', '', 'size="5"'));
@@ -2408,6 +2450,10 @@
         $languages = vam_get_languages();
         $specification_name_string = '';
         $specification_description_string = '';
+// BOF products_filters_seo
+        $specification_seo_name_string = '';
+        $specification_seo_url_string = '';
+// EOF products_filters_seo
         $specification_prefix_string = '';
         $specification_suffix_string = '';
         $specification_query_raw = "select products_column_name,
@@ -2422,6 +2468,9 @@
                                     where specifications_id = '" . $sInfo->specifications_id . "'
                                     limit 1";
         // print $specifications_query_raw . "<br />\n";
+// BOF products_filters_seo
+        $specification_query_raw = str_replace('products_column_name,', 'products_column_name, specification_seo_active,', $specification_query_raw);
+// EOF products_filters_seo
         $specification_query = vam_db_query ($specification_query_raw);
         $specification_fixed_data = vam_db_fetch_array ($specification_query);
         
@@ -2434,6 +2483,9 @@
                                       where language_id = '" . $languages[$i]['id'] . "'
                                         and specifications_id = '" . $sInfo->specifications_id . "'
                                       limit 1";
+// BOF products_filters_seo
+          $specification_query_raw = str_replace('specification_name,', 'specification_name, specification_seo_name, specification_seo_url,', $specification_query_raw);
+// EOF products_filters_seo
           // print $specifications_query_raw . "<br />\n";
           $specification_query = vam_db_query ($specification_query_raw);
           $specification_data = vam_db_fetch_array ($specification_query);
@@ -2443,7 +2495,10 @@
           $specification_name_string .= '<br />' . $languages[$i]['name'] . ':&nbsp;' . vam_draw_input_field ('specification_name[' . $languages[$i]['id'] . ']', $specification_data['specification_name'] );
 
           $specification_description_string .= '<br />' . $languages[$i]['name'] . ':&nbsp;' . vam_draw_textarea_field ('specification_description[' . $languages[$i]['id'] . ']', 'soft', '40', '5', $specification_data['specification_description'] );
-
+// BOF products_filters_seo
+          $specification_seo_name_string .= '<br />' . $languages[$i]['name'] . ':&nbsp;' . vam_draw_input_field ('specification_seo_name[' . $languages[$i]['id'] . ']', $specification_data['specification_seo_name']);
+          $specification_seo_url_string .= '<br />' . $languages[$i]['name'] . ':&nbsp;' . vam_draw_input_field ('specification_seo_url[' . $languages[$i]['id'] . ']', $specification_data['specification_seo_url']);
+// EOF products_filters_seo
           $specification_prefix_string .= '<br />' . $languages[$i]['name'] . ':&nbsp;' . vam_draw_input_field ('specification_prefix[' . $languages[$i]['id'] . ']', $specification_data['specification_prefix'] );
 
           $specification_suffix_string .= '<br />' . $languages[$i]['name'] . ':&nbsp;' . vam_draw_input_field ('specification_suffix[' . $languages[$i]['id'] . ']', $specification_data['specification_suffix'] );
@@ -2451,6 +2506,11 @@
 
         $contents[] = array ('text' => '<br />' . TEXT_SPECIFICATION_NAME . $specification_name_string);
         $contents[] = array ('text' => '<br />' . TEXT_SPECIFICATION_DESCRIPTION . $specification_description_string);
+// BOF products_filters_seo
+        $contents[] = array ('text' => '<br />' . TEXT_SPECIFICATION_SEO_ACTIVE . '<br />' . vam_draw_radio_field('specification_seo_active', '1', $sInfo->specification_seo_active === '1') . '&nbsp;' . TEXT_SPECIFICATION_SEO_ACTIVE_YES . '<br />' . vam_draw_radio_field('specification_seo_active', '0', $sInfo->specification_seo_active === '0') . '&nbsp;' . TEXT_SPECIFICATION_SEO_ACTIVE_NO);
+        $contents[] = array ('text' => '<br />' . TEXT_SPECIFICATION_SEO_NAME . $specification_seo_name_string);
+//        $contents[] = array ('text' => '<br />' . TEXT_SPECIFICATION_SEO_URL . $specification_seo_url_string);
+// EOF products_filters_seo
         $contents[] = array ('text' => '<br />' . TEXT_SPECIFICATION_PREFIX . $specification_prefix_string);
         $contents[] = array ('text' => '<br />' . TEXT_SPECIFICATION_SUFFIX . $specification_suffix_string);
         $contents[] = array ('text' => '<br />' . TEXT_EDIT_SORT_ORDER . '<br />' . vam_draw_input_field ('specification_sort_order', $specification_data['specification_sort_order'], 'size="5"'));
