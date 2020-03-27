@@ -136,7 +136,7 @@
   define ('TEXT_SPECIFICATION_SEO_ACTIVE', 'Создавать автоматически SEO URL из названия спецификации');
   define ('TEXT_SPECIFICATION_SEO_ACTIVE_YES', 'Да');
   define ('TEXT_SPECIFICATION_SEO_ACTIVE_NO', 'Нет');
-  define ('TEXT_SPECIFICATION_SEO_NAME', 'Задать уникальное SEO Название спецификации:');
+  define ('TEXT_SPECIFICATION_SEO_NAME', 'Задать уникальное SEO название спецификации:');
   define ('TEXT_SPECIFICATION_SEO_URL', 'SEO URL:');
 
   define ('TEXT_SPECIFICATION_PREFIX', 'Префикс спецификации:');
