@@ -33,6 +33,43 @@
     
     $db_l = mysqli_connect(DB_SERVER, DB_SERVER_USERNAME, DB_SERVER_PASSWORD, DB_DATABASE);
 
+// BOF products_filters_seo
+    if ($db_l){
+      @mysqli_query($db_l, "SET SQL_MODE= ''");
+      @mysqli_query($db_l, "SET SQL_BIG_SELECTS=1");
+      @mysqli_query($db_l, "SET NAMES 'utf8' COLLATE 'utf8_general_ci'");
+    } else {
+      die(mysqli_error($db_l));
+    }
+    define('TABLE_SPECIFICATION_URL', 'specification_url');
+    $uri = '';
+    list($uri, ) = explode('?', ltrim($_SERVER['REQUEST_URI'], '/'), 2);
+    $sql = "SELECT *
+            FROM " . TABLE_SPECIFICATION_URL . "
+            WHERE uri = '" . mysqli_real_escape_string($db_l, $uri) . "'";
+    $specification_uri_query = mysqli_query($db_l, $sql);
+    if ($specification_uri = mysqli_fetch_array($specification_uri_query, MYSQLI_ASSOC)) {
+      if ($specification_uri['current_id'] != 0) {
+        $sql = "SELECT *
+                FROM " . TABLE_SPECIFICATION_URL . "
+                WHERE id = " . (int)$specification_uri['current_id'] . "";
+        $specification_uri_actual_query = mysqli_query($db_l, $sql);
+        if ($specification_uri_actual = mysqli_fetch_array($specification_uri_actual_query, MYSQLI_ASSOC)) {
+          //error_log('$uri=' . var_export($uri, true) . "\n", 3, __FILE__.'.log');
+          //error_log('$specification_uri_actual=' . var_export($specification_uri_actual, true) . "\n", 3, __FILE__.'.log');
+          redirect_uri($specification_uri_actual['uri']);
+        }
+      }
+      parse_str($specification_uri['query'], $get);
+      $HTTP_GET_VARS = $_GET = array_merge($_GET, $get);
+      mysqli_free_result($specification_uri_query);
+      mysqli_close($db_l);
+      $PHP_SELF = '/products_filter.php';
+      include('products_filter.php');
+      exit();
+    }
+// EOF products_filters_seo
+
     $query = 'select categories_id from ' . TABLE_CATEGORIES . ' where BINARY categories_url="' . vam_db_prepare_input($URI_elements[0]) . '"';
     $result = mysqli_query($db_l, $query);
     if (mysqli_num_rows($result) > 0) {
@@ -277,4 +314,17 @@
         return false;
       }
     }
+  }
+
+  function check_uri($uri_part, $uri_find) {
+    if ($uri_find != $uri_part) {
+      redirect_uri($uri_find);
+    }
+  }
+  function redirect_uri($uri) {
+    $request_type = (getenv('HTTPS') == '1' || getenv('HTTPS') == 'on') ? 'SSL' : 'NONSSL';
+    $url = (($request_type == 'SSL') ? HTTPS_SERVER : HTTP_SERVER) . DIR_WS_CATALOG . $uri . (sizeof($_GET) > 0 ? '?' . http_build_query($_GET) : '');
+    header("HTTP/1.1 301 Moved Permanently");
+    header('Location: ' . $url);
+    exit();
   }
