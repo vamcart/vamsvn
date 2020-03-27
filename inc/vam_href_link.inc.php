@@ -686,8 +686,10 @@
         $specification_query = vamDBquery($sql);
         while ($specification = vam_db_fetch_array($specification_query)) {
 //error_log(__LINE__ . ': ' . ' $specification=' . var_export($specification, true) . "\n", 3, __FILE__.'.log');
-          if (empty($specification['specification_seo_url'])) {
+          if (empty($specification['specification_seo_name'])) {
             $specification['specification_seo_url'] = strtolower(vam_cleanName(trim($specification['specification_name'])));
+          } else {
+            $specification['specification_seo_url'] = strtolower(trim($specification['specification_seo_name']));
           }
 //          if (!empty($specification['products_column_name'])) {
           if (is_array($f_array[$specification['specifications_id']])) {
