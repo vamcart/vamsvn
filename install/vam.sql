@@ -3652,26 +3652,27 @@ CREATE TABLE IF NOT EXISTS `specifications` (
   `filter_display` set('pulldown','multi','checkbox','radio','links','text','image','multiimage') NOT NULL DEFAULT 'pulldown',
   `filter_show_all` set('True','False') NOT NULL DEFAULT 'True',
   `enter_values` set('pulldown','multi','checkbox','radio','links','text','image','multiimage') NOT NULL DEFAULT 'text',
+  `specification_seo_active` tinyint(4) default '1',
   PRIMARY KEY (`specifications_id`),
   KEY `specification_group_id` (`specification_group_id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=16 DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
 INSERT INTO `specifications` VALUES
-(1, 1, 0, 'True', 'True', 'True', 'False', '', 'Left', 'multiple', 'multi', 'True', 'pulldown'),
-(2, 1, 0, 'True', 'True', 'True', 'False', '', 'Left', 'multiple', 'multi', 'True', 'pulldown'),
-(3, 1, 0, 'True', 'True', 'True', 'False', '', 'Left', 'multiple', 'multi', 'True', 'pulldown'),
-(4, 1, 0, 'True', 'True', 'True', 'False', '', 'Left', 'multiple', 'multi', 'True', 'pulldown'),
-(5, 1, 0, 'True', 'True', 'True', 'False', '', 'Left', 'multiple', 'multi', 'True', 'pulldown'),
-(6, 2, 0, 'True', 'True', 'True', 'False', '', 'Left', 'exact', 'links', 'True', 'pulldown'),
-(7, 2, 0, 'True', 'True', 'True', 'False', '', 'Left', 'exact', 'links', 'True', 'pulldown'),
-(8, 2, 0, 'True', 'True', 'True', 'False', '', 'Left', 'exact', 'links', 'True', 'pulldown'),
-(9, 2, 0, 'True', 'True', 'True', 'False', '', 'Left', 'exact', 'links', 'True', 'pulldown'),
-(10, 2, 0, 'True', 'True', 'True', 'False', '', 'Left', 'exact', 'links', 'True', 'pulldown'),
-(11, 3, 0, 'True', 'True', 'True', 'False', '', 'Left', 'exact', 'pulldown', 'True', 'pulldown'),
-(12, 3, 0, 'True', 'True', 'True', 'False', '', 'Left', 'exact', 'pulldown', 'True', 'pulldown'),
-(13, 3, 0, 'True', 'True', 'True', 'False', '', 'Left', 'exact', 'pulldown', 'True', 'pulldown'),
-(14, 3, 0, 'True', 'True', 'True', 'False', '', 'Left', 'exact', 'pulldown', 'True', 'pulldown'),
-(15, 3, 0, 'True', 'True', 'True', 'False', '', 'Left', 'exact', 'pulldown', 'True', 'pulldown');
+(1, 1, 0, 'True', 'True', 'True', 'False', '', 'Left', 'multiple', 'multi', 'True', 'pulldown', 1),
+(2, 1, 0, 'True', 'True', 'True', 'False', '', 'Left', 'multiple', 'multi', 'True', 'pulldown', 1),
+(3, 1, 0, 'True', 'True', 'True', 'False', '', 'Left', 'multiple', 'multi', 'True', 'pulldown', 1),
+(4, 1, 0, 'True', 'True', 'True', 'False', '', 'Left', 'multiple', 'multi', 'True', 'pulldown', 1),
+(5, 1, 0, 'True', 'True', 'True', 'False', '', 'Left', 'multiple', 'multi', 'True', 'pulldown', 1),
+(6, 2, 0, 'True', 'True', 'True', 'False', '', 'Left', 'exact', 'links', 'True', 'pulldown', 1),
+(7, 2, 0, 'True', 'True', 'True', 'False', '', 'Left', 'exact', 'links', 'True', 'pulldown', 1),
+(8, 2, 0, 'True', 'True', 'True', 'False', '', 'Left', 'exact', 'links', 'True', 'pulldown', 1),
+(9, 2, 0, 'True', 'True', 'True', 'False', '', 'Left', 'exact', 'links', 'True', 'pulldown', 1),
+(10, 2, 0, 'True', 'True', 'True', 'False', '', 'Left', 'exact', 'links', 'True', 'pulldown', 1),
+(11, 3, 0, 'True', 'True', 'True', 'False', '', 'Left', 'exact', 'pulldown', 'True', 'pulldown', 1),
+(12, 3, 0, 'True', 'True', 'True', 'False', '', 'Left', 'exact', 'pulldown', 'True', 'pulldown', 1),
+(13, 3, 0, 'True', 'True', 'True', 'False', '', 'Left', 'exact', 'pulldown', 'True', 'pulldown', 1),
+(14, 3, 0, 'True', 'True', 'True', 'False', '', 'Left', 'exact', 'pulldown', 'True', 'pulldown', 1),
+(15, 3, 0, 'True', 'True', 'True', 'False', '', 'Left', 'exact', 'pulldown', 'True', 'pulldown', 1);
 
 ##
 ## Table structure for table `specification_description`
@@ -3689,26 +3690,27 @@ CREATE TABLE IF NOT EXISTS `specification_description` (
   `specification_prefix` varchar(255) NOT NULL DEFAULT '',
   `specification_suffix` varchar(255) NOT NULL DEFAULT '',
   `specification_seo_url` varchar(255) NOT NULL,
+  `specification_seo_name` varchar(255) NOT NULL,
   PRIMARY KEY (`specification_description_id`,`language_id`),
   KEY `specifications_id` (`specifications_id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=16 DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
 INSERT INTO `specification_description` VALUES
-(1, 1, 1, 'Экран', '', '', '', 'display.html'),
-(2, 2, 1, 'Батарея', '', '', '', 'battery.html'),
-(3, 3, 1, 'Вес', '', '', '', 'weight.html'),
-(4, 4, 1, 'Память', '', '', '', 'memory.html'),
-(5, 5, 1, 'Размеры', '', '', '', 'dimensions.html'),
-(6, 6, 1, 'Экран', '', '', '', 'display.html'),
-(7, 7, 1, 'Батарея', '', '', '', 'battery.html'),
-(8, 8, 1, 'Вес', '', '', '', 'weight.html'),
-(9, 9, 1, 'Память', '', '', '', 'memory.html'),
-(10, 10, 1, 'Размеры', '', '', '', 'dimensions.html'),
-(11, 11, 1, 'Экран', '', '', '', 'display.html'),
-(12, 12, 1, 'Батарея', '', '', '', 'battery.html'),
-(13, 13, 1, 'Вес', '', '', '', 'weight.html'),
-(14, 14, 1, 'Память', 'Отфильтрованные смартфоны с выбранным объёмом памяти.', '', '', 'memory.html'),
-(15, 15, 1, 'Размеры', '', '', '', 'dimensions.html');
+(1, 1, 1, 'Экран', '', '', '', 'display.html', 'display'),
+(2, 2, 1, 'Батарея', '', '', '', 'battery.html', 'battery'),
+(3, 3, 1, 'Вес', '', '', '', 'weight.html', 'weight'),
+(4, 4, 1, 'Память', '', '', '', 'memory.html', 'memory'),
+(5, 5, 1, 'Размеры', '', '', '', 'dimensions.html', 'dimensions'),
+(6, 6, 1, 'Экран', '', '', '', 'display.html', 'display'),
+(7, 7, 1, 'Батарея', '', '', '', 'battery.html', 'battery'),
+(8, 8, 1, 'Вес', '', '', '', 'weight.html', 'weight'),
+(9, 9, 1, 'Память', '', '', '', 'memory.html', 'memory'),
+(10, 10, 1, 'Размеры', '', '', '', 'dimensions.html', 'dimensions'),
+(11, 11, 1, 'Экран', '', '', '', 'display.html', 'display'),
+(12, 12, 1, 'Батарея', '', '', '', 'battery.html', 'battery'),
+(13, 13, 1, 'Вес', '', '', '', 'weight.html', 'weight'),
+(14, 14, 1, 'Память', 'Отфильтрованные смартфоны с выбранным объёмом памяти.', '', '', 'memory.html', 'memory'),
+(15, 15, 1, 'Размеры', '', '', '', 'dimensions.html', 'dimensions');
 
 ##
 ## Table structure for table `specification_filters`
@@ -3857,6 +3859,23 @@ CREATE TABLE IF NOT EXISTS `specification_values_description` (
   PRIMARY KEY (`specification_values_description_id`),
   KEY `specification_values_id` (`specification_values_id`),
   KEY `language_id` (`language_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+
+##
+## Table structure for table `specification_url`
+##   Sets up the values that can be used in product specifications
+##
+DROP TABLE IF EXISTS specification_url;
+CREATE TABLE IF NOT EXISTS specification_url (
+  `id` INT(11) NOT NULL auto_increment,
+  `uri` TEXT NOT NULL,
+  `query` TEXT NOT NULL,
+  `date_added` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `current_id` INT(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  KEY idx_current_id (`current_id`),
+  KEY idx_uri (`uri`(128)),
+  KEY idx_query (`query`(128))
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
 
