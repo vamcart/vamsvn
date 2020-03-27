@@ -694,3 +694,17 @@ label {
 .bg-orange {
   background: #dd2c00;
 }
+
+.mainpage-tabs .tab-pane,
+.mainpage-tabs .tab-content {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  -webkit-box-shadow: 0 0px 0px 0 transparent;
+  box-shadow: 0 0px 0px 0 transparent;
+}
+
+.mainpage-tabs .nav-tabs {
+  border-bottom: 0;
+}
