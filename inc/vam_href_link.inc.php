@@ -706,7 +706,7 @@
           if ($specification['products_column_name'] == 'manufacturers_id') {
             $specifications_uri_parts[] = $specifications_values;
           } else {
-            $specifications_uri_parts[] = str_replace(".html","",$specification['specification_seo_url']) . '-' . $specifications_values;
+            $specifications_uri_parts[] = $specification['specification_seo_url'] . '-' . $specifications_values;
           }
         }
 //error_log(__LINE__ . ': ' . ' $specifications_uri_parts=' . var_export($specifications_uri_parts, true) . "\n", 3, __FILE__.'.log');
@@ -722,10 +722,10 @@
         $specifications_uri = $categories_url . '/' . $uri_page;
         if (!isset($specification_db_uri['uri']) || $specification_db_uri['uri'] != $specifications_uri || vam_db_num_rows($specification_db_uri_query) > 1) {
           $sql = "SELECT * FROM " . TABLE_SPECIFICATION_URL . " WHERE uri='" . vam_db_input($specifications_uri) . "'";
-error_log(__LINE__ . ': ' . ' $specification_db_uri[\'uri\']=' . var_export($specification_db_uri['uri'], true) . "\n", 3, __FILE__.'.log');
-error_log(__LINE__ . ': ' . ' vam_db_num_rows($specification_db_uri_query)=' . var_export(vam_db_num_rows($specification_db_uri_query), true) . "\n", 3, __FILE__.'.log');
-error_log(__LINE__ . ': ' . ' $specifications_uri=' . var_export($specifications_uri, true) . "\n", 3, __FILE__.'.log');
-error_log(__LINE__ . ': ' . ' $sql=' . var_export($sql, true) . "\n", 3, __FILE__.'.log');
+//error_log(__LINE__ . ': ' . ' $specification_db_uri[\'uri\']=' . var_export($specification_db_uri['uri'], true) . "\n", 3, __FILE__.'.log');
+//error_log(__LINE__ . ': ' . ' vam_db_num_rows($specification_db_uri_query)=' . var_export(vam_db_num_rows($specification_db_uri_query), true) . "\n", 3, __FILE__.'.log');
+//error_log(__LINE__ . ': ' . ' $specifications_uri=' . var_export($specifications_uri, true) . "\n", 3, __FILE__.'.log');
+//error_log(__LINE__ . ': ' . ' $sql=' . var_export($sql, true) . "\n", 3, __FILE__.'.log');
           $check_query = vam_db_query($sql);
           if ($check = vam_db_fetch_array($check_query)) {
             $id = $check['id'];
@@ -736,7 +736,7 @@ error_log(__LINE__ . ': ' . ' $sql=' . var_export($sql, true) . "\n", 3, __FILE_
           }
           if (isset($specification_db_uri['uri'])) {
             $sql = "UPDATE " . TABLE_SPECIFICATION_URL . " SET current_id=" . (int)$id . " WHERE query='" . vam_db_input($specifications_request_query) . "' AND id!=" . (int)$id . " AND current_id!=" . (int)$id . "";
-error_log(__LINE__ . ': ' . ' $sql=' . var_export($sql, true) . "\n", 3, __FILE__.'.log');
+//error_log(__LINE__ . ': ' . ' $sql=' . var_export($sql, true) . "\n", 3, __FILE__.'.log');
             vam_db_query($sql);
           }
         }
