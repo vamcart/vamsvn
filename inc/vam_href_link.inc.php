@@ -615,7 +615,7 @@
         }
       }
       parse_str($parameters, $get);
-      $parameters = http_build_query($get);
+      //$parameters = http_build_query($get);
       $get_in = $get;
       if (!isset($get['cat'])) {
         return vam_href_link_original($page, $parameters, $connection, $add_session_id, $search_engine_safe);
