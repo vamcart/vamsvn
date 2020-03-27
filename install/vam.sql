@@ -3660,21 +3660,21 @@ CREATE TABLE IF NOT EXISTS `specifications` (
 ) ENGINE=MyISAM AUTO_INCREMENT=16 DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
 INSERT INTO `specifications` VALUES
-(1, 1, 0, 'True', 'True', 'True', 'False', '', 'Left', 'multiple', 'multi', 'True', 'pulldown', 1),
-(2, 1, 0, 'True', 'True', 'True', 'False', '', 'Left', 'multiple', 'multi', 'True', 'pulldown', 1),
-(3, 1, 0, 'True', 'True', 'True', 'False', '', 'Left', 'multiple', 'multi', 'True', 'pulldown', 1),
-(4, 1, 0, 'True', 'True', 'True', 'False', '', 'Left', 'multiple', 'multi', 'True', 'pulldown', 1),
-(5, 1, 0, 'True', 'True', 'True', 'False', '', 'Left', 'multiple', 'multi', 'True', 'pulldown', 1),
+(1, 1, 0, 'True', 'True', 'True', 'False', '', 'Left', 'multiple', 'links', 'True', 'pulldown', 1),
+(2, 1, 0, 'True', 'True', 'True', 'False', '', 'Left', 'multiple', 'links', 'True', 'pulldown', 1),
+(3, 1, 0, 'True', 'True', 'True', 'False', '', 'Left', 'multiple', 'links', 'True', 'pulldown', 1),
+(4, 1, 0, 'True', 'True', 'True', 'False', '', 'Left', 'multiple', 'links', 'True', 'pulldown', 1),
+(5, 1, 0, 'True', 'True', 'True', 'False', '', 'Left', 'multiple', 'links', 'True', 'pulldown', 1),
 (6, 2, 0, 'True', 'True', 'True', 'False', '', 'Left', 'exact', 'links', 'True', 'pulldown', 1),
 (7, 2, 0, 'True', 'True', 'True', 'False', '', 'Left', 'exact', 'links', 'True', 'pulldown', 1),
 (8, 2, 0, 'True', 'True', 'True', 'False', '', 'Left', 'exact', 'links', 'True', 'pulldown', 1),
 (9, 2, 0, 'True', 'True', 'True', 'False', '', 'Left', 'exact', 'links', 'True', 'pulldown', 1),
 (10, 2, 0, 'True', 'True', 'True', 'False', '', 'Left', 'exact', 'links', 'True', 'pulldown', 1),
-(11, 3, 0, 'True', 'True', 'True', 'False', '', 'Left', 'exact', 'pulldown', 'True', 'pulldown', 1),
-(12, 3, 0, 'True', 'True', 'True', 'False', '', 'Left', 'exact', 'pulldown', 'True', 'pulldown', 1),
-(13, 3, 0, 'True', 'True', 'True', 'False', '', 'Left', 'exact', 'pulldown', 'True', 'pulldown', 1),
-(14, 3, 0, 'True', 'True', 'True', 'False', '', 'Left', 'exact', 'pulldown', 'True', 'pulldown', 1),
-(15, 3, 0, 'True', 'True', 'True', 'False', '', 'Left', 'exact', 'pulldown', 'True', 'pulldown', 1);
+(11, 3, 0, 'True', 'True', 'True', 'False', '', 'Left', 'exact', 'links', 'True', 'pulldown', 1),
+(12, 3, 0, 'True', 'True', 'True', 'False', '', 'Left', 'exact', 'links', 'True', 'pulldown', 1),
+(13, 3, 0, 'True', 'True', 'True', 'False', '', 'Left', 'exact', 'links', 'True', 'pulldown', 1),
+(14, 3, 0, 'True', 'True', 'True', 'False', '', 'Left', 'exact', 'links', 'True', 'pulldown', 1),
+(15, 3, 0, 'True', 'True', 'True', 'False', '', 'Left', 'exact', 'links', 'True', 'pulldown', 1);
 
 ##
 ## Table structure for table `specification_description`
