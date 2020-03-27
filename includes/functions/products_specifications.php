@@ -147,7 +147,7 @@
             $field .= ' (' . $link_data['count'] . ')';
           }
           $field .= '</span>';
-          $field .= '</li>';
+          //$field .= '</li>';
           break;
         
         default:
@@ -175,7 +175,7 @@
     $field .= '</div>';
   
 
-    $field .= '<br clear=all>';
+    $field .= '<br />';
     return $field;
   } //  function vam_draw_links_menu
 
