@@ -11,7 +11,12 @@
 
 
 
-<div class="container">
+<div class="container pt-3 pb-3">
+
+{if $box_FILTERS && !{$smarty.get.products_id}}
+<div class="row">
+<div class="col-md-10 order-sm-2 order-md-2 order-lg-2 order-xl-2">
+{/if}
 
 <div class="mainWrapper">
 
@@ -29,6 +34,18 @@
 </div>
 
 </div>
+
+
+{if $box_FILTERS && !{$smarty.get.products_id}}
+</div>
+<div class="col-md-2 order-sm-1 order-md-1 order-lg-1 order-xl-1">
+
+{$box_FILTERS}
+
+</div>
+</div>
+{/if}
+
 
 </div>
 
