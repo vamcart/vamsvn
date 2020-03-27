@@ -19,18 +19,6 @@
 <div class="page">
 <div class="pageItem">
 
-  {if $FILTERS}
-  <button class="btn btn-outline-primary rounded-pill d-md-none mb-2" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-    <i class="fas fa-filter"></i> {#text_product_filters#}
-  </button>
-  
-  <div class="collapse dont-collapse-sm" id="collapseExample">
-    <div class="well">
-      {$FILTERS}
-    </div>
-  </div>
-  {/if}
-
 {if $MANUFACTURER_SORT}
 <div class="py-2">
 {$MANUFACTURER_DROPDOWN}

@@ -143,10 +143,10 @@ $box_content='';
             $count = $spec_object->getFilterCount ('0', $specs_array['specifications_id'], $specs_array['filter_class'], $specs_array['products_column_name']);
           }
           // The ID value must be set as a string, not an integer
-          $filters_select_array[$filter_index] = array ('id' => '0',
-                                                        'text' => TEXT_SHOW_ALL,
-                                                        'count' => $count
-                                                       );
+          //$filters_select_array[$filter_index] = array ('id' => '0',
+                                                        //'text' => TEXT_SHOW_ALL,
+                                                        //'count' => $count
+                                                       //);
           $filter_index++;
         }
         

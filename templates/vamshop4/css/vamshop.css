@@ -2894,12 +2894,12 @@ del.button:hover span
 		z-index:1000;
 	}
 
-div.filter
+/*div.filter
 	{
 		float: left;
 		padding: 0 .5em 0 0;
 	}
-
+*/
 /* ############ checkout ################## */
 
 .sm_layout_box h2 
