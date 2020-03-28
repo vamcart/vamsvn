@@ -318,9 +318,12 @@ a#scrollup:hover {
     padding-bottom: .5em;
 }
 
-.nav-tabs .nav-link:hover, .nav-tabs .nav-link:focus {
+.nav-tabs .nav-item.active .nav-link, 
+.nav-tabs .nav-link:hover, 
+.nav-tabs .nav-link:focus {
     color: #0056B3;
     border-color: #0056B3;
+    cursor: pointer;
     background: #fff;
 }
 
@@ -713,4 +716,35 @@ label {
 
 .mainpage-tabs .nav-tabs {
   border-bottom: 0;
+}
+
+.mainpage-tabs .carousel-indicators {
+    position: relative;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 15;
+    padding-left: 0;
+    margin-right: 0;
+    margin-left: 0;
+    list-style: none;
+}
+
+.mainpage-tabs .carousel-indicators li {
+  width: auto;
+  height: auto;
+  margin-right: 0;
+  margin-left: 0;
+  text-indent: initial;
+  cursor: pointer;
+  background-color: transparent;
+  background-clip: padding-box;
+  border-top: 0;
+  border-bottom: 0;
+  opacity: 1;
+}
+
+.mainpage-tabs .carousel-indicators h3 {
+    display: inline;
+    width: auto;
 }
