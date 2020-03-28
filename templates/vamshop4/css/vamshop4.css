@@ -435,6 +435,12 @@ li.level3 {
     border-color: #545b62 !important;
 }
 
+.btn-group .btn-secondary.active {
+    color: #fff;
+    background-color: #6c757d !important;
+    border-color: #545b62 !important;
+}
+
 .module,
 .mainContent {
   padding: 0;
