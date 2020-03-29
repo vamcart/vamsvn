@@ -1,4 +1,4 @@
-<script type="text/javascript" src="../jscript/jquery/jquery.js"></script>
+<script type="text/javascript" src="../jscript/jquery/jquery-3.4.1.min.js"></script>
 <script type="text/javascript" src="../jscript/jquery/plugins/ui/jquery-ui-min.js"></script>
 <script type="text/javascript" src="includes/javascript/jquery/plugins/ui/datepicker-<?php echo $_SESSION['language_code']; ?>.js"></script>
 
