@@ -153,7 +153,7 @@
 
    echo '
   <tr>
-    <td width="300" align="left" valign="top" class="dataTableContent-'.$class.'">'.constant(strtoupper($configuration['configuration_key'].'_TITLE')).' <a class="tooltip" title="'.constant(strtoupper( $configuration['configuration_key'].'_DESC')).'" href="#">' . vam_image(DIR_WS_IMAGES . 'icons/help.jpg') . '</a></td>
+    <td width="300" align="left" valign="top" class="dataTableContent-'.$class.'">'.constant(strtoupper($configuration['configuration_key'].'_TITLE')).' <span data-toggle="tooltip" data-placement="top" title="'.constant(strtoupper( $configuration['configuration_key'].'_DESC')).'"><i class="far fa-question-circle"></i></span></td>
     <td valign="top" class="dataTableContent-'.$class.'">
     <table width="100%"  border="0" cellspacing="0" cellpadding="2">
       <tr>

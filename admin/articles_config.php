@@ -146,7 +146,7 @@ $manual_link = 'article-settings';
 
    echo '
   <tr>
-    <td width="300" valign="top" class="dataTableContent"><b>'.constant(strtoupper($configuration['configuration_key'].'_TITLE')).'</b> <a class="tooltip" title="'.constant(strtoupper( $configuration['configuration_key'].'_DESC')).'" href="#">' . vam_image(DIR_WS_IMAGES . 'icons/help.jpg') . '</a></td>
+    <td width="300" valign="top" class="dataTableContent"><b>'.constant(strtoupper($configuration['configuration_key'].'_TITLE')).'</b> <span data-toggle="tooltip" data-placement="top" title="'.constant(strtoupper( $configuration['configuration_key'].'_DESC')).'" href="#"><i class="far fa-question-circle"></i></span></td>
     <td valign="top" class="dataTableContent">
     <table width="100%"  border="0" cellspacing="0" cellpadding="2">
       <tr>
