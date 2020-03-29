@@ -63,7 +63,6 @@ function getParent($catID) {
       </tr>
 	  <tr>
         <td>
-<script src="../jscript/jquery/jquery.js" type="text/javascript"></script>
         <script type="text/javascript">
         var lastChecked = null;
  

@@ -143,9 +143,6 @@ if ($pInfo->products_startpage == '1') { $startpage_checked = true; } else { $st
 
 <script type="text/javascript" src="includes/javascript/modified.js"></script>
 <?php if (ENABLE_TABS == 'true') { ?>
-		<link type="text/css" href="../jscript/jquery/plugins/ui/css/smoothness/jquery-ui.css" rel="stylesheet" />	
-		<script type="text/javascript" src="../jscript/jquery/jquery.js"></script>
-		<script type="text/javascript" src="../jscript/jquery/plugins/ui/jquery-ui-min.js"></script>
 		<script type="text/javascript">
 			$(function(){
 				$('#tabs').tabs({ fx: { opacity: 'toggle', duration: 'fast' } });
