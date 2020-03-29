@@ -2,7 +2,8 @@
 <script type="text/javascript" src="../jscript/jquery/plugins/ui/jquery-ui-min.js"></script>
 <script type="text/javascript" src="includes/javascript/jquery/plugins/ui/datepicker-<?php echo $_SESSION['language_code']; ?>.js"></script>
 
-<script type="text/javascript" src="includes/css/bootstrap/bootstrap.min.js"></script>
+<script type="text/javascript" src="includes/css/bootstrap4/popper.min.js"></script>
+<script type="text/javascript" src="includes/css/bootstrap4/bootstrap.min.js"></script>
 
 <script type="text/javascript" src="/jscript/jquery/plugins/select2/select2.js"></script>
 
@@ -18,7 +19,7 @@
 <script type="text/javascript" src="/jscript/jquery/plugins/maskedinput/jquery.maskedinput.min.js"></script>
 <script type="text/javascript" src="/jscript/modified.js"></script>
 
-<script language="javascript" src="includes/categories.js"></script>
+<script language="javascript" src="includes/javascript/categories.js"></script>
 <script language="javascript" src="includes/general.js"></script>
 <script language="javascript"><!--
 function popupWindow(url) {

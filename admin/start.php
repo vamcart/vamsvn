@@ -20,9 +20,10 @@
 require ('includes/application_top.php');
 
 ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!DOCTYPE html>
 <html <?php echo HTML_PARAMS; ?>>
 <head>
+<meta name="viewport" content="initial-scale=1.0, width=device-width" />
 <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $_SESSION['language_charset']; ?>"> 
 <title><?php echo TITLE; ?></title>
 <!-- Header JS, CSS -->
@@ -319,7 +320,7 @@ $data_date[] = $report->info[$i]['text'];
         }
     });
     
-    $('.jqplot-highlighter-tooltip').addClass('panel');
+    $('.jqplot-highlighter-tooltip').addClass('card');
    
 });
 </script>
@@ -366,31 +367,31 @@ $data_date[] = $report->info[$i]['text'];
 
 ?>
 
-      <div class="row-fluid">
-      <div class="span5">
+      <div class="row">
+      <div class="col-xl-5">
 
-			<div class="row-fluid">
-			<div class="panel panel-default span4">
-			  <div class="panel-heading">
-			    <h3 class="panel-title"><?php echo vam_image(DIR_WS_IMAGES . 'icons/tabs/orders.png', '', '16', '16'); ?>&nbsp;<?php echo TEXT_SUMMARY_TOTAL_ORDERS; ?></h3>
+			<div class="card-deck">
+			<div class="card">
+			  <div class="card-header">
+			    <h3 class="card-title"><?php echo vam_image(DIR_WS_IMAGES . 'icons/tabs/orders.png', '', '16', '16'); ?>&nbsp;<?php echo TEXT_SUMMARY_TOTAL_ORDERS; ?></h3>
 			  </div>
-			  <div class="panel-body text-center">
+			  <div class="card-body text-center">
 			    <h4><?php echo (($total_orders['count'] > 0) ? $total_orders['count'] : 0) . (($orders_pending['count'] > 0) ? ' <sup><span title="'.TEXT_SUMMARY_PENDING_ORDERS.': '.$orders_pending['count'].'" class="badge badge-important"> <a href="' . vam_href_link(FILENAME_ORDERS, 'status='.DEFAULT_ORDERS_STATUS_ID, 'NONSSL') . '">'.$orders_pending['count'].'</a> </span></sup>' : '') ?></h4>
 			  </div>
 			</div>
-			<div class="panel panel-default span4">
-			  <div class="panel-heading">
-			    <h3 class="panel-title"><?php echo vam_image(DIR_WS_IMAGES . 'icons/tabs/calculator.png', '', '16', '16'); ?>&nbsp;<?php echo TEXT_SUMMARY_TOTAL_SALES; ?></h3>
+			<div class="card">
+			  <div class="card-header">
+			    <h3 class="card-title"><?php echo vam_image(DIR_WS_IMAGES . 'icons/tabs/calculator.png', '', '16', '16'); ?>&nbsp;<?php echo TEXT_SUMMARY_TOTAL_SALES; ?></h3>
 			  </div>
-			  <div class="panel-body text-center">
+			  <div class="card-body text-center">
 			    <h4><?php echo ($total_sales['value'] > 0) ? number_format($total_sales['value'], 0) : 0; ?></h4>
 			  </div>
 			</div>
-			<div class="panel panel-default span4">
-			  <div class="panel-heading">
-			    <h3 class="panel-title"><?php echo vam_image(DIR_WS_IMAGES . 'icons/tabs/customer.png', '', '16', '16'); ?>&nbsp;<?php echo TEXT_SUMMARY_TOTAL_CUSTOMERS; ?></h3>
+			<div class="card">
+			  <div class="card-header">
+			    <h3 class="card-title"><?php echo vam_image(DIR_WS_IMAGES . 'icons/tabs/customer.png', '', '16', '16'); ?>&nbsp;<?php echo TEXT_SUMMARY_TOTAL_CUSTOMERS; ?></h3>
 			  </div>
-			  <div class="panel-body text-center">
+			  <div class="card-body text-center">
 			    <h4><?php echo  ($customers['count'] > 0) ? $customers['count'] : 0; ?></h4>
 			  </div>
 			</div>
@@ -413,7 +414,7 @@ $data_date[] = $report->info[$i]['text'];
 			</div>
 		</div>
       </div>
-      <div class="span4">
+      <div class="col-xl-4">
 		<div id="sales">
 			<ul>
 				<li><a href="#stat"><?php echo vam_image(DIR_WS_IMAGES . 'icons/tabs/stat.png', '', '16', '16'); ?>&nbsp;<?php echo TEXT_SUMMARY_STAT; ?></a></li>
@@ -423,7 +424,7 @@ $data_date[] = $report->info[$i]['text'];
 			</div>
 		</div>
       </div>
-      <div class="span3">
+      <div class="col-xl-3">
 		<div id="news">
 			<ul>
 				<li><a href="#stat"><?php echo vam_image(DIR_WS_IMAGES . 'icons/tabs/comment.png', '', '16', '16'); ?>&nbsp;<?php echo TEXT_SUMMARY_VAMSHOP_NEWS; ?></a></li>
