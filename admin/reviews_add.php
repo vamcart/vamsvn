@@ -69,33 +69,13 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $_SESSION['language_charset']; ?>"> 
 <title><?php echo TITLE; ?></title>
-<link rel="stylesheet" type="text/css" href="includes/stylesheet.css">
-
-<script type="text/javascript" src="/jscript/jquery/jquery.js"></script>
-<link rel="stylesheet" type="text/css" href="includes/javascript/jquery/plugins/ui/jquery-ui.css">
-<script type="text/javascript" src="includes/javascript/jquery/plugins/ui/jquery-ui-min.js"></script><script type="text/javascript" src="includes/javascript/jquery/plugins/ui/datepicker-ru.js"></script>
-<script type="text/javascript" src="/jscript/jquery/plugins/maskedinput/jquery.maskedinput.min.js"></script>
-<script type="text/javascript" src="/jscript/modified.js"></script>
-<script type="text/javascript" src="/jscript/jquery/plugins/select2/select2.js"></script>
-<link rel="stylesheet" type="text/css" href="/jscript/jquery/plugins/select2/select2.css">
-<link rel="stylesheet" type="text/css" href="/jscript/jquery/plugins/select2/select2-bootstrap.css">
-
+<!-- Header JS, CSS -->
+<?php require(DIR_FS_ADMIN.DIR_WS_INCLUDES . 'header_include.php'); ?>
 <script type="text/javascript"><!--
-
 $(document).ready(function() {
-
 $( "#date-added" ).datepicker({ dateFormat: "dd-mm-yy" }).val();
-
-   });
-   
-    $(document).ready(function() {
-        $(".select2").select2({
-            theme: "bootstrap"
-        });        
-    });    
-   
+});
 //--></script>
-
 <?php 
  $query=vam_db_query("SELECT code FROM ". TABLE_LANGUAGES ." WHERE languages_id='".$_SESSION['languages_id']."'");
  $data=vam_db_fetch_array($query);

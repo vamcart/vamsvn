@@ -42,7 +42,8 @@ if ($_GET['pID']=='media') {
 <html <?php echo HTML_PARAMS; ?>>
 <head>
 <title><?php echo $page_title; ?></title>
-<link rel="stylesheet" type="text/css" href="includes/stylesheet.css">
+<!-- Header JS, CSS -->
+<?php require(DIR_FS_ADMIN.DIR_WS_INCLUDES . 'header_include.php'); ?>
 </head>
 <div class="pageHeading"><?php echo $content_data['content_heading']; ?></div><br>
 <table border="0" width="100%" cellspacing="0" cellpadding="2">

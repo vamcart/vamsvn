@@ -59,22 +59,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $_SESSION['language_charset']; ?>"> 
 <title><?php echo TITLE; ?></title>
-<link rel="stylesheet" type="text/css" href="includes/stylesheet.css">
-<script type="text/javascript" src="includes/general.js"></script>
-
-<script type="text/javascript" src="/jscript/jquery/jquery.js"></script>
-<link rel="stylesheet" type="text/css" href="includes/javascript/jquery/plugins/ui/jquery-ui.css">
-<script type="text/javascript" src="includes/javascript/jquery/plugins/ui/jquery-ui-min.js"></script><script type="text/javascript" src="includes/javascript/jquery/plugins/ui/datepicker-ru.js"></script>
-<script type="text/javascript" src="/jscript/jquery/plugins/maskedinput/jquery.maskedinput.min.js"></script>
-<script type="text/javascript" src="/jscript/modified.js"></script>
+<!-- Header JS, CSS -->
+<?php require(DIR_FS_ADMIN.DIR_WS_INCLUDES . 'header_include.php'); ?>
 <script type="text/javascript"><!--
-
 $(document).ready(function() {
-
 $( "#date_added" ).datepicker({ dateFormat: "dd-mm-yy" }).val();
-
-   });
-   
+});
 //--></script>
 <?php 
  echo vam_wysiwyg_tiny('latest_news',$data['code']); 

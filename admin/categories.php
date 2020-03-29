@@ -339,7 +339,8 @@ if ( !$title_category_path_string ) $title_category_path_string = TITLE;
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=<?php echo $_SESSION['language_charset']; ?>">
 		<title><?php echo $title_category_path_string; ?></title>
-		<link rel="stylesheet" type="text/css" href="includes/stylesheet.css">
+<!-- Header JS, CSS -->
+<?php require(DIR_FS_ADMIN.DIR_WS_INCLUDES . 'header_include.php'); ?>
 		<script type="text/javascript" src="includes/javascript/categories.js"></script>
 		<!-- AJAX Attribute Manager -->
 		<?php require_once( 'attributeManager/includes/attributeManagerHeader.inc.php' )?>

@@ -554,10 +554,8 @@ switch ($_GET['action']) {
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $_SESSION['language_charset']; ?>">
 <title><?php echo TITLE; ?></title>
-<link rel="stylesheet" type="text/css" href="includes/stylesheet.css">
-<script type="text/javascript" src="includes/general.js"></script>
-<script type="text/javascript" src="includes/javascript/categories.js"></script>
-<script type="text/javascript" src="../jscript/jquery/jquery.js"></script>
+<!-- Header JS, CSS -->
+<?php require(DIR_FS_ADMIN.DIR_WS_INCLUDES . 'header_include.php'); ?>
 		        <script type="text/javascript">
         var lastChecked = null;
  
@@ -582,8 +580,6 @@ switch ($_GET['action']) {
         });
         </script>
 <?php if (ENABLE_TABS == 'true') { ?>
-		<link type="text/css" href="../jscript/jquery/plugins/ui/css/smoothness/jquery-ui.css" rel="stylesheet" />	
-		<script type="text/javascript" src="../jscript/jquery/plugins/ui/jquery-ui-min.js"></script>
 		<script type="text/javascript">
 			$(function(){
 				$('#tabs').tabs({ fx: { opacity: 'toggle', duration: 'fast' } });

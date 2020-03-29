@@ -301,7 +301,8 @@ $products['products_price']=$products_price['plain'];
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $_SESSION['language_charset']; ?>">
 <title><?php echo TITLE; ?></title>
-<link rel="stylesheet" type="text/css" href="includes/stylesheet.css">
+<!-- Header JS, CSS -->
+<?php require(DIR_FS_ADMIN.DIR_WS_INCLUDES . 'header_include.php'); ?>
 <?php if ( (isset($_GET['submitForm'])) && ($_GET['submitForm'] == 'yes') ) {
         echo '<script language="javascript" type="text/javascript"><!--' . "\n" .
              '  window.opener.document.edit_order.subaction.value = "add_product";' . "\n" . 
