@@ -376,7 +376,7 @@ $data_date[] = $report->info[$i]['text'];
 			    <h3 class="card-title"><?php echo vam_image(DIR_WS_IMAGES . 'icons/tabs/orders.png', '', '16', '16'); ?>&nbsp;<?php echo TEXT_SUMMARY_TOTAL_ORDERS; ?></h3>
 			  </div>
 			  <div class="card-body text-center">
-			    <h4><?php echo (($total_orders['count'] > 0) ? $total_orders['count'] : 0) . (($orders_pending['count'] > 0) ? ' <sup><span title="'.TEXT_SUMMARY_PENDING_ORDERS.': '.$orders_pending['count'].'" class="badge badge-important"> <a href="' . vam_href_link(FILENAME_ORDERS, 'status='.DEFAULT_ORDERS_STATUS_ID, 'NONSSL') . '">'.$orders_pending['count'].'</a> </span></sup>' : '') ?></h4>
+			    <h4><?php echo (($total_orders['count'] > 0) ? $total_orders['count'] : 0) . (($orders_pending['count'] > 0) ? ' <sup><span title="'.TEXT_SUMMARY_PENDING_ORDERS.': '.$orders_pending['count'].'" class="badge badge-pill badge-danger round"> <a class="text-white" href="' . vam_href_link(FILENAME_ORDERS, 'status='.DEFAULT_ORDERS_STATUS_ID, 'NONSSL') . '">'.$orders_pending['count'].'</a> </span></sup>' : '') ?></h4>
 			  </div>
 			</div>
 			<div class="card">
