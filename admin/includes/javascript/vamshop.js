@@ -11,7 +11,7 @@ $(document).ready(function(){
 	        animationSpeed: 500, // Animation in speed (ms)
 	        scrollTrigger: false, // Set a custom triggering element. Can be an HTML string or jQuery object
 					//scrollTarget: false, // Set a custom target element for scrolling to the top
-	        scrollText: '▲', // Text for element, can contain HTML
+	        scrollText: '<i class="fa fa-chevron-up"></i>', // Text for element, can contain HTML
 	        scrollTitle: false, // Set a custom <a> title if required.
 	        scrollImg: false, // Set true to use image
 	        activeOverlay: false, // Set CSS color to display scrollUp active point, e.g '#00FFFF'
