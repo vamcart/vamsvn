@@ -28,9 +28,6 @@ require ('includes/application_top.php');
 <!-- Header JS, CSS -->
 <?php require(DIR_FS_ADMIN.DIR_WS_INCLUDES . 'header_include.php'); ?>
 <?php if (ENABLE_TABS == 'true') { ?>
-		<link type="text/css" href="../jscript/jquery/plugins/ui/css/smoothness/jquery-ui.css" rel="stylesheet" />	
-		<script type="text/javascript" src="../jscript/jquery/jquery.js"></script>
-		<script type="text/javascript" src="../jscript/jquery/plugins/ui/jquery-ui-min.js"></script>
 		<script type="text/javascript">
 			$(function(){
 				$('#tabs').tabs({ fx: { opacity: 'toggle', duration: 'fast' } });
@@ -326,12 +323,6 @@ $data_date[] = $report->info[$i]['text'];
    
 });
 </script>
-
-		<script type="text/javascript" src="includes/css/bootstrap/bootstrap.min.js"></script>
-
-<link rel="stylesheet" type="text/css" href="includes/css/bootstrap/bootstrap.css">
-<link rel="stylesheet" type="text/css" href="includes/css/bootstrap/bootstrap-responsive.css">
-<link rel="stylesheet" type="text/css" href="includes/stylesheet.css">
 
 </head>
 <body marginwidth="0" marginheight="0" topmargin="0" bottommargin="0" leftmargin="0" rightmargin="0" bgcolor="#FFFFFF">

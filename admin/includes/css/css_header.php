@@ -1,7 +1,5 @@
-<?php
-include(DIR_FS_ADMIN.DIR_WS_INCLUDES.'/css/css_header.php');
-include(DIR_FS_ADMIN.DIR_WS_INCLUDES.'/javascript/script_footer.php');
-?>
-<?php
-if (file_exists(dirname(__FILE__) . '/local.css.php')) include('local.css.php');
-?>
+<link rel="stylesheet" type="text/css" href="includes/css/bootstrap/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="includes/css/bootstrap/bootstrap-responsive.css">
+<link rel="stylesheet" type="text/css" href="includes/stylesheet.css">
+
+<link type="text/css" href="../jscript/jquery/plugins/ui/css/smoothness/jquery-ui.css" rel="stylesheet" />	

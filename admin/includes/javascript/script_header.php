@@ -1,6 +1,4 @@
-<?php
-include(DIR_FS_ADMIN.DIR_WS_INCLUDES.'/javascript/script_header.php');
-?>
-<?php
-if (file_exists(dirname(__FILE__) . '/local.css.php')) include('local.css.php');
-?>
+<script type="text/javascript" src="../jscript/jquery/jquery.js"></script>
+<script type="text/javascript" src="../jscript/jquery/plugins/ui/jquery-ui-min.js"></script>
+
+<script type="text/javascript" src="includes/css/bootstrap/bootstrap.min.js"></script>
