@@ -152,8 +152,11 @@
         
         default:
           //$field .= '<li class="list-group-item list-group-item-action'.(($default == $link_data['id']) ? ' active' : '').'">';
+          if ($default == $link_data['id']) {
+          $field .= '<span class="list-group-item list-group-item-action'.(($default == $link_data['id']) ? ' active' : '').'">';
+          } else {
           $field .= '<a class="list-group-item list-group-item-action'.(($default == $link_data['id']) ? ' active' : '').'" href="' . vam_href_link ($target, vam_get_array_get_params (array ( $name, 'page') ) . ($link_data['id'] == '0' ? '' : $name . '=' . vam_output_string($link_data['id']))) . '">';
-
+          }
           if ($default == $link_data['id']) {
             $field .= '<b>';
           }
@@ -166,7 +169,11 @@
           if ($default == $link_data['id']) {
             $field .= '</b>';
           }
+          if ($default == $link_data['id']) {
+          $field .= '</span>';
+          } else {
           $field .= '</a>';
+          }
           //$field .= '</li>';
           break;
       } // switch (true)
