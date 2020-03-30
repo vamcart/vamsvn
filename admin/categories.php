@@ -394,9 +394,9 @@ if ( !$title_category_path_string ) $title_category_path_string = TITLE;
          <td class="pageHeading" align="left">
          <h1 class="contentBoxHeading"><?php echo HEADING_TITLE; ?></h1>   
          </td>
-         <td align="right">
+         <td>
                 <?php 
-                    echo vam_draw_form('goto', FILENAME_CATEGORIES, '', 'get');
+                    echo vam_draw_form('goto', FILENAME_CATEGORIES, '', 'get', 'class="form-inline"');
                     echo HEADING_TITLE_GOTO . ' ' . vam_draw_pull_down_menu('cPath', vam_get_category_tree(), $current_category_id, 'onChange="this.form.submit();"').vam_draw_hidden_field(vam_session_name(), vam_session_id()); 
                 ?>
                 </form>

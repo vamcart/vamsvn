@@ -1185,9 +1185,9 @@ if ($error == true) {
          <td class="pageHeading" align="left">
          <h1 class="contentBoxHeading"><?php echo HEADING_TITLE; ?></h1>   
          </td>
-         <td align="right">
+         <td>
 
-          <?php echo vam_draw_form('status', FILENAME_CUSTOMERS, '', 'get'); ?>
+          <?php echo vam_draw_form('status', FILENAME_CUSTOMERS, '', 'get', 'class="form-inline"'); ?>
 <?php
 
 	$select_data = array ();

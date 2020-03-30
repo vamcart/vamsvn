@@ -1258,9 +1258,9 @@ elseif ($_GET['action'] == 'custom_action') {
          <td class="pageHeading" align="left">
          <h1 class="contentBoxHeading"><?php echo HEADING_TITLE; ?></h1>   
          </td>
-         <td align="right">
+         <td>
 
-             <?php echo vam_draw_form('status', FILENAME_ORDERS, '', 'get'); ?>
+             <?php echo vam_draw_form('status', FILENAME_ORDERS, '', 'get', 'class="form-inline"'); ?>
                 <?php echo HEADING_TITLE_STATUS . ' ' . vam_draw_pull_down_menu('status', array_merge(array(array('id' => '', 'text' => TEXT_ALL_ORDERS)), $orders_statuses), $_GET['status'], 'onChange="this.form.submit();"').vam_draw_hidden_field(vam_session_name(), vam_session_id()); ?>
               </form>
               
