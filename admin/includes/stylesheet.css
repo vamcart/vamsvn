@@ -535,6 +535,7 @@ font-family: 'Lucida Grande', Helvetica, Arial, Verdana, sans-serif;
    -webkit-border-bottom-left-radius: 4px;
    -moz-border-radius-bottomright: 4px;
    -webkit-border-bottom-right-radius: 4px;
+   min-width: 250px;
 }
 FORM { display: inline; }
 
