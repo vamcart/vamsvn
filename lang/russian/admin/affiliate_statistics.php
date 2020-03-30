@@ -49,4 +49,8 @@ define('TEXT_CLICKTHROUGH_RATE_HELP', '<b>Оплата за клики:</b> ст
 define('TEXT_PAY_PER_SALE_RATE_HELP', '<b>Оплата за заказ:</b> оплата за заказ, оформленный через сайт партнёра, т.е. вне зависимости от стоимости заказа, оплачен ли заказ или нет, просто оплата за факт оформления.');
 define('TEXT_COMMISSION_HELP', '<b>Партнёры заработали:</b> Общая сумма, заработанная партнёрами за весь период работы.');
 define('TEXT_CLOSE_WINDOW', 'Закрыть окно [x]');
+
+define('IMAGE_BANNERS','Баннеры');
+define('IMAGE_CLICKTHROUGHS','Отчёт о кликах');
+define('IMAGE_SALES','Отчёт о продажах');
 ?>
