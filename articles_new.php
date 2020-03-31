@@ -96,7 +96,7 @@ foreach($keys as $k) {
           	foreach ($all_tags as $tags_all) {
                 $all_tags_data[] = array(
                 'NAME' => trim($tags_all),
-                'LINK' => vam_href_link(FILENAME_ARTICLES, 'akeywords='.trim($tags_all)));
+                'LINK' => vam_href_link(FILENAME_ARTICLES, 'akeywords='.rawurlencode(trim($tags_all))));
             $i++;
             }
 
@@ -158,7 +158,7 @@ $articles_new['articles_keywords'] = str_replace($value.",","",$articles_new['ar
           	foreach ($products_tags as $tags) {
                 $tags_data[] = array(
                 'NAME' => trim($tags),
-                'LINK' => vam_href_link(FILENAME_ARTICLES, 'akeywords='.trim($tags)));
+                'LINK' => vam_href_link(FILENAME_ARTICLES, 'akeywords='.rawurlencode(trim($tags))));
         //$info->assign('tags_data', $tags_data);
             }
 
