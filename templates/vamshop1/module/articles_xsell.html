@@ -5,7 +5,7 @@
 {foreach name=aussen item=module_data from=$module_content} 
 <dl class="itemNewProductsDefault">
 <dt class="itemImage">
-{if $module_data.PRODUCTS_IMAGE}<a href="{$module_data.PRODUCTS_LINK}"><img src="{$module_data.PRODUCTS_IMAGE}" border="0" alt="{$module_data.PRODUCTS_NAME}" /></a><br />{/if}
+{if $module_data.PRODUCTS_IMAGE}<a href="{$module_data.PRODUCTS_LINK}"><img src="{$module_data.PRODUCTS_IMAGE}" alt="{$module_data.PRODUCTS_NAME}" /></a><br />{/if}
 {$module_data.PRODUCTS_BUTTON_BUY_NOW}
 </dt>
 <dd class="itemDescription">
