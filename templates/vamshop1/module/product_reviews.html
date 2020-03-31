@@ -21,6 +21,11 @@
 	<meta itemprop="sku" content="{$PRODUCTS_MODEL}" />
 	<meta itemprop="mpn" content="{$PRODUCTS_MODEL}" />
 	{/if}
+
+	<span itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating"> 
+		<meta itemprop="ratingValue" content="{$module_content[0].PRODUCT.REVIEWS_TOTAL_RATING|number_format:1}">
+		<meta itemprop="reviewCount" content="{$module_content[0].PRODUCT.REVIEWS_TOTAL}" />
+	</span> 
 	
 <div class="page">
 <div class="pagecontent">
