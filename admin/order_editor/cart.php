@@ -13,7 +13,7 @@
   class manualCart {
     var $contents, $total, $weight;
 
-    function manualCart() {
+    function __construct() {
       $this->reset();
     }
 
