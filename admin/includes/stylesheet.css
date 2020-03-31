@@ -1256,5 +1256,8 @@ a#scrollup:hover {
   background: #d50000;
   text-decoration: none;
 }	
-
 /* /Scroll To Top */
+
+.select2-container--bootstrap {
+  display: inline-block !important;
+}
