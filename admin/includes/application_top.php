@@ -279,6 +279,7 @@
   require_once(DIR_FS_INC . 'vam_cleanName.inc.php');
   require_once(DIR_FS_INC . 'vam_make_alias.inc.php');
   require_once(DIR_FS_INC . 'vam_parse_input_field_data.inc.php');
+  require_once (DIR_FS_INC.'vam_input_validation.inc.php');
   
   // customization for the design layout
   define('BOX_WIDTH', 125); // how wide the boxes should be in pixels (default: 125)
@@ -424,10 +425,11 @@ if (SESSION_CHECK_USER_AGENT == 'True') {
   // set the language
   if (!isset($_SESSION['language']) || isset($_GET['language']) || empty($language)) {
 
-    include(DIR_WS_CLASSES . 'language.php');
-    $lng = new language($_GET['language']);
+	include (DIR_WS_CLASSES.'language.php');
+	$lng = new language(vam_input_validation($_GET['language'], 'char', ''));
 
-    if (!isset($_GET['language'])) $lng->language(DEFAULT_LANGUAGE);
+	if (!isset ($_GET['language']))
+		$lng = new language(DEFAULT_LANGUAGE);
 
     $_SESSION['language'] = $lng->language['directory'];
     $_SESSION['languages_id'] = $lng->language['id'];
