@@ -1,6 +1,6 @@
 {config_load file="$language/lang_$language.conf" section="articles"} 
 <article itemscope itemtype="http://schema.org/Article">
-<meta itemscope itemprop="mainEntityOfPage" itemType="https://schema.org/WebPage" itemid="{$ARTICLE_LINK}" />
+<meta itemscope itemprop="mainEntityOfPage" itemType="https://schema.org/WebPage" itemid="{$ARTICLE_LINK}" content="{$ARTICLE_LINK}" />
 
 <h1 itemprop="headline">{$ARTICLE_NAME}</h1>
 
@@ -21,9 +21,7 @@
 {/if}
 
 {if $ARTICLE_DESCRIPTION}
-<p>
 {$ARTICLE_DESCRIPTION}
-</p>
 {/if}
 
 {if $ARTICLE_VIEWED}
