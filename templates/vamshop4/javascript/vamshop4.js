@@ -1,7 +1,7 @@
 $(document).ready(function(){
 
 $(".owl-carousel-reverse").owlCarousel({
-    margin: 0,
+    margin: 30,
     nav: true,
     loop:false,
     dots: false,
@@ -33,7 +33,7 @@ $(".owl-carousel-reverse").owlCarousel({
 })
 	
 $(".owl-carousel").owlCarousel({
-    margin: 0,
+    margin: 30,
     nav: true,
     loop:false,
     dots: false,

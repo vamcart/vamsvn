@@ -61,7 +61,7 @@ button:focus, button:active, a, a:hover {
   }
   
 .owl-carousel .owl-nav button.owl-next, .owl-carousel .owl-nav button.owl-prev {
-    padding: 0 .6em !important;
+    padding: 0 0 !important;
 }
 /* /Owl Nav */
 
@@ -74,46 +74,10 @@ button:focus, button:active, a, a:hover {
   padding-left: 0;
 }
 
-.owl-stage-outer {
-  border: 1px solid rgba(0,0,0,.125);
-  border-radius: 0px;
-}
-
-.owl-item{
-  display: flex;
-  height: auto !important;
-  padding-right: 1px;
-  padding-left: 0;
-  margin-right: 0;
-}
-
-.owl-item.active{
-  padding-left: 0px;
-}
-
-.owl-item .card.card-product,
-.owl-item.active  .card.card-product{
-  border-left: 0;
-  border-top: 0;
-  border-bottom: 0;
-  border-right: 1px solid rgba(0,0,0,.125);
-  border-radius: 0;
-}
-
 .owl-item img {
   margin: 0 auto !important;
   width: auto !important;
 }	
-
-.owl-item.active .card.card-product,
-.owl-item .card.card-product {
-}
-
-.owl-item.active:last-child .card.card-product,
-.owl-item:last-child .card.card-product {
-
-}
-
 
 .card-product {
   width: 100%;
