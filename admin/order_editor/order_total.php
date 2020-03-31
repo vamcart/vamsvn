@@ -19,7 +19,7 @@
     var $modules;
 
 // class constructor
-    function order_total() {
+    function __construct() {
       global $language;
 
       if (defined('MODULE_ORDER_TOTAL_INSTALLED') && vam_not_null(MODULE_ORDER_TOTAL_INSTALLED)) {
