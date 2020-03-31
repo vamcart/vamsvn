@@ -1,5 +1,31 @@
 {config_load file="$language/lang_$language.conf" section="reviews"}
+<div class="page" itemscope itemtype="http://schema.org/Product">
 <h1>{#heading_product_reviews#}{if {$smarty.get.reviews_id} > 0} {$smarty.get.reviews_id}{/if}: {$PRODUCTS_NAME}</h1>
+
+	<span itemprop="offers" itemscope itemtype="http://schema.org/Offer"> 
+		<meta itemprop="price" content="{$PRODUCTS_PRICE_PLAIN}">
+		<meta itemprop="priceCurrency" content="{$smarty.session.currency}" />
+		<meta itemprop="availability" content="InStock" />
+		<meta itemprop="priceValidUntil" content="{$smarty.now + (1200*60*24*7)|date_format:"c"}" />
+		<meta itemprop="url" content="{$PRODUCTS_URL_INFO}" />
+	</span> 
+
+	<span itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">
+		<meta itemprop="ratingValue" content="{$module_content[0].PRODUCT.REVIEWS_TOTAL_RATING|number_format:1}" />
+		<meta itemprop="reviewCount" content="{$module_content[0].PRODUCT.REVIEWS_TOTAL}" />
+	</span>
+
+	<meta itemprop="image" content="{$PRODUCTS_IMAGE}" />
+	<meta itemprop="description" content="{$PRODUCTS_SHORT_DESCRIPTION|vam_truncate:$smarty.const.MAX_DISPLAY_SHORT_DESCRIPTION:"...":true}" />
+	
+	{if $MANUFACTURER}
+	<meta itemprop="brand" content="{$MANUFACTURER}" />
+	{/if}
+	
+	{if $PRODUCTS_MODEL}
+	<meta itemprop="sku" content="{$PRODUCTS_MODEL}" />
+	<meta itemprop="mpn" content="{$PRODUCTS_MODEL}" />
+	{/if}
 
 {foreach name=aussen item=module_data from=$module_content}
 <div class="page">
@@ -7,7 +33,7 @@
 
 <dl class="itemNewProducts">
 <dt class="itemImage">
-<a href="{$module_data.PRODUCT.PRODUCTS_LINK}"><img src="{$module_data.PRODUCT.PRODUCTS_IMAGE}" alt="{$module_data.PRODUCT.PRODUCTS_NAME}" border="0" /></a><br />
+<a href="{$module_data.PRODUCT.PRODUCTS_LINK}"><img src="{$module_data.PRODUCT.PRODUCTS_IMAGE}" alt="{$module_data.PRODUCT.PRODUCTS_NAME}" /></a><br />
 {$module_data.PRODUCT.PRODUCTS_BUTTON_BUY_NOW}
 </dt>
 <dd class="itemDescription">
@@ -24,7 +50,7 @@
 
 <dd class="itemDescription" itemprop="reviewBody">
 {if $smarty.SERVER.SCRIPT_NAME != '/product_reviews_info.php'}
-{$module_data.REVIEW.TEXT|strip_tags|vam_truncate:$smarty.const.MAX_DISPLAY_SHORT_DESCRIPTION:"...":true}
+{$module_data.REVIEW.TEXT|strip_tags|vam_truncate:240:"...":true}
 {else}
 {$module_data.REVIEW.TEXT|strip_tags}
 {/if}
@@ -57,3 +83,5 @@
 <div class="clear"></div>
 
 <a class="btn btn-inverse" href="{$REVIEWS_ALL_LINK}"><i class="fa fa-comments"></i> {#text_all#}</a>
+
+</div>
