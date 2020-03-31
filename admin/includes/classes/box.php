@@ -33,12 +33,27 @@
 defined( '_VALID_VAM' ) or die( 'Direct Access to this location is not allowed.' );
 
   class box extends tableBlock {
-    function box() {
+    function __construct() {
       $this->heading = array();
       $this->contents = array();
+      
+      $this->table_class = 'headTable';
+      $this->table_cellspacing = '0';
+      $this->table_width = '97%';
+      $this->table_parameters = 'align="center"';
+      $this->table_row_parameters = 'class="infoBoxHeading"';
+      $this->table_data_parameters = 'class="infoBoxHeading"';
+      $this->heading = $this->tableBlock($heading);
+
+      $this->table_class = 'contentTable';
+      $this->table_row_parameters = '';
+      $this->table_data_parameters = 'class="infoBoxContent"';
+      $this->contents = $this->tableBlock($contents);
+            
     }
 
     function infoBox($heading, $contents) {
+
       $this->table_class = 'headTable';
       $this->table_cellspacing = '0';
       $this->table_width = '97%';
@@ -56,6 +71,7 @@ defined( '_VALID_VAM' ) or die( 'Direct Access to this location is not allowed.'
     }
 
     function menuBox($heading, $contents) {
+
       $this->table_data_parameters = 'class="menuBoxHeading"';
       if ($heading[0]['link']) {
         $this->table_data_parameters .= ' onmouseover="this.style.cursor=\'hand\'" onclick="document.location.href=\'' . $heading[0]['link'] . '\'"';

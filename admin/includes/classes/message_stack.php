@@ -28,7 +28,7 @@ defined( '_VALID_VAM' ) or die( 'Direct Access to this location is not allowed.'
   class messageStack extends tableBlock {
     var $size = 0;
 
-    function messageStack() {
+    function __construct() {
 
       $this->errors = array();
 

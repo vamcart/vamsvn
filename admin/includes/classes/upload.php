@@ -20,7 +20,7 @@ defined( '_VALID_VAM' ) or die( 'Direct Access to this location is not allowed.'
   class upload {
     var $file, $filename, $destination, $permissions, $extensions, $tmp_filename;
 
-    function upload($file = '', $destination = '', $permissions = '777', $extensions = array('gif', 'jpg', 'jpeg', 'png', 'swf', 'sql')) {
+    function __construct($file = '', $destination = '', $permissions = '777', $extensions = array('gif', 'jpg', 'jpeg', 'png', 'swf', 'sql')) {
 
       $this->set_file($file);
       $this->set_destination($destination);

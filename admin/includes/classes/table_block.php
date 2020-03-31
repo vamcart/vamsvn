@@ -27,7 +27,7 @@ defined( '_VALID_VAM' ) or die( 'Direct Access to this location is not allowed.'
     var $table_row_parameters = '';
     var $table_data_parameters = '';
 
-    function tableBlock($contents) {
+    function __construct($contents) {
       $tableBox_string = '';
 
       $form_set = false;
@@ -85,5 +85,65 @@ defined( '_VALID_VAM' ) or die( 'Direct Access to this location is not allowed.'
 
       return $tableBox_string;
     }
+    
+    function tableBlock($contents) {
+      $tableBox_string = '';
+
+      $form_set = false;
+      if (isset($contents['form'])) {
+        $tableBox_string .= $contents['form'] . "\n";
+        $form_set = true;
+        vam_array_shift($contents);
+      }
+
+      $tableBox_string .= '<table class="' . $this->table_class . '" border="' . $this->table_border . '" width="' . $this->table_width . '" cellspacing="' . $this->table_cellspacing . '" cellpadding="' . $this->table_cellpadding . '"';
+      if ($this->table_parameters != '') $tableBox_string .= ' ' . $this->table_parameters;
+      $tableBox_string .= '>' . "\n";
+
+      for ($i = 0, $n = sizeof($contents); $i < $n; $i++) {
+        $tableBox_string .= '  <tr';
+        if ($this->table_row_parameters != '') $tableBox_string .= ' ' . $this->table_row_parameters;
+        if (isset($contents[$i]['params'])) $tableBox_string .= ' ' . $contents[$i]['params'];
+        $tableBox_string .= '>' . "\n";
+        if (!isset($contents[$i][0])) $contents[$i][0] = '';
+        if (is_array($contents[$i][0])) {
+          for ($x = 0, $y = sizeof($contents[$i]); $x < $y; $x++) {
+            if ($contents[$i][$x]['text']) {
+              $tableBox_string .= '    <td ';
+              if ($contents[$i][$x]['align'] != '') $tableBox_string .= ' align="' . $contents[$i][$x]['align'] . '"';
+              if ($contents[$i][$x]['params']) {
+                $tableBox_string .= ' ' . $contents[$i][$x]['params'];
+              } elseif ($this->table_data_parameters != '') {
+                $tableBox_string .= ' ' . $this->table_data_parameters;
+              }
+              $tableBox_string .= '>';
+              if ($contents[$i][$x]['form']) $tableBox_string .= $contents[$i][$x]['form'];
+              $tableBox_string .= $contents[$i][$x]['text'];
+              if ($contents[$i][$x]['form']) $tableBox_string .= '</form>';
+              $tableBox_string .= '</td>' . "\n";
+            }
+          }
+        } else {
+          $tableBox_string .= '    <td ';
+          if (!isset($contents[$i]['align'])) $contents[$i]['align'] = '';
+          if ($contents[$i]['align'] != '') $tableBox_string .= ' align="' . $contents[$i]['align'] . '"';
+          if (isset($contents[$i]['params'])) {
+            $tableBox_string .= ' ' . $contents[$i]['params'];
+          } elseif ($this->table_data_parameters != '') {
+            $tableBox_string .= ' ' . $this->table_data_parameters;
+          }
+          $tableBox_string .= '>' . $contents[$i]['text'] . '</td>' . "\n";
+        }
+
+        $tableBox_string .= '  </tr>' . "\n";
+      }
+
+      $tableBox_string .= '</table>' . "\n";
+
+      if ($form_set) $tableBox_string .= '</form>' . "\n";
+
+      return $tableBox_string;
+    }   
+     
   }
 ?>
