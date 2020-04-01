@@ -823,6 +823,7 @@ $products_special = 100-($vamPrice->CheckSpecial($array['products_id'])*100/$vam
 				'SPECS'=>$specifications_data,
 				'PRODUCTS_ID'=>$array['products_id'],
 				'PRODUCTS_VPE' => $this->getVPEtext($array, $products_price['plain']), 
+				'PRODUCTS_VPE_VALUE' => $this->getVPEtext($array, $products_price['plain']), 
 				'PRODUCTS_LABEL' => $this->getLabelText($array, $array['label_id']), 
 				'PRODUCTS_IMAGE' => $this->productImage($array['products_image'], $image), 
 				'PRODUCTS_IMAGE_INFO' => $this->productImage($array['products_image'], 'info'), 

@@ -175,23 +175,26 @@ if ($error == 1 && $keyerror != 1) {
 
 	//build query
 	$select_str = "SELECT distinct
-	                  p.products_id,
-	                  p.label_id,
-	                  p.products_price,
-	                  p.products_model,
-	                  p.products_ean,
-	                  p.products_quantity,
-	                  p.products_ordered,
-	                  p.products_shippingtime,
 	                  p.products_fsk18,
-	                  p.products_image,
-	                  p.products_weight,
-	                  p.products_tax_class_id,
-	                  m.manufacturers_name,
-	                  m.manufacturers_id,
-	                  pd.products_name,
-	                  pd.products_short_description,
-	                  pd.products_description ";
+                                  p.products_shippingtime,
+                                  p.products_model,
+                                  p.label_id,
+                                  p.products_ean,
+                                  pd.products_name,
+                                  m.manufacturers_name,
+                                  p.products_quantity,
+                                  p.products_image,
+                                  p.products_weight,
+                                  pd.products_short_description,
+                                  pd.products_description,
+                                  p.products_id,
+                                  p.manufacturers_id,
+                                  p.products_price,
+                                  p.products_vpe,
+                                  p.products_vpe_status,
+                                  p.products_vpe_value,                             
+                                  p.products_discount_allowed,
+                                  p.products_tax_class_id ";
 
 	$from_str  = "FROM ".TABLE_PRODUCTS."  AS p LEFT JOIN ".TABLE_PRODUCTS_DESCRIPTION." AS pd ON (p.products_id = pd.products_id) LEFT JOIN ".TABLE_MANUFACTURERS." AS m ON (p.manufacturers_id = m.manufacturers_id) LEFT JOIN products_to_categories as p2c2 ON (p2c2.products_id=p.products_id) LEFT JOIN categories as c ON (c.categories_id=p2c2.categories_id)";
 	$from_str .= $subcat_join;

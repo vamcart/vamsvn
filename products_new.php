@@ -84,12 +84,14 @@ while ($products_new = vam_db_fetch_array($products_new_query)) {
 	$module_content[] = $product->buildDataArray($products_new);
 }
 
+if (PRODUCT_LISTING_ATTRIBUTES == 'true') {
+		
 // Attributes start
 foreach($module_content as $k => $m)
 {
 $pID = $module_content[$k]['PRODUCTS_ID'];
 if (vam_has_product_attributes($pID)) {
-$products_options_name_query = vamDBquery("select distinct popt.products_options_id, popt.products_options_name,popt.products_options_type,popt.products_options_length,popt.products_options_rows,popt.products_options_size from ".TABLE_PRODUCTS_OPTIONS." popt, ".TABLE_PRODUCTS_ATTRIBUTES." patrib where patrib.products_id='".$pID."' and patrib.options_id = popt.products_options_id and popt.language_id = '".(int) $_SESSION['languages_id']."' order by popt.products_options_name");
+$products_options_name_query = vamDBquery("select distinct popt.products_options_id, popt.products_options_name,popt.products_options_type,popt.products_options_length,popt.products_options_rows,popt.products_options_size from ".TABLE_PRODUCTS_OPTIONS." popt, ".TABLE_PRODUCTS_ATTRIBUTES." patrib where patrib.products_id='".$pID."' and patrib.options_id = popt.products_options_id and popt.language_id = '".(int) $_SESSION['languages_id']."' order by popt.sortorder");
 	$row = 0;
 	$col = 0;
 	$products_options_data = array ();
@@ -132,8 +134,31 @@ $products_options_name_query = vamDBquery("select distinct popt.products_options
         $checked = 'checked="checked"';
 		while ($products_options = vam_db_fetch_array($products_options_query,true)) {
 			$price = '';
-			if ($_SESSION['customers_status']['customers_status_show_price'] == '0') {
-				//$products_options_data[$row]['DATA'] = array();
+		//=======================================================================
+		$products_options_photo_1 = $products_options['photo_1'];
+		$products_options_photo_2 = $products_options['photo_2'];
+		/*
+			if($products_options['photo_1'] == '')
+				$$products_options_photo_1 = DIR_WS_IMAGES.'product_attributes_images/'.'no_attribute_image.gif';
+			else
+				$products_options_photo_1 = DIR_WS_IMAGES.'product_attributes_images/'.$products_options['photo_1'];
+			if($products_options['photo_2'] == '')
+				$products_options_photo_2 = DIR_WS_IMAGES.'product_attributes_images/'.'no_attribute_image.gif';
+			else
+				$products_options_photo_2 = DIR_WS_IMAGES.'product_attributes_images/'.$products_options['photo_2'];
+		*/
+				
+			if($products_options_photo_1 == 'no_attribute_image.gif' OR $products_options_photo_1 == '')
+				$products_options_photo_1 = '';
+			else
+				$products_options_photo_1 = DIR_WS_IMAGES.'product_attributes_images/'.$products_options['photo_1'];
+			if($products_options_photo_2 == 'no_attribute_image.gif' OR $products_options_photo_2 == '')
+				$products_options_photo_2 = '';
+			else
+				$products_options_photo_2 = DIR_WS_IMAGES.'product_attributes_images/'.$products_options['photo_2'];
+		//======================================================================
+			if ($_SESSION['customers_status']['customers_status_show_price'] == '0') 
+			{
 				$products_options_data[$row]['DATA'][$col] = array (
 				
 				'ID' => $products_options['products_options_values_id'], 
@@ -149,25 +174,37 @@ $products_options_name_query = vamDBquery("select distinct popt.products_options
 				'PREFIX' => $products_options['price_prefix'],
 				// added by mosq
                 'CHECKED' => $checked,
+				// added by itskander
+				'PHOTO_1' => $products_options_photo_1,
+				'PHOTO_2' => $products_options_photo_2
 				);
 			
 				$price = '';
 				$full_price = '';
-			} else {
-				if ($products_options['options_values_price'] != '0.00') {
-//					$price = $vamPrice->Format($products_options['options_values_price'], false, $module_content[$k]['PRODUCTS_TAX_INFO']);
-					$price = $vamPrice->GetOptionPrice($pID, $products_options_name['products_options_id'], $products_options['products_options_values_id']);
+			} 
+			else 
+			{
+				if ($products_options['options_values_price'] != '0.00') 
+				{
+//					$price = $vamPrice->Format($products_options['options_values_price'], false, $product->data['products_tax_class_id']);
+					$price = $vamPrice->GetOptionPrice($module_content[$k]['PRODUCTS_ID'], $products_options_name['products_options_id'], $products_options['products_options_values_id']);
 					$price = $price['price'];
 				}
-				$products_price = $vamPrice->GetPrice($pID, $format = false, 1, $module_content[$k]['PRODUCTS_TAX_INFO'], $module_content[$k]['PRODUCTS_PRICE']);
+				$products_price = $vamPrice->GetPrice($module_content[$k]['PRODUCTS_ID'], $format = false, 1, $module_content[$k]['PRODUCTS_TAX_INFO'], $module_content[$k]['PRODUCTS_PRICE']);
 				if ($_SESSION['customers_status']['customers_status_discount_attributes'] == 1 && $products_options['price_prefix'] == '+')
 					$price -= $price / 100 * $discount;				
 					$attr_price=$price;
 					//if ($products_options['price_prefix']=="-") { $attr_price=$price*(-1); $price=$attr_price; }
 					$full_price = $products_price + $attr_price;
+					//------ 02-08-2016 ---------
+					$vpe_price = $full_price/$module_content[$k]['PRODUCTS_VPE_VALUE'];
+					//---------------------------
 					$price_plain = $vamPrice->Format($price, false);
 					$price = $vamPrice->Format($price, true);
 					$full_price = $vamPrice->Format($full_price, true);
+					//------ 02-08-2016 ---------
+					$vpe_price = $module_content[$k]['PRODUCTS_VPE'];
+					//---------------------------------------
 			}
 			
 			//$products_options_data[$row]['DATA'] = array();
@@ -183,9 +220,16 @@ $products_options_name_query = vamDBquery("select distinct popt.products_options
 			'STOCK' => $products_options['attributes_stock'], 
 			'PRICE' => $price, 
 			'PRICE_PLAIN' => $price_plain, 
-			'FULL_PRICE' => $full_price, 'PREFIX' => $products_options['price_prefix'],
+			'FULL_PRICE' => $full_price, 
+			//--- 02-08-2016 -----------
+			'VPE_PRICE' => $vpe_price,
+			//-------------------------
+			'PREFIX' => $products_options['price_prefix'],
 			// added by mosq
             'CHECKED' => $checked,
+			// added by itskander
+			'PHOTO_1' => $products_options_photo_1,
+			'PHOTO_2' => $products_options_photo_2
 			);
 			
 			$checked = '';
@@ -197,6 +241,8 @@ $module_content[$k]['attrib'] = $products_options_data;
 }
 }
 // Attributes end
+
+}
 
 if (($products_new_split->number_of_rows > 0)) {
 	$vamTemplate->assign('NAVIGATION_BAR', TEXT_RESULT_PAGE.' '.$products_new_split->display_links(MAX_DISPLAY_PAGE_LINKS, vam_get_all_get_params(array ('page', 'info', 'x', 'y'))));
