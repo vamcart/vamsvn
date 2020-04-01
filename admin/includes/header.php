@@ -37,7 +37,7 @@
 							</div> 
 						</div>
 						<div class="scoop-right-header"> 
-							<div class="sidebar_toggle"><a href="javascript:void(0)" title="<?php echo TEXT_NAVIGATION; ?>"><i class="fa fa-bars"></i></a></div> 
+							<div class="sidebar_toggle"><a href="javascript:void(0)" data-toggle="tooltip" data-placement="bottom" title="<?php echo TEXT_NAVIGATION; ?>"><i class="fa fa-bars"></i></a></div> 
 							<div class="scoop-rl-header"> 
 								<ul>
 									<li class="icons">
