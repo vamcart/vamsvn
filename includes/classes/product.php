@@ -611,6 +611,22 @@ $orders_query = "select
 
 	}
 
+	function getVPEvalue($product, $price) {
+		global $vamPrice;
+
+		require_once (DIR_FS_INC.'vam_get_vpe_name.inc.php');
+
+		if (!is_array($product))
+			$product = $this->data;
+
+		if ($product['products_vpe_status'] == 1 && $product['products_vpe_value'] != 0.0 && $price > 0) {
+			return $product['products_vpe_value'];
+		}
+
+		return;
+
+	}
+
 	function getLabelText($product, $label_id) {
 
 		require_once (DIR_FS_INC.'vam_get_label_name.inc.php');
@@ -823,7 +839,7 @@ $products_special = 100-($vamPrice->CheckSpecial($array['products_id'])*100/$vam
 				'SPECS'=>$specifications_data,
 				'PRODUCTS_ID'=>$array['products_id'],
 				'PRODUCTS_VPE' => $this->getVPEtext($array, $products_price['plain']), 
-				'PRODUCTS_VPE_VALUE' => $this->getVPEtext($array, $products_price['plain']), 
+				'PRODUCTS_VPE_VALUE' => $this->getVPEvalue($array, $products_price['plain']), 
 				'PRODUCTS_LABEL' => $this->getLabelText($array, $array['label_id']), 
 				'PRODUCTS_IMAGE' => $this->productImage($array['products_image'], $image), 
 				'PRODUCTS_IMAGE_INFO' => $this->productImage($array['products_image'], 'info'), 
