@@ -6,3 +6,6 @@
 
 <link rel="stylesheet" type="text/css" href="/jscript/jquery/plugins/select2/select2.css">
 <link rel="stylesheet" type="text/css" href="/jscript/jquery/plugins/select2/select2-bootstrap.css">
+
+<link href="includes/javascript/scoop/css/scoop-vertical.min.css" rel="stylesheet">
+<link href="includes/javascript/scoop/css/jquery.mCustomScrollbar.css" rel="stylesheet">

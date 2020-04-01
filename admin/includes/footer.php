@@ -17,6 +17,171 @@
    Released under the GNU General Public License 
    --------------------------------------------------------------*/
 ?>
+
+
+									</div>
+								</div>
+								<div id="styleSelector" /*class="open"*/>
+									<div class="selector-toggle">
+										<a href="javascript:void(0)"></a>
+									</div> 
+									<ul>
+										<li>
+											<p class="selector-title">Style Selector</p>
+										</li>
+										<li class="theme-option">
+											<span class="sub-title">Left Header Theme</span>
+											<div class="theme-color">
+												<a href="#" class="leftheader-theme" lheader-theme="theme1">&nbsp;</a>
+												<a href="#" class="leftheader-theme" lheader-theme="theme2">&nbsp;</a>
+												<a href="#" class="leftheader-theme" lheader-theme="theme3">&nbsp;</a>
+												<a href="#" class="leftheader-theme" lheader-theme="theme4">&nbsp;</a>
+												<a href="#" class="leftheader-theme" lheader-theme="theme5">&nbsp;</a>
+												<a href="#" class="leftheader-theme" lheader-theme="theme6">&nbsp;</a>
+												<a href="#" class="leftheader-theme" lheader-theme="theme7">&nbsp;</a>
+												<a href="#" class="leftheader-theme" lheader-theme="theme8">&nbsp;</a>
+												<a href="#" class="leftheader-theme" lheader-theme="theme9">&nbsp;</a> 
+											</div>
+										</li>
+										<li class="theme-option">
+											<span class="sub-title">Header Theme</span>
+											<div class="theme-color">
+												<a href="#" class="header-theme" header-theme="theme1">&nbsp;</a>
+												<a href="#" class="header-theme" header-theme="theme2">&nbsp;</a>
+												<a href="#" class="header-theme" header-theme="theme3">&nbsp;</a>
+												<a href="#" class="header-theme" header-theme="theme4">&nbsp;</a>
+												<a href="#" class="header-theme" header-theme="theme5">&nbsp;</a>
+												<a href="#" class="header-theme" header-theme="theme6">&nbsp;</a>
+												<a href="#" class="header-theme" header-theme="theme7">&nbsp;</a>
+												<a href="#" class="header-theme" header-theme="theme8">&nbsp;</a>
+												<a href="#" class="header-theme" header-theme="theme9">&nbsp;</a> 
+											</div>
+										</li>
+										<li class="theme-option">
+											<span class="sub-title">left NavBar Theme</span>
+											<div class="theme-color">
+												<a href="#" class="navbar-theme" navbar-theme="theme1">&nbsp;</a>
+												<a href="#" class="navbar-theme" navbar-theme="theme2">&nbsp;</a>
+												<a href="#" class="navbar-theme" navbar-theme="theme3">&nbsp;</a>
+												<a href="#" class="navbar-theme" navbar-theme="theme4">&nbsp;</a>
+												<a href="#" class="navbar-theme" navbar-theme="theme5">&nbsp;</a>
+												<a href="#" class="navbar-theme" navbar-theme="theme6">&nbsp;</a>
+												<a href="#" class="navbar-theme" navbar-theme="theme7">&nbsp;</a>
+												<a href="#" class="navbar-theme" navbar-theme="theme8">&nbsp;</a>
+												<a href="#" class="navbar-theme" navbar-theme="theme9">&nbsp;</a> 
+											</div>
+										</li>
+										<li class="theme-option">
+											<span class="sub-title">Active item Theme</span>
+											<div class="theme-color">
+												<a href="#" class="active-item-theme" active-item-theme="theme1">&nbsp;</a>
+												<a href="#" class="active-item-theme" active-item-theme="theme2">&nbsp;</a>
+												<a href="#" class="active-item-theme" active-item-theme="theme3">&nbsp;</a>
+												<a href="#" class="active-item-theme" active-item-theme="theme4">&nbsp;</a>
+												<a href="#" class="active-item-theme" active-item-theme="theme5">&nbsp;</a>
+												<a href="#" class="active-item-theme" active-item-theme="theme6">&nbsp;</a>
+												<a href="#" class="active-item-theme" active-item-theme="theme7">&nbsp;</a>
+												<a href="#" class="active-item-theme" active-item-theme="theme8">&nbsp;</a>
+												<a href="#" class="active-item-theme" active-item-theme="theme9">&nbsp;</a>
+											</div>
+										</li>   
+										<li class="theme-option">
+											<span class="sub-title">Background Patterns</span>
+											<div class="theme-color">
+												<a href="#" class="themebg-pattern" themebg-pattern="pattern1">&nbsp;</a>
+												<a href="#" class="themebg-pattern" themebg-pattern="pattern2">&nbsp;</a>
+												<a href="#" class="themebg-pattern" themebg-pattern="pattern3">&nbsp;</a>
+												<a href="#" class="themebg-pattern" themebg-pattern="pattern4">&nbsp;</a>
+												<a href="#" class="themebg-pattern" themebg-pattern="pattern5">&nbsp;</a>
+												<a href="#" class="themebg-pattern" themebg-pattern="pattern6">&nbsp;</a>
+												<a href="#" class="themebg-pattern" themebg-pattern="pattern7">&nbsp;</a>
+												<a href="#" class="themebg-pattern" themebg-pattern="pattern8">&nbsp;</a>
+												<a href="#" class="themebg-pattern" themebg-pattern="pattern9">&nbsp;</a>
+											</div>
+										</li>  
+										<li class="theme-option">
+											<span class="sub-title">Sidebar Position</span> 
+											<div class="slideOne">	
+												<input type="checkbox" value="false" id="sidebar-position" name="sidebar-position"> 
+												<label for="slideOne">Fixed Sidebar Position</label>
+											</div> 
+										</li>
+										<li class="theme-option">
+											<span class="sub-title">Header Position</span> 
+											<div class="slideOne">	
+												<input type="checkbox" value="false" id="header-position" name="header-position"> 
+												<label for="slideOne">Fixed Header Position</label>
+											</div> 
+										</li>
+										
+										<li class="theme-option">
+											<span class="sub-title">Item Border</span> 
+											<div class="slideOne">	
+												<input type="checkbox" value="false" id="vertical-item-border" name="vertical-item-border"> 
+												<label for="slideOne">Hide Item Border</label>
+											</div>
+											
+										</li>
+										<li class="theme-option">
+											<span class="sub-title">SubItem Border</span> 
+											<div class="slideOne">	
+												<input type="checkbox" value="false" id="vertical-subitem-border" name="vertical-item-border"> 
+												<label for="slideOne">Hide SubItem Border</label>
+											</div> 
+										</li>  
+										<li class="theme-option">
+											<span class="sub-title">Theme vertical Layout</span>
+											<select id="theme-layout" class="form-control minimal input-sm">
+												<option name="vertical-layout" value="wide">Wide layout</option>
+												<option name="vertical-layout" value="box">Boxed layout</option>
+												<option name="vertical-layout" value="widebox">widebox layout</option> 
+											</select>
+										</li>
+										<li class="theme-option">
+											<span class="sub-title">SideBar Effect</span>
+											<select id="vertical-menu-effect" class="form-control minimal input-sm">
+												<option name="vertical-menu-effect" value="shrink">shrink</option>
+												<option name="vertical-menu-effect" value="overlay">overlay</option>
+												<option name="vertical-menu-effect" value="push">Push</option>
+											</select>
+										</li>   
+										<li class="theme-option">
+											<span class="sub-title">Border Style</span>
+											<select id="vertical-border-style" class="form-control minimal input-sm">
+												<option name="vertical-border-style" value="solid">Style 1</option>
+												<option name="vertical-border-style" value="dotted">style 2</option>
+												<option name="vertical-border-style" value="dashed">style 3</option> 
+											</select>
+										</li>
+										<li class="theme-option">
+											<span class="sub-title">DropDown Icon</span>
+											<select id="vertical-dropdown-icon" class="form-control minimal input-sm">
+												<option name="vertical-dropdown-icon" value="style1">Style 1</option>
+												<option name="vertical-dropdown-icon" value="style2">style 2</option>
+												<option name="vertical-dropdown-icon" value="style3">style 3</option> 
+											</select>
+										</li>
+										<li class="theme-option">
+											<span class="sub-title">Submenu Item Icon</span>
+											<select id="vertical-subitem-icon" class="form-control minimal input-sm">
+												<option name="vertical-subitem-icon" value="style1">Style 1</option>
+												<option name="vertical-subitem-icon" value="style2">style 2</option>
+												<option name="vertical-subitem-icon" value="style3">style 3</option>
+												<option name="vertical-subitem-icon" value="style4">style 4</option> 
+												<option name="vertical-subitem-icon" value="style5">style 5</option> 
+												<option name="vertical-subitem-icon" value="style6">style 6</option> 
+											</select>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div> 
+				</div>
+			</div>
+		</div>
+
+
 <br>
 <table border="0" width="100%" cellspacing="0" cellpadding="2">
   <tr>
