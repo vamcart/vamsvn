@@ -32,8 +32,8 @@
 					<div class="scoop-wrapper"> 
 						<div class="scoop-left-header"> 
 							<div class="scoop-logo"> 
-								<a href="javascript(void);"><span class="logo-icon"><i class="ion-stats-bars"></i></span>
-								<span class="logo-text">VamShop<span class="hide-in-smallsize"></span></span></a>
+								<span class="logo-icon"><i class="ion-stats-bars"></i></span>
+								<span class="logo-text"><a href="start.php"><?php echo vam_image(DIR_WS_IMAGES . 'logo-small.png', 'VamShop'); ?></a><span class="hide-in-smallsize"></span></span>
 							</div> 
 						</div>
 						<div class="scoop-right-header"> 
