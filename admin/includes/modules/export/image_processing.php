@@ -30,7 +30,7 @@ define('IMAGE_EXPORT_TYPE','<hr noshade><b>Пакетная обработка:<
     var $code, $title, $description, $enabled;
 
 
-    function image_processing() {
+    function __construct() {
       global $order;
 
       $this->code = 'image_processing';

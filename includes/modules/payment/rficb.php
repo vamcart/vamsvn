@@ -6,7 +6,7 @@
     var $code, $title, $description, $enabled;
 
 // class constructor
-    function rficb() {
+    function __construct() {
       global $order;
 
       $this->code = 'rficb';
