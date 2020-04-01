@@ -171,15 +171,19 @@ if (!$box->isCached(CURRENT_TEMPLATE.'/boxes/box_articles.html', $cache_id) || !
       $articles_new_count = '';
     }
 
+    $new_articles_string .= '<li class="list-inline-item pb-2"><a href="' . vam_href_link(FILENAME_ARTICLES_NEW, '', 'NONSSL') . '"><span class="btn btn-outline-primary rounded-pill">';
+
     if (strstr($PHP_SELF,FILENAME_ARTICLES_NEW) or strstr($PHP_SELF,FILENAME_ARTICLES_NEW)) {
-      $new_articles_string = '<b>';
+      $new_articles_string .= '<b>';
     }
 
-    $new_articles_string .= '<li class="list-inline-item pb-2"><a href="' . vam_href_link(FILENAME_ARTICLES_NEW, '', 'NONSSL') . '"><span class="btn btn-outline-primary rounded-pill">' . BOX_NEW_ARTICLES . (($articles_new_count > 0) ? " " . $articles_new_count : "") . '</span></a>';
+    $new_articles_string .= BOX_NEW_ARTICLES . (($articles_new_count > 0) ? " " . $articles_new_count : "");
 
     if (strstr($PHP_SELF,FILENAME_ARTICLES_NEW) or strstr($PHP_SELF,FILENAME_ARTICLES_NEW)) {
       $new_articles_string .= '</b>';
     }
+
+    $new_articles_string .= '</span></a>';
 
     $new_articles_string .= '</li>' . "\n";
 
@@ -194,15 +198,20 @@ if (!$box->isCached(CURRENT_TEMPLATE.'/boxes/box_articles.html', $cache_id) || !
       $articles_all_count = '';
     }
 
+    $all_articles_string .= '<li class="list-inline-item pb-2">';
+    $all_articles_string .= '<a href="' . vam_href_link(FILENAME_ARTICLES, '', 'NONSSL') . '"><span class="btn btn-outline-primary rounded-pill">';
+
     if ($topic_depth == 'top') {
-      $all_articles_string = '<b>';
+      $all_articles_string .= '<b>';
     }
 
-    $all_articles_string .= '<li class="list-inline-item pb-2"><a href="' . vam_href_link(FILENAME_ARTICLES, '', 'NONSSL') . '"><span class="btn btn-outline-primary rounded-pill">' . BOX_ALL_ARTICLES . (($articles_all_count > 0) ? " " . $articles_all_count : "") . '</span></a>';
+    $all_articles_string .= BOX_ALL_ARTICLES . (($articles_all_count > 0) ? " " . $articles_all_count : "");
 
     if ($topic_depth == 'top') {
       $all_articles_string .= '</b>';
     }
+
+    $all_articles_string .= '</span></a>';
 
     $all_articles_string .= '</li>' . "\n";
 
