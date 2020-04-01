@@ -649,4 +649,6 @@ define('BOX_MERKETING_16', 'Партнёрская программа');
 define('PULL_DOWN_DEFAULT', 'Выберите');
 define('TEXT_NOT_FOUND', 'Не найдено.');
 
+define('TEXT_NAVIGATION', 'Навигация');
+
 ?>
