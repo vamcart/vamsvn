@@ -139,7 +139,7 @@
   font-family: open sans;
   font-size: 16px;
   font-weight: 600;
-  left: 20px;
+  left: 0px;
   margin: 0 auto !important;
   opacity: 1;
   position: absolute;
@@ -1018,60 +1018,60 @@ display:none;
 	/* ####### Expanded Navigation With Effect CSS Start Here ##########*/
 
 .scoop[theme-layout="vertical"][vertical-nav-type="expanded"]  .scoop-header .scoop-left-header {
-	width: 170px;
+	width: 150px;
 }
 .scoop[theme-layout="vertical"][vertical-nav-type="expanded"] .scoop-navbar  {
-	width: 170px;
+	width: 150px;
 }
 
 		/* Push Effect CSS Start Here */
 .scoop[theme-layout="vertical"][vertical-placement="left"][vertical-nav-type="expanded"][vertical-effect="push"]  .scoop-header .scoop-right-header {
-	margin-left:170px;
+	margin-left:150px;
 }
 .scoop[theme-layout="vertical"][vertical-placement="left"][vertical-nav-type="expanded"][vertical-effect="push"]  .scoop-header.iscollapsed  .scoop-right-header {
-	margin-left:170px;
-	margin-right:-170px;
+	margin-left:150px;
+	margin-right:-150px;
 }
 .scoop[theme-layout="vertical"][vertical-placement="left"][vertical-nav-type="expanded"][vertical-effect="push"] .scoop-content {
-	margin-left:170px;
-	margin-right:-170px;
+	margin-left:150px;
+	margin-right:-150px;
 } 
 .scoop[theme-layout="vertical"][vertical-placement="right"][vertical-nav-type="expanded"][vertical-effect="push"]  .scoop-header .scoop-right-header {
-	 margin-right:170px;
+	 margin-right:150px;
 }
 .scoop[theme-layout="vertical"][vertical-placement="right"][vertical-nav-type="expanded"][vertical-effect="push"]  .scoop-header.iscollapsed  .scoop-right-header {
 	 margin-right:0px;
-	 margin-left:-170px;
+	 margin-left:-150px;
 }
 .scoop[theme-layout="vertical"][vertical-placement="right"][vertical-nav-type="expanded"][vertical-effect="push"] .scoop-content {
-	 margin-right:170px;
-	 margin-left:-170px;
+	 margin-right:150px;
+	 margin-left:-150px;
 } 
 		/* Push Effect CSS Close Here */
 		/* Shrink Effect CSS Start Here */
 .scoop[theme-layout="vertical"][vertical-placement="left"][vertical-nav-type="expanded"][vertical-effect="shrink"]  .scoop-header .scoop-right-header {
-	margin-left:170px;
+	margin-left:150px;
 }
 .scoop[theme-layout="vertical"][vertical-placement="left"][vertical-nav-type="expanded"][vertical-effect="shrink"]  .scoop-header.iscollapsed  .scoop-right-header {
-	margin-left:170px;
+	margin-left:150px;
 }
 .scoop[theme-layout="vertical"][vertical-placement="left"][vertical-nav-type="expanded"][vertical-effect="shrink"] .scoop-content {
-	margin-left:170px;
+	margin-left:150px;
 } 
 
 .scoop[theme-layout="vertical"][vertical-placement="right"][vertical-nav-type="expanded"][vertical-effect="shrink"]  .scoop-header .scoop-right-header {
-	 margin-right:170px;
+	 margin-right:150px;
 }
 .scoop[theme-layout="vertical"][vertical-placement="right"][vertical-nav-type="expanded"][vertical-effect="shrink"]  .scoop-header.iscollapsed  .scoop-right-header {
-	 margin-right:170px;
+	 margin-right:150px;
 }
 .scoop[theme-layout="vertical"][vertical-placement="right"][vertical-nav-type="expanded"][vertical-effect="shrink"] .scoop-content {
-	 margin-right:170px;
+	 margin-right:150px;
 } 
 	/* Shrink Effect CSS Close Here */	
 	/* Overlay Effect CSS Start Here */
 .scoop[theme-layout="vertical"][vertical-placement="left"][vertical-nav-type="expanded"][vertical-effect="overlay"]  .scoop-header .scoop-right-header {
-	margin-left:170px;
+	margin-left:150px;
 }
 .scoop[theme-layout="vertical"][vertical-placement="left"][vertical-nav-type="expanded"][vertical-effect="overlay"]  .scoop-header.iscollapsed  .scoop-right-header {
 	margin-left:0px;
@@ -1080,7 +1080,7 @@ display:none;
 	margin-left:0px;
 } 
 .scoop[theme-layout="vertical"][vertical-placement="right"][vertical-nav-type="expanded"][vertical-effect="overlay"]  .scoop-header .scoop-right-header {
-	 margin-right:170px;
+	 margin-right:150px;
 }
 .scoop[theme-layout="vertical"][vertical-placement="right"][vertical-nav-type="expanded"][vertical-effect="overlay"]  .scoop-header.iscollapsed  .scoop-right-header {
 	 margin-right:0px;
@@ -1117,14 +1117,14 @@ display:none;
 
 /* ####### collapsed Navigation With Effect CSS Start Here ##########*/
 .scoop[theme-layout="vertical"][vertical-nav-type="collapsed"]  .scoop-header .scoop-left-header {
-	width: 170px;
+	width: 150px;
 }
 .scoop[theme-layout="vertical"][vertical-nav-type="collapsed"] .scoop-navbar  {
 	width: 45px;
 }
 	/* Push Effect CSS Start Here */
 .scoop[theme-layout="vertical"][vertical-placement="left"][vertical-nav-type="collapsed"][vertical-effect="push"]  .scoop-header .scoop-right-header {
-	margin-left:170px;
+	margin-left:150px;
 }
 .scoop[theme-layout="vertical"][vertical-placement="left"][vertical-nav-type="collapsed"][vertical-effect="push"]  .scoop-header.iscollapsed .scoop-left-header {
 	width: 45px;
@@ -1139,7 +1139,7 @@ display:none;
 } 	
  
 .scoop[theme-layout="vertical"][vertical-placement="right"][vertical-nav-type="collapsed"][vertical-effect="push"]  .scoop-header .scoop-right-header {
-	 margin-right:170px;
+	 margin-right:150px;
 }
 
 .scoop[theme-layout="vertical"][vertical-placement="right"][vertical-nav-type="collapsed"][vertical-effect="push"]  .scoop-header.iscollapsed .scoop-left-header {
@@ -1158,7 +1158,7 @@ display:none;
 	/* Shrink Effect CSS Start Here */
  
 .scoop[theme-layout="vertical"][vertical-placement="left"][vertical-nav-type="collapsed"][vertical-effect="shrink"]  .scoop-header .scoop-right-header {
-	margin-left:170px;
+	margin-left:150px;
 }
 
 .scoop[theme-layout="vertical"][vertical-placement="left"][vertical-nav-type="collapsed"][vertical-effect="shrink"]  .scoop-header.iscollapsed .scoop-left-header {
@@ -1172,7 +1172,7 @@ display:none;
 } 
 
 .scoop[theme-layout="vertical"][vertical-placement="right"][vertical-nav-type="collapsed"][vertical-effect="shrink"]  .scoop-header .scoop-right-header {
-	 margin-right:170px;
+	 margin-right:150px;
 }
 
 .scoop[theme-layout="vertical"][vertical-placement="right"][vertical-nav-type="collapsed"][vertical-effect="shrink"]  .scoop-header.iscollapsed .scoop-left-header {
@@ -1187,7 +1187,7 @@ display:none;
 	/* Shrink Effect CSS Close Here */
 	/* overlay Effect CSS Start Here */
 .scoop[theme-layout="vertical"][vertical-placement="left"][vertical-nav-type="collapsed"][vertical-effect="overlay"]  .scoop-header .scoop-right-header {
-	margin-left:170px;
+	margin-left:150px;
 }
 
 .scoop[theme-layout="vertical"][vertical-placement="left"][vertical-nav-type="collapsed"][vertical-effect="overlay"]  .scoop-header.iscollapsed .scoop-left-header {
@@ -1201,7 +1201,7 @@ display:none;
 } 
 
 .scoop[theme-layout="vertical"][vertical-placement="right"][vertical-nav-type="collapsed"][vertical-effect="overlay"]  .scoop-header .scoop-right-header {
-	 margin-right:170px;
+	 margin-right:150px;
 }
 
 .scoop[theme-layout="vertical"][vertical-placement="right"][vertical-nav-type="collapsed"][vertical-effect="overlay"]  .scoop-header.iscollapsed .scoop-left-header {
@@ -1278,10 +1278,10 @@ display:none;
 	/* ####### Offcanvas Navigation With Effect CSS Start Here ##########*/
 		/* push Effect CSS start Here */
  .scoop[theme-layout="vertical"][vertical-placement="left"][vertical-nav-type="offcanvas"][vertical-effect="push"]  .scoop-header .scoop-left-header {
-	width: 170px;
+	width: 150px;
 }
 .scoop[theme-layout="vertical"][vertical-placement="left"][vertical-nav-type="offcanvas"][vertical-effect="push"]  .scoop-header .scoop-right-header {
-	margin-left:170px;
+	margin-left:150px;
 }
 
 .scoop[theme-layout="vertical"][vertical-placement="left"][vertical-nav-type="offcanvas"][vertical-effect="push"]  .scoop-header.iscollapsed .scoop-left-header {
@@ -1292,15 +1292,15 @@ display:none;
 	 margin-right:0px;
 }
 .scoop[theme-layout="vertical"][vertical-placement="left"][vertical-nav-type="offcanvas"][vertical-effect="push"] .scoop-navbar  {
-	width: 170px;
-	margin-left:-170px;
+	width: 150px;
+	margin-left:-150px;
 }
 .scoop[theme-layout="vertical"][vertical-placement="left"][vertical-nav-type="offcanvas"][vertical-effect="push"] .scoop-content {
 	margin-left:0px;
 	margin-right:0px;
 } 
 .scoop[theme-layout="vertical"][vertical-placement="right"][vertical-nav-type="offcanvas"][vertical-effect="push"]  .scoop-header .scoop-left-header {
-	 width:170px;
+	 width:150px;
 }
 .scoop[theme-layout="vertical"][vertical-placement="right"][vertical-nav-type="offcanvas"][vertical-effect="push"]  .scoop-header .scoop-right-header {
 	 margin-right:0px;
@@ -1314,8 +1314,8 @@ display:none;
 	 margin-left:0px;
 }
 .scoop[theme-layout="vertical"][vertical-placement="right"][vertical-nav-type="offcanvas"][vertical-effect="push"] .scoop-navbar  {
-	 width: 170px;
-	 margin-right:-170px;
+	 width: 150px;
+	 margin-right:-150px;
 }
 .scoop[theme-layout="vertical"][vertical-placement="right"][vertical-nav-type="offcanvas"][vertical-effect="push"] .scoop-content {
 	 margin-right:0px;
@@ -1325,10 +1325,10 @@ display:none;
 		/* shrink Effect CSS Start Here */
 
 .scoop[theme-layout="vertical"][vertical-placement="left"][vertical-nav-type="offcanvas"][vertical-effect="shrink"]  .scoop-header .scoop-left-header {
-	width: 170px;
+	width: 150px;
 }
 .scoop[theme-layout="vertical"][vertical-placement="left"][vertical-nav-type="offcanvas"][vertical-effect="shrink"]  .scoop-header .scoop-right-header {
-	margin-left:170px;
+	margin-left:150px;
 }
 
 .scoop[theme-layout="vertical"][vertical-placement="left"][vertical-nav-type="offcanvas"][vertical-effect="shrink"]  .scoop-header.iscollapsed .scoop-left-header {
@@ -1338,17 +1338,17 @@ display:none;
 	margin-left:0px;
 }
 .scoop[theme-layout="vertical"][vertical-placement="left"][vertical-nav-type="offcanvas"][vertical-effect="shrink"] .scoop-navbar  {
-	width: 170px;
-	margin-left:-170px;
+	width: 150px;
+	margin-left:-150px;
 }
 .scoop[theme-layout="vertical"][vertical-placement="left"][vertical-nav-type="offcanvas"][vertical-effect="shrink"] .scoop-content {
 	margin-left:0px;
 } 
 .scoop[theme-layout="vertical"][vertical-placement="right"][vertical-nav-type="offcanvas"][vertical-effect="shrink"]  .scoop-header .scoop-left-header {
-	 width:170px;
+	 width:150px;
 }
 .scoop[theme-layout="vertical"][vertical-placement="right"][vertical-nav-type="offcanvas"][vertical-effect="shrink"]  .scoop-header .scoop-right-header {
-	 margin-right:170px;
+	 margin-right:150px;
 }
 
 .scoop[theme-layout="vertical"][vertical-placement="right"][vertical-nav-type="offcanvas"][vertical-effect="shrink"]  .scoop-header.iscollapsed .scoop-left-header {
@@ -1358,8 +1358,8 @@ display:none;
 	 margin-right:0px;
 }
 .scoop[theme-layout="vertical"][vertical-placement="right"][vertical-nav-type="offcanvas"][vertical-effect="shrink"] .scoop-navbar  {
-	 width: 170px;
-	 margin-right: -170px;
+	 width: 150px;
+	 margin-right: -150px;
 }
 .scoop[theme-layout="vertical"][vertical-placement="right"][vertical-nav-type="offcanvas"][vertical-effect="shrink"] .scoop-content {
 	 margin-right:0px;
@@ -1368,10 +1368,10 @@ display:none;
 		/* overlay Effect CSS Start Here */
 
 .scoop[theme-layout="vertical"][vertical-placement="left"][vertical-nav-type="offcanvas"][vertical-effect="overlay"]  .scoop-header .scoop-left-header {
-	width: 170px;
+	width: 150px;
 }
 .scoop[theme-layout="vertical"][vertical-placement="left"][vertical-nav-type="offcanvas"][vertical-effect="overlay"]  .scoop-header .scoop-right-header {
-	margin-left:170px;
+	margin-left:150px;
 }
 
 .scoop[theme-layout="vertical"][vertical-placement="left"][vertical-nav-type="offcanvas"][vertical-effect="overlay"]  .scoop-header.iscollapsed .scoop-left-header {
@@ -1381,8 +1381,8 @@ display:none;
 	margin-left:0px;
 }
 .scoop[theme-layout="vertical"][vertical-placement="left"][vertical-nav-type="offcanvas"][vertical-effect="overlay"] .scoop-navbar  {
-	width: 170px;
-	margin-left:-170px;
+	width: 150px;
+	margin-left:-150px;
 }
 .scoop[theme-layout="vertical"][vertical-placement="left"][vertical-nav-type="offcanvas"][vertical-effect="overlay"] .scoop-content {
 	margin-left:0px;
@@ -1390,10 +1390,10 @@ display:none;
 
 
 .scoop[theme-layout="vertical"][vertical-placement="right"][vertical-nav-type="offcanvas"][vertical-effect="overlay"]  .scoop-header .scoop-left-header {
-	 width:170px;
+	 width:150px;
 }
 .scoop[theme-layout="vertical"][vertical-placement="right"][vertical-nav-type="offcanvas"][vertical-effect="overlay"]  .scoop-header .scoop-right-header {
-	 margin-right:170px;
+	 margin-right:150px;
 }
 
 .scoop[theme-layout="vertical"][vertical-placement="right"][vertical-nav-type="offcanvas"][vertical-effect="overlay"]  .scoop-header.iscollapsed .scoop-left-header {
@@ -1403,8 +1403,8 @@ display:none;
 	 margin-right:0px;
 }
 .scoop[theme-layout="vertical"][vertical-placement="right"][vertical-nav-type="offcanvas"][vertical-effect="overlay"] .scoop-navbar  {
-	 width: 170px;
-	 margin-right:-170px;
+	 width: 150px;
+	 margin-right:-150px;
 }
 .scoop[theme-layout="vertical"][vertical-placement="right"][vertical-nav-type="offcanvas"][vertical-effect="overlay"] .scoop-content {
 	 margin-right:0px;
@@ -1414,126 +1414,126 @@ display:none;
 	/* ####### Compact Navigation With Effect CSS Start Here ##########*/
 		/* Push Effect CSS Start Here */
 .scoop[theme-layout="vertical"][vertical-placement="left"][vertical-nav-type="compact"][vertical-effect="push"]  .scoop-header.iscollapsed .scoop-left-header {
-	width: 190px;
+	width: 150px;
 }
 .scoop[theme-layout="vertical"][vertical-placement="left"][vertical-nav-type="compact"][vertical-effect="push"]  .scoop-header.iscollapsed  .scoop-right-header {
-	margin-left:190px;
-	margin-right:-190px;
+	margin-left:150px;
+	margin-right:-150px;
 }
 .scoop[theme-layout="vertical"][vertical-placement="left"][vertical-nav-type="compact"][vertical-effect="push"]  .scoop-header .scoop-left-header {
-	width: 190px;
+	width: 150px;
 }
 .scoop[theme-layout="vertical"][vertical-placement="left"][vertical-nav-type="compact"][vertical-effect="push"]  .scoop-header .scoop-right-header {
-	margin-left:190px;
+	margin-left:150px;
 }
 
 
 .scoop[theme-layout="vertical"][vertical-placement="left"][vertical-nav-type="compact"][vertical-effect="push"] .scoop-navbar  {
-	width: 190px;
+	width: 150px;
 }
 .scoop[theme-layout="vertical"][vertical-placement="left"][vertical-nav-type="compact"][vertical-effect="push"] .scoop-content {
-	margin-left:190px;
-	margin-right:-190px;
+	margin-left:150px;
+	margin-right:-150px;
 } 
 
 
 .scoop[theme-layout="vertical"][vertical-placement="right"][vertical-nav-type="compact"][vertical-effect="push"]  .scoop-header.iscollapsed .scoop-left-header {
-	 width:190px;
+	 width:150px;
 }
 .scoop[theme-layout="vertical"][vertical-placement="right"][vertical-nav-type="compact"][vertical-effect="push"]  .scoop-header.iscollapsed  .scoop-right-header {
-	 margin-right:190px;
-	 margin-left:-190px;
+	 margin-right:150px;
+	 margin-left:-150px;
 }
 .scoop[theme-layout="vertical"][vertical-placement="right"][vertical-nav-type="compact"][vertical-effect="push"]  .scoop-header .scoop-left-header {
-	 width:190px;
+	 width:150px;
 }
 .scoop[theme-layout="vertical"][vertical-placement="right"][vertical-nav-type="compact"][vertical-effect="push"]  .scoop-header .scoop-right-header {
-	 margin-right:190px;
+	 margin-right:150px;
 }
 .scoop[theme-layout="vertical"][vertical-placement="right"][vertical-nav-type="compact"][vertical-effect="push"] .scoop-navbar  {
-	 width: 190px;
+	 width: 150px;
 }
 .scoop[theme-layout="vertical"][vertical-placement="right"][vertical-nav-type="compact"][vertical-effect="push"] .scoop-content {
-	 margin-right:190px;
-	 margin-left:-190px;
+	 margin-right:150px;
+	 margin-left:-150px;
 } 
 		/* Push Effect CSS Close Here */
 		/* Shrink Effect CSS Start Here */
 .scoop[theme-layout="vertical"][vertical-placement="left"][vertical-nav-type="compact"][vertical-effect="shrink"]  .scoop-header.iscollapsed .scoop-left-header {
-	width: 190px;
+	width: 150px;
 }
 .scoop[theme-layout="vertical"][vertical-placement="left"][vertical-nav-type="compact"][vertical-effect="shrink"]  .scoop-header.iscollapsed  .scoop-right-header {
-	margin-left:190px;
+	margin-left:150px;
 }
 .scoop[theme-layout="vertical"][vertical-placement="left"][vertical-nav-type="compact"][vertical-effect="shrink"]  .scoop-header .scoop-left-header {
-	width: 190px;
+	width: 150px;
 }
 .scoop[theme-layout="vertical"][vertical-placement="left"][vertical-nav-type="compact"][vertical-effect="shrink"]  .scoop-header .scoop-right-header {
-	margin-left:190px;
+	margin-left:150px;
 }
 .scoop[theme-layout="vertical"][vertical-placement="left"][vertical-nav-type="compact"][vertical-effect="shrink"] .scoop-navbar  {
-	width: 190px;
+	width: 150px;
 }
 .scoop[theme-layout="vertical"][vertical-placement="left"][vertical-nav-type="compact"][vertical-effect="shrink"] .scoop-content {
-	margin-left:190px;
+	margin-left:150px;
 } 
 .scoop[theme-layout="vertical"][vertical-placement="right"][vertical-nav-type="compact"][vertical-effect="shrink"]  .scoop-header.iscollapsed .scoop-left-header {
-	 width:190px;
+	 width:150px;
 }
 .scoop[theme-layout="vertical"][vertical-placement="right"][vertical-nav-type="compact"][vertical-effect="shrink"]  .scoop-header.iscollapsed  .scoop-right-header {
-	 margin-right:190px;
+	 margin-right:150px;
 }
 .scoop[theme-layout="vertical"][vertical-placement="right"][vertical-nav-type="compact"][vertical-effect="shrink"]  .scoop-header .scoop-left-header {
-	 width:190px;
+	 width:150px;
 }
 .scoop[theme-layout="vertical"][vertical-placement="right"][vertical-nav-type="compact"][vertical-effect="shrink"]  .scoop-header .scoop-right-header {
-	 margin-right:190px;
+	 margin-right:150px;
 }
 
 .scoop[theme-layout="vertical"][vertical-placement="right"][vertical-nav-type="compact"][vertical-effect="shrink"] .scoop-navbar  {
-	 width: 190px;
+	 width: 150px;
 }
 .scoop[theme-layout="vertical"][vertical-placement="right"][vertical-nav-type="compact"][vertical-effect="shrink"] .scoop-content {
-	 margin-right:190px;
+	 margin-right:150px;
 } 
 	/* Shrink Effect CSS Close Here */
 	/* Overlay Effect CSS Start Here */
 
 .scoop[theme-layout="vertical"][vertical-placement="left"][vertical-nav-type="compact"][vertical-effect="overlay"]  .scoop-header.iscollapsed .scoop-left-header {
-	width: 190px;
+	width: 150px;
 }
 .scoop[theme-layout="vertical"][vertical-placement="left"][vertical-nav-type="compact"][vertical-effect="overlay"]  .scoop-header.iscollapsed  .scoop-right-header {
 	margin-left:0px;
 }
 .scoop[theme-layout="vertical"][vertical-placement="left"][vertical-nav-type="compact"][vertical-effect="overlay"]  .scoop-header .scoop-left-header {
-	width: 190px;
+	width: 150px;
 }
 .scoop[theme-layout="vertical"][vertical-placement="left"][vertical-nav-type="compact"][vertical-effect="overlay"]  .scoop-header .scoop-right-header {
-	margin-left:190px;
+	margin-left:150px;
 }
 
 .scoop[theme-layout="vertical"][vertical-placement="left"][vertical-nav-type="compact"][vertical-effect="overlay"] .scoop-navbar  {
-	width: 190px;
+	width: 150px;
 }
 .scoop[theme-layout="vertical"][vertical-placement="left"][vertical-nav-type="compact"][vertical-effect="overlay"] .scoop-content {
 	margin-left:0px;
 } 
 
 .scoop[theme-layout="vertical"][vertical-placement="right"][vertical-nav-type="compact"][vertical-effect="overlay"]  .scoop-header .scoop-left-header {
-	 width:190px;
+	 width:150px;
 }
 .scoop[theme-layout="vertical"][vertical-placement="right"][vertical-nav-type="compact"][vertical-effect="overlay"]  .scoop-header .scoop-right-header {
-	 margin-right:190px;
+	 margin-right:150px;
 }
 
 .scoop[theme-layout="vertical"][vertical-placement="right"][vertical-nav-type="compact"][vertical-effect="overlay"]  .scoop-header.iscollapsed .scoop-left-header {
-	 width:190px;
+	 width:150px;
 }
 .scoop[theme-layout="vertical"][vertical-placement="right"][vertical-nav-type="compact"][vertical-effect="overlay"]  .scoop-header.iscollapsed  .scoop-right-header {
 	 margin-right:0px;
 }
 .scoop[theme-layout="vertical"][vertical-placement="right"][vertical-nav-type="compact"][vertical-effect="overlay"] .scoop-navbar  {
-	 width: 190px;
+	 width: 150px;
 }
 .scoop[theme-layout="vertical"][vertical-placement="right"][vertical-nav-type="compact"][vertical-effect="overlay"] .scoop-content {
 	 margin-right:0px;
@@ -1623,58 +1623,58 @@ display:none;
 /* ####### sub-expanded Navigation With Effect CSS Start Here ##########*/
 
 .scoop[theme-layout="vertical"][vertical-nav-type="sub-expanded"]  .scoop-header .scoop-left-header {
-	width: 170px;
+	width: 150px;
 }
 .scoop[theme-layout="vertical"][vertical-nav-type="sub-expanded"] .scoop-navbar  {
-	width: 170px;
+	width: 150px;
 }
 	/* Push Effect CSS Start Here */
 .scoop[theme-layout="vertical"][vertical-placement="left"][vertical-nav-type="sub-expanded"][vertical-effect="push"]  .scoop-header .scoop-right-header {
-	margin-left:170px;
+	margin-left:150px;
 }
 .scoop[theme-layout="vertical"][vertical-placement="left"][vertical-nav-type="sub-expanded"][vertical-effect="push"]  .scoop-header.iscollapsed  .scoop-right-header {
-	margin-left:170px;
-	margin-right:-170px;
+	margin-left:150px;
+	margin-right:-150px;
 }
 .scoop[theme-layout="vertical"][vertical-placement="left"][vertical-nav-type="sub-expanded"][vertical-effect="push"] .scoop-content {
-	margin-left:170px;
-	margin-right:-170px;
+	margin-left:150px;
+	margin-right:-150px;
 } 
 .scoop[theme-layout="vertical"][vertical-placement="right"][vertical-nav-type="sub-expanded"][vertical-effect="push"]  .scoop-header .scoop-right-header {
-	 margin-right:170px;
+	 margin-right:150px;
 }
 .scoop[theme-layout="vertical"][vertical-placement="right"][vertical-nav-type="sub-expanded"][vertical-effect="push"]  .scoop-header.iscollapsed  .scoop-right-header {
 	 margin-right:0px;
-	 margin-left:-170px;
+	 margin-left:-150px;
 }
 .scoop[theme-layout="vertical"][vertical-placement="right"][vertical-nav-type="sub-expanded"][vertical-effect="push"] .scoop-content {
-	 margin-right:170px;
-	 margin-left:-170px;
+	 margin-right:150px;
+	 margin-left:-150px;
 } 
 	/* Push Effect CSS Close Here */
 
 	/* Shrink Effect CSS Start Here */
 
 .scoop[theme-layout="vertical"][vertical-placement="left"][vertical-nav-type="sub-expanded"][vertical-effect="shrink"]  .scoop-header .scoop-right-header {
-	margin-left:170px;
+	margin-left:150px;
 }
 .scoop[theme-layout="vertical"][vertical-placement="left"][vertical-nav-type="sub-expanded"][vertical-effect="shrink"]  .scoop-header.iscollapsed  .scoop-right-header {
-	margin-left:170px;
+	margin-left:150px;
 }
 .scoop[theme-layout="vertical"][vertical-placement="left"][vertical-nav-type="sub-expanded"][vertical-effect="shrink"] .scoop-content {
-	margin-left:170px;
+	margin-left:150px;
 } 
 .scoop[theme-layout="vertical"][vertical-placement="right"][vertical-nav-type="sub-expanded"][vertical-effect="shrink"]  .scoop-header .scoop-right-header {
-	 margin-right:170px;
+	 margin-right:150px;
 }
 .scoop[theme-layout="vertical"][vertical-placement="right"][vertical-nav-type="sub-expanded"][vertical-effect="shrink"]  .scoop-header.iscollapsed  .scoop-right-header {
-	 margin-right:170px;
+	 margin-right:150px;
 }
 .scoop[theme-layout="vertical"][vertical-placement="right"][vertical-nav-type="sub-expanded"][vertical-effect="shrink"] .scoop-navbar  {
-	 width: 170px;
+	 width: 150px;
 }
 .scoop[theme-layout="vertical"][vertical-placement="right"][vertical-nav-type="sub-expanded"][vertical-effect="shrink"] .scoop-content {
-	 margin-right:170px;
+	 margin-right:150px;
 } 
 
 	/* Shrink Effect CSS Close Here */
@@ -1682,20 +1682,20 @@ display:none;
 	/* overlay Effect CSS Start Here */
 
 .scoop[theme-layout="vertical"][vertical-placement="left"][vertical-nav-type="sub-expanded"][vertical-effect="overlay"]  .scoop-header .scoop-right-header {
-	margin-left:170px;
+	margin-left:150px;
 }
 .scoop[theme-layout="vertical"][vertical-placement="left"][vertical-nav-type="sub-expanded"][vertical-effect="overlay"]  .scoop-header.iscollapsed  .scoop-right-header {
 	margin-left:0px;
 }
 .scoop[theme-layout="vertical"][vertical-placement="left"][vertical-nav-type="sub-expanded"][vertical-effect="overlay"] .scoop-navbar  {
-	width: 170px;
+	width: 150px;
 }
 .scoop[theme-layout="vertical"][vertical-placement="left"][vertical-nav-type="sub-expanded"][vertical-effect="overlay"] .scoop-content {
 	margin-left:0px;
 } 
 
 .scoop[theme-layout="vertical"][vertical-placement="right"][vertical-nav-type="sub-expanded"][vertical-effect="overlay"]  .scoop-header .scoop-right-header {
-	 margin-right:170px;
+	 margin-right:150px;
 }
 .scoop[theme-layout="vertical"][vertical-placement="right"][vertical-nav-type="sub-expanded"][vertical-effect="overlay"]  .scoop-header.iscollapsed  .scoop-right-header {
 	 margin-right:0px;
@@ -1748,36 +1748,36 @@ display:none;
 
 /* ####### ex-popover Navigation With Effect CSS Start Here ##########*/
 .scoop[theme-layout="vertical"][vertical-nav-type="ex-popover"] .scoop-header .scoop-left-header {
-	width: 170px;
+	width: 150px;
 }
 .scoop[theme-layout="vertical"][vertical-nav-type="ex-popover"] .scoop-header.iscollapsed .scoop-left-header {
-	width: 170px;
+	width: 150px;
 }
 .scoop[theme-layout="vertical"][vertical-nav-type="ex-popover"] .scoop-navbar  {
-	width: 170px;
+	width: 150px;
 }
 	/* push Effect CSS Start Here */
 .scoop[theme-layout="vertical"][vertical-placement="left"][vertical-nav-type="ex-popover"][vertical-effect="push"]  .scoop-header .scoop-right-header {
-	margin-left:170px;
+	margin-left:150px;
 }
 .scoop[theme-layout="vertical"][vertical-placement="left"][vertical-nav-type="ex-popover"][vertical-effect="push"]  .scoop-header.iscollapsed  .scoop-right-header {
-	margin-left:170px;
-	margin-right:-170px;
+	margin-left:150px;
+	margin-right:-150px;
 }
 .scoop[theme-layout="vertical"][vertical-placement="left"][vertical-nav-type="ex-popover"][vertical-effect="push"] .scoop-content {
-	margin-left:170px;
-	margin-right:-170px;
+	margin-left:150px;
+	margin-right:-150px;
 } 
 .scoop[theme-layout="vertical"][vertical-placement="right"][vertical-nav-type="ex-popover"][vertical-effect="push"]  .scoop-header .scoop-right-header {
-	 margin-right:170px;
+	 margin-right:150px;
 }
 .scoop[theme-layout="vertical"][vertical-placement="right"][vertical-nav-type="ex-popover"][vertical-effect="push"]  .scoop-header.iscollapsed  .scoop-right-header {
 	 margin-right:0px;
-	 margin-left:-170px;
+	 margin-left:-150px;
 }
 .scoop[theme-layout="vertical"][vertical-placement="right"][vertical-nav-type="ex-popover"][vertical-effect="push"] .scoop-content {
-	 margin-right:170px;
-	 margin-left:-170px;
+	 margin-right:150px;
+	 margin-left:-150px;
 } 
 
 	/* push Effect CSS Close Here */
@@ -1785,27 +1785,27 @@ display:none;
 
 
 .scoop[theme-layout="vertical"][vertical-placement="left"][vertical-nav-type="ex-popover"][vertical-effect="shrink"]  .scoop-header .scoop-right-header {
-	margin-left:170px;
+	margin-left:150px;
 }
 .scoop[theme-layout="vertical"][vertical-placement="left"][vertical-nav-type="ex-popover"][vertical-effect="shrink"]  .scoop-header.iscollapsed  .scoop-right-header {
-	margin-left:170px;
+	margin-left:150px;
 }
 .scoop[theme-layout="vertical"][vertical-placement="left"][vertical-nav-type="ex-popover"][vertical-effect="shrink"] .scoop-content {
-	margin-left:170px;
+	margin-left:150px;
 } 
 .scoop[theme-layout="vertical"][vertical-placement="right"][vertical-nav-type="ex-popover"][vertical-effect="shrink"]  .scoop-header .scoop-right-header {
-	 margin-right:170px;
+	 margin-right:150px;
 }
 .scoop[theme-layout="vertical"][vertical-placement="right"][vertical-nav-type="ex-popover"][vertical-effect="shrink"]  .scoop-header.iscollapsed  .scoop-right-header {
-	 margin-right:170px;
+	 margin-right:150px;
 }
 .scoop[theme-layout="vertical"][vertical-placement="right"][vertical-nav-type="ex-popover"][vertical-effect="shrink"] .scoop-content {
-	 margin-right:170px;
+	 margin-right:150px;
 } 
 	/* shrink Effect CSS Close Here */
 	/* overlay Effect CSS Start Here */
 .scoop[theme-layout="vertical"][vertical-placement="left"][vertical-nav-type="ex-popover"][vertical-effect="overlay"]  .scoop-header .scoop-right-header {
-	margin-left:170px;
+	margin-left:150px;
 }
 .scoop[theme-layout="vertical"][vertical-placement="left"][vertical-nav-type="ex-popover"][vertical-effect="overlay"]  .scoop-header.iscollapsed  .scoop-right-header {
 	margin-left:0px;
@@ -1814,7 +1814,7 @@ display:none;
 	margin-left:0px;
 } 
 .scoop[theme-layout="vertical"][vertical-placement="right"][vertical-nav-type="ex-popover"][vertical-effect="overlay"]  .scoop-header .scoop-right-header {
-	 margin-right:170px;
+	 margin-right:150px;
 }
 .scoop[theme-layout="vertical"][vertical-placement="right"][vertical-nav-type="ex-popover"][vertical-effect="overlay"]  .scoop-header.iscollapsed  .scoop-right-header {
 	 margin-right:0px;
@@ -1871,14 +1871,14 @@ display:none;
 
 /* ####### Fullpage Navigation With Effect CSS Start Here ##########*/
 .scoop[theme-layout="vertical"][vertical-placement="left"][vertical-nav-type="fullpage"]  .scoop-header .scoop-left-header {
-	width: 170px;
+	width: 150px;
 }
 .scoop[theme-layout="vertical"][vertical-placement="left"][vertical-nav-type="fullpage"]  .scoop-header .scoop-right-header {
-	margin-left:170px;
+	margin-left:150px;
 } 
 
 .scoop[theme-layout="vertical"][vertical-placement="left"][vertical-nav-type="fullpage"] .scoop-header.iscollapsed .scoop-left-header {
-	width: 170px;
+	width: 150px;
 }
 
 .scoop[theme-layout="vertical"][vertical-nav-type="fullpage"] .scoop-navbar  {
@@ -1891,14 +1891,14 @@ display:none;
 
 
 .scoop[theme-layout="vertical"][vertical-placement="right"][vertical-nav-type="fullpage"]  .scoop-header .scoop-left-header {
-	 width:170px;
+	 width:150px;
 }
  .scoop[theme-layout="vertical"][vertical-placement="right"][vertical-nav-type="fullpage"] .scoop-header .scoop-right-header {
-	 margin-right:170px;
+	 margin-right:150px;
 } 
 
 .scoop[theme-layout="vertical"][vertical-placement="right"][vertical-nav-type="fullpage"]  .scoop-header.iscollapsed .scoop-left-header {
-	 width:170px;
+	 width:150px;
 }
 .scoop[theme-layout="vertical"][vertical-nav-type="fullpage"] .scoop-navbar .scoop-item > li.active > a {
   background: transparent !important;
@@ -2053,7 +2053,7 @@ display:none;
 /* ################## Style Section According Navigation Type CSS Style Close Here ###############################*/
 .scoop[theme-layout="vertical"][scoop-device-type="phone"]  .scoop-header.nocollapsed .scoop-left-header {
 	width: 100% !important;
-	padding-left: 170px;
+	padding-left: 150px;
 }
 .scoop[theme-layout="vertical"][scoop-device-type="phone"][vertical-nav-type="collapsed"]  .scoop-header.nocollapsed .scoop-left-header {
 	padding-left: 45px;
