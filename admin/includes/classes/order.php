@@ -33,7 +33,7 @@ defined( '_VALID_VAM' ) or die( 'Direct Access to this location is not allowed.'
   class order {
     var $info, $totals, $products, $customer, $delivery;
 
-    function order($order_id) {
+    function __construct($order_id) {
       $this->info = array();
       $this->totals = array();
       $this->products = array();
