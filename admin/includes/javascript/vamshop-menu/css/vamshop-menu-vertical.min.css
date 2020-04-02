@@ -4485,8 +4485,9 @@ body[themebg-pattern="pattern9"]{
     box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.2);
 }
 .selector-toggle > a:before {
-    font-family: FontAwesome;
-    content: "\f100";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    content: "\f053";
     font-size: 22px;
     position: relative;
     float: left;
@@ -4499,11 +4500,12 @@ body[themebg-pattern="pattern9"]{
 	-o-transition: 0.5s;
 }
 .vamshop-menu[vertical-placement="right"] .selector-toggle > a:before {
-    content: "\f101";
+    content: "\f054";
 }
 .open .selector-toggle > a:before {
-    font-family: FontAwesome;
-    content: "\f101";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    content: "\f054";
     font-size: 22px;
     position: relative;
     float: left;
@@ -4516,7 +4518,7 @@ body[themebg-pattern="pattern9"]{
 	-o-transition: 0.5s;
 }
 .vamshop-menu[vertical-placement="right"] .open .selector-toggle > a:before {
-    content: "\f100";
+    content: "\f054";
 }
 #styleSelector ul {
     border: 0 none;
