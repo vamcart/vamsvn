@@ -388,7 +388,6 @@ a.button span, span.button button, span.button input, del.button span{
 	display:inline-block;
 	line-height:1;
     letter-spacing:0 !important;
-    font-family:"Arial" !important;
     font-size:13px !important;
     font-style:normal;    
     background-color:transparent;
