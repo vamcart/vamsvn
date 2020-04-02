@@ -13,12 +13,27 @@
 <script type="text/javascript" src="/jscript/jquery/plugins/select2/select2.js"></script>
 
 <script type="text/javascript"><!--
-    $(document).ready(function() {
-        $("select").select2({
-            theme: "bootstrap"
-        });     
-    });    
-   
+// Select2 added
+$(function() {
+
+var customSorter = function(data) {
+     return data.sort(function(a,b){
+         a = a.text.toLowerCase();
+         b = b.text.toLowerCase();
+         if(a > b) {
+             return 1;
+         } else if (a < b) {
+             return -1;
+         }
+         return 0;
+     });
+};
+	
+	  $("select").select2({
+	      theme: "bootstrap",
+	      sorter: customSorter
+	  });        
+}); 
 //--></script>
 
 <script type="text/javascript" src="/jscript/jquery/plugins/maskedinput/jquery.maskedinput.min.js"></script>
