@@ -23,7 +23,7 @@
 defined( '_VALID_VAM' ) or die( 'Direct Access to this location is not allowed.' );
   class image_manipulation {
     var $effects_disabled = false; //DokuMan - 2011-01-06
-    function image_manipulation($resource_file, $max_width, $max_height, $destination_file="", $compression=IMAGE_QUALITY, $transform="") {
+    function __construct($resource_file, $max_width, $max_height, $destination_file="", $compression=IMAGE_QUALITY, $transform="") {
       $this->a = $resource_file;  // image to be thumbnailed
       $this->c = $transform;
       $this->d = $destination_file;  // thumbnail saved to
