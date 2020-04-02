@@ -1,5 +1,5 @@
-$(document).ready(function(){
 // Scroll to top button 
+$(document).ready(function(){
 	$(function () {
 		$.scrollUp({
 	        scrollName: 'scrollup', // Element ID
@@ -20,6 +20,37 @@ $(document).ready(function(){
 	});
 });
 
+//Tooltips
 $(document).ready(function(){
     $('[data-toggle="tooltip"]').tooltip({ trigger: "hover" });
 });
+
+// Select2 added
+$(function() {
+
+var customSorter = function(data) {
+     return data.sort(function(a,b){
+         a = a.text.toLowerCase();
+         b = b.text.toLowerCase();
+         if(a > b) {
+             return 1;
+         } else if (a < b) {
+             return -1;
+         }
+         return 0;
+     });
+};
+	
+	  $("select").select2({
+	      theme: "bootstrap",
+	      sorter: customSorter
+	  });        
+}); 
+
+function popupWindow(url) {
+  window.open(url,'popupWindow','toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=no,resizable=yes,copyhistory=no,width=450,height=120,screenX=150,screenY=150,top=150,left=150')
+}
+
+function popupImageWindow(url) {
+  window.open(url,'popupImageWindow','toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=no,resizable=yes,copyhistory=no,width=100,height=100,screenX=150,screenY=150,top=150,left=150')
+}

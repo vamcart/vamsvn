@@ -21,7 +21,7 @@
 
 									</div>
 								</div>
-								<div id="styleSelector" /*class="open"*/>
+								<div id="styleSelector" class="closed">
 									<div class="selector-toggle">
 										<a href="javascript:void(0)"></a>
 									</div> 
@@ -212,8 +212,6 @@ osCommerce provides no warranty and is redistributable under the <a href="http:/
   </tr>
 </table>
 
-<script src="<?php echo DIR_WS_CATALOG; ?>jscript/jquery/plugins/scrollup/jquery.scrollup.min.js"></script>
-<script src="<?php echo DIR_WS_ADMIN; ?>includes/javascript/vamshop.js"></script>
 <?php
 include(DIR_FS_ADMIN.DIR_WS_INCLUDES.'/javascript/script_footer_local.php');
 include(DIR_FS_ADMIN.DIR_WS_INCLUDES.'/javascript/script_footer.php');
