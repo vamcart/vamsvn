@@ -21,6 +21,7 @@ templates/vamshop1/cache
 templates/vamshop2/cache
 templates/vamshop3/cache
 templates/vamshop4/cache
+templates/vamshop5/cache
 admin/*.log
 admin/backups
 admin/contributions
