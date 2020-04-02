@@ -5,12 +5,17 @@
 !.vscode/extensions.json
 *.code-workspace
 cache
+install
 images
 import
 export
 media
 pub
 tmp
+/admin/includes/configure.php
+/admin/includes/configure.org.php
+/includes/configure.org.php
+/includes/configure.php
 templates/vamshop/cache
 templates/vamshop1/cache
 templates/vamshop2/cache
