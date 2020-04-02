@@ -578,13 +578,15 @@ display:none;
 }
  
 .scoop[theme-layout="vertical"] .scoop-navbar .scoop-item  li.scoop-hasmenu[dropdown-icon="style1"] > a:after {
-  content: "\e606";
-  font-family: simple-line-icons;
+  content: "\f105";
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
 }
 
 .scoop[theme-layout="vertical"] .scoop-navbar .scoop-item  li.scoop-hasmenu.scoop-trigger[dropdown-icon="style1"] > a:after {
-  content: "\e604";
-  font-family: simple-line-icons;
+  content: "\f107";
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
 }
 .scoop[theme-layout="vertical"] .scoop-navbar .scoop-item  li.scoop-hasmenu[dropdown-icon="style2"] > a:after {
   content: "\e095";
@@ -904,14 +906,16 @@ display:none;
   font-size: 12px;
 }
 .scoop .scoop-navbar .scoop-item .scoop-hasmenu[subitem-icon="style5"] .scoop-submenu li > a .scoop-mtext:before  {
-  content: "\f0da";
-  font-family: FontAwesome;
+  content: "\f105";
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
   padding-right: 5px;
   font-size: 12px;
 } 
 .scoop .scoop-navbar .scoop-item .scoop-hasmenu[subitem-icon="style6"] .scoop-submenu li > a .scoop-mtext:before  {
-  content: "\f375";
-  font-family: Ionicons;
+  content: "\f105";
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
   padding-right: 5px;
   font-size: 12px;
 } 
@@ -2274,8 +2278,9 @@ display:none;
   font-family: simple-line-icons;
 }
 .scoop[theme-layout="vertical"][vertical-placement="right"] .scoop-navbar .scoop-item  li.scoop-hasmenu.scoop-trigger[dropdown-icon="style1"] > a:after {
-  content: "\e604";
-  font-family: simple-line-icons;
+  content: "\f107";
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
 }
 .scoop[theme-layout="vertical"][vertical-placement="right"][vertical-nav-type="expanded"][scoop-device-type="desktop"] .scoop-navbar.is-hover .scoop-item > .scoop-hasmenu.scoop-trigger > .scoop-submenu,
 .scoop[theme-layout="vertical"][vertical-placement="right"][vertical-nav-type="expanded"][scoop-device-type="tablet"] .scoop-navbar.is-hover .scoop-item > .scoop-hasmenu.scoop-trigger > .scoop-submenu {
