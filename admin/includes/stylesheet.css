@@ -17,39 +17,42 @@
    --------------------------------------------------------------*/
 
 /* links */
-a:link { font-family: 'Lucida Grande', Helvetica, Arial, Verdana, sans-serif; color: #000000; font-weight: normal; text-decoration: none; }
-a:visited { font-family: 'Lucida Grande', Helvetica, Arial, Verdana, sans-serif; color: #000000; font-weight: normal; text-decoration: none; }
-a:active { font-family: 'Lucida Grande', Helvetica, Arial, Verdana, sans-serif; color: #000000; font-weight: normal; text-decoration: none; }
-a:hover { font-family: 'Lucida Grande', Helvetica, Arial, Verdana, sans-serif; color: #000000; font-weight: normal; text-decoration: underline; }
+a:link { font-family: "Roboto", sans-serif; color: #000000; font-weight: normal; text-decoration: none; }
+a:visited { font-family: "Roboto", sans-serif; color: #000000; font-weight: normal; text-decoration: none; }
+a:active { font-family: "Roboto", sans-serif; color: #000000; font-weight: normal; text-decoration: none; }
+a:hover { font-family: "Roboto", sans-serif; color: #000000; font-weight: normal; text-decoration: underline; }
 
-a.headerLink:link { font-family: 'Lucida Grande', Helvetica, Arial, Verdana, sans-serif; color: #000000; font-weight: bold; text-decoration: none; }
-a.headerLink:visited { font-family: 'Lucida Grande', Helvetica, Arial, Verdana, sans-serif; color: #000000; font-weight: bold; text-decoration: none; }
-a.headerLink:active { font-family: 'Lucida Grande', Helvetica, Arial, Verdana, sans-serif; color: #000000; font-weight: bold; text-decoration: none; }
-a.headerLink:hover { font-family: 'Lucida Grande', Helvetica, Arial, Verdana, sans-serif; color: #000000; font-weight: bold; text-decoration: underline; }
+a.headerLink:link { font-family: "Roboto", sans-serif; color: #000000; font-weight: bold; text-decoration: none; }
+a.headerLink:visited { font-family: "Roboto", sans-serif; color: #000000; font-weight: bold; text-decoration: none; }
+a.headerLink:active { font-family: "Roboto", sans-serif; color: #000000; font-weight: bold; text-decoration: none; }
+a.headerLink:hover { font-family: "Roboto", sans-serif; color: #000000; font-weight: bold; text-decoration: underline; }
 
 a.menuBoxHeadingLink:link { color: #000000; font-weight: bold; text-decoration: none; }
 a.menuBoxHeadingLink:visited { color: #000000; font-weight: bold; text-decoration: none; }
 a.menuBoxHeadingLink:active { color: #000000; font-weight: bold; text-decoration: none; }
 a.menuBoxHeadingLink:hover { color: #000000; font-weight: bold; text-decoration: none; }
 
-a.menuBoxContentLink:link { font-family: 'Lucida Grande', Helvetica, Arial, Verdana, sans-serif; color: #000000; font-weight: normal; text-decoration: none; }
-a.menuBoxContentLink:visited { font-family: 'Lucida Grande', Helvetica, Arial, Verdana, sans-serif; color: #000000; font-weight: normal; text-decoration: none; }
-a.menuBoxContentLink:active { font-family: 'Lucida Grande', Helvetica, Arial, Verdana, sans-serif; color: #000000; font-weight: normal; text-decoration: none; }
-a.menuBoxContentLink:hover { font-family: 'Lucida Grande', Helvetica, Arial, Verdana, sans-serif; color: #cccccc; font-weight: normal; text-decoration: none; }
+a.menuBoxContentLink:link { font-family: "Roboto", sans-serif; color: #000000; font-weight: normal; text-decoration: none; }
+a.menuBoxContentLink:visited { font-family: "Roboto", sans-serif; color: #000000; font-weight: normal; text-decoration: none; }
+a.menuBoxContentLink:active { font-family: "Roboto", sans-serif; color: #000000; font-weight: normal; text-decoration: none; }
+a.menuBoxContentLink:hover { font-family: "Roboto", sans-serif; color: #cccccc; font-weight: normal; text-decoration: none; }
 
-a.splitPageLink:link { font-family: 'Lucida Grande', Helvetica, Arial, Verdana, sans-serif; color: #0000FF; font-weight: normal; text-decoration: none; }
-a.splitPageLink:visited { font-family: 'Lucida Grande', Helvetica, Arial, Verdana, sans-serif; color: #0000FF; font-weight: normal; text-decoration: none; }
-a.splitPageLink:active { font-family: 'Lucida Grande', Helvetica, Arial, Verdana, sans-serif; color: #0000FF; font-weight: normal; text-decoration: none; }
-a.splitPageLink:hover { font-family: 'Lucida Grande', Helvetica, Arial, Verdana, sans-serif; color: #0000FF; font-weight: normal; text-decoration: underline; background-color: #FFFF33; }
+a.splitPageLink:link { font-family: "Roboto", sans-serif; color: #0000FF; font-weight: normal; text-decoration: none; }
+a.splitPageLink:visited { font-family: "Roboto", sans-serif; color: #0000FF; font-weight: normal; text-decoration: none; }
+a.splitPageLink:active { font-family: "Roboto", sans-serif; color: #0000FF; font-weight: normal; text-decoration: none; }
+a.splitPageLink:hover { font-family: "Roboto", sans-serif; color: #0000FF; font-weight: normal; text-decoration: underline; background-color: #FFFF33; }
 
 /* menu box */
-.menuBoxHeading { font-family: 'Lucida Grande', Helvetica, Arial, Verdana, sans-serif; color: #000000; background-color: #f1f1f1; }
-.menuBoxContent { font-family: 'Lucida Grande', Helvetica, Arial, Verdana, sans-serif; color: #616060; }
+.menuBoxHeading { font-family: "Roboto", sans-serif; color: #000000; background-color: #f1f1f1; }
+.menuBoxContent { font-family: "Roboto", sans-serif; color: #616060; }
 .longDescription { visibility: hidden; display: none; }
 
 /* page */
 html,body
    {
+		font-family: "Roboto", sans-serif;
+		font-weight: normal;
+		font-size: 16px;
 		margin: 0;
 		padding: 0;
 		background-color: #fff;
@@ -68,7 +71,7 @@ button:focus, button:active {
     border-bottom: 1px solid;  
  }
 .headerBarContent { 
-font-family: 'Lucida Grande', Helvetica, Arial, Verdana, sans-serif; 
+font-family: "Roboto", sans-serif; 
 
 color: #000000; 
 font-weight: bold; 
@@ -90,7 +93,7 @@ font-color: #000000;
 
 .pageHeading { 
 
-		font-family: 'Lucida Grande', Helvetica, Arial, Verdana, sans-serif; 
+		font-family: "Roboto", sans-serif; 
 		color: #ff7b08;
 		font-weight: bold;
 		font-size: 12pt;
@@ -135,7 +138,7 @@ table.pageHead
 
 .dataTableHeadingContent {
 
-    font-family: 'Lucida Grande', Helvetica, Arial, Verdana, sans-serif; 
+    font-family: "Roboto", sans-serif; 
     font-size: 11pt;
     font-weight: bold;
     text-align: left;
@@ -173,7 +176,7 @@ table.pageHead
  } 
  
 .dataTableContent {
- font-family: 'Lucida Grande', Helvetica, Arial, Verdana, sans-serif;
+ font-family: "Roboto", sans-serif;
  
  color: #000000;
  vertical-align: middle;
@@ -183,7 +186,7 @@ table.pageHead
  }
 
 .dataTableContent-odd {
- font-family: 'Lucida Grande', Helvetica, Arial, Verdana, sans-serif;
+ font-family: "Roboto", sans-serif;
  
  color: #000000;
  vertical-align: middle;
@@ -194,7 +197,7 @@ table.pageHead
  }
 
 .dataTableContent-even {
- font-family: 'Lucida Grande', Helvetica, Arial, Verdana, sans-serif;
+ font-family: "Roboto", sans-serif;
  
  color: #000000;
  vertical-align: middle;
@@ -205,7 +208,7 @@ table.pageHead
  }
 
 .dataTableContentRss {
- font-family: 'Lucida Grande', Helvetica, Arial, Verdana, sans-serif;
+ font-family: "Roboto", sans-serif;
  
  color: #000000;
  vertical-align: middle;
@@ -213,7 +216,7 @@ table.pageHead
  }
  
 td.categories_view_data {
- font-family: 'Lucida Grande', Helvetica, Arial, Verdana, sans-serif; 
+ font-family: "Roboto", sans-serif; 
  
  color: #000000;
  vertical-align: middle;
@@ -223,7 +226,7 @@ td.categories_view_data {
 }
 
 td.categories_view_data_even {
- font-family: 'Lucida Grande', Helvetica, Arial, Verdana, sans-serif; 
+ font-family: "Roboto", sans-serif; 
  
  color: #000000;
  vertical-align: middle;
@@ -232,7 +235,7 @@ td.categories_view_data_even {
 }
 
 td.categories_view_data_odd {
- font-family: 'Lucida Grande', Helvetica, Arial, Verdana, sans-serif; 
+ font-family: "Roboto", sans-serif; 
  
  color: #000000;
  vertical-align: middle;
@@ -241,7 +244,7 @@ td.categories_view_data_odd {
 }
 
 td.view_data_even {
- font-family: 'Lucida Grande', Helvetica, Arial, Verdana, sans-serif; 
+ font-family: "Roboto", sans-serif; 
  
  color: #000000;
  vertical-align: middle;
@@ -251,7 +254,7 @@ td.view_data_even {
 }
 
 td.view_data_odd {
- font-family: 'Lucida Grande', Helvetica, Arial, Verdana, sans-serif; 
+ font-family: "Roboto", sans-serif; 
  
  color: #000000;
  vertical-align: middle;
@@ -261,7 +264,7 @@ td.view_data_odd {
 }
 
 .dataTableContent_products {
- font-family: 'Lucida Grande', Helvetica, Arial, Verdana, sans-serif; 
+ font-family: "Roboto", sans-serif; 
  
  color: #000000; 
  vertical-align: middle;
@@ -271,7 +274,7 @@ td.view_data_odd {
 
  
 .dataTableContentRow {
-font-family: 'Lucida Grande', Helvetica, Arial, Verdana, sans-serif; 
+font-family: "Roboto", sans-serif; 
 
 color: #000000; 
 vertical-align: middle;
@@ -281,12 +284,12 @@ border-color: #cccccc;
 
 /* info box */
 .infoBoxHeading {
-    font-family: 'Lucida Grande', Helvetica, Arial, Verdana, sans-serif; 
+    font-family: "Roboto", sans-serif; 
     font-size: 11pt;
     font-weight: bold;
 }
 .infoBoxContent { 
-    font-family: 'Lucida Grande', Helvetica, Arial, Verdana, sans-serif;
+    font-family: "Roboto", sans-serif;
     font-size: 11pt;
 }
 
@@ -314,7 +317,7 @@ border-color: #cccccc;
 }
 
 .contentTable {
- 	font-family: 'Lucida Grande', Helvetica, Arial, Verdana, sans-serif;
+ 	font-family: "Roboto", sans-serif;
  	font-size: 11pt;
 		margin: 0 auto;
 		padding: .5em;
@@ -510,13 +513,13 @@ div.stock_warn {
 
 /* message box */
 
-.messageBox { font-family: 'Lucida Grande', Helvetica, Arial, Verdana, sans-serif; }
-.messageStackError, .messageStackWarning { font-family: 'Lucida Grande', Helvetica, Arial, Verdana, sans-serif; background-color: #ffb3b5; }
-.messageStackSuccess { font-family: 'Lucida Grande', Helvetica, Arial, Verdana, sans-serif; background-color: #99ff00; }
+.messageBox { font-family: "Roboto", sans-serif; }
+.messageStackError, .messageStackWarning { font-family: "Roboto", sans-serif; background-color: #ffb3b5; }
+.messageStackSuccess { font-family: "Roboto", sans-serif; background-color: #99ff00; }
 
 /* forms */
 CHECKBOX, input[type=text], RADIO, SELECT, TEXTAREA, FILE { 
-font-family: 'Lucida Grande', Helvetica, Arial, Verdana, sans-serif;
+font-family: "Roboto", sans-serif;
 	font-size: 1em;
 	border: 1px solid;
 	border-color: #ccc;
@@ -545,7 +548,7 @@ input:focus, .sffocus, .sffocus {
 
 /* account */
 .formArea { background-color: #f1f1f1; border-color: #cccccc; border-style: solid; border-width: 1px; }
-.formAreaTitle { font-family: 'Lucida Grande', Helvetica, Arial, Verdana, sans-serif; font-weight: bold; }
+.formAreaTitle { font-family: "Roboto", sans-serif; font-weight: bold; }
 
 /* attributes */
 .attributes-odd { background-color: #f4f7fd; }
@@ -554,15 +557,15 @@ input:focus, .sffocus, .sffocus {
 /* miscellaneous */
 .specialPrice { color: #ff0000; }
 .oldPrice { text-decoration: line-through; }
-.fieldRequired { font-family: 'Lucida Grande', Helvetica, Arial, Verdana, sans-serif; color: #ff0000; }
-.smallText { font-family: 'Lucida Grande', Helvetica, Arial, Verdana, sans-serif; }
-.main { font-family: 'Lucida Grande', Helvetica, Arial, Verdana, sans-serif; text-align: left; vertical-align: middle; }
-.errorText { font-family: 'Lucida Grande', Helvetica, Arial, Verdana, sans-serif; color: #ff0000; }
+.fieldRequired { font-family: "Roboto", sans-serif; color: #ff0000; }
+.smallText { font-family: "Roboto", sans-serif; }
+.main { font-family: "Roboto", sans-serif; text-align: left; vertical-align: middle; }
+.errorText { font-family: "Roboto", sans-serif; color: #ff0000; }
 
 /* Сборка VaM */
 
 div.buttonadmin {
-  font-family: 'Lucida Grande', Helvetica, Arial, Verdana, sans-serif;
+  font-family: "Roboto", sans-serif;
   font-size: 11px;
   font-weight: bold;
   background-color: #67748B;
@@ -571,7 +574,7 @@ div.buttonadmin {
 }
 
 TD.buttonadmin {
-  font-family: 'Lucida Grande', Helvetica, Arial, Verdana, sans-serif;
+  font-family: "Roboto", sans-serif;
   font-size: 11px;
   font-weight: bold;
   background-color: #67748B;
@@ -585,7 +588,7 @@ TR.buttonadmin {
 }
 
 A.shippingInfo { 
-  font-family: 'Lucida Grande', Helvetica, Arial, Verdana, sans-serif;
+  font-family: "Roboto", sans-serif;
   font-size: 11px;
   font-weight: bold;
   background-color: #67748B;
@@ -595,7 +598,7 @@ A.shippingInfo {
 }
 
 A.shippingInfo:hover {
-  font-family: 'Lucida Grande', Helvetica, Arial, Verdana, sans-serif;
+  font-family: "Roboto", sans-serif;
   font-size: 11px;
   font-weight: bold;
   background-color: #67748B;
@@ -605,7 +608,7 @@ A.shippingInfo:hover {
 }
 
 A.shippingInfo:visited {
-  font-family: 'Lucida Grande', Helvetica, Arial, Verdana, sans-serif;
+  font-family: "Roboto", sans-serif;
   font-size: 11px;
   font-weight: bold;
   background-color: #67748B;
@@ -620,7 +623,7 @@ TD.button1 {
 }
 
 TD.navigation {
-  font-family: 'Lucida Grande', Helvetica, Arial, Verdana, sans-serif;
+  font-family: "Roboto", sans-serif;
   font-size: 11px;
   font-weight: bold;
   background-color: #990000;
@@ -629,7 +632,7 @@ TD.navigation {
 }
 
 TD.navigationTop {
-  font-family: 'Lucida Grande', Helvetica, Arial, Verdana, sans-serif;
+  font-family: "Roboto", sans-serif;
   font-size: 11px;
   font-weight: bold;
   background-color: #000000;
@@ -638,7 +641,7 @@ TD.navigationTop {
 }
 
 TD.contentBoxHeading1, p.contentBoxHeading1 {
-  font-family: 'Lucida Grande', Helvetica, Arial, Verdana, sans-serif;
+  font-family: "Roboto", sans-serif;
   font-size: 16px;
   font-weight: bold;
   color: #990000;
@@ -646,7 +649,7 @@ TD.contentBoxHeading1, p.contentBoxHeading1 {
 
 A.contentBoxHeading1 {
   color: #0000FF;
-  font-family: 'Lucida Grande', Helvetica, Arial, Verdana, sans-serif;
+  font-family: "Roboto", sans-serif;
   font-size: 16px;
   font-weight: bold;
   color: #990000;
@@ -655,7 +658,7 @@ A.contentBoxHeading1 {
 
 a:hover.contentBoxHeading1 {
   color: #0000FF;
-  font-family: 'Lucida Grande', Helvetica, Arial, Verdana, sans-serif;
+  font-family: "Roboto", sans-serif;
   font-size: 16px;
   font-weight: bold;
   color: #990000;
@@ -672,7 +675,7 @@ TR.headerNavigation {
 }
 
 TD.headerNavigation {
-	font-family: 'Lucida Grande', Helvetica, Arial, Verdana, sans-serif;
+	font-family: "Roboto", sans-serif;
 	font-size: 11pt;
 	color: #000000;
 	font-weight : bold;
@@ -690,7 +693,7 @@ A.headerNavigation:hover {
 }
 
 h1.contentBoxHeading {
-		font-family: 'Lucida Grande', Helvetica, Arial, Verdana, sans-serif; 
+		font-family: "Roboto", sans-serif; 
 		color: #ff7b08;
 		font-weight: bold;
 		font-size: 12pt;
@@ -699,7 +702,7 @@ h1.contentBoxHeading {
 		}
 		
 h1.contentBoxHeading a, h1.contentBoxHeading a:hover, h1.contentBoxHeading a:visited {
-		font-family: 'Lucida Grande', Helvetica, Arial, Verdana, sans-serif; 
+		font-family: "Roboto", sans-serif; 
 		color: #ff7b08;
 		font-weight: bold;
 		font-size: 12pt;
@@ -855,7 +858,7 @@ div#tabs
    
 div#map
 	{
-		font-family: 'Lucida Grande', Helvetica, Arial, Verdana, sans-serif; 
+		font-family: "Roboto", sans-serif; 
 		
 		color: #000000; 
 		font-weight: normal; 
@@ -886,7 +889,7 @@ div#map #error
 width: 200px;
 position: absolute;
 z-index: 1001;
-		font-family: 'Lucida Grande', Helvetica, Arial, Verdana, sans-serif; 
+		font-family: "Roboto", sans-serif; 
 		font-size: 10pt; 
 border: 1px solid #1593db;
 background-color: #e5f5fe;
