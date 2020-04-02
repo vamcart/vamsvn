@@ -4,8 +4,8 @@ $( document ).ready(function() {
 		themelayout: 'vertical', 
 		verticalMenuplacement: 'left',		// value should be left/right
 		verticalMenulayout: 'wide',   		// value should be wide/box/widebox
-		MenuTrigger: 'hover', 
-		SubMenuTrigger: 'hover',
+		MenuTrigger: 'click', 
+		SubMenuTrigger: 'click',
 		activeMenuClass: 'active',
 		ThemeBackgroundPattern: 'pattern6',
 		HeaderBackground: 'theme2' ,
@@ -34,9 +34,9 @@ $( document ).ready(function() {
 			phone : "offcanvas",		// value should be offcanvas/collapsed/expanded/compact/fullpage/ex-popover/sub-expanded
 		},
 		onToggleVerticalMenu : {
-			desktop : "collapsed",		// value should be offcanvas/collapsed/expanded/compact/fullpage/ex-popover/sub-expanded
-			tablet : "collapsed",		// value should be offcanvas/collapsed/expanded/compact/fullpage/ex-popover/sub-expanded
-			phone : "collapsed",			// value should be offcanvas/collapsed/expanded/compact/fullpage/ex-popover/sub-expanded
+			desktop : "expanded",		// value should be offcanvas/collapsed/expanded/compact/fullpage/ex-popover/sub-expanded
+			tablet : "expanded",		// value should be offcanvas/collapsed/expanded/compact/fullpage/ex-popover/sub-expanded
+			phone : "expanded",			// value should be offcanvas/collapsed/expanded/compact/fullpage/ex-popover/sub-expanded
 		},
 
 	});

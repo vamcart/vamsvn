@@ -96,7 +96,7 @@
 										</a>
 									</li>
 									
-                <li class="scoop-hasmenu"><a href="<?php echo vam_href_link(FILENAME_ORDERS, '', 'NONSSL'); ?>" ><span class="scoop-micon"><i class="fas fa-shopping-cart"></i></span><span class="scoop-mtext"><?php echo BOX_HEADING_ORDERS; ?></span>
+                <li class="scoop-hasmenu"><a href="javascript:void(0)" ><span class="scoop-micon"><i class="fas fa-shopping-cart"></i></span><span class="scoop-mtext"><?php echo BOX_HEADING_ORDERS; ?></span>
 											<span class="scoop-mcaret"></span>
 										</a>
 										<ul class="scoop-submenu">
@@ -161,7 +161,7 @@
 
 										</ul>
 									</li>
-                <li class="scoop-hasmenu"><a href="<?php echo vam_href_link(FILENAME_CATEGORIES, '', 'NONSSL'); ?>"><span class="scoop-micon"><i class="fas fa-book"></i></span><span class="scoop-mtext"><?php echo BOX_HEADING_CATALOG; ?></span>
+                <li class="scoop-hasmenu"><a href="javascript:void(0)"><span class="scoop-micon"><i class="fas fa-book"></i></span><span class="scoop-mtext"><?php echo BOX_HEADING_CATALOG; ?></span>
 											<span class="scoop-mcaret"></span>
 										</a>
 										<ul class="scoop-submenu">  
@@ -199,7 +199,7 @@
                                 										</ul>
                                 									</li>
 
-                <li class="scoop-hasmenu"><a href="<?php echo vam_href_link(FILENAME_CUSTOMERS, '', 'NONSSL'); ?>" ><span class="scoop-micon"><i class="fas fa-users"></i></span><span class="scoop-mtext"><?php echo BOX_HEADING_CUSTOMERS; ?></span>
+                <li class="scoop-hasmenu"><a href="javascript:void(0)" ><span class="scoop-micon"><i class="fas fa-users"></i></span><span class="scoop-mtext"><?php echo BOX_HEADING_CUSTOMERS; ?></span>
 											<span class="scoop-mcaret"></span>
 										</a>
 										<ul class="scoop-submenu">
@@ -216,7 +216,7 @@
 ?>
                                 										</ul>
 									</li>
-                <li class="scoop-hasmenu"><a href="<?php echo vam_href_link(FILENAME_MODULES, 'set=payment', 'NONSSL'); ?>" ><span class="scoop-micon"><i class="fas fa-plug"></i></span><span class="scoop-mtext"><?php echo BOX_HEADING_MODULES; ?></span>
+                <li class="scoop-hasmenu"><a href="javascript:void(0)" ><span class="scoop-micon"><i class="fas fa-plug"></i></span><span class="scoop-mtext"><?php echo BOX_HEADING_MODULES; ?></span>
 											<span class="scoop-mcaret"></span>
 										</a>
 										<ul class="scoop-submenu">
@@ -515,10 +515,10 @@
 										</ul>
 									</li> 									
 
-                <li class="scoop-hasmenu"><a href="http://vamshop.ru" target="_blank" ><span class="scoop-micon"><i class="fas fa-question"></i></span><span class="scoop-mtext"><?php echo BOX_HEADING_HELP; ?></span>
+                <li class="scoop-hasmenu"><a href="javascript:void(0)"><span class="scoop-micon"><i class="fas fa-question"></i></span><span class="scoop-mtext"><?php echo BOX_HEADING_HELP; ?></span>
 											<span class="scoop-mcaret"></span>
 										</a>
-										<ul class="scoop-submenu">
+										<ul class="scoop-submenu">  
 <?php
 
   if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['languages'] == '1')) echo '<li class=" "><a href="http://vamshop.ru" target="_blank"><span class="scoop-micon"><i class="fas fa-chevron-right"></i></span><span class="scoop-mtext">' . BOX_SUPPORT_SITE  . '</span><span class="scoop-mcaret"></span></a></li>' . "\n";
@@ -543,7 +543,7 @@
 										</a> 
 									</li>
 									<li class=" ">
-										<a href="<?php echo vam_href_link(FILENAME_LOGOFF, '', 'NONSSL'); ?>">
+										<a href="<?php echo vam_href_link(FILENAME_LOGOUT, '', 'NONSSL'); ?>">
 											<span class="scoop-micon"><i class="fas fa-power-off"></i></span>
 											<span class="scoop-mtext"><?php echo BOX_HEADING_LOGOFF; ?></span>
 											<span class="scoop-mcaret"></span>
