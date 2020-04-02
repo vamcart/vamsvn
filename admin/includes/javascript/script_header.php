@@ -5,10 +5,10 @@
 <script type="text/javascript" src="includes/css/bootstrap4/popper.min.js"></script>
 <script type="text/javascript" src="includes/css/bootstrap4/bootstrap.min.js"></script>
 
-<script src="includes/javascript/scoop/js/scoop.min.js"></script>
-<script src="includes/javascript/scoop/js/scoop-settings.js"></script> 	 
-<script src="includes/javascript/scoop/js/lib/jquery.mCustomScrollbar.concat.min.js"></script> 
-<script src="includes/javascript/scoop/js/lib/jquery.mousewheel.min.js"></script> 
+<script src="includes/javascript/vamshop-menu/js/vamshop-menu.min.js"></script>
+<script src="includes/javascript/vamshop-menu/js/vamshop-menu-settings.js"></script> 	 
+<script src="includes/javascript/vamshop-menu/js/lib/jquery.mCustomScrollbar.concat.min.js"></script> 
+<script src="includes/javascript/vamshop-menu/js/lib/jquery.mousewheel.min.js"></script> 
 
 <script type="text/javascript" src="/jscript/jquery/plugins/select2/select2.js"></script>
 
