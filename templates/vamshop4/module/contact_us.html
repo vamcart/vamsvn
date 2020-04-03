@@ -48,7 +48,6 @@ $(function($){
 	<p><label>{#text_message#}</label> {$INPUT_TEXT}</p>
 </fieldset>
 <!-- /форма -->
-</div>
 <div class="form-anti-bot" style="clear:both;">
 	<strong>Current <span style="display:none;">month</span> <span style="display:inline;">ye@r</span> <span style="display:none;">day</span></strong> <span class="required">*</span>
 	<input type="hidden" name="anti-bot-a" id="anti-bot-a" value="{$smarty.now|date_format:"%Y"}" />
@@ -69,6 +68,7 @@ $(function($){
 </div>
 {$FORM_END}
 {else}
+<!-- Скругленные углы -->
 {#text_success#}
 <div>
 {$BUTTON_CONTINUE}
