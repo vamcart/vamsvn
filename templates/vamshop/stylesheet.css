@@ -3413,4 +3413,7 @@ div.CheckoutError
 		height: auto;
 	}
 
+.list-group-item {
+  display: block;
+}
 /*]]>*/

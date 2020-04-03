@@ -3310,3 +3310,7 @@ dd {
 .py-1 {
   padding-top: .5em;
 }
+
+.list-group-item {
+  display: block;
+}
