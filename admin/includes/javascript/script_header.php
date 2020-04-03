@@ -13,6 +13,12 @@
 
 <script src="includes/javascript/jquery/plugins/ui/datepicker-<?php echo $_SESSION['language_code']; ?>.js"></script>
 
+<script src="includes/javascript/vamshop-menu/js/lib/jquery.mCustomScrollbar.concat.min.js"></script> 
+<script src="includes/javascript/vamshop-menu/js/lib/jquery.mousewheel.min.js"></script> 
+
+<script src="includes/javascript/vamshop-menu/js/vamshop-menu.min.js"></script>
+<script src="includes/javascript/vamshop-menu/js/vamshop-menu-settings.js"></script> 	 
+
 <?php
   if ( ($_GET['action'] == 'new') || ($_GET['action'] == 'edit') ) {
 ?>

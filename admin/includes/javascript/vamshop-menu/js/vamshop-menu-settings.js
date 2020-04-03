@@ -1,4 +1,4 @@
-//$( document ).ready(function() {
+$( document ).ready(function() {
 	$( "#vamshop-menu" ).menu({
 		themelayout: 'vertical', 
 		verticalMenuplacement: 'left',		// value should be left/right
@@ -260,4 +260,4 @@
 /*  collapseable Left Header Change Function Close here*/
  
   
-//});
+});
