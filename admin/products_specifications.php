@@ -1976,10 +1976,10 @@
                 </table></td>
               </tr>
               <tr>
-                <td><?php echo vam_draw_separator('pixel_trans.gif', '100%', '10'); ?></td>
+                <td colspan="6"><?php echo vam_draw_separator('pixel_trans.gif', '100%', '10'); ?></td>
               </tr>
               <tr>
-                <td colspan="3"><table border="0" width="100%" cellspacing="0" cellpadding="2">
+                <td colspan="6"><table border="0" width="100%" cellspacing="0" cellpadding="2">
                   <tr>
                     <td class="main"><b><?php echo TEXT_SPECS_LEGEND; ?></b></td>
                   </tr>
