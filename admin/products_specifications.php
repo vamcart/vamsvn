@@ -1665,30 +1665,27 @@
     <table border="0" width="100%" cellspacing="0" cellpadding="2">
       <tr>
         <td><table border="0" width="100%" cellspacing="0" cellpadding="0">
-          <tr>
-				<h1 class="contentBoxHeading"><?php echo HEADING_TITLE_GROUPS; ?></h1>    
-            <td align="right"><table border="0" width="100%" cellspacing="0" cellpadding="0">
-              <tr>
-                <td class="smallText" align="right">
+        <tr>
+         <td class="pageHeading" align="left">
+         <h1 class="contentBoxHeading"><?php echo HEADING_TITLE_GROUPS; ?></h1>   
+         </td>
+         <td>
+<?php
+    echo vam_draw_form('goto', FILENAME_PRODUCTS_SPECIFICATIONS, '', 'get');
+    echo HEADING_TITLE_GOTO . ' ' . vam_draw_pull_down_menu ('sgpath', vam_get_group_names(), $specs_group_id, 'onChange="this.form.submit();"');
+    echo vam_draw_hidden_field(vam_session_name(), vam_session_id()) . '</form>';
+?>
+         </td>
+         <td align="right">
 <?php
     echo vam_draw_form ('search', FILENAME_PRODUCTS_SPECIFICATIONS, '', 'get');
     echo HEADING_TITLE_SEARCH_GROUPS . ' ' . vam_draw_input_field ('search');
     echo vam_draw_hidden_field(vam_session_name(), vam_session_id()) . '</form>';
 ?>
-                </td>
-              </tr>
-              <tr>
-                <td class="smallText" align="right">
-<?php
-    echo vam_draw_form('goto', FILENAME_PRODUCTS_SPECIFICATIONS, '', 'get');
-    echo HEADING_TITLE_GOTO . ' ' . vam_draw_pull_down_menu ('sgid', vam_get_group_names(), $specs_group_id, 'onsubmit="this.form.submit();"');
-    echo vam_draw_hidden_field(vam_session_name(), vam_session_id()) . '</form>';
-?>
-                </td>
-              </tr>
-            </table></td>
-          </tr>
-        </table></td>
+         </td>
+       </tr>  
+        </table>
+        </td>
       </tr>
       <tr>
         <td><table border="0" width="100%" cellspacing="0" cellpadding="0">
@@ -1819,32 +1816,29 @@
     <table border="0" width="100%" cellspacing="0" cellpadding="2">
       <tr>
         <td><table border="0" width="100%" cellspacing="0" cellpadding="0">
-          <tr>
-				<h1 class="contentBoxHeading"><?php echo HEADING_TITLE_SPECIFICATIONS . $group_name['specification_group_name']; ?></h1>    
-            <td align="right"><table border="0" width="100%" cellspacing="0" cellpadding="0">
-              <tr>
-                <td class="smallText" align="right">
+        <tr>
+         <td class="pageHeading" align="left">
+         <h1 class="contentBoxHeading"><?php echo HEADING_TITLE_SPECIFICATIONS . $group_name['specification_group_name']; ?></h1>     
+         </td>
+         <td>
+<?php
+    echo vam_draw_form ('goto', FILENAME_PRODUCTS_SPECIFICATIONS, '', 'get');
+    echo vam_draw_hidden_field ('sgpath', $specs_group_path);
+    echo HEADING_TITLE_GOTO . ' ' . vam_draw_pull_down_menu ('spid', vam_get_specification_names ($specs_group_path, $_SESSION['languages_id']), $specification_id, 'onChange="this.form.submit();"');
+    echo vam_draw_hidden_field(vam_session_name(), vam_session_id()) . '</form>';
+?>
+         </td>
+         <td align="right">
 <?php
     echo vam_draw_form ('search', FILENAME_PRODUCTS_SPECIFICATIONS, '', 'get');
     echo vam_draw_hidden_field ('sgpath', $specs_group_path);
     echo HEADING_TITLE_SEARCH_SPECIFICATIONS . ' ' . vam_draw_input_field('search');
     echo vam_draw_hidden_field(vam_session_name(), vam_session_id()) . '</form>';
 ?>
-                </td>
-              </tr>
-              <tr>
-                <td class="smallText" align="right">
-<?php
-    echo vam_draw_form ('goto', FILENAME_PRODUCTS_SPECIFICATIONS, '', 'get');
-    echo vam_draw_hidden_field ('sgpath', $specs_group_path);
-    echo HEADING_TITLE_GOTO . ' ' . vam_draw_pull_down_menu ('spid', vam_get_specification_names ($specs_group_path, $_SESSION['languages_id']), $specification_id, 'onClick="this.form.submit();"');
-    echo vam_draw_hidden_field(vam_session_name(), vam_session_id()) . '</form>';
-?>
-                </td>
-              </tr>
-            </table></td>
-          </tr>
-        </table></td>
+         </td>
+       </tr>  
+        </table>
+        </td>
       </tr>
       <tr>
         <td><table border="0" width="100%" cellspacing="0" cellpadding="0">
@@ -2014,13 +2008,23 @@
       $specification_name = vam_db_fetch_array ($specification_name_query);
 ?>
     <table border="0" width="100%" cellspacing="0" cellpadding="2">
+
       <tr>
         <td><table border="0" width="100%" cellspacing="0" cellpadding="0">
-          <tr>
-				<h1 class="contentBoxHeading"><?php echo HEADING_TITLE_FILTERS . $specification_name['specification_name']; ?></h1>    
-            <td align="right"><table border="0" width="100%" cellspacing="0" cellpadding="0">
-              <tr>
-                <td class="smallText" align="right">
+        <tr>
+         <td class="pageHeading" align="left">
+         <h1 class="contentBoxHeading"><?php echo HEADING_TITLE_FILTERS . $specification_name['specification_name']; ?></h1>    
+         </td>
+         <td>
+<?php
+    echo vam_draw_form ('goto', FILENAME_PRODUCTS_SPECIFICATIONS, '', 'get');
+    echo vam_draw_hidden_field ('sgpath', $specs_group_path);
+    echo vam_draw_hidden_field ('spath', $specs_path);
+    echo HEADING_TITLE_GOTO . ' ' . vam_draw_pull_down_menu ('fid', vam_get_specification_filters ($specs_path, $_SESSION['languages_id'] = 1), $filter_id, 'onChange="this.form.submit();"');
+    echo vam_draw_hidden_field(vam_session_name(), vam_session_id()) . '</form>';
+?>         
+         </td>
+         <td align="right">
 <?php
     echo vam_draw_form ('search', FILENAME_PRODUCTS_SPECIFICATIONS, '', 'get');
     echo vam_draw_hidden_field ('sgpath', $specs_group_path);
@@ -2028,22 +2032,10 @@
     echo HEADING_TITLE_SEARCH_FILTERS . ' ' . vam_draw_input_field ('search');
     echo vam_draw_hidden_field(vam_session_name(), vam_session_id()) . '</form>';
 ?>
-                </td>
-              </tr>
-              <tr>
-                <td class="smallText" align="right">
-<?php
-    echo vam_draw_form ('goto', FILENAME_PRODUCTS_SPECIFICATIONS, '', 'get');
-    echo vam_draw_hidden_field ('sgpath', $specs_group_path);
-    echo vam_draw_hidden_field ('spath', $specs_path);
-    echo HEADING_TITLE_GOTO . ' ' . vam_draw_pull_down_menu ('fid', vam_get_specification_filters ($specs_path, $_SESSION['languages_id'] = 1), $filter_id, 'onClick="this.form.submit();"');
-    echo vam_draw_hidden_field(vam_session_name(), vam_session_id()) . '</form>';
-?>
-                </td>
-              </tr>
-            </table></td>
-          </tr>
-        </table></td>
+         </td>
+       </tr>  
+        </table>
+        </td>
       </tr>
       <tr>
         <td><table border="0" width="100%" cellspacing="0" cellpadding="0">
