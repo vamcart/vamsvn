@@ -449,7 +449,7 @@ $url = 'http://blog.vamshop.ru/feed/';
 $feed = new SimplePie();
 
 // Set which feed to process.
- $feed->set_cache_location('../cache');
+ $feed->set_cache_location(DIR_FS_CATALOG . DIR_FS_CACHE);
  
 // Set which feed to process.
  $feed->set_feed_url($url);
@@ -461,23 +461,23 @@ $feed->handle_content_type();
  
 ?>
  
-   <ul>
+	<div class="rssFeed">
+	<ul>
  
 	<?php
 	/*
 	Here, we'll loop through all of the items in the feed, and $item represents the current item in the loop.
 	*/
-	foreach ($feed->get_items(0,5) as $item):
-	?>
- 
-		<li class="item">
-			<h3><strong><a href="<?php echo $item->get_permalink(); ?>" target="_blank"><?php echo $item->get_title(); ?></a></strong></h3>
-			<p><?php echo $item->get_description(); ?></p>
-		</li>
- 
-	<?php endforeach; ?>
-	
+			foreach ($feed->get_items(0,5) as $item) {
+				echo '<li class="rssRow">';
+				echo '<h3><strong><a href="' . $item->get_permalink() .'" target="_blank">' . $item->get_title() .'</a></strong></h3>';
+				echo '<div>' . ((function_exists(mb_substr)) ? mb_substr(strip_tags($item->get_description($str)),0,256) : substr(strip_tags($item->get_description($str)),0,256)) . '</div>';
+				echo '</li>';
+		 
+			}
+	?>	
 	</ul>
+	</div>
 
 			  
 			  
