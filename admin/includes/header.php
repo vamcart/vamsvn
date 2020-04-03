@@ -71,7 +71,7 @@
 										<a href="<?php echo vam_href_link(FILENAME_CATEGORIES, '', 'NONSSL'); ?>" data-toggle="tooltip" data-placement="bottom" title="<?php echo BOX_CATEGORIES; ?>"><i class="fa fa-book" aria-hidden="true"></i>
 										</a>
 									</li>
-<!--									<li class="icons">
+									<li class="icons">
 										<a href="<?php echo HTTP_SERVER . DIR_WS_CATALOG; ?>" data-toggle="tooltip" data-placement="bottom" title="<?php echo TEXT_HEADER_SHOP; ?>"><i class="fa fa-store" aria-hidden="true"></i>
 										</a>
 									</li>
@@ -79,7 +79,7 @@
 										<a href="https://vamshop.ru" data-toggle="tooltip" data-placement="bottom" title="<?php echo TEXT_HEADER_SUPPORT; ?>"><i class="fas fa-question-circle" aria-hidden="true"></i>
 										</a>
 									</li>
--->								</ul>
+								</ul>
 							</div>
 							<div class="vamshop-menu-rr-header">
 								<ul>
