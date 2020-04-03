@@ -45,7 +45,7 @@
 <!DOCTYPE html>
 <html <?php echo HTML_PARAMS; ?>>
 <head>
-<meta name="viewport" content="initial-scale=1.0, width=device-width" />
+<!--<meta name="viewport" content="initial-scale=1.0, width=device-width" />-->
 <title><?php echo $page_title; ?></title>
 <script language="javascript"><!--
 var i=0;

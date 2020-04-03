@@ -102,7 +102,7 @@ if ($_GET['delete']) {
 <!DOCTYPE html>
 <html <?php echo HTML_PARAMS; ?>>
 <head>
-<meta name="viewport" content="initial-scale=1.0, width=device-width" />
+<!--<meta name="viewport" content="initial-scale=1.0, width=device-width" />-->
 <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $_SESSION['language_charset']; ?>"> 
 <title><?php echo TITLE; ?></title>
 <!-- Header JS, CSS -->
