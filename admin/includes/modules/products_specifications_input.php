@@ -61,6 +61,7 @@
             $products_specification = '';
             if ($count_products_specs > 0) {
               if ($enter_values == 'multi' || $enter_values == 'checkbox' || $enter_values == 'multiimage') {
+              	$products_specification = array();
                 // Build an array of selected fields to pass to vam_get_values_menu
                 while ($products_data = vam_db_fetch_array($products_query)) {
                   $products_specification[] = array ('id' => $products_data['specification'],
