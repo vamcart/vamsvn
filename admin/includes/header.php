@@ -157,6 +157,17 @@
   if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['ship2pay'] == '1')) echo '<li class=" "><a href="' . vam_href_link(FILENAME_SHIP2PAY) . '"><span class="vamshop-menu-micon"><i class="fas fa-chevron-right"></i></span><span class="vamshop-menu-mtext">' . BOX_MODULES_SHIP2PAY . '</span><span class="vamshop-menu-mcaret"></span></a></li>' . "\n";
   if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['recover_cart_sales'] == '1')) echo '<li class=" "><a href="' . vam_href_link(FILENAME_RECOVER_CART_SALES) . '"><span class="vamshop-menu-micon"><i class="fas fa-chevron-right"></i></span><span class="vamshop-menu-mtext">' . BOX_TOOLS_RECOVER_CART . '</span><span class="vamshop-menu-mcaret"></span></a></li>' . "\n";
 
+ if (($_SESSION['customers_status']['customers_status_id'] == '0') && 
+ ($admin_access['specials'] == '0') && 
+ ($admin_access['category_specials'] == '0') && 
+ ($admin_access['manufacturer_specials'] == '0') && 
+ ($admin_access['featured'] == '0') && 
+ ($admin_access['modules'] == '0') && 
+ ($admin_access['module_newsletter'] == '0') && 
+ ($admin_access['ship2pay'] == '0') && 
+ ($admin_access['recover_cart_sales'] == '0')
+ ) echo '<li class=" "><a href=""><span class="vamshop-menu-micon"><i class="fas fa-chevron-right"></i></span><span class="vamshop-menu-mtext">' . TEXT_ACCESS_FORBIDDEN . '</span><span class="vamshop-menu-mcaret"></span></a></li>'; 
+
 ?>
 
 										</ul>
@@ -475,6 +486,10 @@
 //  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['configuration'] == '1')) echo '<li class=" "><a href="' . vam_href_link(FILENAME_CONFIGURATION, 'gID=21', 'NONSSL') . '"><span class="vamshop-menu-micon"><i class="fas fa-chevron-right"></i></span><span class="vamshop-menu-mtext">' .  BOX_CONFIGURATION_21  . '</span><span class="vamshop-menu-mcaret"></span></a></li>' . "\n";
   if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['configuration'] == '1')) echo '<li class=" "><a href="' . vam_href_link(FILENAME_CONFIGURATION, 'gID=22', 'NONSSL') . '"><span class="vamshop-menu-micon"><i class="fas fa-chevron-right"></i></span><span class="vamshop-menu-mtext">' .  BOX_CONFIGURATION_22  . '</span><span class="vamshop-menu-mcaret"></span></a></li>' . "\n";
   if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['configuration'] == '1')) echo '<li class=" "><a href="' . vam_href_link(FILENAME_CONFIGURATION, 'gID=24', 'NONSSL') . '"><span class="vamshop-menu-micon"><i class="fas fa-chevron-right"></i></span><span class="vamshop-menu-mtext">' .  BOX_CONFIGURATION_24  . '</span><span class="vamshop-menu-mcaret"></span></a></li>' . "\n";
+
+ if (($_SESSION['customers_status']['customers_status_id'] == '0') && 
+ ($admin_access['configuration'] == '0')
+ ) echo '<li class=" "><a href="">' . TEXT_ACCESS_FORBIDDEN . '</span><span class="vamshop-menu-mcaret"></span></a></li>'; 
 ?>  
 												</ul>
 											</li>
@@ -521,15 +536,11 @@
 										<ul class="vamshop-menu-submenu">  
 <?php
 
-  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['languages'] == '1')) echo '<li class=" "><a href="http://vamshop.ru" target="_blank"><span class="vamshop-menu-micon"><i class="fas fa-chevron-right"></i></span><span class="vamshop-menu-mtext">' . BOX_SUPPORT_SITE  . '</span><span class="vamshop-menu-mcaret"></span></a></li>' . "\n";
-  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['languages'] == '1')) echo '<li class=" "><a href="http://vamshop.ru/contact_us.html" target="_blank"><span class="vamshop-menu-micon"><i class="fas fa-chevron-right"></i></span><span class="vamshop-menu-mtext">' . HEADER_TITLE_ASK_A_QUESTION  . '</span><span class="vamshop-menu-mcaret"></span></a></li>' . "\n";
-  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['languages'] == '1')) echo '<li class=" "><a href="http://manual.vamshop.ru/" target="_blank"><span class="vamshop-menu-micon"><i class="fas fa-chevron-right"></i></span><span class="vamshop-menu-mtext">' . HEADER_TITLE_DOCS  . '</span><span class="vamshop-menu-mcaret"></span></a></li>' . "\n";
-  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['languages'] == '1')) echo '<li class=" "><a href="http://forum.vamshop.ru/forum/26-faq/" target="_blank"><span class="vamshop-menu-micon"><i class="fas fa-chevron-right"></i></span><span class="vamshop-menu-mtext">' . BOX_SUPPORT_FAQ  . '</span><span class="vamshop-menu-mcaret"></span></a></li>' . "\n";
-  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['languages'] == '1')) echo '<li class=" "><a href="http://forum.vamshop.ru/" target="_blank"><span class="vamshop-menu-micon"><i class="fas fa-chevron-right"></i></span><span class="vamshop-menu-mtext">' . BOX_SUPPORT_FORUM  . '</span><span class="vamshop-menu-mcaret"></span></a></li>' . "\n";
-
- if (($_SESSION['customers_status']['customers_status_id'] == '0') && 
- ($admin_access['languages'] == '0')
- ) echo '<li class=" "><a href=""><span class="vamshop-menu-micon"><i class="fas fa-chevron-right"></i></span><span class="vamshop-menu-mtext">' . TEXT_ACCESS_FORBIDDEN . '</span><span class="vamshop-menu-mcaret"></span></a></li>'; 
+  echo '<li class=" "><a href="https://vamshop.ru" target="_blank"><span class="vamshop-menu-micon"><i class="fas fa-chevron-right"></i></span><span class="vamshop-menu-mtext">' . BOX_SUPPORT_SITE  . '</span><span class="vamshop-menu-mcaret"></span></a></li>' . "\n";
+  echo '<li class=" "><a href="https://vamshop.ru/contact_us.html" target="_blank"><span class="vamshop-menu-micon"><i class="fas fa-chevron-right"></i></span><span class="vamshop-menu-mtext">' . HEADER_TITLE_ASK_A_QUESTION  . '</span><span class="vamshop-menu-mcaret"></span></a></li>' . "\n";
+  echo '<li class=" "><a href="http://manual.vamshop.ru/" target="_blank"><span class="vamshop-menu-micon"><i class="fas fa-chevron-right"></i></span><span class="vamshop-menu-mtext">' . HEADER_TITLE_DOCS  . '</span><span class="vamshop-menu-mcaret"></span></a></li>' . "\n";
+  echo '<li class=" "><a href="https://forum.vamshop.ru/forum/26-faq/" target="_blank"><span class="vamshop-menu-micon"><i class="fas fa-chevron-right"></i></span><span class="vamshop-menu-mtext">' . BOX_SUPPORT_FAQ  . '</span><span class="vamshop-menu-mcaret"></span></a></li>' . "\n";
+  echo '<li class=" "><a href="https://forum.vamshop.ru/" target="_blank"><span class="vamshop-menu-micon"><i class="fas fa-chevron-right"></i></span><span class="vamshop-menu-mtext">' . BOX_SUPPORT_FORUM  . '</span><span class="vamshop-menu-mcaret"></span></a></li>' . "\n";
 
 ?>
 										</ul>
@@ -543,7 +554,7 @@
 										</a> 
 									</li>
 									<li class=" ">
-										<a href="<?php echo vam_href_link(FILENAME_LOGOUT, '', 'NONSSL'); ?>">
+										<a href="../logoff.php">
 											<span class="vamshop-menu-micon"><i class="fas fa-power-off"></i></span>
 											<span class="vamshop-menu-mtext"><?php echo BOX_HEADING_LOGOFF; ?></span>
 											<span class="vamshop-menu-mcaret"></span>
