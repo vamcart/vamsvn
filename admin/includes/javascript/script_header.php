@@ -13,9 +13,9 @@
 <script type="text/javascript" src="/jscript/jquery/plugins/select2/select2.js"></script>
 
 <script type="text/javascript" src="/jscript/jquery/plugins/maskedinput/jquery.maskedinput.min.js"></script>
-<script type="text/javascript" src="/jscript/modified.js"></script>
 
 <script language="javascript" src="includes/javascript/categories.js"></script>
+<script type="text/javascript" src="includes/javascript/modified.js"></script>
 <script language="javascript" src="includes/general.js"></script>
 
 <?php
