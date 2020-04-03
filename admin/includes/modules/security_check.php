@@ -71,13 +71,7 @@ if ($file_warning != '' or $folder_warning != '' or $installed_shipping == '' or
 ?>
 
 
-<table style="border: 1px solid; border-color: #ff0000;" bgcolor="#FDAC00" border="0" width="100%" cellspacing="0" cellpadding="0">
-<tr>
-<td>
-<div class"main"> 
-        <table width="100%" border="0">
-          <tr>
-            <td class="main">
+<div class="notification">
               <?php
 
 	if ($file_warning != '') {
@@ -109,14 +103,8 @@ if ($file_warning != '' or $folder_warning != '' or $installed_shipping == '' or
 		echo '<br>'.TEXT_SHIPPING_ERROR;
 	}
 ?>
-<br /><br />
-            </td>
-          </tr>
-        </table>
-      </div>
-</td>
-</tr>
-</table>
+<br />
+</div>
 <?php
 
 }
