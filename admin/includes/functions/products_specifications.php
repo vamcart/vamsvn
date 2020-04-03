@@ -254,7 +254,8 @@
 
     for ($i=0, $n=sizeof($values); $i<$n; $i++) {
       $field .= '<option value="' . vam_output_string ($values[$i]['id']) . '"';
-      if (in_array ($values[$i]['id'], (array) $default) ) {
+      //if (in_array ($values[$i]['id'], (array) $default) ) {
+      if (in_array_column($values[$i]['id'], "id", $default) ) {
         $field .= ' SELECTED';
       }
 
@@ -266,6 +267,18 @@
 
     $field .= '<br clear=all>';
     return $field;
+  }
+
+  function in_array_column($text, $column, $array)
+  {
+    if (!empty($array) && is_array($array))
+    {
+      for ($i=0; $i < count($array); $i++)
+      {
+        if ($array[$i][$column]==$text || strcmp($array[$i][$column],$text)==0) return true;
+      }
+    }
+    return false;
   }
 
 ////
@@ -361,7 +374,7 @@
         break;
             
       case 'multi':
-        $box_text .= vam_draw_multi_pull_down_menu ($specification_name . '[]', $values_select_array, $specification_value, 'multiple="' . $specification_name . 'f"');
+        $box_text .= vam_draw_multi_pull_down_menu ($specification_name . '[]', $values_select_array, $specification_value, 'data-placeholder="'.PULL_DOWN_DEFAULT.'" multiple="' . $specification_name . 'f"');
         break;
             
       case 'checkbox':
