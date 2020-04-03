@@ -2136,11 +2136,21 @@
     <table border="0" width="100%" cellspacing="0" cellpadding="2">
       <tr>
         <td><table border="0" width="100%" cellspacing="0" cellpadding="0">
-          <tr>
-				<h1 class="contentBoxHeading"><?php echo HEADING_TITLE_VALUES . $specification_name['specification_name']; ?></h1>    
-            <td align="right"><table border="0" width="100%" cellspacing="0" cellpadding="0">
-              <tr>
-                <td class="smallText" align="right">
+        <tr>
+         <td class="pageHeading" align="left">
+         <h1 class="contentBoxHeading"><?php echo HEADING_TITLE_VALUES . $specification_name['specification_name']; ?></h1>    
+         </td>
+         <td>
+<?php
+    echo vam_draw_form ('goto', FILENAME_PRODUCTS_SPECIFICATIONS, '', 'get');
+    echo vam_draw_hidden_field ('sgpath', $specs_group_path);
+    echo vam_draw_hidden_field ('spath', $specs_path);
+    echo vam_draw_hidden_field ('value', '1');
+    echo HEADING_TITLE_GOTO . ' ' . vam_draw_pull_down_menu ('vid', vam_get_specification_values ($specs_path, $_SESSION['languages_id']), $value_id, 'onChange="this.form.submit();"');
+    echo vam_draw_hidden_field(vam_session_name(), vam_session_id()) . '</form>';
+?>
+         </td>
+         <td align="right">
 <?php
     echo vam_draw_form ('search', FILENAME_PRODUCTS_SPECIFICATIONS, '', 'get');
     echo vam_draw_hidden_field ('sgpath', $specs_group_path);
@@ -2149,22 +2159,8 @@
     echo HEADING_TITLE_SEARCH_VALUES . ' ' . vam_draw_input_field ('search');
     echo vam_draw_hidden_field(vam_session_name(), vam_session_id()) . '</form>';
 ?>
-                </td>
-              </tr>
-              <tr>
-                <td class="smallText" align="right">
-<?php
-    echo vam_draw_form ('goto', FILENAME_PRODUCTS_SPECIFICATIONS, '', 'get');
-    echo vam_draw_hidden_field ('sgpath', $specs_group_path);
-    echo vam_draw_hidden_field ('spath', $specs_path);
-    echo vam_draw_hidden_field ('value', '1');
-    echo HEADING_TITLE_GOTO . ' ' . vam_draw_pull_down_menu ('vid', vam_get_specification_values ($specs_path, $_SESSION['languages_id']), $value_id, 'onClick="this.form.submit();"');
-    echo vam_draw_hidden_field(vam_session_name(), vam_session_id()) . '</form>';
-?>
-                </td>
-              </tr>
-            </table></td>
-          </tr>
+         </td>
+       </tr>  
         </table></td>
       </tr>
       <tr>

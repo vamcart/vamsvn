@@ -346,8 +346,6 @@ $data_date[] = $report->info[$i]['text'];
     
         <?php include(DIR_WS_MODULES.FILENAME_SECURITY_CHECK); ?>
 
-      <br />
-
         <table border="0" width="100%" cellspacing="4" cellpadding="6">
           <tr>
             <td>
@@ -368,8 +366,7 @@ $data_date[] = $report->info[$i]['text'];
 ?>
 
       <div class="row">
-      <div class="col-xl-5">
-
+      <div class="col-xl-12">
 			<div class="card-deck">
 			<div class="card">
 			  <div class="card-header">
@@ -377,6 +374,14 @@ $data_date[] = $report->info[$i]['text'];
 			  </div>
 			  <div class="card-body text-center">
 			    <h4><?php echo (($total_orders['count'] > 0) ? $total_orders['count'] : 0) . (($orders_pending['count'] > 0) ? ' <sup><span title="'.TEXT_SUMMARY_PENDING_ORDERS.': '.$orders_pending['count'].'" class="badge badge-pill badge-danger round"> <a class="text-white" href="' . vam_href_link(FILENAME_ORDERS, 'status='.DEFAULT_ORDERS_STATUS_ID, 'NONSSL') . '">'.$orders_pending['count'].'</a> </span></sup>' : '') ?></h4>
+			  </div>
+			</div>
+			<div class="card">
+			  <div class="card-header">
+			    <h3 class="card-title"><?php echo vam_image(DIR_WS_IMAGES . 'icons/tabs/calculator.png', '', '16', '16'); ?>&nbsp;<?php echo TEXT_SUMMARY_AVERAGE_ORDERS; ?></h3>
+			  </div>
+			  <div class="card-body text-center">
+			    <h4><?php echo ($total_sales['value'] > 0) ? number_format($total_sales['value']/$total_orders['count'], 0) : 0; ?></h4>
 			  </div>
 			</div>
 			<div class="card">
@@ -396,6 +401,11 @@ $data_date[] = $report->info[$i]['text'];
 			  </div>
 			</div>
 			</div>
+      </div>
+      </div>
+
+      <div class="row">
+      <div class="col-xl-5">
 
 		<div id="tabs">
 			<ul>
