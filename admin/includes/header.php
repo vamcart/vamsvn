@@ -42,39 +42,50 @@
 						<div class="vamshop-menu-right-header"> 
 							<div class="sidebar_toggle"><a href="javascript:void(0)" data-toggle="tooltip" data-placement="bottom" title="<?php echo TEXT_NAVIGATION; ?>"><i class="fa fa-bars"></i></a></div> 
 							<div class="vamshop-menu-rl-header"> 
+<?php
+
+  $total_orders_query = vam_db_query("select count(*) as count from " . TABLE_ORDERS);
+  $total_orders = vam_db_fetch_array($total_orders_query);
+
+  $orders_pending_query = vam_db_query("select count(*) as count from " . TABLE_ORDERS . " where orders_status = '" . DEFAULT_ORDERS_STATUS_ID . "'");
+  $orders_pending = vam_db_fetch_array($orders_pending_query);
+
+  $total_sales_query = vam_db_query("SELECT sum(ot.value) as value, avg(ot.value) as avg, count(ot.value) as count FROM " . TABLE_ORDERS_TOTAL . " ot, " . TABLE_ORDERS . " o WHERE ot.orders_id = o.orders_id and ot.class = 'ot_subtotal'");
+  $total_sales = vam_db_fetch_array($total_sales_query);
+
+  $customers_query = vam_db_query("select count(*) as count from " . TABLE_CUSTOMERS);
+  $customers = vam_db_fetch_array($customers_query);
+
+?>
 								<ul>
 									<li class="icons">
-										<a href="javascript:void(0)"><i class="fa fa-envelope" aria-hidden="true"></i>
-											<span class="vamshop-menu-badge badge-success">2</span>
+										<a href="<?php echo vam_href_link(FILENAME_ORDERS, 'status='.DEFAULT_ORDERS_STATUS_ID, 'NONSSL'); ?>" data-toggle="tooltip" data-placement="bottom" title="<?php echo (($orders_pending['count'] > 0) ? TEXT_SUMMARY_PENDING_ORDERS.': '.$orders_pending['count'] : BOX_ORDERS) ?>"><i class="fa fa-shopping-cart" aria-hidden="true"></i>
+											<?php echo (($orders_pending['count'] > 0) ? ' <span class="vamshop-menu-badge badge-danger">'.$orders_pending['count'].'</span>' : '') ?>
 										</a>
 									</li>
 									<li class="icons">
-										<a href="javascript:void(0)"><i class="fa fa-bell" aria-hidden="true"></i>
-											<span class="vamshop-menu-badge badge-danger">8</span>
+										<a href="<?php echo vam_href_link(FILENAME_CUSTOMERS, '', 'NONSSL'); ?>" data-toggle="tooltip" data-placement="bottom" title="<?php echo BOX_CUSTOMERS; ?>"><i class="fas fa-users" aria-hidden="true"></i>
 										</a>
 									</li>
 									<li class="icons">
-										<a href="javascript:void(0)"><i class="fa fa-tasks" aria-hidden="true"></i>
-											<span class="vamshop-menu-badge badge-warning">8</span>
-										</a>
-									</li> 
-									<li class="icons hide-small-device">
-										<a href="javascript:void(0)">
-											<i class="fa fa-rss" aria-hidden="true"></i>
+										<a href="<?php echo vam_href_link(FILENAME_CATEGORIES, '', 'NONSSL'); ?>" data-toggle="tooltip" data-placement="bottom" title="<?php echo BOX_CATEGORIES; ?>"><i class="fa fa-book" aria-hidden="true"></i>
 										</a>
 									</li>
-								</ul>
+<!--									<li class="icons">
+										<a href="<?php echo HTTP_SERVER . DIR_WS_CATALOG; ?>" data-toggle="tooltip" data-placement="bottom" title="<?php echo TEXT_HEADER_SHOP; ?>"><i class="fa fa-store" aria-hidden="true"></i>
+										</a>
+									</li>
+									<li class="icons">
+										<a href="https://vamshop.ru" data-toggle="tooltip" data-placement="bottom" title="<?php echo TEXT_HEADER_SUPPORT; ?>"><i class="fas fa-question-circle" aria-hidden="true"></i>
+										</a>
+									</li>
+-->								</ul>
 							</div>
 							<div class="vamshop-menu-rr-header">
 								<ul>
 									<li class="icons">
-										<a href="javascript:void(0)">
-											<i class="fa fa-user" aria-hidden="true"></i>
-										</a>
-									</li>
-									<li class="icons">
-										<a href="javascript:void(0)">
-											<i class="fa fa-sign-out" aria-hidden="true"></i>
+										<a href="../logoff.php" data-toggle="tooltip" data-placement="bottom" title="<?php echo BOX_HEADING_LOGOFF; ?>">
+											<i class="fas fa-power-off" aria-hidden="true"></i>
 										</a>
 									</li> 
 								</ul>

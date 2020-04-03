@@ -651,4 +651,10 @@ define('TEXT_NOT_FOUND', 'Не найдено.');
 
 define('TEXT_NAVIGATION', 'Навигация');
 
+define('TEXT_SUMMARY_VAMSHOP_NEWS','Новости VamShop');
+define('TEXT_SUMMARY_TOTAL_ORDERS','Всего заказов');
+define('TEXT_SUMMARY_TOTAL_SALES','Сумма продаж');
+define('TEXT_SUMMARY_TOTAL_CUSTOMERS','Всего клиентов');
+define('TEXT_SUMMARY_PENDING_ORDERS','Новых заказов');
+
 ?>
