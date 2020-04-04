@@ -787,16 +787,6 @@ require(DIR_WS_FUNCTIONS . 'customers_extra_fields.php');
 
 define('TAX_DECIMAL_PLACES','2');
 
-// starts canonical tag function
-function CanonicalUrl() {
-$domain = substr((($request_type == 'SSL') ? HTTPS_SERVER : HTTP_SERVER), 0); // gets the base URL minus the trailing slash
-$string = $_SERVER['REQUEST_URI']; // gets the url
-$search = '/\&sid.[^\&\?]*|\?sid.[^\&\?]*|\?sort.[^\&\?]*|\&sort.[^\&\?]*|\?direction.[^\&\?]*|\&direction.[^\&\?]*|\?on_page.[^\&\?]*|\&on_page.[^\&\?]*|\?page.[^\&\?]*|\&page.[^\&\?]*|\?page==1|\&page==1|\&cat.[^\&\?]*|\&filter_id.[^\&\?]*|\&manufacturers_id.[^\&\?]*|\&params.[^\&\?]*|\?q.[^\&\?]*|\&q.[^\&\?]*|\?price_min.[^\&\?]*|\&price_min.[^\&\?]*|\?price_max.[^\&\?]*|\&price_max.[^\&\?]*/'; // searches for the session id in the url
-$replace = ''; // replaces with nothing i.e. deletes
-echo $domain . preg_replace( $search, $replace, $string ); // merges the variables and echoing them
-}
-// eof - canonical tag
-
 $url = vam_href_link(basename($PHP_SELF), vam_get_all_get_params(array ('page', 'cPath', 'info', 'x', 'y')));
 
 if ($cID && PRODUCT_LIST_RECURSIVE == 'false') {
