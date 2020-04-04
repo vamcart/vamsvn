@@ -197,9 +197,46 @@ $listing_sql = '';
   // print $listing_sql . "<br>\n";
 
   // Add Filter to Breadcrumbs if selected
-  if (SPECIFICATIONS_FILTER_BREADCRUMB == 'True') {
+if (SPECIFICATIONS_FILTER_BREADCRUMB == 'True') {
     foreach ($specs_array_breadcrumb as $crumb) {
-      $breadcrumb->add ($crumb['specification_name'] . ' : ' . $crumb['value'] . ' [X]', vam_href_link (FILENAME_PRODUCTS_FILTERS, vam_get_all_get_params (array ('f' . $crumb['specifications_id']) ) ) );
+
+
+        $get_key = 'f' . $crumb['specifications_id'];
+
+        //if( $_GET['show_crumb'] == '1') echo is_array($_GET[$get_key])."\r\n";
+
+        //if( $_GET['show_crumb'] == '1') {
+
+            if (!is_array($_GET[$get_key])) {
+
+                $exclude_array = array('f' . $crumb['specifications_id']);
+                $breadcrumb->add('<span>'. $crumb['specification_name'] . ' : ' . $crumb['value'] . ' <span class="circle text-danger cart_delete"><i class="fas fa-times"></i></span></span>', vam_href_link(FILENAME_PRODUCTS_FILTERS, vam_get_all_get_params($exclude_array)));
+
+            } else {
+
+                foreach ($_GET[$get_key] as $new_key => $new_value) {
+
+                    if($crumb['value'] == $new_value) {
+                        $exclude_array = array('f' . $crumb['specifications_id'] . '[' . $new_key . ']');
+                        $breadcrumb->add('<span>'. $crumb['specification_name'] . ' : ' . $crumb['value'] . ' <span class="circle text-danger cart_delete"><i class="fas fa-times"></i></span></span>', vam_href_link(FILENAME_PRODUCTS_FILTERS, vam_get_all_get_params_filters_breadhumps($exclude_array)));
+                    }
+                }
+
+            }
+
+
+        //}else{
+
+            //$exclude_array = array('f' . $crumb['specifications_id']);
+            //$breadcrumb->add($crumb['specification_name'] . ' : ' . $crumb['value'] . ' <span class="close">[X]</span>', vam_href_link(FILENAME_PRODUCTS_FILTERS, vam_get_all_get_params($exclude_array)));
+
+        //}
+
+        //if( $_GET['show_crumb'] == '1') echo 'f' . $crumb['specifications_id'] . " \r\n\ ";
+        
+        //if( $_GET['show_crumb'] == '1' && $crumb['value'] == 'Comisa') var_dump(vam_get_all_get_params_filters_breadhumps (array ($exclude_array), true ));
+
+      //$breadcrumb->add ($crumb['specification_name'] . ' : ' . $crumb['value'] . ' <span class="close">[X]</span>', FILENAME_PRODUCTS_FILTERS.'?'.$params[0];
     }
   }
  

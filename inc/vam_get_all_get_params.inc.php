@@ -44,4 +44,60 @@
     return $get_url;
   }
   
+  
+function vam_get_all_get_params_filters_breadhumps($exclude_array = '', $dbg=false) {
+  global $InputFilter;
+
+  if (!is_array($exclude_array))
+    $exclude_array = array ();
+  $get_url = '';
+
+  //if($dbg) var_dump($exclude_array);
+
+  if (is_array($_GET) && (sizeof($_GET) > 0)) {
+    reset($_GET);
+
+    foreach ($_GET as $key => $value) {
+
+
+      if($dbg) echo $key."\r\n";
+
+      if (is_array($value)) {
+
+              foreach ($value as $new_key => $new_value) {
+
+
+                //if($dbg && is_array($value)) echo ($key).' '.var_dump($exclude_array)."\r\n";
+
+                if (!in_array($key. '[' . $new_key . ']', $exclude_array)) {
+                  $get_url .= $key . '[' . $new_key . ']' . '=' . rawurlencode(stripslashes((string)$new_value)) . '&';
+
+                //if($dbg && is_array($value)) echo $get_url."\r\n";
+
+
+                }
+
+                //if($dbg && is_array($value)) echo ($key).' '.var_dump($exclude_array)."\r\n";
+
+                //if($dbg && is_array($value)) echo $new_value."\r\n";
+
+              }
+
+        //if($dbg && is_array($value)) echo $get_url."\r\n";
+
+      }elseif ((strlen($value) > 0) && ($key != vam_session_name()) && ($key != 'error') && (!in_array($key, $exclude_array)) && ($key != 'x') && ($key != 'y')) {
+
+        $get_url .= $key . '=' . rawurlencode(stripslashes($value)) . '&';
+
+      }
+
+    }
+  }
+
+  if($dbg) echo $get_url."\r\n";
+
+  return $get_url;
+}
+  
+  
  ?>
