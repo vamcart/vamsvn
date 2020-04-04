@@ -62,6 +62,8 @@ define('AM_AJAX_OPTION', 'Option:');
 define('AM_AJAX_VALUE', 'Value:');
 define('AM_AJAX_PREFIX', 'Prefix:');
 define('AM_AJAX_PRICE', 'Price:');
+define('AM_AJAX_WEIGHT_PREFIX', 'Weight Prefix:');
+define('AM_AJAX_WEIGHT', 'Weight:');
 define('AM_AJAX_SORT', 'Sort:');
 define('AM_AJAX_ADDS_NEW_OPTION_VALUE', 'Adds a new option value to the list');
 define('AM_AJAX_ADDS_ATTRIBUTE_TO_PRODUCT', 'Adds the attribute to the current product');
