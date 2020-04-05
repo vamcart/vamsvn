@@ -541,7 +541,7 @@ if (isset ($_GET['social_login']) && ($_GET['social_login'] == 'fb')) {
 	
 	$firstname = html_entity_decode($userInfo['first_name']);
 	$secondname = ''; 
-	$lastnam﻿e = html_entity_decode($userInfo['last_name']);
+	$lastname = html_entity_decode($userInfo['last_name']);
 	$fullname = html_entity_decode($userInfo['name']);
 	$email_address = html_entity_decode($_SESSION['fb_user_email']);
 	$password = vam_RandomString(8);
@@ -757,7 +757,7 @@ if (isset ($_GET['social_login']) && ($_GET['social_login'] == 'google')) {
 	require_once (DIR_FS_INC.'vam_create_password.inc.php');
 	require_once (DIR_FS_INC.'vam_random_charcode.inc.php');
 	
-	$firstnam﻿e = html_entity_decode($userProfile['given_name']);
+	$firstname = html_entity_decode($userProfile['given_name']);
 	$secondname = ''; 
 	$lastname = html_entity_decode($userProfile['family_name']);
 	$fullname = html_entity_decode($userProfile['given_name']." ".$userProfile['family_name']);
