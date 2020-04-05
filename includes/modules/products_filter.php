@@ -85,7 +85,7 @@
         $first = false;
         
         if (isset ($_GET[$var]) && $_GET[$var] != '') {
-        $box_text .=  '<b>' . $specs_array['specification_name'] . '</b> <a href="'.vam_href_link (FILENAME_PRODUCTS_FILTERS, vam_get_all_get_params (array ('f' . $specs_array['specifications_id']) ) ).'"><span class="close-box">[X]</span></a><br />';
+        $box_text .=  '<b>' . $specs_array['specification_name'] . '</b> <a href="'.vam_href_link (FILENAME_PRODUCTS_FILTERS, vam_get_all_get_params (array ('f' . $specs_array['specifications_id']) ) ).'"><span class="filter-close circle text-danger cart_delete"><i class="fas fa-times"></i></span></a><br />';
         } else {
         $box_text .=  '<b>' . $specs_array['specification_name'] . '</b><br />';
         }

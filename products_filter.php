@@ -210,7 +210,7 @@ if (SPECIFICATIONS_FILTER_BREADCRUMB == 'True') {
             if (!is_array($_GET[$get_key])) {
 
                 $exclude_array = array('f' . $crumb['specifications_id']);
-                $breadcrumb->add('<span>'. $crumb['specification_name'] . ' : ' . $crumb['value'] . ' <span class="circle text-danger cart_delete"><i class="fas fa-times"></i></span></span>', vam_href_link(FILENAME_PRODUCTS_FILTERS, vam_get_all_get_params($exclude_array)));
+                $breadcrumb->add('<span>'. $crumb['specification_name'] . ' : ' . $crumb['value'] . ' <span class="filter-close circle text-danger cart_delete"><i class="fas fa-times"></i></span></span>', vam_href_link(FILENAME_PRODUCTS_FILTERS, vam_get_all_get_params($exclude_array)));
 
             } else {
 
@@ -218,7 +218,7 @@ if (SPECIFICATIONS_FILTER_BREADCRUMB == 'True') {
 
                     if($crumb['value'] == $new_value) {
                         $exclude_array = array('f' . $crumb['specifications_id'] . '[' . $new_key . ']');
-                        $breadcrumb->add('<span>'. $crumb['specification_name'] . ' : ' . $crumb['value'] . ' <span class="circle text-danger cart_delete"><i class="fas fa-times"></i></span></span>', vam_href_link(FILENAME_PRODUCTS_FILTERS, vam_get_all_get_params_filters_breadhumps($exclude_array)));
+                        $breadcrumb->add('<span>'. $crumb['specification_name'] . ' : ' . $crumb['value'] . ' <span class="filter-close circle text-danger cart_delete"><i class="fas fa-times"></i></span></span>', vam_href_link(FILENAME_PRODUCTS_FILTERS, vam_get_all_get_params_filters_breadhumps($exclude_array)));
                     }
                 }
 
@@ -228,7 +228,7 @@ if (SPECIFICATIONS_FILTER_BREADCRUMB == 'True') {
         //}else{
 
             //$exclude_array = array('f' . $crumb['specifications_id']);
-            //$breadcrumb->add($crumb['specification_name'] . ' : ' . $crumb['value'] . ' <span class="close">[X]</span>', vam_href_link(FILENAME_PRODUCTS_FILTERS, vam_get_all_get_params($exclude_array)));
+            //$breadcrumb->add($crumb['specification_name'] . ' : ' . $crumb['value'] . ' <span class="filter-close circle text-danger cart_delete"><i class="fas fa-times"></i></span>', vam_href_link(FILENAME_PRODUCTS_FILTERS, vam_get_all_get_params($exclude_array)));
 
         //}
 
@@ -236,7 +236,7 @@ if (SPECIFICATIONS_FILTER_BREADCRUMB == 'True') {
         
         //if( $_GET['show_crumb'] == '1' && $crumb['value'] == 'Comisa') var_dump(vam_get_all_get_params_filters_breadhumps (array ($exclude_array), true ));
 
-      //$breadcrumb->add ($crumb['specification_name'] . ' : ' . $crumb['value'] . ' <span class="close">[X]</span>', FILENAME_PRODUCTS_FILTERS.'?'.$params[0];
+      //$breadcrumb->add ($crumb['specification_name'] . ' : ' . $crumb['value'] . ' <span class="filter-close circle text-danger cart_delete"><i class="fas fa-times"></i></span>', FILENAME_PRODUCTS_FILTERS.'?'.$params[0];
     }
   }
  
