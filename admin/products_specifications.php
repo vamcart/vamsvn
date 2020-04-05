@@ -1708,7 +1708,7 @@
     $search = '';
     if (isset($_GET['search'])) {
       $search = preg_replace ("(\r\n|\n|\r)", '', $_GET['search']);  // Remove CR &/ LF
-      $search = preg_replace ("/[^a-zA-Z0-9_]/i", '', $search); // strip anything we don't want
+      //$search = preg_replace ("/[^a-zA-Z0-9_]/i", '', $search); // strip anything we don't want
       $search = "where specification_group_name like '%" . $search . "%'";
     }
     $categories_query_raw = "select specification_group_id, 
@@ -1862,8 +1862,8 @@
 
     if (isset($_GET['search']) ) {
       $search = preg_replace ("(\r\n|\n|\r)", '', $_GET['search']);  // Remove CR &/ LF
-      $search = preg_replace ("/[^a-zA-Z0-9_]/i", '', $search); // strip anything we don't want
-      $search = " sd.and specification_name like '%" . $search . "%' ";
+      //$search = preg_replace ("/[^a-zA-Z0-9_]/i", '', $search); // strip anything we don't want
+      $search = " and sd.specification_name like '%" . $search . "%' ";
     }
     
     $specifications_query_raw = "select sp.specifications_id,
@@ -2052,7 +2052,7 @@
     $search = '';
     if (isset($_GET['search']) ) {
       $search = preg_replace ("(\r\n|\n|\r)", '', $_GET['search']);  // Remove CR &/ LF
-      $search = preg_replace ("/[^a-zA-Z0-9_]/i", '', $search); // strip anything we don't want
+      //$search = preg_replace ("/[^a-zA-Z0-9_]/i", '', $search); // strip anything we don't want
       $search = " and sfd.filter like '%" . $search . "%' ";
     }
     
@@ -2178,7 +2178,7 @@
     $search = '';
     if (isset($_GET['search']) ) {
       $search = preg_replace ("(\r\n|\n|\r)", '', $_GET['search']);  // Remove CR &/ LF
-      $search = preg_replace ("/[^a-zA-Z0-9_]/i", '', $search); // strip anything we don't want
+      //$search = preg_replace ("/[^a-zA-Z0-9_]/i", '', $search); // strip anything we don't want
       $search = "and svd.specification_value like '%" . $search . "%' ";
     }
     
