@@ -12,6 +12,8 @@ if (!defined('WC1C_XML_CHARSET')) define('WC1C_XML_CHARSET', 'UTF-8');
 if (!defined('WC1C_DISABLE_VARIATIONS')) define('WC1C_DISABLE_VARIATIONS', false);
 if (!defined('WC1C_OUTOFSTOCK_STATUS')) define('WC1C_OUTOFSTOCK_STATUS', 'outofstock');
 define('WC1C_TIMESTAMP', time());
+define('WC1C_PLUGIN_DIR', DIR_FS_CATALOG."vamshop-1c/");
+define('WC1C_DATA_DIR', DIR_FS_CATALOG."vamshop-1c/uploads/");
 
 function wc1c_query_vars($query_vars) {
   $query_vars[] = 'wc1c';
@@ -195,7 +197,7 @@ function wc1c_mode_checkauth() {
 	$password = vam_db_prepare_input($_SERVER['PHP_AUTH_PW']);
 
 	// Check if email exists
-	$check_customer_query = vam_db_query("select customers_id, customers_status, customers_vat_id, customers_firstname,customers_lastname, customers_gender, customers_password, customers_email_address, login_tries, login_time, customers_default_address_id from ".TABLE_CUSTOMERS." where customers_status = 0 and customers_email_address = '".vam_db_input($email_address)."' and account_type = '0'");
+	$check_customer_query = vam_db_query("select customers_id, customers_status, customers_vat_id, customers_firstname,customers_lastname, customers_gender, customers_password, customers_email_address, login_tries, login_time, customers_default_address_id from ".TABLE_CUSTOMERS." where customers_email_address = '".vam_db_input($email_address)."' and customers_status = '0'");
 	if (!vam_db_num_rows($check_customer_query)) {
 		wc1c_error("No permissions");
 	} else {
@@ -226,13 +228,16 @@ function wc1c_check_auth() {
   if (preg_match("/ Development Server$/", $_SERVER['SERVER_SOFTWARE'])) return;
 
   if (!empty($_COOKIE['wc1c-auth'])) {
-    $user = wp_validate_auth_cookie($_COOKIE['wc1c-auth'], 'auth');
-    if (!$user) wc1c_error("Invalid cookie");
+	// Check if email exists
+	$check_customer_query = vam_db_query("select customers_id, customers_vat_id, customers_firstname,customers_lastname, customers_gender, customers_password, customers_email_address, login_tries, login_time, customers_default_address_id from ".TABLE_CUSTOMERS." where customers_id = '".vam_db_input($_COOKIE['wc1c-auth'])."' and customers_status = '0'");
+	if (!vam_db_num_rows($check_customer_query)) {
+		wc1c_error("Invalid cookie");
+	} else {
+	}  
+  } else {
+    wc1c_error("Not logged in");
   }
-  else {
-    $user = wp_get_current_user();
-    if (!$user->ID) wc1c_error("Not logged in");
-  }
+	
 
   wc1c_check_permissions($user);
 }
@@ -518,7 +523,7 @@ function wc1c_exchange() {
     wc1c_mode_checkauth();
   }
 
-  wc1c_check_auth();
+  //wc1c_check_auth();
 
   define('WC1C_DEBUG', true);
 
@@ -551,6 +556,19 @@ function wc1c_exchange() {
     $_GET = array_merge($_GET, $query);
   }
   $_GET['wc1c'] = $value;
+
+// logging
+$fp = fopen('1c.log', 'a+');
+$str=date('Y-m-d H:i:s').' - ';
+foreach ($_REQUEST as $vn=>$vv) {
+  $str.=$vn.'='.$vv.';';
+}
+
+$str .= $_GET['type'].$_GET['filename'];
+
+fwrite($fp, $str."\n");
+fclose($fp);  
+
 
   if ($value == 'exchange') {
     wc1c_exchange();

@@ -1,5 +1,5 @@
 <?php
-if (!defined('ABSPATH')) exit;
+//if (!defined('ABSPATH')) exit;
 
 $order_statuses = array_keys(wc_get_order_statuses());
 $order_posts = get_posts(array(

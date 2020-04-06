@@ -1,5 +1,5 @@
 <?php
-if (!defined('ABSPATH')) exit;
+//if (!defined('ABSPATH')) exit;
 
 if (!defined('WC1C_PRICE_TYPE')) define('WC1C_PRICE_TYPE', null);
 if (!defined('WC1C_PRESERVE_PRODUCT_VARIATIONS')) define('WC1C_PRESERVE_PRODUCT_VARIATIONS', false);

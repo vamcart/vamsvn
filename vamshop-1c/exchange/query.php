@@ -1,10 +1,26 @@
 <?php
-if (!defined('ABSPATH')) exit;
+//if (!defined('ABSPATH')) exit;
 
-if (!defined('WC1C_CURRENCY')) define('WC1C_CURRENCY', null);
+$lang = 1;
 
-WC();
-$order_statuses = array_keys(wc_get_order_statuses());
+if (!defined('WC1C_CURRENCY')) define('WC1C_CURRENCY', DEFAULT_CURRENCY);
+
+//WC();
+
+$orders_statuses = array ();
+$orders_status_array = array ();
+$orders_status_query = vam_db_query("select orders_status_id, orders_status_name from ".TABLE_ORDERS_STATUS." where language_id = '".(int)$lang."'");
+while ($orders_status = vam_db_fetch_array($orders_status_query)) {
+	$orders_statuses[] = $orders_status['orders_status_id'];
+	//$orders_statuses[] = array ('id' => $orders_status['orders_status_id'], 'text' => $orders_status['orders_status_name']);
+	//$orders_status_array[$orders_status['orders_status_id']] = $orders_status['orders_status_name'];
+}
+
+$order_statuses = array_keys($orders_statuses);
+
+
+echo var_dump($orders_statuses);
+
 $order_posts = get_posts(array(
   'post_type' => 'shop_order',
   'post_status' => $order_statuses,

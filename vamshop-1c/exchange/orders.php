@@ -1,5 +1,5 @@
 <?php
-if (!defined('ABSPATH')) exit;
+//if (!defined('ABSPATH')) exit;
 
 function wc1c_orders_start_element_handler($is_full, $names, $depth, $name, $attrs) {
   global $wc1c_document;

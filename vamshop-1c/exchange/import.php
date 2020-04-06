@@ -1,9 +1,9 @@
 <?php
-if (!defined('ABSPATH')) exit;
+//if (!defined('ABSPATH')) exit;
 
-require_once ABSPATH . "wp-admin/includes/media.php";
-require_once ABSPATH . "wp-admin/includes/file.php";
-require_once ABSPATH . "wp-admin/includes/image.php";
+//require_once ABSPATH . "wp-admin/includes/media.php";
+//require_once ABSPATH . "wp-admin/includes/file.php";
+//require_once ABSPATH . "wp-admin/includes/image.php";
 
 if (!defined('WC1C_PRODUCT_DESCRIPTION_TO_CONTENT')) define('WC1C_PRODUCT_DESCRIPTION_TO_CONTENT', false);
 if (!defined('WC1C_PREVENT_CLEAN')) define('WC1C_PREVENT_CLEAN', false);
