@@ -527,7 +527,7 @@ if (vam_not_null($cPath)) {
 require (DIR_WS_CLASSES.'breadcrumb.php');
 $breadcrumb = new breadcrumb;
 
-if ($current_category_id > 0 or !strstr($PHP_SELF, FILENAME_DEFAULT)) { 
+if ($current_category_id > 0 or !strstr($PHP_SELF, FILENAME_DEFAULT) or $_GET['filter_id'] > 0 or $_GET['manufacturers_id'] > 0) { 
 if (!strstr($PHP_SELF, FILENAME_CONTENT)) {
 $breadcrumb->add(TITLE_DEFAULT_PAGE, HTTP_SERVER);
 }
