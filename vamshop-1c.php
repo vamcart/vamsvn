@@ -71,7 +71,7 @@ function wc1c_error($message, $type = "Error", $no_exit = false) {
       "Memory limit" => ini_get('memory_limit'),
       "Maximum POST size" => ini_get('post_max_size'),
       "PHP version" => PHP_VERSION,
-      "WordPress version" => get_bloginfo('version'),
+      //"WordPress version" => get_bloginfo('version'),
       "Plugin version" => WC1C_VERSION,
     );
     echo "\n";

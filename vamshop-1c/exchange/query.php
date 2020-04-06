@@ -2,6 +2,8 @@
 //if (!defined('ABSPATH')) exit;
 
 $lang = 1;
+$_SESSION['language'] = 'russian';
+require (DIR_WS_CLASSES.'order.php');
 
 if (!defined('WC1C_CURRENCY')) define('WC1C_CURRENCY', DEFAULT_CURRENCY);
 
@@ -18,48 +20,57 @@ while ($orders_status = vam_db_fetch_array($orders_status_query)) {
 
 $order_statuses = array_keys($orders_statuses);
 
-
-echo var_dump($orders_statuses);
-
-$order_posts = get_posts(array(
-  'post_type' => 'shop_order',
-  'post_status' => $order_statuses,
-  'meta_query' => array(
-    array(
-      'key' => 'wc1c_queried',
-      'compare' => "NOT EXISTS",
-    ),
-  ),
-));
-
 $order_post_ids = array();
 $documents = array();
-foreach ($order_posts as $order_post) {
-  $order = wc_get_order($order_post);
-  if (!$order) wc1c_error("Failed to get order");
 
-  $order_post_ids[] = $order_post->ID;
+$orders_query = vam_db_query("select o.*, ot.text as order_total from ".TABLE_ORDERS." o left join ".TABLE_ORDERS_TOTAL." ot on (ot.orders_id = o.orders_id) where ot.class = 'ot_total' order by o.orders_id DESC");
+//echo vam_db_num_rows($orders_query);
+if (!vam_db_num_rows($orders_query)) wc1c_error("Failed to get order");
 
-  $order_line_items = $order->get_items();
+while ($order_post = vam_db_fetch_array($orders_query)) {
+  $order = new order($order_post['orders_id']);
+  
+  //echo var_dump($order);
+  //echo var_dump($order->products);
+
+  $order_post_ids[] = $order_post['orders_id'];
+
+  $order_line_items = $order->products;
+  
+  //echo var_dump($order_line_items);
 
   // $has_missing_item = false;
-  foreach ($order_line_items as $key => $order_line_item) {
-    $product_id = $order_line_item['variation_id'] ? $order_line_item['variation_id'] : $order_line_item['product_id'];
-    $guid = get_post_meta($product_id, '_wc1c_guid', true);
+  //foreach ($order_line_items as $key => $order_line_item) {
+    //$product_id = $order_line_item['variation_id'] ? $order_line_item['variation_id'] : $order_line_item['product_id'];
+    //$guid = get_post_meta($product_id, '_wc1c_guid', true);
     // if (!$guid) {
     //   $has_missing_item = true;
     //   break;
     // }
 
-    $order_line_items[$key]['wc1c_guid'] = $guid;
-  }
+    //$order_line_items[$key]['wc1c_guid'] = $guid;
+  //}
   // if ($has_missing_item) continue;
 
-  $order_shipping_items = $order->get_shipping_methods();
+  //$order_shipping_items = $order->get_shipping_methods();
 
-  $order_meta = get_post_meta($order_post->ID, null, true);
+    $shipping_method_query = vam_db_query("select title, value from " . TABLE_ORDERS_TOTAL . " where orders_id = '" . vam_db_input($order_post['orders_id']) . "' and class = 'ot_shipping'");
+	 $shipping_method = vam_db_fetch_array($shipping_method_query);
+
+	 $order_payment = $order_post['payment_method'];
+
+	 //require(DIR_WS_LANGUAGES . $_SESSION['language'] . '/modules/payment/' . $order_payment .'.php');
+	 //$order_payment_text = constant(MODULE_PAYMENT_.strtoupper($order_payment)._TEXT_TITLE);
+
+
+  //$order_meta = get_post_meta($order_post->ID, null, true);
+  //foreach ($order_meta as $meta_key => $meta_value) {
+    //$order_meta[$meta_key] = $meta_value[0];
+  //}
+
+  $order_meta = $order_post;
   foreach ($order_meta as $meta_key => $meta_value) {
-    $order_meta[$meta_key] = $meta_value[0];
+    $order_meta[$meta_key] = $meta_value;
   }
 
   $address_items = array(
@@ -73,14 +84,14 @@ foreach ($order_posts as $order_post) {
     'phone' => "ТелефонРабочий",
   );
 
-  $contragent_meta = get_post_meta($order_post->ID, 'wc1c_contragent', true);
+  //$contragent_meta = get_post_meta($order_post->ID, 'wc1c_contragent', true);
   $contragents = array();
-  foreach (array('billing', 'shipping') as $type) {
+  foreach (array('customers', 'delivery') as $type) {
     $contragent = array();
 
     $name = array();
-    foreach (array('last_name', 'first_name') as $name_key) {
-      $meta_key = "_{$type}_$name_key";
+    foreach (array('lastname', 'firstname') as $name_key) {
+      $meta_key = "{$type}_$name_key";
       if (empty($order_meta[$meta_key])) continue;
 
       $name[] = $order_meta[$meta_key];
@@ -89,22 +100,22 @@ foreach ($order_posts as $order_post) {
 
     $name = implode(' ', $name);
     if (!$name) {
-      $contragent['name'] = $contragent_meta ? $contragent_meta : "Гость";
+      $contragent['name'] = "Гость";
       $contragent['user_id'] = 0;
     }
     else {
       $contragent['name'] = $name;
-      $contragent['user_id'] = $order_post->post_author;
+      $contragent['user_id'] = $order_post['customers_id'];
     }
 
     if (!empty($order_meta["_{$type}_country"])) {
       $country_code = $order_meta["_{$type}_country"];
-      $order_meta["_{$type}_country_name"] = WC()->countries->countries[$country_code];
+      $order_meta["{$type}_country_name"] = WC()->countries->countries[$country_code];
     }
 
     $full_address = array();
-    foreach (array('postcode', 'country_name', 'state', 'city', 'address_1', 'address_2') as $address_key) {
-      $meta_key = "_{$type}_$address_key";
+    foreach (array('postcode', 'country', 'state', 'city', 'street_address', 'suburb') as $address_key) {
+      $meta_key = "{$type}_$address_key";
       if (!empty($order_meta[$meta_key])) $full_address[] = $order_meta[$meta_key];
     }
     $contragent['full_address'] = implode(", ", $full_address);
@@ -118,75 +129,79 @@ foreach ($order_posts as $order_post) {
 
     $contragent['contacts'] = array();
     foreach ($contact_items as $contact_key => $contact_item_name) {
-      if (empty($order_meta["_{$type}_$contact_key"])) continue;
+      if (empty($order_meta["{$type}_$contact_key"])) continue;
 
       $contragent['contacts'][$contact_item_name] = $order_meta["_{$type}_$contact_key"];
     }
 
     $contragents[$type] = $contragent;
   }
+  
+  //echo var_dump($contragents);
 
   $products = array();
   foreach ($order_line_items as $order_line_item) {
     $products[] = array(
-      'guid' => $order_line_item['wc1c_guid'],
+      'guid' => $order_line_item['id'],
       'name' => $order_line_item['name'],
-      'price_per_item' => $order_line_item['line_total'] / $order_line_item['qty'],
+      'price_per_item' => $order_line_item['price'],
       'quantity' => $order_line_item['qty'],
-      'total' => $order_line_item['line_total'],
+      'total' => $order_line_item['final_price'],
       'type' => "Товар",
     );
   }
 
-  foreach ($order_shipping_items as $order_shipping_item) {
-    if (!$order_shipping_item['cost']) continue;
+  //foreach ($order_shipping_items as $order_shipping_item) {
+    //if (!$shipping_method['value']) continue;
 
     $products[] = array(
       'guid' => 'ORDER_DELIVERY',
-      'name' => $order_shipping_item['name'],
-      'price_per_item' => $order_shipping_item['cost'],
+      'name' => $shipping_method['title'],
+      'price_per_item' => $shipping_method['value'],
       'quantity' => 1,
-      'total' => $order_shipping_item['cost'],
+      'total' => $shipping_method['value'],
       'type' => "Услуга",
     );
-  }
+  //}
 
   $statuses = array(
     'cancelled' => "Отменен",
     'trash' => "Удален",
   );
-  $status = $order->get_status();
-  if (array_key_exists($status, $statuses)) {
-    $order_status_name = $statuses[$status];
-  }
-  else {
-    $order_status_name = wc_get_order_status_name($status);
-  }
+  //$status = $order->get_status();
+  //if (array_key_exists($status, $statuses)) {
+    //$order_status_name = $statuses[$status];
+  //}
+  //else {
+    //$order_status_name = wc_get_order_status_name($status);
+  //}
 
-  if (WC1C_CURRENCY) $document_currency = WC1C_CURRENCY;
-  else $document_currency = get_option('wc1c_currency', @$order_meta['_order_currency']);
+  if (DEFAULT_CURRENCY) $document_currency = DEFAULT_CURRENCY;
+  else $document_currency = $order_post['currency'];
 
   $document = array(
-    'order_id' => $order_post->ID,
+    'order_id' => $order_post['orders_id'],
     'currency' => $document_currency,
-    'total' => @$order_meta['_order_total'],
-    'comment' => $order_post->post_excerpt,
+    'total' => number_format($order->info['total_value'],2,'.',''),
+    'comment' => '',
     'contragents' => $contragents,
     'products' => $products,
-    'payment_method_title' => @$order_meta['_payment_method_title'],
-    'status' => $status,
-    'status_name' => $order_status_name,
-    'has_shipping' => count($order_shipping_items) > 0,
-    'modified_at' => $order_post->post_modified,
+    'payment_method_title' => $order_post['payment_method'],
+    'status' => $order_post['orders_status'],
+    'status_name' => vam_get_orders_status_name($order_post['orders_status']),
+    'has_shipping' => 1,
+    'modified_at' => $order_post['last_modified'],
   );
-  list($document['date'], $document['time']) = explode(' ', $order_post->post_date, 2);
+  list($document['date'], $document['time']) = explode(' ', $order_post['date_purchased'], 2);
 
   $documents[] = $document;
 }
 
-$documents = apply_filters('wc1c_query_documents', $documents);
+//echo var_dump($documents);
 
-echo '<?xml version="1.0" encoding="' . WC1C_XML_CHARSET . '"?>';
+//$documents = apply_filters('wc1c_query_documents', $documents);
+
+echo '<?xml version="1.0" encoding="UTF-8"?>';
 ?>
 
 <КоммерческаяИнформация ВерсияСхемы="2.05" ДатаФормирования="<?php echo date("Y-m-dTH:i:s", WC1C_TIMESTAMP) ?>">
@@ -210,11 +225,11 @@ echo '<?xml version="1.0" encoding="' . WC1C_XML_CHARSET . '"?>';
               <Наименование><?php echo $contragent['name'] ?></Наименование>
               <ПолноеНаименование><?php echo $contragent['name'] ?></ПолноеНаименование>
             <?php endif ?>
-            <?php if (!empty($contragent['first_name'])): ?>
-              <Имя><?php echo $contragent['first_name'] ?></Имя>
+            <?php if (!empty($contragent['firstname'])): ?>
+              <Имя><?php echo $contragent['firstname'] ?></Имя>
             <?php endif ?>
-            <?php if (!empty($contragent['last_name'])): ?>
-              <Фамилия><?php echo $contragent['last_name'] ?></Фамилия>
+            <?php if (!empty($contragent['lastname'])): ?>
+              <Фамилия><?php echo $contragent['lastname'] ?></Фамилия>
             <?php endif ?>
             <?php if (!empty($contragent['full_address']) || $contragent['address']): ?>
               <АдресРегистрации>
@@ -284,7 +299,7 @@ echo '<?xml version="1.0" encoding="' . WC1C_XML_CHARSET . '"?>';
           'Дата изменения статуса' => $document['modified_at'],
         );
         if ($document['payment_method_title']) $requisites['Метод оплаты'] = $document['payment_method_title'];
-        $requisites = apply_filters('wc1c_query_order_requisites', $requisites, $document);
+        //$requisites = apply_filters('wc1c_query_order_requisites', $requisites, $document);
         foreach ($requisites as $requisite_key => $requisite_value): ?>
           <ЗначениеРеквизита>
             <Наименование><?php echo $requisite_key ?></Наименование>
@@ -297,7 +312,17 @@ echo '<?xml version="1.0" encoding="' . WC1C_XML_CHARSET . '"?>';
 </КоммерческаяИнформация>
 
 <?php
-foreach ($order_post_ids as $order_post_id) {
-  update_post_meta($order_post_id, 'wc1c_querying', 1);
+//foreach ($order_post_ids as $order_post_id) {
+  //update_post_meta($order_post_id, 'wc1c_querying', 1);
+//}
+
+function vam_get_orders_status_name($orders_status_id, $language_id = 1) {
+
+	if (!$language_id)
+		$language_id = $_SESSION['languages_id'];
+	$orders_status_query = vam_db_query("select orders_status_name from ".TABLE_ORDERS_STATUS." where orders_status_id = '".$orders_status_id."' and language_id = '".$language_id."'");
+	$orders_status = vam_db_fetch_array($orders_status_query);
+
+	return $orders_status['orders_status_name'];
 }
 ?>
