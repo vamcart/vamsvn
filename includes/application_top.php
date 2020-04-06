@@ -570,7 +570,13 @@ elseif (vam_not_null($_GET['manufacturers_id'])) {
 	$manufacturers_query = vamDBquery("select manufacturers_name from ".TABLE_MANUFACTURERS." where manufacturers_id = '".(int) $_GET['manufacturers_id']."'");
 	$manufacturers = vam_db_fetch_array($manufacturers_query, true);
 
-	$breadcrumb->add($manufacturers['manufacturers_name'], vam_href_link(FILENAME_DEFAULT, vam_manufacturer_link((int) $_GET['manufacturers_id'], $manufacturers['manufacturers_name'])));
+	$breadcrumb->add($manufacturers['manufacturers_name']);
+
+} elseif (vam_not_null($_GET['filter_id'])) {
+	$manufacturers_query = vamDBquery("select manufacturers_name from ".TABLE_MANUFACTURERS." where manufacturers_id = '".(int) $_GET['filter_id']."'");
+	$manufacturers = vam_db_fetch_array($manufacturers_query, true);
+
+	$breadcrumb->add($manufacturers['manufacturers_name']);
 
 }
 
