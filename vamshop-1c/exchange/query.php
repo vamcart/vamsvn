@@ -21,7 +21,7 @@ while ($orders_status = vam_db_fetch_array($orders_status_query)) {
 $order_post_ids = array();
 $documents = array();
 
-$orders_query = vam_db_query("select o.*, ot.text as order_total from ".TABLE_ORDERS." o left join ".TABLE_ORDERS_TOTAL." ot on (ot.orders_id = o.orders_id) where ot.class = 'ot_total' order by o.orders_id DESC");
+$orders_query = vam_db_query("select o.*, ot.text as order_total from ".TABLE_ORDERS." o left join ".TABLE_ORDERS_TOTAL." ot on (ot.orders_id = o.orders_id) where ot.class = 'ot_total' order by o.orders_id DESC limit 50");
 //echo vam_db_num_rows($orders_query);
 if (!vam_db_num_rows($orders_query)) wc1c_error("Failed to get order");
 
