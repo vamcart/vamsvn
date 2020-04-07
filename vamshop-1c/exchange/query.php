@@ -3,6 +3,7 @@
 
 $lang = 1;
 $_SESSION['language'] = 'russian';
+$_SESSION['languages_id'] = 1;
 require (DIR_WS_CLASSES.'order.php');
 
 if (!defined('WC1C_CURRENCY')) define('WC1C_CURRENCY', DEFAULT_CURRENCY);
@@ -13,12 +14,12 @@ $orders_statuses = array ();
 $orders_status_array = array ();
 $orders_status_query = vam_db_query("select orders_status_id, orders_status_name from ".TABLE_ORDERS_STATUS." where language_id = '".(int)$lang."'");
 while ($orders_status = vam_db_fetch_array($orders_status_query)) {
-	$orders_statuses[] = $orders_status['orders_status_id'];
-	//$orders_statuses[] = array ('id' => $orders_status['orders_status_id'], 'text' => $orders_status['orders_status_name']);
-	//$orders_status_array[$orders_status['orders_status_id']] = $orders_status['orders_status_name'];
+	$orders_statuses[] = array ('id' => $orders_status['orders_status_id'], 'text' => $orders_status['orders_status_name']);
+	$orders_status_array[$orders_status['orders_status_id']] = $orders_status['orders_status_name'];
 }
 
 $order_statuses = array_keys($orders_statuses);
+//echo var_dump($orders_status_array);
 
 $order_post_ids = array();
 $documents = array();
@@ -59,9 +60,14 @@ while ($order_post = vam_db_fetch_array($orders_query)) {
 
 	 $order_payment = $order_post['payment_method'];
 
-	 //require(DIR_WS_LANGUAGES . $_SESSION['language'] . '/modules/payment/' . $order_payment .'.php');
-	 //$order_payment_text = constant(MODULE_PAYMENT_.strtoupper($order_payment)._TEXT_TITLE);
+	 require(DIR_WS_LANGUAGES . $_SESSION['language'] . '/modules/payment/' . $order_payment .'.php');
+	 $order_payment_text = constant(MODULE_PAYMENT_.strtoupper($order_payment)._TEXT_TITLE);
 
+
+	 // Order History
+	 $statuses_query = vam_db_query("select os.orders_status_name, osh.date_added, osh.comments from ".TABLE_ORDERS_STATUS." os, ".TABLE_ORDERS_STATUS_HISTORY." osh where osh.orders_id = '".vam_db_input($order_post['orders_id'])."' and osh.orders_status_id = os.orders_status_id and os.language_id = '".(int) $_SESSION['languages_id']."' order by orders_status_history_id ASC limit 1");
+	 $statuses = vam_db_fetch_array($statuses_query);
+	 $order_comment = (empty ($statuses['comments']) ? '' : nl2br(htmlspecialchars($statuses['comments'])));
 
   //$order_meta = get_post_meta($order_post->ID, null, true);
   //foreach ($order_meta as $meta_key => $meta_value) {
@@ -75,13 +81,13 @@ while ($order_post = vam_db_fetch_array($orders_query)) {
 
   $address_items = array(
     'postcode' => "Почтовый индекс",
-    'country_name' => "Страна",
+    'country' => "Страна",
     'state' => "Регион",
     'city' => "Город",
   );
   $contact_items = array(
-    'email' => "Почта",
-    'phone' => "ТелефонРабочий",
+    'email_address' => "Почта",
+    'telephone' => "ТелефонРабочий",
   );
 
   //$contragent_meta = get_post_meta($order_post->ID, 'wc1c_contragent', true);
@@ -108,9 +114,9 @@ while ($order_post = vam_db_fetch_array($orders_query)) {
       $contragent['user_id'] = $order_post['customers_id'];
     }
 
-    if (!empty($order_meta["_{$type}_country"])) {
-      $country_code = $order_meta["_{$type}_country"];
-      $order_meta["{$type}_country_name"] = WC()->countries->countries[$country_code];
+    if (!empty($order_meta["{$type}_country"])) {
+      $country_code = $order_meta["{$type}_country"];
+      $order_meta["{$type}_country"] = $country_code;
     }
 
     $full_address = array();
@@ -122,16 +128,16 @@ while ($order_post = vam_db_fetch_array($orders_query)) {
 
     $contragent['address'] = array();
     foreach ($address_items as $address_key => $address_item_name) {
-      if (empty($order_meta["_{$type}_$address_key"])) continue;
+      if (empty($order_meta["{$type}_$address_key"])) continue;
 
-      $contragent['address'][$address_item_name] = $order_meta["_{$type}_$address_key"];
+      $contragent['address'][$address_item_name] = $order_meta["{$type}_$address_key"];
     }
 
     $contragent['contacts'] = array();
     foreach ($contact_items as $contact_key => $contact_item_name) {
       if (empty($order_meta["{$type}_$contact_key"])) continue;
 
-      $contragent['contacts'][$contact_item_name] = $order_meta["_{$type}_$contact_key"];
+      $contragent['contacts'][$contact_item_name] = $order_meta["{$type}_$contact_key"];
     }
 
     $contragents[$type] = $contragent;
@@ -156,7 +162,7 @@ while ($order_post = vam_db_fetch_array($orders_query)) {
 
     $products[] = array(
       'guid' => 'ORDER_DELIVERY',
-      'name' => $shipping_method['title'],
+      'name' => $order->info['shipping_method'],
       'price_per_item' => $shipping_method['value'],
       'quantity' => 1,
       'total' => $shipping_method['value'],
@@ -164,16 +170,16 @@ while ($order_post = vam_db_fetch_array($orders_query)) {
     );
   //}
 
-  $statuses = array(
-    'cancelled' => "Отменен",
-    'trash' => "Удален",
-  );
+  //$statuses = array(
+    //'cancelled' => "Отменен",
+    //'trash' => "Удален",
+  //);
   //$status = $order->get_status();
   //if (array_key_exists($status, $statuses)) {
     //$order_status_name = $statuses[$status];
   //}
   //else {
-    //$order_status_name = wc_get_order_status_name($status);
+    $order_status_name = $orders_status_array[$order_post['orders_status']];
   //}
 
   if (DEFAULT_CURRENCY) $document_currency = DEFAULT_CURRENCY;
@@ -183,14 +189,15 @@ while ($order_post = vam_db_fetch_array($orders_query)) {
     'order_id' => $order_post['orders_id'],
     'currency' => $document_currency,
     'total' => number_format($order->info['total_value'],2,'.',''),
-    'comment' => '',
+    'comment' => $order_comment,
     'contragents' => $contragents,
     'products' => $products,
-    'payment_method_title' => $order_post['payment_method'],
+    'payment_method_title' => $order_payment_text,
     'status' => $order_post['orders_status'],
-    'status_name' => vam_get_orders_status_name($order_post['orders_status']),
+    'status_name' => $order_status_name,
+    //'status_name' => vam_get_orders_status_name($order_post['orders_status']),
     'has_shipping' => 1,
-    'modified_at' => $order_post['last_modified'],
+    'modified_at' => ($order_post['last_modified'] != '') ? $order_post['last_modified'] : $order_post['date_purchased'],
   );
   list($document['date'], $document['time']) = explode(' ', $order_post['date_purchased'], 2);
 
@@ -220,7 +227,7 @@ echo '<?xml version="1.0" encoding="UTF-8"?>';
         <?php foreach ($document['contragents'] as $type => $contragent): ?>
           <Контрагент>
             <Ид>wc1c#user#<?php echo $contragent['user_id'] ?></Ид>
-            <Роль><?php echo $type == 'billing' ? "Плательщик" : "Получатель" ?></Роль>
+            <Роль><?php echo $type == 'customers' ? "Плательщик" : "Получатель" ?></Роль>
             <?php if (!empty($contragent['name'])): ?>
               <Наименование><?php echo $contragent['name'] ?></Наименование>
               <ПолноеНаименование><?php echo $contragent['name'] ?></ПолноеНаименование>
@@ -291,10 +298,10 @@ echo '<?xml version="1.0" encoding="UTF-8"?>';
       <ЗначенияРеквизитов>
         <?php
         $requisites = array(
-          'Заказ оплачен' => !in_array($document['status'], array('on-hold', 'pending')) ? 'true' : 'false',
+          'Заказ оплачен' => !in_array($document['status'], array('1', '2', '3')) ? 'true' : 'false',
           'Доставка разрешена' => $document['has_shipping'] ? 'true' : 'false',
-          'Отменен' => $document['status'] == 'cancelled' ? 'true' : 'false',
-          'Финальный статус' => !in_array($document['status'], array('trash', 'on-hold', 'pending', 'processing')) ? 'true' : 'false',
+          'Отменен' => $document['status'] == '3' ? 'true' : 'false',
+          'Финальный статус' => !in_array($document['status'], array('1', '2', '3', '4', '5')) ? 'true' : 'false',
           'Статус заказа' => $document['status_name'],
           'Дата изменения статуса' => $document['modified_at'],
         );
@@ -315,14 +322,4 @@ echo '<?xml version="1.0" encoding="UTF-8"?>';
 //foreach ($order_post_ids as $order_post_id) {
   //update_post_meta($order_post_id, 'wc1c_querying', 1);
 //}
-
-function vam_get_orders_status_name($orders_status_id, $language_id = 1) {
-
-	if (!$language_id)
-		$language_id = $_SESSION['languages_id'];
-	$orders_status_query = vam_db_query("select orders_status_name from ".TABLE_ORDERS_STATUS." where orders_status_id = '".$orders_status_id."' and language_id = '".$language_id."'");
-	$orders_status = vam_db_fetch_array($orders_status_query);
-
-	return $orders_status['orders_status_name'];
-}
 ?>
