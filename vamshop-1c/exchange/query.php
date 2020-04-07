@@ -18,9 +18,6 @@ while ($orders_status = vam_db_fetch_array($orders_status_query)) {
 	$orders_status_array[$orders_status['orders_status_id']] = $orders_status['orders_status_name'];
 }
 
-$order_statuses = array_keys($orders_statuses);
-//echo var_dump($orders_status_array);
-
 $order_post_ids = array();
 $documents = array();
 
