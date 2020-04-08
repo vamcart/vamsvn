@@ -335,8 +335,12 @@ function wc1c_replace_document_services($order, $document_services) {
 
 			vam_db_perform(TABLE_ORDERS_TOTAL, $sql_data_array, 'update', 'orders_id = \''.$order->info['id'].'\' and class = \'ot_shipping\'');
 
+        $products_total_query = vam_db_query("select title, value from " . TABLE_ORDERS_TOTAL . " where orders_id = '" . vam_db_input($order->info['id']) . "' and class = 'ot_subtotal'");
+        $products_total = vam_db_fetch_array($products_total_query);
+
+
         $sql_data_array = array('orders_id' => vam_db_prepare_input($order->info['id']),
-                                'text' => vam_db_prepare_input($order->info['total']-$shipping_method['value']+$shipping_cost),
+                                'text' => vam_db_prepare_input($products_total['value']+$order->info['total']-$shipping_method['value']+$shipping_cost),
                                 'value' => vam_db_prepare_input($order->info['total']-$shipping_method['value']+$shipping_cost)
                                 );
 
@@ -373,6 +377,9 @@ function wc1c_replace_document($document) {
 
   $order = new order($document['Номер']);
   
+  //echo var_dump($order);
+  //echo var_dump($document['Номер']);
+  
   if (!$order) {
     wc1c_error("Failed to get order");
   }
@@ -401,8 +408,25 @@ function wc1c_replace_document($document) {
     if ($is_passed) $set_order_status = '6';
 
     //$order = wc_update_order($args);
+    //echo $set_order_status;
     
-    $set_order_status
+    $sql_data_array = array('orders_id' => vam_db_prepare_input($order->info['id']),
+                            'orders_status' => vam_db_prepare_input($set_order_status)
+                           );
+                                
+    //echo var_dump($sql_data_array);                                
+                                
+    vam_db_perform(TABLE_ORDERS, $sql_data_array, 'update', 'orders_id = \''.$order->info['id'].'\'');
+
+    $sql_data_array = array('orders_id' => vam_db_prepare_input($order->info['id']),
+                            'orders_status_id' => vam_db_prepare_input($set_order_status),
+                            'date_added' => vam_db_prepare_input(date("Y-m-d H:i:s")),
+                            'customer_notified' => 0
+                           );
+                                
+    //echo var_dump($sql_data_array);                                
+                                
+    vam_db_perform(TABLE_ORDERS_STATUS_HISTORY, $sql_data_array);
     
     
     wc1c_check_wp_error($order);
