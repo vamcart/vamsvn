@@ -44,7 +44,7 @@ defined( '_VALID_VAM' ) or die( 'Direct Access to this location is not allowed.'
     }
 
     function query($order_id) {
-      $order_query = vam_db_query("select customers_name,
+      $order_query = vam_db_query("select orders_id, customers_name,
                                    customers_firstname,
                                    customers_secondname,
                                    customers_lastname,      
@@ -113,7 +113,8 @@ defined( '_VALID_VAM' ) or die( 'Direct Access to this location is not allowed.'
                                 'text' => $totals['text']);
       }
 
-      $this->info = array('currency' => $order['currency'],
+      $this->info = array('id' => $order['orders_id'],
+                          'currency' => $order['currency'],
                           'currency_value' => $order['currency_value'],
                           'payment_method' => $order['payment_method'],
                           'payment_class' => $order['payment_class'],

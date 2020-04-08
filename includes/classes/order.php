@@ -90,7 +90,8 @@
       $order_status_query = vam_db_query("select orders_status_name from " . TABLE_ORDERS_STATUS . " where orders_status_id = '" . (int)$order['orders_status'] . "' and language_id = '" . (int)$_SESSION['languages_id'] . "'");
       $order_status = vam_db_fetch_array($order_status_query);
 
-      $this->info = array('currency' => $order['currency'],
+      $this->info = array('id' => $order['orders_id'],
+                          'currency' => $order['currency'],
                           'currency_value' => $order['currency_value'],
                           'payment_method' => $order['payment_method'],
                           'cc_type' => $order['cc_type'],
