@@ -279,7 +279,22 @@ function wc1c_mode_init($type) {
   exit("zip=yes\nfile_limit=$file_limit");
 }
 
-function wc1c_mode_file($type, $filename) {
+	function wc1c_mode_file($type, $filename) {
+	
+// logging
+$fp = fopen('1c.log', 'a+');
+$str=date('Y-m-d H:i:s').' - ';
+foreach ($_REQUEST as $vn=>$vv) {
+  $str.=$vn.'='.$vv.';';
+}
+
+$str .= 'modelfile:'.$type.'file:'.$filename;
+
+fwrite($fp, $str."\n");
+fclose($fp);	
+	
+//exit("test");	
+	
   if ($filename) {
     $path = WC1C_DATA_DIR . "$type/" . ltrim($filename, "./\\");
     $path_dir = dirname($path);
@@ -340,10 +355,13 @@ function wc1c_set_transaction_mode() {
 
   register_shutdown_function('wc1c_transaction_shutdown_function');
 
-  $wpdb->show_errors(false); 
+  //$wpdb->show_errors(false); 
 
   $wc1c_is_transaction = true;
-  $wpdb->query("START TRANSACTION");
+  
+  vam_db_query("START TRANSACTION");
+  
+  //$wpdb->query("START TRANSACTION");
   wc1c_check_wpdb_error();
 }
 
@@ -489,12 +507,12 @@ function wc1c_post_id_by_meta($key, $value) {
 
   $cache_key = "wc1c_post_id_by_meta-$key-$value";
   $post_id = wp_cache_get($cache_key);
-  if ($post_id === false) {
-    $post_id = $wpdb->get_var($wpdb->prepare("SELECT post_id FROM $wpdb->postmeta JOIN $wpdb->posts ON post_id = ID WHERE meta_key = %s AND meta_value = %s", $key, $value));
-    wc1c_check_wpdb_error();
+  //if ($post_id === false) {
+    //$post_id = $wpdb->get_var($wpdb->prepare("SELECT post_id FROM $wpdb->postmeta JOIN $wpdb->posts ON post_id = ID WHERE meta_key = %s AND meta_value = %s", $key, $value));
+    //wc1c_check_wpdb_error();
 
-    if ($post_id) wp_cache_set($cache_key, $post_id);
-  }
+    //if ($post_id) wp_cache_set($cache_key, $post_id);
+  //}
 
   return $post_id;
 }
@@ -564,7 +582,7 @@ foreach ($_REQUEST as $vn=>$vv) {
   $str.=$vn.'='.$vv.';';
 }
 
-$str .= $_GET['type'].$_GET['filename'];
+$str .= 'type:'.$_GET['type'].'mode:'.$_GET['type'].'file:'.$_GET['filename'];
 
 fwrite($fp, $str."\n");
 fclose($fp);  
@@ -578,3 +596,62 @@ fclose($fp);
     exit;
   }
 
+
+
+function wc1c_add_rewrite_rules() {
+  add_rewrite_rule("wc1c/exchange", "index.php?wc1c=exchange", 'top');
+  add_rewrite_rule("wc1c/clean", "index.php?wc1c=clean");
+}
+
+function wc1c_delete_term($term_id, $tt_id, $taxonomy, $deleted_term) {
+  global $wpdb;
+
+  if ($taxonomy != 'product_cat' && strpos($taxonomy, 'pa_') !== 0) return;
+
+  $wpdb->delete($wpdb->termmeta, array('term_id' => $term_id));
+  if (function_exists('wc1c_check_wpdb_error')) wc1c_check_wpdb_error();
+}
+add_action('delete_term', 'wc1c_delete_term', 10, 4);
+
+function wc1c_woocommerce_attribute_by_id($attribute_id) {
+  global $wpdb;
+
+  $cache_key = "wc1c_woocomerce_attribute_by_id-$attribute_id";
+  $attribute = wp_cache_get($cache_key);
+  if ($attribute === false) {
+    $attribute = $wpdb->get_row($wpdb->prepare("SELECT * FROM {$wpdb->prefix}woocommerce_attribute_taxonomies WHERE attribute_id = %d", $attribute_id), ARRAY_A);
+    if (function_exists('wc1c_check_wpdb_error')) wc1c_check_wpdb_error();
+
+    if ($attribute) {
+      $attribute['taxonomy'] = wc_attribute_taxonomy_name($attribute['attribute_name']);
+
+      wp_cache_set($cache_key, $attribute);
+    }
+  }
+
+  return $attribute;
+}
+
+function wc1c_delete_woocommerce_attribute($attribute_id) {
+  global $wpdb;
+
+  $attribute = wc1c_woocommerce_attribute_by_id($attribute_id);
+
+  if (!$attribute) return false;
+
+  delete_option("{$attribute['taxonomy']}_children");
+
+  $terms = get_terms($attribute['taxonomy'], "hide_empty=0");
+  foreach ($terms as $term) {
+    wp_delete_term($term->term_id, $attribute['taxonomy']);
+  }
+
+  $wpdb->delete("{$wpdb->prefix}woocommerce_attribute_taxonomies", compact('attribute_id'));
+  if (function_exists('wc1c_check_wpdb_error')) wc1c_check_wpdb_error();
+}
+
+function wc1c_parse_decimal($number) {
+  $number = str_replace(array(',', ' '), array('.', ''), $number);
+
+  return (float) $number;
+}
