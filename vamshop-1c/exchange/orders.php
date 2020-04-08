@@ -335,12 +335,12 @@ function wc1c_replace_document_services($order, $document_services) {
 
 			vam_db_perform(TABLE_ORDERS_TOTAL, $sql_data_array, 'update', 'orders_id = \''.$order->info['id'].'\' and class = \'ot_shipping\'');
 
-        $products_total_query = vam_db_query("select title, value from " . TABLE_ORDERS_TOTAL . " where orders_id = '" . vam_db_input($order->info['id']) . "' and class = 'ot_subtotal'");
-        $products_total = vam_db_fetch_array($products_total_query);
+        //$products_total_query = vam_db_query("select title, value from " . TABLE_ORDERS_TOTAL . " where orders_id = '" . vam_db_input($order->info['id']) . "' and class = 'ot_subtotal'");
+        //$products_total_method = vam_db_fetch_array($shipping_method_query);
 
 
         $sql_data_array = array('orders_id' => vam_db_prepare_input($order->info['id']),
-                                'text' => vam_db_prepare_input($products_total['value']+$order->info['total']-$shipping_method['value']+$shipping_cost),
+                                'text' => vam_db_prepare_input($order->info['total']-$shipping_method['value']+$shipping_cost),
                                 'value' => vam_db_prepare_input($order->info['total']-$shipping_method['value']+$shipping_cost)
                                 );
 
