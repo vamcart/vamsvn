@@ -338,7 +338,7 @@ var customSorter = function(data) {
      });
 };
 	
-	  $(".select2").select2({
+	  $("select:not(.noselect2)").select2({
 	      theme: "bootstrap",
 	      sorter: customSorter
 	  });        

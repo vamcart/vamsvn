@@ -1192,7 +1192,7 @@ while ($answer_templates = vam_db_fetch_array($answer_templates_query)) {
 }
 ?>      
       <tr><?php echo vam_draw_form('status', FILENAME_ORDERS, vam_get_all_get_params(array('action')) . 'action=update_order'); ?>
-        <td class="main"><b><?php echo ENTRY_ANSWER_TEMPLATE; ?></b> <?php echo vam_draw_pull_down_menu('menu', $answer_templates_array, '', 'onclick="var textarea = document.getElementById(\'comments\'); textarea.value=document.status.menu.options[document.status.menu.selectedIndex].value;"'). '&nbsp;<a href="'.vam_href_link(FILENAME_ANSWER_TEMPLATES).'" target="_blank">' . vam_image(DIR_WS_IMAGES . 'icons/buttons/add.png', '', '12', '12').'</a>'; ?></td>
+        <td class="main"><b><?php echo ENTRY_ANSWER_TEMPLATE; ?></b> <?php echo vam_draw_pull_down_menu('menu', $answer_templates_array, '', 'class="noselect2" onclick="var textarea = document.getElementById(\'comments\'); textarea.value=document.status.menu.options[document.status.menu.selectedIndex].value;"'). '&nbsp;<a href="'.vam_href_link(FILENAME_ANSWER_TEMPLATES).'" target="_blank">' . vam_image(DIR_WS_IMAGES . 'icons/buttons/add.png', '', '12', '12').'</a>'; ?></td>
       </tr>
       <tr>
         <td class="main"><?php echo vam_draw_textarea_field('comments', 'soft', '120', '15'); ?></td>
