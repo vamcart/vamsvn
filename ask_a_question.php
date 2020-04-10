@@ -52,18 +52,20 @@ $product_info = vam_db_fetch_array($product_info_query);
 
 	if (isset($_SESSION['customer_id'])) { 
 		$firstname = $_SESSION['customer_first_name'];
-		$lastname = $_SESSION['customer_last_name'];
+		//$lastname = $_SESSION['customer_last_name'];
 		$email_address =$_SESSION['customer_email_address'];
 		$message = vam_db_input($_POST['message_body']);
 		$to_email_address = $email_address;
-		$to_name = $firstname .' '. $lastname;
+		//$to_name = $firstname .' '. $lastname;
+		$to_name = $firstname;
   } else {    
 		$firstname = vam_db_input($_POST['firstname']);
-		$lastname = vam_db_input($_POST['lastname']);
+		//$lastname = vam_db_input($_POST['lastname']);
 		$email_address = vam_db_input($_POST['email_address']);
 		$message = vam_db_input($_POST['message_body']);
 		$to_email_address = $email_address;
-		$to_name = $firstname .' '. $lastname;
+		//$to_name = $firstname .' '. $lastname;
+		$to_name = $firstname;
 	}
 	
 	if (strlen($firstname) < ENTRY_FIRST_NAME_MIN_LENGTH) {
@@ -71,10 +73,10 @@ $product_info = vam_db_fetch_array($product_info_query);
 		$messageStack->add('ask_a_question', ENTRY_FIRST_NAME_ERROR);
 	}
 
-	if (strlen($lastname) < ENTRY_LAST_NAME_MIN_LENGTH) {
-		$error = true;
-		$messageStack->add('ask_a_question', ENTRY_LAST_NAME_ERROR);
-	}
+	//if (strlen($lastname) < ENTRY_LAST_NAME_MIN_LENGTH) {
+		//$error = true;
+		//$messageStack->add('ask_a_question', ENTRY_LAST_NAME_ERROR);
+	//}
 
 	if (strlen($email_address) < ENTRY_EMAIL_ADDRESS_MIN_LENGTH) {
 		$error = true;

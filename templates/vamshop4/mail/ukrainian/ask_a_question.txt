@@ -1,9 +1,8 @@
-Питання про товар {$PRODUCTS_NAME}
+Вопрос о товаре {$PRODUCTS_NAME}
 
-Відправник: {$TEXT_EMAIL}
-Ім'я: {$TEXT_FIRSTNAME}
-Прізвище: {$TEXT_LASTNAME}
+Отправитель: {$TEXT_EMAIL}
+Имя: {$TEXT_FIRSTNAME}
 Товар: {$PRODUCT_LINK}
 
-Повідомлення:
+Сообщение:
 {$TEXT_MESSAGE}

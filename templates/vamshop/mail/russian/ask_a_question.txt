@@ -2,7 +2,6 @@
 
 Отправитель: {$TEXT_EMAIL}
 Имя: {$TEXT_FIRSTNAME}
-Фамилия: {$TEXT_LASTNAME}
 Товар: {$PRODUCT_LINK}
 
 Сообщение:
