@@ -482,33 +482,32 @@ function wc1c_replace_term($is_full, $guid, $parent_guid, $name, $taxonomy, $ord
   	//}
 
 		$sql_data_array = array (
-		//'categories_status' => 1, 
-		//'products_sorting' => vam_db_prepare_input("p.products_sort"), 
-		//'products_sorting2' => vam_db_prepare_input("ASC"), 
-		//'categories_template' => vam_db_prepare_input("default"), 
+		'categories_status' => 1, 
+		'products_sorting' => vam_db_prepare_input("p.products_sort"), 
+		'products_sorting2' => vam_db_prepare_input("ASC"), 
+		'categories_template' => vam_db_prepare_input("default"), 
 		'date_added' => vam_db_prepare_input(date("Y-m-d H:i:s")),
 		'last_modified' => vam_db_prepare_input(date("Y-m-d H:i:s")),
-		//'listing_template' => vam_db_prepare_input("default"), 
-		'parent_id' => vam_db_prepare_input($parent) 
-		//'guid' => $guid,
-		//'categories_url' => $slug,
-		//'yml_bid' => 0,
-		//'yml_cbid' => 0,
-		//'icon' => vam_db_prepare_input("fa fa-chevron-right")
+		'listing_template' => vam_db_prepare_input("default"), 
+		'parent_id' => vam_db_prepare_input($parent), 
+		'guid' => $guid,
+		'categories_url' => $slug,
+		'yml_bid' => 0,
+		'yml_cbid' => 0,
+		'icon' => vam_db_prepare_input("fa fa-chevron-right")
        );
 
 		vam_db_perform(TABLE_CATEGORIES, $sql_data_array, 'update', 'guid = \''.$guid.'\'');
-		//$categories_id = vam_db_insert_id();
-		//echo $guid.'::'.$parent.'::'.$parent_guid.'<br />';
-		//exit;
 
-		//$sql_data_array = array (
-		//'language_id' => vam_db_prepare_input($_SESSION['languages_id']), 
-		//'categories_id' => $categories_id,
-		//'categories_name' => vam_db_prepare_input($name) 
-		//);
+		$categories_id = vam_db_insert_id();
 
-		//vam_db_perform(TABLE_CATEGORIES_DESCRIPTION, $sql_data_array);
+		$sql_data_array = array (
+		'language_id' => vam_db_prepare_input($_SESSION['languages_id']), 
+		'categories_id' => $categories_id,
+		'categories_name' => vam_db_prepare_input($name) 
+		);
+
+		vam_db_perform(TABLE_CATEGORIES_DESCRIPTION, $sql_data_array, 'update', 'categories_id = \''.$categories_id.'\'');
 
       //echo "update:";				    
 		//echo $guid.'::'.$parent.'::'.$parent_guid.'<br />';
