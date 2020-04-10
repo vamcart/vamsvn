@@ -259,7 +259,7 @@ $( "#date_added" ).datepicker({ dateFormat: "dd-mm-yy" }).val();
         $products_name_query = vam_db_query("select products_name from " . TABLE_PRODUCTS_DESCRIPTION . " where products_id = '" . $reviews['products_id'] . "' and language_id = '" . $_SESSION['languages_id'] . "'");
         $products_name = vam_db_fetch_array($products_name_query);
 
-        $reviews_average_query = vam_db_query("select (avg(reviews_rating) / 5 * 100) as average_rating from " . TABLE_REVIEWS . " where products_id = '" . $reviews['products_id'] . "'");
+        $reviews_average_query = vam_db_query("select (avg(r.reviews_rating) / 5 * 100) as average_rating, rd.reviews_text from " . TABLE_REVIEWS . " as r, " . TABLE_REVIEWS_DESCRIPTION . " as rd where rd.reviews_id = r.reviews_id and rd.languages_id = '" . $_SESSION['languages_id'] . "' and r.products_id = '" . $reviews['products_id'] . "'");
         $reviews_average = vam_db_fetch_array($reviews_average_query);
 
         $review_info = vam_array_merge($reviews_text, $reviews_average, $products_name);
@@ -320,6 +320,7 @@ $( "#date_added" ).datepicker({ dateFormat: "dd-mm-yy" }).val();
         $contents[] = array('text' => '<br />' . TEXT_INFO_REVIEW_AUTHOR . ' ' . $rInfo->customers_name);
         $contents[] = array('text' => TEXT_INFO_REVIEW_RATING . ' ' . vam_image(HTTP_CATALOG_SERVER . DIR_WS_CATALOG . 'templates/'. CURRENT_TEMPLATE .'/img/stars_' . $rInfo->reviews_rating . '.gif'));
         $contents[] = array('text' => TEXT_INFO_REVIEW_READ . ' ' . $rInfo->reviews_read);
+        $contents[] = array('text' => ENTRY_REVIEW . '<br />' . $rInfo->reviews_text);
         $contents[] = array('text' => '<br />' . TEXT_INFO_REVIEW_SIZE . ' ' . $rInfo->reviews_text_size . ' bytes');
         $contents[] = array('text' => '<br />' . TEXT_INFO_PRODUCTS_AVERAGE_RATING . ' ' . number_format($rInfo->average_rating, 2) . '%');
       }
