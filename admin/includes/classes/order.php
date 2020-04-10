@@ -178,30 +178,28 @@ defined( '_VALID_VAM' ) or die( 'Direct Access to this location is not allowed.'
                              'format_id' => $order['billing_address_format_id']);
 
       $index = 0;
-      $orders_products_query = vam_db_query("select
-                                                 orders_products_id,products_id, products_name, products_model, products_price, products_tax, products_quantity, final_price,allow_tax, products_discount_made
-                                             from
-                                                 " . TABLE_ORDERS_PRODUCTS . "
-                                             where
-                                                 orders_id ='" . vam_db_input($order_id) . "'");
+      $orders_products_query = vam_db_query("SELECT * FROM " . TABLE_ORDERS_PRODUCTS . " where orders_id = '" . vam_db_input($order_id) . "'");
 
       while ($orders_products = vam_db_fetch_array($orders_products_query)) {
         $this->products[$index] = array('qty' => $orders_products['products_quantity'],
                                         'name' => $orders_products['products_name'],
                                         'id' => $orders_products['products_id'],
+                                        'guid' => $orders_products['guid'],
                                         'opid' => $orders_products['orders_products_id'],                                        
                                         'model' => $orders_products['products_model'],
                                         'tax' => $orders_products['products_tax'],
                                         'price' => $orders_products['products_price'],
                                         'discount' => $orders_products['products_discount_made'],
                                         'final_price' => $orders_products['final_price'],
-					'allow_tax' => $orders_products['allow_tax']);
+                                        'allow_tax' => $orders_products['allow_tax']);
 
         $subindex = 0;
-        $attributes_query = vam_db_query("select products_options, products_options_values, options_values_price, price_prefix from " . TABLE_ORDERS_PRODUCTS_ATTRIBUTES . " where orders_id = '" . vam_db_input($order_id) . "' and orders_products_id = '" . $orders_products['orders_products_id'] . "'");
+        $attributes_query = vam_db_query("select orders_products_id, guid, products_options, products_options_values, options_values_price, price_prefix from " . TABLE_ORDERS_PRODUCTS_ATTRIBUTES . " where orders_id = '" . vam_db_input($order_id) . "' and orders_products_id = '" . $orders_products['orders_products_id'] . "'");
         if (vam_db_num_rows($attributes_query)) {
           while ($attributes = vam_db_fetch_array($attributes_query)) {
             $this->products[$index]['attributes'][$subindex] = array('option' => $attributes['products_options'],
+                                                                     'orders_products_id' => $attributes['orders_products_id'],
+                                                                     'guid' => $attributes['guid'],
                                                                      'value' => $attributes['products_options_values'],
                                                                      'prefix' => $attributes['price_prefix'],
                                                                      'price' => $attributes['options_values_price']);
@@ -220,6 +218,7 @@ defined( '_VALID_VAM' ) or die( 'Direct Access to this location is not allowed.'
     	
     	$order_query = "SELECT
 	        				products_id,
+	        				guid,
 	        				orders_products_id,
 	        				products_model,
 	        				products_name,
@@ -233,6 +232,7 @@ defined( '_VALID_VAM' ) or die( 'Direct Access to this location is not allowed.'
 	while ($order_data_values = vam_db_fetch_array($order_query)) {
 		$attributes_query = "SELECT
 		        				products_options,
+		        				guid,
 		        				products_options_values,
 		        				price_prefix,
 		        				options_values_price
