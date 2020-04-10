@@ -391,6 +391,7 @@
 
         $this->products[$index] = array('qty' => $products[$i]['quantity'],
                                         'name' => $products[$i]['name'],
+                                        'guid' => $products[$i]['guid'],
                                         'model' => $products[$i]['model'],
                                         'tax_class_id'=> $products[$i]['tax_class_id'],
                                         'tax' => vam_get_tax_rate($products[$i]['tax_class_id'], $tax_address['entry_country_id'], $tax_address['entry_zone_id']),
@@ -630,6 +631,7 @@ if ($_SESSION['sc_payment_address_selected'] != '1') { //is unchecked - so payme
 
         $this->products[$index] = array('qty' => $products[$i]['quantity'],
                                         'name' => $products[$i]['name'],
+                                        'guid' => $products[$i]['guid'],
                                         'model' => $products[$i]['model'],
                                         'tax_class_id'=> $products[$i]['tax_class_id'],
                                         'tax' => vam_get_tax_rate($products[$i]['tax_class_id'], $tax_address['entry_country_id'], $tax_address['entry_zone_id']),
