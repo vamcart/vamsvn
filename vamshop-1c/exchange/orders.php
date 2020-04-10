@@ -384,7 +384,7 @@ function wc1c_replace_document($document) {
     wc1c_error("Failed to get order");
   }
   else {
-    // Заказ оплачен, ставим статус по умолчанию Ожидает проверки на стороне VamShop
+    // Заказ не оплачен, ставим статус по умолчанию Ожидает проверки на стороне VamShop
     $set_order_status = '1';
   	
     $is_paid = false;

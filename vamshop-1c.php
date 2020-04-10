@@ -611,7 +611,7 @@ function wc1c_delete_term($term_id, $tt_id, $taxonomy, $deleted_term) {
   $wpdb->delete($wpdb->termmeta, array('term_id' => $term_id));
   if (function_exists('wc1c_check_wpdb_error')) wc1c_check_wpdb_error();
 }
-add_action('delete_term', 'wc1c_delete_term', 10, 4);
+//add_action('delete_term', 'wc1c_delete_term', 10, 4);
 
 function wc1c_woocommerce_attribute_by_id($attribute_id) {
   global $wpdb;

@@ -1,6 +1,9 @@
 <?php
 //if (!defined('ABSPATH')) exit;
 
+//echo 'test';
+//exit("test");
+
 //require_once ABSPATH . "wp-admin/includes/media.php";
 //require_once ABSPATH . "wp-admin/includes/file.php";
 //require_once ABSPATH . "wp-admin/includes/image.php";
@@ -231,17 +234,39 @@ function wc1c_import_end_element_handler($is_full, $names, $depth, $name) {
 }
 
 function wc1c_term_id_by_meta($key, $value) {
-  global $wpdb;
+  //global $wpdb;
+
+  //echo $key;
+  //echo "<br />";
+  $value = str_replace("product_cat::","",$value);
+  //echo $value;
+  //exit;
 
   if ($value === null) return;
 
-  $cache_key = "wc1c_term_id_by_meta-$key-$value";
-  $term_id = wp_cache_get($cache_key);
+  //$cache_key = "wc1c_term_id_by_meta-$key-$value";
+  //$term_id = wp_cache_get($cache_key);
+  //echo var_dump($term_id);
+  //exit;
+  
+  $term_id = false;
+  
   if ($term_id === false) {
-    $term_id = $wpdb->get_var($wpdb->prepare("SELECT tm.term_id FROM $wpdb->termmeta tm JOIN $wpdb->terms t ON tm.term_id = t.term_id WHERE meta_key = %s AND meta_value = %s", $key, $value));
-    wc1c_check_wpdb_error();
+  	
+  	$get_categories_id_by_guid_query = vam_db_query("select categories_id from " . TABLE_CATEGORIES . " where guid = '" . vam_db_input($value) . "'");
+  	$get_categories_id_by_guid = vam_db_fetch_array($get_categories_id_by_guid_query);
+  	
+    //$term_id = $wpdb->get_var($wpdb->prepare("SELECT tm.term_id FROM $wpdb->termmeta tm JOIN $wpdb->terms t ON tm.term_id = t.term_id WHERE meta_key = %s AND meta_value = %s", $key, $value));
+    //wc1c_check_wpdb_error();
 
-    if ($term_id) wp_cache_set($cache_key, $term_id);
+    //if ($term_id) wp_cache_set($cache_key, $term_id);
+    
+    if (vam_db_num_rows($get_categories_id_by_guid_query, true) > 0) $term_id = $get_categories_id_by_guid['categories_id'];
+    
+  //echo var_dump($term_id);
+  
+  //exit;
+
   }
 
   return $term_id;
@@ -252,49 +277,59 @@ function wc1c_unique_term_name($name, $taxonomy, $parent = null) {
 
   $name = htmlspecialchars($name);
 
-  $sql = "SELECT * FROM $wpdb->terms NATURAL JOIN $wpdb->term_taxonomy WHERE name = %s AND taxonomy = %s AND parent = %d LIMIT 1";
-  if (!$parent) $parent = 0;
-  $term = $wpdb->get_row($wpdb->prepare($sql, $name, $taxonomy, $parent));
-  wc1c_check_wpdb_error();
-  if (!$term) return $name;
+  //$sql = "SELECT * FROM $wpdb->terms NATURAL JOIN $wpdb->term_taxonomy WHERE name = %s AND taxonomy = %s AND parent = %d LIMIT 1";
+  //if (!$parent) $parent = 0;
+  //$term = $wpdb->get_row($wpdb->prepare($sql, $name, $taxonomy, $parent));
+  //echo $name.$taxonomy.$parent;
+  //exit;
+  //wc1c_check_wpdb_error();
+  //if (!$term) return $name;
 
-  $number = 2;
-  while (true) {
-    $new_name = "$name ($number)";
-    $number++;
+  //$number = 2;
+  //while (true) {
+    //$new_name = "$name ($number)";
+    //$number++;
 
-    $term = $wpdb->get_row($wpdb->prepare($sql, $new_name, $taxonomy, $parent));
-    wc1c_check_wpdb_error();
-    if (!$term) return $new_name;
-  }
+    //$term = $wpdb->get_row($wpdb->prepare($sql, $new_name, $taxonomy, $parent));
+    //wc1c_check_wpdb_error();
+    //if (!$term) return $new_name;
+  //}
+   return $name;
 }
 
 function wc1c_unique_term_slug($slug, $taxonomy, $parent = null) {
-  global $wpdb;
+  //global $wpdb;
+  require_once(DIR_FS_INC . 'vam_make_alias.inc.php');
+  
+  $slug = make_alias($slug);
+  
+  return $slug;
+  //echo $slug;
+  //exit;
 
-  while (true) {
-    $sanitized_slug = sanitize_title($slug);
-    if (strlen($sanitized_slug) <= 195) break;
+  //while (true) {
+    //$sanitized_slug = sanitize_title($slug);
+    //if (strlen($sanitized_slug) <= 195) break;
 
-    $slug = mb_substr($slug, 0, mb_strlen($slug) - 3);
-  }
+    //$slug = mb_substr($slug, 0, mb_strlen($slug) - 3);
+  //}
 
-  $sql = "SELECT * FROM $wpdb->terms NATURAL JOIN $wpdb->term_taxonomy WHERE slug = %s AND taxonomy = %s AND parent = %d LIMIT 1";
-  if (!$parent) $parent = 0;
-  $term = $wpdb->get_row($wpdb->prepare($sql, $sanitized_slug, $taxonomy, $parent));
-  wc1c_check_wpdb_error();
-  if (!$term) return $slug;
+  //$sql = "SELECT * FROM $wpdb->terms NATURAL JOIN $wpdb->term_taxonomy WHERE slug = %s AND taxonomy = %s AND parent = %d LIMIT 1";
+  //if (!$parent) $parent = 0;
+  //$term = $wpdb->get_row($wpdb->prepare($sql, $sanitized_slug, $taxonomy, $parent));
+  //wc1c_check_wpdb_error();
+  //if (!$term) return $slug;
 
-  $number = 2;
-  while (true) {
-    $new_slug = "$slug-$number";
-    $new_sanitized_slug = "$sanitized_slug-$number";
-    $number++;
+  //$number = 2;
+  //while (true) {
+    //$new_slug = "$slug-$number";
+    //$new_sanitized_slug = "$sanitized_slug-$number";
+    //$number++;
 
-    $term = $wpdb->get_row($wpdb->prepare($sql, $new_sanitized_slug, $taxonomy, $parent));
-    wc1c_check_wpdb_error();
-    if (!$term) return $new_slug;
-  }
+    //$term = $wpdb->get_row($wpdb->prepare($sql, $new_sanitized_slug, $taxonomy, $parent));
+    //wc1c_check_wpdb_error();
+    //if (!$term) return $new_slug;
+  //}
 }
 
 function wc1c_wp_unique_term_slug($slug, $term, $original_slug) {
@@ -310,54 +345,184 @@ function wc1c_wp_unique_term_slug($slug, $term, $original_slug) {
 
   return $slug;
 }
-add_filter('wp_unique_term_slug', 'wc1c_wp_unique_term_slug', 10, 3);
+//add_filter('wp_unique_term_slug', 'wc1c_wp_unique_term_slug', 10, 3);
 
 function wc1c_replace_term($is_full, $guid, $parent_guid, $name, $taxonomy, $order, $use_guid_as_slug = false) {
   global $wpdb;
+  
+  //echo var_dump($guid);
+  //echo "<br />";
+  //echo var_dump($parent_guid);
+  //exit;
 
-  $term_id = wc1c_term_id_by_meta('wc1c_guid', "$taxonomy::$guid");
-  if ($term_id) $term = get_term($term_id, $taxonomy);
+  //$term_id = wc1c_term_id_by_meta('wc1c_guid', "$taxonomy::$guid");
+  $term_id = $guid;
 
-  $parent = $parent_guid ? wc1c_term_id_by_meta('wc1c_guid', "$taxonomy::$parent_guid") : null;
+  	$get_category_info_query = vam_db_query("select
+                                      c.*,
+                                      cd.* from ".TABLE_CATEGORIES." c, ".TABLE_CATEGORIES_DESCRIPTION." cd
+                                      where c.guid = '".$term_id."'
+                                      and cd.language_id = '".(int) $_SESSION['languages_id']."'");
+  	$get_category_info = vam_db_fetch_array($get_category_info_query);
+
+  	if (vam_db_num_rows($get_category_info_query) > 0) $term = $get_category_info;
+  	
+  	//echo var_dump($term);
+  	//exit;
+  	//$parent_id = false;
+  
+    $parent = $parent_guid ? wc1c_term_id_by_meta('wc1c_guid', $parent_guid) : null;
+  	//else {
+  	//$parent = null;
+  	//}
+
+  //$parent = $parent_guid ? $parent_id : null;
+  
+  //echo var_dump($term_id);
+  //echo "<br />";
+  //echo var_dump($term);
+  //echo "<br />";
+  //echo "<br />";
+  //echo "<br />";
+  //echo var_dump($parent);
+  //echo "<br />";
+  //echo "<br />";
+  //echo "<br />";
+  //exit;
+  
+  //$term = false;
 
   if (!$term_id || !$term) {
+  	
+  	
+  //echo var_dump($guid);
+  //echo "<br />";
+  //echo var_dump($parent_guid);
+  //echo "<br />";
+  //echo var_dump($parent);
+    	
+  	//echo 'test';
+  	//exit;
     $name = wc1c_unique_term_name($name, $taxonomy, $parent);
     $slug = wc1c_unique_term_slug($name, $taxonomy, $parent);
-    $args = array(
-      'slug' => $slug,
-      'parent' => $parent,
-    );
-    if ($use_guid_as_slug) $args['slug'] = $guid;
-    $result = wp_insert_term($name, $taxonomy, $args);
-    wc1c_check_wpdb_error();
-    wc1c_check_wp_error($result);
+    //$args = array(
+      //'slug' => $slug,
+      //'parent' => $parent,
+    //);
+  //echo var_dump($name);
+  //echo "<br />";
+  //echo var_dump($taxonomy);
+  //echo "<br />";
+  //echo var_dump($parent);
+  //echo "<br />";
+  //echo var_dump($slug);
+  //test();
+    //exit;
+    //if ($use_guid_as_slug) $args['slug'] = $guid;
+    
+    //$result = wp_insert_term($name, $taxonomy, $args);
+    //wc1c_check_wpdb_error();
+    //wc1c_check_wp_error($result);
 
-    $term_id = $result['term_id'];
-    update_term_meta($term_id, 'wc1c_guid', "$taxonomy::$guid");
+    //$term_id = $result['term_id'];
+    //update_term_meta($term_id, 'wc1c_guid', "$taxonomy::$guid");
+    
+		$sql_data_array = array (
+		'categories_status' => 1, 
+		'products_sorting' => vam_db_prepare_input("p.products_sort"), 
+		'products_sorting2' => vam_db_prepare_input("ASC"), 
+		'categories_template' => vam_db_prepare_input("default"), 
+		'date_added' => vam_db_prepare_input(date("Y-m-d H:i:s")),
+		'last_modified' => vam_db_prepare_input(date("Y-m-d H:i:s")),
+		'listing_template' => vam_db_prepare_input("default"), 
+		'parent_id' => vam_db_prepare_input($parent), 
+		'guid' => $guid,
+		'categories_url' => $slug,
+		'yml_bid' => 0,
+		'yml_cbid' => 0,
+		'icon' => vam_db_prepare_input("fa fa-chevron-right")
+       );
 
+		vam_db_perform(TABLE_CATEGORIES, $sql_data_array);
+		$categories_id = vam_db_insert_id();
+
+		$sql_data_array = array (
+		'language_id' => vam_db_prepare_input($_SESSION['languages_id']), 
+		'categories_id' => $categories_id,
+		'categories_name' => vam_db_prepare_input($name) 
+		);
+
+		vam_db_perform(TABLE_CATEGORIES_DESCRIPTION, $sql_data_array);
+
+      //echo "new:";				    
+		//echo $guid.'::'.$parent.'::'.$parent_guid.'<br />';
+		
     $is_added = true;
   }
 
   if (empty($is_added)) {
-    if (trim($name) != $term->name) $name = wc1c_unique_term_name($name, $taxonomy, $parent);
-    $parent = $parent_guid ? wc1c_term_id_by_meta('wc1c_guid', "$taxonomy::$parent_guid") : null;
-    $args = array(
-      'name' => $name,
-      'parent' => $parent,
-    );
+    if (trim($name) != $term['categories_name']) $name = wc1c_unique_term_name($name, $taxonomy, $parent);
+    //$parent = $parent_guid ? wc1c_term_id_by_meta('wc1c_guid', "$taxonomy::$parent_guid") : null;
+    //$args = array(
+      //'name' => $name,
+      //'parent' => $parent,
+    //);
 
-    $result = wp_update_term($term_id, $taxonomy, $args);
-    wc1c_check_wp_error($result);
+  //echo var_dump($name);
+  //echo var_dump($parent);
+  //echo var_dump($term_id);
+  //test1();
+
+    //$result = wp_update_term($term_id, $taxonomy, $args);
+    //wc1c_check_wp_error($result);
+
+    $parent = $parent_guid ? wc1c_term_id_by_meta('wc1c_guid', $parent_guid) : null;
+  	//else {
+  	//$parent = null;
+  	//}
+
+		$sql_data_array = array (
+		//'categories_status' => 1, 
+		//'products_sorting' => vam_db_prepare_input("p.products_sort"), 
+		//'products_sorting2' => vam_db_prepare_input("ASC"), 
+		//'categories_template' => vam_db_prepare_input("default"), 
+		'date_added' => vam_db_prepare_input(date("Y-m-d H:i:s")),
+		'last_modified' => vam_db_prepare_input(date("Y-m-d H:i:s")),
+		//'listing_template' => vam_db_prepare_input("default"), 
+		'parent_id' => vam_db_prepare_input($parent) 
+		//'guid' => $guid,
+		//'categories_url' => $slug,
+		//'yml_bid' => 0,
+		//'yml_cbid' => 0,
+		//'icon' => vam_db_prepare_input("fa fa-chevron-right")
+       );
+
+		vam_db_perform(TABLE_CATEGORIES, $sql_data_array, 'update', 'guid = \''.$guid.'\'');
+		//$categories_id = vam_db_insert_id();
+		//echo $guid.'::'.$parent.'::'.$parent_guid.'<br />';
+		//exit;
+
+		//$sql_data_array = array (
+		//'language_id' => vam_db_prepare_input($_SESSION['languages_id']), 
+		//'categories_id' => $categories_id,
+		//'categories_name' => vam_db_prepare_input($name) 
+		//);
+
+		//vam_db_perform(TABLE_CATEGORIES_DESCRIPTION, $sql_data_array);
+
+      //echo "update:";				    
+		//echo $guid.'::'.$parent.'::'.$parent_guid.'<br />';
+
   }
 
-  if ($is_full) wc_set_term_order($term_id, $order, $taxonomy);
+  //if ($is_full) wc_set_term_order($term_id, $order, $taxonomy);
 
-  update_term_meta($term_id, 'wc1c_timestamp', WC1C_TIMESTAMP);
+  //update_term_meta($term_id, 'wc1c_timestamp', WC1C_TIMESTAMP);
 }
 
 function wc1c_replace_group($is_full, $group, $order, $groups) {
   $parent_groups = array_slice($groups, 0, -1);
-  $group = apply_filters('wc1c_import_group_xml', $group, $parent_groups, $is_full);
+  //$group = apply_filters('wc1c_import_group_xml', $group, $parent_groups, $is_full);
   if (!$group) return;
 
   $group_name = isset($group['Наименование']) ? $group['Наименование'] : $group['Ид'];
