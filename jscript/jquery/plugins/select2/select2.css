@@ -1,7 +1,7 @@
 .select2-container {
   box-sizing: border-box;
   display: inline-block;
-  min-width: 40px;
+  min-width: 80px;
   margin: 0;
   position: relative;
   vertical-align: middle; }

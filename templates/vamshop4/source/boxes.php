@@ -16,7 +16,7 @@
 
   define('DIR_WS_BOXES',DIR_FS_CATALOG .'templates/'.CURRENT_TEMPLATE. '/source/boxes/');
 
-  if (SET_BOX_FILTERS == 'true') include(DIR_WS_BOXES . 'products_filter.php');
+  if (SET_BOX_FILTERS == 'true') if (!strstr($PHP_SELF, FILENAME_SHOPPING_CART)) include(DIR_WS_BOXES . 'products_filter.php');
 
   if (SET_BOX_AFFILIATE == 'true') include(DIR_WS_BOXES . 'affiliate.php');
   if (SET_BOX_CATEGORIES == 'true') include(DIR_WS_BOXES . 'categories.php');
