@@ -1026,6 +1026,7 @@ CREATE TABLE newsletters_history (
 DROP TABLE IF EXISTS orders;
 CREATE TABLE orders (
   orders_id int NOT NULL auto_increment,
+  guid text not null,
   customers_id int NOT NULL,
   customers_cid varchar(255),
   customers_vat_id varchar (20) DEFAULT NULL,
