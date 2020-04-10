@@ -197,7 +197,19 @@ for ($i = 0, $n = sizeof($order->products); $i < $n; $i ++) {
 	// Update products_ordered (for bestsellers list)
 	vam_db_query("update ".TABLE_PRODUCTS." set products_ordered = products_ordered + ".sprintf('%d', $order->products[$i]['qty'])." where products_id = '".vam_get_prid($order->products[$i]['id'])."'");
 
-	$sql_data_array = array ('orders_id' => $insert_id, 'products_id' => vam_get_prid($order->products[$i]['id']), 'products_model' => $order->products[$i]['model'], 'products_name' => $order->products[$i]['name'],'products_shipping_time'=>$order->products[$i]['shipping_time'], 'products_price' => $order->products[$i]['price'], 'final_price' => $order->products[$i]['final_price'], 'products_tax' => $order->products[$i]['tax'], 'products_discount_made' => $order->products[$i]['discount_allowed'], 'products_quantity' => $order->products[$i]['qty'], 'allow_tax' => $_SESSION['customers_status']['customers_status_show_price_tax']);
+	$sql_data_array = array ('orders_id' => $insert_id, 
+                            'products_id' => vam_get_prid($order->products[$i]['id']), 
+                            'guid' => $order->products[$i]['guid'], 
+                            'products_model' => $order->products[$i]['model'], 
+                            'products_name' => $order->products[$i]['name'],
+                            'products_shipping_time'=>$order->products[$i]['shipping_time'], 
+                            'products_price' => $order->products[$i]['price'], 
+                            'final_price' => $order->products[$i]['final_price'], 
+                            'products_tax' => $order->products[$i]['tax'], 
+                            'products_discount_made' => $order->products[$i]['discount_allowed'], 
+                            'products_quantity' => $order->products[$i]['qty'], 
+                            'allow_tax' => $_SESSION['customers_status']['customers_status_show_price_tax']
+                           );
 
 	vam_db_perform(TABLE_ORDERS_PRODUCTS, $sql_data_array);
 	$order_products_id = vam_db_insert_id();
@@ -229,6 +241,7 @@ for ($i = 0, $n = sizeof($order->products); $i < $n; $i ++) {
 								                               poval.products_options_values_name,
 								                               pa.options_values_price,
 								                               pa.price_prefix,
+								                               pa.guid,
 								                               pad.products_attributes_maxdays,
 								                               pad.products_attributes_maxcount,
 								                               pad.products_attributes_filename,
@@ -247,6 +260,7 @@ for ($i = 0, $n = sizeof($order->products); $i < $n; $i ++) {
 			} else {
 				$attributes = vam_db_query("select popt.products_options_name,
 								                                             poval.products_options_values_name,
+								                                             pa.guid,
 								                                             pa.options_values_price,
 								                                             pa.price_prefix
 								                                             from ".TABLE_PRODUCTS_OPTIONS." popt, ".TABLE_PRODUCTS_OPTIONS_VALUES." poval, ".TABLE_PRODUCTS_ATTRIBUTES." pa
@@ -269,7 +283,14 @@ for ($i = 0, $n = sizeof($order->products); $i < $n; $i ++) {
 
 			$attributes_values = vam_db_fetch_array($attributes);
 
-			$sql_data_array = array ('orders_id' => $insert_id, 'orders_products_id' => $order_products_id, 'products_options' => $attributes_values['products_options_name'], 'products_options_values' => $order->products[$i]['attributes'][$j]['value'], 'options_values_price' => $attributes_values['options_values_price'], 'price_prefix' => $attributes_values['price_prefix']);
+			$sql_data_array = array ('orders_id' => $insert_id, 
+                                  'orders_products_id' => $order_products_id, 
+                                  'guid' => $attributes_values['guid'], 
+                                  'products_options' => $attributes_values['products_options_name'], 
+                                  'products_options_values' => $order->products[$i]['attributes'][$j]['value'], 
+                                  'options_values_price' => $attributes_values['options_values_price'], 
+                                  'price_prefix' => $attributes_values['price_prefix']
+                                 );
 			vam_db_perform(TABLE_ORDERS_PRODUCTS_ATTRIBUTES, $sql_data_array);
 
         if ((DOWNLOAD_ENABLED == 'true') && ((isset($attributes_values['products_attributes_filename']) && vam_not_null($attributes_values['products_attributes_filename'])) or $attributes_values['products_attributes_is_pin'])) {
@@ -292,6 +313,7 @@ for ($i = 0, $n = sizeof($order->products); $i < $n; $i ++) {
 				
 				$sql_data_array = array ('orders_id' => $insert_id, 
                                   'orders_products_id' => $order_products_id, 
+                                  'guid' => $attributes_values['guid'], 
                                   'orders_products_filename' => $attributes_values['products_attributes_filename'], 
                                   'download_maxdays' => $attributes_values['products_attributes_maxdays'], 
                                   'download_count' => $attributes_values['products_attributes_maxcount'],
