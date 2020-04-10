@@ -611,6 +611,7 @@ CREATE TABLE banners_history (
 DROP TABLE IF EXISTS categories;
 CREATE TABLE categories (
   categories_id int NOT NULL auto_increment,
+  guid text not null,
   categories_image varchar(255),
   parent_id int DEFAULT '0' NOT NULL,
   categories_status TINYint (1)  UNSIGNED DEFAULT "1" NOT NULL,
@@ -638,10 +639,10 @@ CREATE TABLE categories (
 ) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
 INSERT INTO `categories` VALUES
-(1, '1.png', 0, 1, 'default', 0, 0, 0, 0, 'default', 3, 'p.products_sort', 'ASC', '2014-01-20 10:35:47', '2014-01-20 11:11:52', '', '', 'notebooks.html', 1, 0, 'fas fa-laptop',0,0),
-(2, '2.png', 0, 1, 'default', 0, 0, 0, 0, 'product_listing_list.html', 2, 'p.products_sort', 'ASC', '2014-01-20 10:36:08', '2014-01-20 11:11:57', '', '', 'tablets.html', 1, 3, 'fas fa-tablet-alt',0,0),
-(3, '3.png', 0, 1, 'default', 0, 0, 0, 0, 'default', 1, 'p.products_sort', 'ASC', '2014-01-20 10:36:29', '2014-01-20 11:12:01', '', '', 'smartphones.html', 1, 0, 'fas fa-mobile-alt',0,0),
-(4, '4.png', 0, 1, 'default', 0, 0, 0, 0, 'default', 4, 'p.products_sort', 'ASC', '2014-01-20 10:36:29', '2014-01-20 11:12:01', '', '', 'monitors.html', 1, 0, 'fas fa-tv',0,0);
+(1, '', '1.png', 0, 1, 'default', 0, 0, 0, 0, 'default', 3, 'p.products_sort', 'ASC', '2014-01-20 10:35:47', '2014-01-20 11:11:52', '', '', 'notebooks.html', 1, 0, 'fas fa-laptop',0,0),
+(2, '', '2.png', 0, 1, 'default', 0, 0, 0, 0, 'product_listing_list.html', 2, 'p.products_sort', 'ASC', '2014-01-20 10:36:08', '2014-01-20 11:11:57', '', '', 'tablets.html', 1, 3, 'fas fa-tablet-alt',0,0),
+(3, '', '3.png', 0, 1, 'default', 0, 0, 0, 0, 'default', 1, 'p.products_sort', 'ASC', '2014-01-20 10:36:29', '2014-01-20 11:12:01', '', '', 'smartphones.html', 1, 0, 'fas fa-mobile-alt',0,0),
+(4, '', '4.png', 0, 1, 'default', 0, 0, 0, 0, 'default', 4, 'p.products_sort', 'ASC', '2014-01-20 10:36:29', '2014-01-20 11:12:01', '', '', 'monitors.html', 1, 0, 'fas fa-tv',0,0);
 
 DROP TABLE IF EXISTS categories_description;
 CREATE TABLE categories_description (
@@ -1117,6 +1118,7 @@ CREATE TABLE card_blacklist (
 DROP TABLE IF EXISTS orders_products;
 CREATE TABLE orders_products (
   orders_products_id int NOT NULL auto_increment,
+  guid text not null,
   orders_id int NOT NULL,
   products_id int NOT NULL,
   products_model varchar(255),
@@ -1175,6 +1177,7 @@ CREATE TABLE orders_status_history (
 DROP TABLE IF EXISTS orders_products_attributes;
 CREATE TABLE orders_products_attributes (
   orders_products_attributes_id int NOT NULL auto_increment,
+  guid text not null,
   orders_id int NOT NULL,
   orders_products_id int NOT NULL,
   products_options varchar(255) NOT NULL,
@@ -1187,6 +1190,7 @@ CREATE TABLE orders_products_attributes (
 DROP TABLE IF EXISTS orders_products_download;
 CREATE TABLE orders_products_download (
   orders_products_download_id int NOT NULL auto_increment,
+  guid text not null,
   orders_id int NOT NULL default '0',
   orders_products_id int NOT NULL default '0',
   orders_products_filename varchar(255) NOT NULL default '',
@@ -1225,6 +1229,7 @@ CREATE TABLE orders_recalculate (
 DROP TABLE IF EXISTS products;
 CREATE TABLE products (
   products_id int NOT NULL auto_increment,
+  guid text not null,
   products_ean varchar(255),
   products_quantity int(4) NOT NULL,
   products_quantity_min int(4) NOT NULL DEFAULT '1',
@@ -1275,20 +1280,21 @@ CREATE TABLE products (
 ) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
 INSERT INTO `products` VALUES
-(1, '', 1000, 1, 1000, 1, 'samsung-ativ-book-9', 0, 0, 0, 0, 1, '1_0.png', '', '29999.0000', '100.0000', '2014-01-20 10:43:06', '2014-01-20 11:10:27', '0000-00-00 00:00:00', '0.6', 1, 0, 'default', 'default', 3, 3, 0, 0, 0, 0, '0.0000', 1, 1, 1, '', '', 'samsung-ativ-book-9.html',30,20,5,0.003,"no","no",0,0),
-(2, '', 1000, 1, 1000, 1, 'samsung-ativ-smart-pc', 0, 0, 0, 0, 2, '2_0.png', '', '27999.0000', '100.0000', '2014-01-20 10:45:50', '2014-01-20 11:10:33', '0000-00-00 00:00:00', '0.6', 1, 0, 'default', 'default', 3, 0, 0, 0, 0, 0, '0.0000', 1, 2, 1, '', '', 'samsung-ativ-smart-pc.html',30,20,5,0.003,"no","no",0,0),
-(3, '', 1000, 1, 1000, 1, 'samsung-ativ-book-4', 0, 0, 0, 0, 3, '3_0.png', '', '24999.0000', '100.0000', '2014-01-20 10:47:11', '2014-01-20 11:10:38', '0000-00-00 00:00:00', '0.6', 1, 0, 'default', 'default', 2, 3, 0, 0, 0, 0, '0.0000', 1, 3, 1, '', '', 'samsung-ativ-book-4.html',30,20,5,0.003,"no","no",0,0),
-(4, '', 1000, 1, 1000, 1, 'samsung-galaxy-tab-3', 0, 0, 0, 0, 1, '4_0.png', '', '12999.0000', '100.0000', '2014-01-20 11:00:59', '2014-01-20 11:10:54', '0000-00-00 00:00:00', '0.6', 1, 0, 'default', 'default', 6, 1, 0, 0, 0, 0, '0.0000', 1, 1, 1, '', '', 'samsung-galaxy-tab-3.html',30,20,5,0.003,"no","no",0,0),
-(5, '', 1000, 1, 1000, 1, 'samsung-galaxy-note-10-1', 0, 0, 0, 0, 2, '5_0.png', '', '9999.0000', '100.0000', '2014-01-20 11:02:11', '2014-01-20 11:10:59', '0000-00-00 00:00:00', '0.6', 1, 0, 'default', 'default', 4, 0, 0, 0, 0, 0, '0.0000', 1, 2, 1, '', '', 'samsung-galaxy-note-10-1.html',30,20,5,0.003,"no","no",0,0),
-(6, '', 1000, 1, 1000, 1, 'samsung-galaxy-note-8', 0, 0, 0, 0, 3, '6_0.png', '', '6999.0000', '100.0000', '2014-01-20 11:03:21', '2014-01-20 11:11:04', '0000-00-00 00:00:00', '0.6', 1, 0, 'default', 'default', 5, 3, 0, 0, 0, 0, '0.0000', 1, 3, 1, '', '', 'samsung-galaxy-note-8.html',30,20,5,0.003,"no","no",0,0),
-(7, '', 1000, 1, 1000, 1, 'samsung-galaxy-note-3', 0, 0, 0, 0, 1, '7_0.png', '', '15999.0000', '100.0000', '2014-01-20 11:06:47', '2014-01-20 11:10:02', '0000-00-00 00:00:00', '0.6', 1, 0, 'default', 'default', 5, 1, 0, 0, 0, 0, '0.0000', 1, 1, 1, '', '', 'samsung-galaxy-note-3.html',30,20,5,0.003,"no","no",0,0),
-(8, '', 1000, 1, 1000, 1, 'samsung-galaxy-s4', 0, 0, 0, 0, 2, '8_0.png', '', '12999.0000', '100.0000', '2014-01-20 11:07:46', '2014-01-20 11:10:06', '0000-00-00 00:00:00', '0.6', 1, 0, 'default', 'default', 1, 2, 0, 0, 0, 0, '0.0000', 1, 2, 1, '', '', 'samsung-galaxy-s4.html',30,20,5,0.003,"no","no",0,0),
-(9, '', 1000, 1, 1000, 1, 'samsung-galaxy-ace-3', 0, 0, 0, 0, 3, '9_0.png', '', '9999.0000', '100.0000', '2014-01-20 11:08:51', '2014-01-20 11:10:10', '0000-00-00 00:00:00', '0.6', 1, 0, 'default', 'default', 2, 3, 0, 0, 0, 0, '0.0000', 1, 3, 1, '', '', 'samsung-galaxy-ace-3.html',30,20,5,0.003,"no","no",0,0);
+(1, '', '', 1000, 1, 1000, 1, 'samsung-ativ-book-9', 0, 0, 0, 0, 1, '1_0.png', '', '29999.0000', '100.0000', '2014-01-20 10:43:06', '2014-01-20 11:10:27', '0000-00-00 00:00:00', '0.6', 1, 0, 'default', 'default', 3, 3, 0, 0, 0, 0, '0.0000', 1, 1, 1, '', '', 'samsung-ativ-book-9.html',30,20,5,0.003,"no","no",0,0),
+(2, '', '', 1000, 1, 1000, 1, 'samsung-ativ-smart-pc', 0, 0, 0, 0, 2, '2_0.png', '', '27999.0000', '100.0000', '2014-01-20 10:45:50', '2014-01-20 11:10:33', '0000-00-00 00:00:00', '0.6', 1, 0, 'default', 'default', 3, 0, 0, 0, 0, 0, '0.0000', 1, 2, 1, '', '', 'samsung-ativ-smart-pc.html',30,20,5,0.003,"no","no",0,0),
+(3, '', '', 1000, 1, 1000, 1, 'samsung-ativ-book-4', 0, 0, 0, 0, 3, '3_0.png', '', '24999.0000', '100.0000', '2014-01-20 10:47:11', '2014-01-20 11:10:38', '0000-00-00 00:00:00', '0.6', 1, 0, 'default', 'default', 2, 3, 0, 0, 0, 0, '0.0000', 1, 3, 1, '', '', 'samsung-ativ-book-4.html',30,20,5,0.003,"no","no",0,0),
+(4, '', '', 1000, 1, 1000, 1, 'samsung-galaxy-tab-3', 0, 0, 0, 0, 1, '4_0.png', '', '12999.0000', '100.0000', '2014-01-20 11:00:59', '2014-01-20 11:10:54', '0000-00-00 00:00:00', '0.6', 1, 0, 'default', 'default', 6, 1, 0, 0, 0, 0, '0.0000', 1, 1, 1, '', '', 'samsung-galaxy-tab-3.html',30,20,5,0.003,"no","no",0,0),
+(5, '', '', 1000, 1, 1000, 1, 'samsung-galaxy-note-10-1', 0, 0, 0, 0, 2, '5_0.png', '', '9999.0000', '100.0000', '2014-01-20 11:02:11', '2014-01-20 11:10:59', '0000-00-00 00:00:00', '0.6', 1, 0, 'default', 'default', 4, 0, 0, 0, 0, 0, '0.0000', 1, 2, 1, '', '', 'samsung-galaxy-note-10-1.html',30,20,5,0.003,"no","no",0,0),
+(6, '', '', 1000, 1, 1000, 1, 'samsung-galaxy-note-8', 0, 0, 0, 0, 3, '6_0.png', '', '6999.0000', '100.0000', '2014-01-20 11:03:21', '2014-01-20 11:11:04', '0000-00-00 00:00:00', '0.6', 1, 0, 'default', 'default', 5, 3, 0, 0, 0, 0, '0.0000', 1, 3, 1, '', '', 'samsung-galaxy-note-8.html',30,20,5,0.003,"no","no",0,0),
+(7, '', '', 1000, 1, 1000, 1, 'samsung-galaxy-note-3', 0, 0, 0, 0, 1, '7_0.png', '', '15999.0000', '100.0000', '2014-01-20 11:06:47', '2014-01-20 11:10:02', '0000-00-00 00:00:00', '0.6', 1, 0, 'default', 'default', 5, 1, 0, 0, 0, 0, '0.0000', 1, 1, 1, '', '', 'samsung-galaxy-note-3.html',30,20,5,0.003,"no","no",0,0),
+(8, '', '', 1000, 1, 1000, 1, 'samsung-galaxy-s4', 0, 0, 0, 0, 2, '8_0.png', '', '12999.0000', '100.0000', '2014-01-20 11:07:46', '2014-01-20 11:10:06', '0000-00-00 00:00:00', '0.6', 1, 0, 'default', 'default', 1, 2, 0, 0, 0, 0, '0.0000', 1, 2, 1, '', '', 'samsung-galaxy-s4.html',30,20,5,0.003,"no","no",0,0),
+(9, '', '', 1000, 1, 1000, 1, 'samsung-galaxy-ace-3', 0, 0, 0, 0, 3, '9_0.png', '', '9999.0000', '100.0000', '2014-01-20 11:08:51', '2014-01-20 11:10:10', '0000-00-00 00:00:00', '0.6', 1, 0, 'default', 'default', 2, 3, 0, 0, 0, 0, '0.0000', 1, 3, 1, '', '', 'samsung-galaxy-ace-3.html',30,20,5,0.003,"no","no",0,0);
 
 
 DROP TABLE IF EXISTS products_attributes;
 CREATE TABLE products_attributes (
   products_attributes_id int NOT NULL auto_increment,
+  guid text not null,
   products_id int NOT NULL,
   options_id int NOT NULL,
   options_values_id int NOT NULL,
@@ -1306,6 +1312,7 @@ CREATE TABLE products_attributes (
 DROP TABLE IF EXISTS products_attributes_download;
 CREATE TABLE products_attributes_download (
   products_attributes_id int NOT NULL,
+  guid text not null,
   products_attributes_filename varchar(255) NOT NULL default '',
   products_attributes_maxdays int(2) default '0',
   products_attributes_maxcount int(2) default '0',
@@ -4193,10 +4200,10 @@ INSERT INTO `products_options_values_to_products_options` (`products_options_val
 (2, 1, 2),
 (3, 1, 3);
 
-INSERT INTO `products_attributes` (`products_attributes_id`, `products_id`, `options_id`, `options_values_id`, `options_values_price`, `price_prefix`, `attributes_model`, `attributes_stock`, `options_values_weight`, `weight_prefix`, `sortorder`) VALUES
-(1, 7, 1, 1, '100.0000', '+', '', 10000, '0.0000', '+', 0),
-(2, 7, 1, 2, '200.0000', '+', '', 10000, '0.0000', '+', 0),
-(3, 7, 1, 3, '300.0000', '+', '', 10000, '0.0000', '+', 0),
-(4, 4, 1, 1, '100.0000', '+', '', 10000, '0.0000', '+', 0),
-(5, 4, 1, 2, '200.0000', '+', '', 10000, '0.0000', '+', 0),
-(6, 4, 1, 3, '300.0000', '+', '', 10000, '0.0000', '+', 0);
+INSERT INTO `products_attributes` (`products_attributes_id`, `guid`, `products_id`, `options_id`, `options_values_id`, `options_values_price`, `price_prefix`, `attributes_model`, `attributes_stock`, `options_values_weight`, `weight_prefix`, `sortorder`) VALUES
+(1, '', 7, 1, 1, '100.0000', '+', '', 10000, '0.0000', '+', 0),
+(2, '', 7, 1, 2, '200.0000', '+', '', 10000, '0.0000', '+', 0),
+(3, '', 7, 1, 3, '300.0000', '+', '', 10000, '0.0000', '+', 0),
+(4, '', 4, 1, 1, '100.0000', '+', '', 10000, '0.0000', '+', 0),
+(5, '', 4, 1, 2, '200.0000', '+', '', 10000, '0.0000', '+', 0),
+(6, '', 4, 1, 3, '300.0000', '+', '', 10000, '0.0000', '+', 0);
