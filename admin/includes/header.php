@@ -76,6 +76,10 @@
 										</a>
 									</li>
 									<li class="icons">
+										<a href="<?php echo vam_href_link(FILENAME_CACHE, 'action=unlink', 'NONSSL'); ?>" data-toggle="tooltip" data-placement="bottom" title="<?php echo TEXT_CLEAR_CACHE; ?>"><i class="fa fa-trash-alt" aria-hidden="true"></i>
+										</a>
+									</li>
+									<li class="icons">
 										<a href="https://vamshop.ru" data-toggle="tooltip" data-placement="bottom" title="<?php echo TEXT_HEADER_SUPPORT; ?>"><i class="fas fa-question-circle" aria-hidden="true"></i>
 										</a>
 									</li>

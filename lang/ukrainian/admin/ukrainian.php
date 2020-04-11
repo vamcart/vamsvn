@@ -657,4 +657,6 @@ define('TEXT_SUMMARY_TOTAL_SALES','Сумма продаж');
 define('TEXT_SUMMARY_TOTAL_CUSTOMERS','Всего клиентов');
 define('TEXT_SUMMARY_PENDING_ORDERS','Новых заказов');
 
+define('TEXT_CLEAR_CACHE','Очистить кэш');
+
 ?>
