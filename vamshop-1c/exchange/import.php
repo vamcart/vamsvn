@@ -192,12 +192,22 @@ function wc1c_import_end_element_handler($is_full, $names, $depth, $name) {
       wc1c_replace_product($is_full, $guid, $wc1c_product);
       $_post_id = wc1c_replace_product($is_full, $guid, $wc1c_product);
       if ($_post_id) {
-        $_product = wc_get_product($_post_id);
-        $_qnty = $_product->get_stock_quantity();
+        //$_product = wc_get_product($_post_id);
+        //$_qnty = $_product->get_stock_quantity();
+        //echo var_dump($_post_id);
+        $get_stock_quantity_by_id_query = vam_db_query("select products_quantity from " . TABLE_PRODUCTS . " where products_id = '" . vam_db_input($_post_id) . "'");      
+        $get_stock_quantity_by_id = vam_db_fetch_array($get_stock_quantity_by_id_query);
+        $_qnty = $get_stock_quantity_by_id['products_quantity'];
         if (!$_qnty) {
-          update_post_meta($_post_id, '_stock_status', WC1C_OUTOFSTOCK_STATUS);
+          //update_post_meta($_post_id, '_stock_status', WC1C_OUTOFSTOCK_STATUS);
+				$sql_data_array = array (
+				'products_quantity' => $_qnty 
+		       );
+		
+				vam_db_perform(TABLE_PRODUCTS, $sql_data_array, 'update', 'products_id = \''.$_post_id.'\'');
+				          
         }
-        unset($_product, $_qnty);
+        //unset($_product, $_qnty);
       }
       unset($_post_id);
     }
@@ -638,6 +648,9 @@ function wc1c_replace_property($is_full, $property, $order) {
 
 function wc1c_replace_post($guid, $post_type, $is_deleted, $is_draft, $post_title, $post_name, $post_excerpt, $post_content, $post_meta, $category_taxonomy, $category_guids, $preserve_fields) {
   $post_id = wc1c_post_id_by_meta('_wc1c_guid', $guid);
+  
+  //echo var_dump($post_id);
+  //echo var_dump($post_excerpt);
 
   if (!$post_excerpt) $post_excerpt = '';
   if (WC1C_PRODUCT_DESCRIPTION_TO_CONTENT) {
@@ -649,57 +662,115 @@ function wc1c_replace_post($guid, $post_type, $is_deleted, $is_draft, $post_titl
 
   if (!$post_id) {
     $args = array_merge($args, array(
-      'post_name' => $post_name,
-      'post_status' => $is_draft ? 'draft' : 'publish',
+      'products_name' => $post_name,
+      'products_status' => $is_draft ? '0' : '1',
     ));
-    $post_id = wp_insert_post($args, true);
+    
+    //echo var_dump($args);
+    
+    //$post_id = wp_insert_post($args, true);
+
+		$sql_data_array = array (
+		'guid' => vam_db_prepare_input($guid), 
+		'products_status' => vam_db_prepare_input($args['products_status']) 
+       );
+
+		vam_db_perform(TABLE_PRODUCTS, $sql_data_array);
+		$products_id = vam_db_insert_id();
+
+		$sql_data_array = array (
+		'language_id' => vam_db_prepare_input($_SESSION['languages_id']), 
+		'products_id' => $products_id,
+		'products_name' => vam_db_prepare_input($args['products_name']), 
+		'products_short_description' => vam_db_prepare_input($args['post_content']), 
+		'products_description' => vam_db_prepare_input($args['post_content']) 
+		);
+
+		vam_db_perform(TABLE_PRODUCTS_DESCRIPTION, $sql_data_array);
+
+//echo var_dump($post_id);
+
     wc1c_check_wpdb_error();
     wc1c_check_wp_error($post_id);
-
-    update_post_meta($post_id, '_visibility', 'visible');
-    update_post_meta($post_id, '_wc1c_guid', $guid);
 
     $is_added = true;
   }
   else {
     $is_added = false;
   }
+  
+  //echo var_dump($post_id);
+  
+  	$get_product_info_query = vam_db_query("select
+                                      p.*,
+                                      pd.* from ".TABLE_PRODUCTS." p, ".TABLE_PRODUCTS_DESCRIPTION." pd
+                                      where p.guid = '".$guid."'
+                                      and pd.language_id = '".(int) $_SESSION['languages_id']."'");
+  	$get_product_info = vam_db_fetch_array($get_product_info_query);
 
-  $post = get_post($post_id);
+  	if (vam_db_num_rows($get_product_info_query) > 0) $post = $get_product_info;
+  
+//echo var_dump($post);
+
+  //$post = get_post($post_id);
   if (!$post) wc1c_error("Failed to get post");
 
   if (!$is_added) {
     if (in_array('title', $preserve_fields)) unset($args['post_title']);
     if (in_array('excerpt', $preserve_fields)) unset($args['post_excerpt']);
     if (in_array('body', $preserve_fields)) unset($args['post_content']);
+    
+    //echo var_dump($args);
 
     foreach ($args as $key => $value) {
-      if ($post->$key == $value) continue;
+      if ($post[$key] == $value) continue;
 
       $is_changed = true;
       break;
     }
+    
+    //echo var_dump($is_changed);
 
     if (!empty($is_changed)) {
-      $post_date = current_time('mysql');
-      $args = array_merge($args, array(
-        'ID' => $post_id,
-        'post_date' => $post_date,
-        'post_date_gmt' => get_gmt_from_date($post_date),
-      ));
-      $post_id = wp_update_post($args, true);
+      $post_date = date("Y-m-d H:i:s");
+      //$args = array_merge($args, array(
+        //'ID' => $post_id,
+        //'post_date' => $post_date,
+        //'post_date_gmt' => get_gmt_from_date($post_date),
+      //));
+      //$post_id = wp_update_post($args, true);
+      
+		$sql_data_array = array (
+		'products_last_modified' => $post_date, 
+       );
+
+		vam_db_perform(TABLE_PRODUCTS, $sql_data_array, 'update', 'products_id = \''.$post_id.'\'');
+      
       wc1c_check_wp_error($post_id);
     }
   }
 
-  if ($is_deleted && $post->post_status != 'trash') {
-    wp_trash_post($post_id);
+//echo var_dump($post);
+
+  if ($is_deleted && $post['products_status'] != '0') {
+    //wp_trash_post($post_id);
+		$sql_data_array = array (
+		'products_status' => 0, 
+       );
+		vam_db_perform(TABLE_PRODUCTS, $sql_data_array, 'update', 'products_id = \''.$post_id.'\'');
   }
-  elseif (!$is_deleted && $post->post_status == 'trash') {
-    wp_untrash_post($post_id);
+  elseif (!$is_deleted && $post->post_status == '0') {
+    //wp_untrash_post($post_id);
+		$sql_data_array = array (
+		'products_status' => 1, 
+       );
+		vam_db_perform(TABLE_PRODUCTS, $sql_data_array, 'update', 'products_id = \''.$post_id.'\'');
   }
 
-  $current_post_meta = get_post_meta($post_id);
+  $current_post_meta = $post;
+  //echo var_dump($current_post_meta);
+  //echo var_dump($post_meta);
+  
   foreach ($current_post_meta as $meta_key => $meta_value) {
     $current_post_meta[$meta_key] = $meta_value[0];
   }
@@ -708,12 +779,25 @@ function wc1c_replace_post($guid, $post_type, $is_deleted, $is_draft, $post_titl
     $current_meta_value = @$current_post_meta[$meta_key];
     if ($current_meta_value == $meta_value) continue;
 
-    update_post_meta($post_id, $meta_key, $meta_value);
+		//$sql_data_array = array (
+		//'products_id' => $post_id, 
+		//$meta_key => $meta_value, 
+       //);
+		//vam_db_perform(TABLE_PRODUCTS, $sql_data_array, 'update', 'products_id = \''.$post_id.'\'');
+		
+    //update_post_meta($post_id, $meta_key, $meta_value);
   }
 
   if (!in_array('categories', $preserve_fields)) {
-    $current_category_ids = wp_get_post_terms($post_id, $category_taxonomy, "fields=ids");
-    wc1c_check_wp_error($current_category_ids);
+    //$current_category_ids = wp_get_post_terms($post_id, $category_taxonomy, "fields=ids");
+    //wc1c_check_wp_error($current_category_ids);
+    
+    $get_categories_id_by_guid_query = vam_db_query("select categories_id from " . TABLE_PRODUCTS_TO_CATEGORIES . " where products_id = '" . vam_db_input($post_id) . "'");      
+    $get_categories_id_by_guid = vam_db_fetch_array($get_categories_id_by_guid_query);
+    
+    $current_category_ids[0] = $get_categories_id_by_guid['categories_id'];
+  	    
+    //echo var_dump($current_category_ids);
 
     $category_ids = array();
     if ($category_guids) {
@@ -725,13 +809,37 @@ function wc1c_replace_post($guid, $post_type, $is_deleted, $is_draft, $post_titl
 
     sort($current_category_ids);
     sort($category_ids);
+    
+//echo var_dump($current_category_ids);    
+//echo var_dump($category_ids);    
+    
     if ($current_category_ids != $category_ids) {
-      $result = wp_set_post_terms($post_id, $category_ids, $category_taxonomy);
-      wc1c_check_wp_error($result);
+      //$result = wp_set_post_terms($post_id, $category_ids, $category_taxonomy);
+      //wc1c_check_wp_error($result);
+
+  	$get_products_id_by_guid_query = vam_db_query("select products_id from " . TABLE_PRODUCTS . " where guid = '" . vam_db_input($guid) . "'");
+  	$get_products_id_by_guid = vam_db_fetch_array($get_products_id_by_guid_query);
+  	
+//echo var_dump($get_products_id_by_guid);  	
+//echo "<br />";      
+//echo var_dump($post_id);
+//echo "<br />";      
+//echo var_dump($guid);      
+      
+		$sql_data_array = array (
+		'products_id' => $get_products_id_by_guid['products_id'], 
+		'categories_id' => $category_ids[0]
+       );
+
+		vam_db_perform(TABLE_PRODUCTS_TO_CATEGORIES, $sql_data_array);
+		
+		//exit;
+      
+      
     }
   }
 
-  update_post_meta($post_id, '_wc1c_timestamp', WC1C_TIMESTAMP);
+  //update_post_meta($post_id, '_wc1c_timestamp', WC1C_TIMESTAMP);
 
   return array($is_added, $post_id, $current_post_meta);
 }
@@ -797,11 +905,13 @@ function wc1c_replace_requisite_name_callback($matches) {
 
 function wc1c_replace_product($is_full, $guid, $product) {
   global $wc1c_is_moysklad;
+  
+  //echo var_dump($product);
 
-  $product = apply_filters('wc1c_import_product_xml', $product, $is_full);
+  //$product = apply_filters('wc1c_import_product_xml', $product, $is_full);
   if (!$product) return;
 
-  $preserve_fields = apply_filters('wc1c_import_preserve_product_fields', array(), $product, $is_full);
+  //$preserve_fields = apply_filters('wc1c_import_preserve_product_fields', array(), $product, $is_full);
 
   $is_deleted = @$product['Статус'] == 'Удален';
   $is_draft = @$product['Статус'] == 'Черновик';
@@ -846,8 +956,10 @@ function wc1c_replace_product($is_full, $guid, $product) {
     }
   }
 
-  $post_name = sanitize_title($post_title);
-  $post_name = apply_filters('wc1c_import_product_slug', $post_name, $product, $is_full);
+  $post_name = vam_db_input($post_title);
+  //$post_name = apply_filters('wc1c_import_product_slug', $post_name, $product, $is_full);
+  
+  //echo var_dump($post_name);
 
   $description = isset($product['Описание']) ? $product['Описание'] : '';
   list($is_added, $post_id, $post_meta) = wc1c_replace_post($guid, 'product', $is_deleted, $is_draft, $post_title, $post_name, $description, $post_content, $post_meta, 'product_cat', @$product['Группы'], $preserve_fields);
@@ -980,10 +1092,10 @@ function wc1c_replace_product($is_full, $guid, $product) {
 
     $requisite_name = $requisite['Наименование'];
     $product_attribute_name = strpos($requisite_name, ' ') === false ? preg_replace_callback("/(?<!^)\p{Lu}/u", 'wc1c_replace_requisite_name_callback', $requisite_name) : $requisite_name;
-    $product_attribute_key = sanitize_title($requisite_name);
+    $product_attribute_key = vam_db_input($requisite_name);
     $product_attribute_position = count($product_attributes);
     $product_attributes[$product_attribute_key] = array(
-      'name' => wc_clean($product_attribute_name),
+      'name' => vam_db_input($product_attribute_name),
       'value' => implode(" | ", $attribute_values),
       'position' => $product_attribute_position,
       'is_visible' => 0,
@@ -992,7 +1104,7 @@ function wc1c_replace_product($is_full, $guid, $product) {
     );
   }
 
-  foreach ($product['ХарактеристикиТовара'] as $characteristic) {
+/*  foreach ($product['ХарактеристикиТовара'] as $characteristic) {
     $attribute_value = @$characteristic['Значение'];
     if (!$attribute_value) continue;
 
@@ -1033,7 +1145,7 @@ function wc1c_replace_product($is_full, $guid, $product) {
       $product_attributes = array_merge($product_attributes, $current_product_attribute_variations);
       update_post_meta($post_id, '_product_attributes', $product_attributes);
     }
-  }
+  }*/
 
   if (!in_array('attachments', $preserve_fields)) {
     $attachments = array();
@@ -1077,7 +1189,7 @@ function wc1c_replace_product($is_full, $guid, $product) {
     }
   }
 
-  do_action('wc1c_post_product', $post_id, $is_added, $product, $is_full);
+  //do_action('wc1c_post_product', $post_id, $is_added, $product, $is_full);
 
   return $post_id;
 }
@@ -1089,20 +1201,20 @@ function wc1c_replace_subproducts($is_full, $subproducts) {
 }
 
 function wc1c_clean_woocommerce_categories($is_full) {
-  global $wpdb;
+  //global $wpdb;
 
-  if (!$is_full || WC1C_PREVENT_CLEAN) return;
+  //if (!$is_full || WC1C_PREVENT_CLEAN) return;
 
-  $term_ids = $wpdb->get_col($wpdb->prepare("SELECT tm.term_id FROM $wpdb->termmeta tm JOIN $wpdb->term_taxonomy tt ON tm.term_id = tt.term_id WHERE taxonomy = 'product_cat' AND meta_key = 'wc1c_timestamp' AND meta_value != %d", WC1C_TIMESTAMP));
-  wc1c_check_wpdb_error();
+  //$term_ids = $wpdb->get_col($wpdb->prepare("SELECT tm.term_id FROM $wpdb->termmeta tm JOIN $wpdb->term_taxonomy tt ON tm.term_id = tt.term_id WHERE taxonomy = 'product_cat' AND meta_key = 'wc1c_timestamp' AND meta_value != %d", WC1C_TIMESTAMP));
+  //wc1c_check_wpdb_error();
 
-  $term_ids = apply_filters('wc1c_clean_categories', $term_ids);
-  if (!$term_ids) return;
+  //$term_ids = apply_filters('wc1c_clean_categories', $term_ids);
+  //if (!$term_ids) return;
 
-  foreach ($term_ids as $term_id) {
-    $result = wp_delete_term($term_id, 'product_cat');
-    wc1c_check_wp_error($result);
-  }
+  //foreach ($term_ids as $term_id) {
+    //$result = wp_delete_term($term_id, 'product_cat');
+    //wc1c_check_wp_error($result);
+  //}
 }
 
 function wc1c_clean_woocommerce_attributes($is_full) {

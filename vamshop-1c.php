@@ -410,7 +410,7 @@ function wc1c_xml_start_element_handler($parser, $name, $attrs) {
   $element_number++;
   if ($element_number > 1000) {
     $element_number = 0;
-    wp_cache_flush();
+    //wp_cache_flush();
   }
 }
 
@@ -504,9 +504,18 @@ function wc1c_post_id_by_meta($key, $value) {
   global $wpdb;
 
   if ($value === null) return;
+  
+  //echo var_dump($key);
+  //echo "<br />";
+  //echo var_dump($value);
 
-  $cache_key = "wc1c_post_id_by_meta-$key-$value";
-  $post_id = wp_cache_get($cache_key);
+  //$cache_key = "wc1c_post_id_by_meta-$key-$value";
+  
+  $get_products_id_by_guid_query = vam_db_query("select products_id from " . TABLE_PRODUCTS . " where guid = '" . vam_db_input($value) . "'");
+  $get_products_id_by_guid = vam_db_fetch_array($get_products_id_by_guid_query);
+  	  
+  //$post_id = wp_cache_get($cache_key);
+  if (vam_db_num_rows($get_products_id_by_guid_query, true) > 0) $post_id = $get_products_id_by_guid['products_id'];
   //if ($post_id === false) {
     //$post_id = $wpdb->get_var($wpdb->prepare("SELECT post_id FROM $wpdb->postmeta JOIN $wpdb->posts ON post_id = ID WHERE meta_key = %s AND meta_value = %s", $key, $value));
     //wc1c_check_wpdb_error();
