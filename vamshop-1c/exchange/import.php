@@ -236,10 +236,10 @@ function wc1c_import_end_element_handler($is_full, $names, $depth, $name) {
     wc1c_clean_product_terms();
   }
   elseif (!$depth && $name == 'КоммерческаяИнформация') {
-    $wpdb->query("DELETE FROM $wpdb->options WHERE option_name LIKE '_transient_%'");
-    wc1c_check_wpdb_error();
+    //$wpdb->query("DELETE FROM $wpdb->options WHERE option_name LIKE '_transient_%'");
+    //wc1c_check_wpdb_error();
 
-    do_action('wc1c_post_import', $is_full);
+    //do_action('wc1c_post_import', $is_full);
   }
 }
 
@@ -651,6 +651,7 @@ function wc1c_replace_post($guid, $post_type, $is_deleted, $is_draft, $post_titl
   
   //echo var_dump($post_id);
   //echo var_dump($post_excerpt);
+  //echo var_dump($post_meta);
 
   if (!$post_excerpt) $post_excerpt = '';
   if (WC1C_PRODUCT_DESCRIPTION_TO_CONTENT) {
@@ -785,6 +786,8 @@ function wc1c_replace_post($guid, $post_type, $is_deleted, $is_draft, $post_titl
        //);
 		//vam_db_perform(TABLE_PRODUCTS, $sql_data_array, 'update', 'products_id = \''.$post_id.'\'');
 		
+//echo $meta_key;		
+		
     //update_post_meta($post_id, $meta_key, $meta_value);
   }
 
@@ -847,6 +850,9 @@ function wc1c_replace_post($guid, $post_type, $is_deleted, $is_draft, $post_titl
 function wc1c_replace_post_attachments($post_id, $attachments) {
   $data_dir = WC1C_DATA_DIR . "catalog";
 
+//echo var_dump($post_id);
+//echo var_dump($attachments);
+
   $attachment_path_by_hash = array();
   foreach ($attachments as $attachment_path => $attachment) {
     $attachment_path = "$data_dir/$attachment_path";
@@ -857,10 +863,21 @@ function wc1c_replace_post_attachments($post_id, $attachments) {
   }
   $attachment_hash_by_path = array_flip($attachment_path_by_hash);
 
-  $post_attachments = get_attached_media('image', $post_id);
+  //$post_attachments = get_attached_media('image', $post_id);
+
+  	$get_products_image_by_id_query = vam_db_query("select products_image from " . TABLE_PRODUCTS . " where products_id = '" . vam_db_input($post_id) . "'");
+  	$get_products_image_by_id = vam_db_fetch_array($get_products_image_by_id_query);
+
+  $post_attachments[] = $get_products_image_by_id['products_image'];
+  
+//echo var_dump($get_products_image_by_id['products_image']);  	
+//echo var_dump($post_id);  
+//echo var_dump($post_attachments);  
+  
   $post_attachment_id_by_hash = array();
   foreach ($post_attachments as $post_attachment) {
-    $post_attachment_path = get_attached_file($post_attachment->ID, true);
+    $post_attachment_path = DIR_FS_CATALOG.DIR_WS_THUMBNAIL_IMAGES.$post_attachment;
+    //echo $post_attachment_path;
     if (file_exists($post_attachment_path)) {
       $post_attachment_hash = basename($post_attachment_path) . md5_file($post_attachment_path);
       $post_attachment_id_by_hash[$post_attachment_hash] = $post_attachment->ID;
@@ -870,8 +887,8 @@ function wc1c_replace_post_attachments($post_id, $attachments) {
       }
     }
 
-    $result = wp_delete_attachment($post_attachment->ID);
-    if ($result === false) wc1c_error("Failed to delete post attachment");
+    //$result = wp_delete_attachment($post_attachment->ID);
+    //if ($result === false) wc1c_error("Failed to delete post attachment");
   }
 
   $attachment_ids = array();
@@ -881,20 +898,76 @@ function wc1c_replace_post_attachments($post_id, $attachments) {
 
     $attachment_hash = $attachment_hash_by_path[$attachment_path];
     $attachment_id = @$post_attachment_id_by_hash[$attachment_hash];
+
+//echo var_dump($attachment_hash);
+//echo "<br />";
+//echo var_dump($attachment_id);
+
     if (!$attachment_id) {
       $file = array(
         'tmp_name' => $attachment_path,
         'name' => basename($attachment_path),
       );
-      $attachment_id = @media_handle_sideload($file, $post_id, @$attachment['description']);
+      
+  	$get_products_image_by_id_query = vam_db_query("select products_image from " . TABLE_PRODUCTS . " where products_id = '" . vam_db_input($post_id) . "'");
+  	$get_products_image_by_id = vam_db_fetch_array($get_products_image_by_id_query);
+
+   $attachment_id = $get_products_image_by_id['products_image'];
+   
+   //echo var_dump($attachment_id);
+   
+   if ($attachment_id == '') {
+
+		$sql_data_array = array (
+		'products_image' => $file['name'] 
+       );
+
+//echo $meta_key."::".$meta_value;
+//echo 'test';
+//echo var_dump($sql_data_array);
+
+		vam_db_perform(TABLE_PRODUCTS, $sql_data_array, 'update', 'products_id = \''.$post_id.'\'');
+		
+		}        
+
+        
+      //$attachment_id = @media_handle_sideload($file, $post_id, @$attachment['description']);
       wc1c_check_wp_error($attachment_id);
       
-      $uploaded_attachment_path = get_attached_file($attachment_id);
-      if ($uploaded_attachment_path) copy($uploaded_attachment_path, $attachment_path);
+      $uploaded_attachment_path_thumb = DIR_FS_CATALOG.DIR_WS_THUMBNAIL_IMAGES.$file['name'];
+      $uploaded_attachment_path_info = DIR_FS_CATALOG.DIR_WS_INFO_IMAGES.$file['name'];
+      $uploaded_attachment_path_popup = DIR_FS_CATALOG.DIR_WS_POPUP_IMAGES.$file['name'];
+      $uploaded_attachment_path_original = DIR_FS_CATALOG.DIR_WS_ORIGINAL_IMAGES.$file['name'];
+      
+//echo var_dump($file);      
+//echo var_dump($attachment_path);      
+//echo var_dump($uploaded_attachment_path);
+      
+      if ($uploaded_attachment_path_thumb) {
+      	copy($attachment_path, $uploaded_attachment_path_thumb);
+      	//echo var_dump(copy($attachment_path, $uploaded_attachment_path_thumb));
+      }
+
+      if ($uploaded_attachment_path_info) {
+      	copy($attachment_path, $uploaded_attachment_path_info);
+      	//echo var_dump(copy($attachment_path, $uploaded_attachment_path_info));
+      }
+
+      if ($uploaded_attachment_path_popup) {
+      	copy($attachment_path, $uploaded_attachment_path_popup);
+      	//echo var_dump(copy($attachment_path, $uploaded_attachment_path_popup));
+      }
+
+      if ($uploaded_attachment_path_original) {
+      	copy($attachment_path, $uploaded_attachment_path_original);
+      	//echo var_dump(copy($attachment_path, $uploaded_attachment_path_original));
+      }
     }
 
     $attachment_ids[] = $attachment_id;
   }
+
+//echo var_dump($attachment_ids);
 
   return $attachment_ids;
 }
@@ -1164,7 +1237,7 @@ function wc1c_replace_product($is_full, $guid, $product) {
 
         $attribute_values = @$requisite['Значение'];
         if (!$attribute_values) continue;
-
+        
         $attribute_value = $attribute_values[0];
         if (strpos($attribute_value, "import_files/") !== 0) continue;
           
@@ -1173,18 +1246,41 @@ function wc1c_replace_product($is_full, $guid, $product) {
 
         $attachment_key = $attachment_keys[$attribute_name];
         $attachments[$picture_path][$attachment_key] = $attribute_value;
+        //echo var_dump($attachments);
       }
     }
 
     if ($attachments) {
+    	//echo var_dump($attachments);
+    	//exit;
       $attachment_ids = wc1c_replace_post_attachments($post_id, $attachments);
+      
+      //echo var_dump($attachment_ids);
 
       $new_post_meta = array(
-        '_product_image_gallery' => implode(',', array_slice($attachment_ids, 1)),
-        '_thumbnail_id' => @$attachment_ids[0],
+        //'_product_image_gallery' => implode(',', array_slice($attachment_ids, 1)),
+        'products_image' => @$attachment_ids[0],
       );
+      
+      //echo var_dump($post_id);
+      //echo var_dump($post_meta);
+      //echo var_dump($new_post_meta);
       foreach ($new_post_meta as $meta_key => $meta_value) {
-        if ($meta_value != @$post_meta[$meta_key]) update_post_meta($post_id, $meta_key, $meta_value);
+        if ($meta_value != @$post_meta[$meta_key]) {
+
+		$sql_data_array = array (
+		'products_image' => @$attachment_ids[0] 
+       );
+
+//echo $meta_key."::".$meta_value;
+//echo 'test';
+//echo var_dump($sql_data_array);
+
+		vam_db_perform(TABLE_PRODUCTS, $sql_data_array, 'update', 'products_id = \''.$post_id.'\'');        
+
+      //update_post_meta($post_id, $meta_key, $meta_value);
+        
+        } 
       }
     }
   }
@@ -1276,13 +1372,15 @@ function wc1c_clean_woocommerce_attribute_options($is_full, $attribute_taxonomy)
 
 function wc1c_clean_posts($post_type) {
   global $wpdb;
+  
+  //echo var_dump($post_type);
 
-  $post_ids = $wpdb->get_col($wpdb->prepare("SELECT post_id FROM $wpdb->postmeta JOIN $wpdb->posts ON post_id = ID WHERE post_type = %s AND meta_key = '_wc1c_timestamp' AND meta_value != %d", $post_type, WC1C_TIMESTAMP));
-  wc1c_check_wpdb_error();
+  //$post_ids = $wpdb->get_col($wpdb->prepare("SELECT post_id FROM $wpdb->postmeta JOIN $wpdb->posts ON post_id = ID WHERE post_type = %s AND meta_key = '_wc1c_timestamp' AND meta_value != %d", $post_type, WC1C_TIMESTAMP));
+  //wc1c_check_wpdb_error();
 
-  foreach ($post_ids as $post_id) {
-    wp_trash_post($post_id);
-  }
+  //foreach ($post_ids as $post_id) {
+    //wp_trash_post($post_id);
+  //}
 }
 
 function wc1c_clean_products($is_full) {
@@ -1294,15 +1392,15 @@ function wc1c_clean_products($is_full) {
 function wc1c_clean_product_terms() {
   global $wpdb;
 
-  $wpdb->query("UPDATE $wpdb->term_taxonomy tt SET count = (SELECT COUNT(*) FROM $wpdb->term_relationships WHERE term_taxonomy_id = tt.term_taxonomy_id) WHERE taxonomy LIKE 'pa_%'");
-  wc1c_check_wpdb_error();
+  //$wpdb->query("UPDATE $wpdb->term_taxonomy tt SET count = (SELECT COUNT(*) FROM $wpdb->term_relationships WHERE term_taxonomy_id = tt.term_taxonomy_id) WHERE taxonomy LIKE 'pa_%'");
+  //wc1c_check_wpdb_error();
 
-  $rows = $wpdb->get_results("SELECT tm.term_id, taxonomy FROM $wpdb->term_taxonomy tt LEFT JOIN $wpdb->termmeta tm ON tt.term_id = tm.term_id AND meta_key = 'wc1c_guid' WHERE meta_value IS NULL AND taxonomy LIKE 'pa_%' AND count = 0");
-  wc1c_check_wpdb_error();
+  //$rows = $wpdb->get_results("SELECT tm.term_id, taxonomy FROM $wpdb->term_taxonomy tt LEFT JOIN $wpdb->termmeta tm ON tt.term_id = tm.term_id AND meta_key = 'wc1c_guid' WHERE meta_value IS NULL AND taxonomy LIKE 'pa_%' AND count = 0");
+  //wc1c_check_wpdb_error();
 
-  foreach ($rows as $row) {
-    register_taxonomy($row->taxonomy, null);
-    $result = wp_delete_term($row->term_id, $row->taxonomy);
-    wc1c_check_wp_error($result);
-  }
+  //foreach ($rows as $row) {
+    //register_taxonomy($row->taxonomy, null);
+    //$result = wp_delete_term($row->term_id, $row->taxonomy);
+    //wc1c_check_wp_error($result);
+  //}
 }
