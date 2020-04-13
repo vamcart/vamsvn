@@ -340,7 +340,7 @@ echo vam_draw_pull_down_menu('item_language',$languages_array,$languages_selecte
             $contents[] = array('align' => 'center', 
                                 'text' => '<a class="button" href="' . vam_href_link(FILENAME_FAQ, vam_get_all_get_params(array ('faq_id', 'action')).'faq_id=' . $fInfo->faq_id . '&action=new_faq') . '"><span>' . vam_image(DIR_WS_IMAGES . 'icons/buttons/edit.png', '', '12', '12') . '&nbsp;' . BUTTON_EDIT . '</span></a> <a class="button" href="' . vam_href_link(FILENAME_FAQ,  vam_get_all_get_params(array ('faq_id', 'action')).'faq_id=' . $fInfo->faq_id . '&action=delete_faq') . '"><span>' . vam_image(DIR_WS_IMAGES . 'icons/buttons/delete.png', '', '12', '12') . '&nbsp;' . BUTTON_DELETE . '</span></a>');
 
-            $contents[] = array('text' => '<br>' . $fInfo->answer);
+            $contents[] = array('text' => '<br>' . vam_break_string(strip_tags($fInfo->answer), 128, '...'));
           }
         } else { // create category/product info
           $heading[] = array('text' => '<b>' . EMPTY_CATEGORY . '</b>');
