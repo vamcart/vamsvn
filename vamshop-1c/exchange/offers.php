@@ -67,7 +67,7 @@ function wc1c_offers_end_element_handler($is_full, $names, $depth, $name) {
 
     if (!empty($wc1c_price_type['Валюта'])) {
       wc1c_update_currency($wc1c_price_type['Валюта']);
-      update_option('wc1c_currency', $wc1c_price_type['Валюта']);
+      //update_option('wc1c_currency', $wc1c_price_type['Валюта']);
     }
   }
   elseif (@$names[$depth - 1] == 'Цены' && $name == 'Цена') {
@@ -83,10 +83,18 @@ function wc1c_offers_end_element_handler($is_full, $names, $depth, $name) {
       $guid = $wc1c_offer['Ид'];
       $_post_id = wc1c_replace_offer($is_full, $guid, $wc1c_offer);
       if ($_post_id) {
-        $_product = wc_get_product($_post_id);
-        $_qnty = $_product->get_stock_quantity();
+        //$_product = wc_get_product($_post_id);
+        //$_qnty = $_product->get_stock_quantity();
+        $get_stock_quantity_by_id_query = vam_db_query("select products_quantity from " . TABLE_PRODUCTS . " where products_id = '" . vam_db_input($_post_id) . "'");      
+        $get_stock_quantity_by_id = vam_db_fetch_array($get_stock_quantity_by_id_query);
+        $_qnty = $get_stock_quantity_by_id['products_quantity'];
         if (!$_qnty) {
-          update_post_meta($_post_id, '_stock_status', WC1C_OUTOFSTOCK_STATUS);
+          //update_post_meta($_post_id, '_stock_status', WC1C_OUTOFSTOCK_STATUS);
+				$sql_data_array = array (
+				'products_quantity' => $_qnty 
+		       );
+		
+				vam_db_perform(TABLE_PRODUCTS, $sql_data_array, 'update', 'products_id = \''.$_post_id.'\'');          
         }
         unset($_product, $_qnty);
       }
@@ -112,23 +120,37 @@ function wc1c_offers_end_element_handler($is_full, $names, $depth, $name) {
     if ($wc1c_suboffers) wc1c_replace_suboffers($is_full, $wc1c_suboffers);
   }
   elseif (!$depth && $name == 'КоммерческаяИнформация') {
-    $wpdb->query("DELETE FROM $wpdb->options WHERE option_name LIKE '_transient_%'");
-    wc1c_check_wpdb_error();
+    //$wpdb->query("DELETE FROM $wpdb->options WHERE option_name LIKE '_transient_%'");
+    //wc1c_check_wpdb_error();
 
-    do_action('wc1c_post_offers', $is_full);
+    //do_action('wc1c_post_offers', $is_full);
   }
 }
 
 function wc1c_update_currency($currency) {
-  if (!array_key_exists($currency, get_woocommerce_currencies())) return;
 
-  update_option('woocommerce_currency', $currency);
+//require (DIR_WS_CLASSES.'currencies.php');
+//echo DIR_WS_CLASSES;
+//$currencies = new currencies();
 
-  $currency_position = array(
-    'RUB' => 'right_space',
-    'USD' => 'left',
+  $currencies = array(
+    'RUB' => 'Российский рубль'
   );
-  if (isset($currency_position[$currency])) update_option('woocommerce_currency_pos', $currency_position[$currency]);
+
+//echo var_dump($currencies);
+//echo var_dump(!array_key_exists($currency, $currencies));
+//echo $currency;
+//exit;
+	
+  if (!array_key_exists($currency, $currencies)) return;
+
+  //update_option('woocommerce_currency', $currency);
+
+  //$currency_position = array(
+    //'RUB' => 'right_space',
+    //'USD' => 'left',
+  //);
+  //if (isset($currency_position[$currency])) update_option('woocommerce_currency_pos', $currency_position[$currency]);
 }
 
 function wc1c_replace_offer_post_meta($is_full, $post_id, $offer, $attributes = array()) {
@@ -191,27 +213,44 @@ function wc1c_replace_offer_post_meta($is_full, $post_id, $offer, $attributes = 
     $current_meta_value = @$current_post_meta[$meta_key];
     if ($meta_value !== '' && $current_meta_value == $meta_value) continue;
     if ($meta_value === '' && $current_meta_value === $meta_value) continue;
+    
+    //echo $post_id."::".$meta_key."::".$meta_value;
+    
+		$sql_data_array = array (
+		'products_price' => $meta_value 
+       );
 
-    update_post_meta($post_id, $meta_key, $meta_value);
+		vam_db_perform(TABLE_PRODUCTS, $sql_data_array, 'update', 'products_id = \''.$post_id.'\'');    
+
+    //update_post_meta($post_id, $meta_key, $meta_value);
   }
 
   $quantity = isset($offer['Количество']) ? $offer['Количество'] : @$offer['КоличествоНаСкладе'];
   if (!is_null($quantity)) {
     $quantity = wc1c_parse_decimal($quantity);
-    wc_update_product_stock($post_id, $quantity);
+    //echo var_dump($quantity);
+    //exit;
+    //wc_update_product_stock($post_id, $quantity);
+    
+		$sql_data_array = array (
+		'products_quantity' => $quantity 
+       );
 
-    $stock_status = $quantity > 0 ? 'instock' : WC1C_OUTOFSTOCK_STATUS;
-    @wc_update_product_stock_status($post_id, $stock_status);
+		vam_db_perform(TABLE_PRODUCTS, $sql_data_array, 'update', 'products_id = \''.$post_id.'\'');    
+    
+
+    //$stock_status = $quantity > 0 ? 'instock' : WC1C_OUTOFSTOCK_STATUS;
+    //@wc_update_product_stock_status($post_id, $stock_status);
   }
 
-  do_action('wc1c_post_offer_meta', $post_id, $offer, $is_full);
+  //do_action('wc1c_post_offer_meta', $post_id, $offer, $is_full);
 }
 
 function wc1c_replace_offer($is_full, $guid, $offer) {
   $post_id = wc1c_post_id_by_meta('_wc1c_guid', $guid);
   if ($post_id) wc1c_replace_offer_post_meta($is_full, $post_id, $offer);
 
-  do_action('wc1c_post_offer', $post_id, $offer, $is_full);
+  //do_action('wc1c_post_offer', $post_id, $offer, $is_full);
   return $post_id;
 }
 

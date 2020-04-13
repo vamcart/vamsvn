@@ -334,13 +334,13 @@ fclose($fp);
 function wc1c_check_wpdb_error() {
   global $wpdb;
 
-  if (!$wpdb->last_error) return;
+  //if (!$wpdb->last_error) return;
 
-  wc1c_error(sprintf("%s for query \"%s\"", $wpdb->last_error, $wpdb->last_query), "DB Error", true);
+  //wc1c_error(sprintf("%s for query \"%s\"", $wpdb->last_error, $wpdb->last_query), "DB Error", true);
 
-  wc1c_wpdb_end(false, true);
+  //wc1c_wpdb_end(false, true);
 
-  exit;
+  //exit;
 }
 
 function wc1c_disable_time_limit() {
