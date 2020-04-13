@@ -1,5 +1,4 @@
 <?php
-// shaklov
 /* --------------------------------------------------------------
    $Id: languages.php 1180 2007-02-08 11:13:01Z VaM $   
 
@@ -57,9 +56,6 @@
 
           $sql_data_array = array('headline'   => vam_db_prepare_input($_POST['headline']),
                                   'news_page_url'    => vam_db_prepare_input($news_page_url),
-                                  'news_head_title' => vam_db_prepare_input($_POST['news_head_title']),
-                                  'news_head_desc' => vam_db_prepare_input($_POST['news_head_desc']),
-                                  'news_head_keys' => vam_db_prepare_input($_POST['news_head_keys']),
                                   'content'    => vam_db_prepare_input($_POST['content']),
                                   'date_added' => 'now()', //uses the inbuilt mysql function 'now'
                                   'language'   => vam_db_prepare_input($_POST['item_language']),
@@ -74,9 +70,6 @@
         if($_GET['news_id']) {
           $sql_data_array = array('headline' => vam_db_prepare_input($_POST['headline']),
                                   'news_page_url'    => vam_db_prepare_input($_POST['news_page_url']),
-                                  'news_head_title' => vam_db_prepare_input($_POST['news_head_title']),
-                                  'news_head_desc' => vam_db_prepare_input($_POST['news_head_desc']),
-                                  'news_head_keys' => vam_db_prepare_input($_POST['news_head_keys']),
                                   'content'  => vam_db_prepare_input($_POST['content']),
                                   'date_added'  => vam_db_prepare_input($_POST['date_added']),
                                   'language'   => vam_db_prepare_input($_POST['item_language']),
@@ -88,14 +81,12 @@
     }
   }
 ?>
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html <?php echo HTML_PARAMS; ?>>
 <head>
-<!--<meta name="viewport" content="initial-scale=1.0, width=device-width" />-->
 <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $_SESSION['language_charset']; ?>"> 
 <title><?php echo TITLE; ?></title>
-<!-- Header JS, CSS -->
-<?php require(DIR_FS_ADMIN.DIR_WS_INCLUDES . 'header_include.php'); ?>
+<link rel="stylesheet" type="text/css" href="includes/stylesheet.css">
 <?php 
  $query=vam_db_query("SELECT code FROM ". TABLE_LANGUAGES ." WHERE languages_id='".$_SESSION['languages_id']."'");
  $data=vam_db_fetch_array($query);
@@ -141,8 +132,7 @@ $manual_link = 'delete-news';
 <?php
   if ($_GET['action'] == 'new_latest_news') { //insert or edit a news item
     if ( isset($_GET['news_id']) ) { //editing exsiting news item
-// shaklov
-      $latest_news_query = vam_db_query("select news_id, headline, news_page_url, news_head_title, news_head_desc, news_head_keys, language, date_added, content from " . TABLE_LATEST_NEWS . " where news_id = '" . $_GET['news_id'] . "'");
+      $latest_news_query = vam_db_query("select news_id, headline, news_page_url, language, date_added, content from " . TABLE_LATEST_NEWS . " where news_id = '" . $_GET['news_id'] . "'");
       $latest_news = vam_db_fetch_array($latest_news_query);
     } else { //adding new news item
       $latest_news = array();
@@ -160,28 +150,6 @@ $manual_link = 'delete-news';
           <tr>
             <td class="main"><?php echo TEXT_NEWS_PAGE_URL; ?>:</td>
             <td class="main"><?php echo vam_draw_separator('pixel_trans.gif', '24', '15') . '&nbsp;' . vam_draw_input_field('news_page_url', $latest_news['news_page_url'], 'size="60"', true); ?></td>
-          </tr>
-          <tr>
-            <td colspan="2"><?php echo vam_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
-          </tr>
-<!-- shaklov Тайтл и дескрипшн -->
-          <tr>
-            <td class="main"><?php echo TEXT_LATEST_NEWS_META_TITLE; ?>:</td>
-            <td class="main"><?php echo vam_draw_separator('pixel_trans.gif', '24', '15') . '&nbsp;' . vam_draw_input_field('news_head_title', $latest_news['news_head_title'], 'size="60"', false); ?></td>
-          </tr>
-          <tr>
-            <td colspan="2"><?php echo vam_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
-          </tr>
-          <tr>
-            <td class="main"><?php echo TEXT_LATEST_NEWS_META_DESCRIPTION; ?>:</td>
-            <td class="main"><?php echo vam_draw_separator('pixel_trans.gif', '24', '15') . '&nbsp;' . vam_draw_textarea_field('news_head_desc', 'soft', '70', '5', $latest_news['news_head_desc'], 'class="notinymce"'); ?></td>
-          </tr>
-          <tr>
-            <td colspan="2"><?php echo vam_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
-          </tr>
-          <tr>
-            <td class="main"><?php echo TEXT_LATEST_NEWS_META_KEYWORDS; ?>:</td>
-            <td class="main"><?php echo vam_draw_separator('pixel_trans.gif', '24', '15') . '&nbsp;' . vam_draw_textarea_field('news_head_keys', 'soft', '70', '5', $latest_news['news_head_keys'], 'class="notinymce"'); ?></td>
           </tr>
           <tr>
             <td colspan="2"><?php echo vam_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
@@ -266,8 +234,7 @@ echo vam_draw_pull_down_menu('item_language',$languages_array,$languages_selecte
     $rows = 0;
 
     $latest_news_count = 0;
-// shaklov
-    $latest_news_query_raw = 'select news_id, headline, news_page_url, news_head_title, news_head_desc, news_head_keys, content, status from ' . TABLE_LATEST_NEWS . ' order by date_added desc';
+    $latest_news_query_raw = 'select news_id, headline, news_page_url, content, status from ' . TABLE_LATEST_NEWS . ' order by date_added desc';
 
 	$latest_news_split = new splitPageResults($_GET['page'], MAX_DISPLAY_ADMIN_PAGE, $latest_news_query_raw, $latest_news_query_numrows);
 
@@ -343,7 +310,7 @@ echo vam_draw_pull_down_menu('item_language',$languages_array,$languages_selecte
             $contents[] = array('align' => 'center', 
                                 'text' => '<a class="button" href="' . vam_href_link(FILENAME_LATEST_NEWS,  vam_get_all_get_params(array ('news_id', 'action')).'news_id=' . $nInfo->news_id . '&action=new_latest_news') . '"><span>' . vam_image(DIR_WS_IMAGES . 'icons/buttons/edit.png', '', '12', '12') . '&nbsp;' . BUTTON_EDIT . '</span></a> <a class="button" href="' . vam_href_link(FILENAME_LATEST_NEWS,  vam_get_all_get_params(array ('news_id', 'action')).'news_id=' . $nInfo->news_id . '&action=delete_latest_news') . '"><span>' . vam_image(DIR_WS_IMAGES . 'icons/buttons/delete.png', '', '12', '12') . '&nbsp;' . BUTTON_DELETE . '</span></a>');
 
-            $contents[] = array('text' => '<br>' . $nInfo->content);
+            $contents[] = array('text' => '<br>' . vam_break_string(strip_tags($nInfo->content), 128, '...'));
           }
         } else { // create category/product info
           $heading[] = array('text' => '<b>' . EMPTY_CATEGORY . '</b>');
