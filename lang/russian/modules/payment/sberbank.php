@@ -9,6 +9,8 @@ define('MODULE_PAYMENT_SBERBANK_ALLOWED_TITLE' , 'Разрешённые стр�
 define('MODULE_PAYMENT_SBERBANK_ALLOWED_DESC' , 'Укажите коды стран, для которых будет доступен данный модуль (например RU,DE (оставьте поле пустым, если хотите что б модуль был доступен покупателям из любых стран))');
 define('MODULE_PAYMENT_SBERBANK_UNAME_TITLE' , 'Логин:');
 define('MODULE_PAYMENT_SBERBANK_UNAME_DESC' , 'Укажите Ваш логин.');
+define('MODULE_PAYMENT_SBERBANK_MODE_TITLE' , 'Режим работы:');
+define('MODULE_PAYMENT_SBERBANK_MODE_DESC' , 'Выберите режим работы модуля. test - тестовый. production - боевой.');
 define('MODULE_PAYMENT_SBERBANK_PASS_TITLE' , 'Пароль');
 define('MODULE_PAYMENT_SBERBANK_PASS_DESC' , 'Укажите Ваш пароль');
 define('MODULE_PAYMENT_SBERBANK_SECRET_TITLE' , 'Секретный ключ');

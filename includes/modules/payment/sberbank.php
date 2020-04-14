@@ -341,11 +341,16 @@ if ($_SERVER["HTTP_X_FORWARDED_FOR"]) {
 				'quantity'  => array('value'=>1, 'measure'=>'шт'),
 				'itemCode'  => 'delivery', 'itemPrice'=> round($order->info['total'] - $order->info['subtotal']) * 100,
 			);
-		}									 
+		}								
+		if (MODULE_PAYMENT_SBERBANK_MODE == 'test') {	 
+		$url = 'https://3dsec.sberbank.ru/payment/rest/registerPreAuth.do?' . http_build_query($arr);
+		} else {
 		$url = 'https://securepayments.sberbank.ru/payment/rest/registerPreAuth.do?' . http_build_query($arr);
+		}
 		$url.= '&orderBundle={"cartItems":{"items":' .json_encode($bsk) . '}}';
 		$url = str_replace(' ', '+', $url); 
 		$response = file_get_contents($url);
+		//echo var_dump($response);
 		if(!$response) return '<div>Нет доступа к серверу Сбербанка</div>';
 		$response = json_decode($response);
 		if(isset($response->errorMessage)) return '<div style="color:#a00">'.$response->errorMessage.'</div>';
@@ -547,6 +552,7 @@ $vamTemplate = new vamTemplate;
       vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) values ('MODULE_PAYMENT_SBERBANK_ALLOWED', '', '6', '4', now())");
       vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) values ('MODULE_PAYMENT_SBERBANK_UNAME', '', '6', '5', now())");
       vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) values ('MODULE_PAYMENT_SBERBANK_PASS', '', '6', '5', now())");
+      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, set_function, date_added) values ('MODULE_PAYMENT_SBERBANK_MODE', 'test', '6', '5', 'vam_cfg_select_option(array(\'test\', \'production\'), ', now())");
       vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) values ('MODULE_PAYMENT_SBERBANK_SECRET', '', '6', '5', now())");
       vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) values ('MODULE_PAYMENT_SBERBANK_SORT_ORDER', '0', '6', '7', now())");
       vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, use_function, set_function, date_added) values ('MODULE_PAYMENT_SBERBANK_ZONE', '0', '6', '8', 'vam_get_zone_class_title', 'vam_cfg_pull_down_zone_classes(', now())");
@@ -558,7 +564,7 @@ $vamTemplate = new vamTemplate;
     }
 
     function keys() {
-      return array('MODULE_PAYMENT_SBERBANK_STATUS', 'MODULE_PAYMENT_SBERBANK_ALLOWED', 'MODULE_PAYMENT_SBERBANK_UNAME', 'MODULE_PAYMENT_SBERBANK_PASS', 'MODULE_PAYMENT_SBERBANK_SORT_ORDER', 'MODULE_PAYMENT_SBERBANK_ZONE', 'MODULE_PAYMENT_SBERBANK_ORDER_STATUS_ID', 'MODULE_PAYMENT_SBERBANK_SECRET');
+      return array('MODULE_PAYMENT_SBERBANK_STATUS', 'MODULE_PAYMENT_SBERBANK_ALLOWED', 'MODULE_PAYMENT_SBERBANK_UNAME', 'MODULE_PAYMENT_SBERBANK_PASS', 'MODULE_PAYMENT_SBERBANK_MODE', 'MODULE_PAYMENT_SBERBANK_SORT_ORDER', 'MODULE_PAYMENT_SBERBANK_ZONE', 'MODULE_PAYMENT_SBERBANK_ORDER_STATUS_ID', 'MODULE_PAYMENT_SBERBANK_SECRET');
     }
 
   }
