@@ -343,13 +343,14 @@ if ($_SERVER["HTTP_X_FORWARDED_FOR"]) {
 			);
 		}								
 		if (MODULE_PAYMENT_SBERBANK_MODE == 'test') {	 
-		$url = 'https://3dsec.sberbank.ru/payment/rest/registerPreAuth.do?' . http_build_query($arr);
+		$url = 'https://3dsec.sberbank.ru/payment/rest/register.do?' . http_build_query($arr);
 		} else {
-		$url = 'https://securepayments.sberbank.ru/payment/rest/registerPreAuth.do?' . http_build_query($arr);
+		$url = 'https://securepayments.sberbank.ru/payment/rest/register.do?' . http_build_query($arr);
 		}
 		$url.= '&orderBundle={"cartItems":{"items":' .json_encode($bsk) . '}}';
 		$url = str_replace(' ', '+', $url); 
 		$response = file_get_contents($url);
+		echo var_dump($bsk);
 		//echo var_dump($response);
 		if(!$response) return '<div>Нет доступа к серверу Сбербанка</div>';
 		$response = json_decode($response);
