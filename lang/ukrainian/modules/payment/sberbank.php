@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 define('MODULE_PAYMENT_SBERBANK_TEXT_TITLE', 'Сбербанк (Мир, Visa, Mastercard)');
 define('MODULE_PAYMENT_SBERBANK_TEXT_PUBLIC_TITLE', 'Оплата банковской картой. Оплата происходит через ПАО СБЕРБАНК с использованием Банковских карт платежных систем: МИР, VISA International, Mastercard Worldwide');
 define('MODULE_PAYMENT_SBERBANK_TEXT_ADMIN_DESCRIPTION', '');
