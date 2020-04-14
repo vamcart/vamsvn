@@ -1,6 +1,6 @@
 <?php
 define('MODULE_PAYMENT_SBERBANK_TEXT_TITLE', 'Сбербанк (Мир, Visa, Mastercard)');
-define('MODULE_PAYMENT_SBERBANK_TEXT_PUBLIC_TITLE', 'Оплата банковской картой. Оплата происходит через ПАО СБЕРБАНК с использованием Банковских карт платежных систем: МИР, VISA International, Mastercard Worldwide');
+define('MODULE_PAYMENT_SBERBANK_TEXT_PUBLIC_TITLE', 'Сбербанк (Мир, Visa, Mastercard)');
 define('MODULE_PAYMENT_SBERBANK_TEXT_ADMIN_DESCRIPTION', '');
 define('MODULE_PAYMENT_SBERBANK_TEXT_DESCRIPTION', 'После нажатия кнопки Подтвердить заказ Вы перейдёте на сайт платёжной системы для оплаты заказа, после оплаты Ваш заказ будет выполнен.');  
 define('MODULE_PAYMENT_SBERBANK_STATUS_TITLE' , 'Разрешить модуль Сбербанк');
