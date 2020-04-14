@@ -19,7 +19,7 @@ $sql_data_array = array('orders_status' => MODULE_PAYMENT_SBERBANK_STATUS);
 vam_db_perform('orders', $sql_data_array, 'update', "orders_id='".$_REQUEST['orderNumber']."'");
 $sql_data_arrax = array(
 	'orders_id' => $_REQUEST['orderNumber'],
-	'orders_status_id' => MODULE_PAYMENT_PAYONLINESYSTEM_ORDER_STATUS_ID,
+	'orders_status_id' => MODULE_PAYMENT_SBERBANK_ORDER_STATUS_ID,
 	'date_added' => 'now()',
 	'customer_notified' => '0',
 	'comments' => 'Sberbank System accepted this order payment'
