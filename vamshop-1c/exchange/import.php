@@ -652,6 +652,9 @@ function wc1c_replace_post($guid, $post_type, $is_deleted, $is_draft, $post_titl
   //echo var_dump($post_id);
   //echo var_dump($post_excerpt);
   //echo var_dump($post_meta);
+  //echo var_dump($post_title);
+  //echo var_dump($post_name);
+  //exit;
 
   if (!$post_excerpt) $post_excerpt = '';
   if (WC1C_PRODUCT_DESCRIPTION_TO_CONTENT) {
@@ -659,8 +662,16 @@ function wc1c_replace_post($guid, $post_type, $is_deleted, $is_draft, $post_titl
     $post_excerpt = '';
   }
 
+//echo var_dump($post_excerpt);
+//echo var_dump($post_content);
+//exit;
+
+
   $args = compact('post_type', 'post_title', 'post_excerpt', 'post_content');
 
+//echo var_dump($args);
+//exit;
+    
   if (!$post_id) {
     $args = array_merge($args, array(
       'products_name' => $post_name,
@@ -668,6 +679,7 @@ function wc1c_replace_post($guid, $post_type, $is_deleted, $is_draft, $post_titl
     ));
     
     //echo var_dump($args);
+    //exit;
     
     //$post_id = wp_insert_post($args, true);
 
@@ -683,8 +695,8 @@ function wc1c_replace_post($guid, $post_type, $is_deleted, $is_draft, $post_titl
 		'language_id' => vam_db_prepare_input($_SESSION['languages_id']), 
 		'products_id' => $products_id,
 		'products_name' => vam_db_prepare_input($args['products_name']), 
-		'products_short_description' => vam_db_prepare_input($args['post_content']), 
-		'products_description' => vam_db_prepare_input($args['post_content']) 
+		'products_short_description' => vam_db_prepare_input($args['post_excerpt']), 
+		'products_description' => vam_db_prepare_input($args['post_excerpt']) 
 		);
 
 		vam_db_perform(TABLE_PRODUCTS_DESCRIPTION, $sql_data_array);
@@ -770,23 +782,29 @@ function wc1c_replace_post($guid, $post_type, $is_deleted, $is_draft, $post_titl
 
   $current_post_meta = $post;
   //echo var_dump($current_post_meta);
-  //echo var_dump($post_meta);
+  //echo var_dump($post_name);
   
   foreach ($current_post_meta as $meta_key => $meta_value) {
     $current_post_meta[$meta_key] = $meta_value[0];
   }
 
   foreach ($post_meta as $meta_key => $meta_value) {
+  	//echo 'test';
     $current_meta_value = @$current_post_meta[$meta_key];
     if ($current_meta_value == $meta_value) continue;
 
-		//$sql_data_array = array (
-		//'products_id' => $post_id, 
-		//$meta_key => $meta_value, 
-       //);
-		//vam_db_perform(TABLE_PRODUCTS, $sql_data_array, 'update', 'products_id = \''.$post_id.'\'');
+		$sql_data_array = array (
+		'products_id' => $post_id, 
+		'products_name' => $post_name, 
+		'products_description' => $post_excerpt, 
+		'products_short_description' => $post_excerpt, 
+      );
+		vam_db_perform(TABLE_PRODUCTS_DESCRIPTION, $sql_data_array, 'update', 'products_id = \''.$post_id.'\'');
 		
+				
 //echo $meta_key;		
+//echo "<br />";		
+//echo $meta_value;		
 		
     //update_post_meta($post_id, $meta_key, $meta_value);
   }
@@ -864,6 +882,8 @@ function wc1c_replace_post_attachments($post_id, $attachments) {
   $attachment_hash_by_path = array_flip($attachment_path_by_hash);
 
   //$post_attachments = get_attached_media('image', $post_id);
+  //echo var_dump($post_id);
+  //exit;
 
   	$get_products_image_by_id_query = vam_db_query("select products_image from " . TABLE_PRODUCTS . " where products_id = '" . vam_db_input($post_id) . "'");
   	$get_products_image_by_id = vam_db_fetch_array($get_products_image_by_id_query);
@@ -877,7 +897,8 @@ function wc1c_replace_post_attachments($post_id, $attachments) {
   $post_attachment_id_by_hash = array();
   foreach ($post_attachments as $post_attachment) {
     $post_attachment_path = DIR_FS_CATALOG.DIR_WS_THUMBNAIL_IMAGES.$post_attachment;
-    //echo $post_attachment_path;
+    //echo $post_attachment;
+    //exit;
     if (file_exists($post_attachment_path)) {
       $post_attachment_hash = basename($post_attachment_path) . md5_file($post_attachment_path);
       $post_attachment_id_by_hash[$post_attachment_hash] = $post_attachment->ID;
@@ -887,6 +908,15 @@ function wc1c_replace_post_attachments($post_id, $attachments) {
       }
     }
 
+     //echo 'test';
+     //echo var_dump($post_attachment);
+     //exit;
+     
+		$sql_data_array = array (
+		'products_image' => '' 
+      );
+		vam_db_perform(TABLE_PRODUCTS, $sql_data_array, 'update', 'products_id = \''.$post_id.'\'');
+		     
     //$result = wp_delete_attachment($post_attachment->ID);
     //if ($result === false) wc1c_error("Failed to delete post attachment");
   }
