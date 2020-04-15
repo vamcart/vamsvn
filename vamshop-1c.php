@@ -218,9 +218,12 @@ function wc1c_mode_checkauth() {
 			$_SESSION['customer_status'] = $check_customer['customers_status'];
 		}  
 
-  $auth_cookie = vam_setcookie("wc1c-auth", $check_customer['customers_id'], time()+60*60*24*3650, "/",  "", 0 );
   vam_setcookie("wc1c-auth", $check_customer['customers_id'], time()+60*60*24*3650, "/",  "", 0 );
 
+  $auth_cookie = $_COOKIE['wc1c-auth'];
+  
+  //echo var_dump($auth_cookie);
+  
   exit("success\nwc1c-auth\n$auth_cookie");
 }
 
@@ -235,11 +238,10 @@ function wc1c_check_auth() {
 	} else {
 	}  
   } else {
-    wc1c_error("Not logged in");
+    //wc1c_error("Not logged in");
   }
 	
-
-  wc1c_check_permissions($user);
+  //wc1c_check_permissions($user);
 }
 
 function wc1c_filesize_to_bytes($filesize) {
@@ -550,7 +552,7 @@ function wc1c_exchange() {
     wc1c_mode_checkauth();
   }
 
-  //wc1c_check_auth();
+  wc1c_check_auth();
 
   define('WC1C_DEBUG', true);
 
