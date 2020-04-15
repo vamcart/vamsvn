@@ -255,8 +255,8 @@ function wc1c_replace_document_products($order, $document_products) {
 
 
         $sql_data_array = array('orders_id' => vam_db_prepare_input($order->info['id']),
-                                'text' => vam_db_prepare_input($order_products_sum),
-                                'value' => vam_db_prepare_input($order_products_sum)
+                                'text' => vam_db_prepare_input($order_products_sum-$order_subtotal['final_price']),
+                                'value' => vam_db_prepare_input($order_products_sum-$order_subtotal['final_price'])
                                 );
 
 			//echo var_dump($sql_data_array);
