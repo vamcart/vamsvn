@@ -685,6 +685,12 @@ function wc1c_replace_post($guid, $post_type, $is_deleted, $is_draft, $post_titl
 
 		$sql_data_array = array (
 		'guid' => vam_db_prepare_input($guid), 
+		'products_model' => vam_db_prepare_input($post_meta['_sku']), 
+		'products_weight' => vam_db_prepare_input($post_meta['products_weight']), 
+		'products_width' => vam_db_prepare_input($post_meta['products_width']), 
+		'products_height' => vam_db_prepare_input($post_meta['products_height']), 
+		'products_length' => vam_db_prepare_input($post_meta['products_lengt']), 
+		'products_volume' => vam_db_prepare_input($post_meta['products_width']*$post_meta['products_height']*$post_meta['products_length']/1000000), 
 		'products_status' => vam_db_prepare_input($args['products_status']) 
        );
 
@@ -789,10 +795,25 @@ function wc1c_replace_post($guid, $post_type, $is_deleted, $is_draft, $post_titl
   }
 
   foreach ($post_meta as $meta_key => $meta_value) {
+  	//echo $meta_key.$meta_value;
+  	//echo $post_meta['products_weight'].$post_meta['products_width'];
+  	//exit;
+  	//echo 'test';
   	//echo 'test';
     $current_meta_value = @$current_post_meta[$meta_key];
     if ($current_meta_value == $meta_value) continue;
 
+		$sql_data_array = array (
+		'products_model' => vam_db_prepare_input($post_meta['_sku']), 
+		'products_weight' => vam_db_prepare_input($post_meta['products_weight']), 
+		'products_width' => vam_db_prepare_input($post_meta['products_width']), 
+		'products_height' => vam_db_prepare_input($post_meta['products_height']), 
+		'products_length' => vam_db_prepare_input($post_meta['products_length']), 
+		'products_volume' => vam_db_prepare_input($post_meta['products_width']*$post_meta['products_height']*$post_meta['products_length']/1000000) 
+       );
+
+		vam_db_perform(TABLE_PRODUCTS, $sql_data_array, 'update', 'products_id = \''.$post_id.'\'');
+		
 		$sql_data_array = array (
 		'products_id' => $post_id, 
 		'products_name' => $post_name, 
@@ -1042,19 +1063,19 @@ function wc1c_replace_product($is_full, $guid, $product) {
       unset($product['ЗначенияРеквизитов'][$i]);
     }
     elseif ($requisite['Наименование'] == "Длина") {
-      $post_meta['_length'] = floatval($value);
+      $post_meta['products_length'] = floatval($value);
       unset($product['ЗначенияРеквизитов'][$i]);
     }
     elseif ($requisite['Наименование'] == "Ширина") {
-      $post_meta['_width'] = floatval($value);
+      $post_meta['products_width'] = floatval($value);
       unset($product['ЗначенияРеквизитов'][$i]);
     }
     elseif ($requisite['Наименование'] == "Высота") {
-      $post_meta['_height'] = floatval($value);
+      $post_meta['products_height'] = floatval($value);
       unset($product['ЗначенияРеквизитов'][$i]);
     }
     elseif ($requisite['Наименование'] == "Вес") {
-      $post_meta['_weight'] = floatval($value);
+      $post_meta['products_weight'] = floatval($value);
       unset($product['ЗначенияРеквизитов'][$i]);
     }
   }
