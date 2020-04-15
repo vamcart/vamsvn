@@ -259,6 +259,9 @@ function wc1c_replace_document_products($order, $document_products) {
                                 'value' => vam_db_prepare_input($order_products_sum-$order_subtotal['final_price'])
                                 );
 
+
+//echo $order_products_sum-$order_subtotal['final_price'];
+//echo $order->info['id'];
 			//echo var_dump($sql_data_array);
 
 			vam_db_perform(TABLE_ORDERS_TOTAL, $sql_data_array, 'update', 'orders_id = \''.$order->info['id'].'\' and class = \'ot_subtotal\'');
