@@ -2587,6 +2587,8 @@ INSERT INTO configuration_group VALUES ('90', 'CG_SOCIAL_NETWORKS', 'Social Netw
 
 INSERT INTO configuration_group VALUES ('100', 'CG_1C_EXCHANGE', '1С:Предприятие', 'Двусторонний обмен заказами, ценами, остатками, номенклатурой между VamShop и 1С:Предприятие.', '1', '1');
 
+INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) values ('ENABLE_1C_EXCHANGE', 'false', '100', '1', now(), now(), NULL, 'vam_cfg_select_option(array(\'true\', \'false\'),');
+
 INSERT INTO countries VALUES (1,'Afghanistan','AF','AFG','1','0');
 INSERT INTO countries VALUES (2,'Albania','AL','ALB','1','0');
 INSERT INTO countries VALUES (3,'Algeria','DZ','DZA','1','0');
