@@ -2585,6 +2585,8 @@ INSERT INTO configuration_group VALUES ('80', 'CG_SMART_CHECKOUT', 'Smart Checko
 
 INSERT INTO configuration_group VALUES ('90', 'CG_SOCIAL_NETWORKS', 'Social Networks', 'Social Networks Options', '1', '1');
 
+INSERT INTO configuration_group VALUES ('100', 'CG_1C_EXCHANGE', '1С:Предприятие', 'Двусторонний обмен заказами, ценами, остатками, номенклатурой между VamShop и 1С:Предприятие.', '1', '1');
+
 INSERT INTO countries VALUES (1,'Afghanistan','AF','AFG','1','0');
 INSERT INTO countries VALUES (2,'Albania','AL','ALB','1','0');
 INSERT INTO countries VALUES (3,'Algeria','DZ','DZA','1','0');

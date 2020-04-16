@@ -1112,5 +1112,8 @@ define('SPECIFICATIONS_FILTERS_HIDE_EMPTY_FILTERS_GROUP_DESC', '');
 define('ENABLE_1C_EXCHANGE_TITLE' , 'Разрешить двусторонний обмен заказами, ценами, остатками, номенклатурой между VamShop и 1С:Предприятие. Подробная информация о модуле интеграции VamShop и 1С:Предприяте, настройка, обмена дыннми и прочее доступна <a href="https://forum.vamshop.ru/topic/16769-%D0%B8%D0%BD%D1%82%D0%B5%D0%B3%D1%80%D0%B0%D1%86%D0%B8%D1%8F-vamshop-%D0%B8-1%D1%81%D0%BF%D1%80%D0%B5%D0%B4%D0%BF%D1%80%D0%B8%D1%8F%D1%82%D0%B8%D0%B5/" target="_blank">здесь</a>.');
 define('ENABLE_1C_EXCHANGE_DESC', 'Разрешить двусторонний обмен заказами, ценами, остатками, номенклатурой между VamShop и 1С:Предприятие. Подробная информация о модуле интеграции VamShop и 1С:Предприяте, настройка, обмена дыннми и прочее доступна <a href="https://forum.vamshop.ru/topic/16769-%D0%B8%D0%BD%D1%82%D0%B5%D0%B3%D1%80%D0%B0%D1%86%D0%B8%D1%8F-vamshop-%D0%B8-1%D1%81%D0%BF%D1%80%D0%B5%D0%B4%D0%BF%D1%80%D0%B8%D1%8F%D1%82%D0%B8%D0%B5/" target="_blank">здесь</a>.');
 
+define('CG_1C_EXCHANGE', '1С:Предприятие');
+define('CG_1C_EXCHANGE_TITLE', '1С:Предприятие');
+define('CG_1C_EXCHANGE_DESC', '');
 
 ?>
