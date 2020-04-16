@@ -1,7 +1,7 @@
 <?php
 define('MODULE_PAYMENT_SBERBANK_TEXT_TITLE', 'Сбербанк (Мир, Visa, Mastercard)');
 define('MODULE_PAYMENT_SBERBANK_TEXT_PUBLIC_TITLE', 'Сбербанк (Мир, Visa, Mastercard)');
-define('MODULE_PAYMENT_SBERBANK_TEXT_ADMIN_DESCRIPTION', '');
+define('MODULE_PAYMENT_SBERBANK_TEXT_ADMIN_DESCRIPTION', 'Как правильно настроить модуль оплаты Сбербанк читайте в нашем <a href="http://blog.vamshop.ru/2020/04/16/%d0%bd%d0%be%d0%b2%d1%8b%d0%b9-%d0%bc%d0%be%d0%b4%d1%83%d0%bb%d1%8c-%d0%be%d0%bf%d0%bb%d0%b0%d1%82%d1%8b-%d1%81%d0%b1%d0%b5%d1%80%d0%b1%d0%b0%d0%bd%d0%ba/"><u>блоге</u></a>.');
 define('MODULE_PAYMENT_SBERBANK_TEXT_DESCRIPTION', 'После нажатия кнопки Подтвердить заказ Вы перейдёте на сайт платёжной системы для оплаты заказа, после оплаты Ваш заказ будет выполнен.');  
 define('MODULE_PAYMENT_SBERBANK_STATUS_TITLE' , 'Разрешить модуль Сбербанк');
 define('MODULE_PAYMENT_SBERBANK_STATUS_DESC' , 'Вы хотите разрешить использование модуля при оформлении заказов?');
