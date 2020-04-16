@@ -79,16 +79,21 @@
 </div>
 {/if}
 
-<div class="inner">
-	<a class="iframe" target="_blank" href="{$ASK_PRODUCT_QUESTION_LINK}">{#question#}</a>&nbsp;{$ASK_PRODUCT_QUESTION}
-</div>
-
-{if $SHIPPING_NAME}
+{if $PRODUCTS_MODEL != ''}
 <div class="inner text-muted">
-	{#text_shippingtime#}&nbsp;{if $SHIPPING_IMAGE}<img src="{$SHIPPING_IMAGE}" alt="{$SHIPPING_NAME}" />{/if}&nbsp;&nbsp;<span class="font-weight-bold">{$SHIPPING_NAME}</span>
+	{#model#} <span class="font-weight-bold">{$PRODUCTS_MODEL}</span>
 </div>
 {/if}
 
+{if $SHIPPING_NAME}
+<div class="inner text-muted">
+	{#text_shippingtime#}&nbsp;{if $SHIPPING_IMAGE}<img src="{$SHIPPING_IMAGE}" alt="{$SHIPPING_NAME}" />{/if}<span class="font-weight-bold">{$SHIPPING_NAME}</span>
+</div>
+{/if}
+
+<div class="inner">
+	<a class="iframe" target="_blank" href="{$ASK_PRODUCT_QUESTION_LINK}">{#question#}</a>&nbsp;{$ASK_PRODUCT_QUESTION}
+</div>
 
 <div class="mt-3 mb-3"> 
 	<div class="price h3" itemprop="offers" itemscope itemtype="http://schema.org/Offer"> 
