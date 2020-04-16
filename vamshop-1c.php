@@ -4,7 +4,7 @@ require('includes/application_top.php');
 // include needed functions
 require_once (DIR_FS_INC.'vam_validate_password.inc.php');
 
-//if (!defined('ABSPATH')) exit("The exchange using direct URL is not supported anymore. Please change your exchange URL to http://example.com/?wc1c=exchange.", 'woocommerce-1c'));
+if (!defined(ENABLE_1C_EXCHANGE) && ENABLE_1C_EXCHANGE != 'true') exit('Модуль интеграции VamShop и 1С:Предприятие выключен. Подробная информация <a href="https://forum.vamshop.ru/topic/16769-%D0%B8%D0%BD%D1%82%D0%B5%D0%B3%D1%80%D0%B0%D1%86%D0%B8%D1%8F-vamshop-%D0%B8-1%D1%81%D0%BF%D1%80%D0%B5%D0%B4%D0%BF%D1%80%D0%B8%D1%8F%D1%82%D0%B8%D0%B5/" target="_blank"><u>здесь</u></a>.');
 
 if (!defined('WC1C_SUPPRESS_NOTICES')) define('WC1C_SUPPRESS_NOTICES', false);
 if (!defined('WC1C_FILE_LIMIT')) define('WC1C_FILE_LIMIT', null);
