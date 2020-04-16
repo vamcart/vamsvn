@@ -101,6 +101,7 @@ define('BOX_CONFIGURATION_29', 'Боксы');
 define('BOX_CONFIGURATION_72', 'Редактор заказов');
 define('BOX_CONFIGURATION_80', 'Оформление заказов');
 define('BOX_CONFIGURATION_90', 'Социальные сети');
+define('BOX_CONFIGURATION_100', '1С:Предприятие');
 define('BOX_CONFIGURATION_1610', 'Спецификации товаров');
 
 define('BOX_MODULES', 'Оплата/Доставка/Счета');
