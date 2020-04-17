@@ -271,7 +271,7 @@ $( "#date_added" ).datepicker({ dateFormat: "dd-mm-yy" }).val();
     $reviews_query = vam_db_query($reviews_query_raw);
     while ($reviews = vam_db_fetch_array($reviews_query)) {
       if ( ((!$_GET['rID']) || ($_GET['rID'] == $reviews['reviews_id'])) && (!$rInfo) ) {
-        $reviews_text_query = vam_db_query("select r.reviews_read, r.customers_name, r.customers_avatar, length(rd.reviews_text) as reviews_text_size from " . TABLE_AUTHOR_REVIEWS . " r, " . TABLE_AUTHOR_REVIEWS_DESCRIPTION . " rd where r.reviews_id = '" . $reviews['reviews_id'] . "' and r.reviews_id = rd.reviews_id");
+        $reviews_text_query = vam_db_query("select r.*, rd.*, length(rd.reviews_text) as reviews_text_size from " . TABLE_AUTHOR_REVIEWS . " r, " . TABLE_AUTHOR_REVIEWS_DESCRIPTION . " rd where r.reviews_id = '" . $reviews['reviews_id'] . "' and r.reviews_id = rd.reviews_id");
         $reviews_text = vam_db_fetch_array($reviews_text_query);
 
         $products_image_query = vam_db_query("select authors_image from " . TABLE_AUTHORS . " where authors_id = '" . $reviews['authors_id'] . "'");
@@ -283,8 +283,7 @@ $( "#date_added" ).datepicker({ dateFormat: "dd-mm-yy" }).val();
         $reviews_average_query = vam_db_query("select (avg(reviews_rating) / 5 * 100) as average_rating from " . TABLE_AUTHOR_REVIEWS . " where authors_id = '" . $reviews['authors_id'] . "'");
         $reviews_average = vam_db_fetch_array($reviews_average_query);
 
-        $review_info = vam_array_merge($reviews_text, $reviews_average, $article_name);
-        $rInfo_array = vam_array_merge($reviews, $review_info, $products_image);
+        $rInfo_array = vam_array_merge($reviews_text, $article_name, $products_image, $reviews_average);
         $rInfo = new objectInfo($rInfo_array);
       }
 
