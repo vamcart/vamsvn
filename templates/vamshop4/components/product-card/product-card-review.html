@@ -18,6 +18,7 @@
 				</div>
 				{/if}
 				<p>{$module_data.REVIEW.TEXT|vam_truncate:$smarty.const.MAX_DISPLAY_SHORT_DESCRIPTION:"...":true}</p>
+				{if {$module_data.REVIEW.ANSWER} != ''}<p>{$module_data.REVIEW.ANSWER}</p>{/if}
 			</div>
       </div>
 		<div class="category card-footer text-center">

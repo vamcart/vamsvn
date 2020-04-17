@@ -24,6 +24,13 @@
 				</div>
 				<br />
 				{/if}
+				{if {$module_data.REVIEW.ANSWER} != ''}
+				<div class="desc">
+				<br />
+				{$module_data.REVIEW.ANSWER}
+				</div>
+				<br />
+				{/if}
 
             {if $smarty.SERVER.SCRIPT_NAME != '/product_reviews_info.php'}
 				<div class="desc">

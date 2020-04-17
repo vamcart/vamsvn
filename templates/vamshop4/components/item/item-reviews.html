@@ -17,6 +17,12 @@
 {$module_data.TEXT}
 </div>
 <br />
+{if {$module_data.ANSWER} != ''}
+<div class="desc" itemprop="reviewBody">
+{$module_data.ANSWER}
+</div>
+<br />
+{/if}
 </div>
 </div>
 </div>
