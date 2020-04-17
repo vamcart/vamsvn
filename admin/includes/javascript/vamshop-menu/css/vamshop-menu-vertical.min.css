@@ -155,8 +155,8 @@
 .vamshop-menu[theme-layout="vertical"][vertical-nav-type="compact"] .vamshop-menu-header .vamshop-menu-left-header .vamshop-menu-logo .logo-text,
 .vamshop-menu[theme-layout="vertical"][vertical-nav-type="compact"] .vamshop-menu-header .vamshop-menu-left-header .vamshop-menu-logo .logo-text,
 .vamshop-menu[theme-layout="vertical"][vertical-nav-type="compact"] .vamshop-menu-header.iscollapsed .vamshop-menu-left-header .vamshop-menu-logo .logo-text {
-  left: 15px;
-  top: 13px;
+  left: 0px;
+  top: 0px;
 }
 .vamshop-menu[theme-layout="vertical"][vamshop-menu-device-type="phone"] .vamshop-menu-header.nocollapsed .vamshop-menu-left-header .vamshop-menu-logo .logo-text {
     font-family: open sans;

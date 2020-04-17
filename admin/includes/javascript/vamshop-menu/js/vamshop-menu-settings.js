@@ -29,8 +29,8 @@ $( document ).ready(function() {
 		},
 		defaultVerticalMenu: {
 			desktop : "expanded",	// value should be offcanvas/collapsed/expanded/compact/compact-acc/fullpage/ex-popover/sub-expanded
-			tablet : "expanded",		// value should be offcanvas/collapsed/expanded/compact/fullpage/ex-popover/sub-expanded
-			phone : "expanded",		// value should be offcanvas/collapsed/expanded/compact/fullpage/ex-popover/sub-expanded
+			tablet : "compact",		// value should be offcanvas/collapsed/expanded/compact/fullpage/ex-popover/sub-expanded
+			phone : "collapsed",		// value should be offcanvas/collapsed/expanded/compact/fullpage/ex-popover/sub-expanded
 		},
 		onToggleVerticalMenu : {
 			desktop : "offcanvas",		// value should be offcanvas/collapsed/expanded/compact/fullpage/ex-popover/sub-expanded
