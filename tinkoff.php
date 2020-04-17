@@ -80,20 +80,6 @@ require_once (DIR_FS_INC.'vam_send_answer_template.inc.php');
             exit('NOTOK');
         }
 
-    function logs($requestParams, $request)
-    {
-        // log send
-        $log = '[' . date('D M d H:i:s Y', time()) . '] ';
-        $log .= json_encode($requestParams, JSON_UNESCAPED_UNICODE);
-        $log .= "\n";
-        file_put_contents(dirname(__FILE__) . "/tinkoff.log", $log, FILE_APPEND);
-
-        $log = '[' . date('D M d H:i:s Y', time()) . '] ';
-        $log .= $request;
-        $log .= "\n";
-        file_put_contents(dirname(__FILE__) . "/tinkoff.log", $log, FILE_APPEND);
-    }
-
     function get_tinkoff_token($request, $tinkoffSecretKey)
     {
         $request['Password'] = $tinkoffSecretKey;

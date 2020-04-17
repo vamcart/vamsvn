@@ -32,7 +32,7 @@
       $this->sort_order = MODULE_PAYMENT_TINKOFF_SORT_ORDER;
       $this->enabled = ((MODULE_PAYMENT_TINKOFF_STATUS == 'True') ? true : false);
 
-        $this->form_action_url = 'https://merchant.webmoney.ru/lmi/payment.asp';
+		$this->form_action_url = vam_href_link(FILENAME_CHECKOUT_PROCESS, '', 'SSL');
     }
 
 // class methods
@@ -101,18 +101,18 @@
       }
     }
     
-    function confirmation() {
+    public function confirmation() {
       global $cartID, $customer_id, $languages_id, $order, $order_total_modules;
 
       if (isset($_SESSION['cartID'])) {
-        $insert_order = false;
+        $insert_order = true;
 
-        if (isset($_SESSION['cart_tinkoff_id'])) {
-          $order_id = substr($_SESSION['cart_tinkoff_id'], strpos($_SESSION['cart_tinkoff_id'], '-')+1);
+        if (isset($_SESSION['cart_yandex_kassa_id'])) {
+          $order_id = substr($_SESSION['cart_yandex_kassa_id'], strpos($_SESSION['cart_yandex_kassa_id'], '-')+1);
           $curr_check = vam_db_query("select currency from " . TABLE_ORDERS . " where orders_id = '" . (int)$order_id . "'");
           $curr = vam_db_fetch_array($curr_check);
 
-          if ( ($curr['currency'] != $order->info['currency']) || ($_SESSION['cartID'] != substr($_SESSION['cart_tinkoff_id'], 0, strlen($_SESSION['cartID']))) ) {
+          if ( ($curr['currency'] != $order->info['currency']) || ($cartID != substr($_SESSION['cart_yandex_kassa_id'], 0, strlen($cartID))) ) {
             $check_query = vam_db_query('select orders_id from ' . TABLE_ORDERS_STATUS_HISTORY . ' where orders_id = "' . (int)$order_id . '" limit 1');
 
             if (vam_db_num_rows($check_query) < 1) {
@@ -322,29 +322,118 @@ if ($_SERVER["HTTP_X_FORWARDED_FOR"]) {
             }
           }
 
-          $_SESSION['cart_tinkoff_id'] = $_SESSION['cartID'] . '-' . $insert_id;
+          $_SESSION['cart_yandex_kassa_id'] = $cartID . '-' . $insert_id;
         }
-      }
+
+// Выписываем qiwi счёт для покупателя
+
+        if ($insert_order == true) {
+
+        include_once(DIR_FS_CATALOG.'vendor/tinkoff/TinkoffMerchantAPI.php');
+
+        $terminalKey = MODULE_PAYMENT_TINKOFF_TERMINAL_KEY;
+        $password = MODULE_PAYMENT_TINKOFF_PASSWORD;
+        $paymentEnabled = MODULE_PAYMENT_TINKOFF_PAYMENT_ENABLED;
+        $emailCompany = MODULE_PAYMENT_TINKOFF_EMAIL_COMPANY;
+        $taxation = MODULE_PAYMENT_TINKOFF_PAYMENT_TAXATION;
+        $paymentMethod = MODULE_PAYMENT_TINKOFF_PAYMENT_METHOD;
+        $paymentObject = MODULE_PAYMENT_TINKOFF_PAYMENT_OBJECT;
+        $taxShipping = MODULE_PAYMENT_TINKOFF_PAYMENT_SHIPPING;
+        $taxProduct = MODULE_PAYMENT_TINKOFF_PAYMENT_TAX;
+
+        $orderId = substr($_SESSION['cart_yandex_kassa_id'], strpos($_SESSION['cart_yandex_kassa_id'], '-')+1);		
+        $orderEmail = $order->customer['email_address'];
+        $items = [];
+        $orderAmount = 0;
+        foreach ($order->products as $product) {
+            $quantity = $product['qty'];
+            $tax = round($product['tax']);
+            $taxItem = $tax * 100;
+            $price = round($product['price'] * 100) + $taxItem;
+            $amount = $price * $quantity;
+
+            $item = [
+                'Name'          => mb_substr($product['name'], 0, 64),
+                'Price'         => $price,
+                'Quantity'      => $product['qty'],
+                'Amount'        => $amount,
+                'PaymentMethod' => trim($paymentMethod),
+                'PaymentObject' => trim($paymentObject),
+                'Tax'           => $taxProduct,
+            ];
+            $orderAmount += $amount;
+            array_push($items, $item);
+        }
+
+        if ($order->info['shipping_cost'] > 0) {
+            $price = round($order->info['shipping_cost']) * 100;
+            $item = [
+                'Name'          => mb_substr('Доставка - ' . $order->info['shipping_method'], 0, 64),
+                'Price'         => $price,
+                'Quantity'      => 1,
+                'Amount'        => $price,
+                'PaymentMethod' => trim($paymentMethod),
+                'PaymentObject' => 'service',
+                'Tax'           => $taxShipping,
+            ];
+            $orderAmount += $price;
+            $isShipping = true;
+            array_push($items, $item);
+        }
+
+        $emailCompany = mb_substr($emailCompany, 0, 64);
+        if (!$emailCompany) {
+            $emailCompany = null;
+        }
+
+        $arrFields = [
+            'EmailCompany' => $emailCompany,
+            'Email'        => $order->customer['email_address'],
+            'Taxation'     => $taxation,
+            'Items'        => $items,
+        ];
+
+        if ($paymentEnabled == 'yes') {
+            $requestParams = [
+                'TerminalKey' => $terminalKey,
+                'Amount'      => $orderAmount,
+                'OrderId'     => $orderId,
+                'DATA'        => ['Email' => $orderEmail, 'Connection_type' => 'VamShop 2.x'],
+                'Receipt'     => $arrFields,
+            ];
+        } else {
+            $requestParams = [
+                'TerminalKey' => $terminalKey,
+                'Amount'      => $orderAmount,
+                'OrderId'     => $orderId,
+                'DATA'        => ['Email' => $orderEmail, 'Connection_type' => 'VamShop 2.x'],
+            ];
+        }
+
+        $requestParams['Receipt'] = $arrFields;
+        $tinkoffModel = new TinkoffMerchantAPI($terminalKey, $password);
+        $request = $tinkoffModel->buildQuery('Init', $requestParams);
+        //echo var_dump($requestParams);
+        //echo var_dump($result);
+        //$this->tinkoff_logs($requestParams, $request);
+        $result = json_decode($request);
+
+        if ($result->ErrorCode == 8) {
+            die($result->Details);
+        }
+        
+// Переход на Тинькофф
+
+		vam_redirect($result->PaymentURL);
+
+        }
 
       return array('title' => MODULE_PAYMENT_TINKOFF_TEXT_DESCRIPTION);
     }
 
-    function process_button() {
-      global $customer_id, $order, $sendto, $vamPrice, $currencies, $shipping;
-
-      $process_button_string = '';
-
-                               $purse = MODULE_PAYMENT_TINKOFF_WMR;
-                               $order_sum = $order->info['total'];
-
-      $process_button_string = vam_draw_hidden_field('LMI_PAYMENT_NO', substr($_SESSION['cart_tinkoff_id'], strpos($_SESSION['cart_tinkoff_id'], '-')+1)) .
-                               vam_draw_hidden_field('LMI_PAYEE_PURSE', $purse) .
-                               vam_draw_hidden_field('LMI_PAYMENT_DESC', substr($_SESSION['cart_tinkoff_id'], strpos($_SESSION['cart_tinkoff_id'], '-')+1)) .
-                               vam_draw_hidden_field('LMI_PAYMENT_AMOUNT', $order_sum) .
-                               vam_draw_hidden_field('LMI_SIM_MODE', '0');
-
-      return $process_button_string;
-    }
+	function process_button() {
+		return false;
+	}
 
     function before_process() {
       global $customer_id, $order, $vamPrice, $order_totals, $sendto, $billto, $languages_id, $payment, $currencies, $cart;
@@ -559,7 +648,7 @@ $vamTemplate = new vamTemplate;
       return array('MODULE_PAYMENT_TINKOFF_STATUS', 'MODULE_PAYMENT_TINKOFF_ALLOWED', 'MODULE_PAYMENT_TINKOFF_TERMINAL_KEY', 'MODULE_PAYMENT_TINKOFF_PASSWORD', 'MODULE_PAYMENT_TINKOFF_SORT_ORDER', 'MODULE_PAYMENT_TINKOFF_ZONE', 'MODULE_PAYMENT_TINKOFF_PAYMENT_ENABLED', 'MODULE_PAYMENT_TINKOFF_EMAIL_COMPANY', 'MODULE_PAYMENT_TINKOFF_PAYMENT_TAXATION', 'MODULE_PAYMENT_TINKOFF_PAYMENT_METHOD', 'MODULE_PAYMENT_TINKOFF_PAYMENT_OBJECT', 'MODULE_PAYMENT_TINKOFF_PAYMENT_SHIPPING', 'MODULE_PAYMENT_TINKOFF_PAYMENT_TAX',  'MODULE_PAYMENT_TINKOFF_ORDER_STATUS_ID');
     }
 
-    private function logs($requestParams, $request)
+    function tinkoff_logs($requestParams, $request)
     {
         // log send
         $log = '[' . date('D M d H:i:s Y', time()) . '] ';
@@ -571,15 +660,6 @@ $vamTemplate = new vamTemplate;
         $log .= $request;
         $log .= "\n";
         file_put_contents(dirname(__FILE__) . "/tinkoff.log", $log, FILE_APPEND);
-    }
-
-    public function get_tinkoff_token($request, $tinkoffSecretKey)
-    {
-        $request['Password'] = $tinkoffSecretKey;
-        ksort($request);
-        unset($request['Token']);
-        $values = implode('', array_values($request));
-        return hash('sha256', $values);
     }
 
   }
@@ -687,348 +767,8 @@ function vam_cfg_pull_down_tinkoff_payment_tax($id, $key = '') {
 	}
 
 	return vam_draw_pull_down_menu($name, $array, $id);
-}       
+}
 
-/**
- * File TinkoffMerchantAPI
- *
- * PHP version 5.3
- *
- * @category Tinkoff
- * @package  Tinkoff
- * @author   Shuyskiy Sergey <s.shuyskiy@tinkoff.ru>
- * @license  http://opensource.org/licenses/MIT MIT license
- * @link     http://tinkoff.ru
- */
-//namespace Tinkoff;
- 
-//use HttpException;
-
-/**
- * Class TinkoffMerchantAPI
- *
- * @category Tinkoff
- * @package  Tinkoff
- * @author   Shuyskiy Sergey <s.shuyskiy@tinkoff.ru>
- * @license  http://opensource.org/licenses/MIT MIT license
- * @link     http://tinkoff.ru
- * @property integer     orderId
- * @property integer     Count
- * @property bool|string error
- * @property bool|string response
- * @property bool|string customerKey
- * @property bool|string status
- * @property bool|string paymentUrl
- * @property bool|string paymentId
- */
-
-class TinkoffMerchantAPI
-{
-    private $_api_url;
-    private $_terminalKey;
-    private $_secretKey;
-    private $_paymentId;
-    private $_status;
-    private $_error;
-    private $_response;
-    private $_paymentUrl;
-
-    /**
-     * Constructor
-     *
-     * @param string $terminalKey Your Terminal name
-     * @param string $secretKey   Secret key for terminal
-     */
-    public function __construct($terminalKey, $secretKey)
-    {
-        $this->_api_url = 'https://rest-api-test.tinkoff.ru/v2';
-        $this->_terminalKey = $terminalKey;
-        $this->_secretKey = $secretKey;
-    }
-
-    /**
-     * Get class property or json key value
-     *
-     * @param mixed $name Name for property or json key
-     *
-     * @return bool|string
-     */
-    public function __get($name)
-    {
-        switch ($name) {
-        case 'paymentId':
-            return $this->_paymentId;
-        case 'status':
-            return $this->_status;
-        case 'error':
-            return $this->_error;
-        case 'paymentUrl':
-            return $this->_paymentUrl;
-        case 'response':
-            return htmlentities($this->_response);
-        default:
-            if ($this->_response) {
-                if ($json = json_decode($this->_response, true)) {
-                    foreach ($json as $key => $value) {
-                        if (strtolower($name) == strtolower($key)) {
-                            return $json[$key];
-                        }
-                    }
-                }
-            }
-
-            return false;
-        }
-    }
-
-    /**
-     * Initialize the payment
-     *
-     * @param mixed $args mixed You could use associative array or url params string
-     *
-     * @return bool
-     */
-    public function init($args)
-    {
-        return $this->buildQuery('Init', $args);
-    }
-
-    /**
-     * Get state of payment
-     *
-     * @param mixed $args Can be associative array or string
-     *
-     * @return mixed
-     */
-    public function getState($args)
-    {
-        return $this->buildQuery('GetState', $args);
-    }
-
-    /**
-     * Confirm 2-staged payment
-     *
-     * @param mixed $args Can be associative array or string
-     *
-     * @return mixed
-     */
-    public function confirm($args)
-    {
-        return $this->buildQuery('Confirm', $args);
-    }
-
-    /**
-     * Performs recursive (re) payment - direct debiting of funds from the
-     * account of the Buyer's credit card.
-     *
-     * @param mixed $args Can be associative array or string
-     *
-     * @return mixed
-     */
-    public function charge($args)
-    {
-        return $this->buildQuery('Charge', $args);
-    }
-
-    /**
-     * Registers in the terminal buyer Seller. (Init do it automatically)
-     *
-     * @param mixed $args Can be associative array or string
-     *
-     * @return mixed
-     */
-    public function addCustomer($args)
-    {
-        return $this->buildQuery('AddCustomer', $args);
-    }
-
-    /**
-     * Returns the data stored for the terminal buyer Seller.
-     *
-     * @param mixed $args Can be associative array or string
-     *
-     * @return mixed
-     */
-    public function getCustomer($args)
-    {
-        return $this->buildQuery('GetCustomer', $args);
-    }
-
-    /**
-     * Deletes the data of the buyer.
-     *
-     * @param mixed $args Can be associative array or string
-     *
-     * @return mixed
-     */
-    public function removeCustomer($args)
-    {
-        return $this->buildQuery('RemoveCustomer', $args);
-    }
-
-    /**
-     * Returns a list of bounded card from the buyer.
-     *
-     * @param mixed $args Can be associative array or string
-     *
-     * @return mixed
-     */
-    public function getCardList($args)
-    {
-        return $this->buildQuery('GetCardList', $args);
-    }
-
-    /**
-     * Removes the customer's bounded card.
-     *
-     * @param mixed $args Can be associative array or string
-     *
-     * @return mixed
-     */
-    public function removeCard($args)
-    {
-        return $this->buildQuery('RemoveCard', $args);
-    }
-
-    /**
-     * The method is designed to send all unsent notification
-     *
-     * @return mixed
-     */
-    public function resend()
-    {
-        return $this->buildQuery('Resend', array());
-    }
-
-    /**
-     * Builds a query string and call sendRequest method.
-     * Could be used to custom API call method.
-     *
-     * @param string $path API method name
-     * @param mixed  $args query params
-     *
-     * @return mixed
-     * @throws HttpException
-     */
-    public function buildQuery($path, $args)
-    {
-        $url = $this->_api_url;
-        if (is_array($args)) {
-            if (! array_key_exists('TerminalKey', $args)) {
-                $args['TerminalKey'] = $this->_terminalKey;
-            }
-            if (! array_key_exists('Token', $args)) {
-                $args['Token'] = $this->_genToken($args);
-            }
-        }
-        $url = $this->_combineUrl($url, $path);
-
-        return $this->_sendRequest($url, $args);
-    }
-
-    /**
-     * Generates token
-     *
-     * @param array $args array of query params
-     *
-     * @return string
-     */
-    private function _genToken($args)
-    {
-        $args['Password'] = $this->_secretKey;
-        ksort($args);
-
-        $token = '';
-
-        foreach ($args as $arg) {
-            if (is_array($arg)) {
-                $arg = 'Array';
-            }
-            $token .= $arg;
-        }
-
-        $token = hash('sha256', $token);
-
-        return $token;
-    }
-
-    /**
-     * Combines parts of URL. Simply gets all parameters and puts '/' between
-     *
-     * @return string
-     */
-    private function _combineUrl()
-    {
-        $args = func_get_args();
-        $url = '';
-        foreach ($args as $arg) {
-            if (is_string($arg)) {
-                if ($arg[strlen($arg) - 1] !== '/') {
-                    $arg .= '/';
-                }
-                $url .= $arg;
-            } else {
-                continue;
-            }
-        }
-
-        return $url;
-    }
-
-    /**
-     * Main method. Call API with params
-     *
-     * @param string $api_url API Url
-     * @param array  $args    API params
-     *
-     * @return mixed
-     * @throws HttpException
-     */
-    private function _sendRequest($api_url, $args)
-    {
-        $this->_error = '';
-        //todo add string $args support
-
-        if (is_array($args)) {
-            $args = json_encode($args);
-        }
-
-        if ($curl = curl_init()) {
-            curl_setopt($curl, CURLOPT_URL, $api_url);
-            curl_setopt($curl, CURLOPT_FOLLOWLOCATION, true);
-            curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-            curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
-            curl_setopt($curl, CURLOPT_POST, true);
-            curl_setopt($curl, CURLOPT_POSTFIELDS, $args);
-            curl_setopt($curl, CURLOPT_HTTPHEADER, array(
-                'Content-Type: application/json',
-            ));
-
-            $out = curl_exec($curl);
-            $this->_response = $out;
-
-            $json = json_decode($out);
-            if ($json) {
-                if (@$json->ErrorCode !== "0") {
-                    $this->_error = @$json->Details;
-                } else {
-                    $this->_paymentUrl = @$json->PaymentURL;
-                    $this->_paymentId = @$json->PaymentId;
-                    $this->_status = @$json->Status;
-                }
-            }
-
-            curl_close($curl);
-
-            return $out;
-
-        } else {
-            throw new HttpException(
-                'Can not create connection to ' . $api_url . ' with args '
-                . $args, 404
-            );
-        }
-    }
 }
          
 ?>
