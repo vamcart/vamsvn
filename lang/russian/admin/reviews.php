@@ -31,6 +31,7 @@ define('ENTRY_NAME', 'или укажите имя:');
 define('ENTRY_FROM', 'От:');
 define('ENTRY_DATE', 'Дата:');
 define('ENTRY_REVIEW', 'Отзыв:');
+define('ENTRY_REVIEW_ANSWER', 'Ответ на отзыв:');
 define('ENTRY_REVIEW_TEXT', '<small><font color="#ff0000"><b>ЗАМЕЧАНИЕ:</b></font></small>&nbsp;HTML не поддерживается!&nbsp;');
 define('ENTRY_RATING', 'Рейтинг:');
 

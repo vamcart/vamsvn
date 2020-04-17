@@ -29,6 +29,7 @@
         $date_added = vam_db_prepare_input($_POST['date_added']);
         $last_modified = vam_db_prepare_input($_POST['last_modified']);
         $reviews_text = vam_db_prepare_input($_POST['reviews_text']);
+        $reviews_answer = vam_db_prepare_input($_POST['reviews_answer']);
 
 
         $avatar = $_POST['customers_avatar'];
@@ -38,7 +39,7 @@
         }
 
         vam_db_query("update " . TABLE_SITE_REVIEWS . " set reviews_rating = '" . vam_db_input($reviews_rating) . "',date_added = '" . vam_db_input($date_added) . "', customers_name = '" . vam_db_input($customers_name) . "', customers_avatar = '" . vam_db_input($avatar) . "', last_modified = now() where reviews_id = '" . vam_db_input($reviews_id) . "'");
-        vam_db_query("update " . TABLE_SITE_REVIEWS_DESCRIPTION . " set reviews_text = '" . vam_db_input($reviews_text) . "' where reviews_id = '" . vam_db_input($reviews_id) . "'");
+        vam_db_query("update " . TABLE_SITE_REVIEWS_DESCRIPTION . " set reviews_text = '" . vam_db_input($reviews_text) . "', reviews_answer = '" . vam_db_input($reviews_answer) . "' where reviews_id = '" . vam_db_input($reviews_id) . "'");
 
         vam_redirect(vam_href_link(FILENAME_SITE_REVIEWS, 'page=' . $_GET['page'] . '&rID=' . $reviews_id));
         break;
@@ -96,7 +97,7 @@ $( "#date_added" ).datepicker({ dateFormat: "dd-mm-yy" }).val();
   if ($_GET['action'] == 'edit') {
     $rID = vam_db_prepare_input($_GET['rID']);
 
-    $reviews_query = vam_db_query("select r.reviews_id, r.products_id, r.customers_name, r.customers_avatar, r.date_added, r.last_modified, r.reviews_read, rd.reviews_text, r.reviews_rating from " . TABLE_SITE_REVIEWS . " r, " . TABLE_SITE_REVIEWS_DESCRIPTION . " rd where r.reviews_id = '" . vam_db_input($rID) . "' and r.reviews_id = rd.reviews_id");
+    $reviews_query = vam_db_query("select r.reviews_id, r.products_id, r.customers_name, r.customers_avatar, r.date_added, r.last_modified, r.reviews_read, rd.reviews_text, rd.reviews_answer, r.reviews_rating from " . TABLE_SITE_REVIEWS . " r, " . TABLE_SITE_REVIEWS_DESCRIPTION . " rd where r.reviews_id = '" . vam_db_input($rID) . "' and r.reviews_id = rd.reviews_id");
     $reviews = vam_db_fetch_array($reviews_query);
 
     $rInfo_array = $reviews;
@@ -143,6 +144,16 @@ $( "#date_added" ).datepicker({ dateFormat: "dd-mm-yy" }).val();
         <td><?php echo vam_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
       </tr>
       <tr>
+        <td><table witdh="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td class="main" valign="top"><b><?php echo ENTRY_REVIEW_ANSWER; ?></b><?php echo vam_draw_textarea_field('reviews_answer', 'soft', '60', '15', $rInfo->reviews_answer); ?></td>
+          </tr>
+        </table></td>
+      </tr>
+      <tr>
+        <td><?php echo vam_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
+      </tr>
+      <tr>
         <td align="right" class="main"><?php echo vam_draw_hidden_field('reviews_id', $rInfo->reviews_id) . vam_draw_hidden_field('products_name', $rInfo->products_name) . '<span class="button"><button type="submit" value="' . BUTTON_PREVIEW . '">' . vam_image(DIR_WS_IMAGES . 'icons/buttons/submit.png', '', '12', '12') . '&nbsp;' . BUTTON_PREVIEW . '</button></span> <a class="button" href="' . vam_href_link(FILENAME_SITE_REVIEWS, 'page=' . $_GET['page'] . '&rID=' . $_GET['rID']) . '"><span>' . vam_image(DIR_WS_IMAGES . 'icons/buttons/cancel.png', '', '12', '12') . '&nbsp;' . BUTTON_CANCEL . '</span></a>'; ?></td>
       </form></tr>
 <?php
@@ -167,7 +178,7 @@ $( "#date_added" ).datepicker({ dateFormat: "dd-mm-yy" }).val();
       
       
     } else {
-      $reviews_query = vam_db_query("select r.reviews_id, r.products_id, r.customers_name, r.customers_avatar, r.date_added, r.last_modified, r.reviews_read, rd.reviews_text, r.reviews_rating from " . TABLE_SITE_REVIEWS . " r, " . TABLE_SITE_REVIEWS_DESCRIPTION . " rd where r.reviews_id = '" . $_GET['rID'] . "' and r.reviews_id = rd.reviews_id");
+      $reviews_query = vam_db_query("select r.reviews_id, r.products_id, r.customers_name, r.customers_avatar, r.date_added, r.last_modified, r.reviews_read, rd.reviews_text, rd.reviews_answer, r.reviews_rating from " . TABLE_SITE_REVIEWS . " r, " . TABLE_SITE_REVIEWS_DESCRIPTION . " rd where r.reviews_id = '" . $_GET['rID'] . "' and r.reviews_id = rd.reviews_id");
       $reviews = vam_db_fetch_array($reviews_query);
 
       $rInfo_array = vam_array_merge($reviews);
@@ -186,6 +197,16 @@ $( "#date_added" ).datepicker({ dateFormat: "dd-mm-yy" }).val();
         <td><table witdh="100%" border="0" cellspacing="0" cellpadding="0">
           <tr>
             <td valign="top" class="main"><b><?php echo ENTRY_REVIEW; ?></b><?php echo nl2br(vam_db_output($rInfo->reviews_text)); ?></td>
+          </tr>
+        </table></td>
+      </tr>
+      <tr>
+        <td><?php echo vam_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
+      </tr>
+      <tr>
+        <td><table witdh="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td valign="top" class="main"><b><?php echo ENTRY_REVIEW_ANSWER; ?></b><?php echo nl2br(vam_db_output($rInfo->reviews_answer)); ?></td>
           </tr>
         </table></td>
       </tr>
