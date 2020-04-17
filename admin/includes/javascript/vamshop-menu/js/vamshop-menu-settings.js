@@ -23,19 +23,19 @@ $( document ).ready(function() {
 		VerticalSubMenuItemIconStyle: 'style6',  // value should be style1,style2,style3,style4,style5,style6
 		VerticalNavigationView: 'view1',
 		verticalMenueffect:{
-			desktop : "overlay",
-			tablet : "overlay",
-			phone : "overlay",
+			//desktop : "overlay",
+			//tablet : "overlay",
+			//phone : "overlay",
 		},
 		defaultVerticalMenu: {
-			desktop : "offcanvas",	// value should be offcanvas/collapsed/expanded/compact/compact-acc/fullpage/ex-popover/sub-expanded
-			tablet : "offcanvas",		// value should be offcanvas/collapsed/expanded/compact/fullpage/ex-popover/sub-expanded
-			phone : "offcanvas",		// value should be offcanvas/collapsed/expanded/compact/fullpage/ex-popover/sub-expanded
+			desktop : "expanded",	// value should be offcanvas/collapsed/expanded/compact/compact-acc/fullpage/ex-popover/sub-expanded
+			tablet : "expanded",		// value should be offcanvas/collapsed/expanded/compact/fullpage/ex-popover/sub-expanded
+			phone : "expanded",		// value should be offcanvas/collapsed/expanded/compact/fullpage/ex-popover/sub-expanded
 		},
 		onToggleVerticalMenu : {
-			desktop : "expanded",		// value should be offcanvas/collapsed/expanded/compact/fullpage/ex-popover/sub-expanded
-			tablet : "expanded",		// value should be offcanvas/collapsed/expanded/compact/fullpage/ex-popover/sub-expanded
-			phone : "expanded",			// value should be offcanvas/collapsed/expanded/compact/fullpage/ex-popover/sub-expanded
+			desktop : "offcanvas",		// value should be offcanvas/collapsed/expanded/compact/fullpage/ex-popover/sub-expanded
+			tablet : "offcanvas",		// value should be offcanvas/collapsed/expanded/compact/fullpage/ex-popover/sub-expanded
+			phone : "offcanvas",			// value should be offcanvas/collapsed/expanded/compact/fullpage/ex-popover/sub-expanded
 		},
 
 	});
