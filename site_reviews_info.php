@@ -60,6 +60,7 @@ $vamTemplate->assign('REVIEWS_AVATAR', $avatar);
 $vamTemplate->assign('REVIEWS_AUTHOR', $reviews['customers_name']);
 $vamTemplate->assign('REVIEWS_DATE', vam_date_short($reviews['date_added']));
 $vamTemplate->assign('REVIEWS_TEXT', nl2br($reviews['reviews_text']));
+$vamTemplate->assign('REVIEWS_ANSWER', nl2br($reviews['reviews_answer']));
 $vamTemplate->assign('REVIEWS_STAR_RATING', $star_rating);
 $vamTemplate->assign('REVIEWS_RATING', $reviews['reviews_rating']);
 $vamTemplate->assign('BUTTON_BACK', '<a class="button" href="'.vam_href_link(FILENAME_SITE_REVIEWS, $get_params).'">'.vam_image_button('back.png', IMAGE_BUTTON_BACK).'</a>');

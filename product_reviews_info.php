@@ -77,6 +77,7 @@ $reviews = vam_db_fetch_array($reviews_query, true);
 		'DATE' => vam_date_short($reviews['date_added']), 
 		'TEXT_COUNT' => '('.sprintf(TEXT_REVIEW_WORD_COUNT, vam_word_count($reviews['reviews_text'], ' ')).')<br />'.vam_break_string(htmlspecialchars($reviews['reviews_text']), 60, '-<br />').'..', 
 		'TEXT' => $reviews['reviews_text'], 
+		'ANSWER' => $reviews['reviews_answer'], 
 		'RATING' => $reviews['reviews_rating'],
 		'STAR_RATING' => $star_rating,
 		'RATING_IMG' => vam_image('templates/'.CURRENT_TEMPLATE.'/img/stars_'.$reviews['reviews_rating'].'.gif', sprintf(TEXT_OF_5_STARS, $reviews['reviews_rating']))

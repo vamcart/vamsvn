@@ -151,7 +151,8 @@ class product {
 									                                 r.date_added,
 									                                 r.last_modified,
 									                                 r.reviews_read,
-									                                 rd.reviews_text
+									                                 rd.reviews_text,
+									                                 rd.reviews_answer
 									                                 from ".TABLE_REVIEWS." r,
 									                                 ".TABLE_REVIEWS_DESCRIPTION." rd
 									                                 where r.products_id = '".$this->pID."'
@@ -182,6 +183,7 @@ class product {
 				'DATE' => vam_date_short($reviews['date_added']), 
 				//'TEXT_COUNT' => '('.sprintf(TEXT_REVIEW_WORD_COUNT, vam_word_count($reviews['reviews_text'], ' ')).')<br />'.vam_break_string(htmlspecialchars($reviews['reviews_text']), 60, '-<br />').'..', 
 				'TEXT' => $reviews['reviews_text'], 
+				'ANSWER' => $reviews['reviews_answer'], 
 				'RATING' => $reviews['reviews_rating'],
 				'STAR_RATING' => $star_rating,
 				'RATING_IMG' => vam_image('templates/'.CURRENT_TEMPLATE.'/img/stars_'.$reviews['reviews_rating'].'.gif', sprintf(TEXT_OF_5_STARS, $reviews['reviews_rating']))

@@ -57,7 +57,8 @@ if (vam_db_num_rows($reviews_query)) {
 		'AUTHOR' => '<a href="'.vam_href_link(FILENAME_AUTHOR_REVIEWS_INFO, $get_params.'&reviews_id='.$reviews['reviews_id']).'">'.$reviews['customers_name'].'</a>', 
 		'DATE' => vam_date_short($reviews['date_added']), 
 		'RATING' => vam_image('templates/'.CURRENT_TEMPLATE.'/img/stars_'.$reviews['reviews_rating'].'.gif', sprintf(BOX_REVIEWS_TEXT_OF_5_STARS, $reviews['reviews_rating'])), 
-		'TEXT' => vam_break_string(htmlspecialchars($reviews['reviews_text']), 60, '-<br />'));
+		'TEXT' => vam_break_string(htmlspecialchars($reviews['reviews_text']), 60, '-<br />'),
+		'ANSWER' => htmlspecialchars($reviews['reviews_answer']));
 
 	}
 }

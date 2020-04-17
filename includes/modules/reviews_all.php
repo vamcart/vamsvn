@@ -28,7 +28,7 @@ if ($_SESSION['customers_status']['customers_status_read_reviews'] == 0) {
              return;
 }
 
-$reviews_query_raw = "select r.reviews_id, r.products_id, rd.reviews_text, r.reviews_rating, r.date_added, p.*, pd.*, r.customers_id, r.customers_name from ".TABLE_REVIEWS." r, ".TABLE_REVIEWS_DESCRIPTION." rd, ".TABLE_PRODUCTS." p, ".TABLE_PRODUCTS_DESCRIPTION." pd where p.products_status = '1' and p.products_id = r.products_id and r.reviews_id = rd.reviews_id and p.products_id = pd.products_id and pd.language_id = '".(int) $_SESSION['languages_id']."' and rd.languages_id = '".(int) $_SESSION['languages_id']."' order by r.date_added DESC";
+$reviews_query_raw = "select r.reviews_id, r.products_id, rd.reviews_text, rd.reviews_answer, r.reviews_rating, r.date_added, p.*, pd.*, r.customers_id, r.customers_name from ".TABLE_REVIEWS." r, ".TABLE_REVIEWS_DESCRIPTION." rd, ".TABLE_PRODUCTS." p, ".TABLE_PRODUCTS_DESCRIPTION." pd where p.products_status = '1' and p.products_id = r.products_id and r.reviews_id = rd.reviews_id and p.products_id = pd.products_id and pd.language_id = '".(int) $_SESSION['languages_id']."' and rd.languages_id = '".(int) $_SESSION['languages_id']."' order by r.date_added DESC";
 $reviews_split = new splitPageResults($reviews_query_raw, $_GET['page'], MAX_DISPLAY_NEW_REVIEWS);
 
 if ($reviews_split->number_of_rows > 0) {
@@ -63,6 +63,7 @@ if ($reviews_split->number_of_rows > 0) {
 		'DATE' => vam_date_short($reviews['date_added']), 
 		'TEXT_COUNT' => '('.sprintf(TEXT_REVIEW_WORD_COUNT, vam_word_count($reviews['reviews_text'], ' ')).')<br />'.vam_break_string(htmlspecialchars($reviews['reviews_text']), 60, '-<br />').'..', 
 		'TEXT' => $reviews['reviews_text'], 
+		'ANSWER' => $reviews['reviews_answer'], 
 		'RATING' => $reviews['reviews_rating'], 
 		'STAR_RATING' => $star_rating, 
 		'RATING_IMG' => vam_image('templates/'.CURRENT_TEMPLATE.'/img/stars_'.$reviews['reviews_rating'].'.gif', sprintf(TEXT_OF_5_STARS, $reviews['reviews_rating']))

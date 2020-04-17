@@ -31,7 +31,7 @@ require_once (DIR_FS_INC.'vam_date_long.inc.php');
 $get_params = vam_get_all_get_params(array ('reviews_id'));
 $get_params = substr($get_params, 0, -1); //remove trailing &
 
-$reviews_query = "select rd.reviews_text, r.reviews_rating, r.reviews_id, r.authors_id, r.customers_name, r.date_added, r.last_modified, r.reviews_read, p.authors_id, p.authors_name, p.authors_image from ".TABLE_AUTHOR_REVIEWS." r left join ".TABLE_AUTHORS." p on (r.authors_id = p.authors_id) left join ".TABLE_AUTHORS_INFO." pd on (p.authors_id = pd.authors_id), ".TABLE_AUTHOR_REVIEWS_DESCRIPTION." rd where r.reviews_id = '".(int) $_GET['reviews_id']."' and r.reviews_id = rd.reviews_id";
+$reviews_query = "select rd.reviews_text, rd.reviews_answer, r.reviews_rating, r.reviews_id, r.authors_id, r.customers_name, r.date_added, r.last_modified, r.reviews_read, p.authors_id, p.authors_name, p.authors_image from ".TABLE_AUTHOR_REVIEWS." r left join ".TABLE_AUTHORS." p on (r.authors_id = p.authors_id) left join ".TABLE_AUTHORS_INFO." pd on (p.authors_id = pd.authors_id), ".TABLE_AUTHOR_REVIEWS_DESCRIPTION." rd where r.reviews_id = '".(int) $_GET['reviews_id']."' and r.reviews_id = rd.reviews_id";
 $reviews_query = vam_db_query($reviews_query);
 
 if (!vam_db_num_rows($reviews_query))
@@ -54,6 +54,7 @@ $vamTemplate->assign('PRODUCTS_NAME', $reviews['authors_name']);
 $vamTemplate->assign('AUTHOR', $reviews['customers_name']);
 $vamTemplate->assign('DATE', vam_date_long($reviews['date_added']));
 $vamTemplate->assign('REVIEWS_TEXT', nl2br($reviews_text));
+$vamTemplate->assign('REVIEWS_ANSWER', nl2br($reviews['reviews_answer']));
 $vamTemplate->assign('RATING', vam_image('templates/'.CURRENT_TEMPLATE.'/img/stars_'.$reviews['reviews_rating'].'.gif', sprintf(TEXT_OF_5_STARS, $reviews['reviews_rating'])));
 $vamTemplate->assign('PRODUCTS_LINK', vam_href_link(FILENAME_ARTICLES, 'authors_id=' . $reviews['authors_id'] . $SEF_parameter_author));
 $vamTemplate->assign('BUTTON_BACK', '<a class="button" href="'.vam_href_link(FILENAME_AUTHOR_REVIEWS, $get_params).'">'.vam_image_button('back.png', IMAGE_BUTTON_BACK).'</a>');
