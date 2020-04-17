@@ -107,12 +107,12 @@
       if (isset($_SESSION['cartID'])) {
         $insert_order = true;
 
-        if (isset($_SESSION['cart_yandex_kassa_id'])) {
-          $order_id = substr($_SESSION['cart_yandex_kassa_id'], strpos($_SESSION['cart_yandex_kassa_id'], '-')+1);
+        if (isset($_SESSION['cart_tinkoff_id'])) {
+          $order_id = substr($_SESSION['cart_tinkoff_id'], strpos($_SESSION['cart_tinkoff_id'], '-')+1);
           $curr_check = vam_db_query("select currency from " . TABLE_ORDERS . " where orders_id = '" . (int)$order_id . "'");
           $curr = vam_db_fetch_array($curr_check);
 
-          if ( ($curr['currency'] != $order->info['currency']) || ($cartID != substr($_SESSION['cart_yandex_kassa_id'], 0, strlen($cartID))) ) {
+          if ( ($curr['currency'] != $order->info['currency']) || ($cartID != substr($_SESSION['cart_tinkoff_id'], 0, strlen($cartID))) ) {
             $check_query = vam_db_query('select orders_id from ' . TABLE_ORDERS_STATUS_HISTORY . ' where orders_id = "' . (int)$order_id . '" limit 1');
 
             if (vam_db_num_rows($check_query) < 1) {
@@ -322,7 +322,7 @@ if ($_SERVER["HTTP_X_FORWARDED_FOR"]) {
             }
           }
 
-          $_SESSION['cart_yandex_kassa_id'] = $cartID . '-' . $insert_id;
+          $_SESSION['cart_tinkoff_id'] = $cartID . '-' . $insert_id;
         }
 
 // Выписываем qiwi счёт для покупателя
@@ -341,7 +341,7 @@ if ($_SERVER["HTTP_X_FORWARDED_FOR"]) {
         $taxShipping = MODULE_PAYMENT_TINKOFF_PAYMENT_SHIPPING;
         $taxProduct = MODULE_PAYMENT_TINKOFF_PAYMENT_TAX;
 
-        $orderId = substr($_SESSION['cart_yandex_kassa_id'], strpos($_SESSION['cart_yandex_kassa_id'], '-')+1);		
+        $orderId = substr($_SESSION['cart_tinkoff_id'], strpos($_SESSION['cart_tinkoff_id'], '-')+1);		
         $orderEmail = $order->customer['email_address'];
         $items = [];
         $orderAmount = 0;
