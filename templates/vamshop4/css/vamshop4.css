@@ -1,5 +1,5 @@
 body {
-  background: #f1f3f4;
+  background: #fff;
   font-family: "Roboto",Helvetica,Arial,sans-serif;
   font-weight: 500;
 }
@@ -582,10 +582,11 @@ label {
 .pulse-button {
   box-shadow: 0 0 0 0 rgba(232, 76, 61, 0.7);
   cursor: pointer;
-  -webkit-animation: pulse 1.25s infinite cubic-bezier(0.66, 0, 0, 1);
-  -moz-animation: pulse 1.25s infinite cubic-bezier(0.66, 0, 0, 1);
-  -ms-animation: pulse 1.25s infinite cubic-bezier(0.66, 0, 0, 1);
-  animation: pulse 1.25s infinite cubic-bezier(0.66, 0, 0, 1);
+  -webkit-animation: pulse 3.1s infinite cubic-bezier(0.66, 0, 0, 1);
+  -moz-animation: pulse 3.1s infinite cubic-bezier(0.66, 0, 0, 1);
+  -ms-animation: pulse 3.1s infinite cubic-bezier(0.66, 0, 0, 1);
+  animation: pulse 3.1s infinite cubic-bezier(0.66, 0, 0, 1);
+  animation-delay: 0s;
 }
 .pulse-button:hover 
 {
