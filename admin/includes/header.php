@@ -72,6 +72,18 @@
 										</a>
 									</li>
 									<li class="icons">
+										<a href="<?php echo vam_href_link(FILENAME_CONTENT_MANAGER, '', 'NONSSL'); ?>" data-toggle="tooltip" data-placement="bottom" title="<?php echo TEXT_HEADER_PAGES; ?>"><i class="far fa-file-alt" aria-hidden="true"></i>
+										</a>
+									</li>
+									<li class="icons">
+										<a href="<?php echo vam_href_link(FILENAME_ARTICLES, '', 'NONSSL'); ?>" data-toggle="tooltip" data-placement="bottom" title="<?php echo TEXT_HEADER_ARTICLES; ?>"><i class="far fa-newspaper" aria-hidden="true"></i>
+										</a>
+									</li>
+									<li class="icons">
+										<a href="<?php echo vam_href_link(FILENAME_LATEST_NEWS, '', 'NONSSL'); ?>" data-toggle="tooltip" data-placement="bottom" title="<?php echo TEXT_HEADER_NEWS; ?>"><i class="fa fa-rss" aria-hidden="true"></i>
+										</a>
+									</li>
+									<li class="icons">
 										<a href="<?php echo HTTP_SERVER . DIR_WS_CATALOG; ?>" data-toggle="tooltip" data-placement="bottom" title="<?php echo TEXT_HEADER_SHOP; ?>"><i class="fa fa-store" aria-hidden="true"></i>
 										</a>
 									</li>
