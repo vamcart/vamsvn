@@ -46,7 +46,7 @@ if ($_SESSION['customers_status']['customers_fsk18_display'] == '0')
 	                                        ".$fsk_lock."
 	                                        and p2c.categories_id = c.categories_id and '".$current_category_id."'
 	                                        in (c.categories_id, c.parent_id)
-	                                        order by p.products_ordered, p.products_id desc limit ".MAX_DISPLAY_BESTSELLERS;
+	                                        order by p.products_ordered desc limit ".MAX_DISPLAY_BESTSELLERS;
 
 $row = 0;
 $module_content = array ();
