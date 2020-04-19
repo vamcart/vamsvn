@@ -430,6 +430,7 @@ if ($_SERVER["HTTP_X_FORWARDED_FOR"]) {
 
       return array('title' => MODULE_PAYMENT_TINKOFF_TEXT_DESCRIPTION);
     }
+   }
 
 	function process_button() {
 		return false;
@@ -648,6 +649,8 @@ $vamTemplate = new vamTemplate;
       return array('MODULE_PAYMENT_TINKOFF_STATUS', 'MODULE_PAYMENT_TINKOFF_ALLOWED', 'MODULE_PAYMENT_TINKOFF_TERMINAL_KEY', 'MODULE_PAYMENT_TINKOFF_PASSWORD', 'MODULE_PAYMENT_TINKOFF_SORT_ORDER', 'MODULE_PAYMENT_TINKOFF_ZONE', 'MODULE_PAYMENT_TINKOFF_PAYMENT_ENABLED', 'MODULE_PAYMENT_TINKOFF_EMAIL_COMPANY', 'MODULE_PAYMENT_TINKOFF_PAYMENT_TAXATION', 'MODULE_PAYMENT_TINKOFF_PAYMENT_METHOD', 'MODULE_PAYMENT_TINKOFF_PAYMENT_OBJECT', 'MODULE_PAYMENT_TINKOFF_PAYMENT_SHIPPING', 'MODULE_PAYMENT_TINKOFF_PAYMENT_TAX',  'MODULE_PAYMENT_TINKOFF_ORDER_STATUS_ID');
     }
 
+}
+
     function tinkoff_logs($requestParams, $request)
     {
         // log send
@@ -662,7 +665,6 @@ $vamTemplate = new vamTemplate;
         file_put_contents(dirname(__FILE__) . "/tinkoff.log", $log, FILE_APPEND);
     }
 
-  }
   
   
 function vam_cfg_pull_down_tinkoff_taxation($id, $key = '') {
@@ -769,6 +771,5 @@ function vam_cfg_pull_down_tinkoff_payment_tax($id, $key = '') {
 	return vam_draw_pull_down_menu($name, $array, $id);
 }
 
-}
          
 ?>
