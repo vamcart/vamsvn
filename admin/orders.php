@@ -66,7 +66,7 @@ if ((($_GET['action'] == 'edit') || ($_GET['action'] == 'update_order')) && ($or
       $shipping_method_query = vam_db_query("select title from " . TABLE_ORDERS_TOTAL . " where orders_id = '" . vam_db_input($oID) . "' and class = 'ot_shipping'");
       $shipping_method = vam_db_fetch_array($shipping_method_query);
 
-  $order_shipping_text = $order->info['shipping_method'];
+  $order_shipping_text = strip_tags($order->info['shipping_method']);
 
 }
 
