@@ -41,9 +41,9 @@
   define('_VALID_VAM',true);
 
   // set the level of error reporting
-  error_reporting(0);
-  //ini_set('display_errors',1);
-  //error_reporting(E_ALL & ~E_NOTICE & ~E_WARNING);
+  //error_reporting(0);
+  ini_set('display_errors',1);
+  error_reporting(E_ALL & ~E_NOTICE & ~E_WARNING);
 
   // Disable use_trans_sid as vam_href_link() does this manually
   if (function_exists('ini_set')) {
@@ -60,7 +60,7 @@
   define('SQL_CACHEDIR',DIR_FS_CATALOG.'cache/');
 
   // Define the project version
-  define('PROJECT_VERSION', 'VamShop 1.99.16');
+  define('PROJECT_VERSION', 'VamShop 1.99.17');
 
   // Set the length of the redeem code, the longer the more secure
   define('SECURITY_CODE_LENGTH', '6');
