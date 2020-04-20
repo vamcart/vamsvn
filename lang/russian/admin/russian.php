@@ -441,7 +441,7 @@ define('TEXT_HEADER_DEFAULT','Главная');
 define('TEXT_HEADER_SUPPORT','Поддержка');
 define('TEXT_HEADER_SHOP','Магазин');
 define('TEXT_HEADER_LOGOFF','Выход');
-define('TEXT_HEADER_PAGES','Информационные страницы');
+define('TEXT_HEADER_PAGES','Страницы');
 define('TEXT_HEADER_ARTICLES','Статьи');
 define('TEXT_HEADER_NEWS','Новости');
 
