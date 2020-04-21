@@ -17,8 +17,12 @@
 					{$module_data.REVIEW.STAR_RATING}
 				</div>
 				{/if}
+				<span class="font-weight-bold text-secondary">{$smarty.const.TEXT_CUSTOMER_REVIEW}</span>
 				<p>{$module_data.REVIEW.TEXT|vam_truncate:$smarty.const.MAX_DISPLAY_SHORT_DESCRIPTION:"...":true}</p>
-				{if {$module_data.REVIEW.ANSWER} != ''}<p>{$module_data.REVIEW.ANSWER}</p>{/if}
+				{if {$module_data.REVIEW.ANSWER} != ''}
+				<span class="font-weight-bold text-primary">{$smarty.const.TEXT_STORE_ANSWER}</span>
+				<p>{$module_data.REVIEW.ANSWER}</p>
+				{/if}
 			</div>
       </div>
 		<div class="category card-footer text-center">

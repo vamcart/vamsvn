@@ -733,4 +733,7 @@ define('TEXT_PRODUCTS_IN_CART', 'Товаров в корзине');
 define('TEXT_PRODUCTS_TOTAL', 'Всего товаров');
 define('TEXT_PIECE', 'шт.');
 
+define('TEXT_CUSTOMER_REVIEW', 'Отзыв покупателя:');
+define('TEXT_STORE_ANSWER', 'Ответ магазина:');
+
 ?>

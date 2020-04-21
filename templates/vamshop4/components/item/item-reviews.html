@@ -13,11 +13,13 @@
 <div class="desc"><span class="bold">{#text_author#}</span> <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">{$module_data.AUTHOR}</span></span></div>
 {if $module_data.CUSTOMER}<div class="desc"><span class="btn btn-outline-primary rounded-pill btn-sm"><i class="fas fa-user-check"></i> {$smarty.const.TEXT_BADGE_CUSTOMER}</span></div>{/if}
 <br />
+<span class="font-weight-bold text-secondary">{$smarty.const.TEXT_CUSTOMER_REVIEW}</span>
 <div class="desc" itemprop="reviewBody">
 {$module_data.TEXT}
 </div>
 <br />
 {if {$module_data.ANSWER} != ''}
+<span class="font-weight-bold text-primary">{$smarty.const.TEXT_STORE_ANSWER}</span>
 <div class="desc" itemprop="reviewBody">
 {$module_data.ANSWER}
 </div>
