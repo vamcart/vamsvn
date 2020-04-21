@@ -360,7 +360,7 @@ if (count($campaign->result)) {
   </tr>
   
   
-  <?
+  <?php
 	}
 ?>
 </table>
@@ -379,14 +379,11 @@ if (count($campaign->result)) {
 
 <!-- footer //-->
 <?php
-
-
 	require (DIR_WS_INCLUDES.'footer.php');
 ?>
 <!-- footer_eof //-->
 </body>
 </html>
 <?php
-
 	require (DIR_WS_INCLUDES.'application_bottom.php');
 ?>
