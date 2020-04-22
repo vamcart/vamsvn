@@ -1,5 +1,5 @@
 <?php
-if (!defined(ENABLE_1C_EXCHANGE) && ENABLE_1C_EXCHANGE != 'true') exit('Модуль интеграции VamShop и 1С:Предприятие выключен. Подробная информация <a href="https://forum.vamshop.ru/topic/16769-%D0%B8%D0%BD%D1%82%D0%B5%D0%B3%D1%80%D0%B0%D1%86%D0%B8%D1%8F-vamshop-%D0%B8-1%D1%81%D0%BF%D1%80%D0%B5%D0%B4%D0%BF%D1%80%D0%B8%D1%8F%D1%82%D0%B8%D0%B5/" target="_blank"><u>здесь</u></a>.');
+if (ENABLE_1C_EXCHANGE != 'true') exit('Модуль интеграции VamShop и 1С:Предприятие выключен. Подробная информация <a href="https://forum.vamshop.ru/topic/16769-%D0%B8%D0%BD%D1%82%D0%B5%D0%B3%D1%80%D0%B0%D1%86%D0%B8%D1%8F-vamshop-%D0%B8-1%D1%81%D0%BF%D1%80%D0%B5%D0%B4%D0%BF%D1%80%D0%B8%D1%8F%D1%82%D0%B8%D0%B5/" target="_blank"><u>здесь</u></a>.');
 
 if (!defined('WC1C_PRICE_TYPE')) define('WC1C_PRICE_TYPE', null);
 if (!defined('WC1C_PRESERVE_PRODUCT_VARIATIONS')) define('WC1C_PRESERVE_PRODUCT_VARIATIONS', false);
