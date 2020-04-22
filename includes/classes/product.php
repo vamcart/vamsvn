@@ -514,6 +514,7 @@ $orders_query = "select
 												and xp.products_xsell_grp_name_id = ".$cross_sells['products_xsell_grp_name_id']."
 												and pd.language_id = '".$_SESSION['languages_id']."'
 												and p.products_status = '1'
+												and p.products_quantity > '0'
 												group by p.products_id
 												order by xp.sort_order asc limit ".MAX_DISPLAY_ALSO_PURCHASED."");
 												
