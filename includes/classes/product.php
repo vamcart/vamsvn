@@ -470,10 +470,19 @@ $orders_query = "select
 		global $vamPrice;
 		
 		$products = $_SESSION['cart']->get_products();
+		
+		foreach ($products AS $in_cart) {
+		$ids[] = intval($in_cart['id']);
+		}
+		
+		$products_ids = implode(",",$ids);
+		
+		//echo var_dump($ids);
+		//echo var_dump($products_ids);
 
   foreach ($products AS $product_id_in_cart) {
 
-		$cs_groups = "SELECT products_xsell_grp_name_id FROM ".TABLE_PRODUCTS_XSELL." WHERE products_id = '".intval($product_id_in_cart['id'])."' GROUP BY products_xsell_grp_name_id";
+		$cs_groups = "SELECT products_xsell_grp_name_id FROM ".TABLE_PRODUCTS_XSELL." WHERE products_id in (".$products_ids.") GROUP BY products_xsell_grp_name_id";
 		$cs_groups = vamDBquery($cs_groups);
 		$cross_sell_data = array ();
 		if (vam_db_num_rows($cs_groups, true)>0) {
@@ -488,25 +497,26 @@ $orders_query = "select
 				$group_check = " and p.group_permission_".$_SESSION['customers_status']['customers_status_id']."=1 ";
 			}
 
-				$cross_query = "select p.products_fsk18,
-																														 p.products_tax_class_id,
-																								                                                 p.products_id,
-																								                                                 p.label_id,
-																								                                                 p.products_image,
-																								                                                 p.products_quantity,
-																								                                                 pd.products_name,
-																														 						pd.products_short_description,
-																								                                                 p.products_fsk18,p.products_price,p.products_vpe,
-						                           																									p.products_vpe_status,
-						                           																									p.products_vpe_value,
-																								                                                 xp.sort_order from ".TABLE_PRODUCTS_XSELL." xp, ".TABLE_PRODUCTS." p, ".TABLE_PRODUCTS_DESCRIPTION." pd
-																								                                            where xp.products_id = '".intval($product_id_in_cart['id'])."' and xp.xsell_id = p.products_id ".$fsk_lock.$group_check."
-																								                                            and p.products_id = pd.products_id and xp.products_xsell_grp_name_id='".$cross_sells['products_xsell_grp_name_id']."'
-																								                                            and pd.language_id = '".$_SESSION['languages_id']."'
-																								                                            and p.products_status = '1'
-																								                                            order by xp.sort_order asc limit ".MAX_DISPLAY_ALSO_PURCHASED;
-
-			$cross_query = vamDBquery($cross_query);
+				$cross_query = vamDBquery("select p.products_fsk18,
+												p.products_tax_class_id,
+												p.products_id,
+												p.label_id,
+												p.products_image,
+												p.products_quantity,
+												pd.products_name,
+												pd.products_short_description,
+												p.products_fsk18,p.products_price,p.products_vpe,
+												p.products_vpe_status,
+												p.products_vpe_value,  
+												xp.sort_order from ".TABLE_PRODUCTS_XSELL." xp, ".TABLE_PRODUCTS." p, ".TABLE_PRODUCTS_DESCRIPTION." pd
+												where xp.products_id in (".$products_ids.") and xp.xsell_id not in (".$products_ids.") and xp.xsell_id = p.products_id ".$fsk_lock.$group_check."
+												and p.products_id = pd.products_id 
+                                    and xp.products_xsell_grp_name_id = ".$cross_sells['products_xsell_grp_name_id']."
+												and pd.language_id = '".$_SESSION['languages_id']."'
+												and p.products_status = '1'
+												group by p.products_id
+												order by xp.sort_order asc limit ".MAX_DISPLAY_ALSO_PURCHASED."");
+												
 			if (vam_db_num_rows($cross_query, true) > 0)
 				$cross_sell_data[$cross_sells['products_xsell_grp_name_id']] = array ('GROUP' => vam_get_cross_sell_name($cross_sells['products_xsell_grp_name_id']), 'PRODUCTS' => array ());
 
