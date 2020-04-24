@@ -1,5 +1,5 @@
 <?php
-if (ENABLE_1C_EXCHANGE != 'true') exit('Модуль интеграции VamShop и 1С:Предприятие выключен. Подробная информация <a href="https://forum.vamshop.ru/topic/16769-%D0%B8%D0%BD%D1%82%D0%B5%D0%B3%D1%80%D0%B0%D1%86%D0%B8%D1%8F-vamshop-%D0%B8-1%D1%81%D0%BF%D1%80%D0%B5%D0%B4%D0%BF%D1%80%D0%B8%D1%8F%D1%82%D0%B8%D0%B5/" target="_blank"><u>здесь</u></a>.');
+if (!defined(ENABLE_1C_EXCHANGE) && ENABLE_1C_EXCHANGE != 'true') exit('Модуль интеграции VamShop и 1С:Предприятие выключен. Подробная информация <a href="https://forum.vamshop.ru/topic/16769-%D0%B8%D0%BD%D1%82%D0%B5%D0%B3%D1%80%D0%B0%D1%86%D0%B8%D1%8F-vamshop-%D0%B8-1%D1%81%D0%BF%D1%80%D0%B5%D0%B4%D0%BF%D1%80%D0%B8%D1%8F%D1%82%D0%B8%D0%B5/" target="_blank"><u>здесь</u></a>.');
 
 //echo 'test';
 //exit("test");
@@ -509,15 +509,20 @@ function wc1c_replace_term($is_full, $guid, $parent_guid, $name, $taxonomy, $ord
 
 		vam_db_perform(TABLE_CATEGORIES, $sql_data_array, 'update', 'guid = \''.$guid.'\'');
 
-		$categories_id = vam_db_insert_id();
-
+		$get_categories_id_by_guid_query = vam_db_query("select categories_id from " . TABLE_CATEGORIES . " where guid = '" . vam_db_input($guid) . "'");
+		$get_categories_id_by_guid = vam_db_fetch_array($get_categories_id_by_guid_query);
+  	
 		$sql_data_array = array (
 		'language_id' => vam_db_prepare_input($_SESSION['languages_id']), 
-		'categories_id' => $categories_id,
+		'categories_id' => $get_categories_id_by_guid['categories_id'],
 		'categories_name' => vam_db_prepare_input($name) 
 		);
+		
+		//echo var_dump($name);
+		//echo var_dump($get_categories_id_by_guid['categories_id']);
+		//exit("test");
 
-		vam_db_perform(TABLE_CATEGORIES_DESCRIPTION, $sql_data_array, 'update', 'categories_id = \''.$categories_id.'\'');
+		vam_db_perform(TABLE_CATEGORIES_DESCRIPTION, $sql_data_array, 'update', 'categories_id = \''.$get_categories_id_by_guid['categories_id'].'\'');
 
       //echo "update:";				    
 		//echo $guid.'::'.$parent.'::'.$parent_guid.'<br />';
