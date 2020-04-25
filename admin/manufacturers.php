@@ -178,7 +178,7 @@
 	$languages = vam_get_languages();
 
 	// generate editor for products
-	if ($_GET['action'] == 'edit') {
+	if ($_GET['action'] == 'edit' or $_GET['action'] == 'new') {
 		//for ($i = 0; $i < sizeof($languages); $i ++) {
 			echo vam_wysiwyg_tiny('manufacturers_description', $data['code'], $languages[$i]['id']);
 		//}
