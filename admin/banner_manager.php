@@ -333,7 +333,7 @@
                 <td class="dataTableHeadingContent" align="right"><?php echo TABLE_HEADING_ACTION; ?>&nbsp;</td>
               </tr>
 <?php
-    $banners_query_raw = "select banners_id, banners_title, banners_description, banners_image, banners_group, status, expires_date, expires_impressions, date_status_change, date_scheduled, date_added from " . TABLE_BANNERS . " order by banners_id, banners_group";
+    $banners_query_raw = "select banners_id, banners_title, banners_description, banners_image, banners_group, status, expires_date, expires_impressions, date_status_change, date_scheduled, date_added from " . TABLE_BANNERS . " order by banners_id DESC, banners_group";
     $banners_split = new splitPageResults($_GET['page'], MAX_DISPLAY_ADMIN_PAGE, $banners_query_raw, $banners_query_numrows);
     $banners_query = vam_db_query($banners_query_raw);
     while ($banners = vam_db_fetch_array($banners_query)) {
