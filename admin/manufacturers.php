@@ -18,6 +18,7 @@
    --------------------------------------------------------------*/
 
   require('includes/application_top.php');
+  require_once (DIR_FS_INC.'vam_wysiwyg_tiny.inc.php');
 
 // BOF manufacturers meta tags	// Return the manufacturers meta title in the needed language	// TABLES: manufacturers_info
 	  function vam_get_manufacturers_meta_title($manufacturer_id, $language_id) {
@@ -170,6 +171,19 @@
 <title><?php echo TITLE; ?></title>
 <!-- Header JS, CSS -->
 <?php require(DIR_FS_ADMIN.DIR_WS_INCLUDES . 'header_include.php'); ?>
+<?php 
+	$query = vam_db_query("SELECT code FROM ".TABLE_LANGUAGES." WHERE languages_id='".$_SESSION['languages_id']."'");
+	$data = vam_db_fetch_array($query);
+	// generate editor for categories EDIT
+	$languages = vam_get_languages();
+
+	// generate editor for products
+	if ($_GET['action'] == 'edit') {
+		//for ($i = 0; $i < sizeof($languages); $i ++) {
+			echo vam_wysiwyg_tiny('manufacturers_description', $data['code'], $languages[$i]['id']);
+		//}
+	} 
+?>
 </head>
 <body marginwidth="0" marginheight="0" topmargin="0" bottommargin="0" leftmargin="0" rightmargin="0" bgcolor="#FFFFFF" onload="SetFocus();">
 <!-- header //-->
@@ -214,6 +228,12 @@ $manual_link = 'delete-manufacturer';
 
     <table border="0" width="100%" cellspacing="0" cellpadding="2">
       <tr>
+      
+<?php
+  if ($_GET['action'] != 'edit') {
+  if ($_GET['action'] != 'new') {
+?>
+      
         <td><table border="0" width="100%" cellspacing="0" cellpadding="0">
           <tr>
             <td valign="top"><table border="0" width="100%" cellspacing="2" cellpadding="0" class="contentListingTable">
@@ -267,6 +287,42 @@ $manual_link = 'delete-manufacturer';
 ?>
             </table></td>
 <?php
+
+} else {
+	
+  $manufacturers_query_raw = "select manufacturers_id, manufacturers_name, manufacturers_image, date_added, last_modified from " . TABLE_MANUFACTURERS . " order by manufacturers_name";
+  $manufacturers_split = new splitPageResults($_GET['page'], MAX_DISPLAY_ADMIN_PAGE, $manufacturers_query_raw, $manufacturers_query_numrows);
+  $manufacturers_query = vam_db_query($manufacturers_query_raw);
+  while ($manufacturers = vam_db_fetch_array($manufacturers_query)) {
+    if (((!$_GET['mID']) || (@$_GET['mID'] == $manufacturers['manufacturers_id'])) && (!$mInfo) && (substr($_GET['action'], 0, 3) != 'new')) {
+      $manufacturer_products_query = vam_db_query("select count(*) as products_count from " . TABLE_PRODUCTS . " where manufacturers_id = '" . $manufacturers['manufacturers_id'] . "'");
+      $manufacturer_products = vam_db_fetch_array($manufacturer_products_query);
+
+      $mInfo_array = vam_array_merge($manufacturers, $manufacturer_products);
+      $mInfo = new objectInfo($mInfo_array);
+    }
+    }
+	
+	
+} 
+
+} else {
+	
+	  $manufacturers_query_raw = "select manufacturers_id, manufacturers_name, manufacturers_image, date_added, last_modified from " . TABLE_MANUFACTURERS . " order by manufacturers_name";
+  $manufacturers_split = new splitPageResults($_GET['page'], MAX_DISPLAY_ADMIN_PAGE, $manufacturers_query_raw, $manufacturers_query_numrows);
+  $manufacturers_query = vam_db_query($manufacturers_query_raw);
+  while ($manufacturers = vam_db_fetch_array($manufacturers_query)) {
+    if (((!$_GET['mID']) || (@$_GET['mID'] == $manufacturers['manufacturers_id'])) && (!$mInfo) && (substr($_GET['action'], 0, 3) != 'new')) {
+      $manufacturer_products_query = vam_db_query("select count(*) as products_count from " . TABLE_PRODUCTS . " where manufacturers_id = '" . $manufacturers['manufacturers_id'] . "'");
+      $manufacturer_products = vam_db_fetch_array($manufacturer_products_query);
+
+      $mInfo_array = vam_array_merge($manufacturers, $manufacturer_products);
+      $mInfo = new objectInfo($mInfo_array);
+    }
+    }
+
+}
+
   $heading = array();
   $contents = array();
   switch ($_GET['action']) {
@@ -282,21 +338,22 @@ $manual_link = 'delete-manufacturer';
       $manufacturer_inputs_string = '';
       $languages = vam_get_languages();
       for ($i=0, $n=sizeof($languages); $i<$n; $i++) {
-        $manufacturer_inputs_string .= '<br />' . $languages[$i]['name'] . ':&nbsp;' . vam_draw_input_field('manufacturers_meta_title[' . $languages[$i]['id'] . ']');
+        $manufacturer_inputs_string .= '<br />' . $languages[$i]['name'] . ':&nbsp;' . vam_draw_textarea_field('manufacturers_meta_title[' . $languages[$i]['id'] . ']', 'soft', '95', '15',vam_get_manufacturers_meta_title($mInfo->manufacturers_id, $languages[$i]['id']),'class="meta-title notinymce"');
       }
       $contents[] = array('text' => '<br />' . TEXT_MANUFACTURERS_META_TITLE . $manufacturer_inputs_string);
 
       $manufacturer_inputs_string = '';
       $languages = vam_get_languages();
       for ($i=0, $n=sizeof($languages); $i<$n; $i++) {
-        $manufacturer_inputs_string .= '<br />' . $languages[$i]['name'] . ':&nbsp;' . vam_draw_input_field('manufacturers_meta_keywords[' . $languages[$i]['id'] . ']');
+        $manufacturer_inputs_string .= '<br />' . $languages[$i]['name'] . ':&nbsp;' . vam_draw_textarea_field('manufacturers_meta_keywords[' . $languages[$i]['id'] . ']', 'soft', '95', '15',vam_get_manufacturers_meta_keywords($mInfo->manufacturers_id, $languages[$i]['id']),'class="meta-keywords notinymce"');
       }
       $contents[] = array('text' => '<br />' . TEXT_MANUFACTURERS_META_KEYWORDS . $manufacturer_inputs_string);
 
       $manufacturer_inputs_string = '';
       $languages = vam_get_languages();
       for ($i=0, $n=sizeof($languages); $i<$n; $i++) {
-        $manufacturer_inputs_string .= '<br />' . $languages[$i]['name'] . ':&nbsp;' . vam_draw_input_field('manufacturers_meta_description[' . $languages[$i]['id'] . ']');
+        $manufacturer_inputs_string .= '<br />' . $languages[$i]['name'] . ':&nbsp;' . vam_draw_textarea_field('manufacturers_meta_description[' . $languages[$i]['id'] . ']', 'soft', '95', '15',vam_get_manufacturers_meta_description($mInfo->manufacturers_id, $languages[$i]['id']),'class="meta-description notinymce"');
+
       }
       $contents[] = array('text' => '<br />' . TEXT_MANUFACTURERS_META_DESCRIPTION . $manufacturer_inputs_string);
 
@@ -336,21 +393,21 @@ $manual_link = 'delete-manufacturer';
       $manufacturer_inputs_string = '';
       $languages = vam_get_languages();
       for ($i=0, $n=sizeof($languages); $i<$n; $i++) {
-        $manufacturer_inputs_string .= '<br>' . $languages[$i]['name'] . ':&nbsp;' . vam_draw_input_field('manufacturers_meta_title[' . $languages[$i]['id'] . ']', vam_get_manufacturers_meta_title($mInfo->manufacturers_id, $languages[$i]['id']));
+        $manufacturer_inputs_string .= '<br>' . $languages[$i]['name'] . ':&nbsp;' . vam_draw_textarea_field('manufacturers_meta_title[' . $languages[$i]['id'] . ']', 'soft', '95', '15',vam_get_manufacturers_meta_title($mInfo->manufacturers_id, $languages[$i]['id']),'class="meta-title notinymce"');
       }
       $contents[] = array('text' => '<br>' . TEXT_MANUFACTURERS_META_TITLE . $manufacturer_inputs_string);
 
       $manufacturer_inputs_string = '';
       $languages = vam_get_languages();
       for ($i=0, $n=sizeof($languages); $i<$n; $i++) {
-        $manufacturer_inputs_string .= '<br>' . $languages[$i]['name'] . ':&nbsp;' . vam_draw_input_field('manufacturers_meta_keywords[' . $languages[$i]['id'] . ']', vam_get_manufacturers_meta_keywords($mInfo->manufacturers_id, $languages[$i]['id']));
+        $manufacturer_inputs_string .= '<br>' . $languages[$i]['name'] . ':&nbsp;' . vam_draw_textarea_field('manufacturers_meta_keywords[' . $languages[$i]['id'] . ']', 'soft', '95', '15',vam_get_manufacturers_meta_keywords($mInfo->manufacturers_id, $languages[$i]['id']),'class="meta-keywords notinymce"');
       }
       $contents[] = array('text' => '<br>' . TEXT_MANUFACTURERS_META_KEYWORDS . $manufacturer_inputs_string);
 
       $manufacturer_inputs_string = '';
       $languages = vam_get_languages();
       for ($i=0, $n=sizeof($languages); $i<$n; $i++) {
-        $manufacturer_inputs_string .= '<br>' . $languages[$i]['name'] . ':&nbsp;' . vam_draw_input_field('manufacturers_meta_description[' . $languages[$i]['id'] . ']', vam_get_manufacturers_meta_description($mInfo->manufacturers_id, $languages[$i]['id']));
+	        $manufacturer_inputs_string .= '<br>' . $languages[$i]['name'] . ':&nbsp;' . vam_draw_textarea_field('manufacturers_meta_description[' . $languages[$i]['id'] . ']', 'soft', '95', '15',vam_get_manufacturers_meta_description($mInfo->manufacturers_id, $languages[$i]['id']),'class="meta-description notinymce"');
       }
       $contents[] = array('text' => '<br>' . TEXT_MANUFACTURERS_META_DESCRIPTION . $manufacturer_inputs_string);
 
@@ -373,7 +430,6 @@ $manual_link = 'delete-manufacturer';
 
       $contents[] = array('text' => '<br />' . TEXT_MANUFACTURERS_PAGE_URL . '<br />' . vam_draw_input_field('manufacturers_seo_url', $mInfo->manufacturers_seo_url));
       $contents[] = array('text' => '<br />' . TEXT_MANUFACTURERS_SORT_ORDER . '<br />' . vam_draw_input_field('sort_order', $mInfo->sort_order));
-
       $contents[] = array('text' => '<br />' . TEXT_MANUFACTURERS_URL . $manufacturer_inputs_string);
       $contents[] = array('align' => 'center', 'text' => '<br />' . '<span class="button"><button type="submit" value="' . BUTTON_SAVE . '">' . vam_image(DIR_WS_IMAGES . 'icons/buttons/save.png', '', '12', '12') . '&nbsp;' . BUTTON_SAVE . '</button></span>' . '&nbsp;' . '<a class="button" href="' . vam_href_link(FILENAME_MANUFACTURERS, 'page=' . $_GET['page'] . '&mID=' . $mInfo->manufacturers_id) . '"><span>' . vam_image(DIR_WS_IMAGES . 'icons/buttons/cancel.png', '', '12', '12') . '&nbsp;' . BUTTON_CANCEL . '</span></a>');
       break;

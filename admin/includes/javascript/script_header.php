@@ -19,6 +19,41 @@
 <script src="includes/javascript/vamshop-menu/js/vamshop-menu.min.js"></script>
 <script src="includes/javascript/vamshop-menu/js/vamshop-menu-settings.js"></script> 	 
 
+<script type="text/javascript" src="includes/javascript/jquery.limitText.min.js"></script>
+<script type="text/javascript">
+$(function(){
+			
+$(".meta-title").textcounter({
+	type: "character",
+	max: 70,
+	countDown: false,
+	countDownText: "%d символов из 70",
+	displayErrorText: false,
+	stopInputAtMaximum: false
+});
+
+$(".meta-description").textcounter({
+	type: "character",
+	max: 160,
+	countDown: false,
+	countDownText: "%d символов из 160",
+	displayErrorText: false,
+	stopInputAtMaximum: false
+});
+
+$(".meta-keywords").textcounter({
+	type: "comma",
+	max: 30,
+	countDown: false,
+	countDownText: "%d символов из 30",
+	displayErrorText: false,
+	stopInputAtMaximum: false
+});
+
+			});
+		</script>
+
+
 <?php
   if ( ($_GET['action'] == 'new') || ($_GET['action'] == 'edit') ) {
 ?>

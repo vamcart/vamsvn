@@ -372,6 +372,45 @@ function toggleHTMLEditor(id) {
                         break;
 
                 // WYSIWYG editor newsletter
+                case 'manufacturers_description':
+                        $val ='<script type="text/javascript" src="'.$js_src.'"></script>
+<script type="text/javascript">
+tinymce.init({
+  selector: "textarea:not(.notinymce)",
+  height: 500,
+  extended_valid_elements : "script[language|type|src],iframe[src|width|height|name|align|class]",
+  image_advtab: true ,
+  verify_html: false ,
+  convert_urls : false,
+  external_filemanager_path: "'.HTTP_SERVER . DIR_WS_CATALOG.'admin/filemanager/",
+  filemanager_title:"VamShop" ,
+  filemanager_access_key:"'. session_name() .'" ,
+  external_plugins: { "filemanager" : "'.HTTP_SERVER . DIR_WS_CATALOG.'admin/filemanager/plugin.min.js"},
+  autosave_ask_before_unload: false,
+  image_class_list: [
+      {title: "img-fluid", value: "img-fluid"}
+  ],		  
+  language : "'.$lang.'",
+  plugins: [
+    "advlist autolink lists link image charmap print preview anchor",
+    "searchreplace visualblocks code help fullscreen",
+    "insertdatetime media table paste imagetools wordcount responsivefilemanager"
+  ],
+  toolbar: "insertfile undo redo | styleselect | bold italic underline forecolor backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image code | help"
+});
+
+
+function toggleHTMLEditor(id) {
+	if (!tinymce.get(id))
+		tinymce.execCommand("mceAddEditor", false, id);
+	else
+		tinymce.execCommand("mceRemoveEditor", false, id);
+}
+                        	   	</script>
+                        	   	';
+                        break;
+
+                // WYSIWYG editor newsletter
                 case 'mail':
                         $val ='<script type="text/javascript" src="'.$js_src.'"></script>
 <script type="text/javascript">
