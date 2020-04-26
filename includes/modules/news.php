@@ -40,11 +40,22 @@ $module_content = array ();
 $query = vamDBquery($sql);
 while ($one = vam_db_fetch_array($query,true)) {
 
+$qI=0; $qIcon='';
+//echo strpos($one['content'],'src="')." ";
+if ($qI=strpos($one['content'],'src="')) {
+	$qI=$qI+5;
+	$qIcon=substr ($one['content'] , $qI);
+	$qI=strpos($qIcon,'"');
+	$qIcon= substr($qIcon, 0, $qI);
+//echo "<pre>".$qIcon."</pre>";
+}
+
 		$SEF_parameter = '';
 		if (SEARCH_ENGINE_FRIENDLY_URLS == 'true')
 			$SEF_parameter = '&headline='.vam_cleanName($one['headline']);
 
     $module_content[]=array(
+        'NEWS_ICON' => $qIcon,
         'NEWS_HEADING' => $one['headline'],
         'NEWS_CONTENT' => $one['content'],
         'NEWS_ID'      => $one['news_id'],
