@@ -34,16 +34,22 @@ if ((!isset ($new_products_category_id)) || ($new_products_category_id == '0')) 
 	if (GROUP_CHECK == 'true')
 		$group_check = " and p.group_permission_".$_SESSION['customers_status']['customers_status_id']."=1 ";
 
+	if (MAX_DISPLAY_NEW_PRODUCTS_DAYS != '0') {
+		$date_new_products = date("Y.m.d", mktime(1, 1, 1, date(m), date(d) - MAX_DISPLAY_NEW_PRODUCTS_DAYS, date(Y)));
+		//$days = " and p.products_date_added > '".$date_new_products."' ";
+	}
+
 	$new_products_query = "SELECT distinct * FROM
 	                                         ".TABLE_PRODUCTS." p,
 	                                         ".TABLE_PRODUCTS_DESCRIPTION." pd WHERE
-	                                         p.products_id=pd.products_id and
-	                                         p.products_startpage = '1'
+	                                         p.products_quantity > 0 and  
+	                                         p.products_id=pd.products_id 
 	                                         ".$group_check."
+	                                         ".$days."
 	                                         ".$fsk_lock."
 	                                         and p.products_status = '1' and pd.language_id = '".(int) $_SESSION['languages_id']."'
 	                                         group by p.products_id
-	                                         order by p.products_startpage_sort ASC, p.products_id DESC limit ".MAX_DISPLAY_NEW_PRODUCTS;
+	                                         order by rand() limit ".MAX_DISPLAY_NEW_PRODUCTS;
 } else {
 
 	if (GROUP_CHECK == 'true')
@@ -51,7 +57,7 @@ if ((!isset ($new_products_category_id)) || ($new_products_category_id == '0')) 
 
 	if (MAX_DISPLAY_NEW_PRODUCTS_DAYS != '0') {
 		$date_new_products = date("Y.m.d", mktime(1, 1, 1, date(m), date(d) - MAX_DISPLAY_NEW_PRODUCTS_DAYS, date(Y)));
-		$days = " and p.products_date_added > '".$date_new_products."' ";
+		//$days = " and p.products_date_added > '".$date_new_products."' ";
 	}
 	$new_products_query = "SELECT distinct * FROM
 	                                        ".TABLE_PRODUCTS." p,
@@ -62,6 +68,7 @@ if ((!isset ($new_products_category_id)) || ($new_products_category_id == '0')) 
 	                                        and p.products_id = p2c.products_id and p.products_id=pd.products_id
 	                                        and p2c.categories_id = c.categories_id
 	                                        ".$group_check."
+	                                        ".$days."
 	                                        ".$fsk_lock."
 	                                        and c.parent_id = '".$new_products_category_id."'
 	                                        and p.products_status = '1' and pd.language_id = '".(int) $_SESSION['languages_id']."'

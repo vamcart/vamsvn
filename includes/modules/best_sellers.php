@@ -33,6 +33,11 @@ if ($_SESSION['customers_status']['customers_fsk18_display'] == '0')
 	if (GROUP_CHECK == 'true')
 		$group_check = " and p.group_permission_".$_SESSION['customers_status']['customers_status_id']."=1 ";
 
+	if (MAX_DISPLAY_NEW_PRODUCTS_DAYS != '0') {
+		$date_new_products = date("Y.m.d", mktime(1, 1, 1, date(m), date(d) - 90, date(Y)));
+		//$days = " and p.products_date_added > '".$date_new_products."' ";
+	}
+
 	$best_sellers_query = "select distinct
 	                                        p.*,
 	                                        pd.* from ".TABLE_PRODUCTS." p, ".TABLE_PRODUCTS_DESCRIPTION." pd, ".TABLE_PRODUCTS_TO_CATEGORIES." p2c, ".TABLE_CATEGORIES." c
@@ -43,10 +48,11 @@ if ($_SESSION['customers_status']['customers_fsk18_display'] == '0')
 	                                        and pd.language_id = '".(int) $_SESSION['languages_id']."'
 	                                        and p.products_id = p2c.products_id
 	                                        ".$group_check."
+	                                         ".$days."
 	                                        ".$fsk_lock."
 	                                        and p2c.categories_id = c.categories_id and '".$current_category_id."'
 	                                        in (c.categories_id, c.parent_id)
-	                                        order by p.products_ordered desc limit ".MAX_DISPLAY_BESTSELLERS;
+	                                        order by rand() limit ".MAX_DISPLAY_BESTSELLERS;
 
 $row = 0;
 $module_content = array ();
