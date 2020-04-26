@@ -19,7 +19,7 @@
   if (SET_BOX_FILTERS == 'true') if (!strstr($PHP_SELF, FILENAME_SHOPPING_CART)) include(DIR_WS_BOXES . 'products_filter.php');
 
   if (SET_BOX_AFFILIATE == 'true') include(DIR_WS_BOXES . 'affiliate.php');
-  if (SET_BOX_CATEGORIES == 'true') include(DIR_WS_BOXES . 'categories.php');
+  if (SET_BOX_CATEGORIES == 'true' && DEFAULT_NAVIGATION == "fullscreen_menu") include(DIR_WS_BOXES . 'categories.php');
   if (DEFAULT_NAVIGATION == 'fullscreen_menu') require(DIR_WS_BOXES . 'categories2.php');
   if (DEFAULT_NAVIGATION == 'slide_menu') require(DIR_WS_BOXES . 'categories3.php');
   if (SET_BOX_AUTHORS == 'true') include(DIR_WS_BOXES . 'authors.php');
