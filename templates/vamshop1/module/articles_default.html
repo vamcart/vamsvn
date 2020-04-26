@@ -1,0 +1,39 @@
+{config_load file="$language/lang_$language.conf" section="boxes"} 
+<h3 style="text-align:center;"><a href="articles.php">{#heading_articles#}</a></h3>
+<div class="page">
+<div class="pageItem">
+<div class="row-fluid last-news">
+
+{foreach name=aussen item=module_data from=$module_content}
+
+<b class="b1"></b><b class="b2"></b><b class="b3"></b><b class="b4"></b>
+
+<div class="pageItem">
+
+<dl class="itemLatestNewsDefault">
+
+
+<dd class="itemNews">
+<h4 class="title"><a href="{$module_data.ARTICLES_URL}">{$module_data.ARTICLES_NAME}</a></h4>
+</dd>
+<div style="min-height: 80px">
+<div style="text-align:initial">
+{$module_data.ARTICLES_DESCRIPTOIN|vam_truncate:255:"..."}
+</div>
+</div>
+</dl>
+<div class="clear"></div>
+</div>
+
+
+<b class="b4b"></b><b class="b3b"></b><b class="b2b"></b><b class="b1b"></b>
+
+
+{/foreach} 
+
+
+</div>
+<div class="clear"></div>
+</div>
+
+</div>

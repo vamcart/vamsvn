@@ -38,5 +38,7 @@
 
   require (DIR_WS_MODULES.FILENAME_BANNER_MAINPAGE);
 
+  require (DIR_WS_MODULES.FILENAME_ARTICLES);
+
   return $module;
 ?>
