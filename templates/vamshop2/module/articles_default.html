@@ -1,0 +1,81 @@
+{config_load file="$language/lang_$language.conf" section="boxes"} 
+<h3><a href="{$smart.const.FILENAME_ARTICLES}">{#heading_articles#}</a></h3>
+<div class="page">
+<div class="pageItem">
+<div class="row-fluid last-news">
+
+{foreach name=aussen item=module_data from=$module_content} 
+<div class="page">
+<div class="pageItem">
+
+{if $module_data.ARTICLE_IMAGE}
+<p>
+<a href="{$module_data.ARTICLE_LINK}"><img src="{$smarty.const.DIR_WS_CATALOG}{$smarty.const.DIR_WS_IMAGES}articles/{$module_data.ARTICLE_IMAGE}" class="img-responsive" alt="{$module_data.ARTICLE_NAME|htmlentities|strip_tags}" /></a>
+</p>
+{/if}
+
+<p>
+<a href="{$module_data.ARTICLE_LINK}">{$module_data.ARTICLE_NAME}</a>
+</p>
+
+{if $module_data.AUTHOR_NAME}
+<p>
+{#text_author#} <a href="{$module_data.AUTHOR_LINK}">{$module_data.AUTHOR_NAME}</a>
+</p>
+{/if}
+
+{if {$module_data.ARTICLE_ID} > 0}
+<p>
+Отзывы о статье: <a href="{$smarty.const.FILENAME_ARTICLE_REVIEWS}?articles_id={$module_data.ARTICLE_ID}">{$module_data.ARTICLE_REVIEWS}</a> (<a href="{$smarty.const.FILENAME_ARTICLE_REVIEWS}?articles_id={$module_data.ARTICLE_ID}">читать все отзывы о статье</a>, <a href="{$smarty.const.FILENAME_ARTICLE_REVIEWS_WRITE}?articles_id={$module_data.ARTICLE_ID}">добавить отзыв о статье</a>)
+</p>
+{if {$module_data.ARTICLE_RATING} > 0 }
+<p>
+Рейтинг статьи: {$module_data.ARTICLE_STAR_RATING}
+</p>
+{/if}
+{/if}
+
+{if {$module_data.AUTHOR_ID} > 0}
+<p>
+Отзывы об авторе: <a href="{$smarty.const.FILENAME_AUTHOR_REVIEWS}?authors_id={$module_data.AUTHOR_ID}">{$module_data.AUTHOR_REVIEWS}</a> (<a href="{$smarty.const.FILENAME_AUTHOR_REVIEWS}?authors_id={$module_data.AUTHOR_ID}">читать все отзывы автора</a> , <a href="{$smarty.const.FILENAME_AUTHOR_REVIEWS_WRITE}?authors_id={$module_data.AUTHOR_ID}">добавить отзыв об авторе</a>)
+</p>
+{if {$module_data.AUTHOR_RATING} > 0 }
+<p>
+Рейтинг автора: {$module_data.AUTHOR_STAR_RATING}
+</p>
+{/if}
+{/if}
+
+{if $module_data.ARTICLE_SHORT_DESCRIPTION}
+<p>
+{$module_data.ARTICLE_SHORT_DESCRIPTION}
+</p>
+{/if}
+
+{if $module_data.ARTICLE_KEYWORDS}
+<p>
+Тэги:
+{foreach item=article_tags from=$module_data.ARTICLE_KEYWORDS_ARRAY_TAGS}
+<a href="{$article_tags.LINK}">{$article_tags.NAME}</a> 
+{/foreach}
+</p>
+{/if}
+
+{if $module_data.ARTICLE_DATE}
+<p>
+{#text_date#} {$module_data.ARTICLE_DATE}
+</p>
+{/if}
+
+<div class="clear"></div>
+</div>
+
+</div>
+          {/foreach} 
+
+
+</div>
+<div class="clear"></div>
+</div>
+
+</div>
