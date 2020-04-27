@@ -2247,6 +2247,14 @@ span.Requirement
   margin-bottom: 5px;
   margin-right: 5px;
 }
+.btn.btn-inverse.red {
+  font-size: 16px;
+  padding: 10px 12px;
+  background-color: #ed1a20;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  margin-right: 5px;
+}
 .btn:hover {
   background-color: #dd2c00;
 }
@@ -3313,4 +3321,10 @@ dd {
 
 .list-group-item {
   display: block;
+}
+
+.radio.inline {
+padding: .5em;
+border: 1px solid #ff6633;
+
 }
