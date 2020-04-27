@@ -1,0 +1,30 @@
+<table  width="100%" border="0" align="center" cellpadding="4" cellspacing="0">
+  <tr> 
+    <td><b>Купить в 1 клик, заказан товар:</b><br><br>{$PRODUCTS_NAME}
+&nbsp;<table border="0" cellpadding="4" style="border-collapse: collapse" width="100%">
+		<tr>
+			<td width="10%" valign="top">Имя:</td>
+			<td valign="top">{$TEXT_FIRSTNAME}</td>
+		</tr>
+		<tr>
+			<td width="10%" valign="top">Телефон:</td>
+			<td valign="top">{$TEXT_LASTNAME}</td>
+		</tr>
+		{if {$TEXT_EMAIL} != ''}
+		<tr>
+			<td width="10%" valign="top">Email покупателя:</td>
+			<td valign="top">{$TEXT_EMAIL}</td>
+		</tr>
+		{/if}
+		<tr>
+			<td width="10%" valign="top">Товар:</td>
+			<td valign="top"><a href="{$PRODUCT_LINK}">{$PRODUCT_LINK}</a></td>
+		</tr>
+		<tr>
+			<td width="10%" valign="top">Комментарий:</td>
+			<td valign="top">{$TEXT_MESSAGE}</td>
+		</tr>
+	</table>
+	</td>
+  </tr>
+</table>

@@ -163,4 +163,6 @@ define('FILENAME_INFO_AUTOLOGON', 'info_autologon.php');
   
 define('FILENAME_BANNER_MAINPAGE', 'banners_mainpage.php');
 
+define('FILENAME_ONE_CLICK_BUY', 'one_click_buy.php');
+
 ?>

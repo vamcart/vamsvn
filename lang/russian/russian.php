@@ -772,4 +772,9 @@ define('TEXT_PIECE', 'шт.');
 define('TEXT_CUSTOMER_REVIEW', 'Отзыв покупателя:');
 define('TEXT_STORE_ANSWER', 'Ответ магазина:');
 
+define('ONE_CLICK_BUY_NAVBAR_TITLE','Вопрос о товаре');
+define('ONE_CLICK_BUY_TEXT_EMAIL_SUCCESSFUL_SENT','Ваш вопрос о товаре <b>%s</b> успешно отправлен, мы ответим на него в самое ближайшее время.');
+define('ONE_CLICK_BUY_THX_SUCCESSFUL_SENT','Спасибо большое!');
+define('ONE_CLICK_BUY_TEXT_MESSAGE_ERROR','Вы не заполнили поле Ваш вопрос.');
+
 ?>
