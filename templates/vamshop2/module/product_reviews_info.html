@@ -23,20 +23,20 @@
 </dd>
 
 <dd class="itemDescription" itemprop="reviewBody">
-{if $smarty.SERVER.SCRIPT_NAME != '/product_reviews_info.php'}
+{if $smarty.server.SCRIPT_NAME != '/product_reviews_info.php'}
 {$module_data.REVIEW.TEXT|strip_tags|vam_truncate:240:"...":true}
 {else}
 {$module_data.REVIEW.TEXT|strip_tags}
 {/if}
 </dd>
 
-{if $smarty.SERVER.SCRIPT_NAME != '/product_reviews_info.php'}
+{if $smarty.server.SCRIPT_NAME != '/product_reviews_info.php'}
 <dd class="itemDescription">
 <a href="{$module_data.REVIEW.REVIEWS_LINK}"><i class="fa fa-comment"></i> {#text_read#} {$module_data.PRODUCT.PRODUCTS_NAME}</a>
 </dd>
 {/if}
 
-{if $smarty.SERVER.SCRIPT_NAME != '/product_reviews.php'}
+{if $smarty.server.SCRIPT_NAME != '/product_reviews.php'}
 <dd class="itemDescription">
 <a href="{$module_data.REVIEW.REVIEWS_ALL_LINK}"><i class="fa fa-comments"></i> {#text_all#} {$module_data.PRODUCT.PRODUCTS_NAME}</a>
 </dd>
