@@ -3334,3 +3334,7 @@ border: 1px solid #ff6633;
 .radio.inline+.radio.inline, .checkbox.inline+.checkbox.inline {
     margin-left: 0px;
 }
+
+input, textarea, .uneditable-input {
+    width: auto;
+}
