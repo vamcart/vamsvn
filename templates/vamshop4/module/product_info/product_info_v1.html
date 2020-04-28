@@ -21,7 +21,7 @@
 	<div class="row">
 		{if $LABEL_ID > 0}{$PRODUCT_LABEL}{/if}
 		{if $PRODUCTS_SPECIAL > 0}<span class="badge-offer"><b>-{$PRODUCTS_SPECIAL|round}%</b></span>{/if}
-		<div class="col-md-7">
+		<div class="col-md-6">
 
 
 <div id="carouselExampleInterval" class="carousel slide text-center" data-interval="10000000" data-ride="false" data-wrap="true">
@@ -66,7 +66,7 @@
 </div>
 
 		</div>
-		<div class="col-md-5">
+		<div class="col-md-6">
 			
 <div class="product-info p-2">
 
@@ -92,9 +92,16 @@
 {/if}
 
 <div class="inner">
-	<a class="iframe" target="_blank" href="{$ASK_PRODUCT_QUESTION_LINK}">{#question#}</a>&nbsp;{$ASK_PRODUCT_QUESTION}
+	<a class="iframe" target="_blank" href="{$ASK_PRODUCT_QUESTION_LINK}">{#question#}</a>
 </div>
 
+{if {$PRODUCTS_QUANTITY} > 0 && {$smarty.const.ONE_CLICK_BUY} == 'true'}
+<div class="inner">
+	<a class="iframe" target="_blank" href="{$ONE_CLICK_BUY_LINK}">{$smarty.const.ONE_CLICK_BUY_NAVBAR_TITLE}</a>
+</div>
+{/if}
+
+{if {$PRODUCTS_QUANTITY} > 0 or {$PRODUCTS_PRICE_PLAIN} > 0}
 <div class="mt-3 mb-3"> 
 	<div class="price h3" itemprop="offers" itemscope itemtype="http://schema.org/Offer"> 
 		<span class="price">{$PRODUCTS_PRICE}</span>
@@ -105,6 +112,7 @@
 		<meta itemprop="url" content="{$PRODUCTS_URL_INFO}" />
 	</div> 
 </div>
+{/if}
 
 {if $PRODUCTS_DISCOUNT}
 <p>
@@ -153,6 +161,7 @@
 <hr>
 
 <div class="CartContentLeft">
+{if {$PRODUCTS_QUANTITY} > 0}
   <div class="form-row align-items-center">
     <div class="col-auto mt-1">
       <label class="sr-only" for="quantity{$PRODUCTS_ID}">{#quantity#}</label>
@@ -170,6 +179,13 @@
          <button class="btn btn-inverse checkout btn-block"><i class="fas fa-shopping-cart"></i> {$smarty.const.IMAGE_BUTTON_IN_CART}</button>
     </div>
   </div>
+{else}
+  <div class="form-row align-items-center">
+    <div class="col-auto mt-1">
+         <span class="btn btn-outline-danger btn-block">{$smarty.const.TEXT_OUT_OF_STOCK}</span>
+    </div>
+  </div>
+{/if}  
 </div>
 
 </div>

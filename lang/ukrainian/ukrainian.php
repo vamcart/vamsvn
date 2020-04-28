@@ -535,7 +535,6 @@ define('TABLE_HEADING_FAQ', 'Останні питання');
 define('NAVBAR_TITLE_FAQ', 'Питання і відповіді');
 define('TEXT_DISPLAY_NUMBER_OF_FAQ', 'Показано <span class="bold">%d</span> - <span class="bold">%d</span> (всього <span class="bold">% d < / span> питань) ');
 define('TEXT_NO_FAQ', 'Немає питань.');
-
 require_once(DIR_WS_LANGUAGES . $_SESSION['language'].'/'.'affiliate_' . $_SESSION['language'] .'.php');
 
 define('ENTRY_EXTRA_FIELDS_ERROR', 'Поле %s повинно містити як мінімум% d символів');
@@ -737,9 +736,11 @@ define('TEXT_PIECE', 'шт.');
 define('TEXT_CUSTOMER_REVIEW', 'Отзыв покупателя:');
 define('TEXT_STORE_ANSWER', 'Ответ магазина:');
 
-define('ONE_CLICK_BUY_NAVBAR_TITLE', 'Питання про товар');
-define('ONE_CLICK_BUY_TEXT_EMAIL_SUCCESSFUL_SENT', 'Ваше питання про товар <b>%s </b> успішно відправлене, ми відповімо на нього в самий найближчий час.');
-define('ONE_CLICK_BUY_THX_SUCCESSFUL_SENT', 'Дякуємо!');
-define('ONE_CLICK_BUY_TEXT_MESSAGE_ERROR', 'Ви не заповнили поле Ваше питання.');
+define('ONE_CLICK_BUY_NAVBAR_TITLE','Купить в 1 клик');
+define('ONE_CLICK_BUY_TEXT_EMAIL_SUCCESSFUL_SENT','Ваш заказ <b>%s</b> успешно оформлен, мы свяжемся с Вами в самое ближайшее время.');
+define('ONE_CLICK_BUY_THX_SUCCESSFUL_SENT','Спасибо большое!');
+define('ONE_CLICK_BUY_TEXT_MESSAGE_ERROR','Вы не заполнили поле комментарий.');
+
+define('TEXT_OUT_OF_STOCK','Нет в наличии');
 
 ?>

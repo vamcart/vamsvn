@@ -160,6 +160,8 @@ if (!is_object($product) || !$product->isProduct() OR !$product->data['products_
 		$info->assign('ASK_PRODUCT_QUESTION', '<img src="templates/'.CURRENT_TEMPLATE.'/buttons/'.$_SESSION['language'].'/button_ask_a_question.gif" alt="" />');
 		$info->assign('ASK_PRODUCT_QUESTION_LINK', vam_href_link(FILENAME_ASK_PRODUCT_QUESTION, 'products_id='.$product->data['products_id']));
 
+		$info->assign('ONE_CLICK_BUY_LINK', vam_href_link(FILENAME_ONE_CLICK_BUY, 'products_id='.$product->data['products_id']));
+
 
 		if ($product->data['products_keywords'] != '') {
 

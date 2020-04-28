@@ -94,6 +94,11 @@
 <p>
 <a class="iframe" target="_blank" href="{$ASK_PRODUCT_QUESTION_LINK}">{#question#}</a>&nbsp;{$ASK_PRODUCT_QUESTION}
 </p>
+{if {$PRODUCTS_QUANTITY} > 0 && {$smarty.const.ONE_CLICK_BUY} == 'true'}
+<p>
+<a class="iframe" target="_blank" href="{$ONE_CLICK_BUY_LINK}">{$smarty.const.ONE_CLICK_BUY_NAVBAR_TITLE}</a>
+</p>
+{/if}
 
 {if $SHIPPING_NAME}
 <p>
