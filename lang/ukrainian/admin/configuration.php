@@ -1116,4 +1116,7 @@ define('CG_1C_EXCHANGE', '1С:Предприятие');
 define('CG_1C_EXCHANGE_TITLE', '1С:Предприятие');
 define('CG_1C_EXCHANGE_DESC', '');
 
+define('ONE_CLICK_BUY_TITLE' , 'Разрешить модуль Купить в 1 клик');
+define('ONE_CLICK_BUY_DESC', 'Показывать модуль Купить в 1 клик на странице карточки товара.');
+
 ?>

@@ -2542,6 +2542,8 @@ INSERT INTO `configuration` (`configuration_key`, `configuration_value`, `config
 ('SC_EMAIL_LOGIN_DATA', 'true', 80, 7, '2012-11-01 06:37:14', '2012-11-01 06:37:14', NULL, 'vam_cfg_select_option(array(''true'', ''false''),'),
 ('SC_CONFIRMATION_PAGE', 'false', 80, 8, '2012-11-01 06:37:14', '2012-11-01 06:37:14', NULL, 'vam_cfg_select_option(array(''true'', ''false''),');
 
+INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) values ('ONE_CLICK_BUY', 'true', '80', '9', now(), now(), NULL, 'vam_cfg_select_option(array(\'true\', \'false\'),');
+
 INSERT INTO `configuration` (`configuration_key`, `configuration_value`, `configuration_group_id`, `sort_order`, `last_modified`, `date_added`, `use_function`, `set_function`) VALUES
 ('GOOGLE_OAUTH_CLIENT_ID', '', '90', '1', NULL, now(), NULL, NULL),
 ('GOOGLE_OAUTH_SECRET_KEY', '', '90', '2', NULL, now(), NULL, NULL),
