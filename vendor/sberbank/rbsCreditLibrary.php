@@ -7,7 +7,7 @@ define('RBS_TEST_URL' , 'https://3dsec.sberbank.ru/payment/rest/');
 
 
 /**
- * Интеграция платежного шлюза RBS с OpenCart
+ * Интеграция платежного шлюза RBS
  */
 class RBSCreditLibrary {
 
@@ -127,7 +127,7 @@ class RBSCreditLibrary {
             CURLOPT_SSL_VERIFYHOST => false,
             CURLOPT_SSL_VERIFYPEER => false,
             CURLOPT_POSTFIELDS => http_build_query($args, '', '&'),
-            CURLOPT_HTTPHEADER => array('CMS: OpenCart 3.x', 'Module-Version: ' . $this->version),
+            CURLOPT_HTTPHEADER => array('CMS: VamShop', 'Module-Version: ' . $this->version),
         ));
 
         $response = curl_exec($curl);
@@ -174,7 +174,7 @@ class RBSCreditLibrary {
             'amount' => $amount,
             'jsonParams' => json_encode(
                 [
-                    'CMS:' => 'Opencart 3.x',
+                    'CMS:' => 'VamShop',
                     'Module-Version: ' =>  $this->version,
                     'phone' => $customer_phone
                 ]
