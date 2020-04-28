@@ -1,4 +1,4 @@
-{config_load file="$language/lang_$language.conf" section="ask_a_question"}
+{config_load file="$language/lang_$language.conf" section="one_click_buy"}
 <script type="text/javascript">
 {literal}
 $(function($){
@@ -7,10 +7,10 @@ $(function($){
     var answer = $('.form-anti-bot input#anti-bot-a').val(); // get answer
     $('.form-anti-bot input#anti-bot-q').val( answer ); // set answer into other input
 
-    if ( $('form#ask_a_question input#anti-bot-q').length == 0 ) {
+    if ( $('form#one_click_buy input#anti-bot-q').length == 0 ) {
         var current_date = new Date();
         var current_year = current_date.getFullYear();
-        $('form#ask_a_question').append('<input type="hidden" name="anti-bot-q" id="anti-bot-q" value="'+current_year+'" />'); // add whole input with answer via javascript to form
+        $('form#one_click_buy').append('<input type="hidden" name="anti-bot-q" id="anti-bot-q" value="'+current_year+'" />'); // add whole input with answer via javascript to form
     }
 
 });
@@ -18,7 +18,7 @@ $(function($){
 </script>
 
 <div class="page">
-<h1>{#heading_text#}</h1>
+<h2>{#heading_text#}</h2>
 <div class="pageContent">
 
 {$FORM_ACTION}
@@ -31,10 +31,11 @@ $(function($){
 <!-- форма -->
 <fieldset class="form">
 <legend>{$PRODUCTS_NAME}</legend>
-<p>{#text_lastname#} {$INPUT_LASTNAME}</p>
 <p>{#text_firstname#} {$INPUT_FIRSTNAME}</p>
+<!--<p>{#text_lastname#} {$INPUT_LASTNAME}</p>-->
+<p>{#text_telephone#} {$INPUT_TELEPHONE}</p>
 <!--<p>{#text_email#} {$INPUT_EMAIL}</p>-->
-<p>{#text_message#} {$INPUT_TEXT}</p>
+<!--<p>{#text_message#} {$INPUT_TEXT}</p>-->
 </fieldset>
 <div class="form-anti-bot" style="clear:both;">
 	<strong>Current <span style="display:none;">month</span> <span style="display:inline;">ye@r</span> <span style="display:none;">day</span></strong> <span class="required">*</span>
@@ -52,17 +53,11 @@ $(function($){
 </div>
 <br />
 <div>
-<!--
 {$smarty.const.PRIVACY_TEXT}
--->
 </div>
 {$FORM_END}
 
 <br />
-
-{if $smarty.const.ENABLE_SERVICE_WORKER == 'true'}	
-<button class="btn btn-primary a2hs-button" id="a2hs-button">{#text_a2hs#}</button>	
-{/if}
 
 </div>
 </div>
