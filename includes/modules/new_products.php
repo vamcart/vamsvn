@@ -83,6 +83,8 @@ while ($new_products = vam_db_fetch_array($new_products_query, true)) {
 
 }
 
+if (PRODUCT_LISTING_ATTRIBUTES == 'true') {
+
 // Attributes start
 foreach($module_content as $k => $m)
 {
@@ -196,6 +198,8 @@ $module_content[$k]['attrib'] = $products_options_data;
 }
 }
 // Attributes end
+
+}
 
 if (sizeof($module_content) >= 1) {
    $module->assign('NEW_PRODUCTS_LINK', vam_href_link(FILENAME_PRODUCTS_NEW));

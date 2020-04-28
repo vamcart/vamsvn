@@ -61,6 +61,8 @@ while ($best_sellers = vam_db_fetch_array($best_sellers_query)) {
 	$module_content[] = $product->buildDataArray($best_sellers);
 }
 
+if (PRODUCT_LISTING_ATTRIBUTES == 'true') {
+
 // Attributes start
 foreach($module_content as $k => $m)
 {
@@ -174,6 +176,8 @@ $module_content[$k]['attrib'] = $products_options_data;
 }
 }
 // Attributes end
+
+}
 
 if (($best_sellers_split->number_of_rows > 0)) {
 	$vamTemplate->assign('NAVIGATION_BAR', TEXT_RESULT_PAGE.' '.$best_sellers_split->display_links(MAX_DISPLAY_PAGE_LINKS, vam_get_all_get_params(array ('page', 'info', 'x', 'y'))));
