@@ -2,31 +2,45 @@
 <div itemscope itemtype="http://schema.org/Product">
 <h1 itemprop="name">{#heading_text#} {$PRODUCTS_NAME}</h1>
 
-	<span itemprop="offers" itemscope itemtype="http://schema.org/Offer"> 
-		<meta itemprop="price" content="{$PRODUCTS_PRICE_PLAIN}">
-		<meta itemprop="priceCurrency" content="{$smarty.session.currency}" />
-		<meta itemprop="availability" content="InStock" />
-		<meta itemprop="priceValidUntil" content="{$smarty.now + (1200*60*24*7)|date_format:"c"}" />
-		<meta itemprop="url" content="{$PRODUCTS_URL_INFO}" />
-	</span> 
-
-	<meta itemprop="image" content="{$PRODUCTS_IMAGE}" />
-	<meta itemprop="description" content="{$PRODUCTS_SHORT_DESCRIPTION|vam_truncate:$smarty.const.MAX_DISPLAY_SHORT_DESCRIPTION:"...":true}" />
-	
-	{if $MANUFACTURER}
-	<meta itemprop="brand" content="{$MANUFACTURER}" />
-	{/if}
-	
-	{if $PRODUCTS_MODEL}
-	<meta itemprop="sku" content="{$PRODUCTS_MODEL}" />
-	<meta itemprop="mpn" content="{$PRODUCTS_MODEL}" />
-	{/if}
-	
-<div class="row-fluid reviews-title" itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">
-  <div class="card card-product h-100">
+  <div class="card card-product">
 	<div class="card-body">
 	<div class="row">
+		{if $PRODUCT_LABEL}{$PRODUCT_LABEL}{/if}
+		{if $PRODUCTS_SPECIAL > 0}<span class="badge-offer"><b>-{$PRODUCTS_SPECIAL|round}%</b></span>{/if}
+		<div class="col-md-2">
+			<div class="img-wrap"><a href="{$PRODUCTS_URL_INFO}" title="{$IMAGE_ALT}"><img src="{$PRODUCTS_IMAGE}" alt="{$IMAGE_ALT}"></a></div>
+		</div>
 		<div class="col-md-3">
+				<h2 class="title"><a href="{$PRODUCTS_URL_INFO}" title="{$IMAGE_ALT}">{$PRODUCTS_NAME}</a></h2>
+				{if {$PRODUCTS_SHORT_DESCRIPTION} != ''}
+				<div class="desc mb-2">
+				{$PRODUCTS_SHORT_DESCRIPTION|vam_truncate:$smarty.const.MAX_DISPLAY_SHORT_DESCRIPTION:"...":true}
+				</div>
+				{/if}
+				<div class="price-wrap h6 font-weight-bold text-dark b">
+					<div><strong>{$PRODUCTS_PRICE}</strong></div>
+					<span itemprop="offers" itemscope itemtype="http://schema.org/Offer"> 
+					<meta itemprop="price" content="{$PRODUCTS_PRICE_PLAIN}">
+					<meta itemprop="priceCurrency" content="{$smarty.session.currency}" />
+					<meta itemprop="availability" content="InStock" />
+					<meta itemprop="priceValidUntil" content="{$smarty.now + (1200*60*24*7)|date_format:"c"}" />
+					<meta itemprop="url" content="{$PRODUCTS_URL_INFO}" />
+					</span> 
+
+					<meta itemprop="image" content="{$PRODUCTS_IMAGE}" />
+					<meta itemprop="description" content="{$PRODUCTS_SHORT_DESCRIPTION|vam_truncate:$smarty.const.MAX_DISPLAY_SHORT_DESCRIPTION:"...":true}" />
+	
+					{if $MANUFACTURER}
+					<meta itemprop="brand" content="{$MANUFACTURER}" />
+					{/if}
+	
+					{if $PRODUCTS_MODEL}
+					<meta itemprop="sku" content="{$PRODUCTS_MODEL}" />
+					<meta itemprop="mpn" content="{$PRODUCTS_MODEL}" />
+					{/if}
+					</div>
+		</div>
+		<div class="col-md-2" itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">
 			<div class="text-center">
 			<div class="display-4 font-weight-bolder"><span itemprop="ratingValue">{$module_content[0].PRODUCT.REVIEWS_TOTAL_RATING|number_format:1}</span></div>
 			{$module_content[0].PRODUCT.REVIEWS_STAR_RATING}
@@ -37,7 +51,7 @@
 				</div>
 				{/if}
 		</div>
-		<div class="col-md-6">
+		<div class="col-md-2">
 		<div class="line pb-2">
 		<span class="progress-label">5</span>
 		<div class="progress">
@@ -78,22 +92,21 @@
 		  </div>
 		</div>
 		</div>
-
 		</div>
-		<div class="col-md-3 my-auto">
+		<div class="col-md-3">
 			<div class="action-wrap text-center">
            {$BUTTON_WRITE}	
+           {$PRODUCTS_BUY_NOW}	
 			</div>
 		</div>
 	</div>
 	</div>
-</div>
-</div>
+</div>	
 				
 <div class="page">
 <div class="pageContent">
 {foreach name=aussen item=module_data from=$module_content}
-{include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/product-card/product-card-review-listing.html"}
+{include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/product-card/product-card-review-listing-product.html"}
 {/foreach}
 <div class="reviewsAll">
 <a class="btn btn-primary" href="{$REVIEWS_ALL_LINK}"><i class="far fa-comments"></i> {#text_all#}</a>
