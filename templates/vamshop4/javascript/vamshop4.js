@@ -440,17 +440,6 @@ $(document).ajaxComplete(function () {
 
 // Product Images Zoom
 
-//$(document).ready(function(){
-  //$('.image-zoom')
-    //.wrap('<span style="display:inline-block"></span>')
-    //.css('display', 'block')
-    //.parent()
-    //.zoom({
-      //url: $(this).find('.image-zoom').attr('data-zoom')
-    //});
-    //console.log($(this).find('.image-zoom').attr('data-zoom'));
-//});  
-
 $(document).ready(function(){
 $(".image-zoom").each(function(arg, el){
     var image = $(el).find("img");
@@ -463,16 +452,3 @@ $(".image-zoom").each(function(arg, el){
     });
 });
 });  
-
-// zoom jquery plugin
-//$(document).ready(function(){
-//$('.image-zoom')
-//.wrap('')
-//.css('display', 'block')
-//.parent()
-//.zoom({
-//url: $(this).find('img').attr('data-zoom')
-//});
-
-//}); 
-

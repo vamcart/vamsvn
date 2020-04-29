@@ -41,7 +41,7 @@
 
     {foreach name=slide item=slides from=$mo_img}
     <div class="carousel-item{if $slides@first} active{/if}" data-interval="10000000" data-ride="false" data-wrap="true">
-      {if $slides.PRODUCTS_MO_POPUP_LINK !=''}<a href="{$slides.PRODUCTS_MO_POPUP_IMAGE}" title="{$PRODUCTS_NAME}" class="lightbox image-zoom">{/if}<img class="img-fluid" src="{$slides.PRODUCTS_MO_IMAGE}" alt="{if $slides.PRODUCTS_MO_IMAGE_DESCRIPTION !=''}{$slides.PRODUCTS_MO_IMAGE_DESCRIPTION}{else}{$PRODUCTS_NAME}{/if}" />{if $slides.PRODUCTS_MO_POPUP_LINK !=''}</a>{/if}
+      {if $slides.PRODUCTS_MO_POPUP_LINK !=''}<a href="{$slides.PRODUCTS_MO_POPUP_IMAGE}" title="{$PRODUCTS_NAME}" class="lightbox image-zoom">{/if}<img class="img-fluid" itemprop="image" src="{$slides.PRODUCTS_MO_IMAGE}" alt="{if $slides.PRODUCTS_MO_IMAGE_DESCRIPTION !=''}{$slides.PRODUCTS_MO_IMAGE_DESCRIPTION}{else}{$PRODUCTS_NAME}{/if}" />{if $slides.PRODUCTS_MO_POPUP_LINK !=''}</a>{/if}
     </div>
     {/foreach}
     
