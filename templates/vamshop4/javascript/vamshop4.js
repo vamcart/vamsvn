@@ -437,3 +437,42 @@ $(document).ajaxComplete(function () {
     $('.card-body .info-wrap .title').matchHeight();
 });
 }	
+
+// Product Images Zoom
+
+//$(document).ready(function(){
+  //$('.image-zoom')
+    //.wrap('<span style="display:inline-block"></span>')
+    //.css('display', 'block')
+    //.parent()
+    //.zoom({
+      //url: $(this).find('.image-zoom').attr('data-zoom')
+    //});
+    //console.log($(this).find('.image-zoom').attr('data-zoom'));
+//});  
+
+$(document).ready(function(){
+$(".image-zoom").each(function(arg, el){
+    var image = $(el).find("img");
+    $(el).wrap('<span style="display:inline-block"></span>')
+    $(el).css('display', 'block')
+    $(el).parent()    
+    $(el).zoom({
+        on: 'mouseover',
+        url: image.attr("src").replace("info_images", "popup_images")
+    });
+});
+});  
+
+// zoom jquery plugin
+//$(document).ready(function(){
+//$('.image-zoom')
+//.wrap('')
+//.css('display', 'block')
+//.parent()
+//.zoom({
+//url: $(this).find('img').attr('data-zoom')
+//});
+
+//}); 
+
