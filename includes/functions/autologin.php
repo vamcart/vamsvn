@@ -50,7 +50,7 @@ function vam_doautologin ()
         {
 
             //$check_customer_query = vam_db_query("select customers_id, customers_vat_id, customers_firstname,customers_lastname, customers_gender, customers_password, customers_email_address, login_tries, login_time, customers_default_address_id from " . TABLE_CUSTOMERS . " where md5(CONCAT(customers_id,customers_email_address,customers_password,'" . $ip_address . "'))= '" . $_COOKIE['autologin'] . "'");
-            $check_customer_query = vam_db_query("select customers_id, customers_status, customers_vat_id, customers_firstname,customers_lastname, customers_gender, customers_password, customers_email_address, login_tries, login_time, customers_default_address_id from " . TABLE_CUSTOMERS . " where md5(CONCAT(customers_id,customers_email_address,customers_password))= '" . $_COOKIE['autologin'] . "'");
+            $check_customer_query = vam_db_query("select customers_id, customers_status, customers_vat_id, customers_firstname,customers_lastname, customers_gender, customers_password, customers_email_address, customers_telephone, login_tries, login_time, customers_default_address_id from " . TABLE_CUSTOMERS . " where md5(CONCAT(customers_id,customers_email_address,customers_password))= '" . $_COOKIE['autologin'] . "'");
             $check_customer = vam_db_fetch_array($check_customer_query);
 
             if (SESSION_RECREATE == 'True')
@@ -77,6 +77,7 @@ function vam_doautologin ()
             $_SESSION['customer_first_name'] = $check_customer['customers_firstname'];
             $_SESSION['customer_last_name'] = $check_customer['customers_lastname'];
             $_SESSION['customer_email_address'] = $check_customer['customers_email_address'];
+            $_SESSION['customer_telephone'] = $check_customer['customers_telephone'];
             $_SESSION['customer_id'] = $check_customer['customers_id'];
             $_SESSION['customers_status']['customers_status_id'] = $check_customer['customers_status'];
             $_SESSION['customer_vat_id'] = $check_customer['customers_vat_id'];
