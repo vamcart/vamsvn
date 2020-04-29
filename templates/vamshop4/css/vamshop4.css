@@ -582,10 +582,10 @@ label {
 .pulse-button {
   box-shadow: 0 0 0 0 rgba(232, 76, 61, 0.7);
   cursor: pointer;
-  -webkit-animation: pulse 3.1s infinite cubic-bezier(0.66, 0, 0, 1);
-  -moz-animation: pulse 3.1s infinite cubic-bezier(0.66, 0, 0, 1);
-  -ms-animation: pulse 3.1s infinite cubic-bezier(0.66, 0, 0, 1);
-  animation: pulse 3.1s infinite cubic-bezier(0.66, 0, 0, 1);
+  -webkit-animation: pulse 4.1s infinite cubic-bezier(0.66, 0, 0, 1);
+  -moz-animation: pulse 4.1s infinite cubic-bezier(0.66, 0, 0, 1);
+  -ms-animation: pulse 4.1s infinite cubic-bezier(0.66, 0, 0, 1);
+  animation: pulse 4.1s infinite cubic-bezier(0.66, 0, 0, 1);
   animation-delay: 0s;
 }
 .pulse-button:hover 
@@ -725,3 +725,43 @@ label {
 .mainpage-tabs .pill-content > .active {
     height: auto;       /* let the content decide it  */
 } /* bootstrap hack end */
+
+
+.wsmobileheader .wscart {
+    background-color: transparent;
+    z-index: 1000;
+    position: absolute;
+    top: 0;
+    right: 44px;
+    padding: 18px 22px;
+    cursor: pointer;
+}
+
+.wsmobileheader .wscart i {
+    font-size: 18px;
+    color: #9196a0;
+}
+
+.wscart .wsmegamenu.halfdiv,
+.wscart .hidetxt {
+  display: none;
+}
+
+.wscart em.roundpoint {
+  position: absolute;
+  top: 14px;
+  /*right: 21px;*/
+  left: 12px;
+  right: auto;
+  width: 17px;
+  height: 17px;
+  background-color: #DA4B38;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  font-size: 9px;
+  text-align: center;
+  font-style: normal;
+  line-height: 16px;
+  color: #fff;
+}
