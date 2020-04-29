@@ -40,6 +40,7 @@ Disallow: /popup_search_help.php
 Disallow: /privacy.php
 Disallow: /product_notifications.php
 Disallow: /product_compare.php
+Disallow: /product_reviews_info.php
 Disallow: /product_reviews_write.php
 Disallow: /article_reviews_write.php
 Disallow: /author_reviews_write.php
