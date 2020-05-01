@@ -55,6 +55,7 @@ Disallow: /index.php/action/
 Disallow: /product_info.php/action/
 Disallow: /special.php
 Disallow: /specials.php
+Disallow: /one_click_buy.php
 Disallow: /*action=*
 Disallow: /*q=*
 Disallow: /*on_page=*
