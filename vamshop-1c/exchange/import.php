@@ -172,7 +172,7 @@ function wc1c_import_end_element_handler($is_full, $names, $depth, $name) {
   elseif (@$names[$depth - 1] == 'Классификатор' && $name == 'Свойства') {
     wc1c_clean_woocommerce_attributes($is_full);
 
-    delete_transient('wc_attribute_taxonomies');
+    //delete_transient('wc_attribute_taxonomies');
   }
   elseif (@$names[$depth - 1] == 'Товары' && $name == 'Товар') {
     if ($wc1c_requisite_properties) {
@@ -628,27 +628,31 @@ function wc1c_replace_property_option($property_option, $attribute_taxonomy, $or
 }
 
 function wc1c_replace_property($is_full, $property, $order) {
-  $property = apply_filters('wc1c_import_property_xml', $property, $is_full);
-  if (!$property) return;
+  //$property = apply_filters('wc1c_import_property_xml', $property, $is_full);
+  //echo var_dump($property);
+  //echo vam_deump($is_full);
+  //exit;
+  
+  //if (!$property) return;
 
-  $preserve_fields = apply_filters('wc1c_import_preserve_property_fields', array(), $property, $is_full);
+  //$preserve_fields = apply_filters('wc1c_import_preserve_property_fields', array(), $property, $is_full);
 
-  $attribute_name = !empty($property['Наименование']) ? $property['Наименование'] : $property['Ид'];
-  $attribute_type = (empty($property['ТипЗначений']) || $property['ТипЗначений'] == 'Справочник' || defined('WC1C_MULTIPLE_VALUES_DELIMETER')) ? 'select' : 'text';
-  $attribute_id = wc1c_replace_woocommerce_attribute($is_full, $property['Ид'], $attribute_name, $attribute_type, $order, $preserve_fields);
+  //$attribute_name = !empty($property['Наименование']) ? $property['Наименование'] : $property['Ид'];
+  //$attribute_type = (empty($property['ТипЗначений']) || $property['ТипЗначений'] == 'Справочник' || defined('WC1C_MULTIPLE_VALUES_DELIMETER')) ? 'select' : 'text';
+  //$attribute_id = wc1c_replace_woocommerce_attribute($is_full, $property['Ид'], $attribute_name, $attribute_type, $order, $preserve_fields);
 
-  $attribute = wc1c_woocommerce_attribute_by_id($attribute_id);
-  if (!$attribute) wc1c_error("Failed to get attribute");
+  //$attribute = wc1c_woocommerce_attribute_by_id($attribute_id);
+  //if (!$attribute) wc1c_error("Failed to get attribute");
 
-  register_taxonomy($attribute['taxonomy'], null);
+  //register_taxonomy($attribute['taxonomy'], null);
 
-  if ($attribute_type == 'select' && !empty($property['ВариантыЗначений'])) {
-    foreach ($property['ВариантыЗначений'] as $i => $property_option) {
-      wc1c_replace_property_option($property_option, $attribute['taxonomy'], $i + 1);
-    }
-  }
+  //if ($attribute_type == 'select' && !empty($property['ВариантыЗначений'])) {
+    //foreach ($property['ВариантыЗначений'] as $i => $property_option) {
+      //wc1c_replace_property_option($property_option, $attribute['taxonomy'], $i + 1);
+    //}
+  //}
 
-  return $attribute['taxonomy'];
+  //return $attribute['taxonomy'];
 }
 
 function wc1c_replace_post($guid, $post_type, $is_deleted, $is_draft, $post_title, $post_name, $post_excerpt, $post_content, $post_meta, $category_taxonomy, $category_guids, $preserve_fields) {
@@ -1102,7 +1106,7 @@ function wc1c_replace_product($is_full, $guid, $product) {
   //   wc_update_product_stock_status($post_id, $stock_status);
   // }
 
-  $current_product_attributes = isset($post_meta['_product_attributes']) ? maybe_unserialize($post_meta['_product_attributes']) : array();
+/*  $current_product_attributes = isset($post_meta['_product_attributes']) ? maybe_unserialize($post_meta['_product_attributes']) : array();
 
   $current_product_attribute_variations = array(); 
   foreach ($current_product_attributes as $current_product_attribute_key => $current_product_attribute) {
@@ -1231,7 +1235,7 @@ function wc1c_replace_product($is_full, $guid, $product) {
       'is_variation' => 0,
       'is_taxonomy' => 0,
     );
-  }
+  }*/
 
 /*  foreach ($product['ХарактеристикиТовара'] as $characteristic) {
     $attribute_value = @$characteristic['Значение'];
@@ -1370,60 +1374,60 @@ function wc1c_clean_woocommerce_categories($is_full) {
 }
 
 function wc1c_clean_woocommerce_attributes($is_full) {
-  global $wpdb;
+  //global $wpdb;
 
-  if (!$is_full || WC1C_PREVENT_CLEAN) return;
+  //if (!$is_full || WC1C_PREVENT_CLEAN) return;
 
-  $timestamps = get_option('wc1c_timestamp_attributes', array());
-  if (!$timestamps) return;
+  //$timestamps = get_option('wc1c_timestamp_attributes', array());
+  //if (!$timestamps) return;
 
-  $guids = get_option('wc1c_guid_attributes', array());
+  //$guids = get_option('wc1c_guid_attributes', array());
 
-  $attribute_ids = array();
-  foreach ($timestamps as $guid => $timestamp) {
-    if ($timestamp != WC1C_TIMESTAMP) $attribute_ids[] = $guids[$guid];
-  }
+  //$attribute_ids = array();
+  //foreach ($timestamps as $guid => $timestamp) {
+    //if ($timestamp != WC1C_TIMESTAMP) $attribute_ids[] = $guids[$guid];
+  //}
 
-  $attribute_ids = apply_filters('wc1c_clean_attributes', $attribute_ids);
-  if (!$attribute_ids) return;
+  //$attribute_ids = apply_filters('wc1c_clean_attributes', $attribute_ids);
+  //if (!$attribute_ids) return;
 
-  foreach ($attribute_ids as $attribute_id) {
-    $attribute = wc1c_woocommerce_attribute_by_id($attribute_id);
-    if (!$attribute) continue;
+  //foreach ($attribute_ids as $attribute_id) {
+    //$attribute = wc1c_woocommerce_attribute_by_id($attribute_id);
+    //if (!$attribute) continue;
 
-    wc1c_delete_woocommerce_attribute($attribute_id);
+    //wc1c_delete_woocommerce_attribute($attribute_id);
     
-    unset($guids[$guid]);
-    unset($timestamps[$guid]);
+    //unset($guids[$guid]);
+    //unset($timestamps[$guid]);
 
-    $is_deleted = true;
-  }
+    //$is_deleted = true;
+  //}
 
-  if (!empty($is_deleted)) {
-    $orders = get_option('wc1c_order_attributes', array());
-    $order_index = array_search($attribute_id, $orders);
-    if ($order_index !== false) {
-      unset($orders[$order_index]);
-      update_option('wc1c_order_attributes', $orders);
-    }
+  //if (!empty($is_deleted)) {
+    //$orders = get_option('wc1c_order_attributes', array());
+    //$order_index = array_search($attribute_id, $orders);
+    //if ($order_index !== false) {
+      //unset($orders[$order_index]);
+      //update_option('wc1c_order_attributes', $orders);
+    //}
 
-    update_option('wc1c_guid_attributes', $guids);
-    update_option('wc1c_timestamp_attributes', $timestamps);
-  }
+    //update_option('wc1c_guid_attributes', $guids);
+    //update_option('wc1c_timestamp_attributes', $timestamps);
+  //}
 }
 
 function wc1c_clean_woocommerce_attribute_options($is_full, $attribute_taxonomy) {
-  global $wpdb;
+  //global $wpdb;
 
-  if (!$is_full || WC1C_PREVENT_CLEAN) return;
+  //if (!$is_full || WC1C_PREVENT_CLEAN) return;
 
-  $term_ids = $wpdb->get_col($wpdb->prepare("SELECT tm.term_id FROM $wpdb->termmeta tm JOIN $wpdb->term_taxonomy tt ON tm.term_id = tt.term_id WHERE taxonomy = %s AND meta_key = 'wc1c_timestamp' AND meta_value != %d", $attribute_taxonomy, WC1C_TIMESTAMP));
-  wc1c_check_wpdb_error();
+  //$term_ids = $wpdb->get_col($wpdb->prepare("SELECT tm.term_id FROM $wpdb->termmeta tm JOIN $wpdb->term_taxonomy tt ON tm.term_id = tt.term_id WHERE taxonomy = %s AND meta_key = 'wc1c_timestamp' AND meta_value != %d", $attribute_taxonomy, WC1C_TIMESTAMP));
+  //wc1c_check_wpdb_error();
 
-  foreach ($term_ids as $term_id) {
-    $result = wp_delete_term($term_id, $attribute_taxonomy);
-    wc1c_check_wp_error($result);
-  }
+  //foreach ($term_ids as $term_id) {
+    //$result = wp_delete_term($term_id, $attribute_taxonomy);
+    //wc1c_check_wp_error($result);
+  //}
 }
 
 function wc1c_clean_posts($post_type) {
