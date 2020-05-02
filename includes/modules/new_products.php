@@ -47,7 +47,7 @@ if ((!isset ($new_products_category_id)) || ($new_products_category_id == '0')) 
 	                                         ".$group_check."
 	                                         ".$days."
 	                                         ".$fsk_lock."
-	                                         and p.products_status = '1' and pd.language_id = '".(int) $_SESSION['languages_id']."'
+	                                         and p.products_status = '1' and p.products_quantity > 0 and pd.language_id = '".(int) $_SESSION['languages_id']."'
 	                                         group by p.products_id
 	                                         order by rand() limit ".MAX_DISPLAY_NEW_PRODUCTS;
 } else {
@@ -71,7 +71,7 @@ if ((!isset ($new_products_category_id)) || ($new_products_category_id == '0')) 
 	                                        ".$days."
 	                                        ".$fsk_lock."
 	                                        and c.parent_id = '".$new_products_category_id."'
-	                                        and p.products_status = '1' and pd.language_id = '".(int) $_SESSION['languages_id']."'
+	                                        and p.products_status = '1' and p.products_quantity > 0 and pd.language_id = '".(int) $_SESSION['languages_id']."'
 	                                        group by p.products_id
 	                                        order by p.products_id DESC limit ".MAX_DISPLAY_NEW_PRODUCTS;
 }

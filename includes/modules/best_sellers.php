@@ -44,6 +44,7 @@ if ($_SESSION['customers_status']['customers_fsk18_display'] == '0')
 	                                        where p.products_status = '1'
 	                                        and c.categories_status = '1'
 	                                        and p.products_ordered > 0
+	                                        and p.products_quantity > 0
 	                                        and p.products_id = pd.products_id
 	                                        and pd.language_id = '".(int) $_SESSION['languages_id']."'
 	                                        and p.products_id = p2c.products_id

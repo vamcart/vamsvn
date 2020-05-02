@@ -39,7 +39,7 @@ if ($_SESSION['customers_status']['customers_fsk18_display'] == '0')
                                            s.specials_new_products_price
                                            from ".TABLE_PRODUCTS." p,
                                            ".TABLE_PRODUCTS_DESCRIPTION." pd,
-                                           ".TABLE_SPECIALS." s where p.products_status = '1'
+                                           ".TABLE_SPECIALS." s where p.products_status = '1' and p.products_quantity > 0 
                                            and p.products_id = s.products_id
                                            and pd.products_id = s.products_id
                                            and pd.language_id = '".$_SESSION['languages_id']."'
