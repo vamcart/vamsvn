@@ -68,6 +68,7 @@ if (MAX_DISPLAY_NEW_PRODUCTS_DAYS != '0') {
 	                                    and c.categories_status=1
 	                                    and p.products_id = p2c.products_id
 	                                    and c.categories_id = p2c.categories_id
+	                                    and products_quantity > 0 
 	                                    and products_status = '1'
 	                                    " . $group_check . "
 	                                    " . $fsk_lock . "                                    

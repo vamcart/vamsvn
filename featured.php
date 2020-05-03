@@ -45,6 +45,7 @@ $featured_query_raw = "select p.products_id,
                                 p.products_tax_class_id,p.products_shippingtime,
                                 p.products_image,p.products_vpe_status,p.products_vpe_value,p.products_vpe,p.products_fsk18 from ".TABLE_PRODUCTS." p, ".TABLE_PRODUCTS_DESCRIPTION." pd, ".TABLE_FEATURED." f
                                 where p.products_status = '1'
+                                and p.products_quantity > 0 
                                 and f.products_id = p.products_id
                                 and p.products_id = pd.products_id
                                 ".$group_check."
@@ -59,8 +60,6 @@ $featured_query = vam_db_query($featured_split->sql_query);
 while ($featured = vam_db_fetch_array($featured_query)) {
 	$module_content[] = $product->buildDataArray($featured);
 }
-
-if (PRODUCT_LISTING_ATTRIBUTES == 'true') {
 
 // Attributes start
 foreach($module_content as $k => $m)
@@ -175,8 +174,6 @@ $module_content[$k]['attrib'] = $products_options_data;
 }
 }
 // Attributes end
-
-}
 
 if (($featured_split->number_of_rows > 0)) {
 	$vamTemplate->assign('NAVBAR', TEXT_RESULT_PAGE.' '.$featured_split->display_links(MAX_DISPLAY_PAGE_LINKS, vam_get_all_get_params(array ('page', 'info', 'x', 'y'))));

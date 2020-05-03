@@ -76,8 +76,6 @@ while ($specials = vam_db_fetch_array($specials_query)) {
 	$module_content[] = $product->buildDataArray($specials);
 }
 
-if (PRODUCT_LISTING_ATTRIBUTES == 'true') {
-
 // Attributes start
 foreach($module_content as $k => $m)
 {
@@ -191,8 +189,6 @@ $module_content[$k]['attrib'] = $products_options_data;
 }
 }
 // Attributes end
-
-}
 
 if (($specials_split->number_of_rows > 0)) {
 	$vamTemplate->assign('NAVBAR', TEXT_RESULT_PAGE.' '.$specials_split->display_links(MAX_DISPLAY_PAGE_LINKS, vam_get_all_get_params(array ('page', 'info', 'x', 'y'))));
