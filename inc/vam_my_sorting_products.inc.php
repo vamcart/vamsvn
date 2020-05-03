@@ -18,7 +18,7 @@
 		$sort = initGetVariable('sort', '');
 		$direction = initGetVariable('direction', '');
 		if( in_array($sort, $sortingTypes) && in_array($direction, $directionTypes) ) {
-			$sorting_data = array('products_sorting'=> 'products_' . $sort, 'products_sorting2'=>$direction);
+			$sorting_data = array('products_sorting'=> 'products_quantity DESC, products_' . $sort, 'products_sorting2'=>$direction);
 		}
 	}
 	function InitGetVariable($var, $value) {
