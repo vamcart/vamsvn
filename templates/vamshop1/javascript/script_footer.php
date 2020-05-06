@@ -14,6 +14,21 @@ if (AJAX_CART == 'true') $bender->enqueue("templates/".CURRENT_TEMPLATE."/javasc
 <?php
 echo $bender->output("templates/".CURRENT_TEMPLATE."/cache/".CURRENT_TEMPLATE."-packed.js");
 ?>
+<?php if (ENABLE_SERVICE_WORKER == 'true') { ?>
+<script>
+// Register service worker to control making site work offline
+
+$(function(){
+	
+if('serviceWorker' in navigator) {
+  navigator.serviceWorker
+           .register('/sw.js')
+           .then(function() { console.log('Service Worker Registered'); });
+}
+
+});
+</script>
+<?php } ?>
 <?php if (AJAX_CART == 'true') { ?>
 <script>
 function cartPopupOn(){ 

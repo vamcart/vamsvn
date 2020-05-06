@@ -214,18 +214,6 @@ $(document).on('click','.value-control',function(){
     $('[id="'+target+'"]').val(value)
 })
 
-// Register service worker to control making site work offline
-
-$(function(){
-	
-if('serviceWorker' in navigator) {
-  navigator.serviceWorker
-           .register('/sw.js')
-           .then(function() { console.log('Service Worker Registered'); });
-}
-
-});
-
 // Select2 added
 $(function() {
 
