@@ -57,9 +57,10 @@ if (($category_depth != 'top' || ($category_depth == 'top' && isset($_GET['manuf
     header("Status: 410 Gone");
 }
 
+include (DIR_WS_MODULES.'default.php');
+
 require (DIR_WS_INCLUDES.'header.php');
 
-include (DIR_WS_MODULES.'default.php');
 $vamTemplate->assign('language', $_SESSION['language']);
 
 $vamTemplate->caching = 0;
