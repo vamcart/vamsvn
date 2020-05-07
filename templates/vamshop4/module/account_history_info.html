@@ -119,7 +119,7 @@
         <tr> 
           <td width="20"><span class="bold">{$order_values.PRODUCTS_QTY}</span></td>
           <td width="20"><span class="bold">x</span></td>
-          <td><span class="bold">{$order_values.PRODUCTS_NAME}</span><em>{$order_values.PRODUCTS_ATTRIBUTES}</em>{if $order_values.PRODUCTS_SHIPPING_TIME neq ''}<br />
+          <td><span class="bold"><a href="{$order_values.PRODUCTS_LINK}">{$order_values.PRODUCTS_NAME}</a></span><em>{$order_values.PRODUCTS_ATTRIBUTES}</em>{if $order_values.PRODUCTS_SHIPPING_TIME neq ''}<br />
             {#text_shippingtime#} {$order_values.PRODUCTS_SHIPPING_TIME}<br />{/if}</td>
           <td>{$order_values.PRODUCTS_MODEL}<em>{$order_values.PRODUCTS_ATTRIBUTES_MODEL}</em></td>
           <td>{$order_values.PRODUCTS_SINGLE_PRICE}</td>

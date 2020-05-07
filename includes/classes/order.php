@@ -231,7 +231,18 @@
 			$attributes_model .= '<br />'.vam_get_attributes_model($order_data_values['products_id'], $attributes_data_values['products_options_values'],$attributes_data_values['products_options']);
 
 		}
-      	$order_data[] = array ('PRODUCTS_ID' => $order_data_values['products_id'], 'PRODUCTS_MODEL' => $order_data_values['products_model'], 'PRODUCTS_NAME' => $order_data_values['products_name'],'PRODUCTS_SHIPPING_TIME' => $order_data_values['products_shipping_time'], 'PRODUCTS_ATTRIBUTES' => $attributes_data, 'PRODUCTS_ATTRIBUTES_MODEL' => $attributes_model, 'PRODUCTS_PRICE' => $vamPrice->Format($order_data_values['final_price'], false),'PRODUCTS_SINGLE_PRICE' => $vamPrice->Format($order_data_values['final_price']/$order_data_values['products_quantity'], false), 'PRODUCTS_QTY' => $order_data_values['products_quantity']);
+      	$order_data[] = array (
+      	'PRODUCTS_ID' => $order_data_values['products_id'], 
+      	'PRODUCTS_LINK' => vam_href_link(FILENAME_PRODUCT_INFO, vam_product_link($order_data_values['products_id'], $order_data_values['products_name'])),
+      	'PRODUCTS_MODEL' => $order_data_values['products_model'], 
+      	'PRODUCTS_NAME' => $order_data_values['products_name'],
+      	'PRODUCTS_SHIPPING_TIME' => $order_data_values['products_shipping_time'], 
+      	'PRODUCTS_ATTRIBUTES' => $attributes_data, 
+      	'PRODUCTS_ATTRIBUTES_MODEL' => $attributes_model, 
+      	'PRODUCTS_PRICE' => $vamPrice->Format($order_data_values['final_price'], false),
+      	'PRODUCTS_SINGLE_PRICE' => $vamPrice->Format($order_data_values['final_price']/$order_data_values['products_quantity'], false), 
+      	'PRODUCTS_QTY' => $order_data_values['products_quantity']
+      	);
 
 	}
 	
