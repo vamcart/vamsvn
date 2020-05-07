@@ -38,6 +38,7 @@ function vam_php_mail($from_email_address, $from_email_name, $to_email_address, 
 		$mail->IsSMTP();
 		$mail->SMTPKeepAlive = true; // set mailer to use SMTP
 		$mail->SMTPAuth = SMTP_AUTH; // turn on SMTP authentication true/false
+		$mail->Port = SMTP_PORT;
 		$mail->Username = SMTP_USERNAME; // SMTP username
 		$mail->Password = SMTP_PASSWORD; // SMTP password
 		$mail->Host = SMTP_MAIN_SERVER.';'.SMTP_Backup_Server; // specify main and backup server "smtp1.example.com;smtp2.example.com"
