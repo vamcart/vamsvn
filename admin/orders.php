@@ -343,6 +343,7 @@ switch ($_GET['action']) {
 
 		$comments = str_replace('{$NAME}', $check_status['customers_name'], $comments);
 		$comments = str_replace('{$ORDER_NR}', $oID, $comments);
+		$comments = str_replace('{$ORDER_TOTAL}', $order->info['total'], $comments);
 		$comments = str_replace('{$ORDER_LINK}', vam_catalog_href_link(FILENAME_CATALOG_ACCOUNT_HISTORY_INFO, 'order_id='.$oID, 'SSL'), $comments);
 		$comments = str_replace('{$ORDER_DATE}', vam_date_long($check_status['date_purchased']), $comments);
 		$comments = str_replace('{$ORDER_STATUS}', $orders_status_array[$status], $comments);
