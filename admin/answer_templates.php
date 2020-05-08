@@ -136,6 +136,7 @@
           <ul>
 				<li><?php echo TEXT_NAME; ?></li>
 				<li><?php echo TEXT_ORDER_NR; ?></li>
+				<li><?php echo TEXT_ORDER_TOTAL; ?></li>
 				<li><?php echo TEXT_ORDER_LINK; ?></li>
 				<li><?php echo TEXT_ORDER_DATE; ?></li>
 				<li><?php echo TEXT_ORDER_STATUS; ?></li>
