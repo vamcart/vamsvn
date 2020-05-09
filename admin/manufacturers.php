@@ -278,9 +278,9 @@ $manual_link = 'delete-manufacturer';
                 <?php
                 //show status icons (green & red circle) with links
                 if ($manufacturers['manufacturers_status'] == '1') {
-                  echo vam_image(DIR_WS_IMAGES . 'icon_status_green.gif', IMAGE_ICON_STATUS_GREEN, 10, 10) . '&nbsp;&nbsp;<a href="' . vam_href_link(FILENAME_MANUFACTURERS, vam_get_all_get_params(array('action', 'mID', 'search')) . 'action=setstatusflag&flag=0&mID=' . $mInfo->manufacturers_id) . '">' . vam_image(DIR_WS_IMAGES . 'icon_status_red_light.gif', IMAGE_ICON_STATUS_RED_LIGHT, 10, 10) . '</a>';
+                  echo vam_image(DIR_WS_IMAGES . 'icon_status_green.gif', IMAGE_ICON_STATUS_GREEN, 10, 10) . '&nbsp;&nbsp;<a href="' . vam_href_link(FILENAME_MANUFACTURERS, vam_get_all_get_params(array('action', 'mID', 'search')) . 'action=setstatusflag&flag=0&mID=' . $manufacturers['manufacturers_id']) . '">' . vam_image(DIR_WS_IMAGES . 'icon_status_red_light.gif', IMAGE_ICON_STATUS_RED_LIGHT, 10, 10) . '</a>';
                 } else {
-                  echo '<a href="' . vam_href_link(FILENAME_MANUFACTURERS, vam_get_all_get_params(array('action', 'mID', 'search')) . 'action=setstatusflag&flag=1&mID=' . $mInfo->manufacturers_id) . '">' . vam_image(DIR_WS_IMAGES . 'icon_status_green_light.gif', IMAGE_ICON_STATUS_GREEN_LIGHT, 10, 10) . '</a>&nbsp;&nbsp;' . vam_image(DIR_WS_IMAGES . 'icon_status_red.gif', IMAGE_ICON_STATUS_RED, 10, 10);
+                  echo '<a href="' . vam_href_link(FILENAME_MANUFACTURERS, vam_get_all_get_params(array('action', 'mID', 'search')) . 'action=setstatusflag&flag=1&mID=' . $manufacturers['manufacturers_id']) . '">' . vam_image(DIR_WS_IMAGES . 'icon_status_green_light.gif', IMAGE_ICON_STATUS_GREEN_LIGHT, 10, 10) . '</a>&nbsp;&nbsp;' . vam_image(DIR_WS_IMAGES . 'icon_status_red.gif', IMAGE_ICON_STATUS_RED, 10, 10);
                 }
                 ?>
                 </td>                
