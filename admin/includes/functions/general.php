@@ -1805,6 +1805,17 @@ function vam_button_link($value, $href='javascript:void(null)', $parameter='') {
     }
   }
 
+////// Sets the status of a product to XML
+  function vam_set_manufacturer_status($manufacturers_id, $status) {
+    if ($status == '1') {
+      return vam_db_query("update " . TABLE_MANUFACTURERS . " set manufacturers_status = '1', last_modified = now() where manufacturers_id = '" . (int)$manufacturers_id . "'");
+    } elseif ($status == '0') {
+      return vam_db_query("update " . TABLE_MANUFACTURERS . " set manufacturers_status = '0', last_modified = now() where manufacturers_id = '" . (int)$manufacturers_id . "'");
+    } else {
+      return -1;
+    }
+  }
+
 //OPTIONS_UPDATE
 // return: 0 = $_FILES nicht gesetzt / 1 = Datei zu groЯ / 2 = Datei nur teilweise hochgeladen / 3 = Datei nicht hochgeladen / 4 = Falscher Dateityp / 5 = Verschieben der Temp Datei fehlgeschlagen / 6 = Image Processing fehlgeschlagen / 7 = Kein geeigneter Dateiname gefunden
 function vam_upload_attribute_image($file,$lang,$max_byte_size,$upload_dir,$thumb_width,$thumb_height,$admin_width,$admin_height) {

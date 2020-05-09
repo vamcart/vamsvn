@@ -56,4 +56,7 @@ define('TEXT_MANUFACTURERS_DESCRIPTION','Описание производите
 define('TEXT_MANUFACTURERS_PAGE_URL', 'SEO URL производителя:');
 define('TEXT_MANUFACTURERS_SORT_ORDER', 'Порядок сортировки:');
 
+define('TEXT_MANUFACTURERS_STATUS', 'Бренд активен:');
+define('TABLE_HEADING_STATUS', 'Статус');
+
 ?>

@@ -161,6 +161,16 @@
 
       vam_redirect(vam_href_link(FILENAME_MANUFACTURERS, 'page=' . $_GET['page']));
       break;
+      
+      case 'setstatusflag' :
+        if (($_GET['flag'] == '0') || ($_GET['flag'] == '1')) {
+          if ($_GET['mID']) {
+            vam_set_manufacturer_status($_GET['mID'], $_GET['flag']);
+          }
+         }
+         
+        vam_redirect(vam_href_link(FILENAME_MANUFACTURERS, 'page=' . $_GET['page'] . '&mID=' . $_GET['mID']));
+        break;
   }
 ?>
 <!DOCTYPE html>
@@ -240,10 +250,11 @@ $manual_link = 'delete-manufacturer';
               <tr class="dataTableHeadingRow">
                 <td class="dataTableHeadingContent"><?php echo TABLE_HEADING_MANUFACTURERS; ?></td>
                 <td class="dataTableHeadingContent"><?php echo TABLE_HEADING_SORT_ORDER; ?></td>
+                <td class="dataTableHeadingContent"><?php echo TABLE_HEADING_STATUS; ?></td>
                 <td class="dataTableHeadingContent" align="right"><?php echo TABLE_HEADING_ACTION; ?>&nbsp;</td>
               </tr>
 <?php
-  $manufacturers_query_raw = "select manufacturers_id, manufacturers_name, manufacturers_seo_url, sort_order, manufacturers_image, date_added, last_modified from " . TABLE_MANUFACTURERS . " order by manufacturers_name";
+  $manufacturers_query_raw = "select manufacturers_id, manufacturers_name, manufacturers_seo_url, manufacturers_status, sort_order, manufacturers_image, date_added, last_modified from " . TABLE_MANUFACTURERS . " order by manufacturers_name";
   $manufacturers_split = new splitPageResults($_GET['page'], MAX_DISPLAY_ADMIN_PAGE, $manufacturers_query_raw, $manufacturers_query_numrows);
   $manufacturers_query = vam_db_query($manufacturers_query_raw);
   while ($manufacturers = vam_db_fetch_array($manufacturers_query)) {
@@ -263,13 +274,23 @@ $manual_link = 'delete-manufacturer';
 ?>
                 <td class="dataTableContent"><?php echo $manufacturers['manufacturers_name']; ?></td>
                 <td class="dataTableContent"><?php echo $manufacturers['sort_order']; ?></td>
+                <td class="<?php echo $css_class; ?>">
+                <?php
+                //show status icons (green & red circle) with links
+                if ($manufacturers['manufacturers_status'] == '1') {
+                  echo vam_image(DIR_WS_IMAGES . 'icon_status_green.gif', IMAGE_ICON_STATUS_GREEN, 10, 10) . '&nbsp;&nbsp;<a href="' . vam_href_link(FILENAME_MANUFACTURERS, vam_get_all_get_params(array('action', 'mID', 'search')) . 'action=setstatusflag&flag=0&mID=' . $mInfo->manufacturers_id) . '">' . vam_image(DIR_WS_IMAGES . 'icon_status_red_light.gif', IMAGE_ICON_STATUS_RED_LIGHT, 10, 10) . '</a>';
+                } else {
+                  echo '<a href="' . vam_href_link(FILENAME_MANUFACTURERS, vam_get_all_get_params(array('action', 'mID', 'search')) . 'action=setstatusflag&flag=1&mID=' . $mInfo->manufacturers_id) . '">' . vam_image(DIR_WS_IMAGES . 'icon_status_green_light.gif', IMAGE_ICON_STATUS_GREEN_LIGHT, 10, 10) . '</a>&nbsp;&nbsp;' . vam_image(DIR_WS_IMAGES . 'icon_status_red.gif', IMAGE_ICON_STATUS_RED, 10, 10);
+                }
+                ?>
+                </td>                
                 <td class="dataTableContent" align="right"><?php if ( (is_object($mInfo)) && ($manufacturers['manufacturers_id'] == $mInfo->manufacturers_id) ) { echo vam_image(DIR_WS_IMAGES . 'icon_arrow_right.gif'); } else { echo '<a href="' . vam_href_link(FILENAME_MANUFACTURERS, 'page=' . $_GET['page'] . '&mID=' . $manufacturers['manufacturers_id']) . '">' . vam_image(DIR_WS_IMAGES . 'icon_info.gif', IMAGE_ICON_INFO) . '</a>'; } ?>&nbsp;</td>
               </tr>
 <?php
   }
 ?>
               <tr>
-                <td colspan="3"><table border="0" width="100%" cellspacing="0" cellpadding="2">
+                <td colspan="4"><table border="0" width="100%" cellspacing="0" cellpadding="2">
                   <tr>
                     <td class="smallText" valign="top"><?php echo $manufacturers_split->display_count($manufacturers_query_numrows, MAX_DISPLAY_ADMIN_PAGE, $_GET['page'], TEXT_DISPLAY_NUMBER_OF_MANUFACTURERS); ?></td>
                     <td class="smallText" align="right"><?php echo $manufacturers_split->display_links($manufacturers_query_numrows, MAX_DISPLAY_ADMIN_PAGE, MAX_DISPLAY_PAGE_LINKS, $_GET['page']); ?></td>
@@ -280,7 +301,7 @@ $manual_link = 'delete-manufacturer';
   if ($_GET['action'] != 'new') {
 ?>
               <tr>
-                <td align="right" colspan="3" class="smallText"><?php echo '<a class="button" href="' . vam_href_link(FILENAME_MANUFACTURERS, 'page=' . $_GET['page'] . '&mID=' . $mInfo->manufacturers_id . '&action=new') . '"><span>' . vam_image(DIR_WS_IMAGES . 'icons/buttons/add.png', '', '12', '12') . '&nbsp;' . BUTTON_INSERT . '</span></a>'; ?></td>
+                <td align="right" colspan="4" class="smallText"><?php echo '<a class="button" href="' . vam_href_link(FILENAME_MANUFACTURERS, 'page=' . $_GET['page'] . '&mID=' . $mInfo->manufacturers_id . '&action=new') . '"><span>' . vam_image(DIR_WS_IMAGES . 'icons/buttons/add.png', '', '12', '12') . '&nbsp;' . BUTTON_INSERT . '</span></a>'; ?></td>
               </tr>
 <?php
   }
@@ -290,7 +311,7 @@ $manual_link = 'delete-manufacturer';
 
 } else {
 	
-  $manufacturers_query_raw = "select manufacturers_id, manufacturers_name, manufacturers_image, date_added, last_modified from " . TABLE_MANUFACTURERS . " order by manufacturers_name";
+  $manufacturers_query_raw = "select manufacturers_id, manufacturers_name, manufacturers_status, manufacturers_image, date_added, last_modified from " . TABLE_MANUFACTURERS . " order by manufacturers_name";
   $manufacturers_split = new splitPageResults($_GET['page'], MAX_DISPLAY_ADMIN_PAGE, $manufacturers_query_raw, $manufacturers_query_numrows);
   $manufacturers_query = vam_db_query($manufacturers_query_raw);
   while ($manufacturers = vam_db_fetch_array($manufacturers_query)) {
@@ -308,7 +329,7 @@ $manual_link = 'delete-manufacturer';
 
 } else {
 	
-	  $manufacturers_query_raw = "select manufacturers_id, manufacturers_name, manufacturers_image, date_added, last_modified from " . TABLE_MANUFACTURERS . " order by manufacturers_name";
+	  $manufacturers_query_raw = "select manufacturers_id, manufacturers_name, manufacturers_status, manufacturers_image, date_added, last_modified from " . TABLE_MANUFACTURERS . " order by manufacturers_name";
   $manufacturers_split = new splitPageResults($_GET['page'], MAX_DISPLAY_ADMIN_PAGE, $manufacturers_query_raw, $manufacturers_query_numrows);
   $manufacturers_query = vam_db_query($manufacturers_query_raw);
   while ($manufacturers = vam_db_fetch_array($manufacturers_query)) {
@@ -373,8 +394,11 @@ $manual_link = 'delete-manufacturer';
       for ($i = 0, $n = sizeof($languages); $i < $n; $i++) {
         $manufacturer_inputs_string .= '<br />' . $languages[$i]['name'] . '&nbsp;' . vam_draw_input_field('manufacturers_url[' . $languages[$i]['id'] . ']');
       }
+      
+      $mInfo->manufacturers_status = 1;
 
       $contents[] = array('text' => '<br />' . TEXT_MANUFACTURERS_PAGE_URL . '<br />' . vam_draw_input_field('manufacturers_seo_url'));
+      $contents[] = array('text' => '<br />' . TEXT_MANUFACTURERS_STATUS . '<br />' . vam_draw_selection_field('manufacturers_status', 'checkbox', '1',$mInfo->manufacturers_status==1 ? true : false));
       $contents[] = array('text' => '<br />' . TEXT_MANUFACTURERS_SORT_ORDER . '<br />' . vam_draw_input_field('sort_order'));
 
       $contents[] = array('text' => '<br />' . TEXT_MANUFACTURERS_URL . $manufacturer_inputs_string);
@@ -427,8 +451,11 @@ $manual_link = 'delete-manufacturer';
       for ($i = 0, $n = sizeof($languages); $i < $n; $i++) {
         $manufacturer_inputs_string .= '<br />' . $languages[$i]['name'] . '&nbsp;' . vam_draw_input_field('manufacturers_url[' . $languages[$i]['id'] . ']', vam_get_manufacturer_url($mInfo->manufacturers_id, $languages[$i]['id']));
       }
+      //if ($mInfo->manufacturers_status == NULL) $mInfo->manufacturers_status = 1;
+      //echo $mInfo->manufacturers_status;
 
       $contents[] = array('text' => '<br />' . TEXT_MANUFACTURERS_PAGE_URL . '<br />' . vam_draw_input_field('manufacturers_seo_url', $mInfo->manufacturers_seo_url));
+      $contents[] = array('text' => '<br />' . TEXT_MANUFACTURERS_STATUS . '<br />' . vam_draw_selection_field('manufacturers_status', 'checkbox', '1',$mInfo->manufacturers_status==1 ? true : false));
       $contents[] = array('text' => '<br />' . TEXT_MANUFACTURERS_SORT_ORDER . '<br />' . vam_draw_input_field('sort_order', $mInfo->sort_order));
       $contents[] = array('text' => '<br />' . TEXT_MANUFACTURERS_URL . $manufacturer_inputs_string);
       $contents[] = array('align' => 'center', 'text' => '<br />' . '<span class="button"><button type="submit" value="' . BUTTON_SAVE . '">' . vam_image(DIR_WS_IMAGES . 'icons/buttons/save.png', '', '12', '12') . '&nbsp;' . BUTTON_SAVE . '</button></span>' . '&nbsp;' . '<a class="button" href="' . vam_href_link(FILENAME_MANUFACTURERS, 'page=' . $_GET['page'] . '&mID=' . $mInfo->manufacturers_id) . '"><span>' . vam_image(DIR_WS_IMAGES . 'icons/buttons/cancel.png', '', '12', '12') . '&nbsp;' . BUTTON_CANCEL . '</span></a>');
