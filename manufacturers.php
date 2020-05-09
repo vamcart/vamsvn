@@ -41,7 +41,7 @@ if (GROUP_CHECK == 'true') {
 	$manufacturers_query_raw = "SELECT m.*, mi.* FROM ".TABLE_MANUFACTURERS." as m 
                          left join ".TABLE_MANUFACTURERS_INFO." as mi 
                          on mi.manufacturers_id = m.manufacturers_id 
-                         where mi.languages_id = '".$_SESSION['languages_id']."' 
+                         where mi.languages_id = '".$_SESSION['languages_id']."' and m.manufacturers_status = 1 
                          ".$group_check." 
                          ".$fsk_lock." 
                          order by m.sort_order, m.manufacturers_name asc";
