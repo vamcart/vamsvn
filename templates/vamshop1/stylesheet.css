@@ -904,7 +904,7 @@ background: #fff;
 .sidebar .accordion {
   margin-bottom: 0;
 }
-.page-sidebar .nav-tabs,
+/*.page-sidebar .nav-tabs,
 .sidebar .nav-tabs {
   margin-bottom: 0;
   border-bottom-color: #e1e1e1;
@@ -951,7 +951,7 @@ background: #fff;
 .page-sidebar .tab-content .tab-pane p:last-child,
 .sidebar .tab-content .tab-pane p:last-child {
   margin-bottom: 0;
-}
+}*/
 .page-sidebar .show-all-posts,
 .sidebar .show-all-posts {
   background-color: #dd2c00;
@@ -3337,4 +3337,126 @@ border: 1px solid #ff6633;
 
 input, textarea, .uneditable-input {
     width: auto;
+}
+
+/* Nav Buttons Margin On Mobile */
+@media (max-width: 992px) {
+.nav-item .btn {
+    margin: 7px 0 !important;
+}
+}
+/* /Nav Buttons Margin On Mobile */
+
+/* Tabs */
+
+.nav-tabs .nav-link.active, .nav-tabs .nav-item.show .nav-link {
+    color: #dd2c00;
+    border: 2px solid #dd2c00;
+    background: #fff;
+}
+
+.nav-link {
+    display: block;
+    padding: .5rem 1rem;
+}
+
+.nav-tabs .nav-link {
+    color: #575757;
+    border: 2px solid #dee2e6;
+    border-radius: 50rem;
+}
+.nav-item {
+    padding-right: .5em;
+    padding-bottom: .5em;
+}
+
+.nav-tabs .nav-item.active .nav-link, 
+.nav-tabs .nav-link:hover, 
+.nav-tabs .nav-link:focus {
+    color: #dd2c00;
+    border-color: #dd2c00;
+    cursor: pointer;
+    background: #fff;
+}
+
+.tab-pane {
+  border-top: 0;	
+  border-left: 0px solid #dee2e6;
+  border-right: 0px solid #dee2e6;
+  border-bottom: 0px solid #dee2e6;
+  background: transparent;
+  padding: .5em;
+/*  -webkit-box-shadow: 0 3px 5px 0 rgba(0,0,0,.1);
+  box-shadow: 0 3px 5px 0 rgba(0,0,0,.1);
+*/
+}
+.tab-content {
+  margin-bottom: 1em;
+}
+/* /Tabs */
+
+.bg-orange {
+  background: #dd2c00;
+}
+
+.tab-pane,
+.tab-content {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  -webkit-box-shadow: 0 0px 0px 0 transparent;
+  box-shadow: 0 0px 0px 0 transparent;
+}
+
+.nav-tabs {
+  border-bottom: 0;
+}
+
+.carousel-indicators {
+    position: relative;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 15;
+    padding-left: 0;
+    margin-right: 0;
+    margin-left: 0;
+    list-style: none;
+}
+
+.carousel-indicators li {
+  width: auto;
+  height: auto;
+  margin-right: 0;
+  margin-left: 0;
+  text-indent: initial;
+  cursor: pointer;
+  background-color: transparent;
+  background-clip: padding-box;
+  border-top: 0;
+  border-bottom: 0;
+  opacity: 1;
+}
+
+.carousel-indicators h3 {
+    display: inline;
+    width: auto;
+}
+
+/* bootstrap hack: fix content width inside hidden tabs */
+.tab-content > .tab-pane,
+.pill-content > .pill-pane {
+    display: block;     /* undo display:none          */
+    height: 0;          /* height:0 is also invisible */ 
+    overflow-y: hidden; /* no-overflow                */
+}
+.tab-content > .active,
+.pill-content > .active {
+    height: auto;       /* let the content decide it  */
+} /* bootstrap hack end */
+
+.btn-outline-primary {
+    color: #dd2c00;
+    border-color: #dd2c00;
 }
