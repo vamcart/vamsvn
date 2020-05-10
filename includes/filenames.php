@@ -165,4 +165,6 @@ define('FILENAME_BANNER_MAINPAGE', 'banners_mainpage.php');
 
 define('FILENAME_ONE_CLICK_BUY', 'one_click_buy.php');
 
+define('FILENAME_SITE_REVIEWS_ALL', 'site_reviews_all.php');
+
 ?>
