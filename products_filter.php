@@ -118,9 +118,11 @@ $listing_sql = '';
                                                 where categories_id='".$current_category_id."'");
     $sorting_data = vam_db_fetch_array($sorting_query,true);
     my_sorting_products($sorting_data);
-    if (!$sorting_data['products_sorting'])
-    $sorting_data['products_sorting'] = 'pd.products_name';
-    $sorting = ' ORDER BY '.$sorting_data['products_sorting'].' '.$sorting_data['products_sorting2'].' ';
+    if (!$sorting_data['products_sorting'] or $sorting_data['products_sorting']== 'p.products_sort') {
+    $sorting_data['products_sorting'] = 'p.products_quantity DESC, p.products_id DESC';
+    $sorting_data['products_sorting2'] = '';
+    }
+    $sorting = ' GROUP BY p.products_id ORDER BY '.$sorting_data['products_sorting'].' '.$sorting_data['products_sorting2'].' ';
     // We show them all
     if (GROUP_CHECK == 'true') {
     $group_check = " and p.group_permission_".$_SESSION['customers_status']['customers_status_id']."=1 ";
