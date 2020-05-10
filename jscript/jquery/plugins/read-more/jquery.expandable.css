@@ -59,7 +59,7 @@
     position: absolute;
     width: 10px;
     height: 1px;
-    background: #1d1d1d;
+    /*background: #1d1d1d;*/
     content: "";
     left: 5px;
 }
