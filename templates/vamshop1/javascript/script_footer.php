@@ -3,6 +3,7 @@ require_once(DIR_FS_CATALOG."vendor/Bender/Bender.class.php");
 $bender = new Bender();
 $bender->enqueue("jscript/bootstrap/bootstrap.min.js");
 $bender->enqueue("jscript/jquery/plugins/easing/jquery.easing.1.3.js");
+$bender->enqueue("jscript/jquery/plugins/read-more/jquery.expandable.js");
 $bender->enqueue("jscript/jquery/plugins/jpushmenu/v2p.js");
 $bender->enqueue("jscript/jquery/plugins/jpushmenu/jpushmenu.js");
 $bender->enqueue("jscript/jquery/plugins/select2/select2.js");
