@@ -1,0 +1,34 @@
+{config_load file="$language/lang_$language.conf" section="boxes"} 
+{config_load file="$language/lang_$language.conf" section="reviews"} 
+<div class="page">
+<div class="pageItem">
+
+<!-- start: products listing -->
+<div class="row-fluid shop-products">
+	<ul class="thumbnails">
+		{foreach name=aussen item=module_data from=$module_content}
+		<li class="item span3{if $smarty.foreach.aussen.index % 4 == 0} first{/if}">
+			<div class="thumbnail text-center">
+			<div class="inner notop nobottom text-center">
+				<h4 class="title"><a href="{$module_data.LINK}">{$module_data.AUTHOR}</a></h4>
+				{if $module_data.RATING > 0}<div class="description"><span class="rating">{$module_data.STAR_RATING}</span> </div>{/if}
+				<div class="description">{$module_data.TEXT|strip_tags|vam_truncate:56:"...":true}</div>
+				<p class="desc text-center"><a class="" href="{$module_data.LINK}"><i class="fa fa-comment"></i> {#text_read#}</a></p>
+			</div>
+			</div>
+		</li>
+		{/foreach}
+	</ul>
+</div>  
+<!-- end: products listing -->  
+  
+<div class="clear"></div>
+
+<div class="text-right">
+<a class="btn-outline-primary" href="{$smarty.const.FILENAME_SITE_REVIEWS_WRITE}"><span>Написать отзыв о магазине</span></a>&nbsp;
+<a class="btn-outline-primary" href="{$REVIEWS_ALL_LINK}"><span>Все отзывы</span></a>
+</div>
+
+</div>
+
+</div>
