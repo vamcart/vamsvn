@@ -3457,6 +3457,19 @@ input, textarea, .uneditable-input {
 } /* bootstrap hack end */
 
 .btn-outline-primary {
+	 display: inline-block;
     color: #dd2c00;
-    border-color: #dd2c00;
+    background: #fff;
+    padding: .5rem 1rem;
+    border: 2px solid #dd2c00;
+    border-radius: 50rem;
+}
+
+.btn-outline-primary:hover {
+	 display: inline-block;
+    color: #575757;
+    background: #fff;
+    padding: .5rem 1rem;
+    border: 2px solid #dee2e6;
+    border-radius: 50rem;
 }
