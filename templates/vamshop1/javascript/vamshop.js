@@ -45,8 +45,9 @@ this.options)});b._afterUpdate&&b._afterUpdate(a,b._groups)};b._update=function(
 
 if ($(window).width() > 767) {
 $(window).load(function() {
-    $('.thumbnails .thumbnail').matchHeight();
-    $('.thumbnails .thumbnail img').matchHeight();
+    $('.thumbnails .item .thumbnail').matchHeight();
+    $('.thumbnails .item .thumbnail .title').matchHeight();
+    $('.thumbnails .item a.image').matchHeight();
 });
 }
 
