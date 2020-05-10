@@ -237,8 +237,8 @@
 		{/if}
 			<div class="thumbnail text-center">
 				{if $module_data.PRODUCTS_SPECIAL > 0}<div class="description"><span class="discount">-{$module_data.PRODUCTS_SPECIAL|round}%</span></div>{/if}
-				<a href="{$module_data.PRODUCTS_LINK}" class="image"><img src="{$module_data.PRODUCTS_IMAGE}" alt="{$module_data.PRODUCTS_NAME}" />{if $module_data.PRODUCTS_LABEL}{$module_data.PRODUCTS_LABEL}{/if}</a>
-				<span class="frame-overlay"></span><span class="price">{$module_data.PRODUCTS_PRICE}</span>
+				<a href="{$module_data.PRODUCTS_LINK}" class="image"><span class="frame-overlay"></span><img src="{$module_data.PRODUCTS_IMAGE}" alt="{$module_data.PRODUCTS_NAME}" />{if $module_data.PRODUCTS_LABEL}{$module_data.PRODUCTS_LABEL}{/if}</a>
+				<span class="price">{$module_data.PRODUCTS_PRICE}</span>
 			<div class="inner notop nobottom text-center">
 				<h4 class="title"><a href="{$module_data.PRODUCTS_LINK}">{$module_data.PRODUCTS_NAME}</a></h4>
 				{if $module_data.REVIEWS_TOTAL > 0}<div class="description"><span class="rating">{$module_data.REVIEWS_STAR_RATING}</span> <span class="reviews">{$smarty.const.TEXT_TOTAL_REVIEWS}: {$module_data.REVIEWS_TOTAL}</span></div>{/if}
