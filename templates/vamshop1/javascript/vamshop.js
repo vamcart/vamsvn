@@ -257,3 +257,11 @@ $(document).ready(function(event) {
         window.location.hash= event.target.hash;
     })
 });
+
+
+//Expandable Text
+$('.read-more').expandable({
+  'height': 250,
+  'more': 'Читать далее...',
+  'less': 'Свернуть...'
+});
