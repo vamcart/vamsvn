@@ -2597,45 +2597,45 @@ body[themebg-pattern="pattern9"] {
 
 /* Active Item Theme 1 with style1 */
 .vamshop-menu .vamshop-menu-navbar[active-item-theme="theme1"][active-item-style="style1"]	.vamshop-menu-item  > li:hover > a {
-	background:#F2706E;
+	background:#dd2c00;
 	color:#FFF;
 } 
 .vamshop-menu .vamshop-menu-navbar[active-item-theme="theme1"][active-item-style="style1"]	.vamshop-menu-item > li.active > a {
-  background: #F2706E;
+  background: #dd2c00;
   color:#FFF;
 } 
 .vamshop-menu .vamshop-menu-navbar[active-item-theme="theme1"][active-item-style="style1"] .vamshop-menu-item .vamshop-menu-hasmenu .vamshop-menu-submenu li:hover > a {
-  background: #F2706E;
+  background: #dd2c00;
   color: #FFF;
 }
 .vamshop-menu .vamshop-menu-navbar[active-item-theme="theme1"][active-item-style="style1"] .vamshop-menu-item .vamshop-menu-hasmenu .vamshop-menu-submenu  li.active > a {
-  background: #F2706E;
+  background: #dd2c00;
   color:#FFF;
 }
 .vamshop-menu .vamshop-menu-navbar[active-item-theme="theme1"][active-item-style="style1"]  .vamshop-menu-item  .vamshop-menu-hasmenu .vamshop-menu-submenu{
-  border-top-color: #de5c5a;
+  border-top-color: #dd2c01;
 }
 .vamshop-menu .vamshop-menu-navbar[active-item-theme="theme1"][active-item-style="style1"]  .vamshop-menu-item > li.vamshop-menu-hasmenu.vamshop-menu-trigger > a > .vamshop-menu-mcaret {
-    border-bottom-color: #de5c5a;
+    border-bottom-color: #dd2c01;
 }  
 .vamshop-menu .vamshop-menu-navbar[active-item-theme="theme1"][active-item-style="style1"]  .vamshop-menu-item  > li.vamshop-menu-hasmenu.vamshop-menu-trigger.active .vamshop-menu-submenu{
-	border-top-color:#de5c5a !important;
+	border-top-color:#dd2c01; !important;
 }
 .vamshop-menu .vamshop-menu-navbar[active-item-theme="theme1"][active-item-style="style1"]  .vamshop-menu-item > li.vamshop-menu-hasmenu.vamshop-menu-trigger.active > a > .vamshop-menu-mcaret {
-	border-bottom-color:#de5c5a !important;
+	border-bottom-color:#dd2c01; !important;
 }
 .vamshop-menu .vamshop-menu-navbar[active-item-theme="theme1"] .vamshop-menu-form-wrapper button:before {
-    border-color: transparent #de5c5a transparent !important;
+    border-color: transparent #dd2c01; transparent !important;
 }
 .vamshop-menu .vamshop-menu-navbar[active-item-theme="theme1"] .vamshop-menu-form-wrapper button:hover:before {
-    border-right-color: #de5c5a !important;
+    border-right-color: #dd2c01; !important;
 }
 .vamshop-menu .vamshop-menu-navbar[active-item-theme="theme1"] .vamshop-menu-form-wrapper button {
-    background: #de5c5a !important;
+    background: #dd2c01; !important;
 	color:#FFF;
 }
 .vamshop-menu .vamshop-menu-navbar[active-item-theme="theme1"] .vamshop-menu-form-wrapper button:hover {
-    background: #de5c5a !important;
+    background: #dd2c01; !important;
 	color:#FFF;
 }
 

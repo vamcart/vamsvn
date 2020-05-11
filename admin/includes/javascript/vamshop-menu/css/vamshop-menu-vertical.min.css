@@ -4118,7 +4118,7 @@ body[themebg-pattern="pattern9"]{
  
  /*################## Active Theme 1 CSS Style Start Here ################*/
 .vamshop-menu .vamshop-menu-navbar[active-item-theme="theme1"] .vamshop-menu-item   li.active > a{
-	background: #ff5e3a !important;
+	background: #dd2c00 !important;
 }
 .vamshop-menu .vamshop-menu-navbar[active-item-theme="theme1"] .vamshop-menu-item  li.active > a {
     color: #FFF !important;
@@ -4127,13 +4127,13 @@ body[themebg-pattern="pattern9"]{
     color: #FFF !important;
 }
 .vamshop-menu .vamshop-menu-navbar[active-item-theme="theme1"] .vamshop-menu-item  li:hover > a {
-    background: #ff5e3a !important;
+    background: #dd2c00 !important;
 }
 .vamshop-menu .vamshop-menu-navbar[active-item-theme="theme1"] .vamshop-menu-item > li.active > a:before {
-    border-left-color: #ff5e3a !important;
+    border-left-color: #dd2c00 !important;
 }
 .vamshop-menu .vamshop-menu-navbar[active-item-theme="theme1"] .vamshop-menu-item  li:hover > a:before {
-    border-left-color: #ff5e3a !important;
+    border-left-color: #dd2c00 !important;
 }
 .vamshop-menu .vamshop-menu-navbar[active-item-theme="theme1"] .vamshop-menu-item  li.active > a:after {
     color: #FFF !important;
@@ -4708,7 +4708,7 @@ body[themebg-pattern="pattern9"]{
 
 /*Active Item style selector Css start here*/
 .theme-color a[active-item-theme="theme1"] {
-    background: #ff5e3a;
+    background: #dd2c00;
 }
 .theme-color a[active-item-theme="theme2"] {
     background: #0096b1;
