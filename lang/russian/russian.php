@@ -787,5 +787,6 @@ define('TEXT_ALL_REVIEWS','Все отзывы');
 define('TEXT_ALL_SITE_REVIEWS','Все отзывы о магазине');
 define('TEXT_ALL_NEWS','Все новости');
 define('TEXT_ALL_ARTICLES','Все статьи');
+define('TEXT_ALL_MANUFACTURERS','Все бренды');
 
 ?>
