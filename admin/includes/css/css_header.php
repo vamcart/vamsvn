@@ -1,4 +1,9 @@
+<?php if (ADMIN_DROP_DOWN_NAVIGATION == 'true') { ?>
+<link href="includes/javascript/vamshop-menu/css/vamshop-menu-horizontal.min.css" rel="stylesheet">
+<?php } else { ?>
 <link href="includes/javascript/vamshop-menu/css/vamshop-menu-vertical.min.css" rel="stylesheet">
+<?php } ?>
+
 <link href="includes/javascript/vamshop-menu/css/jquery.mCustomScrollbar.css" rel="stylesheet">
 
 <link rel="stylesheet" type="text/css" href="includes/css/bootstrap4/bootstrap.min.css">

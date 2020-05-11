@@ -17,7 +17,12 @@
 <script src="includes/javascript/vamshop-menu/js/lib/jquery.mousewheel.min.js"></script> 
 
 <script src="includes/javascript/vamshop-menu/js/vamshop-menu.min.js"></script>
-<script src="includes/javascript/vamshop-menu/js/vamshop-menu-settings.js"></script> 	 
+
+<?php if (ADMIN_DROP_DOWN_NAVIGATION == 'true') { ?>
+<script src="includes/javascript/vamshop-menu/js/vamshop-menu-settings-horizontal.js"></script> 	 
+<?php } else { ?>
+<script src="includes/javascript/vamshop-menu/js/vamshop-menu-settings.js"></script>
+<?php } ?>
 
 <script type="text/javascript" src="includes/javascript/jquery.limitText.min.js"></script>
 <script type="text/javascript">

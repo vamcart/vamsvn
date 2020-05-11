@@ -1,3 +1,4 @@
+<?php if (ADMIN_DROP_DOWN_NAVIGATION == 'true') { ?>
 <?php
 /* --------------------------------------------------------------
    $Id: column_left.php 1231 2007-02-08 12:09:57 VaM $   
@@ -170,3 +171,4 @@ if (ACTIVATE_GIFT_SYSTEM=='true') {
   require(DIR_WS_INCLUDES . 'affiliate_column_left.php');
  
 ?>
+<?php } ?>

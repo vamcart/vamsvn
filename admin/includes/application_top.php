@@ -282,7 +282,11 @@
   require_once (DIR_FS_INC.'vam_input_validation.inc.php');
   
   // customization for the design layout
+if (ADMIN_DROP_DOWN_NAVIGATION == 'true') {  
   define('BOX_WIDTH', 125); // how wide the boxes should be in pixels (default: 125)
+} else {
+  define('BOX_WIDTH', 0); // how wide the boxes should be in pixels (default: 125)
+}
 
   // Define how do we update currency exchange rates
   // Possible values are 'oanda' 'xe' or ''
