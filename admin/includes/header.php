@@ -114,6 +114,10 @@
 				<header class="vamshop-menu-header">
 					<div class="vamshop-menu-wrapper"> 
 						<div class="vamshop-menu-left-header"> 
+								<div class="vamshop-menu-brand">
+									<a href="start.php"><?php echo vam_image(DIR_WS_IMAGES . 'logo-small-vertical.png', 'VamShop'); ?></a>
+									<span class="menu-toggle"><a href="#"><i class="icon-menu"></i></a></span>
+								</div>
 						</div>
 						<div class="vamshop-menu-right-header"> 
 							<div class="sidebar_toggle"><a href="javascript:void(0)" data-toggle="tooltip" data-placement="bottom" title="<?php echo TEXT_NAVIGATION; ?>"><i class="fa fa-bars"></i></a></div> 
