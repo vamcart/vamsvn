@@ -36,7 +36,7 @@
 							<div class="vamshop-menu-rl-header"> 
 							<div class="vamshop-menu-logo"> 
 								<span class="logo-icon"><i class="ion-stats-bars"></i></span>
-								<span class="logo-text"><a href="javascript:void(0)"><?php echo vam_image(DIR_WS_IMAGES . 'logo-small.png', 'VamShop'); ?></a><span class="hide-in-smallsize"></span></span>
+								<span class="logo-text"><a href="start.php"><?php echo vam_image(DIR_WS_IMAGES . 'logo-small.png', 'VamShop'); ?></a><span class="hide-in-smallsize"></span></span>
 							</div> 
 							</div>
 							<div class="vamshop-menu-rr-header">
