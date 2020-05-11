@@ -13,7 +13,7 @@
   color: #5cb85c ;
 }
 .vamshop-menu-address span i {
-  font-size: 16px;
+  font-size: 14px;
   padding: 0 2px;
 }
 
@@ -188,7 +188,7 @@ a:focus {
   display:block;
 }
 .vamshop-menu .vamshop-menu-inner-content {
-	padding:10px;
+	padding:15px;
 }
 /* ########### Header CSS Style Start Here ############################## */
 .vamshop-menu .vamshop-menu-header .vamshop-menu-left-header {
@@ -268,7 +268,7 @@ a:focus {
 }
 .vamshop-menu .vamshop-menu-navbar .vamshop-menu-item  .vamshop-menu-hasmenu .vamshop-menu-submenu li > a {
   display: block;
-  font-size: 16px;
+  font-size: 14px;
   padding: 0 8px;
   text-decoration:none;
   position: relative;
@@ -283,7 +283,7 @@ a:focus {
 } */
 
 .vamshop-menu .vamshop-menu-navbar .vamshop-menu-item   > li > a > .vamshop-menu-micon {
-    font-size: 16px;
+    font-size: 14px;
     padding: 0 5px 0 0;
 }
 .vamshop-menu .vamshop-menu-navbar .vamshop-menu-item.vamshop-menu-search-item   > li > a > .vamshop-menu-micon {
