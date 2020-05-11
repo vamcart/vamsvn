@@ -2329,7 +2329,7 @@ body[themebg-pattern="pattern9"] {
    ##################################################################################*/
 /* Header Theme 1 */
 .vamshop-menu .vamshop-menu-header[header-theme="theme1"] {
-    background: #e9ecf3;
+    background: #fff;
 } 
  .vamshop-menu[vamshop-menu-device-type="phone"] .vamshop-menu-header[header-theme="theme1"]  .vamshop-menubrand-xs {
     background: #364760 ;
@@ -2343,7 +2343,7 @@ body[themebg-pattern="pattern9"] {
 /* Header Theme 2 */
  
 .vamshop-menu .vamshop-menu-header[header-theme="theme2"] {
-    background: #e9ecf3;
+    background: #fff;
 } 
  .vamshop-menu[vamshop-menu-device-type="phone"] .vamshop-menu-header[header-theme="theme2"]  .vamshop-menubrand-xs {
     background: #FFF ;
@@ -2358,7 +2358,7 @@ body[themebg-pattern="pattern9"] {
 /* Header Theme 3 */
  
 .vamshop-menu .vamshop-menu-header[header-theme="theme3"] {
-    background: #e9ecf3;
+    background: #fff;
 } 
  .vamshop-menu[vamshop-menu-device-type="phone"] .vamshop-menu-header[header-theme="theme3"]  .vamshop-menubrand-xs {
     background: #f5f5f5 ;
@@ -2372,7 +2372,7 @@ body[themebg-pattern="pattern9"] {
 
 /* Header Theme 4 */
 .vamshop-menu .vamshop-menu-header[header-theme="theme4"] {
-    background: #e9ecf3;
+    background: #fff;
 } 
  .vamshop-menu[vamshop-menu-device-type="phone"] .vamshop-menu-header[header-theme="theme4"]  .vamshop-menubrand-xs {
     background: #354052;
@@ -2387,7 +2387,7 @@ body[themebg-pattern="pattern9"] {
  
 /* Header Theme 5 */
 .vamshop-menu .vamshop-menu-header[header-theme="theme5"] {
-    background: #e9ecf3;
+    background: #fff;
 } 
  .vamshop-menu[vamshop-menu-device-type="phone"] .vamshop-menu-header[header-theme="theme5"]  .vamshop-menubrand-xs {
     background: #3c75b5;
@@ -2402,7 +2402,7 @@ body[themebg-pattern="pattern9"] {
  
 /* Header Theme 6 */
 .vamshop-menu .vamshop-menu-header[header-theme="theme6"] {
-    background: #e9ecf3;
+    background: #fff;
 } 
  .vamshop-menu[vamshop-menu-device-type="phone"] .vamshop-menu-header[header-theme="theme6"]  .vamshop-menubrand-xs {
     background: #583a63;
@@ -2416,7 +2416,7 @@ body[themebg-pattern="pattern9"] {
  
 /* Header Theme 7 */
 .vamshop-menu .vamshop-menu-header[header-theme="theme7"] {
-    background: #e9ecf3;
+    background: #fff;
 } 
  .vamshop-menu[vamshop-menu-device-type="phone"] .vamshop-menu-header[header-theme="theme7"]  .vamshop-menubrand-xs {
     background: #0aa699;
@@ -2430,7 +2430,7 @@ body[themebg-pattern="pattern9"] {
 
 /* Header Theme 8 */
 .vamshop-menu .vamshop-menu-header[header-theme="theme8"] {
-    background: #e9ecf3;
+    background: #fff;
 } 
  .vamshop-menu[vamshop-menu-device-type="phone"] .vamshop-menu-header[header-theme="theme8"]  .vamshop-menubrand-xs {
     background: #3f5485;
@@ -2444,7 +2444,7 @@ body[themebg-pattern="pattern9"] {
  
 /* Header Theme 9 */
 .vamshop-menu .vamshop-menu-header[header-theme="theme9"] {
-    background: #e9ecf3;
+    background: #fff;
 } 
  .vamshop-menu[vamshop-menu-device-type="phone"] .vamshop-menu-header[header-theme="theme9"]  .vamshop-menubrand-xs {
     background: #576acc;

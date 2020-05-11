@@ -18,7 +18,7 @@ $( document ).ready(function() {
 		SubMenuTrigger: 'hover',
 		activeMenuClass: 'active',
 		ThemeBackgroundPattern: 'pattern6',
-		HeaderBackground: 'theme4' ,
+		HeaderBackground: 'theme2' ,
 		LHeaderBackground :'theme2',
 		NavbarBackground: 'theme2',
 		ActiveItemBackground: 'theme0',
