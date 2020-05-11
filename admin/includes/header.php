@@ -35,7 +35,7 @@
 						<div class="vamshop-menu-right-header">
 							<div class="vamshop-menu-rl-header"> 
 							<div class="vamshop-menu-logo"> 
-								<span class="logo-text"><a href="start.php"><?php echo vam_image(DIR_WS_IMAGES . 'logo-small.png', 'VamShop'); ?></a></span>
+								<span class="hide-in-smallsize"><span class="logo-text"><a href="start.php"><?php echo vam_image(DIR_WS_IMAGES . 'logo-small.png', 'VamShop'); ?></a></span></span>
 							</div> 
 							</div>
 							<div class="vamshop-menu-rr-header">

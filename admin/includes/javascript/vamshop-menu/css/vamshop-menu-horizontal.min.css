@@ -2934,3 +2934,8 @@ display: list-item;
 .vamshop-menu .vamshop-menu-navbar .vamshop-menu-item li.fullwidth-drop.vamshop-menu-hasmenu .vamshop-menu-submenu li.vamshop-menu-hasmenu > a:after {
 	float: none; 
 }
+
+.vamshop-menu[theme-layout="horizontal"][vamshop-menu-device-type="phone"] .hide-in-smallsize,
+.vamshop-menu[theme-layout="horizontal"][vamshop-menu-device-type="tablet"] .hide-in-smallsize {
+	display:none;
+}
