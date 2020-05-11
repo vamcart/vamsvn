@@ -17,10 +17,10 @@
    --------------------------------------------------------------*/
 
 /* links */
-a:link { font-family: Roboto,Helvetica,Arial,Verdana,Tahoma,sans-serif; color: #678098; font-weight: normal; text-decoration: none; }
-a:visited { font-family: Roboto,Helvetica,Arial,Verdana,Tahoma,sans-serif; color: #678098; font-weight: normal; text-decoration: none; }
-a:active { font-family: Roboto,Helvetica,Arial,Verdana,Tahoma,sans-serif; color: #678098; font-weight: normal; text-decoration: none; }
-a:hover { font-family: Roboto,Helvetica,Arial,Verdana,Tahoma,sans-serif; color: #678098; font-weight: normal; text-decoration: underline; }
+a:link { font-family: Roboto,Helvetica,Arial,Verdana,Tahoma,sans-serif; color: #000000; font-weight: normal; text-decoration: none; }
+a:visited { font-family: Roboto,Helvetica,Arial,Verdana,Tahoma,sans-serif; color: #000000; font-weight: normal; text-decoration: none; }
+a:active { font-family: Roboto,Helvetica,Arial,Verdana,Tahoma,sans-serif; color: #000000; font-weight: normal; text-decoration: none; }
+a:hover { font-family: Roboto,Helvetica,Arial,Verdana,Tahoma,sans-serif; color: #000000; font-weight: normal; text-decoration: underline; }
 
 a.headerLink:link { font-family: Roboto,Helvetica,Arial,Verdana,Tahoma,sans-serif; color: #000000; font-weight: bold; text-decoration: none; }
 a.headerLink:visited { font-family: Roboto,Helvetica,Arial,Verdana,Tahoma,sans-serif; color: #000000; font-weight: bold; text-decoration: none; }
