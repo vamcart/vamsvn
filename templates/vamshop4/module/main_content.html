@@ -63,7 +63,40 @@
 
 
 {$MODULE_manufacturers_default}
-{$MODULE_reviews_all}
+
+
+<div class="mainpage-tabs pb-3">
+
+<ul class="nav nav-tabs pb-3">
+{if {$MODULE_reviews_all}}
+  <li class="nav-item">
+    <span class="nav-link active" id="reviews-tab" data-toggle="tab" data-target="#reviews">{$smarty.const.TEXT_PRODUCT_REVIEWS}</span>
+  </li>
+{/if}  
+{if {$MODULE_site_reviews_all}}
+  <li class="nav-item">
+    <span class="nav-link" id="site-reviews-tab" data-toggle="tab" data-target="#site-reviews">{$smarty.const.NAVBAR_TITLE_SITE_REVIEWS}</span>
+  </li>
+{/if}  
+</ul>
+
+<div class="tab-content" id="myTabContent2">
+
+{if {$MODULE_reviews_all}}
+  <div class="tab-pane fade show active" id="reviews" role="tabpanel" aria-labelledby="reviews-tab">
+  {$MODULE_reviews_all}
+  </div>
+{/if}  
+{if {$MODULE_specials_default}}
+  <div class="tab-pane fade" id="site-reviews" role="tabpanel" aria-labelledby="site-reviews-tab">
+  {$MODULE_site_reviews_all}
+  </div>
+{/if}  
+
+</div>
+
+</div>
+
 {$MODULE_latest_news}
 {$MODULE_articles}
 {$MODULE_upcoming_products}

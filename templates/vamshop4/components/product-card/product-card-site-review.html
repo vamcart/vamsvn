@@ -1,0 +1,23 @@
+<!-- Product Card Simple -->
+		<div class="card card-sm card-product h-100">
+      <div class="card-body">
+			<div class="info-wrap text-left">
+				{if $module_data.RATING > 0}
+				<div class="rating-wrap small">
+					{$module_data.STAR_RATING}
+				</div>
+				{/if}
+				<span class="font-weight-bold text-secondary">{$smarty.const.TEXT_CUSTOMER_REVIEW}</span>
+				<p>{$module_data.TEXT|vam_truncate:$smarty.const.MAX_DISPLAY_SHORT_DESCRIPTION:"...":true}</p>
+				{if {$module_data.ANSWER} != ''}
+				<span class="font-weight-bold text-primary">{$smarty.const.TEXT_STORE_ANSWER}</span>
+				<p>{$module_data.ANSWER}</p>
+				{/if}
+			</div>
+      </div>
+		<div class="category card-footer text-center">
+		<a class="btn btn-outline-primary rounded-pill btn-block" href="{$module_data.LINK}"><i class="far fa-comment"></i> {#text_read#}</a>
+		</div>
+		</div>
+<!-- /Product Card Simple -->
+		
