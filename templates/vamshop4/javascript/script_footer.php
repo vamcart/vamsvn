@@ -6,6 +6,7 @@ $bender->enqueue("templates/".CURRENT_TEMPLATE."/javascript/bootstrap.min.js");
 $bender->enqueue("jscript/jquery/plugins/owl/owl.carousel.min.js");
 $bender->enqueue("jscript/jquery/plugins/jquery-ui/jquery-ui-min.js");
 $bender->enqueue("jscript/jquery/plugins/cookie/jquery.cookie.js");
+$bender->enqueue("jscript/jquery/plugins/read-more/jquery.expandable.js");
 $bender->enqueue("jscript/jquery/plugins/select2/select2.js");
 $bender->enqueue("jscript/jquery/plugins/select2/i18n/" . $_SESSION['language_code'] . ".js");
 $bender->enqueue("jscript/jquery/plugins/scrollup/jquery.scrollup.min.js");
