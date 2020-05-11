@@ -566,18 +566,130 @@ a:focus {
 }
  
 /*################## Style Selector Theme Color Start ###########################*/
-.vamshop-menu #styleSelector {
- /*  background-color: rgba(255, 255, 255, .1); */
-  background:#ddd;
-  border: 1px solid #ddd;
-  border-radius: 6px;
-  height: auto;
-  margin-top: 50px;
-  padding: 15px;
-  position: relative;
-  width: 100%;
+.vamshop-menu.nocollapsed[theme-layout="horizontal"][vamshop-menu-device-type="phone"] #styleSelector{
+	top:100px;
 }
 
+.vamshop-menu #styleSelector {
+  min-height: 500px;
+}
+.vamshop-menu[horizontal-placement="top"] #styleSelector  {
+    border: 1px solid #e9e9e9;
+    background: #FFF;
+    position: absolute;
+    margin: 0;
+    padding: 0 0 10px;
+    width: 230px;
+    height: auto;
+    top: 5px;
+    right: -230px;
+    z-index: 100;
+    height: auto; 
+    transition: 0.5s;
+	-webkit-transition:0.5s;
+	-ms-transition: 0.5s;
+	-moz-transition:0.5s;
+	-o-transition: 0.5s;
+}
+.vamshop-menu[horizontal-placement="top"] #styleSelector.open {
+    background: #FFF none repeat scroll 0 0;
+    right: 0;
+    box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.2);
+}
+.vamshop-menu[vertical-placement="right"] #styleSelector  {
+    border: 1px solid #e9e9e9;
+    background: #FFF;
+    position: absolute;
+    margin: 0;
+    padding: 0 0 10px;
+    width: 230px;
+    height: auto;
+    top: 5px;
+    left: -230px;
+    z-index: 100;
+    height: auto; 
+    transition: 0.5s;
+	-webkit-transition:0.5s;
+	-ms-transition: 0.5s;
+	-moz-transition:0.5s;
+	-o-transition: 0.5s;
+}
+.vamshop-menu[vertical-placement="right"] #styleSelector.open {
+    background: #FFF none repeat scroll 0 0;
+    left: 0;
+    box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.2);
+}
+.selector-toggle {
+    position: relative;
+}
+.vamshop-menu[horizontal-placement="top"] .selector-toggle > a {
+    border: 1px solid #e9e9e9;
+    border-right: 0;
+    position: absolute;
+    top: -1px;
+    left: -35px;
+    width: 35px;
+    height: 36px;
+    display: block;
+    cursor: pointer;
+    text-align: center;
+    border-radius: 4px 0 0 4px;
+    background: #FFF;
+    color: #9c9c9c;
+    box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.2);
+}
+.vamshop-menu[vertical-placement="right"] .selector-toggle > a {
+    border: 1px solid #e9e9e9;
+    border-right: 0;
+    position: absolute;
+    top: -1px;
+    right: -35px;
+    width: 35px;
+    height: 36px;
+    display: block;
+    cursor: pointer;
+    text-align: center;
+    border-radius: 0 4px 4px 0;
+    background: #FFF;
+    color: #9c9c9c;
+    box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.2);
+}
+.selector-toggle > a:before {
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    content: "\f053";
+    font-size: 22px;
+    position: relative;
+    float: left;
+    left: 13px;
+    line-height: 35px;
+	transition: 0.5s;
+	-webkit-transition:0.5s;
+	-ms-transition: 0.5s;
+	-moz-transition:0.5s;
+	-o-transition: 0.5s;
+}
+.vamshop-menu[vertical-placement="right"] .selector-toggle > a:before {
+    content: "\f054";
+}
+.open .selector-toggle > a:before {
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    content: "\f054";
+    font-size: 22px;
+    position: relative;
+    float: left;
+    left: 13px;
+    line-height: 35px;
+	transition: 0.5s;
+	-webkit-transition:0.5s;
+	-ms-transition: 0.5s;
+	-moz-transition:0.5s;
+	-o-transition: 0.5s;
+}
+.vamshop-menu[vertical-placement="right"] .open .selector-toggle > a:before {
+    content: "\f054";
+}
 #styleSelector ul {
     border: 0 none;
     margin: 0;
@@ -588,64 +700,67 @@ a:focus {
     border-bottom: 0px solid #e9e9e9;
     display: block;
     margin: 0;
-    padding: 10px;
+    padding: 0px 6px;
     text-align: left;
-    min-width: 220px;
-	display: inline-block;
+    width: 100%;
 }
 #styleSelector ul li p.selector-title {
     border-bottom: 1px solid #e9e9e9;
     color: #9c9c9c;
-    font-size: 16px;
+    font-size: 14px;
     margin: 0;
     padding: 6px;
     text-align: center;
 }
 #styleSelector > ul > li > .sub-title {
-/*   border-bottom: 1px solid #ddd; */
   color: #9c9c9c;
   display: block;
-  font-size: 15px;
-  margin: 0 0 10px;
-  padding: 5px 0;
+  font-size: 13px;
+  margin: 0;
+  padding: 5px 0px;
   position: relative;
   text-align: left;
-  font-weight: 500;
-
 }
 #styleSelector li {
     padding: 5px;
-}
-.theme-option label {
-  color: #8e8e8e;
-  display: inline-block;
-  font-weight: 500;
-  margin-bottom: 5px;
-  max-width: 100%;
 }
 .theme-option select {
     background-color: #f1f1f1;
     border: 1px solid #ccc;
     border-radius: 2px;
     padding: 3px 10px;
-	display:block;
-	width:100%;
 }
 @-moz-document url-prefix() {
-.theme-option select {
-		/*  border: 0 !important; */  /*Removes border*/
-		-webkit-appearance: none !important;  /*Removes default chrome and safari style*/
-		-moz-appearance: none !important; /* Removes Default Firefox style*/
-		background: #FFF url(../images/select-arrow.png) no-repeat 95% center !important;
-		width: 100% !important; /*Width of select dropdown to give space for arrow image*/
-		text-indent: 0.01px; /* Removes default arrow from firefox*/
-		text-overflow: "";  /*Removes default arrow from firefox*/ /*My custom style for fonts*/
-		color: #555;
-		border-radius: 4px;
+	.theme-option select {
+		background-color: #f1f1f1;
+		border: 1px solid #ccc;
+		border-radius: 2px;
+		display: inline-block;
 		font: inherit;
 		line-height: 1.5em;
-		border:1px solid #ddd !important;
+		padding: 3px 10px;
+		margin: 0;
+		box-sizing: border-box;
+		-webkit-appearance: none;
+		-moz-appearance: none;
 	}
+    .theme-option select.minimal {
+        background-image: -webkit-linear-gradient(45deg, transparent 50%, gray 50%), -webkit-linear-gradient(315deg, gray 50%, transparent 50%), -webkit-linear-gradient(left, #ccc, #ccc);
+        background-image: linear-gradient(45deg, transparent 50%, gray 50%), linear-gradient(135deg, gray 50%, transparent 50%), linear-gradient(to right, #ccc, #ccc);
+        background-position: calc(100% - 18px) calc(1em + -1px), calc(100% - 13px) calc(1em + -1px), calc(100% - 2.5em) 4px;
+        background-size: 5px 5px, 5px 5px, 1px 1.5em;
+        background-repeat: no-repeat;
+    }
+    .theme-option select.minimal:focus,
+    .theme-option select.minimal:active {
+        background-image: -webkit-linear-gradient(45deg, gray 50%, transparent 50%), -webkit-linear-gradient(315deg, transparent 50%, gray 50%), -webkit-linear-gradient(left, gray, gray);
+        background-image: linear-gradient(45deg, gray 50%, transparent 50%), linear-gradient(135deg, transparent 50%, gray 50%), linear-gradient(to right, gray, gray);
+        background-position: calc(100% - 15px) 13px, calc(100% - 20px) 13px, calc(100% - 2.5em) 0.3em;
+        background-size: 5px 5px, 5px 5px, 1px 1.5em;
+        background-repeat: no-repeat;
+        border-color: #66afe9;
+        outline: 0;
+    }
 }
 
 
@@ -657,7 +772,7 @@ a:focus {
 /**/
 
 .theme-color a {
-    border-radius: 0%;
+    border-radius: 50%;
     cursor: pointer;
     display: inline-block;
     height: 18px;
@@ -681,7 +796,7 @@ a:focus {
     background: #e9e9e9;
 }
 .theme-color a[lheader-theme="theme4"] {
-    background: #354052;
+    background: #353a40;
 }
 .theme-color a[lheader-theme="theme5"] {
     background: #2b64a4;
@@ -698,7 +813,7 @@ a:focus {
 .theme-color a[lheader-theme="theme9"] {
     background: #3c4fb1;
 }
-
+ 
 /*Left Header style selector CSS Close here*/
 /*Header style selector Css start here*/
 .theme-color a[header-theme="theme1"] {
@@ -711,7 +826,7 @@ a:focus {
     background: #f5f5f5 ;
 }
 .theme-color a[header-theme="theme4"] {
-    background: #354052;
+    background: #353a40;
 }
 .theme-color a[header-theme="theme5"] {
     background: #3c75b5;
@@ -728,7 +843,7 @@ a:focus {
 .theme-color a[header-theme="theme9"] {
     background: #485bbd;
 }
-
+ 
 /*Header style selector CSS Close here*/
 /*Navbar style selector Css start here*/
 .theme-color a[navbar-theme="theme1"] {
@@ -741,7 +856,7 @@ a:focus {
     background: #f5f5f5 ;
 }
 .theme-color a[navbar-theme="theme4"] {
-    background: #354052;
+    background: #353a40;
 }
 .theme-color a[navbar-theme="theme5"] {
     background: #3c75b5;
@@ -758,7 +873,7 @@ a:focus {
 .theme-color a[navbar-theme="theme9"] {
     background: #485bbd;
 }
-
+ 
 /*Navbar style selector CSS Close here*/
 
 /*Active Item style selector Css start here*/
@@ -778,12 +893,15 @@ a:focus {
     background: #8eb021;
 }
 .theme-color a[active-item-theme="theme6"] {
-    background: #967adc;
+    background: #354a5f;
 }
 .theme-color a[active-item-theme="theme7"] {
-    background: #fe9375;
+    background: #967adc;
 }
 .theme-color a[active-item-theme="theme8"] {
+    background: #fe9375;
+}
+.theme-color a[active-item-theme="theme9"] {
     background: #565a90;
 }
 /*Active Item style selector CSS Close here*/
@@ -829,7 +947,7 @@ a:focus {
 
 
 /*background Pattern style selector Css start here*/
-.theme-color a[themebg-pattern="pattern1"] {
+/*.theme-color a[themebg-pattern="pattern1"] {
 	background-image: url("../images/pattern1.png");
 }
 .theme-color a[themebg-pattern="pattern2"] {
@@ -856,7 +974,9 @@ a:focus {
 .theme-color a[themebg-pattern="pattern9"] {
     background-image: url("../images/pattern9.png");
 }
-/*background Pattern style selector CSS Close here*/
+*//*background Pattern style selector CSS Close here*/
+
+/* fixed issue  20170319 */
 
 /* Plugin Option Panel Csss Close Here */
 
@@ -2291,7 +2411,7 @@ li.edge > ul {
 /* ###################################################################################
 		********************Horizontal Theme patteren CSS Start************ 
    ##################################################################################*/
-body[themebg-pattern="pattern1"] {
+/*body[themebg-pattern="pattern1"] {
   background-image: url("../images/pattern1.png");
 }
 body[themebg-pattern="pattern2"] {
@@ -2317,7 +2437,7 @@ body[themebg-pattern="pattern8"] {
 }
 body[themebg-pattern="pattern9"] {
   background-image: url("../images/pattern9.png");
-}
+}*/
 
 
 /* ###################################################################################

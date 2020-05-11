@@ -21,7 +21,7 @@
 
 									</div>
 								</div>
-								<div id="styleSelector" class="closed">
+<!--								<div id="styleSelector" class="closed">
 									<div class="selector-toggle">
 										<a href="javascript:void(0)"></a>
 									</div> 
@@ -173,7 +173,7 @@
 											</select>
 										</li>
 									</ul>
-								</div>
+								</div>-->
 							</div>
 						</div>
 					</div>

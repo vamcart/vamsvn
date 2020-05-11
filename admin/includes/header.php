@@ -59,7 +59,7 @@
 								<ul class="list-inline pt-1 mb-0">
 									<li class="list-inline-item">
 										<a href="<?php echo vam_href_link(FILENAME_ORDERS, 'status='.DEFAULT_ORDERS_STATUS_ID, 'NONSSL'); ?>" data-toggle="tooltip" data-placement="bottom" title="<?php echo (($orders_pending['count'] > 0) ? TEXT_SUMMARY_PENDING_ORDERS.': '.$orders_pending['count'] : BOX_ORDERS) ?>"><i class="fa fa-shopping-cart" aria-hidden="true"></i>
-											<?php echo (($orders_pending['count'] > 0) ? ' <sup class="badge badge-danger">'.$orders_pending['count'].'</sup>' : '') ?>
+											<?php echo (($orders_pending['count'] > 0) ? ' <sup class="badge badge-danger rounded-pill">'.$orders_pending['count'].'</sup>' : '') ?>
 										</a>
 									</li>
 									<li class="list-inline-item">
@@ -87,11 +87,11 @@
 										</a>
 									</li>
 									<li class="list-inline-item">
-										<a href="https://vamshop.ru" data-toggle="tooltip" data-placement="bottom" title="<?php echo TEXT_HEADER_SUPPORT; ?>"><i class="fas fa-question-circle" aria-hidden="true"></i>
+										<a href="<?php echo HTTP_SERVER . DIR_WS_CATALOG; ?>" data-toggle="tooltip" data-placement="bottom" title="<?php echo TEXT_HEADER_SHOP; ?>"><i class="fa fa-store" aria-hidden="true"></i>
 										</a>
 									</li>
 									<li class="list-inline-item">
-										<a href="<?php echo HTTP_SERVER . DIR_WS_CATALOG; ?>" data-toggle="tooltip" data-placement="bottom" title="<?php echo TEXT_HEADER_SHOP; ?>"><i class="fa fa-store" aria-hidden="true"></i>
+										<a href="https://vamshop.ru" data-toggle="tooltip" data-placement="bottom" title="<?php echo TEXT_HEADER_SUPPORT; ?>"><i class="fas fa-question-circle" aria-hidden="true"></i>
 										</a>
 									</li>
 									<li class="list-inline-item">
