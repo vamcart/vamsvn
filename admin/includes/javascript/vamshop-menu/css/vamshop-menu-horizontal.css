@@ -13,7 +13,7 @@
   color: #5cb85c ;
 }
 .vamshop-menu-address span i {
-  font-size: 14px;
+  font-size: 16px;
   padding: 0 2px;
 }
 
@@ -28,6 +28,7 @@
 }
 
 .vamshop-menu-logo a,
+.vamshop-menu-logo a:link,
 .vamshop-menu-logo a:hover, 
 .vamshop-menu-logo a:visited {
   color: #678098;
@@ -267,7 +268,7 @@ a:focus {
 }
 .vamshop-menu .vamshop-menu-navbar .vamshop-menu-item  .vamshop-menu-hasmenu .vamshop-menu-submenu li > a {
   display: block;
-  font-size: 14px;
+  font-size: 16px;
   padding: 0 8px;
   text-decoration:none;
   position: relative;
@@ -282,7 +283,7 @@ a:focus {
 } */
 
 .vamshop-menu .vamshop-menu-navbar .vamshop-menu-item   > li > a > .vamshop-menu-micon {
-    font-size: 14px;
+    font-size: 16px;
     padding: 0 5px 0 0;
 }
 .vamshop-menu .vamshop-menu-navbar .vamshop-menu-item.vamshop-menu-search-item   > li > a > .vamshop-menu-micon {
