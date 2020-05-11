@@ -258,6 +258,20 @@ $(document).ready(function(event) {
     })
 });
 
+// Product Images Zoom
+
+$(document).ready(function(){
+$(".image-zoom").each(function(arg, el){
+    var image = $(el).find("img");
+    $(el).wrap('<span style="display:inline-block"></span>')
+    $(el).css('display', 'block')
+    $(el).parent()    
+    $(el).zoom({
+        on: 'mouseover',
+        url: image.attr("src").replace("info_images", "popup_images")
+    });
+});
+});  
 
 //Expandable Text
 $('.read-more').expandable({
