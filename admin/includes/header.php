@@ -34,15 +34,71 @@
 					<div class="vamshop-menu-wrapper"> 
 						<div class="vamshop-menu-right-header">
 							<div class="vamshop-menu-rl-header"> 
-								<div class="vamshop-menu-address">
-									<span><i class="fa fa-map-marker" aria-hidden="true"></i> 3982 Aspen Court, Boston, MA 02114 </span>
-									<span><a href=""><i class="fa fa-phone" aria-hidden="true"></i>123-456-7890</a></span>
-								</div>
+							<div class="vamshop-menu-logo"> 
+								<span class="logo-icon"><i class="ion-stats-bars"></i></span>
+								<span class="logo-text"><a href="javascript:void(0)"><?php echo vam_image(DIR_WS_IMAGES . 'logo-small.png', 'VamShop'); ?></a><span class="hide-in-smallsize"></span></span>
+							</div> 
 							</div>
 							<div class="vamshop-menu-rr-header">
 								<div class="vamshop-menu-logo">
-									<span><i class="fa fa-clock-o" aria-hidden="true"></i> Monday - 08:30 AM</span>
-									<span><a href="https://codecanyon.net/item/responsive-horizontal-and-vertical-bootstrap-mega-menu/19607138"><button type="button" class="btn btn-success btn-xs">Buy Now</button></a></span> 
+<?php
+
+  $total_orders_query = vam_db_query("select count(*) as count from " . TABLE_ORDERS);
+  $total_orders = vam_db_fetch_array($total_orders_query);
+
+  $orders_pending_query = vam_db_query("select count(*) as count from " . TABLE_ORDERS . " where orders_status = '" . DEFAULT_ORDERS_STATUS_ID . "'");
+  $orders_pending = vam_db_fetch_array($orders_pending_query);
+
+  $total_sales_query = vam_db_query("SELECT sum(ot.value) as value, avg(ot.value) as avg, count(ot.value) as count FROM " . TABLE_ORDERS_TOTAL . " ot, " . TABLE_ORDERS . " o WHERE ot.orders_id = o.orders_id and ot.class = 'ot_subtotal'");
+  $total_sales = vam_db_fetch_array($total_sales_query);
+
+  $customers_query = vam_db_query("select count(*) as count from " . TABLE_CUSTOMERS);
+  $customers = vam_db_fetch_array($customers_query);
+
+?>
+								<ul class="list-inline pt-1 mb-0">
+									<li class="list-inline-item">
+										<a href="<?php echo vam_href_link(FILENAME_ORDERS, 'status='.DEFAULT_ORDERS_STATUS_ID, 'NONSSL'); ?>" data-toggle="tooltip" data-placement="bottom" title="<?php echo (($orders_pending['count'] > 0) ? TEXT_SUMMARY_PENDING_ORDERS.': '.$orders_pending['count'] : BOX_ORDERS) ?>"><i class="fa fa-shopping-cart" aria-hidden="true"></i>
+											<?php echo (($orders_pending['count'] > 0) ? ' <sup class="badge badge-danger">'.$orders_pending['count'].'</sup>' : '') ?>
+										</a>
+									</li>
+									<li class="list-inline-item">
+										<a href="<?php echo vam_href_link(FILENAME_CUSTOMERS, '', 'NONSSL'); ?>" data-toggle="tooltip" data-placement="bottom" title="<?php echo BOX_CUSTOMERS; ?>"><i class="fas fa-users" aria-hidden="true"></i>
+										</a>
+									</li>
+									<li class="list-inline-item">
+										<a href="<?php echo vam_href_link(FILENAME_CATEGORIES, '', 'NONSSL'); ?>" data-toggle="tooltip" data-placement="bottom" title="<?php echo BOX_CATEGORIES; ?>"><i class="fa fa-book" aria-hidden="true"></i>
+										</a>
+									</li>
+									<li class="list-inline-item">
+										<a href="<?php echo vam_href_link(FILENAME_CONTENT_MANAGER, '', 'NONSSL'); ?>" data-toggle="tooltip" data-placement="bottom" title="<?php echo TEXT_HEADER_PAGES; ?>"><i class="far fa-file-alt" aria-hidden="true"></i>
+										</a>
+									</li>
+									<li class="list-inline-item">
+										<a href="<?php echo vam_href_link(FILENAME_ARTICLES, '', 'NONSSL'); ?>" data-toggle="tooltip" data-placement="bottom" title="<?php echo TEXT_HEADER_ARTICLES; ?>"><i class="far fa-newspaper" aria-hidden="true"></i>
+										</a>
+									</li>
+									<li class="list-inline-item">
+										<a href="<?php echo vam_href_link(FILENAME_LATEST_NEWS, '', 'NONSSL'); ?>" data-toggle="tooltip" data-placement="bottom" title="<?php echo TEXT_HEADER_NEWS; ?>"><i class="fa fa-rss" aria-hidden="true"></i>
+										</a>
+									</li>
+									<li class="list-inline-item">
+										<a href="<?php echo vam_href_link(FILENAME_CACHE, 'action=unlink', 'NONSSL'); ?>" data-toggle="tooltip" data-placement="bottom" title="<?php echo TEXT_CLEAR_CACHE; ?>"><i class="fa fa-trash-alt" aria-hidden="true"></i>
+										</a>
+									</li>
+									<li class="list-inline-item">
+										<a href="https://vamshop.ru" data-toggle="tooltip" data-placement="bottom" title="<?php echo TEXT_HEADER_SUPPORT; ?>"><i class="fas fa-question-circle" aria-hidden="true"></i>
+										</a>
+									</li>
+									<li class="list-inline-item">
+										<a href="<?php echo HTTP_SERVER . DIR_WS_CATALOG; ?>" data-toggle="tooltip" data-placement="bottom" title="<?php echo TEXT_HEADER_SHOP; ?>"><i class="fa fa-store" aria-hidden="true"></i>
+										</a>
+									</li>
+									<li class="list-inline-item">
+										<a href="../logoff.php" data-toggle="tooltip" data-placement="bottom" title="<?php echo BOX_HEADING_LOGOFF; ?>"><i class="fas fa-power-off" aria-hidden="true"></i>
+										</a>
+									</li>
+								</ul>
 								</div>
 								
 							</div>
@@ -50,9 +106,6 @@
 					</div>
 					<div class="vamshop-menubrand-xs">
 						<div class="vamshop-menu-brand">
-							<a href="start.php">
-								<span class="vamshop-menu-brand-text">Vam<span class="small-text">Shop</span></span>
-							</a>
 							<span class="menu-toggle"><a href="#"><i class="fa fa-bars"></i></a></span>
 						</div>
 					</div>
@@ -61,10 +114,6 @@
 				<header class="vamshop-menu-header">
 					<div class="vamshop-menu-wrapper"> 
 						<div class="vamshop-menu-left-header"> 
-							<div class="vamshop-menu-logo"> 
-								<span class="logo-icon"><i class="ion-stats-bars"></i></span>
-								<span class="logo-text"><a href="start.php"><?php echo vam_image(DIR_WS_IMAGES . 'logo-small-vertical.png', 'VamShop'); ?></a><span class="hide-in-smallsize"></span></span>
-							</div> 
 						</div>
 						<div class="vamshop-menu-right-header"> 
 							<div class="sidebar_toggle"><a href="javascript:void(0)" data-toggle="tooltip" data-placement="bottom" title="<?php echo TEXT_NAVIGATION; ?>"><i class="fa fa-bars"></i></a></div> 
@@ -141,22 +190,16 @@
 						<nav class="vamshop-menu-navbar">  
 						<div class="vamshop-menu-wrapper">
 							<div class="vamshop-menu-inner-navbar">
-<?php if (ADMIN_DROP_DOWN_NAVIGATION == 'true') { ?>
-								<div class="vamshop-menu-brand">
-									<a href="start.php"><?php echo vam_image(DIR_WS_IMAGES . 'logo-small.png', 'VamShop'); ?></a>
-									<span class="menu-toggle"><a href="#"><i class="icon-menu"></i></a></span>
-								</div>
-<?php } ?>								  
 								<ul class="vamshop-menu-item vamshop-menu-left-item">
-<!--									<li class="">
+									<li class="">
 										<a href="<?php echo vam_href_link(FILENAME_START, '', 'NONSSL'); ?>">
 											<span class="vamshop-menu-micon"><i class="fas fa-home"></i></span>
 											<span class="vamshop-menu-mtext"><?php echo TEXT_HEADER_DEFAULT; ?></span>
 											<span class="vamshop-menu-mcaret"></span>
 										</a>
 									</li>
--->									
-                <li class="vamshop-menu-hasmenu"><a href="start.php" ><span class="vamshop-menu-micon"><i class="fas fa-shopping-cart"></i></span><span class="vamshop-menu-mtext"><?php echo BOX_HEADING_ORDERS; ?></span>
+									
+                <li class="vamshop-menu-hasmenu"><a href="javascript:void(0)" ><span class="vamshop-menu-micon"><i class="fas fa-shopping-cart"></i></span><span class="vamshop-menu-mtext"><?php echo BOX_HEADING_ORDERS; ?></span>
 											<span class="vamshop-menu-mcaret"></span>
 										</a>
 										<ul class="vamshop-menu-submenu">
@@ -621,7 +664,42 @@
 											<span class="vamshop-menu-mcaret"></span>
 										</a>  
 									</li>   
--->								</ul> 								
+-->								</ul> 		
+<?php if (ADMIN_DROP_DOWN_NAVIGATION == 'true') { ?>
+<?php
+
+  $total_orders_query = vam_db_query("select count(*) as count from " . TABLE_ORDERS);
+  $total_orders = vam_db_fetch_array($total_orders_query);
+
+  $orders_pending_query = vam_db_query("select count(*) as count from " . TABLE_ORDERS . " where orders_status = '" . DEFAULT_ORDERS_STATUS_ID . "'");
+  $orders_pending = vam_db_fetch_array($orders_pending_query);
+
+  $total_sales_query = vam_db_query("SELECT sum(ot.value) as value, avg(ot.value) as avg, count(ot.value) as count FROM " . TABLE_ORDERS_TOTAL . " ot, " . TABLE_ORDERS . " o WHERE ot.orders_id = o.orders_id and ot.class = 'ot_subtotal'");
+  $total_sales = vam_db_fetch_array($total_sales_query);
+
+  $customers_query = vam_db_query("select count(*) as count from " . TABLE_CUSTOMERS);
+  $customers = vam_db_fetch_array($customers_query);
+
+?>
+<!--
+								<ul class="vamshop-menu-item vamshop-menu-right-item">
+									<li class=" ">
+										<a href="<?php echo HTTP_SERVER . DIR_WS_CATALOG; ?>">
+											<span class="vamshop-menu-micon"><i class="fas fa-store"></i></span>
+											<span class="vamshop-menu-mtext"><?php echo HEADER_TITLE_ONLINE_CATALOG; ?></span>
+											<span class="vamshop-menu-mcaret"></span>
+										</a> 
+									</li>
+									<li class=" ">
+										<a href="../logoff.php">
+											<span class="vamshop-menu-micon"><i class="fas fa-power-off"></i></span>
+											<span class="vamshop-menu-mtext"><?php echo BOX_HEADING_LOGOFF; ?></span>
+											<span class="vamshop-menu-mcaret"></span>
+										</a>  
+									</li>   
+								</ul>
+-->
+<?php } ?>
 							</div> 
 						</nav> 
 					<div class="vamshop-menu-content">

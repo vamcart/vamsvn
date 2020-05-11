@@ -18,11 +18,11 @@
 }
 
 .vamshop-menu-rl-header .vamshop-menu-logo img {
-  height: 30px;
-  width: 95px;
+  /*height: 30px;
+  width: 95px;*/
 }
 .vamshop-menu-logo {
-  font-size: 15px;
+  font-size: 18px;
   font-weight: 600;
   line-height: 35px;
 }
@@ -157,7 +157,7 @@ a:focus {
 }
 .vamshop-menu .vamshop-menu-header {
   display:block;
-  height: 35px;
+  height: 45px;
   background:transparent;
   color:#414141;
   width:100%;
@@ -1191,7 +1191,7 @@ li.edge > ul {
 /* Handle Horizontal menu on Phone CSS Start */
 
 .vamshop-menu[theme-layout="horizontal"][vamshop-menu-device-type="phone"] .vamshop-menu-header .vamshop-menu-rl-header{
-	display:none;
+	/*display:none;*/
 }
 .vamshop-menu[theme-layout="horizontal"][vamshop-menu-device-type="phone"] .vamshop-menu-header .vamshop-menu-right-header .vamshop-menu-rr-header {
     text-align: center;

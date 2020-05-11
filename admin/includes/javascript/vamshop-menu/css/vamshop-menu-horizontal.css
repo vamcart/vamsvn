@@ -13,16 +13,16 @@
   color: #5cb85c ;
 }
 .vamshop-menu-address span i {
-  font-size: 14px;
+  font-size: 16px;
   padding: 0 2px;
 }
 
 .vamshop-menu-rl-header .vamshop-menu-logo img {
-  height: 30px;
-  width: 95px;
+  /*height: 30px;
+  width: 95px;*/
 }
 .vamshop-menu-logo {
-  font-size: 13px;
+  font-size: 18px;
   font-weight: 600;
   line-height: 35px;
 }
@@ -153,12 +153,12 @@ a:focus {
 }
 .vamshop-menu .vamshop-menu-container {
   position: relative;
-  background: #d5dae6;
+  background: transparent;
 }
 .vamshop-menu .vamshop-menu-header {
   display:block;
-  height: 35px;
-  background:#e9ecf3;
+  height: 45px;
+  background:transparent;
   color:#414141;
   width:100%;
   z-index:1024;
@@ -174,7 +174,7 @@ a:focus {
 }
 .vamshop-menu-main-container{
 	display:block;
-	background:#c3c3c3;
+	background:transparent;
 }
 .vamshop-menu .vamshop-menu-content {
   position: relative;
@@ -233,7 +233,7 @@ a:focus {
 
 .vamshop-menu  .vamshop-menu-navbar .vamshop-menu-item  > li > a {
   display: block;
-  font-size: 13px;
+  font-size: 15px;
   padding: 0 14px 0 12px ;
   text-decoration:none;
   position: relative;
@@ -243,6 +243,7 @@ a:focus {
 .vamshop-menu .vamshop-menu-navbar .vamshop-menu-item > li.vamshop-menu-hasmenu > a {
     line-height: 39px;
 }
+ 
 .vamshop-menu  .vamshop-menu-navbar .vamshop-menu-item  > li:hover > a {
 
 }
@@ -260,7 +261,7 @@ a:focus {
 }
 .vamshop-menu .vamshop-menu-navbar .vamshop-menu-item  .vamshop-menu-hasmenu .vamshop-menu-submenu li > a {
   display: block;
-  font-size: 14px;
+  font-size: 16px;
   padding: 0 8px;
   text-decoration:none;
   position: relative;
@@ -275,7 +276,7 @@ a:focus {
 } */
 
 .vamshop-menu .vamshop-menu-navbar .vamshop-menu-item   > li > a > .vamshop-menu-micon {
-    font-size: 14px;
+    font-size: 16px;
     padding: 0 5px 0 0;
 }
 .vamshop-menu .vamshop-menu-navbar .vamshop-menu-item.vamshop-menu-search-item   > li > a > .vamshop-menu-micon {
@@ -283,7 +284,7 @@ a:focus {
 }
 
 .vamshop-menu .vamshop-menu-navbar .vamshop-menu-item .vamshop-menu-hasmenu .vamshop-menu-submenu li > a .vamshop-menu-micon {
-  font-size: 13px;
+  font-size: 15px;
   padding-right: 5px;
 }
 .vamshop-menu[horizontal-layout="wide"] .vamshop-menu-container{
@@ -351,14 +352,14 @@ a:focus {
 }
 .vamshop-menu .vamshop-menu-navbar .vamshop-menu-item  .vamshop-menu-hasmenu .vamshop-menu-submenu{
   position: absolute;
-  min-width:200px;
+  min-width:300px;
   z-index:1;
   /* box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.26); */
   border-top-style: solid;
   border-top-width: 1px;
 }
 .vamshop-menu .vamshop-menu-navbar .vamshop-menu-item .vamshop-menu-hasmenu .vamshop-menu-submenu li > a {
-  font-size: 13px;
+  font-size: 15px;
   font-weight: 500;
   line-height: 34px;
   text-align: left;
@@ -373,7 +374,7 @@ a:focus {
 }
 .vamshop-menu .vamshop-menu-navbar .vamshop-menu-item  .vamshop-menu-submenu  .vamshop-menu-submenu{
   position: absolute;
-  min-width:200px;
+  min-width:300px;
   z-index:1;
   /* box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.26); */
   left: 100%;
@@ -513,9 +514,9 @@ a:focus {
  
 
 .vamshop-menu .vamshop-menu-navbar .vamshop-menu-item  .vamshop-menu-submenu  li.vamshop-menu-hasmenu > a:after {
-  content: "\f101";
-  font-family: FontAwesome;
-  font-style: normal;
+  content: "\f107";
+  font-family: "Font Awesome 5 Free";
+  font-weight: 600;
   margin-left: 3px; 
   position:relative;
   float: right;
@@ -528,28 +529,30 @@ a:focus {
 .vamshop-menu[theme-layout="horizontal"] .vamshop-menu-navbar .vamshop-menu-item  > li.vamshop-menu-hasmenu.vamshop-menu-trigger > a:after {
   font-style: normal;
   margin-left: 3px;
-  font-size: 10px;
+  /*font-size: 10px;*/
   padding-left: 5px;
   position:relative;
 }
 .vamshop-menu[theme-layout="horizontal"] .vamshop-menu-navbar .vamshop-menu-item  > li.vamshop-menu-hasmenu[dropdown-icon="style1"] > a::after {
-  content: "\e604";
-  font-family: simple-line-icons;
+  content: "\f107";
+  font-weight: 600;
+  font-family: "Font Awesome 5 Free";
 }
 .vamshop-menu[theme-layout="horizontal"] .vamshop-menu-navbar .vamshop-menu-item  > li.vamshop-menu-hasmenu.vamshop-menu-trigger[dropdown-icon="style1"] > a:after{
-  content: "\e607";
-  font-family: simple-line-icons;
+  content: "\f107";
+  font-weight: 600;
+  font-family: "Font Awesome 5 Free";
 }  
  
 .vamshop-menu[theme-layout="horizontal"] .vamshop-menu-navbar .vamshop-menu-item  > li.vamshop-menu-hasmenu[dropdown-icon="style2"] > a:after {
-  content: "\f0d7";
-  font-family: FontAwesome;
-  font-size: 13px;
+  content: "\f107";
+  font-weight: 600;
+  font-family: "Font Awesome 5 Free";
 }
 .vamshop-menu[theme-layout="horizontal"] .vamshop-menu-navbar .vamshop-menu-item  > li.vamshop-menu-hasmenu.vamshop-menu-trigger[dropdown-icon="style2"] > a:after{
   content: "\f0d8";
   font-family: FontAwesome;
-  font-size: 13px;
+  font-size: 15px;
 }
 .vamshop-menu[theme-layout="horizontal"] .vamshop-menu-navbar .vamshop-menu-item  > li.vamshop-menu-hasmenu[dropdown-icon="style3"] > a:after {
   content: "\f218";
@@ -593,7 +596,7 @@ a:focus {
 #styleSelector ul li p.selector-title {
     border-bottom: 1px solid #e9e9e9;
     color: #9c9c9c;
-    font-size: 14px;
+    font-size: 16px;
     margin: 0;
     padding: 6px;
     text-align: center;
@@ -1039,7 +1042,7 @@ li.edge > ul {
 }
 .vamshop-menu[theme-layout="horizontal"][vamshop-menu-device-type="desktop"] .vamshop-menu-navbar .vamshop-menu-item  > li.fullwidth-drop.vamshop-menu-hasmenu .vamshop-menu-submenu,
 .vamshop-menu[theme-layout="horizontal"][vamshop-menu-device-type="tablet"] .vamshop-menu-navbar .vamshop-menu-item  > li.fullwidth-drop.vamshop-menu-hasmenu .vamshop-menu-submenu  {
-    min-width: 200px;
+    min-width: 300px;
     width: 100%;
 	left: 0;
     right: 0;
@@ -1094,7 +1097,7 @@ li.edge > ul {
 }
 .vamshop-menu .vamshop-menu-navbar .vamshop-menu-item > li.megamenu-half.vamshop-menu-hasmenu .vamshop-menu-submenu {
   left: auto;
-  min-width: 200px;
+  min-width: 300px;
   right: auto;
   width: 50%;
 } 
@@ -1124,7 +1127,7 @@ li.edge > ul {
 }
 .vamshop-menu .vamshop-menu-navbar .vamshop-menu-item > li.megamenu-full.vamshop-menu-hasmenu .vamshop-menu-submenu {
   left: 0;
-  min-width: 200px;
+  min-width: 300px;
   right: 0;
   width: 100%;
 } 
@@ -1150,7 +1153,7 @@ li.edge > ul {
 }
 .vamshop-menu .vamshop-menu-navbar .vamshop-menu-item .vamshop-menu-hasmenu .vamshop-menu-submenu.vamshop-menu-megamenu ul li a {
     border-bottom-width: 0 !important;
-    font-size: 13px;
+    font-size: 15px;
     font-weight: 500;
     line-height: 23px;
     padding: 0;
@@ -1163,7 +1166,7 @@ li.edge > ul {
 }
 .vamshop-menu .vamshop-menu-navbar .vamshop-menu-item .vamshop-menu-hasmenu .vamshop-menu-submenu.vamshop-menu-megamenu ul li.title {
   display: block;
-  font-size: 13px;
+  font-size: 15px;
   font-weight: 600;
   padding: 10px 0;
   margin-bottom:10px;
@@ -1188,7 +1191,7 @@ li.edge > ul {
 /* Handle Horizontal menu on Phone CSS Start */
 
 .vamshop-menu[theme-layout="horizontal"][vamshop-menu-device-type="phone"] .vamshop-menu-header .vamshop-menu-rl-header{
-	display:none;
+	/*display:none;*/
 }
 .vamshop-menu[theme-layout="horizontal"][vamshop-menu-device-type="phone"] .vamshop-menu-header .vamshop-menu-right-header .vamshop-menu-rr-header {
     text-align: center;
