@@ -77,7 +77,7 @@ if ($qI=strpos($one['content'],'src="')) {
 	$qI=$qI+5;
 	$qIcon=substr ($one['content'] , $qI);
 	$qI=strpos($qIcon,'"');
-	$qIcon='<img width="80" src="'.substr ($qIcon, 0, $qI).'" />';
+	$qIcon= substr($qIcon, 0, $qI);
 //echo "<pre>".$qIcon."</pre>";
 }
 

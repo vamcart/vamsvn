@@ -779,4 +779,13 @@ define('ONE_CLICK_BUY_TEXT_MESSAGE_ERROR','Вы не заполнили поле
 
 define('TEXT_OUT_OF_STOCK','Нет в наличии');
 
+define('TEXT_ALL_NEW_PRODUCTS','Все новинки');
+define('TEXT_ALL_SPECIAL_PRODUCTS','Все скидки');
+define('TEXT_ALL_BEST_SELLERS','Все популярные товары');
+define('TEXT_ALL_FEATURED_PRODUCTS','Все рекомендуемые');
+define('TEXT_ALL_REVIEWS','Все отзывы');
+define('TEXT_ALL_SITE_REVIEWS','Все отзывы о магазине');
+define('TEXT_ALL_NEWS','Все новости');
+define('TEXT_ALL_ARTICLES','Все статьи');
+
 ?>

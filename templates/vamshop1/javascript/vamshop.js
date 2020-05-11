@@ -262,6 +262,6 @@ $(document).ready(function(event) {
 //Expandable Text
 $('.read-more').expandable({
   'height': 250,
-  'more': 'Читать далее...',
-  'less': 'Свернуть...'
+  'more': '▼▼▼▼▼',
+  'less': '▲▲▲▲▲'
 });

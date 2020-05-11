@@ -28,11 +28,6 @@ if ($_SESSION['customers_status']['customers_status_read_reviews'] == 0) {
              return;
 }
 
-	if (MAX_DISPLAY_NEW_PRODUCTS_DAYS != '0') {
-		$date_new_products = date("Y.m.d", mktime(1, 1, 1, date(m), date(d) - 60, date(Y)));
-		$days = " and r.date_added > '".$date_new_products."' ";
-	}
-
 $reviews_query_raw = "select r.*, rd.* from ".TABLE_SITE_REVIEWS." r, ".TABLE_SITE_REVIEWS_DESCRIPTION." rd where r.reviews_id = rd.reviews_id and rd.languages_id = '".(int) $_SESSION['languages_id']."' order by r.reviews_id DESC";
 $reviews_split = new splitPageResults($reviews_query_raw, $_GET['page'], 4);
 

@@ -2681,6 +2681,14 @@ div.navigation
      padding-top: 1em;
    }
 
+div.navigation-button
+   {
+     display: block;
+     text-align: left;
+     width: 100%;
+     line-height: 50px;
+   }
+
 span.right
    {
      float: right;
