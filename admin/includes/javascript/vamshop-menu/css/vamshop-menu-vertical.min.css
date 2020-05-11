@@ -75,7 +75,7 @@
   position: relative;
 }
 .vamshop-menu .vamshop-menu-navbar .vamshop-menu-item   > li > a > .vamshop-menu-micon {
-    font-size: 15px;
+    font-size: 14px;
     padding-right: 10px;
 }
 .vamshop-menu .vamshop-menu-navbar .vamshop-menu-item .vamshop-menu-hasmenu .vamshop-menu-submenu li > a .vamshop-menu-micon {
@@ -137,7 +137,7 @@
 .vamshop-menu[theme-layout="vertical"][vamshop-menu-device-type="tablet"] .vamshop-menu-header .vamshop-menu-left-header .vamshop-menu-logo .logo-text,
 .vamshop-menu[theme-layout="vertical"][vamshop-menu-device-type="phone"] .vamshop-menu-header.iscollapsed .vamshop-menu-left-header .vamshop-menu-logo .logo-text {
   font-family: open sans;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 600;
   left: 0px;
   margin: 0 auto !important;
@@ -160,7 +160,7 @@
 }
 .vamshop-menu[theme-layout="vertical"][vamshop-menu-device-type="phone"] .vamshop-menu-header.nocollapsed .vamshop-menu-left-header .vamshop-menu-logo .logo-text {
     font-family: open sans;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 400;
     margin: 0 auto !important;
     opacity: 1;

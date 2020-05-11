@@ -13,7 +13,7 @@
   color: #5cb85c ;
 }
 .vamshop-menu-address span i {
-  font-size: 16px;
+  font-size: 14px;
   padding: 0 2px;
 }
 
@@ -239,7 +239,7 @@ a:focus {
 
 .vamshop-menu  .vamshop-menu-navbar .vamshop-menu-item  > li > a {
   display: block;
-  font-size: 15px;
+  font-size: 14px;
   padding: 0 14px 0 12px ;
   text-decoration:none;
   position: relative;
@@ -267,7 +267,7 @@ a:focus {
 }
 .vamshop-menu .vamshop-menu-navbar .vamshop-menu-item  .vamshop-menu-hasmenu .vamshop-menu-submenu li > a {
   display: block;
-  font-size: 16px;
+  font-size: 14px;
   padding: 0 8px;
   text-decoration:none;
   position: relative;
@@ -282,7 +282,7 @@ a:focus {
 } */
 
 .vamshop-menu .vamshop-menu-navbar .vamshop-menu-item   > li > a > .vamshop-menu-micon {
-    font-size: 16px;
+    font-size: 14px;
     padding: 0 5px 0 0;
 }
 .vamshop-menu .vamshop-menu-navbar .vamshop-menu-item.vamshop-menu-search-item   > li > a > .vamshop-menu-micon {
@@ -290,7 +290,7 @@ a:focus {
 }
 
 .vamshop-menu .vamshop-menu-navbar .vamshop-menu-item .vamshop-menu-hasmenu .vamshop-menu-submenu li > a .vamshop-menu-micon {
-  font-size: 15px;
+  font-size: 14px;
   padding-right: 5px;
 }
 .vamshop-menu[horizontal-layout="wide"] .vamshop-menu-container{
@@ -365,7 +365,7 @@ a:focus {
   border-top-width: 1px;
 }
 .vamshop-menu .vamshop-menu-navbar .vamshop-menu-item .vamshop-menu-hasmenu .vamshop-menu-submenu li > a {
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 500;
   line-height: 34px;
   text-align: left;
@@ -558,7 +558,7 @@ a:focus {
 .vamshop-menu[theme-layout="horizontal"] .vamshop-menu-navbar .vamshop-menu-item  > li.vamshop-menu-hasmenu.vamshop-menu-trigger[dropdown-icon="style2"] > a:after{
   content: "\f0d8";
   font-family: FontAwesome;
-  font-size: 15px;
+  font-size: 14px;
 }
 .vamshop-menu[theme-layout="horizontal"] .vamshop-menu-navbar .vamshop-menu-item  > li.vamshop-menu-hasmenu[dropdown-icon="style3"] > a:after {
   content: "\f218";
@@ -1279,7 +1279,7 @@ li.edge > ul {
 }
 .vamshop-menu .vamshop-menu-navbar .vamshop-menu-item .vamshop-menu-hasmenu .vamshop-menu-submenu.vamshop-menu-megamenu ul li a {
     border-bottom-width: 0 !important;
-    font-size: 15px;
+    font-size: 14px;
     font-weight: 500;
     line-height: 23px;
     padding: 0;
@@ -1292,7 +1292,7 @@ li.edge > ul {
 }
 .vamshop-menu .vamshop-menu-navbar .vamshop-menu-item .vamshop-menu-hasmenu .vamshop-menu-submenu.vamshop-menu-megamenu ul li.title {
   display: block;
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 600;
   padding: 10px 0;
   margin-bottom:10px;
