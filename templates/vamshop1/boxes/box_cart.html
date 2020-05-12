@@ -1,7 +1,7 @@
 {config_load file="$language/lang_$language.conf" section="boxes"}
 {config_load file="$language/lang_$language.conf" section="index"}
 {if $deny_cart neq 'true'}
-<a data-toggle="dropdown" class="dropdown-toggle cart" data-target="#" href="{$smarty.const.FILENAME_SHOPPING_CART}" title="{$smarty.const.NAVBAR_TITLE_SHOPPING_CART}"> <i class="fa fa-shopping-cart"></i> {$smarty.const.NAVBAR_TITLE_SHOPPING_CART} {if $TOTAL_QUANTITY > 0}<sup><span title="{$cart_count}" class="badge badge-important">{$TOTAL_QUANTITY}</span></sup>{/if} <b class="caret"></b></a>
+<a data-toggle="dropdown" class="dropdown-toggle cart" data-target="#" href="{$smarty.const.FILENAME_SHOPPING_CART}" title="{$smarty.const.NAVBAR_TITLE_SHOPPING_CART}"> <i class="fa fa-shopping-cart"></i> {$smarty.const.NAVBAR_TITLE_SHOPPING_CART} {if $TOTAL_QUANTITY > 0}<sup><span title="{$cart_count}" class="badge badge-important pulse-button">{$TOTAL_QUANTITY}</span></sup>{/if} <b class="caret"></b></a>
 <div class="dropdown-menu cart">
 {if $empty=='false'}
 <div class="widget inner shopping-cart-widget">
