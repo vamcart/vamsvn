@@ -72,14 +72,14 @@ if ($order_status < DOWNLOAD_MIN_ORDERS_STATUS) {
 		// - No expiry date is enforced (maxdays == 0), OR
 		// - The expiry date is not reached
 		if (($downloads['download_count'] > 0) && (file_exists(DIR_FS_DOWNLOAD.$downloads['orders_products_filename'])) && (($downloads['download_maxdays'] == 0) || ($download_timestamp > time())) && ($order_status >= DOWNLOAD_MIN_ORDERS_STATUS)) {
-			$dl[$jj]['download_link'] .= '<a href="'.vam_href_link(FILENAME_DOWNLOAD, 'order='.$last_order.'&id='.$downloads['orders_products_download_id']).'">'.$downloads['products_name'].'</a>';
-			$dl[$jj]['pic_link'] .= vam_href_link(FILENAME_DOWNLOAD, 'order='.$last_order.'&id='.$downloads['orders_products_download_id']);
+			$dl[$jj]['download_link'] = '<a href="'.vam_href_link(FILENAME_DOWNLOAD, 'order='.$last_order.'&id='.$downloads['orders_products_download_id']).'">'.$downloads['products_name'].'</a>';
+			$dl[$jj]['pic_link'] = vam_href_link(FILENAME_DOWNLOAD, 'order='.$last_order.'&id='.$downloads['orders_products_download_id']);
 		} else {
-			$dl[$jj]['download_link'] .= $downloads['products_name'];
+			$dl[$jj]['download_link'] = $downloads['products_name'];
 		}
 		//<!-- right box -->
-		$dl[$jj]['date'] .= vam_date_long($download_expiry);
-		$dl[$jj]['count'] .= $downloads['download_count'];
+		$dl[$jj]['date'] = vam_date_long($download_expiry);
+		$dl[$jj]['count'] = $downloads['download_count'];
 		$jj ++;
 	}
   }
