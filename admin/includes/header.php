@@ -51,44 +51,44 @@
   $customers = vam_db_fetch_array($customers_query);
 
 ?>
-									<span>
+									<span class="pr-1">
 										<a href="<?php echo vam_href_link(FILENAME_ORDERS, 'status='.DEFAULT_ORDERS_STATUS_ID, 'NONSSL'); ?>" data-toggle="tooltip" data-placement="bottom" title="<?php echo (($orders_pending['count'] > 0) ? TEXT_SUMMARY_PENDING_ORDERS.': '.$orders_pending['count'] : BOX_ORDERS) ?>"><i class="fa fa-shopping-cart" aria-hidden="true"></i>
 											<?php echo (($orders_pending['count'] > 0) ? ' <sup class="badge badge-danger rounded-pill">'.$orders_pending['count'].'</sup>' : '') ?>
 										</a>
 									</span>
-									<span>
+									<span class="pr-1">
 										<a href="<?php echo vam_href_link(FILENAME_CUSTOMERS, '', 'NONSSL'); ?>" data-toggle="tooltip" data-placement="bottom" title="<?php echo BOX_CUSTOMERS; ?>"><i class="fas fa-users" aria-hidden="true"></i>
 										</a>
 									</span>
-									<span>
+									<span class="pr-1">
 										<a href="<?php echo vam_href_link(FILENAME_CATEGORIES, '', 'NONSSL'); ?>" data-toggle="tooltip" data-placement="bottom" title="<?php echo BOX_CATEGORIES; ?>"><i class="fa fa-book" aria-hidden="true"></i>
 										</a>
 									</span>
-									<span>
+									<span class="pr-1">
 										<a href="<?php echo vam_href_link(FILENAME_CONTENT_MANAGER, '', 'NONSSL'); ?>" data-toggle="tooltip" data-placement="bottom" title="<?php echo TEXT_HEADER_PAGES; ?>"><i class="far fa-file-alt" aria-hidden="true"></i>
 										</a>
 									</span>
-									<span>
+									<span class="pr-1">
 										<a href="<?php echo vam_href_link(FILENAME_ARTICLES, '', 'NONSSL'); ?>" data-toggle="tooltip" data-placement="bottom" title="<?php echo TEXT_HEADER_ARTICLES; ?>"><i class="far fa-newspaper" aria-hidden="true"></i>
 										</a>
 									</span>
-									<span>
+									<span class="pr-1">
 										<a href="<?php echo vam_href_link(FILENAME_LATEST_NEWS, '', 'NONSSL'); ?>" data-toggle="tooltip" data-placement="bottom" title="<?php echo TEXT_HEADER_NEWS; ?>"><i class="fa fa-rss" aria-hidden="true"></i>
 										</a>
 									</span>
-									<span>
+									<span class="pr-1">
 										<a href="<?php echo vam_href_link(FILENAME_CACHE, 'action=unlink', 'NONSSL'); ?>" data-toggle="tooltip" data-placement="bottom" title="<?php echo TEXT_CLEAR_CACHE; ?>"><i class="fa fa-trash-alt" aria-hidden="true"></i>
 										</a>
 									</span>
-									<span>
+									<span class="pr-1">
 										<a href="<?php echo HTTP_SERVER . DIR_WS_CATALOG; ?>" data-toggle="tooltip" data-placement="bottom" title="<?php echo TEXT_HEADER_SHOP; ?>"><i class="fa fa-store" aria-hidden="true"></i>
 										</a>
 									</span>
-									<span>
+									<span class="pr-1">
 										<a href="https://vamshop.ru" data-toggle="tooltip" data-placement="bottom" title="<?php echo TEXT_HEADER_SUPPORT; ?>"><i class="fas fa-question-circle" aria-hidden="true"></i>
 										</a>
 									</span>
-									<span>
+									<span class="pr-1">
 										<a href="../logoff.php" data-toggle="tooltip" data-placement="bottom" title="<?php echo BOX_HEADING_LOGOFF; ?>"><i class="fas fa-power-off" aria-hidden="true"></i>
 										</a>
 									</span>
