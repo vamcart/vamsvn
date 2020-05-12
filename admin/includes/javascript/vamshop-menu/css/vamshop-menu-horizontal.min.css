@@ -200,7 +200,7 @@ a:focus {
 	padding: 0 10px;
 }
 .vamshop-menu .vamshop-menu-header .vamshop-menu-right-header .vamshop-menu-rl-header {
-  float: left;
+  /*float: left;*/
 }
 .vamshop-menu .vamshop-menu-header .vamshop-menu-right-header .vamshop-menu-rr-header {
   text-align: right;
