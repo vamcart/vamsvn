@@ -35,7 +35,7 @@
 						<div class="vamshop-menu-right-header">
 							<div class="vamshop-menu-rl-header"> 
 							<div class="vamshop-menu-logo"> 
-								<span class="logo-text"><a href="start.php"><?php echo vam_image(DIR_WS_IMAGES . 'logo-small.png', 'VamShop'); ?></a></span>
+								<span class="hide-in-smallsize"><span class="logo-text"><a href="start.php"><?php echo vam_image(DIR_WS_IMAGES . 'logo-small.png', 'VamShop'); ?></a></span></span>
 <?php
 
   $total_orders_query = vam_db_query("select count(*) as count from " . TABLE_ORDERS);
@@ -51,10 +51,8 @@
   $customers = vam_db_fetch_array($customers_query);
 
 ?>
-									<span class="pr-2">
-										<a href="<?php echo vam_href_link(FILENAME_ORDERS, 'status='.DEFAULT_ORDERS_STATUS_ID, 'NONSSL'); ?>" data-toggle="tooltip" data-placement="bottom" title="<?php echo (($orders_pending['count'] > 0) ? TEXT_SUMMARY_PENDING_ORDERS.': '.$orders_pending['count'] : BOX_ORDERS) ?>"><i class="fa fa-shopping-cart" aria-hidden="true"></i>
-											<?php echo (($orders_pending['count'] > 0) ? ' <sup class="badge badge-danger rounded-pill">'.$orders_pending['count'].'</sup>' : '') ?>
-										</a>
+									<span class="pl-2 pr-2">
+										<a href="<?php echo vam_href_link(FILENAME_ORDERS, 'status='.DEFAULT_ORDERS_STATUS_ID, 'NONSSL'); ?>" data-toggle="tooltip" data-placement="bottom" title="<?php echo (($orders_pending['count'] > 0) ? TEXT_SUMMARY_PENDING_ORDERS.': '.$orders_pending['count'] : BOX_ORDERS) ?>"><i class="fa fa-shopping-cart" aria-hidden="true"></i><?php echo (($orders_pending['count'] > 0) ? '<sup class="badge badge-danger rounded-pill small">'.$orders_pending['count'].'</sup>' : '') ?></a>
 									</span>
 									<span class="pr-2">
 										<a href="<?php echo vam_href_link(FILENAME_CUSTOMERS, '', 'NONSSL'); ?>" data-toggle="tooltip" data-placement="bottom" title="<?php echo BOX_CUSTOMERS; ?>"><i class="fas fa-users" aria-hidden="true"></i>
@@ -100,7 +98,7 @@
 					</div>
 					<div class="vamshop-menubrand-xs">
 						<div class="vamshop-menu-brand">
-							<span class="menu-toggle"><a href="#"><i class="fa fa-bars"></i></a></span>
+							<span class="menu-toggle"><a href="javascript:void(0)"><i class="fa fa-bars"></i></a></span>
 						</div>
 					</div>
 				</header>
@@ -110,7 +108,7 @@
 						<div class="vamshop-menu-left-header"> 
 								<div class="vamshop-menu-brand">
 									<a href="start.php"><?php echo vam_image(DIR_WS_IMAGES . 'logo-small-vertical.png', 'VamShop'); ?></a>
-									<span class="menu-toggle"><a href="#"><i class="icon-menu"></i></a></span>
+									<span class="menu-toggle"><a href="javascript:void(0)"><i class="icon-menu"></i></a></span>
 								</div>
 						</div>
 						<div class="vamshop-menu-right-header"> 
@@ -189,14 +187,14 @@
 						<div class="vamshop-menu-wrapper">
 							<div class="vamshop-menu-inner-navbar">
 								<ul class="vamshop-menu-item vamshop-menu-left-item">
-									<li class="">
+<!--									<li class="">
 										<a href="<?php echo vam_href_link(FILENAME_START, '', 'NONSSL'); ?>">
 											<span class="vamshop-menu-micon"><i class="fas fa-home"></i></span>
 											<span class="vamshop-menu-mtext"><?php echo TEXT_HEADER_DEFAULT; ?></span>
 											<span class="vamshop-menu-mcaret"></span>
 										</a>
 									</li>
-									
+-->									
                 <li class="vamshop-menu-hasmenu"><a href="javascript:void(0)" ><span class="vamshop-menu-micon"><i class="fas fa-shopping-cart"></i></span><span class="vamshop-menu-mtext"><?php echo BOX_HEADING_ORDERS; ?></span>
 											<span class="vamshop-menu-mcaret"></span>
 										</a>
