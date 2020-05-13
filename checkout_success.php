@@ -161,7 +161,7 @@ $vamTemplate->assign('KUPIVKREDIT_CODE', $kupi_v_kredit);
 }
 
 // Google Conversion tracking
-if ($orders['orders_id'] > 0 && (GOOGLE_CONVERSION == 'true' or GOOGLE_TAG_MANAGER == 'true')) {
+if ($order->info['id'] > 0 && (GOOGLE_CONVERSION == 'true' or GOOGLE_TAG_MANAGER == 'true')) {
 
 include(DIR_WS_MODULES . 'analytics/analytics.php');
 
@@ -193,7 +193,7 @@ $tracking_code .= '
 
 }
 
-if ($orders['orders_id'] > 0 && YANDEX_METRIKA == 'true') {
+if ($order->info['id'] > 0 && YANDEX_METRIKA == 'true') {
 
 include(DIR_WS_MODULES . 'analytics/metrika.php');
 
