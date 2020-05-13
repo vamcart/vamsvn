@@ -410,7 +410,7 @@ $(".image-zoom").each(function(arg, el){
 
 //Expandable Text
 $('.read-more').expandable({
-  'height': 250,
-  'more': '▼▼▼▼▼',
-  'less': '▲▲▲▲▲'
+  'height': 350,
+  'more': '▼',
+  'less': '▲'
 });
