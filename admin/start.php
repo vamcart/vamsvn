@@ -220,8 +220,8 @@ for ($i = 0; $i < $report->size; $i++) {
 
 $data_count[] = $report->info[$i]['count'];
 $data_sum[] = number_format($report->info[$i]['sum'],0,'','');
-$data_total[] = '["'.$report->info[$i]['text']. '",'.number_format($report->info[$i]['sum'],0,'','').']';
-$data_number[] = '["'.$report->info[$i]['text']. '",'.number_format($report->info[$i]['count'],0,'','').']';
+$data_total[] = '["'.$report->info[$i]['text_value']. '",'.number_format($report->info[$i]['sum'],0,'','').']';
+$data_number[] = '["'.$report->info[$i]['text_value']. '",'.number_format($report->info[$i]['count'],0,'','').']';
 									
 }
 

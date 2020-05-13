@@ -276,26 +276,31 @@ defined('_VALID_VAM') or die('Direct Access to this location is not allowed.');
           // hourly
           case '1':
             $this->info[$i]['text'] = strftime("%H", $this->startDates[$i]) . " - " . strftime("%H", $this->endDates[$i]);
+            $this->info[$i]['text_value'] = strftime("%H", $this->startDates[$i]) . " - " . strftime("%H", $this->endDates[$i]);
             $this->info[$i]['link'] = "";
             break;
           // daily
           case '2':
             $this->info[$i]['text'] = strftime("%x", $this->startDates[$i]);
+            $this->info[$i]['text_value'] = strftime("%x", $this->startDates[$i]);
             $this->info[$i]['link'] = "report=1&startDate=" . $this->startDates[$i] . "&endDate=" . mktime(0, 0, 0, date("m", $this->endDates[$i]), date("d", $this->endDates[$i]) + 1, date("Y", $this->endDates[$i]));
             break;
           // weekly
           case '3':
             $this->info[$i]['text'] = strftime("%x", $this->startDates[$i]) . " - " . strftime("%x", mktime(0, 0, 0, date("m", $this->endDates[$i]), date("d", $this->endDates[$i]) - 1, date("Y", $this->endDates[$i])));
+            $this->info[$i]['text_value'] = strftime("%x", $this->startDates[$i]) . " - " . strftime("%x", mktime(0, 0, 0, date("m", $this->endDates[$i]), date("d", $this->endDates[$i]) - 1, date("Y", $this->endDates[$i])));
             $this->info[$i]['link'] = "report=2&startDate=" . $this->startDates[$i] . "&endDate=" . mktime(0, 0, 0, date("m", $this->endDates[$i]), date("d", $this->endDates[$i]) - 1, date("Y", $this->endDates[$i]));
             break;
           // monthly
           case '4':
             $this->info[$i]['text'] = strftime("%b %y", $this->startDates[$i]);
+            $this->info[$i]['text_value'] = strftime("%d-%h-%Y", $this->startDates[$i]);
             $this->info[$i]['link'] = "report=3&startDate=" . $this->startDates[$i] . "&endDate=" . mktime(0, 0, 0, date("m", $this->endDates[$i]), date("d", $this->endDates[$i]) - 1, date("Y", $this->endDates[$i]));
             break;
           // yearly
           case '5':
             $this->info[$i]['text'] = date("Y", $this->startDates[$i]);
+            $this->info[$i]['text_value'] = date("Y", $this->startDates[$i]);
             $this->info[$i]['link'] = "report=4&startDate=" . $this->startDates[$i] . "&endDate=" . mktime(0, 0, 0, date("m", $this->endDates[$i]) - 1, date("d", $this->endDates[$i]), date("Y", $this->endDates[$i]));
             break;
         }
