@@ -28,6 +28,7 @@ require_once (DIR_FS_INC.'vam_get_all_get_params.inc.php');
 require_once (DIR_FS_INC.'vam_image_button.inc.php');
 require_once (DIR_FS_INC.'vam_display_tax_value.inc.php');
 require_once (DIR_FS_INC.'vam_format_price_order.inc.php');
+require_once (DIR_WS_CLASSES.'order.php');
 
 //security checks
 if (!isset ($_SESSION['customer_id'])) { vam_redirect(vam_href_link(FILENAME_LOGIN, '', 'SSL')); }
@@ -42,9 +43,7 @@ $breadcrumb->add(NAVBAR_TITLE_1_ACCOUNT_HISTORY_INFO, vam_href_link(FILENAME_ACC
 $breadcrumb->add(NAVBAR_TITLE_2_ACCOUNT_HISTORY_INFO, vam_href_link(FILENAME_ACCOUNT_HISTORY, '', 'SSL'));
 $breadcrumb->add(sprintf(NAVBAR_TITLE_3_ACCOUNT_HISTORY_INFO, (int)$_GET['order_id']), vam_href_link(FILENAME_ACCOUNT_HISTORY_INFO, 'order_id='.(int)$_GET['order_id'], 'SSL'));
 
-require (DIR_WS_CLASSES.'order.php');
 $order = new order((int)$_GET['order_id']);
-require (DIR_WS_INCLUDES.'header.php');
 
 // Delivery Info
 if ($order->delivery != false) {
@@ -97,9 +96,14 @@ $vamTemplate->assign('PRODUCTS_EDIT', vam_href_link(FILENAME_SHOPPING_CART, '', 
 $vamTemplate->assign('SHIPPING_ADDRESS_EDIT', vam_href_link(FILENAME_CHECKOUT_SHIPPING_ADDRESS, '', 'SSL'));
 $vamTemplate->assign('BILLING_ADDRESS_EDIT', vam_href_link(FILENAME_CHECKOUT_PAYMENT_ADDRESS, '', 'SSL'));
 $vamTemplate->assign('BUTTON_PRINT', '<a class="button" target="_blank" href="'.vam_href_link(FILENAME_PRINT_ORDER, 'oID='.(int)$_GET['order_id']).'">'.vam_image_button('print.png', IMAGE_BUTTON_PRINT).'</a>');
+$vamTemplate->assign('DUPLICATE_ORDER_BUTTON', '<a class="button" href="'.vam_href_link(FILENAME_ACCOUNT_DUPLICATE_ORDER, 'order_id=' . $_GET['order_id'] . '&action=order', 'SSL').'">'.TEXT_DUPLICATE_ORDER.'</a>');
+$vamTemplate->assign('DUPLICATE_CART_BUTTON', '<a class="button" href="'.vam_href_link(FILENAME_ACCOUNT_DUPLICATE_ORDER, 'order_id=' . $_GET['order_id'] . '&action=cart', 'SSL').'">'.TEXT_DUPLICATE_ORDER_ADD_TO_CART.'</a>');
+
 $from_history = preg_match("/page=/i", vam_get_all_get_params()); // referer from account_history yes/no
 $back_to = $from_history ? FILENAME_ACCOUNT_HISTORY : FILENAME_ACCOUNT; // if from account_history => return to account_history
 $vamTemplate->assign('BUTTON_BACK','<a class="button" href="' . vam_href_link($back_to,vam_get_all_get_params(array ('order_id')), 'SSL') . '">' . vam_image_button('back.png', IMAGE_BUTTON_BACK) . '</a>');
+
+require (DIR_WS_INCLUDES.'header.php');
 
 $vamTemplate->assign('language', $_SESSION['language']);
 $vamTemplate->caching = 0;

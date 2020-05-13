@@ -167,4 +167,6 @@ define('FILENAME_ONE_CLICK_BUY', 'one_click_buy.php');
 
 define('FILENAME_SITE_REVIEWS_ALL', 'site_reviews_all.php');
 
+define('FILENAME_ACCOUNT_DUPLICATE_ORDER', 'order_functions.php');
+
 ?>

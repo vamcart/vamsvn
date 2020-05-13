@@ -1,25 +1,59 @@
 {config_load file="$language/lang_$language.conf" section="account_history"}
-<div class="page">
+{config_load file="$language/lang_$language.conf" section="account_history_info"}<div class="page">
 <h1>{#heading_history#}</h1>
 <div class="pageContent">
-<!-- Список заказов -->
-{foreach name=aussen item=order_data from=$order_content}
-<p>
-{#text_oid#} {$order_data.ORDER_ID}
-</p>
-<p>
-{#text_date#} {$order_data.ORDER_DATE}
-</p>
-<p>
-{#text_articles#} {$order_data.ORDER_PRODUCTS}
-</p>
-<p>
-{#text_total#} {$order_data.ORDER_TOTAL}&nbsp;&nbsp;{#text_status#} {$order_data.ORDER_STATUS} 
-</p>
-<p>
-{$order_data.ORDER_BUTTON}
-</p>
-{/foreach}
+<div class="duplicate-order">
+	{foreach name=aussen item=order_data from=$order_content name=order_item}
+		<button class="accordion {if $smarty.foreach.order_item.iteration != 1}collapsed{/if}" data-toggle="collapse" data-target="#order-{$order_data.ORDER_ID}" 
+		style="background-color: #eee; color: #444; cursor: pointer; padding: 18px; width: 100%; text-align: left; border: none; outline: none; transition: 0.4s; margin-bottom: 20px; display: flex; align-items: center; justify-content: space-between;">
+			{#text_oid#} {$order_data.ORDER_ID}
+			<div class="buttons">
+				{$order_data.ORDER_BUTTON} &nbsp; {$order_data.DUPLICATE_ORDER_BUTTON} &nbsp; {$order_data.DUPLICATE_CART_BUTTON}
+			</div>
+		</button>
+		<div class="panel collapse {if $smarty.foreach.order_item.iteration == 1}show{/if}" id="order-{$order_data.ORDER_ID}">
+			{foreach $order_data.ORDER_INFO->products item=order_product}
+				<div class="row">
+					<div class="col-md-2">
+						<a href="{$order_product['product_info']->data['products_page_url']}">
+							<img class="product-image" style="width: 100%;" src="{$order_product['product_info']->data['products_image']}" />
+						</a>
+					</div>
+					<div class="col-md-6">
+						<p style="margin-bottom: 0;"><a href="{$order_product['product_info']->data['products_page_url']}"><b style="font-weight: bold;">{$order_product['name']}</b></a></p>
+						<em>{$order_product['attributes']}</em>
+						<br/><br/><b>{$smarty.const.TEXT_DUPLICATE_ORDER_PRICE}: {$order_product['final_price']|number_format:0:".":""} {if {$smarty.session.currency} == 'RUB'}руб.{/if}</b>
+					</div>
+					<div class="col-md-2" style="display: flex; align-items: center; justify-content: center;">
+						<p>{$order_product['qty']} {$smarty.const.TEXT_PIECE}</p>
+					</div>
+					<div class="col-md-2" style="display: flex; align-items: center; justify-content: center;">
+						<p>{$order_product['final_price']|number_format:0:".":""} {if {$smarty.session.currency} == 'RUB'}руб.{/if}</p>
+					</div>
+				</div>
+				<hr/>
+			{/foreach}
+			<p>
+				{#text_date#} {$order_data.ORDER_DATE}
+			</p>
+			<p>
+				{#text_shipping_method#} {$order_data.ORDER_INFO->info['shipping_method']}
+			</p>
+			<p>
+				{#text_shipped#} {$order_data.ORDER_INFO->delivery['country']}, {$order_data.ORDER_INFO->delivery['city']}, {$order_data.ORDER_INFO->delivery['street_address']}
+			</p>
+			</p>
+			<p>
+				{#text_articles#} {$order_data.ORDER_PRODUCTS}
+			</p>
+			<p>
+				{#text_total#} {$order_data.ORDER_TOTAL}&nbsp;&nbsp;{#text_status#} {$order_data.ORDER_STATUS} 
+			</p>
+			<p>
+				{$order_data.ORDER_BUTTON}
+			</p>
+		</div>
+	{/foreach}
 
 <div class="clear"></div>
 <div class="navigation">
@@ -30,6 +64,6 @@
 <div class="pageContentFooter">
 {$BUTTON_BACK}
 </div>
-<!-- /Список заказов -->
+</div>
 </div>
 </div>

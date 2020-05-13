@@ -765,3 +765,33 @@ label {
   line-height: 16px;
   color: #fff;
 }
+
+.duplicate-order .active, .accordion:hover {
+  background-color: #ccc;
+}
+
+.duplicate-order .panel {
+  padding: 0px 18px 20px;
+  background-color: white;
+}
+
+.duplicate-order .accordion .buttons:after {
+  content: "\2796"; /* Unicode character for "minus" sign (-) */
+    font-size: 13px;
+  color: #777;
+  margin-left: 5px;
+}
+
+.duplicate-order .accordion.collapsed .buttons:after {
+  content: '\02795'; /* Unicode character for "plus" sign (+) */
+  font-size: 13px;
+  color: #777;
+  margin-left: 5px;
+}
+
+@media(max-width: 991px) {
+	.duplicate-order .product-image {
+		max-height: 150px;
+		width: auto !important;
+	}
+}

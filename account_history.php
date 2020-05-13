@@ -27,14 +27,13 @@ require_once (DIR_FS_INC.'vam_count_customer_orders.inc.php');
 require_once (DIR_FS_INC.'vam_date_long.inc.php');
 require_once (DIR_FS_INC.'vam_image_button.inc.php');
 require_once (DIR_FS_INC.'vam_get_all_get_params.inc.php');
+require_once (DIR_WS_CLASSES.'order.php');
 
 if (!isset ($_SESSION['customer_id']))
 	vam_redirect(vam_href_link(FILENAME_LOGIN, '', 'SSL'));
 
 $breadcrumb->add(NAVBAR_TITLE_1_ACCOUNT_HISTORY, vam_href_link(FILENAME_ACCOUNT, '', 'SSL'));
 $breadcrumb->add(NAVBAR_TITLE_2_ACCOUNT_HISTORY, vam_href_link(FILENAME_ACCOUNT_HISTORY, '', 'SSL'));
-
-require (DIR_WS_INCLUDES.'header.php');
 
 $module_content = array ();
 if (($orders_total = vam_count_customer_orders()) > 0) {
@@ -53,7 +52,34 @@ if (($orders_total = vam_count_customer_orders()) > 0) {
 			$order_type = TEXT_ORDER_BILLED_TO;
 			$order_name = $history['billing_name'];
 		}
-		$module_content[] = array ('ORDER_ID' => $history['orders_id'], 'ORDER_STATUS' => $history['orders_status_name'], 'ORDER_DATE' => vam_date_long($history['date_purchased']), 'ORDER_PRODUCTS' => $products['count'], 'ORDER_TOTAL' => strip_tags($history['order_total']), 'ORDER_BUTTON' => '<a class="button" href="'.vam_href_link(FILENAME_ACCOUNT_HISTORY_INFO, 'page='.(empty($_GET['page']) ? "1" : (int)$_GET['page']) .'&order_id='.$history['orders_id'], 'SSL').'">'.vam_image_button('view.png', SMALL_IMAGE_BUTTON_VIEW).'</a>');
+		$order = new order((int)$history['orders_id']);
+		$order_info = $order->getOrderData((int)$history['orders_id']);
+		foreach ($order->products as &$pr) {
+			$pr['product_info'] = new product((int)$pr['id']);
+			if ($pr['product_info']->data['products_image'] != '') {
+				$pr['product_info']->data['products_image'] = DIR_WS_INFO_IMAGES.$pr['product_info']->data['products_image'];
+			}
+	   		if (!file_exists($pr['product_info']->data['products_image'])) {
+	   			$pr['product_info']->data['products_image'] = DIR_WS_INFO_IMAGES.'../noimage.gif';
+   			}
+   			foreach ($order_info as $oi) {
+   				if ($pr['id'] == $oi['PRODUCTS_ID']) {
+   					$pr['attributes'] = $oi['PRODUCTS_ATTRIBUTES'];
+   				}
+   			}
+		}
+
+		$module_content[] = array (
+		'ORDER_ID' => $history['orders_id'], 
+		'ORDER_STATUS' => $history['orders_status_name'], 
+		'ORDER_DATE' => vam_date_long($history['date_purchased']), 
+		'ORDER_PRODUCTS' => $products['count'], 
+		'ORDER_TOTAL' => strip_tags($history['order_total']), 
+		'ORDER_BUTTON' => '<a class="button mb-2" href="'.vam_href_link(FILENAME_ACCOUNT_HISTORY_INFO, 'page='.(empty($_GET['page']) ? "1" : (int)$_GET['page']) .'&order_id='.$history['orders_id'], 'SSL').'">'.vam_image_button('view.png', SMALL_IMAGE_BUTTON_VIEW).'</a>', 
+		'DUPLICATE_ORDER_BUTTON' => '<a class="button mb-2" href="'.vam_href_link(FILENAME_ACCOUNT_DUPLICATE_ORDER, 'order_id=' . $history['orders_id'] . '&action=order', 'SSL').'">'.TEXT_DUPLICATE_ORDER.'</a>', 
+		'DUPLICATE_CART_BUTTON' => '<a class="button mb-2" href="'.vam_href_link(FILENAME_ACCOUNT_DUPLICATE_ORDER, 'order_id=' . $history['orders_id'] . '&action=cart', 'SSL').'">'.TEXT_DUPLICATE_ORDER_ADD_TO_CART.'</a>', 
+		'ORDER_INFO' => $order
+		);
 
 	}
 }
@@ -67,6 +93,8 @@ $vamTemplate->assign('language', $_SESSION['language']);
 $vamTemplate->assign('BUTTON_BACK', '<a class="button" href="'.vam_href_link(FILENAME_ACCOUNT, '', 'SSL').'">'.vam_image_button('back.png', IMAGE_BUTTON_BACK).'</a>');
 $vamTemplate->caching = 0;
 $main_content = $vamTemplate->fetch(CURRENT_TEMPLATE.'/module/account_history.html');
+
+require (DIR_WS_INCLUDES.'header.php');
 
 $vamTemplate->assign('language', $_SESSION['language']);
 $vamTemplate->assign('main_content', $main_content);

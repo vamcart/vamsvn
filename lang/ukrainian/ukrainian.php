@@ -753,4 +753,9 @@ define('TEXT_ALL_NEWS','Все новости');
 define('TEXT_ALL_ARTICLES','Все статьи');
 define('TEXT_ALL_MANUFACTURERS','Все бренды');
 
+define('TEXT_DUPLICATE_ORDER','Повторить заказ');
+define('TEXT_DUPLICATE_ORDER_ADD_TO_CART','Переложить в корзину');
+define('TEXT_DUPLICATE_ORDER_ORDER_NUMBER','Номер заказа');
+define('TEXT_DUPLICATE_ORDER_PRICE','Цена');
+
 ?>
