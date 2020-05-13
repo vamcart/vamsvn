@@ -69,7 +69,7 @@ function toggleBox(szDivID) {
 }
 
 function SetFocus() {
-  if (document.forms.length > 0) {
+/*  if (document.forms.length > 0) {
     var field = document.forms[0];
     for (i=0; i<field.length; i++) {
       if ( (field.elements[i].type != "image") && 
@@ -86,5 +86,5 @@ function SetFocus() {
         break;
       }
     }
-  }
+  }*/
 }
