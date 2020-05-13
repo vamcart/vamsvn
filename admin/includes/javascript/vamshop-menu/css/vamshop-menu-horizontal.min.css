@@ -4,7 +4,7 @@
 .vamshop-menu-address {
   font-size: 12px;
   font-weight: 600;
-  line-height: 50px;
+  line-height: 60px;
 }
 .vamshop-menu-address span {
   padding: 0 10px;
@@ -24,7 +24,7 @@
 .vamshop-menu-logo {
   font-size: 18px;
   font-weight: 600;
-  line-height: 50px;
+  line-height: 60px;
 }
 
 .vamshop-menu-logo a,
@@ -164,7 +164,7 @@ a:focus {
 }
 .vamshop-menu .vamshop-menu-header {
   display:block;
-  height: 50px;
+  height: 60px;
   background-color: #fff;
   background-image: url(../../../../images/bg.png);
   background-position: 0 -602px;
