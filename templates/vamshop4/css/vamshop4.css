@@ -795,3 +795,7 @@ label {
 		width: auto !important;
 	}
 }
+
+.text-primary {
+  color: #0654a7 !important;
+}
