@@ -85,7 +85,7 @@ function duplicateCart($order_id) {
     while ($ordered_product = vam_db_fetch_array($query)) {
         $attributes_query = vam_db_query("SELECT * FROM " . TABLE_ORDERS_PRODUCTS_ATTRIBUTES . " WHERE orders_products_id=" . $ordered_product['orders_products_id']);
         $attributes = [];
-        while ($attribute = vam_db_featch_array($attributes_query)) {
+        while ($attribute = vam_db_fetch_array($attributes_query)) {
             $option_id = vam_db_query("SELECT * FROM " . TABLE_PRODUCTS_OPTIONS . " WHERE products_options_name='" . $attribute['products_options'] . "'");
             $option_id = vam_db_fetch_array($option_id);
             $option = vam_db_query("SELECT * FROM " . TABLE_PRODUCTS_ATTRIBUTES . " as pa LEFT JOIN " . TABLE_PRODUCTS_OPTIONS_VALUES . " as pov ON pa.options_values_id=pov.products_options_values_id WHERE products_id =" . $ordered_product['products_id'] . " AND products_options_values_name='" . $attribute['products_options_values'] . "'");
