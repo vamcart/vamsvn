@@ -18,10 +18,10 @@
 				</div>
 				{/if}
 				<span class="font-weight-bold text-secondary">{$smarty.const.TEXT_CUSTOMER_REVIEW}</span>
-				<p>{$module_data.REVIEW.TEXT|vam_truncate:$smarty.const.MAX_DISPLAY_SHORT_DESCRIPTION:"...":true}</p>
+				<div>{$module_data.REVIEW.TEXT|vam_truncate:$smarty.const.MAX_DISPLAY_SHORT_DESCRIPTION:"...":true}</div>
 				{if {$module_data.REVIEW.ANSWER} != ''}
 				<span class="font-weight-bold text-primary">{$smarty.const.TEXT_STORE_ANSWER}</span>
-				<p>{$module_data.REVIEW.ANSWER}</p>
+				<div>{$module_data.REVIEW.ANSWER}</div>
 				{/if}
 			</div>
       </div>
