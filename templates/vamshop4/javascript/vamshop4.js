@@ -8,11 +8,11 @@ $(".owl-carousel-reverse").owlCarousel({
     navText: ['<span class="fas fa-chevron-left fa-3x"></span>','<span class="fas fa-chevron-right fa-3x"></span>'],
     responsive:{
         0:{
-            items:1,
+            items:2,
             nav:true
         },
         576:{
-            items:2,
+            items:3,
             nav:true
         },
         768:{
@@ -40,11 +40,11 @@ $(".owl-carousel").owlCarousel({
     navText: ['<span class="fas fa-chevron-left fa-3x"></span>','<span class="fas fa-chevron-right fa-3x"></span>'],
     responsive:{
         0:{
-            items:1,
+            items:2,
             nav:true
         },
         576:{
-            items:2,
+            items:3,
             nav:true
         },
         768:{
