@@ -457,7 +457,7 @@ elseif ($category_depth == 'products' || $_GET['manufacturers_id']) {
     }
     }
     $manufacturer_sort .= '<a href="'.vam_href_link(FILENAME_DEFAULT, 'cat='.$current_category_id).'">' . TEXT_ALL_MANUFACTURERS . '</a> ';
-    $manufacturer_dropdown .= vam_draw_pull_down_menu('filter_id', $options, $_GET['filter_id'], 'class="form-control col-xs-12 col-sm-6 col-md-4 col-lg-4 col-xl-3" onchange="this.form.submit()"');
+    $manufacturer_dropdown .= vam_draw_pull_down_menu('filter_id', $options, $_GET['filter_id'], 'class="form-control col-12 col-sm-6 col-md-4 col-lg-4 col-xl-3" onchange="this.form.submit()"');
     $manufacturer_dropdown .= '</form>'."\n"; 
   }
   }
