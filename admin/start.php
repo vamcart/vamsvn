@@ -472,7 +472,7 @@ $data_date[] = $report->info[$i]['text'];
 <?php
  
 // We'll process this feed with all of the default options.
-$url = 'http://blog.vamshop.ru/feed/';
+$url = 'https://blog.vamshop.ru/feed/';
 $feed = new SimplePie();
 
 // Set which feed to process.
