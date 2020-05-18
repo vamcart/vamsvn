@@ -55,7 +55,7 @@ define('RSS_FEED_DESCRIPTION', 'false');
 define('RSS_FEED_DESCRIPTION_CHARACTERS', '0');
 define('RSS_TTL', '1440'); // time to live - time after reader should refresh the info in minutes
 define('RSS_STRIP_TAGS', 'true');
-define('RSS_IMAGE', 'favicon.ico');
+define('RSS_IMAGE', 'logo.png');
 define('RSS_IMAGE_NAME', STORE_NAME);
 
 if(RSS_STRIP_TAGS == 'false') {
@@ -91,7 +91,7 @@ define('RSS_CONTENT_COPYRIGHT', 'Copyright &copy; ' . date('Y') . ' ' . STORE_OW
 	$rss->rss_feed_set('copyright', RSS_CONTENT_COPYRIGHT);
 	$rss->rss_feed_set('managingEditor', STORE_OWNER_EMAIL_ADDRESS . " (" . STORE_OWNER . ")");
 	$rss->rss_feed_set('ttl', RSS_TTL);
-	$rss->rss_feed_image(RSS_IMAGE_NAME, HTTP_SERVER . DIR_WS_CATALOG, HTTP_SERVER . DIR_WS_CATALOG . RSS_IMAGE);
+	$rss->rss_feed_image(RSS_IMAGE_NAME, HTTP_SERVER . DIR_WS_CATALOG, HTTP_SERVER . DIR_WS_CATALOG . DIR_WS_IMAGES . RSS_IMAGE);
 
 // get the language code...
 //$lang_code_query = vam_db_query("select code from " . TABLE_LANGUAGES . " where languages_id = " . $languages_id);
