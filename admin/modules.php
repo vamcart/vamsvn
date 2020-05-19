@@ -211,7 +211,7 @@
   }  
 ?>
               <tr>
-                <td colspan="3" class="smallText"><?php echo TEXT_MODULE_DIRECTORY . ' ' . $module_directory; ?></td>
+                <td colspan="4" class="smallText"><?php echo TEXT_MODULE_DIRECTORY . ' ' . $module_directory; ?></td>
               </tr>
             </table></td>
 <?php
