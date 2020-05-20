@@ -150,23 +150,23 @@ class SypexDumper
                     switch ($a) {
                         case 'cfg':
                             if (empty($user)) {
-                                continue;
+                                continue 2;
                             }
                             $auth = !empty($CFG['user']) && isset($CFG['pass']) && $CFG['user'] == $user && $CFG['pass'] == $pass;
                             break;
                         case 'mysql':
                             if (empty($user)) {
-                                continue;
+                                continue 2;
                             }
                             if ($host != 'localhost' && !empty($this->CFG['my_host']) && $this->CFG['my_host'] != $host) {
-                                continue;
+                                continue 2;
                             }
                             $auth = $this->connect($host, $port, $user, $pass);
                             break;
                         default:
                             $file = 'auth_'.$a.'.php';
                             if (!file_exists($file)) {
-                                continue;
+                                continue 2;
                             }
                             include($file);
                     }
@@ -608,7 +608,7 @@ class SypexDumper
                         } elseif (sxd_check($item[0], $object['TC'], $filter['TC'])) {
                             $type = 'TC';
                         } else {
-                            continue;
+                            continue 2;
                         }
                         $todo['TA'][] = array($type, $item[0], $item[1], $item[2]);
                         $rows += $type == 'TA' ? $item[1] : 0;
@@ -1062,7 +1062,7 @@ class SypexDumper
                                 $todo['VI'] = array();
                                 $header['VI'] = array();
                             }
-                            continue;
+                            continue 2;
                         } elseif (sxd_check($n, $object['TA'], $filter['TA'])) {
                             $engine = V_MYSQL > 40101 ? $item['Engine'] : $item['Type'];
                             $t = in_array($engine, $only_create) ? 'TC' : 'TA';
@@ -1070,7 +1070,7 @@ class SypexDumper
                             $t = 'TC';
                             $item['Rows'] = $item['Data_length'] = '';
                         } else {
-                            continue;
+                            continue 2;
                         }
                         $rowcnt = mysqli_query($GLOBALS['mysqlilink'], 'SELECT COUNT(*) from ' . $n);
                         $item['OldRows'] = $item['Rows'];
@@ -1852,3 +1852,14 @@ function sxd_antimagic($arr)
     return is_array($arr) ? array_map('sxd_antimagic', $arr) : stripslashes($arr);
 }
 
+function mysqli_result($res,$row=0,$col=0){ 
+    $numrows = mysqli_num_rows($res); 
+    if ($numrows && $row <= ($numrows-1) && $row >=0){
+        mysqli_data_seek($res,$row);
+        $resrow = (is_numeric($col)) ? mysqli_fetch_row($res) : mysqli_fetch_assoc($res);
+        if (isset($resrow[$col])){
+            return $resrow[$col];
+        }
+    }
+    return false;
+}
