@@ -61,8 +61,20 @@ $xml = simplexml_load_file($_FILES['xml_file']['tmp_name']);
     foreach ($xml->shop->offers->offer as $product) {
     	
       $products_id = $product['id'];
-      $products_quantity = (($product['available']) ? 0 : 10000);
-      $products_price = $product->price;
+      $products_stock = (($product['available']) ? 0 : 10000);
+      
+      foreach ($product->param as $params) {
+      if ($params['name'] == "Артикул") {
+    	  $products_model = (($params['name'] == "Артикул") ? $params : $products_id);
+      }
+      if ($params['name'] == "Цена РРЦ") {
+    	  $products_price = (($params['name'] == "Цена РРЦ") ? $params : $product->price);
+      }
+      if ($params['name'] == "Количество") {
+    	  $products_quantity = (($params['name'] == "Количество") ? $params : $products_stock);
+      }
+      }
+      
       $categoryId = $product->categoryId;
       $products_image = substr(strrchr($product->picture, "/"), 1);
       $products_name = unhtmlentities($product->name);
@@ -73,18 +85,57 @@ $xml = simplexml_load_file($_FILES['xml_file']['tmp_name']);
       if (vam_db_num_rows($products_query)) {
         $row=vam_db_fetch_array($products_query);
         if ($row['products_price']!=$products_price) {
-          vam_db_perform(TABLE_PRODUCTS, array('products_last_modified' => 'now()', 'products_price' => $products_price, 'products_image' => $products_image, 'group_permission_0' => 1, 'group_permission_1' => 1, 'group_permission_2' => 1, 'group_permission_3' => 1, 'products_startpage' => 1, 'products_status' => $products_status, 'products_quantity' => $products_quantity, 'products_date_available' => 'now()'), 'update', 'products_id=\''.$products_id.'\'');
-          vam_db_perform(TABLE_PRODUCTS_DESCRIPTION, array('products_name' => $products_name, 'products_description' => $products_description), 'update', 'products_id=\''.$products_id.'\' and language_id=\''.$_SESSION['languages_id'].'\'');
+          vam_db_perform(TABLE_PRODUCTS, array(
+          'products_last_modified' => 'now()', 
+          'products_price' => $products_price, 
+          'products_image' => $products_image, 
+          'group_permission_0' => 1, 
+          'group_permission_1' => 1, 
+          'group_permission_2' => 1, 
+          'group_permission_3' => 1, 
+          'products_startpage' => 1, 
+          'products_status' => $products_status, 
+          'products_quantity' => $products_quantity, 
+          'products_model' => $products_model, 
+          'products_date_available' => 'now()'), 
+          'update', 'products_id=\''.$products_id.'\'');
+          vam_db_perform(TABLE_PRODUCTS_DESCRIPTION, array(
+          'products_name' => $products_name, 
+          'products_description' => $products_description), 
+          'update', 'products_id=\''.$products_id.'\' and language_id=\''.$_SESSION['languages_id'].'\'');
           $count_upd++;
         }
       } else {
-        vam_db_perform(TABLE_PRODUCTS, array('products_id' => $products_id, 'products_last_modified' => 'now()', 'products_price' => $products_price, 'products_image' => $products_image, 'group_permission_0' => 1, 'group_permission_1' => 1, 'group_permission_2' => 1, 'group_permission_3' => 1, 'products_startpage' => 1, 'products_status' => $products_status, 'products_quantity' => $products_quantity, 'products_date_available' => 'now()'));
-        vam_db_perform(TABLE_PRODUCTS_DESCRIPTION, array('products_id' => $products_id, 'products_name' => $products_name, 'products_description' => $products_description, 'language_id' => $_SESSION['languages_id']));
-        vam_db_perform(TABLE_PRODUCTS_TO_CATEGORIES, array('products_id' => $products_id, 'categories_id' => $categoryId));
+        vam_db_perform(TABLE_PRODUCTS, array(
+        'products_id' => $products_id, 
+        'products_last_modified' => 'now()', 
+        'products_price' => $products_price, 
+        'products_image' => $products_image, 
+        'group_permission_0' => 1, 
+        'group_permission_1' => 1, 
+        'group_permission_2' => 1, 
+        'group_permission_3' => 1, 
+        'products_startpage' => 1, 
+        'products_status' => $products_status, 
+        'products_quantity' => $products_quantity, 
+        'products_model' => $products_model, 
+        'products_date_available' => 'now()')
+        );
+        vam_db_perform(TABLE_PRODUCTS_DESCRIPTION, array(
+        'products_id' => $products_id, 
+        'products_name' => $products_name, 
+        'products_description' => $products_description, 
+        'language_id' => $_SESSION['languages_id'])
+        );
+        vam_db_perform(TABLE_PRODUCTS_TO_CATEGORIES, array(
+        'products_id' => $products_id, 
+        'categories_id' => $categoryId)
+        );
         $count_add++;
       }
       $count++;
     }
+
     $messageStack->add_session(TEXT_YML_UPDATED.$count_upd, 'success');
     $messageStack->add_session(TEXT_YML_CHANGED.($count-$count_upd), 'success');
     $messageStack->add_session(TEXT_YML_ADDED.$count_add, 'success');
