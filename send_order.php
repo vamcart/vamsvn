@@ -17,6 +17,7 @@
 
 require_once (DIR_FS_INC.'vam_get_order_data.inc.php');
 require_once (DIR_FS_INC.'vam_get_attributes_model.inc.php');
+require_once (DIR_FS_INC.'get_cross_sell_name.inc.php');
 // check if customer is allowed to send this order!
 $order_query_check = vam_db_query("SELECT
   					customers_id
@@ -79,6 +80,77 @@ $order_check = vam_db_fetch_array($order_query_check);
 
 	$vamTemplate->assign('PAYMENT_INFO_HTML', constant(MODULE_PAYMENT_.strtoupper($order->info['payment_method'])._TEXT_DESCRIPTION));
 	$vamTemplate->assign('PAYMENT_INFO_TXT', str_replace("<br />", "\n", constant(MODULE_PAYMENT_.strtoupper($order->info['payment_method'])._TEXT_DESCRIPTION)));
+
+// Cross Sells In Email
+
+		if ($insert_id > 0) {
+
+		$cross_sell_products = $order->products;
+		
+		foreach ($cross_sell_products AS $in_cart) {
+		$ids[] = intval($in_cart['id']);
+		}
+		
+		$cross_sell_products_ids = implode(",",$ids);
+		
+		//echo var_dump($ids);
+		//echo var_dump($cross_sell_products_ids);
+
+  foreach ($cross_sell_products AS $product_id_in_cart) {
+
+		$cs_groups = "SELECT products_xsell_grp_name_id FROM ".TABLE_PRODUCTS_XSELL." WHERE products_id in (".$cross_sell_products_ids.") GROUP BY products_xsell_grp_name_id";
+		$cs_groups = vamDBquery($cs_groups);
+		$cross_sell_data = array ();
+		if (vam_db_num_rows($cs_groups, true)>0) {
+		while ($cross_sells = vam_db_fetch_array($cs_groups, true)) {
+
+			$fsk_lock = '';
+			if ($_SESSION['customers_status']['customers_fsk18_display'] == '0') {
+				$fsk_lock = ' and p.products_fsk18!=1';
+			}
+			$group_check = "";
+			if (GROUP_CHECK == 'true') {
+				$group_check = " and p.group_permission_".$_SESSION['customers_status']['customers_status_id']."=1 ";
+			}
+
+				$cross_query = vamDBquery("select p.products_fsk18,
+												p.products_tax_class_id,
+												p.products_id,
+												p.label_id,
+												p.products_image,
+												p.products_quantity,
+												pd.products_name,
+												pd.products_short_description,
+												p.products_fsk18,p.products_price,p.products_vpe,
+												p.products_vpe_status,
+												p.products_vpe_value,  
+												xp.sort_order from ".TABLE_PRODUCTS_XSELL." xp, ".TABLE_PRODUCTS." p, ".TABLE_PRODUCTS_DESCRIPTION." pd
+												where xp.products_id in (".$cross_sell_products_ids.") and xp.xsell_id not in (".$cross_sell_products_ids.") and xp.xsell_id = p.products_id ".$fsk_lock.$group_check."
+												and p.products_id = pd.products_id 
+												and xp.products_xsell_grp_name_id = ".$cross_sells['products_xsell_grp_name_id']."
+												and pd.language_id = '".$_SESSION['languages_id']."'
+												and p.products_status = '1'
+												and p.products_quantity > '0'
+												group by p.products_id
+												order by xp.sort_order asc limit ".MAX_DISPLAY_ALSO_PURCHASED."");
+												
+			if (vam_db_num_rows($cross_query, true) > 0)
+				$cross_sell_data[$cross_sells['products_xsell_grp_name_id']] = array ('GROUP' => vam_get_cross_sell_name($cross_sells['products_xsell_grp_name_id']), 'PRODUCTS' => array ());
+
+			while ($xsell = vam_db_fetch_array($cross_query, true)) {
+
+				$cross_sell_data[$cross_sells['products_xsell_grp_name_id']]['PRODUCTS'][] = $product->buildDataArray($xsell);
+			}
+
+		}
+		}
+
+		}
+		
+	   $vamTemplate->assign('cross_sell', $cross_sell_data);
+	   
+		}
+
 
 	// dont allow cache
 	$vamTemplate->caching = false;
