@@ -40,7 +40,7 @@ $order_check = vam_db_fetch_array($order_query_check);
 	$vamTemplate->assign('csID', $order->customer['csID']);
 
   $it=0;
-	$semextrfields = vamDBquery("select * from " . TABLE_EXTRA_FIELDS . " where fields_required_email = '1'");
+	$semextrfields = vamDBquery("select * from " . TABLE_EXTRA_FIELDS . " where fields_status=1 and fields_required_email = '1'");
 	while($dataexfes = vam_db_fetch_array($semextrfields,true)) {
 	$cusextrfields = vamDBquery("select * from " . TABLE_CUSTOMERS_TO_EXTRA_FIELDS . " where customers_id = '" . (int)$_SESSION['customer_id'] . "' and fields_id = '" . $dataexfes['fields_id'] . "'");
 	$rescusextrfields = vam_db_fetch_array($cusextrfields,true);
