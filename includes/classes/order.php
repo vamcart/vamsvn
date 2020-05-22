@@ -212,9 +212,17 @@
 	        				products_quantity
 	        				FROM ".TABLE_ORDERS_PRODUCTS."
 	        				WHERE orders_id='".(int) $oID."'";
+	        				
 	$order_data = array ();
 	$order_query = vam_db_query($order_query);
 	while ($order_data_values = vam_db_fetch_array($order_query)) {
+		
+		$image_query = vam_db_query("SELECT
+		        				products_image 
+		        				FROM ".TABLE_PRODUCTS."
+		        				WHERE products_id='".(int)$order_data_values['products_id']."'");
+		$image = vam_db_fetch_array($image_query);
+
 		$attributes_query = "SELECT
 		        				products_options,
 		        				guid,
@@ -231,8 +239,10 @@
 			$attributes_model .= '<br />'.vam_get_attributes_model($order_data_values['products_id'], $attributes_data_values['products_options_values'],$attributes_data_values['products_options']);
 
 		}
+		
       	$order_data[] = array (
       	'PRODUCTS_ID' => $order_data_values['products_id'], 
+      	'PRODUCTS_IMAGE' => $image['products_image'], 
       	'PRODUCTS_LINK' => vam_href_link(FILENAME_PRODUCT_INFO, vam_product_link($order_data_values['products_id'], $order_data_values['products_name'])),
       	'PRODUCTS_MODEL' => $order_data_values['products_model'], 
       	'PRODUCTS_NAME' => $order_data_values['products_name'],
