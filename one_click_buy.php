@@ -98,6 +98,7 @@ $vamTemplate->assign('error', $messageStack->output('one_click_buy'));
 
 		if ($error == false) {
 		$vamTemplate->assign('PRODUCTS_NAME', $product_info['products_name']);
+		$vamTemplate->assign('PRODUCTS_IMAGE', $product_info['products_image']);
 		$vamTemplate->assign('PRODUCTS_MODEL', $product_info['products_model']);
 		$vamTemplate->assign('TEXT_MESSAGE', $_POST['message_body']);
 		$vamTemplate->assign('TEXT_FIRSTNAME', $firstname);
@@ -171,6 +172,7 @@ include ('includes/header.php');
 $breadcrumb->add(NAVBAR_TITLE_ASK, vam_href_link(FILENAME_ONE_CLICK_BUY, 'products_id='.$product->data['products_id'], 'SSL'));
 
 $vamTemplate->assign('PRODUCTS_NAME', $product_info['products_name']);
+$vamTemplate->assign('PRODUCTS_IMAGE', $product_info['products_image']);
 $vamTemplate->assign('PRODUCTS_MODEL', $product_info['products_model']);
 
 $vamTemplate->assign('FORM_ACTION', vam_draw_form('one_click_buy', vam_href_link(FILENAME_ONE_CLICK_BUY, 'products_id='.$_GET['products_id'].'')).vam_draw_hidden_field('action', 'process').vam_draw_hidden_field('products_id', $_GET['products_id']));
