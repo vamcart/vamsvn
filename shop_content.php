@@ -103,7 +103,21 @@ if ($_GET['coID'] == 7) {
 	if (isset ($_GET['action']) && ($_GET['action'] == 'send') && $spam_flag == false) {
 		if (vam_validate_email(trim($_POST['email']))) {
 
-			vam_php_mail(CONTACT_US_EMAIL_ADDRESS, CONTACT_US_NAME, CONTACT_US_EMAIL_ADDRESS, CONTACT_US_NAME, CONTACT_US_FORWARDING_STRING, $_POST['email'], $_POST['name'], '', '', CONTACT_US_EMAIL_SUBJECT, nl2br($_POST['message_body']), $_POST['message_body']);
+			// assign language to template for caching
+			$vamTemplate->assign('language', $_SESSION['language']);
+			$vamTemplate->assign('tpl_path', 'templates/'.CURRENT_TEMPLATE.'/');
+			$vamTemplate->assign('logo_path', HTTP_SERVER.DIR_WS_CATALOG.'templates/'.CURRENT_TEMPLATE.'/img/');
+		
+			// assign vars
+			$vamTemplate->assign('CONTENT', nl2br($_POST['message_body']));
+			// dont allow cache
+			$vamTemplate->caching = false;
+		
+			// create mails
+			$html_mail = $vamTemplate->fetch(CURRENT_TEMPLATE.'/mail/'.$_SESSION['language'].'/contact_us_mail.html');
+			$txt_mail = $vamTemplate->fetch(CURRENT_TEMPLATE.'/mail/'.$_SESSION['language'].'/contact_us_mail.txt');
+
+			vam_php_mail(CONTACT_US_EMAIL_ADDRESS, CONTACT_US_NAME, CONTACT_US_EMAIL_ADDRESS, CONTACT_US_NAME, CONTACT_US_FORWARDING_STRING, $_POST['email'], $_POST['name'], '', '', CONTACT_US_EMAIL_SUBJECT, $html_mail, $txt_mail);
 
 			if (!isset ($mail_error)) {
 				vam_redirect(vam_href_link(FILENAME_CONTENT, 'action=success&coID='.(int) $_GET['coID']));
