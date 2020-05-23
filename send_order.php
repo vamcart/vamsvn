@@ -82,7 +82,7 @@ $order_check = vam_db_fetch_array($order_query_check);
 	$vamTemplate->assign('PAYMENT_INFO_TXT', str_replace("<br />", "\n", constant(MODULE_PAYMENT_.strtoupper($order->info['payment_method'])._TEXT_DESCRIPTION)));
 
 // Cross Sells In Email
-
+if (XSELL_CART == 'true') {
 		if ($insert_id > 0) {
 
 		$cross_sell_products = $order->products;
@@ -150,7 +150,7 @@ $order_check = vam_db_fetch_array($order_query_check);
 	   $vamTemplate->assign('cross_sell', $cross_sell_data);
 	   
 		}
-
+}
 
 	// dont allow cache
 	$vamTemplate->caching = false;
