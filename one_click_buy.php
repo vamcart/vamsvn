@@ -99,6 +99,8 @@ $vamTemplate->assign('error', $messageStack->output('one_click_buy'));
 		if ($error == false) {
 		$vamTemplate->assign('PRODUCTS_NAME', $product_info['products_name']);
 		$vamTemplate->assign('PRODUCTS_IMAGE', $product_info['products_image']);
+      $products_price = $vamPrice->GetPrice($product_info['products_id'], $format = true, 1, $product_info['products_tax_class_id'], $product_info['products_price'], 1);
+		$vamTemplate->assign('PRODUCTS_PRICE', $products_price['formated']);
 		$vamTemplate->assign('PRODUCTS_MODEL', $product_info['products_model']);
 		$vamTemplate->assign('TEXT_MESSAGE', $_POST['message_body']);
 		$vamTemplate->assign('TEXT_FIRSTNAME', $firstname);
@@ -173,6 +175,9 @@ $breadcrumb->add(NAVBAR_TITLE_ASK, vam_href_link(FILENAME_ONE_CLICK_BUY, 'produc
 
 $vamTemplate->assign('PRODUCTS_NAME', $product_info['products_name']);
 $vamTemplate->assign('PRODUCTS_IMAGE', $product_info['products_image']);
+$products_price = $vamPrice->GetPrice($product_info['products_id'], $format = true, 1, $product_info['products_tax_class_id'], $product_info['products_price'], 1);
+$vamTemplate->assign('PRODUCTS_PRICE', $products_price['formated']);
+$vamTemplate->assign('PRODUCTS_MODEL', $product_info['products_model']);
 $vamTemplate->assign('PRODUCTS_MODEL', $product_info['products_model']);
 
 $vamTemplate->assign('FORM_ACTION', vam_draw_form('one_click_buy', vam_href_link(FILENAME_ONE_CLICK_BUY, 'products_id='.$_GET['products_id'].'')).vam_draw_hidden_field('action', 'process').vam_draw_hidden_field('products_id', $_GET['products_id']));
