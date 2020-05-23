@@ -1,7 +1,7 @@
 <!doctype html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
 <head>
-<title>{$smarty.const.STORE_NAME} - Задать вопрос о товаре</title>
+<title>{$smarty.const.STORE_NAME} - Вопрос о товаре</title>
 <!--[if !mso]><!-- --> 
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <!--<![endif]--> 
@@ -60,7 +60,7 @@
                            <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
                               <tr>
                                  <td align="center" style="font-family: Open Sans, Helvetica, Tahoma, Arial, sans-serif; font-size: 0px; padding: 0; word-break: break-word;">
-                                    <div style="font-family: Open Sans, Helvetica, Tahoma, Arial, sans-serif; font-size: 1px; font-weight: 400; line-height: 0; text-align: center; color: #F2F2F2;">Заказ успешно оформлен!</div>
+                                    <div style="font-family: Open Sans, Helvetica, Tahoma, Arial, sans-serif; font-size: 1px; font-weight: 400; line-height: 0; text-align: center; color: #F2F2F2;">Вопрос о товаре!</div>
                                  </td>
                               </tr>
                            </table>
@@ -260,6 +260,79 @@
 </tr>
 <![endif]-->
 
+<!-- product list --> <!-- Products List --> <!--[if mso | IE]> 
+<tr>
+<td class="products-list-outlook margin-bottom-outlook" width="600px" >
+<table align="center" border="0" cellpadding="0" cellspacing="0" class="products-list-outlook margin-bottom-outlook" style="width:560px;" width="560" >
+<tr>
+<td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;">
+<![endif]--> 
+<div class="products-list margin-bottom" style="padding: 10px 0; background-color: #fff; border-radius: 10px; font-family: Open Sans, Helvetica, Tahoma, Arial, sans-serif; margin: 0px auto; max-width: 560px; margin-bottom: 15px;">
+   <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:100%;">
+      <tbody>
+         <tr>
+            <td style="font-family: Open Sans, Helvetica, Tahoma, Arial, sans-serif; direction: ltr; font-size: 0px; padding: 0px; text-align: center;" align="center">
+               <!--[if mso | IE]> 
+               <table role="presentation" border="0" cellpadding="0" cellspacing="0">
+                  <tr>
+                     <td class="" style="vertical-align:top;width:560px;" >
+                        <![endif]--> 
+                        <div class="column-per-100 outlook-group-fix" style="font-family: Open Sans, Helvetica, Tahoma, Arial, sans-serif; font-size: 0px; text-align: left; direction: ltr; display: inline-block; vertical-align: top; width: 100%;">
+                           <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
+                              <tr>
+                                 <td align="left" class="products-list-table" style="font-family: Open Sans, Helvetica, Tahoma, Arial, sans-serif; font-size: 0px; padding: 10px 25px; word-break: break-word;">
+                                    <table cellpadding="0" cellspacing="0" width="100%" border="0" style="color:#999;font-family:Open Sans, Helvetica, Tahoma, Arial, sans-serif;font-size:13px;line-height:22px;table-layout:auto;width:100%;border:none;">
+                                       <tr class="products-list-header" style="border-bottom: 2px solid #D8D8D8; line-height: 30px;">
+                                          <th class="image-column" width="55%" align="left" style="line-height: 18px; padding-bottom: 18px; color: #333;"> Информация о товаре</th>
+                                          <th class="price-column" width="45%" align="right" style="line-height: 18px; padding-bottom: 18px; color: #333;"></th>
+                                       </tr>
+                                       <tr>
+                                          <td class="product-img" width="40%" align="center" style="font-family: Open Sans, Helvetica, Tahoma, Arial, sans-serif; vertical-align: top; line-height: 1; padding: 15px 0 20px 0; border-bottom: 1px dashed #D8D8D8; font-size: 14px;" valign="top"> {if {$PRODUCTS_IMAGE} != ''}<a href="{$PRODUCT_LINK}" style="font-family: Open Sans, Helvetica, Tahoma, Arial, sans-serif;"> <img src="{$smarty.const.HTTP_SERVER}{$smarty.const.DIR_WS_CATALOG}{$smarty.const.DIR_WS_THUMBNAIL_IMAGES}{$PRODUCTS_IMAGE}" class="products-gallery-image" style="display: block; width: 80px;" width="80"> </a>{/if} </td>
+                                          <td align="left" width="60%" style="font-family: Open Sans, Helvetica, Tahoma, Arial, sans-serif; vertical-align: top; line-height: 1; padding: 15px 0 20px 0; border-bottom: 1px dashed #D8D8D8; font-size: 14px;" valign="top">
+                                             <div class="product-info" style="font-family: Open Sans, Helvetica, Tahoma, Arial, sans-serif; width: 100%; min-height: 80px; margin-bottom: 20px;"> <a href="{$PRODUCT_LINK}" style="font-family: Open Sans, Helvetica, Tahoma, Arial, sans-serif; display: block; color: #333; font-weight: bold; line-height: 20px; text-decoration: none;"> {$PRODUCTS_NAME} </a> {if $PRODUCTS_MODEL neq ''}<br /><span style="color: #999;">Артикул: {$PRODUCTS_MODEL}</span>{/if}</div>
+                                          </td>
+                                       </tr>
+                                    </table>
+                                 </td>
+                              </tr>
+                              <tr>
+                                 <td align="left" class="order-info-table" style="font-family: Open Sans, Helvetica, Tahoma, Arial, sans-serif; font-size: 0px; padding: 10px 25px; word-break: break-word;">
+                                    <table cellpadding="0" cellspacing="0" width="100%" border="0" style="color:#000000;font-family:Open Sans, Helvetica, Tahoma, Arial, sans-serif;font-size:13px;line-height:22px;table-layout:auto;width:100%;border:none;">
+                                       <tr>
+                                          <td width="65%" style="font-family: Open Sans, Helvetica, Tahoma, Arial, sans-serif;"> <span style="font-family: Open Sans, Helvetica, Tahoma, Arial, sans-serif; color: #999999;">Стоимость товара </span> </td>
+                                          <td width="35%" align="right" style="font-family: Open Sans, Helvetica, Tahoma, Arial, sans-serif;"> <span style="font-family: Open Sans, Helvetica, Tahoma, Arial, sans-serif; font-weight: bold;">{$PRODUCTS_PRICE}</span> </td>
+                                       </tr>
+                                    </table>
+                                 </td>
+                              </tr>
+                              <tr>
+                                 <td align="center" vertical-align="middle" style="font-family: Open Sans, Helvetica, Tahoma, Arial, sans-serif; font-size: 0px; padding: 10px 25px; word-break: break-word;">
+                                    <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse:separate;width:100%;line-height:100%;">
+                                       <tr>
+                                          <td align="center" bgcolor="#dd2c00" role="presentation" style="font-family: Open Sans, Helvetica, Tahoma, Arial, sans-serif; border: none; border-radius: 3px; cursor: auto; mso-padding-alt: 0; background: #dd2c00;" valign="middle"> <a href="{$PRODUCT_LINK}" style="display: inline-block; background: #dd2c00; color: #ffffff; font-family: Open Sans, Helvetica, Tahoma, Arial, sans-serif; font-size: 18px; font-weight: bold; line-height: 36px; margin: 0; text-decoration: none; text-transform: none; padding: 0; mso-padding-alt: 0px; border-radius: 3px;" target="_blank"> Смотреть товар в каталоге </a> </td>
+                                       </tr>
+                                    </table>
+                                 </td>
+                              </tr>
+                           </table>
+                        </div>
+                        <!--[if mso | IE]> 
+                     </td>
+                  </tr>
+               </table>
+               <![endif]--> 
+            </td>
+         </tr>
+      </tbody>
+   </table>
+</div>
+<!--[if mso | IE]> 
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<![endif]-->
 
 <!--[if mso | IE]> 
 </table>
