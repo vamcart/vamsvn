@@ -754,8 +754,8 @@ $content_meta_default = vam_db_fetch_array($content_meta_default_query,true);
 			$content_default_title = TITLE;
 }
 
-   $mDesc = (isset($content_meta_default['content_meta_description']) ? $content_meta_default['content_meta_description'] : null);
-   $mKey = (isset($content_meta_default['content_meta_keywords']) ? $content_meta_default['content_meta_keywords'] : null);
+   $mDesc = (isset($content_meta_default['content_meta_description']) ? $content_meta_default['content_meta_description'] : TITLE);
+   $mKey = (isset($content_meta_default['content_meta_keywords']) ? $content_meta_default['content_meta_keywords'] : TITLE);
 
 		if (isset($_GET['filter_id']) or isset($_GET['manufacturers_id'])) {		
 
