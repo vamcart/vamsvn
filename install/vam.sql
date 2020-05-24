@@ -1914,14 +1914,14 @@ INSERT INTO shipping_status VALUES (3, 1, '2 недели', '');
 
 # data
 
-INSERT INTO `content_manager` VALUES (1, 0, 0, '', 1, 'Доставка', 'Доставка', 'Условия доставки.', '', 0, 1, '', 1, 1, 0,'','','','shipping.html', 0, 0);
-INSERT INTO `content_manager` VALUES (2, 0, 0, '', 1, 'Оплата', 'Оплата', 'Условия оплаты.', '', 0, 1, '', 1, 2, 0,'','','','payment.html', 0, 0);
-INSERT INTO `content_manager` VALUES (3, 0, 0, '', 1, 'Условия использования', 'Условия использования', 'Ваш текст', '', 0, 1, '', 1, 3, 0,'','','','privacy.html', 0, 0);
-INSERT INTO `content_manager` VALUES (4, 0, 0, '', 1, 'Информация о магазине', 'Информация о магазине', 'Текст страницы информация о магазине.', '', 0, 1, '', 1, 4, 0,'','','','about_us.html', 0, 0);
+INSERT INTO `content_manager` VALUES (1, 0, 0, '', 1, 'Доставка', 'Доставка', 'Условия доставки.', '', 0, 1, '', 1, 1, 0,'','Доставка','Доставка','shipping.html', 0, 0);
+INSERT INTO `content_manager` VALUES (2, 0, 0, '', 1, 'Оплата', 'Оплата', 'Условия оплаты.', '', 0, 1, '', 1, 2, 0,'','Оплата','Оплата','payment.html', 0, 0);
+INSERT INTO `content_manager` VALUES (3, 0, 0, '', 1, 'Условия использования', 'Условия использования', 'Ваш текст', '', 0, 1, '', 1, 3, 0,'','Условия использования','Условия использования','privacy.html', 0, 0);
+INSERT INTO `content_manager` VALUES (4, 0, 0, '', 1, 'Информация о магазине', 'Информация о магазине', 'Текст страницы информация о магазине.', '', 0, 1, '', 1, 4, 0,'','Информация о магазине','Информация о магазине','about_us.html', 0, 0);
 INSERT INTO `content_manager` VALUES (5, 0, 0, '', 1, 'Главная страница', 'Добро пожаловать', '<div class="box h-100 mt-2 mb-4">\r\n			<div class="itemside">\r\n				<div class="aside align-top">\r\n					<span class="icon-wrap icon-md round bg-warning">\r\n						<i class="fa fa-lightbulb white"></i>\r\n					</span>\r\n				</div>\r\n				<div class="text-wrap">\r\n				   <h5 class="title">Вы установили интернет-магазин VamShop</h5>\r\n				   <p>Данный текст можно изменить в Админке - Разное - Инструменты - Информационные страницы.</p>\r\n				</div>\r\n			</div>\r\n	</div>\r\n', '', 0, 1, '', 0, 5, 0,'Главная страница','Главная страница','Главная страница','', 0, 0);
-INSERT INTO `content_manager` VALUES (6, 0, 0, '', 1, 'Пример страницы', 'Пример страницы', 'Текст страницы', '', 0, 1, '', 0, 6, 1,'','','','', 0, 0);
-INSERT INTO `content_manager` VALUES (7, 0, 0, '', 1, 'Свяжитесь с нами', 'Свяжитесь с нами', 'Форма обратной связи', '', 0, 1, '', 1, 7, 0,'','','','contact_us.html', 0, 0);
-INSERT INTO `content_manager` VALUES (8, 0, 0, '', 1, 'Карта сайта', 'Карта сайта', '', '', 0, 0, 'sitemap.php', 1, 8, 0,'','','','', 0, 0);
+INSERT INTO `content_manager` VALUES (6, 0, 0, '', 1, 'Пример страницы', 'Пример страницы', 'Текст страницы', '', 0, 1, '', 0, 6, 1,'','Пример страницы','Пример страницы','sample.html', 0, 0);
+INSERT INTO `content_manager` VALUES (7, 0, 0, '', 1, 'Свяжитесь с нами', 'Свяжитесь с нами', 'Форма обратной связи', '', 0, 1, '', 1, 7, 0,'','Форма обратной связи','Форма обратной связи','contact_us.html', 0, 0);
+INSERT INTO `content_manager` VALUES (8, 0, 0, '', 1, 'Карта сайта', 'Карта сайта', '', '', 0, 0, 'sitemap.php', 1, 8, 0,'','Карта сайта','Карта сайта','', 0, 0);
 
 INSERT INTO content_manager VALUES (9, 0, 0, '', 1, 'Правила партнёрской программы', 'Правила и условия партнёрской программы', '<b>1. Участники партнёрской программы.</b>
 <br />
@@ -1967,7 +1967,7 @@ INSERT INTO content_manager VALUES (9, 0, 0, '', 1, 'Правила партнё
 <br />
 В случае возникновения разногласий, стороны будут стремиться урегулировать возникшие разногласия путем переговоров. В случае, если стороны не придут к соглашению, то спор подлежит рассмотрению в суде РФ.
 <br />
-<br />', '', 0, 2, '', 1, 9, 0,'','','','',0,0);
+<br />', '', 0, 2, '', 1, 9, 0,'','Правила партнёрской программы','Правила партнёрской программы','',0,0);
 INSERT INTO content_manager VALUES (10, 0, 0, '', 1, 'Информация', 'Информация', '<b>1. Участники партнёрской программы.</b>
 <br />
 Участниками партнёрской программы могут быть физические лица. Под физическими лицами понимаются граждане РФ, иностранные граждане, лица без гражданства, а так же предприниматели без образования юридического лица.
@@ -2012,7 +2012,7 @@ INSERT INTO content_manager VALUES (10, 0, 0, '', 1, 'Информация', 'И
 <br />
 В случае возникновения разногласий, стороны будут стремиться урегулировать возникшие разногласия путем переговоров. В случае, если стороны не придут к соглашению, то спор подлежит рассмотрению в суде РФ.
 <br />
-<br />', '', 0, 2, '', 1, 10, 0,'','','','',0,0);
+<br />', '', 0, 2, '', 1, 10, 0,'','Информация','Информация','',0,0);
 INSERT INTO content_manager VALUES (11, 0, 0, '', 1, 'Вопросы и ответы', 'Вопросы и ответы', 'Список частозадаваемых вопросов по партнёрской программе.<br>
 <br>
 <ul>
@@ -2039,9 +2039,9 @@ INSERT INTO content_manager VALUES (11, 0, 0, '', 1, 'Вопросы и отве
 <p style="line-height: 100%; word-spacing: 0; text-indent: 0; margin: 0"><font color="maroon">Что будет если покупатель, который пришёл с моего сайта не оплатит заказ?</font><a name="4"></a><br>
 Вы не получите свою комиссию, т.к. комиссия начисляется только за <b>оплаченные</b> заказы.</p>
 <p align="right" style="line-height: 100%; word-spacing: 0; text-indent: 0; margin: 0"></p>
-<p align="right" style="line-height: 100%; word-spacing: 0; text-indent: 0; margin: 0">&nbsp;</p>', '', 0, 2, '', 1, 11, 0,'','','','',0,0);
+<p align="right" style="line-height: 100%; word-spacing: 0; text-indent: 0; margin: 0">&nbsp;</p>', '', 0, 2, '', 1, 11, 0,'','Вопросы и ответы','Вопросы и ответы','',0,0);
 
-INSERT INTO content_manager VALUES (12, 0, 0, '', 1, '404', '404', '<div class="text-center">\r\n<h1 class="text-success text-center"><i class="fa fa-question fa-7x"></i></h1>\r\n<p>Не найдены товары, соответствующие Вашему запросу.</p>\r\n<form name="new_find" id="new_find" action="advanced_search_result.php" method="get"><span class="bold">Воспользуйтесь поиском!</span> <br /><br /><!-- форма --><fieldset class="form"><legend class="h6">Ключевые слова:</legend>\r\n<p><input type="text" name="keywords" size="30" maxlength="30" /></p>\r\n<p><span class="button"><button type="submit"><img src="images/icons/buttons/search.png" alt="Поиск" title=" Поиск " width="12" height="12" />&nbsp;Поиск</button></span></p>\r\n</fieldset><!-- /форма --></form></div>', '', 0, 0, '', 0, 12, 1, '', '', '', '404.html',0,0);
+INSERT INTO content_manager VALUES (12, 0, 0, '', 1, '404', '404', '<div class="text-center">\r\n<h1 class="text-success text-center"><i class="fa fa-question fa-7x"></i></h1>\r\n<p>Не найдены товары, соответствующие Вашему запросу.</p>\r\n<form name="new_find" id="new_find" action="advanced_search_result.php" method="get"><span class="bold">Воспользуйтесь поиском!</span> <br /><br /><!-- форма --><fieldset class="form"><legend class="h6">Ключевые слова:</legend>\r\n<p><input type="text" name="keywords" size="30" maxlength="30" /></p>\r\n<p><span class="button"><button type="submit"><img src="images/icons/buttons/search.png" alt="Поиск" title=" Поиск " width="12" height="12" />&nbsp;Поиск</button></span></p>\r\n</fieldset><!-- /форма --></form></div>', '', 0, 0, '', 0, 12, 1, '', '404', '404', '404.html',0,0);
 
 # 1 - Default, 2 - USA, 3 - Spain, 4 - Singapore, 5 - Germany
 INSERT INTO address_format VALUES (1, '$firstname $secondname $lastname$cr$streets$cr$city, $postcode$cr$statecomma$country','$city / $country');
