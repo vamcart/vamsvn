@@ -718,6 +718,10 @@ $reviews = vam_db_fetch_array($reviews_query);
 
   case (strstr($PHP_SELF, FILENAME_ADVANCED_SEARCH_RESULT)):
 
+if ($_GET['keywords'] == '') {
+$_GET['keywords'] = TITLE;
+}
+
 ?>
 <title><?php echo str_replace('+',' ', mb_convert_case($_GET['keywords'], MB_CASE_TITLE, "UTF-8")) . (isset($_GET['page']) && $_GET['page'] > 0 ? ' - ' . TEXT_PAGE_IN_CAT . ' ' . $_GET['page'] : null); ?></title>	
 <meta name="description" content="<?php echo str_replace('+',' ', mb_convert_case($_GET['keywords'], MB_CASE_TITLE, "UTF-8")) . (isset($_GET['page']) && $_GET['page'] > 0 ? ' - ' . TEXT_PAGE_IN_CAT . ' ' . $_GET['page'] : null); ?>" />
