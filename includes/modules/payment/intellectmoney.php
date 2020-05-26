@@ -335,7 +335,7 @@ if ($_SERVER["HTTP_X_FORWARDED_FOR"]) {
       $process_button_string = '';
       
       ((MODULE_PAYMENT_INTELLECTMONEY_TEST == 'test') ? $currency = 'TST' : $currency = $order->info['currency']);
-      $order_sum = number_format($order->info['total'],2);
+      $order_sum = number_format($order->info['total'],2, '.', '');
       
       $process_button_string = vam_draw_hidden_field('eshopId', MODULE_PAYMENT_INTELLECTMONEY_ID) .
                                vam_draw_hidden_field('orderId', substr($_SESSION['cart_intellectmoney_id'], strpos($_SESSION['cart_intellectmoney_id'], '-')+1)) .
