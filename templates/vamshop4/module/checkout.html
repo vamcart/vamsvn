@@ -1,6 +1,5 @@
 {config_load file="$language/lang_$language.conf" section="create_account"}
 <div class="page">
-<h1>{#heading_checkout#}</h1>
 <div class="pageContent">
 {if $smarty.const.DADATA_API_KEY != "" and $smarty.session.language == "russian"}
 <!--[if lt IE 10]>
@@ -106,6 +105,8 @@ $(function($){
 
 <div class="row">
 <div class="col-xl-9">
+
+<h1>{#heading_checkout#}</h1>
 
 <div id="box">
 <div id="checkout">
@@ -343,6 +344,8 @@ $(function($){
 <button type="submit" class="btn btn-primary btn-block"><i class="fa fa-shopping-cart"></i> {$smarty.const.IMAGE_BUTTON_CHECKOUT}</button></div>
 </div>
 
+
+</div>
 
 </div>
 
