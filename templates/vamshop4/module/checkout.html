@@ -103,6 +103,10 @@ $(function($){
 {/literal}
 </script>
 <div id="load_status"></div>
+
+<div class="row">
+<div class="col-xl-9">
+
 <div id="box">
 <div id="checkout">
 {$PAYMENT_FIELDS}
@@ -304,23 +308,46 @@ $(function($){
 </div><!--div end comment_box--> 
 {/if}
 
+</div><!-- Div end checkout -->
+</div><!-- Div end checkout_container -->
+
+</div>
+
+
+<div class="col-xl-3">
+
 <div id="order_total_modules" class="sm_layout_box">
-<h2>{$TITLE_TOTALS}</h2>
-<div class="contentText">
-<div style="float: right;">
-<table border="0" cellspacing="0" cellpadding="2">
+
+<h3>{$TITLE_TOTALS}</h3>
+
+<div class="card card-product card-sm">
+<div class="card-body">
+<div class="info-wrap">
 {$ORDER_TOTALS}
-</table>
-</div>
-</div>
-<p>&nbsp;</p>
-</div><!--div end order_total_modules -->
+<hr />
 
 {if $conditions=='true'}
 <div id="conditions" class="sm_layout_box">
 {$AGB_checkbox} {$smarty.const.SC_CONDITION} {$AGB_LINK} {$smarty.const.SC_CONDITION_END}
 </div><!--div end conditions --> 
 {/if}
+
+<br />
+<div>
+{$smarty.const.PRIVACY_TEXT}
+</div>
+
+</div>
+</div>
+<div class="card-footer text-center">
+<button type="submit" class="btn btn-primary btn-block"><i class="fa fa-shopping-cart"></i> {$smarty.const.IMAGE_BUTTON_CHECKOUT}</button></div>
+</div>
+
+
+</div>
+
+</div>
+
 
 <div class="form-anti-bot" style="clear:both;">
 	<strong>Current <span style="display:none;">month</span> <span style="display:inline;">ye@r</span> <span style="display:none;">day</span></strong> <span class="required">*</span>
@@ -332,20 +359,7 @@ $(function($){
 	<input type="text" name="anti-bot-e-email-url" id="anti-bot-e-email-url" size="30" value=""/>
 </div>
 
-<br />
-
-<div class="clear"></div>
-
-<div class="pageContentFooter text-right">
-{$BUTTON_CONTINUE}
-</div>
-<br />
-<div>
-{$smarty.const.PRIVACY_TEXT}
-</div>
 {$FORM_END}
-</div><!-- Div end checkout -->
-</div><!-- Div end checkout_container -->
 
 </div>
 </div>
