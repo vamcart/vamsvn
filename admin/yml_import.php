@@ -131,6 +131,21 @@ $xml = simplexml_load_file($_FILES['xml_file']['tmp_name']);
         'products_id' => $products_id, 
         'categories_id' => $categoryId)
         );
+        
+		//MO_PICS
+		$img = 0;
+		$products_image_name = '';
+		foreach ($product->picture as $image) {
+			
+			$products_image_name = substr(strrchr($image, "/"), 1);
+			
+			//echo var_dump($image);
+			if ($products_image != $products_image_name) {			
+			create_MO_PICS ($products_image_name, $img, 'insert', $products_id, $products_data);
+			}
+			$img++;
+		}
+        
         $count_add++;
       }
       $count++;
@@ -146,6 +161,45 @@ $xml = simplexml_load_file($_FILES['xml_file']['tmp_name']);
   }
 
   vam_redirect(vam_href_link(FILENAME_YML_IMPORT));
+}
+
+//BOF Added by Andreaz. Support-Functions for images.
+function create_MO_PICS ($mo_products_image_name, $mo_image_number, $performed_action, $products_id, &$products_data){
+	$absolute_image_number = $mo_image_number+1;
+	$mo_img = array ('products_id' => vam_db_prepare_input($products_id), 
+			'image_nr' => vam_db_prepare_input($absolute_image_number), 
+			'image_name' => vam_db_prepare_input($mo_products_image_name),
+			'image_description' => vam_db_prepare_input($products_data['mo_pics_descr_'.$mo_image_number]) );
+	$previous_image_name = $products_data['products_previous_image_'.$absolute_image_number];
+
+	
+	if ($performed_action == 'insert') {
+		//New product add. Insert new additional image record into DB
+		vam_db_perform(TABLE_PRODUCTS_IMAGES, $mo_img);
+	} elseif ($performed_action == 'update' && $previous_image_name) {
+		//We update existing product and previous image exists.
+		if ($products_data['del_mo_pic']) {
+			foreach ($products_data['del_mo_pic'] AS $dummy => $val) {
+				//MO_PICS records were deleted - insert if necessary
+				if ($val == $previous_image_name){
+					vam_db_perform(TABLE_PRODUCTS_IMAGES, $mo_img);
+				}
+				break;
+			}
+		}
+		//Update DB with new existing image
+		vam_db_perform(TABLE_PRODUCTS_IMAGES, $mo_img, 'update', 'image_name = \''.vam_db_input($previous_image_name).'\'');
+	} elseif (!$previous_image_name){
+		//additional picture was not exists before. Insert it into DB
+		vam_db_perform(TABLE_PRODUCTS_IMAGES, $mo_img);
+	}
+
+	//assign products_image_name right value to correctly create thumbnail, info and popup images
+	$products_image_name = $mo_products_image_name;
+	
+	//require (DIR_WS_INCLUDES.'product_thumbnail_images.php');
+	//require (DIR_WS_INCLUDES.'product_info_images.php');
+	//require (DIR_WS_INCLUDES.'product_popup_images.php');
 }
 
 ?>
