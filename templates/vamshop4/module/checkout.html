@@ -6,7 +6,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-ajaxtransport-xdomainrequest/1.0.1/jquery.xdomainrequest.min.js"></script>
 <![endif]-->
 <script src="https://cdn.jsdelivr.net/jquery.suggestions/16.5.2/js/jquery.suggestions.min.js"></script>
-<script type="text/javascript">
+<script>
 {literal}
 $(function () {
 
@@ -84,7 +84,7 @@ function showSelected(suggestion) {
 </script>
 {/literal}
 {/if}
-<script type="text/javascript">
+<script>
 {literal}
 $(function($){
 
@@ -102,16 +102,15 @@ $(function($){
 {/literal}
 </script>
 <div id="load_status"></div>
+{$FORM_ACTION}
 
 <div class="row">
 <div class="col-xl-9">
 
 <h1>{#heading_checkout#}</h1>
-
 <div id="box">
 <div id="checkout">
 {$PAYMENT_FIELDS}
-{$FORM_ACTION}
 {if $error!=''}
 <div class="CheckoutError">
 {$error}
