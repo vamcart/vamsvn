@@ -1122,4 +1122,21 @@ define('ONE_CLICK_BUY_DESC', 'Показывать модуль Купить в 
 define('DISPLAY_PRIVACY_TEXT_TITLE' , 'Показывать текст про защиту персональных данных');
 define('DISPLAY_PRIVACY_TEXT_DESC', 'Показывать текст про защиту персональных данных.');
 
+define('STORE_VK_TITLE' , 'ВКонтакте');
+define('STORE_VK_DESC', 'Ваш аккаунт ВКонтакте.');
+define('STORE_FACEBOOK_TITLE' , 'Facebook');
+define('STORE_FACEBOOK_DESC', 'Ваш аккаунт Facebook.');
+define('STORE_TELEGRAM_TITLE' , 'Telegram');
+define('STORE_TELEGRAM_DESC', 'Ваш аккаунт Telegram.');
+define('STORE_INSTAGRAM_TITLE' , 'Instagram');
+define('STORE_INSTAGRAM_DESC', 'Ваш аккаунт Instagram.');
+define('STORE_TWITTER_TITLE' , 'Twitter');
+define('STORE_TWITTER_DESC', 'Ваш аккаунт Twitter.');
+define('STORE_YOUTUBE_TITLE' , 'YouTube');
+define('STORE_YOUTUBE_DESC', 'Ваш аккаунт YouTube.');
+define('STORE_WHATSAPP_TITLE' , 'WhatsApp');
+define('STORE_WHATSAPP_DESC', 'Ваш аккаунт WhatsApp.');
+define('STORE_VIBER_TITLE' , 'Viber');
+define('STORE_VIBER_DESC', 'Ваш аккаунт Viber.');
+
 ?>
