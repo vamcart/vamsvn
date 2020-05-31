@@ -332,10 +332,13 @@ $(function($){
 </div><!--div end conditions --> 
 {/if}
 
-<br />
+{if $smarty.const.DISPLAY_PRIVACY_TEXT == 'true'}
 <div>
+<small>
 {$smarty.const.PRIVACY_TEXT}
+</small>
 </div>
+{/if}
 
 </div>
 </div>

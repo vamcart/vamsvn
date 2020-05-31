@@ -67,9 +67,11 @@ function reload(){
 <div class="clear"></div>
 
 <br />
+{if $smarty.const.DISPLAY_PRIVACY_TEXT == 'true'}
 <div>
 {$smarty.const.PRIVACY_TEXT}
 </div>
+{/if}
 
 {$FORM_END}
 {/if}

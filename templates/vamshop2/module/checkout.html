@@ -340,9 +340,11 @@ $(function($){
 {$BUTTON_CONTINUE}
 </div>
 <br />
+{if $smarty.const.DISPLAY_PRIVACY_TEXT == 'true'}
 <div>
 {$smarty.const.PRIVACY_TEXT}
 </div>
+{/if}
 {$FORM_END}
 </div><!-- Div end checkout -->
 </div><!-- Div end checkout_container -->
