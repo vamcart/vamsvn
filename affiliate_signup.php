@@ -238,14 +238,16 @@ if (isset($_POST['action'])) {
 
     // Check Fax
     $entry_fax_error = false;
+    
+    $entry_homepage_error = false;
 
-    if (!affiliate_check_url($a_homepage)) {
-    	$error = true;
-    	$entry_homepage_error = true;
-    }
-	else {
-		$entry_homepage_error = false;
-    }
+    //if (!affiliate_check_url($a_homepage)) {
+    	//$error = true;
+    	//$entry_homepage_error = true;
+    //}
+	//else {
+		//$entry_homepage_error = false;
+    //}
 
     if (!$a_agb) {
     	$error=true;

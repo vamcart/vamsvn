@@ -54,7 +54,7 @@ define('ENTRY_AFFILIATE_COMPANY_TEXT', '');
 define('ENTRY_AFFILIATE_COMPANY_ERROR', '&nbsp;<small><font color="#FF0000">обязательно</font></small>');
 define('ENTRY_AFFILIATE_COMPANY_TAXID_TEXT', '');
 define('ENTRY_AFFILIATE_COMPANY_TAXID_ERROR', '&nbsp;<small><font color="#FF0000">обязательно</font></small>');
-define('ENTRY_AFFILIATE_HOMEPAGE_TEXT', '&nbsp;<small><font color="#FF0000">обязательно (http://)</font></small>');
+define('ENTRY_AFFILIATE_HOMEPAGE_TEXT', '');
 define('ENTRY_AFFILIATE_HOMEPAGE_ERROR', '&nbsp;<small><font color="#FF0000">обязательно (http://)</font></small>');
 
 define('TEXT_AFFILIATE_PERIOD', 'Период: ');
