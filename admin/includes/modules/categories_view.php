@@ -485,6 +485,7 @@ if ($numr>$max_count){
       <?php 
       
 	  echo '<a href="' . vam_href_link(FILENAME_CATEGORIES, vam_get_all_get_params(array('cPath', 'action', 'pID', 'cID', 'search')) . 'cPath=' . $cPath . '&pID=' . $products['products_id']) . '&action=new_product">' . vam_image(DIR_WS_IMAGES . 'icons/edit.gif', BUTTON_EDIT,'16','16') . '</a> ';
+	  echo '<a href="'.vam_catalog_href_link('product_info.php', vam_product_link($products['products_id'], $products['products_name'])).'" target="_blank">' . vam_image(DIR_WS_IMAGES . 'icons/buttons/link.png', TEXT_COPY_AS_LINK,'16','16') . '</a> ';
 	        
         if ( (is_object($pInfo)) && ($products['products_id'] == $pInfo->products_id) ) { echo vam_image(DIR_WS_IMAGES . 'icons/nav_forward.png', ''); } else { echo '<a href="' . vam_href_link(FILENAME_CATEGORIES, vam_get_all_get_params(array('cPath', 'action', 'pID', 'cID')) . 'cPath=' . $cPath . '&pID=' . $products['products_id']) . '">' . vam_image(DIR_WS_IMAGES . 'icons/info.png', IMAGE_ICON_INFO) . '</a>'; } 
       ?>
@@ -780,6 +781,7 @@ if ($numr>$max_count){
             //$contents[] = array('text' => '<br />' . TEXT_PRODUCTS_PRICE_INFO . ' ' . $currencies->format($pInfo->products_price) . '<br />' . TEXT_PRODUCTS_QUANTITY_INFO . ' ' . $pInfo->products_quantity);
             $contents[] = array('text' => '<div style="padding-left: 30px; padding-bottom: 10px;">' . TEXT_PRODUCTS_AVERAGE_RATING . ' ' . number_format($pInfo->average_rating, 2) . ' %</div>');
             $contents[] = array('text' => '<div style="padding-left: 30px; padding-bottom: 10px;">' . TEXT_PRODUCT_LINKED_TO . '<br />' . vam_output_generated_category_path($pInfo->products_id, 'product') . '</div>');
+            $contents[] = array('text' => '<div style="padding-left: 30px; padding-bottom: 10px;"><a href="'.vam_catalog_href_link('product_info.php', vam_product_link($pInfo->products_id, $pInfo->products_name)).'">' . TEXT_COPY_AS_LINK . ' ' . '</a></div>');
             $contents[] = array('align' => 'center', 'text' => '<div style="padding: 10px;">' . vam_product_thumb_image($pInfo->products_image, $pInfo->products_name)  . '</div><div style="padding-bottom: 10px;">' . $pInfo->products_image.'</div>');
           }          
         } else { 
