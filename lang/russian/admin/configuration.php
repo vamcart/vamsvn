@@ -1119,4 +1119,7 @@ define('CG_1C_EXCHANGE_DESC', '');
 define('ONE_CLICK_BUY_TITLE' , 'Разрешить модуль Купить в 1 клик');
 define('ONE_CLICK_BUY_DESC', 'Показывать модуль Купить в 1 клик на странице карточки товара.');
 
+define('DISPLAY_PRIVACY_TEXT_TITLE' , 'Показывать текст про защиту персональных данных');
+define('DISPLAY_PRIVACY_TEXT_DESC', 'Показывать текст про защиту персональных данных.');
+
 ?>

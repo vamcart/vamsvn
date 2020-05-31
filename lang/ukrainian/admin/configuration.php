@@ -1004,8 +1004,8 @@ define('SPECIFICATIONS_FILTER_IMAGE_WIDTH_DESC', 'Установите шири�
 define('SPECIFICATIONS_FILTER_IMAGE_HEIGHT_TITLE', 'Высота картинки фильтров');
 define('SPECIFICATIONS_FILTER_IMAGE_HEIGHT_DESC', 'Установите высоту картинки, отображаемой в боксе фильтры.');
 
-define('AVISOSMS_EMAIL_TITLE','SMS Email Шлюз');
-define('AVISOSMS_EMAIL_DESC','Укажите свой email ящик для sms уведомление покупателей. Подробнее о настройке SMS уведомлений читайте на форуме https://forum.vamshop.ru/topic/16979-н');
+define('AVISOSMS_EMAIL_TITLE','MainSMS Email');
+define('AVISOSMS_EMAIL_DESC','Укажите свой email ящик для sms уведомление покупателей. Подробнее о настройке SMS уведомлений читайте на форуме http://vamshop.ru/forum/topic/11998-%D0%B7%D0%B0%D0%BC%D0%B5%D0%BD%D0%B0-sms-%D1%83%D0%B2%D0%B5%D0%B4%D0%BE%D0%BC%D0%BB%D0%B5%D0%BD%D0%B8%D0%B9-%D1%81-avisosms-%D0%BD%D0%B0-mainsms-%D1%81%D1%82%D0%BE%D0%B8%D0%BC%D0%BE%D1%81%D1%82%D1%8C-sms-15-%D0%BA%D0%BE%D0%BF%D0%B5%D0%B5%D0%BA/');
 
 define('CG_SMART_CHECKOUT', 'Оформление заказов');
 define('CG_SMART_CHECKOUT_TITLE', 'Оформление заказов');
@@ -1118,5 +1118,8 @@ define('CG_1C_EXCHANGE_DESC', '');
 
 define('ONE_CLICK_BUY_TITLE' , 'Разрешить модуль Купить в 1 клик');
 define('ONE_CLICK_BUY_DESC', 'Показывать модуль Купить в 1 клик на странице карточки товара.');
+
+define('DISPLAY_PRIVACY_TEXT_TITLE' , 'Показывать текст про защиту персональных данных');
+define('DISPLAY_PRIVACY_TEXT_DESC', 'Показывать текст про защиту персональных данных.');
 
 ?>
