@@ -1225,7 +1225,7 @@ if (ACCOUNT_DOB == 'true') {
 
 $vamTemplate->assign('INPUT_EMAIL', vam_draw_input_fieldNote(array ('name' => 'email_address', 'text' => '&nbsp;'. (vam_not_null(ENTRY_EMAIL_ADDRESS_TEXT) ? '<span class="Requirement">'.ENTRY_EMAIL_ADDRESS_TEXT.'</span>' : '')), '', 'id="email_address"'));
 
-$vamTemplate->assign('INPUT_NEWSLETTER', vam_draw_checkbox_field('newsletter', '1', true));
+$vamTemplate->assign('INPUT_NEWSLETTER', vam_draw_checkbox_field('newsletter', '1', true, 'id="newsletter"'));
 
 if (ACCOUNT_COMPANY == 'true') {
 	$vamTemplate->assign('company', '1');
