@@ -21,6 +21,9 @@
   function vam_draw_textarea_field($name, $wrap, $width, $height, $text = '', $parameters = '', $reinsert_value = true) {
     $field = '<textarea name="' . vam_parse_input_field_data($name, array('"' => '&quot;')) . '" id="' . vam_parse_input_field_data($name, array('"' => '&quot;')) . '" cols="' . vam_parse_input_field_data($width, array('"' => '&quot;')) . '" rows="' . vam_parse_input_field_data($height, array('"' => '&quot;')) . '"';
 
+    // Bootstrap form-control
+    if (!vam_not_null($parameters)) $field .= ' class="form-control"';
+
     if (vam_not_null($parameters)) $field .= ' ' . $parameters;
 
     $field .= '>';

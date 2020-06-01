@@ -18,11 +18,15 @@
    ---------------------------------------------------------------------------------------*/
    
 // Output a form password field
-  function vam_draw_password_field($name, $value = '', $parameters = 'maxlength="40"') {
+  function vam_draw_password_field($name, $value = '', $parameters = '') {
+    // Bootstrap form-control
+    if (!vam_not_null($parameters)) $parameters .= ' class="form-control"';
     return vam_draw_input_field($name, $value, $parameters, 'password', false);
   }
   
-    function vam_draw_password_fieldNote($name, $value = '', $parameters = 'maxlength="40"') {
+    function vam_draw_password_fieldNote($name, $value = '', $parameters = '') {
+    // Bootstrap form-control
+    if (!vam_not_null($parameters)) $parameters .= ' class="form-control"';
     return vam_draw_input_fieldNote($name, $value, $parameters, 'password', false);
   }
  ?>

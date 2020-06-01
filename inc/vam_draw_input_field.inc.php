@@ -27,6 +27,9 @@
       $field .= ' value="' . vam_parse_input_field_data($value, array('"' => '&quot;')) . '"';
     }
 
+    // Bootstrap form-control
+    if (!vam_not_null($parameters)) $field .= ' class="form-control"';
+
     if (vam_not_null($parameters)) $field .= ' ' . $parameters;
 
     $field .= ' />';
@@ -42,6 +45,9 @@
     } elseif (vam_not_null($value)) {
       $field .= ' value="' . vam_parse_input_field_data($value, array('"' => '&quot;')) . '"';
     }
+
+    // Bootstrap form-control
+    if (!vam_not_null($parameters)) $field .= ' class="form-control"';
 
     if (vam_not_null($parameters)) $field .= ' ' . $parameters;
 

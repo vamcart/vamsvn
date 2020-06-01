@@ -28,6 +28,9 @@
       $selection .= ' checked="checked"';
     }
 
+    // Bootstrap form-control
+    if (!vam_not_null($parameters)) $selection .= ' class="form-check-input"';
+
     if (vam_not_null($parameters)) $selection .= ' ' . $parameters;
 
     $selection .= ' />';
@@ -43,6 +46,9 @@
     if ( ($checked == true) || ($GLOBALS[$data['name']] == 'on') || ( (isset($value)) && ($GLOBALS[$data['name']] == $value) ) ) {
       $selection .= ' checked="checked"';
     }
+
+    // Bootstrap form-control
+    if (!vam_not_null($parameters)) $selection .= ' class="form-check-input"';
 
     if (vam_not_null($parameters)) $selection .= ' ' . $parameters;
 
