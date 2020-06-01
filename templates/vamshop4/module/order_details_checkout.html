@@ -1,0 +1,20 @@
+{config_load file="$language/lang_$language.conf" section="shopping_cart"}
+{config_load file="$language/lang_$language.conf" section="product_info"}
+
+<div class="row">
+<div class="col-xl-12">
+
+{foreach from=$module_content key=category_name item=cart_data}
+<h3>{$category_name}</h3>
+{foreach name=aussen item=module_data from=$cart_data}
+{include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/item/item-cart-list-checkout.html"}
+{/foreach}
+{/foreach}
+</div>
+
+</div>
+
+{if $MODULE_cross_selling_cart}
+{$MODULE_cross_selling_cart}
+{/if}
+

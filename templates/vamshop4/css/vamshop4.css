@@ -832,3 +832,13 @@ li.level3 {
 		z-index: 9999;
 	}
 }
+
+.checkout-cart {
+  max-height: 270px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+#footer {
+  z-index: 99999;
+}
