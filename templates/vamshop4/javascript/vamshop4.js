@@ -421,20 +421,20 @@ $('.read-more').expandable({
 
 
 // Sticky top
-var parentElement = document.querySelector('.sticky-wrapper');
-var fixedElement = document.querySelector('.sticky-top');
+//var parentElement = document.querySelector('.sticky-wrapper');
+//var fixedElement = document.querySelector('.sticky-top');
 
 // get parent-element width when page is fully loaded
 // and change fixed-element width accordingly
-window.addEventListener('load', changeFixedElementWidth);
+//window.addEventListener('load', changeFixedElementWidth);
 
 // get parent-element width when window is resized
 // and change fixed-element width accordingly
-window.addEventListener('resize', changeFixedElementWidth);
+//window.addEventListener('resize', changeFixedElementWidth);
 
-function changeFixedElementWidth() {
-  const parentElementWidth = parentElement.getBoundingClientRect().width;
-  const parentElementHeight = parentElement.getBoundingClientRect().height;
-  fixedElement.style.width = parentElementWidth + 'px';
-  fixedElement.style.height = parentElementHeight + 'px';
-}
+//function changeFixedElementWidth() {
+  //if (parentElement) var parentElementWidth = parentElement.getBoundingClientRect().width;
+  //if (parentElement) var parentElementHeight = parentElement.getBoundingClientRect().height;
+  //if (fixedElement) fixedElement.style.width = parentElementWidth + 'px';
+  //if (fixedElement) fixedElement.style.height = parentElementHeight + 'px';
+//}
