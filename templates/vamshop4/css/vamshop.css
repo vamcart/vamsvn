@@ -2208,6 +2208,19 @@ label.error
 		text-align: right;
 	}	 
 
+#checkout label.error 
+	{
+		clear: both;
+		width: auto; 
+		margin: 5px 0 0; 
+		padding: 0 10px 0 10px;
+		border: 0px solid black;
+		background: transparent; 
+		color: #991F00; 
+		font-weight: normal; 
+		text-align: right;
+	}	 
+
 .error
 	{
 		background: #fcc;

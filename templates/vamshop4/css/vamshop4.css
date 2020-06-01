@@ -816,3 +816,23 @@ li.level3 {
 #checkout span.Requirement {
   display: none;
 }
+
+#checkout .form-group {
+  margin-bottom: 0;
+}
+
+#checkout .form-check {
+  padding-left: 0;
+}
+
+.sticky-top {
+		position: relative;
+		z-index: 999999999;
+}
+
+@media(min-width: 1200px) {
+	.sticky-top {
+		position: fixed;
+		z-index: 999999999;
+	}
+}
