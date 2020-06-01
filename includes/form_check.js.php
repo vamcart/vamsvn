@@ -58,14 +58,6 @@ $form_id = 'checkout_address';
 <script><!--
 
 $(document).ready(function() {
-<?php
-if (!strstr($PHP_SELF, FILENAME_CHECKOUT) or !strstr($PHP_SELF, FILENAME_CHECKOUT_PAYMENT)) {
-?>	
-$(function () {
-    //$('#<?php echo $form_id; ?> :input:text:visible:enabled:first').focus();
-})
-<?php } ?>
-
   $("#country").change(function(){
       var searchString = $(this).val();
       $.ajax({
