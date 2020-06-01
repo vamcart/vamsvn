@@ -833,7 +833,7 @@ li.level3 {
 	}
 }
 
-.checkout-cart {
+.checkout-cart-scroll {
   max-height: 270px;
   overflow-y: auto;
   overflow-x: hidden;
