@@ -810,3 +810,9 @@ label {
 .text-primary {
   color: #0654a7 !important;
 }
+
+#checkout .form-check-input {
+    position: relative;
+    margin-top: 0;
+    margin-left: 0;
+}

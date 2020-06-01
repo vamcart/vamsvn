@@ -120,12 +120,39 @@ $(function($){
 {if $TEXT_ORIGIN_LOGIN}<p>{$TEXT_ORIGIN_LOGIN}</p>{/if}
 
 <div id="shipping_box" class="sm_layout_box">
-<h2>{$TITLE_SHIPPING_ADDRESS}</h2>
+{if !$smarty.session.customer_id}
+<h3>{$TITLE_SHIPPING_ADDRESS}</h3>
+{else}
+<div class="row">
 {if $ADDRESS_LABEL_SHIPPING_ADDRESS}
-{$ADDRESS_LABEL_SHIPPING_ADDRESS}
-<br />
-{$BUTTON_SHIPPING_ADDRESS}
+<div class="col-md-6">
+<div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative bg-white">
+<div class="col p-4 d-flex flex-column position-static">
+<h5 class="mb-0 font-weight-bold">{$TITLE_SHIPPING_ADDRESS}</h5>
+<div class="mb-1 text-muted"></div>
+<p class="card-text mb-auto">{$ADDRESS_LABEL_SHIPPING_ADDRESS}</p>
+</div>
+<div class="col-auto my-auto mx-2">{$BUTTON_SHIPPING_ADDRESS}</div>
+</div>
+</div>
 {/if}
+{if $sc_payment_address_show}
+{if $ADDRESS_LABEL_PAYMENT_ADDRESS}
+<div class="col-md-6">
+<div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative bg-white">
+<div class="col p-4 d-flex flex-column position-static">
+<h5 class="mb-0 font-weight-bold">{$TITLE_PAYMENT_ADDRESS}</h5>
+<div class="mb-1 text-muted"></div>
+<p class="card-text mb-auto">{$ADDRESS_LABEL_PAYMENT_ADDRESS}</p>
+</div>
+<div class="col-auto my-auto mx-2">{$BUTTON_PAYMENT_ADDRESS}</div>
+</div>
+</div>
+{/if}
+{/if}
+</div>
+{/if}
+
 {if !$smarty.session.customer_id}
 <!-- форма -->
 <fieldset class="form">
@@ -185,12 +212,6 @@ $(function($){
 
 {if $sc_payment_address_show}
 <div id="payment_address_box"  class="sm_layout_box">
-<h2>{$TITLE_PAYMENT_ADDRESS}</h2>
-{if $ADDRESS_LABEL_PAYMENT_ADDRESS}
-{$ADDRESS_LABEL_PAYMENT_ADDRESS}
-<br />
-{$BUTTON_PAYMENT_ADDRESS}
-{/if}
 {if !$smarty.session.customer_id}
 <div id="payment_address_checkbox">
 <label>
@@ -245,7 +266,7 @@ $(function($){
 {if !$smarty.session.customer_id}
 <div id="contact_box" class="sm_layout_box">
 <fieldset class="form">
-<h2>{$TITLE_CONTACT_ADDRESS}</h2>
+<h3>{$TITLE_CONTACT_ADDRESS}</h3>
 <p><label for="email">{#text_email#}</label> {$INPUT_EMAIL}</p>
 {if $telephone=='1'}<p><label for="telephone">{#text_tel#}</label> {$INPUT_TEL}</p>
 {/if}
@@ -261,7 +282,7 @@ $(function($){
 
 {if !$smarty.session.customer_id}
 <div id="password_box" class="sm_layout_box">
-{if $TITLE_CONTACT_PASSWORD}<h2>{$TITLE_CONTACT_PASSWORD}</h2>{/if}
+{if $TITLE_CONTACT_PASSWORD}<h3>{$TITLE_CONTACT_PASSWORD}</h3>{/if}
 <div id="password_checkbox">
 {$PASSWORD_CHECKBOX}
 </div>
@@ -283,7 +304,7 @@ $(function($){
 <input type="hidden" name="to_boxberry_address" id="to_boxberry_address" value="">
 {/if}
 <div id="shipping_modules_box" class="sm_layout_box">
-<h2>{$TITLE_SHIPPING_MODULES}</h2>
+<h3>{$TITLE_SHIPPING_MODULES}</h3>
 <div id="shipping_options"> 
 {$SHIPPING_BLOCK}
 </div> <!--div end shipping_options-->
@@ -291,7 +312,7 @@ $(function($){
 {/if}
 
 <div id="payment_options" class="sm_layout_box"> 
-<h2>{$TITLE_PAYMENT_MODULES}</h2>
+<h3>{$TITLE_PAYMENT_MODULES}</h3>
 {$PAYMENT_BLOCK}
 </div> <!--div end payment_options-->
 
@@ -303,8 +324,10 @@ $(function($){
 
 {if $comments=='1'}
 <div id="comment_box" class="sm_layout_box">
-<h2>{$TITLE_COMMENTS}</h2>
-{$COMMENTS}
+<div class="form-group">
+  <label for="comments"><h3>{$TITLE_COMMENTS}</h3></label>
+  {$COMMENTS}
+</div>
 </div><!--div end comment_box--> 
 {/if}
 
