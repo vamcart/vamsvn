@@ -5,7 +5,7 @@
 <div class="col-xl-12">
 
 {foreach from=$module_content key=category_name item=cart_data}
-<h3>{$category_name}</h3>
+<span class="h6">{$category_name}</span>
 {foreach name=aussen item=module_data from=$cart_data}
 {include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/item/item-cart-list-checkout.html"}
 {/foreach}

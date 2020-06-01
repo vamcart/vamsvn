@@ -131,8 +131,8 @@ $(function($){
 <h5 class="mb-0 font-weight-bold">{$TITLE_SHIPPING_ADDRESS}</h5>
 <div class="mb-1 text-muted"></div>
 <p class="card-text mb-auto">{$ADDRESS_LABEL_SHIPPING_ADDRESS}</p>
+{$BUTTON_SHIPPING_ADDRESS}
 </div>
-<div class="col-auto my-auto mx-2">{$BUTTON_SHIPPING_ADDRESS}</div>
 </div>
 </div>
 {/if}
@@ -144,8 +144,8 @@ $(function($){
 <h5 class="mb-0 font-weight-bold">{$TITLE_PAYMENT_ADDRESS}</h5>
 <div class="mb-1 text-muted"></div>
 <p class="card-text mb-auto">{$ADDRESS_LABEL_PAYMENT_ADDRESS}</p>
+{$BUTTON_PAYMENT_ADDRESS}
 </div>
-<div class="col-auto my-auto mx-2">{$BUTTON_PAYMENT_ADDRESS}</div>
 </div>
 </div>
 {/if}
@@ -472,8 +472,10 @@ $(function($){
 
 <div class="col-xl-5">
 
-<div id="order_total_modules" class="sm_layout_box sticky-wrapper">
+<div class="sticky-wrapper">
 <div class="sticky-top">
+
+<div id="order_total_modules" class="sm_layout_box">
 <div class="card card-product card-sm">
 <div class="card-header">
 <span class="h5">{$TITLE_TOTALS}</span>
@@ -501,6 +503,24 @@ $(function($){
 </div>
 <div class="card-footer text-center">
 <button type="submit" class="btn btn-primary btn-block"><i class="fa fa-shopping-cart"></i> {$smarty.const.IMAGE_BUTTON_CHECKOUT}</button></div>
+
+
+</div>
+</div>
+
+<div class="card card-product card-sm">
+<div class="card-header">
+<span class="h5">{$smarty.const.NAVBAR_TITLE_SHOPPING_CART}</span>
+</div>
+<div class="card-body checkout-cart">
+
+{$MODULE_order_details_checkout}
+
+</div>
+<div class="card-footer text-center">
+<a class="btn btn-outline-primary btn-block" href="{$smarty.const.FILENAME_SHOPPING_CART}"><i class="fa fa-shopping-cart"></i> {$smarty.const.SMALL_IMAGE_BUTTON_EDIT}</a></div>
+
+
 </div>
 
 </div>
