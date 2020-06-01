@@ -15,7 +15,7 @@ $(this).addClass("selected");
 <label class="h-100 payment {$module_data.id}" for="{$module_data.id}">
   <div class="card-header d-flex justify-content-between">
     <div>{$module_data.selection}</div>
-    <div>{$module_data.module}</div>
+    <div class="method-title"><span class="title">{$module_data.module}</span></div>
     <div class="font-weight-bolder">{if $module_data.module_cost}<span class="badge badge-secondary font-weight-bold">{$module_data.module_cost}</span>{/if}</div>
   </div>
   <div class="card-body">
