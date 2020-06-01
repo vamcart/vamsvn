@@ -17,6 +17,7 @@ $("#firstname").suggestions({
   serviceUrl: "https://suggestions.dadata.ru/suggestions/api/4_1/rs",
   partner: "VAMSHOP",
   token: token,
+  scrollOnFocus: false,
   type: "NAME",
   params: {
     parts: ["NAME"]
@@ -27,6 +28,7 @@ $("#lastname").suggestions({
   serviceUrl: "https://suggestions.dadata.ru/suggestions/api/4_1/rs",
   partner: "VAMSHOP",
   token: token,
+  scrollOnFocus: false,
   type: "NAME",
   params: {
     parts: ["SURNAME"]
@@ -37,6 +39,7 @@ $("#email_address").suggestions({
   serviceUrl: "https://suggestions.dadata.ru/suggestions/api/4_1/rs",
   partner: "VAMSHOP",
   token: token,
+  scrollOnFocus: false,
   type: "EMAIL",
   params: {
     parts: ["SURNAME"]
@@ -47,6 +50,7 @@ $("#street_address").suggestions({
   serviceUrl: "https://suggestions.dadata.ru/suggestions/api/4_1/rs",
   partner: "VAMSHOP",
   token: token,
+  scrollOnFocus: false,
   type: "ADDRESS",
   geoLocation: true,
   onSelect: showSelected
