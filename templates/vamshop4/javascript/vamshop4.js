@@ -386,10 +386,14 @@ if ($(window).width() > 767) {
 $(window).on('load', function () {
     $('.card-body .img-wrap').matchHeight();
     $('.card-body .info-wrap .title').matchHeight();
+    $('.payment-method .method-title').matchHeight();
+    $('.shipping-method .method-title').matchHeight();
 });
 $(document).ajaxComplete(function () {
     $('.card-body .img-wrap').matchHeight();
     $('.card-body .info-wrap .title').matchHeight();
+    $('.payment-method .method-title').matchHeight();
+    $('.shipping-method .method-title').matchHeight();
 });
 }	
 
@@ -414,3 +418,21 @@ $('.read-more').expandable({
   'more': '▼',
   'less': '▲'
 });
+
+
+// Sticky top
+var parentElement = document.querySelector('.sticky-wrapper');
+var fixedElement = document.querySelector('.sticky-top');
+
+// get parent-element width when page is fully loaded
+// and change fixed-element width accordingly
+window.addEventListener('load', changeFixedElementWidth);
+
+// get parent-element width when window is resized
+// and change fixed-element width accordingly
+window.addEventListener('resize', changeFixedElementWidth);
+
+function changeFixedElementWidth() {
+  const parentElementWidth = parentElement.getBoundingClientRect().width;
+  fixedElement.style.width = parentElementWidth + 'px';
+}
