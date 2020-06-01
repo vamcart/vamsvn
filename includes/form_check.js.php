@@ -62,7 +62,7 @@ $(document).ready(function() {
 if (!strstr($PHP_SELF, FILENAME_CHECKOUT) or !strstr($PHP_SELF, FILENAME_CHECKOUT_PAYMENT)) {
 ?>	
 $(function () {
-    $('#<?php echo $form_id; ?> :input:text:visible:enabled:first').focus();
+    //$('#<?php echo $form_id; ?> :input:text:visible:enabled:first').focus();
 })
 <?php } ?>
 
