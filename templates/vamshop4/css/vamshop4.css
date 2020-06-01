@@ -543,10 +543,6 @@ li.level3 {
   border-radius: 0px;
 }
 
-label {
-  display: block;
-}
-
 #searchPreview table {
   border: 1px solid #e5e5e5;
   box-shadow: 0 1px 4px 0 rgba(0,0,0,.1);
@@ -815,4 +811,8 @@ label {
     position: relative;
     margin-top: 0;
     margin-left: 0;
+}
+
+#checkout span.Requirement {
+  display: none;
 }

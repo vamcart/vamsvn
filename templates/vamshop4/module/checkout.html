@@ -154,57 +154,109 @@ $(function($){
 {/if}
 
 {if !$smarty.session.customer_id}
-<!-- форма -->
-<fieldset class="form">
+
 {if $gender=='1'} 
-<p><label for="gender">{#text_gender#}</label> {$INPUT_MALE}&nbsp;{$INPUT_FEMALE}</p>
+  <div class="form-group">
+      <label for="gender">{#text_gender#}</label>
+      {$INPUT_MALE}
+      {$INPUT_FEMALE}
+  </div>
 {/if}
-<p><label for="firstname">{#text_firstname#}</label> {$INPUT_FIRSTNAME}</p>
-{if $secondname=='1'}<p><label for="secondname">{#text_secondname#}</label> {$INPUT_SECONDNAME}</p>
-{/if}
-<p><label for="lastname">{#text_lastname#}</label> {$INPUT_LASTNAME}</p>
+
 {if $birthdate=='1'} 
-<p><label for="dob">{#text_birthdate#}</label> {$INPUT_DOB}</p>
+  <div class="form-group">
+      <label for="dob">{#text_birthdate#}</label>
+      {$INPUT_DOB}
+  </div>
 {/if}
-</fieldset>
-{if $company=='1'}<fieldset class="form">
-<p><label for="company">{#text_company#}</label> {$INPUT_COMPANY}</p>
-</fieldset>
-{/if}<div id="shipping_address">
-<fieldset class="form">
-{if $street_address=='1'}{/if}
-{if $street_address=='1'}<p><label for="address">{#text_street#}</label> {$INPUT_STREET}</p>
+
+  <div class="form-row">
+    <div class="form-group {if $secondname=='1'}col-md-4{else}col-md-6{/if}">
+      <label for="firstname">{#text_firstname#}</label>
+      {$INPUT_FIRSTNAME}
+    </div>
+    {if $secondname=='1'}
+    <div class="form-group col-md-6">
+      <label for="secondname">{#text_secondname#}</label>
+      {$INPUT_SECONDNAME}
+    </div>
+    {/if}
+    <div class="form-group {if $secondname=='1'}col-md-4{else}col-md-6{/if}">
+      <label for="lastname">{#text_lastname#}</label>
+      {$INPUT_LASTNAME}
+    </div>
+  </div>
+
+{if $company=='1'} 
+  <div class="form-group">
+      <label for="company">{#text_company#}</label>
+      {$INPUT_COMPANY}
+  </div>
 {/if}
-{if $suburb=='1'}<p><label for="suburb">{#text_suburb#}</label> {$INPUT_SUBURB}</p>
-{/if}
-{if $postcode=='1'}<p><label for="postcode">{#text_code#}</label> {$INPUT_CODE}</p>
-{/if}
-{if $city=='1'}<p><label for="city">{#text_city#}</label> {$INPUT_CITY}</p>
-{/if}
-{if $country=='1'}
-<div id="shipping_country_box">
-<div id="shipping_country"><p><label for="country">{#text_country#}</label> {$SELECT_COUNTRY}</p>
-</div><!--div end shipping_country -->
-</div><!--div end shipping_country_box -->
-{else}
-<div id="shipping_country_box">
-<div id="shipping_country">
-<input type="hidden" name="country" id="country" value="{$smarty.const.STORE_COUNTRY}" />
-</div><!--div end shipping_country -->
-</div><!--div end shipping_country_box -->
-{/if}
-{if $state=='1'}
-<div id="shipping_state_box">
-<div id="shipping_state"><p><label for="state">{#text_state#}</label> <span id="stateXML">{$INPUT_STATE}</span></p>
-</div><!--div end shipping_state -->
-</div><!--div end shipping_state_box -->
-{else}
-<div id="shipping_state_box">
-<div id="shipping_state"><input type="hidden" name="state" id="state" value="{$smarty.const.STORE_STATE}" />
-</div><!--div end shipping_state -->
-</div><!--div end shipping_state_box -->
-{/if}
-</fieldset>
+<div id="shipping_address">
+
+  <div class="form-row">
+    <div class="form-group {if $suburb=='1'}col-md-6{else}col-md-12{/if}">
+      <label for="address">{#text_street#}</label>
+      {$INPUT_STREET}
+    </div>
+    {if $secondname=='1'}
+    <div class="form-group col-md-6">
+      <label for="suburb">{#text_suburb#}</label>
+      {$INPUT_SUBURB}
+    </div>
+    {/if}
+  </div>
+
+  <div class="form-row">
+  {if $city=='1'}
+    <div class="form-group col-md-9">
+      <label for="city">{#text_city#}</label>
+      {$INPUT_CITY}
+    </div>
+  {/if}
+  {if $postcode=='1'}
+    <div class="form-group col-md-3">
+      <label for="postcode">{#text_code#}</label>
+      {$INPUT_CODE}
+    </div>
+  {/if}
+  </div>
+
+  <div class="form-row">
+    {if $country=='1'}
+    <div class="form-group col-md-6">
+      <label for="country">{#text_country#}</label>
+      <div id="shipping_country_box">
+      <div id="shipping_country">
+      {$SELECT_COUNTRY}
+      </div>
+      </div>
+    </div>
+    {else}
+    <div id="shipping_country_box">
+    <div id="shipping_country">
+    <input type="hidden" name="country" id="country" value="{$smarty.const.STORE_COUNTRY}" />
+    </div><!--div end shipping_country -->
+    </div><!--div end shipping_country_box -->
+    {/if}
+    {if $state=='1'}
+    <div class="form-group col-md-6">
+      <label for="state">{#text_state#}</label>
+      <div id="shipping_state_box">
+      <div id="shipping_state">
+      <span id="stateXML">{$INPUT_STATE}</span>
+      </div>
+      </div>
+    </div>
+    {else}
+    <div id="shipping_state_box">
+    <div id="shipping_state">    <input type="hidden" name="state" id="state" value="{$smarty.const.STORE_STATE}" />
+    </div><!--div end shipping_state -->
+    </div><!--div end shipping_state_box -->
+    {/if}
+  </div>
+
 </div> <!--div end shipping_address -->
 {/if}
 </div> <!--div end shipping_box --> 
@@ -214,50 +266,115 @@ $(function($){
 <div id="payment_address_box"  class="sm_layout_box">
 {if !$smarty.session.customer_id}
 <div id="payment_address_checkbox">
-<label>
-{$PAYMENT_ADDRESS_CHECKBOX}{$TEXT_SHIPPING_SAME_AS_PAYMENT}
-</label>
+<div class="form-check mb-4">
+  {$PAYMENT_ADDRESS_CHECKBOX}
+  <label class="form-check-label" for="pay_show">
+    {$smarty.const.TEXT_SHIPPING_SAME_AS_PAYMENT}
+  </label>
+</div>
 </div>
 <div id="payment_address">
-<!-- форма -->
-<fieldset class="form">
+
 {if $gender_payment=='1'} 
-<p><label for="gender_payment">{#text_gender#}</label> {$INPUT_MALE_PAYMENT}&nbsp;{$INPUT_FEMALE_PAYMENT}</p>
+  <div class="form-group">
+      <label for="gender_payment">{#text_gender#}</label>
+      {$INPUT_MALE_PAYMENT}
+      {$INPUT_FEMALE_PAYMENT}
+  </div>
 {/if}
-<p><label for="firstname_payment">{#text_firstname#}</label> {$INPUT_FIRSTNAME_PAYMENT}</p>
-{if $secondname_payment=='1'}<p>{#text_secondname#} {$INPUT_SECONDNAME_PAYMENT}</p>
-{/if}
-<p><label for="lastname_payment">{#text_lastname#}</label> {$INPUT_LASTNAME_PAYMENT}</p>
+
 {if $birthdate_payment=='1'} 
-<p><label for="dob">{#text_birthdate#}</label> {$INPUT_DOB_PAYMENT}</p>
+  <div class="form-group">
+      <label for="dob_payment">{#text_birthdate#}</label>
+      {$INPUT_DOB_PAYMENT}
+  </div>
 {/if}
-</fieldset>
-{if $company_payment=='1'}<fieldset class="form">
-<p>{#text_company#} {$INPUT_COMPANY_PAYMENT}</p>
-</fieldset>
-{/if}<fieldset class="form">
-{if $street_address_payment=='1'}{/if}
-{if $street_address_payment=='1'}<p><label for="address">{#text_street#}</label> {$INPUT_STREET_PAYMENT}</p>
+
+  <div class="form-row">
+    <div class="form-group {if $secondname_payment=='1'}col-md-4{else}col-md-6{/if}">
+      <label for="firstname_payment">{#text_firstname#}</label>
+      {$INPUT_FIRSTNAME_PAYMENT}
+    </div>
+    {if $secondname_payment=='1'}
+    <div class="form-group col-md-6">
+      <label for="secondname_payment">{#text_secondname#}</label>
+      {$INPUT_SECONDNAME_PAYMENT}
+    </div>
+    {/if}
+    <div class="form-group {if $secondname_payment=='1'}col-md-4{else}col-md-6{/if}">
+      <label for="lastname_payment">{#text_lastname#}</label>
+      {$INPUT_LASTNAME_PAYMENT}
+    </div>
+  </div>
+
+{if $company_payment=='1'} 
+  <div class="form-group">
+      <label for="company_payment">{#text_company#}</label>
+      {$INPUT_COMPANY_PAYMENT}
+  </div>
 {/if}
-{if $suburb_payment=='1'}<p><label for="suburb">{#text_suburb#}</label> {$INPUT_SUBURB_PAYMENT}</p>
-{/if}
-{if $postcode_payment=='1'}<p><label for="postcode">{#text_code#}</label> {$INPUT_CODE_PAYMENT}</p>
-{/if}
-{if $city_payment=='1'}<p><label for="city">{#text_city#}</label> {$INPUT_CITY_PAYMENT}</p>
-{/if}
-{if $country_payment=='1'}
-<div id="payment_country_box">
-<div id="payment_country_"><p><label for="country">{#text_country#}</label> {$SELECT_COUNTRY_PAYMENT}</p>
-</div><!--div end payment_country -->
-</div><!--div end payment_country_box -->
-{/if}
-{if $state_payment=='1'}
-<div id="shipping_state_box">
-<div id="shipping_state"><p><label for="state">{#text_state#}</label> <span id="stateXMLPayment">{$INPUT_STATE_PAYMENT}</span></p>
-</div><!--div end shipping_state -->
-</div><!--div end shipping_state_box -->
-{/if}
-</fieldset>
+  <div class="form-row">
+    <div class="form-group {if $suburb_payment=='1'}col-md-6{else}col-md-12{/if}">
+      <label for="address_payment">{#text_street#}</label>
+      {$INPUT_STREET_PAYMENT}
+    </div>
+    {if $secondname=='1'}
+    <div class="form-group col-md-6">
+      <label for="suburb_payment">{#text_suburb#}</label>
+      {$INPUT_SUBURB_PAYMENT}
+    </div>
+    {/if}
+  </div>
+
+  <div class="form-row">
+  {if $city_payment=='1'}
+    <div class="form-group col-md-9">
+      <label for="city_payment">{#text_city#}</label>
+      {$INPUT_CITY_PAYMENT}
+    </div>
+  {/if}
+  {if $postcode_payment=='1'}
+    <div class="form-group col-md-3">
+      <label for="postcode_payment">{#text_code#}</label>
+      {$INPUT_CODE_PAYMENT}
+    </div>
+  {/if}
+  </div>
+
+  <div class="form-row">
+    {if $country_payment=='1'}
+    <div class="form-group col-md-6">
+      <label for="country_payment">{#text_country#}</label>
+      <div id="payment_country_box">
+      <div id="payment_country">
+      {$SELECT_COUNTRY_PAYMENT}
+      </div>
+      </div>
+    </div>
+    {else}
+    <div id="payment_country_box">
+    <div id="payment_country">
+    <input type="hidden" name="country_payment" id="country_payment" value="{$smarty.const.STORE_COUNTRY}" />
+    </div><!--div end shipping_country -->
+    </div><!--div end shipping_country_box -->
+    {/if}
+    {if $state=='1'}
+    <div class="form-group col-md-6">
+      <label for="state_payment">{#text_state#}</label>
+      <div id="payment_state_box">
+      <div id="payment_state">
+      <span id="payment_stateXML">{$INPUT_STATE_PAYMENT}</span>
+      </div>
+      </div>
+    </div>
+    {else}
+    <div id="payment_state_box">
+    <div id="payment_state">    <input type="hidden" name="state_payment" id="state_payment" value="{$smarty.const.STORE_STATE}" />
+    </div><!--div end shipping_state -->
+    </div><!--div end shipping_state_box -->
+    {/if}
+  </div>
+
 </div><!--div end payment_address -->
 {/if}
 </div><!--div end payment_address_box -->
@@ -265,18 +382,34 @@ $(function($){
 
 {if !$smarty.session.customer_id}
 <div id="contact_box" class="sm_layout_box">
-<fieldset class="form">
 <h3>{$TITLE_CONTACT_ADDRESS}</h3>
-<p><label for="email">{#text_email#}</label> {$INPUT_EMAIL}</p>
-{if $telephone=='1'}<p><label for="telephone">{#text_tel#}</label> {$INPUT_TEL}</p>
-{/if}
-{if $fax=='1'}<p><label for="fax">{#text_fax#}</label> {$INPUT_FAX}</p>
-{/if}
+
+  <div class="form-row">
+    {if $telephone=='1'}
+    <div class="form-group {if $fax=='1'}col-md-4{else}col-md-6{/if}">
+      <label for="firstname">{#text_tel#}</label>
+      {$INPUT_TEL}
+    </div>
+    {/if}
+    {if $fax=='1'}
+    <div class="form-group col-md-6">
+      <label for="secondname">{#text_fax#}</label>
+      {$INPUT_FAX}
+    </div>
+    {/if}
+    <div class="form-group {if $fax=='1'}col-md-4{else}col-md-6{/if}">
+      <label for="lastname">{#text_email#}</label>
+      {$INPUT_EMAIL}
+    </div>
+  </div>
+
 {if $INPUT_CUSTOMERS_EXTRA_FIELDS}
-{foreach item=customers_extra_filelds from=$INPUT_CUSTOMERS_EXTRA_FIELDS}<p><label>{$customers_extra_filelds.NAME}:</label> {$customers_extra_filelds.VALUE}</p>
+{foreach item=customers_extra_filelds from=$INPUT_CUSTOMERS_EXTRA_FIELDS}  <div class="form-group {if $suburb=='1'}col-md-6{else}col-md-12{/if}">
+    <label for="address">{$customers_extra_filelds.NAME}:</label>
+    {$customers_extra_filelds.VALUE}
+  </div>
 {/foreach}
 {/if}
-</fieldset>
 </div> <!--div end contact_box -->   
 {/if}
 
