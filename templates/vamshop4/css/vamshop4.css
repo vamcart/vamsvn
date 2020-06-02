@@ -831,7 +831,7 @@ li.level3 {
 	.sticky-top {
 		position: fixed;
 		z-index: 9999;
-		top: 110px;
+		/*top: 110px;*/
 	}
 }
 
