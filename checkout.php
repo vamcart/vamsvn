@@ -97,6 +97,107 @@ if ($_SESSION['cart']->show_total() > 0 ) {
 if ($_SESSION['allow_checkout'] == 'false')
 	vam_redirect(vam_href_link(FILENAME_SHOPPING_CART));
 
+
+// Cart
+
+
+	$hidden_options = '';
+	$_SESSION['any_out_of_stock'] = 0;
+
+	$products = $_SESSION['cart']->get_products();
+	sort($products);
+	for ($i = 0, $n = sizeof($products); $i < $n; $i ++) {
+		// Push all attributes information in an array
+		if (isset ($products[$i]['attributes'])) {
+			foreach ($products[$i]['attributes'] as $option => $value) {
+				//$hidden_options .= vam_draw_hidden_field('id['.$products[$i]['id'].']['.$option.']', $value);
+				$attributes = vam_db_query("select popt.products_options_name, popt.products_options_type, poval.products_options_values_name, pa.options_values_price, pa.price_prefix,pa.attributes_stock,pa.products_attributes_id,pa.attributes_model
+				                                      from ".TABLE_PRODUCTS_OPTIONS." popt, ".TABLE_PRODUCTS_OPTIONS_VALUES." poval, ".TABLE_PRODUCTS_ATTRIBUTES." pa
+				                                      where pa.products_id = '".(int)$products[$i]['id']."'
+				                                       and pa.options_id = '".(int)$option."'
+				                                       and pa.options_id = popt.products_options_id
+				                                       and pa.options_values_id = '".(int)$value."'
+				                                       and pa.options_values_id = poval.products_options_values_id
+				                                       and popt.language_id = '".(int) $_SESSION['languages_id']."'
+				                                       and poval.language_id = '".(int) $_SESSION['languages_id']."'");
+				$attributes_values = vam_db_fetch_array($attributes);
+
+				if($attributes_values['products_options_type']=='2' || $attributes_values['products_options_type']=='3'){
+					$hidden_options .= vam_draw_hidden_field('id[' . $products[$i]['id'] . '][txt_' . $option . '_'.$value.']',  $products[$i]['attributes_values'][$option]);
+				    $attr_value = $products[$i]['attributes_values'][$option];
+				}else{
+					$hidden_options .= vam_draw_hidden_field('id[' . $products[$i]['id'] . '][' . $option . ']', $value);
+				    $attr_value = $attributes_values['products_options_values_name'];
+				}
+
+				$products[$i][$option]['products_options_name'] = $attributes_values['products_options_name'];
+				$products[$i][$option]['options_values_id'] = $value;
+				$products[$i][$option]['products_options_values_name'] = $attr_value;
+				$products[$i][$option]['options_values_price'] = $attributes_values['options_values_price'];
+				$products[$i][$option]['price_prefix'] = $attributes_values['price_prefix'];
+				$products[$i][$option]['weight_prefix'] = $attributes_values['weight_prefix'];
+				$products[$i][$option]['options_values_weight'] = $attributes_values['options_values_weight'];
+				$products[$i][$option]['attributes_stock'] = $attributes_values['attributes_stock'];
+				$products[$i][$option]['products_attributes_id'] = $attributes_values['products_attributes_id'];
+				$products[$i][$option]['products_attributes_model'] = $attributes_values['products_attributes_model'];
+			}
+		}
+	}
+
+    // begin Bundled Products
+    if (STOCK_CHECK == 'true') {
+      $bundle_contents = array();
+      $bundle_values = array();
+      $product_ids_in_bundles = array();
+      $bundle_qty_ordered = array();
+      for ($i=0, $n=sizeof($products); $i<$n; $i++) {
+        if ($products[$i]['bundle'] == "yes") {
+          $tmp = get_all_bundle_products($products[$i]['id']);
+          $bundle_values[$products[$i]['id']] = $products[$i]['final_price'];
+          $bundle_contents[$products[$i]['id']] = $tmp;
+          $bundle_qty_ordered[$products[$i]['id']] = $products[$i]['quantity'];
+          foreach ($tmp as $id => $qty) {
+            if (!in_array($id, $product_ids_in_bundles)) $product_ids_in_bundles[] = $id; // save unique ids
+          }
+        }
+      }
+      if (!empty($bundle_values)) { // if bundles exist in order
+        arsort($bundle_values); // sort array so bundle ids with highest value come first
+        $product_on_hand = array();
+        $bundles_stock_check = array();
+        foreach ($product_ids_in_bundles as $id) {
+          // get quantity on hand for every product contained in bundles in this order
+          $product_on_hand[$id] = vam_get_products_stock($id);
+        }
+        foreach ($bundle_values as $bid => $bprice) {
+          $bundles_available = array();
+          foreach ($bundle_contents[$bid] as $pid => $qty) {
+            $bundles_available[] = intval($product_on_hand[$pid] / $qty);
+          }
+          $available = min($bundles_available); // max number of this bundle we can make with product on hand
+          $bundles_stock_check[$bid] = '';
+          if ($available <= 0) {
+            $bundles_stock_check[$bid] = '<span class="markProductOutOfStock">' . STOCK_MARK_PRODUCT_OUT_OF_STOCK . '<br />' . STOCK_MARK_PRODUCT_OUT_OF_STOCK . TEXT_NOT_AVAILABLEINSTOCK . '</span>';
+          } elseif ($available < $bundle_qty_ordered[$bid]) {
+            $bundles_stock_check[$bid] = '<span class="markProductOutOfStock">' . STOCK_MARK_PRODUCT_OUT_OF_STOCK . '<br />' . STOCK_MARK_PRODUCT_OUT_OF_STOCK . TEXT_ONLY_THIS_AVAILABLEINSTOCK1 . $available . TEXT_ONLY_THIS_AVAILABLEINSTOCK2 . '</span>';
+          }
+          $deduct = min($available, $bundle_qty_ordered[$bid]); // assume we sell as many of the bundle as possible
+          foreach ($bundle_contents[$bid] as $pid => $qty) {
+            // reduce product left on hand by number sold in this bundle before checking next less expensive bundle
+            // also lets us know how many we have left to sell individually
+            $product_on_hand[$pid] -= ($deduct * $qty);
+          }
+        }
+      }
+    }
+    $any_bundle_only = false;
+    // end Bundled Products
+
+
+	$vamTemplate->assign('HIDDEN_OPTIONS', $hidden_options);
+	require (DIR_WS_MODULES.'order_details_checkout.php');
+	
+
 if (isset($_POST['sc_shipping_address_show'])) { 
 $sc_shipping_address_show = vam_db_prepare_input($_POST['sc_shipping_address_show']);
 } else {

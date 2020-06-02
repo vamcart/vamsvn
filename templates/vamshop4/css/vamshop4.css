@@ -813,6 +813,7 @@ li.level3 {
     margin-left: 0;
 }
 
+#create_account_form span.Requirement, 
 #checkout span.Requirement {
   display: none;
 }

@@ -30,6 +30,7 @@ $("#firstname").suggestions({
   serviceUrl: "https://suggestions.dadata.ru/suggestions/api/4_1/rs",
   partner: "VAMSHOP",
   token: token,
+  scrollOnFocus: false,
   type: "NAME",
   params: {
     parts: ["NAME"]
@@ -40,6 +41,7 @@ $("#lastname").suggestions({
   serviceUrl: "https://suggestions.dadata.ru/suggestions/api/4_1/rs",
   partner: "VAMSHOP",
   token: token,
+  scrollOnFocus: false,
   type: "NAME",
   params: {
     parts: ["SURNAME"]
@@ -50,6 +52,7 @@ $("#email_address").suggestions({
   serviceUrl: "https://suggestions.dadata.ru/suggestions/api/4_1/rs",
   partner: "VAMSHOP",
   token: token,
+  scrollOnFocus: false,
   type: "EMAIL",
   params: {
     parts: ["SURNAME"]
@@ -60,6 +63,7 @@ $("#street_address").suggestions({
   serviceUrl: "https://suggestions.dadata.ru/suggestions/api/4_1/rs",
   partner: "VAMSHOP",
   token: token,
+  scrollOnFocus: false,
   type: "ADDRESS",
   geoLocation: true,
   onSelect: showSelected
@@ -98,73 +102,195 @@ function showSelected(suggestion) {
 </script>
 {/literal}
 {/if}
+
 <div class="page">
-<h1>{#heading_create_account#}</h1>
-<div class="pageContent">
+<div class="pageContent" id="create_account_form">
+
+<div class="row">
+<div class="col-xl-9">
+
 {$FORM_ACTION}{if $error!=''}
 {$error}
 {/if}
-<span class="Requirement">{#text_must#}</span>
-<br />
-<br />
+
 <!-- форма -->
-<fieldset class="form">
-<legend>{#title_personal#}</legend>
+
+<h3>{#title_personal#}</h3>
+
 {if $gender=='1'} 
-<p><label for="gender">{#text_gender#}</label> {$INPUT_MALE}&nbsp;{$INPUT_FEMALE}</p>
+  <div class="form-group">
+      <label for="gender">{#text_gender#}</label>
+      {$INPUT_MALE}
+      {$INPUT_FEMALE}
+  </div>
 {/if}
-<p><label for="firstname">{#text_firstname#}</label> {$INPUT_FIRSTNAME}</p>
-{if $secondname=='1'}<p><label for="secondname">{#text_secondname#}</label> {$INPUT_SECONDNAME}</p>
-{/if}
-<p><label for="lastname">{#text_lastname#}</label> {$INPUT_LASTNAME}</p>
+
 {if $birthdate=='1'} 
-<p><label for="dob">{#text_birthdate#}</label> {$INPUT_DOB}</p>
+  <div class="form-group">
+      <label for="dob">{#text_birthdate#}</label>
+      {$INPUT_DOB}
+  </div>
 {/if}
-<p><label for="email">{#text_email#}</label> {$INPUT_EMAIL}</p>
-<p><label for="newsletter">{#text_newsletter#}</label>{$INPUT_NEWSLETTER}</p>
-</fieldset>
-{if $company=='1'}<fieldset class="form">
-<legend>{#title_company#}</legend>
-<p><label for="company">{#text_company#}</label> {$INPUT_COMPANY}</p>
-{if $vat=='1'}<p><label for="vat">{#text_ustid#}</label> {$INPUT_VAT}</p>
+
+
+  <div class="form-row">
+    <div class="form-group {if $secondname=='1'}col-md-4{else}col-md-6{/if}">
+      <label for="firstname">{#text_firstname#}</label>
+      {$INPUT_FIRSTNAME}
+    </div>
+    {if $secondname=='1'}
+    <div class="form-group col-md-6">
+      <label for="secondname">{#text_secondname#}</label>
+      {$INPUT_SECONDNAME}
+    </div>
+    {/if}
+    <div class="form-group {if $secondname=='1'}col-md-4{else}col-md-6{/if}">
+      <label for="lastname">{#text_lastname#}</label>
+      {$INPUT_LASTNAME}
+    </div>
+  </div>
+  
+{if $company=='1'} 
+
+<h3>{#title_company#}</h3>
+
+  <div class="form-group">
+      <label for="company">{#text_company#}</label>
+      {$INPUT_COMPANY}
+  </div>
 {/if}
-</fieldset>
-{/if}<fieldset class="form">
-{if $street_address=='1'}<legend>{#title_address#}</legend>
+
+{if $company=='1'} 
+  <div class="form-group">
+      <label for="company">{#text_ustid#}</label>
+      {$INPUT_VAT}
+  </div>
 {/if}
-{if $street_address=='1'}<p><label for="address">{#text_street#}</label> {$INPUT_STREET}</p>
+
+{if $street_address=='1'}
+<h3>{#title_address#}</h3>
 {/if}
-{if $suburb=='1'}<p><label for="suburb">{#text_suburb#}</label> {$INPUT_SUBURB}</p>
+
+  <div class="form-row">
+    {if $street_address=='1'}
+    <div class="form-group {if $suburb=='1'}col-md-6{else}col-md-12{/if}">
+      <label for="address">{#text_street#}</label>
+      {$INPUT_STREET}
+    </div>
+    {/if}
+    {if $suburb=='1'}
+    <div class="form-group col-md-6">
+      <label for="suburb">{#text_suburb#}</label>
+      {$INPUT_SUBURB}
+    </div>
+    {/if}
+  </div>
+
+  <div class="form-row">
+  {if $city=='1'}
+    <div class="form-group col-md-9">
+      <label for="city">{#text_city#}</label>
+      {$INPUT_CITY}
+    </div>
+  {/if}
+  {if $postcode=='1'}
+    <div class="form-group col-md-3">
+      <label for="postcode">{#text_code#}</label>
+      {$INPUT_CODE}
+    </div>
+  {/if}
+  </div>
+
+  <div class="form-row">
+    {if $country=='1'}
+    <div class="form-group col-md-6">
+      <label for="country">{#text_country#}</label>
+      <div id="shipping_country_box">
+      <div id="shipping_country">
+      {$SELECT_COUNTRY}
+      </div>
+      </div>
+    </div>
+    {else}
+    <div id="shipping_country_box">
+    <div id="shipping_country">
+    <input type="hidden" name="country" id="country" value="{$smarty.const.STORE_COUNTRY}" />
+    </div><!--div end shipping_country -->
+    </div><!--div end shipping_country_box -->
+    {/if}
+    {if $state=='1'}
+    <div class="form-group col-md-6">
+      <label for="state">{#text_state#}</label>
+      <div id="shipping_state_box">
+      <div id="shipping_state">
+      <span id="stateXML">{$INPUT_STATE}</span>
+      </div>
+      </div>
+    </div>
+    {else}
+    <div id="shipping_state_box">
+    <div id="shipping_state">    <input type="hidden" name="state" id="state" value="{$smarty.const.STORE_STATE}" />
+    </div><!--div end shipping_state -->
+    </div><!--div end shipping_state_box -->
+    {/if}
+  </div>
+  
+{if $telephone=='1'}
+<h3>{#title_contact#}</h3>
 {/if}
-{if $postcode=='1'}<p><label for="postcode">{#text_code#}</label> {$INPUT_CODE}</p>
-{/if}
-{if $city=='1'}<p><label for="city">{#text_city#}</label> {$INPUT_CITY}</p>
-{/if}
-{if $state=='1'}<p><label for="state">{#text_state#}</label> <span id="stateXML">{$INPUT_STATE}</span></p>
-{/if}
-{if $country=='1'}<p><label for="country">{#text_country#}</label> {$SELECT_COUNTRY}</p>
-{/if}
-</fieldset>
-<fieldset class="form">
-{if $telephone=='1'}<legend>{#title_contact#}</legend>
-{/if}
-{if $telephone=='1'}<p><label for="telephone">{#text_tel#}</label> {$INPUT_TEL}</p>
-{/if}
-{if $fax=='1'}<p><label for="fax">{#text_fax#}</label> {$INPUT_FAX}</p>
-{/if}
-</fieldset>
+
+  <div class="form-row">
+    {if $telephone=='1'}
+    <div class="form-group {if $fax=='1'}col-md-4{else}col-md-6{/if}">
+      <label for="firstname">{#text_tel#}</label>
+      {$INPUT_TEL}
+    </div>
+    {/if}
+    {if $fax=='1'}
+    <div class="form-group col-md-6">
+      <label for="secondname">{#text_fax#}</label>
+      {$INPUT_FAX}
+    </div>
+    {/if}
+    <div class="form-group {if $fax=='1'}col-md-4{else}col-md-6{/if}">
+      <label for="lastname">{#text_email#}</label>
+      {$INPUT_EMAIL}
+    </div>
+  </div>
+  
+<div id="newletter_checkbox">
+<div class="form-check mb-4">
+  {$INPUT_NEWSLETTER}
+  <label class="form-check-label" for="pay_show">
+    {#text_newsletter#}
+  </label>
+</div>
+</div>  
+  
 {if $INPUT_CUSTOMERS_EXTRA_FIELDS}
-<fieldset class="form">
-<legend>{#title_options#}</legend>
-{foreach item=customers_extra_filelds from=$INPUT_CUSTOMERS_EXTRA_FIELDS}<p><label>{$customers_extra_filelds.NAME}:</label> {$customers_extra_filelds.VALUE}</p>
+
+<h3>{#title_options#}</h3>
+
+{foreach item=customers_extra_filelds from=$INPUT_CUSTOMERS_EXTRA_FIELDS}  <div class="form-group {if $suburb=='1'}col-md-6{else}col-md-12{/if}">
+    <label for="address">{$customers_extra_filelds.NAME}:</label>
+    {$customers_extra_filelds.VALUE}
+  </div>
 {/foreach}
-</fieldset>
 {/if}
-<fieldset class="form">
-<legend>{#title_password#}</legend>
-<p><label for="pass">{#text_password#}</label> {$INPUT_PASSWORD}</p>
-<p><label for="confirmation">{#text_confirmation#}</label> {$INPUT_CONFIRMATION}</p>
-</fieldset>
+
+<h3>{#title_password#}</h3>
+
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="lastname">{#text_password#}</label>
+      {$INPUT_PASSWORD}
+    </div>
+    <div class="form-group col-md-6">
+      <label for="lastname">{#text_confirmation#}</label>
+      {$INPUT_CONFIRMATION}
+    </div>
+  </div>
+
 <!-- /форма -->
 <div class="form-anti-bot" style="clear:both;">
 	<strong>Current <span style="display:none;">month</span> <span style="display:inline;">ye@r</span> <span style="display:none;">day</span></strong> <span class="required">*</span>
@@ -176,16 +302,38 @@ function showSelected(suggestion) {
 	<input type="text" name="anti-bot-e-email-url" id="anti-bot-e-email-url" size="30" value=""/>
 </div>
 
-<div class="pageContentFooter">
-{$BUTTON_SUBMIT}
 </div>
 
-<br />
+<div class="col-xl-3">
+<!--<div class="sticky-wrapper">
+<div class="sticky-top">-->
+
+<div class="card card-product card-sm">
+<div class="card-header">
+<span class="h5">{#heading_create_account#}</span>
+</div>
+<div class="card-body">
+<div class="info-wrap">
 {if $smarty.const.DISPLAY_PRIVACY_TEXT == 'true'}
 <div>
+<small>
 {$smarty.const.PRIVACY_TEXT}
+</small>
 </div>
+<hr />
 {/if}
+</div>
+</div>
+<div class="card-footer text-center">
+<button type="submit" class="btn btn-primary btn-block"><i class="fa fa-check-o"></i> {$smarty.const.IMAGE_BUTTON_CONTINUE}</button>
+</div>
+<!--
+</div>
+</div>
+-->
+</div>
+</div>
+</div>
 
 {$FORM_END}
 
