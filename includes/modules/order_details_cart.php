@@ -210,7 +210,9 @@ $module->assign('module_content', $module_content);
 $module->assign('new_array', $new_array);
 
 if (ACTIVATE_GIFT_SYSTEM == 'true')
-include (DIR_WS_MODULES.'gift_cart_details.php');
+include_once (DIR_WS_MODULES.'gift_cart_details.php');
+
+//include_once (DIR_WS_MODULES.'cross_selling_cart_details.php');
 
 $module->caching = 0;
 $module = $module->fetch(CURRENT_TEMPLATE.'/module/order_details.html');
