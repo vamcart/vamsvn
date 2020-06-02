@@ -1139,4 +1139,7 @@ define('STORE_WHATSAPP_DESC', 'Ваш аккаунт WhatsApp.');
 define('STORE_VIBER_TITLE' , 'Viber');
 define('STORE_VIBER_DESC', 'Ваш аккаунт Viber.');
 
+define('DISPLAY_CART_IN_CHECKOUT_TITLE' , 'Показывать корзину на странице оформления заказа');
+define('DISPLAY_CART_IN_CHECKOUT_DESC', 'Показывать корзину на странице оформления заказа.');
+
 ?>
