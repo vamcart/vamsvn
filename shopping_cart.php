@@ -152,9 +152,29 @@ if ($_SESSION['cart']->count_contents() > 0) {
 
 	$vamTemplate->assign('HIDDEN_OPTIONS', $hidden_options);
 	require (DIR_WS_MODULES.'order_details_cart.php');
-	if (!$ajax_cart) {
+	//if (!$ajax_cart) {
 	include (DIR_WS_MODULES.'cross_selling_cart.php');
+	//}
+
+if (!$ajax_cart) {
+$i = 0;
+$max = count($_SESSION['tracking']['products_history']);
+
+while ($i < $max) {
+
+	
+	$product_history_query = vamDBquery("select * from ".TABLE_PRODUCTS." p, ".TABLE_PRODUCTS_DESCRIPTION." pd where p.products_id=pd.products_id and pd.language_id='".(int) $_SESSION['languages_id']."' and p.products_status = '1' and p.products_id = '".$_SESSION['tracking']['products_history'][$i]."'");
+	$history_product = vam_db_fetch_array($product_history_query, true);
+$cpath = vam_get_product_path($_SESSION['tracking']['products_history'][$i]);
+	if ($history_product['products_status'] != 0) {
+
+		$history_product = array_merge($history_product,array('cat_url' => vam_href_link(FILENAME_DEFAULT, 'cat='.$cpath)));
+		$products_history[] = $product->buildDataArray($history_product);
 	}
+	$i ++;
+}
+$vamTemplate->assign('products_history', $products_history);
+}
 
 $_SESSION['allow_checkout'] = 'true';
 	if (STOCK_CHECK == 'true') {
@@ -218,27 +238,6 @@ if ($total > 0 ) {
 	$vamTemplate->assign('cart_empty', $cart_empty);
 	$vamTemplate->assign('BUTTON_CONTINUE', '<a class="button" href="'.vam_href_link(FILENAME_DEFAULT).'">'.vam_image_button('submit.png', IMAGE_BUTTON_CONTINUE).'</a>');
 
-}
-
-
-if (!$ajax_cart) {
-$i = 0;
-$max = count($_SESSION['tracking']['products_history']);
-
-while ($i < $max) {
-
-	
-	$product_history_query = vamDBquery("select * from ".TABLE_PRODUCTS." p, ".TABLE_PRODUCTS_DESCRIPTION." pd where p.products_id=pd.products_id and pd.language_id='".(int) $_SESSION['languages_id']."' and p.products_status = '1' and p.products_id = '".$_SESSION['tracking']['products_history'][$i]."'");
-	$history_product = vam_db_fetch_array($product_history_query, true);
-$cpath = vam_get_product_path($_SESSION['tracking']['products_history'][$i]);
-	if ($history_product['products_status'] != 0) {
-
-		$history_product = array_merge($history_product,array('cat_url' => vam_href_link(FILENAME_DEFAULT, 'cat='.$cpath)));
-		$products_history[] = $product->buildDataArray($history_product);
-	}
-	$i ++;
-}
-$vamTemplate->assign('products_history', $products_history);
 }
 
 $vamTemplate->assign('language', $_SESSION['language']);

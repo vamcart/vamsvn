@@ -1,0 +1,23 @@
+  <div class="card card-product">
+	<div class="card-body">
+	<div class="row">
+		<div class="col-md-2">
+			<div class="img-wrap"><a href="{$module_data.PRODUCTS_LINK}" title="{$module_data.IMAGE_ALT}"><img class="img-sm" src="{$module_data.PRODUCTS_IMAGE}" alt="{$module_data.IMAGE_ALT}"></a></div>
+		</div>
+		<div class="col-md-5">
+				<h5 class="title"><a href="{$module_data.PRODUCTS_LINK}" title="{$module_data.IMAGE_ALT}">{$module_data.PRODUCTS_NAME}</a></h5>
+				{if $module_data.PRODUCTS_SHIPPING_TIME neq ""}<p><span class="text-muted">{#text_shippingtime#}&nbsp;{$module_data.PRODUCTS_SHIPPING_TIME}</span></p>{/if}
+		</div>
+		<div class="col-md-2">
+				<div class="price-wrap h6 font-weight-bold text-dark b">
+					<div><strong>{$module_data.PRODUCTS_PRICE}</strong></div>
+				</div>
+		</div>
+		<div class="col-md-3 my-auto">
+			<div class="action-wrap text-center">
+         {$module_data.PRODUCTS_BUTTON_BUY_NOW}
+			</div>
+		</div>
+	</div>
+	</div>
+</div>
