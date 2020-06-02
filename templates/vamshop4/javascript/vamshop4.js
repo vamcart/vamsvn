@@ -434,7 +434,5 @@ window.addEventListener('resize', changeFixedElementWidth);
 
 function changeFixedElementWidth() {
   if (parentElement) var parentElementWidth = parentElement.getBoundingClientRect().width;
-  if (parentElement) var parentElementHeight = parentElement.getBoundingClientRect().height;
   if (fixedElement) fixedElement.style.width = parentElementWidth + 'px';
-  if (fixedElement) fixedElement.style.height = parentElementHeight + 'px';
 }
