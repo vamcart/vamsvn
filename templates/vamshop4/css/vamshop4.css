@@ -873,3 +873,11 @@ li.level3 {
 .social-login span:after {
     margin: 0 0 0 20px;
 }
+
+.wsmain  .input-group>.form-control, .wsmain .input-group>.form-control-plaintext {
+    position: relative;
+    -ms-flex: 1 1 0%;
+    flex: 1 1 0%;
+    min-width: 90px;
+    margin-bottom: 0;
+}
