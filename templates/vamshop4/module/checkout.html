@@ -111,7 +111,7 @@ $(function($){
 <div class="row">
 <div class="col-xl-7">
 
-<h1>{#heading_checkout#}</h1>
+<!--<h1>{#heading_checkout#}</h1>-->
 <div id="box">
 <div id="checkout">
 {$PAYMENT_FIELDS}
@@ -121,7 +121,9 @@ $(function($){
 </div>
 {/if}
 
+<!--
 {if $TEXT_ORIGIN_LOGIN}<p>{$TEXT_ORIGIN_LOGIN}</p>{/if}
+-->
 
 <div id="shipping_box" class="sm_layout_box">
 {if !$smarty.session.customer_id}
