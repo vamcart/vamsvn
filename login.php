@@ -187,7 +187,7 @@ $vamTemplate->assign('BUTTON_LOGIN', vam_image_submit('login.png', IMAGE_BUTTON_
 $vamTemplate->assign('FORM_ACTION', vam_draw_form('login', vam_href_link(FILENAME_LOGIN, 'action=process', 'SSL')));
 $vamTemplate->assign('INPUT_MAIL', vam_draw_input_field('email_address'));
 $vamTemplate->assign('INPUT_PASSWORD', vam_draw_password_field('password'));
-$vamTemplate->assign('INPUT_REMEMBER', vam_draw_checkbox_field('remember_me', '1', true, 'id="remember_me"'));
+$vamTemplate->assign('INPUT_REMEMBER', vam_draw_checkbox_field('remember_me', '1', true, 'class="form-check-input" id="remember_me"'));
 $vamTemplate->assign('LINK_LOST_PASSWORD', vam_href_link(FILENAME_PASSWORD_DOUBLE_OPT, '', 'SSL'));
 $vamTemplate->assign('FORM_END', '</form>');
 

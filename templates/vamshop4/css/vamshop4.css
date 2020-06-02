@@ -844,3 +844,32 @@ li.level3 {
 #footer {
   z-index: 99999;
 }
+
+.card-header {
+  padding: .75em .65em;
+}
+
+.login-form {
+  max-width: 330px;
+  margin: 0 auto;
+}
+
+.social-login span {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.social-login span:before,
+.social-login span:after {
+    content: '';
+    border-top: 2px solid #6c757d;
+    margin: 0 20px 0 0;
+    flex: 1 0 20px;
+}
+
+.social-login span:after {
+    margin: 0 0 0 20px;
+}
