@@ -1,270 +1,94 @@
 <?php
-/* -----------------------------------------------------------------------------------------
-   $Id: vam_template.php 899 2019-10-13 20:14:57 VaM $   
-
-   VaM Shop - open source ecommerce solution
-   http://vamshop.ru
-   http://vamshop.com
-
-   Copyright (c) 2019 VamShop
-   -----------------------------------------------------------------------------------------
-   Released under the GNU General Public License
-   ---------------------------------------------------------------------------------------*/
-
 /**
- * HTMLMinify-Smarty: A simple Smarty filter to minify HTML
- * (C) 2017 Mark Hughes <m@rkhugh.es>
+ * Smarty plugin
  *
- * Based mostly on the mecha-cms minify addon (https://github.com/mecha-cms/extend.minify Copyright (c) 2014-2016 Taufik Nurrohman)
+ * @package Smarty
+ * @subpackage PluginsFilter
  */
 
-define('MINIFY_STRING', '"(?:[^"\\\]|\\\.)*"|\'(?:[^\'\\\]|\\\.)*\'');
-define('MINIFY_COMMENT_CSS', '/\*[\s\S]*?\*/');
-define('MINIFY_COMMENT_HTML', '<!\-{2}[\s\S]*?\-{2}>');
-define('MINIFY_HTML', '<[!/]?[a-zA-Z\d:.-]+[\s\S]*?>');
-define('MINIFY_HTML_ENT', '&(?:[a-zA-Z\d]+|\#\d+|\#x[a-fA-F\d]+);');
-define('MINIFY_HTML_KEEP', '<pre(?:\s[^<>]*?)?>[\s\S]*?</pre>|<code(?:\s[^<>]*?)?>[\s\S]*?</code>|<script(?:\s[^<>]*?)?>[\s\S]*?</script>|<style(?:\s[^<>]*?)?>[\s\S]*?</style>|<textarea(?:\s[^<>]*?)?>[\s\S]*?</textarea>');
+/**
+ * Smarty minify_html outputfilter plugin
+ *
+ * Trim unnecessary whitespace from HTML markup.
+ *
+ * @author   Rodney Rehm
+ * @param string                   $source input string
+ * @param Smarty_Internal_Template $smarty Smarty object
+ * @return string filtered output
+ */
+function smarty_outputfilter_minify_html($source, Smarty_Internal_Template $smarty)
+{
+    $store = array();
+    $_store = 0;
+    $_offset = 0;
 
-// by default we minify URLs
-if ( ! defined("HTML_MINIFY_URL_ENABLED")) {
-	define("HTML_MINIFY_URL_ENABLED", false);
-}
+    // Unify Line-Breaks to \n
+    $source = preg_replace("/\015\012|\015|\012/", "\n", $source);
+    $source = preg_replace('/\t/', ' ', $source); 
+    $source = preg_replace('/ +/', ' ', $source);
 
-// by default we minify inline CSS
-if ( ! defined("HTML_MINIFY_INLINE_CSS_ENABLED")) {
-	define("HTML_MINIFY_INLINE_CSS_ENABLED", true);
-}
+    // capture Internet Explorer Conditional Comments
+    if (preg_match_all('#<!--\[[^\]]+\]>.*?<!\[[^\]]+\]-->#is', $source, $matches, PREG_OFFSET_CAPTURE | PREG_SET_ORDER)) {
+        foreach ($matches as $match) {
+            $store[] = $match[0][0];
+            $_length = strlen($match[0][0]);
+            $replace = '@!@SMARTY:' . $_store . ':SMARTY@!@';
+            $source = substr_replace($source, $replace, $match[0][1] - $_offset, $_length);
 
-
-// get URL
-if ( ! defined("HTML_MINIFY_URL")) {
-	$protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' || $_SERVER['SERVER_PORT'] === 443 ? 'https' : 'http') . '://';
-	$host = isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : (isset($_SERVER['SERVER_NAME']) ? $_SERVER['SERVER_NAME'] : "");
-	$url = $protocol . $host;
-} else {
-	$url = HTML_MINIFY_URL;
-}
-
-// escape character
-define('X', "\x1A");
-
-// normalize line–break(s)
-function n($s) {
-    return str_replace(["\r\n", "\r"], "\n", $s);
-}
-
-// trim once
-function t($a, $b) {
-    if ($a && strpos($a, $b) === 0 && substr($a, -strlen($b)) === $b) {
-        return substr(substr($a, strlen($b)), 0, -strlen($b));
+            $_offset += $_length - strlen($replace);
+            $_store++;
+        }
     }
-    return $a;
-}
 
-function fn_minify($pattern, $input) {
-    return preg_split('#(' . implode('|', $pattern) . ')#', $input, -1, PREG_SPLIT_NO_EMPTY | PREG_SPLIT_DELIM_CAPTURE);
-}
+    // Strip all HTML-Comments
+    $source = preg_replace( '#<!--.*?-->#ms', '', $source );
 
-function fn_minify_css($input, $comment = 2, $quote = 2) {
-    if (!is_string($input) || !$input = n(trim($input))) return $input;
-    $output = $prev = "";
-    foreach (fn_minify([MINIFY_COMMENT_CSS, MINIFY_STRING], $input) as $part) {
-        if (trim($part) === "") continue;
-        if ($comment !== 1 && strpos($part, '/*') === 0 && substr($part, -2) === '*/') {
-            if (
-                $comment === 2 && (
-                    // Detect special comment(s) from the third character. It should be a `!` or `*` → `/*! keep */` or `/** keep */`
-                    strpos('*!', $part[2]) !== false ||
-                    // Detect license comment(s) from the content. It should contains character(s) like `@license`
-                    stripos($part, '@licence') !== false || // noun
-                    stripos($part, '@license') !== false || // verb
-                    stripos($part, '@preserve') !== false
-                )
-            ) {
-                $output .= $part;
-            }
-            continue;
+    // capture html elements not to be messed with
+    $_offset = 0;
+    if (preg_match_all('#<(script|pre)[^>]*>.*?</\\1>#is', $source, $matches, PREG_OFFSET_CAPTURE | PREG_SET_ORDER)) {
+        foreach ($matches as $match) {
+            $store[] = $match[0][0];
+            $_length = strlen($match[0][0]);
+            $replace = '@!@SMARTY:' . $_store . ':SMARTY@!@';
+            $source = substr_replace($source, $replace, $match[0][1] - $_offset, $_length);
+
+            $_offset += $_length - strlen($replace);
+            $_store++;
         }
-        if ($part[0] === '"' && substr($part, -1) === '"' || $part[0] === "'" && substr($part, -1) === "'") {
-            // Remove quote(s) where possible …
-            $q = $part[0];
-            if (
-                $quote !== 1 && (
-                    // <https://www.w3.org/TR/CSS2/syndata.html#uri>
-                    substr($prev, -4) === 'url(' && preg_match('#\burl\($#', $prev) ||
-                    // <https://www.w3.org/TR/CSS2/syndata.html#characters>
-                    substr($prev, -1) === '=' && preg_match('#^' . $q . '[a-zA-Z_][\w-]*?' . $q . '$#', $part)
-                )
-            ) {
-                $part = t($part, $q); // trim quote(s)
-            }
-            $output .= $part;
-        } else {
-            $output .= fn_minify_css_union($part);
-        }
-        $prev = $part;
     }
-    return trim($output);
-}
 
-function fn_minify_css_union($input) {
-    if (stripos($input, 'calc(') !== false) {
-        // Keep important white–space(s) in `calc()`
-        $input = preg_replace_callback('#\b(calc\()\s*(.*?)\s*\)#i', function($m) {
-            return $m[1] . preg_replace('#\s+#', X, $m[2]) . ')';
-        }, $input);
+    $expressions = array(
+        // replace multiple spaces between tags by a single space
+        // can't remove them entirely, becaue that might break poorly implemented CSS display:inline-block elements
+        '#(:SMARTY@!@|>)\s+(?=@!@SMARTY:|<)#s' => '\1 \2',
+        // remove spaces between attributes (but not in attribute values!)
+        '#(([a-z0-9]\s*=\s*(["\'])[^\3]*?\3)|<[a-z0-9_]+)\s+([a-z/>])#is' => '\1 \4',
+        // note: for some very weird reason trim() seems to remove spaces inside attributes.
+        // maybe a \0 byte or something is interfering?
+        '#^\s+<#Ss' => '<',
+        '#>\s+$#Ss' => '>',
+    );
+
+    $source = preg_replace( array_keys($expressions), array_values($expressions), $source );
+    // note: for some very weird reason trim() seems to remove spaces inside attributes.
+    // maybe a \0 byte or something is interfering?
+    // $source = trim( $source );
+
+    // capture html elements not to be messed with
+    $_offset = 0;
+    if (preg_match_all('#@!@SMARTY:([0-9]+):SMARTY@!@#is', $source, $matches, PREG_OFFSET_CAPTURE | PREG_SET_ORDER)) {
+        foreach ($matches as $match) {
+            $store[] = $match[0][0];
+            $_length = strlen($match[0][0]);
+            $replace = array_shift($store);
+            $source = substr_replace($source, $replace, $match[0][1] + $_offset, $_length);
+
+            $_offset += strlen($replace) - $_length;
+            $_store++;
+        }
     }
-    $input = preg_replace([
-        // Fix case for `#foo<space>[bar="baz"]`, `#foo<space>*` and `#foo<space>:first-child` [^1]
-        '#(?<=[\w])\s+(\*|\[|:[\w-]+)#',
-        // Fix case for `[bar="baz"]<space>.foo`, `*<space>.foo`, `:nth-child(2)<space>.foo` and `@media<space>(foo: bar)<space>and<space>(baz: qux)` [^2]
-        '#([*\]\)])\s+(?=[\w\#.])#', '#\b\s+\(#', '#\)\s+\b#',
-        // Minify HEX color code … [^3]
-        '#\#([a-f\d])\1([a-f\d])\2([a-f\d])\3\b#i',
-        // Remove white–space(s) around punctuation(s) [^4]
-        '#\s*([~!@*\(\)+=\{\}\[\]:;,>\/])\s*#',
-        // Replace zero unit(s) with `0` [^5]
-        '#\b(?<!\d\.)(?:0+\.)?0+(?:[a-z]+\b)#i',
-        // Replace `0.6` with `.6` [^6]
-        '#\b0+\.(\d+)#',
-        // Replace `:0 0`, `:0 0 0` and `:0 0 0 0` with `:0` [^7]
-        '#:(0\s+){0,3}0(?=[!,;\)\}]|$)#',
-        // Replace `background(?:-position)?:(0|none)` with `background$1:0 0` [^8]
-        '#\b(background(?:-position)?):(?:0|none)([;,\}])#i',
-        // Replace `(border(?:-radius)?|outline):none` with `$1:0` [^9]
-        '#\b(border(?:-radius)?|outline):none\b#i',
-        // Remove empty selector(s) [^10]
-        '#(^|[\{\}])(?:[^\{\}]+)\{\}#',
-        // Remove the last semi–colon and replace multiple semi–colon(s) with a semi–colon [^11]
-        '#;+([;\}])#',
-        // Replace multiple white–space(s) with a space [^12]
-        '#\s+#'
-    ], [
-        // [^1]
-        X . '$1',
-        // [^2]
-        '$1' . X, X . '(', ')' . X,
-        // [^3]
-        '#$1$2$3',
-        // [^4]
-        '$1',
-        // [^5]
-        '0',
-        // [^6]
-        '.$1',
-        // [^7]
-        ':0',
-        // [^8]
-        '$1:0 0',
-        // [^9]
-        '$1:0',
-        // [^10]
-        '$1',
-        // [^11]
-        '$1',
-        // [^12]
-        ' '
-    ], $input);
-    return trim(str_replace(X, ' ', $input));
+
+    return $source;
 }
 
-function fn_minify_html($input, $comment = 2, $quote = 1) {
-    if (!is_string($input) || !$input = n(trim($input))) return $input;
-    $output = $prev = "";
-    foreach (fn_minify([MINIFY_COMMENT_HTML, MINIFY_HTML_KEEP, MINIFY_HTML, MINIFY_HTML_ENT], $input) as $part) {
-        if ($part === "\n") continue;
-        if ($part !== ' ' && trim($part) === "" || $comment !== 1 && strpos($part, '<!--') === 0) {
-            // Detect IE conditional comment(s) by its closing tag …
-            if ($comment === 2 && substr($part, -12) === '<![endif]-->') {
-                $output .= $part;
-            }
-            continue;
-        }
-        if ($part[0] === '<' && substr($part, -1) === '>') {
-            $output .= fn_minify_html_union($part, $quote);
-        } else if ($part[0] === '&' && substr($part, -1) === ';' && $part !== '<' && $part !== '>' && $part !== '&') {
-            $output .= html_entity_decode($part); // Evaluate HTML entit(y|ies)
-        } else {
-            $output .= preg_replace('#\s+#', ' ', $part);
-        }
-        $prev = $part;
-    }
-    $output = str_replace(' </', '</', $output);
-    // Force space with ` ` and line–break with ``
-    return str_ireplace([' ', ' ', '
-', '
-'], [' ', ' ', "\n", "\n"], trim($output));
-}
-
-function fn_minify_html_union($input, $quote) {
-    if (
-        strpos($input, ' ') === false &&
-        strpos($input, "\n") === false &&
-        strpos($input, "\t") === false
-    ) return $input;
-    global $url;
-    return preg_replace_callback('#<\s*([^\/\s]+)\s*(?:>|(\s[^<>]+?)\s*>)#', function($m) use($quote, $url) {
-        if (isset($m[2])) {
-            // Minify inline CSS(s)
-            if (stripos($m[2], ' style=') !== false && HTML_MINIFY_INLINE_CSS_ENABLED) {
-                $m[2] = preg_replace_callback('#( style=)([\'"]?)(.*?)\2#i', function($m) {
-                    return $m[1] . $m[2] . fn_minify_css($m[3]) . $m[2];
-                }, $m[2]);
-            }
-            // Minify URL(s)
-            if (strpos($m[2], '://') !== false && HTML_MINIFY_URL_ENABLED) {
-                $m[2] = str_replace([
-                    $url . '/',
-                    $url . '?',
-                    $url . '&',
-                    $url . '#',
-                    $url . '"',
-                    $url . "'"
-                ], [
-                    '/',
-                    '?',
-                    '&',
-                    '#',
-                    '/"',
-                    "/'"
-                ], $m[2]);
-            }
-            $a = 'a(sync|uto(focus|play))|c(hecked|ontrols)|d(efer|isabled)|hidden|ismap|loop|multiple|open|re(adonly|quired)|s((cop|elect)ed|pellcheck)';
-            $a = '<' . $m[1] . preg_replace([
-                // From `a="a"`, `a='a'`, `a="true"`, `a='true'`, `a=""` and `a=''` to `a` [^1]
-                '#\s(' . $a . ')(?:=([\'"]?)(?:true|\1)?\2)#i',
-                // Remove extra white–space(s) between HTML attribute(s) [^2]
-                '#\s*([^\s=]+?)(=(?:\S+|([\'"]?).*?\3)|$)#',
-                // From `<img />` to `<img/>` [^3]
-                '#\s+\/$#'
-            ], [
-                // [^1]
-                ' $1',
-                // [^2]
-                ' $1$2',
-                // [^3]
-                '/'
-            ], str_replace("\n", ' ', $m[2])) . '>';
-            return $quote !== 1 ? fn_minify_html_union_attr($a) : $a;
-        }
-        return '<' . $m[1] . '>';
-    }, $input);
-}
-
-function fn_minify_html_union_attr($input) {
-    if (strpos($input, '=') === false) return $input;
-    return preg_replace_callback('#=(' . MINIFY_STRING . ')#', function($m) {
-        $q = $m[1][0];
-        if (strpos($m[1], ' ') === false && preg_match('#^' . $q . '[a-zA-Z_][\w-]*?' . $q . '$#', $m[1])) {
-            return '=' . t($m[1], $q);
-        }
-        return $m[0];
-    }, $input);
-}
-   
-// used for smarty hook
- function smarty_outputfilter_minify_html($source, Smarty_Internal_Template $template) {
- 	
- 	
-	return fn_minify_html($source);
-}
+?>
