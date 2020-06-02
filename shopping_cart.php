@@ -47,8 +47,8 @@ if (!$ajax_cart) {
 $breadcrumb->add(NAVBAR_TITLE_SHOPPING_CART);
 require (DIR_WS_INCLUDES.'header.php');
 }
-if (ACTIVATE_GIFT_SYSTEM == 'true')
-include (DIR_WS_MODULES.'gift_cart.php');
+//if (ACTIVATE_GIFT_SYSTEM == 'true')
+//include (DIR_WS_MODULES.'gift_cart.php');
 
 if ($_SESSION['cart']->count_contents() > 0) {
 

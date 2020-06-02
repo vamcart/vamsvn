@@ -196,6 +196,9 @@ if ($_SESSION['allow_checkout'] == 'false')
 
 	$vamTemplate->assign('HIDDEN_OPTIONS', $hidden_options);
 	require (DIR_WS_MODULES.'order_details_checkout.php');
+
+   if (ACTIVATE_GIFT_SYSTEM == 'true')
+   require (DIR_WS_MODULES.'gift_cart.php');
 	
 
 if (isset($_POST['sc_shipping_address_show'])) { 

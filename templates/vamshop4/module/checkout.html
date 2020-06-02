@@ -470,6 +470,16 @@ $(function($){
 </div><!--div end comment_box--> 
 {/if}
 
+<div class="form-anti-bot" style="clear:both;">
+	<strong>Current <span style="display:none;">month</span> <span style="display:inline;">ye@r</span> <span style="display:none;">day</span></strong> <span class="required">*</span>
+	<input type="hidden" name="anti-bot-a" id="anti-bot-a" value="{$smarty.now|date_format:"%Y"}" />
+	<input type="text" name="anti-bot-q" id="anti-bot-q" size="30" value="19" />
+</div>
+<div class="form-anti-bot-2" style="display:none;">
+	<strong>Leave this field empty</strong> <span class="required">*</span>
+	<input type="text" name="anti-bot-e-email-url" id="anti-bot-e-email-url" size="30" value=""/>
+</div>
+
 </div><!-- Div end checkout -->
 </div><!-- Div end checkout_container -->
 
@@ -512,6 +522,10 @@ $(function($){
 </div>
 </div>
 
+{$FORM_END}
+
+{$MODULE_gift_cart}
+
 {$MODULE_order_details_checkout}
 
 <!--
@@ -522,19 +536,6 @@ $(function($){
 </div>
 
 </div>
-
-
-<div class="form-anti-bot" style="clear:both;">
-	<strong>Current <span style="display:none;">month</span> <span style="display:inline;">ye@r</span> <span style="display:none;">day</span></strong> <span class="required">*</span>
-	<input type="hidden" name="anti-bot-a" id="anti-bot-a" value="{$smarty.now|date_format:"%Y"}" />
-	<input type="text" name="anti-bot-q" id="anti-bot-q" size="30" value="19" />
-</div>
-<div class="form-anti-bot-2" style="display:none;">
-	<strong>Leave this field empty</strong> <span class="required">*</span>
-	<input type="text" name="anti-bot-e-email-url" id="anti-bot-e-email-url" size="30" value=""/>
-</div>
-
-{$FORM_END}
 
 </div>
 </div>

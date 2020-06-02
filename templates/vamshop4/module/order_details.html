@@ -52,6 +52,12 @@
 <div class="card-footer text-center">
 <a class="btn btn-primary btn-block" href="{$smarty.const.FILENAME_CHECKOUT_SHIPPING}"><i class="fa fa-shopping-cart"></i> {$smarty.const.IMAGE_BUTTON_CHECKOUT}</a></div>
 </div>
+
+{if $MODULE_gift_cart}
+</form>
+{$MODULE_gift_cart}
+{/if}
+
 <!--
 </div>
 </div>
