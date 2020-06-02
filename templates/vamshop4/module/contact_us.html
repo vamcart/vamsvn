@@ -42,11 +42,20 @@ $(function($){
 {$FORM_ACTION}
 {$CONTACT_CONTENT}
 <!-- форма -->
-<fieldset class="form">
-	<p><label>{#text_name#}</label> {$INPUT_NAME}</p>
-	<p><label>{#text_email#}</label> {$INPUT_EMAIL}</p>
-	<p><label>{#text_message#}</label> {$INPUT_TEXT}</p>
-</fieldset>
+
+    <div class="form-group">
+      <label for="name">{#text_name#}</label>
+      {$INPUT_NAME}
+    </div>
+    <div class="form-group">
+      <label for="email">{#text_email#}</label>
+      {$INPUT_EMAIL}
+    </div>
+    <div class="form-group">
+      <label for="message_body">{#text_message#}</label>
+      {$INPUT_TEXT}
+    </div>
+
 <!-- /форма -->
 <div class="form-anti-bot" style="clear:both;">
 	<strong>Current <span style="display:none;">month</span> <span style="display:inline;">ye@r</span> <span style="display:none;">day</span></strong> <span class="required">*</span>
