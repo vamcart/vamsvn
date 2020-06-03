@@ -28,6 +28,11 @@ for ($i=0, $n=sizeof($order->products); $i<$n; $i++) {
 }
 $affiliate_total = round($affiliate_total, 2);
 
+$affiliate_clientdate = (date ("Y-m-d H:i:s"));
+$affiliate_clientbrowser = $_SERVER["HTTP_USER_AGENT"];
+$affiliate_clientip = $_SERVER["REMOTE_ADDR"];
+$affiliate_clientreferer = $_SERVER["HTTP_REFERER"];
+
 // Check for individual commission
 $affiliate_percentage = 0;
 if (AFFILATE_INDIVIDUAL_PERCENTAGE == 'true') {

@@ -329,6 +329,9 @@ if ($_SERVER["HTTP_X_FORWARDED_FOR"]) {
 
       }
 
+		require_once(DIR_WS_INCLUDES . 'affiliate_checkout_process.php');
+
+
 // Переход на яндекс деньги
 
 		vam_redirect('https://money.yandex.ru/embed/shop.xml?account='.MODULE_PAYMENT_YANDEX_FIZLICO_SHOP_ID.'&quickpay=shop&payment-type-choice=on&mobile-payment-type-choice=on&writer=seller&label='.substr($_SESSION['cart_yandex_fizlico_id'], strpos($_SESSION['cart_yandex_fizlico_id'], '-')+1).'&targets='.substr($_SESSION['cart_yandex_fizlico_id'], strpos($_SESSION['cart_yandex_fizlico_id'], '-')+1).'&targets-hint=&default-sum='.$order->info['total'].'&button-text=01&hint=&successURL='.vam_href_link(FILENAME_CHECKOUT_PROCESS, '', 'SSL').'');
@@ -504,7 +507,7 @@ $vamTemplate = new vamTemplate;
 // load the after_process function from the payment modules
       $this->after_process();
 
-		require_once(DIR_WS_INCLUDES . 'affiliate_checkout_process.php');
+		//require_once(DIR_WS_INCLUDES . 'affiliate_checkout_process.php');
 
 
       $_SESSION['cart']->reset(true);
