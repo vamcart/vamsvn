@@ -4,6 +4,10 @@
 
 <h1 itemprop="headline">{$ARTICLE_NAME}</h1>
 
+{if $smarty.session.customers_status.customers_status_id == 0}
+<a class="btn btn-inverse" href="{$smarty.const.HTTP_SERVER}{$smarty.const.DIR_WS_CATALOG}admin/articles.php?tPath={$TOPIC_ID}&aID={$ARTICLE_ID}&action=new_article"><i class="fa fa-pencil-alt"></i> {$smarty.const.IMAGE_BUTTON_ARTICLE_EDIT}</a>
+{/if}
+
 <div class="card card-product">
 <div class="card-body">
 

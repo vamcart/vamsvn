@@ -90,6 +90,7 @@ $article_info['articles_keywords'] = str_replace($value.",","",$article_info['ar
 	$vamTemplate->assign('ARTICLE_NAME', $article_info['articles_name']);
 	$vamTemplate->assign('TOPICS_NAME', $topics_name['topics_name']);
 	$vamTemplate->assign('TOPICS_LINK', $topics_link);
+	$vamTemplate->assign('TOPIC_ID', $topics_name['topics_id']);
 	$vamTemplate->assign('ARTICLE_ID', $article_info['articles_id']);
 	$vamTemplate->assign('ARTICLE_REVIEWS', $article_reviews['total']);
 
