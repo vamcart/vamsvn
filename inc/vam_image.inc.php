@@ -27,7 +27,7 @@
 
 // alt is added to the img tag even if it is null to prevent browsers from outputting
 // the image filename as default
-    $image = '<img src="' . vam_parse_input_field_data($src, array('"' => '&quot;')) . '" alt="' . vam_parse_input_field_data($alt, array('"' => '&quot;')) . '"';
+    $image = '<img class="img-fluid" src="' . vam_parse_input_field_data($src, array('"' => '&quot;')) . '" alt="' . vam_parse_input_field_data($alt, array('"' => '&quot;')) . '"';
 
     if (vam_not_null($alt)) {
       $image .= ' title=" ' . vam_parse_input_field_data($alt, array('"' => '&quot;')) . ' "';
