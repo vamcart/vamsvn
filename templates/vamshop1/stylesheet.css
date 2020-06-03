@@ -3504,3 +3504,43 @@ input, textarea, .uneditable-input {
 @-moz-keyframes pulse {to {box-shadow: 0 0 0 45px rgba(232, 76, 61, 0);}}
 @-ms-keyframes pulse {to {box-shadow: 0 0 0 45px rgba(232, 76, 61, 0);}}
 @keyframes pulse {to {box-shadow: 0 0 0 45px rgba(232, 76, 61, 0);}}
+
+
+.dlist-align {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+}
+
+[class*="dlist-"] {
+    margin-bottom: 5px;
+}
+
+.dlist-align dt {
+    width: 50%;
+    word-wrap: break-word;
+    font-weight: normal;
+}
+
+dt {
+    font-weight: 700;
+}
+
+.dlist-align dd {
+    -webkit-box-flex: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+}
+
+[class*="dlist-"] dd {
+    margin-bottom: 0;
+}
+
+.text-right {
+    text-align: right !important;
+}
+
+dd {
+    margin-bottom: .5rem;
+    margin-left: 0;
+}

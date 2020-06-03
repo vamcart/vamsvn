@@ -1,0 +1,67 @@
+{config_load file="$language/lang_$language.conf" section="shopping_cart"}
+{config_load file="$language/lang_$language.conf" section="product_info"}
+
+<table width="100%" border="0" cellspacing="0" cellpadding="3">
+  <tr> 
+    <td>&nbsp;</td>
+    <td align="left" width="150"><strong>{#text_qty#}</strong></td>
+    <td align="left"><strong>{#text_article#}</strong></td>
+    <td align="left"><strong>{#text_single#}</strong></td>
+    <td align="left"><strong>{#text_total#}</strong></td>
+    <td align="left"><strong>{#text_remove#}</strong></td>
+  </tr>
+{foreach from=$module_content key=category_name item=cart_data}
+  <tr> 
+    <td colspan="6">{$category_name}</td>
+  </tr>
+{foreach name=aussen item=module_data from=$cart_data}  
+  <tr> 
+    <td colspan="6"></td>
+  </tr>
+  <tr> 
+    <td>{if $module_data.PRODUCTS_IMAGE!=''}<img src="{$module_data.PRODUCTS_IMAGE}" width="100" alt="{$module_data.IMAGE_ALT}" />{/if}</td>
+
+    <td valign="middle" align="left">
+      {if $smarty.const.AJAX_CART == 'true'}
+        <div class="input-group">
+          <div class="input-prepend">
+    	    {$module_data.MINUS}
+          </div>
+      {/if}
+          {$module_data.PRODUCTS_QTY}
+      {if $smarty.const.AJAX_CART == 'true'}
+          <div class="input-append">
+      	    {$module_data.PLUS}
+          </div>
+        </div>
+      {/if}
+    </td>
+
+    <td valign="middle" align="left"><strong><a href="{$module_data.PRODUCTS_LINK}">{$module_data.PRODUCTS_NAME}</a></strong><br />
+      {if $module_data.PRODUCTS_SHIPPING_TIME neq ""}{#text_shippingtime#}&nbsp;{$module_data.PRODUCTS_SHIPPING_TIME}{/if}
+      {if $module_data.ATTRIBUTES!=''} 
+      <table border="0" cellspacing="0" cellpadding="0">
+        {foreach key=key_data item=item_data from=$module_data.ATTRIBUTES} 
+        <tr> 
+          <td>{$item_data.NAME}:</td>
+          <td align="left">{$item_data.VALUE_NAME}</td>
+        </tr>
+        {/foreach} 
+      </table>
+      {else}
+      {/if} </td>
+    <td valign="middle" align="left">{$module_data.PRODUCTS_SINGLE_PRICE}</td>
+    <td valign="middle" align="left">{$module_data.PRODUCTS_PRICE}&nbsp; 
+    </td>
+    <td width="10" align="left" valign="middle">{$module_data.BOX_DELETE}</td>
+  </tr>
+  {/foreach} 
+  {/foreach}
+  <tr> 
+    <td colspan="6"></td>
+  </tr>
+  <tr> 
+    <td colspan="6" align="right">{$UST_CONTENT}<strong>{$TOTAL_CONTENT}</strong>{if 
+      $SHIPPING_INFO}{$SHIPPING_INFO}{/if}</td>
+  </tr>
+</table>
