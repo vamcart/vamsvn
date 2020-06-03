@@ -874,7 +874,8 @@ li.level3 {
     margin: 0 0 0 20px;
 }
 
-.wsmain  .input-group>.form-control, .wsmain .input-group>.form-control-plaintext {
+.wsmain .input-group>.form-control, .input-group>.form-control-plaintext, .input-group>.custom-select, .input-group>.custom-file,
+.CartContentLeft .input-group>.form-control, .input-group>.form-control-plaintext, .input-group>.custom-select, .input-group>.custom-file {
     position: relative;
     -ms-flex: 1 1 0%;
     flex: 1 1 0%;
