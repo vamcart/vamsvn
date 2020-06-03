@@ -65,7 +65,7 @@
        
        if ($token != '') {
 
-        $url="http://api.boxberry.de/json.php?token=".$token."&method=DeliveryCosts&weight=".$total_weight."&target=&ordersum=".$total."&deliverysum=".$cost."&targetstart=&height=&width=&depth=&zip=".$to_zip."";
+        $url="http://api.boxberry.ru/json.php?token=".$token."&method=DeliveryCosts&weight=".$total_weight."&target=&ordersum=".$total."&deliverysum=".$cost."&targetstart=&height=&width=&depth=&zip=".$to_zip."";
 
         // create curl resource
         $ch = curl_init();

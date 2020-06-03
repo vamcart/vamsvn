@@ -31,7 +31,7 @@ function init()
 	function point(){
 		var adrr = $('#to_pickpoint_address').val();
 		var vall = $('#to_pickpoint_id').val();
-		$('#pickpoint_address_text').html('Ваш заказ доставят по адресу: '+adrr);
+		$('#pickpoint_address_text').html(adrr);
 		$('#shipping_options').find('#pickpoint_id').remove();
 		$('#shipping_options').find('#pickpoint_address').remove();
 		$('#pickpoint_address_text').before('<input type="hidden" name="pickpoint_id" id="pickpoint_id" value="'+vall+'">');
@@ -41,7 +41,7 @@ function init()
 	function boxberry(){
 		var adrr = $('#to_boxberry_address').val();
 		var vall = $('#to_boxberry_id').val();
-		$('#boxberry_address_text').html('Ваш заказ доставят по адресу: '+adrr);
+		$('#boxberry_address_text').html(adrr);
 		$('#shipping_options').find('#boxberry_id').remove();
 		$('#shipping_options').find('#boxberry_address').remove();
 		$('#boxberry_address_text').before('<input type="hidden" name="boxberry_id" id="boxberry_id" value="'+vall+'">');
@@ -153,7 +153,7 @@ function init()
 	function point(){
 		var adrr = $('#to_pickpoint_address').val();
 		var vall = $('#to_pickpoint_id').val();
-		$('#pickpoint_address_text').html('Ваш заказ доставят по адресу: '+adrr);
+		$('#pickpoint_address_text').html(adrr);
 		$('#shipping_options').find('#pickpoint_id').remove();
 		$('#shipping_options').find('#pickpoint_address').remove();
 		$('#pickpoint_address_text').before('<input type="hidden" name="pickpoint_id" id="pickpoint_id" value="'+vall+'">');
@@ -163,7 +163,7 @@ function init()
 	function boxberry(){
 		var adrr = $('#to_boxberry_address').val();
 		var vall = $('#to_boxberry_id').val();
-		$('#boxberry_address_text').html('Ваш заказ доставят по адресу: '+adrr);
+		$('#boxberry_address_text').html(adrr);
 		$('#shipping_options').find('#boxberry_id').remove();
 		$('#shipping_options').find('#boxberry_address').remove();
 		$('#boxberry_address_text').before('<input type="hidden" name="boxberry_id" id="boxberry_id" value="'+vall+'">');

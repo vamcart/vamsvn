@@ -85,31 +85,37 @@ var pickpoint_options={};
 
 <script src="//points.boxberry.ru/js/boxberry.js"> </script>
 
-	<a href="#" class="button" onclick="boxberry.open(callback_function); return false;"><span><i class="fa fa-check"></i> {$smarty.const.MODULE_SHIPPING_BOXBERRY_TEXT_SELECT_ADDRESS}</span></a>
 	<input type="hidden" name="boxberry_id" id="boxberry_id" value="" />
 	<input type="hidden" name="boxberry_address" id="boxberry_address" value="" />
-	<span id="boxberry_address_text"></span>
+	<div id="boxberry_address_text"></div>
+	<a href="#" class="button" onclick="boxberry.open(callback_function); return false;"><span><i class="fa fa-check"></i> {$smarty.const.MODULE_SHIPPING_BOXBERRY_TEXT_SELECT_ADDRESS}</span></a>
 
 <script>
 
 function callback_function(result){ 
+
+console.log(result);
+
 document.getElementById("boxberry_address").value = result.address;
 //document.getElementById("js-pricedelivery").innerHTML = result.price;
 document.getElementById("to_boxberry_id").innerHTML = result.id;
 
-result.name = encodeURIComponent(result.name) // Что бы избежать проблемы с кириллическими символами, на страницах отличными от UTF8, вы можете использовать функцию encodeURIComponent() 
+//result.name = encodeURIComponent(result.name); // Что бы избежать проблемы с кириллическими символами, на страницах отличными от UTF8, вы можете использовать функцию encodeURIComponent() 
 
 //document.getElementById("boxberry_name").innerHTML =	result.name;
 document.getElementById("to_boxberry_address").innerHTML =	result.address;
-document.getElementById("boxberry_address_text").innerHTML = "{$smarty.const.MODULE_SHIPPING_BOXBERRY_TEXT_ADDRESS}" + result.address + " ";
+document.getElementById("boxberry_address_text").innerHTML = result.address;
 //document.getElementById("workschedule").innerHTML =	result.workschedule;
 //document.getElementById("boxberry_phone").innerHTML = result.phone;
 //document.getElementById("boxberry_period").innerHTML = result.period;
 
 {if !$smarty.session.customer_id}  
   document.getElementById("street_address").value=result.address;
+  document.getElementById("postcode").value=result.zip;
+  document.getElementById("city").value=result.name;
+  document.getElementById("boxberry").innerHTML += '<input type="hidden" name="street_address" id="street_address" value="'+result.address+'" /><input type="hidden" name="postcode" id="postcode" value="'+result.zip+'" /><input type="hidden" name="city" id="city" value="'+result.city+'" />';
 {else}
-  document.getElementById("boxberry").innerHTML += '<input type="hidden" name="street_address" id="street_address" value="'+result.address+'" />';
+  document.getElementById("boxberry").innerHTML += '<input type="hidden" name="street_address" id="street_address" value="'+result.address+'" /><input type="hidden" name="postcode" id="postcode" value="'+result.zip+'" /><input type="hidden" name="city" id="city" value="'+result.city+'" />';
 {/if}
 
 document.getElementById("boxberry").checked="checked";
