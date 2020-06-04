@@ -2279,7 +2279,7 @@ if (vam_count_shipping_modules() > 0) {
 
 					}
 
-					if (($n > 1) || ($n2 > 1)) {
+					if (($n >= 1) || ($n2 >= 1)) {
 						if ($_SESSION['customers_status']['customers_status_show_price_tax'] == 0)
 							$quotes[$i]['tax'] = '';
 						if ($_SESSION['customers_status']['customers_status_show_price_tax'] == 0)
