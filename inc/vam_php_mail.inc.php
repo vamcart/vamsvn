@@ -59,7 +59,7 @@ function vam_php_mail($from_email_address, $from_email_name, $to_email_address, 
 		// remove html tags
 		$message_body_plain = str_replace('<br />', " \n", $message_body_plain);
 		$message_body_plain = strip_tags($message_body_plain);
-		$mail->AltBody = $message_body_plain;
+		//$mail->AltBody = $message_body_plain;
 	} else {
 		$mail->IsHTML(false);
 		//remove html tags
