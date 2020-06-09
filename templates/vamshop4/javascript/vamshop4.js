@@ -408,7 +408,8 @@ $(window).on('resize', function () {
 $(document).ready(function(){
 $(".image-zoom").each(function(arg, el){
     var image = $(el).find("img");
-    $(el).wrap('<span style="display:inline-block"></span>')
+    //$(el).wrap('<span style="display:inline-block"></span>')
+    $(el).wrap('<span></span>')
     $(el).css('display', 'block')
     $(el).parent()    
     $(el).zoom({
