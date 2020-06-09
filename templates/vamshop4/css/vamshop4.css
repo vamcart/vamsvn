@@ -45,23 +45,35 @@ button:focus, button:active, a, a:hover {
 /* /Remove outline */
 
 /* Owl Nav */
-.owl-prev, .owl-next {
+.owl-prev, .owl-next,
+.owl-prev.disabled, .owl-next.disabled {
   z-index: 9;
   top: 50%;
   -webkit-transform: translateY(-50%);
           transform: translateY(-50%);
   position: absolute; }
 
-.owl-prev {
+.owl-prev, .owl-prev.disabled {
   left: 0px;
   }
 
-.owl-next {
+.owl-next, .owl-next.disabled {
   right: 0px;
   }
+
+.owl-theme .owl-nav {
+  margin-top: 0;
+}
   
-.owl-carousel .owl-nav button.owl-next, .owl-carousel .owl-nav button.owl-prev {
-    padding: 0 0 !important;
+.owl-carousel .owl-nav button.owl-next, .owl-carousel .owl-nav button.owl-prev,
+.owl-carousel .owl-nav button.owl-next.disabled, .owl-carousel .owl-nav button.owl-prev.disabled {
+    padding: 5px 10px !important;
+    margin: -1em -15px 0 -15px;
+    border-radius: 50%;
+    border: 1px solid #dadada;
+    color: #1e1e1e;
+    box-shadow: -1px 0px 3px #dadada;
+    background: #eee;
 }
 /* /Owl Nav */
 
@@ -72,6 +84,10 @@ button:focus, button:active, a, a:hover {
   padding: 0;
   padding-right: 0;
   padding-left: 0;
+  padding-bottom: 1em;
+}
+
+.owl-carousel .owl-stage-outer {
 }
 
 .owl-item img {
@@ -81,6 +97,7 @@ button:focus, button:active, a, a:hover {
 
 .card-product {
   width: 100%;
+  margin-bottom: 1em;
 }
 
 .card-product .bottom-wrap {
@@ -378,12 +395,19 @@ li.level3 {
 
 .card.card-product .carousel-control-prev span,
 .card.card-product .carousel-control-next span {
-	color: #000;
+    padding: 9px 10px !important;
+    margin: 0;
+    border-radius: 50%;
+    border: 1px solid #dadada;
+    color: #000;
+    box-shadow: -1px 0px 3px #dadada;
+    background: #eee;	
 }
 
-.card.card-product .carousel-control-prev:hover,
-.card.card-product .carousel-control-next:hover {
-	color: #494f4d;
+.card.card-product .carousel-control-prev span:hover,
+.card.card-product .carousel-control-next span:hover {
+    color: #494f4d;
+    background: #869791;
 }
 
 .card.card-product .carousel-indicators li {
@@ -726,7 +750,7 @@ li.level3 {
 .mainpage-tabs .pill-content > .pill-pane {
     display: block;     /* undo display:none          */
     height: 0;          /* height:0 is also invisible */ 
-    overflow-y: hidden; /* no-overflow                */
+    overflow-y: visible; /* no-overflow                */
 }
 .mainpage-tabs .tab-content > .active,
 .mainpage-tabs .pill-content > .active {

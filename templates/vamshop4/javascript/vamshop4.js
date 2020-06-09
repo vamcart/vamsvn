@@ -1,11 +1,43 @@
 $(document).ready(function(){
 
+$(".owl-carousel").owlCarousel({
+    margin: 30,
+    nav: true,
+    loop:false,
+    dots: false,
+    navText: ['<span class="fas fa-chevron-left fa-1x"></span>','<span class="fas fa-chevron-right fa-1x"></span>'],
+    responsive:{
+        0:{
+            items:2,
+            nav:true
+        },
+        576:{
+            items:3,
+            nav:true
+        },
+        768:{
+            items:3,
+            nav:true
+        },
+        992:{
+            items:4,
+            nav:true,
+            loop:false
+        },
+        1200:{
+            items:4,
+            nav:true,
+            loop:false
+        }
+    }
+})
+
 $(".owl-carousel-reverse").owlCarousel({
     margin: 30,
     nav: true,
     loop:false,
     dots: false,
-    navText: ['<span class="fas fa-chevron-left fa-3x"></span>','<span class="fas fa-chevron-right fa-3x"></span>'],
+    navText: ['<span class="fas fa-chevron-left fa-1x"></span>','<span class="fas fa-chevron-right fa-1x"></span>'],
     responsive:{
         0:{
             items:2,
@@ -26,38 +58,6 @@ $(".owl-carousel-reverse").owlCarousel({
         },
         1200:{
             items:1,
-            nav:true,
-            loop:false
-        }
-    }
-})
-	
-$(".owl-carousel").owlCarousel({
-    margin: 30,
-    nav: true,
-    loop:false,
-    dots: false,
-    navText: ['<span class="fas fa-chevron-left fa-3x"></span>','<span class="fas fa-chevron-right fa-3x"></span>'],
-    responsive:{
-        0:{
-            items:2,
-            nav:true
-        },
-        576:{
-            items:3,
-            nav:true
-        },
-        768:{
-            items:3,
-            nav:true
-        },
-        992:{
-            items:4,
-            nav:true,
-            loop:false
-        },
-        1200:{
-            items:4,
             nav:true,
             loop:false
         }
@@ -396,6 +396,12 @@ $(document).ajaxComplete(function () {
     $('.shipping-method .method-title').matchHeight();
 });
 }	
+$(window).on('resize', function () {
+    $('.card-body .img-wrap').matchHeight();
+    $('.card-body .info-wrap .title').matchHeight();
+    $('.payment-method .method-title').matchHeight();
+    $('.shipping-method .method-title').matchHeight();
+});
 
 // Product Images Zoom
 
