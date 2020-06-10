@@ -1659,7 +1659,8 @@ video {
   }
 
   .wsmobileheader .wssearchform form {
-    width: calc((100% - 10px) - 45px);
+    /*width: calc((100% - 10px) - 45px);*/
+    width: 100%;
     display: block;
     position: relative;
   }
