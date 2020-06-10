@@ -24,8 +24,6 @@
 
 
   function vam_db_fetch_array(&$db_query,$cq=false) {
-  	
-  	//if (!defined("DB_CACHE")) define("DB_CACHE", "false");
 
       if (DB_CACHE=='true' && $cq) {
         if (!count($db_query)) return false;
