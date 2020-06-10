@@ -274,8 +274,8 @@ $(".image-zoom").each(function(arg, el){
 });  
 
 //Expandable Text
-$('.read-more').expandable({
-  'height': 350,
-  'more': '▼',
-  'less': '▲'
-});
+//$('.read-more').expandable({
+//  'height': 350,
+//  'more': '▼',
+//  'less': '▲'
+//});
