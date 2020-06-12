@@ -200,7 +200,7 @@ require_once (DIR_FS_INC.'vam_Security.inc.php');
 
 // set the application parameters
 function vamDBquery($query) {
-	if (DB_CACHE == 'true' && strlen($query) > 126) {
+	if (DB_CACHE == 'true' && strlen($query) > 252) {
 //			echo  'cached query: '.$query.'<br>';
 		$result = vam_db_queryCached($query);
 	} else {
