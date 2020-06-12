@@ -29,7 +29,7 @@ if ($_SESSION['customers_status']['customers_status_read_reviews'] == 0) {
 }
 
 $reviews_query_raw = "select r.*, rd.* from ".TABLE_SITE_REVIEWS." r, ".TABLE_SITE_REVIEWS_DESCRIPTION." rd where r.reviews_id = rd.reviews_id and rd.languages_id = '".(int) $_SESSION['languages_id']."' order by r.reviews_id DESC";
-$reviews_split = new splitPageResults($reviews_query_raw, $_GET['page'], 4);
+$reviews_split = new splitPageResults($reviews_query_raw, $_GET['page'], MAX_DISPLAY_NEW_REVIEWS);
 
 if ($reviews_split->number_of_rows > 0) {
 
