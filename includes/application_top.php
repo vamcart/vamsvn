@@ -199,9 +199,8 @@ if (EMAIL_TRANSPORT == 'smtp')
 require_once (DIR_FS_INC.'vam_Security.inc.php');
 
 // set the application parameters
-
 function vamDBquery($query) {
-	if (DB_CACHE == 'true') {
+	if (DB_CACHE == 'true' && strlen($query) > 126) {
 //			echo  'cached query: '.$query.'<br>';
 		$result = vam_db_queryCached($query);
 	} else {

@@ -56,11 +56,13 @@
                 $records[]=$record;
 
 
+        if ($records) { 
         // safe result into file.
         $stream = serialize($records);
         $fp = fopen($file,"w");
         fwrite($fp, $stream);
         fclose($fp);
+        }
         $result = $records;
 
    }
