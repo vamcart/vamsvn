@@ -46,7 +46,7 @@ function reload(){
 <legend>{#text_input#}</legend>
 	<p>{#text_input#} {$INPUT_TEXT}</p>
 	<p>{#text_note#}</p>
-	<p>{#text_rating#} <span class="bold">{#text_bad#}</span>{$INPUT_RATING}<span class="bold">{#text_good#}</span></p>
+	<p>{#text_rating#} <div class="form-check form-check-inline"><span class="bold">{#text_bad#}</span>{$INPUT_RATING}<span class="bold">{#text_good#}</span></div></p>
    <p>{#text_sec_code#} {$CAPTCHA_IMG} <a href="javascript:void(0)" title="{#text_update#}" onclick="reload()">{#text_update#}</a></p>
    <p>{#text_sec_code_text#} {$CAPTCHA_INPUT}</p>
 </fieldset>

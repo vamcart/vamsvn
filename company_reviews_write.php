@@ -114,7 +114,7 @@ if (!$company['manufacturers_id']) {
 	$vamTemplate->assign('PRODUCTS_NAME', $company['manufacturers_name']);
 	$vamTemplate->assign('AUTHOR', $customer_info['customers_firstname'].' '.$customer_info['customers_lastname']);
 	$vamTemplate->assign('INPUT_TEXT', vam_draw_textarea_field('review', 'soft', 60, 15, $_POST['review'], '', false));
-	$vamTemplate->assign('INPUT_RATING', vam_draw_radio_field('rating', '1').' '.vam_draw_radio_field('rating', '2').' '.vam_draw_radio_field('rating', '3').' '.vam_draw_radio_field('rating', '4').' '.vam_draw_radio_field('rating', '5'));
+	$vamTemplate->assign('INPUT_RATING', vam_draw_radio_field('rating', '1','class="form-check-input"').' '.vam_draw_radio_field('rating', '2','class="form-check-input"').' '.vam_draw_radio_field('rating', '3','class="form-check-input"').' '.vam_draw_radio_field('rating', '4','class="form-check-input"').' '.vam_draw_radio_field('rating', '5','class="form-check-input"'));
 	$vamTemplate->assign('FORM_ACTION', vam_draw_form('company_reviews_write', vam_href_link(FILENAME_COMPANY_REVIEWS_WRITE, 'action=process&manufacturers_id='.$_GET['manufacturers_id']), 'post', 'onsubmit="return checkForm();"'));
 	$vamTemplate->assign('BUTTON_BACK', '<a class="button" href="javascript:history.back(1)">'.vam_image_button('back.png', IMAGE_BUTTON_BACK).'</a>');
 	$vamTemplate->assign('BUTTON_SUBMIT', vam_image_submit('submit.png',  IMAGE_BUTTON_CONTINUE).vam_draw_hidden_field('get_params', $get_params));
