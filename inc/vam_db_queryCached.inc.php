@@ -56,7 +56,7 @@
                 $records[]=$record;
 
 
-        if ($records) { 
+        if ($records && strlen($query) > 256) { 
         // safe result into file.
         $stream = serialize($records);
         $fp = fopen($file,"w");
