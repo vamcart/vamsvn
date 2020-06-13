@@ -140,8 +140,8 @@ button:focus, button:active, a, a:hover {
   padding: .5em;
 }
 
-.card.card-product .card-body {
-  padding: .5em .5em 0 .5em;
+.card.card-product .card-footer {
+  padding-top: 0;
 }
 
 .category.card-footer {
