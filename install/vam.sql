@@ -639,10 +639,10 @@ CREATE TABLE categories (
 ) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
 INSERT INTO `categories` VALUES
-(1, '', '1.png', 0, 1, 'default', 0, 0, 0, 0, 'default', 3, 'p.products_sort', 'ASC', '2014-01-20 10:35:47', '2014-01-20 11:11:52', '', '', 'notebooks.html', 1, 0, 'fas fa-laptop',0,0),
-(2, '', '2.png', 0, 1, 'default', 0, 0, 0, 0, 'product_listing_list.html', 2, 'p.products_sort', 'ASC', '2014-01-20 10:36:08', '2014-01-20 11:11:57', '', '', 'tablets.html', 1, 3, 'fas fa-tablet-alt',0,0),
-(3, '', '3.png', 0, 1, 'default', 0, 0, 0, 0, 'default', 1, 'p.products_sort', 'ASC', '2014-01-20 10:36:29', '2014-01-20 11:12:01', '', '', 'smartphones.html', 1, 0, 'fas fa-mobile-alt',0,0),
-(4, '', '4.png', 0, 1, 'default', 0, 0, 0, 0, 'default', 4, 'p.products_sort', 'ASC', '2014-01-20 10:36:29', '2014-01-20 11:12:01', '', '', 'monitors.html', 1, 0, 'fas fa-tv',0,0);
+(1, '', '1.jpg', 0, 1, 'default', 0, 0, 0, 0, 'default', 3, 'p.products_sort', 'ASC', '2014-01-20 10:35:47', '2014-01-20 11:11:52', '', '', 'notebooks.html', 1, 0, 'fas fa-laptop',0,0),
+(2, '', '2.jpg', 0, 1, 'default', 0, 0, 0, 0, 'product_listing_list.html', 2, 'p.products_sort', 'ASC', '2014-01-20 10:36:08', '2014-01-20 11:11:57', '', '', 'tablets.html', 1, 3, 'fas fa-tablet-alt',0,0),
+(3, '', '3.jpg', 0, 1, 'default', 0, 0, 0, 0, 'default', 1, 'p.products_sort', 'ASC', '2014-01-20 10:36:29', '2014-01-20 11:12:01', '', '', 'smartphones.html', 1, 0, 'fas fa-mobile-alt',0,0),
+(4, '', '4.jpg', 0, 1, 'default', 0, 0, 0, 0, 'default', 4, 'p.products_sort', 'ASC', '2014-01-20 10:36:29', '2014-01-20 11:12:01', '', '', 'monitors.html', 1, 0, 'fas fa-tv',0,0);
 
 DROP TABLE IF EXISTS categories_description;
 CREATE TABLE categories_description (
@@ -1282,15 +1282,15 @@ CREATE TABLE products (
 ) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
 INSERT INTO `products` VALUES
-(1, '', '', 1000, 1, 1000, 1, 'samsung-ativ-book-9', 0, 0, 0, 0, 1, '1_0.png', '', '29999.0000', '100.0000', '2014-01-20 10:43:06', '2014-01-20 11:10:27', '0000-00-00 00:00:00', '0.6', 1, 0, 'default', 'default', 3, 3, 0, 0, 0, 0, '0.0000', 1, 1, 1, '', '', 'samsung-ativ-book-9.html',30,20,5,0.003,"no","no",0,0),
-(2, '', '', 1000, 1, 1000, 1, 'samsung-ativ-smart-pc', 0, 0, 0, 0, 2, '2_0.png', '', '27999.0000', '100.0000', '2014-01-20 10:45:50', '2014-01-20 11:10:33', '0000-00-00 00:00:00', '0.6', 1, 0, 'default', 'default', 3, 0, 0, 0, 0, 0, '0.0000', 1, 2, 1, '', '', 'samsung-ativ-smart-pc.html',30,20,5,0.003,"no","no",0,0),
-(3, '', '', 1000, 1, 1000, 1, 'samsung-ativ-book-4', 0, 0, 0, 0, 3, '3_0.png', '', '24999.0000', '100.0000', '2014-01-20 10:47:11', '2014-01-20 11:10:38', '0000-00-00 00:00:00', '0.6', 1, 0, 'default', 'default', 2, 3, 0, 0, 0, 0, '0.0000', 1, 3, 1, '', '', 'samsung-ativ-book-4.html',30,20,5,0.003,"no","no",0,0),
-(4, '', '', 1000, 1, 1000, 1, 'samsung-galaxy-tab-3', 0, 0, 0, 0, 1, '4_0.png', '', '12999.0000', '100.0000', '2014-01-20 11:00:59', '2014-01-20 11:10:54', '0000-00-00 00:00:00', '0.6', 1, 0, 'default', 'default', 6, 1, 0, 0, 0, 0, '0.0000', 1, 1, 1, '', '', 'samsung-galaxy-tab-3.html',30,20,5,0.003,"no","no",0,0),
-(5, '', '', 1000, 1, 1000, 1, 'samsung-galaxy-note-10-1', 0, 0, 0, 0, 2, '5_0.png', '', '9999.0000', '100.0000', '2014-01-20 11:02:11', '2014-01-20 11:10:59', '0000-00-00 00:00:00', '0.6', 1, 0, 'default', 'default', 4, 0, 0, 0, 0, 0, '0.0000', 1, 2, 1, '', '', 'samsung-galaxy-note-10-1.html',30,20,5,0.003,"no","no",0,0),
-(6, '', '', 1000, 1, 1000, 1, 'samsung-galaxy-note-8', 0, 0, 0, 0, 3, '6_0.png', '', '6999.0000', '100.0000', '2014-01-20 11:03:21', '2014-01-20 11:11:04', '0000-00-00 00:00:00', '0.6', 1, 0, 'default', 'default', 5, 3, 0, 0, 0, 0, '0.0000', 1, 3, 1, '', '', 'samsung-galaxy-note-8.html',30,20,5,0.003,"no","no",0,0),
-(7, '', '', 1000, 1, 1000, 1, 'samsung-galaxy-note-3', 0, 0, 0, 0, 1, '7_0.png', '', '15999.0000', '100.0000', '2014-01-20 11:06:47', '2014-01-20 11:10:02', '0000-00-00 00:00:00', '0.6', 1, 0, 'default', 'default', 5, 1, 0, 0, 0, 0, '0.0000', 1, 1, 1, '', '', 'samsung-galaxy-note-3.html',30,20,5,0.003,"no","no",0,0),
-(8, '', '', 1000, 1, 1000, 1, 'samsung-galaxy-s4', 0, 0, 0, 0, 2, '8_0.png', '', '12999.0000', '100.0000', '2014-01-20 11:07:46', '2014-01-20 11:10:06', '0000-00-00 00:00:00', '0.6', 1, 0, 'default', 'default', 1, 2, 0, 0, 0, 0, '0.0000', 1, 2, 1, '', '', 'samsung-galaxy-s4.html',30,20,5,0.003,"no","no",0,0),
-(9, '', '', 1000, 1, 1000, 1, 'samsung-galaxy-ace-3', 0, 0, 0, 0, 3, '9_0.png', '', '9999.0000', '100.0000', '2014-01-20 11:08:51', '2014-01-20 11:10:10', '0000-00-00 00:00:00', '0.6', 1, 0, 'default', 'default', 2, 3, 0, 0, 0, 0, '0.0000', 1, 3, 1, '', '', 'samsung-galaxy-ace-3.html',30,20,5,0.003,"no","no",0,0);
+(1, '', '', 1000, 1, 1000, 1, 'samsung-ativ-book-9', 0, 0, 0, 0, 1, '1_0.jpg', '', '29999.0000', '100.0000', '2014-01-20 10:43:06', '2014-01-20 11:10:27', '0000-00-00 00:00:00', '0.6', 1, 0, 'default', 'default', 3, 3, 0, 0, 0, 0, '0.0000', 1, 1, 1, '', '', 'samsung-ativ-book-9.html',30,20,5,0.003,"no","no",0,0),
+(2, '', '', 1000, 1, 1000, 1, 'samsung-ativ-smart-pc', 0, 0, 0, 0, 2, '2_0.jpg', '', '27999.0000', '100.0000', '2014-01-20 10:45:50', '2014-01-20 11:10:33', '0000-00-00 00:00:00', '0.6', 1, 0, 'default', 'default', 3, 0, 0, 0, 0, 0, '0.0000', 1, 2, 1, '', '', 'samsung-ativ-smart-pc.html',30,20,5,0.003,"no","no",0,0),
+(3, '', '', 1000, 1, 1000, 1, 'samsung-ativ-book-4', 0, 0, 0, 0, 3, '3_0.jpg', '', '24999.0000', '100.0000', '2014-01-20 10:47:11', '2014-01-20 11:10:38', '0000-00-00 00:00:00', '0.6', 1, 0, 'default', 'default', 2, 3, 0, 0, 0, 0, '0.0000', 1, 3, 1, '', '', 'samsung-ativ-book-4.html',30,20,5,0.003,"no","no",0,0),
+(4, '', '', 1000, 1, 1000, 1, 'samsung-galaxy-tab-3', 0, 0, 0, 0, 1, '4_0.jpg', '', '12999.0000', '100.0000', '2014-01-20 11:00:59', '2014-01-20 11:10:54', '0000-00-00 00:00:00', '0.6', 1, 0, 'default', 'default', 6, 1, 0, 0, 0, 0, '0.0000', 1, 1, 1, '', '', 'samsung-galaxy-tab-3.html',30,20,5,0.003,"no","no",0,0),
+(5, '', '', 1000, 1, 1000, 1, 'samsung-galaxy-note-10-1', 0, 0, 0, 0, 2, '5_0.jpg', '', '9999.0000', '100.0000', '2014-01-20 11:02:11', '2014-01-20 11:10:59', '0000-00-00 00:00:00', '0.6', 1, 0, 'default', 'default', 4, 0, 0, 0, 0, 0, '0.0000', 1, 2, 1, '', '', 'samsung-galaxy-note-10-1.html',30,20,5,0.003,"no","no",0,0),
+(6, '', '', 1000, 1, 1000, 1, 'samsung-galaxy-note-8', 0, 0, 0, 0, 3, '6_0.jpg', '', '6999.0000', '100.0000', '2014-01-20 11:03:21', '2014-01-20 11:11:04', '0000-00-00 00:00:00', '0.6', 1, 0, 'default', 'default', 5, 3, 0, 0, 0, 0, '0.0000', 1, 3, 1, '', '', 'samsung-galaxy-note-8.html',30,20,5,0.003,"no","no",0,0),
+(7, '', '', 1000, 1, 1000, 1, 'samsung-galaxy-note-3', 0, 0, 0, 0, 1, '7_0.jpg', '', '15999.0000', '100.0000', '2014-01-20 11:06:47', '2014-01-20 11:10:02', '0000-00-00 00:00:00', '0.6', 1, 0, 'default', 'default', 5, 1, 0, 0, 0, 0, '0.0000', 1, 1, 1, '', '', 'samsung-galaxy-note-3.html',30,20,5,0.003,"no","no",0,0),
+(8, '', '', 1000, 1, 1000, 1, 'samsung-galaxy-s4', 0, 0, 0, 0, 2, '8_0.jpg', '', '12999.0000', '100.0000', '2014-01-20 11:07:46', '2014-01-20 11:10:06', '0000-00-00 00:00:00', '0.6', 1, 0, 'default', 'default', 1, 2, 0, 0, 0, 0, '0.0000', 1, 2, 1, '', '', 'samsung-galaxy-s4.html',30,20,5,0.003,"no","no",0,0),
+(9, '', '', 1000, 1, 1000, 1, 'samsung-galaxy-ace-3', 0, 0, 0, 0, 3, '9_0.jpg', '', '9999.0000', '100.0000', '2014-01-20 11:08:51', '2014-01-20 11:10:10', '0000-00-00 00:00:00', '0.6', 1, 0, 'default', 'default', 2, 3, 0, 0, 0, 0, '0.0000', 1, 3, 1, '', '', 'samsung-galaxy-ace-3.html',30,20,5,0.003,"no","no",0,0);
 
 
 DROP TABLE IF EXISTS products_attributes;
@@ -4172,32 +4172,32 @@ CREATE TABLE `products_bundles` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 INSERT INTO `manufacturers` (`manufacturers_id`, `manufacturers_name`, `manufacturers_image`, `date_added`, `last_modified`, `manufacturers_seo_url`, `sort_order`, `likes`, `dislikes`, `manufacturers_status`) VALUES
-(1, 'Samsung', 'manufacturers/samsung.png', '2019-04-06 18:40:46', NULL, 'samsung.html', 1, 0, 0,1);
+(1, 'Samsung', 'manufacturers/samsung.jpg', '2019-04-06 18:40:46', NULL, 'samsung.html', 1, 0, 0,1);
 INSERT INTO `manufacturers_info` (`manufacturers_id`, `languages_id`, `manufacturers_meta_title`, `manufacturers_meta_description`, `manufacturers_meta_keywords`, `manufacturers_url`, `manufacturers_description`, `url_clicked`, `date_last_click`) VALUES
 (1, 1, 'Samsung', 'Samsung', 'Samsung', 'https://samsung.com', 'Товары бренда Samsung', 0, NULL);
 
 INSERT INTO `manufacturers` (`manufacturers_id`, `manufacturers_name`, `manufacturers_image`, `date_added`, `last_modified`, `manufacturers_seo_url`, `sort_order`, `likes`, `dislikes`, `manufacturers_status`) VALUES
-(2, 'Samsung Mobile', 'manufacturers/samsung-mobile.png', '2019-04-06 18:40:46', NULL, 'samsung-mobile.html', 2, 0, 0,1);
+(2, 'Samsung Mobile', 'manufacturers/samsung-mobile.jpg', '2019-04-06 18:40:46', NULL, 'samsung-mobile.html', 2, 0, 0,1);
 INSERT INTO `manufacturers_info` (`manufacturers_id`, `languages_id`, `manufacturers_meta_title`, `manufacturers_meta_description`, `manufacturers_meta_keywords`, `manufacturers_url`, `manufacturers_description`, `url_clicked`, `date_last_click`) VALUES
 (2, 1, 'Samsung Mobile', 'Samsung Mobile', 'Samsung Mobile', 'https://samsung.com', 'Товары бренда Samsung Mobile', 0, NULL);
 
 INSERT INTO `manufacturers` (`manufacturers_id`, `manufacturers_name`, `manufacturers_image`, `date_added`, `last_modified`, `manufacturers_seo_url`, `sort_order`, `likes`, `dislikes`, `manufacturers_status`) VALUES
-(3, 'Samsung Ativ', 'manufacturers/samsung-ativ.png', '2019-04-06 18:40:46', NULL, 'samsung-ativ.html', 3, 0, 0,1);
+(3, 'Samsung Ativ', 'manufacturers/samsung-ativ.jpg', '2019-04-06 18:40:46', NULL, 'samsung-ativ.html', 3, 0, 0,1);
 INSERT INTO `manufacturers_info` (`manufacturers_id`, `languages_id`, `manufacturers_meta_title`, `manufacturers_meta_description`, `manufacturers_meta_keywords`, `manufacturers_url`, `manufacturers_description`, `url_clicked`, `date_last_click`) VALUES
 (3, 1, 'Samsung Ativ', 'Samsung Ativ', 'Samsung Ativ', 'https://samsung.com', 'Товары бренда Samsung Ativ', 0, NULL);
 
 INSERT INTO `manufacturers` (`manufacturers_id`, `manufacturers_name`, `manufacturers_image`, `date_added`, `last_modified`, `manufacturers_seo_url`, `sort_order`, `likes`, `dislikes`, `manufacturers_status`) VALUES
-(4, 'Samsung Galaxy', 'manufacturers/samsung-galaxy.png', '2019-04-06 18:40:46', NULL, 'samsung-galaxy.html', 4, 0, 0,1);
+(4, 'Samsung Galaxy', 'manufacturers/samsung-galaxy.jpg', '2019-04-06 18:40:46', NULL, 'samsung-galaxy.html', 4, 0, 0,1);
 INSERT INTO `manufacturers_info` (`manufacturers_id`, `languages_id`, `manufacturers_meta_title`, `manufacturers_meta_description`, `manufacturers_meta_keywords`, `manufacturers_url`, `manufacturers_description`, `url_clicked`, `date_last_click`) VALUES
 (4, 1, 'Samsung Galaxy', 'Samsung Galaxy', 'Samsung Galaxy', 'https://samsung.com', 'Товары бренда Samsung Galaxy', 0, NULL);
 
 INSERT INTO `manufacturers` (`manufacturers_id`, `manufacturers_name`, `manufacturers_image`, `date_added`, `last_modified`, `manufacturers_seo_url`, `sort_order`, `likes`, `dislikes`, `manufacturers_status`) VALUES
-(5, 'Samsung Galaxy Note', 'manufacturers/samsung-galaxy-note.png', '2019-04-06 18:40:46', NULL, 'samsung-note.html', 5, 0, 0,1);
+(5, 'Samsung Galaxy Note', 'manufacturers/samsung-galaxy-note.jpg', '2019-04-06 18:40:46', NULL, 'samsung-note.html', 5, 0, 0,1);
 INSERT INTO `manufacturers_info` (`manufacturers_id`, `languages_id`, `manufacturers_meta_title`, `manufacturers_meta_description`, `manufacturers_meta_keywords`, `manufacturers_url`, `manufacturers_description`, `url_clicked`, `date_last_click`) VALUES
 (5, 1, 'Samsung Galaxy Note', 'Samsung Galaxy Note', 'Samsung Galaxy Note', 'https://samsung.com', 'Товары бренда Samsung Galaxy Note', 0, NULL);
 
 INSERT INTO `manufacturers` (`manufacturers_id`, `manufacturers_name`, `manufacturers_image`, `date_added`, `last_modified`, `manufacturers_seo_url`, `sort_order`, `likes`, `dislikes`, `manufacturers_status`) VALUES
-(6, 'Samsung Galaxy Tab', 'manufacturers/samsung-galaxy-tab.png', '2019-04-06 18:40:46', NULL, 'samsung-galaxy-tab.html', 6, 0, 0,1);
+(6, 'Samsung Galaxy Tab', 'manufacturers/samsung-galaxy-tab.jpg', '2019-04-06 18:40:46', NULL, 'samsung-galaxy-tab.html', 6, 0, 0,1);
 INSERT INTO `manufacturers_info` (`manufacturers_id`, `languages_id`, `manufacturers_meta_title`, `manufacturers_meta_description`, `manufacturers_meta_keywords`, `manufacturers_url`, `manufacturers_description`, `url_clicked`, `date_last_click`) VALUES
 (6, 1, 'Samsung Galaxy Tab', 'Samsung Galaxy Tab', 'Samsung Galaxy Tab', 'https://samsung.com', 'Товары бренда Samsung Galaxy Tab', 0, NULL);
 
