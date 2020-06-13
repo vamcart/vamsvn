@@ -140,6 +140,10 @@ button:focus, button:active, a, a:hover {
   padding: .5em;
 }
 
+.card.card-product .card-body {
+  padding: .5em .5em 0 .5em;
+}
+
 .category.card-footer {
   background: transparent;
   border: 0;
@@ -396,7 +400,7 @@ li.level3 {
 }
 
 .rating-wrap {
-  padding-bottom: .5em; 
+  padding-bottom: 0em; 
 }
 
 .card.card-product .carousel-control-prev span,
