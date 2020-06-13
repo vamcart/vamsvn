@@ -2125,13 +2125,13 @@ ul.row, ul.row-sm {
   .badge-offer b {
     background: #dd2c00;
     padding: 4px;
-    font-family: 'Bebas';
-    font-weight: normal;
+    font-family: 'Roboto';
+    font-weight: bold;
     text-align: center;
     color: #fff;
-    font-size: 16px;
+    font-size: 14px;
     display: inline-block;
-    height: 36px;
+    height: 30px;
     width: 50px;
     position: relative; }
   .badge-offer b:after {
@@ -2142,7 +2142,7 @@ ul.row, ul.row-sm {
     height: 0;
     left: 0;
     position: absolute;
-    top: 36px;
+    top: 30px;
     width: 0; }
 
 /* ================= RATINGS ============== */
