@@ -2126,10 +2126,10 @@ ul.row, ul.row-sm {
     background: #dd2c00;
     padding: 4px;
     font-family: 'Roboto';
-    font-weight: bold;
+    font-weight: normal;
     text-align: center;
     color: #fff;
-    font-size: 13px;
+    font-size: 14px;
     display: inline-block;
     height: 30px;
     width: 50px;
