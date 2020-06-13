@@ -62,7 +62,7 @@ define('TEXT_VALIDATING','Не проверено');
 define('BOX_MANUFACTURER_INFO_HOMEPAGE', 'Официальный сайт %s');
 define('BOX_MANUFACTURER_INFO_OTHER_PRODUCTS', 'Другие товары данного производителя');
 
-define('BOX_HEADING_ADD_PRODUCT_ID','В корзину');
+define('BOX_HEADING_ADD_PRODUCT_ID','Добавить в корзину');
   
 define('BOX_LOGINBOX_STATUS','Группа:');     
 define('BOX_LOGINBOX_DISCOUNT','Ваша скидка');
