@@ -62,7 +62,7 @@ define('TEXT_VALIDATING','Не проверено');
 define('BOX_MANUFACTURER_INFO_HOMEPAGE', 'Официальный сайт %s');
 define('BOX_MANUFACTURER_INFO_OTHER_PRODUCTS', 'Другие товары данного производителя');
 
-define('BOX_HEADING_ADD_PRODUCT_ID','Добавить в корзину');
+define('BOX_HEADING_ADD_PRODUCT_ID','В корзину');
   
 define('BOX_LOGINBOX_STATUS','Группа:');     
 define('BOX_LOGINBOX_DISCOUNT','Ваша скидка');
@@ -184,7 +184,7 @@ define('IMAGE_BUTTON_CONFIRM_ORDER', 'Подтвердить Заказ');
 define('IMAGE_BUTTON_CONTINUE', 'Продолжить');
 define('IMAGE_BUTTON_DELETE', 'Удалить');
 define('IMAGE_BUTTON_LOGIN', 'Продолжить');
-define('IMAGE_BUTTON_IN_CART', 'Добавить в корзину');
+define('IMAGE_BUTTON_IN_CART', 'В корзину');
 define('IMAGE_BUTTON_SEARCH', 'Искать');
 define('IMAGE_BUTTON_UPDATE', 'Обновить');
 define('IMAGE_BUTTON_UPDATE_CART', 'Пересчитать');
@@ -740,7 +740,7 @@ define('TEXT_ALERT_COOKIE', 'Мы используем файлы cookie для 
 define('TEXT_COOKIE_CLOSE', 'Закрыть');
 define('TEXT_COOKIE_OK', 'Разрешаю');
 
-define('TEXT_SELECT_OPTIONS','Выбрать опции');
+define('TEXT_SELECT_OPTIONS','Опции');
 
 define('TEXT_TAGS','Тэги');
 

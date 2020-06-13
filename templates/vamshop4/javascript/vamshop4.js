@@ -16,16 +16,16 @@ $(".owl-carousel").owlCarousel({
             nav:true
         },
         768:{
-            items:3,
+            items:4,
             nav:true
         },
         992:{
-            items:4,
+            items:5,
             nav:true,
             loop:false
         },
         1200:{
-            items:4,
+            items:6,
             nav:true,
             loop:false
         }
