@@ -69,11 +69,22 @@ if ($parent_id == 0){ $cPath = ''; } else { $cPath .= $parent_id . '_'; }
  while ($categories = vam_db_fetch_array($categories_query,true)) {
    
    $SEF_link = vam_href_link(FILENAME_DEFAULT, vam_category_link($categories['categories_id'],$categories['categories_name']));
+	if(file_exists($categories_image) && is_file($categories_image)) {
+   $categories_image = DIR_WS_IMAGES . 'categories/' . $categories['categories_image'];
+   } else {
+   $categories_image = DIR_WS_IMAGES . 'product_images/noimage.gif';
+   }
+ 
+	if(file_exists($categories_image) && is_file($categories_image)) {
+		list($width, $height, $type, $attr) = getimagesize($categories_image);
+	}
  
    $module_content[]=array('ID'  => $categories['categories_id'],
                            'CATEGORIES_NAME'  => $categories['categories_name'],
                            'CATEGORIES_DESCRIPTION'  => $categories['categories_description'],
-                           'CATEGORIES_IMAGE' => ($categories['categories_image'] == '' ) ? DIR_WS_IMAGES . 'product_images/noimage.gif' : DIR_WS_IMAGES . 'categories/' . $categories['categories_image'],
+                           'CATEGORIES_IMAGE' => $categories_image,
+                           'CATEGORIES_IMAGE_WIDTH' => $width,
+                           'CATEGORIES_IMAGE_HEIGHT' => $height,
                            'CATEGORIES_LINK'  => $SEF_link
                            
 			   //'SCATS'  => get_category_tree($categories['categories_id'], '',0)
