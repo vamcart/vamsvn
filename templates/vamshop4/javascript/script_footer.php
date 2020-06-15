@@ -3,6 +3,7 @@ require_once(DIR_FS_CATALOG."vendor/Bender/Bender.class.php");
 $bender = new Bender();
 $bender->enqueue("templates/".CURRENT_TEMPLATE."/javascript/popper.min.js");
 $bender->enqueue("templates/".CURRENT_TEMPLATE."/javascript/bootstrap.min.js");
+$bender->enqueue("jscript/jquery/plugins/lazyload/lazyload.min.js");
 $bender->enqueue("jscript/jquery/plugins/jquery-ui/jquery-ui-min.js");
 $bender->enqueue("jscript/jquery/plugins/cookie/jquery.cookie.js");
 $bender->enqueue("jscript/jquery/plugins/read-more/jquery.expandable.js");

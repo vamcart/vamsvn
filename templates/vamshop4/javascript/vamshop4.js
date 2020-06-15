@@ -1,5 +1,12 @@
 $(document).ready(function(){
 
+// Lazy Load
+var lazyLoadInstance = new LazyLoad({
+  elements_selector: ".lazy"
+  // ... more custom settings?
+});
+
+//Slick Slider
 $('.slider').slick({
   dots: false,
   arrows: true,
@@ -12,7 +19,7 @@ $('.slider').slick({
   slidesToScroll: 5,
   responsive: [
     {
-      breakpoint: 1200,
+      breakpoint: 1360,
       settings: {
         slidesToShow: 4,
         slidesToScroll: 4,
