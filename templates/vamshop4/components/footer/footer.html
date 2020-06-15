@@ -23,7 +23,7 @@
 	{if $smarty.const.ENABLE_SERVICE_WORKER == 'true'}<div class="d-block mt-3 mb-3 text-white"><button class="btn btn-inverse checkout btn-sm a2hs-button" id="a2hs-button">{#text_a2hs#}</button></div>{/if}
 	</div>
 	<div class="col-12 col-sm-6 col-md-4 col-lg-4 col-xl-3">
-		<h5 class="text-white text-left font-weight-bold widget-title">{#heading_infobox#}</h5>
+		<div class="h5 text-white text-left font-weight-bold widget-title">{#heading_infobox#}</div>
 		<div class="widget-inner text-left">
 			<ul class="list-unstyled text-small">
 				{$box_CONTENT_PULL}
@@ -31,7 +31,7 @@
 		</div>
 	</div>
 	<div class="col-12 col-sm-6 col-md-4 col-lg-4 col-xl-3">
-		<h5 class="text-white text-left font-weight-bold widget-title">{#heading_news#}</h5>
+		<div class="h5 text-white text-left font-weight-bold widget-title">{#heading_news#}</div>
 		<div class="widget-inner text-left">
 			<ul class="list-unstyled text-small">
 				{$box_LATESTNEWS_DROPDOWN}
@@ -40,7 +40,7 @@
 	</div>
 
 	<div class="col-12 col-sm-6 col-md-4 col-lg-4 col-xl-3">
-		<h5 class="text-white text-left font-weight-bold widget-title">{#heading_articles_new#}</h5>
+		<div class="h5 text-white text-left font-weight-bold widget-title">{#heading_articles_new#}</div>
 		<div class="widget-inner text-left">
 			<ul class="list-unstyled text-small">
 				{$box_ARTICLESNEW_DROPDOWN}
@@ -58,7 +58,7 @@
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="myModalTitle">{$smarty.const.TEXT_CITY_LOCATION}</h5>
+        <div class="h5 modal-title" id="myModalTitle">{$smarty.const.TEXT_CITY_LOCATION}</div>
         <button type="button" class="close" data-dismiss="modal" aria-label="{$smarty.const.TEXT_CITY_CLOSE}">
           <span aria-hidden="true">&times;</span>
         </button>
