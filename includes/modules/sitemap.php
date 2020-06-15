@@ -67,17 +67,19 @@ if ($parent_id == 0){ $cPath = ''; } else { $cPath .= $parent_id . '_'; }
  $categories_query = vamDBquery($categories_query);
  $module_content = array();
  $categories_image = ''; 
+ $categories_image_path = ''; 
  
  while ($categories = vam_db_fetch_array($categories_query,true)) {
    
    $SEF_link = vam_href_link(FILENAME_DEFAULT, vam_category_link($categories['categories_id'],$categories['categories_name']));
 
    $categories_image = DIR_WS_IMAGES . 'categories/' . $categories['categories_image'];
+   $categories_image_path = DIR_FS_CATALOG . DIR_WS_IMAGES . 'categories/' . $categories['categories_image'];
  
-	if(file_exists($categories_image) && is_file($categories_image)) {
+	if(file_exists($categories_image_path) && is_file($categories_image_path)) {
 		list($width, $height, $type, $attr) = getimagesize($categories_image);
 	}
- 
+	
    $module_content[]=array('ID'  => $categories['categories_id'],
                            'CATEGORIES_NAME'  => $categories['categories_name'],
                            'CATEGORIES_DESCRIPTION'  => $categories['categories_description'],

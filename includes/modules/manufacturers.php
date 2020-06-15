@@ -34,12 +34,12 @@ $module->assign('tpl_path','templates/'.CURRENT_TEMPLATE.'/');
  
  while ($manufacturers = vam_db_fetch_array($manufacturers_query,true)) {
 
-   $manufacturers_image = DIR_WS_IMAGES . 'manufacturers/' . $manufacturers['manufacturers_image'];
+   $manufacturers_image = DIR_FS_CATALOG . DIR_WS_IMAGES . $manufacturers['manufacturers_image'];
  
 	if(file_exists($manufacturers_image) && is_file($manufacturers_image)) {
 		list($width, $height, $type, $attr) = getimagesize($manufacturers_image);
 	}
-   
+	
    $module_content[]=array('PRODUCTS_ID'  => $manufacturers['manufacturers_id'],
                            'PRODUCTS_NAME'  => $manufacturers['manufacturers_name'],
                            'PRODUCTS_SHORT_DESCRIPTION'  => $manufacturers['manufacturers_description'],
