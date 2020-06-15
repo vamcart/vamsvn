@@ -860,3 +860,6 @@ li.level3 {
 .slick-track {
   margin-left: 0;
 }
+
+.lazy.loading { background: #fff url('../img/ajax-loader.gif') center center no-repeat; }
+
