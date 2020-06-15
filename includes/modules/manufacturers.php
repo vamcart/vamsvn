@@ -30,14 +30,11 @@ $module->assign('tpl_path','templates/'.CURRENT_TEMPLATE.'/');
  // db Cache
  $manufacturers_query = vamDBquery($manufacturers_query);
  $module_content = array();
+ $manufacturers_image = '';
+ 
  while ($manufacturers = vam_db_fetch_array($manufacturers_query,true)) {
 
    $manufacturers_image = DIR_WS_IMAGES . 'manufacturers/' . $manufacturers['manufacturers_image'];
-	if(file_exists($manufacturers_image) && is_file($manufacturers_image)) {
-   $manufacturers_image = DIR_WS_IMAGES . 'manufacturers/' . $manufacturers['manufacturers_image'];
-   } else {
-   $manufacturers_image = DIR_WS_IMAGES . 'product_images/noimage.gif';
-   }
  
 	if(file_exists($manufacturers_image) && is_file($manufacturers_image)) {
 		list($width, $height, $type, $attr) = getimagesize($manufacturers_image);
