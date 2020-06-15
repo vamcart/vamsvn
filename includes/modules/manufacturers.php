@@ -31,11 +31,24 @@ $module->assign('tpl_path','templates/'.CURRENT_TEMPLATE.'/');
  $manufacturers_query = vamDBquery($manufacturers_query);
  $module_content = array();
  while ($manufacturers = vam_db_fetch_array($manufacturers_query,true)) {
+
+   $manufacturers_image = DIR_WS_IMAGES . 'manufacturers/' . $manufacturers['manufacturers_image'];
+	if(file_exists($manufacturers_image) && is_file($manufacturers_image)) {
+   $manufacturers_image = DIR_WS_IMAGES . 'manufacturers/' . $manufacturers['manufacturers_image'];
+   } else {
+   $manufacturers_image = DIR_WS_IMAGES . 'product_images/noimage.gif';
+   }
+ 
+	if(file_exists($manufacturers_image) && is_file($manufacturers_image)) {
+		list($width, $height, $type, $attr) = getimagesize($manufacturers_image);
+	}
    
    $module_content[]=array('PRODUCTS_ID'  => $manufacturers['manufacturers_id'],
                            'PRODUCTS_NAME'  => $manufacturers['manufacturers_name'],
                            'PRODUCTS_SHORT_DESCRIPTION'  => $manufacturers['manufacturers_description'],
                            'PRODUCTS_IMAGE' => DIR_WS_IMAGES . $manufacturers['manufacturers_image'],
+                           'PRODUCTS_IMAGE_WIDTH' => $width,
+                           'PRODUCTS_IMAGE_HEIGHT' => $height,
                            'PRODUCTS_LINK'  => vam_href_link(FILENAME_DEFAULT, 'manufacturers_id='.$manufacturers['manufacturers_id'])
    );
  }

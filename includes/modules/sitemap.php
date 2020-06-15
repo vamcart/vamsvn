@@ -69,6 +69,8 @@ if ($parent_id == 0){ $cPath = ''; } else { $cPath .= $parent_id . '_'; }
  while ($categories = vam_db_fetch_array($categories_query,true)) {
    
    $SEF_link = vam_href_link(FILENAME_DEFAULT, vam_category_link($categories['categories_id'],$categories['categories_name']));
+
+   $categories_image = DIR_WS_IMAGES . 'categories/' . $categories['categories_image'];
 	if(file_exists($categories_image) && is_file($categories_image)) {
    $categories_image = DIR_WS_IMAGES . 'categories/' . $categories['categories_image'];
    } else {
