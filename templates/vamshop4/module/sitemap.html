@@ -1,5 +1,5 @@
 {config_load file="$language/lang_$language.conf" section="sitemap"} 
-<div class="owl-carousel owl-theme">
+<div class="slider responsive">
 {foreach name=aussen item=module_data from=$module_content}
 {include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/box/box-card-category.html"}
 {/foreach}

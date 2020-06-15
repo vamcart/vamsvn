@@ -449,3 +449,48 @@ function changeFixedElementWidth() {
   if (parentElement) var parentElementWidth = parentElement.getBoundingClientRect().width;
   if (fixedElement) fixedElement.style.width = parentElementWidth + 'px';
 }
+
+
+$('.responsive').slick({
+  dots: false,
+  lazyLoad: 'ondemand',
+  infinite: false,
+  speed: 300,
+  slidesToShow: 4,
+  slidesToScroll: 4,
+  responsive: [
+    {
+      breakpoint: 1024,
+      settings: {
+        slidesToShow: 3,
+        slidesToScroll: 3,
+      }
+    },
+    {
+      breakpoint: 600,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 2
+      }
+    },
+    {
+      breakpoint: 480,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1
+      }
+    }
+    // You can unslick at a given breakpoint now by adding:
+    // settings: "unslick"
+    // instead of a settings object
+  ]
+});
+
+$(window).on('load', function () {
+      $('.slider').on('setPosition', function () {
+      $(this).find('.slick-slide').height('auto');
+      var slickTrack = $(this).find('.slick-track');
+      var slickTrackHeight = $(slickTrack).height();
+      $(this).find('.slick-slide').css('height', slickTrackHeight + 'px');
+      });
+})

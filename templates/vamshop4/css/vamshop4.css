@@ -755,18 +755,19 @@ li.level3 {
     width: auto;
 }
 
+/* Based on https://github.com/kenwheeler/slick/issues/187#issuecomment-59123524 */
 /* bootstrap hack: fix content width inside hidden tabs */
-.mainpage-tabs .tab-content > .tab-pane,
-.mainpage-tabs .pill-content > .pill-pane {
-    display: block;     /* undo display:none          */
-    height: 0;          /* height:0 is also invisible */ 
-    overflow-y: visible; /* no-overflow                */
+.tab-content > .tab-pane,
+.pill-content > .pill-pane {
+    display: block;    /* undo display:none          */
+    height: 0;         /* height:0 is also invisible */
+    overflow: hidden;  /* no-overflow                */
 }
-.mainpage-tabs .tab-content > .active,
-.mainpage-tabs .pill-content > .active {
-    height: auto;       /* let the content decide it  */
-} /* bootstrap hack end */
-
+.tab-content > .active,
+.pill-content > .active {
+    height: auto;      /* let the content decide it  */
+}
+/* bootstrap hack end */
 
 .wsmobileheader .wscart {
     background-color: transparent;
@@ -915,4 +916,41 @@ li.level3 {
     flex: 1 1 0%;
     min-width: 90px;
     margin-bottom: 0;
+}
+
+.slick-prev,
+.slick-next {
+    font-size: 0;
+    position: absolute;
+    bottom: 20px;
+    color: #d5122f;
+    border: 0;
+    background: none;
+    z-index: 1;
+}
+
+.slick-prev {
+    left: 20px;
+}
+
+.slick-prev:before {
+content: "\f107";
+    font-weight: 600;
+    font-family: "Font Awesome 5 Free";
+}
+
+.slick-next {
+    right: 20px;
+    text-align: right;
+}
+
+.slick-next:before {
+content: "\f107";
+    font-weight: 600;
+    font-family: "Font Awesome 5 Free";
+}
+
+.slick-prev:hover:after,
+.slick-next:hover:after {
+    color: #7e7e7e;
 }
