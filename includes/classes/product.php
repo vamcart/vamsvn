@@ -849,20 +849,20 @@ $products_special = 100-($vamPrice->CheckSpecial($array['products_id'])*100/$vam
 		$star_rating .= '<span class="rating"><i class="fa fa-star"></i></span> ';
 		}
 
-		if(file_exists($this->productImage($array['products_image'], $image)) && is_file($this->productImage($array['products_image'], $image))) {
-			list($width_thumbnail, $height_thumbnail, $type_thumbnail, $attr_thumbnail) = getimagesize($this->productImage($array['products_image'], $image));
+		if(file_exists(DIR_FS_CATALOG.$this->productImage($array['products_image'], $image)) && is_file(DIR_FS_CATALOG.$this->productImage($array['products_image'], $image))) {
+			list($width_thumbnail, $height_thumbnail, $type_thumbnail, $attr_thumbnail) = getimagesize(DIR_FS_CATALOG.$this->productImage($array['products_image'], $image));
 		}
 
-		if(file_exists($this->productImage($array['products_image'], 'info')) && is_file($this->productImage($array['products_image'], 'info'))) {
-			list($width_info, $height_info, $type_info, $attr_info) = getimagesize($this->productImage($array['products_image'], 'info'));
+		if(file_exists(DIR_FS_CATALOG.$this->productImage($array['products_image'], 'info')) && is_file(DIR_FS_CATALOG.$this->productImage($array['products_image'], 'info'))) {
+			list($width_info, $height_info, $type_info, $attr_info) = getimagesize(DIR_FS_CATALOG.$this->productImage($array['products_image'], 'info'));
 		}
 
-		if(file_exists($this->productImage($array['products_image'], 'popup')) && is_file($this->productImage($array['products_image'], 'popup'))) {
-			list($width_popup, $height_popup, $type_popup, $attr_popup) = getimagesize($this->productImage($array['products_image'], 'popup'));
+		if(file_exists(DIR_FS_CATALOG.$this->productImage($array['products_image'], 'popup')) && is_file(DIR_FS_CATALOG.$this->productImage($array['products_image'], 'popup'))) {
+			list($width_popup, $height_popup, $type_popup, $attr_popup) = getimagesize(DIR_FS_CATALOG.$this->productImage($array['products_image'], 'popup'));
 		}
 
-		if(file_exists($this->productImage($array['products_image'], 'original')) && is_file($this->productImage($array['products_image'], 'original'))) {
-			list($width_original, $height_original, $type_original, $attr_original) = getimagesize($this->productImage($array['products_image'], 'original'));
+		if(file_exists(DIR_FS_CATALOG.$this->productImage($array['products_image'], 'original')) && is_file(DIR_FS_CATALOG.$this->productImage($array['products_image'], 'original'))) {
+			list($width_original, $height_original, $type_original, $attr_original) = getimagesize(DIR_FS_CATALOG.$this->productImage($array['products_image'], 'original'));
 		}
 	
 		return array ('PRODUCTS_NAME' => vam_parse_input_field_data($array['products_name'], array('"' => '&quot;')), 
