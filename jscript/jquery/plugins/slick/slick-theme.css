@@ -47,10 +47,7 @@
 .slick-next.slick-disabled,
 .slick-next.slick-disabled:hover
 {
-    border: 1px solid transparent;
-    color: transparent;
-    box-shadow: -1px 0px 3px transparent;
-    background: transparent;
+    color: #cfcfcf;
 }
 
 .slick-prev
