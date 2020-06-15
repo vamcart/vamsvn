@@ -50,68 +50,6 @@ button:focus, button:active, a, a:hover {
 }
 /* /Remove outline */
 
-/* Owl Nav */
-.owl-prev, .owl-next,
-.owl-prev.disabled, .owl-next.disabled {
-  z-index: 9;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-          transform: translateY(-50%);
-  position: absolute; }
-
-.owl-prev, .owl-prev.disabled {
-  left: 0px;
-  }
-
-.owl-next, .owl-next.disabled {
-  right: 0px;
-  }
-
-.owl-theme .owl-nav {
-  margin-top: 0;
-}
-  
-.owl-carousel .owl-nav button.owl-next, .owl-carousel .owl-nav button.owl-prev,
-.owl-carousel .owl-nav button.owl-next.disabled, .owl-carousel .owl-nav button.owl-prev.disabled {
-    padding: 5px 10px !important;
-    margin: -1em -15px 0 -15px;
-    border-radius: 50%;
-    border: 1px solid #dadada;
-    color: #1e1e1e;
-    box-shadow: -1px 0px 3px #dadada;
-    background: #eee;
-}
-/* /Owl Nav */
-
-/* Owl Slides Equal Height */
-.owl-stage {
-  display: flex;
-  flex-wrap: wrap;
-  padding: 0;
-  padding-right: 0;
-  padding-left: 0;
-  padding-bottom: 1em;
-}
-
-.owl-carousel .owl-stage-outer {
-}
-
-.owl-item img {
-  margin: 0 auto !important;
-  width: auto !important;
-}	
-
-.card-product {
-  width: 100%;
-  margin-bottom: 1em;
-}
-
-.card-product .bottom-wrap {
-    border-top: 0;
-}
-/* /Owl Slides Equal Height */
-
-
 /* Main */
 .mainWrapper {
     padding-bottom: 1rem; 
@@ -212,6 +150,15 @@ button:focus, button:active, a, a:hover {
 
 .card.card-product .info-wrap {
   padding: 0;
+}
+
+.card-product {
+  width: 100%;
+  margin-bottom: 1em;
+}
+
+.card-product .bottom-wrap {
+    border-top: 0;
 }
 /* /Main */
 
@@ -416,8 +363,9 @@ li.level3 {
 
 .card.card-product .carousel-control-prev span:hover,
 .card.card-product .carousel-control-next span:hover {
+    outline: none;
     color: #494f4d;
-    background: #869791;
+    background: #e0e0e0;
 }
 
 .card.card-product .carousel-indicators li {
@@ -755,19 +703,10 @@ li.level3 {
     width: auto;
 }
 
-/* Based on https://github.com/kenwheeler/slick/issues/187#issuecomment-59123524 */
-/* bootstrap hack: fix content width inside hidden tabs */
-.tab-content > .tab-pane,
-.pill-content > .pill-pane {
-    display: block;    /* undo display:none          */
-    height: 0;         /* height:0 is also invisible */
-    overflow: hidden;  /* no-overflow                */
-}
-.tab-content > .active,
-.pill-content > .active {
-    height: auto;      /* let the content decide it  */
-}
-/* bootstrap hack end */
+.tab-content>.tab-pane {display: block;visibility: hidden;}
+.tab-content>.tab-pane.active {visibility: visible;}
+.tab-content{position: relative;}
+.tab-pane:not(:first-child){position: absolute;width: 100%;height: 100%;top: 0;left: 0;}
 
 .wsmobileheader .wscart {
     background-color: transparent;
@@ -918,39 +857,6 @@ li.level3 {
     margin-bottom: 0;
 }
 
-.slick-prev,
-.slick-next {
-    font-size: 0;
-    position: absolute;
-    bottom: 20px;
-    color: #d5122f;
-    border: 0;
-    background: none;
-    z-index: 1;
-}
-
-.slick-prev {
-    left: 20px;
-}
-
-.slick-prev:before {
-content: "\f107";
-    font-weight: 600;
-    font-family: "Font Awesome 5 Free";
-}
-
-.slick-next {
-    right: 20px;
-    text-align: right;
-}
-
-.slick-next:before {
-content: "\f107";
-    font-weight: 600;
-    font-family: "Font Awesome 5 Free";
-}
-
-.slick-prev:hover:after,
-.slick-next:hover:after {
-    color: #7e7e7e;
+.slick-track {
+  margin-left: 0;
 }
