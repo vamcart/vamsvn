@@ -42,6 +42,7 @@ if ((!isset ($new_products_category_id)) || ($new_products_category_id == '0')) 
 	$new_products_query = "SELECT distinct * FROM
 	                                         ".TABLE_PRODUCTS." p,
 	                                         ".TABLE_PRODUCTS_DESCRIPTION." pd WHERE
+	                                         p.products_startpage = '1' and
 	                                         p.products_quantity > 0 and  
 	                                         p.products_id=pd.products_id 
 	                                         ".$group_check."
@@ -49,7 +50,7 @@ if ((!isset ($new_products_category_id)) || ($new_products_category_id == '0')) 
 	                                         ".$fsk_lock."
 	                                         and p.products_status = '1' and p.products_quantity > 0 and pd.language_id = '".(int) $_SESSION['languages_id']."'
 	                                         group by p.products_id
-	                                         order by rand() limit ".MAX_DISPLAY_NEW_PRODUCTS;
+	                                         order by p.products_startpage_sort ASC, rand() limit ".MAX_DISPLAY_NEW_PRODUCTS;
 } else {
 
 	if (GROUP_CHECK == 'true')
