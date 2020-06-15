@@ -1382,6 +1382,10 @@ div.notification
     transition: all .3s linear;
 }
 
+.chip.cart {
+    background-color: #d0d2d4;
+}
+
 .chip.chip-md {
     height: 42px;
     line-height: 42px;

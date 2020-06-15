@@ -29,6 +29,7 @@ defined('_VALID_VAM') or die('Direct Access to this location is not allowed.');
 
 <?php
   $whos_online_query = vam_db_query("select customer_id, full_name, ip_address, time_entry, time_last_click, last_page_url, session_id from " . TABLE_WHOS_ONLINE ." order by time_last_click desc");
+  $products = false;
   while ($whos_online = vam_db_fetch_array($whos_online_query)) {
     $time_online = (time() - $whos_online['time_entry']);
     //if ( ((!$_GET['info']) || (@$_GET['info'] == $whos_online['session_id'])) && (!$info) ) {
@@ -63,6 +64,7 @@ $tooltip .= TABLE_HEADING_SHOPPING_CART . ": <br />";
     }
 
       $user_session = unserialize_session_data($session_data);
+      $products = false;
 		
       if ($user_session) {
         $products = vam_get_products($user_session);
@@ -84,7 +86,7 @@ $tooltip .= TABLE_HEADING_SHOPPING_CART . ": <br />";
 
 ?>
 
-<div class="chip" data-toggle="tooltip" data-html="true" data-placement="top" title="" data-original-title="<?php echo $tooltip; ?>">
+<div class="chip<?php if (sizeof($products) > 0) { ?> cart<?php } ?>" data-toggle="tooltip" data-html="true" data-placement="top" title="" data-original-title="<?php echo $tooltip; ?>">
 <a href="<?php echo vam_href_link(FILENAME_WHOS_ONLINE, vam_get_all_get_params(array('info', 'action')) . 'info=' . $whos_online['session_id'], 'NONSSL'); ?>">
 <?php if (sizeof($products) > 0) { ?>
   <div class="icon pulse-button"><i class="fas fa-shopping-basket"></i></div> <?php echo $whos_online['full_name']; ?>
@@ -101,10 +103,8 @@ $tooltip .= TABLE_HEADING_SHOPPING_CART . ": <br />";
   }
 ?>
 
-<!--
 <div>
 <span class="small text-muted">
 <?php echo sprintf(TEXT_NUMBER_OF_CUSTOMERS, vam_db_num_rows($whos_online_query)); ?>
 </span>
--->
 </div>
