@@ -32,6 +32,7 @@ require ('includes/application_top.php');
 		<script type="text/javascript">
 			$(function(){
 				$('#tabs').tabs({ fx: { opacity: 'toggle', duration: 'fast' } });
+				$('#whos_online_tab').tabs({ fx: { opacity: 'toggle', duration: 'fast' } });
 				$('#news').tabs({ fx: { opacity: 'toggle', duration: 'fast' } });
 				$('#sales').tabs({ fx: { opacity: 'toggle', duration: 'fast' } });
 			});
@@ -430,6 +431,19 @@ $data_date[] = $report->info[$i]['text'];
 			</div>
       </div>
       </div>
+      
+      <div class="row">
+      <div class="col-xl-12">
+		<div id="whos_online_tab">
+			<ul>
+				<li><a href="#whos_online"><?php echo vam_image(DIR_WS_IMAGES . 'icons/tabs/orders.png', '', '16', '16'); ?>&nbsp;<?php echo BOX_WHOS_ONLINE; ?></a></li>
+			</ul>
+			<div id="whos_online">
+			<?php include(DIR_WS_MODULES . 'summary/whos_online.php'); ?>
+			</div>
+		</div>
+      </div>
+      </div>      
 
       <div class="row">
       <div class="col-xl-5">
