@@ -1142,4 +1142,7 @@ define('STORE_VIBER_DESC', 'Ваш аккаунт Viber.');
 define('DISPLAY_CART_IN_CHECKOUT_TITLE' , 'Показывать корзину на странице оформления заказа');
 define('DISPLAY_CART_IN_CHECKOUT_DESC', 'Показывать корзину на странице оформления заказа.');
 
+define('DISPLAY_WHOS_ONLINE_TITLE' , 'Показывать блок Кто в онлайне? на главной админки');
+define('DISPLAY_WHOS_ONLINE_DESC', 'Показывать блок Кто в онлайне? на главной админки');
+
 ?>

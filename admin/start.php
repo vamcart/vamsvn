@@ -432,6 +432,7 @@ $data_date[] = $report->info[$i]['text'];
       </div>
       </div>
       
+      <?php if (DISPLAY_WHOS_ONLINE == 'true') { ?>
       <div class="row">
       <div class="col-xl-12">
 		<div id="whos_online_tab">
@@ -444,6 +445,7 @@ $data_date[] = $report->info[$i]['text'];
 		</div>
       </div>
       </div>      
+      <?php } ?>
 
       <div class="row">
       <div class="col-xl-5">
