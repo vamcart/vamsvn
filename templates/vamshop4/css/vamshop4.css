@@ -120,12 +120,32 @@ button:focus, button:active, a, a:hover {
 .slick-track {
   margin-left: 0;
 }
+/* /Slick Slider */
+
+/* Lazy Load */
 
 .lazy.loading { 
   background: #fff url('../img/ajax-loader.gif') center center no-repeat; 
 }
-/* /Slick Slider */
 
+.lazy {
+ /*opacity: 0;*/
+ transition: opacity 400ms ease-in; 
+}
+
+.lazy[src^=""], .lazy:not([src]) {
+  max-height: 0; 
+}
+ 
+.lazy {
+  transform-style: preserve-3d; 
+}
+
+img.lazy:not([src]) {
+  visibility: hidden;
+}
+
+/* /Lazy Load */
 
 /* Main */
 .mainWrapper {
