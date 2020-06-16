@@ -33,7 +33,7 @@ $(".owl-carousel").owlCarousel({
             loop:false
         },
         1200:{
-            items:5,
+            items:6,
             nav:true,
             loop:false
         }
