@@ -123,11 +123,11 @@ button:focus, button:active, a, a:hover {
 /* /Slick Slider */
 
 /* Lazy Load */
-
+/*
 .lazy.loading { 
   background: #fff url('../img/ajax-loader.gif') center center no-repeat; 
 }
-
+*/
 .lazy {
  /*opacity: 0;*/
  transition: opacity 400ms ease-in; 
