@@ -2,7 +2,7 @@
 <div class="module">
 <h3>{#heading_text#}</h3>
 <div class="moduleContent">
-<div class="slider responsive">
+<div class="owl-carousel owl-theme">
 {foreach name=aussen item=module_data from=$module_content}
 {include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/product-card/product-card-simple.html"}
 {/foreach}

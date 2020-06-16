@@ -5,7 +5,7 @@
 		{if $module_data.PRODUCTS_LABEL}{$module_data.PRODUCTS_LABEL}{/if}
 		{if $module_data.PRODUCTS_SPECIAL > 0}<span class="badge-offer"><b>-{$module_data.PRODUCTS_SPECIAL|round}%</b></span>{/if}
 		<div class="col-md-3">
-			<div class="img-wrap"><a href="{$module_data.PRODUCTS_LINK}" title="{$module_data.PRODUCTS_NAME}"><img {if $smarty.const.ENABLE_LAZY_LOAD == 'true'}class="lazy" data-src="{$module_data.PRODUCTS_IMAGE}"{else}src="{$module_data.PRODUCTS_IMAGE}"{/if} {if {$module_data.PRODUCTS_IMAGE_WIDTH} > 0} width="{$module_data.PRODUCTS_IMAGE_WIDTH}"{/if} {if {$module_data.PRODUCTS_IMAGE_HEIGHT} > 0} height="{$module_data.PRODUCTS_IMAGE_HEIGHT}"{/if} alt="{$module_data.PRODUCTS_NAME}"></a></div>
+			<div class="img-wrap"><a href="{$module_data.PRODUCTS_LINK}" title="{$module_data.PRODUCTS_NAME}"><img {if $smarty.const.ENABLE_LAZY_LOAD == 'true'}class="owl-lazy" data-src="{$module_data.PRODUCTS_IMAGE}"{else}src="{$module_data.PRODUCTS_IMAGE}"{/if} {if {$module_data.PRODUCTS_IMAGE_WIDTH} > 0} width="{$module_data.PRODUCTS_IMAGE_WIDTH}"{/if} {if {$module_data.PRODUCTS_IMAGE_HEIGHT} > 0} height="{$module_data.PRODUCTS_IMAGE_HEIGHT}"{/if} alt="{$module_data.PRODUCTS_NAME}"></a></div>
 				{if $module_data.REVIEWS_TOTAL > 0}
 				<div class="rating-wrap text-center small">
 					{$module_data.REVIEWS_STAR_RATING} <span class="text-muted pr-2" title="{$smarty.const.TEXT_REVIEWS_RATING}">{$module_data.REVIEWS_TOTAL_RATING|number_format:1}</span>

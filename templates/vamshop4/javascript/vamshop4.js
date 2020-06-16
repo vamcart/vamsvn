@@ -1,63 +1,129 @@
 $(document).ready(function(){
 
 // Lazy Load
-var lazyLoadInstance = new LazyLoad({
-  elements_selector: ".lazy"
+//var lazyLoadInstance = new LazyLoad({
+  //elements_selector: ".lazy"
   // ... more custom settings?
-});
+//});
+
+//OWL Carousel Slider
+$(".owl-carousel").owlCarousel({
+    margin: 30,
+    nav: true,
+    lazyLoad: true,
+    loop:false,
+    dots: false,
+    navText: ['<span class="fas fa-chevron-left fa-1x"></span>','<span class="fas fa-chevron-right fa-1x"></span>'],
+    responsive:{
+        0:{
+            items:1,
+            nav:true
+        },
+        360:{
+            items:2,
+            nav:true
+        },
+        768:{
+            items:3,
+            nav:true
+        },
+        992:{
+            items:4,
+            nav:true,
+            loop:false
+        },
+        1200:{
+            items:5,
+            nav:true,
+            loop:false
+        }
+    }
+})
+
+$(".owl-carousel-reverse").owlCarousel({
+    margin: 30,
+    nav: true,
+    loop:false,
+    dots: false,
+    navText: ['<span class="fas fa-chevron-left fa-1x"></span>','<span class="fas fa-chevron-right fa-1x"></span>'],
+    responsive:{
+        0:{
+            items:1,
+            nav:true
+        },
+        360:{
+            items:2,
+            nav:true
+        },
+        768:{
+            items:3,
+            nav:true
+        },
+        992:{
+            items:4,
+            nav:true,
+            loop:false
+        },
+        1200:{
+            items:1,
+            nav:true,
+            loop:false
+        }
+    }
+})
 
 //Slick Slider
-$('.slider').slick({
-  dots: false,
-  arrows: true,
-  prevArrow:'<button type="button" class="slick-prev pull-left" role="presentation"><span class="fas fa-chevron-left fa-1x" aria-hidden="true"></span></button>',
-  nextArrow:'<button type="button" class="slick-next pull-right" role="presentation"><span class="fas fa-chevron-right fa-1x" aria-hidden="true"></span></button>',
-  lazyLoad: 'ondemand',
-  infinite: false,
-  speed: 300,
-  slidesToShow: 5,
-  slidesToScroll: 5,
-  responsive: [
-    {
-      breakpoint: 1360,
-      settings: {
-        slidesToShow: 4,
-        slidesToScroll: 4,
-      }
-    },
-    {
-      breakpoint: 992,
-      settings: {
-        slidesToShow: 3,
-        slidesToScroll: 3,
-      }
-    },
-    {
-      breakpoint: 768,
-      settings: {
-        slidesToShow: 3,
-        slidesToScroll: 3,
-      }
-    },
-    {
-      breakpoint: 576,
-      settings: {
-        slidesToShow: 2,
-        slidesToScroll: 2
-      }
-    },
-    {
-      breakpoint: 360,
-      settings: {
-        slidesToShow: 1,
-        slidesToScroll: 1
-      }
-    }
+//$('.slider').slick({
+  //dots: false,
+  //arrows: true,
+  //prevArrow:'<button type="button" class="slick-prev pull-left" role="presentation"><span class="fas fa-chevron-left fa-1x" aria-hidden="true"></span></button>',
+  //nextArrow:'<button type="button" class="slick-next pull-right" role="presentation"><span class="fas fa-chevron-right fa-1x" aria-hidden="true"></span></button>',
+  //lazyLoad: 'ondemand',
+  //infinite: false,
+  //speed: 300,
+  //slidesToShow: 5,
+  //slidesToScroll: 5,
+  //responsive: [
+    //{
+      //breakpoint: 1360,
+      //settings: {
+        //slidesToShow: 4,
+        //slidesToScroll: 4,
+      //}
+    //},
+    //{
+      //breakpoint: 992,
+      //settings: {
+        //slidesToShow: 3,
+        //slidesToScroll: 3,
+      //}
+    //},
+    //{
+      //breakpoint: 768,
+      //settings: {
+        //slidesToShow: 3,
+        //slidesToScroll: 3,
+      //}
+    //},
+    //{
+      //breakpoint: 576,
+      //settings: {
+        //slidesToShow: 2,
+        //slidesToScroll: 2
+      //}
+    //},
+    //{
+      //breakpoint: 360,
+      //settings: {
+        //slidesToShow: 1,
+        //slidesToScroll: 1
+      //}
+    //}
     // You can unslick at a given breakpoint now by adding:
     // settings: "unslick"
     // instead of a settings object
-  ]
-});
+  //]
+//});
 
 
 // Scroll to top button 
