@@ -2,8 +2,8 @@ $(document).ready(function(){
 
 // Lazy Load
 var lazyLoadInstance = new LazyLoad({
-  elements_selector: ".lazy"
-  // ... more custom settings?
+  elements_selector: ".lazy",
+  //use_native: true
 });
 
 //OWL Carousel Slider
