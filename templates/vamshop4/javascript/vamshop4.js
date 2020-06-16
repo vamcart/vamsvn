@@ -1,16 +1,16 @@
 $(document).ready(function(){
 
 // Lazy Load
-//var lazyLoadInstance = new LazyLoad({
-  //elements_selector: ".lazy"
+var lazyLoadInstance = new LazyLoad({
+  elements_selector: ".lazy"
   // ... more custom settings?
-//});
+});
 
 //OWL Carousel Slider
 $(".owl-carousel").owlCarousel({
     margin: 30,
     nav: true,
-    lazyLoad: true,
+    //lazyLoad: true,
     loop:false,
     dots: false,
     navText: ['<span class="fas fa-chevron-left fa-1x"></span>','<span class="fas fa-chevron-right fa-1x"></span>'],
