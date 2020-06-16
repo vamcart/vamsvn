@@ -800,10 +800,26 @@ li.level3 {
     width: auto;
 }
 
-.tab-content>.tab-pane {display: block;visibility: hidden;}
-.tab-content>.tab-pane.active {visibility: visible;}
-.tab-content{position: relative;}
-.tab-pane:not(:first-child){position: absolute;width: 100%;height: 100%;top: 0;left: 0;}
+.mainpage-tabs .tab-content>.tab-pane {
+  display: block;
+  visibility: hidden;
+}
+
+.mainpage-tabs .tab-content>.tab-pane.active {
+  visibility: visible;
+}
+
+.mainpage-tabs .tab-content {
+  position: relative;
+}
+
+.mainpage-tabs .tab-pane:not(:first-child) {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
 
 .wsmobileheader .wscart {
     background-color: transparent;
