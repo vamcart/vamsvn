@@ -10,35 +10,33 @@ var lazyLoadInstance = new LazyLoad({
 $(".owl-carousel").owlCarousel({
     margin: 30,
     nav: true,
-    //lazyLoad: true,
-    loop:false,
+    center: false,
     dots: false,
+    loop: false,
     navText: ['<span class="fas fa-chevron-left fa-1x"></span>','<span class="fas fa-chevron-right fa-1x"></span>'],
     responsive:{
         0:{
-            items:1,
-            nav:true
+            items:1
         },
         360:{
-            items:2,
-            nav:true
+            items:2
         },
         768:{
-            items:3,
-            nav:true
+            items:3
         },
         992:{
-            items:4,
-            nav:true,
-            loop:false
+            items:4
         },
         1200:{
-            items:6,
-            nav:true,
-            loop:false
+            items:6
         }
     }
 })
+
+// hook into Bootstrap shown event and manually trigger 'resize' event so that Slick recalculates the widths
+$('span[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+     $('.owl-carousel').trigger('refresh.owl.carousel');
+});
 
 $(".owl-carousel-reverse").owlCarousel({
     margin: 30,
