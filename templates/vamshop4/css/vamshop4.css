@@ -82,7 +82,7 @@ button:focus, button:active, a, a:hover {
 .owl-carousel .owl-nav button.owl-next, .owl-carousel .owl-nav button.owl-prev,
 .owl-carousel .owl-nav button.owl-next.disabled, .owl-carousel .owl-nav button.owl-prev.disabled {
     padding: 20px 5px !important;
-    margin: -1em -21px 0 -21px;
+    margin: -0em -21px 0 -21px;
     border: 1px solid #dadada;
     color: #1e1e1e;
     /*box-shadow: -1px 0px 3px #dadada;*/
