@@ -2954,8 +2954,8 @@ div.CheckoutError
 /* Product Labels */
 
 .label {
-  top: 7px;
-  left: 7px;
+  top: 5px;
+  left: 5px;
   position: absolute;
   display: block;
   z-index: 10;
