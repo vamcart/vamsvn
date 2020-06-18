@@ -71,7 +71,7 @@
 		<div class="col-md-6">
 			
 				{if {$ARTICLE_ID} > 0}
-				<div class="desc pt-2">
+				<div class="desc py-2">
 				{$smarty.const.TEXT_ARTICLE_COMMENTS}: {if {$ARTICLE_REVIEWS} > 0}<a href="{$smarty.const.FILENAME_ARTICLE_REVIEWS}?articles_id={$ARTICLE_ID}">{$ARTICLE_REVIEWS}</a>{else}0{/if} ({if {$ARTICLE_REVIEWS} > 0}<a href="{$smarty.const.FILENAME_ARTICLE_REVIEWS}?articles_id={$ARTICLE_ID}">{$smarty.const.TEXT_ARTICLE_REVIEWS_READ}</a>, {/if}<a href="{$smarty.const.FILENAME_ARTICLE_REVIEWS_WRITE}?articles_id={$ARTICLE_ID}">{$smarty.const.TEXT_ARTICLE_REVIEWS_ADD}</a>)
 				</div>
 				{if {$ARTICLE_RATING} > 0 }
@@ -82,7 +82,7 @@
 				{/if}
 
 				{if $AUTHOR_NAME}
-				<div class="desc pt-2">
+				<div class="desc py-2">
 				{#text_author#} <a href="{$AUTHOR_LINK}">{$AUTHOR_NAME}</a>
 				</div>
 				{/if}
