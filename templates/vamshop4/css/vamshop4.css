@@ -171,7 +171,7 @@ img.lazy:not([src]) {
 .card-footer {
   background: #fff;
   border-top: 0px;
-  padding: .2em;
+  padding: 0 .4em;
 }
 
 .category.card-body {
@@ -179,7 +179,7 @@ img.lazy:not([src]) {
 }
 
 .card-body {
-  padding: .2em;
+  padding: 0 .4em;
 }
 
 .card.card-product .card-footer {
@@ -190,7 +190,7 @@ img.lazy:not([src]) {
   background: transparent;
   border: 0;
   margin: 0;
-  padding: .2em;
+  padding: 0 .4em .4em .4em;
 }
 
 .card-deck {
