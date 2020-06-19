@@ -6,9 +6,13 @@
 
 {foreach from=$module_content key=category_name item=cart_data}
 <h3>{$category_name}</h3>
+<div class="card-deck">
 {foreach name=aussen item=module_data from=$cart_data}
+<div class="col-6 col-sm-6 col-xs-6 col-md-12 col-lg-12 col-xl-12">
 {include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/item/item-cart-list.html"}
+</div>
 {/foreach}
+</div>
 {/foreach}
 </div>
 
