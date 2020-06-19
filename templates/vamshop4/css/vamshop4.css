@@ -903,6 +903,7 @@ li.level3 {
 }
 
 .sticky-top {
+	position: static;
 }
 
 @media(min-width: 1200px) {
