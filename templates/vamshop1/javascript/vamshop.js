@@ -43,8 +43,18 @@ this.options)});b._afterUpdate&&b._afterUpdate(a,b._groups)};b._update=function(
 
 // Responsive equal height
 
-if ($(window).width() > 767) {
+if ($(window).width() > 360) {
 $(window).load(function() {
+    $('.thumbnails .item .thumbnail').matchHeight();
+    $('.thumbnails .item .thumbnail .title').matchHeight();
+    $('.thumbnails .item a.image').matchHeight();
+});
+$(document).ajaxSuccess(function () {
+    $('.thumbnails .item .thumbnail').matchHeight();
+    $('.thumbnails .item .thumbnail .title').matchHeight();
+    $('.thumbnails .item a.image').matchHeight();
+});
+$(window).on('resize', function () {
     $('.thumbnails .item .thumbnail').matchHeight();
     $('.thumbnails .item .thumbnail .title').matchHeight();
     $('.thumbnails .item a.image').matchHeight();
