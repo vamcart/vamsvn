@@ -2938,7 +2938,7 @@ div.CheckoutError
 
 #load_status_bg .load_status_image 
 	{
-		background:url(../img/wind_bg.png);
+		background: transparent url('../img/ajax-loader.gif') center center no-repeat; 
 		width:100%; 
 		margin: 270px auto 0;
 		z-index: 2300;
