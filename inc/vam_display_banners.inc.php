@@ -30,6 +30,15 @@
 		$banners_array = array ();
 
       while ($banner = vam_db_fetch_array($banners_data, true)) {      	
+
+	   $banner_image = DIR_WS_IMAGES . 'banner/' . $banner['banners_image'];
+	   $banner_image_path = DIR_FS_CATALOG . DIR_WS_IMAGES . 'banner/' . $banner['banners_image'];
+	 
+		if(file_exists($banner_image_path) && is_file($banner_image_path)) {
+			list($width, $height, $type, $attr) = getimagesize($banner_image);
+		}
+
+
 			$banners_array[] = array (
 			
 			'id' => $banner['banners_id'], 
@@ -37,6 +46,8 @@
 			'description' => $banner['banners_description'], 
 			'html' => $banner['banners_html_text'], 
 			'image' => $banner['banners_image'],
+			'image_width' => $width,
+			'image_height' => $height,
 			'link' => $banner['banners_url'],
 			'url' => vam_href_link(FILENAME_REDIRECT, 'action=banner&goto=' . $banner['banners_id'])
 			);

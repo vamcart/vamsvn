@@ -186,6 +186,7 @@ function normalizeSlideHeights() {
 $(window).on(
     'load resize orientationchange', 
     normalizeSlideHeights);
+
     
 // Ajax quick search
   $("#quick_find_keyword").keyup(function(){
