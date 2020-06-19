@@ -3,7 +3,7 @@
 <div class="moduleContent">
 <div class="card-deck">
 {foreach name=aussen item=module_data from=$module_content}<h3>{$module_data.GROUP}</h3>{foreach name=aussen item=module_data from=$module_data.PRODUCTS}
-<div class="col-sm-6 col-md-12 col-lg-12 col-xl-12">
+<div class="col-6 col-sm-6 col-md-12 col-lg-12 col-xl-12">
 {include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/item/item-cart-list-cross-sell.html"}
 </div>
 {/foreach}
