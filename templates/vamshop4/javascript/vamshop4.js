@@ -498,21 +498,3 @@ $(".image-zoom").each(function(arg, el){
 //  'more': '▼',
 //  'less': '▲'
 //});
-
-
-// Sticky top
-var parentElement = document.querySelector('.sticky-wrapper');
-var fixedElement = document.querySelector('.sticky-top');
-
-// get parent-element width when page is fully loaded
-// and change fixed-element width accordingly
-window.addEventListener('load', changeFixedElementWidth);
-
-// get parent-element width when window is resized
-// and change fixed-element width accordingly
-window.addEventListener('resize', changeFixedElementWidth);
-
-function changeFixedElementWidth() {
-  if (parentElement) var parentElementWidth = parentElement.getBoundingClientRect().width;
-  if (fixedElement) fixedElement.style.width = parentElementWidth + 'px';
-}
