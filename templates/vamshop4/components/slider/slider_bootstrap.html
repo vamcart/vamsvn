@@ -10,7 +10,7 @@
   <div class="carousel-inner">
     {foreach item=slides from=$slider_bootstrap}
     <div class="carousel-item{if $slides@first} active{/if}" data-interval="10000">
-      <a href="{$slides.url}"><img {if $smarty.const.ENABLE_LAZY_LOAD == 'true'}class="d-block w-100 img-fluid lazy" data-src="images/banner/{$slides.image}"{else} class="d-block w-100" src="images/banner/{$slides.image}"{/if} {if {$slides.image_width} > 0} width="{$slides.image_width}"{/if} {if {$slides.image_height} > 0} height="{$slides.image_height}"{/if} alt="{$slides.title}" /></a>
+      <a href="{$slides.url}"><img {if $smarty.const.ENABLE_LAZY_LOAD == 'true'}class="d-block w-100 img-fluid lazy" data-src="images/banner/{$slides.image}"{if {$slides.image_width} > 0} width="{$slides.image_width}"{/if} {if {$slides.image_height} > 0} height="{$slides.image_height}"{/if}{else} class="d-block w-100" src="images/banner/{$slides.image}"{/if} alt="{$slides.title}" /></a>
     </div>
     {/foreach}
   </div>
