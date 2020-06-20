@@ -499,6 +499,16 @@ li.level3 {
     border-color: #545b62 !important;
 }
 
+.btn-outline-secondary {
+  background: rgba(0,0,0,.03);
+  border-color: #ccc !important;
+}
+
+.btn-outline-secondary:hover {
+  color: #0051A8;
+  background: #c8c8c8;
+}
+
 .btn-group .btn-secondary.active {
     color: #fff;
     background-color: #6c757d !important;
