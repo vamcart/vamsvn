@@ -472,6 +472,20 @@ $(function($){
 </div><!--div end comment_box--> 
 {/if}
 
+{if $conditions=='true'}
+<div id="conditions" class="sm_layout_box">
+{$AGB_checkbox} {$smarty.const.SC_CONDITION} {$AGB_LINK} {$smarty.const.SC_CONDITION_END}
+</div><!--div end conditions --> 
+{/if}
+
+{if $smarty.const.DISPLAY_PRIVACY_TEXT == 'true'}
+<div>
+<small>
+{$smarty.const.PRIVACY_TEXT}
+</small>
+</div>
+{/if}
+
 <div class="form-anti-bot" style="clear:both;">
 	<strong>Current <span style="display:none;">month</span> <span style="display:inline;">ye@r</span> <span style="display:none;">day</span></strong> <span class="required">*</span>
 	<input type="hidden" name="anti-bot-a" id="anti-bot-a" value="{$smarty.now|date_format:"%Y"}" />
@@ -500,21 +514,6 @@ $(function($){
 <div class="info-wrap">
 {$ORDER_TOTALS}
 <hr />
-
-{if $conditions=='true'}
-<div id="conditions" class="sm_layout_box">
-{$AGB_checkbox} {$smarty.const.SC_CONDITION} {$AGB_LINK} {$smarty.const.SC_CONDITION_END}
-</div><!--div end conditions --> 
-{/if}
-
-{if $smarty.const.DISPLAY_PRIVACY_TEXT == 'true'}
-<div>
-<small>
-{$smarty.const.PRIVACY_TEXT}
-</small>
-</div>
-{/if}
-
 </div>
 </div>
 <div class="card-footer text-center">
