@@ -7,7 +7,7 @@ body {
 .title,
 .title a,
 .title a:hover {
-  font-size: 16px;
+  font-size: 15px;
 }
 
 h1,
@@ -970,4 +970,9 @@ li.level3 {
     flex: 1 1 0%;
     min-width: 90px;
     margin-bottom: 0;
+}
+
+.spec-name,
+.spec-value {
+  font-size: 80%;
 }
