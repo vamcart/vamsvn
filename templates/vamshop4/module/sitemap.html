@@ -1,9 +1,11 @@
 {config_load file="$language/lang_$language.conf" section="sitemap"} 
 <div class="module">
 <div class="pageContent">
-<div class="owl-carousel owl-theme">
+<div class="card-deck">
 {foreach name=aussen item=module_data from=$module_content}
+<div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-3">
 {include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/box/box-card-category.html"}
+</div>
 {/foreach}
 </div>
 </div>
