@@ -1355,8 +1355,10 @@ border: 0px solid transparent;
   font-size: 16px;
   font-weight: bold;
   padding: 10px 20px;
-  color: #ffffff;
-  background-color: #333333;
+  background-color: transparent;
+  color: #575757;
+  border: 2px solid #dee2e6;
+  border-radius: 50rem;
   margin-top: 5px;
   margin-bottom: 5px;
 }
@@ -1364,7 +1366,11 @@ border: 0px solid transparent;
   margin-left: 0;
 }
 .shop-products .btn-add-to-cart:hover {
-  background-color: #dd2c00;
+  color: #dd2c00;
+  border: 2px solid #dd2c00;
+  border-radius: 50rem;
+  cursor: pointer;
+  background: #fff;
 }
 .shop-products .thumbnail {
   border: solid 1px #eeeeee;
@@ -2261,9 +2267,9 @@ span.Requirement
 
 .btn-secondary,
 .btn-dark {
-    color: #fff;
-    background-color: #363636;
-    border-color: #363636;
+    color: #6c757d;
+    background-color: rgba(0,0,0,.03);
+    border-color: #ccc;
 }
 
 .btn-secondary:hover,
