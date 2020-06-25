@@ -706,6 +706,8 @@ define('TEXT_ALERT_COOKIE', 'Мы используем файлы cookie для 
 define('TEXT_COOKIE_CLOSE', 'Закрыть');
 define('TEXT_COOKIE_OK', 'Разрешаю');
 
+define('TEXT_SELECT_OPTIONS','Опции');
+
 define('TEXT_TAGS','Тэги');
 
 define('TEXT_AUTHOR_COMMENTS','Отзывы об авторе');
