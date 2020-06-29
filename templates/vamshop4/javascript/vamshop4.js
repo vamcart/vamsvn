@@ -9,7 +9,7 @@ var lazyLoadInstance = new LazyLoad({
 //OWL Carousel Slider
 $(".owl-carousel").owlCarousel({
     margin: 30,
-    nav: true,
+    nav: false,
     center: false,
     dots: false,
     loop: false,
@@ -40,7 +40,7 @@ $('span[data-toggle="tab"]').on('shown.bs.tab', function (e) {
 
 $(".owl-carousel-reverse").owlCarousel({
     margin: 30,
-    nav: true,
+    nav: false,
     loop:false,
     dots: false,
     navText: ['<span class="fas fa-chevron-left fa-1x"></span>','<span class="fas fa-chevron-right fa-1x"></span>'],
