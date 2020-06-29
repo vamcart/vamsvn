@@ -3551,6 +3551,34 @@ dd {
     margin-left: 0;
 }
 
+/* Owl Slides Equal Height */
+.owl-stage {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0;
+  padding-right: 0;
+  padding-left: 0;
+  padding-bottom: 1em;
+}
+
+.owl-carousel .owl-stage-outer {
+}
+
+.owl-item img {
+  margin: 0 auto !important;
+  width: auto !important;
+}	
+
+.owl-carousel .item {
+  width: 100%;
+  margin-bottom: 1em;
+}
+
+.card-product .bottom-wrap {
+    border-top: 0;
+}
+/* /Owl Slides Equal Height */
+ 
 .dropdown-submenu {
     position:relative;
 }

@@ -1,32 +1,41 @@
 // Slide menu
+
 $(document).ready(function(){
   $(".navbar .navbar-toggle").click();
   $('.toggle-menu').jPushMenu({closeOnClickLink: false});
   $('.dropdown-toggle').dropdown();
+});
 
+//OWL Carousel Slider
+$(".owl-carousel").owlCarousel({
+    margin: 30,
+    nav: false,
+    center: false,
+    dots: false,
+    loop: false,
+    navText: ['<span class="fa fa-chevron-left fa-1x"></span>','<span class="fa fa-chevron-right fa-1x"></span>'],
+    responsive:{
+        0:{
+            items:1
+        },
+        360:{
+            items:2
+        },
+        768:{
+            items:3
+        },
+        992:{
+            items:4
+        },
+        1200:{
+            items:4
+        }
+    }
+})
 
-  $('.dropdown-sub a.drop').on("click", function(e){
-  	
-	if($(this).hasClass('opened')){
-		$(this).removeClass('opened');
-	}else{
-		
-		$(this).parent().parent().find('.opened').each(function(index) {
-			if($(this).hasClass('opened')){
-				$(this).next('ul').toggle();
-				$(this).removeClass('opened');
-			}
-		});
-		$(this).addClass('opened');
-		
-	}
-	  	
-    $(this).next('ul').toggle();
-    e.stopPropagation();
-    e.preventDefault();
-  });
-
-
+// hook into Bootstrap shown event and manually trigger 'resize' event so that Slick recalculates the widths
+$('span[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+     $('.owl-carousel').trigger('refresh.owl.carousel');
 });
 
 /**
@@ -45,17 +54,26 @@ this.options)});b._afterUpdate&&b._afterUpdate(a,b._groups)};b._update=function(
 
 if ($(window).width() > 360) {
 $(window).load(function() {
+    //$('.owl-carousel .item').matchHeight();
     $('.thumbnails .item .thumbnail').matchHeight();
+    $('.item .thumbnail .notop').matchHeight();
+    $('.item .thumbnail .notop .title').matchHeight();
     $('.thumbnails .item .thumbnail .title').matchHeight();
     $('.thumbnails .item a.image').matchHeight();
 });
 $(document).ajaxSuccess(function () {
+    //$('.owl-carousel .item').matchHeight();
     $('.thumbnails .item .thumbnail').matchHeight();
+    $('.item .thumbnail .notop').matchHeight();
+    $('.item .thumbnail .notop .title').matchHeight();
     $('.thumbnails .item .thumbnail .title').matchHeight();
     $('.thumbnails .item a.image').matchHeight();
 });
 $(window).on('resize', function () {
+    //$('.owl-carousel .item').matchHeight();
     $('.thumbnails .item .thumbnail').matchHeight();
+    $('.item .thumbnail .notop').matchHeight();
+    $('.item .thumbnail .notop .title').matchHeight();
     $('.thumbnails .item .thumbnail .title').matchHeight();
     $('.thumbnails .item a.image').matchHeight();
 });
@@ -281,7 +299,7 @@ $(".image-zoom").each(function(arg, el){
         url: image.attr("src").replace("info_images", "popup_images")
     });
 });
-});  
+});   
 
 //Expandable Text
 //$('.read-more').expandable({

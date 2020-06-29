@@ -2,9 +2,9 @@
 <h3><a href="{$SITEMAP_LINK}">{#heading_text#}</a></h3>
 <div class="pageItem">
 <div class="row-fluid shop-products">
-	<ul class="thumbnails">
+<div class="owl-carousel owl-theme">
 	{foreach name=aussen item=module_data from=$module_content} 
-		<li class="span3 item{if $smarty.foreach.aussen.index % 4 == 0} first{/if}">
+		<div class="span3 item{if $smarty.foreach.aussen.index % 4 == 0} first{/if}">
 			<div class="thumbnail text-center">
 				<a href="{$module_data.CATEGORIES_LINK}" class="image">
 				{if $module_data.CATEGORIES_IMAGE}<img src="{$module_data.CATEGORIES_IMAGE}" alt="{$module_data.CATEGORIES_NAME}" title="{$module_data.CATEGORIES_NAME}" />{/if}
@@ -16,8 +16,8 @@
 					</div>
 				</div>
 			</div>
-		</li>
+		</div>
 	{/foreach}
-</ul>
+</div>
 </div>	
 </div>	

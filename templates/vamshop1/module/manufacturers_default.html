@@ -4,12 +4,12 @@
 
 <!-- start: products listing -->
 <div class="row-fluid shop-products">
-	<ul class="thumbnails">
+<div class="owl-carousel owl-theme">
 		{foreach name=aussen item=module_data from=$module_content}
 		{if {$smarty.get.cat} > 0}
-		<li class="item span4{if $smarty.foreach.aussen.index % 3 == 0} first{/if}">
+		<div class="item span4{if $smarty.foreach.aussen.index % 3 == 0} first{/if}">
 		{else}
-		<li class="item span3{if $smarty.foreach.aussen.index % 4 == 0} first{/if}">
+		<div class="item span3{if $smarty.foreach.aussen.index % 4 == 0} first{/if}">
 		{/if}
 			<div class="thumbnail text-center">
 				<a href="{$module_data.PRODUCTS_LINK}" class="image"><img src="{$module_data.PRODUCTS_IMAGE}" alt="{$module_data.PRODUCTS_NAME}" /></a>
@@ -17,9 +17,9 @@
 				<h4 class="title"><a href="{$module_data.PRODUCTS_LINK}">{$module_data.PRODUCTS_NAME}</a></h4>
 			</div>
 			</div>
-		</li>
+		</div>
 		{/foreach}
-	</ul>
+</div>
 </div>  
 <!-- end: products listing -->  
   
