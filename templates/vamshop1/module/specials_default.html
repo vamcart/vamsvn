@@ -6,7 +6,7 @@
 <div class="owl-carousel owl-theme">
 		{foreach name=aussen item=module_data from=$module_content}
 		{if {$smarty.get.cat} > 0}
-		<div class="item span4{if $smarty.foreach.aussen.index % 3 == 0} first{/if}">
+		<div class="item span3{if $smarty.foreach.aussen.index % 4 == 0} first{/if}">
 		{else}
 		<div class="item span3{if $smarty.foreach.aussen.index % 4 == 0} first{/if}">
 		{/if}

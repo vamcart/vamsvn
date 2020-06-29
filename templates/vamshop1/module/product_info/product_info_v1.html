@@ -231,7 +231,7 @@
 	<ul class="thumbnails">
 		{foreach name=aussen item=module_data from=$products_history}
 		{if {$smarty.get.cat} > 0}
-		<li class="item span4{if $smarty.foreach.aussen.index % 3 == 0} first{/if}">
+		<li class="item span3{if $smarty.foreach.aussen.index % 4 == 0} first{/if}">
 		{else}
 		<li class="item span3{if $smarty.foreach.aussen.index % 4 == 0} first{/if}">
 		{/if}

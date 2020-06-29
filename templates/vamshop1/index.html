@@ -111,48 +111,13 @@
 		<div class="row-fluid">
 
 			<!-- start: Page section -->
-			<div class="{if {$current_category_id} > 0 && !{$smarty.get.products_id}}span9{else}span12{/if} page-sidebar pull-right">
+			<div class="span12 page-sidebar pull-right">
 	
 			{$main_content}
 
 			</div>
 			<!-- end: Page section -->
 			
-
-		{if {$current_category_id} > 0 && !{$smarty.get.products_id}}
-		<!-- start: Sidebar -->
-		<aside class="span3 sidebar pull-left">
-			{$box_DOWNLOADS}
-			{$box_CATEGORIES}
-			{$box_FILTERS}
-			{$box_CONTENT}
-			{$box_INFORMATION}
-			{$box_LOGIN}
-			{$box_ADMIN}
-			{$box_ADD_QUICKIE}
-			{$box_LAST_VIEWED}
-			{$box_REVIEWS}
-			{$box_SPECIALS}
-			{$box_FEATURED}
-			{$box_LATESTNEWS}
-			{$box_ARTICLES}
-			{$box_ARTICLESNEW}
-			{$box_AUTHORS}
-			{$box_AFFILIATE}
-			{$box_WHATSNEW}
-			{$box_NEWSLETTER}
-			{$box_BESTSELLERS}
-			{$box_INFOBOX}
-			{$box_CURRENCIES}
-			{$box_LANGUAGES}
-			{$box_MANUFACTURERS}
-			{$box_MANUFACTURERS_INFO}
-			{$box_FAQ}
-
-		</aside>
-		<!-- end: Sidebar -->
-		{/if}
-
 		</div>
 
 	</div>

@@ -36,7 +36,7 @@
 <div class="row-fluid shop-products">
 	<ul class="thumbnails">
 		{foreach name=aussen item=module_data from=$module_content}
-		<li class="item span4{if $smarty.foreach.aussen.index % 3 == 0} first{/if}">
+		<li class="item span3{if $smarty.foreach.aussen.index % 4 == 0} first{/if}">
 			<div class="thumbnail text-center">
 			{if $module_data.NEWS_ICON}
 				<a href="{$module_data.NEWS_LINK_MORE}" class="image"><img height="85" src="{$module_data.NEWS_ICON}" class="img-responsive" alt="{$module_data.NEWS_HEADING|htmlentities|strip_tags}" aria-label="{$module_data.NEWS_HEADING|htmlentities|strip_tags}" /></a>
