@@ -7,7 +7,7 @@
 		<div class="span3 item{if $smarty.foreach.aussen.index % 4 == 0} first{/if}">
 			<div class="thumbnail text-center">
 				<a href="{$module_data.CATEGORIES_LINK}" class="image">
-				{if $module_data.CATEGORIES_IMAGE}<img src="{$module_data.CATEGORIES_IMAGE}" alt="{$module_data.CATEGORIES_NAME}" title="{$module_data.CATEGORIES_NAME}" />{/if}
+				{if {$module_data.CATEGORIES_IMAGE} && {$module_data.CATEGORIES_IMAGE} != "images/categories/"}<img src="{$module_data.CATEGORIES_IMAGE}" alt="{$module_data.CATEGORIES_NAME}" title="{$module_data.CATEGORIES_NAME}" />{/if}
 				<span class="frame-overlay"></span>
 				</a>
 				<div class="inner notop">
