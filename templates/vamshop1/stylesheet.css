@@ -3481,6 +3481,7 @@ input, textarea, .uneditable-input {
     padding: .5rem 1rem;
     border: 2px solid #dd2c00;
     border-radius: 50rem;
+    outline: 0 !important;
 }
 
 .btn-outline-primary:hover {
