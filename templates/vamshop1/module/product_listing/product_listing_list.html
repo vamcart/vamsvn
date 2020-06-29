@@ -19,6 +19,7 @@
 <div class="page">
 <div class="pageItem">
 
+{if {$FILTERS}}
   <button class="btn btn-outline-primary rounded-pill d-xl-none mb-2 visible-desktop visible-phone" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
     <i class="fa fa-filter"></i> {#text_product_filters#}
   </button>
@@ -30,6 +31,9 @@
       {$FILTERS}
     </div>
   </div>
+  
+  <div class="clear"></div>
+{/if}
 
 {if $MANUFACTURER_DROPDOWN}
 {$MANUFACTURER_DROPDOWN}
