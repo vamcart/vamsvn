@@ -1351,27 +1351,6 @@ border: 0px solid transparent;
 .shop-products .inner.darken {
   border-top: solid 0px #e1e1e1;
 }
-.shop-products .btn-add-to-cart {
-  font-size: 16px;
-  font-weight: bold;
-  padding: 10px 20px;
-  background-color: transparent;
-  color: #575757;
-  border: 2px solid #dee2e6;
-  border-radius: 50rem;
-  margin-top: 5px;
-  margin-bottom: 5px;
-}
-.shop-products .btn-add-to-cart i {
-  margin-left: 0;
-}
-.shop-products .btn-add-to-cart:hover {
-  color: #dd2c00;
-  border: 2px solid #dd2c00;
-  border-radius: 50rem;
-  cursor: pointer;
-  background: #fff;
-}
 .shop-products .thumbnail {
   border: solid 1px #eeeeee;
   padding: 5px;
@@ -1749,21 +1728,6 @@ box-shadow: 0 4px 15px #d5d5d5;
 }
 .featured-products .inner.darken {
   border-top: solid 0px #e1e1e1;
-}
-.featured-products .btn-add-to-cart {
-  font-size: 16px;
-  font-weight: bold;
-  padding: 10px 20px;
-  color: #ffffff;
-  background-color: #333333;
-  margin-top: 5px;
-  margin-bottom: 5px;
-}
-.featured-products .btn-add-to-cart i {
-  margin-left: 0;
-}
-.featured-products .btn-add-to-cart:hover {
-  background-color: #dd2c00;
 }
 .featured-products .thumbnail {
   border: solid 1px #eeeeee;
@@ -3474,7 +3438,8 @@ input, textarea, .uneditable-input {
     height: auto;       /* let the content decide it  */
 } /* bootstrap hack end */
 
-.btn-outline-primary {
+.btn-outline-primary,
+.btn-add-to-cart {
 	 display: inline-block;
     color: #dd2c00;
     background: #fff;
@@ -3482,9 +3447,12 @@ input, textarea, .uneditable-input {
     border: 2px solid #dd2c00;
     border-radius: 50rem;
     outline: 0 !important;
+    margin-top: 5px;
+    margin-bottom: 5px;    
 }
 
-.btn-outline-primary:hover {
+.btn-outline-primary:hover,
+.btn-add-to-cart:hover {
 	 display: inline-block;
     color: #575757;
     background: #fff;
