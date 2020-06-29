@@ -3441,10 +3441,10 @@ input, textarea, .uneditable-input {
 .btn-outline-primary,
 .btn-add-to-cart {
 	 display: inline-block;
-    color: #dd2c00;
+    color: #575757;
     background: #fff;
     padding: .5rem 1rem;
-    border: 2px solid #dd2c00;
+    border: 2px solid #dee2e6;
     border-radius: 50rem;
     outline: 0 !important;
     margin-top: 5px;
@@ -3454,10 +3454,10 @@ input, textarea, .uneditable-input {
 .btn-outline-primary:hover,
 .btn-add-to-cart:hover {
 	 display: inline-block;
-    color: #575757;
+    color: #dd2c00;
     background: #fff;
     padding: .5rem 1rem;
-    border: 2px solid #dee2e6;
+    border: 2px solid #dd2c00;
     border-radius: 50rem;
 }
 
