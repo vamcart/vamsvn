@@ -135,6 +135,8 @@
             <td colspan="2"><?php echo TEXT_AVAILABLE_PLACEHOLDERS; ?>
           <ul>
 				<li><?php echo TEXT_NAME; ?></li>
+				<li><?php echo TEXT_FIRST_NAME; ?></li>
+				<li><?php echo TEXT_LAST_NAME; ?></li>
 				<li><?php echo TEXT_ORDER_NR; ?></li>
 				<li><?php echo TEXT_ORDER_TOTAL; ?></li>
 				<li><?php echo TEXT_ORDER_LINK; ?></li>

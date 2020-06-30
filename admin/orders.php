@@ -109,7 +109,11 @@ if (isset($_POST['submit']) && isset($_POST['multi_orders'])){
 				$vamTemplate->assign('tpl_path', 'templates/'.CURRENT_TEMPLATE.'/');
 				$vamTemplate->assign('logo_path', HTTP_SERVER.DIR_WS_CATALOG.'templates/'.CURRENT_TEMPLATE.'/img/');
 
+		
 				$vamTemplate->assign('NAME', $check_status['customers_name']);
+				$fio = explode(" ", $check_status['customers_name']);		
+				$vamTemplate->assign('FIRST_NAME', isset($fio[0]) ? $fio[0] : $check_status['customers_name']);
+				$vamTemplate->assign('LAST_NAME', isset($fio[1]) ? $fio[1] : $check_status['customers_name']);
 				$vamTemplate->assign('ORDER_NR', $this_orderID);
 				$vamTemplate->assign('ORDER_LINK', vam_catalog_href_link(FILENAME_CATALOG_ACCOUNT_HISTORY_INFO, 'order_id='.$this_orderID, 'SSL'));
 				$vamTemplate->assign('ORDER_DATE', vam_date_long($check_status['date_purchased']));
@@ -383,6 +387,9 @@ switch ($_GET['action']) {
 				$vamTemplate->assign('logo_path', HTTP_SERVER.DIR_WS_CATALOG.'templates/'.CURRENT_TEMPLATE.'/img/');
 
 				$vamTemplate->assign('NAME', $check_status['customers_name']);
+				$fio = explode(" ", $check_status['customers_name']);		
+				$vamTemplate->assign('FIRST_NAME', isset($fio[0]) ? $fio[0] : $check_status['customers_name']);
+				$vamTemplate->assign('LAST_NAME', isset($fio[1]) ? $fio[1] : $check_status['customers_name']);
 				$vamTemplate->assign('ORDER_NR', $oID);
 				$vamTemplate->assign('ORDER_LINK', vam_catalog_href_link(FILENAME_CATALOG_ACCOUNT_HISTORY_INFO, 'order_id='.$oID, 'SSL'));
 				$vamTemplate->assign('ORDER_DATE', vam_date_long($check_status['date_purchased']));

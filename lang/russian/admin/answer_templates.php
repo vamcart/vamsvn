@@ -44,6 +44,8 @@ define('TEXT_NO_CHILD_CATEGORIES_OR_PRODUCTS', 'Добавьте ответ');
 
 define('TEXT_AVAILABLE_PLACEHOLDERS', 'Доступные метки:');
 define('TEXT_NAME', '{$NAME} - Имя покупателя.');
+define('TEXT_FIRST_NAME', '{$FIRST_NAME} - Только имя покупателя.');
+define('TEXT_LAST_NAME', '{$LAST_NAME} - Только фамилия покупателя.');
 define('TEXT_ORDER_NR', '{$ORDER_NR} - Номер заказа.');
 define('TEXT_ORDER_TOTAL', '{$ORDER_TOTAL} - Сумма заказа.');
 define('TEXT_ORDER_LINK', '{$ORDER_LINK} - Ссылка на страницу заказа.');
