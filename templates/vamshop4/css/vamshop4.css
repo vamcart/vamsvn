@@ -913,13 +913,13 @@ li.level3 {
 }
 
 .sticky-top {
-	position: static;
+
 }
 
 @media(min-width: 1200px) {
 	.sticky-top {
-		position: fixed;
-		/*z-index: 9999;
+		/*position: fixed;
+		z-index: 9999;
 		top: 110px;*/
 	}
 }
