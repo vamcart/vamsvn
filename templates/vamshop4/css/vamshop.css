@@ -2734,39 +2734,40 @@ li.ajaxAddQuickie
 
 /* Buttons */
 
-.btn.btn-inverse {
-  color: #ffffff;
-  background-color: #575757;
+.btn.btn-inverse,
+.btn.btn-inverse.checkout {
+  color: #575757;
+  background-color: #fff;
+  border: 2px solid #dee2e6;
+  border-radius: 50rem;
   margin-top: 5px;
   margin-right: 5px;
   margin-bottom: 5px;
 }
-.btn.btn-inverse.checkout {
-  background-color: #dd2c00;
-}
-.btn.btn-inverse:hover {
-    color: #fff;
-    background-color: #dd2c00;
-}
+.btn.btn-inverse:hover,
 .btn.btn-inverse.checkout:hover {
-    color: #fff;
-    background-color: #007bff;
+    color: #dd2c00;
+    border: 2px solid #dd2c00;
+    background-color: #fff;
 }
 .btn:hover {
     color: #fff;
 }
 
 .btn-add-to-cart {
-  color: #ffffff;
-  background-color: #dd2c00;
+  color: #575757;
+  background-color: #fff;
+  border: 2px solid #dee2e6;
+  border-radius: 50rem;
   margin: 0px;
 }
 .btn-add-to-cart i {
   margin-left: 0;
 }
 .btn-add-to-cart:hover {
-    color: #fff;
-    background-color: #007bff;
+    color: #dd2c00;
+    border: 2px solid #dd2c00;
+    background-color: #fff;
 }
 
 /* /Buttons */

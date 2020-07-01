@@ -489,14 +489,14 @@ li.level3 {
 .btn-secondary,
 .badge-secondary,
 .bg-secondary {
-    background-color: #575757 !important;
-    border-color: #575757;
+  background: rgba(0,0,0,.03);
+  border-color: #ccc !important;
+  color: #6c757d;
 }
 
 .btn-secondary:hover {
-    color: #fff;
-    background-color: #6c757d !important;
-    border-color: #545b62 !important;
+  color: #0051A8;
+  background: #c8c8c8;
 }
 
 .btn-outline-secondary {
