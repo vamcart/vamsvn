@@ -3520,6 +3520,46 @@ dd {
     margin-left: 0;
 }
 
+/* Owl Nav */
+.owl-prev, .owl-next,
+.owl-prev.disabled, .owl-next.disabled {
+  z-index: 9;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  position: absolute; }
+
+.owl-prev, .owl-prev.disabled {
+  left: 0px;
+  }
+
+.owl-next, .owl-next.disabled {
+  right: 0px;
+  }
+
+.owl-theme .owl-nav {
+  margin-top: 0;
+}
+  
+.owl-carousel .owl-nav button.owl-next, .owl-carousel .owl-nav button.owl-prev,
+.owl-carousel .owl-nav button.owl-next.disabled, .owl-carousel .owl-nav button.owl-prev.disabled {
+    padding: 5px 10px !important;
+    /*margin: -1em -15px 0 -15px;*/
+    border-radius: 50%;
+    border: 1px solid #dadada;
+    color: #1e1e1e;
+    box-shadow: -1px 0px 3px #dadada;
+    background: #eee;
+}
+/* /Owl Nav */
+
+
+.owl-item .item {
+
+width: 100%;
+
+}
+
 /* Owl Slides Equal Height */
 .owl-stage {
   display: flex;
@@ -3536,17 +3576,7 @@ dd {
 .owl-item img {
   margin: 0 auto !important;
   width: auto !important;
-}	
-
-.owl-carousel .item {
-  width: 100%;
-  margin-bottom: 1em;
 }
-
-.card-product .bottom-wrap {
-    border-top: 0;
-}
-/* /Owl Slides Equal Height */
  
 .dropdown-submenu {
     position:relative;
