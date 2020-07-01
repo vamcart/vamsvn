@@ -919,8 +919,8 @@ li.level3 {
 @media(min-width: 1200px) {
 	.sticky-top {
 		position: fixed;
-		z-index: 9999;
-		/*top: 110px;*/
+		/*z-index: 9999;
+		top: 110px;*/
 	}
 }
 
