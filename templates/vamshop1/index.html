@@ -71,7 +71,7 @@
 
 	<div class="container">
 
-{if $navtrail}
+{if $navtrail && !{$smarty.get.manufacturers_id}}
 <!-- start: Page header / Breadcrumbs -->
 <div id="breadcrumbs">
 		<div class="breadcrumbs" itemscope itemtype="http://schema.org/BreadcrumbList">
@@ -81,9 +81,8 @@
 <!-- end: Page header / Breadcrumbs -->
 {/if}
 
-
 {if {$slider_pop_slide|@count} > 1} 
-{if $smarty.server.REQUEST_URI == '/'}
+{if $smarty.SERVER.REQUEST_URI == '/'}
 
 
 <div id="myCarousel" class="carousel slide">
@@ -108,17 +107,46 @@
 {/if}
 {/if}
 
-		<div class="row-fluid">
+{if $box_FILTERS && {$smarty.get.cat}}
+<div class="row">
+<div class="span3">
+
+
+<div class="visible-phone">
+
+  <button class="btn btn-outline-primary rounded-pill d-xl-none mb-2 visible-desktop visible-phone" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+    <i class="fa fa-filter"></i> {#text_product_filters#}
+  </button>
+  
+  <br />
+  
+  <div class="collapse" id="collapseExample">
+    <div class="well">
+      {$box_FILTERS}
+    </div>
+  </div>
+</div>
+
+<div class="hidden-phone">
+      {$box_FILTERS}
+</div>      
+
+</div>
+<div class="span9">
+{/if}
 
 			<!-- start: Page section -->
-			<div class="span12 page-sidebar pull-right">
+			<div class="page-sidebar">
 	
 			{$main_content}
 
 			</div>
 			<!-- end: Page section -->
-			
-		</div>
+
+{if $box_FILTERS && {$smarty.get.cat}}
+</div>
+</div>
+{/if}
 
 	</div>
 </div>
