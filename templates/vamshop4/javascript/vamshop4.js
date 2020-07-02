@@ -500,7 +500,7 @@ $(".image-zoom").each(function(arg, el){
 //});
 
 //Sticky Column Calc Height
-if ($(window).width() > 360) {
+if ($(window).width() > 1200) {
 $(document).ready(function(){
 var sticky_column_height = $(".sticky-wrapper").parent().parent().height();
 var sticky = $(".sticky-wrapper");
