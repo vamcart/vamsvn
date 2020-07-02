@@ -912,15 +912,19 @@ li.level3 {
   padding-left: 0;
 }
 
-.sticky-top {
-
+.sticky-wrapper {
+	position: static;
 }
 
 @media(min-width: 1200px) {
+	.sticky-wrapper {
+		position: relative;
+		min-height: 200vh;
+	}
+
 	.sticky-top {
-		/*position: fixed;
-		z-index: 9999;
-		top: 110px;*/
+		position: sticky;
+		top: 80px;
 	}
 }
 
