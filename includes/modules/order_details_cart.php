@@ -194,25 +194,25 @@ if (SHOW_SHIPPING == 'true') {
 	$module->assign('SHIPPING_INFO', ' '.SHIPPING_EXCL.'<a href="javascript:newWin=void(window.open(\''.vam_href_link(FILENAME_POPUP_CONTENT, 'coID='.SHIPPING_INFOS).'\', \'popup\', \'toolbar=0, width=640, height=600\'))"> '.SHIPPING_COSTS.'</a>');
 }
 
-if (!$ajax_cart) {
-$i = 0;
-$max = count($_SESSION['tracking']['products_history']);
+//if (!$ajax_cart) {
+//$i = 0;
+//$max = count($_SESSION['tracking']['products_history']);
 
-while ($i < $max) {
+//while ($i < $max) {
 
 	
-	$product_history_query = vamDBquery("select * from ".TABLE_PRODUCTS." p, ".TABLE_PRODUCTS_DESCRIPTION." pd where p.products_id=pd.products_id and pd.language_id='".(int) $_SESSION['languages_id']."' and p.products_status = '1' and p.products_id = '".$_SESSION['tracking']['products_history'][$i]."'");
-	$history_product = vam_db_fetch_array($product_history_query, true);
-$cpath = vam_get_product_path($_SESSION['tracking']['products_history'][$i]);
-	if ($history_product['products_status'] != 0) {
+	//$product_history_query = vamDBquery("select * from ".TABLE_PRODUCTS." p, ".TABLE_PRODUCTS_DESCRIPTION." pd where p.products_id=pd.products_id and pd.language_id='".(int) $_SESSION['languages_id']."' and p.products_status = '1' and p.products_id = '".$_SESSION['tracking']['products_history'][$i]."'");
+	//$history_product = vam_db_fetch_array($product_history_query, true);
+//$cpath = vam_get_product_path($_SESSION['tracking']['products_history'][$i]);
+	//if ($history_product['products_status'] != 0) {
 
-		$history_product = array_merge($history_product,array('cat_url' => vam_href_link(FILENAME_DEFAULT, 'cat='.$cpath)));
-		$products_history[] = $product->buildDataArray($history_product);
-	}
-	$i ++;
-}
-$module->assign('products_history', $products_history);
-}
+		//$history_product = array_merge($history_product,array('cat_url' => vam_href_link(FILENAME_DEFAULT, 'cat='.$cpath)));
+		//$products_history[] = $product->buildDataArray($history_product);
+	//}
+	//$i ++;
+//}
+//$module->assign('products_history', $products_history);
+//}
 
 $module->assign('UST_CONTENT', $_SESSION['cart']->show_tax());
 $module->assign('UST_CONTENT_NAME', $_SESSION['cart']->show_tax_name());

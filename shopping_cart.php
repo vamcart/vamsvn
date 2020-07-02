@@ -162,7 +162,7 @@ $max = count($_SESSION['tracking']['products_history']);
 
 while ($i < $max) {
 
-	
+
 	$product_history_query = vamDBquery("select * from ".TABLE_PRODUCTS." p, ".TABLE_PRODUCTS_DESCRIPTION." pd where p.products_id=pd.products_id and pd.language_id='".(int) $_SESSION['languages_id']."' and p.products_status = '1' and p.products_id = '".$_SESSION['tracking']['products_history'][$i]."'");
 	$history_product = vam_db_fetch_array($product_history_query, true);
 $cpath = vam_get_product_path($_SESSION['tracking']['products_history'][$i]);
