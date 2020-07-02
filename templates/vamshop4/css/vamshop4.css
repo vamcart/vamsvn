@@ -919,7 +919,7 @@ li.level3 {
 @media(min-width: 1200px) {
 	.sticky-wrapper {
 		position: relative;
-		min-height: 200vh;
+		/*min-height: 200vh;*/
 	}
 
 	.sticky-top {

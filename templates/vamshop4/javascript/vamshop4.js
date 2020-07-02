@@ -498,3 +498,17 @@ $(".image-zoom").each(function(arg, el){
 //  'more': '▼',
 //  'less': '▲'
 //});
+
+//Sticky Column Calc Height
+if ($(window).width() > 360) {
+$(document).ready(function(){
+var sticky_column_height = $(".sticky-wrapper").parent().parent().height();
+var sticky = $(".sticky-wrapper");
+sticky.css("min-height", sticky_column_height + "px");
+});  
+$(document).ajaxSuccess(function () {	
+var sticky_column_height = $(".sticky-wrapper").parent().parent().height();
+var sticky = $(".sticky-wrapper");
+sticky.css("min-height", sticky_column_height + "px");
+});  
+}
