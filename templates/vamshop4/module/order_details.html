@@ -19,22 +19,6 @@
 {$MODULE_cross_selling_cart_details}
 {/if}
 
-{if $smarty.const.DISPLAY_LAST_VIEWED =='true'}
-{if $products_history}
-<div class="module">
-<h3>{#title_viewed_products#}</h3>
-<div class="moduleContent">
-<div class="owl-carousel owl-theme">
-{foreach name=aussen item=module_data from=$products_history}
-{include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/product-card/product-card-details.html"}
-{/foreach}
-</div>
-<div class="clear"></div>
-</div>
-</div>
-{/if}
-{/if}
-
 </div>
 
 <div class="col-xl-3">
