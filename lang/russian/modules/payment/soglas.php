@@ -18,7 +18,7 @@
    ---------------------------------------------------------------------------------------*/
 
 define('MODULE_PAYMENT_TYPE_PERMISSION', 'soglas');
-define('MODULE_PAYMENT_SOGLAS_TEXT_TITLE', 'По согласованию с администрацией ');
+define('MODULE_PAYMENT_SOGLAS_TEXT_TITLE', 'По согласованию');
 define('MODULE_PAYMENT_SOGLAS_TEXT_DESCRIPTION', 'После оформления заказа с вами свяжется менеджер для уточнения способа оплаты ');
 define('MODULE_PAYMENT_SOGLAS_TEXT_INFO','');
 define('MODULE_PAYMENT_SOGLAS_ZONE_TITLE' , 'Зона');
