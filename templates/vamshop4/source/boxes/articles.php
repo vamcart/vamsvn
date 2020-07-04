@@ -25,14 +25,7 @@ $box->assign('language', $_SESSION['language']);
 if (!CacheCheck()) {
 	$cache=false;
 	$box->caching = 0;
-} else {
-	$cache=true;
-	$box->caching = 1;
-	$box->cache_lifetime = CACHE_LIFETIME;
-	$box->cache_modified_check = CACHE_CHECK;
-	$cache_id = $_SESSION['language'].$_SESSION['customers_status']['customers_status_id'].$tPath;
-}
-
+} 
 if (!$box->isCached(CURRENT_TEMPLATE.'/boxes/box_articles.html', $cache_id) || !$cache) {
 
 	$box->assign('tpl_path', 'templates/'.CURRENT_TEMPLATE.'/');
@@ -102,8 +95,8 @@ if (!$box->isCached(CURRENT_TEMPLATE.'/boxes/box_articles.html', $cache_id) || !
   $topics_string = '';
   $tree = array();
 
-  $topics_query = vam_db_query("select t.topics_id, td.topics_name, t.parent_id from " . TABLE_TOPICS . " t, " . TABLE_TOPICS_DESCRIPTION . " td where t.parent_id = '0' and t.topics_id = td.topics_id and td.language_id = '" . (int)$_SESSION['languages_id'] . "' order by sort_order, td.topics_name");
-  while ($topics = vam_db_fetch_array($topics_query))  {
+  $topics_query = vamDBquery("select t.topics_id, td.topics_name, t.parent_id from " . TABLE_TOPICS . " t, " . TABLE_TOPICS_DESCRIPTION . " td where t.parent_id = '0' and t.topics_id = td.topics_id and td.language_id = '" . (int)$_SESSION['languages_id'] . "' order by sort_order, td.topics_name");
+  while ($topics = vam_db_fetch_array($topics_query,true))  {
     $tree[$topics['topics_id']] = array('name' => $topics['topics_name'],
                                         'parent' => $topics['parent_id'],
                                         'level' => 0,
@@ -127,10 +120,10 @@ if (!$box->isCached(CURRENT_TEMPLATE.'/boxes/box_articles.html', $cache_id) || !
     foreach ($tPath_array as $key => $value) {	
       unset($parent_id);
       unset($first_id);
-      $topics_query = vam_db_query("select t.topics_id, td.topics_name, t.parent_id from " . TABLE_TOPICS . " t, " . TABLE_TOPICS_DESCRIPTION . " td where t.parent_id = '" . (int)$value . "' and t.topics_id = td.topics_id and td.language_id = '" . (int)$_SESSION['languages_id'] . "' order by sort_order, td.topics_name");
-      if (vam_db_num_rows($topics_query)) {
+      $topics_query = vamDBquery("select t.topics_id, td.topics_name, t.parent_id from " . TABLE_TOPICS . " t, " . TABLE_TOPICS_DESCRIPTION . " td where t.parent_id = '" . (int)$value . "' and t.topics_id = td.topics_id and td.language_id = '" . (int)$_SESSION['languages_id'] . "' order by sort_order, td.topics_name");
+      if (vam_db_num_rows($topics_query,true)) {
         $new_path .= $value;
-        while ($row = vam_db_fetch_array($topics_query)) {
+        while ($row = vam_db_fetch_array($topics_query,true)) {
           $tree[$row['topics_id']] = array('name' => $row['topics_name'],
                                            'parent' => $row['parent_id'],
                                            'level' => $key+1,
