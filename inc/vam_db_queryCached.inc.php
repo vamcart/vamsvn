@@ -26,6 +26,7 @@
 
     // cache File Name
     $file=SQL_CACHEDIR.$id.'.vam';
+    $gzfile=SQL_CACHEDIR.$id.'.gz';
 
     // file life time
     $expire = DB_CACHE_EXPIRE; // 24 hours
@@ -57,11 +58,15 @@
 
 
         if ($records && strlen($query) > 256) { 
-        // safe result into file.
-        $stream = serialize($records);
-        $fp = fopen($file,"w");
-        fwrite($fp, $stream);
-        fclose($fp);
+        // safe result into file.		
+		$stream = serialize($records);		
+		$fp2 = gzopen ($gzfile, 'w6');
+		gzwrite ($fp2, $stream);
+		gzclose($fp2);
+		
+        //$fp = fopen($file,"w");
+        //fwrite($fp, $stream);
+        //fclose($fp);
         }
         $result = $records;
 
