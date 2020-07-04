@@ -38,7 +38,7 @@
     if (file_exists($file) && filemtime($file) > (time() - $expire)) {
 
      // get cached resulst
-        $result = unserialize(implode('',file($file)));
+        $result = unserialize(implode('',gzfile($file)));
 
         } else {
 
