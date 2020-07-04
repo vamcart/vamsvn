@@ -38,9 +38,14 @@
     if (file_exists($file) && filemtime($file) > (time() - $expire)) {
 
      // get cached resulst
-        $result = unserialize(implode('',gzfile($file)));
+        $result = unserialize(implode('',file($file)));
 
-        } else {
+        } elseif (file_exists($gzfile) && filemtime($file) > (time() - $expire)) {
+			
+		// get GZIP cached resulst
+        $result = unserialize(implode('',file($file)));
+		} 
+		else {
 
          if (file_exists($file)) @unlink($file);
 
@@ -59,15 +64,19 @@
 
         if ($records && strlen($query) > 256) { 
         // safe result into file.		
-		$stream = serialize($records);		
+		$stream = serialize($records);
+		
+		if (strlen($stream) > 300) {
 		$fp2 = gzopen ($gzfile, 'w6');
 		gzwrite ($fp2, $stream);
 		gzclose($fp2);
+		} else {			
+		$fp = fopen($file,"w");
+        fwrite($fp, $stream);
+        fclose($fp);
+		}
 		
-        //$fp = fopen($file,"w");
-        //fwrite($fp, $stream);
-        //fclose($fp);
-        }
+		}
         $result = $records;
 
    }
