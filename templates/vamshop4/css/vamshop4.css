@@ -70,22 +70,15 @@ button:focus, button:active, a, a:hover {
 .owl-theme .owl-nav {
   margin-top: 0;
 }
-
-.owl-carousel .owl-nav button.owl-prev {
-    border-radius: 15% 0 0 15%;
-}
-
-.owl-carousel .owl-nav button.owl-next {
-    border-radius: 0 15% 15% 0;
-}
   
 .owl-carousel .owl-nav button.owl-next, .owl-carousel .owl-nav button.owl-prev,
 .owl-carousel .owl-nav button.owl-next.disabled, .owl-carousel .owl-nav button.owl-prev.disabled {
-    padding: 20px 2px !important;
-    margin: -0em -15px 0 -15px;
-    border: 0px solid #dadada;
+    padding: 5px 10px !important;
+    margin: -1em -15px 0 -15px;
+    border-radius: 50%;
+    border: 1px solid #dadada;
     color: #1e1e1e;
-    /*box-shadow: -1px 0px 3px #dadada;*/
+    box-shadow: -1px 0px 3px #dadada;
     background: #eee;
 }
 /* /Owl Nav */

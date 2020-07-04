@@ -9,7 +9,7 @@ var lazyLoadInstance = new LazyLoad({
 //OWL Carousel Slider
 $(".owl-carousel").owlCarousel({
     margin: 30,
-    nav: false,
+    nav: true,
     center: false,
     dots: false,
     loop: false,
