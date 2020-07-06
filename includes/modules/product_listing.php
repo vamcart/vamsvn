@@ -277,7 +277,7 @@ if ($result != false) {
 	$module->assign('NAVIGATION', $navigation);
 	$module->assign('NAVIGATION_PAGES', $navigation_pages);
 	
-  //include (DIR_WS_MODULES.FILENAME_PRODUCTS_FILTERS);	
+  include (DIR_WS_MODULES.FILENAME_PRODUCTS_FILTERS);	
 	
 	// set cache ID
 	 if (!CacheCheck()) {
