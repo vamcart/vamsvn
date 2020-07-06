@@ -971,7 +971,7 @@ if (($_GET['action'] == 'edit') && ($order_exists)) {
 	}
 ?>
           <tr>
-            <td align="right" colspan="10"><table border="0" cellspacing="0" cellpadding="2">
+            <td align="right" colspan="7"><table border="0" cellspacing="0" cellpadding="2">
 <?php
 
 	for ($i = 0, $n = sizeof($order->totals); $i < $n; $i ++) {
