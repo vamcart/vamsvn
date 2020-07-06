@@ -971,7 +971,19 @@ if (($_GET['action'] == 'edit') && ($order_exists)) {
 	}
 ?>
           <tr>
+<?php
+
+	if ($order->products[0]['allow_tax'] == 1) {
+?>
             <td align="right" colspan="7"><table border="0" cellspacing="0" cellpadding="2">
+<?php
+} else {
+?>
+            <td align="right" colspan="5"><table border="0" cellspacing="0" cellpadding="2">
+<?php
+}
+?>
+
 <?php
 
 	for ($i = 0, $n = sizeof($order->totals); $i < $n; $i ++) {
