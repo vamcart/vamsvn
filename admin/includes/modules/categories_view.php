@@ -35,6 +35,13 @@
         case 'sort-desc'    :
             $catsort    = 'c.sort_order DESC';
             $prodsort   = 'p.products_sort DESC';
+        case 'model'         : 
+            $catsort    = 'c.sort_order ASC';
+            $prodsort   = 'p.products_model ASC';
+            break;
+        case 'model-desc'    :
+            $catsort    = 'c.sort_order DESC';
+            $prodsort   = 'p.products_model DESC';
         case 'name'         :
             $catsort    = 'cd.categories_name ASC';
             $prodsort   = 'pd.products_name ASC';
@@ -119,6 +126,9 @@
              </td>
              <td class="dataTableHeadingContent" align="center">
                 <?php echo TABLE_HEADING_XML.vam_sorting(FILENAME_CATEGORIES,'yandex'); ?>
+             </td>
+             <td class="dataTableHeadingContent" align="center">
+                <?php echo TABLE_HEADING_MODEL.vam_sorting(FILENAME_CATEGORIES,'model'); ?>
              </td>
              <td class="dataTableHeadingContent" align="center">
                 <?php echo TABLE_HEADING_PRICE.vam_sorting(FILENAME_CATEGORIES,'price'); ?>
@@ -245,6 +255,7 @@
         pd.products_name,
         p.products_sort,
         p.products_quantity,
+        p.products_model,
         p.products_to_xml,
         p.products_image,
         p.products_price,
@@ -267,6 +278,7 @@
         p.products_id, 
         pd.products_name, 
         p.products_quantity, 
+        p.products_model,
         p.products_to_xml,
         p.products_image, 
         p.products_price, 
@@ -322,6 +334,7 @@ $max_count = MAX_DISPLAY_ADMIN_PAGE;
         pd.products_name,
         p.products_sort,
         p.products_quantity,
+        p.products_model,
         p.products_to_xml,
         p.products_image,
         p.products_price,
@@ -344,6 +357,7 @@ $max_count = MAX_DISPLAY_ADMIN_PAGE;
         p.products_id, 
         pd.products_name, 
         p.products_quantity, 
+        p.products_model,
         p.products_to_xml,
         p.products_image, 
         p.products_price, 
@@ -464,6 +478,12 @@ if ($numr>$max_count){
             } else {
                 echo '<a href="' . vam_href_link(FILENAME_CATEGORIES, vam_get_all_get_params(array('cPath', 'action', 'pID', 'cID', 'search')) . 'action=setxml&flagxml=1&pID=' . $products['products_id'] . '&cPath=' . $cPath) . '">' . vam_image(DIR_WS_IMAGES . 'icon_status_green_light.gif', IMAGE_ICON_STATUS_GREEN_LIGHT, 10, 10) . '</a>&nbsp;&nbsp;' . vam_image(DIR_WS_IMAGES . 'icon_status_red.gif', IMAGE_ICON_STATUS_RED, 10, 10);
             }
+      ?>
+      </td>
+      <td class="<?php echo $css_class; ?>">
+      <?php
+        //show model
+        echo ($products['products_model'] != '') ? $products['products_model'] : '-';
       ?>
       </td>
       <td class="<?php echo $css_class; ?>">
