@@ -38,17 +38,8 @@
 								<span class="hide-in-smallsize"><span class="logo-text"><a href="start.php"><?php echo vam_image(DIR_WS_IMAGES . 'logo-small.png', 'VamShop'); ?></a></span></span>
 <?php
 
-  $total_orders_query = vam_db_query("select count(*) as count from " . TABLE_ORDERS);
-  $total_orders = vam_db_fetch_array($total_orders_query);
-
   $orders_pending_query = vam_db_query("select count(*) as count from " . TABLE_ORDERS . " where orders_status = '" . DEFAULT_ORDERS_STATUS_ID . "'");
   $orders_pending = vam_db_fetch_array($orders_pending_query);
-
-  $total_sales_query = vam_db_query("SELECT sum(ot.value) as value, avg(ot.value) as avg, count(ot.value) as count FROM " . TABLE_ORDERS_TOTAL . " ot, " . TABLE_ORDERS . " o WHERE ot.orders_id = o.orders_id and ot.class = 'ot_subtotal'");
-  $total_sales = vam_db_fetch_array($total_sales_query);
-
-  $customers_query = vam_db_query("select count(*) as count from " . TABLE_CUSTOMERS);
-  $customers = vam_db_fetch_array($customers_query);
 
 ?>
 									<span class="pl-2 pr-2">
@@ -116,17 +107,8 @@
 							<div class="vamshop-menu-rl-header"> 
 <?php
 
-  $total_orders_query = vam_db_query("select count(*) as count from " . TABLE_ORDERS);
-  $total_orders = vam_db_fetch_array($total_orders_query);
-
   $orders_pending_query = vam_db_query("select count(*) as count from " . TABLE_ORDERS . " where orders_status = '" . DEFAULT_ORDERS_STATUS_ID . "'");
   $orders_pending = vam_db_fetch_array($orders_pending_query);
-
-  $total_sales_query = vam_db_query("SELECT sum(ot.value) as value, avg(ot.value) as avg, count(ot.value) as count FROM " . TABLE_ORDERS_TOTAL . " ot, " . TABLE_ORDERS . " o WHERE ot.orders_id = o.orders_id and ot.class = 'ot_subtotal'");
-  $total_sales = vam_db_fetch_array($total_sales_query);
-
-  $customers_query = vam_db_query("select count(*) as count from " . TABLE_CUSTOMERS);
-  $customers = vam_db_fetch_array($customers_query);
 
 ?>
 								<ul>
@@ -667,17 +649,8 @@
 <?php if (ADMIN_DROP_DOWN_NAVIGATION == 'true') { ?>
 <?php
 
-  $total_orders_query = vam_db_query("select count(*) as count from " . TABLE_ORDERS);
-  $total_orders = vam_db_fetch_array($total_orders_query);
-
   $orders_pending_query = vam_db_query("select count(*) as count from " . TABLE_ORDERS . " where orders_status = '" . DEFAULT_ORDERS_STATUS_ID . "'");
   $orders_pending = vam_db_fetch_array($orders_pending_query);
-
-  $total_sales_query = vam_db_query("SELECT sum(ot.value) as value, avg(ot.value) as avg, count(ot.value) as count FROM " . TABLE_ORDERS_TOTAL . " ot, " . TABLE_ORDERS . " o WHERE ot.orders_id = o.orders_id and ot.class = 'ot_subtotal'");
-  $total_sales = vam_db_fetch_array($total_sales_query);
-
-  $customers_query = vam_db_query("select count(*) as count from " . TABLE_CUSTOMERS);
-  $customers = vam_db_fetch_array($customers_query);
 
 ?>
 <!--
