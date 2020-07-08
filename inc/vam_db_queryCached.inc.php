@@ -40,10 +40,10 @@
      // get cached resulst
         $result = unserialize(implode('',file($file)));
 
-        } elseif (file_exists($gzfile) && filemtime($file) > (time() - $expire)) {
+        } elseif (file_exists($gzfile) && filemtime($gzfile) > (time() - $expire)) {
 			
 		// get GZIP cached resulst
-        $result = unserialize(implode('',file($file)));
+        $result = unserialize(implode('',gzfile($gzfile)));
 		} 
 		else {
 
