@@ -33,34 +33,6 @@ $box_content='';
   if (SPECIFICATIONS_FILTERS_BOX == 'True') {
     $box_text =  ''; //HTML string goes into the text part of the box
     $get_category = '';
-
-	   	// Cache Roma
-		// file life time
-		$cache_expire = DB_CACHE_EXPIRE; // 24 hours
-
-		$cache_file = DIR_FS_DOCUMENT_ROOT.'cache/cache-filter-box-'.md5($_SERVER['REQUEST_URI']).'.box';
-		$gzcache_file = DIR_FS_DOCUMENT_ROOT.'cache/cache-filter-box-'.md5($_SERVER['REQUEST_URI']).'.box.gz';
-
-		
-    if (file_exists($cache_file) && filemtime($cache_file) > (time() - $cache_expire)) {
-
-     // get cached resulst
-        $box_text = unserialize(implode('',file($cache_file)));
-
-//echo 'test1';
-
-        } elseif (file_exists($gzcache_file) && filemtime($gzcache_file) > (time() - $cache_expire)) {
-
-//echo 'test2';
-
-		// get GZIP cached resulst
-        $box_text = unserialize(implode('',gzfile($gzcache_file)));
-
-	}	else {
-
-//echo 'test3';
-
-	//ob_start();		
     
     if (strstr($PHP_SELF, FILENAME_DEFAULT) && !isset($_GET['cat'])) {
      
@@ -236,30 +208,6 @@ $box_content='';
     $box_text .= '</div>';
     } // while ($specs_array
     $box_text .= '<div class="clear"></div>';
-    
-	// Write the output to cache and echo them	
-	//$output = @ob_get_contents();
-	//ob_end_clean();	    
-	
-	
-     if (file_exists($cache_file)) @unlink($cache_file);
-
-        // safe result into file.		
-		$stream = serialize($box_text);
-
-		if (strlen($stream) > 300) {
-		$fp2 = gzopen ($gzcache_file, 'w6');
-		gzwrite ($fp2, $stream);
-		gzclose($fp2);
-		} else {			
-		$fp = fopen($cache_file,"w");
-        fwrite($fp, $stream);
-        fclose($fp);
-		}	
-    
-    }    
-    
-    
 if (vam_db_num_rows ($specs_query, true) > 0) {
 
     $box->assign('BOX_CONTENT', $box_text);
