@@ -48,6 +48,7 @@
 		else {
 
          if (file_exists($file)) @unlink($file);
+         if (file_exists($gzfile)) @unlink($gzfile);
 
         // get result from DB and create new file
         $result = mysqli_query($$link, $query) or vam_db_error($query, mysqli_errno($$link), mysqli_error($$link));
