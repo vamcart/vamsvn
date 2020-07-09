@@ -541,11 +541,13 @@ li.level3 {
   margin-right: 1em;
 }
 
+.filters .filters .fields,
 .shipping-methods .shipping-method .shipping-fields,
 .payment-methods .payment-method .payment-fields {
     display: none;
 }
 
+.filter.card.card-product .card-footer,
 .shipping-method.card.card-product .card-footer,
 .payment-method.card.card-product .card-footer {
   padding: 0;
@@ -553,21 +555,26 @@ li.level3 {
   background: #fff;
 }
 
+.filters .filter.card,
 .shipping-methods .shipping-method.card,
 .payment-methods .payment-method.card {
 	border-radius: 0;
 }
 
+.filters .filter.card .card-body,
 .shipping-methods .shipping-method.card .card-body,
 .payment-methods .payment-method.card .card-body {
   padding-top: 1em;
 }
 
+.filters .filter.card .card-footer,
 .shipping-methods .shipping-method.card .card-footer,
 .payment-methods .payment-method.card .card-footer {
   border-top: 0px;
 }
 
+.filter.selected .fields,
+.filter:hover .fields,
 .shipping-method.selected .shipping-fields,
 .shipping-method:hover .shipping-fields,
 .payment-method.selected .payment-fields,
@@ -590,6 +597,7 @@ li.level3 {
   transition: .5s;
 }
 
+.filter.selected,
 .shipping-method.selected,
 .payment-method.selected {
   webkit-box-shadow: 0 14px 15px rgba(153,153,153,.3);
@@ -598,6 +606,7 @@ li.level3 {
   transition: .5s;
 }
 
+.filter:hover,
 .shipping-method:hover,
 .payment-method:hover {
   border-top: 1px solid #dd2c00;
@@ -609,6 +618,7 @@ li.level3 {
   transition: .2s;
 }
 
+.filter:hover .fields,
 .shipping-method:hover .shipping-fields,
 .payment-method:hover .payment-fields {
   border-top: 0px solid #dd2c00;
@@ -628,6 +638,7 @@ li.level3 {
   border-radius: 0px;
 }
 
+.filter.selected .fields,
 .shipping-method.selected .shipping-fields,
 .payment-method.selected .payment-fields {
   border-top: 0px;

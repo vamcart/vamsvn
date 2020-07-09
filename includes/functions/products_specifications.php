@@ -251,7 +251,7 @@ function filters_select_array_sort($a, $b) {
 // EOF products_filters-multilinks
     $field = '';
 
-    $field .= '<ul class="filter-list">';
+    $field .= '<div class="filter-list list-group list-group-flush">';
     foreach ($values as $link_data) {
       $link_data['id'] = trim($link_data['id']);
       switch (true) {
@@ -259,18 +259,18 @@ function filters_select_array_sort($a, $b) {
           break;
 
         case ($link_data['count'] != '' && $link_data['count'] < 1 && SPECIFICATIONS_FILTER_NO_RESULT == 'grey'):
-          $field .= '<li>';
+          $field .= '<div>';
           $field .= '<span class="no_results">';
           $field .= vam_output_string($link_data['text'] );
           if ($link_data['count'] != '' && SPECIFICATIONS_FILTER_SHOW_COUNT == 'True' && $link_data['count'] > 1) {
             $field .= '<span class="filter_count"> (' . $link_data['count'] . ')</span>';
           }
           $field .= '</span>';
-          $field .= '</li>';
+          $field .= '</div>';
           break;
 
         default:
-          $field .= '<li class="filter-item' . ($link_data['display'] == 0 ? ' filter-list_toggle' : '') . '">';
+          //$field .= '<li class="filter-item' . ($link_data['display'] == 0 ? ' filter-list_toggle' : '') . '">';
           $flag_active = false;
           if ($default == $link_data['id']) {
             $field .= '<span class="active">';
@@ -281,7 +281,7 @@ function filters_select_array_sort($a, $b) {
 // BOF products_filters-multilinks
           if (is_array($default)) {
             if (in_array($link_data['id'], $default)) {
-              $field .= '<span class="active">';
+              //$field .= '<span class="active">';
               $flag_active = true;
             }
           }
@@ -306,15 +306,15 @@ function filters_select_array_sort($a, $b) {
 // EOF products_filters-multilinks
 // BOF nolink_active (remarka)
           if (!$flag_active) {
-            $field .= '<a class="filter-item-link" href="' . $link . '">';
+            $field .= '<a class="list-group-item list-group-item-action d-flex justify-content-between align-items-center" href="' . $link . '">';
           } else {
-            $field .= '<div class="filter-item-link" data-href="' . $link . '">';
+            $field .= '<div class="list-group-item list-group-item-action d-flex justify-content-between align-items-center disabled'.(($link_data['id']) != '0' ? ' active' : '').'" data-href="' . $link . '">';
           }
 // EOF nolink_active (remarka)
 
           $field .= vam_output_string($link_data['text'] );
           if ($link_data['count'] != '' && $link_data['count'] > 1 && SPECIFICATIONS_FILTER_SHOW_COUNT == 'True') {
-            $field .= '<span class="filter_count"> (' . $link_data['count'] . ')</span>';
+            $field .= '<span class="filter_count badge badge-light badge-pill">' . $link_data['count'] . '</span>';
           }
 
 //          $field .= '</a>';
@@ -327,14 +327,14 @@ function filters_select_array_sort($a, $b) {
 // EOF nolink_active (remarka)
 
           if ($default == $link_data['id']) {
-            $field .= '</span>';
+            //$field .= '</span>';
           }
-          $field .= '</li>';
+          //$field .= '</li>';
           break;
       } // switch (true)
     } // foreach ($values
 
-    $field .= '</ul>';
+    $field .= '</div>';
     return $field;
   } //  function vam_draw_links_menu
 

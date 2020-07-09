@@ -193,9 +193,39 @@ if (SPECIFICATIONS_FILTERS_BOX == 'True') {
 // BOF specifications_filters_hide_empty_filters_group
       $box_head = '';
       if (isset($_GET[$var]) && $_GET[$var] != '') {
-        $box_head .= '<div class="list-radio">' . '<div class="list-radio-title-wrap filtered">' . '<h4 class="list-radio-title">' . $specification['specification_name'] . '</h4>' . '<a rel="nofollow" href="' . vam_href_link(FILENAME_PRODUCTS_FILTERS, vam_get_all_get_params(array('f' . $specification['specifications_id']))) . '">' . '<span class="close">[X]</span>' . '</a>' . '</div>';
+        //$box_head .= '<div class="list-radio">' . '<div class="list-radio-title-wrap filtered">' . '<h4 class="list-radio-title">' . $specification['specification_name'] . '</h4>' . '<a rel="nofollow" href="' . vam_href_link(FILENAME_PRODUCTS_FILTERS, vam_get_all_get_params(array('f' . $specification['specifications_id']))) . '">' . '<span class="close">[X]</span>' . '</a>' . '</div>';
+        
+
+$box_head .= '
+
+<div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-12">
+<div class="filter card card-product card-sm text-center h-100 selected">
+  <div class="card-header d-flex justify-content-between">
+    <div class="method-title"><span class="title">'.$specification['specification_name'].'</span></div>
+    <div></div>
+    <div class="font-weight-bolder">' . '<a class="circle text-danger" title="'.TEXT_COOKIE_CLOSE.'" rel="nofollow" href="' . vam_href_link(FILENAME_PRODUCTS_FILTERS, vam_get_all_get_params(array('f' . $specification['specifications_id']))) . '">' . '<i class="fas fa-times"></i>' . '</a>' . '</div>
+  </div>
+  <div class="card-body p-0 text-left">
+
+';
+        
       } else {
-        $box_head .= '<div class="list-radio">' . '<div class="list-radio-title-wrap">' . '<h4 class="list-radio-title disabled">' . $specification['specification_name'] . '</h4>' . '</div>';
+        //$box_head .= '<div class="list-radio">' . '<div class="list-radio-title-wrap">' . '<h4 class="list-radio-title disabled">' . $specification['specification_name'] . '</h4>' . '</div>';
+
+$box_head .= '
+
+<div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-12">
+<div class="filter card card-product card-sm text-center h-100">
+  <div class="card-header d-flex justify-content-between">
+    <div class="method-title"><span class="title">'.$specification['specification_name'].'</span></div>
+    <div></div>
+    <div class="font-weight-bolder"></div>
+  </div>
+  <div class="card-body p-0 text-left">
+
+';
+
+
       }
       //$box_text .= '<div class="clear"></div>';
 // EOF specifications_filters_hide_empty_filters_group
@@ -398,7 +428,17 @@ if ($specs_array['products_column_name'] == 'manufacturers_id') {
 // BOF specifications_filters_hide_empty_filters_group
       if (!in_array($specification['filter_class'], array('exact', 'multiple', )) || count($filters_select_array) > 1 || SPECIFICATIONS_FILTERS_HIDE_EMPTY_FILTERS_GROUP == 'False') {
         $box_text .= $box_head;
-        $box_text .= vam_get_filter_string($specification['filter_display'], $filters_select_array, FILENAME_PRODUCTS_FILTERS, $var, $$var, $specification['filter_class']) . '</div>';
+        $box_text .= vam_get_filter_string($specification['filter_display'], $filters_select_array, FILENAME_PRODUCTS_FILTERS, $var, $$var, $specification['filter_class']);
+        $box_text .= '
+
+ </div>
+  <div class="card-footer">
+  </div>
+</div>
+</div>        
+        
+        ';
+        
       }
 // EOF specifications_filters_hide_empty_filters_group
 
