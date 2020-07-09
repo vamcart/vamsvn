@@ -3638,7 +3638,7 @@ INSERT INTO `configuration` (`configuration_key`, `configuration_value`, `config
 ('SPECIFICATIONS_FILTER_IMAGE_HEIGHT', '20', 1610, 130, '2009-07-15 18:46:37', '2009-07-15 18:46:45', NULL, NULL),
 ('SPECIFICATIONS_FILTERS_SEO_MAX_FILTER_IDS', '2', 1610, 131, '2009-07-15 18:46:21', '2009-07-15 18:46:30', NULL, NULL),
 ('SPECIFICATIONS_FILTERS_SEO_MAX_FILTER_VALUES', '2', 1610, 132, '2009-07-15 18:46:37', '2009-07-15 18:46:45', NULL, NULL),
-('SPECIFICATIONS_FILTERS_HIDE_EMPTY_FILTERS_GROUP', 'true', 1610, 133, '2009-07-15 19:15:07', '2009-07-15 19:15:14', NULL, 'vam_cfg_select_option(array(''True'', ''False''), ');
+('SPECIFICATIONS_FILTERS_HIDE_EMPTY_FILTERS_GROUP', 'True', 1610, 133, '2009-07-15 19:15:07', '2009-07-15 19:15:14', NULL, 'vam_cfg_select_option(array(''True'', ''False''), ');
 
 ##
 ## Table structure for table `specification_groups_to_categories`

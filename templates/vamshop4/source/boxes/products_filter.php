@@ -396,7 +396,7 @@ if ($specs_array['products_column_name'] == 'manufacturers_id' && $_SERVER['REMO
 // BOF products_filters-multilinks
 //      $box_text .= vam_get_filter_string($specification['filter_display'], $filters_select_array, FILENAME_PRODUCTS_FILTERS, $var, $$var) . '</div>';
 // BOF specifications_filters_hide_empty_filters_group
-      if (!in_array($specification['filter_class'], array('exact', 'multiple', )) || count($filters_select_array) > 1 || SPECIFICATIONS_FILTERS_HIDE_EMPTY_FILTERS_GROUP == 'false') {
+      if (!in_array($specification['filter_class'], array('exact', 'multiple', )) || count($filters_select_array) > 1 || SPECIFICATIONS_FILTERS_HIDE_EMPTY_FILTERS_GROUP == 'False') {
         $box_text .= $box_head;
         $box_text .= vam_get_filter_string($specification['filter_display'], $filters_select_array, FILENAME_PRODUCTS_FILTERS, $var, $$var, $specification['filter_class']) . '</div>';
       }
