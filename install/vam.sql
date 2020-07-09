@@ -3696,7 +3696,7 @@ CREATE TABLE IF NOT EXISTS `specifications` (
   `column_justify` set('Left','Center','Right') NOT NULL DEFAULT 'Left',
   `filter_class` set('none','exact','multiple','range','reverse','start','partial','like') NOT NULL DEFAULT 'none',
   `filter_display` set('pulldown','multi','checkbox','radio','links','text','image','multiimage') NOT NULL DEFAULT 'pulldown',
-  `filter_show_all` set('True','False') NOT NULL DEFAULT 'True',
+  `filter_show_all` set('True','False') NOT NULL DEFAULT 'False',
   `enter_values` set('pulldown','multi','checkbox','radio','links','text','image','multiimage') NOT NULL DEFAULT 'text',
   `specification_seo_active` tinyint(4) default '1',
   PRIMARY KEY (`specifications_id`),
@@ -3704,20 +3704,20 @@ CREATE TABLE IF NOT EXISTS `specifications` (
 ) ENGINE=MyISAM AUTO_INCREMENT=16 DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
 INSERT INTO `specifications` VALUES
-(1, 1, 0, 'True', 'True', 'True', 'False', '', 'Left', 'multiple', 'links', 'True', 'pulldown', 1),
-(2, 1, 0, 'True', 'True', 'True', 'False', '', 'Left', 'multiple', 'links', 'True', 'pulldown', 1),
-(3, 1, 0, 'True', 'True', 'True', 'False', '', 'Left', 'multiple', 'links', 'True', 'pulldown', 1),
-(4, 1, 0, 'True', 'True', 'True', 'False', '', 'Left', 'multiple', 'links', 'True', 'pulldown', 1),
-(5, 1, 0, 'True', 'True', 'True', 'False', '', 'Left', 'multiple', 'links', 'True', 'pulldown', 1),
-(6, 2, 0, 'True', 'True', 'True', 'False', '', 'Left', 'multiple', 'links', 'True', 'pulldown', 1),
-(7, 2, 0, 'True', 'True', 'True', 'False', '', 'Left', 'multiple', 'links', 'True', 'pulldown', 1),
-(8, 2, 0, 'True', 'True', 'True', 'False', '', 'Left', 'multiple', 'links', 'True', 'pulldown', 1),
-(9, 2, 0, 'True', 'True', 'True', 'False', '', 'Left', 'multiple', 'links', 'True', 'pulldown', 1),
-(10, 2, 0, 'True', 'True', 'True', 'False', '', 'Left', 'multiple', 'links', 'True', 'pulldown', 1),
-(11, 3, 0, 'True', 'True', 'True', 'False', '', 'Left', 'multiple', 'links', 'True', 'pulldown', 1),
-(12, 3, 0, 'True', 'True', 'True', 'False', '', 'Left', 'multiple', 'links', 'True', 'pulldown', 1),
-(13, 3, 0, 'True', 'True', 'True', 'False', '', 'Left', 'multiple', 'links', 'True', 'pulldown', 1),
-(14, 3, 0, 'True', 'True', 'True', 'False', '', 'Left', 'multiple', 'links', 'True', 'pulldown', 1),
+(1, 1, 0, 'True', 'True', 'True', 'False', '', 'Left', 'multiple', 'links', 'False', 'pulldown', 1),
+(2, 1, 0, 'True', 'True', 'True', 'False', '', 'Left', 'multiple', 'links', 'False', 'pulldown', 1),
+(3, 1, 0, 'True', 'True', 'True', 'False', '', 'Left', 'multiple', 'links', 'False', 'pulldown', 1),
+(4, 1, 0, 'True', 'True', 'True', 'False', '', 'Left', 'multiple', 'links', 'False', 'pulldown', 1),
+(5, 1, 0, 'True', 'True', 'True', 'False', '', 'Left', 'multiple', 'links', 'False', 'pulldown', 1),
+(6, 2, 0, 'True', 'True', 'True', 'False', '', 'Left', 'multiple', 'links', 'False', 'pulldown', 1),
+(7, 2, 0, 'True', 'True', 'True', 'False', '', 'Left', 'multiple', 'links', 'False', 'pulldown', 1),
+(8, 2, 0, 'True', 'True', 'True', 'False', '', 'Left', 'multiple', 'links', 'False', 'pulldown', 1),
+(9, 2, 0, 'True', 'True', 'True', 'False', '', 'Left', 'multiple', 'links', 'False', 'pulldown', 1),
+(10, 2, 0, 'True', 'True', 'True', 'False', '', 'Left', 'multiple', 'links', 'False', 'pulldown', 1),
+(11, 3, 0, 'True', 'True', 'True', 'False', '', 'Left', 'multiple', 'links', 'False', 'pulldown', 1),
+(12, 3, 0, 'True', 'True', 'True', 'False', '', 'Left', 'multiple', 'links', 'False', 'pulldown', 1),
+(13, 3, 0, 'True', 'True', 'True', 'False', '', 'Left', 'multiple', 'links', 'False', 'pulldown', 1),
+(14, 3, 0, 'True', 'True', 'True', 'False', '', 'Left', 'multiple', 'links', 'False', 'pulldown', 1),
 (15, 3, 0, 'True', 'True', 'True', 'False', '', 'Left', 'multiple', 'links', 'True', 'pulldown', 1);
 
 ##
