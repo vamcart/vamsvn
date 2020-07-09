@@ -486,27 +486,6 @@ if (SPECIFICATIONS_FILTER_BREADCRUMB == 'True') {
     }
   } 
 
-  $sql = "SELECT categories_name, categories_meta_keywords, categories_meta_description, categories_meta_title, categories_heading_title
-          FROM " . TABLE_CATEGORIES_DESCRIPTION . "
-          WHERE categories_id=" . (int)$current_category_id . "
-            AND language_id=" . (int)$_SESSION['languages_id'] . "";
-  $categories_meta_query = vamDBquery($sql);
-  $categories_meta = vam_db_fetch_array($categories_meta_query, true);
-  if (!empty($manufacturers_meta['manufacturers_name'])) $man_name = ' ' . $manufacturers_meta['manufacturers_name'];
-  $metaTags['h1'] = ((empty($categories_meta['categories_heading_title'])) ? $categories_meta['categories_name'] : $categories_meta['categories_heading_title']) . $man_name . ' ' .  mb_strtolower(implode(', ',$seo_text));
-  $metaTags['title'] = $metaTags['h1'] .' купить в интернет – магазине vamvelosiped.ru';// ' по низким ценам – Vamvelosiped.ru';
-  $metaTags['description'] = $metaTags['h1'] .' купить по доступной цене с доставкой по России, каталог, отзывы и фото в интернет – магазине vamvelosiped.ru';// 'У нас можно купить ' . $metaTags['h1'] . ' по низким ценам. Быстрая доставка по всей России.';
-  $metaTags['keywords'] = '';
-  $breadCrumbsToH1 = implode(", ", $specs_array_breadcrumb_titles_to_h1);
-  $metaTags['h1bc'] = ", ".$breadCrumbsToH1; 
-  
-
-		    
-
-
-	// echo '<!-- 11111';var_export($breadCrumbsToH1);echo '-->';
-// EOF products_filters_seo
-
   // Show the Filters module here if set in Admin
   if (SPECIFICATIONS_FILTERS_MODULE == 'True') {
   //  require(DIR_WS_MODULES . 'products_filter.php');
