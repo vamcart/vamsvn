@@ -604,6 +604,7 @@
     } elseif ($page == FILENAME_PRODUCTS_FILTERS) {
       define('TABLE_SPECIFICATION_URL', 'specification_url');
       static $filter_no_seo;
+      static $specification_url_cache = array();
       if (!isset($filter_no_seo)) {
         $filter_no_seo = array();
         $sql = "SELECT *
@@ -614,8 +615,16 @@
           $filter_no_seo[$specification_seo_active['specifications_id']] = $specification_seo_active['specifications_id'];
         }
       }
+//error_log(__LINE__ . ': ' . ' $parameters=' . var_export($parameters, true) . "\n", 3, __FILE__.'.log');
       parse_str($parameters, $get);
-      //$parameters = http_build_query($get);
+//error_log(__LINE__ . ': ' . ' $get=' . var_export($get, true) . "\n", 3, __FILE__.'.log');
+      ksort($get);
+//error_log(__LINE__ . ': ' . ' $get=' . var_export($get, true) . "\n", 3, __FILE__.'.log');
+      $parameters = http_build_query($get);
+//error_log(__LINE__ . ': ' . ' $parameters=' . var_export($parameters, true) . "\n", 3, __FILE__.'.log');
+//      $parameters = preg_replace('/%5B[0-9]+%5D/simU', '%5B%5D', $parameters);
+      $parameters = preg_replace('/%5B[0-9]+%5D/simU', '[]', $parameters);
+//error_log(__LINE__ . ': ' . ' $parameters=' . var_export($parameters, true) . "\n", 3, __FILE__.'.log');
       $get_in = $get;
       if (!isset($get['cat'])) {
         return vam_href_link_original($page, $parameters, $connection, $add_session_id, $search_engine_safe);
@@ -642,6 +651,7 @@
       $categories_url = strtolower(vam_cleanName($categories_url));
 
       $f_array = array();
+//error_log(__LINE__ . ': ' . ' $get=' . var_export($get, true) . "\n", 3, __FILE__.'.log');
       foreach ($get as $key => $val) {
 //        if (substr($key, 0, 1) == 'f') {
         if (preg_match('@^f[0-9]+$@', $key)) {
@@ -657,6 +667,7 @@
         }
       }
       if (sizeof($f_array) == 0 || sizeof($f_array) > SPECIFICATIONS_FILTERS_SEO_MAX_FILTER_IDS) {
+//error_log(__LINE__ . ': ' . ' $parameters=' . var_export($parameters, true) . "\n", 3, __FILE__.'.log');
         return vam_href_link_original($page, $parameters, $connection, $add_session_id, $search_engine_safe);
       }
 
@@ -669,80 +680,143 @@
       }
       $specifications_request_query = http_build_query($s_get);
       $specifications_request_query = preg_replace('/%5B[0-9]+%5D/simU', '%5B%5D', $specifications_request_query);
-      $specifications_request_query = urldecode($specifications_request_query);
-      $sql = "SELECT * FROM " . TABLE_SPECIFICATION_URL . " WHERE query = '" . vam_db_input($specifications_request_query) . "'";
-      $specification_db_uri_query = vamDBquery($sql);
-      if ($specification_db_uri = vam_db_fetch_array($specification_db_uri_query)) {
-//        $specifications_uri = $specification_db_uri['uri'];
+//      $specifications_request_query = urldecode($specifications_request_query);
+
+      if (isset($specification_url_cache[$specifications_request_query])) {
+//error_log(__LINE__ . ': ' . ' $specifications_request_query=' . var_export($specifications_request_query, true) . "\n", 3, __FILE__.'.log');
+//error_log(__LINE__ . ': ' . ' $specification_url_cache[$specifications_request_query]=' . var_export($specification_url_cache[$specifications_request_query], true) . "\n", 3, __FILE__.'.log');
+//error_log(__LINE__ . ': ' . ' $get=' . var_export($get, true) . "\n", 3, __FILE__.'.log');
+        $specifications_uri = $specification_url_cache[$specifications_request_query];
+        $href = vam_href_link_original($specifications_uri, http_build_query($get, '&amp;'), $connection, $add_session_id, $search_engine_safe);
+//error_log(__LINE__ . ': ' . ' $href=' . var_export($href, true) . "\n", 3, __FILE__.'.log');
+        return $href;
       }
-      if (!isset($specifications_uri)) {
-        $specifications_uri_parts = array();
-        $sql = "SELECT s.*, sd.*
-                FROM " . TABLE_SPECIFICATION . " AS s
-                  INNER JOIN " . TABLE_SPECIFICATION_DESCRIPTION . " sd ON (sd.specifications_id = s.specifications_id)
-                WHERE sd.language_id = " . (int)$_SESSION['languages_id'] . "
-                  AND s.specifications_id IN (" . implode(',', array_keys($f_array)) . ")
-                ORDER BY s.specification_sort_order, specification_name";
-        $specification_query = vamDBquery($sql);
-        while ($specification = vam_db_fetch_array($specification_query)) {
-//error_log(__LINE__ . ': ' . ' $specification=' . var_export($specification, true) . "\n", 3, __FILE__.'.log');
-          if (empty($specification['specification_seo_name'])) {
-            $specification['specification_seo_url'] = strtolower(vam_cleanName(trim($specification['specification_name'])));
-          } else {
-            $specification['specification_seo_url'] = strtolower(trim($specification['specification_seo_name']));
+//error_log(__LINE__ . ': ' . ' $parameters=' . var_export($parameters, true) . "\n", 3, __FILE__.'.log');
+
+      $specifications_uri_parts = array();
+
+      $sql = "SELECT s.*, sd.*
+              FROM " . TABLE_SPECIFICATION . " AS s
+                INNER JOIN " . TABLE_SPECIFICATION_DESCRIPTION . " sd ON (sd.specifications_id = s.specifications_id AND sd.language_id = " . (int)$_SESSION['languages_id'] . ")
+              WHERE s.specifications_id IN (" . implode(',', array_keys($f_array)) . ")
+              ORDER BY s.specification_sort_order, sd.specification_name";
+      $specification_query = vamDBquery($sql);
+      while ($specification = vam_db_fetch_array($specification_query)) {
+        if (empty($specification['specification_seo_url'])) {
+          $specification['specification_seo_url'] = $specification['specification_name'];
+        }
+//error_log(__LINE__ . ': ' . ' $specification[specification_seo_url]=' . var_export($specification['specification_seo_url'], true) . "\n", 3, __FILE__.'.log');
+        $specification['specification_seo_url'] = strtolower(vam_cleanName(trim($specification['specification_seo_url'])));
+        $specification['specification_seo_url'] = preg_replace('@\-[\-]+@', '-', $specification['specification_seo_url']);
+//error_log(__LINE__ . ': ' . ' $specification[specification_seo_url]=' . var_export($specification['specification_seo_url'], true) . "\n", 3, __FILE__.'.log');
+        if (is_array($f_array[$specification['specifications_id']])) {
+          sort($f_array[$specification['specifications_id']]);
+          foreach ($f_array[$specification['specifications_id']] as $fk => $fv) {
+            $f_array[$specification['specifications_id']][$fk] = trim($f_array[$specification['specifications_id']][$fk]);
           }
-//          if (!empty($specification['products_column_name'])) {
-          if (is_array($f_array[$specification['specifications_id']])) {
-            sort($f_array[$specification['specifications_id']]);
-            foreach ($f_array[$specification['specifications_id']] as $fk => $fv) {
-              $f_array[$specification['specifications_id']][$fk] = trim($f_array[$specification['specifications_id']][$fk]);
-            }
-          } else {
-            $f_array[$specification['specifications_id']] = trim($f_array[$specification['specifications_id']]);
-          }
+        } else {
+          $f_array[$specification['specifications_id']] = trim($f_array[$specification['specifications_id']]);
+        }
 //error_log(__LINE__ . ': ' . ' $f_array[$specification[specifications_id]]=' . var_export($f_array[$specification['specifications_id']], true) . "\n", 3, __FILE__.'.log');
-          $specifications_values = (is_array($f_array[$specification['specifications_id']]) ? implode('-', $f_array[$specification['specifications_id']]) : $f_array[$specification['specifications_id']]);
-          $specifications_values = vam_cleanName($specifications_values);
-          $specifications_values = strtolower($specifications_values);
+// BOF use filter_id
+        if (!is_array($f_array[$specification['specifications_id']])) {
+          $f_array[$specification['specifications_id']] = array($f_array[$specification['specifications_id']]);
+        }
+//error_log(__LINE__ . ': ' . ' $f_array[$specification[specifications_id]]=' . var_export($f_array[$specification['specifications_id']], true) . "\n", 3, __FILE__.'.log');
+//error_log(__LINE__ . ': ' . ' $specification[products_column_name]=' . var_export($specification['products_column_name'], true) . "\n", 3, __FILE__.'.log');
+        if ($specification['products_column_name'] == 'manufacturers_id') {
+          $sql = "SELECT m.manufacturers_id as specification_filters_id,
+                         m.manufacturers_name as filter
+                  FROM " . TABLE_MANUFACTURERS . " m
+                  WHERE m.manufacturers_id IN (" . implode(',', $f_array[$specification['specifications_id']]) . ")
+                  ORDER BY m.manufacturers_name";
+        } else {
+          $sql = "SELECT sf.specification_filters_id,
+                         sf.filter_sort_order,
+                         sfd.filter
+                  FROM " . TABLE_SPECIFICATIONS_FILTERS . " sf
+                    INNER JOIN " . TABLE_SPECIFICATIONS_FILTERS_DESCRIPTION . " sfd ON (sfd.specification_filters_id = sf.specification_filters_id AND sfd.language_id = " . (int)$_SESSION['languages_id'] . ")
+                  WHERE sf.specifications_id = " . (int)$specification['specifications_id'] . "
+                    AND sf.specification_filters_id IN (" . implode(',', $f_array[$specification['specifications_id']]) . ")
+                  ORDER BY sf.filter_sort_order, sfd.filter";
+        }
+//error_log(__LINE__ . ': ' . ' $sql=' . var_export($sql, true) . "\n", 3, __FILE__.'.log');
+        $filter_values_query = vamDBquery($sql);
+        $filter_values_array = array();
+//error_log(__LINE__ . ': ' . ' vam_db_num_rows($filter_values_query)=' . var_export(vam_db_num_rows($filter_values_query), true) . "\n", 3, __FILE__.'.log');
+        while ($filter_values = vam_db_fetch_array($filter_values_query, true)) {
+//error_log(__LINE__ . ': ' . ' $filter_values=' . var_export($filter_values, true) . "\n", 3, __FILE__.'.log');
+          $filter_values_array[] = $filter_values['filter'];
+        }
+//error_log(__LINE__ . ': ' . ' $filter_values_array=' . var_export($filter_values_array, true) . "\n", 3, __FILE__.'.log');
+        $specifications_values = implode('-', $filter_values_array);
+//        $specifications_values = (is_array($f_array[$specification['specifications_id']]) ? implode('-', $f_array[$specification['specifications_id']]) : $f_array[$specification['specifications_id']]);
+// EOF use filter_id
 //error_log(__LINE__ . ': ' . ' $specifications_values=' . var_export($specifications_values, true) . "\n", 3, __FILE__.'.log');
-          if ($specification['products_column_name'] == 'manufacturers_id') {
-            $specifications_uri_parts[] = $specifications_values;
-          } else {
-            $specifications_uri_parts[] = $specification['specification_seo_url'] . '-' . $specifications_values;
-          }
-        }
-//error_log(__LINE__ . ': ' . ' $specifications_uri_parts=' . var_export($specifications_uri_parts, true) . "\n", 3, __FILE__.'.log');
-        $uri_page = implode('-', $specifications_uri_parts);
-//error_log(__LINE__ . ': ' . ' $uri_page=' . var_export($uri_page, true) . "\n", 3, __FILE__.'.log');
-        $uri_page = preg_replace('@\-\-+@', '-', $uri_page);
-        $uri_page = trim($uri_page, '-');
-//error_log(__LINE__ . ': ' . ' $uri_page=' . var_export($uri_page, true) . "\n", 3, __FILE__.'.log');
-        if ($uri_page == '') {
-          return vam_href_link_original($page, $parameters, $connection, $add_session_id, $search_engine_safe);
-        }
-        $uri_page .= '.html';
-        $specifications_uri = $categories_url . '/' . $uri_page;
-        if (!isset($specification_db_uri['uri']) || $specification_db_uri['uri'] != $specifications_uri || vam_db_num_rows($specification_db_uri_query) > 1) {
-          $sql = "SELECT * FROM " . TABLE_SPECIFICATION_URL . " WHERE uri='" . vam_db_input($specifications_uri) . "'";
-//error_log(__LINE__ . ': ' . ' $specification_db_uri[\'uri\']=' . var_export($specification_db_uri['uri'], true) . "\n", 3, __FILE__.'.log');
-//error_log(__LINE__ . ': ' . ' vam_db_num_rows($specification_db_uri_query)=' . var_export(vam_db_num_rows($specification_db_uri_query), true) . "\n", 3, __FILE__.'.log');
-//error_log(__LINE__ . ': ' . ' $specifications_uri=' . var_export($specifications_uri, true) . "\n", 3, __FILE__.'.log');
-//error_log(__LINE__ . ': ' . ' $sql=' . var_export($sql, true) . "\n", 3, __FILE__.'.log');
-          $check_query = vam_db_query($sql);
-          if ($check = vam_db_fetch_array($check_query)) {
-            $id = $check['id'];
-          } else {
-            $sql = "INSERT INTO " . TABLE_SPECIFICATION_URL . " (uri, query) VALUES ('" . vam_db_input($specifications_uri) . "', '" . vam_db_input($specifications_request_query) . "')";
-            vam_db_query($sql);
-            $id = vam_db_insert_id();
-          }
-          if (isset($specification_db_uri['uri'])) {
-            $sql = "UPDATE " . TABLE_SPECIFICATION_URL . " SET current_id=" . (int)$id . " WHERE query='" . vam_db_input($specifications_request_query) . "' AND id!=" . (int)$id . " AND current_id!=" . (int)$id . "";
-//error_log(__LINE__ . ': ' . ' $sql=' . var_export($sql, true) . "\n", 3, __FILE__.'.log');
-            vam_db_query($sql);
-          }
+        $specifications_values = vam_cleanName($specifications_values);
+        $specifications_values = preg_replace('@\-[\-]+@', '-', $specifications_values);
+        $specifications_values = strtolower($specifications_values);
+//error_log(__LINE__ . ': ' . ' $specifications_values=' . var_export($specifications_values, true) . "\n", 3, __FILE__.'.log');
+        if ($specification['products_column_name'] == 'manufacturers_id') {
+          $specifications_uri_parts[] = $specifications_values;
+        } else {
+          $specifications_uri_parts[] = $specification['specification_seo_url'] . '-' . $specifications_values;
         }
       }
+//error_log(__LINE__ . ': ' . ' $specifications_uri_parts=' . var_export($specifications_uri_parts, true) . "\n", 3, __FILE__.'.log');
+      $uri_page = implode('-', $specifications_uri_parts);
+//error_log(__LINE__ . ': ' . ' $uri_page=' . var_export($uri_page, true) . "\n", 3, __FILE__.'.log');
+      $uri_page = preg_replace('@\-[\-]+@', '-', $uri_page);
+      $uri_page = trim($uri_page, '-');
+//error_log(__LINE__ . ': ' . ' $uri_page=' . var_export($uri_page, true) . "\n", 3, __FILE__.'.log');
+      if ($uri_page == '') {
+        return vam_href_link_original($page, $parameters, $connection, $add_session_id, $search_engine_safe);
+      }
+      $uri_page .= '.html';
+      $specifications_uri = $categories_url . '/' . $uri_page;
+//if ($specifications_uri == 'vinos-velosipedniy-dlya-rulya/satori-tip-adaptery-pauki.html') {
+//  error_log(__LINE__ . ': ' . ' $specifications_uri=' . var_export($specifications_uri, true) . "\n", 3, __FILE__.'.log');
+//  error_log(__LINE__ . ': ' . ' $specifications_request_query=' . var_export($specifications_request_query, true) . "\n", 3, __FILE__.'.log');
+//}
+
+//      $sql = "SELECT * FROM " . TABLE_SPECIFICATION_URL . " WHERE query = '" . vam_db_input($specifications_request_query) . "' AND uri = '" . vam_db_input($specifications_uri) . "'";
+      $sql = "SELECT * FROM " . TABLE_SPECIFICATION_URL . " WHERE uri = '" . vam_db_input($specifications_uri) . "'";
+      $specification_db_uri_query = vam_db_query($sql);
+      if (vam_db_num_rows($specification_db_uri_query) == 0) {
+        $sql = "INSERT INTO " . TABLE_SPECIFICATION_URL . " (uri, query, current_id) VALUES ('" . vam_db_input($specifications_uri) . "', '" . vam_db_input($specifications_request_query) . "', 0)";
+//if ($specifications_uri == 'vinos-velosipedniy-dlya-rulya/satori-tip-adaptery-pauki.html') {
+  error_log(__LINE__ . ': ' . ' $sql=' . var_export($sql, true) . "\n", 3, __FILE__.'.log');
+//}
+        vam_db_query($sql);
+        $id = vam_db_insert_id();
+      } else {
+        $specification_db_uri = vam_db_fetch_array($specification_db_uri_query);
+        $id = $specification_db_uri['id'];
+        if ($specification_db_uri['query'] != $specifications_request_query) {
+          $sql = "UPDATE " . TABLE_SPECIFICATION_URL . " SET query = '" . vam_db_input($specifications_request_query) . "' WHERE id = " . (int)$id . "";
+          vam_db_query($sql);
+        }
+      }
+      $sql = "SELECT * FROM " . TABLE_SPECIFICATION_URL . " WHERE uri = '" . vam_db_input($specifications_uri) . "' AND id != " . (int)$id . "";
+      $check_query = vam_db_query($sql);
+      if (vam_db_num_rows($check_query) > 0) {
+        error_log(__LINE__ . ': ' . ' $sql=' . var_export($sql, true) . "\n", 3, __FILE__.'.log');
+        error_log(__LINE__ . ': ' . ' vam_db_num_rows($check_query)=' . var_export(vam_db_num_rows($check_query), true) . "\n", 3, __FILE__.'.log');
+        while ($check = vam_db_fetch_array($check_query)) {
+          error_log(__LINE__ . ': ' . ' $check=' . var_export($check, true) . "\n", 3, __FILE__.'.log');
+        }
+      }
+      if (vam_db_num_rows($check_query) > 0) {
+        $sql = "DELETE FROM " . TABLE_SPECIFICATION_URL . " WHERE uri = '" . vam_db_input($specifications_uri) . "' AND id != " . (int)$id . "";
+        vam_db_query($sql);
+      }
+      $sql = "SELECT * FROM " . TABLE_SPECIFICATION_URL . " WHERE query = '" . vam_db_input($specifications_request_query) . "' AND current_id != " . (int)$id . " AND id != " . (int)$id . "";
+      $check_query = vam_db_query($sql);
+      if (vam_db_num_rows($check_query) > 0) {
+        $sql = "UPDATE " . TABLE_SPECIFICATION_URL . " SET current_id = " . (int)$id . " WHERE query = '" . vam_db_input($specifications_request_query) . "' AND current_id != " . (int)$id . " AND id != " . (int)$id . "";
+        vam_db_query($sql);
+      }
+      $specification_url_cache[$specifications_request_query] = $specifications_uri;
       $href = vam_href_link_original($specifications_uri, http_build_query($get, '&amp;'), $connection, $add_session_id, $search_engine_safe);
       return $href;
 // EOF products_filters_seo
