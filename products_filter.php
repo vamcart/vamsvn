@@ -39,9 +39,7 @@ define('TABLE_SPECIFICATION_FILTERS_STATISTICS', 'specification_filters_statisti
     $get_spec[$key] = (array)$val;
   }
 // EOF products_filters_seo
-if ($_SERVER['REMOTE_ADDR'] == '95.31.38.56') {
 //error_log('$_GET=' . var_export($_GET, true) . "\n", 3, __FILE__ . '-.log');
-}
 
 function get_specification_filters_id($sid, $val) { 
   if (substr($sid, 0, 1) == 'f') {
@@ -182,13 +180,9 @@ $module = new vamTemplate;
   $specifications_founded = array();
   $specifications_id_brand = 0;
 // EOF products_filters_seo
-if ($_SERVER['REMOTE_ADDR'] == '95.31.38.56') {
 //error_log('$specs_query=' . var_export($specs_query, true) . "\n", 3, __FILE__ . '-.log');
-}
   while ($specs_array = vam_db_fetch_array($specs_query) ) {
-if ($_SERVER['REMOTE_ADDR'] == '95.31.38.56') {
 //error_log('$specs_array=' . var_export($specs_array, true) . "\n", 3, __FILE__ . '-.log');
-}
     // Retrieve the GET vars used as filters
     // Variable names are the letter "f" followed by the specifications_id for that spec.
     $var = 'f' . $specs_array['specifications_id'];
@@ -245,18 +239,14 @@ if ($_SERVER['REMOTE_ADDR'] == '95.31.38.56') {
 // EOF products_filters-sort
 // BOF products_filters_seo
       $specifications_founded[$var] = $_GET[$var];
-if ($_SERVER['REMOTE_ADDR'] == '95.31.38.56') {
 //error_log('$var=' . var_export($var, true) . ' $specifications_id=' . var_export($specs_array['specifications_id'], true) . ' $filter_class=' . var_export($specs_array['filter_class'], true) . ' $products_column_name=' . var_export($specs_array['products_column_name'], true) . "\n", 3, __FILE__ . '-.log');
-}
       if (in_array($specs_array['filter_class'], array('exact', 'multiple', ))) {
         if (!isset($_GET[$var]) || !is_array($_GET[$var])) {
 //          error_log('REQUEST_URI=' . var_export($_SERVER["REQUEST_URI"], true) . "\n" . '$var=' . var_export($var, true) . "\n" . '$_GET[$var]=' . var_export($_GET[$var], true) . "\n" . '(array)$_GET[$var]=' . var_export((array)$_GET[$var], true) . "\n", 3, __FILE__.'.log');
         }
         foreach ((array)$_GET[$var] as $specs_val_ind => $specs_val) {
           $count = $spec_object->getFilterCount($specs_val, $specs_array['specifications_id'], $specs_array['filter_class'], $specs_array['products_column_name']);
-//if ($_SERVER['REMOTE_ADDR'] == '95.31.38.56') {
 //error_log('$specs_val=' . var_export($specs_val, true) . ' $specifications_id=' . var_export($specs_array['specifications_id'], true) . ' $filter_class=' . var_export($specs_array['filter_class'], true) . ' $products_column_name=' . var_export($specs_array['products_column_name'], true) . ' $count=' . var_export($count, true) . "\n", 3, __FILE__ . '-.log');
-//}
           if ($count != 0) {
             unset($get_spec[$var][$specs_val_ind]);
             if (count($get_spec[$var]) == 0) unset($get_spec[$var]);
@@ -274,9 +264,7 @@ if ($_SERVER['REMOTE_ADDR'] == '95.31.38.56') {
     } // if (isset($_GET[$var]
   } // while ($specs_array
 // BOF products_filters_seo
-if ($_SERVER['REMOTE_ADDR'] == '95.31.38.56') {
 //error_log('$get_spec=' . var_export($get_spec, true) . "\n", 3, __FILE__ . '-.log');
-}
   if (count($get_spec) > 0) {
     $get_ignore = $_GET;
     unset($get_ignore['cPath']);

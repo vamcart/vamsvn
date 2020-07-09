@@ -382,7 +382,7 @@ if (SPECIFICATIONS_FILTERS_BOX == 'True') {
           }
 */
 // BOF specifications_filters_hide_empty_filters_group
-if ($specs_array['products_column_name'] == 'manufacturers_id' && $_SERVER['REMOTE_ADDR'] == '95.31.38.56') {
+if ($specs_array['products_column_name'] == 'manufacturers_id') {
 //  error_log(var_export($filters_select_array, true) . "\n", 3, __FILE__.'.log');
 }
         foreach ($filters_select_array as $i => $fsa_row) {
