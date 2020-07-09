@@ -273,7 +273,7 @@ function filters_select_array_sort($a, $b) {
           //$field .= '<li class="filter-item' . ($link_data['display'] == 0 ? ' filter-list_toggle' : '') . '">';
           $flag_active = false;
           if ($default == $link_data['id']) {
-            $field .= '<span class="active">';
+            //$field .= '<span class="active">';
 // BOF products_filters-multilinks
             $flag_active = true;
 // EOF products_filters-multilinks
@@ -306,13 +306,13 @@ function filters_select_array_sort($a, $b) {
 // EOF products_filters-multilinks
 // BOF nolink_active (remarka)
           if (!$flag_active) {
-            $field .= '<a class="list-group-item list-group-item-action d-flex justify-content-between align-items-center" href="' . $link . '">';
+            $field .= '<a class="list-group-item list-group-item-action d-flex justify-content-between align-items-center" href="' . $link . '"><i class="far fa-square"></i> ';
           } else {
-            $field .= '<div class="list-group-item list-group-item-action d-flex justify-content-between align-items-center disabled'.(($link_data['id']) != '0' ? ' active' : '').'" data-href="' . $link . '">';
+            $field .= '<div class="list-group-item list-group-item-action d-flex justify-content-between align-items-center disabled'.(($link_data['id']) != '0' ? ' active' : '').'" data-href="' . $link . '"><i class="fas fa-check-square"></i> ';
           }
 // EOF nolink_active (remarka)
 
-          $field .= vam_output_string($link_data['text'] );
+          $field .= '<span class="pl-2 flex-grow-1 small">'.vam_output_string($link_data['text'] ).'</span>';
           if ($link_data['count'] != '' && $link_data['count'] > 1 && SPECIFICATIONS_FILTER_SHOW_COUNT == 'True') {
             $field .= '<span class="filter_count badge badge-light badge-pill">' . $link_data['count'] . '</span>';
           }
