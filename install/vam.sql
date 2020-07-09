@@ -3718,7 +3718,7 @@ INSERT INTO `specifications` VALUES
 (12, 3, 0, 'True', 'True', 'True', 'False', '', 'Left', 'multiple', 'links', 'False', 'pulldown', 1),
 (13, 3, 0, 'True', 'True', 'True', 'False', '', 'Left', 'multiple', 'links', 'False', 'pulldown', 1),
 (14, 3, 0, 'True', 'True', 'True', 'False', '', 'Left', 'multiple', 'links', 'False', 'pulldown', 1),
-(15, 3, 0, 'True', 'True', 'True', 'False', '', 'Left', 'multiple', 'links', 'True', 'pulldown', 1);
+(15, 3, 0, 'True', 'True', 'True', 'False', '', 'Left', 'multiple', 'links', 'False', 'pulldown', 1);
 
 ##
 ## Table structure for table `specification_description`
