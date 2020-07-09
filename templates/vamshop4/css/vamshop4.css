@@ -984,3 +984,10 @@ li.level3 {
 .spec-value {
   font-size: 80%;
 }
+
+.list-group-item.active {
+    z-index: 2;
+    /*color: #000;
+    background-color: rgba(0,0,0,.03);*/
+    border-color: rgba(0,0,0,.125);
+}
