@@ -181,8 +181,9 @@ function filters_select_array_sort($a, $b) {
         foreach ($filter_value as $value) {
           if ($value != '0') {
             $specs_array_breadcrumb[] = array('specification_name' => $specs_array['specification_name'],
+                                              'specification_description' => $specs_array['specification_description'],
                                               'specifications_id' => $specs_array['specifications_id'],
-//                                              'value' => $value,
+//                                            'value' => $value,
                                               'value' => vam_get_filter_value($value, $specs_array['specifications_id']),
                                               );
           } // if ($value
@@ -194,21 +195,24 @@ function filters_select_array_sort($a, $b) {
           if ($specs_array['products_column_name'] == 'final_price' || $specs_array['products_column_name'] == 'products_price') {
             $tmp = explode('-', $filter_value);
             $specs_array_breadcrumb[] = array('specification_name' => $specs_array['specification_name'],
+                                              'specification_description' => $specs_array['specification_description'],
                                               'specifications_id' => $specs_array['specifications_id'],
                                               'value' => number_format($tmp[0], $vamPrice->currencies['RUB']['decimal_places'], $vamPrice->currencies['RUB']['decimal_point'], $vamPrice->currencies['RUB']['thousands_point']) . ' - ' . number_format($tmp[1], $vamPrice->currencies['RUB']['decimal_places'], $vamPrice->currencies['RUB']['decimal_point'], $vamPrice->currencies['RUB']['thousands_point']) . ' руб.',
                                               );
 
           } else {
             $specs_array_breadcrumb[] = array('specification_name' => $specs_array['specification_name'],
+                                              'specification_description' => $specs_array['specification_description'],
                                               'specifications_id' => $specs_array['specifications_id'],
-    //                                          'value' => $filter_value,
+//                                            'value' => $filter_value,
                                               'value' => vam_get_filter_value($filter_value, $specs_array['specifications_id']),
                                               );
           }
         } else {
           $specs_array_breadcrumb[] = array('specification_name' => $specs_array['specification_name'],
+                                            'specification_description' => $specs_array['specification_description'],
                                             'specifications_id' => $specs_array['specifications_id'],
-  //                                          'value' => $filter_value,
+//                                          'value' => $filter_value,
                                             'value' => vam_get_filter_value($filter_value, $specs_array['specifications_id']),
                                             );
         }
