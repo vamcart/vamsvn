@@ -205,7 +205,7 @@ $box_head .= '
     <div></div>
     <div class="font-weight-bolder">' . '<a class="circle text-danger" title="'.TEXT_COOKIE_CLOSE.'" rel="nofollow" href="' . vam_href_link(FILENAME_PRODUCTS_FILTERS, vam_get_all_get_params(array('f' . $specification['specifications_id']))) . '">' . '<i class="fas fa-times"></i>' . '</a>' . '</div>
   </div>
-  <div class="card-body p-0 text-left">
+  <div class="card-body p-0 text-left read-more">
 
 ';
         
@@ -221,7 +221,7 @@ $box_head .= '
     <div></div>
     <div class="font-weight-bolder"></div>
   </div>
-  <div class="card-body p-0 text-left">
+  <div class="card-body p-0 text-left read-more">
 
 ';
 
