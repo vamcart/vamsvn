@@ -9,25 +9,46 @@
 <div class="page">
 <div class="pageItem">
 
+<div class="d-flex justify-content-between">
+
+<div class="py-2 pr-2">
+
 {if $MANUFACTURER_SORT}
-<div class="py-2">
+<div class="brands">
 {$MANUFACTURER_DROPDOWN}
 </div>
 {/if}
 
-<div class="btn-group flex-wrap py-2">
-<span class="btn btn-secondary mt-1">{#text_sort#}</span>
-<a class="btn btn-secondary{if {$smarty.get.sort == "name"} && {$smarty.get.direction == "asc"}} active{/if} mt-1" href="{$LINK_sort_name_asc}">{#text_sort_name_asc#}</a>  
-<a class="btn btn-secondary{if {$smarty.get.sort == "name"} && {$smarty.get.direction == "desc"}} active{/if} mt-1" href="{$LINK_sort_name_desc}">{#text_sort_name_desc#}</a>
-<a class="btn btn-secondary{if {$smarty.get.sort == "price"} && {$smarty.get.direction == "asc"}} active{/if} mt-1" href="{$LINK_sort_price_asc}">{#text_sort_price_asc#}</a>  
-<a class="btn btn-secondary{if {$smarty.get.sort == "price"} && {$smarty.get.direction == "desc"}} active{/if} mt-1" href="{$LINK_sort_price_desc}">{#text_sort_price_desc#}</a>
-<a class="btn btn-secondary{if {$smarty.get.sort == "ordered"} && {$smarty.get.direction == "asc"}} active{/if} mt-1" href="{$LINK_sort_ordered_asc}">{#text_sort_ordered_asc#}</a>
-<a class="btn btn-secondary{if {$smarty.get.sort == "ordered"} && {$smarty.get.direction == "desc"}} active{/if} mt-1" href="{$LINK_sort_ordered_desc}">{#text_sort_ordered_desc#}</a>
-<a class="btn btn-secondary{if {$smarty.get.sort == "id"} && {$smarty.get.direction == "asc"}} active{/if} mt-1" href="{$LINK_sort_id_asc}">{#text_sort_id_asc#}</a>  
-<a class="btn btn-secondary{if {$smarty.get.sort == "id"} && {$smarty.get.direction == "desc"}} active{/if} mt-1" href="{$LINK_sort_id_desc}">{#text_sort_id_desc#}</a>
-<a class="btn btn-secondary{if {$smarty.get.sort == "quantity"} && {$smarty.get.direction == "asc"}} active{/if} mt-1" href="{$LINK_sort_quantity_asc}">{#text_sort_quantity_asc#}</a>
-<a class="btn btn-secondary{if {$smarty.get.sort == "quantity"} && {$smarty.get.direction == "desc"}} active{/if} mt-1" href="{$LINK_sort_quantity_desc}">{#text_sort_quantity_desc#}</a>
 </div>
+
+
+
+<div class="py-2 pl-2">
+
+
+<div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownSortButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    {#text_sort#}
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownSortButton">
+	<a class="dropdown-item{if {$smarty.get.sort == "name"} && {$smarty.get.direction == "asc"}} active{/if} mt-1" href="{$LINK_sort_name_asc}">{#text_sort_name_asc#}</a>  
+	<a class="dropdown-item{if {$smarty.get.sort == "name"} && {$smarty.get.direction == "desc"}} active{/if} mt-1" href="{$LINK_sort_name_desc}">{#text_sort_name_desc#}</a>
+	<a class="dropdown-item{if {$smarty.get.sort == "price"} && {$smarty.get.direction == "asc"}} active{/if} mt-1" href="{$LINK_sort_price_asc}">{#text_sort_price_asc#}</a>  
+	<a class="dropdown-item{if {$smarty.get.sort == "price"} && {$smarty.get.direction == "desc"}} active{/if} mt-1" href="{$LINK_sort_price_desc}">{#text_sort_price_desc#}</a>
+	<a class="dropdown-item{if {$smarty.get.sort == "ordered"} && {$smarty.get.direction == "asc"}} active{/if} mt-1" href="{$LINK_sort_ordered_asc}">{#text_sort_ordered_asc#}</a>
+	<a class="dropdown-item{if {$smarty.get.sort == "ordered"} && {$smarty.get.direction == "desc"}} active{/if} mt-1" href="{$LINK_sort_ordered_desc}">{#text_sort_ordered_desc#}</a>
+	<a class="dropdown-item{if {$smarty.get.sort == "id"} && {$smarty.get.direction == "asc"}} active{/if} mt-1" href="{$LINK_sort_id_asc}">{#text_sort_id_asc#}</a>  
+	<a class="dropdown-item{if {$smarty.get.sort == "id"} && {$smarty.get.direction == "desc"}} active{/if} mt-1" href="{$LINK_sort_id_desc}">{#text_sort_id_desc#}</a>
+	<a class="dropdown-item{if {$smarty.get.sort == "quantity"} && {$smarty.get.direction == "asc"}} active{/if} mt-1" href="{$LINK_sort_quantity_asc}">{#text_sort_quantity_asc#}</a>
+	<a class="dropdown-item{if {$smarty.get.sort == "quantity"} && {$smarty.get.direction == "desc"}} active{/if} mt-1" href="{$LINK_sort_quantity_desc}">{#text_sort_quantity_desc#}</a>
+  </div>
+</div>
+
+
+</div>
+
+</div>
+
 
 <div class="clear"></div>
 </div>
