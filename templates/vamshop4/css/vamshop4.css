@@ -388,10 +388,6 @@ a#scrollup:hover {
 }
 /* /Tabs */
 
-/*.list-group-item {
-  border: 0;
-}
-*/
 li.level2 {
   padding: .5rem 0 0 0;
 }
@@ -558,7 +554,7 @@ li.level3 {
 .filters .filter.card,
 .shipping-methods .shipping-method.card,
 .payment-methods .payment-method.card {
-	border-radius: 0;
+	border-radius: .25rem;
 }
 
 .filters .filter.card .card-body,
@@ -985,11 +981,22 @@ li.level3 {
   font-size: 80%;
 }
 
+/*.list-group-item {
+  border: 0;
+}
+*/
+
 .list-group-item.active {
     z-index: 2;
     /*color: #000;
     background-color: rgba(0,0,0,.03);*/
     border-color: rgba(0,0,0,.125);
+}
+
+.list-group-flush .list-group-item {
+    border-right-width: 0;
+    border-left-width: 0;
+    border-radius: .25rem;
 }
 
 .filter .card-body {
