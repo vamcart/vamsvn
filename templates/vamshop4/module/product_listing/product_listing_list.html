@@ -37,12 +37,6 @@
 {if $CATEGORIES_NAME && SPECIFICATIONS_BOX_COMPARISON == "True"}
 <form action="{$smarty.const.FILENAME_COMPARISON}">{/if}
 
-<div class="clear"></div>
-<div class="navigation">
-<span class="right">{$NAVIGATION}</span>{$NAVIGATION_PAGES}
-</div>
-<div class="clear"></div>
-
 {foreach name=aussen item=module_data from=$module_content}
 {if $smarty.const.PRODUCT_LISTING_ATTRIBUTES == 'true'}
 {include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/product-card/product-card-listing-attributes.html"}
