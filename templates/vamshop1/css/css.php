@@ -2,7 +2,7 @@
 require_once(DIR_FS_CATALOG."vendor/Bender/Bender.class.php");
 $bender = new Bender();
 $bender->enqueue("templates/".CURRENT_TEMPLATE."/bootstrap/bootstrap.css");
-$bender->enqueue("templates/".CURRENT_TEMPLATE."/font-awesome.min.css");
+$bender->enqueue("templates/".CURRENT_TEMPLATE."/font-awesome.css");
 //$bender->enqueue("jscript/jquery/plugins/slick/slick.css");
 //$bender->enqueue("jscript/jquery/plugins/slick/slick-theme.css");
 //$bender->enqueue("jscript/jquery/plugins/read-more/jquery.expandable.css");
