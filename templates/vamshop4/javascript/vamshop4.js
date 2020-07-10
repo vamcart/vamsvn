@@ -493,11 +493,11 @@ $(".image-zoom").each(function(arg, el){
 });  
 
 //Expandable Text
-$('.read-more').expandable({
-  'height': 500,
-  'more': '▼',
-  'less': '▲'
-});
+//$('.read-more').expandable({
+  //'height': 450,
+  //'more': '▼',
+  //'less': '▲'
+//});
 
 //Sticky Column Calc Height
 if ($(window).width() > 1200) {

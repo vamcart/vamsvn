@@ -991,3 +991,8 @@ li.level3 {
     background-color: rgba(0,0,0,.03);*/
     border-color: rgba(0,0,0,.125);
 }
+
+.filter .card-body {
+  max-height: 350px;
+  overflow-y: auto;
+}

@@ -5,7 +5,7 @@ $bender->enqueue("templates/".CURRENT_TEMPLATE."/javascript/popper.min.js");
 $bender->enqueue("templates/".CURRENT_TEMPLATE."/javascript/bootstrap.min.js");
 $bender->enqueue("jscript/jquery/plugins/jquery-ui/jquery-ui-min.js");
 $bender->enqueue("jscript/jquery/plugins/cookie/jquery.cookie.js");
-$bender->enqueue("jscript/jquery/plugins/read-more/jquery.expandable.js");
+//$bender->enqueue("jscript/jquery/plugins/read-more/jquery.expandable.js");
 $bender->enqueue("jscript/jquery/plugins/lazyload/lazyload.min.js");
 //$bender->enqueue("jscript/jquery/plugins/slick/slick.js");
 $bender->enqueue("jscript/jquery/plugins/owl/owl.carousel.min.js");
