@@ -741,7 +741,7 @@ background: #fff;
   position: relative;
 }
 #footer .widget-title.do:before {
-  font-family: 'FontAwesome';
+  font-family: "Font Awesome 5 Free";
   color: #dd2c00;
   content: "\f0c9";
   position: absolute;
@@ -1009,7 +1009,7 @@ background: #fff;
 }
 .categories-widget ul.icons li:after {
   content: "\f105";
-  font-family: "FontAwesome";
+  font-family: "Font Awesome 5 Free";
   display: block;
   position: absolute;
   left: 3px;
@@ -1312,7 +1312,7 @@ border: 0px solid transparent;
 }
 #search .search-bt:before {
   content: "\f096";
-  font-family: fontawesome;
+  font-family: "Font Awesome 5 Free";
   display: block;
   width: 20px;
   height: 20px;

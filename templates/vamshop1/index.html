@@ -52,7 +52,7 @@
                       <li><a href="{$smarty.const.FILENAME_LOGIN}"><i class="fa fa-user"></i> {$smarty.const.TEXT_MY_ORDERS}</a></li>
                       {if !$cart_current}<li class="dropdown" id="divShoppingCart">{$box_CART}</li>{/if}
                       {if $smarty.session.customers_status.customers_status_id == 0}
-                      <li><a href="{$admin_area_link}"><i class="fa fa-gear"></i> {#text_admin#}</a></li>
+                      <li><a href="{$admin_area_link}"><i class="fa fa-cog"></i> {#text_admin#}</a></li>
                       {/if}  
                       {if $smarty.session.customer_id}
                       <li><a href="{$logoff}"><i class="fa fa-power-off"></i> {#link_logoff#}</a></li>
