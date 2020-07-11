@@ -88,7 +88,7 @@
 						</div>
 					</div>
 					<div class="vamshop-menubrand-xs">
-						<div class="vamshop-menu-brand">
+						<div class="vamshop-menu-brand d-lg-none">
 							<span class="menu-toggle"><a href="javascript:void(0)"><i class="fa fa-bars"></i></a></span>
 						</div>
 					</div>
