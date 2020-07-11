@@ -981,22 +981,16 @@ li.level3 {
   font-size: 80%;
 }
 
-/*.list-group-item {
-  border: 0;
-}
-*/
-
-.list-group-item.active {
-    z-index: 2;
-    /*color: #000;
-    background-color: rgba(0,0,0,.03);*/
-    border-color: rgba(0,0,0,.125);
-}
-
 .list-group-flush .list-group-item {
     border-right-width: 0;
     border-left-width: 0;
     border-radius: .25rem;
+}
+
+.list-group-item.active {
+    z-index: 2;
+    border-color: rgba(0,0,0,.125);
+    border-radius: 0;
 }
 
 .filter .card-body {
