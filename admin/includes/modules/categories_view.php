@@ -223,6 +223,7 @@
              ?>
              </td>
              <td class="<?php echo $css_class; ?>">--</td>
+             <td class="<?php echo $css_class; ?>">--</td>
              <td class="<?php echo $css_class; ?>"><?php echo $categories['sort_order']; ?></td>
              <td class="<?php echo $css_class; ?>">
              <?php
