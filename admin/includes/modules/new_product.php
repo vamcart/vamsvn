@@ -167,7 +167,7 @@ $manual_link = ($_GET['pID']) ? 'edit-product' : 'add-product';
     echo vam_draw_hidden_field('products_id', $pInfo->products_id);
 ?>
     <span class="button"><button type="submit" value="<?php echo BUTTON_SAVE; ?>" cf="false"><?php echo vam_image(DIR_WS_IMAGES . 'icons/buttons/save.png', '', '12', '12'); ?>&nbsp;<?php echo BUTTON_SAVE; ?></button></span>
-    <a class="button" href="<?php echo vam_href_link(FILENAME_CATEGORIES, 'cPath=' . $cPath . '&pID=' . $_GET['pID']); ?>"><span><?php echo vam_image(DIR_WS_IMAGES . 'icons/buttons/cancel.png', '', '12', '12');?>&nbsp;<?php echo BUTTON_CANCEL; ?></span></a>
+    <a class="button" href="<?php echo vam_href_link(FILENAME_CATEGORIES, 'cPath=' . $cPath . '&pID=' . $_GET['pID'] . (isset($_GET['page']) ? '&page=' . $_GET['page'] : '')); ?>"><span><?php echo vam_image(DIR_WS_IMAGES . 'icons/buttons/cancel.png', '', '12', '12');?>&nbsp;<?php echo BUTTON_CANCEL; ?></span></a>
     &nbsp;&nbsp;|&nbsp;&nbsp;
     <a class="button" href="<?php echo vam_href_link(FILENAME_NEW_ATTRIBUTES, 'action=edit' . '&current_product_id=' . $_GET['pID'] . '&cpath=' . $cPath); ?>"><span><?php echo vam_image(DIR_WS_IMAGES . 'icons/buttons/edit.png', '', '12', '12'); ?>&nbsp;<?php echo BUTTON_EDIT_ATTRIBUTES; ?></span></a>
     <a class="button" href="<?php echo vam_href_link(FILENAME_CATEGORIES, 'action=edit_crossselling' . '&current_product_id=' . $_GET['pID'] . '&cpath=' . $cPath); ?>"><span><?php echo vam_image(DIR_WS_IMAGES . 'icons/buttons/edit.png', '', '12', '12'); ?>&nbsp;<?php echo BUTTON_EDIT_CROSS_SELLING; ?></span></a>
