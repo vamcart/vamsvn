@@ -1,7 +1,8 @@
 <?php
 require_once(DIR_FS_CATALOG."vendor/Bender/Bender.class.php");
 $bender = new Bender();
-$bender->enqueue("templates/".CURRENT_TEMPLATE."/css/mplusrounded1c.css");
+//$bender->enqueue("templates/".CURRENT_TEMPLATE."/css/font-mplusrounded1c.css");
+$bender->enqueue("templates/".CURRENT_TEMPLATE."/css/font-roboto.css");
 $bender->enqueue("templates/".CURRENT_TEMPLATE."/css/bootstrap.min.css");
 $bender->enqueue("templates/".CURRENT_TEMPLATE."/bootstrap-ecommerce/ui.css");
 $bender->enqueue("templates/".CURRENT_TEMPLATE."/bootstrap-ecommerce/responsive.css");
