@@ -456,8 +456,8 @@ $(window).on('load', function () {
 });
 $(document).ajaxSuccess(function () {
     $('.card-body .img-wrap').matchHeight();
-    $('.card-body .info-wrap .title').matchHeight();
     $('.card-body .attributes').matchHeight();
+    $('.card-body .title').matchHeight();
     $('.card-body .price-wrap').matchHeight();
     $('.payment-method .method-title').matchHeight();
     $('.shipping-method .method-title').matchHeight();
@@ -474,6 +474,19 @@ $(window).on('resize', function () {
     $('.shipping-method .method-title').matchHeight();
     $('.payment-method .card-title').matchHeight();
     $('.shipping-method .card-title').matchHeight();
+});
+
+$(function () {
+$('span[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+    $('.card-body .img-wrap').matchHeight();
+    $('.card-body .attributes').matchHeight();
+    $('.card-body .title').matchHeight();
+    $('.card-body .price-wrap').matchHeight();
+    $('.payment-method .method-title').matchHeight();
+    $('.shipping-method .method-title').matchHeight();
+    $('.payment-method .card-title').matchHeight();
+    $('.shipping-method .card-title').matchHeight();
+});
 });
 
 // Product Images Zoom
