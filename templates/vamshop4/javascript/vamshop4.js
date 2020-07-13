@@ -433,46 +433,48 @@ function doDislike(id) {
 // Responsive equal height
 if ($(window).width() > 360) {
 $(window).on('load', function () {
-    $('.card-body .img-wrap').sameHeight();
-    $('.card-body .attributes').sameHeight();
-    $('.card-body .title').sameHeight();
-    $('.card-body .price-wrap').sameHeight();
-    $('.payment-method .method-title').sameHeight();
-    $('.shipping-method .method-title').sameHeight();
-    $('.payment-method .card-title').sameHeight();
-    $('.shipping-method .card-title').sameHeight();
+    $('.card-body .img-wrap').matchHeight();
+    $('.card-body .attributes').matchHeight();
+    $('.card-body .title').matchHeight();
+    $('.card-body .price-wrap').matchHeight();
+    $('.payment-method .method-title').matchHeight();
+    $('.shipping-method .method-title').matchHeight();
+    $('.payment-method .card-title').matchHeight();
+    $('.shipping-method .card-title').matchHeight();
 });
 $(document).ajaxSuccess(function () {
-    $('.card-body .img-wrap').sameHeight();
-    $('.card-body .attributes').sameHeight();
-    $('.card-body .title').sameHeight();
-    $('.card-body .price-wrap').sameHeight();
-    $('.payment-method .method-title').sameHeight();
-    $('.shipping-method .method-title').sameHeight();
-    $('.payment-method .card-title').sameHeight();
-    $('.shipping-method .card-title').sameHeight();
+    $('.card-body .img-wrap').matchHeight();
+    $('.card-body .attributes').matchHeight();
+    $('.card-body .title').matchHeight();
+    $('.card-body .price-wrap').matchHeight();
+    $('.payment-method .method-title').matchHeight();
+    $('.shipping-method .method-title').matchHeight();
+    $('.payment-method .card-title').matchHeight();
+    $('.shipping-method .card-title').matchHeight();
 });
 }	
 $(window).on('resize', function () {
-    $('.card-body .img-wrap').sameHeight();
-    $('.card-body .attributes').sameHeight();
-    $('.card-body .title').sameHeight();
-    $('.card-body .price-wrap').sameHeight();
-    $('.payment-method .method-title').sameHeight();
-    $('.shipping-method .method-title').sameHeight();
-    $('.payment-method .card-title').sameHeight();
-    $('.shipping-method .card-title').sameHeight();
+    $('.card-body .img-wrap').matchHeight();
+    $('.card-body .attributes').matchHeight();
+    $('.card-body .title').matchHeight();
+    $('.card-body .price-wrap').matchHeight();
+    $('.payment-method .method-title').matchHeight();
+    $('.shipping-method .method-title').matchHeight();
+    $('.payment-method .card-title').matchHeight();
+    $('.shipping-method .card-title').matchHeight();
 });
 
+$(function () {
 $('span[data-toggle="tab"]').on('shown.bs.tab', function (e) {
-    $('.card-body .img-wrap').sameHeight();
-    $('.card-body .attributes').sameHeight();
-    $('.card-body .title').sameHeight();
-    $('.card-body .price-wrap').sameHeight();
-    $('.payment-method .method-title').sameHeight();
-    $('.shipping-method .method-title').sameHeight();
-    $('.payment-method .card-title').sameHeight();
-    $('.shipping-method .card-title').sameHeight();
+    $('.card-body .img-wrap').matchHeight();
+    $('.card-body .attributes').matchHeight();
+    $('.card-body .title').matchHeight();
+    $('.card-body .price-wrap').matchHeight();
+    $('.payment-method .method-title').matchHeight();
+    $('.shipping-method .method-title').matchHeight();
+    $('.payment-method .card-title').matchHeight();
+    $('.shipping-method .card-title').matchHeight();
+});
 });
 
 // Product Images Zoom
