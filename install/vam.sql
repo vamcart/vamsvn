@@ -915,6 +915,7 @@ CREATE TABLE faq (
    faq_page_url varchar(255),
    likes int(3) DEFAULT "0" NOT NULL,
    dislikes int(3) DEFAULT "0" NOT NULL,
+   categories_id int(3) DEFAULT "0" NOT NULL,
    PRIMARY KEY (faq_id)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
@@ -945,6 +946,7 @@ CREATE TABLE latest_news (
    news_page_url varchar(255),
    likes int(3) DEFAULT "0" NOT NULL,
    dislikes int(3) DEFAULT "0" NOT NULL,
+   categories_id int(3) DEFAULT "0" NOT NULL,
    PRIMARY KEY (news_id)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
