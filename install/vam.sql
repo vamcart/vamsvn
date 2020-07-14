@@ -916,7 +916,6 @@ CREATE TABLE faq (
    faq_page_url varchar(255),
    likes int(3) DEFAULT "0" NOT NULL,
    dislikes int(3) DEFAULT "0" NOT NULL,
-   categories_id int(3) DEFAULT "0" NOT NULL,
    PRIMARY KEY (faq_id)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
@@ -947,7 +946,6 @@ CREATE TABLE latest_news (
    news_page_url varchar(255),
    likes int(3) DEFAULT "0" NOT NULL,
    dislikes int(3) DEFAULT "0" NOT NULL,
-   categories_id int(3) DEFAULT "0" NOT NULL,
    PRIMARY KEY (news_id)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
@@ -4936,3 +4934,51 @@ INSERT INTO `specification_url` (`id`, `uri`, `query`, `date_added`, `current_id
 (663, 'tablets/pamyat-32-gb-razmery-176-10-x-243-10-x-7-95-mm.html', 'cPath=2&cat=2&f10%5B%5D=19&f9%5B%5D=25', '2020-07-11 15:15:23', 0),
 (664, 'tablets/pamyat-32-gb-yekran-10-1in-1280-x-800.html', 'cPath=2&cat=2&f6%5B%5D=27&f9%5B%5D=25', '2020-07-11 15:15:23', 0),
 (665, 'tablets/pamyat-32-gb-yekran-10-1in-2560-h-1600.html', 'cPath=2&cat=2&f6%5B%5D=28&f9%5B%5D=25', '2020-07-11 15:15:23', 0);
+
+DROP TABLE IF EXISTS articles_to_categories;
+CREATE TABLE articles_to_categories (
+  articles_id int NOT NULL,
+  categories_id int NOT NULL,
+  PRIMARY KEY (articles_id,categories_id),
+  KEY idx_categories_id (categories_id)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+
+DROP TABLE IF EXISTS articles_to_products;
+CREATE TABLE articles_to_products (
+  articles_id int NOT NULL,
+  products_id int NOT NULL,
+  PRIMARY KEY (articles_id,products_id),
+  KEY idx_products_id (products_id)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+
+DROP TABLE IF EXISTS faq_to_categories;
+CREATE TABLE faq_to_categories (
+  faq_id int NOT NULL,
+  categories_id int NOT NULL,
+  PRIMARY KEY (faq_id,categories_id),
+  KEY idx_categories_id (categories_id)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+
+DROP TABLE IF EXISTS faq_to_products;
+CREATE TABLE faq_to_products (
+  faq_id int NOT NULL,
+  products_id int NOT NULL,
+  PRIMARY KEY (faq_id,products_id),
+  KEY idx_products_id (products_id)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+
+DROP TABLE IF EXISTS latest_news_to_categories;
+CREATE TABLE latest_news_to_categories (
+  news_id int NOT NULL,
+  categories_id int NOT NULL,
+  PRIMARY KEY (news_id,categories_id),
+  KEY idx_categories_id (categories_id)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+
+DROP TABLE IF EXISTS latest_news_to_products;
+CREATE TABLE latest_news_to_products (
+  news_id int NOT NULL,
+  products_id int NOT NULL,
+  PRIMARY KEY (news_id,products_id),
+  KEY idx_products_id (products_id)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
