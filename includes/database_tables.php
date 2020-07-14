@@ -155,5 +155,12 @@ define('TABLE_PRODUCTS_PINS', 'products_pins');
   define('TABLE_ANSWER_TEMPLATES', 'answer_templates');
 
   define('TABLE_PRODUCTS_BUNDLES', 'products_bundles');
-    
+
+  define('TABLE_ARTICLES_TO_CATEGORIES', 'articles_to_categories');
+  define('TABLE_ARTICLES_TO_PRODUCTS', 'articles_to_products');
+  define('TABLE_FAQ_TO_CATEGORIES', 'faq_to_categories');
+  define('TABLE_FAQ_TO_PRODUCTS', 'faq_to_products');
+  define('TABLE_LATEST_NEWS_TO_CATEGORIES', 'latest_news_to_categories');
+  define('TABLE_LATEST_NEWS_TO_PRODUCTS', 'latest_news_to_products');
+      
 ?>
