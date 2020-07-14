@@ -722,9 +722,9 @@ CREATE TABLE currencies (
   code char(3) NOT NULL,
   symbol_left varchar(12),
   symbol_right varchar(12),
-  decimal_point char(1),
-  thousands_point char(1),
-  decimal_places char(1),
+  decimal_point varchar(12),
+  thousands_point varchar(12),
+  decimal_places varchar(12),
   value float(13,8),
   last_updated datetime NULL,
   PRIMARY KEY (currencies_id)
