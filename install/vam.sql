@@ -247,6 +247,7 @@ CREATE TABLE articles (
   articles_keywords varchar(255),
   likes int(3) DEFAULT "0" NOT NULL,
   dislikes int(3) DEFAULT "0" NOT NULL,
+  categories_id int(3) DEFAULT "0" NOT NULL,
   PRIMARY KEY  (articles_id),
   KEY idx_articles_date_added (articles_date_added)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
