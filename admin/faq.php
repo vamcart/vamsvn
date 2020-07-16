@@ -18,7 +18,8 @@
   require('includes/application_top.php');
   require_once(DIR_FS_INC . 'vam_wysiwyg_tiny.inc.php');
   require_once (DIR_FS_INC.'vam_image_submit.inc.php');
-
+  require_once (DIR_WS_FUNCTIONS . 'products_specifications.php');
+  
   if ($_GET['action']) {
     switch ($_GET['action']) {
       case 'setflag': //set the status of a faq item.
@@ -67,6 +68,27 @@
           $faq_id = vam_db_insert_id(); //not actually used ATM -- just there in case
         }
  //       vam_redirect(vam_href_link(FILENAME_FAQ));
+ 
+      if (isset($_POST['faq_to_categories_id']) && $faq_id > 0) {
+      foreach ($_POST['faq_to_categories_id'] as $key => $value) {
+        if (!is_array($_POST[$key])) {
+			vam_db_query("INSERT INTO ".TABLE_FAQ_TO_CATEGORIES."
+								              SET faq_id   = '".$faq_id."',
+								              categories_id = '".$value."'");
+        }
+      }
+      }
+
+      if (isset($_POST['faq_to_products_id']) && $faq_id > 0) {
+      foreach ($_POST['faq_to_products_id'] as $key => $value) {
+        if (!is_array($_POST[$key])) {
+			vam_db_query("INSERT INTO ".TABLE_FAQ_TO_PRODUCTS."
+								              SET faq_id   = '".$faq_id."',
+								              products_id = '".$value."'");
+        }
+      }
+      }
+ 
         break;
 
       case 'update_faq': //user wants to modify a faq.
@@ -82,6 +104,40 @@
                                   );
           vam_db_perform(TABLE_FAQ, $sql_data_array, 'update', "faq_id = '" . vam_db_prepare_input($_GET['faq_id']) . "'");
         }
+
+		//$faq_to_categories_array = array();
+		//if ($_GET['faq_id'] > 0) {
+		//$faq_to_categories_query = vam_db_query("select f2c.categories_id from " . TABLE_FAQ_TO_CATEGORIES . " f2c where f2c.faq_id = ".$_GET['faq_id']."");
+		//while ($faq_to_categories = vam_db_fetch_array($faq_to_categories_query))
+		//{
+			//$faq_to_categories_array[] = $faq_to_categories['categories_id'];
+		//}
+		//}
+
+      //if (isset($_POST['faq_to_categories_id']) && $_GET['faq_id'] > 0) {
+      vam_db_query("DELETE FROM " . TABLE_FAQ_TO_CATEGORIES . " WHERE faq_id = '" . (int)$_GET['faq_id'] . "'");
+      foreach ($_POST['faq_to_categories_id'] as $key => $value) {
+        if (!is_array($_POST[$key])) {
+        //if (in_array_column($value, "categories_id", $faq_to_categories_array)) {        	
+			vam_db_query("INSERT INTO ".TABLE_FAQ_TO_CATEGORIES."
+								              SET faq_id   = '".$_GET['faq_id']."',
+								              categories_id = '".$value."'");
+        //}
+        }
+      }
+      //}
+
+      //if (isset($_POST['faq_to_products_id']) && $faq_id > 0) {
+      vam_db_query("DELETE FROM " . TABLE_FAQ_TO_PRODUCTS . " WHERE faq_id = '" . (int)$_GET['faq_id'] . "'");
+      foreach ($_POST['faq_to_products_id'] as $key => $value) {
+        if (!is_array($_POST[$key])) {
+			vam_db_query("INSERT INTO ".TABLE_FAQ_TO_PRODUCTS."
+								              SET faq_id   = '".$_GET['faq_id']."',
+								              products_id = '".$value."'");
+        }
+      }
+      //}
+              
   //      vam_redirect(vam_href_link(FILENAME_FAQ));
         break;
     }
@@ -186,6 +242,42 @@ $manual_link = 'delete-faq';
           </tr>
           <tr>
             <td colspan="2"><?php echo vam_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
+          </tr>
+<?php 
+
+		// create an array of products on special, which will be excluded from the pull down menu of products
+		// (when creating a new product on special)
+		$faq_to_categories_array = array();
+		if ($_GET['faq_id'] > 0) {
+		$faq_to_categories_query = vam_db_query("select f2c.categories_id from " . TABLE_FAQ_TO_CATEGORIES . " f2c where f2c.faq_id = ".$_GET['faq_id']."");
+		while ($faq_to_categories = vam_db_fetch_array($faq_to_categories_query))
+		{
+			$faq_to_categories_array[] = $faq_to_categories['categories_id'];
+		}
+		}
+?>          
+          <tr>
+            <td class="main"><?php echo TEXT_FAQ_ATTACH_TO_CATEGORIES; ?>:</td>
+            <td class="main"><?php echo vam_draw_multi_pull_down_menu('faq_to_categories_id[]', vam_get_category_tree(), $faq_to_categories_array, 'multiple="multiple" data-placeholder="'.TEXT_FAQ_SELECT_CATEGORIES.'"'); ?></td>
+          </tr>
+          <tr>
+            <td colspan="2"><?php echo vam_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
+          </tr>
+<?php 
+
+      // create an array of products on special, which will be excluded from the pull down menu of products
+      // (when creating a new product on special)
+      $faq_to_products_array = array();
+		if ($_GET['faq_id'] > 0) {
+		$faq_to_products_query = vam_db_query("select f2p.products_id from " . TABLE_FAQ_TO_PRODUCTS . " f2p where f2p.faq_id = ".$_GET['faq_id']."");
+      while ($faq_to_products = vam_db_fetch_array($faq_to_products_query)) {
+        $faq_to_products_array[] = $faq_to_products['products_id'];
+      }
+      }
+?>          
+          <tr>
+            <td class="main"><?php echo TEXT_FAQ_ATTACH_TO_PRODUCTS; ?>:</td>
+            <td class="main"><?php echo vam_draw_products_multi_pull_down_menu('faq_to_products_id[]', '', $faq_to_products_array, 'multiple="multiple" data-placeholder="'.TEXT_FAQ_SELECT_PRODUCTS.'"'); ?></td>
           </tr>
           <tr>
             <td colspan="2"><?php echo vam_draw_separator('pixel_trans.gif', '1', '10'); ?></td>

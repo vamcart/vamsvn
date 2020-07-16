@@ -353,6 +353,51 @@ function vam_draw_products_pull_down($name, $parameters = '', $exclude = '') {
 	return $select_string;
 }
 
+////
+// Output a multiple select form pull down menu
+  function vam_draw_products_multi_pull_down_menu ($name, $values, $default = array(), $parameters = '', $required = false) {
+    $field = '<select name="' . vam_output_string ($name) . '"';
+
+    if (vam_not_null ($parameters) ) $field .= ' ' . $parameters;
+
+    $field .= 'multiple="' . $name . '">';
+
+    if (empty ($default) && ( (isset ($_GET[$name]) && is_string ($_GET[$name])) || (isset ($_POST[$name]) && is_string ($_POST[$name])) ) ) {
+      if (isset ($_GET[$name]) && is_string ($_GET[$name])) {
+        $default = stripslashes ($_GET[$name]);
+      } elseif (isset ($_POST[$name]) && is_string ($_POST[$name]) ) {
+        $default = stripslashes ($_POST[$name]);
+      }
+    }
+
+	$products_query = vam_db_query("select p.products_id, pd.products_name,p.products_tax_class_id, p.products_price from ".TABLE_PRODUCTS." p, ".TABLE_PRODUCTS_DESCRIPTION." pd where p.products_id = pd.products_id and pd.language_id = '".$_SESSION['languages_id']."' order by products_name");
+	while ($products = vam_db_fetch_array($products_query)) {
+		//if (!vam_in_array($products['products_id'], $exclude)) {
+			//brutto admin:
+			if (PRICE_IS_BRUTTO == 'true') {
+				$products['products_price'] = vam_round($products['products_price'] * ((100 + vam_get_tax_rate($products['products_tax_class_id'])) / 100), PRICE_PRECISION);
+			}
+			//$select_string .= '<option value="'.$products['products_id'].'">'.$products['products_name'].' ('.vam_round($products['products_price'], PRICE_PRECISION).')</option>';
+			
+			$field .= '<option value="' . vam_output_string ($products['products_id']) . '"';
+      //if (in_array ($values[$i]['id'], (array) $default) ) {
+      if (in_array_column($products['products_id'], "id", $default) ) {
+			$field .= ' SELECTED';
+      }
+
+			$field .= '>' . vam_output_string ($products['products_name'], array ('"' => '&quot;', '\'' => '&#039;', '<' => '&lt;', '>' => '&gt;')) . '</option>';
+      			
+		//}
+	}
+
+    $field .= '</select>';
+
+    if ($required == true) $field .= TEXT_FIELD_REQUIRED;
+
+    $field .= '<br clear=all>';
+    return $field;
+  }
+
 function vam_options_name($options_id) {
 
 	$options = vam_db_query("select products_options_name from ".TABLE_PRODUCTS_OPTIONS." where products_options_id = '".$options_id."' and language_id = '".$_SESSION['languages_id']."'");

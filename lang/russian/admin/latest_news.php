@@ -48,4 +48,10 @@ define('TEXT_NO_CHILD_CATEGORIES_OR_PRODUCTS', 'Добавьте новость'
 
 define('TEXT_NEWS_PAGE_URL', 'SEO URL новости');
 
+define('TEXT_NEWS_ATTACH_TO_CATEGORIES', 'Прицепить новость к категории');
+define('TEXT_NEWS_SELECT_CATEGORIES', 'Выберите категории');
+
+define('TEXT_NEWS_ATTACH_TO_PRODUCTS', 'Прицепить новость к товарам');
+define('TEXT_NEWS_SELECT_PRODUCTS', 'Выберите товары');
+
 ?>

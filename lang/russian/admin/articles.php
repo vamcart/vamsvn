@@ -117,4 +117,10 @@ define('TEXT_ARTICLE_IMAGE', 'Картинка:');
 
 define('TEXT_ARTICLE_KEYWORDS', 'Ключевые слова (через запятую):');
 
+define('TEXT_ARTICLE_ATTACH_TO_CATEGORIES', 'Прицепить статью к категории');
+define('TEXT_ARTICLE_SELECT_CATEGORIES', 'Выберите категории');
+
+define('TEXT_ARTICLE_ATTACH_TO_PRODUCTS', 'Прицепить статью к товарам');
+define('TEXT_ARTICLE_SELECT_PRODUCTS', 'Выберите товары');
+
 ?>

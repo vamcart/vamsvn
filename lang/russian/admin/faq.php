@@ -48,4 +48,10 @@ define('TEXT_NO_CHILD_CATEGORIES_OR_PRODUCTS', 'Добавьте faq');
 
 define('TEXT_FAQ_PAGE_URL', 'SEO URL вопроса и ответа');
 
+define('TEXT_FAQ_ATTACH_TO_CATEGORIES', 'Прицепить вопрос к категории');
+define('TEXT_FAQ_SELECT_CATEGORIES', 'Выберите категории');
+
+define('TEXT_FAQ_ATTACH_TO_PRODUCTS', 'Прицепить вопрос к товарам');
+define('TEXT_FAQ_SELECT_PRODUCTS', 'Выберите товары');
+
 ?>
