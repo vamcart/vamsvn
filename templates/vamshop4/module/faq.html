@@ -1,7 +1,7 @@
 {config_load file="$language/lang_$language.conf" section="faq"} 
 {if $ONE eq 1}
 {assign var="module_data" value=$module_content[0]}
-<div itemscope itemscope itemtype="https://schema.org/FAQPage">
+<div itemscope itemtype="https://schema.org/FAQPage">
 <div class="page" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
 <h1 itemprop="name">{$module_data.FAQ_QUESTION}</h1>
 <div class="pageContent" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
@@ -34,7 +34,7 @@
 
 <br />
 
-<div class="row" itemscope itemscope itemtype="https://schema.org/FAQPage">
+<div class="row" itemscope itemtype="https://schema.org/FAQPage">
 {foreach name=aussen item=module_data from=$module_content}<div class="col-md-6 mb-3">	
 {include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/item/item-faq.html"}
 </div>

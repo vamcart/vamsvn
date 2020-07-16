@@ -17,10 +17,14 @@
    Released under the GNU General Public License 
    ---------------------------------------------------------------------------------------*/
 
+global $news_category_id;
+
 $module = new vamTemplate;
 $module->assign('tpl_path', 'templates/'.CURRENT_TEMPLATE.'/');
 
-$sql = "
+if ((!isset ($news_category_id)) || ($news_category_id == '0')) {
+	
+$sql_news = "
     SELECT
         news_id,
         headline,
@@ -34,17 +38,37 @@ $sql = "
     LIMIT " . MAX_DISPLAY_LATEST_NEWS . "
     ";
 
-$row = 0;
-$module_content = array ();
+} else {
 
-$query = vamDBquery($sql);
-while ($one = vam_db_fetch_array($query,true)) {
+$sql_news = "
+    SELECT
+        n.news_id,
+        n.headline,
+        n.content,
+        n.date_added
+    FROM " . TABLE_LATEST_NEWS . " n , " . TABLE_LATEST_NEWS_TO_CATEGORIES . " n2c
+    WHERE
+         n2c.categories_id = '" . (int)$news_category_id . "'
+         and n.news_id = n2c.news_id 
+         and n.status = '1'
+         and n.language = '" . (int)$_SESSION['languages_id'] . "'
+    ORDER BY n.date_added DESC
+    LIMIT " . MAX_DISPLAY_LATEST_NEWS . "
+    ";
+
+}
+
+$row = 0;
+$module_content_news = array ();
+
+$query_news = vamDBquery($sql_news);
+while ($one_news = vam_db_fetch_array($query_news,true)) {
 
 $qI=0; $qIcon='';
-//echo strpos($one['content'],'src="')." ";
-if ($qI=strpos($one['content'],'src="')) {
+//echo strpos($one_news['content'],'src="')." ";
+if ($qI=strpos($one_news['content'],'src="')) {
 	$qI=$qI+5;
-	$qIcon=substr ($one['content'] , $qI);
+	$qIcon=substr ($one_news['content'] , $qI);
 	$qI=strpos($qIcon,'"');
 	$qIcon= substr($qIcon, 0, $qI);
 //echo "<pre>".$qIcon."</pre>";
@@ -52,22 +76,22 @@ if ($qI=strpos($one['content'],'src="')) {
 
 		$SEF_parameter = '';
 		if (SEARCH_ENGINE_FRIENDLY_URLS == 'true')
-			$SEF_parameter = '&headline='.vam_cleanName($one['headline']);
+			$SEF_parameter = '&headline='.vam_cleanName($one_news['headline']);
 
-    $module_content[]=array(
+    $module_content_news[]=array(
         'NEWS_ICON' => $qIcon,
-        'NEWS_HEADING' => $one['headline'],
-        'NEWS_CONTENT' => $one['content'],
-        'NEWS_ID'      => $one['news_id'],
-        'NEWS_DATA'    => vam_date_short($one['date_added']),
-        'NEWS_LINK_MORE'    => vam_href_link(FILENAME_NEWS, 'news_id='.$one['news_id'] . $SEF_parameter, 'NONSSL'),
+        'NEWS_HEADING' => $one_news['headline'],
+        'NEWS_CONTENT' => $one_news['content'],
+        'NEWS_ID'      => $one_news['news_id'],
+        'NEWS_DATA'    => vam_date_short($one_news['date_added']),
+        'NEWS_LINK_MORE'    => vam_href_link(FILENAME_NEWS, 'news_id='.$one_news['news_id'] . $SEF_parameter, 'NONSSL'),
         );
 
 }
-if (sizeof($module_content) > 0) {
+if (sizeof($module_content_news) > 0) {
     $module->assign('NEWS_LINK', vam_href_link(FILENAME_NEWS));
     $module->assign('language', $_SESSION['language']);
-    $module->assign('module_content',$module_content);
+    $module->assign('module_content',$module_content_news);
 	
 	// set cache ID
 	 if (!CacheCheck()) {

@@ -17,10 +17,14 @@
    Released under the GNU General Public License 
    ---------------------------------------------------------------------------------------*/
 
+global $faq_category_id;
+
 $module = new vamTemplate;
 $module->assign('tpl_path', 'templates/'.CURRENT_TEMPLATE.'/');
 
-$sql = "
+if ((!isset ($faq_category_id)) || ($faq_category_id == '0')) {
+	
+$sql_faq = "
     SELECT
         faq_id,
         question,
@@ -34,40 +38,60 @@ $sql = "
     LIMIT " . MAX_DISPLAY_FAQ . "
     ";
 
+} else {
+
+$sql_faq = "
+    SELECT
+        f.faq_id,
+        f.question,
+        f.answer,
+        f.date_added
+    FROM " . TABLE_FAQ . " f , " . TABLE_FAQ_TO_CATEGORIES . " f2c
+    WHERE
+         f2c.categories_id = '" . (int)$faq_category_id . "'
+         and f.faq_id = f2c.faq_id 
+         and f.status = '1'
+         and f.language = '" . (int)$_SESSION['languages_id'] . "'
+    ORDER BY f.date_added DESC
+    LIMIT " . MAX_DISPLAY_FAQ . "
+    ";
+    
+}
+
 $row = 0;
-$module_content = array ();
+$module_content_faq = array ();
 
-$query = vamDBquery($sql);
-while ($one = vam_db_fetch_array($query,true)) {
+$query_faq = vamDBquery($sql_faq);
+while ($one_faq = vam_db_fetch_array($query_faq,true)) {
 
-$qI=0; $qIcon='';
-//echo strpos($one['content'],'src="')." ";
-if ($qI=strpos($one['content'],'src="')) {
-	$qI=$qI+5;
-	$qIcon=substr ($one['content'] , $qI);
-	$qI=strpos($qIcon,'"');
-	$qIcon= substr($qIcon, 0, $qI);
+$faqI=0; $faqIcon='';
+//echo strpos($one_faq['answer'],'src="')." ";
+if ($faqI=strpos($one_faq['answer'],'src="')) {
+	$faqI=$faqI+5;
+	$faqIcon=substr ($one_faq['answer'] , $faqI);
+	$faqI=strpos($faqIcon,'"');
+	$faqIcon= substr($faqIcon, 0, $faqI);
 //echo "<pre>".$qIcon."</pre>";
 }
 
 		$SEF_parameter = '';
 		if (SEARCH_ENGINE_FRIENDLY_URLS == 'true')
-			$SEF_parameter = '&headline='.vam_cleanName($one['headline']);
+			$SEF_parameter = '&headline='.vam_cleanName($one_faq['question']);
 
-    $module_content[]=array(
-        'FAQ_ICON' => $qIcon,
-        'FAQ_QUESTION' => $one['question'],
-        'FAQ_ANSWER' => $one['answer'],
-        'FAQ_ID'      => $one['faq_id'],
-        'FAQ_DATA'    => vam_date_short($one['date_added']),
-        'FAQ_LINK_MORE'    => vam_href_link(FILENAME_FAQ, 'faq_id='.$one['faq_id'] . $SEF_parameter, 'NONSSL'),
+    $module_content_faq[]=array(
+        'FAQ_ICON' => $faqIcon,
+        'FAQ_QUESTION' => $one_faq['question'],
+        'FAQ_ANSWER' => $one_faq['answer'],
+        'FAQ_ID'      => $one_faq['faq_id'],
+        'FAQ_DATA'    => vam_date_short($one_faq['date_added']),
+        'FAQ_LINK_MORE'    => vam_href_link(FILENAME_FAQ, 'faq_id='.$one_faq['faq_id'] . $SEF_parameter, 'NONSSL'),
         );
 
 }
-if (sizeof($module_content) > 0) {
+if (sizeof($module_content_faq) > 0) {
     $module->assign('FAQ_LINK', vam_href_link(FILENAME_FAQ));
     $module->assign('language', $_SESSION['language']);
-    $module->assign('module_content',$module_content);
+    $module->assign('module_content',$module_content_faq);
 	
 	// set cache ID
 	 if (!CacheCheck()) {
