@@ -19,6 +19,7 @@
   require('includes/application_top.php');
   require_once(DIR_FS_INC . 'vam_wysiwyg_tiny.inc.php');
   require_once (DIR_FS_INC.'vam_image_submit.inc.php');
+  require_once (DIR_WS_FUNCTIONS . 'products_specifications.php');
 
   if ($_GET['action']) {
     switch ($_GET['action']) {
@@ -68,6 +69,27 @@
           $news_id = vam_db_insert_id(); //not actually used ATM -- just there in case
         }
  //       vam_redirect(vam_href_link(FILENAME_LATEST_NEWS));
+ 
+      if (isset($_POST['news_to_categories_id']) && $news_id > 0) {
+      foreach ($_POST['news_to_categories_id'] as $key => $value) {
+        if (!is_array($_POST[$key])) {
+			vam_db_query("INSERT INTO ".TABLE_LATEST_NEWS_TO_CATEGORIES."
+								              SET news_id   = '".$news_id."',
+								              categories_id = '".$value."'");
+        }
+      }
+      }
+
+      if (isset($_POST['news_to_products_id']) && $news_id > 0) {
+      foreach ($_POST['news_to_products_id'] as $key => $value) {
+        if (!is_array($_POST[$key])) {
+			vam_db_query("INSERT INTO ".TABLE_LATEST_NEWS_TO_PRODUCTS."
+								              SET news_id   = '".$news_id."',
+								              products_id = '".$value."'");
+        }
+      }
+      }
+ 
         break;
 
       case 'update_latest_news': //user wants to modify a news article.
@@ -83,6 +105,39 @@
                                   );
           vam_db_perform(TABLE_LATEST_NEWS, $sql_data_array, 'update', "news_id = '" . vam_db_prepare_input($_GET['news_id']) . "'");
         }
+
+		//$news_to_categories_array = array();
+		//if ($_GET['news_id'] > 0) {
+		//$news_to_categories_query = vam_db_query("select f2c.categories_id from " . TABLE_LATEST_NEWS_TO_CATEGORIES . " f2c where f2c.news_id = ".$_GET['news_id']."");
+		//while ($news_to_categories = vam_db_fetch_array($news_to_categories_query))
+		//{
+			//$news_to_categories_array[] = $news_to_categories['categories_id'];
+		//}
+		//}
+
+      //if (isset($_POST['news_to_categories_id']) && $_GET['news_id'] > 0) {
+      vam_db_query("DELETE FROM " . TABLE_LATEST_NEWS_TO_CATEGORIES . " WHERE news_id = '" . (int)$_GET['news_id'] . "'");
+      foreach ($_POST['news_to_categories_id'] as $key => $value) {
+        if (!is_array($_POST[$key])) {
+        //if (in_array_column($value, "categories_id", $news_to_categories_array)) {        	
+			vam_db_query("INSERT INTO ".TABLE_LATEST_NEWS_TO_CATEGORIES."
+								              SET news_id   = '".$_GET['news_id']."',
+								              categories_id = '".$value."'");
+        //}
+        }
+      }
+      //}
+
+      //if (isset($_POST['news_to_products_id']) && $news_id > 0) {
+      vam_db_query("DELETE FROM " . TABLE_LATEST_NEWS_TO_PRODUCTS . " WHERE news_id = '" . (int)$_GET['news_id'] . "'");
+      foreach ($_POST['news_to_products_id'] as $key => $value) {
+        if (!is_array($_POST[$key])) {
+			vam_db_query("INSERT INTO ".TABLE_LATEST_NEWS_TO_PRODUCTS."
+								              SET news_id   = '".$_GET['news_id']."',
+								              products_id = '".$value."'");
+        }
+      }
+      //}
   //      vam_redirect(vam_href_link(FILENAME_LATEST_NEWS));
         break;
     }
@@ -189,6 +244,46 @@ $manual_link = 'delete-news';
           <tr>
             <td class="main"><?php echo TEXT_LATEST_NEWS_CONTENT; ?>:</td>
             <td class="main"><?php echo vam_draw_separator('pixel_trans.gif', '24', '15') . '&nbsp;' . vam_draw_textarea_field('content', '', '100%', '25', stripslashes($latest_news['content'])); ?><br /><a href="javascript:toggleHTMLEditor('content');"><?php echo TEXT_TOGGLE_EDITOR; ?></a></td>
+          </tr>
+          <tr>
+            <td colspan="2"><?php echo vam_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
+          </tr>
+
+<?php 
+
+		// create an array of products on special, which will be excluded from the pull down menu of products
+		// (when creating a new product on special)
+		$news_to_categories_array = array();
+		if ($_GET['news_id'] > 0) {
+		$news_to_categories_query = vam_db_query("select f2c.categories_id from " . TABLE_LATEST_NEWS_TO_CATEGORIES . " f2c where f2c.news_id = ".$_GET['news_id']."");
+		while ($news_to_categories = vam_db_fetch_array($news_to_categories_query))
+		{
+			$news_to_categories_array[] = $news_to_categories['categories_id'];
+		}
+		}
+?>          
+          <tr>
+            <td class="main"><?php echo TEXT_NEWS_ATTACH_TO_CATEGORIES; ?>:</td>
+            <td class="main"><?php echo vam_draw_multi_pull_down_menu('news_to_categories_id[]', vam_get_category_tree(), $news_to_categories_array, 'multiple="multiple" data-placeholder="'.TEXT_NEWS_SELECT_CATEGORIES.'"'); ?></td>
+          </tr>
+          <tr>
+            <td colspan="2"><?php echo vam_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
+          </tr>
+<?php 
+
+      // create an array of products on special, which will be excluded from the pull down menu of products
+      // (when creating a new product on special)
+      $news_to_products_array = array();
+		if ($_GET['news_id'] > 0) {
+		$news_to_products_query = vam_db_query("select f2p.products_id from " . TABLE_LATEST_NEWS_TO_PRODUCTS . " f2p where f2p.news_id = ".$_GET['news_id']."");
+      while ($news_to_products = vam_db_fetch_array($news_to_products_query)) {
+        $news_to_products_array[] = $news_to_products['products_id'];
+      }
+      }
+?>          
+          <tr>
+            <td class="main"><?php echo TEXT_NEWS_ATTACH_TO_PRODUCTS; ?>:</td>
+            <td class="main"><?php echo vam_draw_products_multi_pull_down_menu('news_to_products_id[]', '', $news_to_products_array, 'multiple="multiple" data-placeholder="'.TEXT_NEWS_SELECT_PRODUCTS.'"'); ?></td>
           </tr>
           <tr>
             <td colspan="2"><?php echo vam_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
