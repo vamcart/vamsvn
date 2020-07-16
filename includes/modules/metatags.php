@@ -425,7 +425,7 @@ $content_meta = vam_db_fetch_array($content_meta_query, true);
 
 	$mID = (isset($_GET['filter_id']) ? $_GET['filter_id'] : $_GET['manufacturers_id']);
 		
-		    $manufacturer_query = vam_db_query("select m.manufacturers_name, mi.manufacturers_meta_title, mi.manufacturers_meta_description, mi.manufacturers_meta_keywords from " . TABLE_MANUFACTURERS . " m left join " . TABLE_MANUFACTURERS_INFO . " mi on mi.manufacturers_id = m.manufacturers_id where m.manufacturers_id = '" . $_GET['manufacturers_id'] . "'");
+		    $manufacturer_query = vam_db_query("select m.manufacturers_id, m.manufacturers_name, mi.manufacturers_meta_title, mi.manufacturers_meta_description, mi.manufacturers_meta_keywords from " . TABLE_MANUFACTURERS . " m left join " . TABLE_MANUFACTURERS_INFO . " mi on mi.manufacturers_id = m.manufacturers_id where m.manufacturers_id = '" . $_GET['manufacturers_id'] . "'");
 		      $manufacturer = vam_db_fetch_array($manufacturer_query);		
 
    $mName = ($manufacturer['manufacturers_meta_title'] != '') ? $manufacturer['manufacturers_meta_title'] : $manufacturer['manufacturers_name'];
@@ -435,6 +435,7 @@ $content_meta = vam_db_fetch_array($content_meta_query, true);
 
 ?>
 <title><?php echo $mName . ' ' . TITLE . (isset($_GET['page']) && $_GET['page'] > 0 ? ' - ' . sprintf(PREVNEXT_TITLE_PAGE_NO, $_GET['page']) . $_GET['page'] : null); ?></title>
+<link rel="canonical" href="<?php echo vam_href_link(FILENAME_DEFAULT, 'manufacturers_id='.$manufacturer['manufacturers_id']); ?>"/>
 <meta name="description" content="<?php echo $mDesc; ?>" />
 <meta name="keywords" content="<?php echo $mKey; ?>" />
 <?php
