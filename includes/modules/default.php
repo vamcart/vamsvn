@@ -168,7 +168,23 @@ if ($categories['categories_image'] != '')
                     $image = DIR_WS_IMAGES.'product_images/noimage.gif';
                }
 
-  $categories_content[] = array ('CATEGORIES_NAME' => $categories['categories_name'], 'CATEGORIES_HEADING_TITLE' => $categories['categories_heading_title'], 'CATEGORIES_IMAGE' => $image, 'CATEGORIES_LINK' => vam_href_link(FILENAME_DEFAULT, $cPath_new), 'CATEGORIES_DESCRIPTION' => $categories['categories_description']);
+   $categories_image = DIR_FS_CATALOG . $image;
+ 
+	if(file_exists($categories_image) && is_file($categories_image)) {
+		list($width, $height, $type, $attr) = getimagesize($categories_image);
+	}
+
+  $categories_content[] = array (
+  
+  'CATEGORIES_NAME' => $categories['categories_name'], 
+  'CATEGORIES_HEADING_TITLE' => $categories['categories_heading_title'], 
+  'CATEGORIES_IMAGE' => $image, 
+  'CATEGORIES_IMAGE_WIDTH' => $width, 
+  'CATEGORIES_IMAGE_HEIGHT' => $height, 
+  'CATEGORIES_LINK' => vam_href_link(FILENAME_DEFAULT, $cPath_new), 
+  'CATEGORIES_DESCRIPTION' => $categories['categories_description']
+  
+  );
 
   }
   $new_products_category_id = $current_category_id;
