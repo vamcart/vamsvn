@@ -786,6 +786,7 @@ define('TEXT_ALL_FEATURED_PRODUCTS','Все рекомендуемые');
 define('TEXT_ALL_REVIEWS','Все отзывы');
 define('TEXT_ALL_SITE_REVIEWS','Все отзывы о магазине');
 define('TEXT_ALL_NEWS','Все новости');
+define('TEXT_ALL_FAQ','Все вопросы и ответы');
 define('TEXT_ALL_ARTICLES','Все статьи');
 define('TEXT_ALL_MANUFACTURERS','Все бренды');
 
