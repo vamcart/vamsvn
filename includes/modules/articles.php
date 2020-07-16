@@ -1,10 +1,52 @@
  <?php
+global $articles_category_id;
 
 $module = new vamTemplate;
 
 $module->assign('tpl_path', 'templates/'.CURRENT_TEMPLATE.'/');
 
-$sql = "select a.articles_id, a.articles_image, a.articles_keywords, a.sort_order, a.articles_date_added, ad.articles_name, ad.articles_description, ad.articles_viewed, ad.articles_head_desc_tag, au.authors_id, au.authors_image, au.authors_name, td.topics_id, td.topics_name from " . TABLE_ARTICLES . " a left join " . TABLE_AUTHORS . " au on a.authors_id = au.authors_id, " . TABLE_ARTICLES_TO_TOPICS . " a2t left join " . TABLE_TOPICS_DESCRIPTION . " td on a2t.topics_id = td.topics_id, " . TABLE_ARTICLES_DESCRIPTION . " ad where (a.articles_date_available IS NULL or to_days(a.articles_date_available) <= to_days(now())) and a.articles_id = a2t.articles_id and a.articles_status = '1' and a.articles_id = ad.articles_id and ad.language_id = '" . (int) $_SESSION['languages_id'] . "' and td.language_id = '" . (int) $_SESSION['languages_id'] . "' ORDER BY articles_date_added DESC LIMIT " . MAX_NEW_ARTICLES_PER_PAGE . "";
+if ((!isset ($articles_category_id)) || ($articles_category_id == '0')) {
+
+$sql = "
+
+select a.articles_id, a.articles_image, a.articles_keywords, a.sort_order, a.articles_date_added, 
+ad.articles_name, ad.articles_description, ad.articles_viewed, ad.articles_head_desc_tag, 
+au.authors_id, au.authors_image, au.authors_name, 
+td.topics_id, td.topics_name 
+from " . TABLE_ARTICLES . " a 
+left join " . TABLE_AUTHORS . " au 
+on a.authors_id = au.authors_id, " . TABLE_ARTICLES_TO_TOPICS . " a2t 
+left join " . TABLE_TOPICS_DESCRIPTION . " td 
+on a2t.topics_id = td.topics_id, " . TABLE_ARTICLES_DESCRIPTION . " ad 
+where (a.articles_date_available IS NULL or to_days(a.articles_date_available) <= to_days(now())) 
+and a.articles_id = a2t.articles_id 
+and a.articles_status = '1' 
+and a.articles_id = ad.articles_id 
+and ad.language_id = '" . (int) $_SESSION['languages_id'] . "' 
+and td.language_id = '" . (int) $_SESSION['languages_id'] . "' 
+ORDER BY articles_date_added DESC LIMIT " . MAX_NEW_ARTICLES_PER_PAGE . "
+
+";
+
+} else {
+
+$sql = "
+
+select a.articles_id, a.articles_image, a.articles_keywords, a.sort_order, a.articles_date_added, 
+ad.articles_name, ad.articles_description, ad.articles_viewed, ad.articles_head_desc_tag 
+from 
+" . TABLE_ARTICLES . " a, 
+" . TABLE_ARTICLES_DESCRIPTION . " ad,
+" . TABLE_ARTICLES_TO_CATEGORIES . " a2c   
+where a2c.categories_id = '" . $articles_category_id . "' 
+and a2c.articles_id = a.articles_id 
+and a.articles_id = ad.articles_id 
+and ad.language_id = '" . (int) $_SESSION['languages_id'] . "' 
+ORDER BY articles_date_added DESC LIMIT " . MAX_NEW_ARTICLES_PER_PAGE . "
+
+";
+
+}
 
 $row = 0;
 
