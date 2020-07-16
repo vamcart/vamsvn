@@ -17,6 +17,7 @@
 
   require('includes/application_top.php');
   require_once(DIR_FS_INC . 'vam_wysiwyg_tiny.inc.php');
+  require_once (DIR_WS_FUNCTIONS . 'products_specifications.php');
 
   $action = (isset($_GET['action']) ? $_GET['action'] : '');
 
@@ -289,6 +290,28 @@ $authorsImg = $_POST['articles_image'];
             $articles_id = vam_db_insert_id();
 
             vam_db_query("insert into " . TABLE_ARTICLES_TO_TOPICS . " (articles_id, topics_id) values ('" . (int)$articles_id . "', '" . (int)$current_topic_id . "')");
+
+		      if (isset($_POST['articles_to_categories_id']) && $articles_id > 0) {
+		      foreach ($_POST['articles_to_categories_id'] as $key => $value) {
+		        if (!is_array($_POST[$key])) {
+					vam_db_query("INSERT INTO ".TABLE_ARTICLES_TO_CATEGORIES."
+										              SET articles_id   = '".$articles_id."',
+										              categories_id = '".$value."'");
+		        }
+		      }
+		      }
+		
+		      if (isset($_POST['articles_to_products_id']) && $articles_id > 0) {
+		      foreach ($_POST['articles_to_products_id'] as $key => $value) {
+		        if (!is_array($_POST[$key])) {
+					vam_db_query("INSERT INTO ".TABLE_ARTICLES_TO_PRODUCTS."
+										              SET articles_id   = '".$articles_id."',
+										              products_id = '".$value."'");
+		        }
+		      }
+		      }
+      
+
           } elseif ($action == 'update_article') {
             $update_sql_data = array('articles_last_modified' => 'now()');
             // If expected article then articles_date _added becomes articles_date_available
@@ -301,6 +324,40 @@ $authorsImg = $_POST['articles_image'];
             $sql_data_array = array_merge($sql_data_array, $update_sql_data);
 
             vam_db_perform(TABLE_ARTICLES, $sql_data_array, 'update', "articles_id = '" . (int)$articles_id . "'");
+            
+				//$articles_to_categories_array = array();
+				//if ($_GET['aID'] > 0) {
+				//$articles_to_categories_query = vam_db_query("select f2c.categories_id from " . TABLE_ARTICLES_TO_CATEGORIES . " f2c where f2c.articles_id = ".$_GET['aID']."");
+				//while ($articles_to_categories = vam_db_fetch_array($articles_to_categories_query))
+				//{
+					//$articles_to_categories_array[] = $articles_to_categories['categories_id'];
+				//}
+				//}
+		
+		      //if (isset($_POST['articles_to_categories_id']) && $_GET['aID'] > 0) {
+		      vam_db_query("DELETE FROM " . TABLE_ARTICLES_TO_CATEGORIES . " WHERE articles_id = '" . (int)$_GET['aID'] . "'");
+		      foreach ($_POST['articles_to_categories_id'] as $key => $value) {
+		        if (!is_array($_POST[$key])) {
+		        //if (in_array_column($value, "categories_id", $articles_to_categories_array)) {        	
+					vam_db_query("INSERT INTO ".TABLE_ARTICLES_TO_CATEGORIES."
+										              SET articles_id   = '".$_GET['aID']."',
+										              categories_id = '".$value."'");
+		        //}
+		        }
+		      }
+		      //}
+		
+		      //if (isset($_POST['articles_to_products_id']) && $articles_id > 0) {
+		      vam_db_query("DELETE FROM " . TABLE_ARTICLES_TO_PRODUCTS . " WHERE articles_id = '" . (int)$_GET['aID'] . "'");
+		      foreach ($_POST['articles_to_products_id'] as $key => $value) {
+		        if (!is_array($_POST[$key])) {
+					vam_db_query("INSERT INTO ".TABLE_ARTICLES_TO_PRODUCTS."
+										              SET articles_id   = '".$_GET['aID']."',
+										              products_id = '".$value."'");
+		        }
+		      }
+		      //}
+                  
           }
 
           $languages = vam_get_languages();
@@ -1033,7 +1090,7 @@ textarea.addEventListener("input", function(){
             <td class="main"><?php echo TEXT_ARTICLES_URL . '<br><small>' . TEXT_ARTICLES_URL_WITHOUT_HTTP . '</small>'; ?></td>
             <td class="main"><?php echo vam_draw_input_field('articles_url[' . $languages[$i]['id'] . ']', (isset($articles_url[$languages[$i]['id']]) ? $articles_url[$languages[$i]['id']] : vam_get_articles_url($aInfo->articles_id, $languages[$i]['id'])), 'size="35"'); ?></td>
           </tr>
-          
+
           </table>
           </div>
 <?php
@@ -1065,6 +1122,45 @@ $image_field .= vam_draw_file_field('articles_image');
           <tr>
             <td class="main"><?php echo TEXT_ARTICLE_PAGE_URL; ?></td>
             <td class="main"><?php echo vam_draw_input_field('articles_page_url', $aInfo->articles_page_url, ''); ?></td>
+          </tr>
+          <tr>
+            <td colspan="2"><?php echo vam_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
+          </tr>
+<?php 
+
+		// create an array of products on special, which will be excluded from the pull down menu of products
+		// (when creating a new product on special)
+		$articles_to_categories_array = array();
+		if ($_GET['aID'] > 0) {
+		$articles_to_categories_query = vam_db_query("select f2c.categories_id from " . TABLE_ARTICLES_TO_CATEGORIES . " f2c where f2c.articles_id = ".$_GET['aID']."");
+		while ($articles_to_categories = vam_db_fetch_array($articles_to_categories_query))
+		{
+			$articles_to_categories_array[] = $articles_to_categories['categories_id'];
+		}
+		}
+?>          
+          <tr>
+            <td class="main"><?php echo TEXT_ARTICLE_ATTACH_TO_CATEGORIES; ?>:</td>
+            <td class="main"><?php echo vam_draw_multi_pull_down_menu('articles_to_categories_id[]', vam_get_category_tree(), $articles_to_categories_array, 'multiple="multiple" data-placeholder="'.TEXT_ARTICLE_SELECT_CATEGORIES.'"'); ?></td>
+          </tr>
+          <tr>
+            <td colspan="2"><?php echo vam_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
+          </tr>
+<?php 
+
+      // create an array of products on special, which will be excluded from the pull down menu of products
+      // (when creating a new product on special)
+      $articles_to_products_array = array();
+		if ($_GET['aID'] > 0) {
+		$articles_to_products_query = vam_db_query("select f2p.products_id from " . TABLE_ARTICLES_TO_PRODUCTS . " f2p where f2p.articles_id = ".$_GET['aID']."");
+      while ($articles_to_products = vam_db_fetch_array($articles_to_products_query)) {
+        $articles_to_products_array[] = $articles_to_products['products_id'];
+      }
+      }
+?>          
+          <tr>
+            <td class="main"><?php echo TEXT_ARTICLE_ATTACH_TO_PRODUCTS; ?>:</td>
+            <td class="main"><?php echo vam_draw_products_multi_pull_down_menu('articles_to_products_id[]', '', $articles_to_products_array, 'multiple="multiple" data-placeholder="'.TEXT_ARTICLE_SELECT_PRODUCTS.'"'); ?></td>
           </tr>
           <tr>
             <td colspan="2"><?php echo vam_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
@@ -1267,6 +1363,7 @@ $image_field .= vam_draw_file_field('articles_image');
       foreach ($_POST as $key => $value) {
         if (!is_array($_POST[$key])) {
           echo vam_draw_hidden_field($key, htmlspecialchars(stripslashes($value)));
+          //echo $key.'::'.$value;
         }
       }
         echo vam_draw_hidden_field('articles_image', htmlspecialchars(stripslashes($articles_image)));
@@ -1279,6 +1376,13 @@ $image_field .= vam_draw_file_field('articles_image');
         echo vam_draw_hidden_field('articles_head_title_tag[' . $languages[$i]['id'] . ']', htmlspecialchars(stripslashes($articles_head_title_tag[$languages[$i]['id']])));
         echo vam_draw_hidden_field('articles_head_desc_tag[' . $languages[$i]['id'] . ']', htmlspecialchars(stripslashes($articles_head_desc_tag[$languages[$i]['id']])));
         echo vam_draw_hidden_field('articles_head_keywords_tag[' . $languages[$i]['id'] . ']', htmlspecialchars(stripslashes($articles_head_keywords_tag[$languages[$i]['id']])));
+      }
+
+      foreach ($_POST['articles_to_categories_id'] as $key => $value) {
+        echo vam_draw_hidden_field('articles_to_categories_id[]', $value);
+      }
+      foreach ($_POST['articles_to_products_id'] as $key => $value) {
+        echo vam_draw_hidden_field('articles_to_products_id[]', $value);
       }
 
       echo '<span class="button"><button type="submit" name="edit" value="' . BUTTON_BACK . '">' . vam_image(DIR_WS_IMAGES . 'icons/buttons/back.png', '', '12', '12') . '&nbsp;' . BUTTON_BACK . '</button></span>' . '&nbsp;&nbsp;';
