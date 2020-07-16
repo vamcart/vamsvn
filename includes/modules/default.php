@@ -180,6 +180,15 @@ if ($categories['categories_image'] != '')
   $specials_products_category_id = $current_category_id;
   include (DIR_WS_MODULES.FILENAME_SPECIALS);
 
+  $news_category_id = $current_category_id;
+  include (DIR_WS_MODULES.FILENAME_NEWS);
+
+  $faq_category_id = $current_category_id;
+  include (DIR_WS_MODULES.FILENAME_FAQ);
+
+  $articles_category_id = $current_category_id;
+  include (DIR_WS_MODULES.FILENAME_ARTICLES);
+
   $image = '';
   if ($category['categories_image'] != '') {
   $image = DIR_WS_IMAGES.'categories/'.$category['categories_image'];
