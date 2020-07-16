@@ -278,7 +278,16 @@ if ($result != false) {
 	$module->assign('NAVIGATION_PAGES', $navigation_pages);
 	
   //include (DIR_WS_MODULES.FILENAME_PRODUCTS_FILTERS);	
-	
+
+  $news_category_id = $current_category_id;
+  include (DIR_WS_MODULES.'news_product_listing.php');
+
+  $faq_category_id = $current_category_id;
+  include (DIR_WS_MODULES.'faq_product_listing.php');
+
+  $articles_category_id = $current_category_id;
+  include (DIR_WS_MODULES.'articles_product_listing.php');
+  	
 	// set cache ID
 	 if (!CacheCheck()) {
 		$module->caching = 0;
