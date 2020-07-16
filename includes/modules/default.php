@@ -177,6 +177,9 @@ if ($categories['categories_image'] != '')
   $featured_products_category_id = $current_category_id;
   include (DIR_WS_MODULES.FILENAME_FEATURED);
 
+  $specials_products_category_id = $current_category_id;
+  include (DIR_WS_MODULES.FILENAME_SPECIALS);
+
   $image = '';
   if ($category['categories_image'] != '') {
   $image = DIR_WS_IMAGES.'categories/'.$category['categories_image'];
