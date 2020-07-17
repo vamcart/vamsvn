@@ -542,6 +542,7 @@ define('CATEGORY_EXTRA_FIELDS', 'Додаткова інформація');
 
 define('TEXT_RSS_NEWS', 'Новини');
 define('TEXT_RSS_ARTICLES', 'Статті');
+define('TEXT_RSS_REVIEWS','Обзоры');
 define('TEXT_RSS_CATEGORIES', 'Категорії');
 define('TEXT_RSS_NEW_PRODUCTS', 'Новинки');
 define('TEXT_RSS_FEATURED_PRODUCTS', 'Рекомендовані товари');

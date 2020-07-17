@@ -565,6 +565,7 @@ define('CATEGORY_EXTRA_FIELDS', 'Дополнительная информаци
 
 define('TEXT_RSS_NEWS','Новости');
 define('TEXT_RSS_ARTICLES','Статьи');
+define('TEXT_RSS_REVIEWS','Обзоры');
 define('TEXT_RSS_CATEGORIES','Категории');
 define('TEXT_RSS_NEW_PRODUCTS','Новинки');
 define('TEXT_RSS_FEATURED_PRODUCTS','Рекомендуемые товары');
