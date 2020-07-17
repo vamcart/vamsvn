@@ -118,6 +118,15 @@
 						<li class="nav-item"><span class="nav-link" data-toggle="tab" data-target="#reviews"><i class="fa fa-comment"></i> {$smarty.const.TEXT_PRODUCT_REVIEWS}</span></li>
 						<li class="nav-item"><span class="nav-link" data-toggle="tab" data-target="#shipping"><i class="fa fa-truck"></i> {$smarty.const.TEXT_PRODUCT_SHIPPING}</span></li>
 						<li class="nav-item"><span class="nav-link" data-toggle="tab" data-target="#payment"><i class="fa fa-credit-card"></i> {$smarty.const.TEXT_PRODUCT_PAYMENT}</span></li>
+						{if $MODULE_latest_news}
+						<li class="nav-item"><span class="nav-link" data-toggle="tab" data-target="#news" ><i class="fa fa-newspaper"></i> {$smarty.const.TEXT_RSS_NEWS}</span></li>
+						{/if}
+						{if $MODULE_faq}
+						<li class="nav-item"><span class="nav-link" data-toggle="tab" data-target="#faq" ><i class="fa fa-question"></i> {$smarty.const.NAVBAR_TITLE_FAQ}</span></li>
+						{/if}
+						{if $MODULE_articles}
+						<li class="nav-item"><span class="nav-link" data-toggle="tab" data-target="#articles" ><i class="fa fa-list"></i> {$smarty.const.TEXT_RSS_REVIEWS}</span></li>
+						{/if}						
 					</ul>
 
 					<div class="tab-content">
@@ -195,7 +204,25 @@
 						<div class="tab-pane inner fade in notop" id="payment">
 							{$text_payment_info}
 						</div>
-												
+
+						{if $MODULE_latest_news}
+						<div class="tab-pane inner fade in notop" id="news">
+							{$MODULE_latest_news}
+						</div>
+						{/if}
+
+						{if $MODULE_faq}
+						<div class="tab-pane inner fade in notop" id="faq">
+							{$MODULE_faq}
+						</div>
+						{/if}
+
+						{if $MODULE_articles}
+						<div class="tab-pane inner fade in notop" id="articles">
+							{$MODULE_articles}
+						</div>
+						{/if}
+
 					</div>
 				</div>
 			</div>

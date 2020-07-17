@@ -32,13 +32,6 @@
 </div>
 <p></p>
 {else}
-<form action="faq.php" method="get">
-<input type="hidden" name="description" value="1" />
-<fieldset>
-<legend>{#text_search#}</legend>
-<input type="text" name="akeywords" /><input type="image" src="{$tpl_path}img/box.gif" alt="{#text_search#}" title="{#text_search#}" />
-</fieldset>
-</form>
   {foreach name=aussen item=module_data from=$module_content}<div class="page">
 <div class="pageItem">
 <dl class="itemFaq">
