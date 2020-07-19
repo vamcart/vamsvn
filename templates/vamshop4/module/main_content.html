@@ -1,5 +1,8 @@
 {config_load file="$language/lang_$language.conf" section="index"}
 {$MODULE_error}
+
+{include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/slider/{$smarty.const.DEFAULT_SLIDER}.html"}
+
 <div class="read-more">
 {$text}
 </div>
@@ -57,12 +60,7 @@
 
 </div>
 
-{include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/slider/{$smarty.const.DEFAULT_SLIDER}.html"}
-
-
-
 {$MODULE_manufacturers_default}
-
 
 <div class="mainpage-tabs pb-3">
 
