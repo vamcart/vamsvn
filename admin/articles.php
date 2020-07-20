@@ -17,7 +17,6 @@
 
   require('includes/application_top.php');
   require_once(DIR_FS_INC . 'vam_wysiwyg_tiny.inc.php');
-  require_once (DIR_WS_FUNCTIONS . 'products_specifications.php');
 
   $action = (isset($_GET['action']) ? $_GET['action'] : '');
 
@@ -1141,13 +1140,12 @@ $image_field .= vam_draw_file_field('articles_image');
 ?>          
           <tr>
             <td class="main"><?php echo TEXT_ARTICLE_ATTACH_TO_CATEGORIES; ?>:</td>
-            <td class="main"><?php echo vam_draw_multi_pull_down_menu('articles_to_categories_id[]', vam_get_category_tree(), $articles_to_categories_array, 'multiple="multiple" data-placeholder="'.TEXT_ARTICLE_SELECT_CATEGORIES.'"'); ?></td>
+            <td class="main"><?php echo vam_draw_categories_multi_pull_down_menu('articles_to_categories_id[]', vam_get_category_tree(), $articles_to_categories_array, 'multiple="multiple" data-placeholder="'.TEXT_ARTICLE_SELECT_CATEGORIES.'"'); ?></td>
           </tr>
           <tr>
             <td colspan="2"><?php echo vam_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
           </tr>
 <?php 
-
       // create an array of products on special, which will be excluded from the pull down menu of products
       // (when creating a new product on special)
       $articles_to_products_array = array();

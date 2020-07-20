@@ -18,7 +18,6 @@
   require('includes/application_top.php');
   require_once(DIR_FS_INC . 'vam_wysiwyg_tiny.inc.php');
   require_once (DIR_FS_INC.'vam_image_submit.inc.php');
-  require_once (DIR_WS_FUNCTIONS . 'products_specifications.php');
   
   if ($_GET['action']) {
     switch ($_GET['action']) {
@@ -258,7 +257,7 @@ $manual_link = 'delete-faq';
 ?>          
           <tr>
             <td class="main"><?php echo TEXT_FAQ_ATTACH_TO_CATEGORIES; ?>:</td>
-            <td class="main"><?php echo vam_draw_multi_pull_down_menu('faq_to_categories_id[]', vam_get_category_tree(), $faq_to_categories_array, 'multiple="multiple" data-placeholder="'.TEXT_FAQ_SELECT_CATEGORIES.'"'); ?></td>
+            <td class="main"><?php echo vam_draw_categories_multi_pull_down_menu('faq_to_categories_id[]', vam_get_category_tree(), $faq_to_categories_array, 'multiple="multiple" data-placeholder="'.TEXT_FAQ_SELECT_CATEGORIES.'"'); ?></td>
           </tr>
           <tr>
             <td colspan="2"><?php echo vam_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
