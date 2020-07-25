@@ -277,7 +277,7 @@ if ($result != false) {
 	$module->assign('NAVIGATION', $navigation);
 	$module->assign('NAVIGATION_PAGES', $navigation_pages);
 	
-  //include (DIR_WS_MODULES.FILENAME_PRODUCTS_FILTERS);	
+  include (DIR_WS_MODULES.FILENAME_PRODUCTS_FILTERS);	
 
   $news_category_id = $current_category_id;
   include (DIR_WS_MODULES.'news_product_listing.php');

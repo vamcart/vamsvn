@@ -19,6 +19,15 @@
 <div class="page">
 <div class="pageItem">
 
+{if {$FILTERS}}
+<section class="widget inner">
+	<h2 class="widget-title">{#heading_filters#}</h2>
+			<div class="text-left">
+					{$FILTERS}
+			</div>
+</section>
+{/if}
+
 {if $MANUFACTURER_DROPDOWN}
 {$MANUFACTURER_DROPDOWN}
 {/if}
