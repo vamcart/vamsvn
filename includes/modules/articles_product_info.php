@@ -158,7 +158,7 @@ if (!CacheCheck()) {
 
 $module->caching = 0;
 
-$module= $module->fetch(CURRENT_TEMPLATE.'/module/articles_default.html');
+$module= $module->fetch(CURRENT_TEMPLATE.'/module/articles_product_info.html');
 
 } else {
 
@@ -168,7 +168,7 @@ $module->cache_lifetime=CACHE_LIFETIME;
 
 $module->cache_modified_check=CACHE_CHECK;
 
-$module = $module->fetch(CURRENT_TEMPLATE.'/module/articles_default.html',$cache_id);
+$module = $module->fetch(CURRENT_TEMPLATE.'/module/articles_product_info.html',$cache_id);
 
 }
 

@@ -96,12 +96,12 @@ if (sizeof($module_listing_content_faq) > 0) {
 	// set cache ID
 	 if (!CacheCheck()) {
 		$module_listing->caching = 0;
-      $module_listing= $module_listing->fetch(CURRENT_TEMPLATE.'/module/faq_default.html');
+      $module_listing= $module_listing->fetch(CURRENT_TEMPLATE.'/module/faq_product_listing.html');
 	} else {
         $module_listing->caching = 1;
         $module_listing->cache_lifetime=CACHE_LIFETIME;
         $module_listing->cache_modified_check=CACHE_CHECK;
-        $module_listing = $module_listing->fetch(CURRENT_TEMPLATE.'/module/faq_default.html',$cache_id);
+        $module_listing = $module_listing->fetch(CURRENT_TEMPLATE.'/module/faq_product_listing.html',$cache_id);
 	}
 	$module->assign('MODULE_faq', $module_listing);
 }

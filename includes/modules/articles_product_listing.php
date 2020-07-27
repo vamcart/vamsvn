@@ -158,7 +158,7 @@ if (!CacheCheck()) {
 
 $module_listing->caching = 0;
 
-$module_listing= $module_listing->fetch(CURRENT_TEMPLATE.'/module/articles_default.html');
+$module_listing= $module_listing->fetch(CURRENT_TEMPLATE.'/module/articles_product_listing.html');
 
 } else {
 
@@ -168,7 +168,7 @@ $module_listing->cache_lifetime=CACHE_LIFETIME;
 
 $module_listing->cache_modified_check=CACHE_CHECK;
 
-$module_listing = $module_listing->fetch(CURRENT_TEMPLATE.'/module/articles_default.html',$cache_id);
+$module_listing = $module_listing->fetch(CURRENT_TEMPLATE.'/module/articles_product_listing.html',$cache_id);
 
 }
 
