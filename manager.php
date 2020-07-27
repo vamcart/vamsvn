@@ -234,7 +234,7 @@
           
 				header('HTTP/1.1 404 Not Found');
 				$_GET['coID'] = '12'; // 12 - это id нужной информационной страницы
-				include __DIR__ . '/shop_content.php';
+				include(DIR_FS_CATALOG . '/shop_content.php');
 				exit();          
           
           }
