@@ -587,8 +587,10 @@ $orders_query = "select
 		$vam_get_all_get_params_return = (basename($PHP_SELF) == 'product_info.php') ? preg_replace('/products_id=\d+&/', '', vam_get_all_get_params(array ('action'))) : vam_get_all_get_params(array ('action'));
 		if (AJAX_CART == 'true' && !vam_has_product_attributes($id)) {
 		$link = '<a class="button" href="'.vam_href_link(basename($PHP_SELF), 'action=buy_now&BUYproducts_id='.$id, 'NONSSL').'" onclick="doBuyNow(\''.$id.'\',\'1\'); return false;">'.vam_image_button('buy.png', IMAGE_BUTTON_IN_CART).'</a>';
-		} else {
+		} elseif (AJAX_CART == 'false' && vam_has_product_attributes($id)) {
 		$link = '<a class="button" href="'.vam_href_link(basename($PHP_SELF), 'action=buy_now&BUYproducts_id='.$id, 'NONSSL').'">'.vam_image_button('buy.png', TEXT_SELECT_OPTIONS).'</a>';
+		} else {
+		$link = '<a class="button" href="'.vam_href_link(basename($PHP_SELF), 'action=buy_now&BUYproducts_id='.$id, 'NONSSL').'">'.vam_image_button('buy.png', IMAGE_BUTTON_IN_CART).'</a>';
 		}
 		
 		return $link;
@@ -600,8 +602,10 @@ $orders_query = "select
 		$vam_get_all_get_params_return = (basename($PHP_SELF) == 'product_info.php') ? preg_replace('/products_id=\d+&/', '', vam_get_all_get_params(array ('action'))) : vam_get_all_get_params(array ('action'));
 		if (AJAX_CART == 'true' && !vam_has_product_attributes($id)) {
 		$link = '<a class="btn btn-add-to-cart btn-block" href="'.vam_href_link(basename($PHP_SELF), 'action=buy_now&BUYproducts_id='.$id, 'NONSSL').'" onclick="doBuyNow(\''.$id.'\',\'1\'); return false;"><i class="fa fa-shopping-cart"></i> '.IMAGE_BUTTON_IN_CART.'</a>';
+		} elseif (AJAX_CART == 'false' && vam_has_product_attributes($id)) {
+		$link = '<a class="btn btn-add-to-cart btn-block" href="'.vam_href_link(basename($PHP_SELF), 'action=buy_now&BUYproducts_id='.$id, 'NONSSL').'"><i class="fa fa-shopping-cart"></i> '.IMAGE_BUTTON_IN_CART.'</a>';
 		} else {
-		$link = '<a class="btn btn-add-to-cart btn-block" href="'.vam_href_link(basename($PHP_SELF), 'action=buy_now&BUYproducts_id='.$id, 'NONSSL').'"><i class="fa fa-shopping-cart"></i> '.TEXT_SELECT_OPTIONS.'</a>';
+		$link = '<a class="btn btn-add-to-cart btn-block" href="'.vam_href_link(basename($PHP_SELF), 'action=buy_now&BUYproducts_id='.$id, 'NONSSL').'"><i class="fa fa-shopping-cart"></i> '.IMAGE_BUTTON_IN_CART.'</a>';
 		}
 		
 		return $link;
