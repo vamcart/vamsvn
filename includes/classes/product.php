@@ -590,7 +590,7 @@ $orders_query = "select
 		} elseif (AJAX_CART == 'false' && vam_has_product_attributes($id)) {
 		$link = '<a class="button" href="'.vam_href_link(basename($PHP_SELF), 'action=buy_now&BUYproducts_id='.$id, 'NONSSL').'">'.vam_image_button('buy.png', TEXT_SELECT_OPTIONS).'</a>';
 		} else {
-		$link = '<a class="button" href="'.vam_href_link(basename($PHP_SELF), 'action=buy_now&BUYproducts_id='.$id, 'NONSSL').'">'.vam_image_button('buy.png', IMAGE_BUTTON_IN_CART).'</a>';
+		$link = '<a class="button" href="'.vam_href_link(FILENAME_SHOPPING_CART, 'action=buy_now&BUYproducts_id='.$id, 'NONSSL').'">'.vam_image_button('buy.png', IMAGE_BUTTON_IN_CART).'</a>';
 		}
 		
 		return $link;
@@ -605,7 +605,7 @@ $orders_query = "select
 		} elseif (AJAX_CART == 'false' && vam_has_product_attributes($id)) {
 		$link = '<a class="btn btn-add-to-cart btn-block" href="'.vam_href_link(basename($PHP_SELF), 'action=buy_now&BUYproducts_id='.$id, 'NONSSL').'"><i class="fa fa-shopping-cart"></i> '.IMAGE_BUTTON_IN_CART.'</a>';
 		} else {
-		$link = '<a class="btn btn-add-to-cart btn-block" href="'.vam_href_link(basename($PHP_SELF), 'action=buy_now&BUYproducts_id='.$id, 'NONSSL').'"><i class="fa fa-shopping-cart"></i> '.IMAGE_BUTTON_IN_CART.'</a>';
+		$link = '<a class="btn btn-add-to-cart btn-block" href="'.vam_href_link(FILENAME_SHOPPING_CART, 'action=buy_now&BUYproducts_id='.$id, 'NONSSL').'"><i class="fa fa-shopping-cart"></i> '.IMAGE_BUTTON_IN_CART.'</a>';
 		}
 		
 		return $link;
