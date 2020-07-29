@@ -2,7 +2,7 @@
 <h3><a href="{$NEWS_LINK}">{#heading_text#}</a></h3>
 <div class="moduleContent">
 <div class="row">
-{foreach name=aussen item=module_data from=$module_content}<div class="col-md-6 mb-3">	
+{foreach name=aussen item=module_data from=$module_content}<div class="col-md-12 mb-3">	
 	{include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/item/item-news.html"}
 </div>
 {/foreach} 
