@@ -9,7 +9,19 @@
 <div class="page">
 <div class="pageItem">
 
-{$FILTERS}
+{if {$FILTERS}}
+  <button class="btn btn-outline-primary rounded-pill d-sm-none d-md-block mb-2" type="button" data-toggle="collapse" data-target="#collapseExampleFilter" aria-expanded="false" aria-controls="collapseExampleFilter">
+    <i class="fas fa-filter"></i> {$smarty.const.BOX_HEADING_PRODUCTS_FILTER}
+  </button>
+  
+  <div class="collapse dont-collapse-xl" id="collapseExampleFilter">
+    <div class="well">
+    <div class="filters card-deck">
+      {$FILTERS}
+    </div>
+    </div>
+  </div>
+{/if}
 
 <div class="d-flex justify-content-start">
 {if $MANUFACTURER_DROPDOWN != ''}
