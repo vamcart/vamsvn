@@ -6,7 +6,7 @@
 					</span>
 				</div>
 				<div class="text-wrap" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-					<div class="title">{$module_data.FAQ_DATA} - <a href="{$module_data.FAQ_LINK_MORE}"><span itemprop="name">{$module_data.FAQ_QUESTION}</span></a></div>
+					<div class="title"><a href="{$module_data.FAQ_LINK_MORE}"><span itemprop="name">{$module_data.FAQ_QUESTION}</span></a></div>
 					<div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
 					<div itemprop="text">
 					{$module_data.FAQ_ANSWER|vam_truncate:$smarty.const.MAX_DISPLAY_FAQ_ANSWER:" ..."}
