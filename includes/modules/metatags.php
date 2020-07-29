@@ -186,8 +186,8 @@ else {$page= '';}
       //$specs_array_breadcrumb = array_merge ($specs_array_breadcrumb, (array) $filter_breadcrumbs);
             
     foreach ($filter_breadcrumbs as $crumb) {
-      $filter .= ' ' . $crumb['specification_name'] . ': ' . $crumb['value'] . ' ';
-      $filter_description .= ' ' . $crumb['specification_description'] . ' ';
+      $filter = ' ' . $crumb['specification_name'] . ': ' . $crumb['value'] . ' ';
+      $filter_description = ' ' . $crumb['specification_description'] . ' ';
     }
       
       }
@@ -197,7 +197,7 @@ else {$page= '';}
 
 ?>
 <title><?php echo $categories_meta['categories_meta_title'] . $filter.$mName . $page; ?></title>
-<meta name="description" content="<?php echo $categories_meta['categories_meta_title'].$filter.$filter_description . $mDesc; ?>" />
+<meta name="description" content="<?php echo $categories_meta['categories_meta_title'].$filter.$filter_description.$categories_meta['categories_meta_description'] . $mDesc; ?>" />
 <meta name="keywords" content="<?php echo $categories_meta['categories_meta_keywords'] . $mKey; ?>" />
 <meta property="og:title" content="<?php echo $categories_meta['categories_meta_title'] . $filter.$mName . $page; ?>" />
 <meta property="og:description" content="<?php echo $categories_meta['categories_meta_title'].$filter.$filter_description . $mDesc; ?>" />
