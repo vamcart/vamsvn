@@ -186,7 +186,7 @@ else {$page= '';}
       //$specs_array_breadcrumb = array_merge ($specs_array_breadcrumb, (array) $filter_breadcrumbs);
             
     foreach ($filter_breadcrumbs as $crumb) {
-      $filter = ' ' . $crumb['specification_name'] . ': ' . $crumb['value'] . ' ';
+      $filter .= ' ' . $crumb['specification_name'] . ': ' . $crumb['value'] . ' ';
       $filter_description = ' ' . $crumb['specification_description'] . ' ';
     }
       
