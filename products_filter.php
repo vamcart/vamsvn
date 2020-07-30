@@ -430,7 +430,7 @@ $module = new vamTemplate;
           $specs_array_breadcrumb_titles[] = $crumb['specification_name'] . '';
 		  $specs_array_breadcrumb_titles_to_h1[] = $crumb['specification_name'] . '';
         } else {
-          $specs_array_breadcrumb_titles[] = $crumb['specification_name'] . ' : ' . $crumb['value']; 
+          $specs_array_breadcrumb_titles[] = $crumb['specification_name'] . ' ' . $crumb['value']; 
 		   $specs_array_breadcrumb_titles_to_h1[] = $crumb['specification_name'] . ' ' . $crumb['value'];
         }
       }
