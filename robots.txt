@@ -80,5 +80,7 @@ Disallow: /specials.php/action/buy_now
 Disallow: /comparison.php
 Disallow: /print_product_info.php
 Disallow: /products_filter.php
+Disallow: /faq.php
+Disallow: /news.php
 Disallow: /key.php
 Disallow: /404.html
