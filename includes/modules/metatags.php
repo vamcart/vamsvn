@@ -128,72 +128,7 @@ if ($_GET['page']!=''){ $page= ' - ' . TEXT_PAGE_IN_CAT;$page.= ' '.$_GET['page'
 else {$page= '';}
 
 
-  if (strstr($PHP_SELF, FILENAME_PRODUCTS_FILTERS)) {
-
-  $category_sql = '';
-  if ($current_category_id != 0) {
-    $category_sql = "and s2c.categories_id = '" . (int)$current_category_id . "'";
-  }
-    
-  // Check for filters on each applicable Specification
-  $specs_query_raw = "SELECT DISTINCT
-                        s.specifications_id,
-                        s.filter_class,
-                        s.products_column_name,
-                        sd.specification_name,
-                        sd.specification_description
-                      FROM
-                        " . TABLE_SPECIFICATION . " AS s
-                      Inner Join " . TABLE_SPECIFICATION_GROUPS . " AS sg
-                        ON s.specification_group_id = sg.specification_group_id
-                      Inner Join " . TABLE_SPECIFICATIONS_TO_CATEGORIES . " AS s2c
-                        ON sg.specification_group_id = s2c.specification_group_id
-                      Inner Join " . TABLE_SPECIFICATION_DESCRIPTION . " sd 
-                        ON sd.specifications_id = s.specifications_id
-                      WHERE
-                        s.show_filter = 'True'
-                        AND sg.show_filter = 'True' 
-                        and sd.language_id = '" . (int) $_SESSION['languages_id'] . "'
-                        " . $category_sql;
-  // print $specs_query_raw . "<br>\n";
-  $specs_query = vam_db_query ($specs_query_raw);
-
-  //breadcrumbs : preserve the result of the specs_query
-  $specs_array_breadcrumb = array(); 
-  
-  // Build a string of SQL to constrain the specification to the filter values
-  $sql_array = array (
-    'from' => '',
-    'where' => ''
-  );
-
-  while ($specs_array = vam_db_fetch_array ($specs_query) ) {
-    // Retrieve the GET vars used as filters
-    // Variable names are the letter "f" followed by the specifications_id for that spec.
-    $var = 'f' . $specs_array['specifications_id'];
-    $$var = '0';
-    if (isset ($_GET[$var]) && $_GET[$var] != '') {
-      // Decode the URL-encoded names, including arrays
-      $$var = vam_decode_recursive ($_GET[$var]);
-
-      // Sanitize variables to prevent hacking
-     //$$var = preg_replace("/^[ а-яА-Я\/]+$/","", $$var);
-       
-      // Get rid of extra values if Select All is selected
-      $$var = vam_select_all_override ($$var);
-      
-      $filter_breadcrumbs = vam_get_filter_breadcrumbs ($specs_array, $$var);
-      //$specs_array_breadcrumb = array_merge ($specs_array_breadcrumb, (array) $filter_breadcrumbs);
-            
-    foreach ($filter_breadcrumbs as $crumb) {
-      $filter .= ' ' . $crumb['specification_name'] . ': ' . $crumb['value'] . ' ';
-      $filter_description = ' ' . $crumb['specification_description'] . ' ';
-    }
-      
-      }
-	}
-	
-	}
+global $filter_active, $filter_active_description;
 
 ?>
 <title><?php echo $categories_meta['categories_meta_title'] . $filter.$mName . $page; ?></title>

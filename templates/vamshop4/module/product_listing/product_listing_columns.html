@@ -3,7 +3,7 @@
 {if $smarty.get.keywords}<h1>{$smarty.get.keywords|capitalize} {if {$smarty.get.page} && {$smarty.get.page} > 0} {$smarty.const.TEXT_PAGE_IN_CAT} {$smarty.get.page}{/if}</h1>{/if}
 
 {if $CATEGORIES_NAME}
-<h1>{if $CATEGORIES_HEADING_TITLE}{$CATEGORIES_HEADING_TITLE}{else}{$CATEGORIES_NAME}{/if}{if $MANUFACTURERS_NAME} {$MANUFACTURERS_NAME}{/if}{$FILTER}</h1>
+<h1>{if $CATEGORIES_HEADING_TITLE}{$CATEGORIES_HEADING_TITLE}{else}{$CATEGORIES_NAME}{/if}{if $MANUFACTURERS_NAME} {$MANUFACTURERS_NAME}{/if} {$FILTER}</h1>
 {/if}
 
 <div class="page">

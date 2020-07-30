@@ -153,6 +153,7 @@ $module = new vamTemplate;
                                       s.filter_class,
                                       s.products_column_name,
                                       sd.specification_name,
+                                      sd.specification_description,
                                       sd.specification_seo_name,
                                       s.specification_seo_active,
                                       s.filter_display
@@ -415,47 +416,47 @@ $module = new vamTemplate;
   // Add Filter to Breadcrumbs if selected
 
   // Add Filter to Breadcrumbs if selected
-if (SPECIFICATIONS_FILTER_BREADCRUMB == 'True') {
-    foreach ($specs_array_breadcrumb as $crumb) {
+  if (SPECIFICATIONS_FILTER_BREADCRUMB == 'True') {
+    if (count($specs_array_breadcrumb) > 0) {
 
-
-        $get_key = 'f' . $crumb['specifications_id'];
-
-        //if( $_GET['show_crumb'] == '1') echo is_array($_GET[$get_key])."\r\n";
-
-        //if( $_GET['show_crumb'] == '1') {
-
-            if (!is_array($_GET[$get_key])) {
-
-                $exclude_array = array('f' . $crumb['specifications_id']);
-                $breadcrumb->add('<span>'. $crumb['specification_name'] . ' : ' . $crumb['value'] . ' <span class="filter-close circle text-danger cart_delete"><i class="fas fa-times"></i></span></span>', vam_href_link(FILENAME_PRODUCTS_FILTERS, vam_get_all_get_params($exclude_array)));
-
-            } else {
-
-                foreach ($_GET[$get_key] as $new_key => $new_value) {
-
-                    if($crumb['value'] == $new_value) {
-                        $exclude_array = array('f' . $crumb['specifications_id'] . '[' . $new_key . ']');
-                        $breadcrumb->add('<span>'. $crumb['specification_name'] . ' : ' . $crumb['value'] . ' <span class="filter-close circle text-danger cart_delete"><i class="fas fa-times"></i></span></span>', vam_href_link(FILENAME_PRODUCTS_FILTERS, vam_get_all_get_params_filters_breadhumps($exclude_array)));
-                    }
-                }
-
-            }
-
-
-        //}else{
-
-            //$exclude_array = array('f' . $crumb['specifications_id']);
-            //$breadcrumb->add($crumb['specification_name'] . ' : ' . $crumb['value'] . ' <span class="filter-close circle text-danger cart_delete"><i class="fas fa-times"></i></span>', vam_href_link(FILENAME_PRODUCTS_FILTERS, vam_get_all_get_params($exclude_array)));
-
+//      echo '<pre>';var_export($breadcrumb->_trail);echo '</pre>';
+//      echo '<pre>';var_dump(count($breadcrumb->_trail), $breadcrumb->_trail[count($breadcrumb->_trail)-1], $current_category_id);echo '</pre>';
+      if ($breadcrumb->_trail[count($breadcrumb->_trail)-1]['link'] == '' && !empty($current_category_id) && empty($filter_manufacturers_name)) {
+        $breadcrumb->_trail[count($breadcrumb->_trail)-1]['link'] = vam_href_link(FILENAME_DEFAULT, vam_category_link($current_category_id, $breadcrumb->_trail[count($breadcrumb->_trail)-1]['title']));
+      }
+      $specs_array_breadcrumb_titles = array(); $specs_array_breadcrumb_titles_to_h1 = array();
+      foreach ($specs_array_breadcrumb as $crumb) {
+        if ($crumb['specification_name'] == $crumb['value']) {
+          $specs_array_breadcrumb_titles[] = $crumb['specification_name'] . '';
+		  $specs_array_breadcrumb_titles_to_h1[] = $crumb['specification_name'] . '';
+        } else {
+          $specs_array_breadcrumb_titles[] = $crumb['specification_name'] . ' : ' . $crumb['value']; 
+		   $specs_array_breadcrumb_titles_to_h1[] = $crumb['specification_name'] . ' ' . $crumb['value'];
+        }
+      }
+//  echo '<pre>';var_export($specs_array_breadcrumb_titles);echo '</pre>';
+      $breadcrumb->add(implode('; ', $specs_array_breadcrumb_titles));
+      
+      $specs_array_breadcrumb_description = array(); $specs_array_breadcrumb_description_to_h1 = array();
+      foreach ($specs_array_breadcrumb as $crumb_desc) {
+        //if ($crumb['specification_name'] == $crumb_desc['value']) {
+          $specs_array_breadcrumb_description[] = $crumb_desc['specification_description'] . '';
+		  //$specs_array_breadcrumb_description_to_h1[] = $crumb_desc['specification_description'] . '';
+        //} else {
+          //$specs_array_breadcrumb_description[] = $crumb_desc['specification_name'] . ' : ' . $crumb_desc['value']; 
+		   //$specs_array_breadcrumb_description_to_h1[] = $crumb_desc['specification_description'] . ' ' . $crumb_desc['value'];
         //}
-
-        //if( $_GET['show_crumb'] == '1') echo 'f' . $crumb['specifications_id'] . " \r\n\ ";
-        
-        //if( $_GET['show_crumb'] == '1' && $crumb['value'] == 'Comisa') var_dump(vam_get_all_get_params_filters_breadhumps (array ($exclude_array), true ));
-
-      //$breadcrumb->add ($crumb['specification_name'] . ' : ' . $crumb['value'] . ' <span class="filter-close circle text-danger cart_delete"><i class="fas fa-times"></i></span>', FILENAME_PRODUCTS_FILTERS.'?'.$params[0];
+      }
+//  echo '<pre>';var_export($specs_array_breadcrumb_titles);echo '</pre>';
+//      $breadcrumb->add(implode('; ', $specs_array_breadcrumb_titles));
+            
     }
+//  echo '<pre>';var_export($breadcrumb);echo '</pre>';
+/*
+    foreach ($specs_array_breadcrumb as $crumb) {
+      $breadcrumb->add($crumb['specification_name'] . ' : ' . $crumb['value'] . ' <span class="close">[X]</span>', vam_href_link (FILENAME_PRODUCTS_FILTERS, vam_get_all_get_params (array('f' . $crumb['specifications_id']) ) ) );
+    }
+*/
   }
 // BOF products_filters_seo
   $seo_text = array();
@@ -478,16 +479,16 @@ if (SPECIFICATIONS_FILTER_BREADCRUMB == 'True') {
   if (SPECIFICATIONS_FILTERS_MODULE == 'True') {
   //  require(DIR_WS_MODULES . 'products_filter.php');
   }
-
+$filter_active = implode(", ", $specs_array_breadcrumb_titles);
+$filter_active_description = implode(", ", $specs_array_breadcrumb_description);
+$vamTemplate->assign('FILTER_ACTIVE', $filter_active);
+$vamTemplate->assign('FILTER_DESCRIPTION', $filter_active_description);
+$vamTemplate->assign('language', $_SESSION['language']);
 	
 require(DIR_WS_INCLUDES . 'header.php');
  $timeExec=time();
 include(DIR_WS_MODULES . FILENAME_PRODUCT_LISTING);
 $timeExec2=time();
-
-$breadCrumbsToH1 = implode(", ", $specs_array_breadcrumb_titles);
-$vamTemplate->assign('breadCrumbsToH1', $breadCrumbsToH1);
-$vamTemplate->assign('language', $_SESSION['language']);
 
 $vamTemplate->caching = 0;
 if (!defined(RM)) $vamTemplate->loadFilter('output', 'note');

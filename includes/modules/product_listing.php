@@ -77,9 +77,9 @@ if ($listing_split->number_of_rows > 0) {
 	$module->assign('CATEGORIES_DESCRIPTION', $category['categories_description']);
 
   if (strstr($PHP_SELF, FILENAME_PRODUCTS_FILTERS)) {
-	global $filter,$filter_description;
-	$module->assign('FILTER', $filter);
-	$module->assign('FILTER_DESCRIPTION', $filter_description);
+	global $filter,$filter_active,$filter_active_description;
+	$module->assign('FILTER', $filter_active);
+	$module->assign('FILTER_DESCRIPTION', $filter_active_description);
 	
 	}
 
