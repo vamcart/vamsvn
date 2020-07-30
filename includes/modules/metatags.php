@@ -129,20 +129,22 @@ else {$page= '';}
 
 
 global $filter_active, $filter_active_description;
+($filter_active != '') ? $filter_active = ' ' . $filter_active : false;
+($filter_active_description != '') ? $filter_active_description = ' ' . $filter_active_description : false;
 
 ?>
-<title><?php echo $categories_meta['categories_meta_title'] . $filter.$mName . $page; ?></title>
-<meta name="description" content="<?php echo $categories_meta['categories_meta_title'].$filter.$filter_description.$categories_meta['categories_meta_description'] . $mDesc; ?>" />
+<title><?php echo $categories_meta['categories_meta_title'] . $filter_active.$mName . $page; ?></title>
+<meta name="description" content="<?php echo $categories_meta['categories_meta_title'].$filter_active.$filter_active_description.$categories_meta['categories_meta_description'] . $mDesc; ?>" />
 <meta name="keywords" content="<?php echo $categories_meta['categories_meta_keywords'] . $mKey; ?>" />
 <meta property="og:title" content="<?php echo $categories_meta['categories_meta_title'] . $filter.$mName . $page; ?>" />
-<meta property="og:description" content="<?php echo $categories_meta['categories_meta_title'].$filter.$filter_description . $mDesc; ?>" />
+<meta property="og:description" content="<?php echo $categories_meta['categories_meta_title'].$filter_active.$filter_active_description . $mDesc; ?>" />
 <?php if ($categories_meta['categories_name'] != '') { ?><meta property="og:url" content="<?php echo vam_href_link(FILENAME_DEFAULT, vam_category_link($categories_meta['categories_id'], $categories_meta['categories_name'])); ?>" /><?php } ?>
 <?php if ($categories_meta['categories_name'] != '' && !strstr($PHP_SELF, FILENAME_PRODUCTS_FILTERS)) { ?><link rel="canonical" href="<?php echo vam_href_link(FILENAME_DEFAULT, vam_category_link($categories_meta['categories_id'], $categories_meta['categories_name'])); ?>"/><?php } ?>
 <?php if (strstr($PHP_SELF, FILENAME_PRODUCTS_FILTERS)) { ?><link rel="canonical" href="<?php echo vam_href_link (FILENAME_PRODUCTS_FILTERS, vam_get_all_get_params (array ('sort','direction','page','f' . $specs_array['specifications_id']) ) ); ?>"/><?php } ?>
 <?php if ($categories_meta['categories_image'] != '') { ?><meta property="og:image" content="<?php echo HTTP_SERVER.DIR_WS_CATALOG.DIR_WS_IMAGES . 'categories/' . vam_parse_input_field_data($categories_meta['categories_image'], array('"' => '&quot;')); ?>" /><?php } ?>
 <meta property="og:type" content="website" />
 <meta name="twitter:title" content="<?php echo $categories_meta['categories_meta_title'] . $filter.$mName . $page; ?>" />
-<meta name="twitter:description" content="<?php echo $categories_meta['categories_meta_title'].$filter.$filter_description.$categories_meta['categories_meta_description'] . $mDesc; ?>" />
+<meta name="twitter:description" content="<?php echo $categories_meta['categories_meta_title'].$filter_active.$filter_active_description.$categories_meta['categories_meta_description'] . $mDesc; ?>" />
 <?php
 
 	} else {
