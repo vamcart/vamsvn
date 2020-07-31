@@ -4989,7 +4989,7 @@ CREATE TABLE tags (
    tags_id int(11) NOT NULL AUTO_INCREMENT,
    tags_name text,
    tags_title text,
-   tags_descripition text,
+   tags_description text,
    tags_url varchar(255) NOT NULL,
    tags_mainpage tinyint(1) DEFAULT '0' NOT NULL,
    tags_head_title text,
