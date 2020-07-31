@@ -29,9 +29,10 @@ $sql_tags = "
         *
     FROM " . TABLE_TAGS . "
     WHERE
-         status = '1'
+         status = '1' 
+         and tags_mainpage = '1' 
          and language = '" . (int)$_SESSION['languages_id'] . "'
-    ORDER BY tags_mainpage = 1 and sort_order ASC, date_added DESC
+    ORDER BY sort_order ASC, date_added DESC
     LIMIT " . MAX_DISPLAY_TAGS . "
     ";
 

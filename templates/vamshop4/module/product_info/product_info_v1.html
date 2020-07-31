@@ -120,6 +120,10 @@
 </p>
 {/if}
 
+{if $MODULE_tags != ''}
+{$MODULE_tags}
+{/if}
+	
 {if $extra_fields_data}
 <div class="description extra_fields text-muted">
 {foreach item=extra_fields from=$extra_fields_data} 
@@ -288,11 +292,6 @@
 	</div>
 	{/if}
 
-	{if $MODULE_tags != ''}
-	{$MODULE_tags}
-	{/if}
-
-	
 	{if $MODULE_tpt != ''}
 	<p>
 	{$MODULE_tpt}
