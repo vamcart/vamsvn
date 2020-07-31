@@ -225,7 +225,7 @@ $manual_link = 'delete-tags';
       $tags = array();
     }
     
-if ($tags['status'] == '1') { $status_checked = true; } else { $status_checked = false; }
+if ($tags['status'] == '1') { $status_checked = true; } elseif ($tags['status'] == '0') { $status_checked = false; } else { $status_checked = true; }
 if ($tags['tags_mainpage'] == '1') { $startpage_checked = true; } else { $startpage_checked = false; }
     
 ?>
