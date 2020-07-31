@@ -81,6 +81,7 @@ Disallow: /comparison.php
 Disallow: /print_product_info.php
 Disallow: /products_filter.php
 Disallow: /faq.php
+Disallow: /tags.php
 Disallow: /news.php
 Disallow: /key.php
 Disallow: /404.html
