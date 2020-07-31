@@ -5,7 +5,7 @@
 <h1><a href="{$module_data.TAGS_URL}"{if {$module_data.TAGS_TITLE} != ''} title="{$module_data.TAGS_TITLE}"{/if}><span class="btn btn-add-to-cart">{$module_data.TAGS_NAME}</span></a></h1>
 <div class="moduleContent">
 <div class="row">
-{foreach name=aussen item=module_data from=$module_content}<ul class="d-inline-block list-inline py-2">
+{foreach name=aussen item=module_data from=$module_content}<ul class="d-inline-block list-inline py-1">
 	{include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/item/item-tag.html"}
 </ul>
 {/foreach} 
