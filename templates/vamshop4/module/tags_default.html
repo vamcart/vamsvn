@@ -1,14 +1,4 @@
-{config_load file="$language/lang_$language.conf" section="tags"} <div class="module">
-<h3><a href="{$TAGS_LINK}">{#heading_text#}</a></h3>
-<div class="moduleContent">
-<div class="row">
-<ul class="d-inline-block list-inline py-2">
+{config_load file="$language/lang_$language.conf" section="tags"} <ul class="d-inline-block list-inline py-2">
 {foreach name=aussen item=module_data from=$module_content}	{include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/item/item-tag.html"}
 {/foreach} 
 </ul>
-</div>
-</div>
-<div class="text-right pt-2">
-<a class="btn btn-outline-primary rounded-pill" href="{$TAGS_LINK}"><span>{$smarty.const.TEXT_ALL_TAGS}</span></a>
-</div>
-</div>
