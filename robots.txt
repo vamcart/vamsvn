@@ -84,3 +84,4 @@ Disallow: /faq.php
 Disallow: /news.php
 Disallow: /key.php
 Disallow: /404.html
+Disallow: /monitors.html
