@@ -272,6 +272,46 @@ $content_meta = vam_db_fetch_array($content_meta_query, true);
 <?php
 
     break;
+
+  case ($_GET['tags_id']):
+
+			$tags_meta_query = vamDBquery("SELECT tags_id, name, title, description, tags_head_title, tags_head_desc, tags_head_keys
+			                                            FROM " . TABLE_TAGS . "
+			                                            WHERE tags_id='" . (int)$_GET['tags_id'] . "' and
+			                                            language='" . (int)$_SESSION['languages_id'] . "'");
+			$tags_meta = vam_db_fetch_array($tags_meta_query, true);
+
+		if ($tags_meta['tags_head_title'] == '') {
+			$tags_title = htmlentities($tags_meta['name']);
+		} else {
+			$tags_title = $tags_meta['tags_head_title'];
+		}
+
+		if ($tags_meta['tags_head_desc'] == '') {
+			$tags_desc = htmlentities($tags_meta['title']);
+		} else {
+			$tags_desc = $tags_meta['tags_head_desc'];
+		}
+
+		if ($tags_meta['tags_head_keys'] == '') {
+			$tags_keys = htmlentities($tags_meta['title']);
+		} else {
+			$tags_keys = $tags_meta['tags_head_keys'];
+		}
+?>
+<title><?php echo $tags_title . ' - ' . NAVBAR_TITLE_TAGS; ?></title>
+<meta name="description" content="<?php echo $tags_desc; ?>" />
+<meta name="keywords" content="<?php echo $tags_keys; ?>" />
+<meta property="og:title" content="<?php echo $tags_title; ?>" />
+<meta property="og:description" content="<?php echo $tags_desc; ?>" />
+<meta property="og:url" content="<?php echo vam_href_link(FILENAME_TAGS, 'tags_id='.$tags_meta['tags_id']); ?>" />
+<link rel="canonical" href="<?php echo vam_href_link(FILENAME_TAGS, 'tags_id='.$tags_meta['tags_id']); ?>" />
+<meta property="og:type" content="website" />
+<meta name="twitter:title" content="<?php echo $tags_title; ?>" />
+<meta name="twitter:description" content="<?php echo $tags_desc; ?>" />
+<?php
+
+    break;
     
   case ($_GET['tPath']):
 
