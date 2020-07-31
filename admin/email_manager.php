@@ -26,7 +26,7 @@
 <?php 
  $query=vam_db_query("SELECT code FROM ". TABLE_LANGUAGES ." WHERE languages_id='".$_SESSION['languages_id']."'");
  $data=vam_db_fetch_array($query);
- if (EMAIL_USE_HTML=='true') echo vam_wysiwyg_tiny('products_content',$data['code']); 
+ echo vam_wysiwyg_tiny('products_content',$data['code']); 
 ?>
 </head>
 <body marginwidth="0" marginheight="0" topmargin="0" bottommargin="0" leftmargin="0" rightmargin="0" bgcolor="#FFFFFF">
@@ -81,7 +81,7 @@ if(file_exists($file)) {
 
 <?php
 
-$file_list = vam_array_merge(array('0' => array('id' => '', 'text' => SELECT_FILE)),vam_getFiles(DIR_FS_CATALOG.'templates/'.CURRENT_TEMPLATE.'/mail/' . $_SESSION['language'] . '/',array((EMAIL_USE_HTML=='true') ? '.html' : '.txt')));
+$file_list = vam_array_merge(array('0' => array('id' => '', 'text' => SELECT_FILE)),vam_getFiles(DIR_FS_CATALOG.'templates/'.CURRENT_TEMPLATE.'/mail/' . $_SESSION['language'] . '/',array('.html')));
 
 echo vam_draw_pull_down_menu('file',$file_list,$_REQUEST['file']);
 
@@ -210,7 +210,7 @@ if(file_exists($file_admin)) {
 
 <?php
 
-$file_list_admin = vam_array_merge(array('0' => array('id' => '', 'text' => SELECT_FILE)),vam_getFiles(DIR_FS_CATALOG.'templates/'.CURRENT_TEMPLATE.'/admin/mail/' . $_SESSION['language'] . '/',array((EMAIL_USE_HTML=='true') ? '.html' : '.txt')));
+$file_list_admin = vam_array_merge(array('0' => array('id' => '', 'text' => SELECT_FILE)),vam_getFiles(DIR_FS_CATALOG.'templates/'.CURRENT_TEMPLATE.'/admin/mail/' . $_SESSION['language'] . '/',array('.html')));
 
 echo vam_draw_pull_down_menu('file_admin',$file_list_admin,$_REQUEST['file_admin']);
 
