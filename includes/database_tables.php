@@ -162,5 +162,13 @@ define('TABLE_PRODUCTS_PINS', 'products_pins');
   define('TABLE_FAQ_TO_PRODUCTS', 'faq_to_products');
   define('TABLE_LATEST_NEWS_TO_CATEGORIES', 'latest_news_to_categories');
   define('TABLE_LATEST_NEWS_TO_PRODUCTS', 'latest_news_to_products');
+
+  define('TABLE_TAGS', 'tags');
+  define('TABLE_TAGS_TO_CATEGORIES', 'tags_to_categories');
+  define('TABLE_TAGS_TO_PRODUCTS', 'tags_to_products');
+
+  define('TABLE_TAGS', 'tags');
+  define('TABLE_TAGS_TO_CATEGORIES', 'tags_to_categories');
+  define('TABLE_TAGS_TO_PRODUCTS', 'tags_to_products');
       
 ?>

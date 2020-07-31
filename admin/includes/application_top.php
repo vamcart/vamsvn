@@ -689,5 +689,11 @@ define('FILENAME_PIN_LOADER', 'pin_loader.php');
   define('TABLE_FAQ_TO_PRODUCTS', 'faq_to_products');
   define('TABLE_LATEST_NEWS_TO_CATEGORIES', 'latest_news_to_categories');
   define('TABLE_LATEST_NEWS_TO_PRODUCTS', 'latest_news_to_products');
+
+  define('FILENAME_TAGS', 'tags.php');
+
+  define('TABLE_TAGS', 'tags');
+  define('TABLE_TAGS_TO_CATEGORIES', 'tags_to_categories');
+  define('TABLE_TAGS_TO_PRODUCTS', 'tags_to_products');
       
 ?>

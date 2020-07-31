@@ -169,4 +169,6 @@ define('FILENAME_SITE_REVIEWS_ALL', 'site_reviews_all.php');
 
 define('FILENAME_ACCOUNT_DUPLICATE_ORDER', 'order_functions.php');
 
+define('FILENAME_TAGS', 'tags.php');
+
 ?>
