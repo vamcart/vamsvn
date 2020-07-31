@@ -663,4 +663,8 @@ define('TEXT_SUMMARY_PENDING_ORDERS','Новых заказов');
 
 define('TEXT_CLEAR_CACHE','Очистить кэш');
 
+define('BOX_HEADING_CONTENT', 'Контент');
+
+define('BOX_TAGS', 'Плитка тэгов');
+
 ?>

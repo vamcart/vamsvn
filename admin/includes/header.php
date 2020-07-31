@@ -253,6 +253,7 @@
 
 										</ul>
 									</li>
+
                 <li class="vamshop-menu-hasmenu"><a href="javascript:void(0)"><span class="vamshop-menu-micon"><i class="fas fa-book"></i></span><span class="vamshop-menu-mtext"><?php echo BOX_HEADING_CATALOG; ?></span>
 											<span class="vamshop-menu-mcaret"></span>
 										</a>
@@ -288,6 +289,39 @@
  ($admin_access['specials'] == '0') && 
  ($admin_access['featured'] == '0') && 
  ($admin_access['pin_loader'] == '0')
+ ) echo '<li class=" "><a href=""><span class="vamshop-menu-micon"><i class="far fa-angle-right"></i></span><span class="vamshop-menu-mtext">' . TEXT_ACCESS_FORBIDDEN . '</span><span class="vamshop-menu-mcaret"></span></a></li>'; 
+
+?>
+                                										</ul>
+                                									</li>
+
+                <li class="vamshop-menu-hasmenu"><a href="javascript:void(0)"><span class="vamshop-menu-micon"><i class="far fa-sticky-note"></i></span><span class="vamshop-menu-mtext"><?php echo BOX_HEADING_CONTENT; ?></span>
+											<span class="vamshop-menu-mcaret"></span>
+										</a>
+										<ul class="vamshop-menu-submenu">  
+<?php
+  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['content_manager'] == '1')) echo '<li class=" "><a href="' . vam_href_link(FILENAME_CONTENT_MANAGER) . '"><span class="vamshop-menu-micon"><i class="fas fa-angle-right"></i></span><span class="vamshop-menu-mtext">' .  BOX_CONTENT  . '</span><span class="vamshop-menu-mcaret"></span></a></li>' . "\n";
+  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['articles'] == '1')) echo '<li class=" "><a href="' . vam_href_link(FILENAME_ARTICLES, '', 'NONSSL') . '"><span class="vamshop-menu-micon"><i class="fas fa-angle-right"></i></span><span class="vamshop-menu-mtext">' .  BOX_TOPICS_ARTICLES  . '</span><span class="vamshop-menu-mcaret"></span></a></li>' . "\n";
+  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['articles_xsell'] == '1')) echo '<li class=" "><a href="' . vam_href_link(FILENAME_ARTICLES_XSELL, '', 'NONSSL') . '"><span class="vamshop-menu-micon"><i class="fas fa-angle-right"></i></span><span class="vamshop-menu-mtext">' .  BOX_ARTICLES_XSELL  . '</span><span class="vamshop-menu-mcaret"></span></a></li>' . "\n";
+  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['tags'] == '1')) echo '<li class=" "><a href="' . vam_href_link(FILENAME_TAGS, '', 'NONSSL') . '"><span class="vamshop-menu-micon"><i class="fas fa-angle-right"></i></span><span class="vamshop-menu-mtext">' .  BOX_TAGS  . '</span><span class="vamshop-menu-mcaret"></span></a></li>' . "\n";
+  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['faq'] == '1')) echo '<li class=" "><a href="' . vam_href_link(FILENAME_FAQ) . '"><span class="vamshop-menu-micon"><i class="fas fa-angle-right"></i></span><span class="vamshop-menu-mtext">' .  BOX_CATALOG_FAQ  . '</span><span class="vamshop-menu-mcaret"></span></a></li>' . "\n";
+  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['latest_news'] == '1')) echo '<li class=" "><a href="' . vam_href_link(FILENAME_LATEST_NEWS) . '"><span class="vamshop-menu-micon"><i class="fas fa-angle-right"></i></span><span class="vamshop-menu-mtext">' .  BOX_CATALOG_LATEST_NEWS  . '</span><span class="vamshop-menu-mcaret"></span></a></li>' . "\n";
+  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['answer_templates'] == '1')) echo '<li class=" "><a href="' . vam_href_link(FILENAME_ANSWER_TEMPLATES, '', 'NONSSL') . '"><span class="vamshop-menu-micon"><i class="fas fa-angle-right"></i></span><span class="vamshop-menu-mtext">' .  BOX_ANSWER_TEMPLATES  . '</span><span class="vamshop-menu-mcaret"></span></a></li>' . "\n";
+  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['email_manager'] == '1')) echo '<li class=" "><a href="' . vam_href_link(FILENAME_EMAIL_MANAGER) . '"><span class="vamshop-menu-micon"><i class="fas fa-angle-right"></i></span><span class="vamshop-menu-mtext">' .  BOX_TOOLS_EMAIL_MANAGER  . '</span><span class="vamshop-menu-mcaret"></span></a></li>' . "\n";
+  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['product_labels'] == '1')) echo '<li class=" "><a href="' . vam_href_link(FILENAME_PRODUCT_LABELS, '', 'NONSSL') . '"><span class="vamshop-menu-micon"><i class="fas fa-angle-right"></i></span><span class="vamshop-menu-mtext">' .  BOX_PRODUCT_LABELS  . '</span><span class="vamshop-menu-mcaret"></span></a></li>' . "\n";
+  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['banner_manager'] == '1')) echo '<li class=" "><a href="' . vam_href_link(FILENAME_BANNER_MANAGER) . '"><span class="vamshop-menu-micon"><i class="fas fa-angle-right"></i></span><span class="vamshop-menu-mtext">' .  BOX_BANNER_MANAGER  . '</span><span class="vamshop-menu-mcaret"></span></a></li>' . "\n";
+
+ if (($_SESSION['customers_status']['customers_status_id'] == '0') && 
+ ($admin_access['content_manager'] == '0') && 
+ ($admin_access['latest_news'] == '0') && 
+ ($admin_access['faq'] == '0') && 
+ ($admin_access['banner_manager'] == '0') && 
+ ($admin_access['articles'] == '0') && 
+ ($admin_access['articles_xsell'] == '0') && 
+ ($admin_access['tags'] == '0') && 
+ ($admin_access['answer_templates'] == '0') && 
+ ($admin_access['email_maanger'] == '0') &&   
+ ($admin_access['product_labels'] == '0')  
  ) echo '<li class=" "><a href=""><span class="vamshop-menu-micon"><i class="fas fa-angle-right"></i></span><span class="vamshop-menu-mtext">' . TEXT_ACCESS_FORBIDDEN . '</span><span class="vamshop-menu-mcaret"></span></a></li>'; 
 
 ?>

@@ -70,6 +70,18 @@
   if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['pin_loader'] == '1')) echo '<a href="' . vam_href_link(FILENAME_PIN_LOADER, '', 'NONSSL') . '" class="menuBoxContentLink"> -' . BOX_CATALOG_PIN_LOADER . '</a><br>';
   if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['products_expected'] == '1')) echo '<a href="' . vam_href_link(FILENAME_PRODUCTS_EXPECTED, '', 'NONSSL') . '" class="menuBoxContentLink"> -' . BOX_PRODUCTS_EXPECTED . '</a><br>';
 
+  echo ('<div class="dataTableHeadingContent"><b>'.BOX_HEADING_CONTENT.'</b></div>');
+  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['content_manager'] == '1')) echo '<a href="' . vam_href_link(FILENAME_CONTENT_MANAGER, '', 'NONSSL') . '" class="menuBoxContentLink"> -' . BOX_CONTENT . '</a><br>';
+  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['articles'] == '1')) echo '<a href="' . vam_href_link(FILENAME_PRODUCTS_ARTICLES, '', 'NONSSL') . '" class="menuBoxContentLink"> -' . BOX_TOPICS_ARTICLES . '</a><br>';
+  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['articles_xsell'] == '1')) echo '<a href="' . vam_href_link(FILENAME_ARTICLES_XSELL, '', 'NONSSL') . '" class="menuBoxContentLink"> -' . BOX_ARTICLES_XSELL . '</a><br>';
+  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['tags'] == '1')) echo '<a href="' . vam_href_link(FILENAME_TAGS, '', 'NONSSL') . '" class="menuBoxContentLink"> -'.BOX_TAGS.'</a><br>';
+  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['faq'] == '1')) echo '<a href="' . vam_href_link(FILENAME_FAQ, '', 'NONSSL') . '" class="menuBoxContentLink"> -' . BOX_CATALOG_FAQ . '</a><br>';
+  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['latest_news'] == '1')) echo '<a href="' . vam_href_link(FILENAME_LATEST_NEWS, '', 'NONSSL') . '" class="menuBoxContentLink"> -' . BOX_CATALOG_LATEST_NEWS . '</a><br>';
+  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['answer_templates'] == '1')) echo '<a href="' . vam_href_link(FILENAME_ANSWER_TEMPLATES, '', 'NONSSL') . '" class="menuBoxContentLink"> -' . BOX_ANSWER_TEMPLATES . '</a><br>';
+  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['email_manager'] == '1')) echo '<a href="' . vam_href_link(FILENAME_EMAIL_MANAGER, '', 'NONSSL') . '" class="menuBoxContentLink"> -' . BOX_TOOLS_EMAIL_MANAGER . '</a><br>';
+  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['product_labels'] == '1')) echo '<a href="' . vam_href_link(FILENAME_PRODUCT_LABELS, '', 'NONSSL') . '" class="menuBoxContentLink"> -' . BOX_PRODUCT_LABELS . '</a><br>';
+  if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['banner_manager'] == '1')) echo '<a href="' . vam_href_link(FILENAME_BANNER_MANAGER, '', 'NONSSL') . '" class="menuBoxContentLink"> -' . BOX_BANNER_MANAGER . '</a><br>';
+
   echo ('<div class="dataTableHeadingContent"><b>'.BOX_HEADING_MODULES.'</b></div>');
   if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['modules'] == '1')) echo '<a href="' . vam_href_link(FILENAME_MODULES, 'set=payment', 'NONSSL') . '" class="menuBoxContentLink"> -' . BOX_PAYMENT . '</a><br>';
   if (($_SESSION['customers_status']['customers_status_id'] == '0') && ($admin_access['modules'] == '1')) echo '<a href="' . vam_href_link(FILENAME_MODULES, 'set=shipping', 'NONSSL') . '" class="menuBoxContentLink"> -' . BOX_SHIPPING . '</a><br>';
