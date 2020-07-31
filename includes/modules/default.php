@@ -202,6 +202,9 @@ if ($categories['categories_image'] != '')
   $faq_category_id = $current_category_id;
   include (DIR_WS_MODULES.FILENAME_FAQ);
 
+  $tags_category_id = $current_category_id;
+  include (DIR_WS_MODULES.FILENAME_TAGS);
+
   $articles_category_id = $current_category_id;
   include (DIR_WS_MODULES.FILENAME_ARTICLES);
 

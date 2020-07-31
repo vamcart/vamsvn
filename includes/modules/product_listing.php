@@ -285,6 +285,9 @@ if ($result != false) {
   $faq_category_id = $current_category_id;
   include (DIR_WS_MODULES.'faq_product_listing.php');
 
+  $tags_category_id = $current_category_id;
+  include (DIR_WS_MODULES.'tags_product_listing.php');
+
   $articles_category_id = $current_category_id;
   include (DIR_WS_MODULES.'articles_product_listing.php');
   	

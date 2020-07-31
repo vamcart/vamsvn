@@ -250,6 +250,9 @@ if (!file_exists(DIR_WS_POPUP_IMAGES.$img['image_name'])) $products_mo_popup_lin
 		$faq_category_id = $product->data['products_id'];
 		include (DIR_WS_MODULES.'faq_product_info.php');
 
+		$tags_category_id = $product->data['products_id'];
+		include (DIR_WS_MODULES.'tags_product_info.php');
+
 		$articles_category_id = $product->data['products_id'];
 		include (DIR_WS_MODULES.'articles_product_info.php');
   	
