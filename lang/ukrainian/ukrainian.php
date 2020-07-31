@@ -754,6 +754,7 @@ define('TEXT_ALL_REVIEWS','Все отзывы');
 define('TEXT_ALL_SITE_REVIEWS','Все отзывы о магазине');
 define('TEXT_ALL_NEWS','Все новости');
 define('TEXT_ALL_FAQ','Все вопросы и ответы');
+define('TEXT_ALL_TAGS','Все тэги');
 define('TEXT_ALL_ARTICLES','Все статьи');
 define('TEXT_ALL_MANUFACTURERS','Все бренды');
 
@@ -761,5 +762,10 @@ define('TEXT_DUPLICATE_ORDER','Повторить заказ');
 define('TEXT_DUPLICATE_ORDER_ADD_TO_CART','Переложить в корзину');
 define('TEXT_DUPLICATE_ORDER_ORDER_NUMBER','Номер заказа');
 define('TEXT_DUPLICATE_ORDER_PRICE','Цена');
+
+define('TABLE_HEADING_TAGS', 'Тэги');
+define('NAVBAR_TITLE_TAGS', 'Тэги');
+define('TEXT_DISPLAY_NUMBER_OF_TAGS', 'Показано <span class="bold">%d</span> - <span class="bold">%d</span> (всего <span class="bold">%d</span> тэгов)');
+define('TEXT_NO_TAGS', 'Нет тэгов.');
 
 ?>
