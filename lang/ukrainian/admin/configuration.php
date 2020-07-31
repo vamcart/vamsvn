@@ -1148,4 +1148,11 @@ define('DISPLAY_WHOS_ONLINE_DESC', 'Показывать блок Кто в он
 define('ENABLE_LAZY_LOAD_TITLE' , 'Разрешить Lazy Load');
 define('ENABLE_LAZY_LOAD_DESC', 'Разрешить отложенную загрузку.');
 
+define('MAX_DISPLAY_TAGS_TITLE' , 'Бокс тэги');
+define('MAX_DISPLAY_TAGS_DESC' , 'Количество тэгов, отображаемых в боксе');
+define('MAX_DISPLAY_TAGS_PAGE_TITLE' , 'Тэгов на одной странице');
+define('MAX_DISPLAY_TAGS_PAGE_DESC' , 'Количество тэгов, отображаемых на одной станице');
+define('MAX_DISPLAY_TAGS_DESCRIPTION_TITLE' , 'Теги описание');
+define('MAX_DISPLAY_TAGS_DESCRIPTION_DESC' , 'Количество символов, отображаемых при предварительном просмотре тэгов');
+
 ?>
