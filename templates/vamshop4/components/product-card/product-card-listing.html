@@ -15,7 +15,7 @@
 		<div class="col-md-6">
 			
 				<div class="h5"><a href="{$module_data.PRODUCTS_LINK}" title="{$module_data.PRODUCTS_NAME}">{$module_data.PRODUCTS_NAME}</a></div>
-				{if {$module_data.PRODUCTS_SHORT_DESCRIPTION}}<div class="small">{$module_data.PRODUCTS_SHORT_DESCRIPTION|strip_tags|vam_truncate:240:"...":true}</div>{/if}
+				{if {$module_data.PRODUCTS_SHORT_DESCRIPTION}}<div class="small">{$module_data.PRODUCTS_SHORT_DESCRIPTION|strip_tags|vam_truncate:{$smarty.const.MAX_DISPLAY_SHORT_DESCRIPTION}:"...":true}</div>{/if}
 				{if $module_data.EXTRA_FIELDS}
 				<div class="description extra_fields text-muted">
 				{foreach item=extra_fields from=$module_data.EXTRA_FIELDS}
