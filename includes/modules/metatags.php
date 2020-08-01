@@ -497,6 +497,16 @@ $content_meta = vam_db_fetch_array($content_meta_query, true);
 <?php
 
     break;  
+
+  case (strstr($PHP_SELF, FILENAME_TAGS)):
+
+?>
+<title><?php echo NAVBAR_TITLE_TAGS . ' - ' . STORE_NAME; ?></title>
+<meta name="description" content="<?php echo NAVBAR_TITLE_TAGS . ' - ' . STORE_NAME; ?>" />
+<meta name="keywords" content="<?php echo NAVBAR_TITLE_TAGS . ' - ' . STORE_NAME; ?>" />
+<?php
+
+    break;  
     
   case (isset($_GET['cat']) && $_GET['cat'] == 0 && strstr($PHP_SELF, FILENAME_DEFAULT)):
 
