@@ -276,7 +276,8 @@ if ($result != false) {
 
 	$module->assign('NAVIGATION', $navigation);
 	$module->assign('NAVIGATION_PAGES', $navigation_pages);
-	
+
+if (!strstr($PHP_SELF, FILENAME_ADVANCED_SEARCH_RESULT)) {	
   include (DIR_WS_MODULES.FILENAME_PRODUCTS_FILTERS);	
 
   $news_category_id = $current_category_id;
@@ -290,6 +291,7 @@ if ($result != false) {
 
   $articles_category_id = $current_category_id;
   include (DIR_WS_MODULES.'articles_product_listing.php');
+}
   	
 	// set cache ID
 	 if (!CacheCheck()) {
