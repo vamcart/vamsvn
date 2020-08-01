@@ -103,15 +103,15 @@ $col = 0;
       if ($specifications['specification'] != '') {
       
         if (SPECIFICATIONS_SHOW_NAME_PRODUCTS == 'True') {
-          $specification_text .= $specifications['specification_name'];
+          $specification_text = $specifications['specification_name'];
         }
       
         $specification_text .= $specifications['specification_prefix'];
                       
-        if ($specifications['display'] == 'image' || $specifications['display'] == 'multiimage' || $specifications['enter'] == 'image' || $specifications['enter'] == 'multiimage') { 
-          vam_image (DIR_WS_IMAGES . $specifications['specification'], $specifications['specification_name'], SMALL_IMAGE_WIDTH, SMALL_IMAGE_HEIGHT);
+        if ($specifications['display'] == 'image' || $specifications['display'] == 'multiimage' || $specifications['filter_display'] == 'multiimage' || $specifications['enter'] == 'image' || $specifications['enter'] == 'multiimage') { 
+          $specification_text = vam_image (DIR_WS_IMAGES . $specifications['specification'], $specifications['specification_name'], SMALL_IMAGE_WIDTH, SMALL_IMAGE_HEIGHT);
         } else {
-          $specification_text .= $specifications['specification'] . ' ';
+          $specification_text = $specifications['specification'] . ' ';
         }
 
         $specification_text .= $specifications['specification_suffix'];
@@ -125,7 +125,8 @@ $col = 0;
 				$specifications_data[$row]['DATA'][$col] = array (
 				
 					'NAME' => $specifications['specification_name'], 
-					'VALUE' => (!empty($specifications['specification_prefix']) ? $specifications['specification_prefix'].' ' : '').$specifications['specification'].(!empty($specifications['specification_suffix']) ? ' '.$specifications['specification_suffix'] : '')
+					//'VALUE' => (!empty($specifications['specification_prefix']) ? $specifications['specification_prefix'].' ' : '').$specifications['specification'].(!empty($specifications['specification_suffix']) ? ' '.$specifications['specification_suffix'] : '')
+					'VALUE' => $specification_text
 			
 				);
 				

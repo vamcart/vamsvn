@@ -926,16 +926,26 @@ if ($not_found) {
         break;
 
       case 'multiimage':
-        $box_text .= vam_draw_form('filter', $target, 'get');
+        $box_text .= vam_draw_form('filter', $target, 'get', 'class="form-inline"');
         foreach ($filters_select_array as $filter) {
           $checked = ($filter['id'] == $filter_value[$checkbox_id]) ? true : false;
-          $box_text .= vam_draw_checkbox_field($filter_name . '[' . $checkbox_id . ']', $filter['id'], $checked);
+        if ($filter['text'] != TEXT_SHOW_ALL) {
+          $box_text .= '<div class="form-check form-check-inline px-2"><label class="form-check-label">'.vam_draw_checkbox_field($filter_name . '[' . $checkbox_id . ']', $filter['id'], $checked, 'class="form-check-input" onClick="this.form.submit();"');
+        } else {
+        //if ($filter['id'] == $filter_value[$checkbox_id]) {
+          $box_text .= '<div class="form-check form-check-inline px-2"><label class="form-check-label">'.vam_draw_checkbox_field($filter_name . '[' . $checkbox_id . ']', $filter['id'], false, 'class="form-check-input" onClick="this.form.submit();"');
+        //}
+        }
+        if ($filter['text'] != TEXT_SHOW_ALL) {
           $box_text .= '  ' . vam_image(DIR_WS_IMAGES . trim($filter['text']), $filter['text']) . '<br>' . "\n";
-          $box_text .= '<br>' . "\n";
+        } else {
+          $box_text .= '  ' . $filter['text'] . '<br>' . "\n";
+        }
+          $box_text .= '</label></div>' . "\n";
           $checkbox_id++;
         }
         $box_text .= $additional_variables . vam_hide_session_id();
-        $box_text .= vam_image_submit('submit.png', TEXT_FIND_PRODUCTS);
+        //$box_text .= vam_image_submit('submit.png', TEXT_FIND_PRODUCTS);
         $box_text .= '</form>';
         break;
 
