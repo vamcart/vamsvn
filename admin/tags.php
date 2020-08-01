@@ -226,7 +226,7 @@ $manual_link = 'delete-tags';
     }
     
 if ($tags['status'] == '1') { $status_checked = true; } elseif ($tags['status'] == '0') { $status_checked = false; } else { $status_checked = true; }
-if ($tags['tags_mainpage'] == '1') { $startpage_checked = true; } else { $startpage_checked = false; }
+if ($tags['tags_mainpage'] == '1'){ $startpage_checked = true; } elseif ($tags['tags_mainpage'] == '0') { $startpage_checked = false; } else { $startpage_checked = true; }
     
 ?>
       <tr><?php echo vam_draw_form('new_tags', FILENAME_TAGS, isset($_GET['tags_id']) ? vam_get_all_get_params(array('action')) . 'action=update_tags' : vam_get_all_get_params(array('action')) . 'action=insert_tags', 'post', 'enctype="multipart/form-data"'); ?>
