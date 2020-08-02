@@ -83,6 +83,9 @@ global $order_id, $oStatus;
 				$vamTemplate->assign('SHIPPING_METHOD', $order_shipping_text);
 
 		$comments = str_replace('{$NAME}', $check_status['customers_name'], $comments);
+		$fio = explode(" ", $check_status['customers_name']);		
+		$comments = str_replace('{$FIRST_NAME}', isset($fio[0]) ? $fio[0] : $check_status['customers_name'], $comments);
+		$comments = str_replace('{$LAST_NAME}', isset($fio[1]) ? $fio[1] : $check_status['customers_name'], $comments);
 		$comments = str_replace('{$ORDER_NR}', $oID, $comments);
 		$comments = str_replace('{$ORDER_LINK}', vam_href_link(FILENAME_ACCOUNT_HISTORY_INFO, 'order_id='.$oID, 'SSL'), $comments);
 		$comments = str_replace('{$ORDER_DATE}', vam_date_short($check_status['date_purchased']), $comments);
