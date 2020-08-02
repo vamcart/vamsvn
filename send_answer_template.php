@@ -25,16 +25,22 @@
 
    Released under the GNU General Public License
    --------------------------------------------------------------*/
-include ('includes/application_top.php');
+include_once('includes/application_top.php');
 
-require (DIR_WS_CLASSES.'order.php');
+require_once(DIR_WS_CLASSES.'order.php');
 
 		$order_number = (int)$_GET['oID'];
 		$order_status = (int)$_GET['status'];
 
+global $order_id, $oStatus;
+
+		if ($order_id > 0) $order_number = $order_id;
+		if ($oStatus > 0) $order_status = $oStatus;
+
 		if ($order_number == 0) return;
 
 		$order = new order($order_number);
+
 
 		if (!isset($lang)) $lang=$_SESSION['languages_id'];
 		$orders_statuses = array ();
@@ -95,6 +101,9 @@ require (DIR_WS_CLASSES.'order.php');
 		if ($check_status['orders_status'] != $status || $comments != '') {
 			//vam_db_query("update ".TABLE_ORDERS." set orders_status = '".vam_db_input($status)."', last_modified = now() where orders_id = '".vam_db_input($oID)."'");
 			$customer_notified = '0';
+			global $notify;
+			if ($notify == 'on' && !$_GET['notify']) $_GET['notify'] = $notify;
+			if ($notify_comments == 'on' && !$_GET['notify_comments']) $_GET['notify_comments'] = $notify_comments;
 			$_POST['notify'] = $_GET['notify'];
 			$_POST['notify_comments'] = $_GET['notify_comments'];
 			if ($_POST['notify'] == 'on') {
