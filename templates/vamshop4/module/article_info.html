@@ -20,13 +20,6 @@
 <div class="page">
 <div class="pageItem" itemprop="articleBody">
 
-{if $ARTICLE_IMAGE}
-<p itemprop="image" class="text-center" itemscope itemtype="https://schema.org/ImageObject">
-<img class="img-fluid" src="{$smarty.const.HTTP_SERVER}{$smarty.const.DIR_WS_CATALOG}{$smarty.const.DIR_WS_IMAGES}articles/{$ARTICLE_IMAGE}" alt="{$ARTICLE_NAME}" />
-<meta itemprop="url" content="{$smarty.const.HTTP_SERVER}{$smarty.const.DIR_WS_CATALOG}{$smarty.const.DIR_WS_IMAGES}articles/{$ARTICLE_IMAGE}" />
-</p>
-{/if}
-
 {if $ARTICLE_DESCRIPTION}
 {$ARTICLE_DESCRIPTION}
 {/if}
@@ -60,13 +53,17 @@
 {/if}
 </div>
 </div>
-</article>
 
   <div class="card card-product h-100">
 	<div class="card-body">
 	<div class="row">
 		<div class="col-md-3">
-			<div class="img-wrap"><img src="{if $ARTICLE_IMAGE != ''}{$smarty.const.DIR_WS_CATALOG}{$smarty.const.DIR_WS_IMAGES}articles/{$ARTICLE_IMAGE}{else}{$smarty.const.DIR_WS_CATALOG}{$smarty.const.DIR_WS_IMAGES}product_images/noimage.gif{/if}" alt="{$ARTICLE_NAME}"></div>
+			<div class="img-wrap">
+			<p itemprop="image" class="text-center" itemscope itemtype="https://schema.org/ImageObject">
+			<img class="img-fluid" src="{if $ARTICLE_IMAGE != ''}{$smarty.const.DIR_WS_CATALOG}{$smarty.const.DIR_WS_IMAGES}articles/{$ARTICLE_IMAGE}{else}{$smarty.const.DIR_WS_CATALOG}{$smarty.const.DIR_WS_IMAGES}product_images/noimage.gif{/if}" alt="{$ARTICLE_NAME}" />
+			<meta itemprop="url" content="{$smarty.const.HTTP_SERVER}{$smarty.const.DIR_WS_CATALOG}{$smarty.const.DIR_WS_IMAGES}articles/{$ARTICLE_IMAGE}" />
+			</p>
+			</div>
 		</div>
 		<div class="col-md-6">
 			
@@ -138,6 +135,8 @@
 	</div>
 	</div>
 </div>
+
+</article>
 
 {if $MODULE_articles_xsell != ''}
 {$MODULE_articles_xsell}
