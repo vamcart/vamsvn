@@ -171,4 +171,5 @@ define('FILENAME_ACCOUNT_DUPLICATE_ORDER', 'order_functions.php');
 
 define('FILENAME_TAGS', 'tags.php');
 
+define('FILENAME_POHOZHIE_TOVARY', 'pohozhie_tovary.php');
 ?>

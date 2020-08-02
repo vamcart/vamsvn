@@ -1197,5 +1197,11 @@ define('MODULE_ORDER_STATUS_HAVE_6_DESC' , 'Заказы, у которых те
 define('MODULE_ORDER_STATUS_6_TITLE' , 'Новый статус заказа');
 define('MODULE_ORDER_STATUS_6_DESC' , 'Заказы, у которых текущий статус равен указанному.Укажите новый статус заказа, который будет выставлен всем соответствующим настройке заказам.');
 
+define('POHOZHIE_TOVARY_TITLE' , 'Показывать модуль Похожие товары?');
+define('POHOZHIE_TOVARY_DESC' , 'Блок похожие товары выводится на странице карточки товара.');
+define('POHOZHIE_TOVARY_FULL_TITLE' , 'Количество выбираемых похожих товаров из всех найденых похожих товаров');
+define('POHOZHIE_TOVARY_FULL_DESC' , '');
+define('POHOZHIE_TOVARY_RAND_TITLE' , 'Количество похожих товаров которые будут выводится рандомно (из числа выбранных)');
+define('POHOZHIE_TOVARY_RAND_DESC' , '');
 
 ?>

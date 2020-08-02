@@ -225,6 +225,156 @@ class product {
 
 	}
 
+function getPohozhieTovary() {
+
+global $vamPrice;
+
+$pohozhie_tovary = array();
+
+if ($_GET['articles_id']) {
+$products_info_query = "select articles_head_title_tag, articles_name from " . TABLE_ARTICLES_DESCRIPTION . " where articles_id = '" . (int)$_GET['articles_id'] . "'"; 
+} else {
+$products_info_query = "select products_name, products_meta_title, products_keywords from " . TABLE_PRODUCTS_DESCRIPTION . " where products_id = '" . $this->pID . "'";
+}
+$products_info_query2 = vamDBquery($products_info_query);
+$products_info = vam_db_fetch_array($products_info_query2, true);
+
+$stemmer = new Lingua_Stem_Ru(); // инициализация класса функции по обрезанию окончаний слов (стеммер Поттера)
+
+if ($_GET['articles_id']) {
+$text = $products_info['articles_name'] . ' ' . $products_info['articles_head_title_tag'];
+$text0 = $products_info['articles_name'];
+} else {
+$text = $products_info['products_name'] . ' ' . $products_info['products_keywords'];
+$text0 = $products_info['products_meta_title'];
+}
+
+$text = preg_replace("|[^abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ". 
+  "абвгдежзийклмнопрстуфхцчшщъыьэюяёАБВГДЕЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯЁ ]|", " ", $text); 
+$text0 = preg_replace("|[^abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ". 
+  "абвгдежзийклмнопрстуфхцчшщъыьэюяёАБВГДЕЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯЁ ]|", " ", $text0); 
+
+$text2 = explode(' ', $text);
+$text2 = stopWords($text2);
+
+$text3 = explode(' ', $text0);
+$text3 = stopWords($text3);
+
+// Пройдемся по массиву стимером Потера, обрежем окончания у слов (позже выяснил что для полнотекстового поиска не очень подходит)
+/* foreach ( $text2 as $k => $text2 ) {
+$text3[$k] = $stemmer->stem_word($text2);
+}
+$text2 = $text3; */
+
+$text2 = array_diff($text2, array(' '));
+$text2 = array_diff($text2, array(''));
+
+$q = implode(' ', $text2);
+
+$text3 = array_diff($text3, array(' '));
+$text3 = array_diff($text3, array(''));
+
+$q2 = implode(' ', $text3);
+
+//echo $q2;
+
+
+####### Исключить W товары #######
+
+//$w = "and p.products_model not like '%w%'"; 
+
+##################################
+
+require_once (DIR_FS_INC.'vam_parse_search_string.inc.php');
+
+// $q2 - поиск только по названию, а $q - по тегам и названию
+
+$searchorder = array();
+$searchorder2 = array();
+	
+	if (isset ($text) && vam_not_null($text)) {
+		if (vam_parse_search_string(stripslashes($q2), $search_keywords0)) {
+			
+			for ($i = 0, $n = sizeof($search_keywords0); $i < $n; $i ++) {
+				if ($search_keywords0[$i] != 'and')
+				$exact_phrase[] = addslashes($stemmer->stem_word($search_keywords0[$i]));
+			
+				if (!in_array($search_keywords0[$i], array('(',')','and','or'))) {
+					$searchorder[] = "pd.products_name LIKE ('% ".addslashes($stemmer->stem_word($search_keywords0[$i]))."%')";
+				    $searchorder2[] = "pd.products_description LIKE ('% ".addslashes($stemmer->stem_word($search_keywords0[$i]))."%')";
+				}
+			}
+		}
+	}
+	$exact_phrase = implode(' ', $exact_phrase);
+	
+	if (count($searchorder) > 0) {
+		$select_str = " IF(pd.products_name LIKE '%".addslashes($exact_phrase)."%',0,IF(pd.products_keywords LIKE '%".addslashes($exact_phrase)."%',1,IF(".implode(' or ', $searchorder).",2,IF(".implode(' or ', $searchorder2).",3,4)))) AS searchorder, ";
+		
+	} else {
+		$select_str = ' 0 AS searchorder, ';
+	}
+	
+//echo $q2;
+
+if ($q2 != '') {
+$listing_sql = "select
+							p.products_id,
+							p.label_id,
+							p.products_image,
+							p.products_quantity,
+							p.products_price,
+							p.products_fsk18,							
+							p.products_ordered,							
+							p.products_model,
+							pd.products_name, 
+							pd.products_short_description, 
+							pd.products_meta_title, 
+							pd.products_meta_description,
+							pd.products_description,
+							pd.products_keywords,
+							$select_str
+							match (pd.products_name, pd.products_description, pd.products_keywords) against ('" . $q2 . "') AS head_relevance							
+							from " . TABLE_PRODUCTS_DESCRIPTION . " pd
+							left join " . TABLE_PRODUCTS . " p
+							on (p.products_id = pd.products_id)
+							where (match (pd.products_name) against ('" . $q2 . "')
+							or match (pd.products_description) against ('" . $q2 . "')
+							or match (pd.products_keywords) against ('" . $q2 . "')
+							$searchorder3) 
+							and p.products_status = '1'
+							and pd.language_id = '" . (int)$_SESSION['languages_id'] . "'
+							and pd.products_id NOT IN ('" . $this->pID . "') 
+							$w
+							order by head_relevance desc, searchorder
+							limit ". POHOZHIE_TOVARY_FULL ."";
+
+
+$products_search_query = vam_db_query($listing_sql);
+if(mysqli_num_rows($products_search_query) >= POHOZHIE_TOVARY_RAND) {
+while ($products = vam_db_fetch_array($products_search_query)) {
+$pohozhie_tovary_full[] = $this->buildDataArray($products);
+}
+}
+
+// Рандомим вывод
+    $datar0 = array_shift($pohozhie_tovary_full); // вычленяем первый элемент массива чтобы потом его прибавить в конце к остальным (дабы 1 самый релевантный товар всегда был, не рандомился)
+
+	$datar = array_rand($pohozhie_tovary_full, POHOZHIE_TOVARY_RAND - 1);
+	if (count($datar) >= 1) {
+	for ($x=0; $x < POHOZHIE_TOVARY_RAND - 1; $x++) {
+	$pohozhie_tovary[] = $pohozhie_tovary_full[$datar[$x]];
+	}
+	$pohozhie_tovary[] = $datar0 + $pohozhie_tovary;
+	}
+	$pohozhie_tovary = array_reverse($pohozhie_tovary);
+	
+	return $pohozhie_tovary; 	
+ 	
+}	
+	
+}	
+
 	/**
 	 * 
 	 * get bundle products

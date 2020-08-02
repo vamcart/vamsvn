@@ -185,6 +185,15 @@ require_once (DIR_FS_INC.'vam_get_spsr_zone_id.inc.php');
 require_once (DIR_FS_INC . 'vam_get_subcategories.inc.php');
 require_once (DIR_FS_INC.'vam_get_label_name.inc.php');
 
+// функция обрезки окончаний (работает только для одного слова)
+require_once (DIR_FS_INC.'stemmer_pottera.inc.php');
+
+// Функция уничтожения стоп-слов
+function stopWords($query) { //тут мы обрабатываем весь поисковый запрос
+$query = preg_replace('/(^|\s)(' . STOP_WORDS . ')($|\s)/ui', ' ', $query);
+return $query;
+}
+
 // make a connection to the database... now
 vam_db_connect() or die('Unable to connect to database server!');
 
