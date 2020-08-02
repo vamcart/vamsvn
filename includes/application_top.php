@@ -698,10 +698,10 @@ vam_count_cart();
 // include the articles functions
   require(DIR_WS_FUNCTIONS . 'articles.php');
 
-  if (strstr($PHP_SELF, FILENAME_ARTICLE_INFO)) {   
+  if (strstr($PHP_SELF, FILENAME_ARTICLE_INFO) or (strstr($PHP_SELF, FILENAME_ARTICLES) && isset($_GET['tPath']))) {   
        $breadcrumb->add(TEXT_RSS_ARTICLES, vam_href_link(FILENAME_ARTICLES));
   } 
-
+  
 // calculate topic path
   if (isset($_GET['tPath'])) {
     $tPath = $_GET['tPath'];
@@ -730,8 +730,11 @@ vam_count_cart();
 		if (SEARCH_ENGINE_FRIENDLY_URLS == 'true')
 			$SEF_parameter = '&category='.vam_cleanName($topics['topics_name']);
 
-        if ($current_topic_id == $tPath_array[$i] && (isset($_GET['articles_id']) or isset($_GET['authors_id'])))
+        if ($current_topic_id == $tPath_array[$i] && (isset($_GET['articles_id']) or isset($_GET['authors_id']))) {
         $breadcrumb->add($topics['topics_name'], vam_href_link(FILENAME_ARTICLES, 'tPath=' . $tPath_array[$i].$SEF_parameter));
+        } else {
+        $breadcrumb->add($topics['topics_name']);
+        }
       } else {
         break;
       }

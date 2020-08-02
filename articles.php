@@ -52,7 +52,8 @@ require_once (DIR_FS_INC.'vam_date_short.inc.php');
   }
 
   if ($topic_depth == 'top' && !isset($_GET['authors_id'])) {
-    $breadcrumb->add(NAVBAR_TITLE_DEFAULT, vam_href_link(FILENAME_ARTICLES));
+    $breadcrumb->add(NAVBAR_TITLE_DEFAULT);
+    //$breadcrumb->add(NAVBAR_TITLE_DEFAULT, vam_href_link(FILENAME_ARTICLES));
   }
 
     $topic_query = vam_db_query("select td.topics_name, td.topics_heading_title, td.topics_description from " . TABLE_TOPICS . " t, " . TABLE_TOPICS_DESCRIPTION . " td where t.topics_id = '" . (int)$current_topic_id . "' and td.topics_id = '" . (int)$current_topic_id . "' and td.language_id = '" . (int)$_SESSION['languages_id'] . "'");
