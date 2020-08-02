@@ -38,7 +38,7 @@ require_once(DIR_WS_CLASSES . 'order.php');
 $vamTemplate = new vamTemplate;
 
      
-        $configuration_query = vam_db_query("select configuration_key,configuration_id, configuration_value, use_function,set_function from " . TABLE_CONFIGURATION . " where configuration_id in (47,48,49) order by sort_order");
+        $configuration_query = vam_db_query("select configuration_key,configuration_id, configuration_value, use_function,set_function from " . TABLE_CONFIGURATION . " where configuration_group_id = 1 and sort_order in (47,48,49) order by sort_order");
 
 	$conf1=array();
   while($configuration = vam_db_fetch_array($configuration_query))
