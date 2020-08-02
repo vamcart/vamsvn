@@ -17,7 +17,8 @@
 
   require('includes/application_top.php');
   require_once (DIR_FS_INC.'vam_image_submit.inc.php');
-
+  require_once (DIR_FS_INC.'vam_wysiwyg_tiny.inc.php');
+  
   if ($_GET['action']) {
     switch ($_GET['action']) {
       case 'setflag': //set the status of an item.
@@ -75,6 +76,11 @@
 <title><?php echo TITLE; ?></title>
 <!-- Header JS, CSS -->
 <?php require(DIR_FS_ADMIN.DIR_WS_INCLUDES . 'header_include.php'); ?>
+<?php 
+ $query=vam_db_query("SELECT code FROM ". TABLE_LANGUAGES ." WHERE languages_id='".$_SESSION['languages_id']."'");
+ $data=vam_db_fetch_array($query);
+ echo vam_wysiwyg_tiny('products_content',$data['code']); 
+?>
 </head>
 <body marginwidth="0" marginheight="0" topmargin="0" bottommargin="0" leftmargin="0" rightmargin="0" bgcolor="#FFFFFF">
 <!-- header //-->
