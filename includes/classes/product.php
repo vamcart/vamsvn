@@ -356,7 +356,8 @@ $listing_sql = "select
 
 $products_search_query = vam_db_query($listing_sql);
 
-if(SIMILAR_PRODUCTS_RAND >= vam_db_num_rows($products_search_query)) {
+//if(vam_db_num_rows($products_search_query) >= SIMILAR_PRODUCTS_RAND) {
+if(vam_db_num_rows($products_search_query) >= 1) {
 while ($products = vam_db_fetch_array($products_search_query)) {
 $similar_products_full[] = $this->buildDataArray($products);
 }
@@ -365,16 +366,16 @@ $similar_products_full[] = $this->buildDataArray($products);
 //echo var_dump($similar_products_full);
 
 // Рандомим вывод
-    $datar0 = array_shift($similar_products_full); // вычленяем первый элемент массива чтобы потом его прибавить в конце к остальным (дабы 1 самый релевантный товар всегда был, не рандомился)
+   //$datar0 = array_shift($similar_products_full); // вычленяем первый элемент массива чтобы потом его прибавить в конце к остальным (дабы 1 самый релевантный товар всегда был, не рандомился)
 
-	$datar = array_rand($similar_products_full, SIMILAR_PRODUCTS_RAND - 1);
-	if (count($datar) >= 1) {
-	for ($x=0; $x < SIMILAR_PRODUCTS_RAND - 1; $x++) {
-	$similar_products[] = $similar_products_full[$datar[$x]];
-	}
-	$similar_products[] = $datar0 + $similar_products;
-	}
-	$similar_products = array_reverse($similar_products);
+	//$datar = array_rand($similar_products_full, SIMILAR_PRODUCTS_RAND - 1);
+	//if (count($datar) >= 1) {
+	//for ($x=0; $x < SIMILAR_PRODUCTS_RAND - 1; $x++) {
+	//$similar_products[] = $similar_products_full[$datar[$x]];
+	//}
+	//$similar_products[] = $datar0 + $similar_products;
+	//}
+	//$similar_products = array_reverse($similar_products);
 
 	//return $similar_products; 	
 	return $similar_products_full; 	
