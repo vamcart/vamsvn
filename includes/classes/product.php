@@ -225,11 +225,11 @@ class product {
 
 	}
 
-function getPohozhieTovary() {
+function getSimilarProducts() {
 
 global $vamPrice;
 
-$pohozhie_tovary = array();
+$similar_products = array();
 
 if ($_GET['articles_id']) {
 $products_info_query = "select articles_head_title_tag, articles_name from " . TABLE_ARTICLES_DESCRIPTION . " where articles_id = '" . (int)$_GET['articles_id'] . "'"; 
@@ -248,6 +248,8 @@ $text0 = $products_info['articles_name'];
 $text = $products_info['products_name'] . ' ' . $products_info['products_keywords'];
 $text0 = $products_info['products_meta_title'];
 }
+
+if ($products_info['products_meta_title'] == '') $text0 = $text;
 
 $text = preg_replace("|[^abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ". 
   "абвгдежзийклмнопрстуфхцчшщъыьэюяёАБВГДЕЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯЁ ]|", " ", $text); 
@@ -334,42 +336,48 @@ $listing_sql = "select
 							pd.products_description,
 							pd.products_keywords,
 							$select_str
-							match (pd.products_name, pd.products_description, pd.products_keywords) against ('" . $q2 . "') AS head_relevance							
+							match (pd.products_name, pd.products_description, pd.products_keywords) against ('" . $q2 . "' IN BOOLEAN MODE) AS head_relevance							
 							from " . TABLE_PRODUCTS_DESCRIPTION . " pd
 							left join " . TABLE_PRODUCTS . " p
 							on (p.products_id = pd.products_id)
-							where (match (pd.products_name) against ('" . $q2 . "')
-							or match (pd.products_description) against ('" . $q2 . "')
-							or match (pd.products_keywords) against ('" . $q2 . "')
+							where (match (pd.products_name) against ('" . $q2 . "' IN BOOLEAN MODE)
+							or match (pd.products_description) against ('" . $q2 . "' IN BOOLEAN MODE)
+							or match (pd.products_keywords) against ('" . $q2 . "' IN BOOLEAN MODE)
 							$searchorder3) 
 							and p.products_status = '1'
 							and pd.language_id = '" . (int)$_SESSION['languages_id'] . "'
 							and pd.products_id NOT IN ('" . $this->pID . "') 
 							$w
 							order by head_relevance desc, searchorder
-							limit ". POHOZHIE_TOVARY_FULL ."";
+							limit ". SIMILAR_TOVARY_FULL ."";
 
+
+//echo $listing_sql;
 
 $products_search_query = vam_db_query($listing_sql);
-if(mysqli_num_rows($products_search_query) >= POHOZHIE_TOVARY_RAND) {
+
+if(SIMILAR_TOVARY_RAND >= vam_db_num_rows($products_search_query)) {
 while ($products = vam_db_fetch_array($products_search_query)) {
-$pohozhie_tovary_full[] = $this->buildDataArray($products);
+$similar_products_full[] = $this->buildDataArray($products);
 }
 }
+
+//echo var_dump($similar_products_full);
 
 // Рандомим вывод
-    $datar0 = array_shift($pohozhie_tovary_full); // вычленяем первый элемент массива чтобы потом его прибавить в конце к остальным (дабы 1 самый релевантный товар всегда был, не рандомился)
+    $datar0 = array_shift($similar_products_full); // вычленяем первый элемент массива чтобы потом его прибавить в конце к остальным (дабы 1 самый релевантный товар всегда был, не рандомился)
 
-	$datar = array_rand($pohozhie_tovary_full, POHOZHIE_TOVARY_RAND - 1);
+	$datar = array_rand($similar_products_full, SIMILAR_TOVARY_RAND - 1);
 	if (count($datar) >= 1) {
-	for ($x=0; $x < POHOZHIE_TOVARY_RAND - 1; $x++) {
-	$pohozhie_tovary[] = $pohozhie_tovary_full[$datar[$x]];
+	for ($x=0; $x < SIMILAR_TOVARY_RAND - 1; $x++) {
+	$similar_products[] = $similar_products_full[$datar[$x]];
 	}
-	$pohozhie_tovary[] = $datar0 + $pohozhie_tovary;
+	$similar_products[] = $datar0 + $similar_products;
 	}
-	$pohozhie_tovary = array_reverse($pohozhie_tovary);
-	
-	return $pohozhie_tovary; 	
+	$similar_products = array_reverse($similar_products);
+
+	//return $similar_products; 	
+	return $similar_products_full; 	
  	
 }	
 	
