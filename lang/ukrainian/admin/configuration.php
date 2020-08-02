@@ -1155,4 +1155,47 @@ define('MAX_DISPLAY_TAGS_PAGE_DESC' , 'Количество тэгов, отоб
 define('MAX_DISPLAY_TAGS_DESCRIPTION_TITLE' , 'Теги описание');
 define('MAX_DISPLAY_TAGS_DESCRIPTION_DESC' , 'Количество символов, отображаемых при предварительном просмотре тэгов');
 
+define('MODULE_ORDER_DAYS_TITLE' , 'Заказы старше X дней');
+define('MODULE_ORDER_DAYS_DESC' , 'Заказы, оформленные в магазине более X дней назад, где X - это число. В данной опции указывайте просто число.');
+define('MODULE_ORDER_STATUS_TITLE' , 'Заказы имеющие статус');
+define('MODULE_ORDER_STATUS_DESC' , 'Заказы, у которых текущий статус равен указанному.');
+define('MODULE_ORDER_STATUS_HAVE_TITLE' , 'Новый статус заказа');
+define('MODULE_ORDER_STATUS_HAVE_DESC' , 'Укажите новый статус заказа, который будет выставлен всем соответствующим настройке заказам.');
+
+define('MODULE_ORDER_DAYS_2_TITLE' , 'Заказы старше X дней');
+define('MODULE_ORDER_DAYS_2_DESC' , 'Заказы, оформленные в магазине более X дней назад, где X - это число. В данной опции указывайте просто число.');
+define('MODULE_ORDER_STATUS_2_TITLE' , 'Заказы имеющие статус');
+define('MODULE_ORDER_STATUS_2_DESC' , 'Заказы, у которых текущий статус равен указанному.');
+define('MODULE_ORDER_STATUS_HAVE_2_TITLE' , 'Новый статус заказа');
+define('MODULE_ORDER_STATUS_HAVE_2_DESC' , 'Укажите новый статус заказа, который будет выставлен всем соответствующим настройке заказам.');
+
+define('MODULE_ORDER_DAYS_3_TITLE' , 'Заказы старше X дней');
+define('MODULE_ORDER_DAYS_3_DESC' , 'Заказы, оформленные в магазине более X дней назад, где X - это число. В данной опции указывайте просто число.');
+define('MODULE_ORDER_STATUS_3_TITLE' , 'Заказы имеющие статус');
+define('MODULE_ORDER_STATUS_3_DESC' , 'Заказы, у которых текущий статус равен указанному.');
+define('MODULE_ORDER_STATUS_HAVE_3_TITLE' , 'Новый статус заказа');
+define('MODULE_ORDER_STATUS_HAVE_3_DESC' , 'Укажите новый статус заказа, который будет выставлен всем соответствующим настройке заказам.');
+
+define('MODULE_ORDER_DAYS_4_TITLE' , 'Заказы старше X дней');
+define('MODULE_ORDER_DAYS_4_DESC' , 'Заказы, оформленные в магазине более X дней назад, где X - это число. В данной опции указывайте просто число.');
+define('MODULE_ORDER_STATUS_4_TITLE' , 'Заказы имеющие статус');
+define('MODULE_ORDER_STATUS_4_DESC' , 'Заказы, у которых текущий статус равен указанному.');
+define('MODULE_ORDER_STATUS_HAVE_4_TITLE' , 'Новый статус заказа');
+define('MODULE_ORDER_STATUS_HAVE_4_DESC' , 'Укажите новый статус заказа, который будет выставлен всем соответствующим настройке заказам.');
+
+define('MODULE_ORDER_MINUTES_5_TITLE' , 'Заказы старше Y минут');
+define('MODULE_ORDER_MINUTES_5_DESC' , 'Заказы, оформленные в магазине более Y минут назад, где Y - это число. В данной опции указывайте просто число.');
+define('MODULE_ORDER_STATUS_5_TITLE' , 'Заказы имеющие статус');
+define('MODULE_ORDER_STATUS_5_DESC' , 'Заказы, у которых текущий статус равен указанному.');
+define('MODULE_ORDER_STATUS_HAVE_5_TITLE' , 'Новый статус заказа');
+define('MODULE_ORDER_STATUS_HAVE_5_DESC' , 'Укажите новый статус заказа, который будет выставлен всем соответствующим настройке заказам.');
+
+define('MODULE_ORDER_MINUTES_6_TITLE' , 'Заказы старше Y минут');
+define('MODULE_ORDER_MINUTES_6_DESC' , 'Заказы, оформленные в магазине более Y минут назад, где Y - это число. В данной опции указывайте просто число.');
+define('MODULE_ORDER_STATUS_6_TITLE' , 'Заказы имеющие статус');
+define('MODULE_ORDER_STATUS_6_DESC' , 'Заказы, у которых текущий статус равен указанному.');
+define('MODULE_ORDER_STATUS_HAVE_6_TITLE' , 'Новый статус заказа');
+define('MODULE_ORDER_STATUS_HAVE_6_DESC' , 'Укажите новый статус заказа, который будет выставлен всем соответствующим настройке заказам.');
+
+
 ?>
