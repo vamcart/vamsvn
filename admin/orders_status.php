@@ -225,7 +225,7 @@ array ('id' => '1', 'text' => ENTRY_RESTOCK_1)
       }
 
       $contents[] = array('text' => '<br />' . TEXT_INFO_ORDERS_STATUS_NAME . $orders_status_inputs_string);
-      $contents[] = array('text' => '<br />' . vam_draw_checkbox_field('default') . ' ' . TEXT_SET_DEFAULT);
+      $contents[] = array('text' => '<br />' . vam_draw_checkbox_field('default', 'on', false) . ' ' . TEXT_SET_DEFAULT);
       $contents[] = array('align' => 'center', 'text' => '<br /><span class="button"><button type="submit" value="' . BUTTON_INSERT . '">' . vam_image(DIR_WS_IMAGES . 'icons/buttons/submit.png', '', '12', '12') . '&nbsp;' . BUTTON_INSERT . '</button></span> <a class="button" href="' . vam_href_link(FILENAME_ORDERS_STATUS, 'page=' . $_GET['page']) . '"><span>' . vam_image(DIR_WS_IMAGES . 'icons/buttons/cancel.png', '', '12', '12') . '&nbsp;' . BUTTON_CANCEL . '</span></a>');
       break;
 
@@ -258,7 +258,7 @@ array ('id' => '1', 'text' => ENTRY_RESTOCK_1)
       }
 
       $contents[] = array('text' => '<br />' . TEXT_INFO_ORDERS_STATUS_NAME . $orders_status_inputs_string);
-      if (DEFAULT_ORDERS_STATUS_ID != $oInfo->orders_status_id) $contents[] = array('text' => '<br />' . vam_draw_checkbox_field('default') . ' ' . TEXT_SET_DEFAULT);
+      if (DEFAULT_ORDERS_STATUS_ID != $oInfo->orders_status_id) $contents[] = array('text' => '<br />' . vam_draw_checkbox_field('default', 'on', false) . ' ' . TEXT_SET_DEFAULT);
       $contents[] = array('align' => 'center', 'text' => '<br /><span class="button"><button type="submit" value="' . BUTTON_UPDATE . '">' . vam_image(DIR_WS_IMAGES . 'icons/buttons/submit.png', '', '12', '12') . '&nbsp;' . BUTTON_INSERT . '</button></span> <a class="button" href="' . vam_href_link(FILENAME_ORDERS_STATUS, 'page=' . $_GET['page'] . '&oID=' . $oInfo->orders_status_id) . '"><span>' . vam_image(DIR_WS_IMAGES . 'icons/buttons/cancel.png', '', '12', '12') . '&nbsp;' . BUTTON_CANCEL . '</span></a>');
       break;
 
