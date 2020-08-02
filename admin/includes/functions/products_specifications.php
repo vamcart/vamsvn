@@ -254,8 +254,8 @@
 
     for ($i=0, $n=sizeof($values); $i<$n; $i++) {
       $field .= '<option value="' . vam_output_string ($values[$i]['id']) . '"';
-      //if (in_array ($values[$i]['id'], (array) $default) ) {
-      if (in_array_column($values[$i]['id'], "id", $default) ) {
+      if (in_array ($values[$i]['id'], (array) $default) ) {
+      //if (in_array_column($values[$i]['id'], "id", $default) ) {
         $field .= ' SELECTED';
       }
 
