@@ -26,7 +26,7 @@
    Released under the GNU General Public License
    --------------------------------------------------------------*/
 set_time_limit(0);
-require ('../includes/application_top.php');
+require ('includes/application_top.php');
 require_once(DIR_FS_CATALOG.'includes/external/phpmailer/class.phpmailer.php');
 require_once (DIR_FS_INC.'vam_php_mail.inc.php');
 require_once (DIR_FS_INC.'vam_add_tax.inc.php');
@@ -70,7 +70,7 @@ ORDER BY date_purchased DESC");
  
  }
   }
-  die('end');
+  die();
 	  
 	  
 

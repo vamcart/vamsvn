@@ -70,7 +70,7 @@ ORDER BY date_purchased DESC");
  
  }
   }
-  die('end');
+  die();
 	  
 	  
 
