@@ -26,12 +26,12 @@
    Released under the GNU General Public License
    --------------------------------------------------------------*/
 set_time_limit(0);
-require ('includes/application_top.php');
+require_once('includes/application_top.php');
 require_once(DIR_FS_CATALOG.'includes/external/phpmailer/class.phpmailer.php');
-require_once (DIR_FS_INC.'vam_php_mail.inc.php');
-require_once (DIR_FS_INC.'vam_add_tax.inc.php');
-require_once (DIR_FS_INC.'vam_validate_vatid_status.inc.php');
-require_once (DIR_FS_INC.'vam_get_attributes_model.inc.php');
+require_once(DIR_FS_INC.'vam_php_mail.inc.php');
+require_once(DIR_FS_INC.'vam_add_tax.inc.php');
+require_once(DIR_FS_INC.'vam_validate_vatid_status.inc.php');
+require_once(DIR_FS_INC.'vam_get_attributes_model.inc.php');
 require_once(DIR_WS_CLASSES . 'order.php');
 
 // initiate template engine for mail
@@ -45,8 +45,8 @@ $vamTemplate = new vamTemplate;
   $conf1[]=$configuration;
   
   $count_minutes=(int)$conf1[0]['configuration_value'];
-  $new_status=(int)$conf1[1]['configuration_value'];
-  $have_status=(int)$conf1[2]['configuration_value'];
+  $have_status=(int)$conf1[1]['configuration_value'];
+  $new_status=(int)$conf1[2]['configuration_value'];
   
   if ($count_minutes != 0) {
   if ($count_minutes && $new_status && $have_status)
@@ -58,12 +58,17 @@ DAY))>=UNIX_TIMESTAMP(DATE_FORMAT( CURDATE(), '%Y-%m-%d %H:%M:%S' ))) AND orders
 ORDER BY date_purchased DESC");
  while($orders = vam_db_fetch_array($orders_sql)){		
  $oID=$orders['orders_id'];
+ $order_id = $oID; 
+ $oStatus=$new_status;
+ $notify = 'on';
+ $notify_comments = 'on';
+
  $insert_id=$oID;
    vam_db_query("update  ".TABLE_ORDERS." set orders_status='$new_status' where orders_id='$oID'");
    
  include DIR_FS_CATALOG."send_answer_template.php";
  
- sleep(2);
+ //sleep(2);
  vam_db_query("insert into ".TABLE_ORDERS_STATUS_HISTORY." (orders_id, orders_status_id, date_added, customer_notified, comments) values ('".vam_db_input($oID)."', '".vam_db_input($new_status)."', now(), '1', '".vam_db_input($notify_comments)."')");
  
  }               
