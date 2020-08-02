@@ -349,14 +349,14 @@ $listing_sql = "select
 							and pd.products_id NOT IN ('" . $this->pID . "') 
 							$w
 							order by head_relevance desc, searchorder
-							limit ". SIMILAR_TOVARY_FULL ."";
+							limit ". SIMILAR_PRODUCTS_FULL ."";
 
 
 //echo $listing_sql;
 
 $products_search_query = vam_db_query($listing_sql);
 
-if(SIMILAR_TOVARY_RAND >= vam_db_num_rows($products_search_query)) {
+if(SIMILAR_PRODUCTS_RAND >= vam_db_num_rows($products_search_query)) {
 while ($products = vam_db_fetch_array($products_search_query)) {
 $similar_products_full[] = $this->buildDataArray($products);
 }
@@ -367,9 +367,9 @@ $similar_products_full[] = $this->buildDataArray($products);
 // Рандомим вывод
     $datar0 = array_shift($similar_products_full); // вычленяем первый элемент массива чтобы потом его прибавить в конце к остальным (дабы 1 самый релевантный товар всегда был, не рандомился)
 
-	$datar = array_rand($similar_products_full, SIMILAR_TOVARY_RAND - 1);
+	$datar = array_rand($similar_products_full, SIMILAR_PRODUCTS_RAND - 1);
 	if (count($datar) >= 1) {
-	for ($x=0; $x < SIMILAR_TOVARY_RAND - 1; $x++) {
+	for ($x=0; $x < SIMILAR_PRODUCTS_RAND - 1; $x++) {
 	$similar_products[] = $similar_products_full[$datar[$x]];
 	}
 	$similar_products[] = $datar0 + $similar_products;
