@@ -1,4 +1,4 @@
 {config_load file="$language/lang_$language.conf" section="tags"} <ul class="d-inline-block list-inline py-1">
-{foreach name=aussen item=module_data from=$module_content}	{include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/item/item-tag.html"}
+{foreach name=aussen item=module_data from=$module_content}{include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/item/item-tag.html"}
 {/foreach} 
 </ul>

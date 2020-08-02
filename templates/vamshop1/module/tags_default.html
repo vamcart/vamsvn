@@ -1,0 +1,6 @@
+{config_load file="$language/lang_$language.conf" section="tags"} <ul class="d-inline-block list-inline py-1">
+{foreach name=aussen item=module_data from=$module_content}<li class="list-inline-item pb-2">	
+<a href="{$module_data.TAGS_URL}"{if {$module_data.TAGS_TITLE} != ''} title="{$module_data.TAGS_TITLE}"{/if}><span class="btn btn-sm btn-add-to-cart">{$module_data.TAGS_NAME}</span></a>
+</li>
+{/foreach} 
+</ul>
