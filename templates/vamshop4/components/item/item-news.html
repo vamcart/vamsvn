@@ -7,7 +7,7 @@
 				</div>
 				<div class="text-wrap">
 					<div class="title"><a href="{$module_data.NEWS_LINK_MORE}">{$module_data.NEWS_HEADING}</a></div>
-					{$module_data.NEWS_CONTENT}
+					{$module_data.NEWS_CONTENT|vam_truncate:$smarty.const.MAX_DISPLAY_LATEST_NEWS_CONTENT:"...":true}
 				</div>
 			</div>
 	</div>
