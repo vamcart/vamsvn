@@ -8,7 +8,7 @@
 				</div>
 				{/if}
 				<span class="font-weight-bold text-secondary">{$smarty.const.TEXT_CUSTOMER_REVIEW}</span>
-				<p>{$module_data.TEXT|vam_truncate:$smarty.const.MAX_DISPLAY_SHORT_DESCRIPTION:"...":true}</p>
+				<p>{$module_data.TEXT|vam_truncate:$smarty.const.MAX_DISPLAY_REVIEW_TEXT:"...":true}</p>
 				{if {$module_data.ANSWER} != ''}
 				<span class="font-weight-bold text-primary">{$smarty.const.TEXT_STORE_ANSWER}</span>
 				<p>{$module_data.ANSWER}</p>

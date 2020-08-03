@@ -1204,4 +1204,7 @@ define('SIMILAR_PRODUCTS_FULL_DESC' , '');
 define('SIMILAR_PRODUCTS_RAND_TITLE' , 'Количество похожих товаров которые будут выводится рандомно (из числа выбранных)');
 define('SIMILAR_PRODUCTS_RAND_DESC' , '');
 
+define('MAX_DISPLAY_REVIEW_TEXT_TITLE' , 'Максимум символов в отзывах');
+define('MAX_DISPLAY_REVIEW_TEXT_DESC' , 'Количество символов, выводимых в отзывах, что б объёмное описание на ломало дизайн.');
+
 ?>
