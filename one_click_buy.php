@@ -114,7 +114,7 @@ $vamTemplate->assign('error', $messageStack->output('one_click_buy'));
 		$vamTemplate->caching = 0;
 		$txt_mail = $vamTemplate->fetch(CURRENT_TEMPLATE.'/mail/'.$_SESSION['language'].'/one_click_buy.txt');
 	// send mail to admin
-	vam_php_mail(filter_var($to_email_address, FILTER_VALIDATE_EMAIL), EMAIL_SUPPORT_NAME, EMAIL_SUPPORT_ADDRESS, STORE_NAME, EMAIL_SUPPORT_FORWARDING_STRING, filter_var($to_email_address, FILTER_VALIDATE_EMAIL), $to_name, '', '', ONE_CLICK_BUY_NAVBAR_TITLE, $html_mail, $txt_mail);
+	vam_php_mail(filter_var(EMAIL_SUPPORT_ADDRESS, FILTER_VALIDATE_EMAIL), EMAIL_SUPPORT_NAME, EMAIL_SUPPORT_ADDRESS, STORE_NAME, EMAIL_SUPPORT_FORWARDING_STRING, filter_var($to_email_address, FILTER_VALIDATE_EMAIL), $to_name, '', '', ONE_CLICK_BUY_NAVBAR_TITLE, $html_mail, $txt_mail);
 	// send mail to customer
 	//vam_php_mail(EMAIL_SUPPORT_ADDRESS, EMAIL_SUPPORT_NAME, $to_email_address, $to_name, EMAIL_SUPPORT_FORWARDING_STRING, EMAIL_SUPPORT_REPLY_ADDRESS, EMAIL_SUPPORT_REPLY_ADDRESS_NAME, '', '', NAVBAR_TITLE_ASK, $html_mail, $txt_mail);
 

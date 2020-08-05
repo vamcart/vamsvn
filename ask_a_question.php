@@ -113,7 +113,7 @@ $vamTemplate->assign('error', $messageStack->output('ask_a_question'));
 		$vamTemplate->caching = 0;
 		$txt_mail = $vamTemplate->fetch(CURRENT_TEMPLATE.'/mail/'.$_SESSION['language'].'/ask_a_question.txt');
 	// send mail to admin
-	vam_php_mail(filter_var($to_email_address, FILTER_VALIDATE_EMAIL), EMAIL_SUPPORT_NAME, EMAIL_SUPPORT_ADDRESS, STORE_NAME, EMAIL_SUPPORT_FORWARDING_STRING, filter_var($to_email_address, FILTER_VALIDATE_EMAIL), $to_name, '', '', NAVBAR_TITLE_ASK, $html_mail, $txt_mail);
+	vam_php_mail(filter_var(EMAIL_SUPPORT_ADDRESS, FILTER_VALIDATE_EMAIL), EMAIL_SUPPORT_NAME, EMAIL_SUPPORT_ADDRESS, STORE_NAME, EMAIL_SUPPORT_FORWARDING_STRING, filter_var($to_email_address, FILTER_VALIDATE_EMAIL), $to_name, '', '', NAVBAR_TITLE_ASK, $html_mail, $txt_mail);
 	// send mail to customer
 	//vam_php_mail(EMAIL_SUPPORT_ADDRESS, EMAIL_SUPPORT_NAME, $to_email_address, $to_name, EMAIL_SUPPORT_FORWARDING_STRING, EMAIL_SUPPORT_REPLY_ADDRESS, EMAIL_SUPPORT_REPLY_ADDRESS_NAME, '', '', NAVBAR_TITLE_ASK, $html_mail, $txt_mail);
 
