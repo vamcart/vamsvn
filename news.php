@@ -57,10 +57,10 @@
       }
   }
   if (empty($_GET['news_id'])) {
-      $split = new splitPageResults($all_news_sql, $_GET['page'], MAX_DISPLAY_LATEST_NEWS_PAGE, 'news_id');
+      $split = new splitPageResults($all_news_sql, $_GET['page'], MAX_DISPLAY_LATEST_NEWS_PAGE);
       $query = vam_db_query($split->sql_query);
       if (($split->number_of_rows > 0)) {
-          $vamTemplate->assign('NAVIGATION_BAR', TEXT_RESULT_PAGE.' '.$split->display_links(MAX_DISPLAY_PAGE_LINKS, vam_get_all_get_params(array ('page', 'info', 'x', 'y'))));
+          $vamTemplate->assign('NAVIGATION_BAR', TEXT_RESULT_PAGE.' '.$split->display_links(MAX_DISPLAY_PAGE_LINKS, vam_get_all_get_params(array ('news_id', 'page', 'info', 'x', 'y'))));
           $vamTemplate->assign('NAVIGATION_BAR_PAGES', $split->display_count(TEXT_DISPLAY_NUMBER_OF_LATEST_NEWS));
       }
       $vamTemplate->assign('ONE', false);

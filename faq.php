@@ -77,10 +77,10 @@
       }      
   }
   if (empty($_GET['faq_id'])) {
-      $split = new splitPageResults($all_sql, $_GET['page'], MAX_DISPLAY_FAQ_PAGE, 'faq_id');
+      $split = new splitPageResults($all_sql, $_GET['page'], MAX_DISPLAY_FAQ_PAGE);
       $query = vam_db_query($split->sql_query);
       if (($split->number_of_rows > 0)) {
-          $vamTemplate->assign('NAVIGATION_BAR', '<span class="right">'.TEXT_RESULT_PAGE.' '.$split->display_links(MAX_DISPLAY_PAGE_LINKS, vam_get_all_get_params(array ('page', 'info', 'x', 'y'))) . '</span>' .$split->display_count(TEXT_DISPLAY_NUMBER_OF_FAQ));
+          $vamTemplate->assign('NAVIGATION_BAR', '<span class="right">'.TEXT_RESULT_PAGE.' '.$split->display_links(MAX_DISPLAY_PAGE_LINKS, vam_get_all_get_params(array ('faq_id', 'page', 'info', 'x', 'y'))) . '</span>' .$split->display_count(TEXT_DISPLAY_NUMBER_OF_FAQ));
       } else {
    header("HTTP/1.1 404 Not Found");
 }
