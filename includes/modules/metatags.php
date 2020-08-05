@@ -411,7 +411,7 @@ $content_meta = vam_db_fetch_array($content_meta_query, true);
 
 
 ?>
-<title><?php echo $mName . ' ' . TITLE . (isset($_GET['page']) && $_GET['page'] > 0 ? ' - ' . sprintf(PREVNEXT_TITLE_PAGE_NO, $_GET['page']) . $_GET['page'] : null); ?></title>
+<title><?php echo $mName . ' ' . TITLE . (isset($_GET['page']) && $_GET['page'] > 0 ? ' - ' . sprintf(PREVNEXT_TITLE_PAGE_NO, $_GET['page']) : null); ?></title>
 <link rel="canonical" href="<?php echo vam_href_link(FILENAME_DEFAULT, 'manufacturers_id='.$manufacturer['manufacturers_id']); ?>"/>
 <meta name="description" content="<?php echo $mDesc; ?>" />
 <meta name="keywords" content="<?php echo $mKey; ?>" />
