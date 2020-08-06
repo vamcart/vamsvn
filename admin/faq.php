@@ -208,8 +208,8 @@ $manual_link = 'delete-faq';
       $faq = array();
     }
     
-if ($tags['show_popular_products'] == '1'){ $show_popular_products_checked = true; } else { $show_popular_products_checked = true; }    
-if ($tags['show_discount_products'] == '1'){ $show_discount_products_checked = true; } else { $show_discount_products_checked = true; }    
+if ($faq['show_popular_products'] == '1'){ $show_popular_products_checked = true; } else { $show_popular_products_checked = false; }    
+if ($faq['show_discount_products'] == '1'){ $show_discount_products_checked = true; } else { $show_discount_products_checked = false; }    
 ?>
       <tr><?php echo vam_draw_form('new_faq', FILENAME_FAQ, isset($_GET['faq_id']) ? vam_get_all_get_params(array('action')) . 'action=update_faq' : vam_get_all_get_params(array('action')) . 'action=insert_faq', 'post', 'enctype="multipart/form-data"'); ?>
         <td><table border="0" cellspacing="0" cellpadding="2" width="100%">
