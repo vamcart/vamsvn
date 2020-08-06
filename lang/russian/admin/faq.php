@@ -54,4 +54,7 @@ define('TEXT_FAQ_SELECT_CATEGORIES', 'Выберите категории');
 define('TEXT_FAQ_ATTACH_TO_PRODUCTS', 'Прицепить вопрос к товарам');
 define('TEXT_FAQ_SELECT_PRODUCTS', 'Выберите товары');
 
+define('TEXT_FAQ_SHOW_POPULAR_PRODUCTS', 'Показывать в ответе 5 популярных товаров категории');
+define('TEXT_FAQ_SHOW_DISCOUNT_PRODUCTS', 'Показывать в ответе 5 дешёвых товаров категории');
+
 ?>

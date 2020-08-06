@@ -60,6 +60,8 @@
                                   'faq_head_desc' => vam_db_prepare_input($_POST['faq_head_desc']),
                                   'faq_head_keys' => vam_db_prepare_input($_POST['faq_head_keys']),
                                   'answer'    => vam_db_prepare_input($_POST['answer']),
+                                  'show_popular_products'    => vam_db_prepare_input($_POST['show_popular_products']),
+                                  'show_discount_products'    => vam_db_prepare_input($_POST['show_discount_products']),
                                   'date_added' => 'now()', //uses the inbuilt mysql function 'now'
                                   'language'   => vam_db_prepare_input($_POST['item_language']),
                                   'status'     => '1' );
@@ -98,6 +100,8 @@
                                   'faq_head_desc' => vam_db_prepare_input($_POST['faq_head_desc']),
                                   'faq_head_keys' => vam_db_prepare_input($_POST['faq_head_keys']),
                                   'answer'  => vam_db_prepare_input($_POST['answer']),
+                                  'show_popular_products'    => vam_db_prepare_input($_POST['show_popular_products']),
+                                  'show_discount_products'    => vam_db_prepare_input($_POST['show_discount_products']),
                                   'date_added'  => vam_db_prepare_input($_POST['date_added']),
                                   'language'   => vam_db_prepare_input($_POST['item_language']),
                                   );
@@ -198,11 +202,14 @@ $manual_link = 'delete-faq';
 <?php
   if ($_GET['action'] == 'new_faq') { //insert or edit a faq
     if ( isset($_GET['faq_id']) ) { //editing exsiting faq
-      $faq_query = vam_db_query("select faq_id, question, language, faq_page_url, faq_head_title, faq_head_desc, faq_head_keys, date_added, answer from " . TABLE_FAQ . " where faq_id = '" . $_GET['faq_id'] . "'");
+      $faq_query = vam_db_query("select * from " . TABLE_FAQ . " where faq_id = '" . $_GET['faq_id'] . "'");
       $faq = vam_db_fetch_array($faq_query);
     } else { //adding new faq
       $faq = array();
     }
+    
+if ($tags['show_popular_products'] == '1'){ $show_popular_products_checked = true; } else { $show_popular_products_checked = true; }    
+if ($tags['show_discount_products'] == '1'){ $show_discount_products_checked = true; } else { $show_discount_products_checked = true; }    
 ?>
       <tr><?php echo vam_draw_form('new_faq', FILENAME_FAQ, isset($_GET['faq_id']) ? vam_get_all_get_params(array('action')) . 'action=update_faq' : vam_get_all_get_params(array('action')) . 'action=insert_faq', 'post', 'enctype="multipart/form-data"'); ?>
         <td><table border="0" cellspacing="0" cellpadding="2" width="100%">
@@ -282,6 +289,23 @@ $manual_link = 'delete-faq';
             <td colspan="2"><?php echo vam_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
           </tr>
 
+          <tr>
+            <td class="main"><?php echo TEXT_FAQ_SHOW_POPULAR_PRODUCTS; ?>:</td>
+            <td class="main"><?php echo '&nbsp;<label>'.vam_draw_radio_field('show_popular_products', '1', $show_popular_products_checked) . '&nbsp;' . YES . '</label>&nbsp;<label>' . vam_draw_radio_field('show_popular_products', '0', !$show_popular_products_checked) . '&nbsp;' . NO . '</label>'; ?></td>
+          </tr>
+          <tr>
+            <td colspan="2"><?php echo vam_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
+          </tr>
+
+          <tr>
+            <td class="main"><?php echo TEXT_FAQ_SHOW_DISCOUNT_PRODUCTS; ?>:</td>
+            <td class="main"><?php echo '&nbsp;<label>'.vam_draw_radio_field('show_discount_products', '1', $show_discount_products_checked) . '&nbsp;' . YES . '</label>&nbsp;<label>' . vam_draw_radio_field('show_discount_products', '0', !$show_discount_products_checked) . '&nbsp;' . NO . '</label>'; ?></td>
+          </tr>
+          <tr>
+            <td colspan="2"><?php echo vam_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
+          </tr>
+          
+
 <?php
 if ( isset($_GET['faq_id']) ) {
 ?>
@@ -355,7 +379,7 @@ echo vam_draw_pull_down_menu('item_language',$languages_array,$languages_selecte
     $rows = 0;
 
     $faq_count = 0;
-    $faq_query_raw = 'select faq_id, question, faq_page_url, faq_head_title, faq_head_desc, faq_head_keys, answer, status from ' . TABLE_FAQ . ' order by date_added desc';
+    $faq_query_raw = 'select * from ' . TABLE_FAQ . ' order by date_added desc';
 
 	$faq_split = new splitPageResults($_GET['page'], MAX_DISPLAY_ADMIN_PAGE, $faq_query_raw, $faq_query_numrows);
 

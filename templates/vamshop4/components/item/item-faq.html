@@ -9,7 +9,25 @@
 					<div class="title"><a href="{$module_data.FAQ_LINK_MORE}"><span itemprop="name">{$module_data.FAQ_QUESTION}</span></a></div>
 					<div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
 					<div itemprop="text">
-					{$module_data.FAQ_ANSWER|vam_truncate:$smarty.const.MAX_DISPLAY_FAQ_ANSWER:"...":true}
+					{$module_data.FAQ_ANSWER}
+						{if {$module_data.FAQ_SHOW_POPULAR_PRODUCTS} == 'true'} 
+						{$smarty.const.TITLE_SPECIALS_DEFAULT} {$module_data.CATEGORY_NAME}:<br/>
+						<ul>					
+						{foreach name=aussen item=popular_products from=$module_data.FAQ_PRODUCTS_POPULAR}						<li>	
+						<a href="{$popular_products.PRODUCTS_LINK}">{$popular_products.PRODUCTS_NAME}</a>
+						</li>
+						{/foreach}
+						</ul> 
+						{/if} 
+						{if {$module_data.FAQ_SHOW_DISCOUNT_PRODUCTS} == 'true'} 
+						{$smarty.const.TITLE_FEATURED_DEFAULT_SHORT} {$module_data.CATEGORY_NAME}:<br/>
+						<ul>					
+						{foreach name=aussen item=discount_products from=$module_data.FAQ_PRODUCTS_DISCOUNT}						<li>	
+						<a href="{$discount_products.PRODUCTS_LINK}">{$discount_products.PRODUCTS_NAME}</a>
+						</li>
+						{/foreach}
+						</ul>
+						{/if} 
 					</div>
 					</div>
 				</div>
