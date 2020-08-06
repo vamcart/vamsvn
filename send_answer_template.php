@@ -127,7 +127,11 @@ global $order_id, $oStatus;
 				$vamTemplate->assign('logo_path', HTTP_SERVER.DIR_WS_CATALOG.'templates/'.CURRENT_TEMPLATE.'/img/');
 
 				$vamTemplate->assign('NAME', $check_status['customers_name']);
+				$fio = explode(" ", $check_status['customers_name']);		
+				$vamTemplate->assign('FIRST_NAME', isset($fio[0]) ? $fio[0] : $check_status['customers_name']);
+				$vamTemplate->assign('LAST_NAME', isset($fio[1]) ? $fio[1] : $check_status['customers_name']);
 				$vamTemplate->assign('ORDER_NR', $oID);
+				$vamTemplate->assign('ORDER_TOTAL', $order->info['total']);
 				$vamTemplate->assign('ORDER_LINK', vam_href_link(FILENAME_ACCOUNT_HISTORY_INFO, 'order_id='.$oID, 'SSL'));
 				$vamTemplate->assign('ORDER_DATE', vam_date_short($check_status['date_purchased']));
 				$vamTemplate->assign('NOTIFY_COMMENTS', $notify_comments);
@@ -150,14 +154,14 @@ global $order_id, $oStatus;
 
 				vam_php_mail(EMAIL_BILLING_ADDRESS, EMAIL_BILLING_NAME, $check_status['customers_email_address'], $check_status['customers_name'], '', EMAIL_BILLING_REPLY_ADDRESS, EMAIL_BILLING_REPLY_ADDRESS_NAME, '', '',  $billing_subject, $html_mail, $txt_mail);
 
-				if (defined('AVISOSMS_EMAIL') && AVISOSMS_EMAIL != '') {
+				//if (defined('AVISOSMS_EMAIL') && AVISOSMS_EMAIL != '') {
 
-				$html_mail_sms = $vamTemplate->fetch(CURRENT_TEMPLATE.'/admin/mail/'.$_SESSION['language'].'/change_order_mail_answer_template_sms.html');
-				$txt_mail_sms = $vamTemplate->fetch(CURRENT_TEMPLATE.'/admin/mail/'.$_SESSION['language'].'/change_order_mail_answer_template_sms.txt');
+				//$html_mail_sms = $vamTemplate->fetch(CURRENT_TEMPLATE.'/admin/mail/'.$_SESSION['language'].'/change_order_mail_answer_template_sms.html');
+				//$txt_mail_sms = $vamTemplate->fetch(CURRENT_TEMPLATE.'/admin/mail/'.$_SESSION['language'].'/change_order_mail_answer_template_sms.txt');
 
 				// sms to customer
-				vam_php_mail(EMAIL_BILLING_ADDRESS, EMAIL_BILLING_NAME, AVISOSMS_EMAIL, $order->customer['firstname'].' '.$order->customer['lastname'], '', EMAIL_BILLING_REPLY_ADDRESS, EMAIL_BILLING_REPLY_ADDRESS_NAME, '', '', $order->customer['telephone'], $html_mail_sms, $txt_mail_sms);
-				}
+				//vam_php_mail(EMAIL_BILLING_ADDRESS, EMAIL_BILLING_NAME, AVISOSMS_EMAIL, $order->customer['firstname'].' '.$order->customer['lastname'], '', EMAIL_BILLING_REPLY_ADDRESS, EMAIL_BILLING_REPLY_ADDRESS_NAME, '', '', $order->customer['telephone'], $html_mail_sms, $txt_mail_sms);
+				//}
 	
 				$customer_notified = '1';
 			}
