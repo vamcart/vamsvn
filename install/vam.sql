@@ -5049,7 +5049,7 @@ INSERT INTO `tags` (`tags_id`, `tags_name`, `tags_title`, `tags_description`, `t
 (1, 'Смартфоны 16 Гб', '', '', '/smartphones/pamyat-16-gb.html', 1, '', '', '', '2020-08-06 12:50:59', 1, 1, 'smartphony-16-gb.html', 0, 0, 0),
 (2, 'Смартфоны 32 Гб', '', '', '/smartphones/pamyat-32-gb.html', 1, '', '', '', '2020-08-06 12:51:49', 1, 1, 'smartphony-32-gb.html', 0, 0, 0),
 (3, 'Смартфоны 4 Гб', '', '', '/smartphones/pamyat-4-gb.html', 1, '', '', '', '2020-08-06 12:52:22', 1, 1, 'smartphony-4-gb.html', 0, 0, 0),
-(4, 'Планшеты 10 дюймов', '', '', '/tablets/yekran-10-1in-1280-x-800-10-1in-2560-h-1600.html', 1, '', '', '', '2020-08-06 12:54:12', 1, 1, 'planshety-10-djujmov.html', 0, 0, 0),
+(4, 'Планшеты 10 дюймов', '', '', '/tablets/yekran-10-1in-1280-x-800.html', 1, '', '', '', '2020-08-06 12:54:12', 1, 1, 'planshety-10-djujmov.html', 0, 0, 0),
 (5, 'Планшеты 8 дюймов', '', '', '/tablets/yekran-8-0in-1280-x-800.html', 1, '', '', '', '2020-08-06 12:54:54', 1, 1, 'planshety-8-djujmov.html', 0, 0, 0),
 (6, 'Лёгкие ноутбуки', '', '', '/notebooks/ves-0-744-kg.html', 1, '', '', '', '2020-08-06 12:56:37', 1, 1, 'ljogkie-noutbuki.html', 0, 0, 0),
 (7, 'Ноутбуки 15 дюймов', '', '', '/notebooks/yekran-15-0in-1600-x-900.html', 1, '', '', '', '2020-08-06 12:58:08', 1, 1, 'noutbuki-15-djujmov.html', 0, 0, 0),
