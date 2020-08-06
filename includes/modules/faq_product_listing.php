@@ -279,6 +279,7 @@ $answer = str_replace('{$PRODUCT_DISCOUNT_LINK_5}', $faq_discount_products_conte
         'FAQ_ICON' => $faqIcon,
         'FAQ_SHOW_POPULAR_PRODUCTS' => $one_faq['show_popular_products'],
         'FAQ_SHOW_DISCOUNT_PRODUCTS' => $one_faq['show_discount_products'],
+        'FAQ_QUESTION' => $one_faq['question'],
         'FAQ_ANSWER' => $answer,
         'FAQ_ID'      => $one_faq['faq_id'],
         'FAQ_DATA'    => vam_date_short($one_faq['date_added']),
