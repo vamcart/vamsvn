@@ -165,6 +165,9 @@ if ($_SERVER["HTTP_X_FORWARDED_FOR"]) {
 
           $sql_data_array = array('customers_id' => $_SESSION['customer_id'],
                                   'customers_name' => $order->customer['firstname'] . ' ' . $order->customer['lastname'],
+                                  'customers_firstname' => $order->customer['firstname'],
+                                  'customers_secondname' => $order->customer['secondname'], 
+                                  'customers_lastname' => $order->customer['lastname'],
                                   'customers_cid' => $order->customer['csID'],
                                   'customers_vat_id' => $_SESSION['customer_vat_id'],
                                   'customers_company' => $order->customer['company'],
