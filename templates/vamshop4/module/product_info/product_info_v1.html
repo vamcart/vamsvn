@@ -256,6 +256,10 @@
 	<meta itemprop="mpn" content="{$PRODUCTS_MODEL}" />
 	{/if}
 	
+	{if $PRODUCTS_WEIGHT > 0}
+	<meta itemprop="weight" content="{$PRODUCTS_WEIGHT}" />
+	{/if}
+	
 	{if $extra_fields_data|@count > 5}
 	<div class="description extra_fields text-muted">
 	{foreach item=extra_fields from=$extra_fields_data} 

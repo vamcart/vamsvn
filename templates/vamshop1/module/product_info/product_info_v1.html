@@ -145,6 +145,10 @@
 							<meta itemprop="mpn" content="{$PRODUCTS_MODEL}" />
 							{/if}
 
+							{if $PRODUCTS_WEIGHT > 0}
+							<meta itemprop="weight" content="{$PRODUCTS_WEIGHT}" />
+							{/if}
+	
 						{if $specifications}
 						<div class="inner">
 						<!-- Specifications -->
