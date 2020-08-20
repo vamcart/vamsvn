@@ -259,6 +259,10 @@
 	{if $PRODUCTS_WEIGHT > 0}
 	<meta itemprop="weight" content="{$PRODUCTS_WEIGHT}" />
 	{/if}
+
+	{if $PRODUCTS_EAN > 0}
+	<meta itemprop="gtin" content="{$PRODUCTS_EAN}" />
+	{/if}
 	
 	{if $extra_fields_data|@count > 5}
 	<div class="description extra_fields text-muted">

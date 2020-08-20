@@ -149,6 +149,10 @@
 							<meta itemprop="weight" content="{$PRODUCTS_WEIGHT}" />
 							{/if}
 	
+							{if $PRODUCTS_EAN > 0}
+							<meta itemprop="gtin" content="{$PRODUCTS_EAN}" />
+							{/if}
+	
 						{if $specifications}
 						<div class="inner">
 						<!-- Specifications -->
