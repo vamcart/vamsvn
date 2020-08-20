@@ -383,7 +383,7 @@ $(window).on('load', function() {
     });
 }); 
 
-$(function() {
+//$(function() {
  // footer widget hide/show on mobile devices
  // -----------------------------------------------------------------------------
  function doFooter (){
@@ -396,11 +396,13 @@ $(function() {
      }
  }
  //$(window).on('resize', function(){ doFooter(); });
- $(window).on('load', function(){ doFooter(); });
+ //$(window).on('load', function(){ 
+ doFooter(); 
+ //});
  $('#footer .widget-title').click(function(){
      $(this).next('.widget-inner.do').toggle("slow");
  });
-});     
+//});     
 
 // Tooltips
 
