@@ -2734,12 +2734,16 @@ li.ajaxAddQuickie
 
 /* Buttons */
 
+.btn {
+  border-radius: 1rem;
+}
+
 .btn.btn-inverse,
 .btn.btn-inverse.checkout {
   color: #575757;
   background-color: #fff;
   border: 2px solid #dee2e6;
-  border-radius: 50rem;
+  border-radius: 1rem;
   margin-top: 5px;
   margin-right: 5px;
   margin-bottom: 5px;
@@ -2758,7 +2762,7 @@ li.ajaxAddQuickie
   color: #575757;
   background-color: #fff;
   border: 2px solid #dee2e6;
-  border-radius: 50rem;
+  border-radius: 1rem;
   margin: 0px;
 }
 .btn-add-to-cart i {
@@ -2780,16 +2784,23 @@ del.button
 	{
     display: inline-block;
     font-weight: 400;
-    color: #fff;
     text-align: center;
-    /*vertical-align: middle;*/
+    vertical-align: middle;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
     user-select: none;
-    background-color: transparent;
-    border: 1px solid transparent;
-    padding: .300rem .75rem;
+    padding: .375rem .75rem;
     font-size: 1rem;
     line-height: 1.5;
     border-radius: .25rem;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+  color: #575757;
+  background-color: #fff;
+  border: 2px solid #dee2e6;
+  border-radius: 1rem;
+  margin: 0px;
 	}
 
 a.button, 
@@ -2800,27 +2811,20 @@ span.button button,
 span.button input, 
 del.button span
 	{
-		background-color: #575757;
 	}
+
+span.button button {
+		background-color: transparent;
+		border: 0;
+}
 
 a.button span, 
 span.button button, 
 span.button input, 
 del.button span
 	{
-    display: inline-block;
-    font-weight: 400;
-    color: #fff;
-    text-align: center;
-    /*vertical-align: middle;*/
-    user-select: none;
-    background-color: transparent;
-    border: 0;
-    padding: 0;
-    margin: 0;
-    font-size: 1rem;
-    line-height: 1.5;
-    border-radius: 0;
+
+
 	}
 
 del.button span
@@ -2850,28 +2854,31 @@ a.button:hover,
 a.button:focus, 
 a.dom-button-focus,
 span.button:hover, 
-span.button:focus,
-span.button button:hover, 
-span.button button:focus,
-span.button-behavior-hover
+span.button:focus
 	{
-		background-color: #dd2c00;
-		color: #fff;
-		text-decoration: none;
+    color: #dd2c00;
+    border: 2px solid #dd2c00;
+    background-color: #fff;
+    text-decoration: none;
 	}
+
+span.button:hover button {
+    color: #dd2c00;
+    text-decoration: none;
+} 
+
 
 a.button:hover span, 
 a.button:focus span, 
 span.button-behavior-hover button, 
 span.button-behavior-hover input
 	{
-		background-color: #dd2c00;
 	}
 
 a.button:active, 
 a.button:focus span
 	{
-		color: #fff;
+
 	}
 
 del.button-behavior-hover, 

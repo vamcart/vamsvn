@@ -342,7 +342,10 @@ a#scrollup:hover {
 /* /Nav Buttons Margin On Mobile */
 
 /* Tabs */
-
+.nav-tabs .nav-link {
+    display: block;
+    padding: .15rem 1rem;
+}
 .nav-tabs .nav-link.active, .nav-tabs .nav-item.show .nav-link {
     color: #0056B3;
     border: 2px solid #0056B3;
@@ -351,7 +354,7 @@ a#scrollup:hover {
 .nav-tabs .nav-link {
     color: #575757;
     border: 2px solid #dee2e6;
-    border-radius: 50rem;
+    border-radius: 1rem;
 }
 .nav-item {
     padding-right: .5em;
@@ -368,10 +371,8 @@ a#scrollup:hover {
 }
 
 .tab-pane {
-  border-top: 0;	
-  border-left: 1px solid #dee2e6;
-  border-right: 1px solid #dee2e6;
-  border-bottom: 1px solid #dee2e6;
+  border: 1px solid rgba(0,0,0,.125);
+  border-radius: 1rem;
   background: #fff;
   padding: .5em;
   -webkit-box-shadow: 0 3px 5px 0 rgba(0,0,0,.1);
@@ -435,6 +436,18 @@ li.level3 {
 
 .rating-wrap {
   padding-bottom: 0em; 
+}
+
+.rounded-pill {
+  border-radius: 1rem !important;
+}
+
+.card {
+  border-radius: 1rem;
+}
+
+.card-footer:last-child {
+  border-radius: 1rem;
 }
 
 .card.card-product .carousel-control-prev span,
@@ -781,7 +794,7 @@ li.level3 {
   box-shadow: 0 0px 0px 0 transparent;
 }
 
-.mainpage-tabs .nav-tabs {
+.nav-tabs {
   border-bottom: 0;
 }
 
