@@ -156,7 +156,7 @@ img.lazy:not([src]) {
 }
 
 .card-footer {
-  background: #fff;
+  background: transparent;
   border-top: 0px;
   padding: 0 .4em .4em .4em;
 }
