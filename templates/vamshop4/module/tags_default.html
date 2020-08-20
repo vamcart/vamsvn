@@ -1,5 +1,5 @@
 {config_load file="$language/lang_$language.conf" section="tags"}
-<div class="tags-list"> <ul class="d-inline-block list-inline">
+<div class="tags-list mb-3"> <ul class="d-inline-block list-inline">
 {foreach name=aussen item=module_data from=$module_content}{include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/item/item-tag.html"}
 {/foreach} 
 </ul>
