@@ -123,6 +123,17 @@ $(".owl-carousel-reverse").owlCarousel({
   //]
 //});
 
+$('.tags-list').slick({
+  dots: false,
+  infinite: false,
+  speed: 300,
+  arrows: false,
+  prevArrow:'<button type="button" class="slick-prev pull-left" role="presentation"><span class="fas fa-chevron-left fa-1x" aria-hidden="true"></span></button>',
+  nextArrow:'<button type="button" class="slick-next pull-right" role="presentation"><span class="fas fa-chevron-right fa-1x" aria-hidden="true"></span></button>',
+  slidesToShow: 1,
+  centerMode: false,
+  variableWidth: true
+});
 
 // Scroll to top button 
 	$(function () {
