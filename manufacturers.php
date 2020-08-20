@@ -51,10 +51,19 @@ $module_content = array();
 $row = 0;
 $manufacturers_query = vam_db_query($manufacturers_split->sql_query);
 while ($manufacturers = vam_db_fetch_array($manufacturers_query)) {
+	
+   $manufacturers_image = DIR_FS_CATALOG . DIR_WS_IMAGES . $manufacturers['manufacturers_image'];
+ 
+	if(file_exists($manufacturers_image) && is_file($manufacturers_image)) {
+		list($width, $height, $type, $attr) = getimagesize($manufacturers_image);
+	}
+	
    $module_content[]=array('PRODUCTS_ID'  => $manufacturers['manufacturers_id'],
                            'PRODUCTS_NAME'  => $manufacturers['manufacturers_name'],
                            'PRODUCTS_SHORT_DESCRIPTION'  => $manufacturers['manufacturers_description'],
                            'PRODUCTS_IMAGE' => DIR_WS_IMAGES . $manufacturers['manufacturers_image'],
+                           'PRODUCTS_IMAGE_WIDTH' => $width,
+                           'PRODUCTS_IMAGE_HEIGHT' => $height,
                            'PRODUCTS_LINK'  => vam_href_link(FILENAME_DEFAULT, 'manufacturers_id='.$manufacturers['manufacturers_id'])
    );
 }
