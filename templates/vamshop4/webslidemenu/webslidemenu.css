@@ -1681,8 +1681,6 @@ video {
   .wsmobileheader .wssearchform input {
     width: calc(100% - 80px);
     height: 34px;
-    -webkit-border-radius: 2px;
-    -moz-border-radius: 2px;
     text-indent: 10px;
     margin: 0px;
     line-height: 18px;
