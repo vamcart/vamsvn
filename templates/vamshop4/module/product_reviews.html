@@ -11,7 +11,7 @@
 			<div class="img-wrap"><a href="{$PRODUCTS_URL_INFO}" title="{$IMAGE_ALT}"><img src="{$PRODUCTS_IMAGE}" alt="{$IMAGE_ALT}"></a></div>
 		</div>
 		<div class="col-md-3 py-2">
-				<div class="h5"><a href="{$PRODUCTS_URL_INFO}" title="{$IMAGE_ALT}">{$PRODUCTS_NAME}</a></div>
+				<div class="title h5"><a href="{$PRODUCTS_URL_INFO}" title="{$IMAGE_ALT}">{$PRODUCTS_NAME}</a></div>
 				{if {$PRODUCTS_SHORT_DESCRIPTION} != ''}
 				<div class="desc mb-2 small">
 				{$PRODUCTS_SHORT_DESCRIPTION|vam_truncate:$smarty.const.MAX_DISPLAY_SHORT_DESCRIPTION:"...":true}
