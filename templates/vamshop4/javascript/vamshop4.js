@@ -453,8 +453,10 @@ $(window).on('load', function () {
     $('.card-body .price-wrap').matchHeight();
     $('.payment-method .method-title').matchHeight();
     $('.shipping-method .method-title').matchHeight();
+    $('.product-attribute-item .method-title').matchHeight();
     $('.payment-method .card-title').matchHeight();
     $('.shipping-method .card-title').matchHeight();
+    $('.product-attribute-item .card-title').matchHeight();
 });
 $(document).ajaxSuccess(function () {
     $('.card-body .img-wrap').matchHeight();
@@ -463,8 +465,10 @@ $(document).ajaxSuccess(function () {
     $('.card-body .price-wrap').matchHeight();
     $('.payment-method .method-title').matchHeight();
     $('.shipping-method .method-title').matchHeight();
+    $('.product-attribute-item .method-title').matchHeight();
     $('.payment-method .card-title').matchHeight();
     $('.shipping-method .card-title').matchHeight();
+    $('.product-attribute-item .card-title').matchHeight();
 });
 }	
 //$(window).on('resize', function () {
@@ -474,8 +478,10 @@ $(document).ajaxSuccess(function () {
     //$('.card-body .price-wrap').matchHeight();
     //$('.payment-method .method-title').matchHeight();
     //$('.shipping-method .method-title').matchHeight();
+    //$('.product-attribute-item .method-title').matchHeight();
     //$('.payment-method .card-title').matchHeight();
     //$('.shipping-method .card-title').matchHeight();
+    //$('.product-attribute-item .card-title').matchHeight();
 //});
 
 $(function () {
@@ -486,8 +492,10 @@ $('span[data-toggle="tab"]').on('shown.bs.tab', function (e) {
     $('.card-body .price-wrap').matchHeight();
     $('.payment-method .method-title').matchHeight();
     $('.shipping-method .method-title').matchHeight();
+    $('.product-attribute-item .method-title').matchHeight();
     $('.payment-method .card-title').matchHeight();
     $('.shipping-method .card-title').matchHeight();
+    $('.product-attribute-item .card-title').matchHeight();
 });
 });
 

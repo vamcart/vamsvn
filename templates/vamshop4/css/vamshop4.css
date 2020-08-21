@@ -1035,3 +1035,50 @@ li.level3 {
 .product-attributes .btn-group-toggle .btn {
   padding: 0;
 }
+
+.product-attributes .product-attribute-item label {
+  margin-bottom: 0;
+}
+
+.product-attributes .product-attribute-item.active.card {
+  background: #f8f9fa;
+}
+
+.product-attributes .product-attribute-item.card .card-body:before {
+  content: "\f055";
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  font-size: 18px;
+  color: #dd2c00;
+  float: right;
+  transform: scale(1);
+  transition: all 0.3s ease-out;  
+}
+
+.product-attributes .product-attribute-item.active.card .card-body:before {
+  content: "\f058";
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  font-size: 18px;
+  color: #006100;
+  float: right;
+  transform: scale(1);
+  transition: .5s;
+}
+
+.product-attributes .product-attribute-item.card .card-body {
+  padding-top: 0;
+}
+
+.product-attributes .product-attribute-item.card .card-text {
+  padding-top: .5em;
+}
+
+.product-attributes .product-attribute-item.card .card-header {
+  background-color: rgba(0,0,0,.03);
+  border-bottom: 1px solid rgba(0,0,0,.125);
+}
+
+.product-attributes .product-attribute-item.card .card-body {
+  min-height: 0;
+}
