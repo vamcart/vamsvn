@@ -546,11 +546,13 @@ li.level3 {
 
 .filters .filters .fields,
 .shipping-methods .shipping-method .shipping-fields,
+.product-attributes .product-attribute-item .shipping-fields,
 .payment-methods .payment-method .payment-fields {
     display: none;
 }
 
 .filter.card.card-product .card-footer,
+.product-attribute-item.card.card-product .card-footer,
 .shipping-method.card.card-product .card-footer,
 .payment-method.card.card-product .card-footer {
   padding: 0;
@@ -560,18 +562,21 @@ li.level3 {
 
 .filters .filter.card,
 .shipping-methods .shipping-method.card,
+.product-attributes .product-attribute-item.card,
 .payment-methods .payment-method.card {
 	border-radius: .25rem;
 }
 
 .filters .filter.card .card-body,
 .shipping-methods .shipping-method.card .card-body,
+.product-attributes .product-attribute-item.card .card-body,
 .payment-methods .payment-method.card .card-body {
   padding-top: 1em;
 }
 
 .filters .filter.card .card-footer,
 .shipping-methods .shipping-method.card .card-footer,
+.product-attributes .product-attribute-item.card .card-footer,
 .payment-methods .payment-method.card .card-footer {
   border-top: 0px;
 }
@@ -580,6 +585,9 @@ li.level3 {
 .filter:hover .fields,
 .shipping-method.selected .shipping-fields,
 .shipping-method:hover .shipping-fields,
+.product-attribute-item.selected .shipping-fields,
+.product-attribute-item.active .shipping-fields,
+.product-attribute-item:hover .shipping-fields,
 .payment-method.selected .payment-fields,
 .payment-method:hover .payment-fields {
   display: block;
@@ -602,6 +610,8 @@ li.level3 {
 
 .filter.selected,
 .shipping-method.selected,
+.product-attribute-item.selected,
+.product-attribute-item.active,
 .payment-method.selected {
   webkit-box-shadow: 0 14px 15px rgba(153,153,153,.3);
   box-shadow: 0 14px 15px rgba(153,153,153,.3);
@@ -611,6 +621,7 @@ li.level3 {
 
 .filter:hover,
 .shipping-method:hover,
+.product-attribute-item:hover,
 .payment-method:hover {
   border-top: 1px solid #dd2c00;
   border-left: 1px solid #dd2c00;
@@ -623,6 +634,7 @@ li.level3 {
 
 .filter:hover .fields,
 .shipping-method:hover .shipping-fields,
+.product-attribute-item:hover .shipping-fields,
 .payment-method:hover .payment-fields {
   border-top: 0px solid #dd2c00;
   border-left: 1px solid #dd2c00;
@@ -633,6 +645,7 @@ li.level3 {
   transition: .5s;
 }
 
+.product-attribute-item.active, 
 .selected {
   border-top: 1px solid #dd2c00;
   border-left: 1px solid #dd2c00;
@@ -643,6 +656,8 @@ li.level3 {
 
 .filter.selected .fields,
 .shipping-method.selected .shipping-fields,
+.product-attribute-item.selected .shipping-fields,
+.product-attribute-item.active .shipping-fields,
 .payment-method.selected .payment-fields {
   border-top: 0px;
   border-left: 1px solid #dd2c00;
