@@ -439,7 +439,7 @@ li.level3 {
 }
 
 .rounded-pill {
-  border-radius: 1rem !important;
+  border-radius: 2rem !important;
 }
 
 .card {
@@ -1006,11 +1006,11 @@ li.level3 {
 }
 
 .form-control {
-  border-radius: 1rem;
+  border-radius: 2rem;
 }
 
 .select2-selection {
-  border-radius: 1rem !important;
+  border-radius: 1.5rem !important;
 }
 
 .tags-list .slick-slide {

@@ -2727,7 +2727,7 @@ li.ajaxAddQuickie
 /* Buttons */
 
 .btn {
-  border-radius: 1rem;
+  border-radius: 1.5rem;
 }
 
 .btn.btn-inverse,
@@ -2735,7 +2735,7 @@ li.ajaxAddQuickie
   color: #575757;
   background-color: #fff;
   border: 2px solid #dee2e6;
-  border-radius: 1rem;
+  border-radius: 1.5rem;
   margin-top: 5px;
   margin-right: 5px;
   margin-bottom: 5px;
@@ -2754,7 +2754,7 @@ li.ajaxAddQuickie
   color: #575757;
   background-color: #fff;
   border: 2px solid #dee2e6;
-  border-radius: 1rem;
+  border-radius: 1.5rem;
   margin: 0px;
 }
 .btn-add-to-cart i {
@@ -2791,7 +2791,7 @@ del.button
   color: #575757;
   background-color: #fff;
   border: 2px solid #dee2e6;
-  border-radius: 1rem;
+  border-radius: 1.5rem;
   margin: 0px;
 	}
 
