@@ -4272,7 +4272,7 @@ INSERT INTO `banners` (`banners_id`, `banners_title`, `banners_description`, `ba
 (22, 'Популярные', 'Рекомендуемые товары', 'https://vamshop.ru', 'slide5.jpg', 'slider_bootstrap', '', NULL, NULL, NULL, '2019-04-07 23:04:12', NULL, 0);
 
 INSERT INTO `products_options` (`products_options_id`, `language_id`, `products_options_name`, `products_options_length`, `products_options_size`, `products_options_rows`, `products_options_type`, `sortorder`) VALUES
-(1, 1, 'Цвет', 64, 32, 1, 1, 1);
+(1, 1, 'Цвет', 64, 32, 1, 4, 1);
 
 INSERT INTO `products_options_values` (`products_options_values_id`, `language_id`, `products_options_values_name`, `products_options_values_description`, `products_options_values_text`, `products_options_values_image`, `products_options_values_link`) VALUES
 (1, 1, 'Белый', '', '', '', ''),
