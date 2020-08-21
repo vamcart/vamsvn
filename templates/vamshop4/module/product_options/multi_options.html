@@ -49,16 +49,32 @@
 <div class="py-1">
 <strong>{$options_data.NAME}:</strong>
 <br />
-<div class="btn-group btn-group-toggle flex-wrap" data-toggle="buttons">
+<div class="card-deck product-attributes" data-toggle="buttons">
 {foreach key=key_data item=item_data from=$options_data.DATA}
-<label class="btn btn-outline-primary mt-1{if {$item_data.CHECKED}} active{/if}">
-<input type="radio" name="id[{$options_data.ID}]" id="id[{$options_data.ID}]" value="{$item_data.ID}" {$item_data.CHECKED} />&nbsp;
-{$item_data.TEXT} {if $item_data.PRICE_PLAIN != 0}({$item_data.PREFIX}{$item_data.PRICE}){/if}
-{if $item_data.DESCRIPTION}<br />{$item_data.DESCRIPTION}<br />{/if}
-{if $item_data.SHORT_DESCRIPTION}{$item_data.SHORT_DESCRIPTION}<br />{/if}
-{if $item_data.IMAGE}<img src="{$image_dir}thumbs/{$item_data.IMAGE}" border="0" alt="{$item_data.TEXT}" />{/if}
-{if $item_data.LINK}<a align="right" href="http://{$item_data.LINK}" target="_blank"><img src="{$tpl_path}img/info.gif" border="0" alt="{$item_data.TEXT}" /></a>{/if}<br />
-</label>
+<div class="btn-group-toggle col-12 col-sm-12 col-md-6 col-lg-6 col-xl-4">
+<div class="btn btn-link product-attribute-item card card-product card-sm text-center h-100{if $item_data@first} active{/if}">
+<label class="h-100 payment {$options_data.ID}">
+  <div class="card-header d-flex justify-content-between">
+    <div><input type="radio" name="id[{$options_data.ID}]" id="id[{$options_data.ID}]" value="{$item_data.ID}" {$item_data.CHECKED} /></div>
+    <div class="method-title"><span class="title">{$item_data.TEXT}</span></div>
+    <div class="font-weight-bolder">{if $item_data.PRICE_PLAIN != 0}<span class="badge badge-secondary font-weight-bold">{$item_data.PREFIX}{$item_data.PRICE}</span>{/if}</div>
+  </div>
+  <div class="card-body">
+    {if $item_data.PRICE_PLAIN != 0}<p class="card-text"><span class="btn btn-secondary font-weight-bold">{$item_data.PREFIX}{$item_data.PRICE}</span></p>{/if}
+    {if $item_data.IMAGE}
+    <div class="text-center"><img class="img-fluid" src="{$image_dir}thumbs/{$item_data.IMAGE}" border="0" alt="{$item_data.TEXT}" /></div>
+    {/if}
+    {if $item_data.DESCRIPTION}<br />{$item_data.DESCRIPTION}<br />{/if}
+    {if $item_data.SHORT_DESCRIPTION}{$item_data.SHORT_DESCRIPTION}<br />{/if}
+    {if $item_data.LINK}<a href="http://{$item_data.LINK}" target="_blank"><img src="{$tpl_path}img/info.gif" border="0" alt="{$item_data.TEXT}" /></a>{/if}<br />
+  </div>
+  <div class="card-footer">
+  </div>
+</label>  
+</div>
+</div>
+
+
 {/foreach}
 </div>
 
@@ -68,15 +84,45 @@
 {elseif $options_data.TYPE eq '5'}
 
 <!-- checkbox -->
-<div class="form-group py-1">
+<div class="py-1">
 <strong>{$options_data.NAME}:</strong>
+<br />
+<div class="card-deck payment-methods btn-group-toggle" data-toggle="buttons">
 {foreach key=key_data item=item_data from=$options_data.DATA}
-<label>
-<input type="checkbox" name="id[{$options_data.ID}]" id="id[{$options_data.ID}]" value="{$item_data.ID}" />&nbsp;
-{$item_data.TEXT} {if $item_data.PRICE_PLAIN != 0}({$item_data.PREFIX}{$item_data.PRICE}){/if}
-{if $item_data.DESCRIPTION}<br />{$item_data.DESCRIPTION}{/if}<br />
+<label class="btn btn-link mt-1{if $item_data@first} active{/if}">
+  <div class="card card-product">
+	<div class="card-body">
+	<div class="row">
+	{if $item_data.IMAGE}
+		<div class="col-md-12 my-auto">
+			<div class="img-wrap"><img src="{$image_dir}thumbs/{$item_data.IMAGE}" border="0" alt="{$item_data.TEXT}" /></div>
+		</div>
+	{/if}
+		<div class="{if $item_data.IMAGE}col-md-12{else}col-md-12{/if} my-auto">
+				<input type="checkbox" name="id[{$options_data.ID}]" id="id[{$options_data.ID}]" value="{$item_data.ID}" />
+				<div class="title">{$item_data.TEXT}</div>
+				{if $item_data.DESCRIPTION}<br />{$item_data.DESCRIPTION}<br />{/if}
+				{if $item_data.SHORT_DESCRIPTION}{$item_data.SHORT_DESCRIPTION}<br />{/if}
+				{if $item_data.LINK}<a align="right" href="http://{$item_data.LINK}" target="_blank"><img src="{$tpl_path}img/info.gif" border="0" alt="{$item_data.TEXT}" /></a>{/if}<br />
+		</div>
+		<div class="col-md-12 my-auto">
+				<div class="price-wrap h6 font-weight-bold text-dark b">
+					<div><strong>{if $item_data.PRICE_PLAIN != 0}{$item_data.PREFIX}{$item_data.PRICE}{/if}</strong></div>
+				</div>
+		</div>
+		<div class="col-md-12 my-auto py-2">
+			<div class="action-wrap text-center">
+         {$module_data.PRODUCTS_BUTTON_BUY_NOW_NEW}
+			</div>
+		</div>
+	</div>
+	</div>
+</div>
+
 </label>
 {/foreach}
+</div>
+
 </div>
 <!-- /checkbox -->
 

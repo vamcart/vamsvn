@@ -1031,3 +1031,7 @@ li.level3 {
 .tags-list .slick-slide {
   padding: 0 .75rem 0 0;
 }
+
+.product-attributes .btn-group-toggle .btn {
+  padding: 0;
+}
