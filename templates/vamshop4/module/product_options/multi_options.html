@@ -49,9 +49,9 @@
 <div class="py-1">
 <strong>{$options_data.NAME}:</strong>
 <br />
+<div class="btn-group btn-group-toggle flex-wrap" data-toggle="buttons">
 {foreach key=key_data item=item_data from=$options_data.DATA}
-<div>
-<label>
+<label class="btn btn-outline-primary mt-1{if {$item_data.CHECKED}} active{/if}">
 <input type="radio" name="id[{$options_data.ID}]" id="id[{$options_data.ID}]" value="{$item_data.ID}" {$item_data.CHECKED} />&nbsp;
 {$item_data.TEXT} {if $item_data.PRICE_PLAIN != 0}({$item_data.PREFIX}{$item_data.PRICE}){/if}
 {if $item_data.DESCRIPTION}<br />{$item_data.DESCRIPTION}<br />{/if}
@@ -59,9 +59,9 @@
 {if $item_data.IMAGE}<img src="{$image_dir}thumbs/{$item_data.IMAGE}" border="0" alt="{$item_data.TEXT}" />{/if}
 {if $item_data.LINK}<a align="right" href="http://{$item_data.LINK}" target="_blank"><img src="{$tpl_path}img/info.gif" border="0" alt="{$item_data.TEXT}" /></a>{/if}<br />
 </label>
-</div>
-<br />
 {/foreach}
+</div>
+
 </div>
 <!-- /radio -->
 
