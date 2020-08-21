@@ -13,7 +13,7 @@
 
 <div class="container pt-2">
 
-{if $box_FILTERS && !{$smarty.get.products_id}}
+{if {$current_category_id} > 0 && {$box_FILTERS} && !{$smarty.get.products_id}}
 <div class="row">
 <div class="col-xl-10 order-2">
 {/if}
@@ -36,7 +36,7 @@
 </div>
 
 
-{if $box_FILTERS && !{$smarty.get.products_id}}
+{if {$current_category_id} > 0 && {$box_FILTERS} && !{$smarty.get.products_id}}
 </div>
 <div class="col-xl-2 order-1">
 {$box_FILTERS}
