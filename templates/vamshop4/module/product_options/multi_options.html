@@ -51,7 +51,7 @@
 <br />
 <div class="card-deck product-attributes" data-toggle="buttons">
 {foreach key=key_data item=item_data from=$options_data.DATA}
-<div class="btn-group-toggle col-6 col-sm-6 col-md-4 col-lg-4 col-xl-3">
+<div class="btn-group-toggle col-6 col-sm-6 col-md-4 col-lg-4 col-xl-4">
 <div class="btn btn-default product-attribute-item card card-product card-sm text-center h-100{if $item_data@first} active{/if}">
 <label class="h-100 attribute {$options_data.ID}">
   <input type="radio" name="id[{$options_data.ID}]" id="id[{$options_data.ID}]" value="{$item_data.ID}" {$item_data.CHECKED} />
