@@ -1050,7 +1050,9 @@ li.level3 {
   font-weight: 900;
   font-size: 18px;
   color: #dd2c00;
-  float: right;
+  position: absolute;
+  top 10px;
+  right: 5px;
   transform: scale(1);
   transition: all 0.3s ease-out;  
 }
@@ -1061,7 +1063,9 @@ li.level3 {
   font-weight: 900;
   font-size: 18px;
   color: #006100;
-  float: right;
+  position: absolute;
+  top 10px;
+  right: 5px;
   transform: scale(1);
   transition: .5s;
 }
