@@ -617,6 +617,12 @@ li.level3 {
   box-shadow: 0 14px 15px rgba(153,153,153,.3);
   -webkit-transition: .5s;
   transition: .5s;
+  background: #f8f9fa;
+}
+
+.shipping-method.selected .shipping-fields,
+.payment-method.selected .payment-fields {
+  background: #f8f9fa;
 }
 
 .filter:hover,
@@ -1038,10 +1044,6 @@ li.level3 {
 
 .product-attributes .product-attribute-item label {
   margin-bottom: 0;
-}
-
-.product-attributes .product-attribute-item.active.card {
-  background: #f8f9fa;
 }
 
 .product-attributes .product-attribute-item.card .card-body:before {
