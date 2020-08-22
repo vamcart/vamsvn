@@ -1053,7 +1053,7 @@ li.level3 {
   font-size: 18px;
   color: #dd2c00;
   position: absolute;
-  top 10px;
+  top 0px;
   right: 5px;
   transform: scale(1);
   transition: all 0.3s ease-out;  
@@ -1066,7 +1066,7 @@ li.level3 {
   font-size: 18px;
   color: #006100;
   position: absolute;
-  top 10px;
+  top 0px;
   right: 5px;
   transform: scale(1);
   transition: .5s;
