@@ -1,6 +1,7 @@
 <?php
 require_once(DIR_FS_CATALOG."vendor/Bender/Bender.class.php");
 $bender = new Bender();
+$bender->enqueue("jscript/jquery/jquery-3.4.1.min.js");
 $bender->enqueue("templates/".CURRENT_TEMPLATE."/javascript/popper.min.js");
 $bender->enqueue("templates/".CURRENT_TEMPLATE."/javascript/bootstrap.min.js");
 $bender->enqueue("jscript/jquery/plugins/jquery-ui/jquery-ui-min.js");
@@ -150,12 +151,13 @@ if (file_exists(DIR_FS_CATALOG.'jscript/jquery/plugins/colorbox/i18n/jquery.colo
 	
 $(document).ready(function(){
   $(".lightbox").colorbox({rel:"lightbox", title: false});
-  $(".iframe").colorbox({iframe:true, width:"70%", height:"80%"});
+  $(".iframe").colorbox({iframe:false, width:"70%", height:"80%"});
 });
 </script>
 <?php
  }
 ?>
+<script>(function($,d){$.each(readyQ,function(i,f){$(f)});$.each(bindReadyQ,function(i,f){$(d).on("ready",f)})})(jQuery,document)</script>
 <?php
 if (file_exists(dirname(__FILE__) . '/local_footer.js.php')) include('local_footer.js.php');
 ?>
