@@ -336,7 +336,7 @@ a#scrollup:hover {
 /* Tabs */
 .nav-tabs .nav-link {
     display: block;
-    padding: .15rem 1rem;
+    padding: .4rem 1rem;
 }
 .nav-tabs .nav-link.active, .nav-tabs .nav-item.show .nav-link {
     color: #0056B3;
@@ -346,7 +346,7 @@ a#scrollup:hover {
 .nav-tabs .nav-link {
     color: #575757;
     border: 2px solid #dee2e6;
-    border-radius: 1rem;
+    border-radius: 1.5rem;
 }
 .nav-item {
     padding-right: .5em;
