@@ -12,7 +12,9 @@
 
 {if $smarty.session.customers_status.customers_status_id == 0}
 {if $PRODUCTS_EDIT_LINK}
+<div class="edit-product py-2">
 <a class="btn btn-inverse" href="{$PRODUCTS_EDIT_LINK}"><i class="fa fa-pencil-alt"></i> {#text_product_edit#}</a>
+</div>
 {/if}
 {/if}
 
@@ -68,7 +70,7 @@
 		</div>
 		<div class="col-md-6">
 			
-<div class="product-info p-2">
+<div class="product-info">
 
 <h1 itemprop="name">{$PRODUCTS_NAME}</h1>
 

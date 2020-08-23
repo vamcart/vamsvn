@@ -5,7 +5,9 @@
 <h1 itemprop="headline">{$ARTICLE_NAME}</h1>
 
 {if $smarty.session.customers_status.customers_status_id == 0}
+<div class="edit-article py-2">
 <a class="btn btn-inverse" href="{$smarty.const.HTTP_SERVER}{$smarty.const.DIR_WS_CATALOG}admin/articles.php?tPath={$TOPIC_ID}&aID={$ARTICLE_ID}&action=new_article"><i class="fa fa-pencil-alt"></i> {$smarty.const.IMAGE_BUTTON_ARTICLE_EDIT}</a>
+</div>
 {/if}
 
 <div class="card card-product">
@@ -115,7 +117,7 @@
 
 		</div>
 		<div class="col-md-3 border-left">
-			<div class="action-wrap text-center py-2">
+			<div class="action-wrap text-center">
 
 				{if $ARTICLE_KEYWORDS_NUM > 1}
 				<div>

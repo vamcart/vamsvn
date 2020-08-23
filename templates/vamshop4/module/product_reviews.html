@@ -7,10 +7,10 @@
 	<div class="row">
 		{if $PRODUCT_LABEL}{$PRODUCT_LABEL}{/if}
 		{if $PRODUCTS_SPECIAL > 0}<span class="badge-offer"><b>-{$PRODUCTS_SPECIAL|round}%</b></span>{/if}
-		<div class="col-md-2 py-2">
+		<div class="col-md-2">
 			<div class="img-wrap"><a href="{$PRODUCTS_URL_INFO}" title="{$IMAGE_ALT}"><img src="{$PRODUCTS_IMAGE}" alt="{$IMAGE_ALT}"></a></div>
 		</div>
-		<div class="col-md-3 py-2">
+		<div class="col-md-3">
 				<div class="title h5"><a href="{$PRODUCTS_URL_INFO}" title="{$IMAGE_ALT}">{$PRODUCTS_NAME}</a></div>
 				{if {$PRODUCTS_SHORT_DESCRIPTION} != ''}
 				<div class="desc mb-2 small">
@@ -41,7 +41,7 @@
 					{/if}
 					</div>
 		</div>
-		<div class="col-md-2 py-2" itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">
+		<div class="col-md-2" itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">
 			<div class="text-center">
 			<div class="display-4 font-weight-bolder"><span itemprop="ratingValue">{$module_content[0].PRODUCT.REVIEWS_TOTAL_RATING|number_format:1}</span></div>
 			{$module_content[0].PRODUCT.REVIEWS_STAR_RATING}
@@ -52,7 +52,7 @@
 				</div>
 				{/if}
 		</div>
-		<div class="col-md-2 py-2">
+		<div class="col-md-2">
 		<div class="line pb-2">
 		<span class="progress-label">5</span>
 		<div class="progress">
@@ -95,7 +95,7 @@
 		</div>
 		</div>
 		<div class="col-md-3">
-			<div class="action-wrap text-center py-2">
+			<div class="action-wrap text-center">
            {$BUTTON_WRITE}	
            {$PRODUCTS_BUY_NOW}	
 			</div>
