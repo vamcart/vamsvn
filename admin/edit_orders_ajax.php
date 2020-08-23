@@ -242,7 +242,8 @@ if ($action == 'update_downloads') {
 	   } //end if is_array
 	
 	  if (vam_not_null($shipping['id'])) {
-    vam_db_query("UPDATE " . TABLE_ORDERS . " SET shipping_method = '" . $shipping['id'] . "' WHERE orders_id = '" . $_POST['oID'] . "'");
+    vam_db_query("UPDATE " . TABLE_ORDERS . " SET shipping_method = '" . $shipping['title'] . "' WHERE orders_id = '" . $_POST['oID'] . "'");
+    vam_db_query("UPDATE " . TABLE_ORDERS . " SET shipping_class = '" . $shipping['id'] . "' WHERE orders_id = '" . $_POST['oID'] . "'");
 	   }
 	   
 		$order = new manualOrder($oID);
