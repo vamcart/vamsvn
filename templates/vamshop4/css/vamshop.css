@@ -2744,17 +2744,20 @@ li.ajaxAddQuickie
     background-color: #fff;
 }
 
-.btn-add-to-cart {
+.btn-add-to-cart,
+.btn-rounded {
   color: #575757;
   background-color: #fff;
   border: 2px solid #dee2e6;
   border-radius: 1.5rem;
   margin: 0px;
 }
-.btn-add-to-cart i {
+.btn-add-to-cart i,
+.btn-rounded i {
   margin-left: 0;
 }
-.btn-add-to-cart:hover {
+.btn-add-to-cart:hover,
+.btn-rounded:hover {
     color: #dd2c00;
     border: 2px solid #dd2c00;
     background-color: #fff;

@@ -26,7 +26,7 @@
 				<ul class="d-inline-block list-inline">
 				{foreach name=tags item=tag from=$module_data.ARTICLE_KEYWORDS_ARRAY_TAGS}
 				<li class="list-inline-item pb-2">	
-				<a href="{$tag.LINK}"><span class="btn btn-outline-primary rounded-pill">{$tag.NAME}</span></a>
+				<a href="{$tag.LINK}"><span class="btn btn-rounded">{$tag.NAME}</span></a>
 				</li>
 				{/foreach}
 				</ul>
@@ -82,7 +82,7 @@
 		</div>
 		<div class="col-md-3 border-left">
 			<div class="action-wrap text-center">
-           <a class="btn btn-add-to-cart btn-block" href="{$module_data.ARTICLE_LINK}"><i class="fa fa-newspaper"></i> {$smarty.const.TEXT_VIEW_PRODUCTS_GO}</a>
+           <a class="btn btn-rounded btn-block" href="{$module_data.ARTICLE_LINK}"><i class="fa fa-newspaper"></i> {$smarty.const.TEXT_VIEW_PRODUCTS_GO}</a>
 			</div>
 		</div>
 	</div>

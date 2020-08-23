@@ -11,7 +11,7 @@
 					{$module_data.PRODUCT.PRODUCTS_PRICE}
 				</div>
 				{/if}
-				<div class="desc">&nbsp;{if $module_data.REVIEW.CUSTOMER}<span class="btn btn-outline-primary rounded-pill btn-sm"><i class="fas fa-user-check" data-toggle="tooltip" title="{$smarty.const.TEXT_BADGE_CUSTOMER}"></i></span>{/if}</div>
+				<div class="desc">&nbsp;{if $module_data.REVIEW.CUSTOMER}<span class="btn btn-rounded btn-sm"><i class="fas fa-user-check" data-toggle="tooltip" title="{$smarty.const.TEXT_BADGE_CUSTOMER}"></i></span>{/if}</div>
 				{if $module_data.REVIEW.RATING > 0}
 				<div class="rating-wrap small">
 					{$module_data.REVIEW.STAR_RATING}
@@ -26,7 +26,7 @@
 			</div>
       </div>
 		<div class="category card-footer text-center">
-		<a class="btn btn-outline-primary rounded-pill btn-block" href="{$module_data.REVIEW.URL}"><i class="far fa-comment"></i> {#text_read#}</a>
+		<a class="btn btn-rounded btn-block" href="{$module_data.REVIEW.URL}"><i class="far fa-comment"></i> {#text_read#}</a>
 		</div>
 		</div>
 <!-- /Product Card Simple -->
