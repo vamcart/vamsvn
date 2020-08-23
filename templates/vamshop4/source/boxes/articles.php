@@ -50,7 +50,7 @@ if (!$box->isCached(CURRENT_TEMPLATE.'/boxes/box_articles.html', $cache_id) || !
 			$SEF_parameter_cat = '&category='.vam_cleanName($tree[$counter]['name']);
 
     if ($counter > 0) {
-    $topics_string .= vam_href_link(FILENAME_ARTICLES, $tPath_new . $SEF_parameter_cat) . '"><span class="btn btn-outline-primary rounded-pill">';
+    $topics_string .= vam_href_link(FILENAME_ARTICLES, $tPath_new . $SEF_parameter_cat) . '"><span class="btn btn-rounded">';
     } else {
     $topics_string .= vam_href_link(FILENAME_ARTICLES, $tPath_new . $SEF_parameter_cat) . '">';
     }
@@ -164,7 +164,7 @@ if (!$box->isCached(CURRENT_TEMPLATE.'/boxes/box_articles.html', $cache_id) || !
       $articles_new_count = '';
     }
 
-    $new_articles_string .= '<li class="list-inline-item pb-2"><a href="' . vam_href_link(FILENAME_ARTICLES_NEW, '', 'NONSSL') . '"><span class="btn btn-outline-primary rounded-pill">';
+    $new_articles_string .= '<li class="list-inline-item pb-2"><a href="' . vam_href_link(FILENAME_ARTICLES_NEW, '', 'NONSSL') . '"><span class="btn btn-rounded">';
 
     if (strstr($PHP_SELF,FILENAME_ARTICLES_NEW) or strstr($PHP_SELF,FILENAME_ARTICLES_NEW)) {
       $new_articles_string .= '<b>';
@@ -192,7 +192,7 @@ if (!$box->isCached(CURRENT_TEMPLATE.'/boxes/box_articles.html', $cache_id) || !
     }
 
     $all_articles_string .= '<li class="list-inline-item pb-2">';
-    $all_articles_string .= '<a href="' . vam_href_link(FILENAME_ARTICLES, '', 'NONSSL') . '"><span class="btn btn-outline-primary rounded-pill">';
+    $all_articles_string .= '<a href="' . vam_href_link(FILENAME_ARTICLES, '', 'NONSSL') . '"><span class="btn btn-rounded">';
 
     if ($topic_depth == 'top') {
       $all_articles_string .= '<b>';
