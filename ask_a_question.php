@@ -196,4 +196,5 @@ $vamTemplate->assign('BUTTON_CONTINUE', '<a class="button" href="javascript:wind
 	$vamTemplate->caching = 0;
 	$vamTemplate->display(CURRENT_TEMPLATE.'/module/ask_a_question.html');
 }
+include ('includes/application_bottom.php');
 ?>
