@@ -192,7 +192,7 @@ $vamTemplate->assign('MANUFACTURER',$manufacturer['manufacturers_name']);
 if (AJAX_CART == 'true' && !vam_has_product_attributes($product->data['products_id'])) {
 $link = '<a class="btn btn-add-to-cart btn-block" href="'.vam_href_link(basename($PHP_SELF), 'action=buy_now&BUYproducts_id='.$product->data['products_id'], 'NONSSL').'" onclick="doBuyNow(\''.$product->data['products_id'].'\',\'1\'); return false;"><i class="fa fa-shopping-cart"></i> '.IMAGE_BUTTON_IN_CART.'</a>';
 } else {
-$link = '<a class="btn btn-add-to-cart btn-block" href="'.vam_href_link(basename($PHP_SELF), 'action=buy_now&BUYproducts_id='.$product->data['products_id'], 'NONSSL').'"><i class="fa fa-shopping-cart"></i> '.TEXT_SELECT_OPTIONS.'</a>';
+$link = '<a class="btn btn-add-to-cart btn-block" href="'.vam_href_link(basename($PHP_SELF), 'action=buy_now&BUYproducts_id='.$product->data['products_id'], 'NONSSL').'"><i class="fa fa-shopping-cart"></i> '.IMAGE_BUTTON_IN_CART.'</a>';
 }
 
 $vamTemplate->assign('PRODUCTS_BUY_NOW',$link);
