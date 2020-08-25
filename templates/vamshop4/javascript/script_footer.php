@@ -1,7 +1,13 @@
 <?php
+if (ENABLE_SERVICE_WORKER == 'true') {
+?>
+<link rel="preload" href="<?php echo DIR_WS_CATALOG; ?>sw.js" as="script">
+<?php
+ }
+?>
+<?php
 require_once(DIR_FS_CATALOG."vendor/Bender/Bender.class.php");
 $bender = new Bender();
-if (ENABLE_SERVICE_WORKER == 'true') $bender->enqueue(DIR_WS_CATALOG . "sw.js");
 $bender->enqueue("jscript/jquery/jquery-3.4.1.min.js");
 $bender->enqueue("templates/".CURRENT_TEMPLATE."/javascript/popper.min.js");
 $bender->enqueue("templates/".CURRENT_TEMPLATE."/javascript/bootstrap.min.js");
