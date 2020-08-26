@@ -2143,7 +2143,7 @@ input[type=text]
    {
 		border: 1px solid;
 		border-color: #ccc;
-		padding: .3em;
+		padding: .3em 1em;
 		/*min-width: 250px;*/
    }
 

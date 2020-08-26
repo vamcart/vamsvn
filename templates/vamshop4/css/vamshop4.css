@@ -474,6 +474,10 @@ li.level3 {
     border-color: #0051A8;
 }
 
+.btn-outline-secondary.btn-outline-search {
+  background-color: #fff;
+}
+
 .btn-secondary,
 .badge-secondary,
 .bg-secondary {
