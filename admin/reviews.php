@@ -101,9 +101,13 @@ $vamTemplate = new vamTemplate;
             // create subject
            $review_answer_subject = REVIEW_ANSWER_SUBJECT;
 
-				vam_php_mail(EMAIL_BILLING_ADDRESS, EMAIL_BILLING_NAME, $customer_info['customers_email_address'], $customers_name, '', EMAIL_BILLING_REPLY_ADDRESS, EMAIL_BILLING_REPLY_ADDRESS_NAME, '', '', $review_answer_subject, $html_mail, $txt_mail);
+				if (filter_var($customer_info['customers_email_address'], FILTER_VALIDATE_EMAIL)) {
 
-				if (defined('AVISOSMS_EMAIL') && AVISOSMS_EMAIL != '') {
+				vam_php_mail(EMAIL_BILLING_ADDRESS, EMAIL_BILLING_NAME, $customer_info['customers_email_address'], $customers_name, '', EMAIL_BILLING_REPLY_ADDRESS, EMAIL_BILLING_REPLY_ADDRESS_NAME, '', '', $review_answer_subject, $html_mail, $txt_mail);
+				
+				}
+
+				if (defined('AVISOSMS_EMAIL') && AVISOSMS_EMAIL != '' && $customer_info['customers_telephone'] != '') {
 
 				$html_mail_sms = $vamTemplate->fetch(CURRENT_TEMPLATE.'/admin/mail/'.$_SESSION['language'].'/review_answer_mail_sms.html');
 				$txt_mail_sms = $vamTemplate->fetch(CURRENT_TEMPLATE.'/admin/mail/'.$_SESSION['language'].'/review_answer_mail_sms.txt');
