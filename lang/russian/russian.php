@@ -802,4 +802,6 @@ define('NAVBAR_TITLE_TAGS', 'Тэги');
 define('TEXT_DISPLAY_NUMBER_OF_TAGS', 'Показано <span class="bold">%d</span> - <span class="bold">%d</span> (всего <span class="bold">%d</span> тэгов)');
 define('TEXT_NO_TAGS', 'Нет тэгов.');
 
+define('REVIEW_NEW_SUBJECT', 'Добавлен новый отзыв');
+
 ?>
