@@ -490,7 +490,7 @@ function doDislike(id) {
 	}	
 	
 // Responsive equal height
-//if ($(window).width() > 360) {
+if ($(window).width() > 350) {
 $(window).on('load', function () {
     $('.card-body .img-wrap').matchHeight();
     $('.card-body .attributes').matchHeight();
@@ -515,7 +515,7 @@ $(document).ajaxSuccess(function () {
     $('.shipping-method .card-title').matchHeight();
     $('.product-attribute-item .card-title').matchHeight();
 });
-//}	
+}	
 //$(window).on('resize', function () {
     //$('.card-body .img-wrap').matchHeight();
     //$('.card-body .attributes').matchHeight();
