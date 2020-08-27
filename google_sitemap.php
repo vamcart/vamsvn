@@ -31,6 +31,7 @@
   define('SITEMAP_FOOTER', '</urlset>');
   define('SITEMAP_ENTRY', "\t".'<url>'."\n\t\t".'<loc>%s</loc>'."\n\t\t".'<priority>%s</priority>'."\n\t\t".'<lastmod>%s</lastmod>'."\n\t\t".'<changefreq>%s</changefreq>'."\n\t".'</url>'."\n");
 
+  header('Content-Type: application/xml');
 
   $usegzip        = false;
   $autogenerate   = false;
