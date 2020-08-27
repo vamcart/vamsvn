@@ -255,7 +255,7 @@
                                  <td style="font-family: Open Sans, Helvetica, Tahoma, Arial, sans-serif; line-height: 20px; color: #333; padding-left: 10px;">
                                     <div style="font-family: Open Sans, Helvetica, Tahoma, Arial, sans-serif; font-size: 16px; font-weight: bold; margin-bottom: 8px;">Контактная информация:</div>
                                     {if {$CUSTOMERS_NAME} != ''}<div style="font-family: Open Sans, Helvetica, Tahoma, Arial, sans-serif; font-size: 14px;"> <strong>Имя:</strong> {$CUSTOMERS_NAME}<br> </div>{/if}
-                                    <div style="font-family: Open Sans, Helvetica, Tahoma, Arial, sans-serif; font-size: 14px;"> <strong>Телефон:</strong> {$CUSTOMERS_TELEPHONE}<br /> </div>
+                                    {if {$CUSTOMERS_TELEPHONE} != ''}<div style="font-family: Open Sans, Helvetica, Tahoma, Arial, sans-serif; font-size: 14px;"> <strong>Телефон:</strong> {$CUSTOMERS_TELEPHONE}<br /> </div>{/if}
                                     {if {$CUSTOMERS_EMAIL_ADDRESS} != ''}<div style="font-family: Open Sans, Helvetica, Tahoma, Arial, sans-serif; font-size: 14px;"> <strong>E-mail:</strong> {$CUSTOMERS_EMAIL_ADDRESS}<br /> </div>{/if}
                                     <div style="font-family: Open Sans, Helvetica, Tahoma, Arial, sans-serif; font-size: 14px;"> <strong>Товар:</strong> <a target='_blank' style='font-weight: bold;color: #2E9CC3;' href="{$PRODUCTS_LINK}">{$PRODUCTS_NAME}</a><br /> </div>
                                  </td>
