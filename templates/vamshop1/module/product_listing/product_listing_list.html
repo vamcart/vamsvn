@@ -6,6 +6,10 @@
 <h1>{$CATEGORIES_NAME}{if $MANUFACTURERS_NAME} {$MANUFACTURERS_NAME}{/if}{$FILTER}</h1>
 {/if}
 
+{if $CATEGORIES_NAME}
+{$MODULE_tags}
+{/if}
+
 {if $MANUFACTURERS_DESCRIPTION and !$smarty.get.page}
 <div class="page">
 <div class="pageItem read-more">

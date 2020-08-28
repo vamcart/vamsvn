@@ -5,12 +5,14 @@
 <h1><a href="{$module_data.TAGS_URL}"{if {$module_data.TAGS_TITLE} != ''} title="{$module_data.TAGS_TITLE}"{/if}><span class="btn btn-add-to-cart">{$module_data.TAGS_NAME}</span></a></h1>
 <div class="moduleContent">
 <div class="row">
-<ul class="d-inline-block list-inline py-1">
+<div class="tags-list">
+<ul class="d-inline-block list-inline">
 {foreach name=aussen item=module_data from=$module_content}<li class="list-inline-item pb-2">	
 <a href="{$module_data.TAGS_URL}"{if {$module_data.TAGS_TITLE} != ''} title="{$module_data.TAGS_TITLE}"{/if}><span class="btn btn-sm btn-add-to-cart">{$module_data.TAGS_NAME}</span></a>
 </li>
 {/foreach} 
 </ul>
+</div>
 </div>
 </div>
 <div class="text-right pt-2">
@@ -38,12 +40,14 @@
 
 <div class="moduleContent">
 <div class="row">
-<ul class="d-inline-block list-inline py-1">
+<div class="tags-list">
+<ul class="d-inline-block list-inline">
 {foreach name=aussen item=module_data from=$module_content}<li class="list-inline-item pb-2">	
 <a href="{$module_data.TAGS_URL}"{if {$module_data.TAGS_TITLE} != ''} title="{$module_data.TAGS_TITLE}"{/if}><span class="btn btn-sm btn-add-to-cart">{$module_data.TAGS_NAME}</span></a>
 </li>
 {/foreach} 
 </ul>
+</div>
 </div>
 </div>
 
