@@ -499,7 +499,7 @@ li.level3 {
 .bg-secondary {
   background: var(--button-background-color);
   border-color: var(--border-gray) !important;
-  color: #6c757d;
+  color: var(--color) !important;
 }
 
 .btn-secondary:hover {
@@ -569,7 +569,7 @@ li.level3 {
 .payment-method.card.card-product .card-footer {
   padding: 0;
   margin: 0;
-  background: #fff;
+  background: var(--background-color);
 }
 
 .filters .filter.card,
@@ -609,7 +609,7 @@ li.level3 {
   padding: 0 .5em;
   z-index: 100;
   margin-left: -1px;
-  background: #fff;
+  background: var(--card-background-color);
   border-left: 1px solid rgba(0,0,0,.125);
   border-right: 1px solid rgba(0,0,0,.125);
   border-top: 0px solid rgba(0,0,0,.125);
@@ -629,12 +629,12 @@ li.level3 {
   box-shadow: 0 14px 15px rgba(153,153,153,.3);
   -webkit-transition: .5s;
   transition: .5s;
-  background: #f8f9fa;
+  background: var(--background-color);
 }
 
 .shipping-method.selected .shipping-fields,
 .payment-method.selected .payment-fields {
-  background: #f8f9fa;
+  background: var(--background-color);
 }
 
 .filter:hover,
@@ -1113,6 +1113,7 @@ li.level3 {
 .wsmain.wsfixed,
 .wsfixed,
 .wsmain,
+.wsopensearch,
 .headerfull {
   background-color: var(--card-background-color) !important;
 }
@@ -1173,7 +1174,18 @@ li.level3 {
 }
 }
 
-header .input-group-text {
+header .input-group-text, 
+.wssearch .input-group-text {
   background:  transparent;
   border-color: var(--border-gray) !important;
+}
+
+.wsmenu>.wsmenu-list>li>.wsmegamenu {
+  background: var(--background-color) !important;
+  border-color: var(--background-color) !important;
+  color: var(--color) !important;
+}
+
+.bg-light {
+  background: var(--background-color) !important;
 }
