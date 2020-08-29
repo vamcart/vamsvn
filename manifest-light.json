@@ -1,0 +1,51 @@
+{
+    "name": "VamShop",
+    "short_name": "vamshop",
+    "description": "Движок (CMS) для создания интернет-магазина VamShop.",
+    "start_url": "/?utm_source=pwa&utm_medium=manifest&utm_campaign=manifest_start_url",
+    "display": "standalone",
+    "theme_color": "#dd2c00",
+    "background_color": "#ffffff",
+    "icons": [
+        {
+            "src": "images/icons/vamshop-box-32.png",
+            "sizes": "32x32",
+            "type": "image/png"
+        },
+        {
+            "src": "images/icons/vamshop-box-64.png",
+            "sizes": "64x64",
+            "type": "image/png"
+        },
+        {
+            "src": "images/icons/vamshop-box-128.png",
+            "sizes": "128x128",
+            "type": "image/png"
+        },
+        {
+            "src": "images/icons/vamshop-box-256.png",
+            "sizes": "256x256",
+            "type": "image/png"
+        },
+        {
+            "src": "images/icons/vamshop-box-256-maskable.png",
+            "sizes": "256x256",
+            "type": "image/png",
+            "purpose": "any maskable"
+        },
+        {
+            "src": "images/icons/vamshop-box-512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ],
+    "screenshots": [],
+    "prefer_related_applications": false,
+    "related_applications": [
+    {
+      "platform": "play",
+      "id": "xyz.appmaker.wzxnid",
+      "url": "https://play.google.com/store/apps/details?id=xyz.appmaker.wzxnid&referrer=utm_source%3Dpwa"
+    }
+    ]    
+}
