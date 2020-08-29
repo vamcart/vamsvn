@@ -513,8 +513,8 @@ li.level3 {
 }
 
 .btn-outline-secondary:hover {
-  color: #0051A8;
-  background: var(--button-background-color-hover);
+  color: var(--link-color-hover);
+  background: var(--button-background);
 }
 
 .btn-group .btn-secondary.active {
@@ -1039,8 +1039,13 @@ li.level3 {
 }
 
 .form-control {
+  color: var(--color) !important;
   border-radius: 1.5rem;
   background-color: var(--card-background-color);
+}
+
+.form-control:focus {
+  background-color: var(--background-color);
 }
 
 .select2-selection {
