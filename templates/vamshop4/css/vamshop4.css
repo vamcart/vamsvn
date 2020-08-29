@@ -1,7 +1,18 @@
+:root {
+  color-scheme: dark light;
+  supported-color-schemes: dark light;
+   --duration: 0.5s;
+  --timing: ease;  
+}
+
 body {
-  background: #fff;
   font-family: "Roboto",Helvetica,Arial,sans-serif;
   font-weight: 500;
+  background-color: var(--background-color);
+  color: var(--color);
+  transition:
+    color var(--duration) var(--timing),
+    background-color var(--duration) var(--timing);  
 }
 
 h1,
