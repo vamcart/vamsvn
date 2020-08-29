@@ -2142,7 +2142,7 @@ form
 input[type=text]
    {
 		border: 1px solid;
-		border-color: #ccc;
+		border-color: var(--border-gray);
 		padding: .3em 1em;
 		/*min-width: 250px;*/
    }
@@ -2205,11 +2205,6 @@ label.error
 		background: #fcc;
 	}
 /*- /Подсветка ошибок формы */
-   
-.form textarea:focus, input:focus, .sffocus, .sffocus 
-   {
-	  background-color: #ffc;
-   }
 
 span.Requirement 
    {

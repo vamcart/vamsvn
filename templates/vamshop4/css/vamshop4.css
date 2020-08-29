@@ -498,7 +498,7 @@ li.level3 {
 .badge-secondary,
 .bg-secondary {
   background: var(--button-background-color);
-  border-color: #ccc !important;
+  border-color: var(--border-gray) !important;
   color: #6c757d;
 }
 
@@ -509,7 +509,7 @@ li.level3 {
 
 .btn-outline-secondary {
   background: var(--button-background-color);
-  border-color: #ccc !important;
+  border-color: var(--border-gray) !important;
 }
 
 .btn-outline-secondary:hover {
@@ -1041,6 +1041,7 @@ li.level3 {
 .form-control {
   color: var(--color) !important;
   border-radius: 1.5rem;
+  border-color: var(--border-gray);
   background-color: var(--card-background-color);
 }
 
@@ -1174,4 +1175,5 @@ li.level3 {
 
 header .input-group-text {
   background:  transparent;
+  border-color: var(--border-gray) !important;
 }
