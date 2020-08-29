@@ -2,7 +2,7 @@
 #footer
    {
      flex: 0 auto;
-     background: transparent;
+     background: var(--footer-background-color);
      border-top: 0px solid #67748B;
      text-align: center;
      color: #000;

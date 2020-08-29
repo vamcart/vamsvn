@@ -1100,3 +1100,12 @@ li.level3 {
 .product-attributes .product-attribute-item.card .card-body {
   min-height: 0;
 }
+
+.wsmobileheader,
+.wsmenu>.wsmenu-list,
+.wsmain.wsfixed,
+.wsfixed,
+.wsmain,
+.headerfull {
+  background-color: var(--card-background-color) !important;
+}
