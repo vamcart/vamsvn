@@ -2,39 +2,39 @@
     "name": "VamShop",
     "short_name": "vamshop",
     "description": "Движок (CMS) для создания интернет-магазина VamShop.",
-    "start_url": "/?utm_source=pwa&utm_medium=manifest&utm_campaign=manifest_start_url",
+    "start_url": "/?utm_source=pwa&utm_medium=manifest&utm_campaign=manifest_start_url_dark",
     "display": "standalone",
-    "theme_color": "#dd2c00",
-    "background_color": "#ffffff",
+    "theme_color": "rgb(250, 250, 250)",
+    "background_color": "rgb(5, 5, 5)",
     "icons": [
         {
-            "src": "images/icons/vamshop-box-32.png",
+            "src": "images/icons/vamshop-box-32-dark.png",
             "sizes": "32x32",
             "type": "image/png"
         },
         {
-            "src": "images/icons/vamshop-box-64.png",
+            "src": "images/icons/vamshop-box-64-dark.png",
             "sizes": "64x64",
             "type": "image/png"
         },
         {
-            "src": "images/icons/vamshop-box-128.png",
+            "src": "images/icons/vamshop-box-128-dark.png",
             "sizes": "128x128",
             "type": "image/png"
         },
         {
-            "src": "images/icons/vamshop-box-256.png",
+            "src": "images/icons/vamshop-box-256-dark.png",
             "sizes": "256x256",
             "type": "image/png"
         },
         {
-            "src": "images/icons/vamshop-box-256-maskable.png",
+            "src": "images/icons/vamshop-box-256-maskable-dark.png",
             "sizes": "256x256",
             "type": "image/png",
             "purpose": "any maskable"
         },
         {
-            "src": "images/icons/vamshop-box-512.png",
+            "src": "images/icons/vamshop-box-512-dark.png",
             "sizes": "512x512",
             "type": "image/png"
         }

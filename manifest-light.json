@@ -2,10 +2,10 @@
     "name": "VamShop",
     "short_name": "vamshop",
     "description": "Движок (CMS) для создания интернет-магазина VamShop.",
-    "start_url": "/?utm_source=pwa&utm_medium=manifest&utm_campaign=manifest_start_url",
+    "start_url": "/?utm_source=pwa&utm_medium=manifest&utm_campaign=manifest_start_url_light",
     "display": "standalone",
-    "theme_color": "#dd2c00",
-    "background_color": "#ffffff",
+    "theme_color": "rgb(5, 5, 5)",
+    "background_color": "rgb(250, 250, 250)",
     "icons": [
         {
             "src": "images/icons/vamshop-box-32.png",
