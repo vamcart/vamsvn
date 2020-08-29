@@ -32,6 +32,8 @@
 
   --footer-background-color: #4c5053;
 
+  --border-gray: #424547;
+  --background-gray: #4c5053;
 }
 
 img[src*=".svg"] {

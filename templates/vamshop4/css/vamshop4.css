@@ -1125,3 +1125,48 @@ li.level3 {
 .wsmenu>.wsmenu-list>li>.wsmenu-click>i {
   color: var(--link-color) !important;
 }
+
+.wsmenu>.wsmenu-list>li>.wsshoptabing>.wsshopwp>.wstabitem>li>a {
+    display: block;
+    padding: 5px 6px;
+    font-size: 16px;
+    color: #606060;
+    border-bottom: solid 1px rgba(0,0,0,.13) !important;
+    width: 33%;
+    float: left;
+    position: relative;
+    background-color: var(--background-color) !important;
+}
+
+.wsmenu>.wsmenu-list>li>.wsshoptabing>.wsshopwp>.wstabitem>li.wsshoplink-active>a {
+  color: var(--link-color-hover) !important;
+}
+
+.wsmenu>.wsmenu-list>li>.wsshoptabing>.wsshopwp>.wstabitem>li>a {
+  color: var(--link-color) !important;
+}
+
+.wsmenu>.wsmenu-list>li>.wsshoptabing>.wsshopwp>.wstabitem>li.wsshoplink-active>a>i {
+  color: var(--link-color-hover) !important;
+}
+
+.wsmenu>.wsmenu-list>li>.wsshoptabing>.wsshopwp>.wstabitem>li>.wstitemright {
+  background: var(--background-gray) !important;
+}
+
+.wsmenu .list-group-item {
+  background: transparent;
+  border-radius: 0;
+  border: 0;
+}
+
+@media only screen and (max-width: 991px) {
+.wsmenu .wsmenu-list>li>.wsshoptabing>.wsshopwp>.wstabitem>li>.wsmenu-click02 {
+  border-left: 1px solid var(--border-gray) !important;
+  background-color: var(--background-gray) !important;
+}
+}
+
+header .input-group-text {
+  background:  transparent;
+}
