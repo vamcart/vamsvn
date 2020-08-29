@@ -2195,7 +2195,7 @@ label.error
 		padding: 0 10px 0 10px;
 		border: 0px solid black;
 		background: transparent; 
-		color: #991F00; 
+		color: #ff5151;
 		font-weight: normal; 
 		text-align: right;
 	}	 
@@ -2800,6 +2800,13 @@ del.button span
 span.button button {
 		background-color: transparent;
 		border: 0;
+		color: var(--button-text-color) !important;
+}
+
+span.button:hover button {
+		background-color: transparent;
+		border: 0;
+		color: var(--button-text-color-hover) !important;
 }
 
 a.button span, 
@@ -2840,9 +2847,9 @@ a.dom-button-focus,
 span.button:hover, 
 span.button:focus
 	{
-    color: #dd2c00;
+    color: var(--button-text-color-hover);
     border: 2px solid #dd2c00;
-    background-color: #fff;
+    background-color: var(--button-background-color-hover) !important;
     text-decoration: none;
 	}
 
@@ -2981,7 +2988,7 @@ div.CheckoutError
 	{
 		z-index:5000;
 		overflow:hidden;
-		background:#fff;
+		background:var(--background-color);
 		box-shadow: 0 1px 4px 0 rgba(0,0,0,.1);
 		left:50%;
 		line-height:18px;
