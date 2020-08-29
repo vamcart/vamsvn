@@ -2732,23 +2732,23 @@ li.ajaxAddQuickie
 
 .btn.btn-inverse,
 .btn.btn-inverse.checkout {
-  color: #575757;
-  background-color: #fff;
-  border: 2px solid #dee2e6;
+  color: var(--link-color);
+  background-color: var(--button-background-color);
+  border: 2px solid var(--button-border-color);
   border-radius: 1.5rem;
 }
 .btn.btn-inverse:hover,
 .btn.btn-inverse.checkout:hover {
     color: #dd2c00;
     border: 2px solid #dd2c00;
-    background-color: #fff;
+    background-color: var(--button-background-color-hover);
 }
 
 .btn-add-to-cart,
 .btn-rounded {
-  color: #575757;
-  background-color: #fff;
-  border: 2px solid #dee2e6;
+  color: var(--link-color);
+  background-color: var(--button-background-color);
+  border: 2px solid var(--button-border-color);
   border-radius: 1.5rem;
   margin: 0px;
 }
@@ -2758,9 +2758,9 @@ li.ajaxAddQuickie
 }
 .btn-add-to-cart:hover,
 .btn-rounded:hover {
-    color: #dd2c00;
-    border: 2px solid #dd2c00;
-    background-color: #fff;
+    color: var(--button-text-color-hover);
+    border: 2px solid var(--button-border-color-hover);
+    background-color: var(--button-background-color-hover);
 }
 
 /* /Buttons */
@@ -2785,9 +2785,9 @@ del.button
     line-height: 1.5;
     border-radius: .25rem;
     transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
-  color: #575757;
-  background-color: #fff;
-  border: 2px solid #dee2e6;
+  color: var(--link-color);
+  background-color: var(--button-background-color);
+  border: 2px solid var(--button-border-color);
   border-radius: 1.5rem;
   margin: 0px;
 	}

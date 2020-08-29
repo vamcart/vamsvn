@@ -1,9 +1,30 @@
 :root {
-  --background-color: rgb(250, 250, 250);
-  --color: #0654a7;
-  --link-color: rgb(0, 0, 238);  
+  --background-color: #fff;
+  --color: #212529;
+  --link-color: #575757;
+  --link-color-hover: #004A99;  
   --icon-filter_hover: invert(60%);
   --main-headline-color: rgb(0, 0, 192);
   --accent-background-color: rgb(0, 0, 238);
   --accent-color: rgb(250, 250, 250);
+
+  --box-background-color: #fff;
+  --card-background-color: #fff;
+  --tab-background-color: #fff;
+
+  --button-background-color: #fff;
+  --button-background-color-hover: #fff;
+
+  --button-border-color: #dee2e6;
+  --button-border-color-hover: #dd2c00;
+  --button-text-color: #575757;
+  --button-text-color-hover: #dd2c00;
+
+  --nav-tab-background-color: #fff;
+  --nav-tab-background-color-active: #fff;
+  --nav-tab-border-color: #0056B3;
+  --nav-tab-border-color-active: #0056B3;
+  --nav-tab-text-color: #575757;
+  --nav-tab-text-color-active: #0056B3;
+  
 }

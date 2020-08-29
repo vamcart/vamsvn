@@ -1,7 +1,7 @@
 :root {
   color-scheme: dark light;
   supported-color-schemes: dark light;
-   --duration: 0.5s;
+  --duration: 0.1s;
   --timing: ease;  
 }
 
@@ -11,8 +11,8 @@ body {
   background-color: var(--background-color);
   color: var(--color);
   transition:
-    color var(--duration) var(--timing),
-    background-color var(--duration) var(--timing);  
+  color var(--duration) var(--timing),
+  background-color var(--duration) var(--timing);  
 }
 
 h1,
@@ -38,11 +38,11 @@ header {
 }
 
 a {
-  color: #0654A7;
+  color: var(--link-color);
 }
 
 a:hover {
-  color: #004A99;
+  color: var(--link-color-hover);
 }
 
 p {
@@ -350,13 +350,13 @@ a#scrollup:hover {
     padding: .4rem 1rem;
 }
 .nav-tabs .nav-link.active, .nav-tabs .nav-item.show .nav-link {
-    color: #0056B3;
-    border: 2px solid #0056B3;
-    background: #fff;
+    color: var(--nav-tab-text-color-active);
+    border: 2px solid var(--nav-tab-border-color);
+    background: var(--nav-tab-background-color-active);
 }
 .nav-tabs .nav-link {
-    color: #575757;
-    border: 2px solid #dee2e6;
+    color: var(--nav-tab-text-color);
+    border: 2px solid var(--button-border-color);
     border-radius: 1.5rem;
 }
 .nav-item {
@@ -367,16 +367,16 @@ a#scrollup:hover {
 .nav-tabs .nav-item.active .nav-link, 
 .nav-tabs .nav-link:hover, 
 .nav-tabs .nav-link:focus {
-    color: #0056B3;
-    border-color: #0056B3;
+    color: var(--nav-tab-text-color-active);
+    border-color: var(--nav-tab-border-color-active);
     cursor: pointer;
-    background: #fff;
+    background: var(--nav-tab-background-color-active);
 }
 
 .tab-pane {
   border: 1px solid rgba(0,0,0,.125);
   border-radius: 1rem;
-  background: #fff;
+  background: var(--tab-background-color);
   padding: .5em;
   -webkit-box-shadow: 0 3px 5px 0 rgba(0,0,0,.1);
   box-shadow: 0 3px 5px 0 rgba(0,0,0,.1);
@@ -424,7 +424,7 @@ li.level3 {
 }
 
 .header-logo a {
-  color: #575757;
+  color: var(--link-color);
 }
 
 .input-group.product-info .input-group-append .btn {
@@ -447,6 +447,11 @@ li.level3 {
 
 .card {
   border-radius: 1rem;
+  background-color: var(--card-background-color);
+}
+
+.box {
+  background-color: var(--card-background-color);
 }
 
 .card-footer:last-child {
@@ -486,30 +491,30 @@ li.level3 {
 }
 
 .btn-outline-secondary.btn-outline-search {
-  background-color: #fff;
+  background-color: var(--button-background-color);
 }
 
 .btn-secondary,
 .badge-secondary,
 .bg-secondary {
-  background: rgba(0,0,0,.03);
+  background: var(--button-background-color);
   border-color: #ccc !important;
   color: #6c757d;
 }
 
 .btn-secondary:hover {
   color: #0051A8;
-  background: #c8c8c8;
+  background: var(--button-background-color-hover);
 }
 
 .btn-outline-secondary {
-  background: rgba(0,0,0,.03);
+  background: var(--button-background-color);
   border-color: #ccc !important;
 }
 
 .btn-outline-secondary:hover {
   color: #0051A8;
-  background: #c8c8c8;
+  background: var(--button-background-color-hover);
 }
 
 .btn-group .btn-secondary.active {
