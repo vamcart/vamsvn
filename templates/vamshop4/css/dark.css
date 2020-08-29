@@ -3,6 +3,7 @@
   --color: #fff;
   --link-color: #bdbdbd;
   --link-color-hover: #dee2e6;
+  --link-color-hover-white: #fff;
   --icon-filter: invert(100%);
   --icon-filter_hover: invert(40%);
   --image-filter: grayscale(50%);

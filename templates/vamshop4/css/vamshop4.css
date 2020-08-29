@@ -482,7 +482,7 @@ li.level3 {
 
 .text-muted,
 .address {
-    color: #575757 !important;
+    color: var(--link-color) !important;
 }
 
 .btn-outline-primary {
@@ -1040,6 +1040,7 @@ li.level3 {
 
 .form-control {
   border-radius: 1.5rem;
+  background-color: var(--card-background-color);
 }
 
 .select2-selection {
@@ -1108,4 +1109,19 @@ li.level3 {
 .wsmain,
 .headerfull {
   background-color: var(--card-background-color) !important;
+}
+
+.headertopright a,
+.address a {
+  color: var(--link-color) !important;
+}
+
+
+.wsmenu>.wsmenu-list>li:hover>a {
+  color: var(--link-color-hover-white) !important;
+}
+
+.wsmenu>.wsmenu-list>li>a,
+.wsmenu>.wsmenu-list>li>.wsmenu-click>i {
+  color: var(--link-color) !important;
 }
