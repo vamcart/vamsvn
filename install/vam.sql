@@ -2129,6 +2129,7 @@ INSERT INTO configuration (configuration_key, configuration_value, configuration
 INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('SIMILAR_PRODUCTS', 'true', 1, 65, NULL, '', NULL, 'vam_cfg_select_option(array(\'true\', \'false\'),');
 INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('SIMILAR_PRODUCTS_FULL', '20', 1, 66, 'NULL', '', NULL, NULL);
 INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('SIMILAR_PRODUCTS_RAND', '150', 1, 67, 'NULL', '', NULL, NULL);
+INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('DARK_THEME', 'true', 1, 68, NULL, '', NULL, 'vam_cfg_select_option(array(\'true\', \'false\'),');
 
 # configuration_group_id 2
 INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('ENTRY_FIRST_NAME_MIN_LENGTH', '2',  2, 1, NULL, '', NULL, NULL);

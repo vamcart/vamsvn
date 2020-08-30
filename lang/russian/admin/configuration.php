@@ -711,7 +711,7 @@ define('MAX_DISPLAY_LATEST_NEWS_CONTENT_DESC' , 'Количество симво
 define('MAX_DISPLAY_CART_TITLE' , 'Максимум символов в названии товара в корзине');
 define('MAX_DISPLAY_CART_DESC' , 'Количество символов, выводимых в названии товара в боксе корзина, что б товары с длинным названием не раятягивали корзину.');
 define('MAX_DISPLAY_SHORT_DESCRIPTION_TITLE' , 'Максимум символов в кратком описании');
-define('MAX_DISPLAY_SHORT_DESCRIPTION_DESC' , 'Количество символов, выводимых в кратком описании, что б объёмное описание не ломало дизайн.');
+define('MAX_DISPLAY_SHORT_DESCRIPTION_DESC' , 'Количество символов, выводимых в кратком описании, что б объёмное описание на ломало дизайн.');
 
 // Установка модулей
 
@@ -1205,6 +1205,9 @@ define('SIMILAR_PRODUCTS_RAND_TITLE' , 'Количество похожих то
 define('SIMILAR_PRODUCTS_RAND_DESC' , '');
 
 define('MAX_DISPLAY_REVIEW_TEXT_TITLE' , 'Максимум символов в отзывах');
-define('MAX_DISPLAY_REVIEW_TEXT_DESC' , 'Количество символов, выводимых в отзывах, что б объёмное описание не ломало дизайн.');
+define('MAX_DISPLAY_REVIEW_TEXT_DESC' , 'Количество символов, выводимых в отзывах, что б объёмное описание на ломало дизайн.');
+
+define('DARK_THEME_TITLE' , 'Поддержка тёмной темы оформления');
+define('DARK_THEME_DESC' , 'Если на смартфоне в настройках включена тёмная тема, то и VamShop по умолчанию будет в тёмном цвете, а так же будет переключатель тёмная/светлая тема.');
 
 ?>

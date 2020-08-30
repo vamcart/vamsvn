@@ -1,3 +1,6 @@
+<?php
+if (DARK_THEME == 'true') {
+?>
 <script>
   //if (window.location.protocol === 'http:') {
     //window.location.protocol = 'https:';
@@ -13,7 +16,10 @@
   }
 </script>  
 <script type="module" src="<?php echo DIR_WS_CATALOG; ?>jscript/dark-mode-toggle/dark-mode-toggle.js"></script>    
-<script defer src="templates/<?php echo CURRENT_TEMPLATE; ?>/javascript/darkmode.js"></script> 
+<script defer src="templates/<?php echo CURRENT_TEMPLATE; ?>/javascript/darkmode.js"></script>
+<?php
+}
+?> 
 <script>(function(w,d,u){w.readyQ=[];w.bindReadyQ=[];function p(x,y){if(x=="ready"){w.bindReadyQ.push(y);}else{w.readyQ.push(x);}};var a={ready:p,bind:p};w.$=w.jQuery=function(f){if(f===d||f===u){return a}else{p(f)}}})(window,document)</script>
 <?php
 if (file_exists(dirname(__FILE__) . '/local.js.php')) include('local.js.php');
