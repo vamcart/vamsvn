@@ -499,7 +499,7 @@ li.level3 {
 .bg-secondary {
   background: var(--button-background-color);
   border-color: var(--border-gray) !important;
-  color: var(--color) !important;
+  color: var(--link-color) !important;
 }
 
 .btn-secondary:hover {
@@ -629,7 +629,7 @@ li.level3 {
   box-shadow: 0 14px 15px rgba(153,153,153,.3);
   -webkit-transition: .5s;
   transition: .5s;
-  background: var(--background-color);
+  background: var(--card-background-color-hover);
 }
 
 .shipping-method.selected .shipping-fields,
@@ -682,6 +682,10 @@ li.level3 {
   border-right: 1px solid #dd2c00;
   border-bottom: 1px solid #dd2c00;
   border-radius: 0px;
+}
+
+.product-attribute-item .card-text {
+  color: var(--color);
 }
 
 #searchPreview table {
@@ -1186,6 +1190,21 @@ header .input-group-text,
   color: var(--color) !important;
 }
 
-.bg-light {
-  background: var(--background-color) !important;
+.bg-light,
+.border,
+.bg-white {
+  background: var(--card-background-color) !important;
+}
+
+.progress {
+  background: var(--border-gray) !important;
+}
+
+.border {
+  border: 1px solid var(--background-color) !important;
+}
+
+.text-dark,
+.text-secondary {
+  color: var(--link-color) !important;
 }

@@ -1,6 +1,6 @@
 :root {
   --background-color: #424547;
-  --color: #fff;
+  --color: #e5e5e5;
   --link-color: #bdbdbd;
   --link-color-hover: #dee2e6;
   --link-color-hover-white: #fff;
@@ -13,6 +13,7 @@
 
   --box-background-color: #4c5053;
   --card-background-color: #4c5053;
+  --card-background-color-hover: #424547;
   --tab-background-color: #4c5053;
 
   --button-background-color: #4c5053;
