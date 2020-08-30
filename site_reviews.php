@@ -67,7 +67,7 @@ if (!is_file($avatar)) $avatar = false;
 		'ANSWER' => $reviews['reviews_answer'], 
 		'RATING' => $reviews['reviews_rating'],
 		'STAR_RATING' => $star_rating,
-		'RATING_IMG' => vam_image('templates/'.CURRENT_TEMPLATE.'/img/stars_'.$reviews['reviews_rating'].'.gif', sprintf(TEXT_OF_5_STARS, $reviews['reviews_rating']))
+		'RATING_IMG' => vam_image('templates/'.CURRENT_TEMPLATE.'/img/stars_'.$reviews['reviews_rating'].'.png', sprintf(TEXT_OF_5_STARS, $reviews['reviews_rating']))
 		);
 
 	}

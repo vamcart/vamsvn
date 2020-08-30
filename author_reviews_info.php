@@ -55,7 +55,7 @@ $vamTemplate->assign('AUTHOR', $reviews['customers_name']);
 $vamTemplate->assign('DATE', vam_date_long($reviews['date_added']));
 $vamTemplate->assign('REVIEWS_TEXT', nl2br($reviews_text));
 $vamTemplate->assign('REVIEWS_ANSWER', nl2br($reviews['reviews_answer']));
-$vamTemplate->assign('RATING', vam_image('templates/'.CURRENT_TEMPLATE.'/img/stars_'.$reviews['reviews_rating'].'.gif', sprintf(TEXT_OF_5_STARS, $reviews['reviews_rating'])));
+$vamTemplate->assign('RATING', vam_image('templates/'.CURRENT_TEMPLATE.'/img/stars_'.$reviews['reviews_rating'].'.png', sprintf(TEXT_OF_5_STARS, $reviews['reviews_rating'])));
 $vamTemplate->assign('PRODUCTS_LINK', vam_href_link(FILENAME_ARTICLES, 'authors_id=' . $reviews['authors_id'] . $SEF_parameter_author));
 $vamTemplate->assign('BUTTON_BACK', '<a class="button" href="'.vam_href_link(FILENAME_AUTHOR_REVIEWS, $get_params).'">'.vam_image_button('back.png', IMAGE_BUTTON_BACK).'</a>');
 $vamTemplate->assign('BUTTON_BUY_NOW', '<a class="button" href="'.vam_href_link(FILENAME_DEFAULT, 'action=buy_now&BUYauthors_id='.$reviews['authors_id']).'">'.vam_image_button('buy.png', IMAGE_BUTTON_IN_CART) . '</a>');

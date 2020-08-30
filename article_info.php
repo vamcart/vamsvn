@@ -100,7 +100,7 @@ $article_info['articles_keywords'] = str_replace($value.",","",$article_info['ar
 	$article_rating = $reviews_rating['rating']/$reviews_rating['total'];
 		
 	$vamTemplate->assign('ARTICLE_RATING', number_format($article_rating,1));
-	$vamTemplate->assign('ARTICLE_STAR_RATING', vam_image('templates/'.CURRENT_TEMPLATE.'/img/stars_'.intval($article_rating).'.gif', sprintf(BOX_REVIEWS_TEXT_OF_5_STARS, intval($article_rating))));
+	$vamTemplate->assign('ARTICLE_STAR_RATING', vam_image('templates/'.CURRENT_TEMPLATE.'/img/stars_'.intval($article_rating).'.png', sprintf(BOX_REVIEWS_TEXT_OF_5_STARS, intval($article_rating))));
 	}
 
 	$vamTemplate->assign('ARTICLE_LINK', vam_href_link(FILENAME_ARTICLE_INFO, 'articles_id=' . $article_info['articles_id'] . $SEF_parameter));
@@ -128,7 +128,7 @@ $article_info['articles_keywords'] = str_replace($value.",","",$article_info['ar
 	$author_rating = $author_rating['rating']/$author_rating['total'];
 		
 	$vamTemplate->assign('AUTHOR_RATING', number_format($author_rating,1));
-	$vamTemplate->assign('AUTHOR_STAR_RATING', vam_image('templates/'.CURRENT_TEMPLATE.'/img/stars_'.intval($author_rating).'.gif', sprintf(BOX_REVIEWS_TEXT_OF_5_STARS, intval($author_rating))));
+	$vamTemplate->assign('AUTHOR_STAR_RATING', vam_image('templates/'.CURRENT_TEMPLATE.'/img/stars_'.intval($author_rating).'.png', sprintf(BOX_REVIEWS_TEXT_OF_5_STARS, intval($author_rating))));
 	}
 
 	$vamTemplate->assign('AUTHOR_LINK' , vam_href_link(FILENAME_ARTICLES, 'authors_id=' . $article_info['authors_id'] . $SEF_parameter_author));

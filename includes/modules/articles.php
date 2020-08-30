@@ -118,7 +118,7 @@ $articles_default['articles_keywords'] = str_replace($value.",","",$articles_def
 		'ARTICLE_RATING' => $article_reviews['total'],
 		'ARTICLE_VIEWS' => $articles_default['articles_viewed'],
 		'ARTICLE_RATING' => intval($article_rating),
-		'ARTICLE_STAR_RATING' => vam_image('templates/'.CURRENT_TEMPLATE.'/img/stars_'.intval($article_rating).'.gif', sprintf(BOX_REVIEWS_TEXT_OF_5_STARS, intval($article_rating))),
+		'ARTICLE_STAR_RATING' => vam_image('templates/'.CURRENT_TEMPLATE.'/img/stars_'.intval($article_rating).'.png', sprintf(BOX_REVIEWS_TEXT_OF_5_STARS, intval($article_rating))),
 		'ARTICLE_NAME' => $articles_default['articles_name'],
 		'ARTICLE_NAME' => $articles_default['articles_name'],
 		'ARTICLE_IMAGE' => $articles_default['articles_image'],
@@ -135,7 +135,7 @@ $articles_default['articles_keywords'] = str_replace($value.",","",$articles_def
 		'AUTHOR_ID' => $articles_default['authors_id'], 
 		'AUTHOR_REVIEWS' => $author_reviews['total'],
 		'AUTHOR_RATING' => intval($article_rating),
-		'AUTHOR_STAR_RATING' => vam_image('templates/'.CURRENT_TEMPLATE.'/img/stars_'.intval($article_rating).'.gif', sprintf(BOX_REVIEWS_TEXT_OF_5_STARS, intval($article_rating))),
+		'AUTHOR_STAR_RATING' => vam_image('templates/'.CURRENT_TEMPLATE.'/img/stars_'.intval($article_rating).'.png', sprintf(BOX_REVIEWS_TEXT_OF_5_STARS, intval($article_rating))),
 		'AUTHOR_LINK' =>  vam_href_link(FILENAME_ARTICLES, 'authors_id=' . $articles_default['authors_id'] . $SEF_parameter_author), 
 		'ARTICLE_CATEGORY_NAME' => $articles_default['topics_name'],
 		'ARTICLE_CATEGORY_LINK' => vam_href_link(FILENAME_ARTICLES, 'tPath=' . $articles_default['topics_id'] . $SEF_parameter_category)
