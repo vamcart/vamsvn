@@ -867,6 +867,9 @@ li.level3 {
     width: auto;
 }
 
+.wsactive .wsmobileheader {
+    border-left: solid 1px var(--border-gray) !important;
+}
 
 .wsmobileheader .wscart {
     background-color: transparent;
