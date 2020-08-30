@@ -73,7 +73,7 @@ if ($parent_id == 0){ $cPath = ''; } else { $cPath .= $parent_id . '_'; }
    $module_content[]=array('ID'  => $categories['categories_id'],
                            'CATEGORIES_NAME'  => $categories['categories_name'],
                            'CATEGORIES_DESCRIPTION'  => $categories['categories_description'],
-                           'CATEGORIES_IMAGE' => ($categories['categories_image'] == '' ) ? DIR_WS_IMAGES . 'product_images/noimage.gif' : DIR_WS_IMAGES . 'categories/' . $categories['categories_image'],
+                           'CATEGORIES_IMAGE' => ($categories['categories_image'] == '' ) ? DIR_WS_IMAGES . 'product_images/noimage.png' : DIR_WS_IMAGES . 'categories/' . $categories['categories_image'],
                            'CATEGORIES_LINK'  => $SEF_link
                            
 			   //'SCATS'  => get_category_tree($categories['categories_id'], '',0)

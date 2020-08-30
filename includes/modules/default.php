@@ -165,7 +165,7 @@ if ($categories['categories_image'] != '')
                }
                else
                {
-                    $image = DIR_WS_IMAGES.'product_images/noimage.gif';
+                    $image = DIR_WS_IMAGES.'product_images/noimage.png';
                }
 
    $categories_image = DIR_FS_CATALOG . $image;

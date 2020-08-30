@@ -60,7 +60,7 @@ if (($orders_total = vam_count_customer_orders()) > 0) {
 				$pr['product_info']->data['products_image'] = DIR_WS_INFO_IMAGES.$pr['product_info']->data['products_image'];
 			}
 	   		if (!file_exists($pr['product_info']->data['products_image'])) {
-	   			$pr['product_info']->data['products_image'] = DIR_WS_INFO_IMAGES.'../noimage.gif';
+	   			$pr['product_info']->data['products_image'] = DIR_WS_INFO_IMAGES.'../noimage.png';
    			}
    			foreach ($order_info as $oi) {
    				if ($pr['id'] == $oi['PRODUCTS_ID']) {

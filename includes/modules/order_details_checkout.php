@@ -101,7 +101,7 @@ for ($i = 0, $n = sizeof($productss[$key]['products']); $i < $n; $i ++) {
 	if ($productss[$key]['products'][$i]['image'] != '') {
 		$image = DIR_WS_THUMBNAIL_IMAGES.$productss[$key]['products'][$i]['image'];
 	}
-	if (!is_file($image)) $image = DIR_WS_THUMBNAIL_IMAGES.'../noimage.gif';
+	if (!is_file($image)) $image = DIR_WS_THUMBNAIL_IMAGES.'../noimage.png';
 	$module_content[$key][$i] = array (
 	
 	'PRODUCTS_NAME' => $productss[$key]['products'][$i]['name'].$mark_stock, 

@@ -68,7 +68,7 @@ $vamTemplate->assign('BUTTON_BACK', '<a class="button" href="'.vam_href_link(FIL
 $vamTemplate->assign('ADD_REVIEW', '<a class="button" href="'.vam_href_link(FILENAME_SITE_REVIEWS_WRITE, $get_params).'">'.vam_image_button('add.png', IMAGE_BUTTON_WRITE_REVIEW).'</a>');
 
 $products_image = DIR_WS_THUMBNAIL_IMAGES.$reviews['products_image'];
-if (!is_file($products_image)) $products_image = DIR_WS_THUMBNAIL_IMAGES.'../noimage.gif';
+if (!is_file($products_image)) $products_image = DIR_WS_THUMBNAIL_IMAGES.'../noimage.png';
 $image = vam_image($products_image, $reviews['products_name'], '', '', 'hspace="5" vspace="5"');
 $vamTemplate->assign('IMAGE', $image);
 

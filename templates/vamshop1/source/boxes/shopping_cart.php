@@ -73,7 +73,7 @@ if ($_SESSION['cart']->count_contents() > 0) {
 									 'LINK' => vam_href_link(FILENAME_PRODUCT_INFO, vam_product_link($products[$i]['id'],$products[$i]['name'])), 
 'PRODUCTS_QTY' => $product_attributes_in_cart . vam_draw_hidden_field('cart_quantity[]', $products[$i]['quantity'] - 1) . vam_draw_hidden_field('products_id[]', $products[$i]['id']) . vam_draw_hidden_field('old_qty[]', $products[$i]['quantity']) . ($products[$i]['quantity'] < 2 ? vam_draw_hidden_field('cart_delete[]', $products[$i]['id']) : ''),
 'ATTRIBUTES' => $product_attributes1,
-                            'IMAGE' => (($products[$i]['image'] != '' ? DIR_WS_THUMBNAIL_IMAGES.$products[$i]['image'] : DIR_WS_IMAGES.'product_images/noimage.gif')),
+                            'IMAGE' => (($products[$i]['image'] != '' ? DIR_WS_THUMBNAIL_IMAGES.$products[$i]['image'] : DIR_WS_IMAGES.'product_images/noimage.png')),
 									 'NAME' => $products[$i]['name']);
 
 

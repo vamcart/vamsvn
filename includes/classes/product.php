@@ -26,7 +26,7 @@ class product {
 	function __construct($pID = 0) {
 		$this->pID = $pID;
 		$this->useStandardImage=true;
-		$this->standardImage='../noimage.gif';
+		$this->standardImage='../noimage.png';
 		if ($pID = 0) {
 			$this->isProduct = false;
 			return;

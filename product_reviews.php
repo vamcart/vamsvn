@@ -200,7 +200,7 @@ $vamTemplate->assign('PRODUCTS_BUY_NOW',$link);
 if ($product->data['products_image'] != '')
 $image = DIR_WS_INFO_IMAGES.$product->data['products_image'];
 
-if (!file_exists($image)) $image = DIR_WS_INFO_IMAGES.'../noimage.gif';
+if (!file_exists($image)) $image = DIR_WS_INFO_IMAGES.'../noimage.png';
 
 $vamTemplate->assign('PRODUCTS_IMAGE', $image);
 $vamTemplate->assign('PRODUCTS_IMAGE_DESCRIPTION', htmlentities(strip_tags($product->data['products_image_description'])));

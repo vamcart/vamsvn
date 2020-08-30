@@ -71,7 +71,7 @@
 		if ($products['products_image'] != '')
 			$image = DIR_WS_INFO_IMAGES.$products['products_image'];
 	   
-	   if (!file_exists($image)) $image = DIR_WS_IMAGES.'product_images/noimage.gif';
+	   if (!file_exists($image)) $image = DIR_WS_IMAGES.'product_images/noimage.png';
 
 				$out .= '
 				
