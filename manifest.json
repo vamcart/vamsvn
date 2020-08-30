@@ -4,8 +4,8 @@
     "description": "Движок (CMS) для создания интернет-магазина VamShop.",
     "start_url": "/?utm_source=pwa&utm_medium=manifest&utm_campaign=manifest_start_url",
     "display": "standalone",
-    "theme_color": "#dd2c00",
-    "background_color": "#ffffff",
+    "theme_color": "#f8f9fa",
+    "background_color": "#f8f9fa",
     "icons": [
         {
             "src": "images/icons/vamshop-box-32.png",
