@@ -508,12 +508,13 @@ li.level3 {
 }
 
 .btn-outline-secondary {
+  color: var(--link-color) !important;
   background: var(--button-background-color);
   border-color: var(--border-gray) !important;
 }
 
 .btn-outline-secondary:hover {
-  color: var(--link-color-hover);
+  color: var(--link-color);
   background: var(--button-background);
 }
 
