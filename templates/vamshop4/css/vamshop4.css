@@ -1231,6 +1231,10 @@ header .input-group-text,
   color: var(--link-color) !important;
 }
 
+.text-danger {
+  color: #ff5151 !important;
+}
+
 .modal-content,
 .modal-header,
 .modal-body,
