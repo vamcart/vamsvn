@@ -2120,7 +2120,7 @@ ul.row, ul.row-sm {
   display: block;
   position: absolute;
   top: 0px;
-  right: .5em;
+  right: 1em;
   z-index: 2; }
   .badge-offer b {
     background: #dd2c00;
