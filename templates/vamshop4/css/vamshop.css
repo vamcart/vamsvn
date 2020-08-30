@@ -2169,7 +2169,7 @@ fieldset.form legend
 		margin: 0; 
 		padding: 0; 
 		border: 0px solid black; 
-		color: #545452; 
+		color: var(--color);
 		text-align: left;
 	}
 

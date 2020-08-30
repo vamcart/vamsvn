@@ -690,13 +690,18 @@ li.level3 {
 }
 
 #searchPreview table {
-  border: 1px solid #e5e5e5;
+  border: 1px solid var(--border-gray);
   box-shadow: 0 1px 4px 0 rgba(0,0,0,.1);
-  background: #fff; 
+  background: var(--card-background-color);
   height: 300px;
   overflow-y: scroll;
   overflow-x: hidden;
 }
+
+#searchPreview .table th, #searchPreview .table td {
+  color: var(--color);
+  border-color: var(--border-gray);
+}	
 
 #footer [class^="fa fa-"],
 #footer [class*=" icon-"] {
@@ -908,25 +913,23 @@ li.level3 {
 }
 
 .duplicate-order .active, .accordion:hover {
-  background-color: #ccc;
+  background-color: var(--card-background-color);
 }
 
 .duplicate-order .panel {
   padding: 0px 18px 20px;
-  background-color: white;
+  background-color: var(--background-color);
 }
 
 .duplicate-order .accordion .buttons:after {
   content: "\2796"; /* Unicode character for "minus" sign (-) */
     font-size: 13px;
-  color: #777;
   margin-left: 5px;
 }
 
 .duplicate-order .accordion.collapsed .buttons:after {
   content: '\02795'; /* Unicode character for "plus" sign (+) */
   font-size: 13px;
-  color: #777;
   margin-left: 5px;
 }
 
@@ -935,10 +938,6 @@ li.level3 {
 		max-height: 150px;
 		width: auto !important;
 	}
-}
-
-.text-primary {
-  color: #0654a7 !important;
 }
 
 #checkout .form-check-input {
@@ -1147,7 +1146,7 @@ li.level3 {
     width: 33%;
     float: left;
     position: relative;
-    background-color: var(--background-color) !important;
+    background-color: var(--card-background-color) !important;
 }
 
 .wsmenu>.wsmenu-list>li>.wsshoptabing>.wsshopwp>.wstabitem>li.wsshoplink-active>a {
@@ -1206,6 +1205,7 @@ header .input-group-text,
 }
 
 .text-dark,
+.text-primary,
 .text-secondary {
   color: var(--link-color) !important;
 }
