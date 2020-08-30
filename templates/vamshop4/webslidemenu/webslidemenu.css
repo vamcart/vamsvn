@@ -530,7 +530,7 @@ video {
   width: 33%;
   float: left;
   position: relative;
-  border-left: 3px solid #fff;
+  border-left: 3px solid transparent;
   background-color: #fff;
 }
 
