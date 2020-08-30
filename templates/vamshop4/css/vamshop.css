@@ -2735,7 +2735,7 @@ li.ajaxAddQuickie
 }
 .btn.btn-inverse:hover,
 .btn.btn-inverse.checkout:hover {
-    color: #dd2c00;
+    color: var(--button-text-color-hover);
     border: 2px solid #dd2c00;
     background-color: var(--button-background-color-hover);
 }

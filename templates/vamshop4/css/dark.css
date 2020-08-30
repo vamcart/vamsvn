@@ -17,12 +17,12 @@
   --tab-background-color: #4c5053;
 
   --button-background-color: #4c5053;
-  --button-background-color-hover: #fff;
+  --button-background-color-hover: transparent;
 
   --button-border-color: #9a9a9a;
   --button-border-color-hover: #dd2c00;
   --button-text-color: #f3f3f3;
-  --button-text-color-hover: #dd2c00;
+  --button-text-color-hover: #f3f3f3;
 
   --nav-tab-background-color: #4a7ed2;
   --nav-tab-background-color-active: #4a7ed2;
