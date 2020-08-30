@@ -1222,7 +1222,7 @@ header .input-group-text,
 }
 
 .border {
-  border: 1px solid var(--background-color) !important;
+  border: 1px solid var(--border-gray) !important;
 }
 
 .text-dark,
