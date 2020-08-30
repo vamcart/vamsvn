@@ -2,9 +2,6 @@
 if (DARK_THEME == 'true') {
 ?>
 <script>
-  //if (window.location.protocol === 'http:') {
-    //window.location.protocol = 'https:';
-  //}
   // If `prefers-color-scheme` is not supported, fall back to light mode.
   // In this case, light.css will be downloaded with `highest` priority.
   if (!window.matchMedia('(prefers-color-scheme)').matches) {
