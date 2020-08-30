@@ -50,7 +50,7 @@
 	     <li class="list-inline-item pr-2 d-none d-xl-inline-block text-muted small"><a href="" data-toggle="modal" data-target="#myModal" aria-label="{$smarty.const.TEXT_CITY}"><i class="fas fa-map-marker-alt"></i> <span class="link">{if {cookie name="vamshop-city"}}{cookie name="vamshop-city"}{else}<span class="userCity">{geo_city}</span>{/if}</span></a></li>
 	     {if {$smarty.const.STORE_TELEPHONE} != ""}<li class="list-inline-item pr-2 text-muted small"><a href="tel:{$smarty.const.STORE_TELEPHONE}"><i class="fas fa-phone"></i> <span>{$smarty.const.STORE_TELEPHONE}</span></a></li>{/if}
 	     <li class="list-inline-item pr-2 text-muted small"><a href="contact_us.html"><i class="far fa-envelope"></i> {#text_contact_us#}</a></li>
-	     <li class="list-inline-item pr-2 text-muted small"><dark-mode-toggle id="dark-mode-toggle-1" permanent="true"></dark-mode-toggle></li>
+	     {if {$smarty.const.DARK_THEME} == "true"}<li class="list-inline-item pr-2 text-muted small"><dark-mode-toggle id="dark-mode-toggle-1" permanent="true"></dark-mode-toggle></li>{/if}
 	   </ul>  
       </div>
     </div>
