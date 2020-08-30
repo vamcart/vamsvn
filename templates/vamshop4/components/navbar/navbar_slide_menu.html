@@ -83,8 +83,6 @@
           {/if}
           <li class="wsshopmyaccount"><a href="{$smarty.const.FILENAME_LOGIN}"><i class="fas fa-user"></i>{$smarty.const.TEXT_MY_PROFILE}</a></li>
           {if $smarty.session.customer_id}<li class="wsshopmyaccount"><a href="{$logoff}"><i class="fa fa-power-off"></i> {#link_logoff#}</a></li>{/if} 
-          <li class="wsshopmyaccount">
-          </li>
           {if $smarty.session.customers_status.customers_status_id == 0}<li class="wsshopmyaccount"><a href="{$admin_area_link}"><i class="fas fa-cog"></i> {#text_admin#}</a></li>{/if}
         </ul>
       </nav>
