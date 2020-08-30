@@ -559,15 +559,6 @@ li.level3 {
     display: none;
 }
 
-.filter.card.card-product .card-footer,
-.product-attribute-item.card.card-product .card-footer,
-.shipping-method.card.card-product .card-footer,
-.payment-method.card.card-product .card-footer {
-  padding: 0;
-  margin: 0;
-  background: var(--background-color);
-}
-
 .filters .filter.card,
 .shipping-methods .shipping-method.card,
 .product-attributes .product-attribute-item.card,
@@ -586,6 +577,8 @@ li.level3 {
 .shipping-methods .shipping-method.card .card-footer,
 .product-attributes .product-attribute-item.card .card-footer,
 .payment-methods .payment-method.card .card-footer {
+  padding: 0;
+  margin: 0;
   border-top: 0px;
 }
 
@@ -1031,7 +1024,7 @@ li.level3 {
 
 .list-group-item,
 .list-group-item.disabled {
-  color: var(--color) !important;
+  color: var(--link-color) !important;
   background-color: var(--card-background-color);
 }
 
