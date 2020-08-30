@@ -2243,9 +2243,10 @@ span.errorText
 
 div.contacterror 
    {
+     color: var(--color); 
      border: 1px solid; 
-     border-color: #ff0000; 
-     background-color: #FFCCCC; 
+     border-color: var(--border-gray);  
+     background-color: var(--card-background-color); 
      text-align: center; 
      margin-bottom: 0.5em; 
      margin-top: 0.5em;
