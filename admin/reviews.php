@@ -179,7 +179,7 @@ $( "#date_added" ).datepicker({ dateFormat: "dd-mm-yy" }).val();
   if ($_GET['action'] == 'edit') {
     $rID = vam_db_prepare_input($_GET['rID']);
 
-    $reviews_query = vam_db_query("select r.reviews_id, r.products_id, r.customers_name, r.customers_avatar, r.date_added, r.last_modified, r.reviews_read, rd.reviews_text, rd.reviews_answer, r.reviews_rating from " . TABLE_REVIEWS . " r, " . TABLE_REVIEWS_DESCRIPTION . " rd where r.reviews_id = '" . vam_db_input($rID) . "' and r.reviews_id = rd.reviews_id");
+    $reviews_query = vam_db_query("select r.reviews_id, r.products_id, r.customers_name, r.customers_avatar, r.date_added, r.last_modified, r.reviews_read, rd.reviews_text, rd.reviews_answer, rd.otzyv_img1, rd.otzyv_img2 rd.otzyv_img3, rd.otzyv_img4, rd.otzyv_img5, r.reviews_rating from " . TABLE_REVIEWS . " r, " . TABLE_REVIEWS_DESCRIPTION . " rd where r.reviews_id = '" . vam_db_input($rID) . "' and r.reviews_id = rd.reviews_id");
     $reviews = vam_db_fetch_array($reviews_query);
     $products_query = vam_db_query("select products_image from " . TABLE_PRODUCTS . " where products_id = '" . $reviews['products_id'] . "'");
     $products = vam_db_fetch_array($products_query);
@@ -428,6 +428,11 @@ $( "#date_added" ).datepicker({ dateFormat: "dd-mm-yy" }).val();
         $contents[] = array('text' => $rInfo->reviews_answer);
         $contents[] = array('text' => '<br />' . TEXT_INFO_REVIEW_SIZE . ' ' . $rInfo->reviews_text_size . ' bytes');
         $contents[] = array('text' => '<br />' . TEXT_INFO_PRODUCTS_AVERAGE_RATING . ' ' . number_format($rInfo->average_rating, 2) . '%');
+        if ($rInfo->otzyv_img1 != '') $contents[] = array('align' => 'center', 'text' => '<div style="padding: 10px;">' . vam_review_thumb_image($rInfo->otzyv_img1, $pInfo->products_name,100)  . '</div><div style="padding-bottom: 10px;">' . $pInfo->otzyv_img1.'</div>');
+        if ($rInfo->otzyv_img2 != '') $contents[] = array('align' => 'center', 'text' => '<div style="padding: 10px;">' . vam_review_thumb_image($rInfo->otzyv_img2, $pInfo->products_name,100)  . '</div><div style="padding-bottom: 10px;">' . $pInfo->otzyv_img2.'</div>');
+        if ($rInfo->otzyv_img3 != '') $contents[] = array('align' => 'center', 'text' => '<div style="padding: 10px;">' . vam_review_thumb_image($rInfo->otzyv_img3, $pInfo->products_name,100)  . '</div><div style="padding-bottom: 10px;">' . $pInfo->otzyv_img3.'</div>');
+        if ($rInfo->otzyv_img4 != '') $contents[] = array('align' => 'center', 'text' => '<div style="padding: 10px;">' . vam_review_thumb_image($rInfo->otzyv_img4, $pInfo->products_name,100)  . '</div><div style="padding-bottom: 10px;">' . $pInfo->otzyv_img4.'</div>');
+        if ($rInfo->otzyv_img5 != '') $contents[] = array('align' => 'center', 'text' => '<div style="padding: 10px;">' . vam_review_thumb_image($rInfo->otzyv_img5, $pInfo->products_name,100)  . '</div><div style="padding-bottom: 10px;">' . $pInfo->otzyv_img5.'</div>');
       }
         break;
     }

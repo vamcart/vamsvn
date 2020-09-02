@@ -478,6 +478,16 @@ function vam_product_thumb_image($image, $alt, $width = '', $height = '') {
 	return $image;
 }
 
+function vam_review_thumb_image($image, $alt, $width = '', $height = '') {
+	if (($image) && (file_exists(DIR_FS_CATALOG_IMAGES.'reviews/'.$image))) {
+		$image = vam_image(DIR_WS_CATALOG_IMAGES.'reviews/'.$image, $alt, $width, $height);
+	} else {
+		$image = TEXT_IMAGE_NONEXISTENT;
+	}
+
+	return $image;
+}
+
 function vam_break_string($string, $len, $break_char = '-') {
 	$l = 0;
 	$output = '';
