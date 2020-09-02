@@ -803,5 +803,7 @@ define('TEXT_DISPLAY_NUMBER_OF_TAGS', 'Показано <span class="bold">%d</s
 define('TEXT_NO_TAGS', 'Нет тэгов.');
 
 define('REVIEW_NEW_SUBJECT', 'Добавлен новый отзыв');
+define('REVIEW_PHOTO_HEADER', 'Добавить фотографии (необязательно)');
+define('REVIEW_PHOTO', 'Картинка');
 
 ?>

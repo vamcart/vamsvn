@@ -19,6 +19,7 @@ $(function($){
 <div class="page">
 <h1>{#heading_reviews_write#}</h1>
 <div class="pageContent">
+{if $upload}<div class="contacterror">{$upload}</div>{/if}
 {if $captcha_error}
 <div class="contacterror">{$captcha_error}</div>
 {/if}
@@ -47,6 +48,17 @@ function reload(){
 	<p>{#text_input#} {$INPUT_TEXT}</p>
 	<p>{#text_note#}</p>
 	<p>{#text_rating#} <div class="form-check form-check-inline"><span class="bold">{#text_bad#}</span>{$INPUT_RATING}<span class="bold">{#text_good#}</span></div></p>
+
+	<p>{$smarty.const.REVIEW_PHOTO_HEADER}</p>
+
+	<input type="file" name="otzyv_img1" id="img_otz1" accept="image/jpeg,image/png,image/gif,image/webp,image/svg"/><br />
+	<input type="file" name="otzyv_img2" id="img_otz2" accept="image/jpeg,image/png,image/gif,image/webp,image/svg"/><br />
+	<input type="file" name="otzyv_img3" id="img_otz3" accept="image/jpeg,image/png,image/gif,image/webp,image/svg"/><br />
+	<input type="file" name="otzyv_img4" id="img_otz4" accept="image/jpeg,image/png,image/gif,image/webp,image/svg"/><br />
+	<input type="file" name="otzyv_img5" id="img_otz5" accept="image/jpeg,image/png,image/gif,image/webp,image/svg"/><br />
+	
+	<br />	
+	
    <p>{#text_sec_code#} {$CAPTCHA_IMG} <a href="javascript:void(0)" title="{#text_update#}" onclick="reload()">{#text_update#}</a></p>
    <p>{#text_sec_code_text#} {$CAPTCHA_INPUT}</p>
 </fieldset>

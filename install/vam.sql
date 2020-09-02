@@ -1499,6 +1499,11 @@ CREATE TABLE reviews_description (
   languages_id int NOT NULL,
   reviews_text text,
   reviews_answer text,
+  otzyv_img1 VARCHAR(255) NOT NULL,
+  otzyv_img2 VARCHAR(255) NOT NULL,
+  otzyv_img3 VARCHAR(255) NOT NULL,
+  otzyv_img4 VARCHAR(255) NOT NULL,
+  otzyv_img5 VARCHAR(255) NOT NULL,
   PRIMARY KEY (reviews_id, languages_id)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
