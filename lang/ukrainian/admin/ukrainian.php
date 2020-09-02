@@ -669,4 +669,6 @@ define('BOX_HEADING_CONTENT', 'Контент');
 
 define('BOX_TAGS', 'Плитка тэгов');
 
+define('TEXT_DELETE','удалить');
+
 ?>

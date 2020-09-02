@@ -120,7 +120,7 @@ $vamTemplate = new vamTemplate;
             
         vam_db_query("update " . TABLE_REVIEWS . " set reviews_rating = '" . vam_db_input($reviews_rating) . "',date_added = '" . vam_db_input($date_added) . "', customers_name = '" . vam_db_input($customers_name) . "', customers_avatar = '" . vam_db_input($avatar) . "', last_modified = now() where reviews_id = '" . vam_db_input($reviews_id) . "'");
         vam_db_query("update " . TABLE_REVIEWS_DESCRIPTION . " set reviews_text = '" . vam_db_input($reviews_text) . "', reviews_answer = '" . vam_db_input($reviews_answer) . "' where reviews_id = '" . vam_db_input($reviews_id) . "'");
-            
+
           }
 
         vam_redirect(vam_href_link(FILENAME_REVIEWS, 'page=' . $_GET['page'] . '&rID=' . $reviews_id));
@@ -179,7 +179,7 @@ $( "#date_added" ).datepicker({ dateFormat: "dd-mm-yy" }).val();
   if ($_GET['action'] == 'edit') {
     $rID = vam_db_prepare_input($_GET['rID']);
 
-    $reviews_query = vam_db_query("select r.reviews_id, r.products_id, r.customers_name, r.customers_avatar, r.date_added, r.last_modified, r.reviews_read, rd.reviews_text, rd.reviews_answer, rd.otzyv_img1, rd.otzyv_img2 rd.otzyv_img3, rd.otzyv_img4, rd.otzyv_img5, r.reviews_rating from " . TABLE_REVIEWS . " r, " . TABLE_REVIEWS_DESCRIPTION . " rd where r.reviews_id = '" . vam_db_input($rID) . "' and r.reviews_id = rd.reviews_id");
+    $reviews_query = vam_db_query("select r.reviews_id, r.products_id, r.customers_name, r.customers_avatar, r.date_added, r.last_modified, r.reviews_read, rd.reviews_text, rd.reviews_answer, rd.otzyv_img1, rd.otzyv_img2, rd.otzyv_img3, rd.otzyv_img4, rd.otzyv_img5, r.reviews_rating from " . TABLE_REVIEWS . " r, " . TABLE_REVIEWS_DESCRIPTION . " rd where r.reviews_id = '" . vam_db_input($rID) . "' and r.reviews_id = rd.reviews_id");
     $reviews = vam_db_fetch_array($reviews_query);
     $products_query = vam_db_query("select products_image from " . TABLE_PRODUCTS . " where products_id = '" . $reviews['products_id'] . "'");
     $products = vam_db_fetch_array($products_query);
@@ -230,6 +230,41 @@ $( "#date_added" ).datepicker({ dateFormat: "dd-mm-yy" }).val();
       <tr>
         <td><?php echo vam_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
       </tr>
+
+      <tr>
+        <td><table witdh="100%" border="0" cellspacing="2" cellpadding="2">
+        <tr>
+        <td>    
+        <?php if ($rInfo->otzyv_img1 != '') echo '<a href="'.HTTP_SERVER.DIR_WS_CATALOG_IMAGES.'reviews/'.$rInfo->otzyv_img1.'">'.vam_review_thumb_image($rInfo->otzyv_img1, $rInfo->products_name,100). '</a><br /><label>'.vam_draw_selection_field('del_otzyv_img1', 'checkbox', 'yes').'&nbsp;'.TEXT_DELETE.'</label>'; ?>
+        </td>
+        <td>    
+        <?php if ($rInfo->otzyv_img2 != '') echo '<a href="'.HTTP_SERVER.DIR_WS_CATALOG_IMAGES.'reviews/'.$rInfo->otzyv_img2.'">'.vam_review_thumb_image($rInfo->otzyv_img2, $rInfo->products_name,100). '</a><br /><label>'.vam_draw_selection_field('del_otzyv_img2', 'checkbox', 'yes').'&nbsp;'.TEXT_DELETE.'</label>'; ?>
+        </td>
+        <td>    
+        <?php if ($rInfo->otzyv_img3 != '') echo '<a href="'.HTTP_SERVER.DIR_WS_CATALOG_IMAGES.'reviews/'.$rInfo->otzyv_img3.'">'.vam_review_thumb_image($rInfo->otzyv_img3, $rInfo->products_name,100). '</a><br /><label>'.vam_draw_selection_field('del_otzyv_img3', 'checkbox', 'yes').'&nbsp;'.TEXT_DELETE.'</label>'; ?>
+        </td>
+        <td>    
+        <?php if ($rInfo->otzyv_img4 != '') echo '<a href="'.HTTP_SERVER.DIR_WS_CATALOG_IMAGES.'reviews/'.$rInfo->otzyv_img4.'">'.vam_review_thumb_image($rInfo->otzyv_img4, $rInfo->products_name,100). '</a><br /><label>'.vam_draw_selection_field('del_otzyv_img4', 'checkbox', 'yes').'&nbsp;'.TEXT_DELETE.'</label>'; ?>
+        </td>
+        <td>    
+        <?php if ($rInfo->otzyv_img5 != '') echo '<a href="'.HTTP_SERVER.DIR_WS_CATALOG_IMAGES.'reviews/'.$rInfo->otzyv_img5.'">'.vam_review_thumb_image($rInfo->otzyv_img5, $rInfo->products_name,100). '</a><br /><label>'.vam_draw_selection_field('del_otzyv_img5', 'checkbox', 'yes').'&nbsp;'.TEXT_DELETE.'</label>'; ?>
+        </td>
+        </tr>
+        </table></td>
+      </tr>
+      
+      <tr>
+        <td><table witdh="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td class="main" valign="top"><b><?php echo ENTRY_REVIEW; ?></b><?php echo vam_draw_textarea_field('reviews_text', 'soft', '60', '15', $rInfo->reviews_text); ?></td>
+          </tr>
+        </table></td>
+      </tr>
+      <tr>
+        <td><?php echo vam_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
+      </tr>
+      
+      
       <tr>
         <td><table witdh="100%" border="0" cellspacing="0" cellpadding="0">
           <tr>
@@ -247,6 +282,62 @@ $( "#date_added" ).datepicker({ dateFormat: "dd-mm-yy" }).val();
   } elseif ($_GET['action'] == 'preview') {
     if ($_POST) {
       $rInfo = new objectInfo($_POST);
+
+		if ($_POST['del_otzyv_img1'] == 'yes') {
+			
+		$review_image_query = vam_db_query("select * from " . TABLE_REVIEWS . " r, " . TABLE_REVIEWS_DESCRIPTION . " rd where r.reviews_id = '" . vam_db_input($_GET['rID']) . "' and r.reviews_id = rd.reviews_id");
+		$review_image = vam_db_fetch_array($customer_query);
+							
+			@ unlink(DIR_FS_CATALOG_IMAGES.'reviews/'.$review_image['otzyv_img1']);
+			vam_db_query("UPDATE ".TABLE_REVIEWS_DESCRIPTION."
+						    		                 SET otzyv_img1 = ''
+						    		               WHERE reviews_id    = '".vam_db_input($_GET['rID'])."'");
+		}
+
+		if ($_POST['del_otzyv_img2'] == 'yes') {
+			
+		$review_image_query = vam_db_query("select * from " . TABLE_REVIEWS . " r, " . TABLE_REVIEWS_DESCRIPTION . " rd where r.reviews_id = '" . vam_db_input($_GET['rID']) . "' and r.reviews_id = rd.reviews_id");
+		$review_image = vam_db_fetch_array($customer_query);
+							
+			@ unlink(DIR_FS_CATALOG_IMAGES.'reviews/'.$review_image['otzyv_img2']);
+			vam_db_query("UPDATE ".TABLE_REVIEWS_DESCRIPTION."
+						    		                 SET otzyv_img2 = ''
+						    		               WHERE reviews_id    = '".vam_db_input($_GET['rID'])."'");
+		}
+		
+		if ($_POST['del_otzyv_img3'] == 'yes') {
+			
+		$review_image_query = vam_db_query("select * from " . TABLE_REVIEWS . " r, " . TABLE_REVIEWS_DESCRIPTION . " rd where r.reviews_id = '" . vam_db_input($_GET['rID']) . "' and r.reviews_id = rd.reviews_id");
+		$review_image = vam_db_fetch_array($customer_query);
+							
+			@ unlink(DIR_FS_CATALOG_IMAGES.'reviews/'.$review_image['otzyv_img3']);
+			vam_db_query("UPDATE ".TABLE_REVIEWS_DESCRIPTION."
+						    		                 SET otzyv_img3 = ''
+						    		               WHERE reviews_id    = '".vam_db_input($_GET['rID'])."'");
+		}
+
+		if ($_POST['del_otzyv_img4'] == 'yes') {
+			
+		$review_image_query = vam_db_query("select * from " . TABLE_REVIEWS . " r, " . TABLE_REVIEWS_DESCRIPTION . " rd where r.reviews_id = '" . vam_db_input($_GET['rID']) . "' and r.reviews_id = rd.reviews_id");
+		$review_image = vam_db_fetch_array($customer_query);
+							
+			@ unlink(DIR_FS_CATALOG_IMAGES.'reviews/'.$review_image['otzyv_img4']);
+			vam_db_query("UPDATE ".TABLE_REVIEWS_DESCRIPTION."
+						    		                 SET otzyv_img4 = ''
+						    		               WHERE reviews_id    = '".vam_db_input($_GET['rID'])."'");
+		}
+		
+		if ($_POST['del_otzyv_img5'] == 'yes') {
+			
+		$review_image_query = vam_db_query("select * from " . TABLE_REVIEWS . " r, " . TABLE_REVIEWS_DESCRIPTION . " rd where r.reviews_id = '" . vam_db_input($_GET['rID']) . "' and r.reviews_id = rd.reviews_id");
+		$review_image = vam_db_fetch_array($customer_query);
+							
+			@ unlink(DIR_FS_CATALOG_IMAGES.'reviews/'.$review_image['otzyv_img5']);
+			vam_db_query("UPDATE ".TABLE_REVIEWS_DESCRIPTION."
+						    		                 SET otzyv_img5 = ''
+						    		               WHERE reviews_id    = '".vam_db_input($_GET['rID'])."'");
+		}
+
       
 			if ($_POST['customers_avatar'] == '' && $_POST['customers_avatar_name'] != '' && $_POST['customers_avatar'] != $_POST['customers_avatar_name']) {
         $_POST['customers_avatar'] = $_POST['customers_avatar_name'];
