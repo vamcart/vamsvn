@@ -151,6 +151,7 @@ class product {
 									                                 r.date_added,
 									                                 r.last_modified,
 									                                 r.reviews_read,
+									                                 rd.otzyv_img1, rd.otzyv_img2, rd.otzyv_img3, rd.otzyv_img4, rd.otzyv_img5,
 									                                 rd.reviews_text,
 									                                 rd.reviews_answer
 									                                 from ".TABLE_REVIEWS." r,
@@ -184,6 +185,11 @@ class product {
 				//'TEXT_COUNT' => '('.sprintf(TEXT_REVIEW_WORD_COUNT, vam_word_count($reviews['reviews_text'], ' ')).')<br />'.vam_break_string(htmlspecialchars($reviews['reviews_text']), 60, '-<br />').'..', 
 				'TEXT' => $reviews['reviews_text'], 
 				'ANSWER' => $reviews['reviews_answer'], 
+				'OTZYV_IMG1' => $reviews['otzyv_img1'], 
+				'OTZYV_IMG2' => $reviews['otzyv_img2'], 
+				'OTZYV_IMG3' => $reviews['otzyv_img3'], 
+				'OTZYV_IMG4' => $reviews['otzyv_img4'], 
+				'OTZYV_IMG5' => $reviews['otzyv_img5'], 
 				'RATING' => $reviews['reviews_rating'],
 				'STAR_RATING' => $star_rating,
 				'RATING_IMG' => vam_image('templates/'.CURRENT_TEMPLATE.'/img/stars_'.$reviews['reviews_rating'].'.png', sprintf(TEXT_OF_5_STARS, $reviews['reviews_rating']))
