@@ -19,6 +19,27 @@
 				{/if}
 				<span class="font-weight-bold text-secondary">{$smarty.const.TEXT_CUSTOMER_REVIEW}</span>
 				<div>{$module_data.REVIEW.TEXT|vam_truncate:$smarty.const.MAX_DISPLAY_REVIEW_TEXT:"...":true}</div>
+				{if {$module_data.REVIEW.OTZYV_IMG1} != ''}
+				<ul class="list-inline">
+				{/if}
+				{if {$module_data.REVIEW.OTZYV_IMG1} != ''}
+				<li class="list-inline-item"><a class="lightbox" href="{$smarty.const.DIR_WS_CATALOG}{$smarty.const.DIR_WS_IMAGES}reviews/{$module_data.REVIEW.OTZYV_IMG1}" title="{$module_data.PRODUCT.PRODUCTS_NAME}"><img {if $smarty.const.ENABLE_LAZY_LOAD == 'true'}class="lazy" src="{$smarty.const.DIR_WS_IMAGES}pixel_trans.gif" data-src="{$smarty.const.DIR_WS_CATALOG}{$smarty.const.DIR_WS_IMAGES}reviews/{$module_data.REVIEW.OTZYV_IMG1}"{else}src="{$module_data.REVIEW.OTZYV_IMG1}"{/if} height="100" alt="{$module_data.PRODUCT.PRODUCTS_NAME}"></a></li>
+				{/if}
+				{if {$module_data.REVIEW.OTZYV_IMG2} != ''}
+				<li class="list-inline-item"><a class="lightbox" href="{$smarty.const.DIR_WS_CATALOG}{$smarty.const.DIR_WS_IMAGES}reviews/{$module_data.REVIEW.OTZYV_IMG2}" title="{$module_data.PRODUCT.PRODUCTS_NAME}"><img {if $smarty.const.ENABLE_LAZY_LOAD == 'true'}class="lazy" src="{$smarty.const.DIR_WS_IMAGES}pixel_trans.gif" data-src="{$smarty.const.DIR_WS_CATALOG}{$smarty.const.DIR_WS_IMAGES}reviews/{$module_data.REVIEW.OTZYV_IMG2}"{else}src="{$module_data.REVIEW.OTZYV_IMG1}"{/if} height="100" alt="{$module_data.PRODUCT.PRODUCTS_NAME}"></a></li>
+				{/if}
+				{if {$module_data.REVIEW.OTZYV_IMG3} != ''}
+				<li class="list-inline-item"><a class="lightbox" href="{$smarty.const.DIR_WS_CATALOG}{$smarty.const.DIR_WS_IMAGES}reviews/{$module_data.REVIEW.OTZYV_IMG3}" title="{$module_data.PRODUCT.PRODUCTS_NAME}"><img {if $smarty.const.ENABLE_LAZY_LOAD == 'true'}class="lazy" src="{$smarty.const.DIR_WS_IMAGES}pixel_trans.gif" data-src="{$smarty.const.DIR_WS_CATALOG}{$smarty.const.DIR_WS_IMAGES}reviews/{$module_data.REVIEW.OTZYV_IMG3}"{else}src="{$module_data.REVIEW.OTZYV_IMG1}"{/if} height="100" alt="{$module_data.PRODUCT.PRODUCTS_NAME}"></a></li>
+				{/if}
+				{if {$module_data.REVIEW.OTZYV_IMG4} != ''}
+				<li class="list-inline-item"><a class="lightbox" href="{$smarty.const.DIR_WS_CATALOG}{$smarty.const.DIR_WS_IMAGES}reviews/{$module_data.REVIEW.OTZYV_IMG4}" title="{$module_data.PRODUCT.PRODUCTS_NAME}"><img {if $smarty.const.ENABLE_LAZY_LOAD == 'true'}class="lazy" src="{$smarty.const.DIR_WS_IMAGES}pixel_trans.gif" data-src="{$smarty.const.DIR_WS_CATALOG}{$smarty.const.DIR_WS_IMAGES}reviews/{$module_data.REVIEW.OTZYV_IMG4}"{else}src="{$module_data.REVIEW.OTZYV_IMG1}"{/if} height="100" alt="{$module_data.PRODUCT.PRODUCTS_NAME}"></a></li>
+				{/if}
+				{if {$module_data.REVIEW.OTZYV_IMG5} != ''}
+				<li class="list-inline-item"><a class="lightbox" href="{$smarty.const.DIR_WS_CATALOG}{$smarty.const.DIR_WS_IMAGES}reviews/{$module_data.REVIEW.OTZYV_IMG5}" title="{$module_data.PRODUCT.PRODUCTS_NAME}"><img {if $smarty.const.ENABLE_LAZY_LOAD == 'true'}class="lazy" src="{$smarty.const.DIR_WS_IMAGES}pixel_trans.gif" data-src="{$smarty.const.DIR_WS_CATALOG}{$smarty.const.DIR_WS_IMAGES}reviews/{$module_data.REVIEW.OTZYV_IMG5}"{else}src="{$module_data.REVIEW.OTZYV_IMG1}"{/if} height="100" alt="{$module_data.PRODUCT.PRODUCTS_NAME}"></a></li>
+				{/if}
+				{if {$module_data.REVIEW.OTZYV_IMG1} != ''}
+				</ul>
+				{/if}
 				{if {$module_data.REVIEW.ANSWER} != ''}
 				<span class="font-weight-bold text-primary">{$smarty.const.TEXT_STORE_ANSWER}</span>
 				<div>{$module_data.REVIEW.ANSWER}</div>
