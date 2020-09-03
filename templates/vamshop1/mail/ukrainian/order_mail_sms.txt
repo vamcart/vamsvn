@@ -1,3 +1,6 @@
-Ваш заказ №{$oID} оформлен!
+Ви оформили замовлення в магазині {$smarty.const.STORE_NAME}!
 
-{$smarty.const.HTTP_SERVER}{$smarty.const.DIR_WS_CATALOG}
+Наші контакти:
+
+{$Smarty.const.STORE_OWNER_EMAIL_ADDRESS}
+{$Smarty.const.STORE_TELEPHONE}

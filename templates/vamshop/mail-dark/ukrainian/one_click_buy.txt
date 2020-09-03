@@ -1,0 +1,12 @@
+Купить в 1 клик, заказан товар {$PRODUCTS_NAME}
+
+{if {$TEXT_EMAIL} != ''}Отправитель: {$TEXT_EMAIL}{/if}
+{if {$TEXT_FIRSTNAME} != ''}Имя: {$TEXT_FIRSTNAME}{/if}
+{if {$TEXT_LASTNAME} != ''}Фамилия: {$TEXT_LASTNAME}{/if}
+{if {$TEXT_TELEPHONE} != ''}Телефон: {$TEXT_TELEPHONE}{/if}
+Товар: {$PRODUCT_LINK}
+
+{if {$TEXT_MESSAGE} != ''}
+Сообщение:
+{$TEXT_MESSAGE}
+{/if}
