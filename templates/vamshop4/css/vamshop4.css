@@ -72,6 +72,18 @@ button:focus, button:active, a, a:hover {
   right: 0px;
   }
 
+.owl-theme .owl-dots .owl-dot span {
+    width: 50px;
+    height: 5px;
+    margin: 20px 0;
+    padding: 0;
+    background: #d6d6d6;
+    display: block;
+    -webkit-backface-visibility: visible;
+    transition: opacity .2s ease;
+     border-radius: 0px;
+}
+
 .owl-theme .owl-nav {
   margin-top: 0;
 }
