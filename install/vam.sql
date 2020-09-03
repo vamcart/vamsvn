@@ -2053,8 +2053,8 @@ INSERT INTO content_manager VALUES (11, 0, 0, '', 1, 'Вопросы и отве
 INSERT INTO content_manager VALUES (12, 0, 0, '', 1, '404', '404', '<div class="text-center">\r\n<h1 class="text-success text-center"><i class="fa fa-question fa-7x"></i></h1>\r\n<p>Не найдены товары, соответствующие Вашему запросу.</p>\r\n<form name="new_find" id="new_find" action="advanced_search_result.php" method="get"><span class="bold">Воспользуйтесь поиском!</span> <br /><br /><!-- форма --><fieldset class="form"><legend class="h6">Ключевые слова:</legend>\r\n<p><input type="text" name="keywords" size="30" maxlength="30" /></p>\r\n<p><span class="button"><button type="submit"><img src="images/icons/buttons/search.png" alt="Поиск" title=" Поиск " width="12" height="12" />&nbsp;Поиск</button></span></p>\r\n</fieldset><!-- /форма --></form></div>', '', 0, 0, '', 0, 12, 1, '', '404', '404', '404.html',0,0);
 
 # 1 - Default, 2 - USA, 3 - Spain, 4 - Singapore, 5 - Germany
-INSERT INTO address_format VALUES (1, '$firstname $secondname $lastname$cr$streets$cr$city, $postcode$cr$statecomma$country','$city / $country');
-INSERT INTO address_format VALUES (2, '$firstname $secondname $lastname$cr$streets$cr$city, $state    $postcode$cr$country','$city, $state / $country');
+INSERT INTO address_format VALUES (1, '$firstname $secondname $lastname$cr$streets$cr$city $postcode$cr$statecomma$country','$city / $country');
+INSERT INTO address_format VALUES (2, '$firstname $secondname $lastname$cr$streets$cr$city $state    $postcode$cr$country','$city, $state / $country');
 INSERT INTO address_format VALUES (3, '$firstname $secondname $lastname$cr$streets$cr$city$cr$postcode - $statecomma$country','$state / $country');
 INSERT INTO address_format VALUES (4, '$firstname $secondname $lastname$cr$streets$cr$city ($postcode)$cr$country', '$postcode / $country');
 INSERT INTO address_format VALUES (5, '$firstname $secondname $lastname$cr$streets$cr$postcode $city$cr$country','$city / $country');
