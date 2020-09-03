@@ -871,6 +871,11 @@ li.level3 {
   opacity: 1;
 }
 
+.carousel-indicators li {
+    margin-left: 0;
+    margin-right: 0;
+}
+
 .mainpage-tabs .carousel-indicators h3 {
     display: inline;
     width: auto;
