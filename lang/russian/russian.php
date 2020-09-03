@@ -806,4 +806,7 @@ define('REVIEW_NEW_SUBJECT', 'Добавлен новый отзыв');
 define('REVIEW_PHOTO_HEADER', 'Добавить фотографии (необязательно)');
 define('REVIEW_PHOTO', 'Картинка');
 
+define('THEME_DARK', 'Тёмная тема');
+define('THEME_LIGHT', 'Светлая тема');
+
 ?>

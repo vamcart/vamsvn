@@ -20,6 +20,7 @@
 				<li class="list-inline-item text-white px-1"><a class="text-light" href="https://youtube.com/{$smarty.const.STORE_YOUTUBE}" aria-label="youtube"><i class="fab fa-youtube"></i></a></li>
 				<li class="list-inline-item text-white px-1"><a class="text-light" href="vam_rss2_info.php" aria-label="rss"><i class="fas fa-rss"></i></a></li>
 			</ul>
+	{if {$smarty.const.DARK_THEME} == "true"}<div class="d-block mt-3 mb-3 text-white"><dark-mode-toggle id="dark-mode-toggle-1" permanent="true" dark="{$smarty.const.THEME_DARK}" light="{$smarty.const.THEME_LIGHT}"></dark-mode-toggle></div>{/if}
 	{if $smarty.const.ENABLE_SERVICE_WORKER == 'true'}<div class="d-block mt-3 mb-3 text-white"><button class="btn btn-inverse checkout btn-sm a2hs-button" id="a2hs-button">{#text_a2hs#}</button></div>{/if}
 	</div>
 	<div class="col-12 col-sm-6 col-md-4 col-lg-4 col-xl-3">
