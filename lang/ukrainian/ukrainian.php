@@ -744,6 +744,7 @@ define('ONE_CLICK_BUY_TEXT_EMAIL_SUCCESSFUL_SENT','Ваш заказ <b>%s</b> �
 define('ONE_CLICK_BUY_THX_SUCCESSFUL_SENT','Спасибо большое!');
 define('ONE_CLICK_BUY_TEXT_MESSAGE_ERROR','Вы не заполнили поле комментарий.');
 
+define('TEXT_IN_STOCK','В наличии');
 define('TEXT_OUT_OF_STOCK','Нет в наличии');
 
 define('TEXT_ALL_NEW_PRODUCTS','Все новинки');

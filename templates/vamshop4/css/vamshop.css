@@ -2733,6 +2733,7 @@ li.ajaxAddQuickie
   border: 2px solid var(--button-border-color);
   border-radius: 1.5rem;
 }
+.btn.btn-inverse.active,
 .btn.btn-inverse:hover,
 .btn.btn-inverse.checkout:hover {
     color: var(--button-text-color-hover);
@@ -2752,6 +2753,7 @@ li.ajaxAddQuickie
 .btn-rounded i {
   margin-left: 0;
 }
+.btn-add-to-cart.active,
 .btn-add-to-cart:hover,
 .btn-rounded:hover {
     color: var(--button-text-color-hover);

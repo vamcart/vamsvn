@@ -76,32 +76,35 @@
 
 {if $REVIEWS_TOTAL > 0}
 <div class="rating-wrap small">
-{$STAR_RATING} <span class="text-muted pr-2" title="{$smarty.const.TEXT_REVIEWS_RATING}">{$REVIEWS_RATING|number_format:1}</span>
-<div class="label-rating"><span class="text-muted"><i class="far fa-comments"></i> <a href="{$PRODUCTS_REVIEWS_URL}">{$smarty.const.TEXT_TOTAL_REVIEWS}</a>: {$REVIEWS_TOTAL}</span></div>
+<ul class="list-inline">
+<li class="list-inline-item label-rating"><span class="text-muted"><i class="far fa-comments"></i> <a href="{$PRODUCTS_REVIEWS_URL}">{$smarty.const.TEXT_TOTAL_REVIEWS}</a>: {$REVIEWS_TOTAL}</span></li>
+<li class="list-inline-item">{$STAR_RATING} <span class="text-muted pr-2" title="{$smarty.const.TEXT_REVIEWS_RATING}">{$REVIEWS_RATING|number_format:1}</span></li>
+<li class="list-inline-item"><span class="text-muted"><i class="far fa-question-circle"></i> <a class="iframe" href="{$ASK_PRODUCT_QUESTION_LINK}">{#question#}</a></span></li>
 </div>
+</ul>
 {/if}
 
+<ul class="list-inline small">
 {if $PRODUCTS_MODEL != ''}
-<div class="inner text-muted">
+<li class="list-inline-item text-muted">
 	{#model#} <span class="font-weight-bold">{$PRODUCTS_MODEL}</span>
-</div>
+</li>
 {/if}
 
 {if $SHIPPING_NAME}
-<div class="inner text-muted">
+<li class="list-inline-item text-muted">
 	{#text_shippingtime#}&nbsp;{if $SHIPPING_IMAGE}<img src="{$SHIPPING_IMAGE}" alt="{$SHIPPING_NAME}" />{/if}<span class="font-weight-bold">{$SHIPPING_NAME}</span>
-</div>
+</li>
 {/if}
+</ul>
 
-<div class="inner">
-	<a class="iframe" target="_blank" href="{$ASK_PRODUCT_QUESTION_LINK}">{#question#}</a>
-</div>
-
-{if {$PRODUCTS_QUANTITY} > 0 && {$smarty.const.ONE_CLICK_BUY} == 'true'}
-<div class="inner">
-	<a class="iframe" target="_blank" href="{$ONE_CLICK_BUY_LINK}">{$smarty.const.ONE_CLICK_BUY_NAVBAR_TITLE}</a>
-</div>
+<!--
+{if {$PRODUCTS_QUANTITY} > 0}
+<div class="pt-2"><span class="text-success font-weight-bold"><i class="far fa-check-circle"></i> {$smarty.const.TEXT_IN_STOCK}</span></div>
+{else}
+<div class="pt-2"><span class="text-danger font-weight-bold"><i class="far fa-times-circle"></i> {$smarty.const.TEXT_OUT_OF_STOCK}</span></div>
 {/if}
+-->
 
 {if {$PRODUCTS_QUANTITY} > 0 or {$PRODUCTS_PRICE_PLAIN} > 0}
 <div class="mt-3 mb-3"> 
@@ -182,8 +185,15 @@
       </div>
     </div>
     <div class="col-auto mt-1">
-         <button class="btn btn-inverse checkout btn-block"><i class="fas fa-shopping-cart"></i> {$smarty.const.BOX_HEADING_ADD_PRODUCT_ID}</button>
+         <button class="btn btn-inverse checkout active btn-block"><i class="fas fa-cart-plus"></i> {$smarty.const.BOX_HEADING_ADD_PRODUCT_ID}</button>
     </div>
+    
+    {if {$PRODUCTS_QUANTITY} > 0 && {$smarty.const.ONE_CLICK_BUY} == 'true'}
+    <div class="col-auto mt-1">
+    <a class="btn btn-inverse checkout btn-block iframe" target="_blank" href="{$ONE_CLICK_BUY_LINK}"><i class="fas fa-shopping-cart"></i> {$smarty.const.ONE_CLICK_BUY_NAVBAR_TITLE}</a>
+    </div>
+    {/if}
+        
   </div>
 {else}
   <div class="form-row align-items-center">
