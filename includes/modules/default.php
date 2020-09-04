@@ -257,7 +257,7 @@ elseif ($category_depth == 'products' || $_GET['manufacturers_id']) {
     $sorting_data = vam_db_fetch_array($sorting_query,true);
     my_sorting_products($sorting_data);
     if (!$sorting_data['products_sorting'] or $sorting_data['products_sorting']== 'p.products_sort') {
-    $sorting_data['products_sorting'] = 'p.products_quantity DESC, p.products_id DESC';
+    //$sorting_data['products_sorting'] = 'p.products_quantity DESC, p.products_id DESC';
     $sorting_data['products_sorting2'] = '';
     }
     $sorting = ' GROUP BY p.products_id ORDER BY '.$sorting_data['products_sorting'].' '.$sorting_data['products_sorting2'].' ';
@@ -310,7 +310,7 @@ elseif ($category_depth == 'products' || $_GET['manufacturers_id']) {
     $sorting_data = vam_db_fetch_array($sorting_query,true);
     my_sorting_products($sorting_data);
     if (!$sorting_data['products_sorting'] or $sorting_data['products_sorting']== 'p.products_sort') {
-    $sorting_data['products_sorting'] = 'p.products_quantity DESC, p.products_id DESC';
+    //$sorting_data['products_sorting'] = 'p.products_quantity DESC, p.products_id DESC';
     $sorting_data['products_sorting2'] = '';
     }
     $sorting = ' GROUP BY p.products_id ORDER BY '.$sorting_data['products_sorting'].' '.$sorting_data['products_sorting2'].' ';
@@ -362,7 +362,7 @@ elseif ($category_depth == 'products' || $_GET['manufacturers_id']) {
     $sorting_data = vam_db_fetch_array($sorting_query,true);
     my_sorting_products($sorting_data);
     if (!$sorting_data['products_sorting'] or $sorting_data['products_sorting']== 'p.products_sort') {
-    $sorting_data['products_sorting'] = 'p.products_quantity DESC, p.products_id DESC';
+    //$sorting_data['products_sorting'] = 'p.products_quantity DESC, p.products_id DESC';
     $sorting_data['products_sorting2'] = '';
     }
     $sorting = ' GROUP BY p.products_id ORDER BY '.$sorting_data['products_sorting'].' '.$sorting_data['products_sorting2'].' ';
@@ -421,7 +421,7 @@ elseif ($category_depth == 'products' || $_GET['manufacturers_id']) {
     $sorting_data = vam_db_fetch_array($sorting_query,true);
     my_sorting_products($sorting_data);
     if (!$sorting_data['products_sorting'] or $sorting_data['products_sorting']== 'p.products_sort') {
-    $sorting_data['products_sorting'] = 'p.products_quantity DESC, p.products_id DESC';
+    //$sorting_data['products_sorting'] = 'p.products_quantity DESC, p.products_id DESC';
     $sorting_data['products_sorting2'] = '';
     }
     $sorting = ' GROUP BY p.products_id ORDER BY '.$sorting_data['products_sorting'].' '.$sorting_data['products_sorting2'].' ';
