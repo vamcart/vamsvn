@@ -162,7 +162,7 @@ if (isset ($_GET['action']) && $_GET['action'] == 'process' && $spam_flag == fal
 
    $_SESSION['error_cart_msg'] = sprintf(TEXT_REVIEW_DATE_ADDED, $product->data['products_name']);          
 
-	vam_redirect(vam_href_link(FILENAME_PRODUCT_INFO, $_POST['get_params']));
+	vam_redirect(vam_href_link(FILENAME_PRODUCT_INFO, vam_product_link($product->data['products_id'], $product->data['products_name'])));
 	}
  }
 }
