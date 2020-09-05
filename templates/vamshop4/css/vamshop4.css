@@ -77,7 +77,7 @@ button:focus, button:active, a, a:hover {
     height: 5px;
     margin: 20px 0;
     padding: 0;
-    background: var(--card-background-color);
+    background: var(--button-border-color);
     display: block;
     -webkit-backface-visibility: visible;
     transition: opacity .2s ease;
@@ -85,7 +85,7 @@ button:focus, button:active, a, a:hover {
 }
 
 .owl-theme .owl-dots .owl-dot.active span, .owl-theme .owl-dots .owl-dot:hover span {
-    background: var(--button-border-color);
+    background: var(--footer-background-color);
 }
 
 .owl-theme .owl-nav {
