@@ -132,6 +132,10 @@ $vamTemplate = new vamTemplate;
         vam_db_query("delete from " . TABLE_REVIEWS . " where reviews_id = '" . vam_db_input($reviews_id) . "'");
         vam_db_query("delete from " . TABLE_REVIEWS_DESCRIPTION . " where reviews_id = '" . vam_db_input($reviews_id) . "'");
 
+        vam_db_query("delete from ".TABLE_REVIEWS_IMAGES."
+						    		               WHERE reviews_id = '".vam_db_input($reviews_id)."'");
+
+
         vam_redirect(vam_href_link(FILENAME_REVIEWS, 'page=' . $_GET['page']));
         break;
     }
