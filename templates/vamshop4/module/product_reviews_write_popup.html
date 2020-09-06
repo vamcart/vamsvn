@@ -58,6 +58,38 @@ function reload(){
 	<input type="file" name="otzyv_img5" id="img_otz5" accept="image/jpeg,image/png,image/gif,image/webp,image/svg"/><br />
 	
 	<br />	
+
+<script>
+$(document).ready(function()
+{
+	$("#fileuploader").uploadFile({
+	url:"{$smarty.const.DIR_WS_CATALOG}upload.php?id=' . $reviews_id . '",
+	allowedTypes:"png,gif,jpg,jpeg,webp",
+	fileName:"myfile",
+	showDone: false,
+	showPreview: true,
+	statusBarWidth: 250,
+	dragDropStr: "",
+	uploadButtonClass: "btn btn-default",
+	showFileCounter: false,
+	dragDropStr: "",
+	abortStr: "{$smarty.const.UPLOAD_TEXT_ABORT}",
+	cancelStr: "{$smarty.const.UPLOAD_TEXT_CANCEL}",
+	deletelStr: "{$smarty.const.UPLOAD_TEXT_DELETE}",
+	doneStr: "{$smarty.const.UPLOAD_TEXT_DONE}",
+	multiDragErrorStr: "{$smarty.const.UPLOAD_TEXT_MULTI_ERROR}",
+	extErrorStr: "{$smarty.const.UPLOAD_TEXT_EXT_ERROR}",
+	sizeErrorStr: "{$smarty.const.UPLOAD_TEXT_SIZE_ERROR}",
+	uploadErrorStr: "{$smarty.const.UPLOAD_TEXT_UPLOAD_ERROR}",
+	maxFileCountErrorStr: "{$smarty.const.UPLOAD_TEXT_COUNT_ERROR}",
+	downloadStr: "{$smarty.const.UPLOAD_TEXT_DOWNLOAD}"	
+	});
+});
+</script>
+
+<br />
+<div id="fileuploader"><i class="fas fa-plus-circle text-success"></i> {$smarty.const.ADD_FILES}</div>
+<br />
 	
    <p>{#text_sec_code#} {$CAPTCHA_IMG} <a href="javascript:void(0)" title="{#text_update#}" onclick="reload()">{#text_update#}</a></p>
    <p>{#text_sec_code_text#} {$CAPTCHA_INPUT}</p>

@@ -1265,3 +1265,133 @@ header .input-group-text,
   background-color: var(--card-background-color) !important;
   border: 1px solid var(--border-gray) !important;
 }
+
+/* jQuery File Upload */
+
+.ajax-file-upload-statusbar 
+	{
+		display: inline-block;
+		float: left;
+		padding: 4px;
+		border: 1px solid #999999;
+		background-color: #FFFFFF;
+		margin: 5px;
+	}
+
+.ajax-file-upload-filename 
+	{
+		width: 100%;
+		height: auto;
+		margin: 0 5px 5px 10px;
+		color: #807579
+	}
+
+.ajax-file-upload-progress 
+	{
+		margin: 0 10px 5px 10px;
+		position: relative;
+		width: 220px;
+		border: 1px solid #ddd;
+		padding: 1px;
+		display: inline-block
+	}
+	
+.ajax-file-upload-bar 
+	{
+		background-color: #99ff00;
+		width: 0;
+		height: 4px;
+		color:#FFFFFF;
+	}
+
+.ajax-file-upload-percent 
+	{
+		position: absolute;
+		display: inline-block;
+		top: 3px;
+		left: 48%
+	}
+	
+.ajax-file-upload-red 
+	{
+		background-color: #e4685d;
+		display: inline-block;
+		color: #fff;
+		padding: 4px 15px;
+		text-decoration: none;
+		text-shadow: 0 1px 0 #b23e35;
+		cursor: pointer;
+		vertical-align: top;
+		margin-right:5px;
+	}
+
+.ajax-file-upload-green 
+	{
+		background-color: #99ff00;
+		margin: 0;
+		padding: 0;
+		display: inline-block;
+		color: #fff;
+		padding: 4px 15px;
+		text-decoration: none;
+		cursor: pointer;
+		text-shadow: 0 1px 0 #5b8a3c;
+		vertical-align: top;
+		margin-right:5px;
+	}
+
+.ajax-file-upload 
+	{
+		padding: 15px 20px;
+		cursor:pointer;	
+		line-height:20px;
+		height:25px;
+		margin:0 10px 10px 0;
+		display: inline-block;
+		background: #fff;
+		border: 1px solid #e8e8e8;
+		color: #888;
+		text-decoration: none;
+		padding: 6px 10px 4px 10px; 
+		color: #fff;
+		background: #2f8ab9;
+		border: none;
+		box-shadow: 0 2px 0 0 #13648d; 
+		vertical-align:middle;  
+  }
+  
+.ajax-file-upload:hover 
+	{
+		background: #3396c9;
+		box-shadow: 0 2px 0 0 #15719f;
+	}
+
+.ajax-upload-dragdrop
+	{
+		color: #DADCE3;
+		text-align:left;
+		border: 3px dotted #e5e5e5;
+		vertical-align:middle;
+		padding: .5em;
+	}
+
+#content_images 
+	{
+		list-style-image: none;
+		list-style-position: outside;
+		list-style-type: none;
+		margin: 0pt;
+		padding: 0pt;
+	}
+
+#content_images li 
+	{
+		display: block;
+		float: left;
+		padding: 4px;
+		border: 1px solid #999999;
+		background-color: #FFFFFF;
+		margin: 5px;
+	}
+	
+/* /jQuery File Upload */
