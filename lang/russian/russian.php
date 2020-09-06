@@ -810,4 +810,17 @@ define('REVIEW_PHOTO', 'Картинка');
 define('THEME_DARK', 'Тёмная тема');
 define('THEME_LIGHT', 'Светлая тема');
 
+define('ADD_FILES', 'Добавить фотографии');
+
+define('UPLOAD_TEXT_ABORT', 'Прервать');
+define('UPLOAD_TEXT_CANCEL', 'Отменить');
+define('UPLOAD_TEXT_DELETE', 'Удалить');
+define('UPLOAD_TEXT_DONE', 'Загружено');
+define('UPLOAD_TEXT_MULTI_ERROR', 'Загрузка сразу нескольких файлов перетаскиваним (drag &amp; drop) запрещена.');
+define('UPLOAD_TEXT_EXT_ERROR', 'не может быть загружен. Разрешённые типы файлов: ');
+define('UPLOAD_TEXT_SIZE_ERROR', 'не может быть загружен. Разрешенный максимальный размер файла: ');
+define('UPLOAD_TEXT_UPLOAD_ERROR', 'Загрузка запрещена');
+define('UPLOAD_TEXT_COUNT_ERROR', ' не может быть загружен. Максимально разрешённое количество файлов: ');
+define('UPLOAD_TEXT_DOWNLOAD', 'Скачать');
+
 ?>
