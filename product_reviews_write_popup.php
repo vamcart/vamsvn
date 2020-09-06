@@ -80,6 +80,10 @@ if (isset ($_GET['action']) && $_GET['action'] == 'process' && $spam_flag == fal
 		vam_db_query("insert into ".TABLE_REVIEWS." (products_id, customers_id, customers_name, reviews_rating, date_added) values ('".$product->data['products_id']."', '".(int) $_SESSION['customer_id']."', '".addslashes($customer_values['customers_firstname'])."', '".addslashes($_POST['rating'])."', now())");
 		$insert_id = vam_db_insert_id();
 		vam_db_query("insert into ".TABLE_REVIEWS_DESCRIPTION." (reviews_id, languages_id, reviews_text) values ('".$insert_id."', '".(int) $_SESSION['languages_id']."', '".addslashes($_POST['review'])."')");
+		
+		if ($_SESSION['temp_reviews_id'] > 0) vam_db_query("update ".TABLE_REVIEWS_IMAGES." set reviews_id =  '".$insert_id."' where reviews_id = '".(int) $_SESSION['temp_reviews_id']."'");
+		
+		unset($_SESSION['temp_reviews_id']);
 
           if ($_POST['review'] != '') {
 

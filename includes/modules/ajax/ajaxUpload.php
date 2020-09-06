@@ -36,9 +36,11 @@ $insert_id = $row['Auto_increment'];
 		
    if ($review_images = &vam_try_upload('myfile', $dir_otzyvy)) {
 
-		$sql_data_array = array ('reviews_id' => $insert_id, 'products_id' => $_REQUEST['products_id'], 'image' => $review_images->filename, 'created' => 'now()', 'modified' => 'now()');
+		$sql_data_array = array ('reviews_id' => $insert_id, 'products_id' => $_REQUEST['products_id'], 'customers_id' => (($_SESSION['customer_id'] > 0) ? $_SESSION['customer_id'] : 0), 'image' => $review_images->filename, 'created' => 'now()', 'modified' => 'now()');
 
 		vam_db_perform(TABLE_REVIEWS_IMAGES, $sql_data_array);
+		
+		$_SESSION['temp_reviews_id'] = $insert_id;
 
 
    }
