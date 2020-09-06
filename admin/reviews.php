@@ -243,7 +243,7 @@ $( "#date_added" ).datepicker({ dateFormat: "dd-mm-yy" }).val();
 		while ($reviews_images = vam_db_fetch_array($reviews_images_query)) {
 ?>
         <td>    
-        <?php if ($reviews_images['image'] != '') echo '<a target="_blank" href="'.HTTP_SERVER.DIR_WS_CATALOG_IMAGES.'reviews/'.$reviews_images['image'].'">'.vam_review_thumb_image($reviews_images['image'], $rInfo->products_name,100). '</a><br /><label>'.vam_draw_selection_field('del_otzyv_img'.$img_count, 'checkbox', 'yes').vam_draw_hidden_field('reviews_image_'.$img_count, $reviews_images['image']).'&nbsp;'.TEXT_DELETE.'</label>'; ?>
+        <?php if ($reviews_images['image'] != '') echo '<a target="_blank" href="'.HTTP_SERVER.DIR_WS_CATALOG_IMAGES.'reviews/'.$reviews_images['image'].'">'.vam_review_thumb_image($reviews_images['image'], $rInfo->products_name,100). '</a><br /><label>'.vam_draw_selection_field('del_reviews_img'.$img_count, 'checkbox', 'yes').vam_draw_hidden_field('reviews_image_'.$img_count, $reviews_images['image']).'&nbsp;'.TEXT_DELETE.'</label>'; ?>
         </td>
 <?php
 $img_count++;
@@ -279,7 +279,7 @@ $img_count++;
     $img_count = 1;
     while ($reviews_images = vam_db_fetch_array($reviews_images_query)) {
 
-		if ($_POST['del_otzyv_img'.$img_count] == 'yes') {
+		if ($_POST['del_reviews_img'.$img_count] == 'yes') {
 			
 		$review_image_query = vam_db_query("select * from " . TABLE_REVIEWS . " r, " . TABLE_REVIEWS_DESCRIPTION . " rd where r.reviews_id = '" . vam_db_input($_GET['rID']) . "' and r.reviews_id = rd.reviews_id");
 		$review_image = vam_db_fetch_array($customer_query);
