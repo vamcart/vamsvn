@@ -63,7 +63,7 @@ function reload(){
 $(document).ready(function()
 {
 	$("#fileuploader").uploadFile({
-	url:"{$smarty.const.DIR_WS_CATALOG}upload.php?id=' . $reviews_id . '",
+	url:"{$smarty.const.DIR_WS_CATALOG}upload.php?type=reviews_images&products_id={$smarty.get.products_id}",
 	allowedTypes:"png,gif,jpg,jpeg,webp",
 	fileName:"myfile",
 	showDone: false,
