@@ -49,8 +49,6 @@ function reload(){
 	<p>{#text_note#}</p>
 	<p>{#text_rating#} <div class="form-check form-check-inline"><span class="bold">{#text_bad#}</span>{$INPUT_RATING}<span class="bold">{#text_good#}</span></div></p>
 
-	<p>{$smarty.const.REVIEW_PHOTO_HEADER}</p>
-
 <script>
 $(document).ready(function()
 {
@@ -80,7 +78,7 @@ $(document).ready(function()
 </script>
 
 <br />
-<div id="fileuploader"><i class="fas fa-plus-circle text-success"></i> {$smarty.const.ADD_FILES}</div>
+<div id="fileuploader"><i class="fas fa-plus-circle text-success"></i> {$smarty.const.REVIEW_PHOTO_HEADER}</div>
 <br />
 	
    <p>{#text_sec_code#} {$CAPTCHA_IMG} <a href="javascript:void(0)" title="{#text_update#}" onclick="reload()">{#text_update#}</a></p>

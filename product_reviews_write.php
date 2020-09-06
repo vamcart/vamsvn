@@ -21,17 +21,6 @@ include ('includes/application_top.php');
 require_once (DIR_FS_INC.'vam_random_charcode.inc.php');
 require_once (DIR_FS_INC.'vam_render_vvcode.inc.php');
 
-require_once('includes/classes/upload.php');
-
-function vam_try_upload($file = '', $destination = '', $permissions = '777', $extensions = '', $prefix = 'otzyv_') {
-	$file_object = new upload($file, $destination, $permissions, $extensions, $prefix);
-	if ($file_object->filename != '') {
-		return $file_object;
-	} else {
-		return false;
-	}
-}
-
 // create template elements
 $vamTemplate = new vamTemplate;
 // include boxes
@@ -91,26 +80,10 @@ if (isset ($_GET['action']) && $_GET['action'] == 'process' && $spam_flag == fal
 		vam_db_query("insert into ".TABLE_REVIEWS." (products_id, customers_id, customers_name, reviews_rating, date_added) values ('".$product->data['products_id']."', '".(int) $_SESSION['customer_id']."', '".addslashes($customer_values['customers_firstname'])."', '".addslashes($_POST['rating'])."', now())");
 		$insert_id = vam_db_insert_id();
 		vam_db_query("insert into ".TABLE_REVIEWS_DESCRIPTION." (reviews_id, languages_id, reviews_text) values ('".$insert_id."', '".(int) $_SESSION['languages_id']."', '".addslashes($_POST['review'])."')");
-
-		// загрузка картинок
-		$dir_otzyvy = DIR_FS_CATALOG . "images/reviews";		
 		
-		if ($otzyv_img1 = &vam_try_upload('otzyv_img1', $dir_otzyvy)) {
-        vam_db_query("update ".TABLE_REVIEWS_DESCRIPTION." set otzyv_img1 ='otzyv_img1_".$otzyv_img1->filename . "' where reviews_id = '" . $insert_id . "'");
-        }
-		if ($otzyv_img2 = &vam_try_upload('otzyv_img2', $dir_otzyvy, '644', array('jpg', 'jpeg', 'JPG', 'png', 'PNG'), 'otzyv_img2_')) {
-        vam_db_query("update ".TABLE_REVIEWS_DESCRIPTION." set otzyv_img2 ='otzyv_img2_".$otzyv_img2->filename . "' where reviews_id = '" . $insert_id . "'");
-        }
-		if ($otzyv_img3 = &vam_try_upload('otzyv_img3', $dir_otzyvy, '644', array('jpg', 'jpeg', 'JPG', 'png', 'PNG'), 'otzyv_img3_')) {
-        vam_db_query("update ".TABLE_REVIEWS_DESCRIPTION." set otzyv_img3 ='otzyv_img3_".$otzyv_img3->filename . "' where reviews_id = '" . $insert_id . "'");
-        }
-		if ($otzyv_img4 = &vam_try_upload('otzyv_img4', $dir_otzyvy, '644', array('jpg', 'jpeg', 'JPG', 'png', 'PNG', 'svg', 'SVG', 'webp', 'WEBP'), 'otzyv_img4_')) {
-        vam_db_query("update ".TABLE_REVIEWS_DESCRIPTION." set otzyv_img4 ='otzyv_img4_".$otzyv_img4->filename . "' where reviews_id = '" . $insert_id . "'");
-        }		
-		if ($otzyv_img5 = &vam_try_upload('otzyv_img5', $dir_otzyvy, '644', array('jpg', 'jpeg', 'JPG', 'png', 'PNG', 'svg', 'SVG', 'webp', 'WEBP'), 'otzyv_img5_')) {
-        vam_db_query("update ".TABLE_REVIEWS_DESCRIPTION." set otzyv_img5 ='otzyv_img5_".$otzyv_img5->filename . "' where reviews_id = '" . $insert_id . "'");
-        }		
-
+		if ($_SESSION['temp_reviews_id'] > 0) vam_db_query("update ".TABLE_REVIEWS_IMAGES." set reviews_id =  '".$insert_id."' where reviews_id = '".(int) $_SESSION['temp_reviews_id']."'");
+		
+		unset($_SESSION['temp_reviews_id']);
 
           if ($_POST['review'] != '') {
 
