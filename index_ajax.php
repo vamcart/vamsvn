@@ -19,6 +19,9 @@
 	
 	require('includes/application_top.php');
 
+   // jQuery Image Upload Fix
+   if ($_GET['q'] == 'includes/modules/ajax/ajaxUpload.php') $_POST['q'] = $_GET['q'];
+
 	if($axhandler = (strtoupper($_SERVER['REQUEST_METHOD'])=='GET') ? $_GET['q'] : $_POST['q']) {
 	  $axhandler = preg_replace('/[^A-Za-z0-9_\-\.\/]/', '', $axhandler);
 	  $axhandler = realpath($axhandler) or die(); 
