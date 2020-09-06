@@ -1499,13 +1499,22 @@ CREATE TABLE reviews_description (
   languages_id int NOT NULL,
   reviews_text text,
   reviews_answer text,
-  otzyv_img1 VARCHAR(255) NOT NULL,
-  otzyv_img2 VARCHAR(255) NOT NULL,
-  otzyv_img3 VARCHAR(255) NOT NULL,
-  otzyv_img4 VARCHAR(255) NOT NULL,
-  otzyv_img5 VARCHAR(255) NOT NULL,
   PRIMARY KEY (reviews_id, languages_id)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+
+DROP TABLE IF EXISTS reviews_images;
+CREATE TABLE `reviews_images` (
+  image_id int(10) auto_increment,
+  reviews_id int(10) NOT NULL,
+  products_id int(10) NOT NULL,
+  customers_id int(10) NOT NULL,
+  sort_order int(10) NOT NULL,
+  image varchar(255) NOT NULL,
+  created datetime NOT NULL,
+  modified datetime NOT NULL,
+  PRIMARY KEY (image_id),
+  INDEX products_id (products_id)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 DROP TABLE IF EXISTS scart;
 CREATE TABLE scart (
