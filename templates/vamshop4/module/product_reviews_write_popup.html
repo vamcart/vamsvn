@@ -51,19 +51,11 @@ function reload(){
 
 	<p>{$smarty.const.REVIEW_PHOTO_HEADER}</p>
 
-	<input type="file" name="otzyv_img1" id="img_otz1" accept="image/jpeg,image/png,image/gif,image/webp,image/svg"/><br />
-	<input type="file" name="otzyv_img2" id="img_otz2" accept="image/jpeg,image/png,image/gif,image/webp,image/svg"/><br />
-	<input type="file" name="otzyv_img3" id="img_otz3" accept="image/jpeg,image/png,image/gif,image/webp,image/svg"/><br />
-	<input type="file" name="otzyv_img4" id="img_otz4" accept="image/jpeg,image/png,image/gif,image/webp,image/svg"/><br />
-	<input type="file" name="otzyv_img5" id="img_otz5" accept="image/jpeg,image/png,image/gif,image/webp,image/svg"/><br />
-	
-	<br />	
-
 <script>
 $(document).ready(function()
 {
 	$("#fileuploader").uploadFile({
-	url:"{$smarty.const.DIR_WS_CATALOG}upload.php?type=reviews_images&products_id={$smarty.get.products_id}",
+	url:"{$smarty.const.DIR_WS_CATALOG}index_ajax.php?q=includes/modules/ajax/ajaxUpload.php&type=reviews_images&products_id={$smarty.get.products_id}",
 	allowedTypes:"png,gif,jpg,jpeg,webp",
 	fileName:"myfile",
 	showDone: false,
