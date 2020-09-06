@@ -122,7 +122,7 @@
 	  
 	  // меняем размер картинки jpg
 	  if (strstr($file_end,'.jpg') || strstr($file_end,'.JPG')) {	  
-	  $new_height = 600;
+	  $new_height = 800;
 	  $new_width = '';
 	  $img = imagecreatefromjpeg($this->destination . $file_end);
 	  // если не указана одна из сторон задаем ей пропорциональное значение
@@ -139,7 +139,7 @@
 	  
 	  // меняем размер картинки png
 	  if (strstr($file_end,'.png') || strstr($file_end,'.PNG')) {
-		$new_height = 500;
+		$new_height = 800;
 	    $new_width = '';
 	    $img = imagecreatefrompng($this->destination . $file_end);
 		// если не указана одна из сторон задаем ей пропорциональное значение

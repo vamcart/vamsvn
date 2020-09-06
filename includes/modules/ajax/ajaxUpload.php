@@ -18,7 +18,7 @@ if (filter_var($_REQUEST['products_id'], FILTER_VALIDATE_INT)) {
 
 require_once(DIR_WS_CLASSES.'upload.php');
 
-function vam_try_upload($file = '', $destination = '', $permissions = '777', $extensions = '', $prefix = 'otzyv_') {
+function vam_try_upload($file = '', $destination = '', $permissions = '777', $extensions = '', $prefix = '') {
 	$file_object = new upload($file, $destination, $permissions, $extensions, $prefix);
 	if ($file_object->filename != '') {
 		return $file_object;
