@@ -189,7 +189,6 @@ class product {
 									                                 r.date_added,
 									                                 r.last_modified,
 									                                 r.reviews_read,
-									                                 rd.otzyv_img1, rd.otzyv_img2, rd.otzyv_img3, rd.otzyv_img4, rd.otzyv_img5,
 									                                 rd.reviews_text,
 									                                 rd.reviews_answer
 									                                 from ".TABLE_REVIEWS." r,

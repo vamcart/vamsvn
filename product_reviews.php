@@ -51,7 +51,7 @@ $vamTemplate->assign('PRODUCTS_NAME', $product_info['products_name']);
 
 $data_reviews = array ();
 $module_content = array();
-$reviews_query = vam_db_query("select r.reviews_id, r.products_id, rd.reviews_text, rd.reviews_answer, rd.otzyv_img1, rd.otzyv_img2, rd.otzyv_img3, rd.otzyv_img4, rd.otzyv_img5, r.reviews_rating, r.date_added, p.*, pd.*, r.customers_name, r.customers_id from ".TABLE_REVIEWS." r, ".TABLE_REVIEWS_DESCRIPTION." rd, ".TABLE_PRODUCTS." p, ".TABLE_PRODUCTS_DESCRIPTION." pd where r.products_id = '".(int) $_GET['products_id']."' and p.products_status = '1' and p.products_id = r.products_id and r.reviews_id = rd.reviews_id and p.products_id = pd.products_id and pd.language_id = '".(int) $_SESSION['languages_id']."' and rd.languages_id = '".(int) $_SESSION['languages_id']."' order by r.reviews_id DESC");
+$reviews_query = vam_db_query("select r.reviews_id, r.products_id, rd.reviews_text, rd.reviews_answer, r.reviews_rating, r.date_added, p.*, pd.*, r.customers_name, r.customers_id from ".TABLE_REVIEWS." r, ".TABLE_REVIEWS_DESCRIPTION." rd, ".TABLE_PRODUCTS." p, ".TABLE_PRODUCTS_DESCRIPTION." pd where r.products_id = '".(int) $_GET['products_id']."' and p.products_status = '1' and p.products_id = r.products_id and r.reviews_id = rd.reviews_id and p.products_id = pd.products_id and pd.language_id = '".(int) $_SESSION['languages_id']."' and rd.languages_id = '".(int) $_SESSION['languages_id']."' order by r.reviews_id DESC");
 if (vam_db_num_rows($reviews_query)) {
 
 	$star_rating = '';
