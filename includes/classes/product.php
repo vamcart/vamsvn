@@ -133,7 +133,45 @@ class product {
 	  }
 	   return $reviews_customer;
 	}
-	
+
+	/**
+	 * 
+	 * Query for reviews images
+	 * 
+	 */
+
+	function getReviewsImages($reviews_id = 0, $customer_id = 0) {
+
+	  if ($reviews_id > 0) {
+
+		$reviews_images_query = vamDBquery("select ri.*
+						 from  ".TABLE_REVIEWS_IMAGES." ri
+						 where 
+						 ri.reviews_id = ".(int)$reviews_id."");
+		if (vam_db_num_rows($reviews_images_query)) {
+			$row = 0;
+			$data_reviews_images = array ();
+			while ($reviews_images = vam_db_fetch_array($reviews_images_query)) {
+				$row ++;
+
+				$data_reviews_images[] = array (
+				
+				'IMAGE_ID' => $reviews_images['image_id'], 
+				'REVIEWS_ID' => $reviews_images['reviews_id'], 
+				'PRODUCTS_ID' => $reviews_images['products_id'], 
+				'CUSTOMERS_ID' => $reviews_images['customers_id'], 
+				'SORT_ORDER' => $reviews_images['sort_order'], 
+				'IMAGE' => $reviews_images['image'], 
+				'CREATED' => $reviews_images['created'], 
+				'MODIFIED' => $reviews_images['modified'] 
+				);
+			}
+		}
+		
+		return $data_reviews_images;
+	  }
+	}
+		
 	/**
 	 * 
 	 * select reviews
@@ -179,17 +217,13 @@ class product {
 				'REVIEWS_ALL_LINK' => vam_href_link(FILENAME_PRODUCT_REVIEWS, 'products_id='.$reviews['products_id']), 
 				'AUTHOR' => $reviews['customers_name'], 
 				'CUSTOMER' => $this->getReviewsCustomer((int)$reviews['products_id'],(int)$reviews['customers_id']), 
+				'REVIEWS_IMAGES' => $this->getReviewsImages((int)$reviews['reviews_id'],(int)$reviews['customers_id']), 
 				'ID' => $reviews['reviews_id'], 
 				'URL' => vam_href_link(FILENAME_PRODUCT_REVIEWS_INFO, 'products_id='.$reviews['products_id'].'&reviews_id='.$reviews['reviews_id']), 
 				'DATE' => vam_date_short($reviews['date_added']), 
 				//'TEXT_COUNT' => '('.sprintf(TEXT_REVIEW_WORD_COUNT, vam_word_count($reviews['reviews_text'], ' ')).')<br />'.vam_break_string(htmlspecialchars($reviews['reviews_text']), 60, '-<br />').'..', 
 				'TEXT' => $reviews['reviews_text'], 
 				'ANSWER' => $reviews['reviews_answer'], 
-				'OTZYV_IMG1' => $reviews['otzyv_img1'], 
-				'OTZYV_IMG2' => $reviews['otzyv_img2'], 
-				'OTZYV_IMG3' => $reviews['otzyv_img3'], 
-				'OTZYV_IMG4' => $reviews['otzyv_img4'], 
-				'OTZYV_IMG5' => $reviews['otzyv_img5'], 
 				'RATING' => $reviews['reviews_rating'],
 				'STAR_RATING' => $star_rating,
 				'RATING_IMG' => vam_image('templates/'.CURRENT_TEMPLATE.'/img/stars_'.$reviews['reviews_rating'].'.png', sprintf(TEXT_OF_5_STARS, $reviews['reviews_rating']))

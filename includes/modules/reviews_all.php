@@ -58,17 +58,13 @@ if ($reviews_split->number_of_rows > 0) {
 
 		'AUTHOR' => $reviews['customers_name'], 
 		'CUSTOMER' => $product->getReviewsCustomer((int)$reviews['products_id'],(int)$reviews['customers_id']), 
+		'REVIEWS_IMAGES' => $product->getReviewsImages((int)$reviews['reviews_id'],(int)$reviews['customers_id']), 
 		'ID' => $reviews['reviews_id'], 
 		'URL' => vam_href_link(FILENAME_PRODUCT_REVIEWS_INFO, 'products_id='.$reviews['products_id'].'&reviews_id='.$reviews['reviews_id']), 
 		'DATE' => vam_date_short($reviews['date_added']), 
 		'TEXT_COUNT' => '('.sprintf(TEXT_REVIEW_WORD_COUNT, vam_word_count($reviews['reviews_text'], ' ')).')<br />'.vam_break_string(htmlspecialchars($reviews['reviews_text']), 60, '-<br />').'..', 
 		'TEXT' => $reviews['reviews_text'], 
 		'ANSWER' => $reviews['reviews_answer'], 
-      'OTZYV_IMG1' => $reviews['otzyv_img1'],
-      'OTZYV_IMG2' => $reviews['otzyv_img2'],
-      'OTZYV_IMG3' => $reviews['otzyv_img3'],				
-      'OTZYV_IMG4' => $reviews['otzyv_img4'],				
-      'OTZYV_IMG5' => $reviews['otzyv_img5'],				
 		'RATING' => $reviews['reviews_rating'], 
 		'STAR_RATING' => $star_rating, 
 		'RATING_IMG' => vam_image('templates/'.CURRENT_TEMPLATE.'/img/stars_'.$reviews['reviews_rating'].'.png', sprintf(TEXT_OF_5_STARS, $reviews['reviews_rating']))

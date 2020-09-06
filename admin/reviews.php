@@ -253,13 +253,6 @@ $img_count++;
         </table></td>
       </tr>
       <tr>
-        <td><table witdh="100%" border="0" cellspacing="0" cellpadding="0">
-          <tr>
-            <td class="main" valign="top"><b><?php echo ENTRY_REVIEW; ?></b><?php echo vam_draw_textarea_field('reviews_text', 'soft', '60', '15', $rInfo->reviews_text); ?></td>
-          </tr>
-        </table></td>
-      </tr>
-      <tr>
         <td><?php echo vam_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
       </tr>
       
