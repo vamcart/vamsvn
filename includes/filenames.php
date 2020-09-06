@@ -172,4 +172,7 @@ define('FILENAME_ACCOUNT_DUPLICATE_ORDER', 'order_functions.php');
 define('FILENAME_TAGS', 'tags.php');
 
 define('FILENAME_SIMILAR_PRODUCTS', 'similar_products.php');
+
+define('FILENAME_PRODUCT_REVIEWS_WRITE_POPUP', 'product_reviews_write_popup.php');
+
 ?>

@@ -166,5 +166,7 @@ define('TABLE_PRODUCTS_PINS', 'products_pins');
   define('TABLE_TAGS', 'tags');
   define('TABLE_TAGS_TO_CATEGORIES', 'tags_to_categories');
   define('TABLE_TAGS_TO_PRODUCTS', 'tags_to_products');
+
+  define('TABLE_REVIEWS_IMAGES', 'reviews_images');
       
 ?>
