@@ -162,6 +162,10 @@ button:focus, button:active, a, a:hover {
   transform-style: preserve-3d; 
 }
 
+.lazy.error {
+  background: transparent; 
+}
+
 img.lazy:not([src]) {
   visibility: hidden;
 }
