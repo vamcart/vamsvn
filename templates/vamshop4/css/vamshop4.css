@@ -1370,9 +1370,9 @@ header .input-group-text,
 	{
 		color: #DADCE3;
 		text-align:left;
-		border: 3px dotted #e5e5e5;
+		border: 0px dotted #e5e5e5;
 		vertical-align:middle;
-		padding: .5em;
+		padding: .5em 0;
 	}
 
 #content_images 
