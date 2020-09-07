@@ -16,6 +16,118 @@ $(function($){
 });
 {/literal}
 </script>
+
+
+
+  <div class="card card-product">
+	<div class="card-body">
+	<div class="row">
+		{if $PRODUCT_LABEL}{$PRODUCT_LABEL}{/if}
+		{if $PRODUCTS_SPECIAL > 0}<span class="badge-offer"><b>-{$PRODUCTS_SPECIAL|round}%</b></span>{/if}
+		<div class="col-md-2">
+			<div class="img-wrap"><a href="{$PRODUCTS_URL_INFO}" title="{$IMAGE_ALT}"><img src="{$PRODUCTS_IMAGE}" alt="{$IMAGE_ALT}"></a></div>
+		</div>
+		<div class="col-md-3">
+				<div class="title h5"><a href="{$PRODUCTS_URL_INFO}" title="{$IMAGE_ALT}">{$PRODUCTS_NAME}</a></div>
+				{if {$PRODUCTS_SHORT_DESCRIPTION} != ''}
+				<div class="desc mb-2 small">
+				{$PRODUCTS_SHORT_DESCRIPTION|vam_truncate:$smarty.const.MAX_DISPLAY_SHORT_DESCRIPTION:"...":true}
+				</div>
+				{/if}
+				<div class="price-wrap h6 font-weight-bold text-dark b">
+					<div><strong>{$PRODUCTS_PRICE}</strong></div>
+					<meta itemprop="name" content="{$PRODUCTS_NAME}" />
+					<span itemprop="offers" itemscope itemtype="http://schema.org/Offer"> 
+					<meta itemprop="price" content="{$PRODUCTS_PRICE_PLAIN}">
+					<meta itemprop="priceCurrency" content="{$smarty.session.currency}" />
+					<meta itemprop="availability" content="InStock" />
+					<meta itemprop="priceValidUntil" content="{$smarty.now + (1200*60*24*7)|date_format:"c"}" />
+					<meta itemprop="url" content="{$PRODUCTS_URL_INFO}" />
+					</span> 
+
+					<meta itemprop="image" content="{$PRODUCTS_IMAGE}" />
+					<meta itemprop="description" content="{$PRODUCTS_SHORT_DESCRIPTION|vam_truncate:$smarty.const.MAX_DISPLAY_SHORT_DESCRIPTION:"...":true}" />
+	
+					{if $MANUFACTURER}
+					<meta itemprop="brand" content="{$MANUFACTURER}" />
+					{/if}
+	
+					{if $PRODUCTS_MODEL}
+					<meta itemprop="sku" content="{$PRODUCTS_MODEL}" />
+					<meta itemprop="mpn" content="{$PRODUCTS_MODEL}" />
+					{/if}
+					</div>
+		</div>
+		<div class="col-md-2" itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">
+			<div class="text-center">
+			<div class="display-4 font-weight-bolder"><span itemprop="ratingValue">{$module_content[0].PRODUCT.REVIEWS_TOTAL_RATING|number_format:1}</span></div>
+			{$module_content[0].PRODUCT.REVIEWS_STAR_RATING}
+			</div>
+				{if {$module_content[0].PRODUCT.REVIEWS_TOTAL} > 0}
+				<div class="rating-wrap text-center">
+             {#text_total#}: <span itemprop="reviewCount">{$module_content[0].PRODUCT.REVIEWS_TOTAL}</span>
+				</div>
+				{/if}
+		</div>
+		<div class="col-md-2">
+		<div class="line pb-2">
+		<span class="progress-label">5</span>
+		<div class="progress">
+		  <div class="progress-bar font-weight-bolder{if $PRODUCTS_RATING_FIVE == 0} text-dark{/if}" role="progressbar" style="width: {$PRODUCTS_RATING_FIVE_PERCENT}%" aria-valuenow="{$PRODUCTS_RATING_FIVE_PERCENT}" aria-valuemin="0" aria-valuemax="100">
+		  {$PRODUCTS_RATING_FIVE_PERCENT}%
+		  </div>
+		</div>		
+		</div>		
+		<div class="line pb-2">
+		<span class="progress-label">4</span>
+		<div class="progress">
+		  <div class="progress-bar font-weight-bolder{if $PRODUCTS_RATING_FOUR == 0} text-dark{/if}" role="progressbar" style="width: {$PRODUCTS_RATING_FOUR_PERCENT}%" aria-valuenow="{$PRODUCTS_RATING_FOUR_PERCENT}" aria-valuemin="0" aria-valuemax="100">
+		  {$PRODUCTS_RATING_FOUR_PERCENT}%
+		  </div>
+		</div>
+		</div>		
+		<div class="line pb-2">
+		<span class="progress-label">3</span>
+		<div class="progress">
+		  <div class="progress-bar font-weight-bolder{if $PRODUCTS_RATING_THREE == 0} text-dark{/if}" role="progressbar" style="width: {$PRODUCTS_RATING_THREE_PERCENT}%" aria-valuenow="{$PRODUCTS_RATING_THREE_PERCENT}" aria-valuemin="0" aria-valuemax="100">
+		  {$PRODUCTS_RATING_THREE_PERCENT}%
+		  </div>
+		</div>
+		</div>		
+		<div class="line pb-2">
+		<span class="progress-label">2</span>
+		<div class="progress">
+		  <div class="progress-bar font-weight-bolder{if $PRODUCTS_RATING_TWO == 0} text-dark{/if}" role="progressbar" style="width: {$PRODUCTS_RATING_TWO_PERCENT}%" aria-valuenow="{$PRODUCTS_RATING_TWO_PERCENT}" aria-valuemin="0" aria-valuemax="100">
+		  {$PRODUCTS_RATING_TWO_PERCENT}%
+		  </div>
+		</div>
+		</div>		
+		<div class="line pb-2">
+		<span class="progress-label">1</span>
+		<div class="progress">
+		  <div class="progress-bar font-weight-bolder{if $PRODUCTS_RATING_ONE == 0} text-dark{/if}" role="progressbar" style="width: {$PRODUCTS_RATING_ONE_PERCENT}%" aria-valuenow="{$PRODUCTS_RATING_ONE_PERCENT}" aria-valuemin="0" aria-valuemax="100">
+		  {$PRODUCTS_RATING_ONE_PERCENT}%
+		  </div>
+		</div>
+		</div>
+		</div>
+		<div class="col-md-3">
+			<div class="action-wrap text-center">
+           {$PRODUCTS_BUY_NOW}	
+			</div>
+		</div>
+	</div>
+	
+	</div>
+</div>
+
+
+
+
+
+
+
+
 <div class="page">
 <h1>{#heading_reviews_write#}</h1>
 <div class="pageContent">
@@ -28,26 +140,13 @@ $(function($){
 {else}
 {$FORM_ACTION}
 
-<span class="bold">{#text_product#}</span> {$PRODUCTS_NAME}
-<br />
-<span class="bold">{#text_author#}</span> {$AUTHOR}
-<br />
-<br />
-<script type="text/javascript">
-{literal}
-src="captcha.php";
-function reload(){
-        document.captcha.src='loading.gif';
-        document.captcha.src=src+'?rand='+Math.random();
-}
-{/literal}
-</script>
-<!-- форма -->
-<fieldset class="form">
-<legend>{#text_input#}</legend>
-	<p>{#text_input#} {$INPUT_TEXT}</p>
-	<p>{#text_note#}</p>
-	<p>{#text_rating#} <div class="form-check form-check-inline"><span class="bold">{#text_bad#}</span>{$INPUT_RATING}<span class="bold">{#text_good#}</span></div></p>
+
+
+  <div class="card card-product">
+	<div class="card-body">
+
+	<div class="row">
+		<div class="col-md-12">
 
 <script>
 $(document).ready(function()
@@ -77,13 +176,63 @@ $(document).ready(function()
 });
 </script>
 
-<br />
-<div id="fileuploader"><i class="fas fa-plus-circle text-success"></i> {$smarty.const.REVIEW_PHOTO_HEADER}</div>
-<br />
+    <div class="form-group">
+      <label for="rating">{#text_rating#}</label>
+      <div class="form-check form-check-inline">{$INPUT_RATING}</div>
+    </div>
+
+    <div class="form-group">
+      <label for="review">{#text_input#}</label>
+      {$INPUT_TEXT}
+    </div>
+
+    <div class="form-group">
+      <div id="fileuploader"><i class="fas fa-plus-circle text-success"></i> {$smarty.const.REVIEW_PHOTO_HEADER}</div>
+    </div>	
+
+<script type="text/javascript">
+{literal}
+src="captcha.php";
+function reload(){
+        document.captcha.src='loading.gif';
+        document.captcha.src=src+'?rand='+Math.random();
+}
+{/literal}
+</script>
+
+    <div class="form-group">
+      <label for="captcha-image">{#text_sec_code#}</label>
+      <div>{$CAPTCHA_IMG} <a href="javascript:void(0)" title="{#text_update#}" onclick="reload()">{#text_update#}</a></div>
+    </div>
+
+    <div class="form-group">
+      <label for="captcha">{#text_sec_code_text#}</label>
+      {$CAPTCHA_INPUT}
+    </div>
+
+{$BUTTON_SUBMIT}
+
+		</div>
+	</div>
 	
-   <p>{#text_sec_code#} {$CAPTCHA_IMG} <a href="javascript:void(0)" title="{#text_update#}" onclick="reload()">{#text_update#}</a></p>
-   <p>{#text_sec_code_text#} {$CAPTCHA_INPUT}</p>
-</fieldset>
+	<div class="row">
+		<div class="col-md-2">
+		</div>
+		<div class="col-md-3">
+		</div>
+		<div class="col-md-2">
+		</div>
+		<div class="col-md-2">
+		</div>
+		<div class="col-md-3 my-auto">
+			<div class="action-wrap text-center">
+			</div>
+		</div>
+	</div>
+	
+	</div>
+</div>
+
 <div class="form-anti-bot" style="clear:both;">
 	<strong>Current <span style="display:none;">month</span> <span style="display:inline;">ye@r</span> <span style="display:none;">day</span></strong> <span class="required">*</span>
 	<input type="hidden" name="anti-bot-a" id="anti-bot-a" value="{$smarty.now|date_format:"%Y"}" />
@@ -94,20 +243,6 @@ $(document).ready(function()
 	<input type="text" name="anti-bot-e-email-url" id="anti-bot-e-email-url" size="30" value=""/>
 </div>
 <!-- /форма -->
-
-<div class="clear"></div>
-<div class="navigation">
-<span class="right">{$BUTTON_SUBMIT}</span>
-{$BUTTON_BACK}
-</div>
-<div class="clear"></div>
-
-<br />
-{if $smarty.const.DISPLAY_PRIVACY_TEXT == 'true'}
-<div>
-{$smarty.const.PRIVACY_TEXT}
-</div>
-{/if}
 
 {$FORM_END}
 {/if}
