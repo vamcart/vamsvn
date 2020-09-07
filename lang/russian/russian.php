@@ -823,4 +823,16 @@ define('UPLOAD_TEXT_UPLOAD_ERROR', 'Загрузка запрещена');
 define('UPLOAD_TEXT_COUNT_ERROR', ' не может быть загружен. Максимально разрешённое количество файлов: ');
 define('UPLOAD_TEXT_DOWNLOAD', 'Скачать');
 
+define('RATING_STAR_5','Очень хорошо');
+define('RATING_STAR_4','Хорошо');
+define('RATING_STAR_3','Нормально');
+define('RATING_STAR_2','Плохо');
+define('RATING_STAR_1','Очень плохо');
+
+define('TEXT_STAR_5','5 звёзд');
+define('TEXT_STAR_4','4 звезды');
+define('TEXT_STAR_3','3 звезды');
+define('TEXT_STAR_2','2 звезды');
+define('TEXT_STAR_1','1 звезда');
+
 ?>
