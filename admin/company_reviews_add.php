@@ -148,7 +148,7 @@ echo vam_draw_products_pull_down_company_review('manufacturers_id','class="selec
         <td><table witdh="100%" border="0" cellspacing="0" cellpadding="0">
           <tr>
             <td class="main" valign="top"><b><?php echo ENTRY_DATE; ?></b> <?php echo vam_draw_input_field('date_added', '', 'id="date-added"'); ?></td>
-            <td class="main rating"><?php for ($i=1; $i<=5; $i++) echo vam_draw_radio_field('reviews_rating', $i, '', true, 'class="star-rating"'); ?>
+            <td class="main star-rating"><?php for ($i=1; $i<=5; $i++) echo vam_draw_radio_field('reviews_rating', $i, (($i == 5) ? true : false), '', 'class="star-rating" id="star'.$i.'"').'<label for="star'.$i.'" title="'.constant('RATING_STAR_'.$i).'">'.constant('TEXT_STAR_'.$i).'</label>'; ?>
           </tr>
         </table></td>
       </tr>

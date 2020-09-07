@@ -1155,6 +1155,8 @@ mg.image_filter {
   color: #fff;
 }
 
+/* Star Rating */
+
 .star-rating {
     float:left;
 }
@@ -1225,6 +1227,9 @@ mg.image_filter {
 	0% { opacity: 0; }
 	100% { opacity: 100%; }
 }
+
+/* /Star Rating */
+
 /* Scroll To Top */
 a#scrollup {
   bottom: 50px;
