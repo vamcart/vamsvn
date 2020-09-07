@@ -18,7 +18,7 @@ $(function($){
 </script>
 
 
-
+<div>
   <div class="card card-product">
 	<div class="card-body">
 	<div class="row">
@@ -36,36 +36,16 @@ $(function($){
 				{/if}
 				<div class="price-wrap h6 font-weight-bold text-dark b">
 					<div><strong>{$PRODUCTS_PRICE}</strong></div>
-					<meta itemprop="name" content="{$PRODUCTS_NAME}" />
-					<span itemprop="offers" itemscope itemtype="http://schema.org/Offer"> 
-					<meta itemprop="price" content="{$PRODUCTS_PRICE_PLAIN}">
-					<meta itemprop="priceCurrency" content="{$smarty.session.currency}" />
-					<meta itemprop="availability" content="InStock" />
-					<meta itemprop="priceValidUntil" content="{$smarty.now + (1200*60*24*7)|date_format:"c"}" />
-					<meta itemprop="url" content="{$PRODUCTS_URL_INFO}" />
-					</span> 
-
-					<meta itemprop="image" content="{$PRODUCTS_IMAGE}" />
-					<meta itemprop="description" content="{$PRODUCTS_SHORT_DESCRIPTION|vam_truncate:$smarty.const.MAX_DISPLAY_SHORT_DESCRIPTION:"...":true}" />
-	
-					{if $MANUFACTURER}
-					<meta itemprop="brand" content="{$MANUFACTURER}" />
-					{/if}
-	
-					{if $PRODUCTS_MODEL}
-					<meta itemprop="sku" content="{$PRODUCTS_MODEL}" />
-					<meta itemprop="mpn" content="{$PRODUCTS_MODEL}" />
-					{/if}
 					</div>
 		</div>
-		<div class="col-md-2" itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">
+		<div class="col-md-2">
 			<div class="text-center">
-			<div class="display-4 font-weight-bolder"><span itemprop="ratingValue">{$module_content[0].PRODUCT.REVIEWS_TOTAL_RATING|number_format:1}</span></div>
+			<div class="display-4 font-weight-bolder"><span>{$module_content[0].PRODUCT.REVIEWS_TOTAL_RATING|number_format:1}</span></div>
 			{$module_content[0].PRODUCT.REVIEWS_STAR_RATING}
 			</div>
 				{if {$module_content[0].PRODUCT.REVIEWS_TOTAL} > 0}
 				<div class="rating-wrap text-center">
-             {#text_total#}: <span itemprop="reviewCount">{$module_content[0].PRODUCT.REVIEWS_TOTAL}</span>
+             {#text_total#}: <span>{$module_content[0].PRODUCT.REVIEWS_TOTAL}</span>
 				</div>
 				{/if}
 		</div>
@@ -120,7 +100,7 @@ $(function($){
 	
 	</div>
 </div>
-
+</div>
 
 
 
@@ -187,7 +167,7 @@ $(document).ready(function()
     </div>
 
     <div class="form-group">
-      <div id="fileuploader"><i class="fas fa-plus-circle text-success"></i> {$smarty.const.REVIEW_PHOTO_HEADER}</div>
+      <div id="fileuploader"><span class="button"><i class="fas fa-plus-circle text-success"></i> {$smarty.const.REVIEW_PHOTO_HEADER}</span></div>
     </div>	
 
 <script type="text/javascript">
