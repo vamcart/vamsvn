@@ -1395,3 +1395,79 @@ header .input-group-text,
 	}
 	
 /* /jQuery File Upload */
+
+
+/* Star Rating */
+
+.star-rating {
+    float:left;
+}
+
+/* :not(:checked) is a filter, so that browsers that don’t support :checked don’t 
+   follow these rules. Every browser that supports :checked also supports :not(), so
+   it doesn’t make the test unnecessarily selective */
+.star-rating:not(:checked) > input {
+    position:absolute;
+    top:-9999px;
+}
+
+.star-rating:not(:checked) > label {
+    float:right;
+    width:1em;
+    padding:0 .1em;
+    overflow:hidden;
+    white-space:nowrap;
+    cursor:pointer;
+    font-size:200%;
+    line-height:1.2;
+    color:#ddd;
+    text-shadow:1px 1px #bbb, 2px 2px #666, .1em .1em .2em rgba(0,0,0,.5);
+}
+
+.star-rating:not(:checked) > label:before {
+    content: '★ ';
+}
+
+.star-rating > input:checked ~ label {
+    color: #f70;
+    text-shadow:1px 1px #c60, 2px 2px #940, .1em .1em .2em rgba(0,0,0,.5);
+}
+
+.star-rating:not(:checked) > label:hover,
+.star-rating:not(:checked) > label:hover ~ label {
+    color: gold;
+    text-shadow:1px 1px goldenrod, 2px 2px #B57340, .1em .1em .2em rgba(0,0,0,.5);
+}
+
+.star-rating > input:checked + label:hover,
+.star-rating > input:checked + label:hover ~ label,
+.star-rating > input:checked ~ label:hover,
+.star-rating > input:checked ~ label:hover ~ label,
+.star-rating > label:hover ~ input:checked ~ label {
+    color: #ea0;
+    text-shadow:1px 1px goldenrod, 2px 2px #B57340, .1em .1em .2em rgba(0,0,0,.5);
+}
+
+.star-rating > label:active {
+    position:relative;
+    top:2px;
+    left:2px;
+}
+
+@keyframes star-pop {
+	0% { color: #ef6c00; transform: translateX(-50%) translateY(-50%) scale(1) rotate(0); text-shadow: 0 3px 2px rgba(0,0,0,.25); }
+	80% { color: #0099d5; transform: translateX(-50%) translateY(-50%) scale(1.75) rotate(-5deg); text-shadow: 0 0 0 rgba(255,255,255,0); }
+	100% { color: #ef6c00; transform: translateX(-50%) translateY(-50%) scale(1) rotate(0); text-shadow: 0 3px 2px rgba(0,0,0,.25); }
+}
+@keyframes star-pop-2 {
+	0% { color: rgba(0,153,213,0); transform: translateX(-50%) translateY(-50%) scale(1) rotate(0); }
+	20% { color: rgba(0,153,213,0); transform: translateX(-50%) translateY(-50%) scale(1) rotate(0); }
+	60% { color: rgba(0,153,213,.325); transform: translateX(-50%) translateY(-57.5%) scale(2.5) rotate(-2.5deg); }
+	100% { color: rgba(255,255,255,0); transform: translateX(-50%) translateY(-65%) scale(4) rotate(0deg); }
+}
+@keyframes fade-in {
+	0% { opacity: 0; }
+	100% { opacity: 100%; }
+}
+
+/* /Star Rating */

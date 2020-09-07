@@ -139,7 +139,7 @@ if (isset ($_GET['action']) && $_GET['action'] == 'process' && $spam_flag == fal
 
    $_SESSION['error_cart_msg'] = sprintf(TEXT_REVIEW_DATE_ADDED, $product->data['products_name']);          
 
-	vam_redirect(vam_href_link(FILENAME_PRODUCT_INFO, vam_product_link($product->data['products_id'], $product->data['products_name'])));
+	vam_redirect(vam_href_link(FILENAME_PRODUCT_INFO, vam_product_link($product->data['products_id'], $product->data['products_name'])).'#reviews');
 	}
  }
 }
@@ -170,7 +170,15 @@ if (!$product->isProduct()) {
 	$vamTemplate->assign('PRODUCTS_NAME', $product->data['products_name']);
 	$vamTemplate->assign('AUTHOR', $customer_info['customers_firstname']);
 	$vamTemplate->assign('INPUT_TEXT', vam_draw_textarea_field('review', 'soft', 60, 7, $_POST['review'], 'class="form-control" id="review"', false));
-	$vamTemplate->assign('INPUT_RATING', vam_draw_radio_field('rating', '1','class="form-check-input"').' '.vam_draw_radio_field('rating', '2','class="form-check-input"').' '.vam_draw_radio_field('rating', '3','class="form-check-input"').' '.vam_draw_radio_field('rating', '4','class="form-check-input"').' '.vam_draw_radio_field('rating', '5','class="form-check-input"'));
+	$vamTemplate->assign('INPUT_RATING', 
+	
+	vam_draw_radio_field('rating', '5', '', 'id="star5" class="star-rating"').'<label for="star5" title="Rocks!">5 stars</label>' .
+	vam_draw_radio_field('rating', '4', '', 'id="star4" class="star-rating"').'<label for="star4" title="Pretty good">4 stars</label>'.
+	vam_draw_radio_field('rating', '3', '', 'id="star3" class="star-rating"').'<label for="star3" title="Meh">3 stars</label>'.
+	vam_draw_radio_field('rating', '2', '', 'id="star2" class="star-rating"').'<label for="star2" title="Kinda bad">2 stars</label>'.
+	vam_draw_radio_field('rating', '1', '', 'id="star1" class="star-rating"').'<label for="star1" title="Sucks big time">1 star</label>'
+	
+	);
 	$vamTemplate->assign('FORM_ACTION', vam_draw_form('product_reviews_write', vam_href_link(FILENAME_PRODUCT_REVIEWS_WRITE, 'action=process&'.vam_product_link($product->data['products_id'],$product->data['products_name'])), 'post', 'enctype="multipart/form-data" cf="true" onsubmit="return checkForm();"'));
 	$vamTemplate->assign('BUTTON_BACK', '<a class="button" href="javascript:history.back(1)">'.vam_image_button('back.png', IMAGE_BUTTON_BACK).'</a>');
 	$vamTemplate->assign('BUTTON_SUBMIT', vam_image_submit('submit.png',  IMAGE_BUTTON_CONTINUE).vam_draw_hidden_field('get_params', $get_params));
