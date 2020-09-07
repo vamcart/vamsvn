@@ -33,7 +33,7 @@ $bender->enqueue("templates/".CURRENT_TEMPLATE."/webslidemenu/color-skins/white-
 echo $bender->output("templates/".CURRENT_TEMPLATE."/cache/".CURRENT_TEMPLATE."-packed.css");
 ?>
 <?php
-if (strstr($PHP_SELF, FILENAME_PRODUCT_INFO)) {
+if (strstr($PHP_SELF, FILENAME_PRODUCT_INFO) or strstr($PHP_SELF, FILENAME_PRODUCT_REVIEWS_INFO) or strstr($PHP_SELF, FILENAME_PRODUCT_REVIEWS)) {
 ?>
 <link rel="stylesheet" type="text/css" href="jscript/jquery/plugins/colorbox/colorbox.css" media="screen" />
 <?php

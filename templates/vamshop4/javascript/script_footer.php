@@ -74,7 +74,7 @@ $(document).ajaxComplete(function () {
 </script>
 <?php } ?>
 <?php
-if (strstr($PHP_SELF, FILENAME_PRODUCT_INFO)) {
+if (strstr($PHP_SELF, FILENAME_PRODUCT_INFO) or strstr($PHP_SELF, FILENAME_PRODUCT_REVIEWS_INFO) or strstr($PHP_SELF, FILENAME_PRODUCT_REVIEWS)) {
 ?>
 <script src="jscript/jquery/plugins/colorbox/jquery.colorbox-min.js"></script>
 <?php

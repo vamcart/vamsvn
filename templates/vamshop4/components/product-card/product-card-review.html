@@ -20,7 +20,7 @@
 				<span class="font-weight-bold text-secondary">{$smarty.const.TEXT_CUSTOMER_REVIEW}</span>
 				<div>{$module_data.REVIEW.TEXT|vam_truncate:$smarty.const.MAX_DISPLAY_REVIEW_TEXT:"...":true}</div>
 				{if {$module_data.REVIEW.REVIEWS_IMAGES}}
-				<div class="card-deck owl-carousel owl-theme">
+				<div class="owl-carousel owl-theme">
 				{foreach name=aussen item=reviews_images from=$module_data.REVIEW.REVIEWS_IMAGES}
 				<div class="card card-product card-sm h-100">
 					<div class="card-body">
