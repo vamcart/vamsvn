@@ -151,7 +151,7 @@ button:focus, button:active, a, a:hover {
 */
 .lazy {
  /*opacity: 0;*/
- /*transition: opacity 400ms ease-in;*/ 
+ transition: opacity 400ms ease-in; 
 }
 
 .lazy[src^=""], .lazy:not([src]) {
@@ -159,7 +159,7 @@ button:focus, button:active, a, a:hover {
 }
  
 .lazy {
-  /*transform-style: preserve-3d;*/ 
+  transform-style: preserve-3d; 
 }
 
 .lazy.error {
