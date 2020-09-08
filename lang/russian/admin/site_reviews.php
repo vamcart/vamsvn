@@ -52,4 +52,6 @@ define('TEXT_INFO_HEADING_DELETE_REVIEW', 'Удалить отзыв');
 
 define('TEXT_IMAGE_NONEXISTENT','Картинка отсутствует');
 
+define('SITE_REVIEW_ANSWER_SUBJECT','Добавлен ответ на Ваш отзыв о магазине!');
+
 ?>

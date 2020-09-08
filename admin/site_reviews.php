@@ -18,7 +18,14 @@
    --------------------------------------------------------------*/
 
   require('includes/application_top.php');
+  require_once (DIR_FS_CATALOG . 'includes/external/phpmailer/class.phpmailer.php');
+  if (EMAIL_TRANSPORT == 'smtp')
+  require_once (DIR_FS_CATALOG . 'includes/external/phpmailer/class.smtp.php');
+  require_once (DIR_FS_INC.'vam_php_mail.inc.php');
   require_once(DIR_FS_INC . 'vam_wysiwyg_tiny.inc.php');
+
+// initiate template engine for mail
+$vamTemplate = new vamTemplate;
   
   if ($_GET['action']) {
     switch ($_GET['action']) {
@@ -37,6 +44,78 @@
 			if ($avatar == '' && $_POST['customers_avatar_name'] != '' && $avatar != $_POST['customers_avatar_name']) {
         $avatar = $_POST['customers_avatar_name'];
         }
+
+          if ($reviews_answer != '') {
+
+				// assign language to template for caching
+				$vamTemplate->assign('language', $_SESSION['language']);
+				$vamTemplate->caching = false;
+
+				$vamTemplate->assign('tpl_path', 'templates/'.CURRENT_TEMPLATE.'/');
+				$vamTemplate->assign('logo_path', HTTP_SERVER.DIR_WS_CATALOG.'templates/'.CURRENT_TEMPLATE.'/img/');
+
+		
+				$vamTemplate->assign('CUSTOMERS_NAME', $customers_name);
+
+				$fio = explode(" ", $customers_name);		
+				$vamTemplate->assign('CUSTOMERS_FIRST_NAME', isset($fio[0]) ? $fio[0] : $customers_name);
+				$vamTemplate->assign('CUSTOMERS_LAST_NAME', isset($fio[1]) ? $fio[1] : $customers_name);
+
+				$customer_query = vam_db_query("select * from " . TABLE_REVIEWS . " r, " . TABLE_REVIEWS_DESCRIPTION . " rd where r.reviews_id = '" . vam_db_input($reviews_id) . "' and r.reviews_id = rd.reviews_id");
+				$customer_id = vam_db_fetch_array($customer_query);
+				
+				if ($customer_id > 0) {
+
+				$customer_info_query = vam_db_query("select * from " . TABLE_CUSTOMERS . " c where c.customers_id = '" . vam_db_input($customer_id['customers_id']) . "'");
+				$customer_info = vam_db_fetch_array($customer_info_query);
+
+				$vamTemplate->assign('CUSTOMERS_TELEPHONE', $customer_info['customers_telephone']);
+				$vamTemplate->assign('CUSTOMERS_EMAIL_ADDRESS', $customer_info['customers_email_address']);
+
+				}
+
+				$review_query = vam_db_query("select rd.reviews_answer from " . TABLE_REVIEWS . " r, " . TABLE_REVIEWS_DESCRIPTION . " rd where r.reviews_id = '" . vam_db_input($reviews_id) . "' and r.reviews_id = rd.reviews_id and rd.languages_id = '" . $_SESSION['languages_id'] . "'");
+				$review = vam_db_fetch_array($review_query);
+				
+				if (md5($review['reviews_answer']) == md5($reviews_answer)) {
+				$changed = false;
+				} else { 
+				$changed = true;
+				}
+
+				if ($changed) {
+
+				$vamTemplate->assign('REVIEWS_LINK', HTTP_SERVER . DIR_WS_CATALOG . 'site_reviews_info.php?reviews_id='.$reviews_id); 
+				$vamTemplate->assign('REVIEWS_ANSWER', $reviews_answer);
+
+				$html_mail = $vamTemplate->fetch(CURRENT_TEMPLATE.'/admin/mail/'.$_SESSION['language'].'/site_review_answer_mail.html');
+				$txt_mail = $vamTemplate->fetch(CURRENT_TEMPLATE.'/admin/mail/'.$_SESSION['language'].'/site_review_answer_mail.txt');
+
+            // create subject
+           $review_answer_subject = SITE_REVIEW_ANSWER_SUBJECT;
+
+				if (filter_var($customer_info['customers_email_address'], FILTER_VALIDATE_EMAIL)) {
+
+				vam_php_mail(EMAIL_BILLING_ADDRESS, EMAIL_BILLING_NAME, $customer_info['customers_email_address'], $customers_name, '', EMAIL_BILLING_REPLY_ADDRESS, EMAIL_BILLING_REPLY_ADDRESS_NAME, '', '', $review_answer_subject, $html_mail, $txt_mail);
+				
+				}
+
+				if (defined('AVISOSMS_EMAIL') && AVISOSMS_EMAIL != '' && $customer_info['customers_telephone'] != '') {
+
+				$html_mail_sms = $vamTemplate->fetch(CURRENT_TEMPLATE.'/admin/mail/'.$_SESSION['language'].'/site_review_answer_mail_sms.html');
+				$txt_mail_sms = $vamTemplate->fetch(CURRENT_TEMPLATE.'/admin/mail/'.$_SESSION['language'].'/site_review_answer_mail_sms.txt');
+
+				// sms to customer
+				vam_php_mail(EMAIL_BILLING_ADDRESS, EMAIL_BILLING_NAME, AVISOSMS_EMAIL, $customers_name, '', EMAIL_BILLING_REPLY_ADDRESS, EMAIL_BILLING_REPLY_ADDRESS_NAME, '', '', $customer_info['customers_telephone'], $html_mail_sms, $txt_mail_sms);
+				}
+				
+            }
+            
+        vam_db_query("update " . TABLE_REVIEWS . " set reviews_rating = '" . vam_db_input($reviews_rating) . "',date_added = '" . vam_db_input($date_added) . "', customers_name = '" . vam_db_input($customers_name) . "', customers_avatar = '" . vam_db_input($avatar) . "', last_modified = now() where reviews_id = '" . vam_db_input($reviews_id) . "'");
+        vam_db_query("update " . TABLE_REVIEWS_DESCRIPTION . " set reviews_text = '" . vam_db_input($reviews_text) . "', reviews_answer = '" . vam_db_input($reviews_answer) . "' where reviews_id = '" . vam_db_input($reviews_id) . "'");
+
+          }
+
 
         vam_db_query("update " . TABLE_SITE_REVIEWS . " set reviews_rating = '" . vam_db_input($reviews_rating) . "',date_added = '" . vam_db_input($date_added) . "', customers_name = '" . vam_db_input($customers_name) . "', customers_avatar = '" . vam_db_input($avatar) . "', last_modified = now() where reviews_id = '" . vam_db_input($reviews_id) . "'");
         vam_db_query("update " . TABLE_SITE_REVIEWS_DESCRIPTION . " set reviews_text = '" . vam_db_input($reviews_text) . "', reviews_answer = '" . vam_db_input($reviews_answer) . "' where reviews_id = '" . vam_db_input($reviews_id) . "'");
