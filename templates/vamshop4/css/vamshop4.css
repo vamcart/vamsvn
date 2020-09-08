@@ -1403,6 +1403,12 @@ header .input-group-text,
     float:left;
 }
 
+.star-rating label span {
+  display: inline-block;
+  font-size: 12px;
+  color: var(--color);
+}
+
 /* :not(:checked) is a filter, so that browsers that don’t support :checked don’t 
    follow these rules. Every browser that supports :checked also supports :not(), so
    it doesn’t make the test unnecessarily selective */
@@ -1414,19 +1420,25 @@ header .input-group-text,
 
 .star-rating:not(:checked) > label {
     float:right;
-    width:1em;
+    text-align: center;
+    width:80px;
+    height: 70px;
+    border: 0px solid black;
     padding:0 .1em;
     overflow:hidden;
     white-space:nowrap;
     cursor:pointer;
-    font-size:300%;
+    font-size:200%;
     line-height:1.2;
     color:#ddd;
     /*text-shadow:1px 1px #bbb, 2px 2px #666, .1em .1em .2em rgba(0,0,0,.5);*/
 }
 
 .star-rating:not(:checked) > label:before {
-    content: '★ ';
+    content: "\f005";
+    font-weight: 900;
+    font-family: "Font Awesome 5 Free";
+    display: block;
 }
 
 .star-rating > input:checked ~ label {

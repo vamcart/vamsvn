@@ -172,11 +172,11 @@ if (!$product->isProduct()) {
 	$vamTemplate->assign('INPUT_TEXT', vam_draw_textarea_field('review', 'soft', 60, 7, $_POST['review'], 'class="form-control" id="review"', false));
 	$vamTemplate->assign('INPUT_RATING', 
 	
-	vam_draw_radio_field('rating', '5', '', 'id="star5" class="star-rating"').'<label for="star5" title="'.RATING_STAR_5.'">'.TEXT_STAR_5.'</label>' .
-	vam_draw_radio_field('rating', '4', '', 'id="star4" class="star-rating"').'<label for="star4" title="'.RATING_STAR_4.'">'.TEXT_STAR_4.'</label>'.
-	vam_draw_radio_field('rating', '3', '', 'id="star3" class="star-rating"').'<label for="star3" title="'.RATING_STAR_3.'">'.TEXT_STAR_3.'</label>'.
-	vam_draw_radio_field('rating', '2', '', 'id="star2" class="star-rating"').'<label for="star2" title="'.RATING_STAR_2.'">'.TEXT_STAR_2.'</label>'.
-	vam_draw_radio_field('rating', '1', '', 'id="star1" class="star-rating"').'<label for="star1" title="'.RATING_STAR_1.'">'.TEXT_STAR_1.'</label>'
+	vam_draw_radio_field('rating', '5', '', 'id="star5" class="star-rating"').'<label for="star5" title="'.TEXT_STAR_5.'"><span>'.RATING_STAR_5.'</span></label>' .
+	vam_draw_radio_field('rating', '4', '', 'id="star4" class="star-rating"').'<label for="star4" title="'.TEXT_STAR_4.'"><span>'.RATING_STAR_4.'</span></label>'.
+	vam_draw_radio_field('rating', '3', '', 'id="star3" class="star-rating"').'<label for="star3" title="'.TEXT_STAR_3.'"><span>'.RATING_STAR_3.'</span></label>'.
+	vam_draw_radio_field('rating', '2', '', 'id="star2" class="star-rating"').'<label for="star2" title="'.TEXT_STAR_2.'"><span>'.RATING_STAR_2.'</span></label>'.
+	vam_draw_radio_field('rating', '1', '', 'id="star1" class="star-rating"').'<label for="star1" title="'.TEXT_STAR_1.'"><span>'.RATING_STAR_1.'</span></label>'
 	
 	);
 	$vamTemplate->assign('FORM_ACTION', vam_draw_form('product_reviews_write', vam_href_link(FILENAME_PRODUCT_REVIEWS_WRITE, 'action=process&'.vam_product_link($product->data['products_id'],$product->data['products_name'])), 'post', 'enctype="multipart/form-data" cf="true" onsubmit="return checkForm();"'));
