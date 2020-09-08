@@ -50,7 +50,7 @@ if ($_SESSION['customers_status']['customers_status_write_reviews'] == 0) {
 		}
 		
 if (isset ($_GET['action']) && $_GET['action'] == 'process' && $spam_flag == false) {
-	if (is_object($product) && $product->isProduct()) { // We got to the process but it is an illegal product, don't write
+	//if (is_object($product) && $product->isProduct()) { // We got to the process but it is an illegal product, don't write
 
     $rating = vam_db_prepare_input($_POST['rating']);
     $review = vam_db_prepare_input($_POST['review']);
@@ -141,7 +141,7 @@ if (isset ($_GET['action']) && $_GET['action'] == 'process' && $spam_flag == fal
 
 	vam_redirect(vam_href_link(FILENAME_PRODUCT_INFO, vam_product_link($product->data['products_id'], $product->data['products_name'])).'#reviews');
 	}
- }
+ //}
 }
 
 // lets retrieve all $HTTP_GET_VARS keys and values..
