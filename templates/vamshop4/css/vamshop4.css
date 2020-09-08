@@ -1411,8 +1411,9 @@ header .input-group-text,
    follow these rules. Every browser that supports :checked also supports :not(), so
    it doesn’t make the test unnecessarily selective */
 .star-rating:not(:checked) > input {
-    position:absolute;
-    top:-9999px;
+    /*position:absolute;
+    top:-9999px;*/
+    display: none;
 }
 
 .star-rating:not(:checked) > label {
