@@ -804,4 +804,6 @@ define('TEXT_STAR_1','1 звезда');
 define('TEXT_SITE_REVIEW_HEADER','Пожалуйста, оставьте отзыв!');
 define('TEXT_SITE_REVIEW_ADD','Добавить отзыв');
 
+define('SITE_REVIEW_NEW_SUBJECT', 'Добавлен новый отзыв о магазине');
+
 ?>

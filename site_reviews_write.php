@@ -78,6 +78,50 @@ if (isset ($_GET['action']) && $_GET['action'] == 'process' && $spam_flag == fal
 		$insert_id = vam_db_insert_id();
 		vam_db_query("insert into ".TABLE_SITE_REVIEWS_DESCRIPTION." (reviews_id, languages_id, reviews_text) values ('".$insert_id."', '".(int) $_SESSION['languages_id']."', '".addslashes($_POST['review'])."')");
 
+          if ($_POST['review'] != '') {
+
+				// assign language to template for caching
+				$vamTemplate->assign('language', $_SESSION['language']);
+				$vamTemplate->caching = false;
+
+				$vamTemplate->assign('tpl_path', 'templates/'.CURRENT_TEMPLATE.'/');
+				$vamTemplate->assign('logo_path', HTTP_SERVER.DIR_WS_CATALOG.'templates/'.CURRENT_TEMPLATE.'/img/');
+
+		
+				$vamTemplate->assign('CUSTOMERS_NAME', addslashes($customer_values['customers_firstname']));
+
+				$vamTemplate->assign('CUSTOMERS_FIRST_NAME', $customer_values['customers_firstname']);
+				$vamTemplate->assign('CUSTOMERS_LAST_NAME', $customer_values['customers_lastname']);
+
+				$customer_id = $_SESSION['customer_id'];
+				
+				if ($customer_id > 0) {
+
+				$customer_info_query = vam_db_query("select * from " . TABLE_CUSTOMERS . " c where c.customers_id = '" . vam_db_input($customer_id) . "'");
+				$customer_info = vam_db_fetch_array($customer_info_query);
+
+				$vamTemplate->assign('CUSTOMERS_TELEPHONE', $customer_info['customers_telephone']);
+				$vamTemplate->assign('CUSTOMERS_EMAIL_ADDRESS', $customer_info['customers_email_address']);
+
+				}
+
+				$vamTemplate->assign('REVIEWS_LINK', vam_href_link(FILENAME_SITE_REVIEWS_INFO, 'reviews_id='.$insert_id)); 
+				$vamTemplate->assign('REVIEWS_ALL_LINK', vam_href_link(FILENAME_SITE_REVIEWS); 
+				$vamTemplate->assign('REVIEW_TEXT', addslashes($_POST['review']));
+
+				$html_mail = $vamTemplate->fetch(CURRENT_TEMPLATE.'/mail/'.$_SESSION['language'].'/site_review_added_mail.html');
+				$txt_mail = $vamTemplate->fetch(CURRENT_TEMPLATE.'/mail/'.$_SESSION['language'].'/site_review_added_mail.txt');
+
+            // create subject
+           $review_added_subject = SITE_REVIEW_NEW_SUBJECT;
+
+				if (filter_var(CONTACT_US_EMAIL_ADDRESS, FILTER_VALIDATE_EMAIL)) {
+
+				vam_php_mail(EMAIL_BILLING_ADDRESS, EMAIL_BILLING_NAME, CONTACT_US_EMAIL_ADDRESS, CONTACT_US_NAME, '', EMAIL_BILLING_REPLY_ADDRESS, EMAIL_BILLING_REPLY_ADDRESS_NAME, '', '', $review_added_subject, $html_mail, $txt_mail);
+				
+				}
+				
+          }
 
 	vam_redirect(vam_href_link(FILENAME_SITE_REVIEWS, $_POST['get_params']));
 	}
