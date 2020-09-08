@@ -1176,7 +1176,7 @@ mg.image_filter {
     overflow:hidden;
     white-space:nowrap;
     cursor:pointer;
-    font-size:200%;
+    font-size:300%;
     line-height:1.2;
     color:#ddd;
     /*text-shadow:1px 1px #bbb, 2px 2px #666, .1em .1em .2em rgba(0,0,0,.5);*/
