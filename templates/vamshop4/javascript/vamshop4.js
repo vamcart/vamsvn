@@ -43,8 +43,6 @@ window.addEventListener('beforeinstallprompt', function(e) {
 });
 
 
-$(document).ready(function(){
-
 // Lazy Load
 var lazyLoadInstance = new LazyLoad({
   elements_selector: ".lazy",
@@ -258,8 +256,6 @@ $(window).on('load',
                            
    });
 
-
-});
 
 // Plus minus at product listing
 $(document).on('click','.value-control',function(){
