@@ -10,9 +10,6 @@ body {
   font-weight: 500;
   background-color: var(--background-color);
   color: var(--color);
-  transition:
-  color var(--duration) var(--timing),
-  background-color var(--duration) var(--timing);  
 }
 
 h1,
@@ -547,7 +544,6 @@ li.level3 {
   border: 0px solid rgba(0,0,0,.125);
   border-radius: .25rem;
   /*box-shadow: 0 4px 15px rgba(153,153,153,.3);*/
-  transition: .5s;
 }
 
 .cookie-alert{
