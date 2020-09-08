@@ -680,9 +680,9 @@ $site_reviews_query = vam_db_query($site_reviews_query);
 $site_reviews = vam_db_fetch_array($site_reviews_query);
 
 ?>
-<title><?php echo STORE_NAME . ' - ' . NAVBAR_TITLE_SITE_REVIEWS . ' ' . STORE_NAME . ' - ' . NAVBAR_TITLE_SITE_REVIEW . ' ' . $site_reviews['reviews_id']; ?></title>
-<meta name="description" content="<?php echo STORE_NAME . ' - ' . NAVBAR_TITLE_SITE_REVIEWS . ' ' . STORE_NAME . ' ' . NAVBAR_TITLE_SITE_REVIEW . ' ' . $site_reviews['reviews_id']; ?>" />
-<meta name="keywords" content="<?php echo STORE_NAME . ' - ' . NAVBAR_TITLE_SITE_REVIEWS . ' ' . STORE_NAME . ' ' . NAVBAR_TITLE_SITE_REVIEW . ' ' . $site_reviews['reviews_id']; ?>" />
+<title><?php echo NAVBAR_TITLE_SITE_REVIEW . ' ' . $site_reviews['reviews_id']; ?></title>
+<meta name="description" content="<?php echo NAVBAR_TITLE_SITE_REVIEWS . ' ' . STORE_NAME . ' ' . NAVBAR_TITLE_SITE_REVIEW . ' ' . $site_reviews['reviews_id']; ?>" />
+<meta name="keywords" content="<?php echo NAVBAR_TITLE_SITE_REVIEWS . ' ' . STORE_NAME . ' ' . NAVBAR_TITLE_SITE_REVIEW . ' ' . $site_reviews['reviews_id']; ?>" />
 <?php
 
     break;
