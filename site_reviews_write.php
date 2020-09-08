@@ -106,7 +106,7 @@ if (isset ($_GET['action']) && $_GET['action'] == 'process' && $spam_flag == fal
 				}
 
 				$vamTemplate->assign('REVIEWS_LINK', vam_href_link(FILENAME_SITE_REVIEWS_INFO, 'reviews_id='.$insert_id)); 
-				$vamTemplate->assign('REVIEWS_ALL_LINK', vam_href_link(FILENAME_SITE_REVIEWS); 
+				$vamTemplate->assign('REVIEWS_ALL_LINK', vam_href_link(FILENAME_SITE_REVIEWS)); 
 				$vamTemplate->assign('REVIEW_TEXT', addslashes($_POST['review']));
 
 				$html_mail = $vamTemplate->fetch(CURRENT_TEMPLATE.'/mail/'.$_SESSION['language'].'/site_review_added_mail.html');
