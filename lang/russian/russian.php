@@ -835,4 +835,7 @@ define('TEXT_STAR_3','3 звезды');
 define('TEXT_STAR_2','2 звезды');
 define('TEXT_STAR_1','1 звезда');
 
+define('TEXT_SITE_REVIEW_HEADER','Пожалуйста, оставьте отзыв!');
+define('TEXT_SITE_REVIEW_ADD','Добавить отзыв');
+
 ?>

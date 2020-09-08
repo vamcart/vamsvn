@@ -30,6 +30,8 @@
    ---------------------------------------------------------------------------------------*/
 
 include ('includes/application_top.php');
+require_once (DIR_FS_INC.'vam_random_charcode.inc.php');
+require_once (DIR_FS_INC.'vam_render_vvcode.inc.php');
 // create template elements
 $vamTemplate = new vamTemplate;
 // include boxes
@@ -239,6 +241,10 @@ dataLayer.push({
 	$vamTemplate->assign('tracking_code', $tracking_code);
 
 }
+
+	$vamTemplate->assign('CAPTCHA_IMG', '<img src="'.vam_href_link(FILENAME_DISPLAY_CAPTCHA).'" alt="captcha" name="captcha" />');
+	$vamTemplate->assign('CAPTCHA_INPUT', vam_draw_input_field('captcha', '', 'size="6" id="captcha" class="form-control"', 'text', false));
+
 
 if (DOWNLOAD_ENABLED == 'true')
 	include (DIR_WS_MODULES.'downloads.php');
