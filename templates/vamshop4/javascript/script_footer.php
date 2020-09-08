@@ -8,7 +8,6 @@ $bender->enqueue("jscript/jquery/plugins/jquery-ui/jquery-ui-min.js");
 $bender->enqueue("jscript/jquery/plugins/cookie/jquery.cookie.js");
 $bender->enqueue("jscript/jquery/plugins/read-more/jquery.expandable.js");
 $bender->enqueue("jscript/jquery/plugins/lazyload/lazyload.min.js");
-$bender->enqueue("jscript/jquery/plugins/uploadfile/jquery.uploadfile.js");
 $bender->enqueue("jscript/jquery/plugins/slick/slick.js");
 $bender->enqueue("jscript/jquery/plugins/owl/owl.carousel.min.js");
 $bender->enqueue("jscript/jquery/plugins/select2/select2.js");
@@ -110,6 +109,11 @@ $(document).ready(function(){
 <?php
  }
 ?>
+<?php
+if (strstr($PHP_SELF, FILENAME_PRODUCT_REVIEWS_WRITE)) {
+?>
+<script src="jscript/jquery/plugins/uploadfile/jquery.uploadfile.js"></script>
+<?php } ?>
 <script>(function($,d){$.each(readyQ,function(i,f){$(f)});$.each(bindReadyQ,function(i,f){$(d).on("ready",f)})})(jQuery,document)</script>
 <?php
 if (file_exists(dirname(__FILE__) . '/local_footer.js.php')) include('local_footer.js.php');
