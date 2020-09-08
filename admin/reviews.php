@@ -67,7 +67,7 @@ $vamTemplate = new vamTemplate;
 				$customer_query = vam_db_query("select * from " . TABLE_REVIEWS . " r, " . TABLE_REVIEWS_DESCRIPTION . " rd where r.reviews_id = '" . vam_db_input($reviews_id) . "' and r.reviews_id = rd.reviews_id");
 				$customer_id = vam_db_fetch_array($customer_query);
 				
-				if ($customer_id > 0) {
+				if ($customer_id['customers_id'] > 0) {
 
 				$customer_info_query = vam_db_query("select * from " . TABLE_CUSTOMERS . " c where c.customers_id = '" . vam_db_input($customer_id['customers_id']) . "'");
 				$customer_info = vam_db_fetch_array($customer_info_query);
@@ -118,10 +118,10 @@ $vamTemplate = new vamTemplate;
 				
             }
             
+          }
+
         vam_db_query("update " . TABLE_REVIEWS . " set reviews_rating = '" . vam_db_input($reviews_rating) . "',date_added = '" . vam_db_input($date_added) . "', customers_name = '" . vam_db_input($customers_name) . "', customers_avatar = '" . vam_db_input($avatar) . "', last_modified = now() where reviews_id = '" . vam_db_input($reviews_id) . "'");
         vam_db_query("update " . TABLE_REVIEWS_DESCRIPTION . " set reviews_text = '" . vam_db_input($reviews_text) . "', reviews_answer = '" . vam_db_input($reviews_answer) . "' where reviews_id = '" . vam_db_input($reviews_id) . "'");
-
-          }
 
         vam_redirect(vam_href_link(FILENAME_REVIEWS, 'page=' . $_GET['page'] . '&rID=' . $reviews_id));
         break;
