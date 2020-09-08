@@ -27,6 +27,11 @@
 				</div>
 				<br />
 				{/if}
+				
+				{if {$REVIEWS_ANSWER} != ''}
+				<span class="font-weight-bold text-primary">{$smarty.const.TEXT_STORE_ANSWER}</span>
+				<p>{$REVIEWS_ANSWER}</p>
+				{/if}				
 
 		</div>
 	</div>
