@@ -1399,8 +1399,13 @@ header .input-group-text,
 
 /* Star Rating */
 
+.rating-block {
+  width: 100%;
+}
+
 .star-rating {
-    float:left;
+    margin: 0 auto;
+    text-align: center;
 }
 
 .star-rating label span {
