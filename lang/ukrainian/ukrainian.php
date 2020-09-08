@@ -791,7 +791,7 @@ define('UPLOAD_TEXT_DOWNLOAD', 'Скачать');
 
 define('RATING_STAR_5','Отличный');
 define('RATING_STAR_4','Хороший');
-define('RATING_STAR_3','Нормальный');
+define('RATING_STAR_3','Неплохой');
 define('RATING_STAR_2','Так себе');
 define('RATING_STAR_1','Плохой');
 
