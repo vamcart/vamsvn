@@ -306,7 +306,7 @@ $(document).on('click','.value-control',function(){
 });
 });            
 
-  $(function() {
+$(function() {
 $("#submit-modal1").on("click", function(e) {
     e.preventDefault();
    $.cookie("vamshop-city", $("#vamshop-city").val(), { expires : 10, path: "/" });
@@ -315,11 +315,14 @@ $("#submit-modal1").on("click", function(e) {
 });           
 
 //Cookie alert
+$(function() {
 $('#cookie-alert').on('closed.bs.alert', function (e) {
     e.preventDefault();
    $.cookie("cookie-alert", 1, { expires : 365, path: "/" });
 })
+});           
 
+$(function() {
 //Voice Search
 /* setup vars for our trigger, form, text input and result elements */
 if ($(window).width() >= 992 ) {
@@ -389,6 +392,7 @@ function _transcriptHandler(e) {
         $searchForm.submit();
     }
 }
+});           
 
 // Select2 added
 $(function() {
@@ -412,6 +416,7 @@ var customSorter = function(data) {
 	  });        
 });    	 
 
+$(function() {
 // Fix select2 width
 //$(window).on('resize', function() {
 $(window).on('load', function() {
@@ -423,8 +428,9 @@ $(window).on('load', function() {
 
     });
 }); 
+});           
 
-//$(function() {
+$(function() {
  // footer widget hide/show on mobile devices
  // -----------------------------------------------------------------------------
  function doFooter (){
@@ -443,7 +449,7 @@ $(window).on('load', function() {
  $('#footer .widget-title').click(function(){
      $(this).next('.widget-inner.do').toggle("slow");
  });
-//});     
+});     
 
 // Tooltips
 
@@ -485,6 +491,7 @@ function doDislike(id) {
 		});
 	}	
 	
+$(function () {
 // Responsive equal height
 if ($(window).width() > 350) {
 $(window).on('load', function () {
@@ -524,6 +531,7 @@ $(document).ajaxSuccess(function () {
     //$('.shipping-method .card-title').matchHeight();
     //$('.product-attribute-item .card-title').matchHeight();
 //});
+});
 
 $(function () {
 $('span[data-toggle="tab"]').on('shown.bs.tab', function (e) {
