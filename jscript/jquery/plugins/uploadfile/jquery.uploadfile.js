@@ -21,7 +21,7 @@
             enctype: "multipart/form-data",
             formData: null,
             returnType: null,
-            allowedTypes: "*",
+            allowedTypes: "png,gif,jpg,jpeg,webp",
             //For list of acceptFiles
             // http://stackoverflow.com/questions/11832930/html-input-file-accept-attribute-file-type-csv
             acceptFiles: "*",
