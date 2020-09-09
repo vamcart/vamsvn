@@ -79,7 +79,7 @@ define('PULL_DOWN_DEFAULT', 'Выберите');
 // javascript messages
 define('JS_ERROR', 'Не указана необходимая информация!\nПожалуйста, исправьте допущенные ошибки.\n\n');
 
-define('JS_REVIEW_TEXT', '* Поле Текст отзыва должно содержать не менее ' . REVIEW_TEXT_MIN_LENGTH . ' символов.\n');
+define('JS_REVIEW_TEXT', '* Поле Ваше мнение должно содержать не менее ' . REVIEW_TEXT_MIN_LENGTH . ' символов.\n');
 define('JS_REVIEW_RATING', '* Вы не указали рейтинг.\n');
 define('JS_REVIEW_CAPTCHA', '* Вы не указали код с картинки.\n');
 define('JS_ERROR_NO_PAYMENT_MODULE_SELECTED', '* Выберите способ оплаты для Вашего заказа.\n');
