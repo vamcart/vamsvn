@@ -242,10 +242,6 @@ dataLayer.push({
 
 }
 
-	$vamTemplate->assign('CAPTCHA_IMG', '<img src="'.vam_href_link(FILENAME_DISPLAY_CAPTCHA).'" alt="captcha" name="captcha" />');
-	$vamTemplate->assign('CAPTCHA_INPUT', vam_draw_input_field('captcha', '', 'size="6" id="captcha" class="form-control"', 'text', false));
-
-
 if (DOWNLOAD_ENABLED == 'true')
 	include (DIR_WS_MODULES.'downloads.php');
 $vamTemplate->assign('language', $_SESSION['language']);

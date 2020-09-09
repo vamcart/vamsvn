@@ -104,26 +104,6 @@ $(function($){
       <textarea name="review" id="review" cols="60" rows="7" class="form-control"></textarea>
     </div>
 
-<script type="text/javascript">
-{literal}
-src="captcha.php";
-function reload(){
-        document.captcha.src='loading.gif';
-        document.captcha.src=src+'?rand='+Math.random();
-}
-{/literal}
-</script>
-
-    <div class="form-group">
-      <label for="captcha-image">{#text_sec_code#}</label>
-      <div>{$CAPTCHA_IMG} <a href="javascript:void(0)" title="{#text_update#}" onclick="reload()">{#text_update#}</a></div>
-    </div>
-
-    <div class="form-group">
-      <label for="captcha">{#text_sec_code_text#}</label>
-      {$CAPTCHA_INPUT}
-    </div>
-
     <button type="submit" class="btn btn-defaul btn-inverse"><i class="fa fa-comment"></i> {$smarty.const.TEXT_SITE_REVIEW_ADD}</button>
 
 		</div>
