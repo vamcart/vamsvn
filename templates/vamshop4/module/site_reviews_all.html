@@ -13,16 +13,16 @@
 <meta itemProp="openingHours" content="Fr 09:00-21:00" />
 <meta itemProp="openingHours" content="Sa 09:00-21:00" />
 <meta itemProp="openingHours" content="Su 09:00-21:00" />
-{if $smarty.const.STORE_FACEBOOK != ''}<meta itemProp="sameAs" content="{$smarty.const.STORE_FACEBOOK}" />{/if}
-{if $smarty.const.STORE_INSTAGRAM != ''}<meta itemProp="sameAs" content="{$smarty.const.STORE_INSTAGRAM}" />{/if}
-{if $smarty.const.STORE_TELEGRAM != ''}<meta itemProp="sameAs" content="{$smarty.const.STORE_TELEGRAM}" />{/if}
-{if $smarty.const.STORE_VK != ''}<meta itemProp="sameAs" content="{$smarty.const.STORE_VK}" />{/if}
-{if $smarty.const.STORE_VIBER != ''}<meta itemProp="sameAs" content="{$smarty.const.STORE_VIBER}" />{/if}
-{if $smarty.const.STORE_TWITTER != ''}<meta itemProp="sameAs" content="{$smarty.const.STORE_TWITTER}" />{/if}
-{if $smarty.const.STORE_YOUTUBE != ''}<meta itemProp="sameAs" content="{$smarty.const.STORE_YOUTUBE}" />{/if}
-{if $smarty.const.STORE_WHATSAPP != ''}<meta itemProp="sameAs" content="{$smarty.const.STORE_WHATSAPP}" />{/if}
-{if $smarty.const.STORE_SKYPE != ''}<meta itemProp="sameAs" content="{$smarty.const.STORE_SKYPE}" />{/if}
-{if $smarty.const.STORE_ICQ != ''}<meta itemProp="sameAs" content="{$smarty.const.STORE_ICQ}" />{/if}
+{if $smarty.const.STORE_FACEBOOK != ''}<meta itemProp="sameAs" content="https://facebook.com/{$smarty.const.STORE_FACEBOOK}" />{/if}
+{if $smarty.const.STORE_INSTAGRAM != ''}<meta itemProp="sameAs" content="https://instagram.com/{$smarty.const.STORE_INSTAGRAM}" />{/if}
+{if $smarty.const.STORE_TELEGRAM != ''}<meta itemProp="sameAs" content="https://t.me/{$smarty.const.STORE_TELEGRAM}" />{/if}
+{if $smarty.const.STORE_VK != ''}<meta itemProp="sameAs" content="https://vk.com/{$smarty.const.STORE_VK}" />{/if}
+{if $smarty.const.STORE_VIBER != ''}<meta itemProp="sameAs" content="viber://chat?number={$smarty.const.STORE_VIBER}" />{/if}
+{if $smarty.const.STORE_TWITTER != ''}<meta itemProp="sameAs" content="https://twitter.com/{$smarty.const.STORE_TWITTER}" />{/if}
+{if $smarty.const.STORE_YOUTUBE != ''}<meta itemProp="sameAs" content="https://youtube.com/{$smarty.const.STORE_YOUTUBE}" />{/if}
+{if $smarty.const.STORE_WHATSAPP != ''}<meta itemProp="sameAs" content="https://wa.me/{$smarty.const.STORE_WHATSAPP}" />{/if}
+{if $smarty.const.STORE_SKYPE != ''}<meta itemProp="sameAs" content="skype:{$smarty.const.STORE_SKYPE}?call" />{/if}
+{if $smarty.const.STORE_ICQ != ''}<meta itemProp="sameAs" content="https://icq.com/{$smarty.const.STORE_ICQ}" />{/if}
 
 <span itemscope="" itemProp="aggregateRating" itemType="http://schema.org/AggregateRating">
 {if $REVIEWS_TOTAL > 0}<meta itemProp="reviewCount" content="{$REVIEWS_TOTAL}"/>{/if}
