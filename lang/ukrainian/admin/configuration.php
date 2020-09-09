@@ -1210,4 +1210,7 @@ define('MAX_DISPLAY_REVIEW_TEXT_DESC' , 'Количество символов, 
 define('DARK_THEME_TITLE' , 'Поддержка тёмной темы оформления');
 define('DARK_THEME_DESC' , 'Если на смартфоне в настройках включена тёмная тема, то и VamShop по умолчанию будет в тёмном цвете, а так же будет переключатель тёмная/светлая тема.');
 
+define('REVIEWS_IMAGES_UPLOAD_TITLE' , 'Разрешить загрузку картинок к отзывам');
+define('REVIEWS_IMAGES_UPLOAD_DESC' , 'Разрешить загрузку картинок к отзывам.');
+
 ?>
