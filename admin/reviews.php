@@ -468,13 +468,13 @@ $img_count++;
         $contents[] = array('text' => '<br />' . TEXT_INFO_REVIEW_AUTHOR . ' ' . $rInfo->customers_name);
         $contents[] = array('text' => TEXT_INFO_REVIEW_RATING . ' ' . vam_image(HTTP_CATALOG_SERVER . DIR_WS_CATALOG . 'templates/'. CURRENT_TEMPLATE .'/img/stars_' . $rInfo->reviews_rating . '.gif'));
         $contents[] = array('text' => TEXT_INFO_REVIEW_READ . ' ' . $rInfo->reviews_read);
-        $contents[] = array('text' => ENTRY_REVIEW . '<br />' . $rInfo->reviews_text);
-        $contents[] = array('text' => $rInfo->reviews_answer);
+        $contents[] = array('text' => '<strong>' . ENTRY_REVIEW . '</strong>' . '<br />' . $rInfo->reviews_text);
+        if ($rInfo->reviews_answer != '') $contents[] = array('text' => '<strong>' . ENTRY_REVIEW_ANSWER . '</strong>' . '<br />' . $rInfo->reviews_answer);
         $contents[] = array('text' => '<br />' . TEXT_INFO_REVIEW_SIZE . ' ' . $rInfo->reviews_text_size . ' bytes');
         $contents[] = array('text' => '<br />' . TEXT_INFO_PRODUCTS_AVERAGE_RATING . ' ' . number_format($rInfo->average_rating, 2) . '%');
         $reviews_images_query = vam_db_query("select ri.* from " . TABLE_REVIEWS_IMAGES . " ri where ri.reviews_id = '" . vam_db_input($rInfo->reviews_id) . "'");
 		  while ($reviews_images = vam_db_fetch_array($reviews_images_query)) {
-        if ($reviews_images['image'] != '')$contents[] = array('align' => 'center', 'text' => '<div style="padding: 10px;">' . vam_review_thumb_image($reviews_images['image'], $pInfo->products_name,100)  . '</div><div style="padding-bottom: 10px;">' . $reviews_images['image'].'</div>');
+        if ($reviews_images['image'] != '') $contents[] = array('align' => 'center', 'text' => '<div style="padding: 10px;">' . vam_review_thumb_image($reviews_images['image'], $pInfo->products_name,100)  . '</div><div style="padding-bottom: 10px;">' . $reviews_images['image'].'</div>');
         }
         }
         break;
