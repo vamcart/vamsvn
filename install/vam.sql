@@ -4225,6 +4225,12 @@ CREATE TABLE `site_reviews_description` (
   PRIMARY KEY (reviews_id, languages_id)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
+INSERT INTO `site_reviews` (`reviews_id`, `customers_id`, `customers_name`, `reviews_rating`, `date_added`, `last_modified`, `reviews_read`, `likes`, `dislikes`) VALUES
+(1, 1, 'Alex', 5, '2020-06-03 13:59:34', NULL, 0, 0, 0);
+
+INSERT INTO `site_reviews_description` (`reviews_id`, `languages_id`, `reviews_text`) VALUES
+(1, 1, ':) :) :) :)');
+
 DROP TABLE IF EXISTS products_bundles;
 CREATE TABLE `products_bundles` (
   `bundle_id` int(11) NOT NULL,
