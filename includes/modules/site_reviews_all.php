@@ -77,6 +77,29 @@ if (!is_file($avatar)) $avatar = false;
    $module->assign('REVIEWS_ALL_LINK', vam_href_link(FILENAME_SITE_REVIEWS));
    $module->assign('REVIEWS_TOTAL', vam_db_num_rows(vamDBquery($reviews_query_raw,true)));
 	
+	$reviews_rating_query = vamDBquery("select count(*) as total, TRUNCATE(SUM(reviews_rating),2) as rating from ".TABLE_SITE_REVIEWS." r, ".TABLE_SITE_REVIEWS_DESCRIPTION." rd where r.reviews_id = rd.reviews_id and rd.languages_id = '".$_SESSION['languages_id']."'");
+	$reviews_rating = vam_db_fetch_array($reviews_rating_query, true);
+	if ($reviews_rating['total'] > 0 && $reviews_rating['rating'] > 0) {
+	$reviews_rating_total = $reviews_rating['rating']/$reviews_rating['total'];
+	}	
+
+   $module->assign('REVIEWS_RATING_VALUE', $reviews_rating_total);
+
+	$reviews_rating_min_query = vamDBquery("select min(reviews_rating) as min_rating from ".TABLE_SITE_REVIEWS." r");
+	$reviews_rating_min = vam_db_fetch_array($reviews_rating_min_query,true);
+	
+   $module->assign('REVIEWS_RATING_MIN', $reviews_rating_min['min_rating']);	
+
+	$reviews_rating_max_query = vamDBquery("select max(reviews_rating) as max_rating from ".TABLE_SITE_REVIEWS." r");
+	$reviews_rating_max = vam_db_fetch_array($reviews_rating_max_query,true);
+	
+   $module->assign('REVIEWS_RATING_MAX', $reviews_rating_max['max_rating']);	
+
+	$reviews_rating_sum_query = vamDBquery("select sum(reviews_rating) as sum_rating from ".TABLE_SITE_REVIEWS." r");
+	$reviews_rating_sum = vam_db_fetch_array($reviews_rating_sum_query, true);
+	
+   $module->assign('REVIEWS_RATING_TOTAL', $reviews_rating_sum['sum_rating']);	
+   	
 	// set cache ID
 	 if (!CacheCheck()) {
 		$module->caching = 0;
