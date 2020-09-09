@@ -1399,6 +1399,12 @@ header .input-group-text,
 
 /* Star Rating */
 
+#product_reviews_write .error,
+.star-rating .error {
+  background: var(--button-background-color);
+  color: var(--button-text-color-hover);
+}
+
 .rating-block {
   width: 100%;
 }
