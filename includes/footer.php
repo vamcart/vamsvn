@@ -136,7 +136,7 @@ function popupWindow(url) {
 //--></script>
 <?php
 }
-if (strstr($PHP_SELF, FILENAME_PRODUCT_REVIEWS_WRITE )) {
+if (strstr($PHP_SELF, FILENAME_PRODUCT_REVIEWS_WRITE ) or strstr($PHP_SELF, FILENAME_CHECKOUT_SUCCESS )) {
 ?>
 <script src="jscript/jquery/plugins/validate/jquery.validate.pack.js"></script>
 <script src="jscript/modified.js"></script>
