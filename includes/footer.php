@@ -138,37 +138,46 @@ function popupWindow(url) {
 }
 if (strstr($PHP_SELF, FILENAME_PRODUCT_REVIEWS_WRITE )) {
 ?>
+<script src="jscript/jquery/plugins/validate/jquery.validate.pack.js"></script>
+<script src="jscript/modified.js"></script>
 <script><!--
-function checkForm() {
-  var error = 0;
-  var error_message = unescape("<?php echo vam_js_lang(JS_ERROR); ?>");
 
-  var review = document.getElementById("product_reviews_write").review.value;
+$(document).ready(function() {
 
-  if (review.length < <?php echo REVIEW_TEXT_MIN_LENGTH; ?>) {
-    error_message = error_message + unescape("<?php echo vam_js_lang(JS_REVIEW_TEXT); ?>");
-    error = 1;
-  }
+	// validate form on keyup and submit
+	$("#product_reviews_write").validate({
 
-  var captcha = document.getElementById("product_reviews_write").captcha.value;
+			errorElement: "div",
+			errorContainer: $(".error"),
+			errorPlacement: function(error, element) {
+				error.appendTo(element.parent());
+			},
 
-  if (captcha.length < 4) {
-    error_message = error_message + unescape("<?php echo vam_js_lang(JS_REVIEW_CAPTCHA); ?>");
-    error = 1;
-  }
+		rules: {
+			rating: "required",
+			review: {
+				required: true,
+				minlength: <?php echo REVIEW_TEXT_MIN_LENGTH; ?>
+			},
+			captcha: {
+				required: true
+			}
+		},
+		messages: {
+			rating: "<?php echo JS_REVIEW_RATING; ?>",
+			review: {
+				required: "<?php echo JS_REVIEW_TEXT; ?>",
+				minlength: "<?php echo JS_REVIEW_TEXT; ?>"
+			},
+			captcha: {
+				required: "<?php echo JS_REVIEW_CAPTCHA; ?>",
+				minlength: "<?php echo JS_REVIEW_CAPTCHA; ?>"
+			}
+		}
+	});
+	
+});
 
-  if (!((document.getElementById("product_reviews_write").rating[0].checked) || (document.getElementById("product_reviews_write").rating[1].checked) || (document.getElementById("product_reviews_write").rating[2].checked) || (document.getElementById("product_reviews_write").rating[3].checked) || (document.getElementById("product_reviews_write").rating[4].checked))) {
-    error_message = error_message + unescape("<?php echo vam_js_lang(JS_REVIEW_RATING); ?>");
-    error = 1;
-  }
-
-  if (error == 1) {
-    alert(error_message);
-    return false;
-  } else {
-    return true;
-  }
-}
 //--></script>
 <?php
 }

@@ -179,7 +179,7 @@ if (!$product->isProduct()) {
 	vam_draw_radio_field('rating', '1', '', 'id="star1" class="star-rating"').'<label for="star1" title="'.TEXT_STAR_1.'"><span>'.RATING_STAR_1.'</span></label>'
 	
 	);
-	$vamTemplate->assign('FORM_ACTION', vam_draw_form('product_reviews_write', vam_href_link(FILENAME_PRODUCT_REVIEWS_WRITE, 'action=process&'.vam_product_link($product->data['products_id'],$product->data['products_name'])), 'post', 'enctype="multipart/form-data" cf="true" onsubmit="return checkForm();"'));
+	$vamTemplate->assign('FORM_ACTION', vam_draw_form('product_reviews_write', vam_href_link(FILENAME_PRODUCT_REVIEWS_WRITE, 'action=process&'.vam_product_link($product->data['products_id'],$product->data['products_name'])), 'post', 'enctype="multipart/form-data" cf="true"'));
 	$vamTemplate->assign('BUTTON_BACK', '<a class="button" href="javascript:history.back(1)">'.vam_image_button('back.png', IMAGE_BUTTON_BACK).'</a>');
 	$vamTemplate->assign('BUTTON_SUBMIT', vam_image_submit('submit.png',  IMAGE_BUTTON_CONTINUE).vam_draw_hidden_field('get_params', $get_params));
 	$vamTemplate->assign('CAPTCHA_IMG', '<img src="'.vam_href_link(FILENAME_DISPLAY_CAPTCHA).'" alt="captcha" name="captcha" />');
