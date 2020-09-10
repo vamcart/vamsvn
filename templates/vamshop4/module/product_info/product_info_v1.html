@@ -79,10 +79,16 @@
 <ul class="list-inline">
 <li class="list-inline-item label-rating"><span class="text-muted"><i class="far fa-comments"></i> <a href="{$PRODUCTS_REVIEWS_URL}">{$smarty.const.TEXT_TOTAL_REVIEWS}</a>: {$REVIEWS_TOTAL}</span></li>
 <li class="list-inline-item">{$STAR_RATING} <span class="text-muted pr-2" title="{$smarty.const.TEXT_REVIEWS_RATING}">{$REVIEWS_RATING|number_format:1}</span></li>
-<li class="list-inline-item"><span class="text-muted"><i class="far fa-question-circle"></i> <a class="iframe" href="{$ASK_PRODUCT_QUESTION_LINK}">{#question#}</a></span></li>
 </ul>
 </div>
 {/if}
+
+<div class="rating-wrap small">
+<ul class="list-inline">
+<li class="list-inline-item"><span class="text-muted"><i class="fas fa-paper-plane"></i> <a class="popup-form" href="{$smarty.const.FILENAME_PRODUCT_REVIEWS_WRITE_POPUP}?products_id={$smarty.get.products_id}">{$smarty.const.TEXT_SITE_REVIEW_ADD}</a></span></li>
+<li class="list-inline-item"><span class="text-muted"><i class="far fa-question-circle"></i> <a class="iframe" href="{$ASK_PRODUCT_QUESTION_LINK}">{#question#}</a></span></li>
+</ul>
+</div>
 
 <ul class="list-inline small">
 {if $PRODUCTS_MODEL != ''}

@@ -104,13 +104,14 @@ if (file_exists(DIR_FS_CATALOG.'jscript/jquery/plugins/colorbox/i18n/jquery.colo
 $(document).ready(function(){
   $(".lightbox").colorbox({rel:"lightbox", title: false});
   $(".iframe").colorbox({iframe:true, width:"70%", height:"80%"});
+  $(".popup-form").colorbox({iframe:false,scrolling:true});
 });
 </script>
 <?php
  }
 ?>
 <?php
-if (strstr($PHP_SELF, FILENAME_PRODUCT_REVIEWS_WRITE)) {
+if (strstr($PHP_SELF, FILENAME_PRODUCT_REVIEWS_WRITE) or strstr($PHP_SELF, FILENAME_PRODUCT_REVIEWS_WRITE_POPUP)) {
 ?>
 <script src="jscript/jquery/plugins/uploadfile/jquery.uploadfile.js"></script>
 <?php } ?>
