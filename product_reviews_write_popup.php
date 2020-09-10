@@ -50,17 +50,17 @@ if ($_SESSION['customers_status']['customers_status_write_reviews'] == 0) {
 		}
 		
 if (isset ($_GET['action']) && $_GET['action'] == 'process' && $spam_flag == false) {
-	if (is_object($product) && $product->isProduct()) { // We got to the process but it is an illegal product, don't write
+	//if (is_object($product) && $product->isProduct()) { // We got to the process but it is an illegal product, don't write
 
     $rating = vam_db_prepare_input($_POST['rating']);
     $review = vam_db_prepare_input($_POST['review']);
 
     $error = false;
-    
-    if ($_POST['captcha'] == '' or $_POST['captcha'] != $_SESSION['vvcode']) {
-      $error = true;
-	   $vamTemplate->assign('captcha_error', ENTRY_CAPTCHA_ERROR);
-    }
+
+    //if ($_POST['captcha'] == '' or $_POST['captcha'] != $_SESSION['vvcode']) {
+      //$error = true;
+	   //$vamTemplate->assign('captcha_error', ENTRY_CAPTCHA_ERROR);
+    //}
 
     if (strlen($review) < REVIEW_TEXT_MIN_LENGTH) {
       $error = true;
@@ -141,7 +141,7 @@ if (isset ($_GET['action']) && $_GET['action'] == 'process' && $spam_flag == fal
 
 	vam_redirect(vam_href_link(FILENAME_PRODUCT_INFO, vam_product_link($product->data['products_id'], $product->data['products_name'])).'#reviews');
 	}
- }
+ //}
 }
 
 // lets retrieve all $HTTP_GET_VARS keys and values..
@@ -172,18 +172,18 @@ if (!$product->isProduct()) {
 	$vamTemplate->assign('INPUT_TEXT', vam_draw_textarea_field('review', 'soft', 60, 7, $_POST['review'], 'class="form-control" id="review"', false));
 	$vamTemplate->assign('INPUT_RATING', 
 	
-	vam_draw_radio_field('rating', '5', '', 'id="star5" class="star-rating"').'<label for="star5" title="'.RATING_STAR_5.'">'.TEXT_STAR_5.'</label>' .
-	vam_draw_radio_field('rating', '4', '', 'id="star4" class="star-rating"').'<label for="star4" title="'.RATING_STAR_4.'">'.TEXT_STAR_4.'</label>'.
-	vam_draw_radio_field('rating', '3', '', 'id="star3" class="star-rating"').'<label for="star3" title="'.RATING_STAR_3.'">'.TEXT_STAR_3.'</label>'.
-	vam_draw_radio_field('rating', '2', '', 'id="star2" class="star-rating"').'<label for="star2" title="'.RATING_STAR_2.'">'.TEXT_STAR_2.'</label>'.
-	vam_draw_radio_field('rating', '1', '', 'id="star1" class="star-rating"').'<label for="star1" title="'.RATING_STAR_1.'">'.TEXT_STAR_1.'</label>'
+	vam_draw_radio_field('rating', '5', '', 'id="star5" class="star-rating"').'<label for="star5" title="'.TEXT_STAR_5.'"><span>'.RATING_STAR_5.'</span></label>' .
+	vam_draw_radio_field('rating', '4', '', 'id="star4" class="star-rating"').'<label for="star4" title="'.TEXT_STAR_4.'"><span>'.RATING_STAR_4.'</span></label>'.
+	vam_draw_radio_field('rating', '3', '', 'id="star3" class="star-rating"').'<label for="star3" title="'.TEXT_STAR_3.'"><span>'.RATING_STAR_3.'</span></label>'.
+	vam_draw_radio_field('rating', '2', '', 'id="star2" class="star-rating"').'<label for="star2" title="'.TEXT_STAR_2.'"><span>'.RATING_STAR_2.'</span></label>'.
+	vam_draw_radio_field('rating', '1', '', 'id="star1" class="star-rating"').'<label for="star1" title="'.TEXT_STAR_1.'"><span>'.RATING_STAR_1.'</span></label>'
 	
 	);
-	$vamTemplate->assign('FORM_ACTION', vam_draw_form('product_reviews_write', vam_href_link(FILENAME_PRODUCT_REVIEWS_WRITE_POPUP, 'action=process&'.vam_product_link($product->data['products_id'],$product->data['products_name'])), 'post', 'enctype="multipart/form-data" cf="true" onsubmit="return checkForm();"'));
+	$vamTemplate->assign('FORM_ACTION', vam_draw_form('product_reviews_write', vam_href_link(FILENAME_PRODUCT_REVIEWS_WRITE_POPUP_POPUP_POPUP, 'action=process&'.vam_product_link($product->data['products_id'],$product->data['products_name'])), 'post', 'enctype="multipart/form-data" cf="true"'));
 	$vamTemplate->assign('BUTTON_BACK', '<a class="button" href="javascript:history.back(1)">'.vam_image_button('back.png', IMAGE_BUTTON_BACK).'</a>');
 	$vamTemplate->assign('BUTTON_SUBMIT', vam_image_submit('submit.png',  IMAGE_BUTTON_CONTINUE).vam_draw_hidden_field('get_params', $get_params));
 	$vamTemplate->assign('CAPTCHA_IMG', '<img src="'.vam_href_link(FILENAME_DISPLAY_CAPTCHA).'" alt="captcha" name="captcha" />');
-	$vamTemplate->assign('CAPTCHA_INPUT', vam_draw_input_field('captcha', '', 'size="6" id="captcha" class="form-control"', 'text', false));
+	$vamTemplate->assign('CAPTCHA_INPUT', vam_draw_input_field('captcha', '', 'size="6" id="captcha"', 'text', false));
 	$vamTemplate->assign('FORM_END', '</form>');
 	
 }
@@ -195,7 +195,7 @@ $vamTemplate->assign('REVIEWS_ALL_LINK', vam_href_link(FILENAME_REVIEWS));
 $vamTemplate->assign('REVIEWS_TOTAL', vam_db_num_rows($reviews_query));
 
 $vamTemplate->assign('BUTTON_BACK', '<a class="btn btn-inverse" href="'.vam_href_link(FILENAME_PRODUCT_INFO, $get_params_back).'">'.vam_image_button('back.png', IMAGE_BUTTON_BACK).'</a>');
-$vamTemplate->assign('BUTTON_WRITE', '<a class="btn btn-inverse btn-block" href="'.vam_href_link(FILENAME_PRODUCT_REVIEWS_WRITE_POPUP, $get_params).'">'.vam_image_button('add.png', IMAGE_BUTTON_WRITE_REVIEW).'</a>');
+$vamTemplate->assign('BUTTON_WRITE', '<a class="btn btn-inverse btn-block" href="'.vam_href_link(FILENAME_PRODUCT_REVIEWS_WRITE_POPUP_POPUP_POPUP, $get_params).'">'.vam_image_button('add.png', IMAGE_BUTTON_WRITE_REVIEW).'</a>');
 
 if ($_GET['products_id'] > 0) {
 
@@ -357,7 +357,7 @@ $vamTemplate->assign('language', $_SESSION['language']);
 $vamTemplate->assign('main_content', $main_content);
 $vamTemplate->caching = 0;
 if (!defined(RM)) $vamTemplate->loadFilter('output', 'note');
-$template = (file_exists('templates/'.CURRENT_TEMPLATE.'/'.FILENAME_PRODUCT_REVIEWS_WRITE_POPUP.'.html') ? CURRENT_TEMPLATE.'/'.FILENAME_PRODUCT_REVIEWS_WRITE_POPUP.'.html' : CURRENT_TEMPLATE.'/index.html');
+$template = (file_exists('templates/'.CURRENT_TEMPLATE.'/'.FILENAME_PRODUCT_REVIEWS_WRITE_POPUP_POPUP_POPUP.'.html') ? CURRENT_TEMPLATE.'/'.FILENAME_PRODUCT_REVIEWS_WRITE_POPUP_POPUP_POPUP.'.html' : CURRENT_TEMPLATE.'/index.html');
 $vamTemplate->display($template);
 include ('includes/application_bottom.php');
 ?>
