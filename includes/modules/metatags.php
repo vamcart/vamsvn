@@ -134,7 +134,7 @@ global $filter_active, $filter_active_description;
 
 ?>
 <title><?php echo $categories_meta['categories_meta_title'] . $filter_active.$mName . $page; ?></title>
-<meta name="description" content="<?php echo $categories_meta['categories_meta_title'].$filter_active.$filter_active_description.$categories_meta['categories_meta_description'] . $mDesc; ?>" />
+<meta name="description" content="<?php echo $categories_meta['categories_meta_title'].$filter_active.$filter_active_description.($categories_meta['categories_meta_description'] != '' ? ' ' . $categories_meta['categories_meta_description'] : null) . $mDesc; ?>" />
 <meta name="keywords" content="<?php echo $categories_meta['categories_meta_keywords'] . $mKey; ?>" />
 <meta property="og:title" content="<?php echo $categories_meta['categories_meta_title'] . $filter.$mName . $page; ?>" />
 <meta property="og:description" content="<?php echo $categories_meta['categories_meta_title'].$filter_active.$filter_active_description . $mDesc; ?>" />
