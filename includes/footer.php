@@ -158,21 +158,21 @@ $(document).ready(function() {
 			review: {
 				required: true,
 				minlength: <?php echo REVIEW_TEXT_MIN_LENGTH; ?>
-			},
-			captcha: {
-				required: true
 			}
+			//captcha: {
+				//required: true
+			//}
 		},
 		messages: {
 			rating: "<?php echo JS_REVIEW_RATING; ?>",
 			review: {
 				required: "<?php echo JS_REVIEW_TEXT; ?>",
 				minlength: "<?php echo JS_REVIEW_TEXT; ?>"
-			},
-			captcha: {
-				required: "<?php echo JS_REVIEW_CAPTCHA; ?>",
-				minlength: "<?php echo JS_REVIEW_CAPTCHA; ?>"
 			}
+			//captcha: {
+				//required: "<?php echo JS_REVIEW_CAPTCHA; ?>",
+				//minlength: "<?php echo JS_REVIEW_CAPTCHA; ?>"
+			//}
 		}
 	});
 	
