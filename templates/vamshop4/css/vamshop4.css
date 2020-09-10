@@ -1445,6 +1445,21 @@ header .input-group-text,
     /*text-shadow:1px 1px #bbb, 2px 2px #666, .1em .1em .2em rgba(0,0,0,.5);*/
 }
 
+@media (max-width: 768px) {
+	
+.star-rating:not(:checked) > label {
+	width: 50px;
+}	
+
+.star-rating label span {
+  display: inline-block;
+  font-size: 10px;
+  color: var(--color);
+}
+
+}	
+
+
 .star-rating:not(:checked) > label:before {
     content: "\f005";
     font-weight: 900;
