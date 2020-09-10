@@ -42,6 +42,7 @@ Disallow: /product_notifications.php
 Disallow: /product_compare.php
 Disallow: /product_reviews_info.php
 Disallow: /product_reviews_write.php
+Disallow: /product_reviews_write_popup.php
 Disallow: /article_reviews_write.php
 Disallow: /author_reviews_write.php
 Disallow: /site_reviews_write.php
