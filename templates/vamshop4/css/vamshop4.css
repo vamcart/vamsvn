@@ -874,6 +874,13 @@ li.level3 {
 .carousel-indicators li {
     margin-left: 0;
     margin-right: 0;
+    width: 50px !important;
+    height: 5px !important;
+    background-color: var(--button-border-color) !important;
+}
+
+.carousel-indicators li.active {
+    background-color: var(--nav-tab-border-color-active) !important;
 }
 
 .mainpage-tabs .carousel-indicators h3 {
