@@ -1,6 +1,6 @@
 <?php
 /* -----------------------------------------------------------------------------------------
-   $Id: order_details_cart.php 1281 2007-02-06 20:41:56 VaM $   
+   $Id: order_details_wishlist.php 1281 2007-02-06 20:41:56 VaM $   
 
    VaM Shop - open source ecommerce solution
    http://vamshop.ru
@@ -108,7 +108,7 @@ for ($i = 0, $n = sizeof($productss[$key]['products']); $i < $n; $i ++) {
 	'PRODUCTS_CATEGORIES_ID' => $productss[$key]['products'][$i]['categories_id'], 
 	'PRODUCTS_CATEGORIES_NAME' => $productss[$key]['products'][$i]['categories_name'], 
 	'PRODUCTS_CATEGORIES_SORT_ORDER' => $productss[$key]['products'][$i]['categories_sort_order'], 
-	'PRODUCTS_QTY' => vam_draw_input_field('cart_quantity[]', $productss[$key]['products'][$i]['quantity'], 'size="2" id="cart" class="form-control text-center item-quantity input-small"').vam_draw_hidden_field('products_id[]', $productss[$key]['products'][$i]['id'],'class="ajax_qty"').vam_draw_hidden_field('old_qty[]', $productss[$key]['products'][$i]['quantity']), 
+	'PRODUCTS_QTY' => vam_draw_input_field('wishlist_quantity[]', $productss[$key]['products'][$i]['quantity'], 'size="2" id="wishlist" class="form-control text-center item-quantity input-small"').vam_draw_hidden_field('products_id[]', $productss[$key]['products'][$i]['id'],'class="ajax_qty"').vam_draw_hidden_field('old_qty[]', $productss[$key]['products'][$i]['quantity']), 
 	'PRODUCTS_STOCK' => $productss[$key]['products'][$i]['stock'],
 	'PRODUCTS_QUANTITY' => $productss[$key]['products'][$i]['quantity'],
 	'PRODUCTS_MODEL' => $productss[$key]['products'][$i]['model'],
@@ -116,9 +116,9 @@ for ($i = 0, $n = sizeof($productss[$key]['products']); $i < $n; $i ++) {
 	'PRODUCTS_TAX' => number_format($productss[$key]['products'][$i]['tax'], TAX_DECIMAL_PLACES), 
 	'PRODUCTS_IMAGE' => $image, 
 	'IMAGE_ALT' => $productss[$key]['products'][$i]['name'], 
-	'BOX_DELETE' => '<button class="button btn btn-outline-secondary add-to-cart cart_delete" type="button" value="'.$productss[$key]['products'][$i]['id'].'"><span>X</span></button>', 
-   'PLUS' => '<button class="button btn btn-outline-secondary cart_change cart_plus" type="button" value="1"><span>+</span></button>',
-   'MINUS' => '<button class="button btn btn-outline-secondary cart_change cart_minus" type="button" value="-1"><span>-</span></button>',
+	'BOX_DELETE' => '<button class="button btn btn-outline-secondary add-to-wishlist wishlist_delete" type="button" value="'.$productss[$key]['products'][$i]['id'].'"><span>X</span></button>', 
+   'PLUS' => '<button class="button btn btn-outline-secondary wishlist_change wishlist_plus" type="button" value="1"><span>+</span></button>',
+   'MINUS' => '<button class="button btn btn-outline-secondary wishlist_change wishlist_minus" type="button" value="-1"><span>-</span></button>',
 	'PRODUCTS_LINK' => vam_href_link(FILENAME_PRODUCT_INFO, vam_product_link($productss[$key]['products'][$i]['id'], $productss[$key]['products'][$i]['name'])), 
 	'PRODUCTS_PRICE' => $vamPrice->Format($productss[$key]['products'][$i]['price'] * $productss[$key]['products'][$i]['quantity'], true), 
 	'PRODUCTS_SINGLE_PRICE' =>$vamPrice->Format($productss[$key]['products'][$i]['price'], true), 
@@ -161,10 +161,10 @@ $total_subtotal_text = '';
 $total_subtotal_value = '';
 $total_discount_text = '';
 $total_discount_value = '';
-$total =$_SESSION['cart']->show_total();
+$total =$_SESSION['wishlist']->show_total();
 if ($_SESSION['customers_status']['customers_status_ot_discount_flag'] == '1' && $_SESSION['customers_status']['customers_status_ot_discount'] != '0.00') {
 	if ($_SESSION['customers_status']['customers_status_show_price_tax'] == 0 && $_SESSION['customers_status']['customers_status_add_tax_ot'] == 1) {
-		$price = $total-$_SESSION['cart']->show_tax(false);
+		$price = $total-$_SESSION['wishlist']->show_tax(false);
 	} else {
 		$price = $total;
 	}
@@ -194,7 +194,7 @@ if (SHOW_SHIPPING == 'true') {
 	$module->assign('SHIPPING_INFO', ' '.SHIPPING_EXCL.'<a href="javascript:newWin=void(window.open(\''.vam_href_link(FILENAME_POPUP_CONTENT, 'coID='.SHIPPING_INFOS).'\', \'popup\', \'toolbar=0, width=640, height=600\'))"> '.SHIPPING_COSTS.'</a>');
 }
 
-//if (!$ajax_cart) {
+//if (!$ajax_wishlist) {
 //$i = 0;
 //$max = count($_SESSION['tracking']['products_history']);
 
@@ -214,11 +214,11 @@ if (SHOW_SHIPPING == 'true') {
 //$module->assign('products_history', $products_history);
 //}
 
-$module->assign('UST_CONTENT', $_SESSION['cart']->show_tax());
-$module->assign('UST_CONTENT_NAME', $_SESSION['cart']->show_tax_name());
-$module->assign('UST_CONTENT_VALUE', $_SESSION['cart']->show_tax_value());
+$module->assign('UST_CONTENT', $_SESSION['wishlist']->show_tax());
+$module->assign('UST_CONTENT_NAME', $_SESSION['wishlist']->show_tax_name());
+$module->assign('UST_CONTENT_VALUE', $_SESSION['wishlist']->show_tax_value());
 $module->assign('TOTAL_CONTENT', $total_content);
-$module->assign('TOTAL_QUANTITY', $_SESSION['cart']->count_contents());
+$module->assign('TOTAL_QUANTITY', $_SESSION['wishlist']->count_contents());
 $module->assign('TOTAL_NAME', $total_content_name);
 $module->assign('TOTAL_VALUE', $total_content_value);
 $module->assign('TOTAL_SUBTOTAL_NAME', $total_subtotal_name);

@@ -1,5 +1,5 @@
-{config_load file="$language/lang_$language.conf" section="shopping_cart"}
-<div id="ajax_cart">
+{config_load file="$language/lang_$language.conf" section="wishlist"}
+<div id="ajax_wishlist">
 
 <div class="page">
 <div class="pageСontent">
@@ -11,7 +11,7 @@
 </div>
 {/if}
 
-{if $cart_empty==true}
+{if $wishlist_empty==true}
 
 <p>
 {#text_empty#}
@@ -30,7 +30,7 @@
 
 <div class="clear"></div>
 <div class="navigation">
-{if $smarty.const.AJAX_CART == 'false'}{$BUTTON_RELOAD}{/if}
+{if $smarty.const.AJAX_WISHLIST == 'false'}{$BUTTON_RELOAD}{/if}
 </div>
 <div class="clear"></div>
 {$FORM_END}

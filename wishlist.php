@@ -1,6 +1,6 @@
 <?php
 /* -----------------------------------------------------------------------------------------
-   $Id: shopping_cart.php 1299 2007-02-06 19:20:03 VaM $
+   $Id: wishlist.php 1299 2007-02-06 19:20:03 VaM $
 
    VaM Shop - open source ecommerce solution
    http://vamshop.ru
@@ -10,9 +10,9 @@
    -----------------------------------------------------------------------------------------
    based on: 
    (c) 2000-2001 The Exchange Project  (earlier name of osCommerce)
-   (c) 2002-2003 osCommerce(shopping_cart.php,v 1.72 2003/02/14); www.oscommerce.com 
-   (c) 2003	 nextcommerce (shopping_cart.php,v 1.24 2003/08/17); www.nextcommerce.org
-   (c) 2004	 xt:Commerce (shopping_cart.php,v 1.24 2003/08/17); xt-commerce.com
+   (c) 2002-2003 osCommerce(wishlist.php,v 1.72 2003/02/14); www.oscommerce.com 
+   (c) 2003	 nextcommerce (wishlist.php,v 1.24 2003/08/17); www.nextcommerce.org
+   (c) 2004	 xt:Commerce (wishlist.php,v 1.24 2003/08/17); xt-commerce.com
 
    Released under the GNU General Public License 
    --------------------------------------------------------------
@@ -21,8 +21,8 @@
 
    Released under the GNU General Public License
    ---------------------------------------------------------------------------------------*/
-$cart_empty = false;
-if (!isset($ajax_cart)) require ("includes/application_top.php");
+$wishlist_empty = false;
+if (!isset($ajax_wishlist)) require ("includes/application_top.php");
 
 if (isset ($_SESSION['customer_id']))
 {
@@ -31,7 +31,7 @@ $_SESSION['nologin'] = false;
 $_SESSION['nologin'] = true;
 }
 
-if (!$ajax_cart) {
+if (!$ajax_wishlist) {
 // create template elements
 $vamTemplate = new vamTemplate;
 require (DIR_FS_CATALOG.'templates/'.CURRENT_TEMPLATE.'/source/boxes.php');
@@ -43,24 +43,22 @@ require_once (DIR_FS_INC.'vam_recalculate_price.inc.php');
 require_once (DIR_FS_INC.'get_cross_sell_name.inc.php');
 require_once (DIR_FS_INC.'vam_get_products_stock.inc.php');
 
-if (!$ajax_cart) {
-$breadcrumb->add(NAVBAR_TITLE_SHOPPING_CART);
+if (!$ajax_wishlist) {
+$breadcrumb->add(NAVBAR_TITLE_WISHLIST);
 require (DIR_WS_INCLUDES.'header.php');
 }
-//if (ACTIVATE_GIFT_SYSTEM == 'true')
-//include (DIR_WS_MODULES.'gift_cart.php');
 
-if ($_SESSION['cart']->count_contents() > 0) {
+if ($_SESSION['wishlist']->count_contents() > 0) {
 
-  if($_SESSION['error_cart_msg'] != 0)
-  $vamTemplate->assign('info_message', $_SESSION['error_cart_msg']);
+  if($_SESSION['error_wishlist_msg'] != 0)
+  $vamTemplate->assign('info_message', $_SESSION['error_wishlist_msg']);
 
-	$vamTemplate->assign('FORM_ACTION', vam_draw_form('cart_quantity', vam_href_link(FILENAME_SHOPPING_CART, 'action=update_product')));
+	$vamTemplate->assign('FORM_ACTION', vam_draw_form('wishlist_quantity', vam_href_link(FILENAME_WISHLIST, 'action=update_product')));
 	$vamTemplate->assign('FORM_END', '</form>');
 	$hidden_options = '';
 	$_SESSION['any_out_of_stock'] = 0;
 
-	$products = $_SESSION['cart']->get_products();
+	$products = $_SESSION['wishlist']->get_products();
 	sort($products);
 	for ($i = 0, $n = sizeof($products); $i < $n; $i ++) {
 		// Push all attributes information in an array
@@ -151,12 +149,9 @@ if ($_SESSION['cart']->count_contents() > 0) {
 
 
 	$vamTemplate->assign('HIDDEN_OPTIONS', $hidden_options);
-	require (DIR_WS_MODULES.'order_details_cart.php');
-	//if (!$ajax_cart) {
-	include (DIR_WS_MODULES.'cross_selling_cart.php');
-	//}
+	require (DIR_WS_MODULES.FILENAME_WISHLIST_DETAILS);
 
-if (!$ajax_cart) {
+if (!$ajax_wishlist) {
 $i = 0;
 $max = count($_SESSION['tracking']['products_history']);
 
@@ -196,7 +191,7 @@ $_SESSION['allow_checkout'] = 'true';
 	}
 // minimum/maximum order value
 $checkout = true;
-$total =$_SESSION['cart']->show_total();
+$total =$_SESSION['wishlist']->show_total();
 if ($total > 0 ) {
  if ($total < $_SESSION['customers_status']['customers_status_min_order'] ) {
   $_SESSION['allow_checkout'] = 'false';
@@ -223,7 +218,7 @@ if ($total > 0 ) {
 }
 	if ($_GET['info_message'])
 		$vamTemplate->assign('info_message', str_replace('+', ' ', htmlspecialchars($_GET['info_message'])));
-	$vamTemplate->assign('BUTTON_RELOAD', vam_image_submit('update.png', IMAGE_BUTTON_UPDATE_CART));
+	$vamTemplate->assign('BUTTON_RELOAD', vam_image_submit('update.png', IMAGE_BUTTON_UPDATE_WISHLIST));
 	if (SMART_CHECKOUT == 'true') {
 	$vamTemplate->assign('BUTTON_CHECKOUT', '<a class="btn btn-inverse checkout" href="'.vam_href_link(FILENAME_CHECKOUT, '', 'SSL').'">'.vam_image_button('checkout.png', IMAGE_BUTTON_CHECKOUT).'</a>');		
 	} else {
@@ -231,25 +226,25 @@ if ($total > 0 ) {
 	}
 } else {
 
-	// empty cart
-	$cart_empty = true;
+	// empty wishlist
+	$wishlist_empty = true;
 	if ($_GET['info_message'])
 		$vamTemplate->assign('info_message', str_replace('+', ' ', htmlspecialchars($_GET['info_message'])));
-	$vamTemplate->assign('cart_empty', $cart_empty);
+	$vamTemplate->assign('wishlist_empty', $wishlist_empty);
 	$vamTemplate->assign('BUTTON_CONTINUE', '<a class="button" href="'.vam_href_link(FILENAME_DEFAULT).'">'.vam_image_button('submit.png', IMAGE_BUTTON_CONTINUE).'</a>');
 
 }
 
 $vamTemplate->assign('language', $_SESSION['language']);
 $vamTemplate->caching = 0;
-$main_content = $vamTemplate->fetch(CURRENT_TEMPLATE.'/module/shopping_cart.html');
+$main_content = $vamTemplate->fetch(CURRENT_TEMPLATE.'/module/wishlist.html');
 $vamTemplate->assign('main_content', $main_content);
 
-if (!$ajax_cart)  {
+if (!$ajax_wishlist)  {
 $vamTemplate->assign('language', $_SESSION['language']);
 $vamTemplate->caching = 0;
 if (!defined(RM)) $vamTemplate->loadFilter('output', 'note');
-$template = (file_exists('templates/'.CURRENT_TEMPLATE.'/'.FILENAME_SHOPPING_CART.'.html') ? CURRENT_TEMPLATE.'/'.FILENAME_SHOPPING_CART.'.html' : CURRENT_TEMPLATE.'/index.html');
+$template = (file_exists('templates/'.CURRENT_TEMPLATE.'/'.FILENAME_WISHLIST.'.html') ? CURRENT_TEMPLATE.'/'.FILENAME_WISHLIST.'.html' : CURRENT_TEMPLATE.'/index.html');
 $vamTemplate->display($template);
 include ('includes/application_bottom.php');
 }
