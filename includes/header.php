@@ -163,6 +163,10 @@ if (strstr($PHP_SELF, FILENAME_SHOPPING_CART)) {
 $vamTemplate->assign('cart_current',' class="current"');
 }
 
+if (strstr($PHP_SELF, FILENAME_WISHLIST)) {
+$vamTemplate->assign('wishlist_current',' class="current"');
+}
+
 if (strstr($PHP_SELF, FILENAME_CHECKOUT_SHIPPING) or strstr($PHP_SELF, FILENAME_CHECKOUT_PAYMENT) or strstr($PHP_SELF, FILENAME_CHECKOUT_CONFIRMATION) or strstr($PHP_SELF, FILENAME_CHECKOUT_SUCCESS)) {
 $vamTemplate->assign('checkout_current',' class="current"');
 }
