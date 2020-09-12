@@ -1,6 +1,8 @@
   <div class="card card-product">
 	<div class="card-body">
 	<div class="row">
+		{if $module_data.PRODUCTS_LABEL}{$module_data.PRODUCTS_LABEL}{/if}
+		<span class="badge-offer pt-2">{$module_data.BOX_DELETE}</span>
 		<div class="col-md-2 my-auto">
 			<div class="img-wrap"><a href="{$module_data.PRODUCTS_LINK}" title="{$module_data.IMAGE_ALT}"><img class="img-sm" src="{$module_data.PRODUCTS_IMAGE}" alt="{$module_data.IMAGE_ALT}"></a></div>
 		</div>
@@ -13,7 +15,7 @@
 					<div><strong>{$module_data.PRODUCTS_PRICE}</strong></div>
 				</div>
 		</div>
-		<div class="col-md-3 my-auto">
+		<div class="col-md-2">
 			<div class="action-wrap text-center">
          {$module_data.PRODUCTS_BUTTON_BUY_NOW_NEW}
 			</div>

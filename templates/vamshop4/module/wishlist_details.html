@@ -2,7 +2,7 @@
 {config_load file="$language/lang_$language.conf" section="product_info"}
 
 <div class="row">
-<div class="col-xl-9">
+<div class="col-xl-12">
 
 {foreach from=$module_content key=category_name item=wishlist_data}
 <h3>{$category_name}</h3>
@@ -18,52 +18,6 @@
 {if $MODULE_cross_selling_cart_details}
 {$MODULE_cross_selling_cart_details}
 {/if}
-
-</div>
-
-<div class="col-xl-3">
-<div class="sticky-wrapper">
-<div class="sticky-top">
-
-<div class="card card-product card-sm">
-<div class="card-header">
-<span class="h5">{$smarty.const.TEXT_CHECKOUT_ALTERNATIVE}</span>
-</div>
-<div class="card-body">
-<div class="info-wrap">
-{if $TOTAL_QUANTITY > 0}
-<dl class="dlist-align">
-  <dt>{$smarty.const.TEXT_PRODUCTS_TOTAL}:</dt>
-  <dd class="text-right">{$TOTAL_QUANTITY}</dd>
-</dl>
-{/if}
-{if $UST_CONTENT}
-<dl class="dlist-align">
-  <dt>{$UST_CONTENT_NAME}:</dt>
-  <dd class="text-right">{$UST_CONTENT_VALUE}</dd>
-</dl>
-{/if}
-{if $TOTAL_DISCOUNT_VALUE}
-<dl class="dlist-align">
-  <dt>{$TOTAL_DISCOUNT_NAME}</dt>
-  <dd class="text-right">-{$TOTAL_DISCOUNT_VALUE}</dd>
-</dl>
-{/if}
-{if $TOTAL_SUBTOTAL_VALUE}
-<dl class="dlist-align">
-  <dt>{$TOTAL_SUBTOTAL_NAME}</dt>
-  <dd class="text-right"><strong>{$TOTAL_SUBTOTAL_VALUE}</strong></dd>
-</dl>
-{/if}
-<hr />
-</div>
-</div>
-<div class="card-footer text-center">
-<a class="btn btn-primary btn-block" href="{$smarty.const.FILENAME_CHECKOUT_SHIPPING}"><i class="far fa-heart"></i> {$smarty.const.IMAGE_BUTTON_CHECKOUT}</a></div>
-</div>
-
-</div>
-</div>
 
 </div>
 

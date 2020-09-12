@@ -22,10 +22,10 @@ function doWishlistNow( id, quantity, update, get_wishlist, attributes, popup ) 
       $.ajax({
 			url: "index_ajax.php",             
 			dataType : "html",                       
-			data: {q : 'includes/modules/ajax/ajaxWishlist.php', action : 'cust_order', products_qty : quantity, pid : id, get_wishlist : get_wishlist, update : update, attributes : attributes},
+			data: {q : 'includes/modules/ajax/ajaxWishlist.php', action : 'cust_wishlist', products_qty : quantity, pid : id, get_wishlist : get_wishlist, update : update, attributes : attributes},
 			type: "GET",
 			success: function(msg){
-			if ($(location).attr('pathname') == '/wishlistt.php') {
+			if ($(location).attr('pathname') == '/wishlist.php') {
 				$("#ajax_wishlist").empty().html(msg);
 			} else {
 		      $("#divWishlistHeader").html(msg);
@@ -58,7 +58,7 @@ function doAddWishlist(id) {
 			}
 			 if (tmp.length > 3) data = data + tmp;
 		});
-		data = data + "action=add_product";
+		data = data + "action=add_wishlist";
         if ($("div").is("#ajax_wishlist")) data = data + "&get_wishlist=1"; 		
 		$.ajax({
 					url : "index_ajax.php",
@@ -66,8 +66,8 @@ function doAddWishlist(id) {
 					data : data,
 					type : "GET",
 					success : function(msg) {
-					 $("#divShoppingWishlistHeader").html(msg);
-					 $("#divShoppingWishlist").html(msg);
+					 $("#divWishlistHeader").html(msg);
+					 $("#divWishlist").html(msg);
 					 if ($("div").is("#ajax_wishlist")) {
 					   $("#ajax_wishlist").empty().html(msg);
 					 }
@@ -102,7 +102,7 @@ function doDelWishlist(id, prod_id) {
 		} else {
 			data = data + 'wishlist_quantity[]=&products_id[]='+prod_id+'&old_qty[]=&wishlist_delete[]='+prod_id+'&';
 		}
-		data = data + "action=update_product";
+		data = data + "action=update_wishlist";
 		if ($("div").is("#ajax_wishlist")) data = data + "&get_wishlist=1";
 		$.ajax({
 					url : "index_ajax.php",
@@ -110,16 +110,16 @@ function doDelWishlist(id, prod_id) {
 					data : data,
 					type : "GET",
 					success : function(msg) {
-					 $("#divShoppingWishlistHeader").html(msg);
-					 $("#divShoppingWishlist").html(msg);
+					 $("#divWishlistHeader").html(msg);
+					 $("#divWishlist").html(msg);
 					 if ($("div").is("#ajax_wishlist")) {
 					   $("#ajax_wishlist").empty().html(msg);
 					 }
 					 if (data.total=="0")
   {
   } else {    	             
-					 $("#divShoppingWishlistHeader").html(msg);
-					 $("#divShoppingWishlist").html(msg);
+					 $("#divWishlistHeader").html(msg);
+					 $("#divWishlist").html(msg);
 	
     	              }
     	              
@@ -137,7 +137,7 @@ function doDelWishlist(id, prod_id) {
 $(document).ready(function(){
 
 	$('body').on('click', '.wishlist_delete', function(){
-       doDelProduct('',$(this).val());
+       doDelWishlist('',$(this).val());
        img_loader();
    });
 

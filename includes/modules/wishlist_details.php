@@ -102,8 +102,19 @@ for ($i = 0, $n = sizeof($productss[$key]['products']); $i < $n; $i ++) {
 		$image = DIR_WS_THUMBNAIL_IMAGES.$productss[$key]['products'][$i]['image'];
 	}
 	if (!is_file($image)) $image = DIR_WS_THUMBNAIL_IMAGES.'../noimage.png';
-	$module_content[$key][$i] = array (
 	
+	global $PHP_SELF;
+	$vam_get_all_get_params_return = (basename($PHP_SELF) == 'product_info.php') ? preg_replace('/products_id=\d+&/', '', vam_get_all_get_params(array ('action'))) : vam_get_all_get_params(array ('action'));
+	if (AJAX_CART == 'true' && !vam_has_product_attributes($productss[$key]['products'][$i]['id'])) {
+	$link = '<a class="btn btn-add-to-cart btn-block" href="'.vam_href_link(basename($PHP_SELF), 'action=buy_now&BUYproducts_id='.$productss[$key]['products'][$i]['id'], 'NONSSL').'" onclick="doBuyNow(\''.$productss[$key]['products'][$i]['id'].'\',\'1\'); return false;"><i class="fa fa-shopping-cart"></i> '.IMAGE_BUTTON_IN_CART.'</a>';
+	} elseif (AJAX_CART == 'false' && vam_has_product_attributes($id)) {
+	$link = '<a class="btn btn-add-to-cart btn-block" href="'.vam_href_link(basename($PHP_SELF), 'action=buy_now&BUYproducts_id='.$productss[$key]['products'][$i]['id'], 'NONSSL').'"><i class="fa fa-shopping-cart"></i> '.IMAGE_BUTTON_IN_CART.'</a>';
+	} else {
+	$link = '<a class="btn btn-add-to-cart btn-block" href="'.vam_href_link(FILENAME_SHOPPING_CART, 'action=buy_now&BUYproducts_id='.$productss[$key]['products'][$i]['id'], 'NONSSL').'"><i class="fa fa-shopping-cart"></i> '.IMAGE_BUTTON_IN_CART.'</a>';
+	}
+	
+	$module_content[$key][$i] = array (
+
 	'PRODUCTS_NAME' => $productss[$key]['products'][$i]['name'].$mark_stock, 
 	'PRODUCTS_CATEGORIES_ID' => $productss[$key]['products'][$i]['categories_id'], 
 	'PRODUCTS_CATEGORIES_NAME' => $productss[$key]['products'][$i]['categories_name'], 
@@ -120,6 +131,7 @@ for ($i = 0, $n = sizeof($productss[$key]['products']); $i < $n; $i ++) {
    'PLUS' => '<button class="button btn btn-outline-secondary wishlist_change wishlist_plus" type="button" value="1"><span>+</span></button>',
    'MINUS' => '<button class="button btn btn-outline-secondary wishlist_change wishlist_minus" type="button" value="-1"><span>-</span></button>',
 	'PRODUCTS_LINK' => vam_href_link(FILENAME_PRODUCT_INFO, vam_product_link($productss[$key]['products'][$i]['id'], $productss[$key]['products'][$i]['name'])), 
+	'PRODUCTS_BUTTON_BUY_NOW_NEW' => $link, 
 	'PRODUCTS_PRICE' => $vamPrice->Format($productss[$key]['products'][$i]['price'] * $productss[$key]['products'][$i]['quantity'], true), 
 	'PRODUCTS_SINGLE_PRICE' =>$vamPrice->Format($productss[$key]['products'][$i]['price'], true), 
 	'PRODUCTS_SHORT_DESCRIPTION' => vam_get_short_description($productss[$key]['products'][$i]['id']), 
@@ -235,7 +247,7 @@ include_once (DIR_WS_MODULES.'gift_cart_details.php');
 include_once (DIR_WS_MODULES.'cross_selling_cart_details.php');
 
 $module->caching = 0;
-$module = $module->fetch(CURRENT_TEMPLATE.'/module/order_details.html');
+$module = $module->fetch(CURRENT_TEMPLATE.'/module/wishlist_details.html');
 
-$vamTemplate->assign('MODULE_order_details', $module);
+$vamTemplate->assign('MODULE_wishlist_details', $module);
 ?>
