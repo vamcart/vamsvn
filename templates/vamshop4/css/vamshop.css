@@ -3016,3 +3016,34 @@ div.CheckoutError
 		text-align: center;
 	}
 /* /Корзина popup */
+
+/* Избранное popup */
+.wishlist_popup
+	{
+		z-index:5000;
+		overflow:hidden;
+		background:var(--background-color);
+		box-shadow: 0 1px 4px 0 rgba(0,0,0,.1);
+		left:50%;
+		line-height:18px;
+		padding:15px;
+		position:fixed;
+		top:50%;
+		transition:all 0.3s ease-in-out 0s;
+		margin-left: -180px;
+		margin-top: -70px;
+		width: 360px
+	}
+
+.wishlist_popuptext
+	{
+		font-size:18px;
+		padding:0 0 12px;
+		text-align:center
+	}
+
+.wishlist_popuplink
+	{
+		text-align: center;
+	}
+/* /Избранное popup */

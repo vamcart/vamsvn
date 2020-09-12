@@ -24,6 +24,21 @@ if (AJAX_CART == 'true') $bender->enqueue("templates/".CURRENT_TEMPLATE."/javasc
 <?php
 echo $bender->output("templates/".CURRENT_TEMPLATE."/cache/".CURRENT_TEMPLATE."-packed.js");
 ?>
+<script>
+function wishlistPopupOn(){ 
+$('body').append('<div id="load_status_bg"></div><div class="wishlist_popup"><div class="wishlist_popuptext"><?php echo TEXT_POPUP_WISHLIST_ADD; ?></div><div class="wishlist_popuplink"><a href="wishlist.php" class="button"><span><img src="<?php echo DIR_WS_CATALOG; ?>images/icons/buttons/buy.png" alt="" title="" width="12" height="12" />&nbsp;<?php echo TEXT_POPUP_WISHLIST_WISHLIST; ?></span></a><br /><br /><a href="javascript:wishlistPopupOff()" class="button"><span><img src="<?php echo DIR_WS_CATALOG; ?>images/icons/buttons/back.png" alt="" title="" width="12" height="12" />&nbsp;<?php echo TEXT_POPUP_WISHLIST_CONTINUE; ?></span></a></div></div>'); 
+$('#load_status_bg').show().css({'filter' : 'alpha(opacity=80)'}); 
+$('.wishlist_popup').show(); 
+$(document).click(function (){
+wishlistPopupOff();
+});
+};
+
+function wishlistPopupOff(){ 
+$('.wishlist_popup').hide(); 
+$('#load_status_bg').remove('#load_status_bg'); 
+};
+</script>
 <?php if (AJAX_CART == 'true') { ?>
 <script>
 function cartPopupOn(){ 
