@@ -912,6 +912,8 @@ li.level3 {
   display: none;
 }
 
+.wsshopmyaccount em.roundpoint,
+.wswishlist em.roundpoint,
 .wscart em.roundpoint {
   position: absolute;
   top: 14px;
