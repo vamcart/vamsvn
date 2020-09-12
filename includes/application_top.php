@@ -164,6 +164,7 @@ require_once (DIR_FS_INC.'vam_get_ip_address.inc.php');
 require_once (DIR_FS_INC.'vam_setcookie.inc.php');
 require_once (DIR_FS_INC.'vam_check_agent.inc.php');
 require_once (DIR_FS_INC.'vam_count_cart.inc.php');
+require_once (DIR_FS_INC.'vam_count_wishlist.inc.php');
 require_once (DIR_FS_INC.'vam_get_qty.inc.php');
 require_once (DIR_FS_INC.'create_coupon_code.inc.php');
 require_once (DIR_FS_INC.'vam_gv_account_update.inc.php');
@@ -274,6 +275,9 @@ $cookie_info = vam_get_cookie_info();
 
 // include shopping cart class
 require (DIR_WS_CLASSES.'shopping_cart.php');
+
+// include wishlist class
+require (DIR_WS_CLASSES.'wishlist.php');
 
 // include navigation history class
 require (DIR_WS_CLASSES.'navigation_history.php');
@@ -459,6 +463,12 @@ require (DIR_WS_INCLUDES.FILENAME_CART_ACTIONS);
 // create the shopping cart & fix the cart if necesary
 if (!is_object($_SESSION['cart'])) {
 	$_SESSION['cart'] = new shoppingCart();
+}
+
+require (DIR_WS_INCLUDES.FILENAME_WISHLIST_ACTIONS);
+// create the wishlist & fix the wishlist if necesary
+if (!is_object($_SESSION['wishlist'])) {
+	$_SESSION['wishlist'] = new wishlist();
 }
 
 // include the who's online functions
@@ -703,6 +713,8 @@ if (isset ($_SESSION['customer_id'])) {
 // modification for nre graduated system
 unset ($_SESSION['actual_content']);
 vam_count_cart();
+unset ($_SESSION['actual_content_wishlist']);
+vam_count_wishlist();
 
 // include the articles functions
   require(DIR_WS_FUNCTIONS . 'articles.php');

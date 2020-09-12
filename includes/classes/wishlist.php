@@ -1,6 +1,6 @@
 <?php
 /* -----------------------------------------------------------------------------------------
-   $Id: shopping_cart.php 1534 2007-02-06 20:23:03 VaM $ 
+   $Id: wishlist.php 1534 2007-02-06 20:23:03 VaM $ 
 
    VaM Shop - open source ecommerce solution
    http://vamshop.ru
@@ -10,9 +10,9 @@
    -----------------------------------------------------------------------------------------
    based on: 
    (c) 2000-2001 The Exchange Project  (earlier name of osCommerce)
-   (c) 2002-2003 osCommerce(shopping_cart.php,v 1.32 2003/02/11); www.oscommerce.com
-   (c) 2003	 nextcommerce (shopping_cart.php,v 1.21 2003/08/17); www.nextcommerce.org
-   (c) 2004	 xt:Commerce (shopping_cart.php,v 1.21 2003/08/17); xt-commerce.com
+   (c) 2002-2003 osCommerce(wishlist.php,v 1.32 2003/02/11); www.oscommerce.com
+   (c) 2003	 nextcommerce (wishlist.php,v 1.21 2003/08/17); www.nextcommerce.org
+   (c) 2004	 xt:Commerce (wishlist.php,v 1.21 2003/08/17); xt-commerce.com
 
    Released under the GNU General Public License
    -----------------------------------------------------------------------------------------
@@ -39,8 +39,8 @@ require_once (DIR_FS_INC.'vam_draw_input_field.inc.php');
 require_once (DIR_FS_INC.'vam_image_submit.inc.php');
 require_once (DIR_FS_INC.'vam_get_tax_description.inc.php');
 
-class shoppingCart {
-	var $contents, $total, $weight, $cartID, $content_type;
+class wishlist {
+	var $contents, $total, $weight, $wishlistID, $content_type;
 
 	function __construct() {
 		$this->reset();
@@ -52,35 +52,35 @@ class shoppingCart {
 		if (!isset ($_SESSION['customer_id']))
 			return false;
 
-		// insert current cart contents in database
+		// insert current wishlist contents in database
 		if (is_array($this->contents)) {
 			reset($this->contents);
 			foreach (array_keys($this->contents) as $products_id) {
 				$qty = $this->contents[$products_id]['qty'];
-				$product_query = vam_db_query("select products_id from ".TABLE_CUSTOMERS_BASKET." where customers_id = '".$_SESSION['customer_id']."' and products_id = '".$products_id."'");
+				$product_query = vam_db_query("select products_id from ".TABLE_CUSTOMERS_WISHLIST." where customers_id = '".$_SESSION['customer_id']."' and products_id = '".$products_id."'");
 				if (!vam_db_num_rows($product_query)) {
-					vam_db_query("insert into ".TABLE_CUSTOMERS_BASKET." (customers_id, products_id, customers_basket_quantity, customers_basket_date_added) values ('".$_SESSION['customer_id']."', '".$products_id."', '".$qty."', '".date('Ymd')."')");
+					vam_db_query("insert into ".TABLE_CUSTOMERS_WISHLIST." (customers_id, products_id, customers_basket_quantity, customers_basket_date_added) values ('".$_SESSION['customer_id']."', '".$products_id."', '".$qty."', '".date('Ymd')."')");
 					if (isset ($this->contents[$products_id]['attributes'])) {
 						foreach ($this->contents[$products_id]['attributes'] as $option => $value) {
 						           $attr_value = $this->contents[$products_id]['attributes_values'][$option];
 
-							vam_db_query("insert into ".TABLE_CUSTOMERS_BASKET_ATTRIBUTES." (customers_id, products_id, products_options_id, products_options_value_id, products_options_value_text) values ('".$_SESSION['customer_id']."', '".$products_id."', '".$option."', '".$value."', '" . vam_db_input($attr_value) . "')");
+							vam_db_query("insert into ".TABLE_CUSTOMERS_WISHLIST_ATTRIBUTES." (customers_id, products_id, products_options_id, products_options_value_id, products_options_value_text) values ('".$_SESSION['customer_id']."', '".$products_id."', '".$option."', '".$value."', '" . vam_db_input($attr_value) . "')");
 						}
 					}
 				} else {
-					vam_db_query("update ".TABLE_CUSTOMERS_BASKET." set customers_basket_quantity = customers_basket_quantity+'".$qty."' where customers_id = '".$_SESSION['customer_id']."' and products_id = '".$products_id."'");
+					vam_db_query("update ".TABLE_CUSTOMERS_WISHLIST." set customers_basket_quantity = customers_basket_quantity+'".$qty."' where customers_id = '".$_SESSION['customer_id']."' and products_id = '".$products_id."'");
 				}
 			}
 		}
 
-		// reset per-session cart contents, but not the database contents
+		// reset per-session wishlist contents, but not the database contents
 		$this->reset(false);
 
-		$products_query = vam_db_query("select products_id, customers_basket_quantity from ".TABLE_CUSTOMERS_BASKET." where customers_id = '".$_SESSION['customer_id']."'");
+		$products_query = vam_db_query("select products_id, customers_basket_quantity from ".TABLE_CUSTOMERS_WISHLIST." where customers_id = '".$_SESSION['customer_id']."'");
 		while ($products = vam_db_fetch_array($products_query)) {
 			$this->contents[$products['products_id']] = array ('qty' => $products['customers_basket_quantity']);
 			// attributes
-			$attributes_query = vam_db_query("select products_options_id, products_options_value_id, products_options_value_text from ".TABLE_CUSTOMERS_BASKET_ATTRIBUTES." where customers_id = '".$_SESSION['customer_id']."' and products_id = '".$products['products_id']."'");
+			$attributes_query = vam_db_query("select products_options_id, products_options_value_id, products_options_value_text from ".TABLE_CUSTOMERS_WISHLIST_ATTRIBUTES." where customers_id = '".$_SESSION['customer_id']."' and products_id = '".$products['products_id']."'");
 			while ($attributes = vam_db_fetch_array($attributes_query)) {
 				$this->contents[$products['products_id']]['attributes'][$attributes['products_options_id']] = $attributes['products_options_value_id'];
 				if ($attributes['products_options_value_text']!='') {
@@ -100,17 +100,17 @@ class shoppingCart {
 		$this->content_type = false;
 
 		if (isset ($_SESSION['customer_id']) && ($reset_database == true)) {
-			vam_db_query("delete from ".TABLE_CUSTOMERS_BASKET." where customers_id = '".$_SESSION['customer_id']."'");
-			vam_db_query("delete from ".TABLE_CUSTOMERS_BASKET_ATTRIBUTES." where customers_id = '".$_SESSION['customer_id']."'");
+			vam_db_query("delete from ".TABLE_CUSTOMERS_WISHLIST." where customers_id = '".$_SESSION['customer_id']."'");
+			vam_db_query("delete from ".TABLE_CUSTOMERS_WISHLIST_ATTRIBUTES." where customers_id = '".$_SESSION['customer_id']."'");
 		}
 
-		unset ($this->cartID);
-		if (isset ($_SESSION['cartID']))
-			unset ($_SESSION['cartID']);
+		unset ($this->wishlistID);
+		if (isset ($_SESSION['wishlistID']))
+			unset ($_SESSION['wishlistID']);
 	}
 
-	function add_cart($products_id, $qty = '1', $attributes = '', $notify = true) {
-		global $new_products_id_in_cart;
+	function add_wishlist($products_id, $qty = '1', $attributes = '', $notify = true) {
+		global $new_products_id_in_wishlist;
 
 		$products_id = vam_get_uprid($products_id, $attributes);
 		$attributes_pass_check = true;
@@ -122,17 +122,17 @@ class shoppingCart {
         if (($check_product !== false) && ($check_product['products_status'] == '1') && ($check_product['sold_in_bundle_only'] != 'yes')) {
         	
 		if ($notify == true) {
-			$_SESSION['new_products_id_in_cart'] = $products_id;
+			$_SESSION['new_products_id_in_wishlist'] = $products_id;
 		}
 
-		if ($this->in_cart($products_id)) {
+		if ($this->in_wishlist($products_id)) {
 			$this->update_quantity($products_id, $qty, $attributes);
 		} else {
 			$this->contents[] = array ($products_id);
 			$this->contents[$products_id] = array ('qty' => $qty);
 			// insert into database
 			if (isset ($_SESSION['customer_id']))
-				vam_db_query("insert into ".TABLE_CUSTOMERS_BASKET." (customers_id, products_id, customers_basket_quantity, customers_basket_date_added) values ('".$_SESSION['customer_id']."', '".$products_id."', '".$qty."', '".date('Ymd')."')");
+				vam_db_query("insert into ".TABLE_CUSTOMERS_WISHLIST." (customers_id, products_id, customers_basket_quantity, customers_basket_date_added) values ('".$_SESSION['customer_id']."', '".$products_id."', '".$qty."', '".date('Ymd')."')");
 
 			if (is_array($attributes)) {
 				foreach ($attributes as $option => $value) {
@@ -158,7 +158,7 @@ class shoppingCart {
 					$this->contents[$products_id]['attributes'][$option] = $value;
 					// insert into database
 					if (isset ($_SESSION['customer_id']))
-						vam_db_query("insert into ".TABLE_CUSTOMERS_BASKET_ATTRIBUTES." (customers_id, products_id, products_options_id, products_options_value_id, products_options_value_text) values ('".$_SESSION['customer_id']."', '".$products_id."', '".$option."', '".$value."', '" . vam_db_input($attr_value) . "')");
+						vam_db_query("insert into ".TABLE_CUSTOMERS_WISHLIST_ATTRIBUTES." (customers_id, products_id, products_options_id, products_options_value_id, products_options_value_text) values ('".$_SESSION['customer_id']."', '".$products_id."', '".$option."', '".$value."', '" . vam_db_input($attr_value) . "')");
 				}
 				}
 			}
@@ -166,7 +166,7 @@ class shoppingCart {
 		$this->cleanup();
 
 		// assign a temporary unique ID to the order contents to prevent hack attempts during the checkout procedure
-		$this->cartID = $this->generate_cart_id();
+		$this->wishlistID = $this->generate_wishlist_id();
 	}
 	}
 	}
@@ -179,7 +179,7 @@ class shoppingCart {
 		$this->contents[$products_id] = array ('qty' => $quantity);
 		// update database
 		if (isset ($_SESSION['customer_id']))
-			vam_db_query("update ".TABLE_CUSTOMERS_BASKET." set customers_basket_quantity = '".$quantity."' where customers_id = '".$_SESSION['customer_id']."' and products_id = '".$products_id."'");
+			vam_db_query("update ".TABLE_CUSTOMERS_WISHLIST." set customers_basket_quantity = '".$quantity."' where customers_id = '".$_SESSION['customer_id']."' and products_id = '".$products_id."'");
 
 		if (is_array($attributes)) {
 			foreach ($attributes as $option => $value) {
@@ -206,7 +206,7 @@ class shoppingCart {
 				$this->contents[$products_id]['attributes'][$option] = $value;
 				// update database
 				if (isset ($_SESSION['customer_id']))
-					vam_db_query("update ".TABLE_CUSTOMERS_BASKET_ATTRIBUTES." set products_options_value_id = '".$value."' where customers_id = '".$_SESSION['customer_id']."' and products_id = '".$products_id."' and products_options_id = '".$option."'");
+					vam_db_query("update ".TABLE_CUSTOMERS_WISHLIST_ATTRIBUTES." set products_options_value_id = '".$value."' where customers_id = '".$_SESSION['customer_id']."' and products_id = '".$products_id."' and products_options_id = '".$option."'");
 			}
 			}
 		}
@@ -219,14 +219,14 @@ class shoppingCart {
 				unset ($this->contents[$key]);
 				// remove from database
 				if (vam_session_is_registered('customer_id')) {
-					vam_db_query("delete from ".TABLE_CUSTOMERS_BASKET." where customers_id = '".$_SESSION['customer_id']."' and products_id = '".$key."'");
-					vam_db_query("delete from ".TABLE_CUSTOMERS_BASKET_ATTRIBUTES." where customers_id = '".$_SESSION['customer_id']."' and products_id = '".$key."'");
+					vam_db_query("delete from ".TABLE_CUSTOMERS_WISHLIST." where customers_id = '".$_SESSION['customer_id']."' and products_id = '".$key."'");
+					vam_db_query("delete from ".TABLE_CUSTOMERS_WISHLIST_ATTRIBUTES." where customers_id = '".$_SESSION['customer_id']."' and products_id = '".$key."'");
 				}
 			}
 		}
 	}
 
-	function count_contents() { // get total number of items in cart
+	function count_contents() { // get total number of items in wishlist
 		$total_items = 0;
 		if (is_array($this->contents)) {
 			foreach (array_keys($this->contents) as $products_id) {
@@ -245,7 +245,7 @@ class shoppingCart {
 		}
 	}
 
-	function in_cart($products_id) {
+	function in_wishlist($products_id) {
 		if (isset ($this->contents[$products_id])) {
 			return true;
 		} else {
@@ -258,12 +258,12 @@ class shoppingCart {
 		$this->contents[$products_id]= NULL;
 		// remove from database
 		if (vam_session_is_registered('customer_id')) {
-			vam_db_query("delete from ".TABLE_CUSTOMERS_BASKET." where customers_id = '".$_SESSION['customer_id']."' and products_id = '".$products_id."'");
-			vam_db_query("delete from ".TABLE_CUSTOMERS_BASKET_ATTRIBUTES." where customers_id = '".$_SESSION['customer_id']."' and products_id = '".$products_id."'");
+			vam_db_query("delete from ".TABLE_CUSTOMERS_WISHLIST." where customers_id = '".$_SESSION['customer_id']."' and products_id = '".$products_id."'");
+			vam_db_query("delete from ".TABLE_CUSTOMERS_WISHLIST_ATTRIBUTES." where customers_id = '".$_SESSION['customer_id']."' and products_id = '".$products_id."'");
 		}
 
 		// assign a temporary unique ID to the order contents to prevent hack attempts during the checkout procedure
-		$this->cartID = $this->generate_cart_id();
+		$this->wishlistID = $this->generate_wishlist_id();
 	}
 
 	function remove_all() {
@@ -521,7 +521,7 @@ class shoppingCart {
 		return $output;
 	}
 		
-	function generate_cart_id($length = 5) {
+	function generate_wishlist_id($length = 5) {
 		return vam_create_random_value($length, 'digits');
 	}
 
@@ -593,7 +593,7 @@ class shoppingCart {
 	// which is less than or equal to MINIMUM_WEIGHT
 	// otherwise we just don't count gift certificates
 
-	function count_contents_virtual() { // get total number of items in cart disregard gift vouchers
+	function count_contents_virtual() { // get total number of items in wishlist disregard gift vouchers
 		$total_items = 0;
 		if (is_array($this->contents)) {
 			foreach (array_keys($this->contents) as $products_id) {
