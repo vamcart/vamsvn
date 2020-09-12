@@ -1,0 +1,56 @@
+{config_load file="$language/lang_$language.conf" section="shopping_cart"}
+<div id="ajax_cart">
+
+<div class="page">
+<div class="pageСontent">
+{if $info_message!=''}<div class="contacterror">{$info_message}</div>
+{/if}
+{if $info_message_1!=''}
+<div class="contacterror">
+{$info_message_1}{$min_order}{$info_message_2}{$order_amount}
+</div>
+{/if}
+
+{if $cart_empty==true}
+
+<p>
+{#text_empty#}
+</p>
+
+
+<div class="pageContentFooter">
+{$BUTTON_CONTINUE}
+</div>
+
+{else}
+{$FORM_ACTION}
+{$HIDDEN_OPTIONS}
+
+{$MODULE_order_details}
+
+<div class="clear"></div>
+<div class="navigation">
+{if $smarty.const.AJAX_CART == 'false'}{$BUTTON_RELOAD}{/if}
+</div>
+<div class="clear"></div>
+{$FORM_END}
+{/if}
+</div>
+</div>
+</div>
+
+{if $smarty.const.DISPLAY_LAST_VIEWED =='true'}
+{if $products_history}
+<div class="module">
+<h3>{#title_viewed_products#}</h3>
+<div class="moduleContent">
+<div class="owl-carousel owl-theme">
+{foreach name=aussen item=module_data from=$products_history}
+{include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/product-card/product-card-details.html"}
+{/foreach}
+</div>
+<div class="clear"></div>
+</div>
+</div>
+{/if}
+{/if}

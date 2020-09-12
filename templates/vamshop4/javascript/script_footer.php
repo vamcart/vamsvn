@@ -18,6 +18,7 @@ $bender->enqueue("jscript/jquery/plugins/zoom/jquery.zoom.js");
 $bender->enqueue("jscript/jquery/plugins/equalheight/jquery.matchheight.js");
 $bender->enqueue("templates/".CURRENT_TEMPLATE."/javascript/vamshop4.js");
 $bender->enqueue("templates/".CURRENT_TEMPLATE."/webslidemenu/webslidemenu.js");
+$bender->enqueue("templates/".CURRENT_TEMPLATE."/javascript/jscript_ajax_wishlist.js"); 
 if (AJAX_CART == 'true') $bender->enqueue("templates/".CURRENT_TEMPLATE."/javascript/jscript_ajax_cart.js"); 
 ?>
 <?php
