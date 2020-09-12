@@ -175,4 +175,7 @@ define('FILENAME_SIMILAR_PRODUCTS', 'similar_products.php');
 
 define('FILENAME_PRODUCT_REVIEWS_WRITE_POPUP', 'product_reviews_write_popup.php');
 
+define('FILENAME_WISHLIST', 'wishlist.php');
+define('FILENAME_WISHLIST_ACTIONS', 'wishlist_actions.php');
+
 ?>

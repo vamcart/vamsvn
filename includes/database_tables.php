@@ -168,5 +168,8 @@ define('TABLE_PRODUCTS_PINS', 'products_pins');
   define('TABLE_TAGS_TO_PRODUCTS', 'tags_to_products');
 
   define('TABLE_REVIEWS_IMAGES', 'reviews_images');
+  
+  define('TABLE_CUSTOMERS_WISHLIST', 'customers_wishlist');
+  define('TABLE_CUSTOMERS_WISHLIST_ATTRIBUTES', 'customers_wishlist_attributes');
       
 ?>
