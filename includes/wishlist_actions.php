@@ -51,7 +51,7 @@ if (isset ($_GET['action'])) {
 		);
 	} else {
 		$goto = basename($PHP_SELF);
-		if ($_GET['action'] == 'buy_now') {
+		if ($_GET['action'] == 'wishlist_now') {
 			$parameters = array (
 				'action',
 				'pid',
@@ -191,7 +191,7 @@ if (isset ($_GET['action'])) {
 			break;
 
 			// performed by the 'buy now' button in product listings and review page
-		case 'buy_now' :
+		case 'wishlist_now' :
 			if (isset ($_GET['BUYproducts_id'])) {
 				// check permission to view product
 
