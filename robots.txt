@@ -29,6 +29,7 @@ Disallow: /highslide/
 Disallow: /index.php/manufacturers_id/
 Disallow: /info_shopping_cart.php
 Disallow: /shopping_cart.php
+Disallow: /wishlist.php
 Disallow: /login.php
 Disallow: /logoff.php
 Disallow: /newsletter.php
