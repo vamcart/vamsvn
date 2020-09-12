@@ -1,5 +1,5 @@
 /* -----------------------------------------------------------------------------------------
-   $Id: jscript_ajax_cart.js 899 2007-06-30 20:14:56 VaM $   
+   $Id: jscript_ajax_wishlist.js 899 2007-06-30 20:14:56 VaM $   
 
    VamShop - open source ecommerce solution
    http://vamshop.ru
@@ -13,28 +13,28 @@
    Released under the GNU General Public License
    ---------------------------------------------------------------------------------------*/
 
-function doBuyNow( id, quantity, update, get_cart, attributes, popup ) {
+function doWishlistNow( id, quantity, update, get_wishlist, attributes, popup ) {
 
-		if ($(location).attr('pathname') == '/shopping_cart.php') {
-			get_cart = 1;
+		if ($(location).attr('pathname') == '/wishlist.php') {
+			get_wishlist = 1;
 		} 
 		
       $.ajax({
 			url: "index_ajax.php",             
 			dataType : "html",                       
-			data: {q : 'includes/modules/ajax/ajaxCart.php', action : 'cust_order', products_qty : quantity, pid : id, get_cart : get_cart, update : update, attributes : attributes},
+			data: {q : 'includes/modules/ajax/ajaxWishlist.php', action : 'cust_order', products_qty : quantity, pid : id, get_wishlist : get_wishlist, update : update, attributes : attributes},
 			type: "GET",
 			success: function(msg){
-			if ($(location).attr('pathname') == '/shopping_cart.php') {
-				$("#ajax_cart").empty().html(msg);
+			if ($(location).attr('pathname') == '/wishlistt.php') {
+				$("#ajax_wishlist").empty().html(msg);
 			} else {
-		      $("#divShoppingCartHeader").html(msg);
-		      $("#divShoppingCart").html(msg);
+		      $("#divWishlistHeader").html(msg);
+		      $("#divWishlist").html(msg);
 			}
 	 
-			//if ($(location).attr('pathname') != '/shopping_cart.php')	{
+			//if ($(location).attr('pathname') != '/wishlist.php')	{
 			if (popup != 0)	{
-				cartPopupOn();
+				wishlistPopupOn();
 			}
 			//}
 		
@@ -43,10 +43,10 @@ function doBuyNow( id, quantity, update, get_cart, attributes, popup ) {
 			img_loader();                     
 }
 
-function doAddProduct(id) {
+function doAddWishlist(id) {
 
-		var forma = $('#cart_quantity' + id + ' :input');
-		var data = 'q=includes/modules/ajax/ajaxCart.php&';
+		var forma = $('#wishlist_quantity' + id + ' :input');
+		var data = 'q=includes/modules/ajax/ajaxWishlist.php&';
 		var tmp = false;
 
 		forma.each(function(n,element){
@@ -59,24 +59,24 @@ function doAddProduct(id) {
 			 if (tmp.length > 3) data = data + tmp;
 		});
 		data = data + "action=add_product";
-        if ($("div").is("#ajax_cart")) data = data + "&get_cart=1"; 		
+        if ($("div").is("#ajax_wishlist")) data = data + "&get_wishlist=1"; 		
 		$.ajax({
 					url : "index_ajax.php",
 					dataType : "html",
 					data : data,
 					type : "GET",
 					success : function(msg) {
-					 $("#divShoppingCartHeader").html(msg);
-					 $("#divShoppingCart").html(msg);
-					 if ($("div").is("#ajax_cart")) {
-					   $("#ajax_cart").empty().html(msg);
+					 $("#divShoppingWishlistHeader").html(msg);
+					 $("#divShoppingWishlist").html(msg);
+					 if ($("div").is("#ajax_wishlist")) {
+					   $("#ajax_wishlist").empty().html(msg);
 					 }
 
 
-				//if (data.qty!="0" && $(location).attr('pathname') != '/shopping_cart.php')
-				if ($(location).attr('pathname') != '/shopping_cart.php')
+				//if (data.qty!="0" && $(location).attr('pathname') != '/wishlist.php')
+				if ($(location).attr('pathname') != '/wishlist.php')
 				{
-					cartPopupOn();
+					wishlistPopupOn();
 				}
 
     	               }
@@ -84,11 +84,11 @@ function doAddProduct(id) {
       img_loader();
 	}
 
-function doDelProduct(id, prod_id) {
+function doDelWishlist(id, prod_id) {
 	
-		var data = 'q=includes/modules/ajax/ajaxCart.php&';
+		var data = 'q=includes/modules/ajax/ajaxWishlist.php&';
 		if (id) {
-			var test1 = "#update_cart"+id+" input";
+			var test1 = "#update_wishlist"+id+" input";
 			var forma = $(test1);
 			forma.each(function(n,element){
 				if (element.type == "radio" || element.type == "checkbox") {
@@ -100,31 +100,31 @@ function doDelProduct(id, prod_id) {
 				if (tmp.length > 3) data = data + tmp;
 			});
 		} else {
-			data = data + 'cart_quantity[]=&products_id[]='+prod_id+'&old_qty[]=&cart_delete[]='+prod_id+'&';
+			data = data + 'wishlist_quantity[]=&products_id[]='+prod_id+'&old_qty[]=&wishlist_delete[]='+prod_id+'&';
 		}
 		data = data + "action=update_product";
-		if ($("div").is("#ajax_cart")) data = data + "&get_cart=1";
+		if ($("div").is("#ajax_wishlist")) data = data + "&get_wishlist=1";
 		$.ajax({
 					url : "index_ajax.php",
 					dataType : "html",
 					data : data,
 					type : "GET",
 					success : function(msg) {
-					 $("#divShoppingCartHeader").html(msg);
-					 $("#divShoppingCart").html(msg);
-					 if ($("div").is("#ajax_cart")) {
-					   $("#ajax_cart").empty().html(msg);
+					 $("#divShoppingWishlistHeader").html(msg);
+					 $("#divShoppingWishlist").html(msg);
+					 if ($("div").is("#ajax_wishlist")) {
+					   $("#ajax_wishlist").empty().html(msg);
 					 }
 					 if (data.total=="0")
   {
   } else {    	             
-					 $("#divShoppingCartHeader").html(msg);
-					 $("#divShoppingCart").html(msg);
+					 $("#divShoppingWishlistHeader").html(msg);
+					 $("#divShoppingWishlist").html(msg);
 	
     	              }
     	              
-				//if (data.qty!="0" && $(location).attr('pathname') != '/shopping_cart.php')
-				if ($(location).attr('pathname') != '/shopping_cart.php')
+				//if (data.qty!="0" && $(location).attr('pathname') != '/wishlist.php')
+				if ($(location).attr('pathname') != '/wishlist.php')
 				{
 
             }					
@@ -136,12 +136,12 @@ function doDelProduct(id, prod_id) {
 
 $(document).ready(function(){
 
-	$('body').on('click', '.cart_delete', function(){
+	$('body').on('click', '.wishlist_delete', function(){
        doDelProduct('',$(this).val());
        img_loader();
    });
 
-   $('body').on('click', '.cart_change', function(){
+   $('body').on('click', '.wishlist_change', function(){
        field = $(this).parent().parent().find('input[type=text]');
        id = $(this).parent().parent().find('input.ajax_qty').val();
        perem = $(this).parent().parent().find('input.ajax_qty').val();
@@ -150,7 +150,7 @@ $(document).ready(function(){
 
        attributes = [];
        
-       $("form#cart_quantity input[name^='id["+id+"']").each(function(){
+       $("form#wishlist_quantity input[name^='id["+id+"']").each(function(){
            attributes.push($(this).attr("name")+":"+$(this).val()+"");
        });
        
@@ -166,7 +166,7 @@ $(document).ready(function(){
        img_loader();
    });
 
-   $('body').on('change', 'form#cart_quantity .item-quantity', function(){
+   $('body').on('change', 'form#wishlist_quantity .item-quantity', function(){
        field = $(this).val();
        id = $(this).parent().find('input.ajax_qty').val();
        perem = $(this).parent().find('input.ajax_qty').val();
@@ -175,7 +175,7 @@ $(document).ready(function(){
 
        attributes = [];
        
-       $("form#cart_quantity input[name^='id["+id+"']").each(function(){
+       $("form#wishlist_quantity input[name^='id["+id+"']").each(function(){
            attributes.push($(this).attr("name")+":"+$(this).val()+"");
        });
        
