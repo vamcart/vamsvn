@@ -113,6 +113,19 @@ if (isset ($_GET['action']) && ($_GET['action'] == 'process')) {
 				vam_redirect(vam_href_link(FILENAME_ACCOUNT));
 			}
 
+			// restore wishlist contents
+			$_SESSION['wishlist']->restore_contents();
+
+			if ($_SESSION['wishlist']->count_contents() > 0) {
+				if ($_SESSION['nologin']){
+				vam_redirect(vam_href_link(FILENAME_CHECKOUT_SHIPPING, '', 'SSL'));
+				}else{
+				        vam_redirect(vam_href_link(FILENAME_WISHLIST, '', 'SSL'));
+				}
+			} else {
+				vam_redirect(vam_href_link(FILENAME_ACCOUNT));
+			}
+
 		}
     }else{
     // code falsch
@@ -172,6 +185,19 @@ if (isset ($_GET['action']) && ($_GET['action'] == 'process')) {
 				vam_redirect(vam_href_link(FILENAME_ACCOUNT));
 			}
 
+			// restore wishlist contents
+			$_SESSION['wishlist']->restore_contents();
+
+			if ($_SESSION['wishlist']->count_contents() > 0) {
+				if ($_SESSION['nologin']){
+				vam_redirect(vam_href_link(FILENAME_CHECKOUT_SHIPPING, '', 'SSL'));
+				}else{
+				        vam_redirect(vam_href_link(FILENAME_WISHLIST, '', 'SSL'));
+				}
+			} else {
+				vam_redirect(vam_href_link(FILENAME_ACCOUNT));
+			}
+			
 		}
 	 }
 	}
