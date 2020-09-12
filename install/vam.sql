@@ -2167,6 +2167,7 @@ INSERT INTO configuration (configuration_key, configuration_value, configuration
 INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('SIMILAR_PRODUCTS_RAND', '150', 1, 67, 'NULL', '', NULL, NULL);
 INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('DARK_THEME', 'true', 1, 68, NULL, '', NULL, 'vam_cfg_select_option(array(\'true\', \'false\'),');
 INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('REVIEWS_IMAGES_UPLOAD', 'true', 1, 69, NULL, '', NULL, 'vam_cfg_select_option(array(\'true\', \'false\'),');
+INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('AJAX_WISHLIST', 'true', 1, 70, NULL, '', NULL, 'vam_cfg_select_option(array(\'true\', \'false\'),');
 
 # configuration_group_id 2
 INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('ENTRY_FIRST_NAME_MIN_LENGTH', '2',  2, 1, NULL, '', NULL, NULL);
@@ -2227,6 +2228,7 @@ INSERT INTO configuration (configuration_key, configuration_value, configuration
 INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('MAX_DISPLAY_CART', '50', 3, 26, 'NULL', '', NULL, NULL);
 INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('MAX_DISPLAY_SHORT_DESCRIPTION', '80', 3, 27, 'NULL', '', NULL, NULL);
 INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('MAX_DISPLAY_REVIEW_TEXT', '100', 3, 28, 'NULL', '', NULL, NULL);
+INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('MAX_DISPLAY_WISHLIST', '50', 3, 29, 'NULL', '', NULL, NULL);
 
 # configuration_group_id 4
 INSERT INTO  configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) VALUES ('CONFIG_CALCULATE_IMAGE_SIZE', 'true', 4, 1, NULL, '0000-00-00 00:00:00', NULL, 'vam_cfg_select_option(array(\'true\', \'false\'),');
@@ -2619,6 +2621,7 @@ INSERT INTO configuration (configuration_key, configuration_value, configuration
 INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) values ('SET_BOX_MANUFACTURERS', 'true', '29', '26', NULL, now(), NULL,'vam_cfg_select_option(array(\'true\', \'false\'), ');
 INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) values ('SET_BOX_MANUFACTURERS_INFO', 'true', '29', '27', NULL, now(), NULL,'vam_cfg_select_option(array(\'true\', \'false\'), ');
 INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) values ('SET_BOX_FAQ', 'true', '29', '28', NULL, now(), NULL,'vam_cfg_select_option(array(\'true\', \'false\'), ');
+INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) values ('SET_BOX_WISHLIST', 'true', '29', '29', NULL, now(), NULL,'vam_cfg_select_option(array(\'true\', \'false\'), ');
 
 #configuration_group_id 72
 INSERT INTO configuration (configuration_key, configuration_value, configuration_group_id, sort_order, last_modified, date_added, use_function, set_function) values ('ORDER_EDITOR_PAYMENT_DROPDOWN', 'true', '72', '1', now(), now(), NULL, 'vam_cfg_select_option(array(\'true\', \'false\'),');

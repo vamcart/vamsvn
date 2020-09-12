@@ -16,43 +16,43 @@
   --------------------------------------------------------------------------------------- */
 
 $vamTemplate = new vamTemplate; 
-$box_shopping_cart = false;
+$box_wishlist = false;
  
 foreach ($_REQUEST as $key => $value)
     $_POST[$key] = $value;
 
-require(DIR_FS_CATALOG . 'templates/' . CURRENT_TEMPLATE . '/source/boxes/' . 'shopping_cart.php');
+require(DIR_FS_CATALOG . 'templates/' . CURRENT_TEMPLATE . '/source/boxes/' . 'wishlist.php');
 
-if (($i = strpos($box_shopping_cart, '<div id="divShoppingCartHeader">')) !== false) {
-    $box_shopping_cart = substr($box_shopping_cart, $i + 32);
-    $i = strrpos($box_shopping_cart, '</div>');
-    $box_shopping_cart = substr($box_shopping_cart, 0, $i);
+if (($i = strpos($box_wishlist, '<div id="divWishlistHeader">')) !== false) {
+    $box_wishlist = substr($box_wishlist, $i + 28);
+    $i = strrpos($box_wishlist, '</div>');
+    $box_wishlist = substr($box_wishlist, 0, $i);
 }
 
-if (($i = strpos($box_shopping_cart, '<div id="divShoppingCart">')) !== false) {
-    $box_shopping_cart = substr($box_shopping_cart, $i + 26);
-    $i = strrpos($box_shopping_cart, '</div>');
-    $box_shopping_cart = substr($box_shopping_cart, 0, $i);
+if (($i = strpos($box_wishlist, '<div id="divWishlist">')) !== false) {
+    $box_wishlist = substr($box_wishlist, $i + 22);
+    $i = strrpos($box_wishlist, '</div>');
+    $box_wishlist = substr($box_wishlist, 0, $i);
 }
 
-if (isset($_POST['get_cart']) && $_POST['get_cart'] or isset($_GET['get_cart']) && $_GET['get_cart']) {
-$ajax_cart = true;
-require('shopping_cart.php');
+if (isset($_POST['get_wishlist']) && $_POST['get_wishlist'] or isset($_GET['get_wishlist']) && $_GET['get_wishlist']) {
+$ajax_wishlist = true;
+require('wishlistt.php');
 
-if (($i = strpos($main_content, '<div id="ajax_cart">')) !== false) {
-    $main_content = substr($main_content, $i + 20);
+if (($i = strpos($main_content, '<div id="ajax_wishlist">')) !== false) {
+    $main_content = substr($main_content, $i + 24);
     $i = strrpos($main_content, '</div>');
     $main_content = substr($main_content, 0, $i);
 }
 
 
-$box_shopping_cart = $main_content;
+$box_wishlist = $main_content;
 
-$box_shopping_cart = $main_content;
+$box_wishlist = $main_content;
 }
 
-$box_shopping_cart;
+$box_wishlist;
 
 
-print $box_shopping_cart;
+print $box_wishlist;
 ?>

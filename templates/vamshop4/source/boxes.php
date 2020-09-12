@@ -45,6 +45,7 @@
   if (SET_BOX_LOGIN == 'true') require(DIR_WS_BOXES . 'loginbox.php');
   if (SET_BOX_NEWSLETTER == 'true')  include(DIR_WS_BOXES . 'newsletter.php');
   if ($_SESSION['customers_status']['customers_status_show_price'] == 1) { if (SET_BOX_CART == 'true') include(DIR_WS_BOXES . 'shopping_cart.php'); }
+  if (SET_BOX_WISHLIST == 'true') include(DIR_WS_BOXES . 'wishlist.php');
   if ($product->isProduct()) { if (SET_BOX_MANUFACTURERS_INFO == 'true') include(DIR_WS_BOXES . 'manufacturer_info.php'); }
 
   if (isset($_SESSION['customer_id'])) { include(DIR_WS_BOXES . 'order_history.php'); }
