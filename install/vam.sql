@@ -805,6 +805,28 @@ CREATE TABLE customers_basket_attributes (
   PRIMARY KEY (customers_basket_attributes_id)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
+DROP TABLE IF EXISTS customers_wishlist;
+CREATE TABLE customers_wishlist (
+  customers_wishlist_id int NOT NULL auto_increment,
+  customers_id int NOT NULL,
+  products_id tinytext,
+  customers_wishlist_quantity int(2) NOT NULL,
+  final_price decimal(15,4) NOT NULL,
+  customers_wishlist_date_added char(8),
+  PRIMARY KEY (customers_wishlist_id)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+
+DROP TABLE IF EXISTS customers_wishlist_attributes;
+CREATE TABLE customers_wishlist_attributes (
+  customers_wishlist_attributes_id int NOT NULL auto_increment,
+  customers_id int NOT NULL,
+  products_id tinytext,
+  products_options_id int NOT NULL,
+  products_options_value_id int NOT NULL,
+  products_options_value_text text,
+  PRIMARY KEY (customers_wishlist_attributes_id)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+
 DROP TABLE IF EXISTS customers_info;
 CREATE TABLE customers_info (
   customers_info_id int NOT NULL,
