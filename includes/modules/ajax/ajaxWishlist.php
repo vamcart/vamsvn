@@ -37,7 +37,7 @@ if (($i = strpos($box_wishlist, '<div id="divWishlist">')) !== false) {
 
 if (isset($_POST['get_wishlist']) && $_POST['get_wishlist'] or isset($_GET['get_wishlist']) && $_GET['get_wishlist']) {
 $ajax_wishlist = true;
-require('wishlistt.php');
+require('wishlist.php');
 
 if (($i = strpos($main_content, '<div id="ajax_wishlist">')) !== false) {
     $main_content = substr($main_content, $i + 24);
