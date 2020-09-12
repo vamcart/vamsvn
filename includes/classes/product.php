@@ -814,7 +814,7 @@ $orders_query = "select
 		global $PHP_SELF;
 		$vam_get_all_get_params_return = (basename($PHP_SELF) == 'product_info.php') ? preg_replace('/products_id=\d+&/', '', vam_get_all_get_params(array ('action'))) : vam_get_all_get_params(array ('action'));
 		if (AJAX_CART == 'true' && !vam_has_product_attributes($id)) {
-		$link = '<a class="btn btn-add-to-cart btn-block" href="'.vam_href_link(basename($PHP_SELF), 'action=wishlist_now&BUYproducts_id='.$id, 'NONSSL').'" onclick="doWishlistNow(\''.$id.'\',\'1\'); return false;"><i class="fa fa-shopping-cart"></i> '.IMAGE_BUTTON_IN_WISHLIST.'</a>';
+		$link = '<a class="btn btn-add-to-cart btn-block" href="'.vam_href_link(basename($PHP_SELF), 'action=wishlist_now&BUYproducts_id='.$id, 'NONSSL').'" onclick="doWishlistNow(\''.$id.'\',\'1\'); return false;"><i class="far fa-heart"></i> '.IMAGE_BUTTON_IN_WISHLIST.'</a>';
 		} elseif (AJAX_CART == 'false' && vam_has_product_attributes($id)) {
 		$link = '<a class="btn btn-add-to-cart btn-block" href="'.vam_href_link(basename($PHP_SELF), 'action=wishlist_now&BUYproducts_id='.$id, 'NONSSL').'"><i class="far fa-heart"></i> '.IMAGE_BUTTON_IN_WISHLIST.'</a>';
 		} else {

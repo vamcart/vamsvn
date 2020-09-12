@@ -20,7 +20,14 @@
 				{if $CATEGORIES_NAME && SPECIFICATIONS_BOX_COMPARISON == "True"}<div class="desc"><label><input type="checkbox" id="s_{$module_data.PRODUCTS_ID}" name="products[]" value="{$module_data.PRODUCTS_ID}" /> {#text_compare#}</label></div>{/if}
 			</div>
       </div>
-
+      <div class="card-footer text-center">
+      {if $module_data.PRODUCTS_PRICE_PLAIN > 0}
+         {$module_data.PRODUCTS_BUTTON_BUY_NOW_NEW}
+      {/if}
+      </div>
+      <div class="card-footer text-center">
+         {$module_data.PRODUCTS_BUTTON_WISHLIST}
+      </div>
 		</div>
 <!-- /Product Card Simple -->
 		
