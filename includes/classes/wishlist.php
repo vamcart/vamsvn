@@ -59,7 +59,7 @@ class wishlist {
 				$qty = $this->contents[$products_id]['qty'];
 				$product_query = vam_db_query("select products_id from ".TABLE_CUSTOMERS_WISHLIST." where customers_id = '".$_SESSION['customer_id']."' and products_id = '".$products_id."'");
 				if (!vam_db_num_rows($product_query)) {
-					vam_db_query("insert into ".TABLE_CUSTOMERS_WISHLIST." (customers_id, products_id, customers_basket_quantity, customers_basket_date_added) values ('".$_SESSION['customer_id']."', '".$products_id."', '".$qty."', '".date('Ymd')."')");
+					vam_db_query("insert into ".TABLE_CUSTOMERS_WISHLIST." (customers_id, products_id, customers_wishlist_quantity, customers_wishlist_date_added) values ('".$_SESSION['customer_id']."', '".$products_id."', '".$qty."', '".date('Ymd')."')");
 					if (isset ($this->contents[$products_id]['attributes'])) {
 						foreach ($this->contents[$products_id]['attributes'] as $option => $value) {
 						           $attr_value = $this->contents[$products_id]['attributes_values'][$option];
@@ -68,7 +68,7 @@ class wishlist {
 						}
 					}
 				} else {
-					vam_db_query("update ".TABLE_CUSTOMERS_WISHLIST." set customers_basket_quantity = customers_basket_quantity+'".$qty."' where customers_id = '".$_SESSION['customer_id']."' and products_id = '".$products_id."'");
+					vam_db_query("update ".TABLE_CUSTOMERS_WISHLIST." set customers_wishlist_quantity = customers_wishlist_quantity+'".$qty."' where customers_id = '".$_SESSION['customer_id']."' and products_id = '".$products_id."'");
 				}
 			}
 		}
@@ -76,9 +76,9 @@ class wishlist {
 		// reset per-session wishlist contents, but not the database contents
 		$this->reset(false);
 
-		$products_query = vam_db_query("select products_id, customers_basket_quantity from ".TABLE_CUSTOMERS_WISHLIST." where customers_id = '".$_SESSION['customer_id']."'");
+		$products_query = vam_db_query("select products_id, customers_wishlist_quantity from ".TABLE_CUSTOMERS_WISHLIST." where customers_id = '".$_SESSION['customer_id']."'");
 		while ($products = vam_db_fetch_array($products_query)) {
-			$this->contents[$products['products_id']] = array ('qty' => $products['customers_basket_quantity']);
+			$this->contents[$products['products_id']] = array ('qty' => $products['customers_wishlist_quantity']);
 			// attributes
 			$attributes_query = vam_db_query("select products_options_id, products_options_value_id, products_options_value_text from ".TABLE_CUSTOMERS_WISHLIST_ATTRIBUTES." where customers_id = '".$_SESSION['customer_id']."' and products_id = '".$products['products_id']."'");
 			while ($attributes = vam_db_fetch_array($attributes_query)) {
@@ -132,7 +132,7 @@ class wishlist {
 			$this->contents[$products_id] = array ('qty' => $qty);
 			// insert into database
 			if (isset ($_SESSION['customer_id']))
-				vam_db_query("insert into ".TABLE_CUSTOMERS_WISHLIST." (customers_id, products_id, customers_basket_quantity, customers_basket_date_added) values ('".$_SESSION['customer_id']."', '".$products_id."', '".$qty."', '".date('Ymd')."')");
+				vam_db_query("insert into ".TABLE_CUSTOMERS_WISHLIST." (customers_id, products_id, customers_wishlist_quantity, customers_wishlist_date_added) values ('".$_SESSION['customer_id']."', '".$products_id."', '".$qty."', '".date('Ymd')."')");
 
 			if (is_array($attributes)) {
 				foreach ($attributes as $option => $value) {
@@ -179,7 +179,7 @@ class wishlist {
 		$this->contents[$products_id] = array ('qty' => $quantity);
 		// update database
 		if (isset ($_SESSION['customer_id']))
-			vam_db_query("update ".TABLE_CUSTOMERS_WISHLIST." set customers_basket_quantity = '".$quantity."' where customers_id = '".$_SESSION['customer_id']."' and products_id = '".$products_id."'");
+			vam_db_query("update ".TABLE_CUSTOMERS_WISHLIST." set customers_wishlist_quantity = '".$quantity."' where customers_id = '".$_SESSION['customer_id']."' and products_id = '".$products_id."'");
 
 		if (is_array($attributes)) {
 			foreach ($attributes as $option => $value) {
