@@ -345,6 +345,9 @@ if (isset ($_POST['action']) && ($_POST['action'] == 'process')  && $spam_flag =
 		// restore cart contents
 		$_SESSION['cart']->restore_contents();
 
+		// restore wishlist contents
+		$_SESSION['wishlist']->restore_contents();
+
 		// build the message content
 		$name = $firstname.' '.$lastname;
 
@@ -629,6 +632,9 @@ if (isset ($_GET['social_login']) && ($_GET['social_login'] == 'fb')) {
 		// restore cart contents
 		$_SESSION['cart']->restore_contents();
 
+		// restore wishlist contents
+		$_SESSION['wishlist']->restore_contents();
+
 		// build the message content
 		$name = $firstname.' '.$lastname;
 
@@ -846,6 +852,9 @@ if (isset ($_GET['social_login']) && ($_GET['social_login'] == 'google')) {
 
 		// restore cart contents
 		$_SESSION['cart']->restore_contents();
+
+		// restore wishlist contents
+		$_SESSION['wishlist']->restore_contents();
 
 		// build the message content
 		$name = $firstname.' '.$lastname;
@@ -1100,6 +1109,9 @@ if (isset ($_GET['social_login']) && ($_GET['social_login'] == 'vk')) {
 
 		// restore cart contents
 		$_SESSION['cart']->restore_contents();
+
+		// restore wishlist contents
+		$_SESSION['wishlist']->restore_contents();
 
 		// build the message content
 		$name = $firstname.' '.$lastname;
