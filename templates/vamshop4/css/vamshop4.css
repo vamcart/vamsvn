@@ -897,8 +897,8 @@ li.level3 {
     z-index: 1000;
     position: absolute;
     top: 0;
-    right: 28px;
-    padding: 18px 22px;
+    right: 44px;
+    padding: 18px 18px;
     cursor: pointer;
 }
 
@@ -937,8 +937,8 @@ li.level3 {
     z-index: 1000;
     position: absolute;
     top: 0;
-    right: 60px;
-    padding: 18px 22px;
+    right: 88px;
+    padding: 18px 18px;
     cursor: pointer;
 }
 
