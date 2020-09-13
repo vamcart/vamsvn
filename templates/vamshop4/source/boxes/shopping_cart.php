@@ -67,7 +67,7 @@ if ($_SESSION['cart']->count_contents() > 0) {
 		// Push all attributes information in an array
 		$products_in_cart[] = array ('QTY' => $products[$i]['quantity'], 
 									 'ID' => $products[$i]['id'], 
-									 //'PRICE' => $products[$i]['price'] * $products[$i]['quantity'], 
+									 'FULL_PRICE' => $products[$i]['price'] * $products[$i]['quantity'], 
 									 'PRICE' => $products[$i]['price'], 
 									 'LINK' => vam_href_link(FILENAME_PRODUCT_INFO, vam_product_link($products[$i]['id'],$products[$i]['name'])), 
 'PRODUCTS_QTY' => $product_attributes_in_cart . vam_draw_hidden_field('cart_quantity[]', $products[$i]['quantity'] - 1) . vam_draw_hidden_field('products_id[]', $products[$i]['id']) . vam_draw_hidden_field('old_qty[]', $products[$i]['quantity']) . ($products[$i]['quantity'] < 2 ? vam_draw_hidden_field('cart_delete[]', $products[$i]['id']) : ''),

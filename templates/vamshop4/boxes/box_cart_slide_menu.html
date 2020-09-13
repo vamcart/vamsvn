@@ -29,11 +29,12 @@
 												{if $item_data.NAME != ''}{$item_data.NAME}:{/if} {if $item_data.VALUE != ''}<strong>{$item_data.VALUE}</strong><br />{/if}
 												{/foreach} 
 												{/if}
+							         <strong class="text-muted">{$products_data.QTY} x {$products_data.PRICE}</strong>												
 										</div>				
 						</div>
 						<div class="col-md-2 my-auto">
 								<div class="price-wrap display-6 font-weight-bold">
-									<div><strong>{$products_data.PRICE}</strong></div>
+									<div><strong>{$products_data.FULL_PRICE}</strong></div>
 								</div>
 						</div>
 						<div class="col-md-2 my-auto">
