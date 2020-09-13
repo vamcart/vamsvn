@@ -103,6 +103,10 @@ if (isset ($_GET['action']) && ($_GET['action'] == 'process')) {
 			// restore cart contents
 			$_SESSION['cart']->restore_contents();
 
+			// restore wishlist contents
+			$_SESSION['wishlist']->restore_contents();
+
+
 			if ($_SESSION['cart']->count_contents() > 0) {
 				if ($_SESSION['nologin']){
 				vam_redirect(vam_href_link(FILENAME_CHECKOUT_SHIPPING, '', 'SSL'));
@@ -112,9 +116,6 @@ if (isset ($_GET['action']) && ($_GET['action'] == 'process')) {
 			} else {
 				vam_redirect(vam_href_link(FILENAME_ACCOUNT));
 			}
-
-			// restore wishlist contents
-			$_SESSION['wishlist']->restore_contents();
 
 			if ($_SESSION['wishlist']->count_contents() > 0) {
 				if ($_SESSION['nologin']){
@@ -175,6 +176,9 @@ if (isset ($_GET['action']) && ($_GET['action'] == 'process')) {
 			// restore cart contents
 			$_SESSION['cart']->restore_contents();
 
+			// restore wishlist contents
+			$_SESSION['wishlist']->restore_contents();
+
 			if ($_SESSION['cart']->count_contents() > 0) {
 				if ($_SESSION['nologin']){
 				vam_redirect(vam_href_link(FILENAME_CHECKOUT_SHIPPING, '', 'SSL'));
@@ -184,9 +188,6 @@ if (isset ($_GET['action']) && ($_GET['action'] == 'process')) {
 			} else {
 				vam_redirect(vam_href_link(FILENAME_ACCOUNT));
 			}
-
-			// restore wishlist contents
-			$_SESSION['wishlist']->restore_contents();
 
 			if ($_SESSION['wishlist']->count_contents() > 0) {
 				if ($_SESSION['nologin']){
