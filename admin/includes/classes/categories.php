@@ -436,6 +436,8 @@ class categories {
 		vam_db_query("DELETE FROM ".TABLE_PRODUCTS_ATTRIBUTES." WHERE products_id = '".vam_db_input($product_id)."'");
 		vam_db_query("DELETE FROM ".TABLE_CUSTOMERS_BASKET." WHERE products_id = '".vam_db_input($product_id)."'");
 		vam_db_query("DELETE FROM ".TABLE_CUSTOMERS_BASKET_ATTRIBUTES." WHERE products_id = '".vam_db_input($product_id)."'");
+		vam_db_query("DELETE FROM ".TABLE_CUSTOMERS_WISHLIST." WHERE products_id = '".vam_db_input($product_id)."'");
+		vam_db_query("DELETE FROM ".TABLE_CUSTOMERS_WISHLIST_ATTRIBUTES." WHERE products_id = '".vam_db_input($product_id)."'");
 		vam_db_query("DELETE FROM ".TABLE_PRODUCTS_XSELL." WHERE products_id = '".vam_db_input($product_id)."' OR xsell_id = '".vam_db_input($product_id)."'"  );
 
       vam_db_query("delete from " . TABLE_PRODUCTS_TO_PRODUCTS_EXTRA_FIELDS . " where products_id = " . vam_db_input($product_id));
