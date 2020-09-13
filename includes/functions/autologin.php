@@ -102,6 +102,19 @@ function vam_doautologin ()
                 }
             }
 
+            if (method_exists($_SESSION['wishlist'], 'restore_contents'))
+            {
+                $_SESSION['wishlist']->restore_contents(); // restore wishlist contents
+            }
+            else
+            {
+                $hour = date('G');
+                if( $hour > 7  and $hour < 25 )
+                {
+                    error_log('@@hack 87 $wishlist->restore_contents() method fail fix');
+                }
+            }
+            
             /*  Trying to get back to the users last page can cause page loop, add if your site doesn't change much and also lower cookie expire time to 14 days
 if (sizeof($navigation->snapshot) > 0) {
   $origin_href = vam_href_link($navigation->snapshot['page'], vam_array_to_string($navigation->snapshot['get'], array(vam_session_name())), $navigation->snapshot['mode']);
