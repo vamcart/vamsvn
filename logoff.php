@@ -65,6 +65,7 @@ unset ($_SESSION['cc_id']);
 // #CHAVEIRO14# Autologon END
 
 $_SESSION['cart']->reset();
+$_SESSION['wishlist']->reset();
 // write customers status guest in session again
 require (DIR_WS_INCLUDES.'write_customers_status.php');
 
