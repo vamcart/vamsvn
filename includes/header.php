@@ -186,6 +186,9 @@ $vamTemplate->assign('admin_area_link', vam_href_link_admin(FILENAME_START,'', '
 $vamTemplate->assign('cart_count', $_SESSION['cart']->count_contents());
 $vamTemplate->assign('cart_total', $_SESSION['cart']->show_total());
 
+$vamTemplate->assign('wishlist_count', $_SESSION['wishlist']->count_contents());
+$vamTemplate->assign('wishlist_total', $_SESSION['wishlist']->show_total());
+
 $vamTemplate->assign('current_category_id', $current_category_id);
 	
 // /Метки для закладок
