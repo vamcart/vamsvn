@@ -57,8 +57,8 @@
 	     <li class="list-inline-item pr-2 d-none d-xl-inline-block text-muted small"><a href="{$mainpage}" data-toggle="modal" data-target="#myModal" aria-label="{$smarty.const.TEXT_CITY}"><i class="fas fa-map-marker-alt"></i> <span class="link">{if {cookie name="vamshop-city"}}{cookie name="vamshop-city"}{else}<span class="userCity">{geo_city}</span>{/if}</span></a></li>
 	     {if {$smarty.const.STORE_TELEPHONE} != ""}<li class="list-inline-item pr-2 text-muted small"><a href="tel:{$smarty.const.STORE_TELEPHONE}"><i class="fas fa-phone"></i> <span>{$smarty.const.STORE_TELEPHONE}</span></a></li>{/if}
 	     <li class="list-inline-item pr-2 text-muted small"><a href="contact_us.html"><i class="far fa-envelope"></i> {#text_contact_us#}</a></li>
-	     <li class="list-inline-item pr-2 text-muted small"><a href="{$logoff}"><i class="fa fa-power-off"></i> {#link_logoff#}</a></li>
-	     <li class="list-inline-item pr-2 text-muted small"><a href="{$admin_area_link}"><i class="fas fa-cog"></i> {#text_admin#}</a></li>
+	     {if $smarty.session.customer_id}<li class="list-inline-item pr-2 text-muted small"><a href="{$logoff}"><i class="fa fa-power-off"></i> {#link_logoff#}</a></li>{/if}
+	     {if $smarty.session.customers_status.customers_status_id == 0}<li class="list-inline-item pr-2 text-muted small"><a href="{$admin_area_link}"><i class="fas fa-cog"></i> {#text_admin#}</a></li>{/if}
 	   </ul>  
       </div>
     </div>
