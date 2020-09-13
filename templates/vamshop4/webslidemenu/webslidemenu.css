@@ -468,6 +468,63 @@ video {
   color: #7b7b7b;
 }
 
+/* Main Menu Wishlist Icon*/
+.wsmenu>.wsmenu-list>li.wswishlisticon {
+  float: right;
+  clear: right;
+}
+
+.wsmenu>.wsmenu-list>li.wswishlisticon>a {
+  display: block;
+  color: #575757;
+  padding: 0 26px 0 22px;
+  line-height: 59px;
+  text-decoration: none;
+  position: relative;
+}
+
+.wsmenu>.wsmenu-list>li.wswishlisticon .hidetxt {
+  /*display: none;*/
+}
+
+.wsmenu>.wsmenu-list>li.wswishlisticon a.cart-link {
+  padding: 0 27px 0 23px;
+  text-align: center;
+  border-left: 1px solid rgba(0, 0, 0, 0.1);
+  border-right: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.wsmenu>.wsmenu-list>li.wswishlisticon a.cart-link i {
+  font-size: 16px;
+}
+
+.wsmenu>.wsmenu-list>li.wswishlisticon em.roundpoint {
+  position: absolute;
+  top: 14px;
+  /*right: 21px;*/
+  left: 12px;
+  right: auto;
+  width: 17px;
+  height: 17px;
+  background-color: #DA4B38;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  font-size: 9px;
+  text-align: center;
+  font-style: normal;
+  line-height: 16px;
+  color: #fff;
+}
+
+.wsmenu>.wsmenu-list>li.wswishlisticon i.cart {
+  display: inline-block;
+  font-size: 16px;
+  line-height: inherit;
+  margin-right: 2px;
+  color: #7b7b7b;
+}
+
 /* ================== Desktop Tabing Mega Menus CSS  ================== */
 /* Tabing Leftside */
 .wsmenu>.wsmenu-list>li>.wsshoptabing {
@@ -1249,6 +1306,10 @@ video {
     padding-left: 18px;
   }
 
+  .wsmenu>.wsmenu-list>li.wswishlisticon a.cart-link {
+    padding-left: 18px;
+  }
+
   .wsmenu>.wsmenu-list>li.wsshopmyaccount>a {
     padding-left: 18px;
   }
@@ -1263,11 +1324,22 @@ video {
     font-size: 16px;
   }
 
+  .wsmenu>.wsmenu-list>li.wswishlisticon a.cart-link i {
+    margin-right: 7px;
+    font-size: 16px;
+  }
+
   .wsmenu>.wsmenu-list>li>a .wsarrow:after {
     display: none;
   }
 
   .wsmenu>.wsmenu-list>li.wscarticon em.roundpoint {
+    display: inline-block;
+    right: auto;
+    left: 27px;
+  }
+
+  .wsmenu>.wsmenu-list>li.wswishlisticon em.roundpoint {
     display: inline-block;
     right: auto;
     left: 27px;
@@ -1286,6 +1358,10 @@ video {
     display: inline-block;
   }
 
+  .wsmenu>.wsmenu-list>li.wswishlisticon .hidetxt {
+    display: inline-block;
+  }
+
   .wsmenu>.wsmenu-list>li.wssearchbar {
     display: none;
   }
@@ -1296,11 +1372,20 @@ video {
     float: none;
   }
 
+  .wsmenu>.wsmenu-list>li.wswishlisticon {
+    float: none;
+  }
+
   .wsmenu>.wsmenu-list>li.wsshopmyaccount {
     float: none;
   }
 
   .wsmenu>.wsmenu-list>li.wscarticon a.cart-link {
+    text-align: left;
+    font-size: 16px;
+  }
+
+  .wsmenu>.wsmenu-list>li.wswishlisticon a.cart-link {
     text-align: left;
     font-size: 16px;
   }

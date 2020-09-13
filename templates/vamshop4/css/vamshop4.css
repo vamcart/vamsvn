@@ -897,7 +897,7 @@ li.level3 {
     z-index: 1000;
     position: absolute;
     top: 0;
-    right: 44px;
+    right: 28px;
     padding: 18px 22px;
     cursor: pointer;
 }
@@ -913,8 +913,46 @@ li.level3 {
 }
 
 .wsshopmyaccount em.roundpoint,
-.wswishlist em.roundpoint,
 .wscart em.roundpoint {
+  position: absolute;
+  top: 14px;
+  /*right: 21px;*/
+  left: 12px;
+  right: auto;
+  width: 17px;
+  height: 17px;
+  background-color: #DA4B38;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  font-size: 9px;
+  text-align: center;
+  font-style: normal;
+  line-height: 16px;
+  color: #fff;
+}
+
+.wsmobileheader .wswishlist {
+    background-color: transparent;
+    z-index: 1000;
+    position: absolute;
+    top: 0;
+    right: 60px;
+    padding: 18px 22px;
+    cursor: pointer;
+}
+
+.wsmobileheader .wswishlist i {
+    font-size: 18px;
+    color: #9196a0;
+}
+
+.wswishlist .wsmegamenu.halfdiv,
+.wswishlist .hidetxt {
+  display: none;
+}
+
+.wswishlist em.roundpoint {
   position: absolute;
   top: 14px;
   /*right: 21px;*/
