@@ -170,6 +170,8 @@
   define('TABLE_CUSTOMERS', 'customers');
   define('TABLE_CUSTOMERS_BASKET', 'customers_basket');
   define('TABLE_CUSTOMERS_BASKET_ATTRIBUTES', 'customers_basket_attributes');
+  define('TABLE_CUSTOMERS_WISHLIST', 'customers_wishlist');
+  define('TABLE_CUSTOMERS_WISHLIST_ATTRIBUTES', 'customers_wishlist_attributes');
   define('TABLE_CUSTOMERS_INFO', 'customers_info');
   define('TABLE_CUSTOMERS_IP', 'customers_ip');
   define('TABLE_CUSTOMERS_STATUS', 'customers_status');

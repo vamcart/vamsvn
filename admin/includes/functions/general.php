@@ -2234,6 +2234,8 @@ function vam_get_spsr_zone_id($zone_id) {
 		vam_db_query("DELETE FROM ".TABLE_PRODUCTS_ATTRIBUTES." WHERE products_id = '".vam_db_input($product_id)."'");
 		vam_db_query("DELETE FROM ".TABLE_CUSTOMERS_BASKET." WHERE products_id = '".vam_db_input($product_id)."'");
 		vam_db_query("DELETE FROM ".TABLE_CUSTOMERS_BASKET_ATTRIBUTES." WHERE products_id = '".vam_db_input($product_id)."'");
+		vam_db_query("DELETE FROM ".TABLE_CUSTOMERS_WISHLIST." WHERE products_id = '".vam_db_input($product_id)."'");
+		vam_db_query("DELETE FROM ".TABLE_CUSTOMERS_WISHLIST_ATTRIBUTES." WHERE products_id = '".vam_db_input($product_id)."'");
 
 		$customers_status_array = vam_get_customers_statuses();
 		for ($i = 0, $n = sizeof($customers_status_array); $i < $n; $i ++) {
