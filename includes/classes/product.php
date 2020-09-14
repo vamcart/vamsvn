@@ -799,11 +799,11 @@ $orders_query = "select
 		global $PHP_SELF;
 		$vam_get_all_get_params_return = (basename($PHP_SELF) == 'product_info.php') ? preg_replace('/products_id=\d+&/', '', vam_get_all_get_params(array ('action'))) : vam_get_all_get_params(array ('action'));
 		if (AJAX_CART == 'true' && !vam_has_product_attributes($id)) {
-		$link = '<a class="btn btn-add-to-cart btn-block" href="'.vam_href_link(basename($PHP_SELF), 'action=buy_now&BUYproducts_id='.$id, 'NONSSL').'" onclick="doBuyNow(\''.$id.'\',\'1\'); return false;"><i class="fa fa-shopping-cart"></i> '.IMAGE_BUTTON_IN_CART.'</a>';
+		$link = '<a class="btn btn-add-to-cart btn-block" href="'.vam_href_link(basename($PHP_SELF), 'action=buy_now&BUYproducts_id='.$id, 'NONSSL').'" onclick="doBuyNow(\''.$id.'\',\'1\'); return false;"><i class="fa fa-shopping-cart"></i> '.(($this->getProductCartStatus($id) == 1) ? IMAGE_BUTTON_IN_CART_IN : IMAGE_BUTTON_IN_CART).'</a>';
 		} elseif (AJAX_CART == 'false' && vam_has_product_attributes($id)) {
-		$link = '<a class="btn btn-add-to-cart btn-block" href="'.vam_href_link(basename($PHP_SELF), 'action=buy_now&BUYproducts_id='.$id, 'NONSSL').'"><i class="fa fa-shopping-cart"></i> '.IMAGE_BUTTON_IN_CART.'</a>';
+		$link = '<a class="btn btn-add-to-cart btn-block" href="'.vam_href_link(basename($PHP_SELF), 'action=buy_now&BUYproducts_id='.$id, 'NONSSL').'"><i class="fa fa-shopping-cart"></i> '.(($this->getProductCartStatus($id) == 1) ? IMAGE_BUTTON_IN_CART_IN : IMAGE_BUTTON_IN_CART).'</a>';
 		} else {
-		$link = '<a class="btn btn-add-to-cart btn-block" href="'.vam_href_link(FILENAME_SHOPPING_CART, 'action=buy_now&BUYproducts_id='.$id, 'NONSSL').'"><i class="fa fa-shopping-cart"></i> '.IMAGE_BUTTON_IN_CART.'</a>';
+		$link = '<a class="btn btn-add-to-cart btn-block" href="'.vam_href_link(FILENAME_SHOPPING_CART, 'action=buy_now&BUYproducts_id='.$id, 'NONSSL').'"><i class="fa fa-shopping-cart"></i> '.(($this->getProductCartStatus($id) == 1) ? IMAGE_BUTTON_IN_CART_IN : IMAGE_BUTTON_IN_CART).'</a>';
 		}
 		
 		return $link;
@@ -813,12 +813,38 @@ $orders_query = "select
 	function getWishlistButton($id, $name) {
 		global $PHP_SELF;
 		if (AJAX_WISHLIST == 'true' && !vam_has_product_attributes($id)) {
-		$link = '<a class="btn btn-add-to-cart btn-block" href="'.vam_href_link(basename($PHP_SELF), 'action=wishlist_now&BUYproducts_id='.$id, 'NONSSL').'" onclick="doWishlistNow(\''.$id.'\',\'1\'); return false;"><i class="far fa-heart"></i> '.IMAGE_BUTTON_IN_WISHLIST.'</a>';
+		$link = '<a class="'.(($this->getWishlistStatus($id) == 1) ? ' text-danger' : '').'" data-toggle="tooltip" title="'.(($this->getWishlistStatus($id) == 1) ? IMAGE_BUTTON_IN_WISHLIST_IN : IMAGE_BUTTON_IN_WISHLIST).'" href="'.vam_href_link(basename($PHP_SELF), 'action=wishlist_now&BUYproducts_id='.$id, 'NONSSL').'" onclick="doWishlistNow(\''.$id.'\',\'1\'); return false;"><i class="'.(($this->getWishlistStatus($id) == 1) ? 'fas' : 'far').' fa-heart"></i> '.(($this->getWishlistStatus($id) == 1) ? IMAGE_BUTTON_IN_WISHLIST_IN : IMAGE_BUTTON_IN_WISHLIST).'</a>';
 		} else {
-		$link = '<a class="btn btn-add-to-cart btn-block" href="'.vam_href_link(basename($PHP_SELF), 'action=wishlist_now&BUYproducts_id='.$id, 'NONSSL').'"><i class="far fa-heart"></i> '.IMAGE_BUTTON_IN_WISHLIST.'</a>';
+		$link = '<a class="'.(($this->getWishlistStatus($id) == 1) ? ' text-danger' : '').'" data-toggle="tooltip" title="'.(($this->getWishlistStatus($id) == 1) ? IMAGE_BUTTON_IN_WISHLIST_IN : IMAGE_BUTTON_IN_WISHLIST).'" href="'.vam_href_link(basename($PHP_SELF), 'action=wishlist_now&BUYproducts_id='.$id, 'NONSSL').'"><i class="'.(($this->getWishlistStatus($id) == 1) ? 'fas' : 'far').' fa-heart"></i> '.(($this->getWishlistStatus($id) == 1) ? IMAGE_BUTTON_IN_WISHLIST_IN : IMAGE_BUTTON_IN_WISHLIST).'</a>';
 		}
 		
 		return $link;
+	}
+
+	function getProductCartStatus($id) {
+		
+		if ($id > 0) {
+		if ($_SESSION['cart']->in_cart($id)) {
+			$productcart_status = 1;
+		} else {
+			$productcart_status = 0;
+		}
+      }		
+		
+		return $productcart_status;
+	}
+
+	function getWishlistStatus($id) {
+		
+		if ($id > 0) {
+		if ($_SESSION['wishlist']->in_wishlist($id)) {
+			$wishlist_status = 1;
+		} else {
+			$wishlist_status = 0;
+		}
+      }		
+		
+		return $wishlist_status;
 	}
 
 	function getVPEtext($product, $price) {
@@ -1122,6 +1148,8 @@ $products_special = 100-($vamPrice->CheckSpecial($array['products_id'])*100/$vam
 				'PRODUCTS_BUTTON_BUY_NOW' => $buy_now,
 				'PRODUCTS_BUTTON_BUY_NOW_NEW' => $buy_now_new,
 				'PRODUCTS_BUTTON_WISHLIST' => $this->getWishlistButton($array['products_id'], $array['products_name']),
+				'PRODUCTS_CART_STATUS' => $this->getProductCartStatus($array['products_id']),
+				'PRODUCTS_WISHLIST_STATUS' => $this->getWishlistStatus($array['products_id']),
 				'PRODUCTS_SHIPPING_NAME'=>$shipping_status_name,
 				'PRODUCTS_SHIPPING_IMAGE'=>$shipping_status_image, 
 				'PRODUCTS_DESCRIPTION' => $array['products_description'],
