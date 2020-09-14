@@ -183,7 +183,9 @@ define('IMAGE_BUTTON_CONTINUE', 'Продовжити');
 define('IMAGE_BUTTON_DELETE', 'Видалити');
 define('IMAGE_BUTTON_LOGIN', 'Продовжити');
 define('IMAGE_BUTTON_IN_CART', 'Додати в кошик');
+define('IMAGE_BUTTON_IN_CART_IN', 'Уже в корзине');
 define('IMAGE_BUTTON_IN_WISHLIST', 'Добавить в избранное');
+define('IMAGE_BUTTON_IN_WISHLIST_IN', 'Уже в избранном');
 define('IMAGE_BUTTON_SEARCH', 'Шукати');
 define('IMAGE_BUTTON_UPDATE', 'Оновити');
 define('IMAGE_BUTTON_UPDATE_CART', 'Перерахувати');
@@ -645,6 +647,7 @@ define('TEXT_NO_PRODUCTS_AVAILABLE', 'Товари для порівняння �
 define('TEXT_NO_COMPARISON_AVAILABLE', 'Адміністратором були задані специфікації товару для порівняння. <a href="http://vamshop.ru/manual/ch06.html" target="_blank"> Налаштування специфікацій </a>.') ;
 define('TEXT_COMPARE', 'Порівняння товару');
 define('TEXT_BUY_BUTTON', 'Купити');
+define('TEXT_WISHLIST_BUTTON', 'В избранное');
 define('TEXT_BEST_BUY', 'встигни придбати!');
 define('TEXT_BEST_BUY_UP', 'Встигни прибдати!');
 define('TEXT_READ_MORE', 'докладніше');
