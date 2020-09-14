@@ -813,9 +813,9 @@ $orders_query = "select
 	function getWishlistButton($id, $name) {
 		global $PHP_SELF;
 		if (AJAX_WISHLIST == 'true' && !vam_has_product_attributes($id)) {
-		$link = '<a class="'.(($this->getWishlistStatus($id) == 1) ? ' text-danger' : '').'" data-toggle="tooltip" title="'.(($this->getWishlistStatus($id) == 1) ? IMAGE_BUTTON_IN_WISHLIST_IN : IMAGE_BUTTON_IN_WISHLIST).'" href="'.vam_href_link(basename($PHP_SELF), 'action=wishlist_now&BUYproducts_id='.$id, 'NONSSL').'" onclick="doWishlistNow(\''.$id.'\',\'1\'); return false;"><i class="'.(($this->getWishlistStatus($id) == 1) ? 'fas' : 'far').' fa-heart"></i> '.(($this->getWishlistStatus($id) == 1) ? IMAGE_BUTTON_IN_WISHLIST_IN : IMAGE_BUTTON_IN_WISHLIST).'</a>';
+		$link = '<a class="'.(($this->getWishlistStatus($id) == 1) ? '' : '').'" data-toggle="tooltip" title="'.(($this->getWishlistStatus($id) == 1) ? IMAGE_BUTTON_IN_WISHLIST_IN : IMAGE_BUTTON_IN_WISHLIST).'" href="'.vam_href_link(basename($PHP_SELF), 'action=wishlist_now&BUYproducts_id='.$id, 'NONSSL').'" onclick="doWishlistNow(\''.$id.'\',\'1\'); return false;"><i class="'.(($this->getWishlistStatus($id) == 1) ? 'text-danger fas' : 'far').' fa-heart"></i> '.(($this->getWishlistStatus($id) == 1) ? IMAGE_BUTTON_IN_WISHLIST_IN : IMAGE_BUTTON_IN_WISHLIST).'</a>';
 		} else {
-		$link = '<a class="'.(($this->getWishlistStatus($id) == 1) ? ' text-danger' : '').'" data-toggle="tooltip" title="'.(($this->getWishlistStatus($id) == 1) ? IMAGE_BUTTON_IN_WISHLIST_IN : IMAGE_BUTTON_IN_WISHLIST).'" href="'.vam_href_link(basename($PHP_SELF), 'action=wishlist_now&BUYproducts_id='.$id, 'NONSSL').'"><i class="'.(($this->getWishlistStatus($id) == 1) ? 'fas' : 'far').' fa-heart"></i> '.(($this->getWishlistStatus($id) == 1) ? IMAGE_BUTTON_IN_WISHLIST_IN : IMAGE_BUTTON_IN_WISHLIST).'</a>';
+		$link = '<a class="'.(($this->getWishlistStatus($id) == 1) ? '' : '').'" data-toggle="tooltip" title="'.(($this->getWishlistStatus($id) == 1) ? IMAGE_BUTTON_IN_WISHLIST_IN : IMAGE_BUTTON_IN_WISHLIST).'" href="'.vam_href_link(basename($PHP_SELF), 'action=wishlist_now&BUYproducts_id='.$id, 'NONSSL').'"><i class="'.(($this->getWishlistStatus($id) == 1) ? 'text-danger fas' : 'far').' fa-heart"></i> '.(($this->getWishlistStatus($id) == 1) ? IMAGE_BUTTON_IN_WISHLIST_IN : IMAGE_BUTTON_IN_WISHLIST).'</a>';
 		}
 		
 		return $link;
