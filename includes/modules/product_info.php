@@ -126,6 +126,18 @@ if (!is_object($product) || !$product->isProduct() OR !$product->data['products_
 		$info->assign('PRODUCT_DISLIKES', $product->data['dislikes']);
 
 
+		if ($_SESSION['cart']->in_cart($product->data['products_id'])) {
+			$info->assign('IN_CART', 1);
+		} else {
+			$info->assign('IN_CART', 0);
+		}
+
+		if ($_SESSION['wishlist']->in_wishlist($product->data['products_id'])) {
+			$info->assign('IN_WISHLIST', 1);
+		} else {
+			$info->assign('IN_WISHLIST', 0);
+		}
+
       $i = 0;
       $max = count($_SESSION['tracking']['products_history']);
       

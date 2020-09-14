@@ -199,6 +199,12 @@
     <a class="btn btn-inverse checkout btn-block iframe" target="_blank" href="{$ONE_CLICK_BUY_LINK}"><i class="fas fa-shopping-cart"></i> {$smarty.const.ONE_CLICK_BUY_NAVBAR_TITLE}</a>
     </div>
     {/if}
+    
+    {if $smarty.const.AJAX_WISHLIST == 'true'}
+    <div class="col-auto mt-1">
+    <a class="btn btn-add-to-cart btn-block{if $IN_WISHLIST} btn-outline-danger text-danger{/if}" href="index.php?action=wishlist_now&BUYproducts_id={$PRODUCTS_ID}" onclick="doWishlistNow('{$PRODUCTS_ID}','1'); return false;" data-toggle="tooltip" title="{$smarty.const.ICON_WISHLIST}"><i class="{if $IN_WISHLIST}fas{else}far{/if} fa-heart"></i></a>
+    </div>
+    {/if}
         
   </div>
 {else}
