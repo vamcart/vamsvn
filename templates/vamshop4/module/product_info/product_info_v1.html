@@ -202,7 +202,7 @@
     
     {if $smarty.const.AJAX_WISHLIST == 'true'}
     <div class="col-auto mt-1">
-    <a class="btn btn-add-to-cart btn-block{if $IN_WISHLIST} btn-outline-danger text-danger{/if}" href="index.php?action=wishlist_now&BUYproducts_id={$PRODUCTS_ID}" onclick="doWishlistNow('{$PRODUCTS_ID}','1'); return false;" data-toggle="tooltip" title="{if $IN_WISHLIST}{$smarty.const.IMAGE_BUTTON_IN_WISHLIST_IN}{else}{$smarty.const.IMAGE_BUTTON_IN_WISHLIST}{/if}"><i class="{if $IN_WISHLIST}fas{else}far{/if} fa-heart"></i></a>
+    <a class="btn btn-add-to-cart btn-block{if $IN_WISHLIST} btn-outline-danger text-danger{/if}" href="index.php?action=wishlist_now&BUYproducts_id={$PRODUCTS_ID}" onclick="doWishlistNow('{$PRODUCTS_ID}','1'); return false;" data-toggle="tooltip" title="{if $IN_WISHLIST}{$smarty.const.IMAGE_BUTTON_IN_WISHLIST_IN}{else}{$smarty.const.IMAGE_BUTTON_IN_WISHLIST}{/if}" aria-label="{if $IN_WISHLIST}{$smarty.const.IMAGE_BUTTON_IN_WISHLIST_IN}{else}{$smarty.const.IMAGE_BUTTON_IN_WISHLIST}{/if}"><i class="{if $IN_WISHLIST}fas{else}far{/if} fa-heart"></i></a>
     </div>
     {/if}
         
