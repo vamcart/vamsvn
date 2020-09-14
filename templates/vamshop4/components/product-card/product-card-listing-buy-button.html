@@ -8,11 +8,11 @@
 		</div>
 		<div class="col-md-6">
 				<div class="title h5"><a href="{$module_data.PRODUCTS_LINK}" title="{$module_data.PRODUCTS_NAME}">{$module_data.PRODUCTS_NAME}</a></div>
+				<div class="desc small"><span class="text-muted">{$module_data.PRODUCTS_BUTTON_WISHLIST}</span></div>
 				{if $module_data.REVIEWS_TOTAL > 0}
 				<div class="rating-wrap small">
 					{$module_data.REVIEWS_STAR_RATING} <span class="text-muted pr-2" title="{$smarty.const.TEXT_REVIEWS_RATING}">{$module_data.REVIEWS_TOTAL_RATING|number_format:1}</span>
 					<div class="label-rating"><span class="text-muted"><i class="far fa-comments"></i> {$smarty.const.TEXT_TOTAL_REVIEWS}: {$module_data.REVIEWS_TOTAL}</span></div>
-					<div class="label-rating"><span class="text-muted">{$module_data.PRODUCTS_BUTTON_WISHLIST}</span></div>
 				</div>
 				{/if}
 				{if {$module_data.PRODUCTS_SHORT_DESCRIPTION}}<div class="small">{$module_data.PRODUCTS_SHORT_DESCRIPTION|strip_tags|vam_truncate:{$smarty.const.MAX_DISPLAY_SHORT_DESCRIPTION}:"...":true}</div>{/if}

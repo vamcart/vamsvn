@@ -494,7 +494,7 @@ function doDislike(id) {
 $(function () {
 // Responsive equal height
 if ($(window).width() > 350) {
-$(window).on('load', function () {
+
     $('.card-body .img-wrap').matchHeight();
     $('.card-body .attributes').matchHeight();
     $('.card-body .title').matchHeight();
@@ -505,7 +505,7 @@ $(window).on('load', function () {
     $('.payment-method .card-title').matchHeight();
     $('.shipping-method .card-title').matchHeight();
     $('.product-attribute-item .card-title').matchHeight();
-});
+
 $(document).ajaxSuccess(function () {
     $('.card-body .img-wrap').matchHeight();
     $('.card-body .attributes').matchHeight();
