@@ -18,10 +18,10 @@
   <div class="card card-product card-sm">
 	<div class="card-body">
 	<div class="row">
-		<div class="col-md-2 my-auto">
+		<div class="col-md-3 my-auto">
 			<div class="img-wrap"><a href="{$products_data.LINK}" title="{$products_data.NAME}"><img class="img-sm" src="{$products_data.IMAGE}" alt="{$products_data.NAME}"></a></div>
 		</div>
-		<div class="col-md-6 my-auto">
+		<div class="col-md-5 my-auto">
 				<div class=""><a href="{$products_data.LINK}">{$products_data.NAME|vam_truncate:$smarty.const.MAX_DISPLAY_WISHLIST:"...":true}</a></div>
 						<div class="media-body">
 								{if $products_data.ATTRIBUTES!=''} 
