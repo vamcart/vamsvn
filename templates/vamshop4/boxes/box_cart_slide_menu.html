@@ -22,7 +22,7 @@
 							<div class="img-wrap"><a href="{$products_data.LINK}" title="{$products_data.NAME}"><img class="img-sm" src="{$products_data.IMAGE}" alt="{$products_data.NAME}"></a></div>
 						</div>
 						<div class="col-md-6 my-auto">
-								<div class=""><a href="{$products_data.LINK}">{$products_data.NAME|vam_truncate:$smarty.const.MAX_DISPLAY_WISHLIST:"...":true}</a></div>
+								<div class=""><a href="{$products_data.LINK}">{$products_data.NAME|vam_truncate:$smarty.const.MAX_DISPLAY_CART:"...":true}</a></div>
 										<div class="media-body">
 												{if $products_data.ATTRIBUTES!=''} 
 												{foreach key=key_data item=item_data from=$products_data.ATTRIBUTES} 
@@ -39,7 +39,7 @@
 						</div>
 						<div class="col-md-2 my-auto">
 							<div class="action-wrap text-center">
-				         {if $smarty.const.AJAX_WISHLIST == 'true'}<button class="btn btn-outline-light circle text-danger wishlist_delete" value="{$products_data.ID}"><i class="fas fa-times"></i></button>{/if}
+				         {if $smarty.const.AJAX_CART == 'true'}<button class="btn btn-outline-light circle text-danger cart_delete" value="{$products_data.ID}"><i class="fas fa-times"></i></button>{/if}
 							</div>
 						</div>
 					</div>
