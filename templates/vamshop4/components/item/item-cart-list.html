@@ -8,7 +8,7 @@
 		</div>
 		<div class="col-md-5">
 				<div class="title"><a href="{$module_data.PRODUCTS_LINK}" title="{$module_data.IMAGE_ALT}">{$module_data.PRODUCTS_NAME}</a></div>
-				{if $module_data.PRODUCTS_SHIPPING_TIME neq ""}<p><span class="small text-muted">{#text_shippingtime#}&nbsp;{$module_data.PRODUCTS_SHIPPING_TIME}</span></p>{/if}
+				{if $module_data.PRODUCTS_SHIPPING_TIME neq ""}<p><span class="text-muted small">{#text_shippingtime#}&nbsp;{$module_data.PRODUCTS_SHIPPING_TIME}</span></p>{/if}
 				<div class="small attributes">
 				{if $module_data.ATTRIBUTES!=''}
 				{foreach key=key_data item=item_data from=$module_data.ATTRIBUTES} 
