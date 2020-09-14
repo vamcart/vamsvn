@@ -6,7 +6,7 @@
 			<div class="img-wrap"><a href="{$module_data.PRODUCTS_LINK}" title="{$module_data.IMAGE_ALT}"><img class="img-sm" src="{$module_data.PRODUCTS_IMAGE}" alt="{$module_data.IMAGE_ALT}"></a></div>
 		</div>
 		<div class="col-md-6">
-				<span class="title h6"><a href="{$module_data.PRODUCTS_LINK}" title="{$module_data.IMAGE_ALT}">{$module_data.PRODUCTS_NAME}</a></h6>
+				<span class="title"><a href="{$module_data.PRODUCTS_LINK}" title="{$module_data.IMAGE_ALT}">{$module_data.PRODUCTS_NAME}</a></h6>
 				{if $module_data.PRODUCTS_SHIPPING_TIME neq ""}<p><span class="text-muted small">{#text_shippingtime#}&nbsp;{$module_data.PRODUCTS_SHIPPING_TIME}</span></p>{/if}
 				<div class="attributes">
 				{if $module_data.ATTRIBUTES!=''}
@@ -17,7 +17,7 @@
 				</div> 					
 		</div>
 		<div class="col-md-3 my-auto">
-				<div class="price-wrap h6 font-weight-bold">
+				<div class="price-wrap font-weight-bold">
 					<div><strong>{$module_data.PRODUCTS_PRICE}</strong></div>
 					{if $module_data.PRODUCTS_QUANTITY > 1}<div><span class="text-muted small">{$module_data.PRODUCTS_SINGLE_PRICE} / {$smarty.const.TEXT_PIECE}</span></div>{/if}
 					{if $module_data.PRODUCTS_QUANTITY > 1}<div><span class="text-muted small">{$module_data.PRODUCTS_QUANTITY} {$smarty.const.TEXT_PIECE}</span></div>{/if}

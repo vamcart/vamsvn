@@ -11,13 +11,13 @@
 			<div class="img-wrap"><a href="{$PRODUCTS_URL_INFO}" title="{$IMAGE_ALT}"><img src="{$PRODUCTS_IMAGE}" alt="{$IMAGE_ALT}"></a></div>
 		</div>
 		<div class="col-md-3">
-				<div class="title h5"><a href="{$PRODUCTS_URL_INFO}" title="{$IMAGE_ALT}">{$PRODUCTS_NAME}</a></div>
+				<div class="title"><a href="{$PRODUCTS_URL_INFO}" title="{$IMAGE_ALT}">{$PRODUCTS_NAME}</a></div>
 				{if {$PRODUCTS_SHORT_DESCRIPTION} != ''}
 				<div class="desc mb-2 small">
 				{$PRODUCTS_SHORT_DESCRIPTION|vam_truncate:$smarty.const.MAX_DISPLAY_SHORT_DESCRIPTION:"...":true}
 				</div>
 				{/if}
-				<div class="price-wrap h6 font-weight-bold text-dark b">
+				<div class="price-wrap font-weight-bold text-dark b">
 					<div><strong>{$PRODUCTS_PRICE}</strong></div>
 					<meta itemprop="name" content="{$PRODUCTS_NAME}" />
 					<span itemprop="offers" itemscope itemtype="http://schema.org/Offer"> 
