@@ -90,9 +90,11 @@
           </li>
           {/if}
           {if !$wishlist_current}
+          {if $smarty.const.ENABLE_WISHLIST == 'true'}
           <li aria-haspopup="true" class="wsshopmyaccount clearfix" id="divWishlist">
             {$box_WISHLIST}
           </li>
+          {/if}
           {/if}
           <li class="wsshopmyaccount"><a href="{$smarty.const.FILENAME_LOGIN}"><i class="fas fa-user"></i>{$smarty.const.TEXT_MY_ORDERS}</a></li>
         </ul>

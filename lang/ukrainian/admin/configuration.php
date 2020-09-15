@@ -1219,4 +1219,7 @@ define('DARK_THEME_DESC' , 'Если на смартфоне в настройк
 define('REVIEWS_IMAGES_UPLOAD_TITLE' , 'Разрешить загрузку картинок к отзывам');
 define('REVIEWS_IMAGES_UPLOAD_DESC' , 'Разрешить загрузку картинок к отзывам.');
 
+define('ENABLE_WISHLIST_TITLE' , 'Разрешить избранное');
+define('ENABLE_WISHLIST_DESC' , 'Разрешить добавлять товары в избранное.');
+
 ?>
