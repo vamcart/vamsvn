@@ -14,7 +14,7 @@
 				<div class="small">
 				{if $module_data.REVIEWS_TOTAL > 0}
 					{$module_data.REVIEWS_STAR_RATING} <span class="text-muted pr-2" title="{$smarty.const.TEXT_REVIEWS_RATING}">{$module_data.REVIEWS_TOTAL_RATING|number_format:1}</span>
-					<div class="label-rating"><span class="text-muted" aria-label="{$smarty.const.TEXT_TOTAL_REVIEWS}" data-toggle="tooltip" title="{$smarty.const.TEXT_TOTAL_REVIEWS}"><i class="far fa-comments"></i> {$module_data.REVIEWS_TOTAL}</span></div>
+					<div class="label-rating"><span class="text-muted" data-toggle="tooltip" title="{$smarty.const.TEXT_TOTAL_REVIEWS}"><i class="far fa-comments"></i> {$module_data.REVIEWS_TOTAL}</span></div>
 				{/if}
 				{if $smarty.const.ENABLE_WISHLIST == 'true'}
 					<span class="text-muted">{$module_data.PRODUCTS_BUTTON_WISHLIST}</span>
