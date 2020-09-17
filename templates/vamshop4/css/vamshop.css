@@ -2195,7 +2195,7 @@ label.error
 		padding: 0 10px 0 10px;
 		border: 0px solid black;
 		background: transparent; 
-		color: #ff5151;
+		color: var(--color-red);
 		font-weight: normal; 
 		text-align: right;
 	}	 
@@ -2223,12 +2223,12 @@ span.markProductOutOfStock
 
 span.productSpecialPrice 
    {
-     color: #ff5151;
+     color: var(--color-red);
    }
 
 span.productOldPrice 
    {
-	  color: #ff5151;
+	  color: var(--color-red);
 	  text-decoration: line-through;
    }
 
