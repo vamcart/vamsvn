@@ -1557,3 +1557,7 @@ header .input-group-text,
 }
 
 /* /Star Rating */
+
+#cboxContent {
+  background-color: var(--card-background-color) !important;
+}
