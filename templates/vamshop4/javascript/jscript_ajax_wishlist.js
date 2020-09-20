@@ -44,7 +44,7 @@ function doWishlistNow( id, quantity, update, get_wishlist, attributes, popup ) 
 		
 			}   
 			});
-			//img_loader();                     
+			img_loader();                     
 }
 
 function doAddWishlist(id) {
@@ -82,6 +82,9 @@ function doAddWishlist(id) {
 				//{
 					//wishlistPopupOn();
 				//}
+
+			$(".wishlist-icon-"+id).replaceWith('<i class="fas fa-heart wishlist-icon-'+id+'""></i>');
+			$('[data-toggle="tooltip"]').tooltip('hide');
 
     	               }
 		});
