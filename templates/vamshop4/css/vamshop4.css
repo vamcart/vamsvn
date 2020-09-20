@@ -1560,4 +1560,6 @@ header .input-group-text,
 
 #cboxContent {
   background-color: var(--card-background-color) !important;
+  border-radius: 1rem;
+  padding-top: 1em;
 }
