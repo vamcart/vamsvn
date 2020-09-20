@@ -2,18 +2,18 @@
 <div>
 <h1>{$smarty.const.NAVBAR_TITLE_SITE_REVIEWS}</h1>
 
-<div class="row-fluid reviews-title" itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">
+<div class="row-fluid reviews-title">
   <div class="card card-product h-100">
 	<div class="card-body">
 	<div class="row">
 		<div class="col-md-3">
 			<div class="text-center">
-			<div class="display-4 font-weight-bolder"><span itemprop="ratingValue">{$REVIEWS_TOTAL_RATING|number_format:1}</span></div>
+			<div class="display-4 font-weight-bolder"><span>{$REVIEWS_TOTAL_RATING|number_format:1}</span></div>
 			{$REVIEWS_STAR_RATING}
 			</div>
 				{if {$REVIEWS_TOTAL} > 0}
 				<div class="rating-wrap text-center">
-             {#text_total#}: <span itemprop="reviewCount">{$REVIEWS_TOTAL}</span>
+             {#text_total#}: <span>{$REVIEWS_TOTAL}</span>
 				</div>
 				{/if}
 		</div>
