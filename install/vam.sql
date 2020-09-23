@@ -947,7 +947,7 @@ CREATE TABLE faq (
 
 DROP TABLE IF EXISTS faq1;
 CREATE TABLE `faq1` (
-  `faq1_id` int(11) NOT NULL,
+  `faq1_id` int(11) NOT NULL AUTO_INCREMENT,
   `products_id` int(11) NOT NULL,
   `customer_id` int(11) NOT NULL,
   `email_address` varchar(255) NOT NULL,
@@ -965,7 +965,8 @@ CREATE TABLE `faq1` (
   `dislikes` int(3) NOT NULL DEFAULT '0',
   `show_popular_products` tinyint(1) NOT NULL DEFAULT '0',
   `show_discount_products` tinyint(1) NOT NULL DEFAULT '0',
-  `sort_order` int(4) NOT NULL DEFAULT '0'
+  `sort_order` int(4) NOT NULL DEFAULT '0',
+   PRIMARY KEY (faq1_id)  
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 DROP TABLE IF EXISTS languages;
