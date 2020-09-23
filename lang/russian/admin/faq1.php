@@ -14,27 +14,30 @@
    Released under the GNU General Public License 
    --------------------------------------------------------------*/
 
-define('HEADING_TITLE', 'FAQ');
+define('HEADING_TITLE', 'Вопросы от посетителей');
 
-define('TABLE_HEADING_FAQ_QUESTION', 'Вопрос');
-define('TABLE_HEADING_FAQ_ACTION', 'Действие');
-define('TABLE_HEADING_FAQ_STATUS', 'Статус');
+define('TABLE_HEADING_FAQ1_QUESTION', 'Вопрос');
+define('TABLE_HEADING_FAQ1_ACTION', 'Действие');
+define('TABLE_HEADING_FAQ1_ANSWER', 'Есть ответ');
+define('TABLE_HEADING_FAQ1_STATUS', 'Статус');
 
-define('TEXT_FAQ_ITEMS', 'Количество вопросов:');
+define('TEXT_FAQ1_ITEMS', 'Количество вопросов:');
 define('TEXT_INFO_HEADING_DELETE_ITEM', 'Удалить вопрос');
 define('TEXT_DELETE_ITEM_INTRO', 'Вы уверены, что хотите удалить этот вопрос?');
 
-define('TEXT_FAQ_QUESTION', 'Вопрос');
-define('TEXT_FAQ_ANSWER', 'Ответ');
+define('TEXT_FAQ1_QUESTION', 'Вопрос');
+define('TEXT_FAQ1_ANSWER', 'Ответ');
+define('TEXT_FAQ1_NAME', 'Имя');
+define('TEXT_FAQ1_EMAIL_ADDRESS', 'Email');
 
-define('TEXT_FAQ_META_TITLE', 'Meta Title');
-define('TEXT_FAQ_META_DESCRIPTION', 'Meta Description');
-define('TEXT_FAQ_META_KEYWORDS', 'Meta Keywords');
+define('TEXT_FAQ1_META_TITLE', 'Meta Title');
+define('TEXT_FAQ1_META_DESCRIPTION', 'Meta Description');
+define('TEXT_FAQ1_META_KEYWORDS', 'Meta Keywords');
 
-define('IMAGE_NEW_FAQ_ITEM', 'Добавить вопрос');
-define('IMAGE_EDIT_FAQ_ITEM', 'Изменить вопрос');
-define('TEXT_FAQ_LANGUAGE', 'Язык');
-define('TEXT_FAQ_DATE', 'Дата');
+define('IMAGE_NEW_FAQ1_ITEM', 'Добавить вопрос');
+define('IMAGE_EDIT_FAQ1_ITEM', 'Изменить вопрос');
+define('TEXT_FAQ1_LANGUAGE', 'Язык');
+define('TEXT_FAQ1_DATE', 'Дата');
 
 // Сборка VaM
 
@@ -46,15 +49,20 @@ define('IMAGE_ICON_STATUS_RED_LIGHT', 'Сделать неактивной');
 define('EMPTY_CATEGORY', 'Нет faq');
 define('TEXT_NO_CHILD_CATEGORIES_OR_PRODUCTS', 'Добавьте faq');
 
-define('TEXT_FAQ_PAGE_URL', 'SEO URL вопроса и ответа');
+define('TEXT_FAQ1_PAGE_URL', 'SEO URL вопроса и ответа');
 
-define('TEXT_FAQ_ATTACH_TO_CATEGORIES', 'Прицепить вопрос к категории');
-define('TEXT_FAQ_SELECT_CATEGORIES', 'Выберите категории');
+define('TEXT_FAQ1_ATTACH_TO_CATEGORIES', 'Прицепить вопрос к категории');
+define('TEXT_FAQ1_SELECT_CATEGORIES', 'Выберите категории');
 
-define('TEXT_FAQ_ATTACH_TO_PRODUCTS', 'Прицепить вопрос к товарам');
-define('TEXT_FAQ_SELECT_PRODUCTS', 'Выберите товары');
+define('TEXT_FAQ1_ATTACH_TO_PRODUCTS', 'Прицепить вопрос к товарам');
+define('TEXT_FAQ1_SELECT_PRODUCTS', 'Выберите товары');
 
-define('TEXT_FAQ_SHOW_POPULAR_PRODUCTS', 'Показывать в ответе 5 популярных товаров категории');
-define('TEXT_FAQ_SHOW_DISCOUNT_PRODUCTS', 'Показывать в ответе 5 дешёвых товаров категории');
+define('TEXT_FAQ1_SHOW_POPULAR_PRODUCTS', 'Показывать в ответе 5 популярных товаров категории');
+define('TEXT_FAQ1_SHOW_DISCOUNT_PRODUCTS', 'Показывать в ответе 5 дешёвых товаров категории');
+
+define('TABLE_HEADING_FAQ1_SORT_ORDER', 'Порядок сортировки');
+define('TEXT_FAQ1_SORT_ORDER', 'Порядок сортировки');
+
+define('TEXT_FAQ1_PRODUCT_NAME', 'Название товара');
 
 ?>
