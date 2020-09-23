@@ -19,6 +19,7 @@ include ('includes/application_top.php');
 require_once(DIR_FS_INC.'vam_validate_email.inc.php');
 require_once (DIR_FS_INC.'vam_image_button.inc.php');
 require_once (DIR_FS_INC.'vam_random_charcode.inc.php');
+require_once (DIR_FS_INC.'vam_random_select.inc.php');
 require_once (DIR_FS_INC.'vam_render_vvcode.inc.php');
 
 // create smarty elements
@@ -112,6 +113,27 @@ $vamTemplate->assign('error', $messageStack->output('ask_a_question'));
 		$html_mail = $vamTemplate->fetch(CURRENT_TEMPLATE.'/mail/'.$_SESSION['language'].'/ask_a_question.html');
 		$vamTemplate->caching = 0;
 		$txt_mail = $vamTemplate->fetch(CURRENT_TEMPLATE.'/mail/'.$_SESSION['language'].'/ask_a_question.txt');
+	
+		if (isset($_SESSION['customer_id'])) {
+			$customer_id = $_SESSION['customer_id'];
+		} else {
+			$customer_id = 0;
+		}
+
+		if ($_POST['message_body'] != '') {
+
+          $sql_data_array = array('question'   => vam_db_prepare_input($_POST['message_body']),
+                                  'products_id'    => vam_db_prepare_input($product_info['products_id']),
+                                  'customer_id'    => vam_db_prepare_input($customer_id),
+                                  'email_address'    => vam_db_prepare_input($to_email_address),
+                                  'name'    => vam_db_prepare_input($to_name),
+                                  'date_added'   => 'now()',
+                                  'language'   => '1',
+                                  'status'     => '1' );
+          vam_db_perform(TABLE_FAQ1, $sql_data_array);
+          
+		}	
+	
 	// send mail to admin
 	vam_php_mail(filter_var(EMAIL_SUPPORT_ADDRESS, FILTER_VALIDATE_EMAIL), EMAIL_SUPPORT_NAME, EMAIL_SUPPORT_ADDRESS, STORE_NAME, EMAIL_SUPPORT_FORWARDING_STRING, filter_var($to_email_address, FILTER_VALIDATE_EMAIL), $to_name, '', '', NAVBAR_TITLE_ASK, $html_mail, $txt_mail);
 	// send mail to customer
