@@ -704,5 +704,8 @@ define('FILENAME_PIN_LOADER', 'pin_loader.php');
 
   define('FILENAME_FAQ1', 'faq1.php');
   define('TABLE_FAQ1', 'faq1');
+
+  define('FILENAME_ACCOUNT', 'account.php');
+  define('FILENAME_ACCOUNT_HISTORY', 'account_history.php');
       
 ?>
