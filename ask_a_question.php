@@ -98,22 +98,7 @@ $vamTemplate->assign('error', $messageStack->output('ask_a_question'));
 	}
 
 		if ($error == false) {
-		$vamTemplate->assign('PRODUCTS_NAME', $product_info['products_name']);
-		$vamTemplate->assign('PRODUCTS_IMAGE', $product_info['products_image']);
-      $products_price = $vamPrice->GetPrice($product_info['products_id'], $format = true, 1, $product_info['products_tax_class_id'], $product_info['products_price'], 1);
-		$vamTemplate->assign('PRODUCTS_PRICE', $products_price['formated']);
-		$vamTemplate->assign('PRODUCTS_MODEL', $product_info['products_model']);
-		$vamTemplate->assign('TEXT_MESSAGE', $_POST['message_body']);
-		$vamTemplate->assign('TEXT_FIRSTNAME', $firstname);
-		$vamTemplate->assign('TEXT_LASTNAME', $lastname);
-		$vamTemplate->assign('TEXT_EMAIL', $email_address);
-		$vamTemplate->assign('TEXT_EMAIL_SUCCESSFUL', sprintf(TEXT_EMAIL_SUCCESSFUL_SENT, $product_info['products_name']));
-		$vamTemplate->assign('PRODUCT_LINK', vam_href_link(FILENAME_PRODUCT_INFO, vam_product_link($product_info['products_id'], $product_info['products_name'])));
-		$vamTemplate->caching = 0;
-		$html_mail = $vamTemplate->fetch(CURRENT_TEMPLATE.'/mail/'.$_SESSION['language'].'/ask_a_question.html');
-		$vamTemplate->caching = 0;
-		$txt_mail = $vamTemplate->fetch(CURRENT_TEMPLATE.'/mail/'.$_SESSION['language'].'/ask_a_question.txt');
-	
+
 		if (isset($_SESSION['customer_id'])) {
 			$customer_id = $_SESSION['customer_id'];
 		} else {
@@ -131,8 +116,28 @@ $vamTemplate->assign('error', $messageStack->output('ask_a_question'));
                                   'language'   => '1',
                                   'status'     => '1' );
           vam_db_perform(TABLE_FAQ1, $sql_data_array);
+          $faq_id = vam_db_insert_id();
           
 		}	
+
+		$vamTemplate->assign('FAQ_ID', $faq_id);
+		$vamTemplate->assign('REVIEWS_LINK', HTTP_SERVER.DIR_WS_CATALOG.'admin/'.FILENAME_FAQ1.'?faq1_id='.$faq_id.'&action=new_faq1', 'SSL');
+	
+		$vamTemplate->assign('PRODUCTS_NAME', $product_info['products_name']);
+		$vamTemplate->assign('PRODUCTS_IMAGE', $product_info['products_image']);
+      $products_price = $vamPrice->GetPrice($product_info['products_id'], $format = true, 1, $product_info['products_tax_class_id'], $product_info['products_price'], 1);
+		$vamTemplate->assign('PRODUCTS_PRICE', $products_price['formated']);
+		$vamTemplate->assign('PRODUCTS_MODEL', $product_info['products_model']);
+		$vamTemplate->assign('TEXT_MESSAGE', $_POST['message_body']);
+		$vamTemplate->assign('TEXT_FIRSTNAME', $firstname);
+		$vamTemplate->assign('TEXT_LASTNAME', $lastname);
+		$vamTemplate->assign('TEXT_EMAIL', $email_address);
+		$vamTemplate->assign('TEXT_EMAIL_SUCCESSFUL', sprintf(TEXT_EMAIL_SUCCESSFUL_SENT, $product_info['products_name']));
+		$vamTemplate->assign('PRODUCT_LINK', vam_href_link(FILENAME_PRODUCT_INFO, vam_product_link($product_info['products_id'], $product_info['products_name'])));
+		$vamTemplate->caching = 0;
+		$html_mail = $vamTemplate->fetch(CURRENT_TEMPLATE.'/mail/'.$_SESSION['language'].'/ask_a_question.html');
+		$vamTemplate->caching = 0;
+		$txt_mail = $vamTemplate->fetch(CURRENT_TEMPLATE.'/mail/'.$_SESSION['language'].'/ask_a_question.txt');
 	
 	// send mail to admin
 	vam_php_mail(filter_var(EMAIL_SUPPORT_ADDRESS, FILTER_VALIDATE_EMAIL), EMAIL_SUPPORT_NAME, EMAIL_SUPPORT_ADDRESS, STORE_NAME, EMAIL_SUPPORT_FORWARDING_STRING, filter_var($to_email_address, FILTER_VALIDATE_EMAIL), $to_name, '', '', NAVBAR_TITLE_ASK, $html_mail, $txt_mail);
