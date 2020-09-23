@@ -1,0 +1,10 @@
+Добавлен ответ на Ваш вопрос!
+
+Вопрос о товаре {$PRODUCTS_NAME}
+
+Отправитель: {$TEXT_EMAIL}
+Имя: {$TEXT_FIRSTNAME}
+Товар: {$PRODUCT_LINK}
+
+Сообщение:
+{$TEXT_MESSAGE}

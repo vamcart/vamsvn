@@ -84,25 +84,25 @@ $vamTemplate = new vamTemplate;
         }
  //       vam_redirect(vam_href_link(FILENAME_FAQ1));
  
-      if (isset($_POST['faq1_to_categories_id']) && $faq1_id > 0) {
-      foreach ($_POST['faq1_to_categories_id'] as $key => $value) {
-        if (!is_array($_POST[$key])) {
-			vam_db_query("INSERT INTO ".TABLE_FAQ1_TO_CATEGORIES."
-								              SET faq1_id   = '".$faq1_id."',
-								              categories_id = '".$value."'");
-        }
-      }
-      }
+      //if (isset($_POST['faq1_to_categories_id']) && $faq1_id > 0) {
+      //foreach ($_POST['faq1_to_categories_id'] as $key => $value) {
+        //if (!is_array($_POST[$key])) {
+			//vam_db_query("INSERT INTO ".TABLE_FAQ1_TO_CATEGORIES."
+								              //SET faq1_id   = '".$faq1_id."',
+								              //categories_id = '".$value."'");
+        //}
+      //}
+      //}
 
-      if (isset($_POST['faq1_to_products_id']) && $faq1_id > 0) {
-      foreach ($_POST['faq1_to_products_id'] as $key => $value) {
-        if (!is_array($_POST[$key])) {
-			vam_db_query("INSERT INTO ".TABLE_FAQ1_TO_PRODUCTS."
-								              SET faq1_id   = '".$faq1_id."',
-								              products_id = '".$value."'");
-        }
-      }
-      }
+      //if (isset($_POST['faq1_to_products_id']) && $faq1_id > 0) {
+      //foreach ($_POST['faq1_to_products_id'] as $key => $value) {
+        //if (!is_array($_POST[$key])) {
+			//vam_db_query("INSERT INTO ".TABLE_FAQ1_TO_PRODUCTS."
+								              //SET faq1_id   = '".$faq1_id."',
+								              //products_id = '".$value."'");
+        //}
+      //}
+      //}
  
         break;
 
@@ -121,8 +121,14 @@ $vamTemplate = new vamTemplate;
 		
 				$vamTemplate->assign('CUSTOMERS_NAME', $_POST['name']);
 
+				$vamTemplate->assign('QUESTION', $_POST['question']);
+				$vamTemplate->assign('ANSWER', $_POST['answer']);
+
 				$vamTemplate->assign('CUSTOMERS_FIRST_NAME', $_POST['name']);
 				$vamTemplate->assign('CUSTOMERS_LAST_NAME', '');
+
+				$vamTemplate->assign('PRODUCTS_NAME', vam_get_products_name($_POST['products_id'], 1));
+				$vamTemplate->assign('PRODUCT_LINK', HTTP_SERVER . DIR_WS_CATALOG . 'product_info.php?products_id='.$_POST['products_id']);
 
 				$customer_query = vam_db_query("select * from " . TABLE_FAQ1 . " f where f.faq1_id = '" . vam_db_input($_GET['faq1_id']) . "'");
 				$customer_id = vam_db_fetch_array($customer_query);
@@ -196,27 +202,27 @@ $vamTemplate = new vamTemplate;
 		//}
 
       //if (isset($_POST['faq1_to_categories_id']) && $_GET['faq1_id'] > 0) {
-      vam_db_query("DELETE FROM " . TABLE_FAQ1_TO_CATEGORIES . " WHERE faq1_id = '" . (int)$_GET['faq1_id'] . "'");
-      foreach ($_POST['faq1_to_categories_id'] as $key => $value) {
-        if (!is_array($_POST[$key])) {
+      //vam_db_query("DELETE FROM " . TABLE_FAQ1_TO_CATEGORIES . " WHERE faq1_id = '" . (int)$_GET['faq1_id'] . "'");
+      //foreach ($_POST['faq1_to_categories_id'] as $key => $value) {
+        //if (!is_array($_POST[$key])) {
         //if (in_array_column($value, "categories_id", $faq1_to_categories_array)) {        	
-			vam_db_query("INSERT INTO ".TABLE_FAQ1_TO_CATEGORIES."
-								              SET faq1_id   = '".$_GET['faq1_id']."',
-								              categories_id = '".$value."'");
+			//vam_db_query("INSERT INTO ".TABLE_FAQ1_TO_CATEGORIES."
+								              //SET faq1_id   = '".$_GET['faq1_id']."',
+								              //categories_id = '".$value."'");
         //}
-        }
-      }
+        //}
+      //}
       //}
 
       //if (isset($_POST['faq1_to_products_id']) && $faq1_id > 0) {
-      vam_db_query("DELETE FROM " . TABLE_FAQ1_TO_PRODUCTS . " WHERE faq1_id = '" . (int)$_GET['faq1_id'] . "'");
-      foreach ($_POST['faq1_to_products_id'] as $key => $value) {
-        if (!is_array($_POST[$key])) {
-			vam_db_query("INSERT INTO ".TABLE_FAQ1_TO_PRODUCTS."
-								              SET faq1_id   = '".$_GET['faq1_id']."',
-								              products_id = '".$value."'");
-        }
-      }
+      //vam_db_query("DELETE FROM " . TABLE_FAQ1_TO_PRODUCTS . " WHERE faq1_id = '" . (int)$_GET['faq1_id'] . "'");
+      //foreach ($_POST['faq1_to_products_id'] as $key => $value) {
+        //if (!is_array($_POST[$key])) {
+			//vam_db_query("INSERT INTO ".TABLE_FAQ1_TO_PRODUCTS."
+								              //SET faq1_id   = '".$_GET['faq1_id']."',
+								              //products_id = '".$value."'");
+        //}
+      //}
       //}
               
   //      vam_redirect(vam_href_link(FILENAME_FAQ1));
