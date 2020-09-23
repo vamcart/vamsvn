@@ -126,7 +126,7 @@ class wishlist {
 		}
 
 		if ($this->in_wishlist($products_id)) {
-			$this->update_quantity($products_id, $qty, $attributes);
+			//$this->update_quantity($products_id, $qty, $attributes);
 		} else {
 			$this->contents[] = array ($products_id);
 			$this->contents[$products_id] = array ('qty' => $qty);
