@@ -821,4 +821,6 @@ define('TEXT_SITE_REVIEW_ADD','Добавить отзыв');
 
 define('SITE_REVIEW_NEW_SUBJECT', 'Добавлен новый отзыв о магазине');
 
+define('NAVBAR_TITLE_FAQ1', 'Вопросы посетителей');
+
 ?>

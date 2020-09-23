@@ -85,8 +85,8 @@
 
 <div class="rating-wrap small">
 <ul class="list-inline">
-<li class="list-inline-item"><span class="text-muted"><i class="fas fa-paper-plane"></i> <a class="popup-form" href="{$smarty.const.FILENAME_PRODUCT_REVIEWS_WRITE_POPUP}?products_id={$smarty.get.products_id}">{$smarty.const.TEXT_SITE_REVIEW_ADD}</a></span></li>
-<li class="list-inline-item"><span class="text-muted"><i class="far fa-question-circle"></i> <a class="iframe" href="{$ASK_PRODUCT_QUESTION_LINK}">{#question#}</a></span></li>
+<li class="list-inline-item"><span class="text-muted"><a class="popup-form" href="{$smarty.const.FILENAME_PRODUCT_REVIEWS_WRITE_POPUP}?products_id={$smarty.get.products_id}"><i class="fas fa-paper-plane"></i> {$smarty.const.TEXT_SITE_REVIEW_ADD}</a></span></li>
+<li class="list-inline-item"><span class="text-muted"><a class="iframe" href="{$ASK_PRODUCT_QUESTION_LINK}"><i class="far fa-question-circle"></i> {#question#}</a></span></li>
 </ul>
 </div>
 
@@ -253,6 +253,11 @@
     <a class="nav-link" id="faq-tab" data-toggle="tab" href="#faq" ><i class="fa fa-question"></i> {$smarty.const.NAVBAR_TITLE_FAQ}</a>
   </li>
   {/if}
+  {if $MODULE_faq1}
+  <li class="nav-item">
+    <a class="nav-link" id="visitor_questions_tab" data-toggle="tab" href="#visitor_questions" ><i class="fa fa-user-graduate"></i> {$smarty.const.NAVBAR_TITLE_FAQ1}</a>
+  </li>
+  {/if}
   {if $MODULE_articles}
   <li class="nav-item">
     <a class="nav-link" id="articles-tab" data-toggle="tab" href="#articles" ><i class="fa fa-list"></i> {$smarty.const.TEXT_RSS_ARTICLES}</a>
@@ -357,6 +362,13 @@
   {if $MODULE_faq}
   <div class="tab-pane fade" id="faq" role="tabpanel" aria-labelledby="faq-tab">
   {$MODULE_faq}
+  </div>
+  {/if}
+
+  {if $MODULE_faq1}
+  <div class="tab-pane fade" id="visitor_questions" role="tabpanel" aria-labelledby="visitor_questions_tab">
+  {$MODULE_faq1}
+  <a class="btn btn-default btn-add-to-cart iframe" href="{$ASK_PRODUCT_QUESTION_LINK}"><i class="far fa-question-circle"></i> {#question#}</a>
   </div>
   {/if}
 
