@@ -700,5 +700,9 @@ define('FILENAME_PIN_LOADER', 'pin_loader.php');
 
   define('TABLE_REVIEWS_IMAGES', 'reviews_images');
   
+  define('FILENAME_PRODUCTS_NEW', 'products_new.php');
+
+  define('FILENAME_FAQ1', 'faq1.php');
+  define('TABLE_FAQ1', 'faq1');
       
 ?>

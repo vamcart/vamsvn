@@ -179,4 +179,6 @@ define('FILENAME_WISHLIST', 'wishlist.php');
 define('FILENAME_WISHLIST_DETAILS', 'wishlist_details.php');
 define('FILENAME_WISHLIST_ACTIONS', 'wishlist_actions.php');
 
+define('FILENAME_FAQ1', 'faq1.php');
+
 ?>
