@@ -87,4 +87,6 @@ Disallow: /tags.php
 Disallow: /news.php
 Disallow: /key.php
 Disallow: /404.html
-Disallow: /monitors.html
+Disallow: /advanced_search_result.php
+Disallow: /articles.php?akeywords=*
+Disallow: /articles.php/akeywords/*
