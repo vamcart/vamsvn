@@ -262,7 +262,18 @@ while ($products = vam_db_fetch_array($products_query)) {
     vam_yml_out('  <vendorCode>' . $products['products_model'] . '</vendorCode>');
   }
 
-    vam_yml_out('  <model>' . $products['products_model'] . '</model>');
+    vam_yml_out('  <model>' . $products['products_name'] . '</model>');
+
+$cat_query = vamDBquery("SELECT
+                                 categories_name
+                                 FROM ".TABLE_CATEGORIES_DESCRIPTION." 
+                                 WHERE categories_id='".$products['categories_id']."'
+                                 and language_id = '".(int) $_SESSION['languages_id']."'"
+                                 );
+$cat_data = vam_db_fetch_array($cat_query, true);
+		
+
+  vam_yml_out('  <typePrefix>' . vam_yml_clear_string($cat_data['categories_name']) . '</typePrefix>');
 
   vam_yml_out('  <description>' . vam_yml_clear_string($products['proddesc']) . '</description>');
   if(YML_SALES_NOTES != "") {
