@@ -535,13 +535,13 @@ if (!vam_session_is_registered('customer_id')) { //only for not logged in user
 	  
 	 if ($sc_payment_address_show == true) { //validate only if not free payment 
 		
-      if (ACCOUNT_GENDER == 'true') $gender_payment = vam_db_prepare_input($_POST['gender_payment']);
-      if (ACCOUNT_COMPANY == 'true') $company_payment = vam_db_prepare_input($_POST['company_payment']);
+      if (ACCOUNT_GENDER == 'true' or ACCOUNT_GENDER == 'optional') $gender_payment = vam_db_prepare_input($_POST['gender_payment']);
+      if (ACCOUNT_COMPANY == 'true' or ACCOUNT_COMPANY == 'optional') $company_payment = vam_db_prepare_input($_POST['company_payment']);
       $firstname_payment = vam_db_prepare_input($_POST['firstname_payment']);
       if (ACCOUNT_SECOND_NAME == 'true' or ACCOUNT_SECOND_NAME == 'optional') $secondname_payment = vam_db_prepare_input($_POST['secondname_payment']);
       if (ACCOUNT_LAST_NAME == 'true' or ACCOUNT_LAST_NAME == 'optional') $lastname_payment = vam_db_prepare_input($_POST['lastname_payment']);
       if (ACCOUNT_STREET_ADDRESS == 'true' or ACCOUNT_STREET_ADDRESS == 'optional') $street_address_payment = vam_db_prepare_input($_POST['street_address_payment']);
-      if (ACCOUNT_SUBURB == 'true') $suburb_payment = vam_db_prepare_input($_POST['suburb_payment']);
+      if (ACCOUNT_SUBURB == 'true' or ACCOUNT_SUBURB == 'optional') $suburb_payment = vam_db_prepare_input($_POST['suburb_payment']);
       if (ACCOUNT_POSTCODE == 'true' or ACCOUNT_POSTCODE == 'optional') $postcode_payment = vam_db_prepare_input($_POST['postcode_payment']);
       if (ACCOUNT_CITY == 'true' or ACCOUNT_CITY == 'optional') $city_payment = vam_db_prepare_input($_POST['city_payment']);
       if (ACCOUNT_COUNTRY == 'true' or ACCOUNT_COUNTRY == 'optional') $country_payment = vam_db_prepare_input($_POST['country_payment']);
@@ -1266,7 +1266,7 @@ if (isset($_POST['action']) && (($_POST['action'] == 'not_logged_on') && ($creat
 		$_SESSION['sc_customers_password'] = $password;
 		$_SESSION['sc_customers_dob'] = $dob;
 		
-		if (ACCOUNT_STATE == 'true') {
+		if (ACCOUNT_STATE == 'true' or ACCOUNT_STATE == 'optional') {
 			if ($zone_id > 0) {
 			  $_SESSION['sc_customers_zone_id'] = $zone_id;
 			  $_SESSION['sc_customers_state'] = '';
@@ -1299,7 +1299,7 @@ if (isset($_POST['action']) && (($_POST['action'] == 'not_logged_on') && ($creat
 			$_SESSION['sc_payment_state'] = $state_payment;
 			$_SESSION['sc_payment_country'] = $country_payment;
 			
-			if (ACCOUNT_STATE == 'true') {
+			if (ACCOUNT_STATE == 'true' or ACCOUNT_STATE == 'optional') {
 				if ($zone_id > 0) {
 				  $_SESSION['sc_payment_zone_id'] = $zone_id_payment;
 				  $_SESSION['sc_payment_state'] = '';
@@ -1415,8 +1415,8 @@ if (isset($_POST['action']) && (($_POST['action'] == 'not_logged_on') && ($creat
                               'customers_password' => $dbPass);
                               
 
-      if (ACCOUNT_GENDER == 'true') $sql_data_array['customers_gender'] = $gender;
-      if (ACCOUNT_DOB == 'true') $sql_data_array['customers_dob'] = vam_date_raw($dob);
+      if (ACCOUNT_GENDER == 'true' or ACCOUNT_GENDER == 'optional') $sql_data_array['customers_gender'] = $gender;
+      if (ACCOUNT_DOB == 'true' or ACCOUNT_DOB == 'optional') $sql_data_array['customers_dob'] = vam_date_raw($dob);
 
       vam_db_perform(TABLE_CUSTOMERS, $sql_data_array);
 
@@ -1466,10 +1466,10 @@ if (isset($_POST['action']) && (($_POST['action'] == 'not_logged_on') && ($creat
                               'entry_city' => $city,
                               'entry_country_id' => $country);
 
-      if (ACCOUNT_GENDER == 'true') $sql_data_array['entry_gender'] = $gender;
-      if (ACCOUNT_COMPANY == 'true') $sql_data_array['entry_company'] = $company;
-      if (ACCOUNT_SUBURB == 'true') $sql_data_array['entry_suburb'] = $suburb;
-      if (ACCOUNT_STATE == 'true') {
+      if (ACCOUNT_GENDER == 'true' or ACCOUNT_GENDER == 'optional') $sql_data_array['entry_gender'] = $gender;
+      if (ACCOUNT_COMPANY == 'true' or ACCOUNT_COMPANY == 'optional') $sql_data_array['entry_company'] = $company;
+      if (ACCOUNT_SUBURB == 'true' or ACCOUNT_SUBURB == 'optional') $sql_data_array['entry_suburb'] = $suburb;
+      if (ACCOUNT_STATE == 'true' or ACCOUNT_STATE == 'optional') {
         if ($zone_id > 0) {
           $sql_data_array['entry_zone_id'] = $zone_id;
           $sql_data_array['entry_state'] = '';
@@ -1528,10 +1528,10 @@ if (isset($_POST['action']) && (($_POST['action'] == 'not_logged_on') && ($creat
                                 'entry_city' => $city_payment,
                                 'entry_country_id' => $country_payment);
 
-        if (ACCOUNT_GENDER == 'true') $sql_data_array['entry_gender'] = $gender_payment;
-        if (ACCOUNT_COMPANY == 'true') $sql_data_array['entry_company'] = $company_payment;
-        if (ACCOUNT_SUBURB == 'true') $sql_data_array['entry_suburb'] = $suburb_payment;
-        if (ACCOUNT_STATE == 'true') {
+        if (ACCOUNT_GENDER == 'true' or ACCOUNT_GENDER == 'optional') $sql_data_array['entry_gender'] = $gender_payment;
+        if (ACCOUNT_COMPANY == 'true' or ACCOUNT_COMPANY == 'optional') $sql_data_array['entry_company'] = $company_payment;
+        if (ACCOUNT_SUBURB == 'true' or ACCOUNT_SUBURB == 'optional') $sql_data_array['entry_suburb'] = $suburb_payment;
+        if (ACCOUNT_STATE == 'true' or ACCOUNT_STATE == 'optional') {
           if ($zone_id > 0) {
             $sql_data_array['entry_zone_id'] = $zone_id_payment;
             $sql_data_array['entry_state'] = '';
@@ -1631,7 +1631,7 @@ if (isset($$payment->form_action_url)) {
 		//if ($create_account == true) {
 			  $name = $firstname . ' ' . $lastname;
 		
-			  if (ACCOUNT_GENDER == 'true') {
+			  if (ACCOUNT_GENDER == 'true' or ACCOUNT_GENDER == 'optional') {
 				 if ($gender == 'm') {
 				   $email_text = sprintf(EMAIL_GREET_MR, $lastname);
 				 } else {
@@ -1682,7 +1682,7 @@ if (isset($$payment->form_action_url)) {
 		//if ($create_account == true) {
 			  $name = $firstname . ' ' . $lastname;
 		
-			  if (ACCOUNT_GENDER == 'true') {
+			  if (ACCOUNT_GENDER == 'true' or ACCOUNT_GENDER == 'optional') {
 				 if ($gender == 'm') {
 				   $email_text = sprintf(EMAIL_GREET_MR, $lastname);
 				 } else {
