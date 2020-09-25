@@ -46,8 +46,9 @@ window.addEventListener('beforeinstallprompt', function(e) {
 // Lazy Load
 var lazyLoadInstance = new LazyLoad({
   elements_selector: ".lazy",
-  //use_native: true
+  use_native: true
 });
+  lazyLoadInstance.update();
 
 //OWL Carousel Slider
 $(".owl-carousel").owlCarousel({
