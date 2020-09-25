@@ -326,11 +326,13 @@ $(function($){
   </div>
 {/if}
   <div class="form-row">
+    {if $street_address_payment=='1'}
     <div class="form-group {if $suburb_payment=='1'}col-md-6{else}col-md-12{/if}">
       <label for="address_payment">{#text_street#}</label>
       {$INPUT_STREET_PAYMENT}
     </div>
-    {if $secondname=='1'}
+    {/if}
+    {if $suburb_payment=='1'}
     <div class="form-group col-md-6">
       <label for="suburb_payment">{#text_suburb#}</label>
       {$INPUT_SUBURB_PAYMENT}
