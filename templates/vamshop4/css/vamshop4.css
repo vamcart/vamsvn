@@ -89,6 +89,14 @@ button:focus, button:active, a, a:hover {
   margin-top: 0;
 }
   
+.owl-carousel-tags .owl-dots.disabled, .owl-carousel-tags .owl-nav.disabled {
+    display: none;
+}
+
+.owl-carousel-tags .owl-dots.disabled, .owl-carousel-tags .owl-nav.disabled {
+    display: none;
+}
+
 .owl-carousel .owl-nav button.owl-next, .owl-carousel .owl-nav button.owl-prev,
 .owl-carousel .owl-nav button.owl-next.disabled, .owl-carousel .owl-nav button.owl-prev.disabled {
     padding: 5px 10px !important;

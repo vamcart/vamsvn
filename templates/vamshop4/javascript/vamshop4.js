@@ -52,6 +52,7 @@ var lazyLoadInstance = new LazyLoad({
 //OWL Carousel Slider
 $(".owl-carousel").owlCarousel({
     margin: 30,
+    checkVisible: false,
     nav: false,
     center: false,
     stagePadding: 30,
@@ -77,10 +78,18 @@ $(".owl-carousel").owlCarousel({
     }
 })
 
-// hook into Bootstrap shown event and manually trigger 'resize' event so that Slick recalculates the widths
-$('span[data-toggle="tab"]').on('shown.bs.tab', function (e) {
-     $('.owl-carousel').trigger('refresh.owl.carousel');
-});
+//OWL Carousel Slider
+$(".owl-carousel-tags").owlCarousel({
+    margin: 12,
+    checkVisible: false,
+    nav: false,
+    center: false,
+    autoWidth: true,
+    stagePadding: 30,
+    dots: false,
+    loop: false,
+    navText: false
+})
 
 $(".owl-carousel-reverse").owlCarousel({
     margin: 30,
@@ -113,6 +122,11 @@ $(".owl-carousel-reverse").owlCarousel({
         }
     }
 })
+
+// hook into Bootstrap shown event and manually trigger 'resize' event so that Slick recalculates the widths
+$('span[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+     $('.owl-carousel').trigger('refresh.owl.carousel');
+});
 
 //Slick Slider
 //$('.slider').slick({
@@ -167,17 +181,17 @@ $(".owl-carousel-reverse").owlCarousel({
   //]
 //});
 
-$('.tags-list').slick({
-  dots: false,
-  infinite: false,
-  speed: 300,
-  arrows: false,
-  prevArrow:'<button type="button" class="slick-prev pull-left" role="presentation"><span class="fas fa-chevron-left fa-1x" aria-hidden="true"></span></button>',
-  nextArrow:'<button type="button" class="slick-next pull-right" role="presentation"><span class="fas fa-chevron-right fa-1x" aria-hidden="true"></span></button>',
-  slidesToShow: 1,
-  centerMode: false,
-  variableWidth: true
-});
+//$('.tags-list').slick({
+  //dots: false,
+  //infinite: false,
+  //speed: 300,
+  //arrows: false,
+  //prevArrow:'<button type="button" class="slick-prev pull-left" role="presentation"><span class="fas fa-chevron-left fa-1x" aria-hidden="true"></span></button>',
+  //nextArrow:'<button type="button" class="slick-next pull-right" role="presentation"><span class="fas fa-chevron-right fa-1x" aria-hidden="true"></span></button>',
+  //slidesToShow: 1,
+  //centerMode: false,
+  //variableWidth: true
+//});
 
 // Scroll to top button 
 	$(function () {
