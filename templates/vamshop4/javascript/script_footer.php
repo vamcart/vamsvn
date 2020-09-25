@@ -6,14 +6,14 @@ $bender->enqueue("templates/".CURRENT_TEMPLATE."/javascript/popper.min.js");
 $bender->enqueue("templates/".CURRENT_TEMPLATE."/javascript/bootstrap.min.js");
 //$bender->enqueue("jscript/jquery/plugins/jquery-ui/jquery-ui-min.js");
 $bender->enqueue("jscript/jquery/plugins/cookie/jquery.cookie.js");
-$bender->enqueue("jscript/jquery/plugins/read-more/jquery.expandable.js");
+//$bender->enqueue("jscript/jquery/plugins/read-more/jquery.expandable.js");
 $bender->enqueue("jscript/jquery/plugins/lazyload/lazyload.min.js");
 //$bender->enqueue("jscript/jquery/plugins/slick/slick.js");
 $bender->enqueue("jscript/jquery/plugins/owl/owl.carousel.min.js");
 //$bender->enqueue("jscript/jquery/plugins/select2/select2.js");
 //$bender->enqueue("jscript/jquery/plugins/select2/i18n/" . $_SESSION['language_code'] . ".js");
 $bender->enqueue("jscript/jquery/plugins/scrollup/jquery.scrollup.min.js");
-$bender->enqueue("jscript/jquery/plugins/zoom/jquery.zoom.js");
+//$bender->enqueue("jscript/jquery/plugins/zoom/jquery.zoom.js");
 //$bender->enqueue("jscript/jquery/plugins/equalheight/jquery.sameheight.js");
 $bender->enqueue("jscript/jquery/plugins/equalheight/jquery.matchheight.js");
 $bender->enqueue("templates/".CURRENT_TEMPLATE."/javascript/vamshop4.js");
@@ -24,38 +24,6 @@ if (AJAX_CART == 'true') $bender->enqueue("templates/".CURRENT_TEMPLATE."/javasc
 <?php
 echo $bender->output("templates/".CURRENT_TEMPLATE."/cache/".CURRENT_TEMPLATE."-packed.js");
 ?>
-<script>
-function wishlistPopupOn(){ 
-$('body').append('<div id="load_status_bg"></div><div class="wishlist_popup"><div class="wishlist_popuptext"><?php echo TEXT_POPUP_WISHLIST_ADD; ?></div><div class="wishlist_popuplink"><a href="wishlist.php" class="button"><span><img src="<?php echo DIR_WS_CATALOG; ?>images/icons/buttons/buy.png" alt="" title="" width="12" height="12" />&nbsp;<?php echo TEXT_POPUP_WISHLIST_WISHLIST; ?></span></a><br /><br /><a href="javascript:wishlistPopupOff()" class="button"><span><img src="<?php echo DIR_WS_CATALOG; ?>images/icons/buttons/back.png" alt="" title="" width="12" height="12" />&nbsp;<?php echo TEXT_POPUP_WISHLIST_CONTINUE; ?></span></a></div></div>'); 
-$('#load_status_bg').show().css({'filter' : 'alpha(opacity=80)'}); 
-$('.wishlist_popup').show(); 
-$(document).click(function (){
-wishlistPopupOff();
-});
-};
-
-function wishlistPopupOff(){ 
-$('.wishlist_popup').hide(); 
-$('#load_status_bg').remove('#load_status_bg'); 
-};
-</script>
-<?php if (AJAX_CART == 'true') { ?>
-<script>
-function cartPopupOn(){ 
-$('body').append('<div id="load_status_bg"></div><div class="cart_popup"><div class="cart_popuptext"><?php echo TEXT_POPUP_CART_ADD; ?></div><div class="cart_popuplink"><a href="shopping_cart.php" class="button"><span><img src="<?php echo DIR_WS_CATALOG; ?>images/icons/buttons/buy.png" alt="" title="" width="12" height="12" />&nbsp;<?php echo TEXT_POPUP_CART_CART; ?></span></a><br /><br /><a href="javascript:cartPopupOff()" class="button"><span><img src="<?php echo DIR_WS_CATALOG; ?>images/icons/buttons/back.png" alt="" title="" width="12" height="12" />&nbsp;<?php echo TEXT_POPUP_CART_CONTINUE; ?></span></a></div></div>'); 
-$('#load_status_bg').show().css({'filter' : 'alpha(opacity=80)'}); 
-$('.cart_popup').show(); 
-$(document).click(function (){
-cartPopupOff();
-});
-};
-
-function cartPopupOff(){ 
-$('.cart_popup').hide(); 
-$('#load_status_bg').remove('#load_status_bg'); 
-};
-</script>
-<?php } ?>
 <?php
 if ( strstr($PHP_SELF, FILENAME_ADDRESS_BOOK)
 	or strstr($PHP_SELF, FILENAME_ADDRESS_BOOK_PROCESS)
@@ -98,6 +66,24 @@ $(document).ajaxComplete(function () {
 <?php
 if (strstr($PHP_SELF, FILENAME_PRODUCT_INFO) or strstr($PHP_SELF, FILENAME_PRODUCT_REVIEWS_INFO) or strstr($PHP_SELF, FILENAME_PRODUCT_REVIEWS) or strstr($PHP_SELF, FILENAME_REVIEWS)) {
 ?>
+<script src="jscript/jquery/plugins/zoom/jquery.zoom.js"></script>
+<script>
+// Product Images Zoom
+
+$(document).ready(function(){
+$(".image-zoom").each(function(arg, el){
+    var image = $(el).find("img");
+    //$(el).wrap('<span style="display:inline-block"></span>')
+    $(el).wrap('<span></span>')
+    $(el).css('display', 'block')
+    $(el).parent()    
+    $(el).zoom({
+        on: 'mouseover',
+        url: image.attr("src").replace("info_images", "popup_images")
+    });
+});
+});
+</script>
 <script src="jscript/jquery/plugins/colorbox/jquery.colorbox-min.js"></script>
 <?php
 if (file_exists(DIR_FS_CATALOG.'jscript/jquery/plugins/colorbox/i18n/jquery.colorbox-'.$_SESSION['language_code'].'.js')) {

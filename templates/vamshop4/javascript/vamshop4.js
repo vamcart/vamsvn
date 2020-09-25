@@ -526,22 +526,6 @@ $('span[data-toggle="tab"]').on('shown.bs.tab', function (e) {
 });
 });
 
-// Product Images Zoom
-
-$(document).ready(function(){
-$(".image-zoom").each(function(arg, el){
-    var image = $(el).find("img");
-    //$(el).wrap('<span style="display:inline-block"></span>')
-    $(el).wrap('<span></span>')
-    $(el).css('display', 'block')
-    $(el).parent()    
-    $(el).zoom({
-        on: 'mouseover',
-        url: image.attr("src").replace("info_images", "popup_images")
-    });
-});
-});  
-
 //Expandable Text
 //$('.read-more').expandable({
   //'height': 450,

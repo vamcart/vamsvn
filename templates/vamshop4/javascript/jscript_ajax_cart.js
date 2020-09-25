@@ -32,12 +32,6 @@ function doBuyNow( id, quantity, update, get_cart, attributes, popup ) {
 		      $("#divShoppingCart").html(msg);
 			}
 	 
-			//if ($(location).attr('pathname') != '/shopping_cart.php')	{
-			if (popup != 0)	{
-				cartPopupOn();
-			}
-			//}
-		
 			}   
 			});
 			img_loader();                     
@@ -71,13 +65,6 @@ function doAddProduct(id) {
 					 if ($("div").is("#ajax_cart")) {
 					   $("#ajax_cart").empty().html(msg);
 					 }
-
-
-				//if (data.qty!="0" && $(location).attr('pathname') != '/shopping_cart.php')
-				if ($(location).attr('pathname') != '/shopping_cart.php')
-				{
-					cartPopupOn();
-				}
 
     	               }
 		});

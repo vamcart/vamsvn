@@ -32,12 +32,6 @@ function doWishlistNow( id, quantity, update, get_wishlist, attributes, popup ) 
 		      $("#divWishlist").html(msg);
 			}
 	 
-			//if ($(location).attr('pathname') != '/wishlist.php')	{
-			//if (popup != 0)	{
-				//wishlistPopupOn();
-			//}
-			//}
-
 			$(".wishlist-icon-"+id).replaceWith('<i class="text-danger fas fa-heart wishlist-icon-'+id+'"></i>');
 			$('[data-toggle="tooltip"]').tooltip('hide');
 
@@ -76,12 +70,6 @@ function doAddWishlist(id) {
 					   $("#ajax_wishlist").empty().html(msg);
 					 }
 
-
-				//if (data.qty!="0" && $(location).attr('pathname') != '/wishlist.php')
-				//if ($(location).attr('pathname') != '/wishlist.php')
-				//{
-					//wishlistPopupOn();
-				//}
 
 			$(".wishlist-icon-"+id).replaceWith('<i class="fas fa-heart wishlist-icon-'+id+'""></i>');
 			$('[data-toggle="tooltip"]').tooltip('hide');
