@@ -144,10 +144,12 @@ function showSelected(suggestion) {
       {$INPUT_SECONDNAME}
     </div>
     {/if}
+    {if $lastname=='1'}
     <div class="form-group {if $secondname=='1'}col-md-4{else}col-md-6{/if}">
       <label for="lastname">{#text_lastname#}</label>
       {$INPUT_LASTNAME}
     </div>
+    {/if}
   </div>
   
 {if $company=='1'} 
@@ -242,21 +244,23 @@ function showSelected(suggestion) {
   <div class="form-row">
     {if $telephone=='1'}
     <div class="form-group {if $fax=='1'}col-md-4{else}col-md-6{/if}">
-      <label for="firstname">{#text_tel#}</label>
+      <label for="tel">{#text_tel#}</label>
       {$INPUT_TEL}
     </div>
     {/if}
     {if $fax=='1'}
     <div class="form-group col-md-6">
-      <label for="secondname">{#text_fax#}</label>
+      <label for="fax">{#text_fax#}</label>
       {$INPUT_FAX}
     </div>
     {/if}
+    {if $email=='1'}
     <div class="form-group {if $fax=='1'}col-md-4{else}col-md-6{/if}">
-      <label for="lastname">{#text_email#}</label>
+      <label for="email">{#text_email#}</label>
       {$INPUT_EMAIL}
     </div>
   </div>
+    {/if}
   
 <div id="newletter_checkbox">
 <div class="form-check mb-4">
@@ -282,11 +286,11 @@ function showSelected(suggestion) {
 
   <div class="form-row">
     <div class="form-group col-md-6">
-      <label for="lastname">{#text_password#}</label>
+      <label for="password">{#text_password#}</label>
       {$INPUT_PASSWORD}
     </div>
     <div class="form-group col-md-6">
-      <label for="lastname">{#text_confirmation#}</label>
+      <label for="confirmation">{#text_confirmation#}</label>
       {$INPUT_CONFIRMATION}
     </div>
   </div>
