@@ -84,19 +84,23 @@ $("#qiwi_telephone").mask("79999999999");
 				required: true,
 				minlength: <?php echo ENTRY_FIRST_NAME_MIN_LENGTH; ?>
 			},
+<?php if(ACCOUNT_LAST_NAME == 'true') { ?>
 			lastname: {
 				required: true,
 				minlength: <?php echo ENTRY_LAST_NAME_MIN_LENGTH; ?>
 			},
+<?php } ?>
 			dob: {
 				required: true,
 				minlength: <?php echo ENTRY_DOB_MIN_LENGTH; ?>
 			},
+<?php if(ACCOUNT_EMAIL == 'true') { ?>
 			email_address: {
 				required: true,
 				minlength: <?php echo ENTRY_EMAIL_ADDRESS_MIN_LENGTH; ?>,
 				email: true
 			},
+<?php } ?>
 			street_address: {
 				required: true,
 				minlength: <?php echo ENTRY_STREET_ADDRESS_MIN_LENGTH; ?>
@@ -117,10 +121,12 @@ $("#qiwi_telephone").mask("79999999999");
 				//required: true,
 				//minlength: <?php echo ENTRY_STATE_MIN_LENGTH; ?>
 			//},
+<?php if(ACCOUNT_TELE == 'true') { ?>
 			telephone: {
 				required: true,
 				minlength: <?php echo ENTRY_TELEPHONE_MIN_LENGTH; ?>
 			},
+<?php } ?>
 			password: {
 				required: true,
 				minlength: <?php echo ENTRY_PASSWORD_MIN_LENGTH; ?>
@@ -137,19 +143,23 @@ $("#qiwi_telephone").mask("79999999999");
 				required: "<?php echo ENTRY_FIRST_NAME_ERROR; ?>",
 				minlength: "<?php echo ENTRY_FIRST_NAME_ERROR; ?>"
 			},
+<?php if(ACCOUNT_LAST_NAME == 'true') { ?>
 			lastname: {
 				required: "<?php echo ENTRY_LAST_NAME_ERROR; ?>",
 				minlength: "<?php echo ENTRY_LAST_NAME_ERROR; ?>"
 			},
+<?php } ?>
 			dob: {
 				required: "<?php echo ENTRY_DATE_OF_BIRTH_ERROR; ?>",
 				minlength: "<?php echo ENTRY_DATE_OF_BIRTH_ERROR; ?>"
 			},
+<?php if(ACCOUNT_EMAIL == 'true') { ?>
 			email_address: "<?php echo ENTRY_EMAIL_ADDRESS_ERROR; ?>",
 			street_address: {
 				required: "<?php echo ENTRY_STREET_ADDRESS_ERROR; ?>",
 				minlength: "<?php echo ENTRY_STREET_ADDRESS_ERROR; ?>"
 			},
+<?php } ?>
 			postcode: {
 				required: "<?php echo ENTRY_POST_CODE_ERROR; ?>",
 				minlength: "<?php echo ENTRY_POST_CODE_ERROR; ?>"
@@ -166,10 +176,12 @@ $("#qiwi_telephone").mask("79999999999");
 				//required: "<?php echo ENTRY_COUNTRY_ERROR; ?>",
 				//minlength: "<?php echo ENTRY_COUNTRY_ERROR; ?>"
 			//},
+<?php if(ACCOUNT_TELE == 'true') { ?>
 			telephone: {
 				required: "<?php echo ENTRY_TELEPHONE_NUMBER_ERROR; ?>",
 				minlength: "<?php echo ENTRY_TELEPHONE_NUMBER_ERROR; ?>"
 			},
+<?php } ?>
 			password: {
 				required: "<?php echo ENTRY_PASSWORD_ERROR; ?>",
 				minlength: "<?php echo ENTRY_PASSWORD_CURRENT_ERROR; ?>"
