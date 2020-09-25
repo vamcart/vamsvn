@@ -79,7 +79,9 @@ $("#qiwi_telephone").mask("79999999999");
 	// validate signup form on keyup and submit
 	$("#<?php echo $form_id; ?>").validate({
 		rules: {
+<?php if(ACCOUNT_GENDER == 'true') { ?>
 			gender: "required",
+<?php } ?>
 			firstname: {
 				required: true,
 				minlength: <?php echo ENTRY_FIRST_NAME_MIN_LENGTH; ?>
@@ -90,10 +92,12 @@ $("#qiwi_telephone").mask("79999999999");
 				minlength: <?php echo ENTRY_LAST_NAME_MIN_LENGTH; ?>
 			},
 <?php } ?>
+<?php if(ACCOUNT_DOB == 'true') { ?>
 			dob: {
 				required: true,
 				minlength: <?php echo ENTRY_DOB_MIN_LENGTH; ?>
 			},
+<?php } ?>
 <?php if(ACCOUNT_EMAIL == 'true') { ?>
 			email_address: {
 				required: true,
@@ -101,18 +105,24 @@ $("#qiwi_telephone").mask("79999999999");
 				email: true
 			},
 <?php } ?>
+<?php if(ACCOUNT_STREET_ADDRESS == 'true') { ?>
 			street_address: {
 				required: true,
 				minlength: <?php echo ENTRY_STREET_ADDRESS_MIN_LENGTH; ?>
 			},
+<?php } ?>
+<?php if(ACCOUNT_POSTCODE == 'true') { ?>
 			postcode: {
 				required: true,
 				minlength: <?php echo ENTRY_POSTCODE_MIN_LENGTH; ?>
 			},
+<?php } ?>
+<?php if(ACCOUNT_CITY == 'true') { ?>
 			city: {
 				required: true,
 				minlength: <?php echo ENTRY_CITY_MIN_LENGTH; ?>
 			},
+<?php } ?>
 			//state: {
 				//required: true,
 				//minlength: <?php echo ENTRY_STATE_MIN_LENGTH; ?>
@@ -138,7 +148,9 @@ $("#qiwi_telephone").mask("79999999999");
 			},
 		},
 		messages: {
+<?php if(ACCOUNT_GENDER == 'true') { ?>
 			gender: "<?php echo ENTRY_GENDER_ERROR; ?>",
+<?php } ?>
 			firstname: {
 				required: "<?php echo ENTRY_FIRST_NAME_ERROR; ?>",
 				minlength: "<?php echo ENTRY_FIRST_NAME_ERROR; ?>"
@@ -149,25 +161,33 @@ $("#qiwi_telephone").mask("79999999999");
 				minlength: "<?php echo ENTRY_LAST_NAME_ERROR; ?>"
 			},
 <?php } ?>
+<?php if(ACCOUNT_DOB == 'true') { ?>
 			dob: {
 				required: "<?php echo ENTRY_DATE_OF_BIRTH_ERROR; ?>",
 				minlength: "<?php echo ENTRY_DATE_OF_BIRTH_ERROR; ?>"
 			},
+<?php } ?>
 <?php if(ACCOUNT_EMAIL == 'true') { ?>
 			email_address: "<?php echo ENTRY_EMAIL_ADDRESS_ERROR; ?>",
+<?php } ?>
+<?php if(ACCOUNT_STREET_ADDRESS == 'true') { ?>
 			street_address: {
 				required: "<?php echo ENTRY_STREET_ADDRESS_ERROR; ?>",
 				minlength: "<?php echo ENTRY_STREET_ADDRESS_ERROR; ?>"
 			},
 <?php } ?>
+<?php if(ACCOUNT_POSTCODE == 'true') { ?>
 			postcode: {
 				required: "<?php echo ENTRY_POST_CODE_ERROR; ?>",
 				minlength: "<?php echo ENTRY_POST_CODE_ERROR; ?>"
 			},
+<?php } ?>
+<?php if(ACCOUNT_CITY == 'true') { ?>
 			city: {
 				required: "<?php echo ENTRY_CITY_ERROR; ?>",
 				minlength: "<?php echo ENTRY_CITY_ERROR; ?>"
 			},
+<?php } ?>
 			//state: {
 				//required: "<?php echo ENTRY_STATE_ERROR_SELECT; ?>",
 				//minlength: "<?php echo ENTRY_STATE_ERROR_SELECT; ?>"
