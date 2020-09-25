@@ -54,7 +54,8 @@ $(".owl-carousel").owlCarousel({
     margin: 30,
     nav: false,
     center: false,
-    dots: true,
+    stagePadding: 30,
+    dots: false,
     loop: false,
     navText: ['<span class="fas fa-chevron-left fa-1x"></span>','<span class="fas fa-chevron-right fa-1x"></span>'],
     responsive:{
