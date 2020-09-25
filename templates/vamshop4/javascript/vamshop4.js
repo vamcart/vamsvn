@@ -52,7 +52,6 @@ var lazyLoadInstance = new LazyLoad({
 //OWL Carousel Slider
 $(".owl-carousel").owlCarousel({
     margin: 30,
-    checkVisible: false,
     nav: false,
     center: false,
     stagePadding: 30,
@@ -81,7 +80,6 @@ $(".owl-carousel").owlCarousel({
 //OWL Carousel Slider
 $(".owl-carousel-tags").owlCarousel({
     margin: 12,
-    checkVisible: false,
     nav: false,
     center: false,
     autoWidth: true,
