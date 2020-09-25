@@ -118,7 +118,7 @@ if ($_GET['action'] == 'edit') {
 		$entry_lastname_error = false;
 	}
 
-	if (ACCOUNT_DOB == 'true') {
+	if (ACCOUNT_DOB == 'true' or ACCOUNT_DOB == 'optional') {
 		if (checkdate(substr(vam_date_raw($customers_dob), 4, 2), substr(vam_date_raw($customers_dob), 6, 2), substr(vam_date_raw($customers_dob), 0, 4))) {
 			$entry_date_of_birth_error = false;
 		} else {
@@ -132,7 +132,7 @@ if ($_GET['action'] == 'edit') {
 
 		if ($customers_vat_id != '') {
 
-			if (ACCOUNT_COMPANY_VAT_CHECK == 'true') {
+			if (ACCOUNT_COMPANY_VAT_CHECK == 'true' or ACCOUNT_COMPANY_VAT_CHECK == 'optional') {
 
 				$validate_vatid = validate_vatid($customers_vat_id);
 
@@ -233,7 +233,7 @@ if ($_GET['action'] == 'edit') {
 if (isset($_POST['country'])) { $entry_country_id = $_POST['country']; } else { $entry_country_id = STORE_COUNTRY; }
 $entry_state = $_POST['state'];
 
-	if (ACCOUNT_STATE == 'true') {
+	if (ACCOUNT_STATE == 'true' or ACCOUNT_STATE == 'optional') {
 		if ($entry_country_error == true) {
 			$entry_state_error = true;
 		} else {
@@ -295,9 +295,9 @@ $entry_state = $_POST['state'];
 	if ($error == false) {
 		$sql_data_array = array ('customers_status' => $customers_status_c, 'customers_cid' => $customers_cid, 'customers_vat_id' => $customers_vat_id, 'customers_vat_id_status' => $customers_vat_id_status, 'customers_firstname' => $customers_firstname, 'customers_secondname' => $customers_secondname, 'customers_lastname' => $customers_lastname, 'customers_email_address' => $customers_email_address, 'customers_telephone' => $customers_telephone, 'customers_fax' => $customers_fax, 'payment_unallowed' => $payment_unallowed, 'shipping_unallowed' => $shipping_unallowed, 'customers_password' => $customers_password,'customers_date_added' => 'now()','customers_last_modified' => 'now()');
 
-		if (ACCOUNT_GENDER == 'true')
+		if (ACCOUNT_GENDER == 'true' or ACCOUNT_GENDER == 'optional')
 			$sql_data_array['customers_gender'] = $customers_gender;
-		if (ACCOUNT_DOB == 'true')
+		if (ACCOUNT_DOB == 'true' or ACCOUNT_DOB == 'optional')
 			$sql_data_array['customers_dob'] = vam_date_raw($customers_dob);
 
 		vam_db_perform(TABLE_CUSTOMERS, $sql_data_array);
@@ -306,13 +306,13 @@ $entry_state = $_POST['state'];
 
 		$sql_data_array = array ('customers_id' => $cc_id, 'entry_firstname' => $customers_firstname, 'entry_secondname' => $customers_secondname, 'entry_lastname' => $customers_lastname, 'entry_street_address' => $entry_street_address, 'entry_postcode' => $entry_postcode, 'entry_city' => $entry_city, 'entry_country_id' => $entry_country_id,'address_date_added' => 'now()','address_last_modified' => 'now()');
 
-		if (ACCOUNT_GENDER == 'true')
+		if (ACCOUNT_GENDER == 'true' or ACCOUNT_GENDER == 'optional')
 			$sql_data_array['entry_gender'] = $customers_gender;
-		if (ACCOUNT_COMPANY == 'true')
+		if (ACCOUNT_COMPANY == 'true' or ACCOUNT_COMPANY == 'optional')
 			$sql_data_array['entry_company'] = $entry_company;
-		if (ACCOUNT_SUBURB == 'true')
+		if (ACCOUNT_SUBURB == 'true' or ACCOUNT_SUBURB == 'optional')
 			$sql_data_array['entry_suburb'] = $entry_suburb;
-		if (ACCOUNT_STATE == 'true') {
+		if (ACCOUNT_STATE == 'true' or ACCOUNT_STATE == 'optional') {
 			if ($zone_id > 0) {
 				$sql_data_array['entry_zone_id'] = $entry_zone_id;
 				$sql_data_array['entry_state'] = '';

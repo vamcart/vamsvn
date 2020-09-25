@@ -367,9 +367,9 @@ $entry_state = $_POST['entry_state'];
 					$sql_data_array=array_merge($sql_data_array,array('customers_password' => vam_encrypt_password($password)));						
 				}
 
-				if (ACCOUNT_GENDER == 'true')
+				if (ACCOUNT_GENDER == 'true' or ACCOUNT_GENDER == 'optional')
 					$sql_data_array['customers_gender'] = $customers_gender;
-				if (ACCOUNT_DOB == 'true')
+				if (ACCOUNT_DOB == 'true' or ACCOUNT_DOB == 'optional')
 					$sql_data_array['customers_dob'] = vam_date_raw($customers_dob);
 
 				vam_db_perform(TABLE_CUSTOMERS, $sql_data_array, 'update', "customers_id = '".vam_db_input($customers_id)."'");
@@ -382,12 +382,12 @@ $entry_state = $_POST['entry_state'];
 				$sql_data_array = array ('entry_firstname' => $customers_firstname, 'entry_secondname' => $customers_secondname, 'entry_lastname' => $customers_lastname, 'entry_street_address' => $entry_street_address, 'entry_postcode' => $entry_postcode, 'entry_city' => $entry_city, 'entry_country_id' => (int)$entry_country_id,'address_last_modified' => 'now()');
 				
 				
-				if (ACCOUNT_COMPANY == 'true')
+				if (ACCOUNT_COMPANY == 'true' or ACCOUNT_COMPANY == 'optional')
 					$sql_data_array['entry_company'] = $entry_company;
-				if (ACCOUNT_SUBURB == 'true')
+				if (ACCOUNT_SUBURB == 'true' or ACCOUNT_SUBURB == 'optional')
 					$sql_data_array['entry_suburb'] = $entry_suburb;
 
-				if (ACCOUNT_STATE == 'true') {
+				if (ACCOUNT_STATE == 'true' or ACCOUNT_STATE == 'optional') {
 					if ($entry_zone_id > 0) {
 						$sql_data_array['entry_zone_id'] = (int)$entry_zone_id;
 						$sql_data_array['entry_state'] = '';
