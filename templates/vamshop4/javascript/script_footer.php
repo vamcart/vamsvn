@@ -4,14 +4,14 @@ $bender = new Bender();
 $bender->enqueue("jscript/jquery/jquery-3.4.1.min.js");
 $bender->enqueue("templates/".CURRENT_TEMPLATE."/javascript/popper.min.js");
 $bender->enqueue("templates/".CURRENT_TEMPLATE."/javascript/bootstrap.min.js");
-$bender->enqueue("jscript/jquery/plugins/jquery-ui/jquery-ui-min.js");
+//$bender->enqueue("jscript/jquery/plugins/jquery-ui/jquery-ui-min.js");
 $bender->enqueue("jscript/jquery/plugins/cookie/jquery.cookie.js");
 $bender->enqueue("jscript/jquery/plugins/read-more/jquery.expandable.js");
 $bender->enqueue("jscript/jquery/plugins/lazyload/lazyload.min.js");
 //$bender->enqueue("jscript/jquery/plugins/slick/slick.js");
 $bender->enqueue("jscript/jquery/plugins/owl/owl.carousel.min.js");
-$bender->enqueue("jscript/jquery/plugins/select2/select2.js");
-$bender->enqueue("jscript/jquery/plugins/select2/i18n/" . $_SESSION['language_code'] . ".js");
+//$bender->enqueue("jscript/jquery/plugins/select2/select2.js");
+//$bender->enqueue("jscript/jquery/plugins/select2/i18n/" . $_SESSION['language_code'] . ".js");
 $bender->enqueue("jscript/jquery/plugins/scrollup/jquery.scrollup.min.js");
 $bender->enqueue("jscript/jquery/plugins/zoom/jquery.zoom.js");
 //$bender->enqueue("jscript/jquery/plugins/equalheight/jquery.sameheight.js");
@@ -65,6 +65,13 @@ if ( strstr($PHP_SELF, FILENAME_ADDRESS_BOOK)
 	or strstr($PHP_SELF, FILENAME_CHECKOUT_SHIPPING_ADDRESS)
 	or strstr($PHP_SELF, FILENAME_CREATE_ACCOUNT) ) {
 ?>
+<script src="jscript/jquery/plugins/select2/select2.js"></script>
+<?php
+if (file_exists(DIR_FS_CATALOG.'jscript/jquery/plugins/select2/i18n/' . $_SESSION['language_code'] . '.js')) {
+?>
+<script src="jscript/jquery/plugins/select2/i18n/<?php echo $_SESSION['language_code'] . ".js"; ?>"></script>
+<?php } ?>
+
 <script type="text/javascript">
 function initialise(){
 <?php if (ACCOUNT_STATE == 'true') { ?>

@@ -285,7 +285,7 @@ $(document).on('click','.value-control',function(){
 })
 
 // Geo Modal
-			$(function() {
+/*			$(function() {
 				$("#vamshop-city").autocomplete({
                   appendTo: "#vamshop-cities",
 					source : function(request, response) {
@@ -318,6 +318,7 @@ $(document).on('click','.value-control',function(){
 					}
 });
 });            
+*/
 
 $(function() {
 $("#submit-modal1").on("click", function(e) {
@@ -405,42 +406,6 @@ function _transcriptHandler(e) {
         $searchForm.submit();
     }
 }
-});           
-
-// Select2 added
-$(function() {
-
-var customSorter = function(data) {
-     return data.sort(function(a,b){
-         a = a.text.toLowerCase();
-         b = b.text.toLowerCase();
-         if(a > b) {
-             return 1;
-         } else if (a < b) {
-             return -1;
-         }
-         return 0;
-     });
-};
-	
-	  $("select:not(.noselect2)").select2({
-	      theme: "bootstrap",
-	      sorter: customSorter
-	  });        
-});    	 
-
-$(function() {
-// Fix select2 width
-//$(window).on('resize', function() {
-$(window).on('load', function() {
-    $('.form-group').each(function() {
-        var formGroup = $(this),
-            formgroupWidth = "auto";
-
-        formGroup.find('.select2-container').css('width', formgroupWidth);
-
-    });
-}); 
 });           
 
 $(function() {
