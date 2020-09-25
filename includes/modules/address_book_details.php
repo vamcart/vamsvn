@@ -38,7 +38,7 @@
   }
 
   $module->assign('INPUT_FIRSTNAME',vam_draw_input_fieldNote(array('name'=>'firstname','text'=>'&nbsp;' . (vam_not_null(ENTRY_FIRST_NAME_TEXT) ? '<span class="Requirement">' . ENTRY_FIRST_NAME_TEXT . '</span>': '')),$entry['entry_firstname'], 'id="firstname"'));
-if (ACCOUNT_SECOND_NAME == 'true') {
+if (ACCOUNT_SECOND_NAME == 'true' or ACCOUNT_SECOND_NAME == 'optional') {
 	$module->assign('secondname', '1');
 $module->assign('INPUT_SECONDNAME', vam_draw_input_fieldNote(array ('name' => 'secondname', 'text' => '&nbsp;'. (vam_not_null(ENTRY_SECOND_NAME_TEXT) ? '<span class="Requirement">'.ENTRY_SECOND_NAME_TEXT.'</span>' : '')),$entry['entry_secondname'], 'id="secondname"'));
 }

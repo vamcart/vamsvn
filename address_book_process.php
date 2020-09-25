@@ -49,7 +49,7 @@ if (isset ($_POST['action']) && (($_POST['action'] == 'process') || ($_POST['act
 	if (ACCOUNT_COMPANY == 'true')
 		$company = vam_db_prepare_input($_POST['company']);
 		$firstname = vam_db_prepare_input($_POST['firstname']);
-	if (ACCOUNT_SECOND_NAME == 'true')
+	if (ACCOUNT_SECOND_NAME == 'true' or ACCOUNT_SECOND_NAME == 'optional')
 		$secondname = vam_db_prepare_input($_POST['secondname']);
 	if (ACCOUNT_LAST_NAME == 'true')
 		$lastname = vam_db_prepare_input($_POST['lastname']);

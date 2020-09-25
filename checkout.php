@@ -1938,7 +1938,7 @@ if (ACCOUNT_COMPANY == 'true') {
 }
 
 $vamTemplate->assign('INPUT_FIRSTNAME', vam_draw_input_fieldNote(array ('name' => 'firstname', 'text' => '&nbsp;'. (vam_not_null(ENTRY_FIRST_NAME_TEXT) ? '<span class="Requirement">'.ENTRY_FIRST_NAME_TEXT.'</span>' : '')), $sc_guest_firstname, 'class="form-control" id="firstname"'));
-if (ACCOUNT_SECOND_NAME == 'true') {
+if (ACCOUNT_SECOND_NAME == 'true' or ACCOUNT_SECOND_NAME == 'optional') {
 	$vamTemplate->assign('secondname', '1');
 $vamTemplate->assign('INPUT_SECONDNAME', vam_draw_input_fieldNote(array ('name' => 'secondname', 'text' => '&nbsp;'. (vam_not_null(ENTRY_SECOND_NAME_TEXT) ? '<span class="Requirement">'.ENTRY_SECOND_NAME_TEXT.'</span>' : '')), $sc_guest_secondname, 'class="form-control" id="secondname"'));
 }
@@ -2075,7 +2075,7 @@ if (ACCOUNT_COMPANY == 'true') {
 }
 
 $vamTemplate->assign('INPUT_FIRSTNAME_PAYMENT', vam_draw_input_fieldNote(array ('name' => 'firstname_payment', 'text' => '&nbsp;'. (vam_not_null(ENTRY_FIRST_NAME_TEXT) ? '<span class="Requirement">'.ENTRY_FIRST_NAME_TEXT.'</span>' : '')), $sc_guest_firstname, 'class="form-control" id="firstname_payment"'));
-if (ACCOUNT_SECOND_NAME == 'true') {
+if (ACCOUNT_SECOND_NAME == 'true' or ACCOUNT_SECOND_NAME == 'optional') {
 	$vamTemplate->assign('secondname_payment', '1');
 $vamTemplate->assign('INPUT_SECONDNAME_PAYMENT', vam_draw_input_fieldNote(array ('name' => 'secondname_payment', 'text' => '&nbsp;'. (vam_not_null(ENTRY_SECOND_NAME_TEXT) ? '<span class="Requirement">'.ENTRY_SECOND_NAME_TEXT.'</span>' : '')), $sc_guest_secondname, 'class="form-control" id="secondname_payment"'));
 }
@@ -2167,7 +2167,7 @@ if (!vam_session_is_registered('customer_id')) { //IS NOT LOGGED ON
 
 $vamTemplate->assign('TITLE_CONTACT_ADDRESS', vam_get_sc_titles_number() . CATEGORY_CONTACT.vam_draw_hidden_field('guest', 'guest'));
 
-if (ACCOUNT_EMAIL == 'true') {
+if (ACCOUNT_EMAIL == 'true' or ACCOUNT_EMAIL == 'optional') {
 	$vamTemplate->assign('email', '1');
 $vamTemplate->assign('INPUT_EMAIL', vam_draw_input_fieldNote(array ('name' => 'email_address', 'text' => '&nbsp;'. (vam_not_null(ENTRY_EMAIL_ADDRESS_TEXT) ? '<span class="Requirement">'.ENTRY_EMAIL_ADDRESS_TEXT.'</span>' : '')), $sc_guest_email_address, 'class="form-control" id="email_address"'));
 }

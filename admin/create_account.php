@@ -453,7 +453,7 @@ if ($error == true) {
           </tr>
 <?php
 
-if (ACCOUNT_SECOND_NAME == 'true') {
+if (ACCOUNT_SECOND_NAME == 'true' or ACCOUNT_SECOND_NAME == 'optional') {
 ?>
           <tr>
             <td class="main"><?php echo ENTRY_SECOND_NAME; ?></td>
@@ -516,7 +516,7 @@ if (ACCOUNT_DOB == 'true') {
 ?>
 <?php
 
-if (ACCOUNT_EMAIL == 'true') {
+if (ACCOUNT_EMAIL == 'true' or ACCOUNT_EMAIL == 'optional') {
 ?>
           <tr>
             <td class="main"><?php echo ENTRY_EMAIL_ADDRESS; ?></td>
