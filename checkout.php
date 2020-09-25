@@ -317,7 +317,7 @@ if (!vam_session_is_registered('customer_id')) { //only for not logged in user
     $process = true;
 	
 	if ($sc_shipping_address_show == true) { //show shipping otpions 
-    if (ACCOUNT_GENDER == 'true') {
+    if (ACCOUNT_GENDER == 'true' or ACCOUNT_GENDER == 'optional') {
       if (isset($_POST['gender'])) {
         $gender = vam_db_prepare_input($_POST['gender']);
       } else {
@@ -325,16 +325,16 @@ if (!vam_session_is_registered('customer_id')) { //only for not logged in user
       }
     }
     $firstname = vam_db_prepare_input($_POST['firstname']);
-    $secondname = vam_db_prepare_input($_POST['secondname']);
-    $lastname = vam_db_prepare_input($_POST['lastname']);
-    if (ACCOUNT_DOB == 'true') $dob = vam_db_prepare_input($_POST['dob']);
-    $email_address = vam_db_prepare_input($_POST['email_address']);
-    if (ACCOUNT_COMPANY == 'true') $company = vam_db_prepare_input($_POST['company']);
-    $street_address = vam_db_prepare_input($_POST['street_address']);
-    if (ACCOUNT_SUBURB == 'true') $suburb = vam_db_prepare_input($_POST['suburb']);
-    $postcode = vam_db_prepare_input($_POST['postcode']);
-    $city = vam_db_prepare_input($_POST['city']);
-    if (ACCOUNT_STATE == 'true') {
+    if (ACCOUNT_SECOND_NAME == 'true' or ACCOUNT_SECOND_NAME == 'optional') $secondname = vam_db_prepare_input($_POST['secondname']);
+    if (ACCOUNT_LAST_NAME == 'true' or ACCOUNT_LAST_NAME == 'optional') $lastname = vam_db_prepare_input($_POST['lastname']);
+    if (ACCOUNT_DOB == 'true' or ACCOUNT_DOB == 'optional') $dob = vam_db_prepare_input($_POST['dob']);
+    if (ACCOUNT_EMAIL == 'true' or ACCOUNT_EMAIL == 'optional') $email_address = vam_db_prepare_input($_POST['email_address']);
+    if (ACCOUNT_COMPANY == 'true' or ACCOUNT_COMPANY == 'optional') $company = vam_db_prepare_input($_POST['company']);
+    if (ACCOUNT_STREET_ADDRESS == 'true' or ACCOUNT_STREET_ADDRESS == 'optional') $street_address = vam_db_prepare_input($_POST['street_address']);
+    if (ACCOUNT_SUBURB == 'true' or ACCOUNT_SUBURB == 'optional') $suburb = vam_db_prepare_input($_POST['suburb']);
+    if (ACCOUNT_POSTCODE == 'true' or ACCOUNT_POSTCODE == 'optional') $postcode = vam_db_prepare_input($_POST['postcode']);
+    if (ACCOUNT_CITY == 'true' or ACCOUNT_CITY == 'optional') $city = vam_db_prepare_input($_POST['city']);
+    if (ACCOUNT_STATE == 'true' or ACCOUNT_STATE == 'optional') {
       $state = vam_db_prepare_input($_POST['state']);
       if (isset($_POST['zone_id'])) {
         $zone_id = vam_db_prepare_input($_POST['zone_id']);
@@ -344,12 +344,14 @@ if (!vam_session_is_registered('customer_id')) { //only for not logged in user
     } else {
       $state = STORE_ZONE;
     }
-    if (ACCOUNT_COUNTRY == 'true') {
+    if (ACCOUNT_COUNTRY == 'true' or ACCOUNT_COUNTRY == 'optional') {
     $country = vam_db_prepare_input($_POST['country']);
     } else {
     $country = STORE_COUNTRY;
     }
+    if (ACCOUNT_TELE == 'true' or ACCOUNT_TELE == 'optional') 
     $telephone = vam_db_prepare_input($_POST['telephone']);
+    if (ACCOUNT_FAX == 'true' or ACCOUNT_FAX == 'optional') 
     $fax = vam_db_prepare_input($_POST['fax']);
     if (isset($_POST['newsletter'])) {
       $newsletter = vam_db_prepare_input($_POST['newsletter']);
@@ -536,14 +538,14 @@ if (!vam_session_is_registered('customer_id')) { //only for not logged in user
       if (ACCOUNT_GENDER == 'true') $gender_payment = vam_db_prepare_input($_POST['gender_payment']);
       if (ACCOUNT_COMPANY == 'true') $company_payment = vam_db_prepare_input($_POST['company_payment']);
       $firstname_payment = vam_db_prepare_input($_POST['firstname_payment']);
-      $secondname_payment = vam_db_prepare_input($_POST['secondname_payment']);
-      $lastname_payment = vam_db_prepare_input($_POST['lastname_payment']);
-      $street_address_payment = vam_db_prepare_input($_POST['street_address_payment']);
+      if (ACCOUNT_SECOND_NAME == 'true' or ACCOUNT_SECOND_NAME == 'optional') $secondname_payment = vam_db_prepare_input($_POST['secondname_payment']);
+      if (ACCOUNT_LAST_NAME == 'true' or ACCOUNT_LAST_NAME == 'optional') $lastname_payment = vam_db_prepare_input($_POST['lastname_payment']);
+      if (ACCOUNT_STREET_ADDRESS == 'true' or ACCOUNT_STREET_ADDRESS == 'optional') $street_address_payment = vam_db_prepare_input($_POST['street_address_payment']);
       if (ACCOUNT_SUBURB == 'true') $suburb_payment = vam_db_prepare_input($_POST['suburb_payment']);
-      $postcode_payment = vam_db_prepare_input($_POST['postcode_payment']);
-      $city_payment = vam_db_prepare_input($_POST['city_payment']);
-      $country_payment = vam_db_prepare_input($_POST['country_payment']);
-      if (ACCOUNT_STATE == 'true') {
+      if (ACCOUNT_POSTCODE == 'true' or ACCOUNT_POSTCODE == 'optional') $postcode_payment = vam_db_prepare_input($_POST['postcode_payment']);
+      if (ACCOUNT_CITY == 'true' or ACCOUNT_CITY == 'optional') $city_payment = vam_db_prepare_input($_POST['city_payment']);
+      if (ACCOUNT_COUNTRY == 'true' or ACCOUNT_COUNTRY == 'optional') $country_payment = vam_db_prepare_input($_POST['country_payment']);
+      if (ACCOUNT_STATE == 'true' or ACCOUNT_STATE == 'optional') {
         if (isset($_POST['zone_id'])) {
           $zone_id_payment = vam_db_prepare_input($_POST['zone_id_payment']);
         } else {
@@ -1920,7 +1922,7 @@ $vamTemplate->assign('BUTTON_SHIPPING_ADDRESS', '<a class="button" href="'.vam_h
 
 ################ START Shipping Information - NO ACCOUNT ########################################
 
-if (ACCOUNT_GENDER == 'true') {
+if (ACCOUNT_GENDER == 'true' or ACCOUNT_GENDER == 'optional') {
 	$vamTemplate->assign('gender', '1');
 
 	$vamTemplate->assign('INPUT_MALE', vam_draw_radio_field(array ('name' => 'gender', 'suffix' => MALE.'&nbsp;'), 'm', '', 'class="form-check-input" id="gender" checked="checked"'));
@@ -1930,7 +1932,7 @@ if (ACCOUNT_GENDER == 'true') {
 	$vamTemplate->assign('gender', '0');
 }
 
-if (ACCOUNT_COMPANY == 'true') {
+if (ACCOUNT_COMPANY == 'true' or ACCOUNT_COMPANY == 'optional') {
 	$vamTemplate->assign('company', '1');
 	$vamTemplate->assign('INPUT_COMPANY', vam_draw_input_fieldNote(array ('name' => 'company', 'text' => '&nbsp;'. (vam_not_null(ENTRY_COMPANY_TEXT) ? '<span class="Requirement">'.ENTRY_COMPANY_TEXT.'</span>' : '')),$sc_guest_company));
 } else {
@@ -1946,7 +1948,7 @@ if (ACCOUNT_LAST_NAME == 'true' or ACCOUNT_LAST_NAME == 'optional') {
 	$vamTemplate->assign('lastname', '1');
 $vamTemplate->assign('INPUT_LASTNAME', vam_draw_input_fieldNote(array ('name' => 'lastname', 'text' => '&nbsp;'. (vam_not_null(ENTRY_LAST_NAME_TEXT) ? '<span class="Requirement">'.ENTRY_LAST_NAME_TEXT.'</span>' : '')), $sc_guest_lastname, 'class="form-control" id="lastname"'));
 }
-if (ACCOUNT_DOB == 'true') {
+if (ACCOUNT_DOB == 'true' or ACCOUNT_DOB == 'optional') {
 	$vamTemplate->assign('birthdate', '1');
 
 	$vamTemplate->assign('INPUT_DOB', vam_draw_input_fieldNote(array ('name' => 'dob', 'text' => '&nbsp;'. (vam_not_null(ENTRY_DATE_OF_BIRTH_TEXT) ? '<span class="Requirement">'.ENTRY_DATE_OF_BIRTH_TEXT.'</span>' : '')), $sc_guest_dob, 'class="form-control" id="dob"'));
@@ -1955,35 +1957,35 @@ if (ACCOUNT_DOB == 'true') {
 	$vamTemplate->assign('birthdate', '0');
 }
 
-if (ACCOUNT_STREET_ADDRESS == 'true') {
+if (ACCOUNT_STREET_ADDRESS == 'true' or ACCOUNT_STREET_ADDRESS == 'optional') {
    $vamTemplate->assign('street_address', '1');
    $vamTemplate->assign('INPUT_STREET', vam_draw_input_fieldNote(array ('name' => 'street_address', 'text' => '&nbsp;'. (vam_not_null(ENTRY_SC_STREET_ADDRESS_TEXT) ? '<span class="Requirement">'.ENTRY_SC_STREET_ADDRESS_TEXT.'</span>' : '')), $sc_guest_street_address, 'class="form-control" id="street_address"'));
 } else {
 	$vamTemplate->assign('street_address', '0');
 }
 
-if (ACCOUNT_SUBURB == 'true') {
+if (ACCOUNT_SUBURB == 'true' or ACCOUNT_SUBURB == 'optional') {
 	$vamTemplate->assign('suburb', '1');
 	$vamTemplate->assign('INPUT_SUBURB', vam_draw_input_fieldNote(array ('name' => 'suburb', 'text' => '&nbsp;'. (vam_not_null(ENTRY_SUBURB_TEXT) ? '<span class="Requirement">'.ENTRY_SUBURB_TEXT.'</span>' : '')),$sc_guest_suburb));
 } else {
 	$vamTemplate->assign('suburb', '0');
 }
 
-if (ACCOUNT_POSTCODE == 'true') {
+if (ACCOUNT_POSTCODE == 'true'or ACCOUNT_POSTCODE == 'optional') {
    $vamTemplate->assign('postcode', '1');
    $vamTemplate->assign('INPUT_CODE', vam_draw_input_fieldNote(array ('name' => 'postcode', 'text' => '&nbsp;'. (vam_not_null(ENTRY_POST_CODE_TEXT) ? '<span class="Requirement">'.ENTRY_POST_CODE_TEXT.'</span>' : '')), $sc_guest_postcode, 'class="form-control" id="postcode"'));
 } else {
 	$vamTemplate->assign('postcode', '0');
 }
 
-if (ACCOUNT_CITY == 'true') {
+if (ACCOUNT_CITY == 'true' or ACCOUNT_CITY == 'optional') {
    $vamTemplate->assign('city', '1');
    $vamTemplate->assign('INPUT_CITY', vam_draw_input_fieldNote(array ('name' => 'city', 'text' => '&nbsp;'. (vam_not_null(ENTRY_CITY_TEXT) ? '<span class="Requirement">'.ENTRY_CITY_TEXT.'</span>' : '')), $sc_guest_city, 'class="form-control" id="city"'));
 } else {
 	$vamTemplate->assign('city', '0');
 }
 
-if (ACCOUNT_STATE == 'true') {
+if (ACCOUNT_STATE == 'true' or ACCOUNT_STATE == 'optional') {
 	$vamTemplate->assign('state', '1');
 
 	    $country = (isset($_POST['country']) ? vam_db_prepare_input($_POST['country']) : STORE_COUNTRY);
@@ -2011,7 +2013,7 @@ if (ACCOUNT_STATE == 'true') {
 	$vamTemplate->assign('state', '0');
 }
 
-if (ACCOUNT_COUNTRY == 'true') {
+if (ACCOUNT_COUNTRY == 'true' or ACCOUNT_COUNTRY == 'optional') {
 	$vamTemplate->assign('country', '1');
 
    $vamTemplate->assign('SELECT_COUNTRY', vam_get_country_list(array ('name' => 'country', 'text' => '&nbsp;'. (vam_not_null(ENTRY_COUNTRY_TEXT) ? '<span class="Requirement">'.ENTRY_COUNTRY_TEXT.'</span>' : '')), $selected_country_id, 'class="form-control" id="country"'));

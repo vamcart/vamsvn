@@ -44,29 +44,29 @@ if (isset ($_POST['action']) && (($_POST['action'] == 'process') || ($_POST['act
 	$process = true;
 	$error = false;
 
-	if (ACCOUNT_GENDER == 'true')
+	if (ACCOUNT_GENDER == 'true' or ACCOUNT_GENDER == 'optional')
 		$gender = vam_db_prepare_input($_POST['gender']);
-	if (ACCOUNT_COMPANY == 'true')
+	if (ACCOUNT_COMPANY == 'true' or ACCOUNT_COMPANY == 'optional')
 		$company = vam_db_prepare_input($_POST['company']);
 		$firstname = vam_db_prepare_input($_POST['firstname']);
 	if (ACCOUNT_SECOND_NAME == 'true' or ACCOUNT_SECOND_NAME == 'optional')
 		$secondname = vam_db_prepare_input($_POST['secondname']);
 	if (ACCOUNT_LAST_NAME == 'true' or ACCOUNT_LAST_NAME == 'optional')
 		$lastname = vam_db_prepare_input($_POST['lastname']);
-   if (ACCOUNT_STREET_ADDRESS == 'true')
+   if (ACCOUNT_STREET_ADDRESS == 'true' or ACCOUNT_STREET_ADDRESS == 'optional')
 	   $street_address = vam_db_prepare_input($_POST['street_address']);
-	if (ACCOUNT_SUBURB == 'true')
+	if (ACCOUNT_SUBURB == 'true' or ACCOUNT_SUBURB == 'optional')
 		$suburb = vam_db_prepare_input($_POST['suburb']);
-   if (ACCOUNT_POSTCODE == 'true')
+   if (ACCOUNT_POSTCODE == 'true' or ACCOUNT_POSTCODE == 'optional')
 	   $postcode = vam_db_prepare_input($_POST['postcode']);
-	if (ACCOUNT_CITY == 'true')
+	if (ACCOUNT_CITY == 'true' or ACCOUNT_CITY == 'optional')
 	   $city = vam_db_prepare_input($_POST['city']);
-   if (ACCOUNT_COUNTRY == 'true') {
+   if (ACCOUNT_COUNTRY == 'true' or ACCOUNT_COUNTRY == 'optional') {
 	   $country = vam_db_prepare_input($_POST['country']);
 	} else {
       $country = STORE_COUNTRY;
 	}
-	if (ACCOUNT_STATE == 'true') {
+	if (ACCOUNT_STATE == 'true' or ACCOUNT_STATE == 'optional') {
 		$zone_id = vam_db_prepare_input($_POST['zone_id']);
 		$state = vam_db_prepare_input($_POST['state']);
 	}

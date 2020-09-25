@@ -406,7 +406,7 @@ $entry_state = $_POST['state'];
         <td class="formArea"><table border="0" cellspacing="2" cellpadding="2">
 <?php
 
-if (ACCOUNT_GENDER == 'true') {
+if (ACCOUNT_GENDER == 'true' or ACCOUNT_GENDER == 'optional') {
 ?>
           <tr>
             <td class="main"><?php echo ENTRY_GENDER; ?></td>
@@ -493,7 +493,7 @@ if ($error == true) {
           
 <?php
 
-if (ACCOUNT_DOB == 'true') {
+if (ACCOUNT_DOB == 'true' or ACCOUNT_DOB == 'optional') {
 ?>
           <tr>
             <td class="main"><?php echo ENTRY_DATE_OF_BIRTH; ?></td>
@@ -547,7 +547,7 @@ if ($error == true) {
       </tr>
 <?php
 
-if (ACCOUNT_COMPANY == 'true') {
+if (ACCOUNT_COMPANY == 'true' or ACCOUNT_COMPANY == 'optional') {
 ?>
       <tr>
         <td><?php echo vam_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
@@ -574,7 +574,7 @@ if (ACCOUNT_COMPANY == 'true') {
           </tr>
 <?php
 
-	if (ACCOUNT_COMPANY_VAT_CHECK == 'true') {
+	if (ACCOUNT_COMPANY_VAT_CHECK == 'true' or ACCOUNT_COMPANY_VAT_CHECK == 'optional') {
 ?>
           <tr>
             <td class="main"><?php echo ENTRY_VAT_ID; ?></td>
@@ -607,7 +607,7 @@ if (ACCOUNT_COMPANY == 'true') {
       </tr>
 <?php
 
-	if (ACCOUNT_STREET_ADDRESS == 'true') {
+	if (ACCOUNT_STREET_ADDRESS == 'true' or ACCOUNT_STREET_ADDRESS == 'optional') {
 ?>
       <tr>
         <td class="formAreaTitle"><?php echo CATEGORY_ADDRESS; ?></td>
@@ -620,7 +620,7 @@ if (ACCOUNT_COMPANY == 'true') {
         <td class="formArea"><table border="0" cellspacing="2" cellpadding="2">
 <?php
 
-	if (ACCOUNT_STREET_ADDRESS == 'true') {
+	if (ACCOUNT_STREET_ADDRESS == 'true' or ACCOUNT_STREET_ADDRESS == 'optional') {
 ?>
           <tr>
             <td class="main"><?php echo ENTRY_STREET_ADDRESS; ?></td>
@@ -643,7 +643,7 @@ if ($error == true) {
 ?>
 <?php
 
-if (ACCOUNT_SUBURB == 'true') {
+if (ACCOUNT_SUBURB == 'true' or ACCOUNT_SUBURB == 'optional') {
 ?>
           <tr>
             <td class="main"><?php echo ENTRY_SUBURB; ?></td>
@@ -666,7 +666,7 @@ if (ACCOUNT_SUBURB == 'true') {
 ?>
 <?php
 
-	if (ACCOUNT_POSTCODE == 'true') {
+	if (ACCOUNT_POSTCODE == 'true' or ACCOUNT_POSTCODE == 'optional') {
 ?>
           <tr>
             <td class="main"><?php echo ENTRY_POST_CODE; ?></td>
@@ -689,7 +689,7 @@ if ($error == true) {
 ?>
 <?php
 
-	if (ACCOUNT_CITY == 'true') {
+	if (ACCOUNT_CITY == 'true' or ACCOUNT_CITY == 'optional') {
 ?>
           <tr>
             <td class="main"><?php echo ENTRY_CITY; ?></td>
@@ -711,7 +711,7 @@ if ($error == true) {
 	}
 ?>
 <?php
-  if (ACCOUNT_COUNTRY == 'true') {
+  if (ACCOUNT_COUNTRY == 'true' or ACCOUNT_COUNTRY == 'optional') {
 ?>
               <tr>
                 <td class="main"><?php echo ENTRY_COUNTRY; ?></td>
@@ -721,7 +721,7 @@ if ($error == true) {
   }
 ?>
 <?php
-if (ACCOUNT_STATE == 'true') {
+if (ACCOUNT_STATE == 'true' or ACCOUNT_STATE == 'optional') {
 ?>
              <tr>
                <td class="main"><?php echo ENTRY_STATE;?></td>
@@ -770,7 +770,7 @@ changeselect("<?php echo vam_db_prepare_input($_POST['state']); ?>");
       </tr>
 <?php
 
-	if (ACCOUNT_TELE == 'true') {
+	if (ACCOUNT_TELE == 'true' or ACCOUNT_TELE == 'optional') {
 ?>
       <tr>
         <td class="formAreaTitle"><?php echo CATEGORY_CONTACT; ?></td>
@@ -783,7 +783,7 @@ changeselect("<?php echo vam_db_prepare_input($_POST['state']); ?>");
         <td class="formArea"><table border="0" cellspacing="2" cellpadding="2">
 <?php
 
-	if (ACCOUNT_TELE == 'true') {
+	if (ACCOUNT_TELE == 'true' or ACCOUNT_TELE == 'optional') {
 ?>
           <tr>
             <td class="main"><?php echo ENTRY_TELEPHONE_NUMBER; ?></td>
@@ -806,7 +806,7 @@ if ($error == true) {
 ?>
 <?php
 
-	if (ACCOUNT_FAX == 'true') {
+	if (ACCOUNT_FAX == 'true' or ACCOUNT_FAX == 'optional') {
 ?>
           <tr>
             <td class="main"><?php echo ENTRY_FAX_NUMBER; ?></td>

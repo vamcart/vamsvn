@@ -69,40 +69,40 @@ $process = false;
 if (isset ($_POST['action']) && ($_POST['action'] == 'process')  && $spam_flag == false) {
 	$process = true;
 
-	if (ACCOUNT_GENDER == 'true')
+	if (ACCOUNT_GENDER == 'true' or ACCOUNT_GENDER == 'optional')
 		$gender = vam_db_prepare_input($_POST['gender']);
 	$firstname = vam_db_prepare_input($_POST['firstname']);
 	if (ACCOUNT_SECOND_NAME == 'true' or ACCOUNT_SECOND_NAME == 'optional')
 	$secondname = vam_db_prepare_input($_POST['secondname']);
 	if (ACCOUNT_LAST_NAME == 'true' or ACCOUNT_LAST_NAME == 'optional')
 	$lastname = vam_db_prepare_input($_POST['lastname']);
-	if (ACCOUNT_DOB == 'true')
+	if (ACCOUNT_DOB == 'true' or ACCOUNT_DOB == 'optional')
 		$dob = vam_db_prepare_input($_POST['dob']);
 	if (ACCOUNT_EMAIL == 'true' or ACCOUNT_EMAIL == 'optional')
 	$email_address = vam_db_prepare_input($_POST['email_address']);
-	if (ACCOUNT_COMPANY == 'true')
+	if (ACCOUNT_COMPANY == 'true' or ACCOUNT_COMPANY == 'optional')
 		$company = vam_db_prepare_input($_POST['company']);
-	if (ACCOUNT_COMPANY_VAT_CHECK == 'true')
+	if (ACCOUNT_COMPANY_VAT_CHECK == 'true' or ACCOUNT_COMPANY_VAT_CHECK == 'optional')
 		$vat = vam_db_prepare_input($_POST['vat']);
-   if (ACCOUNT_STREET_ADDRESS == 'true')
+   if (ACCOUNT_STREET_ADDRESS == 'true' or ACCOUNT_STREET_ADDRESS == 'optional')
 	   $street_address = vam_db_prepare_input($_POST['street_address']);
-	if (ACCOUNT_SUBURB == 'true')
+	if (ACCOUNT_SUBURB == 'true' or ACCOUNT_SUBURB == 'optional')
 		$suburb = vam_db_prepare_input($_POST['suburb']);
-   if (ACCOUNT_POSTCODE == 'true')
+   if (ACCOUNT_POSTCODE == 'true' or ACCOUNT_POSTCODE == 'optional')
 	   $postcode = vam_db_prepare_input($_POST['postcode']);
-	if (ACCOUNT_CITY == 'true')
+	if (ACCOUNT_CITY == 'true' or ACCOUNT_CITY == 'optional')
 	   $city = vam_db_prepare_input($_POST['city']);
 	$zone_id = vam_db_prepare_input($_POST['zone_id']);
-	if (ACCOUNT_STATE == 'true')
+	if (ACCOUNT_STATE == 'true' or ACCOUNT_STATE == 'optional')
 		$state = vam_db_prepare_input($_POST['state']);
-   if (ACCOUNT_COUNTRY == 'true') {
+   if (ACCOUNT_COUNTRY == 'true' or ACCOUNT_COUNTRY == 'optional') {
 	   $country = vam_db_prepare_input($_POST['country']);
 	} else {
       $country = STORE_COUNTRY;
 	}
-   if (ACCOUNT_TELE == 'true')
+   if (ACCOUNT_TELE == 'true' or ACCOUNT_TELE == 'optional')
 	   $telephone = vam_db_prepare_input($_POST['telephone']);
-   if (ACCOUNT_FAX == 'true')
+   if (ACCOUNT_FAX == 'true' or ACCOUNT_FAX == 'optional')
 	   $fax = vam_db_prepare_input($_POST['fax']);
 	$newsletter = '0';
 	$newsletter = vam_db_prepare_input($_POST['newsletter']);

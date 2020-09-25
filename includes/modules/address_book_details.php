@@ -27,7 +27,7 @@
   if (!isset($process)) $process = false;
 
 
-  if (ACCOUNT_GENDER == 'true') {
+  if (ACCOUNT_GENDER == 'true' or ACCOUNT_GENDER == 'optional') {
     $male = ($entry['entry_gender'] == 'm') ? true : false;
     $female = ($entry['entry_gender'] == 'f') ? true : false;
 
@@ -47,33 +47,33 @@ if (ACCOUNT_LAST_NAME == 'true' or ACCOUNT_LAST_NAME == 'optional') {
   $module->assign('INPUT_LASTNAME',vam_draw_input_fieldNote(array('name'=>'lastname','text'=>'&nbsp;' . (vam_not_null(ENTRY_LAST_NAME_TEXT) ? '<span class="Requirement">' . ENTRY_LAST_NAME_TEXT . '</span>': '')),$entry['entry_lastname'], 'id="lastname"'));
 }
 
-  if (ACCOUNT_COMPANY == 'true') {
+  if (ACCOUNT_COMPANY == 'true' or ACCOUNT_COMPANY == 'optional') {
   $module->assign('company','1');
   $module->assign('INPUT_COMPANY',vam_draw_input_fieldNote(array('name'=>'company','text'=>'&nbsp;' . (vam_not_null(ENTRY_COMPANY_TEXT) ? '<span class="Requirement">' . ENTRY_COMPANY_TEXT . '</span>': '')), $entry['entry_company']));
   }
 
-  if (ACCOUNT_STREET_ADDRESS == 'true') {
+  if (ACCOUNT_STREET_ADDRESS == 'true' or ACCOUNT_STREET_ADDRESS == 'optional') {
   $module->assign('street_address','1');
   $module->assign('INPUT_STREET',vam_draw_input_fieldNote(array('name'=>'street_address','text'=>'&nbsp;' . (vam_not_null(ENTRY_STREET_ADDRESS_TEXT) ? '<span class="Requirement">' . ENTRY_STREET_ADDRESS_TEXT . '</span>': '')), $entry['entry_street_address'], 'id="street_address"'));
   }
 
-  if (ACCOUNT_SUBURB == 'true') {
+  if (ACCOUNT_SUBURB == 'true' or ACCOUNT_SUBURB == 'optional') {
   $module->assign('suburb','1');
   $module->assign('INPUT_SUBURB',vam_draw_input_fieldNote(array('name'=>'suburb','text'=>'&nbsp;' . (vam_not_null(ENTRY_SUBURB_TEXT) ? '<span class="Requirement">' . ENTRY_SUBURB_TEXT . '</span>': '')), $entry['entry_suburb']));
 
   }
 
-  if (ACCOUNT_POSTCODE == 'true') {
+  if (ACCOUNT_POSTCODE == 'true' or ACCOUNT_POSTCODE == 'optional') {
   $module->assign('postcode','1');
   $module->assign('INPUT_CODE',vam_draw_input_fieldNote(array('name'=>'postcode','text'=>'&nbsp;' . (vam_not_null(ENTRY_POST_CODE_TEXT) ? '<span class="Requirement">' . ENTRY_POST_CODE_TEXT . '</span>': '')), $entry['entry_postcode'], 'id="postcode"'));
   }
 
-  if (ACCOUNT_CITY == 'true') {
+  if (ACCOUNT_CITY == 'true' or ACCOUNT_CITY == 'optional') {
   $module->assign('city','1');
   $module->assign('INPUT_CITY',vam_draw_input_fieldNote(array('name'=>'city','text'=>'&nbsp;' . (vam_not_null(ENTRY_CITY_TEXT) ? '<span class="Requirement">' . ENTRY_CITY_TEXT . '</span>': '')), $entry['entry_city'], 'id="city"'));
   }
   
-if (ACCOUNT_STATE == 'true') {
+if (ACCOUNT_STATE == 'true' or ACCOUNT_STATE == 'optional') {
 	$module->assign('state', '1');
 
 if (!isset($entry['entry_country_id'])) $entry['entry_country_id']  = STORE_COUNTRY;
@@ -130,7 +130,7 @@ if (!isset($entry['entry_zone_id'])) $entry['entry_zone_id']  = STORE_ZONE;
   $selected = $entry['entry_country_id'];
   }
 
-if (ACCOUNT_COUNTRY == 'true') {
+if (ACCOUNT_COUNTRY == 'true' or ACCOUNT_COUNTRY == 'optional') {
 
   $module->assign('country','1');
   

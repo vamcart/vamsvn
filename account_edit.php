@@ -36,20 +36,22 @@ if ($_SESSION['customers_status']['customers_status_id']==0)
 	vam_redirect(vam_href_link_admin(FILENAME_CUSTOMERS, 'cID='.$_SESSION['customer_id'].'&action=edit', 'SSL'));
 
 if (isset ($_POST['action']) && ($_POST['action'] == 'process')) {
-	if (ACCOUNT_GENDER == 'true')
+	if (ACCOUNT_GENDER == 'true' or ACCOUNT_GENDER == 'optional')
 		$gender = vam_db_prepare_input($_POST['gender']);
 	$firstname = vam_db_prepare_input($_POST['firstname']);
 	if (ACCOUNT_SECOND_NAME == 'true' or ACCOUNT_SECOND_NAME == 'optional')
 	$secondname = vam_db_prepare_input($_POST['secondname']);
 	if (ACCOUNT_LAST_NAME == 'true' or ACCOUNT_LAST_NAME == 'optional')
 	$lastname = vam_db_prepare_input($_POST['lastname']);
-	if (ACCOUNT_DOB == 'true')
+	if (ACCOUNT_DOB == 'true' or ACCOUNT_DOB == 'optional')
 		$dob = vam_db_prepare_input($_POST['dob']);
-	if (ACCOUNT_COMPANY_VAT_CHECK == 'true')
+	if (ACCOUNT_COMPANY_VAT_CHECK == 'true' or ACCOUNT_COMPANY_VAT_CHECK == 'optional')
 		$vat = vam_db_prepare_input($_POST['vat']);
 	if (ACCOUNT_EMAIL == 'true' or ACCOUNT_EMAIL == 'optional')
 	$email_address = vam_db_prepare_input($_POST['email_address']);
+	if (ACCOUNT_TELE == 'true' or ACCOUNT_TELE == 'optional')
 	$telephone = vam_db_prepare_input($_POST['telephone']);
+	if (ACCOUNT_FAX == 'true' or ACCOUNT_FAX == 'optional')
 	$fax = vam_db_prepare_input($_POST['fax']);
     vam_get_extra_fields($_SESSION['customer_id'], $_SESSION['languages_id']);
 
