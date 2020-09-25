@@ -3,7 +3,7 @@
 	{if {$module_data.CATEGORIES_IMAGE} && {$module_data.CATEGORIES_IMAGE} != "images/categories/"}
 	<div class="img-wrap">
 	<a href="{$module_data.CATEGORIES_LINK}" title="{$module_data.CATEGORIES_NAME}">
-	<img {if $smarty.const.ENABLE_LAZY_LOAD == 'true'}class="lazy img-fluid" src="{$smarty.const.DIR_WS_IMAGES}pixel_trans.gif" data-src="{$module_data.CATEGORIES_IMAGE}"{else}src="{$module_data.CATEGORIES_IMAGE}"{/if} {if $module_data.CATEGORIES_IMAGE_WIDTH > 0} width="{$module_data.CATEGORIES_IMAGE_WIDTH}"{/if} {if $module_data.CATEGORIES_IMAGE_HEIGHT > 0} height="{$module_data.CATEGORIES_IMAGE_HEIGHT}"{/if} alt="{$module_data.CATEGORIES_NAME}" title="{$module_data.CATEGORIES_NAME}" />
+	<img {if $smarty.const.ENABLE_LAZY_LOAD == 'true'}class="lazy" src="{$smarty.const.DIR_WS_IMAGES}pixel_trans.gif" data-src="{$module_data.CATEGORIES_IMAGE}"{else}src="{$module_data.CATEGORIES_IMAGE}"{/if} {if $module_data.CATEGORIES_IMAGE_WIDTH > 0} width="{$module_data.CATEGORIES_IMAGE_WIDTH}"{/if} {if $module_data.CATEGORIES_IMAGE_HEIGHT > 0} height="{$module_data.CATEGORIES_IMAGE_HEIGHT}"{/if} alt="{$module_data.CATEGORIES_NAME}" title="{$module_data.CATEGORIES_NAME}" />
 	</a>
 	</div>
 	{/if}
