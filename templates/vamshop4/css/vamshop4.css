@@ -97,6 +97,19 @@ button:focus, button:active, a, a:hover {
     display: none;
 }
 
+.owl-carousel-tags .owl-stage {
+    position: relative;
+    -ms-touch-action: pan-Y;
+    touch-action: manipulation;
+    -moz-backface-visibility: hidden;
+}
+
+.owl-carousel-tags .owl-stage-outer {
+    position: relative;
+    overflow: hidden;
+    -webkit-transform: translate3d(0,0,0);
+}
+
 .owl-carousel .owl-nav button.owl-next, .owl-carousel .owl-nav button.owl-prev,
 .owl-carousel .owl-nav button.owl-next.disabled, .owl-carousel .owl-nav button.owl-prev.disabled {
     padding: 5px 10px !important;
