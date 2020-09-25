@@ -732,6 +732,10 @@ if ($_GET['action'] == 'edit' || $_GET['action'] == 'update') {
 
 	}
 ?>
+<?php
+
+	if (ACCOUNT_LAST_NAME == 'true') {
+?>
           <tr>
             <td class="main"><?php echo ENTRY_LAST_NAME; ?></td>
             <td class="main"><?php
@@ -747,6 +751,10 @@ if ($_GET['action'] == 'edit' || $_GET['action'] == 'update') {
 	}
 ?></td>
           </tr>
+<?php
+
+	}
+?>
 <?php
 
 	if (ACCOUNT_DOB == 'true') {
@@ -770,6 +778,10 @@ if ($_GET['action'] == 'edit' || $_GET['action'] == 'update') {
 
 	}
 ?>
+<?php
+
+	if (ACCOUNT_EMAIL == 'true') {
+?>
           <tr>
             <td class="main"><?php echo ENTRY_EMAIL_ADDRESS; ?></td>
             <td class="main"><?php
@@ -791,6 +803,10 @@ if ($_GET['action'] == 'edit' || $_GET['action'] == 'update') {
 	}
 ?></td>
           </tr>
+<?php
+
+	}
+?>
         </table></td>
       </tr>
 <?php

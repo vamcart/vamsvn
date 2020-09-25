@@ -74,9 +74,11 @@ if (isset ($_POST['action']) && ($_POST['action'] == 'process')  && $spam_flag =
 	$firstname = vam_db_prepare_input($_POST['firstname']);
 	if (ACCOUNT_SECOND_NAME == 'true')
 	$secondname = vam_db_prepare_input($_POST['secondname']);
+	if (ACCOUNT_LAST_NAME == 'true')
 	$lastname = vam_db_prepare_input($_POST['lastname']);
 	if (ACCOUNT_DOB == 'true')
 		$dob = vam_db_prepare_input($_POST['dob']);
+	if (ACCOUNT_EMAIL == 'true')
 	$email_address = vam_db_prepare_input($_POST['email_address']);
 	if (ACCOUNT_COMPANY == 'true')
 		$company = vam_db_prepare_input($_POST['company']);
@@ -1224,8 +1226,10 @@ if (ACCOUNT_SECOND_NAME == 'true') {
 	$vamTemplate->assign('secondname', '1');
 $vamTemplate->assign('INPUT_SECONDNAME', vam_draw_input_fieldNote(array ('name' => 'secondname', 'text' => '&nbsp;'. (vam_not_null(ENTRY_SECOND_NAME_TEXT) ? '<span class="Requirement">'.ENTRY_SECOND_NAME_TEXT.'</span>' : '')), '', 'class="form-control" id="secondname"'));
 }
+if (ACCOUNT_LAST_NAME == 'true') {
+	$vamTemplate->assign('lastname', '1');
 $vamTemplate->assign('INPUT_LASTNAME', vam_draw_input_fieldNote(array ('name' => 'lastname', 'text' => '&nbsp;'. (vam_not_null(ENTRY_LAST_NAME_TEXT) ? '<span class="Requirement">'.ENTRY_LAST_NAME_TEXT.'</span>' : '')), '', 'class="form-control" id="lastname"'));
-
+}
 if (ACCOUNT_DOB == 'true') {
 	$vamTemplate->assign('birthdate', '1');
 
@@ -1235,8 +1239,10 @@ if (ACCOUNT_DOB == 'true') {
 	$vamTemplate->assign('birthdate', '0');
 }
 
+if (ACCOUNT_EMAIL == 'true') {
+	$vamTemplate->assign('email', '1');
 $vamTemplate->assign('INPUT_EMAIL', vam_draw_input_fieldNote(array ('name' => 'email_address', 'text' => '&nbsp;'. (vam_not_null(ENTRY_EMAIL_ADDRESS_TEXT) ? '<span class="Requirement">'.ENTRY_EMAIL_ADDRESS_TEXT.'</span>' : '')), '', 'class="form-control" id="email_address"'));
-
+}
 $vamTemplate->assign('INPUT_NEWSLETTER', vam_draw_checkbox_field('newsletter', '1', true, 'class="form-check-input" id="newsletter"'));
 
 if (ACCOUNT_COMPANY == 'true') {

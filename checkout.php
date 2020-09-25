@@ -1942,8 +1942,10 @@ if (ACCOUNT_SECOND_NAME == 'true') {
 	$vamTemplate->assign('secondname', '1');
 $vamTemplate->assign('INPUT_SECONDNAME', vam_draw_input_fieldNote(array ('name' => 'secondname', 'text' => '&nbsp;'. (vam_not_null(ENTRY_SECOND_NAME_TEXT) ? '<span class="Requirement">'.ENTRY_SECOND_NAME_TEXT.'</span>' : '')), $sc_guest_secondname, 'class="form-control" id="secondname"'));
 }
+if (ACCOUNT_LAST_NAME == 'true') {
+	$vamTemplate->assign('lastname', '1');
 $vamTemplate->assign('INPUT_LASTNAME', vam_draw_input_fieldNote(array ('name' => 'lastname', 'text' => '&nbsp;'. (vam_not_null(ENTRY_LAST_NAME_TEXT) ? '<span class="Requirement">'.ENTRY_LAST_NAME_TEXT.'</span>' : '')), $sc_guest_lastname, 'class="form-control" id="lastname"'));
-
+}
 if (ACCOUNT_DOB == 'true') {
 	$vamTemplate->assign('birthdate', '1');
 
@@ -2077,8 +2079,10 @@ if (ACCOUNT_SECOND_NAME == 'true') {
 	$vamTemplate->assign('secondname_payment', '1');
 $vamTemplate->assign('INPUT_SECONDNAME_PAYMENT', vam_draw_input_fieldNote(array ('name' => 'secondname_payment', 'text' => '&nbsp;'. (vam_not_null(ENTRY_SECOND_NAME_TEXT) ? '<span class="Requirement">'.ENTRY_SECOND_NAME_TEXT.'</span>' : '')), $sc_guest_secondname, 'class="form-control" id="secondname_payment"'));
 }
+if (ACCOUNT_LAST_NAME == 'true') {
+	$vamTemplate->assign('lastname_payment', '1');
 $vamTemplate->assign('INPUT_LASTNAME_PAYMENT', vam_draw_input_fieldNote(array ('name' => 'lastname_payment', 'text' => '&nbsp;'. (vam_not_null(ENTRY_LAST_NAME_TEXT) ? '<span class="Requirement">'.ENTRY_LAST_NAME_TEXT.'</span>' : '')), $sc_guest_lastname, 'class="form-control" id="lastname_payment"'));
-
+}
 if (ACCOUNT_DOB == 'true') {
 	$vamTemplate->assign('birthdate_payment', '1');
 
@@ -2163,7 +2167,10 @@ if (!vam_session_is_registered('customer_id')) { //IS NOT LOGGED ON
 
 $vamTemplate->assign('TITLE_CONTACT_ADDRESS', vam_get_sc_titles_number() . CATEGORY_CONTACT.vam_draw_hidden_field('guest', 'guest'));
 
+if (ACCOUNT_EMAIL == 'true') {
+	$vamTemplate->assign('email', '1');
 $vamTemplate->assign('INPUT_EMAIL', vam_draw_input_fieldNote(array ('name' => 'email_address', 'text' => '&nbsp;'. (vam_not_null(ENTRY_EMAIL_ADDRESS_TEXT) ? '<span class="Requirement">'.ENTRY_EMAIL_ADDRESS_TEXT.'</span>' : '')), $sc_guest_email_address, 'class="form-control" id="email_address"'));
+}
 
 if (ACCOUNT_TELE == 'true') {
    $vamTemplate->assign('telephone', '1');

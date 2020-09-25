@@ -467,6 +467,10 @@ if (ACCOUNT_SECOND_NAME == 'true') {
 
 	}
 ?>
+<?php
+
+if (ACCOUNT_LAST_NAME == 'true') {
+?>
           <tr>
             <td class="main"><?php echo ENTRY_LAST_NAME; ?></td>
             <td class="main"><?php
@@ -482,6 +486,11 @@ if ($error == true) {
 }
 ?></td>
           </tr>
+<?php
+
+	}
+?>
+          
 <?php
 
 if (ACCOUNT_DOB == 'true') {
@@ -505,6 +514,10 @@ if (ACCOUNT_DOB == 'true') {
 
 }
 ?>
+<?php
+
+if (ACCOUNT_EMAIL == 'true') {
+?>
           <tr>
             <td class="main"><?php echo ENTRY_EMAIL_ADDRESS; ?></td>
             <td class="main"><?php
@@ -526,6 +539,10 @@ if ($error == true) {
 }
 ?></td>
           </tr>
+<?php
+
+}
+?>
         </table></td>
       </tr>
 <?php

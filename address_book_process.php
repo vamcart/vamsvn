@@ -48,10 +48,11 @@ if (isset ($_POST['action']) && (($_POST['action'] == 'process') || ($_POST['act
 		$gender = vam_db_prepare_input($_POST['gender']);
 	if (ACCOUNT_COMPANY == 'true')
 		$company = vam_db_prepare_input($_POST['company']);
-	$firstname = vam_db_prepare_input($_POST['firstname']);
+		$firstname = vam_db_prepare_input($_POST['firstname']);
 	if (ACCOUNT_SECOND_NAME == 'true')
-	$secondname = vam_db_prepare_input($_POST['secondname']);
-	$lastname = vam_db_prepare_input($_POST['lastname']);
+		$secondname = vam_db_prepare_input($_POST['secondname']);
+	if (ACCOUNT_LAST_NAME == 'true')
+		$lastname = vam_db_prepare_input($_POST['lastname']);
    if (ACCOUNT_STREET_ADDRESS == 'true')
 	   $street_address = vam_db_prepare_input($_POST['street_address']);
 	if (ACCOUNT_SUBURB == 'true')

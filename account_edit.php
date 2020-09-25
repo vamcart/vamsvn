@@ -41,11 +41,13 @@ if (isset ($_POST['action']) && ($_POST['action'] == 'process')) {
 	$firstname = vam_db_prepare_input($_POST['firstname']);
 	if (ACCOUNT_SECOND_NAME == 'true')
 	$secondname = vam_db_prepare_input($_POST['secondname']);
+	if (ACCOUNT_LAST_NAME == 'true')
 	$lastname = vam_db_prepare_input($_POST['lastname']);
 	if (ACCOUNT_DOB == 'true')
 		$dob = vam_db_prepare_input($_POST['dob']);
 	if (ACCOUNT_COMPANY_VAT_CHECK == 'true')
 		$vat = vam_db_prepare_input($_POST['vat']);
+	if (ACCOUNT_EMAIL == 'true')
 	$email_address = vam_db_prepare_input($_POST['email_address']);
 	$telephone = vam_db_prepare_input($_POST['telephone']);
 	$fax = vam_db_prepare_input($_POST['fax']);
@@ -221,15 +223,20 @@ if (ACCOUNT_SECOND_NAME == 'true') {
 	$vamTemplate->assign('secondname', '1');
 $vamTemplate->assign('INPUT_SECONDNAME', vam_draw_input_fieldNote(array ('name' => 'secondname', 'text' => '&nbsp;'. (vam_not_null(ENTRY_SECOND_NAME_TEXT) ? '<span class="Requirement">'.ENTRY_SECOND_NAME_TEXT.'</span>' : '')), $account['customers_secondname'], 'id="secondname"'));
 }
+if (ACCOUNT_LAST_NAME == 'true') {
+	$vamTemplate->assign('lastname', '1');
 $vamTemplate->assign('INPUT_LASTNAME', vam_draw_input_fieldNote(array ('name' => 'lastname', 'text' => '&nbsp;'. (vam_not_null(ENTRY_LAST_NAME_TEXT) ? '<span class="Requirement">'.ENTRY_LAST_NAME_TEXT.'</span>' : '')), $account['customers_lastname'], 'id="lastname"'));
 $vamTemplate->assign('csID', $account['customers_cid']);
-
+}
 if (ACCOUNT_DOB == 'true') {
 	$vamTemplate->assign('birthdate', '1');
 	$vamTemplate->assign('INPUT_DOB', vam_draw_input_fieldNote(array ('name' => 'dob', 'text' => '&nbsp;'. (vam_not_null(ENTRY_DATE_OF_BIRTH_TEXT) ? '<span class="Requirement">'.ENTRY_DATE_OF_BIRTH_TEXT.'</span>' : '')), vam_date_short($account['customers_dob']), 'id="dob"'));
 }
 
+if (ACCOUNT_EMAIL == 'true') {
+	$vamTemplate->assign('email', '1');
 $vamTemplate->assign('INPUT_EMAIL', vam_draw_input_fieldNote(array ('name' => 'email_address', 'text' => '&nbsp;'. (vam_not_null(ENTRY_EMAIL_ADDRESS_TEXT) ? '<span class="Requirement">'.ENTRY_EMAIL_ADDRESS_TEXT.'</span>' : '')), $account['customers_email_address'], 'id="email_address"'));
+}
 
 if (ACCOUNT_TELE == 'true') {
 	$vamTemplate->assign('telephone', '1');
