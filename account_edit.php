@@ -41,7 +41,7 @@ if (isset ($_POST['action']) && ($_POST['action'] == 'process')) {
 	$firstname = vam_db_prepare_input($_POST['firstname']);
 	if (ACCOUNT_SECOND_NAME == 'true' or ACCOUNT_SECOND_NAME == 'optional')
 	$secondname = vam_db_prepare_input($_POST['secondname']);
-	if (ACCOUNT_LAST_NAME == 'true')
+	if (ACCOUNT_LAST_NAME == 'true' or ACCOUNT_LAST_NAME == 'optional')
 	$lastname = vam_db_prepare_input($_POST['lastname']);
 	if (ACCOUNT_DOB == 'true')
 		$dob = vam_db_prepare_input($_POST['dob']);
@@ -223,7 +223,7 @@ if (ACCOUNT_SECOND_NAME == 'true' or ACCOUNT_SECOND_NAME == 'optional') {
 	$vamTemplate->assign('secondname', '1');
 $vamTemplate->assign('INPUT_SECONDNAME', vam_draw_input_fieldNote(array ('name' => 'secondname', 'text' => '&nbsp;'. (vam_not_null(ENTRY_SECOND_NAME_TEXT) ? '<span class="Requirement">'.ENTRY_SECOND_NAME_TEXT.'</span>' : '')), $account['customers_secondname'], 'id="secondname"'));
 }
-if (ACCOUNT_LAST_NAME == 'true') {
+if (ACCOUNT_LAST_NAME == 'true' or ACCOUNT_LAST_NAME == 'optional') {
 	$vamTemplate->assign('lastname', '1');
 $vamTemplate->assign('INPUT_LASTNAME', vam_draw_input_fieldNote(array ('name' => 'lastname', 'text' => '&nbsp;'. (vam_not_null(ENTRY_LAST_NAME_TEXT) ? '<span class="Requirement">'.ENTRY_LAST_NAME_TEXT.'</span>' : '')), $account['customers_lastname'], 'id="lastname"'));
 $vamTemplate->assign('csID', $account['customers_cid']);

@@ -1942,7 +1942,7 @@ if (ACCOUNT_SECOND_NAME == 'true' or ACCOUNT_SECOND_NAME == 'optional') {
 	$vamTemplate->assign('secondname', '1');
 $vamTemplate->assign('INPUT_SECONDNAME', vam_draw_input_fieldNote(array ('name' => 'secondname', 'text' => '&nbsp;'. (vam_not_null(ENTRY_SECOND_NAME_TEXT) ? '<span class="Requirement">'.ENTRY_SECOND_NAME_TEXT.'</span>' : '')), $sc_guest_secondname, 'class="form-control" id="secondname"'));
 }
-if (ACCOUNT_LAST_NAME == 'true') {
+if (ACCOUNT_LAST_NAME == 'true' or ACCOUNT_LAST_NAME == 'optional') {
 	$vamTemplate->assign('lastname', '1');
 $vamTemplate->assign('INPUT_LASTNAME', vam_draw_input_fieldNote(array ('name' => 'lastname', 'text' => '&nbsp;'. (vam_not_null(ENTRY_LAST_NAME_TEXT) ? '<span class="Requirement">'.ENTRY_LAST_NAME_TEXT.'</span>' : '')), $sc_guest_lastname, 'class="form-control" id="lastname"'));
 }
@@ -2079,7 +2079,7 @@ if (ACCOUNT_SECOND_NAME == 'true' or ACCOUNT_SECOND_NAME == 'optional') {
 	$vamTemplate->assign('secondname_payment', '1');
 $vamTemplate->assign('INPUT_SECONDNAME_PAYMENT', vam_draw_input_fieldNote(array ('name' => 'secondname_payment', 'text' => '&nbsp;'. (vam_not_null(ENTRY_SECOND_NAME_TEXT) ? '<span class="Requirement">'.ENTRY_SECOND_NAME_TEXT.'</span>' : '')), $sc_guest_secondname, 'class="form-control" id="secondname_payment"'));
 }
-if (ACCOUNT_LAST_NAME == 'true') {
+if (ACCOUNT_LAST_NAME == 'true' or ACCOUNT_LAST_NAME == 'optional') {
 	$vamTemplate->assign('lastname_payment', '1');
 $vamTemplate->assign('INPUT_LASTNAME_PAYMENT', vam_draw_input_fieldNote(array ('name' => 'lastname_payment', 'text' => '&nbsp;'. (vam_not_null(ENTRY_LAST_NAME_TEXT) ? '<span class="Requirement">'.ENTRY_LAST_NAME_TEXT.'</span>' : '')), $sc_guest_lastname, 'class="form-control" id="lastname_payment"'));
 }

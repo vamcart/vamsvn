@@ -469,7 +469,7 @@ if (ACCOUNT_SECOND_NAME == 'true' or ACCOUNT_SECOND_NAME == 'optional') {
 ?>
 <?php
 
-if (ACCOUNT_LAST_NAME == 'true') {
+if (ACCOUNT_LAST_NAME == 'true' or ACCOUNT_LAST_NAME == 'optional') {
 ?>
           <tr>
             <td class="main"><?php echo ENTRY_LAST_NAME; ?></td>

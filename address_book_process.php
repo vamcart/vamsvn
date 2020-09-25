@@ -51,7 +51,7 @@ if (isset ($_POST['action']) && (($_POST['action'] == 'process') || ($_POST['act
 		$firstname = vam_db_prepare_input($_POST['firstname']);
 	if (ACCOUNT_SECOND_NAME == 'true' or ACCOUNT_SECOND_NAME == 'optional')
 		$secondname = vam_db_prepare_input($_POST['secondname']);
-	if (ACCOUNT_LAST_NAME == 'true')
+	if (ACCOUNT_LAST_NAME == 'true' or ACCOUNT_LAST_NAME == 'optional')
 		$lastname = vam_db_prepare_input($_POST['lastname']);
    if (ACCOUNT_STREET_ADDRESS == 'true')
 	   $street_address = vam_db_prepare_input($_POST['street_address']);
