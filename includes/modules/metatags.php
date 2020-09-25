@@ -602,6 +602,7 @@ $title_is_done = true;
 <title><?php echo TEXT_PAGE_PRODUCT_REVIEWS . $zzz . ' - ' . TITLE; ?></title>
 <meta name="description" content="<?php echo TEXT_PAGE_PRODUCT_REVIEWS . $zzz; ?>" />
 <meta name="keywords" content="<?php echo TEXT_PAGE_PRODUCT_REVIEWS . $zzz; ?>" />
+<link rel="canonical" href="<?php echo vam_href_link(FILENAME_REVIEWS); ?>"/>
 <?php
 
     break;
