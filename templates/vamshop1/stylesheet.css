@@ -35,7 +35,8 @@ p {
   background: linear-gradient(to bottom, rgba(255,255,255,1) 0%, rgba(246,246,246,1) 47%, rgba(237,237,237,1) 100%);
 }
 
-#header .span6.text-center {
+#header .span6.text-center,
+#header .span3.right {
 padding-top: 15px;
 }
 
@@ -477,6 +478,12 @@ hr.transparent {
   margin: 0;
 }
 
+.dropdown-menu.wishlist {
+  width: 260px;
+  min-width: 260px;
+  margin: 0;
+}
+
 .nav-collapse .nav > li > a:hover,
 .nav-collapse .nav > li > a:focus,
 .nav-collapse .dropdown-menu a:hover,
@@ -522,6 +529,16 @@ background: #fff;
 }
 
 #navigation .navbar .nav > li > .dropdown-menu.cart {
+  color: #000;
+  box-shadow: 0 1px 8px rgba(0,0,0,.23),0 1px 8px rgba(0,0,0,.16);
+  border-radius: 0px;
+  background-color: #fff;
+  border: 1px solid #eee;	
+  /*right: auto;*/ /* Открывать корзину вправо */ 
+  left: auto; /* Открывать корзину влево */ 
+}	
+
+#navigation .navbar .nav > li > .dropdown-menu.wishlist {
   color: #000;
   box-shadow: 0 1px 8px rgba(0,0,0,.23),0 1px 8px rgba(0,0,0,.16);
   border-radius: 0px;

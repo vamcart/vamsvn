@@ -15,6 +15,7 @@ $bender->enqueue("jscript/jquery/plugins/select2/i18n/" . $_SESSION['language_co
 $bender->enqueue("jscript/jquery/plugins/scrollup/jquery.scrollup.min.js");
 $bender->enqueue("jscript/jquery/plugins/zoom/jquery.zoom.js");
 $bender->enqueue("templates/".CURRENT_TEMPLATE."/javascript/vamshop.js");
+if (AJAX_WISHLIST == 'true') $bender->enqueue("templates/".CURRENT_TEMPLATE."/javascript/jscript_ajax_wishlist.js"); 
 if (AJAX_CART == 'true') $bender->enqueue("templates/".CURRENT_TEMPLATE."/javascript/jscript_ajax_cart.js"); 
 ?>
 <?php
@@ -33,23 +34,6 @@ if('serviceWorker' in navigator) {
 }
 
 });
-</script>
-<?php } ?>
-<?php if (AJAX_CART == 'true') { ?>
-<script>
-function cartPopupOn(){ 
-$('body').append('<div id="load_status_bg"></div><div class="cart_popup"><div class="cart_popuptext"><?php echo TEXT_POPUP_CART_ADD; ?></div><div class="cart_popuplink"><a href="shopping_cart.php" class="button"><span><img src="<?php echo DIR_WS_CATALOG; ?>images/icons/buttons/buy.png" alt="" title="" width="12" height="12" />&nbsp;<?php echo TEXT_POPUP_CART_CART; ?></span></a><br /><br /><a href="javascript:cartPopupOff()" class="button"><span><img src="<?php echo DIR_WS_CATALOG; ?>images/icons/buttons/back.png" alt="" title="" width="12" height="12" />&nbsp;<?php echo TEXT_POPUP_CART_CONTINUE; ?></span></a></div></div>'); 
-$('#load_status_bg').show().css({'filter' : 'alpha(opacity=80)'}); 
-$('.cart_popup').show(); 
-$(document).click(function (){
-cartPopupOff();
-});
-};
-
-function cartPopupOff(){ 
-$('.cart_popup').hide(); 
-$('#load_status_bg').remove('#load_status_bg'); 
-};
 </script>
 <?php } ?>
 <?php

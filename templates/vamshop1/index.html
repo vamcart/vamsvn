@@ -15,7 +15,15 @@
 				  </div>
            <h4><a href="tel:{$smarty.const.STORE_TELEPHONE}"><i class="fa fa-phone"></i> <span itemprop="telephone">{$smarty.const.STORE_TELEPHONE}</span></a>, <a href="contact_us.html"><i class="fa fa-pencil"></i> {#text_contact_us#}</a></h4>
 			</div>
-			<div class="span3 text-center">
+			<div class="span3 right text-right">
+			<ul class="inline">
+           {if $smarty.session.customers_status.customers_status_id == 0}
+           <li><a href="{$admin_area_link}"><i class="fa fa-cog"></i> {#text_admin#}</a></li> 
+           {/if}  
+           {if $smarty.session.customer_id}
+           <li><a href="{$logoff}"><i class="fa fa-power-off"></i> {#link_logoff#}</a></li>
+           {/if}  
+         </ul>
 			</div>
 		</div>
 	</div>
@@ -50,13 +58,14 @@
                     {$box_SEARCH}
                     <ul class="nav pull-right">
                       <li><a href="{$smarty.const.FILENAME_LOGIN}"><i class="fa fa-user"></i> {$smarty.const.TEXT_MY_ORDERS}</a></li>
+                      {if !$wishlist_current}
+                      {if $smarty.const.ENABLE_WISHLIST == 'true'}
+                      <li class="dropdown" id="divWishlist">
+                      {$box_WISHLIST}
+                      </li>
+                      {/if}
+                      {/if}
                       {if !$cart_current}<li class="dropdown" id="divShoppingCart">{$box_CART}</li>{/if}
-                      {if $smarty.session.customers_status.customers_status_id == 0}
-                      <li><a href="{$admin_area_link}"><i class="fa fa-cog"></i> {#text_admin#}</a></li>
-                      {/if}  
-                      {if $smarty.session.customer_id}
-                      <li><a href="{$logoff}"><i class="fa fa-power-off"></i> {#link_logoff#}</a></li>
-                      {/if}  
                     </ul>
                   </div><!-- /.nav-collapse -->
                 </div>

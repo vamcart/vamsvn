@@ -13,32 +13,72 @@
    Released under the GNU General Public License
    ---------------------------------------------------------------------------------------*/
 
-function doWishlistNow( id, quantity, update, get_wishlist, attributes, popup ) {
+function doWishlistNow( id, quantity, update, get_wishlist, attributes ) {
 
 		if ($(location).attr('pathname') == '/wishlist.php') {
 			get_wishlist = 1;
 		} 
 		
-      $.ajax({
-			url: "index_ajax.php",             
-			dataType : "html",                       
-			data: {q : 'includes/modules/ajax/ajaxWishlist.php', action : 'cust_wishlist', products_qty : quantity, pid : id, get_wishlist : get_wishlist, update : update, attributes : attributes},
-			type: "GET",
-			success: function(msg){
-			if ($(location).attr('pathname') == '/wishlist.php') {
-				$("#ajax_wishlist").empty().html(msg);
-			} else {
-		      $("#divWishlistHeader").html(msg);
-		      $("#divWishlist").html(msg);
-			}
-	 
-			$(".wishlist-icon-"+id).replaceWith('<i class="text-danger fas fa-heart wishlist-icon-'+id+'"></i>');
-			$('[data-toggle="tooltip"]').tooltip('hide');
+  // Setup the ajax indicator
+ $('body').append('<div id="ajaxLoading"><img src="images/loading.gif"></div>');
 
-		
-			}   
-			});
-			img_loader();                     
+$(document).click(function(e) {
+
+$('#ajaxLoading').css('top', function() {
+  return e.pageY-30+"px";
+});      
+
+$('#ajaxLoading').css('left', function() {
+  return e.pageX-10+"px";
+});      
+
+  $('#ajaxLoading').css({
+    margin:"0px auto",
+    paddingLeft:"0px",
+    paddingRight:"0px",
+    paddingTop:"0px",
+    paddingBottom:"0px",
+    position:"absolute",
+    width:"30px"
+  });
+
+      
+})
+
+// Ajax activity indicator bound to ajax start/success/stop document events
+$(document).ajaxSend(function(){
+  $('#ajaxLoading').show();
+});
+
+$(document).ajaxSuccess(function(){
+  $('#ajaxLoading').hide();
+});
+
+$(document).ajaxStop(function(){
+  $('#ajaxLoading').remove();
+});
+
+      $.ajax({
+                     url: "index_ajax.php",             
+                     dataType : "html",                       
+                     data: {q : 'includes/modules/ajax/ajaxWishlist.php', action : 'cust_wishlist', products_qty : quantity, pid : id, get_wishlist : get_wishlist, update : update, attributes : attributes},
+                     type: "GET",
+    	               success: function(msg){
+					      $("#divWishlist").html(msg);
+                     if ($("div").is("#ajax_wishlist")) {
+					      $("#ajax_wishlist").empty().html(msg);
+					 }
+
+				//if (data.qty!="0" && $(location).attr('pathname') != '/wishlist.php')
+				if ($(location).attr('pathname') != '/wishlist.php')
+				{
+					$("#navigation .btn.btn-navbar").click();
+					$("#navigation .btn.btn-navbar").focus();    	               
+					$("#navigation .dropdown-toggle.wishlist").dropdown("toggle");
+				}
+    	               }       
+                   });                     
+
 }
 
 function doAddWishlist(id) {
@@ -64,19 +104,22 @@ function doAddWishlist(id) {
 					data : data,
 					type : "GET",
 					success : function(msg) {
-					 $("#divWishlistHeader").html(msg);
 					 $("#divWishlist").html(msg);
 					 if ($("div").is("#ajax_wishlist")) {
 					   $("#ajax_wishlist").empty().html(msg);
 					 }
 
 
-			$(".wishlist-icon-"+id).replaceWith('<i class="fas fa-heart wishlist-icon-'+id+'""></i>');
-			$('[data-toggle="tooltip"]').tooltip('hide');
+				//if (data.qty!="0" && $(location).attr('pathname') != '/wishlist.php')
+				if ($(location).attr('pathname') != '/wishlist.php')
+				{
+					$("#navigation .btn.btn-navbar").click();
+					$("#navigation .btn.btn-navbar").focus();						
+					$("#navigation .dropdown-toggle.wishlist").dropdown("toggle");
+				}
 
     	               }
 		});
-      img_loader();
 	}
 
 function doDelWishlist(id, prod_id) {
@@ -105,7 +148,6 @@ function doDelWishlist(id, prod_id) {
 					data : data,
 					type : "GET",
 					success : function(msg) {
-					 $("#divWishlistHeader").html(msg);
 					 $("#divWishlist").html(msg);
 					 if ($("div").is("#ajax_wishlist")) {
 					   $("#ajax_wishlist").empty().html(msg);
@@ -113,27 +155,31 @@ function doDelWishlist(id, prod_id) {
 					 if (data.total=="0")
   {
   } else {    	             
-					 $("#divWishlistHeader").html(msg);
 					 $("#divWishlist").html(msg);
+
+				if (!$("#navigation .wishlist").length)
+				{
+		
+				}
 	
     	              }
     	              
 				//if (data.qty!="0" && $(location).attr('pathname') != '/wishlist.php')
 				if ($(location).attr('pathname') != '/wishlist.php')
 				{
-
+					$("#navigation .btn.btn-navbar").click();
+					$("#navigation .btn.btn-navbar").focus();						
+					$("#navigation .dropdown-toggle.wishlist").dropdown("toggle");
             }					
 					
 					}
 		});
-		img_loader();
 	}
 
 $(document).ready(function(){
 
 	$('body').on('click', '.wishlist_delete', function(){
        doDelWishlist('',$(this).val());
-       img_loader();
    });
 
    $('body').on('click', '.wishlist_change', function(){
@@ -157,8 +203,7 @@ $(document).ready(function(){
 
        qty = field.val();
        field.val(parseInt(qty)+parseInt($(this).val()));
-       doWishlistNow(id,$(this).val(),'',1,attributes,0);
-       img_loader();
+       doWishlistNow(id,$(this).val(),'',1,attributes);
    });
 
    $('body').on('change', 'form#wishlist_quantity .item-quantity', function(){
@@ -182,8 +227,8 @@ $(document).ready(function(){
        
        //console.log($("input[name^='old_qty[]'").val());
        
-       doWishlistNow(id,$(this).val(),'1',1,attributes,0);
-       img_loader();
+       doWishlistNow(id,$(this).val(),'1',1,attributes);
+       //img_loader();
    });
    
    //$('body').on('focusout', '.input-small', function(){
