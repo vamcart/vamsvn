@@ -33,6 +33,18 @@ $(".owl-carousel").owlCarousel({
     }
 })
 
+//OWL Carousel Slider
+$(".owl-carousel-tags").owlCarousel({
+    margin: 12,
+    nav: false,
+    center: false,
+    autoWidth: true,
+    stagePadding: 30,
+    dots: false,
+    loop: false,
+    navText: false
+})
+
 // hook into Bootstrap shown event and manually trigger 'resize' event so that Slick recalculates the widths
 $('span[data-toggle="tab"]').on('shown.bs.tab', function (e) {
      $('.owl-carousel').trigger('refresh.owl.carousel');
