@@ -15,9 +15,9 @@
 							</a>
 						<div class="media-body">
 						{if $smarty.const.AJAX_WISHLIST == 'true'}
-		<form id="update_cart{counter name=1}" class="cart_quantity" action="{$products_data.LINK}/action/update_product" method="post" onsubmit="doDelWishlist({counter name=2}); return false;">{$products_data.PRODUCTS_QTY}
+		<form id="update_wishlist{counter name=1}" class="wishlist_quantity" action="{$products_data.LINK}/action/update_wishlist" method="post" onsubmit="doDelWishlist({counter name=2}); return false;">{$products_data.PRODUCTS_QTY}
 		{/if}
-		                  <span class="media-heading"><a href="{$products_data.LINK}">{$products_data.NAME|vam_truncate:$smarty.const.MAX_DISPLAY_WISHLIST:"...":true}</a></span> {if $smarty.const.AJAX_WISHLIST == 'true'}&nbsp;<button class="btn btn-link btn-sm label label-important"><i class="fa fa-times"></i></button></form>{/if}
+		                  <span class="media-heading"><a href="{$products_data.LINK}">{$products_data.NAME|vam_truncate:$smarty.const.MAX_DISPLAY_WISHLIST:"...":true}</a></span> {if $smarty.const.AJAX_WISHLIST == 'true'}&nbsp;<button class="btn btn-link btn-sm label label-important wishlist_delete" value="{$products_data.ID}"><i class="fas fa-times"></i></button></form>{/if}
 								{if $products_data.ATTRIBUTES!=''} 
 								{foreach key=key_data item=item_data from=$products_data.ATTRIBUTES} 
 								{if $item_data.NAME != ''}{$item_data.NAME}:{/if} {if $item_data.VALUE != ''}{$item_data.VALUE}<br />{/if}
