@@ -111,7 +111,7 @@ if (isset ($_POST['action']) && ($_POST['action'] == 'process')  && $spam_flag =
 
 	$error = false;
 
-	if (ACCOUNT_GENDER == 'true') {
+	if (isset($gender) && ACCOUNT_GENDER == 'true') {
 		if (($gender != 'm') && ($gender != 'f')) {
 			$error = true;
 
@@ -125,13 +125,13 @@ if (isset ($_POST['action']) && ($_POST['action'] == 'process')  && $spam_flag =
 		$messageStack->add('create_account', ENTRY_FIRST_NAME_ERROR);
 	}
 
-	if (strlen($lastname) < ENTRY_LAST_NAME_MIN_LENGTH) {
+	if (isset($lastname) && strlen($lastname) < ENTRY_LAST_NAME_MIN_LENGTH) {
 		$error = true;
 
 		$messageStack->add('create_account', ENTRY_LAST_NAME_ERROR);
 	}
 
-	if (ACCOUNT_DOB == 'true') {
+	if (isset($dob) && ACCOUNT_DOB == 'true') {
 		if (checkdate((int)substr(vam_date_raw($dob), 4, 2), substr((int)vam_date_raw($dob), 6, 2), substr((int)vam_date_raw($dob), 0, 4)) == false) { 
 			$error = true;
 
@@ -156,12 +156,13 @@ if (isset ($_POST['action']) && ($_POST['action'] == 'process')  && $spam_flag =
 // New VAT CHECK END
 	
 
-	if (strlen($email_address) < ENTRY_EMAIL_ADDRESS_MIN_LENGTH) {
+if (ACCOUNT_EMAIL == 'true' or ACCOUNT_EMAIL == 'optional') {
+	if (isset($email_address) && strlen($email_address) < ENTRY_EMAIL_ADDRESS_MIN_LENGTH) {
 		$error = true;
 
 		$messageStack->add('create_account', ENTRY_EMAIL_ADDRESS_ERROR);
 	}
-	elseif (vam_validate_email($email_address) == false) {
+	elseif (isset($email_address) && vam_validate_email($email_address) == false) {
 		$error = true;
 
 		$messageStack->add('create_account', ENTRY_EMAIL_ADDRESS_CHECK_ERROR);
@@ -174,8 +175,9 @@ if (isset ($_POST['action']) && ($_POST['action'] == 'process')  && $spam_flag =
 			$messageStack->add('create_account', ENTRY_EMAIL_ADDRESS_ERROR_EXISTS);
 		}
 	}
+}
 
-   if (ACCOUNT_STREET_ADDRESS == 'true') {
+   if (isset($street_address) && ACCOUNT_STREET_ADDRESS == 'true') {
 	if (strlen($street_address) < ENTRY_STREET_ADDRESS_MIN_LENGTH) {
 		$error = true;
 
@@ -183,7 +185,7 @@ if (isset ($_POST['action']) && ($_POST['action'] == 'process')  && $spam_flag =
 	}
   }
   
-   if (ACCOUNT_POSTCODE == 'true') {
+   if (isset($postcode) && ACCOUNT_POSTCODE == 'true') {
 	if (strlen($postcode) < ENTRY_POSTCODE_MIN_LENGTH) {
 		$error = true;
 
@@ -191,7 +193,7 @@ if (isset ($_POST['action']) && ($_POST['action'] == 'process')  && $spam_flag =
 	}
   }
 
-   if (ACCOUNT_CITY == 'true') {
+   if (isset($city) && ACCOUNT_CITY == 'true') {
 	if (strlen($city) < ENTRY_CITY_MIN_LENGTH) {
 		$error = true;
 
@@ -199,7 +201,7 @@ if (isset ($_POST['action']) && ($_POST['action'] == 'process')  && $spam_flag =
 	}
   }
 
-   if (ACCOUNT_COUNTRY == 'true') {
+   if (isset($country) && ACCOUNT_COUNTRY == 'true') {
 	if (is_numeric($country) == false) {
 		$error = true;
 
@@ -207,9 +209,9 @@ if (isset ($_POST['action']) && ($_POST['action'] == 'process')  && $spam_flag =
 	}
   }
 
-	if (ACCOUNT_STATE == 'true') {		$zone_id = 0;		$check_query = vam_db_query("select count(*) as total from ".TABLE_ZONES." where zone_country_id = '".(int) $country."'");		$check = vam_db_fetch_array($check_query);		$entry_state_has_zones = ($check['total'] > 0);		if ($entry_state_has_zones == true) {			$zone_query = vam_db_query("select distinct zone_id from " . TABLE_ZONES . " where zone_country_id = '" . (int)$country . "' and zone_name = '" . vam_db_input($state) . "'");			if (vam_db_num_rows($zone_query) > 1) {				$zone_query = vam_db_query("select distinct zone_id from ".TABLE_ZONES." where zone_country_id = '".(int) $country."' and zone_name = '".vam_db_input($state)."'");			}			if (vam_db_num_rows($zone_query) >= 1) {				$zone = vam_db_fetch_array($zone_query);				$zone_id = $zone['zone_id'];			} else {				$error = true;				$messageStack->add('create_account', ENTRY_STATE_ERROR_SELECT);			}		} else {			if (strlen($state) < ENTRY_STATE_MIN_LENGTH) {				$error = true;				$messageStack->add('create_account', ENTRY_STATE_ERROR);			}		}	}
+	if (isset($state) && ACCOUNT_STATE == 'true') {		$zone_id = 0;		$check_query = vam_db_query("select count(*) as total from ".TABLE_ZONES." where zone_country_id = '".(int) $country."'");		$check = vam_db_fetch_array($check_query);		$entry_state_has_zones = ($check['total'] > 0);		if ($entry_state_has_zones == true) {			$zone_query = vam_db_query("select distinct zone_id from " . TABLE_ZONES . " where zone_country_id = '" . (int)$country . "' and zone_name = '" . vam_db_input($state) . "'");			if (vam_db_num_rows($zone_query) > 1) {				$zone_query = vam_db_query("select distinct zone_id from ".TABLE_ZONES." where zone_country_id = '".(int) $country."' and zone_name = '".vam_db_input($state)."'");			}			if (vam_db_num_rows($zone_query) >= 1) {				$zone = vam_db_fetch_array($zone_query);				$zone_id = $zone['zone_id'];			} else {				$error = true;				$messageStack->add('create_account', ENTRY_STATE_ERROR_SELECT);			}		} else {			if (strlen($state) < ENTRY_STATE_MIN_LENGTH) {				$error = true;				$messageStack->add('create_account', ENTRY_STATE_ERROR);			}		}	}
 
-   if (ACCOUNT_TELE == 'true') {
+   if (isset($telephone) && ACCOUNT_TELE == 'true') {
 	if (strlen($telephone) < ENTRY_TELEPHONE_MIN_LENGTH) {
 		$error = true;
 
