@@ -20,6 +20,11 @@
 				<div class="description">{$module_data.REVIEW.TEXT|strip_tags|vam_truncate:$smarty.const.MAX_DISPLAY_SHORT_DESCRIPTION:"...":true}</div>
 				<p class="desc text-center"><a class="" href="{$module_data.REVIEW.URL}"><i class="fa fa-comment"></i> {#text_read#}</a></p>
 			</div>
+			{if $smarty.const.ENABLE_WISHLIST == 'true'}
+			<div class="inner darken notop text-center">
+				<span class="wishlist-button text-muted">{$module_data.PRODUCTS_BUTTON_WISHLIST}</span>
+			</div>
+			{/if}			
 			</div>
 			<div class="inner darken notop text-center">
 				{$module_data.PRODUCT.PRODUCTS_BUTTON_BUY_NOW_NEW}

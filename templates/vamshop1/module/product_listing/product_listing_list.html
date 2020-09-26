@@ -128,6 +128,11 @@
 				{include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}module/product_options/multi_options.html"}
 				{if $CATEGORIES_NAME && SPECIFICATIONS_BOX_COMPARISON == "True"}<div class="description"><label><input type="checkbox" id="s_{$module_data.PRODUCTS_ID}" name="products[]" value="{$module_data.PRODUCTS_ID}" /> {#text_compare#}</label></div>{/if}
 			</div>
+			{if $smarty.const.ENABLE_WISHLIST == 'true'}
+			<div class="inner darken notop text-center">
+				<span class="wishlist-button text-muted">{$module_data.PRODUCTS_BUTTON_WISHLIST}</span>
+			</div>
+			{/if}			
 			</div>
 			<div class="inner darken notop text-center">
          <div class="btn-group">

@@ -22,6 +22,11 @@
 			<div class="inner notop nobottom text-center">
 				<h4 class="title"><a href="{$module_data.PRODUCTS_LINK}">{$module_data.PRODUCTS_NAME}</a></h4>
 			</div>
+			{if $smarty.const.ENABLE_WISHLIST == 'true'}
+			<div class="inner darken notop text-center">
+				<span class="wishlist-button text-muted">{$module_data.PRODUCTS_BUTTON_WISHLIST}</span>
+			</div>
+			{/if}			
 			</div>
 			<div class="inner darken notop text-center">
 				{$module_data.PRODUCTS_BUTTON_BUY_NOW_NEW}
