@@ -71,7 +71,7 @@ if (isset ($_POST['action']) && (($_POST['action'] == 'process') || ($_POST['act
 		$state = vam_db_prepare_input($_POST['state']);
 	}
 
-	if (ACCOUNT_GENDER == 'true') {
+	if (isset($gender) && ACCOUNT_GENDER == 'true') {
 		if (($gender != 'm') && ($gender != 'f')) {
 			$error = true;
 
@@ -85,13 +85,13 @@ if (isset ($_POST['action']) && (($_POST['action'] == 'process') || ($_POST['act
 		$messageStack->add('addressbook', ENTRY_FIRST_NAME_ERROR);
 	}
 
-	if (strlen($lastname) < ENTRY_LAST_NAME_MIN_LENGTH) {
+	if (isset($lastname) && strlen($lastname) < ENTRY_LAST_NAME_MIN_LENGTH) {
 		$error = true;
 
 		$messageStack->add('addressbook', ENTRY_LAST_NAME_ERROR);
 	}
 
-   if (ACCOUNT_STREET_ADDRESS == 'true') {
+   if (isset($street_address) && ACCOUNT_STREET_ADDRESS == 'true') {
 	if (strlen($street_address) < ENTRY_STREET_ADDRESS_MIN_LENGTH) {
 		$error = true;
 
@@ -99,7 +99,7 @@ if (isset ($_POST['action']) && (($_POST['action'] == 'process') || ($_POST['act
 	}
   }
 
-   if (ACCOUNT_POSTCODE == 'true') {
+   if (isset($postcode) && ACCOUNT_POSTCODE == 'true') {
 	if (strlen($postcode) < ENTRY_POSTCODE_MIN_LENGTH) {
 		$error = true;
 
@@ -107,7 +107,7 @@ if (isset ($_POST['action']) && (($_POST['action'] == 'process') || ($_POST['act
 	}
   }
 
-   if (ACCOUNT_CITY == 'true') {
+   if (isset($city) && ACCOUNT_CITY == 'true') {
 	if (strlen($city) < ENTRY_CITY_MIN_LENGTH) {
 		$error = true;
 
@@ -115,7 +115,7 @@ if (isset ($_POST['action']) && (($_POST['action'] == 'process') || ($_POST['act
 	}
   }
 
-   if (ACCOUNT_COUNTRY == 'true') {
+   if (isset($country) && ACCOUNT_COUNTRY == 'true') {
 	if (is_numeric($country) == false) {
 		$error = true;
 
@@ -123,7 +123,7 @@ if (isset ($_POST['action']) && (($_POST['action'] == 'process') || ($_POST['act
 	}
   }
 
-	if (ACCOUNT_STATE == 'true') {
+	if (isset($state) && ACCOUNT_STATE == 'true') {
 		$zone_id = 0;
 		$check_query = vam_db_query("select count(*) as total from ".TABLE_ZONES." where zone_country_id = '".(int) $country."'");
 		$check = vam_db_fetch_array($check_query);
