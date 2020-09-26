@@ -57,7 +57,7 @@ function join(arr /*, separator */) {
 function showSelected(suggestion) {
   var address = suggestion.data;
   $("#postcode").val(address.postal_code);
-  if (address.region == "Москва" || address.region == "Санкт-Петербург") {
+  if (address.region == "Москва" || address.region == "Санкт-Петербург" || address.region == "Севастополь") {
   $("#state").val(address.region);
   } else {
   $("#state").val(join([
@@ -94,7 +94,9 @@ function showSelected(suggestion) {
 <p><label for="firstname">{#text_firstname#}</label> {$INPUT_FIRSTNAME}</p>
 {if $secondname=='1'}<p><label for="secondname">{#text_secondname#}</label> {$INPUT_SECONDNAME}</p>
 {/if}
+{if $lastname=='1'}
 <p><label for="lastname">{#text_lastname#}</label> {$INPUT_LASTNAME}</p>
+{/if}
 {if $company=='1'}<p><label for="company">{#text_company#}</label> {$INPUT_COMPANY}</p>{/if}
 {if $street_address=='1'}<p><label for="address">{#text_street#}</label> {$INPUT_STREET}</p>{/if}
 {if $suburb=='1'}<p><label for="suburb">{#text_suburb#}</label> {$INPUT_SUBURB}</p>{/if}

@@ -1,6 +1,6 @@
 {config_load file="$language/lang_$language.conf" section="create_account"}
-<h1>{#heading_checkout#}</h1>
 <div class="page">
+<h1>{#heading_checkout#}</h1>
 <div class="pageContent">
 {if $smarty.const.DADATA_API_KEY != "" and $smarty.session.language == "russian"}
 <!--[if lt IE 10]>
@@ -135,7 +135,9 @@ $(function($){
 <p><label for="firstname">{#text_firstname#}</label> {$INPUT_FIRSTNAME}</p>
 {if $secondname=='1'}<p><label for="secondname">{#text_secondname#}</label> {$INPUT_SECONDNAME}</p>
 {/if}
+{if $lastname=='1'}
 <p><label for="lastname">{#text_lastname#}</label> {$INPUT_LASTNAME}</p>
+{/if}
 {if $birthdate=='1'} 
 <p><label for="dob">{#text_birthdate#}</label> {$INPUT_DOB}</p>
 {/if}
@@ -206,7 +208,9 @@ $(function($){
 <p><label for="firstname_payment">{#text_firstname#}</label> {$INPUT_FIRSTNAME_PAYMENT}</p>
 {if $secondname_payment=='1'}<p>{#text_secondname#} {$INPUT_SECONDNAME_PAYMENT}</p>
 {/if}
+{if $lastname_payment=='1'}
 <p><label for="lastname_payment">{#text_lastname#}</label> {$INPUT_LASTNAME_PAYMENT}</p>
+{/if}
 {if $birthdate_payment=='1'} 
 <p><label for="dob">{#text_birthdate#}</label> {$INPUT_DOB_PAYMENT}</p>
 {/if}
@@ -246,7 +250,9 @@ $(function($){
 <div id="contact_box" class="sm_layout_box">
 <fieldset class="form">
 <h2>{$TITLE_CONTACT_ADDRESS}</h2>
+{if $email=='1'}
 <p><label for="email">{#text_email#}</label> {$INPUT_EMAIL}</p>
+{/if}
 {if $telephone=='1'}<p><label for="telephone">{#text_tel#}</label> {$INPUT_TEL}</p>
 {/if}
 {if $fax=='1'}<p><label for="fax">{#text_fax#}</label> {$INPUT_FAX}</p>
