@@ -38,12 +38,12 @@
   <div class="carousel-inner">
 
     <div class="carousel-item active" data-interval="10000000" data-ride="false" data-wrap="true">
-			  {if $PRODUCTS_POPUP_LINK!=''}<a href="{$PRODUCTS_POPUP_IMAGE}" title="{$PRODUCTS_NAME}" class="lightbox image-zoom">{/if}<img class="img-fluid" itemprop="image" src="{$PRODUCTS_IMAGE}" alt="{if $PRODUCTS_IMAGE_DESCRIPTION !=''}{$PRODUCTS_IMAGE_DESCRIPTION}{else}{$PRODUCTS_NAME}{/if}" />{if $PRODUCTS_POPUP_LINK!=''}</a>{/if}
+			  {if $PRODUCTS_POPUP_LINK!=''}<a href="{$PRODUCTS_POPUP_IMAGE}" title="{$PRODUCTS_NAME}" class="lightbox image-zoom">{/if}<img class="product-info-image img-fluid" itemprop="image" src="{$PRODUCTS_IMAGE}" alt="{if $PRODUCTS_IMAGE_DESCRIPTION !=''}{$PRODUCTS_IMAGE_DESCRIPTION}{else}{$PRODUCTS_NAME}{/if}" />{if $PRODUCTS_POPUP_LINK!=''}</a>{/if}
     </div>
 
     {foreach name=slide item=slides from=$mo_img}
     <div class="carousel-item" data-interval="10000000" data-ride="false" data-wrap="true">
-      {if $slides.PRODUCTS_MO_POPUP_LINK !=''}<a href="{$slides.PRODUCTS_MO_POPUP_IMAGE}" title="{$PRODUCTS_NAME}" class="lightbox image-zoom">{/if}<img class="img-fluid" itemprop="image" src="{$slides.PRODUCTS_MO_IMAGE}" alt="{if $slides.PRODUCTS_MO_IMAGE_DESCRIPTION !=''}{$slides.PRODUCTS_MO_IMAGE_DESCRIPTION}{else}{$PRODUCTS_NAME}{/if}" />{if $slides.PRODUCTS_MO_POPUP_LINK !=''}</a>{/if}
+      {if $slides.PRODUCTS_MO_POPUP_LINK !=''}<a href="{$slides.PRODUCTS_MO_POPUP_IMAGE}" title="{$PRODUCTS_NAME}" class="lightbox image-zoom">{/if}<img class="product-info-image img-fluid" itemprop="image" src="{$slides.PRODUCTS_MO_IMAGE}" alt="{if $slides.PRODUCTS_MO_IMAGE_DESCRIPTION !=''}{$slides.PRODUCTS_MO_IMAGE_DESCRIPTION}{else}{$PRODUCTS_NAME}{/if}" />{if $slides.PRODUCTS_MO_POPUP_LINK !=''}</a>{/if}
     </div>
     {/foreach}
     

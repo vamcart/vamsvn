@@ -280,6 +280,10 @@ img.lazy:not([src]) {
   transition: all 0.3s ease-out;
 }
 
+.card.card-product .img-wrap img,
+.card.card-product .product-info-image {
+  border-radius: 1rem;
+}
 .card.card-product .info-wrap {
   padding: 0;
 }
