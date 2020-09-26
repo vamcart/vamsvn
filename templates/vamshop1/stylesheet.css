@@ -496,28 +496,34 @@ hr.transparent {
 background-color: #f44336;
 }
 
-.shopping-cart-widget.dropdown {
+.shopping-cart-widget.dropdown,
+.wishlist-widget.dropdown {
 background: #fff;
 }
-.shopping-cart-widget.dropdown .products {
+.shopping-cart-widget.dropdown .products,
+.wishlist-widget.dropdown .products {
   margin: 0 0 20px 0;
   overflow-y: auto;
   max-height: 300px;
 }
-.shopping-cart-widget.dropdown .products .media-heading {
+.shopping-cart-widget.dropdown .products .media-heading,
+.wishlist-widget.dropdown .products .media-heading {
   font-weight: bold;
   font-size: 16px;
   color: #dd2c00;
 }
-.shopping-cart-widget.dropdown .products .media-heading a {
+.shopping-cart-widget.dropdown .products .media-heading a,
+.wishlist-widget.dropdown .products .media-heading a {
   text-decoration: none;
   color: #dd2c00;
 }
-.shopping-cart-widget.dropdown .products .media-heading a:hover {
+.shopping-cart-widget.dropdown .products .media-heading a:hover,
+.wishlist-widget.dropdown .products .media-heading a:hover {
   color: #dd2c00;
   background: transparent;
 }
-.shopping-cart-widget.dropdown p.buttons {
+.shopping-cart-widget.dropdown p.buttons,
+.wishlist-widget.dropdown p.buttons {
   padding-bottom: 5px;
 }
 
@@ -980,28 +986,34 @@ background: #fff;
 }
 /* Categories widget
 /* ========================================================================== */
-.shopping-cart-widget {
+.shopping-cart-widget,
+.wishlist-widget {
   padding: 5px;
   height: 300px;
   overflow-y: auto;
 }
-.shopping-cart-widget .products {
+.shopping-cart-widget .products,
+.wishlist-widget .products {
   margin: 0 0 20px 0;
 }
-.shopping-cart-widget .products .media-heading {
+.shopping-cart-widget .products .media-heading,
+.wishlist-widget .products .media-heading {
   font-weight: bold;
   font-size: 16px;
   color: #dd2c00;
 }
-.shopping-cart-widget .products .media-heading a {
+.shopping-cart-widget .products .media-heading a,
+.wishlist-widget .products .media-heading a {
   text-decoration: none;
   color: #dd2c00;
 }
-.shopping-cart-widget .products .media-heading a:hover {
+.shopping-cart-widget .products .media-heading a:hover,
+.wishlist-widget .products .media-heading a:hover {
   color: #dd2c00;
   background: transparent;
 }
-.shopping-cart-widget .buttons .btn:hover {
+.shopping-cart-widget .buttons .btn:hover,
+.wishlist-widget .buttons .btn:hover {
   background-color: #dd2c00;
 }
 /* Categories widget
