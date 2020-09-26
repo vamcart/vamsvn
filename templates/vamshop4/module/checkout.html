@@ -184,8 +184,7 @@ $(function($){
 {/if}
 </div> <!--div end shipping_box --> 
 
-
-{if $sc_payment_address_show}
+{if $sc_payment_address_show && $street_address_payment == '1'}
 <div id="payment_address_box"  class="sm_layout_box">
 {if !$smarty.session.customer_id}
 <div id="payment_address_checkbox">
