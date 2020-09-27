@@ -199,7 +199,7 @@ $products_price = $vamPrice->GetPrice($product->data['products_id'], $format = t
            'billing_name' => $firstname,
            'billing_firstname' => $firstname,
            'billing_address_format_id' => 1,
-           'payment_method' => ONE_CLICK_BUY_NAVBAR_TITLE,
+           'payment_method' => $payment,
            'payment_class' => $payment,
            'shipping_method' => ONE_CLICK_BUY_NAVBAR_TITLE,
            'shipping_class' => 'flat_flat',
