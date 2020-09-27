@@ -252,7 +252,7 @@
                                     <div style="font-family: Open Sans, Helvetica, Tahoma, Arial, sans-serif; font-size: 14px;"> <strong>Номер заказа:</strong> {$oID}<br> </div>
                                     <div style="font-family: Open Sans, Helvetica, Tahoma, Arial, sans-serif; font-size: 14px;"> <strong>Дата:</strong> {$DATE}<br> </div>
                                     {if $csID}<div style="font-family: Open Sans, Helvetica, Tahoma, Arial, sans-serif; font-size: 14px;"> <strong>Код покупателя:</strong> {$csID} </div>{/if}
-                                    <div style="font-family: Open Sans, Helvetica, Tahoma, Arial, sans-serif; font-size: 14px;"> <strong>Телефон:</strong> {$PHONE}<br /> </div>
+                                    {if $PHONE}<div style="font-family: Open Sans, Helvetica, Tahoma, Arial, sans-serif; font-size: 14px;"> <strong>Телефон:</strong> {$PHONE}<br /> </div>{/if}
                                     {if $EMAIL}<div style="font-family: Open Sans, Helvetica, Tahoma, Arial, sans-serif; font-size: 14px;"> <strong>E-mail:</strong> {$EMAIL}<br /> </div>{/if}
                                     {if $customer_extra_fields}<div style="font-family: Open Sans, Helvetica, Tahoma, Arial, sans-serif; font-size: 14px;"> {$customer_extra_fields} </div>{/if}
                                  </td>
