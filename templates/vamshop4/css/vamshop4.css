@@ -1588,3 +1588,9 @@ header .input-group-text,
   border-radius: 1rem;
   padding-top: 1em;
 }
+
+.btn-secondary.dropdown-toggle {
+    color: #fff;
+    background-color: var(--button-background-color-hover) !important;
+    border-color: var(--button-border-color) !important;
+}
