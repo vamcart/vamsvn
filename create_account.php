@@ -332,6 +332,7 @@ if (ACCOUNT_EMAIL == 'true' or ACCOUNT_EMAIL == 'optional') {
 		$_SESSION['customer_second_name'] = $secondname;
 		$_SESSION['customer_last_name'] = $lastname;
 		$_SESSION['customer_email_address'] = $email_address;
+		$_SESSION['customer_telephone'] = $telephone;
 		$_SESSION['customer_default_address_id'] = $address_id;
 		$_SESSION['customer_country_id'] = $country;
 		$_SESSION['customer_zone_id'] = $zone_id;
@@ -619,6 +620,7 @@ if (isset ($_GET['social_login']) && ($_GET['social_login'] == 'fb')) {
 		$_SESSION['customer_second_name'] = $secondname;
 		$_SESSION['customer_last_name'] = $lastname;
 		$_SESSION['customer_email_address'] = $email_address;
+		$_SESSION['customer_telephone'] = $telephone;
 		$_SESSION['customer_default_address_id'] = $address_id;
 		$_SESSION['customer_country_id'] = $country;
 		$_SESSION['customer_zone_id'] = $zone_id;
@@ -840,6 +842,7 @@ if (isset ($_GET['social_login']) && ($_GET['social_login'] == 'google')) {
 		$_SESSION['customer_second_name'] = $secondname;
 		$_SESSION['customer_last_name'] = $lastname;
 		$_SESSION['customer_email_address'] = $email_address;
+		$_SESSION['customer_telephone'] = $telephone;
 		$_SESSION['customer_default_address_id'] = $address_id;
 		$_SESSION['customer_country_id'] = $country;
 		$_SESSION['customer_zone_id'] = $zone_id;
@@ -1097,6 +1100,7 @@ if (isset ($_GET['social_login']) && ($_GET['social_login'] == 'vk')) {
 		$_SESSION['customer_second_name'] = $secondname;
 		$_SESSION['customer_last_name'] = $lastname;
 		$_SESSION['customer_email_address'] = $email_address;
+		$_SESSION['customer_telephone'] = $telephone;
 		$_SESSION['customer_default_address_id'] = $address_id;
 		$_SESSION['customer_country_id'] = $country;
 		$_SESSION['customer_zone_id'] = $zone_id;
