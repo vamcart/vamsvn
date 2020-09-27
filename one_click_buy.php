@@ -21,6 +21,16 @@ require_once (DIR_FS_INC.'vam_image_button.inc.php');
 require_once (DIR_FS_INC.'vam_random_charcode.inc.php');
 require_once (DIR_FS_INC.'vam_render_vvcode.inc.php');
 
+require_once(DIR_FS_INC . 'vam_encrypt_password.inc.php');
+require_once(DIR_FS_INC . 'vam_create_password.inc.php');
+require_once(DIR_FS_INC . 'vam_random_charcode.inc.php');
+require_once(DIR_FS_INC . 'vam_calculate_tax.inc.php');
+require_once(DIR_FS_INC . 'vam_address_label.inc.php');
+require_once(DIR_FS_INC . 'changedatain.inc.php');
+
+    require_once (DIR_FS_INC.'vam_check_stock.inc.php');
+
+
 // create smarty elements
 $vamTemplate = new vamTemplate;
 
@@ -97,6 +107,145 @@ $vamTemplate->assign('error', $messageStack->output('one_click_buy'));
 	}
 
 		if ($error == false) {
+			
+			
+// Register customer		
+if (!isset($_SESSION['customer_id'])) { 
+        $newsletter = 1;	
+        $random_pass = vam_RandomString(8);
+        $password = vam_encrypt_password($random_pass);
+
+        $sql_data_array = array('customers_firstname' => $firstname,
+            'customers_status' => 2,
+            'customers_secondname' => '',
+            'customers_lastname' => '',
+            'customers_email_address' => $email_address,
+            'customers_telephone' => $telephone,
+            'customers_fax' => '',
+            'customers_date_added' => 'now()',
+            'customers_last_modified' => 'now()',
+            'customers_newsletter' => $newsletter,
+            'customers_password' => $password);
+
+        vam_db_perform(TABLE_CUSTOMERS, $sql_data_array);
+        $customer_id = vam_db_insert_id();
+        $customers_id = $customer_id;
+
+        $sql_data_array = array('customers_id' => $customer_id,
+            'entry_firstname' => $firstname,
+            'entry_secondname' => '',
+            'entry_lastname' => '',
+            'entry_street_address' => '',
+            'entry_postcode' => '',
+            'entry_city' => '',
+            'entry_country_id' => '');
+
+        vam_db_perform(TABLE_ADDRESS_BOOK, $sql_data_array);
+
+        $address_id = vam_db_insert_id();
+
+        vam_db_query("update " . TABLE_CUSTOMERS . " set customers_default_address_id = '" . (int)$address_id . "' where customers_id = '" . (int)$customer_id . "'");
+
+        vam_db_query("insert into " . TABLE_CUSTOMERS_INFO . " (customers_info_id, customers_info_number_of_logons, customers_info_date_account_created) values ('" . (int)$customer_id . "', '0', now())");
+
+// Send Customer Email
+        if (SC_EMAIL_LOGIN_DATA == 'true' && filter_var($email_address, FILTER_VALIDATE_EMAIL)) {
+
+            $vamTemplate->assign('EMAIL_ADDRESS', $email_address);
+            $vamTemplate->assign('PASSWORD', $random_pass);
+            $module_content = array();
+            $module_content = array('MAIL_REPLY_ADDRESS' => EMAIL_SUPPORT_REPLY_ADDRESS);
+            $vamTemplate->assign('content', $module_content);
+
+            if ($newsletter == 1) {
+                $vlcode = vam_random_charcode(32);
+                $link = vam_href_link(FILENAME_NEWSLETTER, 'action=activate&email=' . $email_address . '&key=' . $vlcode, 'NONSSL');
+                $sql_data_array = array('customers_email_address' => vam_db_input($email_address), 'customers_id' => vam_db_input($customers_id), 'customers_status' => 2, 'customers_firstname' => vam_db_input($firstname), 'customers_lastname' => '', 'mail_status' => '1', 'mail_key' => vam_db_input($vlcode), 'date_added' => 'now()');
+                vam_db_perform(TABLE_NEWSLETTER_RECIPIENTS, $sql_data_array);
+                // assign vars
+                $vamTemplate->assign('LINK', $link);
+            } else {
+                $vamTemplate->assign('LINK', false);
+            }
+
+            $html_mail = $vamTemplate->fetch(CURRENT_TEMPLATE . '/mail/' . $_SESSION['language'] . '/create_account_mail.html');
+            $vamTemplate->caching = 0;
+            $txt_mail = $vamTemplate->fetch(CURRENT_TEMPLATE . '/mail/' . $_SESSION['language'] . '/create_account_mail.txt');
+            vam_php_mail(EMAIL_SUPPORT_ADDRESS, EMAIL_SUPPORT_NAME, $email_address, $firstname, EMAIL_SUPPORT_FORWARDING_STRING, EMAIL_SUPPORT_REPLY_ADDRESS, EMAIL_SUPPORT_REPLY_ADDRESS_NAME, '', '', EMAIL_SUPPORT_SUBJECT, $html_mail, $txt_mail);
+
+        }			
+}			
+			
+
+//Register Order
+if ($_POST['products_id'] > 0) {
+$payment = 'cod';
+$shipping = array('id' => 'flat_flat', 'title' => ONE_CLICK_BUY_NAVBAR_TITLE, 'cost' => '0');
+$product = new product($_POST['products_id']);
+$products_price = $vamPrice->GetPrice($product->data['products_id'], $format = true, 1, $product->data['products_tax_class_id'], $product->data['products_price'], 1);
+
+
+       $sql_data_array = array(
+           'customers_id' => (isset($_SESSION['customer_id']) ? $_SESSION['customer_id'] : $customer_id),
+           'customers_name' => $firstname,
+           'customers_firstname' => $firstname,
+           'customers_status' => 2,
+           'customers_telephone' => $telephone,
+           'customers_email_address' => $email_address,
+           'customers_address_format_id' => 1,
+           'delivery_name' => $firstname,
+           'delivery_firstname' => $firstname,
+           'delivery_address_format_id' => 1,
+           'billing_name' => $firstname,
+           'billing_firstname' => $firstname,
+           'billing_address_format_id' => 1,
+           'payment_method' => ONE_CLICK_BUY_NAVBAR_TITLE,
+           'payment_class' => $payment,
+           'shipping_method' => ONE_CLICK_BUY_NAVBAR_TITLE,
+           'shipping_class' => 'flat_flat',
+           'date_purchased' => 'now()',
+           'orders_status' => 1,
+           'currency' => DEFAULT_CURRENCY,
+           'currency_value' => 1,
+           'language' => $_SESSION['language']);
+                    			
+
+        vam_db_perform(TABLE_ORDERS, $sql_data_array);
+        $insert_id = vam_db_insert_id();
+
+        // Update products_ordered (for bestsellers list)
+        vam_db_query("update " . TABLE_PRODUCTS . " set products_ordered = products_ordered + 1 where products_id = '" . vam_get_prid($product->data['products_id']) . "'");
+
+        $sql_data_array = array('orders_id' => $insert_id, 'products_id' => vam_get_prid($product->data['products_id']), 'products_model' => $product->data['products_model'], 'products_name' => $product->data['products_name'], 'products_price' => $products_price['plain'], 'final_price' => $products_price['plain'], 'products_quantity' => 1, 'allow_tax' => $_SESSION['customers_status']['customers_status_show_price_tax']);
+
+        vam_db_perform(TABLE_ORDERS_PRODUCTS, $sql_data_array);
+        $order_products_id = vam_db_insert_id();
+
+// Include Language Text
+include_once(DIR_WS_LANGUAGES.$_SESSION['language'].'/modules/order_total/ot_subtotal.php');
+include_once(DIR_WS_LANGUAGES.$_SESSION['language'].'/modules/order_total/ot_shipping.php');
+include_once(DIR_WS_LANGUAGES.$_SESSION['language'].'/modules/order_total/ot_total.php');
+
+$total_format = $vamPrice->Format($products_price['plain'],true);
+												
+        // Subtotal
+        $sql_data_array = array('orders_id' => $insert_id, 'title' => MODULE_ORDER_TOTAL_SUBTOTAL_TITLE, 'text' => $total_format, 'value' => $products_price['plain'], 'class' => 'ot_subtotal', 'sort_order' => 10);
+        vam_db_perform(TABLE_ORDERS_TOTAL, $sql_data_array);
+
+        // Shipping
+        $sql_data_array = array('orders_id' => $insert_id, 'title' => MODULE_ORDER_TOTAL_SHIPPING_TITLE, 'text' => 0, 'value' => 0, 'class' => 'ot_shipping', 'sort_order' => 30);
+        vam_db_perform(TABLE_ORDERS_TOTAL, $sql_data_array);
+
+        // Total
+        $sql_data_array = array('orders_id' => $insert_id, 'title' => MODULE_ORDER_TOTAL_TOTAL_TITLE, 'text' => '<b>'.$total_format.'</b>', 'value' => $products_price['plain'], 'class' => 'ot_total', 'sort_order' => 99);
+        vam_db_perform(TABLE_ORDERS_TOTAL, $sql_data_array);
+
+        $customer_notification = (SEND_EMAILS == 'true') ? '1' : '0';
+        $sql_data_array = array('orders_id' => $insert_id, 'orders_status_id' => 1, 'date_added' => 'now()', 'customer_notified' => 1, 'comments' => ONE_CLICK_BUY_NAVBAR_TITLE);
+        vam_db_perform(TABLE_ORDERS_STATUS_HISTORY, $sql_data_array);
+}
+
+			
 		$vamTemplate->assign('PRODUCTS_NAME', $product_info['products_name']);
 		$vamTemplate->assign('PRODUCTS_IMAGE', $product_info['products_image']);
       $products_price = $vamPrice->GetPrice($product_info['products_id'], $format = true, 1, $product_info['products_tax_class_id'], $product_info['products_price'], 1);
