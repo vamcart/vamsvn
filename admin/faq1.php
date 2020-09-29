@@ -486,6 +486,7 @@ echo vam_draw_pull_down_menu('item_language',$languages_array,$languages_selecte
             if ($fInfo->products_id > 0) $contents[] = array('text' => '<strong>'.TEXT_FAQ1_PRODUCT_NAME.':</strong><br><a href="' . HTTP_SERVER.DIR_WS_CATALOG .'product_info.php?products_id='.$fInfo->products_id.'" target="_blank">' . vam_get_products_name($fInfo->products_id, 1).'</a>');
             $contents[] = array('text' => '<strong>'.TEXT_FAQ1_QUESTION.':</strong><br>' . vam_break_string(strip_tags($fInfo->question), 128, '...'));
             if ($fInfo->answer != '') $contents[] = array('text' => '<strong>'.TEXT_FAQ1_ANSWER.':</strong><br>' . vam_break_string(strip_tags($fInfo->answer), 128, '...'));
+            $contents[] = array('text' => '<strong>'.TABLE_HEADING_DATE.':</strong> ' . vam_break_string(strip_tags($fInfo->date_added), 128, '...'));
           }
         } else { // create category/product info
           //$heading[] = array('text' => '<b>' . EMPTY_CATEGORY . '</b>');
