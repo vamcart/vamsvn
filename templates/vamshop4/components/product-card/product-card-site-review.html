@@ -9,7 +9,7 @@
 				</div>			
 				{if $module_data.RATING > 0}
 				<span itemprop="reviewRating" itemscope itemtype="http://schema.org/Rating"><meta itemprop="ratingValue" content="{$module_data.RATING}" /></span>
-				<div class="rating-wrap small">
+				<div class="rating-wrap">
 					<div class="desc"><span class="bold">{#text_date#}</span> <span content="{$module_data.DATE|date_format:"%Y-%m-%d"}" itemprop="datePublished">{$module_data.DATE}</span></div>
 					<div class="desc"><span class="bold">{#text_author#}</span> <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">{$module_data.AUTHOR}</span></span></div>
 					{$module_data.STAR_RATING}
