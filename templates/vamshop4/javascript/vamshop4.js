@@ -60,19 +60,29 @@ $(".owl-carousel").owlCarousel({
     navText: ['<span class="fas fa-chevron-left fa-1x"></span>','<span class="fas fa-chevron-right fa-1x"></span>'],
     responsive:{
         0:{
-            items:1
+            items:1,
+            margin: 10,
+            stagePadding: 10
         },
         360:{
-            items:2
+            items:2,
+            margin: 10,
+            stagePadding: 10
         },
         768:{
-            items:3
+            items:3,
+            margin: 10,
+            stagePadding: 10
         },
         992:{
-            items:4
+            items:4,
+            margin: 30,
+            stagePadding: 30
         },
         1200:{
-            items:4
+            items:4,
+            margin: 30,
+            stagePadding: 30
         }
     }
 })
