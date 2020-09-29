@@ -12,13 +12,19 @@
         </ul>        
 		</div>
 			<ul class="list-inline pt-1">
-				{if $smarty.const.STORE_VK}<li class="list-inline-item text-white px-1"><a class="text-light" href="https://vk.com/{$smarty.const.STORE_VK}" aria-label="vk"><i class="fab fa-vk"></i></a></li>{/if}
-				{if $smarty.const.STORE_FACEBOOK}<li class="list-inline-item text-white px-1"><a class="text-light" href="https://facebook.com/{$smarty.const.STORE_FACEBOOK}" aria-label="facebook"><i class="fab fa-facebook"></i></a></li>{/if}
-				{if $smarty.const.STORE_TELEGRAM}<li class="list-inline-item text-white px-1"><a class="text-light" href="https://t.me/{$smarty.const.STORE_TELEGRAM}" aria-label="telegram"><i class="fab fa-telegram"></i></a></li>{/if}
-				{if $smarty.const.STORE_INSTAGRAM}<li class="list-inline-item text-white px-1"><a class="text-light" href="https://instagram.com/{$smarty.const.STORE_INSTAGRAM}" aria-label="instagram"><i class="fab fa-instagram"></i></a></li>{/if}
-				{if $smarty.const.STORE_TWITTER}<li class="list-inline-item text-white px-1"><a class="text-light" href="https://twitter.com/{$smarty.const.STORE_TWITTER}" aria-label="twitter"><i class="fab fa-twitter"></i></a></li>{/if}
-				{if $smarty.const.STORE_YOUTUBE}<li class="list-inline-item text-white px-1"><a class="text-light" href="https://youtube.com/{$smarty.const.STORE_YOUTUBE}" aria-label="youtube"><i class="fab fa-youtube"></i></a></li>{/if}
-				<li class="list-inline-item text-white px-1"><a class="text-light" href="vam_rss2_info.php" aria-label="rss"><i class="fas fa-rss"></i></a></li>
+				{if $smarty.const.STORE_WHATSAPP}<li class="list-inline-item text-white px-1"><a title="WhatsApp" data-toggle="tooltip" class="text-light" href="https://wa.me/{$smarty.const.STORE_WHATSAPP}" aria-label="whatsapp"><i class="fab fa-whatsapp"></i></a></li>{/if}
+				{if $smarty.const.STORE_VIBER}<li class="list-inline-item text-white px-1"><a title="Viber" data-toggle="tooltip" class="text-light" href="viber://chat?number={$smarty.const.STORE_VIBER}" aria-label="viber"><i class="fab fa-viber"></i></a></li>{/if}
+				{if $smarty.const.STORE_SKYPE}<li class="list-inline-item text-white px-1"><a title="Skype" data-toggle="tooltip" class="text-light" href="skype:{$smarty.const.STORE_SKYPE}" aria-label="skype"><i class="fab fa-skype"></i></a></li>{/if}
+				{if $smarty.const.STORE_ICQ}<li class="list-inline-item text-white px-1"><a title="ICQ" data-toggle="tooltip" class="text-light" href="http://icq.com/{$smarty.const.STORE_ICQ}" aria-label="icq"><i class="fas fa-cog"></i></a></li>{/if}
+			</ul>
+			<ul class="list-inline pt-1">
+				{if $smarty.const.STORE_VK}<li class="list-inline-item text-white px-1"><a title="VK" data-toggle="tooltip" class="text-light" href="https://vk.com/{$smarty.const.STORE_VK}" aria-label="vk"><i class="fab fa-vk"></i></a></li>{/if}
+				{if $smarty.const.STORE_FACEBOOK}<li class="list-inline-item text-white px-1"><a title="Facebook" data-toggle="tooltip" class="text-light" href="https://facebook.com/{$smarty.const.STORE_FACEBOOK}" aria-label="facebook"><i class="fab fa-facebook"></i></a></li>{/if}
+				{if $smarty.const.STORE_TELEGRAM}<li class="list-inline-item text-white px-1"><a title="Telegram" data-toggle="tooltip" class="text-light" href="https://t.me/{$smarty.const.STORE_TELEGRAM}" aria-label="telegram"><i class="fab fa-telegram"></i></a></li>{/if}
+				{if $smarty.const.STORE_INSTAGRAM}<li class="list-inline-item text-white px-1"><a title="Instagram" data-toggle="tooltip" class="text-light" href="https://instagram.com/{$smarty.const.STORE_INSTAGRAM}" aria-label="instagram"><i class="fab fa-instagram"></i></a></li>{/if}
+				{if $smarty.const.STORE_TWITTER}<li class="list-inline-item text-white px-1"><a title="Twitter" data-toggle="tooltip" class="text-light" href="https://twitter.com/{$smarty.const.STORE_TWITTER}" aria-label="twitter"><i class="fab fa-twitter"></i></a></li>{/if}
+				{if $smarty.const.STORE_YOUTUBE}<li class="list-inline-item text-white px-1"><a title="YouTube" data-toggle="tooltip" class="text-light" href="https://youtube.com/{$smarty.const.STORE_YOUTUBE}" aria-label="youtube"><i class="fab fa-youtube"></i></a></li>{/if}
+				<li class="list-inline-item text-white px-1"><a title="RSS" data-toggle="tooltip" class="text-light" href="vam_rss2_info.php" aria-label="rss"><i class="fas fa-rss"></i></a></li>
 			</ul>
 	{if {$smarty.const.DARK_THEME} == "true"}<div class="d-block mt-3 mb-3 text-white"><dark-mode-toggle id="dark-mode-toggle-1" permanent="true" dark="{$smarty.const.THEME_DARK}" light="{$smarty.const.THEME_LIGHT}"></dark-mode-toggle></div>{/if}
 	{if $smarty.const.ENABLE_SERVICE_WORKER == 'true'}<div class="d-block mt-3 mb-3 text-white"><button class="btn btn-inverse checkout btn-sm a2hs-button" id="a2hs-button">{#text_a2hs#}</button></div>{/if}
