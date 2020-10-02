@@ -214,7 +214,7 @@ $products_price = $vamPrice->GetPrice($product->data['products_id'], $format = t
         $insert_id = vam_db_insert_id();
 
         // Update products_ordered (for bestsellers list)
-        vam_db_query("update " . TABLE_PRODUCTS . " set products_ordered = products_ordered + 1 where products_id = '" . vam_get_prid($product->data['products_id']) . "'");
+        vam_db_query("update " . TABLE_PRODUCTS . " set products_ordered = products_ordered + 1, products_quantity = products_quantity - 1 where products_id = '" . vam_get_prid($product->data['products_id']) . "'");
 
         $sql_data_array = array('orders_id' => $insert_id, 'products_id' => vam_get_prid($product->data['products_id']), 'products_model' => $product->data['products_model'], 'products_name' => $product->data['products_name'], 'products_price' => $products_price['plain'], 'final_price' => $products_price['plain'], 'products_quantity' => 1, 'allow_tax' => $_SESSION['customers_status']['customers_status_show_price_tax']);
 
