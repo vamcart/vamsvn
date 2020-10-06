@@ -42,6 +42,16 @@
 		{/if}
 		      
       </li>
+
+      {if !$wishlist_current}
+      {if $smarty.const.ENABLE_WISHLIST == 'true'}
+      <li class="nav-item" id="divWishlist">
+      {$box_WISHLIST}
+      </li>
+      {/if}
+      {/if}
+
+
     </ul>
     </div>
     

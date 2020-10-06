@@ -331,7 +331,7 @@ a#scrollup:hover {
 /* /Scroll To Top */
 
 .dropdown-menu.cart {
-  min-width: 300px; 
+  min-width: 450px; 
   margin: 1em 0 0 0;
   position: absolute; 
   right: 0; /* Открывать корзину вправо */ 
@@ -340,7 +340,7 @@ a#scrollup:hover {
 
 @media (max-width: 992px) {
 .dropdown-menu.cart {
-  min-width: 300px; 
+  min-width: 450px; 
   margin: 1em 0 0 0;
   position: absolute; 
   right: auto; /* Открывать корзину вправо */ 
