@@ -39,7 +39,7 @@
 		</div>
 		<div class="col-md-2 my-auto">
 				<div class="price-wrap display-6 font-weight-bold">
-					<div><strong>{$products_data.PRICE}</strong></div>
+					<div><strong class="text-primary">{$products_data.PRICE}</strong></div>
 				</div>
 		</div>
 		<div class="col-md-2 my-auto">
@@ -55,12 +55,12 @@
 				</div>
 				{if $DISCOUNT}
 				<p class="subtotal">
-					<strong>{#text_discount#}</strong>
+					<strong class="text-primary">{#text_discount#}</strong>
 					<span class="amount">{$DISCOUNT}</span>
 				</p>
 				{/if}
 				<p class="subtotal">
-					<strong>{$UST}{#text_total#}:</strong> 
+					<strong class="text-primary">{$UST}{#text_total#}:</strong> 
 					<span class="amount font-weight-bold text-danger">{$TOTAL}</span>
 				</p>
 				<p class="buttons">
