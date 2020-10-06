@@ -29,7 +29,7 @@
 		</div>
 		<div class="col-md-5 my-auto">
 				<div class=""><a href="{$products_data.LINK}">{$products_data.NAME|vam_truncate:$smarty.const.MAX_DISPLAY_WISHLIST:"...":true}</a></div>
-						<div class="media-body">
+						<div class="media-body text-primary">
 								{if $products_data.ATTRIBUTES!=''} 
 								{foreach key=key_data item=item_data from=$products_data.ATTRIBUTES} 
 								{if $item_data.NAME != ''}{$item_data.NAME}:{/if} {if $item_data.VALUE != ''}<strong>{$item_data.VALUE}</strong><br />{/if}
@@ -73,7 +73,7 @@
 {else}
 <div class="widget inner wishlist-widget">
 	<div class="wishlist-dropdown">
-			<div class="content">
+			<div class="content text-primary">
            {#text_empty_wishlist#} 
 			</div>
 	</div>
