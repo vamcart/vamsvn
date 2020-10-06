@@ -33,16 +33,6 @@
 		</div> <!-- icontext.// -->
 
       </li>
-      <li class="nav-item">
-
-		{if !$cart_current}
-		<div id="divShoppingCart">
-		{$box_CART}
-		</div>
-		{/if}
-		      
-      </li>
-
       {if !$wishlist_current}
       {if $smarty.const.ENABLE_WISHLIST == 'true'}
       <li class="nav-item" id="divWishlist">
@@ -50,8 +40,13 @@
       </li>
       {/if}
       {/if}
-
-
+		{if !$cart_current}
+      <li class="nav-item">
+		<div id="divShoppingCart">
+		{$box_CART}
+		</div>
+      </li>
+		{/if}
     </ul>
     </div>
     
