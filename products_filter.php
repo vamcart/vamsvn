@@ -355,7 +355,6 @@ $module = new vamTemplate;
                           pd.products_description,
                           p.products_id,
                           p.manufacturers_id,
-                          p.products_price,
                           p.products_vpe,
                           p.products_vpe_status,
                           p.products_vpe_value,

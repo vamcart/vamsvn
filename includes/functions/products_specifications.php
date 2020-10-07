@@ -584,6 +584,11 @@ if ($not_found) {
         $products_column_name = 'p.' . $products_column_name;
       }
 
+      if ($products_column_name == 'products_price') {
+//echo '<pre>';var_dump($products_column_name, $filter_class, $specifications_id, $filter_array);echo '</pre>';
+        $products_column_name = 'p.' . $products_column_name;
+      }
+
       // The final_price column doesn't actually exist, so we have to generate it
       $final_price = false;
       if ($products_column_name == 'final_price') {
