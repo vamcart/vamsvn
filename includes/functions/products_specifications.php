@@ -720,7 +720,7 @@ if ($not_found) {
                 $sql_array['where'] .= " and (" . $products_column_name . " between " . $filters_range[0] . " and " . $filters_range[1] . ") ";
               }
             }
-            $sql_array['from'] .= "LEFT JOIN " . TABLE_SPECIALS . " s ON p.products_id = s.products_id" . "\n";
+            //$sql_array['from'] .= "LEFT JOIN " . TABLE_SPECIALS . " s ON p.products_id = s.products_id" . "\n";
           } else {
             if (count($filters_range) < 2) { // There is only one parameter, so it is a minimum
               $sql_array['from'] .= " INNER JOIN " . TABLE_PRODUCTS_SPECIFICATIONS . " ps" . $specifications_id . " ON p.products_id = ps" . $specifications_id . ".products_id ";

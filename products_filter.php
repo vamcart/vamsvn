@@ -334,7 +334,7 @@ $module = new vamTemplate;
       $recursive_table_categories = "";
     }
 
-  $sql_array['from'] = str_replace("LEFT JOIN " . TABLE_SPECIALS . " s ON p.products_id = s.products_id", '', $sql_array['from']);
+  //$sql_array['from'] = str_replace("LEFT JOIN " . TABLE_SPECIALS . " s ON p.products_id = s.products_id", '', $sql_array['from']);
 // BOF extra_sort
 // add $extra_sort_fields
 // EOF extra_sort
@@ -362,7 +362,7 @@ $module = new vamTemplate;
                           p.products_tax_class_id
                           " . $extra_sort_fields . "
                  from " . TABLE_PRODUCTS . " p
-                 left join " . TABLE_SPECIALS . " s on (p.products_id = s.products_id)
+                 /*left join " . TABLE_SPECIALS . " s on (p.products_id = s.products_id)*/
                  left join " . TABLE_MANUFACTURERS . " m on (p.manufacturers_id = m.manufacturers_id)
                  left join " . TABLE_PRODUCTS_DESCRIPTION . " pd on (p.products_id = pd.products_id and pd.language_id = " . (int)$_SESSION['languages_id'] . ")
                  left join " . TABLE_PRODUCTS_TO_CATEGORIES . " p2c on (p.products_id = p2c.products_id)
