@@ -73,9 +73,6 @@
 	    $data = curl_exec($curl);
 	    
 	    curl_close($curl);
-	    if($data === false) {
-		  if (MODULE_SHIPPING_CDEK_DEBUG == 'test') $error_block = "ID номер для города отправителя посылки не найден.";
-	    }
 	    
 	    $senderCity = json_decode($data, $assoc=true);
 	    $senderCityId = $senderCity["geonames"][0]["id"];
@@ -90,7 +87,7 @@
       // если вес больше указаного в переменой то: 
 	  
 	    $min_ves = 0.1; // вес после которого цена выше
-	  
+	    
 		if ($ret['result']['price'] > 0) {
 		$shipping_cost = $ret['result']['price'];
 		}
@@ -124,7 +121,10 @@
 		$max_vremya = $ret['result']['deliveryPeriodMax'];
 
         // запрос вывода списка пвз
-		$ret_pvz = $this->sdekpvz_api_pvz($receiverCityId, $order->delivery['postcode']);
+		$ret_pvz = $this->sdekpvz_api_pvz($receiverCityId);
+		
+      //echo var_dump($ret_pvz);		
+		
 		$count_pvz = count($ret_pvz);
 		$company = 'СДЭК';		
 							
@@ -291,15 +291,17 @@ private function sdekpvz_api_calc($autlogin, $authPassword, $dateExecute, $sende
 
 
 	
-	// print_r($request);
+	 //print_r($request);
 
     $ret = $this->_sdekpvz_api_communicate($request);
+    
+    //echo var_dump($ret);
 	
 	return $ret;
 }   
 
- private function sdekpvz_api_pvz($cityId, $postcode) {  
-	$ret_pvz = file_get_contents("https://integration.cdek.ru/pvzlist.php?cityid=" . $cityId . "&citypostcode=" . $postcode);
+ private function sdekpvz_api_pvz($cityId) {  
+	$ret_pvz = file_get_contents("https://integration.cdek.ru/pvzlist.php?cityid=" . $cityId);
 
 	// разбор xml
     $p = xml_parser_create();
