@@ -196,7 +196,7 @@
 	  
 	  if ((strlen($order->delivery['city']) == '')) {
 
-      $this->quotes['error'] = 'До пункта выдачи. Для расчета этой доставки введите как минимум <b>город</b>';	  
+      $this->quotes['error'] = 'До пункта выдачи. Для расчета стоимости доставки укажите <b>город</b>';	  
 	  
 	  } elseif ($_SESSION['cart']->show_total() < $min_sum) {
 	
