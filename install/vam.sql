@@ -1689,6 +1689,20 @@ CREATE TABLE geo_zones (
   PRIMARY KEY (geo_zone_id)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
+DROP TABLE IF EXISTS markers_geocod;
+CREATE TABLE markers_geocod (
+  id int(11) NOT NULL auto_increment,
+  name varchar(300) NOT NULL,
+  address varchar(300) NOT NULL,
+  lat varchar(255) NOT NULL,
+  lng varchar(255) NOT NULL,
+  telephon varchar(60) NOT NULL,
+  city varchar(255) NOT NULL,
+  company varchar(255) NOT NULL,
+  worktime varchar(100) NOT NULL,
+  PRIMARY KEY (id)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+
 DROP TABLE IF EXISTS whos_online;
 CREATE TABLE whos_online (
   customer_id int,
