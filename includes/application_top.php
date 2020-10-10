@@ -43,9 +43,9 @@ define('RTN_410', '2');
 define('RTN_GOOD', '100');
 
 // set the level of error reporting
-error_reporting(0);
-//ini_set('display_errors',1);
-//error_reporting(E_ALL & ~E_NOTICE & ~E_WARNING);
+//error_reporting(0);
+ini_set('display_errors',1);
+error_reporting(E_ALL & ~E_NOTICE & ~E_WARNING);
 
 // Set the local configuration parameters - mainly for developers - if exists else the mainconfigure
 if (file_exists('includes/local/configure.php')) {
@@ -185,6 +185,7 @@ require_once (DIR_FS_INC.'vam_hide_session_id.inc.php');
 require_once (DIR_FS_INC.'vam_get_spsr_zone_id.inc.php');
 require_once (DIR_FS_INC . 'vam_get_subcategories.inc.php');
 require_once (DIR_FS_INC.'vam_get_label_name.inc.php');
+require_once (DIR_FS_INC.'vam_format_by_count.inc.php');
 
 // функция обрезки окончаний (работает только для одного слова)
 require_once (DIR_FS_INC.'stemmer_pottera.inc.php');
