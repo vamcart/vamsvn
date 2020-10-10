@@ -113,9 +113,9 @@
 		$shipping_txt_min = 'При сумме товаров от <b>' . $sum_akcii . '</b> руб., на эту доставку действует скидка <font color="red"><b>' . $skidka . '%</b></font>. Осталось добавить товаров мин. на: ' .$min_dozakaz . ' руб. <br /> <b>Выберите пункт выдачи:</b>';
 		}	
 
-        if ($_SESSION['cart']->show_total() > $sum_akcii) {     
-	    $skidka_text = ', применена скидка <b>' .$skidka. '%</b> [-' . $shipping_skidka . ' руб.]</b>';	
-        }			
+        //if ($_SESSION['cart']->show_total() > $sum_akcii) {     
+	    //$skidka_text = ', применена скидка <b>' .$skidka. '%</b> [-' . $shipping_skidka . ' руб.]</b>';	
+        //}			
 	 
 		$min_vremya = $ret['result']['deliveryPeriodMin'];
 		$max_vremya = $ret['result']['deliveryPeriodMax'];
@@ -165,7 +165,7 @@
         require_once('includes/modules/yandex-map/geokoder_yandex_kart.php');
 		
         // список пвз, выпадающее меню
-        $pvz = vam_draw_pull_down_menu('pvz', $name_pvz, '', 'id="pvz_sdek"', false);
+        $pvz = vam_draw_pull_down_menu('pvz', $name_pvz, '', 'id="pvz_sdek" class="form-control"');
 		
 		if($_POST['pvz'] != '') $pvz_title = ', ' . $_POST['pvz'] . '';		
 
@@ -232,7 +232,7 @@
 	  
 	  vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value,  configuration_group_id, sort_order, date_added) values ('MODULE_SHIPPING_SDEK_MIN_SUM', '', '6', '0', now())");
 	  vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value,  configuration_group_id, sort_order, date_added) values ('MODULE_SHIPPING_SDEK_PROCENT', '', '6', '0', now())");
-      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value,  configuration_group_id, sort_order, date_added) values ('MODULE_SHIPPING_SDEK_MIN_SUM_ORDER', '', '6', '0', now())");
+      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value,  configuration_group_id, sort_order, date_added) values ('MODULE_SHIPPING_SDEK_MIN_SUM_ORDER', '100', '6', '0', now())");
     }
 
     function remove() {
