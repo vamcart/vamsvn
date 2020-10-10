@@ -172,7 +172,7 @@
         $this->quotes = array('id' => $this->code,
                             'module' => MODULE_SHIPPING_SDEKPVZ_TEXT_TITLE,
                             'methods' => array(array('id' => $this->code,
-                                                     'title' => MODULE_SHIPPING_SDEKPVZ_TEXT_TITLE_2 . $pvz_title . ', ' . $min_vremya . '-' . $max_vremya . vam_format_by_count($max_vremya, ' день', ' дня', ' дней') . '' . $skidka_text,
+                                                     'title' => MODULE_SHIPPING_SDEKPVZ_TEXT_TITLE_2 . $pvz_title . ' ' . $min_vremya . ($max_vremya > 0 ? '-'.$max_vremya.vam_format_by_count($max_vremya, ' день', ' дня', ' дней'):null) . '' . $skidka_text,
                                                      'cost' => $shipping_cost)));
 													 				
 				
