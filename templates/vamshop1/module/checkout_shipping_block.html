@@ -28,6 +28,12 @@ $(this).parent().addClass("selected");
 {$module_data.error}
 </p>{/if} 
 
+{if $module_data.info != ''}
+<p>
+{$module_data.info}
+</p>
+{/if}      
+
 {if $method_data.id == "pickpoint"}
 
 <script src="https://www.pickpoint.ru/select/postamat.js"></script>
