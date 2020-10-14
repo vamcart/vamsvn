@@ -829,7 +829,7 @@ if ($not_found) {
     switch ($display_type) {
       case 'pulldown':
         $box_text .= vam_draw_form('filter', $target, 'get');
-        $box_text .= vam_draw_pull_down_menu($filter_name, $filters_select_array, $filter_value, 'onChange="this.form.submit();"');
+        $box_text .= vam_draw_pull_down_menu($filter_name, $filters_select_array, $filter_value, 'class="select2 form-control" onChange="this.form.submit();"');
         $box_text .= $additional_variables . vam_hide_session_id();
         $box_text .= '<noscript>' . vam_image_submit('submit.png', TEXT_FIND_PRODUCTS) . '</noscript>';
         $box_text .= '</form>';
