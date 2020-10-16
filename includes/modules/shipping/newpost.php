@@ -62,16 +62,6 @@
 		$sender_postcode = MODULE_SHIPPING_NEWPOST_ZIP;
 		$total_weight = $shipping_weight;
 
-		// узнаем id города
-		if($order->delivery['city'] == "спб" || $order->delivery['city'] == "СПБ") $order->delivery['city'] = "Санкт-Петербург";
-	    if($order->delivery['city'] == "Ростов" || $order->delivery['city'] == "ростов" || $order->delivery['city'] == "Ростов на дону" || $order->delivery['city'] == "ростов на дону") $order->delivery['city'] = "ростов-на-дону";
-		
-
-	    $senderCity = json_decode($data, $assoc=true);
-	    $senderCityId = $senderCity["geonames"][0]["id"];
-	    
-		$receiverCityId = $senderCityId;
-		
       // если вес больше указаного в переменой то: 
 	  
 	    $min_ves = 0.1; // вес после которого цена выше
@@ -82,9 +72,9 @@
       	$api_language = "ua";
       }		
 
-include_once(DIR_FS_CATALOG."vendor/novaposhta/NovaPoshtaApi2.php");
+if ($order->delivery['city'] != '') {
 
-//$np = new \LisDev\Delivery\NovaPoshtaApi2('1b7370ef16ac81d3cf57937118fac9f5');	
+include_once(DIR_FS_CATALOG."vendor/novaposhta/NovaPoshtaApi2.php");
 
 $np = new \LisDev\Delivery\NovaPoshtaApi2(
 	MODULE_SHIPPING_NEWPOST_API_LOGIN,
@@ -132,17 +122,16 @@ $name_pvz[] = array(
                    );
 }
 
+}
+
 //echo var_dump($name_pvz);
 		
         // добавление в файл результатов геокодирования
 		
-		if (!$_GET['oID'])
-        //require_once('includes/modules/yandex-map/geokoder_yandex_kart.php');
-		
         // список пвз, выпадающее меню
-        $pvz = vam_draw_pull_down_menu('pvz', $name_pvz, '', 'id="pvz_newpost" class="form-control"');
+        $pvz = vam_draw_pull_down_menu('pvz', $name_pvz, $_POST['pvz'], 'id="pvz_newpost" class="form-control"');
 		
-		if($_POST['pvz'] != '') $pvz_title = ', ' . $_POST['pvz'] . '';		
+		if($_POST['pvz'] != '') $pvz_title = ' ' . $_POST['pvz'] . '';		
 
         $this->quotes = array('id' => $this->code,
                             'module' => MODULE_SHIPPING_NEWPOST_TEXT_TITLE,
@@ -217,75 +206,6 @@ $name_pvz[] = array(
     function keys() {
       return array('MODULE_SHIPPING_NEWPOST_STATUS', 'MODULE_SHIPPING_NEWPOST_COST', 'MODULE_SHIPPING_NEWPOST_COST_2', 'MODULE_SHIPPING_NEWPOST_API_LOGIN', 'MODULE_SHIPPING_NEWPOST_CITY','MODULE_SHIPPING_NEWPOST_STATE','MODULE_SHIPPING_NEWPOST_ALLOWED', 'MODULE_SHIPPING_NEWPOST_TAX_CLASS', 'MODULE_SHIPPING_NEWPOST_ZONE', 'MODULE_SHIPPING_NEWPOST_SORT_ORDER', 'MODULE_SHIPPING_SDEK_MIN_SUM', 'MODULE_SHIPPING_SDEK_PROCENT', 'MODULE_SHIPPING_SDEK_MIN_SUM_ORDER');
     }
-    
-private function _newpost_api_communicate($request)
-{
-
-if ($_SESSION['cart']->show_total() > $min_sum) {
-	
-	
-    $curl = curl_init();
-    curl_setopt($curl, CURLOPT_URL, 'http://api.edostavka.ru/calculator/calculate_price_by_json.php');
-    curl_setopt($curl, CURLOPT_POST, true);
-    curl_setopt($curl, CURLOPT_POSTFIELDS, json_encode($request));
-    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-	curl_setopt($curl, CURLOPT_TIMEOUT, 5);
-	curl_setopt($curl, CURLOPT_CONNECTTIMEOUT, 5);
-	curl_setopt($curl, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
-    $data = curl_exec($curl);
-    
-    curl_close($curl);
-    if($data === false)
-    {
-	return '10000 server error';
-    }
-    
-    $js = json_decode($data, $assoc=true);
-    return $js;
-	
-	}
-}
-
-private function newpost_api_calc($autlogin, $authPassword, $dateExecute, $senderPostcode, $receiverPostcode, $weight, $idCity)
-{	
-	    if ($authPassword != '') {
-        //аутентификация
-        $secure = md5($dateExecute . '&' . $authPassword);
-		
-    }
-    $request = array('version' => '1.0',
-					'authLogin' => $autlogin,
-					'secure' => $secure,
-					'dateExecute' => $dateExecute, 
-					'senderCityPostCode' => $senderPostcode,
-					'receiverCityPostCode' => $receiverPostcode,
-					'receiverCityId' => $idCity,
-					'tariffId' => '136',
-					'goods' => array(array('weight' => $weight,
-										   'volume' => '0.01' )));
-
-
-	
-	 //print_r($request);
-
-    $ret = $this->_newpost_api_communicate($request);
-    
-    //echo var_dump($ret);
-	
-	return $ret;
-}   
-
- private function newpost_api_pvz($cityId) {  
-	$ret_pvz = file_get_contents("https://integration.cdek.ru/pvzlist.php?cityid=" . $cityId);
-
-	// разбор xml
-    $p = xml_parser_create();
-    xml_parse_into_struct($p, $ret_pvz, $vals, $index);
-
-	//print_r($vals);
-   
-    return $vals; 
- }
     
   }
 ?>

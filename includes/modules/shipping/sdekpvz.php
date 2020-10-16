@@ -165,7 +165,7 @@
         require_once('includes/modules/yandex-map/geokoder_yandex_kart.php');
 		
         // список пвз, выпадающее меню
-        $pvz = vam_draw_pull_down_menu('pvz', $name_pvz, '', 'id="pvz_sdek" class="form-control"');
+        $pvz = vam_draw_pull_down_menu('pvz', $name_pvz, $_POST['pvz'], 'id="pvz_sdek" class="form-control"');
 		
 		if($_POST['pvz'] != '') $pvz_title = ', ' . $_POST['pvz'] . '';		
 
