@@ -131,12 +131,12 @@ $name_pvz[] = array(
         // список пвз, выпадающее меню
         $pvz = vam_draw_pull_down_menu('pvz', $name_pvz, $_POST['pvz'], 'id="pvz_newpost" class="form-control"');
 		
-		if($_POST['pvz'] != '') $pvz_title = ' ' . $_POST['pvz'] . '';		
+		if($_POST['pvz'] != '') $pvz_title = ' ' . html_entity_decode($_POST['pvz']) . '';		
 
         $this->quotes = array('id' => $this->code,
                             'module' => MODULE_SHIPPING_NEWPOST_TEXT_TITLE,
                             'methods' => array(array('id' => $this->code,
-                                                     'title' => MODULE_SHIPPING_NEWPOST_TEXT_TITLE_2 . $pvz_title . ' ' . $min_vremya . ($max_vremya > 0 ? '-'.$max_vremya.vam_format_by_count($max_vremya, ' день', ' дня', ' дней'):null) . '' . $skidka_text,
+                                                     'title' => MODULE_SHIPPING_NEWPOST_TEXT_TITLE_2 . html_entity_decode($pvz_title) . ' ' . $min_vremya . ($max_vremya > 0 ? '-'.$max_vremya.vam_format_by_count($max_vremya, ' день', ' дня', ' дней'):null) . '' . $skidka_text,
                                                      'cost' => $shipping_cost)));
 													 				
 				
