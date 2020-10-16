@@ -19,7 +19,7 @@
 
 define('MODULE_SHIPPING_NEWPOST_TEXT_TITLE', 'Новая Почта');
 define('MODULE_SHIPPING_NEWPOST_TEXT_DESCRIPTION', '');
-define('MODULE_SHIPPING_NEWPOST_TEXT_TITLE_2', 'ПВЗ');
+define('MODULE_SHIPPING_NEWPOST_TEXT_TITLE_2', '');
 define('MODULE_SHIPPING_NEWPOST_STATUS_TITLE' , 'Разрешить модуль Новая Почта');
 define('MODULE_SHIPPING_NEWPOST_STATUS_DESC' , 'Вы хотите разрешить модуль Новая Почта?');
 define('MODULE_SHIPPING_NEWPOST_ALLOWED_TITLE' , 'Разрешённые страны');
@@ -28,12 +28,14 @@ define('MODULE_SHIPPING_NEWPOST_COST_TITLE' , 'Стоимость доставк
 define('MODULE_SHIPPING_NEWPOST_COST_DESC' , 'Стоимость доставки данным способом.');
 define('MODULE_SHIPPING_NEWPOST_COST_2_TITLE' , 'Стоимость доставки (вес ниже 0.35 кг.)');
 define('MODULE_SHIPPING_NEWPOST_COST_2_DESC' , 'Стоимость доставки данным способом.');
-define('MODULE_SHIPPING_NEWPOST_API_LOGIN_TITLE' , 'Ваш логин');
-define('MODULE_SHIPPING_NEWPOST_API_LOGIN_DESC' , 'Ваш логин');
+define('MODULE_SHIPPING_NEWPOST_API_LOGIN_TITLE' , 'API Ключ');
+define('MODULE_SHIPPING_NEWPOST_API_LOGIN_DESC' , 'Ваш API Ключ');
 define('MODULE_SHIPPING_NEWPOST_API_PASSWORD_TITLE' , 'API Пароль');
 define('MODULE_SHIPPING_NEWPOST_API_PASSWORD_DESC' , 'Ваш API Пароль');
-define('MODULE_SHIPPING_NEWPOST_ZIP_TITLE' , 'Почтовый индекс отправителя');
-define('MODULE_SHIPPING_NEWPOST_ZIP_DESC' , 'Укажите почтовый индекс отправителя.');
+define('MODULE_SHIPPING_NEWPOST_CITY_TITLE' , 'Город отправителя');
+define('MODULE_SHIPPING_NEWPOST_CITY_DESC' , 'Укажите город отправителя.');
+define('MODULE_SHIPPING_NEWPOST_STATE_TITLE' , 'Регион отправителя');
+define('MODULE_SHIPPING_NEWPOST_STATE_DESC' , 'Укажите регион отправителя.');
 define('MODULE_SHIPPING_NEWPOST_TAX_CLASS_TITLE' , 'Налог');
 define('MODULE_SHIPPING_NEWPOST_TAX_CLASS_DESC' , 'Использовать налог.');
 define('MODULE_SHIPPING_NEWPOST_ZONE_TITLE' , 'Зона');
