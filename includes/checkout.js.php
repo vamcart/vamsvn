@@ -88,7 +88,8 @@ $('#box')
 	function(){
 		$('#payment_options').load(
 			url +' #payment_options > *', {
-				'shipping': $('input[name=shipping]:checked').val()
+				'shipping': $('input[name=shipping]:checked').val(),
+				'pvz': $('select[name=pvz]').val()
 			}
 		)
 	}
@@ -99,7 +100,8 @@ $('#box')
 		$('#shipping_options').load(
 			url +' #shipping_options > *', {
 				'shipping': $('input[name=shipping]:checked').val(),
-				'payment': $('input[name=payment]:checked').val()
+				'payment': $('input[name=payment]:checked').val(),
+				'pvz': $('select[name=pvz]').val()
 			}, 
 			function(){
 				$('#shipping_modules_box').trigger('refresh');
