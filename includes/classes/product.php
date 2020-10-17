@@ -143,15 +143,14 @@ class product {
 	function getReviewsImages($reviews_id = 0, $customer_id = 0) {
 
 	  if ($reviews_id > 0) {
-
 		$reviews_images_query = vamDBquery("select ri.*
 						 from  ".TABLE_REVIEWS_IMAGES." ri
 						 where 
 						 ri.reviews_id = ".(int)$reviews_id."");
-		if (vam_db_num_rows($reviews_images_query)) {
+		if (vam_db_num_rows($reviews_images_query,true)) {
 			$row = 0;
 			$data_reviews_images = array ();
-			while ($reviews_images = vam_db_fetch_array($reviews_images_query)) {
+			while ($reviews_images = vam_db_fetch_array($reviews_images_query,true)) {
 				$row ++;
 
 				$data_reviews_images[] = array (
