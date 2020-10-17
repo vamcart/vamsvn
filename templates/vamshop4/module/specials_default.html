@@ -1,8 +1,14 @@
-{config_load file="$language/lang_$language.conf" section="specials"} <div class="owl-carousel owl-theme">
+{config_load file="$language/lang_$language.conf" section="specials"}
+<div class="module">
+<h3><a href="{$SPECIALS_LINK}">{#heading_text#}</a></h3>
+<div class="moduleContent">
+<div class="owl-carousel owl-theme">
 {foreach name=aussen item=module_data from=$module_content}
 {include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/product-card/product-card-simple.html"}
 {/foreach}
 </div>
-<div class="text-left pt-2">
+</div>
+<div class="text-left">
 <a class="btn btn-rounded" href="{$SPECIALS_LINK}"><span>{$smarty.const.TEXT_ALL_SPECIAL_PRODUCTS}</span></a>
 </div>
+</div> 
