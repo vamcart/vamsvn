@@ -115,7 +115,7 @@ video {
 }
 
 .wsmain.wsfixed .wsmenu {
-  max-width: 1332px;
+  max-width: 1352px;
   float: none;
   margin: 0 auto;
   /*animation: smoothScroll .5s forwards;*/
@@ -148,7 +148,7 @@ video {
   width: 100%;
   margin: 0 auto;
   padding: 0 0;
-  max-width: 1332px;
+  max-width: 1352px;
 }
 
 .wsmenu {
