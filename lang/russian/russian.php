@@ -729,7 +729,7 @@ define('TITLE_SPECIALS_DEFAULT', 'Скидки');
 define('TITLE_MANUFACTURERS_DEFAULT', 'Бренды');
 define('TITLE_BEST_SELLERS_DEFAULT', 'Популярные');
 define('TITLE_NEW_PRODUCTS_DEFAULT', 'Новинки');
-define('TITLE_FEATURED_DEFAULT', 'Рекомендуемые');
+define('TITLE_FEATURED_DEFAULT', 'Рекомендуем');
 define('TITLE_FEATURED_DEFAULT_SHORT', 'Рекомендуемые');
 define('TITLE_SPECIALS_DEFAULT', 'Скидки');
 
