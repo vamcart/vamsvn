@@ -59,7 +59,7 @@
     <span class="attribute-icon"></span>
     <div class="card-text method-title py-1">{if $item_data.IMAGE}<img class="img-fluid rounded-circle border border-light" src="{$image_dir}thumbs/{$item_data.IMAGE}" border="0" alt="{$item_data.TEXT}" />{/if}</div>
     {if $item_data.TEXT}<div class="card-text card-title py-1">{$item_data.TEXT}</div>{/if}
-    {if $item_data.PRICE_PLAIN != 0}<div class="h4 font-weight-bolder"><span class="badge badge-secondary font-weight-bold">{$item_data.PREFIX}{$item_data.PRICE}</span></div>{/if}
+    {if $item_data.PRICE_PLAIN != 0}<div class="small"><span class="text-muted">{$item_data.PREFIX}{$item_data.PRICE}</span></div>{/if}
     {if $item_data.SHORT_DESCRIPTION}<div class="card-text py-1">{$item_data.SHORT_DESCRIPTION}</div>{/if}
     {if $item_data.DESCRIPTION}<div class="card-text py-1">{$item_data.DESCRIPTION}</div>{/if}
     {if $item_data.LINK}<div class="card-text py-1"><a href="http://{$item_data.LINK}" target="_blank"><img src="{$tpl_path}img/info.gif" border="0" alt="{$item_data.TEXT}" /></a></div>{/if}
