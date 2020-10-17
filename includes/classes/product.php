@@ -1083,9 +1083,10 @@ $products_special = 100-($vamPrice->CheckSpecial($array['products_id'])*100/$vam
 }
 
 		$star_rating = '';
-		for($i=0;$i<number_format($this->getReviewsRating($array['products_id']));$i++)	{
-		$star_rating .= '<span class="rating"><i class="fa fa-star"></i></span> ';
-		}
+		//for($i=0;$i<number_format($this->getReviewsRating($array['products_id']));$i++)	{
+		//$star_rating .= '<span class="rating"><i class="fa fa-star"></i></span> ';
+		//}
+		$star_rating = '<span class="rating"><i class="far fa-star"></i></span> ';
 
 		if(file_exists(DIR_FS_CATALOG.$this->productImage($array['products_image'], $image)) && is_file(DIR_FS_CATALOG.$this->productImage($array['products_image'], $image))) {
 			list($width_thumbnail, $height_thumbnail, $type_thumbnail, $attr_thumbnail) = getimagesize(DIR_FS_CATALOG.$this->productImage($array['products_image'], $image));
