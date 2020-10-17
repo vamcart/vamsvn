@@ -8,11 +8,61 @@
 </div>
 
 {$MODULE_tags}
+
 {$MODULE_sitemap}
-{$MODULE_new_products}
-{$MODULE_specials_default}
-{$MODULE_featured_products}
-{$MODULE_best_sellers_default}
+
+<div class="mainpage-tabs pb-3">
+
+<ul class="nav nav-tabs pb-3">
+{if {$MODULE_new_products}}
+  <li class="nav-item">
+    <span class="nav-link active" id="new-products-tab" data-toggle="tab" data-target="#new-products">{$smarty.const.TITLE_NEW_PRODUCTS_DEFAULT}</span>
+  </li>
+{/if}  
+{if {$MODULE_specials_default}}
+  <li class="nav-item">
+    <span class="nav-link" id="specials-tab" data-toggle="tab" data-target="#specials">{$smarty.const.TITLE_SPECIALS_DEFAULT}</span>
+  </li>
+{/if}  
+{if {$MODULE_featured_products}}
+  <li class="nav-item">
+    <span class="nav-link" id="featured-tab" data-toggle="tab" data-target="#featured">{$smarty.const.TITLE_FEATURED_DEFAULT}</span>
+  </li>
+{/if}  
+{if {$MODULE_best_sellers_default}}
+  <li class="nav-item">
+    <span class="nav-link" id="best-sellers-tab" data-toggle="tab" data-target="#best-sellers">{$smarty.const.TITLE_BEST_SELLERS_DEFAULT}</span>
+  </li>
+{/if}  
+</ul>
+
+<div class="tab-content" id="myTabContent">
+
+{if {$MODULE_new_products}}
+  <div class="tab-pane fade show active" id="new-products" role="tabpanel" aria-labelledby="new-products-tab">
+  {$MODULE_new_products}
+  </div>
+{/if}  
+{if {$MODULE_specials_default}}
+  <div class="tab-pane fade" id="specials" role="tabpanel" aria-labelledby="specials-tab">
+  {$MODULE_specials_default}
+  </div>
+{/if}  
+{if {$MODULE_featured_products}}
+  <div class="tab-pane fade" id="featured" role="tabpanel" aria-labelledby="featured-tab">
+  {$MODULE_featured_products}
+  </div>
+{/if}  
+{if {$MODULE_best_sellers_default}}
+  <div class="tab-pane fade" id="best-sellers" role="tabpanel" aria-labelledby="best-sellers-tab">
+  {$MODULE_best_sellers_default}
+  </div>
+{/if}  
+
+</div>
+
+</div>
+
 {$MODULE_manufacturers_default}
 
 <div class="mainpage-tabs pb-3">
