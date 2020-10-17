@@ -1,7 +1,7 @@
 <!-- Product Card Details -->
 	<div class="card card-product h-100">
       <div class="card-body">
-		<div class="img-wrap"><a href="{$module_data.PRODUCTS_LINK}" title="{$module_data.PRODUCTS_NAME}"><img {if $smarty.const.ENABLE_LAZY_LOAD == 'true'}class="lazy" src="{$smarty.const.DIR_WS_IMAGES}pixel_trans.gif" data-src="{$module_data.PRODUCTS_IMAGE}"{else}src="{$module_data.PRODUCTS_IMAGE}"{/if} {if {$module_data.PRODUCTS_IMAGE_WIDTH} > 0} width="{$module_data.PRODUCTS_IMAGE_WIDTH}"{/if} {if {$module_data.PRODUCTS_IMAGE_HEIGHT} > 0} height="{$module_data.PRODUCTS_IMAGE_HEIGHT}"{/if} alt="{$module_data.PRODUCTS_NAME}"></a></div>
+		<div class="img-wrap"><a href="{$module_data.PRODUCTS_LINK}" title="{$module_data.PRODUCTS_NAME}"><img {if $smarty.const.ENABLE_LAZY_LOAD == 'true'}class="lazy img-fluid" src="{$smarty.const.DIR_WS_IMAGES}pixel_trans.gif" data-src="{$module_data.PRODUCTS_IMAGE}"{else}src="{$module_data.PRODUCTS_IMAGE}"{/if} {if {$module_data.PRODUCTS_IMAGE_WIDTH} > 0} width="{$module_data.PRODUCTS_IMAGE_WIDTH}"{/if} {if {$module_data.PRODUCTS_IMAGE_HEIGHT} > 0} height="{$module_data.PRODUCTS_IMAGE_HEIGHT}"{/if} alt="{$module_data.PRODUCTS_NAME}"></a></div>
 		<div class="info-wrap text-center">
 			<div class="title"><a href="{$module_data.PRODUCTS_LINK}" title="{$module_data.PRODUCTS_NAME}">{$module_data.PRODUCTS_NAME}</a></div>
 			<p class="desc">{$module_data.PRODUCTS_SHORT_DESCRIPTION|vam_truncate:$smarty.const.MAX_DISPLAY_SHORT_DESCRIPTION:"...":true}</p>

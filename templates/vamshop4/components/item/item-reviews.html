@@ -24,7 +24,7 @@
 	<div class="card-body">
 	{if {$reviews_images.IMAGE} != ''}
 	<div class="img-wrap">
-	<a class="lightbox" href="{$smarty.const.DIR_WS_CATALOG}{$smarty.const.DIR_WS_IMAGES}reviews/{$reviews_images.IMAGE}" title="{$PRODUCTS_NAME}"><img {if $smarty.const.ENABLE_LAZY_LOAD == 'true'}class="lazy" src="{$smarty.const.DIR_WS_IMAGES}pixel_trans.gif" data-src="{$smarty.const.DIR_WS_CATALOG}{$smarty.const.DIR_WS_IMAGES}reviews/{$reviews_images.IMAGE}"{else}src="{$reviews_images.IMAGE}"{/if} height="150" alt="{$PRODUCTS_NAME}"></a>
+	<a class="lightbox" href="{$smarty.const.DIR_WS_CATALOG}{$smarty.const.DIR_WS_IMAGES}reviews/{$reviews_images.IMAGE}" title="{$PRODUCTS_NAME}"><img {if $smarty.const.ENABLE_LAZY_LOAD == 'true'}class="lazy img-fluid" src="{$smarty.const.DIR_WS_IMAGES}pixel_trans.gif" data-src="{$smarty.const.DIR_WS_CATALOG}{$smarty.const.DIR_WS_IMAGES}reviews/{$reviews_images.IMAGE}"{else}src="{$reviews_images.IMAGE}"{/if} height="150" alt="{$PRODUCTS_NAME}"></a>
 	</div>
 	{/if}
 	</div>
