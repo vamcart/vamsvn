@@ -731,13 +731,19 @@
                   WHERE m.manufacturers_id IN (" . implode(',', $f_array[$specification['specifications_id']]) . ")
                   ORDER BY m.manufacturers_name";
         } else {
+        	$test = implode(" ", $f_array[$specification['specifications_id']]);
+        	$test = explode(" ", $test);
+        	$test = array_filter($test);
+        	$test = implode(',', $test);
+        	//echo var_dump($test);
+        	//echo var_dump($f_array[$specification['specifications_id']]);
           $sql = "SELECT sf.specification_filters_id,
                          sf.filter_sort_order,
                          sfd.filter
                   FROM " . TABLE_SPECIFICATIONS_FILTERS . " sf
                     INNER JOIN " . TABLE_SPECIFICATIONS_FILTERS_DESCRIPTION . " sfd ON (sfd.specification_filters_id = sf.specification_filters_id AND sfd.language_id = " . (int)$_SESSION['languages_id'] . ")
                   WHERE sf.specifications_id = " . (int)$specification['specifications_id'] . "
-                    AND sf.specification_filters_id IN (" . implode(',', $f_array[$specification['specifications_id']]) . ")
+                    AND sf.specification_filters_id IN (" . $test . ")
                   ORDER BY sf.filter_sort_order, sfd.filter";
         }
 //error_log(__LINE__ . ': ' . ' $sql=' . var_export($sql, true) . "\n", 3, __FILE__.'.log');
