@@ -15,6 +15,9 @@
 					<div class="label-rating"><span class="text-muted"><i class="far fa-comments"></i> {$smarty.const.TEXT_TOTAL_REVIEWS}: {$module_data.REVIEWS_TOTAL}</span></div>
 				</div>
 				{/if}
+				{if $smarty.const.ENABLE_WISHLIST == 'true'}
+					<span class="wishlist-button text-muted">{$module_data.PRODUCTS_BUTTON_WISHLIST}</span>
+				{/if}
 				{if {$module_data.PRODUCTS_SHORT_DESCRIPTION}}<div class="small">{$module_data.PRODUCTS_SHORT_DESCRIPTION|strip_tags|vam_truncate:{$smarty.const.MAX_DISPLAY_SHORT_DESCRIPTION}:"...":true}</div>{/if}
 				{assign var=options value=$module_data.attrib}
 				<div class="col-6 p-0">
