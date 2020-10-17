@@ -76,13 +76,13 @@ $(".owl-carousel").owlCarousel({
         },
         992:{
             items:4,
-            margin: 30,
-            stagePadding: 30
+            margin: 10,
+            stagePadding: 10
         },
         1200:{
             items:4,
-            margin: 30,
-            stagePadding: 30
+            margin: 10,
+            stagePadding: 10
         }
     }
 })
