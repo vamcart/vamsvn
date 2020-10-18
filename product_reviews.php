@@ -49,6 +49,22 @@ require (DIR_WS_INCLUDES.'header.php');
 
 $vamTemplate->assign('PRODUCTS_NAME', $product_info['products_name']);
 
+$vamTemplate->assign('PRODUCTS_REVIEWS_COUNT', $product->getReviewsCount());
+$vamTemplate->assign('PRODUCTS_REVIEWS_RATING', $product->getReviewsRating());
+
+$rating_count = 0;
+
+if ($product->getReviewsCount() > 0) {
+
+$star_rating = '';
+for($i=0;$i<number_format($product->getReviewsRating());$i++)	{
+$star_rating .= '<span class="rating"><i class="fa fa-star"></i></span> ';
+}
+
+$vamTemplate->assign('PRODUCTS_STAR_RATING', $star_rating);
+
+}
+
 $data_reviews = array ();
 $module_content = array();
 $reviews_query = vam_db_query("select r.reviews_id, r.products_id, rd.reviews_text, rd.reviews_answer, r.reviews_rating, r.date_added, p.*, pd.*, r.customers_name, r.customers_id from ".TABLE_REVIEWS." r, ".TABLE_REVIEWS_DESCRIPTION." rd, ".TABLE_PRODUCTS." p, ".TABLE_PRODUCTS_DESCRIPTION." pd where r.products_id = '".(int) $_GET['products_id']."' and p.products_status = '1' and p.products_id = r.products_id and r.reviews_id = rd.reviews_id and p.products_id = pd.products_id and pd.language_id = '".(int) $_SESSION['languages_id']."' and rd.languages_id = '".(int) $_SESSION['languages_id']."' order by r.reviews_id DESC");
