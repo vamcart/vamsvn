@@ -15,7 +15,7 @@ class Lingua_Stem_Ru
     var $DERIVATIONAL = '/[^аеиоуыэюя][аеиоуыэюя]+[^аеиоуыэюя]+[аеиоуыэюя].*(?<=о)сть?$/u';
 
 	function __construct() {
-		mb_internal_encoding("UTF-8");
+		//mb_internal_encoding("UTF-8");
 	}
 
     function s(&$s, $re, $to)
@@ -32,7 +32,7 @@ class Lingua_Stem_Ru
 
     function stem_word($word)
     {
-        $word = mb_strtolower($word);
+        $word = strtolower($word);
 
         $word = preg_replace("/ё/u","е",$word);
         # Check against cache of stemmed words
