@@ -173,5 +173,6 @@ define('TABLE_PRODUCTS_PINS', 'products_pins');
   define('TABLE_CUSTOMERS_WISHLIST_ATTRIBUTES', 'customers_wishlist_attributes');
 
   define('TABLE_FAQ1', 'faq1');
+  define('TABLE_BLOCK', 'block');
       
 ?>

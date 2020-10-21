@@ -181,4 +181,6 @@ define('FILENAME_WISHLIST_ACTIONS', 'wishlist_actions.php');
 
 define('FILENAME_FAQ1', 'faq1.php');
 
+define('FILENAME_BLOCK', 'block.php');
+
 ?>

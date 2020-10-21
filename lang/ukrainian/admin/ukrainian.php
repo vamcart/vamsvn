@@ -313,6 +313,7 @@ define('TEXT_DISPLAY_NUMBER_OF_FEATURED', 'Показано <b>%d</b> - <b>%d</b
 define('TEXT_DISPLAY_NUMBER_OF_FAQS', 'Показано <b>%d</b> - <b>%d</b> (всего <b>%d</b> вопросов и ответов)');
 define('TEXT_DISPLAY_NUMBER_OF_FAQ1S', 'Показано <b>%d</b> - <b>%d</b> (всего <b>%d</b> вопросов посетителей)');
 define('TEXT_DISPLAY_NUMBER_OF_NEWS', 'Показано <b>%d</b> - <b>%d</b> (всего <b>%d</b> новостей)');
+define('TEXT_DISPLAY_NUMBER_OF_BLOCKS', 'Показано <b>%d</b> - <b>%d</b> (всего <b>%d</b> страниц)');
 define('TEXT_DISPLAY_NUMBER_OF_ITEMS', 'Показано <b>%d</b> - <b>%d</b> (всего <b>%d</b> записей)');
 define('TEXT_DISPLAY_NUMBER_OF_TAGS', 'Показано <b>%d</b> - <b>%d</b> (всего <b>%d</b> тэгов)');
 
@@ -416,6 +417,7 @@ define('BOX_EASY_POPULATE','Excel импорт/экспорт');
 define('BOX_CATALOG_QUICK_UPDATES', 'Изменение цен');
 
 define('BOX_CATALOG_LATEST_NEWS', 'Новости');
+define('BOX_CATALOG_BLOCK', 'Закрыть от индексации');
 define('IMAGE_NEW_NEWS_ITEM', 'Добавить новость');
 
 define('TABLE_HEADING_CUSTOMERS', 'Последние покупатели');

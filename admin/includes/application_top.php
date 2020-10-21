@@ -707,5 +707,8 @@ define('FILENAME_PIN_LOADER', 'pin_loader.php');
 
   define('FILENAME_ACCOUNT', 'account.php');
   define('FILENAME_ACCOUNT_HISTORY', 'account_history.php');
-      
+
+  define('FILENAME_BLOCK', 'block.php');
+  define('TABLE_BLOCK', 'block');
+        
 ?>
