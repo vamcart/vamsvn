@@ -20,12 +20,12 @@
 define('MODULE_SHIPPING_BOXBERRY_TEXT_TITLE', 'Boxberry');
 define('MODULE_SHIPPING_BOXBERRY_TEXT_DESCRIPTION', 'Boxberry');
 
-define('MODULE_SHIPPING_BOXBERRY_TEXT_SELECT_ADDRESS','Выбрать пункт выдачи на карте');
+define('MODULE_SHIPPING_BOXBERRY_TEXT_SELECT_ADDRESS','Выбрать ПВЗ');
 define('MODULE_SHIPPING_BOXBERRY_TEXT_ADDRESS_HELP','(откроется во всплывающем окне)');
-define('MODULE_SHIPPING_BOXBERRY_TEXT_ADDRESS','Ваш заказ доставят по адресу: ');
+define('MODULE_SHIPPING_BOXBERRY_TEXT_ADDRESS','На указанный адрес доставки');
 define('MODULE_SHIPPING_BOXBERRY_TEXT_ANOTHER_ADDRESS','Выбрать другой адрес');
 
-define('MODULE_SHIPPING_BOXBERRY_TEXT_WAY', 'Заказ будет доставлен в выбранный пункт выдачи');
+define('MODULE_SHIPPING_BOXBERRY_TEXT_WAY', 'Заказ будет доставлен на указанный адрес.');
 
 define('MODULE_SHIPPING_BOXBERRY_STATUS_TITLE' , 'Разрешить модуль boxberry');
 define('MODULE_SHIPPING_BOXBERRY_STATUS_DESC' , 'Вы хотите разрешить модуль boxberry?');
