@@ -77,10 +77,16 @@
 	    $senderCity = json_decode($data, $assoc=true);
 	    $senderCityId = $senderCity["geonames"][0]["id"];
 	    
+	    if ($senderCity["geonames"][0]["postCodeArray"][0] != '') {
+	    	$receiverZip = $senderCity["geonames"][0]["postCodeArray"][0];
+	    } else {
+	    	$receiverZip = $order->delivery['postcode'];
+	    }
+	    
 		$receiverCityId = $senderCityId;
 		
 	    //запрос расчета стоимости отправления 
-	    $ret = $this->sdekpvz_api_calc($aut_login, $auth_Password, $date_Execute, $sender_postcode, $order->delivery['postcode'], $total_weight, $receiverCityId);
+	    $ret = $this->sdekpvz_api_calc($aut_login, $auth_Password, $date_Execute, $sender_postcode, $receiverZip, $total_weight, $receiverCityId);
 		//print_r	($ret);	
 	    $shipping_cost = 0;
 	         
