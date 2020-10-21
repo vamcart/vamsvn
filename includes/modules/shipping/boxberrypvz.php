@@ -18,24 +18,24 @@
    ---------------------------------------------------------------------------------------*/
 
 
-  class sdekpvz {
+  class boxberrypvz {
     var $code, $title, $description, $icon, $enabled;
 
 
     function __construct() {
       global $order;
 
-      $this->code = 'sdekpvz';
-      $this->title = MODULE_SHIPPING_SDEKPVZ_TEXT_TITLE;
-      $this->description = MODULE_SHIPPING_SDEKPVZ_TEXT_DESCRIPTION;
-      $this->sort_order = MODULE_SHIPPING_SDEKPVZ_SORT_ORDER;
-      $this->icon = DIR_WS_ICONS . 'cdek.png';
-      $this->tax_class = MODULE_SHIPPING_SDEKPVZ_TAX_CLASS;
-      $this->enabled = ((MODULE_SHIPPING_SDEKPVZ_STATUS == 'True') ? true : false);
+      $this->code = 'boxberrypvz';
+      $this->title = MODULE_SHIPPING_BOXBERRYPVZ_TEXT_TITLE;
+      $this->description = MODULE_SHIPPING_BOXBERRYPVZ_TEXT_DESCRIPTION;
+      $this->sort_order = MODULE_SHIPPING_BOXBERRYPVZ_SORT_ORDER;
+      $this->icon = DIR_WS_ICONS . 'boxberry.png';
+      $this->tax_class = MODULE_SHIPPING_BOXBERRYPVZ_TAX_CLASS;
+      $this->enabled = ((MODULE_SHIPPING_BOXBERRYPVZ_STATUS == 'True') ? true : false);
 
-      if ( ($this->enabled == true) && ((int)MODULE_SHIPPING_SDEKPVZ_ZONE > 0) ) {
+      if ( ($this->enabled == true) && ((int)MODULE_SHIPPING_BOXBERRYPVZ_ZONE > 0) ) {
         $check_flag = false;
-        $check_query = vam_db_query("select zone_id from " . TABLE_ZONES_TO_GEO_ZONES . " where geo_zone_id = '" . MODULE_SHIPPING_SDEKPVZ_ZONE . "' and zone_country_id = '" . $order->delivery['country']['id'] . "' order by zone_id");
+        $check_query = vam_db_query("select zone_id from " . TABLE_ZONES_TO_GEO_ZONES . " where geo_zone_id = '" . MODULE_SHIPPING_BOXBERRYPVZ_ZONE . "' and zone_country_id = '" . $order->delivery['country']['id'] . "' order by zone_id");
         while ($check = vam_db_fetch_array($check_query)) {
           if ($check['zone_id'] < 1) {
             $check_flag = true;
@@ -56,10 +56,8 @@
     function quote($method = '') {
       global $order, $shipping_weight;
         
-		$aut_login = MODULE_SHIPPING_SDEKPVZ_API_LOGIN;
-		$auth_Password = MODULE_SHIPPING_SDEKPVZ_API_PASSWORD;
+		$aut_login = MODULE_SHIPPING_BOXBERRYPVZ_API_LOGIN;
 		$date_Execute = date('Y-m-d');			
-		$sender_postcode = MODULE_SHIPPING_SDEKPVZ_ZIP;
 		$total_weight = $shipping_weight;
 		
 		// узнаем id города
@@ -87,7 +85,7 @@ if ($order->delivery['city'] != '') {
 		$receiverCityId = $senderCityId;
 		
 	    //запрос расчета стоимости отправления 
-	    $ret = $this->sdekpvz_api_calc($aut_login, $auth_Password, $date_Execute, $sender_postcode, $receiverZip, $total_weight, $receiverCityId);
+	    $ret = $this->boxberrypvz_api_calc($aut_login, $auth_Password, $date_Execute, $sender_postcode, $receiverZip, $total_weight, $receiverCityId);
 		//print_r	($ret);	
 		
 }
@@ -103,16 +101,16 @@ if ($order->delivery['city'] != '') {
 		}
 
 		if ($shipping_weight >= $min_ves) {			
-		$shipping_cost = $shipping_cost + MODULE_SHIPPING_SDEKPVZ_COST;
+		$shipping_cost = $shipping_cost + MODULE_SHIPPING_BOXBERRYPVZ_COST;
 		} else {
-        $shipping_cost = $shipping_cost + MODULE_SHIPPING_SDEKPVZ_COST_2; 
+        $shipping_cost = $shipping_cost + MODULE_SHIPPING_BOXBERRYPVZ_COST_2; 
         }
 						
 		// Расчет скидки
 		
-		$sum_akcii = MODULE_SHIPPING_SDEK_MIN_SUM; //сумма от которой начинается скидка
-		$skidka = MODULE_SHIPPING_SDEK_PROCENT; // скидка на доставку
-		$min_sum = MODULE_SHIPPING_SDEK_MIN_SUM_ORDER; // сумма от которой действует доставка
+		$sum_akcii = MODULE_SHIPPING_BOXBERRYPVZ_MIN_SUM; //сумма от которой начинается скидка
+		$skidka = MODULE_SHIPPING_BOXBERRYPVZ_PROCENT; // скидка на доставку
+		$min_sum = MODULE_SHIPPING_BOXBERRYPVZ_MIN_SUM_ORDER; // сумма от которой действует доставка
 		$min_dozakaz = $sum_akcii - $_SESSION['cart']->show_total();
 
 if ($order->delivery['city'] != '') {
@@ -134,7 +132,7 @@ if ($order->delivery['city'] != '') {
 
         // запрос вывода списка пвз
 if ($order->delivery['city'] != '') {
-		$ret_pvz = $this->sdekpvz_api_pvz($receiverCityId);
+		$ret_pvz = $this->boxberrypvz_api_pvz($receiverCityId);
 }		
 		
       //echo var_dump($ret_pvz);		
@@ -180,16 +178,16 @@ if ($order->delivery['city'] != '') {
 		
 if ($order->delivery['city'] != '') {
         // список пвз, выпадающее меню
-        $pvz = vam_draw_pull_down_menu('pvz', $name_pvz, $_POST['pvz'], 'id="pvz_sdek" class="form-control"');
+        $pvz = vam_draw_pull_down_menu('pvz', $name_pvz, $_POST['pvz'], 'id="pvz_boxberry" class="form-control"');
 }
 		
 		if($_POST['pvz'] != '') $pvz_title = ', ' . html_entity_decode($_POST['pvz']) . '';		
 
         $this->quotes = array('id' => $this->code,
-                            'module' => MODULE_SHIPPING_SDEKPVZ_TEXT_TITLE,
-                            'description' => MODULE_SHIPPING_SDEKPVZ_JS,
+                            'module' => MODULE_SHIPPING_BOXBERRYPVZ_TEXT_TITLE,
+                            'description' => MODULE_SHIPPING_BOXBERRYPVZ_JS,
                             'methods' => array(array('id' => $this->code,
-                                                     'title' => MODULE_SHIPPING_SDEKPVZ_TEXT_TITLE_2 . html_entity_decode($pvz_title) . ' ' . $min_vremya . ($max_vremya > 0 ? '-'.$max_vremya.vam_format_by_count($max_vremya, ' день', ' дня', ' дней'):null) . '' . $skidka_text,
+                                                     'title' => MODULE_SHIPPING_BOXBERRYPVZ_TEXT_TITLE_2 . html_entity_decode($pvz_title) . ' ' . $min_vremya . ($max_vremya > 0 ? '-'.$max_vremya.vam_format_by_count($max_vremya, ' день', ' дня', ' дней'):null) . '' . $skidka_text,
                                                      'cost' => $shipping_cost)));
 													 				
 				
@@ -208,7 +206,7 @@ if ($order->delivery['city'] != '') {
   
      if ($receiverCityId == '') $this->quotes['error'] = 'До пункта выдачи. Возможно нужно правильно ввести город, чтобы был расчет стоимости.';
   
-      // Если символов в индексе меньше 6, или не выбран регион, или стоимость доставки меньше указаной в переменной MODULE_SHIPPING_SDEKPVZ_COST, то:
+      // Если символов в индексе меньше 6, или не выбран регион, или стоимость доставки меньше указаной в переменной MODULE_SHIPPING_BOXBERRYPVZ_COST, то:
 	  
 	  if ((strlen($order->delivery['city']) == '')) {
 
@@ -217,7 +215,7 @@ if ($order->delivery['city'] != '') {
 	  } elseif ($_SESSION['cart']->show_total() < $min_sum) {
 	
 	  $this->quotes['error'] = 'До пункта выдачи. Действует при сумме товаров <b>от ' . $min_sum . ' руб.</b>';
-	  } elseif (isset($ret['error'][0]['code']) || $shipping_cost <= MODULE_SHIPPING_SDEKPVZ_COST) {
+	  } elseif (isset($ret['error'][0]['code']) || $shipping_cost <= MODULE_SHIPPING_BOXBERRYPVZ_COST) {
 		  
 	  $this->quotes['error'] = 'Пункты выдачи. Доставка в этом направлении не осуществляется (или попробуйте <b>ввести также индекс</b>)'; 
 	  } 
@@ -228,27 +226,25 @@ if ($order->delivery['city'] != '') {
 
     function check() {
       if (!isset($this->_check)) {
-        $check_query = vam_db_query("select configuration_value from " . TABLE_CONFIGURATION . " where configuration_key = 'MODULE_SHIPPING_SDEKPVZ_STATUS'");
+        $check_query = vam_db_query("select configuration_value from " . TABLE_CONFIGURATION . " where configuration_key = 'MODULE_SHIPPING_BOXBERRYPVZ_STATUS'");
         $this->_check = vam_db_num_rows($check_query);
       }
       return $this->_check;
     }
 
     function install() {
-      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value,  configuration_group_id, sort_order, set_function, date_added) values ('MODULE_SHIPPING_SDEKPVZ_STATUS', 'True', '6', '0', 'vam_cfg_select_option(array(\'True\', \'False\'), ', now())");
-      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value,  configuration_group_id, sort_order, date_added) values ('MODULE_SHIPPING_SDEKPVZ_ALLOWED', '', '6', '0', now())");
-      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value,  configuration_group_id, sort_order, date_added) values ('MODULE_SHIPPING_SDEKPVZ_COST', '150', '6', '0', now())");
-      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value,  configuration_group_id, sort_order, date_added) values ('MODULE_SHIPPING_SDEKPVZ_COST_2', '100', '6', '0', now())");
-	  vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value,  configuration_group_id, sort_order, date_added) values ('MODULE_SHIPPING_SDEKPVZ_API_LOGIN', 'E50Hrgz08VWXby8xNddk37fyqsFk6FhX', '6', '0', now())");
-      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value,  configuration_group_id, sort_order, date_added) values ('MODULE_SHIPPING_SDEKPVZ_API_PASSWORD', 'nbVwlkmtzZvbwhBIlLpHmHtGX7ANkavF', '6', '0', now())");
-      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value,  configuration_group_id, sort_order, date_added) values ('MODULE_SHIPPING_SDEKPVZ_ZIP', '127051', '6', '0', now())");
-      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value,  configuration_group_id, sort_order, use_function, set_function, date_added) values ('MODULE_SHIPPING_SDEKPVZ_TAX_CLASS', '0', '6', '0', 'vam_get_tax_class_title', 'vam_cfg_pull_down_tax_classes(', now())");
-      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value,  configuration_group_id, sort_order, use_function, set_function, date_added) values ('MODULE_SHIPPING_SDEKPVZ_ZONE', '0', '6', '0', 'vam_get_zone_class_title', 'vam_cfg_pull_down_zone_classes(', now())");
-      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value,  configuration_group_id, sort_order, date_added) values ('MODULE_SHIPPING_SDEKPVZ_SORT_ORDER', '0', '6', '0', now())");
+      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value,  configuration_group_id, sort_order, set_function, date_added) values ('MODULE_SHIPPING_BOXBERRYPVZ_STATUS', 'True', '6', '0', 'vam_cfg_select_option(array(\'True\', \'False\'), ', now())");
+      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value,  configuration_group_id, sort_order, date_added) values ('MODULE_SHIPPING_BOXBERRYPVZ_ALLOWED', '', '6', '0', now())");
+      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value,  configuration_group_id, sort_order, date_added) values ('MODULE_SHIPPING_BOXBERRYPVZ_COST', '150', '6', '0', now())");
+      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value,  configuration_group_id, sort_order, date_added) values ('MODULE_SHIPPING_BOXBERRYPVZ_COST_2', '100', '6', '0', now())");
+	  vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value,  configuration_group_id, sort_order, date_added) values ('MODULE_SHIPPING_BOXBERRYPVZ_API_LOGIN', 'd6f33e419c16131e5325cbd84d5d6000', '6', '0', now())");
+      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value,  configuration_group_id, sort_order, use_function, set_function, date_added) values ('MODULE_SHIPPING_BOXBERRYPVZ_TAX_CLASS', '0', '6', '0', 'vam_get_tax_class_title', 'vam_cfg_pull_down_tax_classes(', now())");
+      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value,  configuration_group_id, sort_order, use_function, set_function, date_added) values ('MODULE_SHIPPING_BOXBERRYPVZ_ZONE', '0', '6', '0', 'vam_get_zone_class_title', 'vam_cfg_pull_down_zone_classes(', now())");
+      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value,  configuration_group_id, sort_order, date_added) values ('MODULE_SHIPPING_BOXBERRYPVZ_SORT_ORDER', '0', '6', '0', now())");
 	  
-	  vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value,  configuration_group_id, sort_order, date_added) values ('MODULE_SHIPPING_SDEK_MIN_SUM', '', '6', '0', now())");
-	  vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value,  configuration_group_id, sort_order, date_added) values ('MODULE_SHIPPING_SDEK_PROCENT', '', '6', '0', now())");
-      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value,  configuration_group_id, sort_order, date_added) values ('MODULE_SHIPPING_SDEK_MIN_SUM_ORDER', '100', '6', '0', now())");
+	  vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value,  configuration_group_id, sort_order, date_added) values ('MODULE_SHIPPING_BOXBERRYPVZ_MIN_SUM', '', '6', '0', now())");
+	  vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value,  configuration_group_id, sort_order, date_added) values ('MODULE_SHIPPING_BOXBERRYPVZ_PROCENT', '', '6', '0', now())");
+      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value,  configuration_group_id, sort_order, date_added) values ('MODULE_SHIPPING_BOXBERRYPVZ_MIN_SUM_ORDER', '100', '6', '0', now())");
     }
 
     function remove() {
@@ -256,77 +252,8 @@ if ($order->delivery['city'] != '') {
     }
 
     function keys() {
-      return array('MODULE_SHIPPING_SDEKPVZ_STATUS', 'MODULE_SHIPPING_SDEKPVZ_COST', 'MODULE_SHIPPING_SDEKPVZ_COST_2', 'MODULE_SHIPPING_SDEKPVZ_API_LOGIN', 'MODULE_SHIPPING_SDEKPVZ_API_PASSWORD', 'MODULE_SHIPPING_SDEKPVZ_ZIP','MODULE_SHIPPING_SDEKPVZ_ALLOWED', 'MODULE_SHIPPING_SDEKPVZ_TAX_CLASS', 'MODULE_SHIPPING_SDEKPVZ_ZONE', 'MODULE_SHIPPING_SDEKPVZ_SORT_ORDER', 'MODULE_SHIPPING_SDEK_MIN_SUM', 'MODULE_SHIPPING_SDEK_PROCENT', 'MODULE_SHIPPING_SDEK_MIN_SUM_ORDER');
+      return array('MODULE_SHIPPING_BOXBERRYPVZ_STATUS', 'MODULE_SHIPPING_BOXBERRYPVZ_COST', 'MODULE_SHIPPING_BOXBERRYPVZ_COST_2', 'MODULE_SHIPPING_BOXBERRYPVZ_API_LOGIN', 'MODULE_SHIPPING_BOXBERRYPVZ_ALLOWED', 'MODULE_SHIPPING_BOXBERRYPVZ_TAX_CLASS', 'MODULE_SHIPPING_BOXBERRYPVZ_ZONE', 'MODULE_SHIPPING_BOXBERRYPVZ_SORT_ORDER', 'MODULE_SHIPPING_BOXBERRYPVZ_MIN_SUM', 'MODULE_SHIPPING_BOXBERRYPVZ_PROCENT', 'MODULE_SHIPPING_BOXBERRYPVZ_MIN_SUM_ORDER');
     }
-    
-private function _sdekpvz_api_communicate($request)
-{
-
-if ($_SESSION['cart']->show_total() > $min_sum) {
-	
-	
-    $curl = curl_init();
-    curl_setopt($curl, CURLOPT_URL, 'http://api.edostavka.ru/calculator/calculate_price_by_json.php');
-    curl_setopt($curl, CURLOPT_POST, true);
-    curl_setopt($curl, CURLOPT_POSTFIELDS, json_encode($request));
-    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-	curl_setopt($curl, CURLOPT_TIMEOUT, 5);
-	curl_setopt($curl, CURLOPT_CONNECTTIMEOUT, 5);
-	curl_setopt($curl, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
-    $data = curl_exec($curl);
-    
-    curl_close($curl);
-    if($data === false)
-    {
-	return '10000 server error';
-    }
-    
-    $js = json_decode($data, $assoc=true);
-    return $js;
-	
-	}
-}
-
-private function sdekpvz_api_calc($autlogin, $authPassword, $dateExecute, $senderPostcode, $receiverPostcode, $weight, $idCity)
-{	
-	    if ($authPassword != '') {
-        //аутентификация
-        $secure = md5($dateExecute . '&' . $authPassword);
-		
-    }
-    $request = array('version' => '1.0',
-					'authLogin' => $autlogin,
-					'secure' => $secure,
-					'dateExecute' => $dateExecute, 
-					'senderCityPostCode' => $senderPostcode,
-					'receiverCityPostCode' => $receiverPostcode,
-					'receiverCityId' => $idCity,
-					'tariffId' => '136',
-					'goods' => array(array('weight' => $weight,
-										   'volume' => '0.01' )));
-
-
-	
-	 //print_r($request);
-
-    $ret = $this->_sdekpvz_api_communicate($request);
-    
-    //echo var_dump($ret);
-	
-	return $ret;
-}   
-
- private function sdekpvz_api_pvz($cityId) {  
-	$ret_pvz = file_get_contents("https://integration.cdek.ru/pvzlist.php?cityid=" . $cityId);
-
-	// разбор xml
-    $p = xml_parser_create();
-    xml_parse_into_struct($p, $ret_pvz, $vals, $index);
-
-	//print_r($vals);
    
-    return $vals; 
- }
-    
   }
 ?>

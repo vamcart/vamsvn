@@ -17,38 +17,38 @@
    Released under the GNU General Public License 
    ---------------------------------------------------------------------------------------*/
 
-define('MODULE_SHIPPING_SDEKPVZ_TEXT_TITLE', 'СДЭК - Пункт выдачи заказов');
-define('MODULE_SHIPPING_SDEKPVZ_TEXT_DESCRIPTION', '');
-define('MODULE_SHIPPING_SDEKPVZ_JS', '
+define('MODULE_SHIPPING_BOXBERRYPVZ_TEXT_TITLE', 'BoxBerry - Пункт выдачи заказов');
+define('MODULE_SHIPPING_BOXBERRYPVZ_TEXT_DESCRIPTION', '');
+define('MODULE_SHIPPING_BOXBERRYPVZ_JS', '
 <script>
 $(function () {
-$("select#pvz_sdek").on("change", function() {
-    $("[name=shipping]").val(["sdekpvz_sdekpvz"]);
+$("select#pvz_boxberry").on("change", function() {
+    $("[name=shipping]").val(["boxberrypvz_boxberrypvz"]);
 });
 });
 </script>
 ');
-define('MODULE_SHIPPING_SDEKPVZ_TEXT_TITLE_2', 'ПВЗ');
-define('MODULE_SHIPPING_SDEKPVZ_STATUS_TITLE' , 'Разрешить модуль СДЭК');
-define('MODULE_SHIPPING_SDEKPVZ_STATUS_DESC' , 'Вы хотите разрешить модуль СДЭК?');
-define('MODULE_SHIPPING_SDEKPVZ_ALLOWED_TITLE' , 'Разрешённые страны');
-define('MODULE_SHIPPING_SDEKPVZ_ALLOWED_DESC' , 'Укажите коды стран, для которых будет доступен данный модуль (например RU,DE (оставьте поле пустым, если хотите что б модуль был доступен покупателям из любых стран))');
-define('MODULE_SHIPPING_SDEKPVZ_COST_TITLE' , 'Стоимость доставки (вес выше 0.35 кг.)');
-define('MODULE_SHIPPING_SDEKPVZ_COST_DESC' , 'Стоимость доставки данным способом.');
-define('MODULE_SHIPPING_SDEKPVZ_COST_2_TITLE' , 'Стоимость доставки (вес ниже 0.35 кг.)');
-define('MODULE_SHIPPING_SDEKPVZ_COST_2_DESC' , 'Стоимость доставки данным способом.');
-define('MODULE_SHIPPING_SDEKPVZ_API_LOGIN_TITLE' , 'Ваш логин');
-define('MODULE_SHIPPING_SDEKPVZ_API_LOGIN_DESC' , 'Ваш логин');
-define('MODULE_SHIPPING_SDEKPVZ_API_PASSWORD_TITLE' , 'API Пароль');
-define('MODULE_SHIPPING_SDEKPVZ_API_PASSWORD_DESC' , 'Ваш API Пароль');
-define('MODULE_SHIPPING_SDEKPVZ_ZIP_TITLE' , 'Почтовый индекс отправителя');
-define('MODULE_SHIPPING_SDEKPVZ_ZIP_DESC' , 'Укажите почтовый индекс отправителя.');
-define('MODULE_SHIPPING_SDEKPVZ_TAX_CLASS_TITLE' , 'Налог');
-define('MODULE_SHIPPING_SDEKPVZ_TAX_CLASS_DESC' , 'Использовать налог.');
-define('MODULE_SHIPPING_SDEKPVZ_ZONE_TITLE' , 'Зона');
-define('MODULE_SHIPPING_SDEKPVZ_ZONE_DESC' , 'Если выбрана зона, то данный модуль доставки будет виден только покупателям из выбранной зоны.');
-define('MODULE_SHIPPING_SDEKPVZ_SORT_ORDER_TITLE' , 'Порядок сортировки');
-define('MODULE_SHIPPING_SDEKPVZ_SORT_ORDER_DESC' , 'Порядок сортировки модуля.');
+define('MODULE_SHIPPING_BOXBERRYPVZ_TEXT_TITLE_2', 'ПВЗ');
+define('MODULE_SHIPPING_BOXBERRYPVZ_STATUS_TITLE' , 'Разрешить модуль BoxBerry');
+define('MODULE_SHIPPING_BOXBERRYPVZ_STATUS_DESC' , 'Вы хотите разрешить модуль BoxBerry?');
+define('MODULE_SHIPPING_BOXBERRYPVZ_ALLOWED_TITLE' , 'Разрешённые страны');
+define('MODULE_SHIPPING_BOXBERRYPVZ_ALLOWED_DESC' , 'Укажите коды стран, для которых будет доступен данный модуль (например RU,DE (оставьте поле пустым, если хотите что б модуль был доступен покупателям из любых стран))');
+define('MODULE_SHIPPING_BOXBERRYPVZ_COST_TITLE' , 'Стоимость доставки (вес выше 0.35 кг.)');
+define('MODULE_SHIPPING_BOXBERRYPVZ_COST_DESC' , 'Стоимость доставки данным способом.');
+define('MODULE_SHIPPING_BOXBERRYPVZ_COST_2_TITLE' , 'Стоимость доставки (вес ниже 0.35 кг.)');
+define('MODULE_SHIPPING_BOXBERRYPVZ_COST_2_DESC' , 'Стоимость доставки данным способом.');
+define('MODULE_SHIPPING_BOXBERRYPVZ_API_LOGIN_TITLE' , 'API Токен');
+define('MODULE_SHIPPING_BOXBERRYPVZ_API_LOGIN_DESC' , 'Укажите Ваш BoxBerry API Токен');
+define('MODULE_SHIPPING_BOXBERRYPVZ_API_PASSWORD_TITLE' , 'API Пароль');
+define('MODULE_SHIPPING_BOXBERRYPVZ_API_PASSWORD_DESC' , 'Ваш API Пароль');
+define('MODULE_SHIPPING_BOXBERRYPVZ_ZIP_TITLE' , 'Почтовый индекс отправителя');
+define('MODULE_SHIPPING_BOXBERRYPVZ_ZIP_DESC' , 'Укажите почтовый индекс отправителя.');
+define('MODULE_SHIPPING_BOXBERRYPVZ_TAX_CLASS_TITLE' , 'Налог');
+define('MODULE_SHIPPING_BOXBERRYPVZ_TAX_CLASS_DESC' , 'Использовать налог.');
+define('MODULE_SHIPPING_BOXBERRYPVZ_ZONE_TITLE' , 'Зона');
+define('MODULE_SHIPPING_BOXBERRYPVZ_ZONE_DESC' , 'Если выбрана зона, то данный модуль доставки будет виден только покупателям из выбранной зоны.');
+define('MODULE_SHIPPING_BOXBERRYPVZ_SORT_ORDER_TITLE' , 'Порядок сортировки');
+define('MODULE_SHIPPING_BOXBERRYPVZ_SORT_ORDER_DESC' , 'Порядок сортировки модуля.');
 
 define('MODULE_SHIPPING_SDEK_MIN_SUM_TITLE' , 'Мин. сумма от которой действует скидка');
 define('MODULE_SHIPPING_SDEK_PROCENT_TITLE' , 'Процент скидки');
