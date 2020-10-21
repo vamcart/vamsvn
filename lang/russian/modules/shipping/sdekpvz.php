@@ -22,7 +22,7 @@ define('MODULE_SHIPPING_SDEKPVZ_TEXT_DESCRIPTION', '');
 define('MODULE_SHIPPING_SDEKPVZ_JS', '
 <script>
 $(function () {
-$("select#pvz_sdek").on("select", function() {
+$("select#pvz_sdek").on("change", function() {
     $("[name=shipping]").val(["sdekpvz_sdekpvz"]);
 });
 });

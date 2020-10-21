@@ -22,7 +22,7 @@ define('MODULE_SHIPPING_NEWPOST_TEXT_DESCRIPTION', '');
 define('MODULE_SHIPPING_NEWPOST_JS', '
 <script>
 $(function () {
-$("select#pvz_newpost").on("select", function() {
+$("select#pvz_newpost").on("change", function() {
     $("[name=shipping]").val(["newpost_newpost"]);
 });
 });
