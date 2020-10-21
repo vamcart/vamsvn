@@ -66,6 +66,7 @@
 		if($order->delivery['city'] == "спб" || $order->delivery['city'] == "СПБ") $order->delivery['city'] = "Санкт-Петербург";
 	    if($order->delivery['city'] == "Ростов" || $order->delivery['city'] == "ростов" || $order->delivery['city'] == "Ростов на дону" || $order->delivery['city'] == "ростов на дону") $order->delivery['city'] = "ростов-на-дону";
 		
+if ($order->delivery['city'] != '') {
 
 	    $curl = curl_init();
 	    curl_setopt($curl, CURLOPT_URL, "http://api.cdek.ru/city/getListByTerm/json.php?q=".$order->delivery['city']);
@@ -88,6 +89,9 @@
 	    //запрос расчета стоимости отправления 
 	    $ret = $this->sdekpvz_api_calc($aut_login, $auth_Password, $date_Execute, $sender_postcode, $receiverZip, $total_weight, $receiverCityId);
 		//print_r	($ret);	
+		
+}
+		
 	    $shipping_cost = 0;
 	         
       // если вес больше указаного в переменой то: 
@@ -127,7 +131,9 @@
 		$max_vremya = $ret['result']['deliveryPeriodMax'];
 
         // запрос вывода списка пвз
+if ($order->delivery['city'] != '') {
 		$ret_pvz = $this->sdekpvz_api_pvz($receiverCityId);
+}		
 		
       //echo var_dump($ret_pvz);		
 		
