@@ -205,9 +205,9 @@ $name_pvz[] = array(
       vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value,  configuration_group_id, sort_order, use_function, set_function, date_added) values ('MODULE_SHIPPING_NEWPOST_ZONE', '0', '6', '0', 'vam_get_zone_class_title', 'vam_cfg_pull_down_zone_classes(', now())");
       vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value,  configuration_group_id, sort_order, date_added) values ('MODULE_SHIPPING_NEWPOST_SORT_ORDER', '0', '6', '0', now())");
 	  
-	  vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value,  configuration_group_id, sort_order, date_added) values ('MODULE_SHIPPING_SDEK_MIN_SUM', '', '6', '0', now())");
-	  vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value,  configuration_group_id, sort_order, date_added) values ('MODULE_SHIPPING_SDEK_PROCENT', '', '6', '0', now())");
-      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value,  configuration_group_id, sort_order, date_added) values ('MODULE_SHIPPING_SDEK_MIN_SUM_ORDER', '100', '6', '0', now())");
+	  vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value,  configuration_group_id, sort_order, date_added) values ('MODULE_SHIPPING_NEWPOST_MIN_SUM', '', '6', '0', now())");
+	  vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value,  configuration_group_id, sort_order, date_added) values ('MODULE_SHIPPING_NEWPOST_PROCENT', '', '6', '0', now())");
+      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value,  configuration_group_id, sort_order, date_added) values ('MODULE_SHIPPING_NEWPOST_MIN_SUM_ORDER', '100', '6', '0', now())");
     }
 
     function remove() {
@@ -215,7 +215,7 @@ $name_pvz[] = array(
     }
 
     function keys() {
-      return array('MODULE_SHIPPING_NEWPOST_STATUS', 'MODULE_SHIPPING_NEWPOST_COST', 'MODULE_SHIPPING_NEWPOST_COST_2', 'MODULE_SHIPPING_NEWPOST_API_LOGIN', 'MODULE_SHIPPING_NEWPOST_CITY','MODULE_SHIPPING_NEWPOST_STATE','MODULE_SHIPPING_NEWPOST_ALLOWED', 'MODULE_SHIPPING_NEWPOST_TAX_CLASS', 'MODULE_SHIPPING_NEWPOST_ZONE', 'MODULE_SHIPPING_NEWPOST_SORT_ORDER', 'MODULE_SHIPPING_SDEK_MIN_SUM', 'MODULE_SHIPPING_SDEK_PROCENT', 'MODULE_SHIPPING_SDEK_MIN_SUM_ORDER');
+      return array('MODULE_SHIPPING_NEWPOST_STATUS', 'MODULE_SHIPPING_NEWPOST_COST', 'MODULE_SHIPPING_NEWPOST_COST_2', 'MODULE_SHIPPING_NEWPOST_API_LOGIN', 'MODULE_SHIPPING_NEWPOST_CITY','MODULE_SHIPPING_NEWPOST_STATE','MODULE_SHIPPING_NEWPOST_ALLOWED', 'MODULE_SHIPPING_NEWPOST_TAX_CLASS', 'MODULE_SHIPPING_NEWPOST_ZONE', 'MODULE_SHIPPING_NEWPOST_SORT_ORDER', 'MODULE_SHIPPING_NEWPOST_MIN_SUM', 'MODULE_SHIPPING_NEWPOST_PROCENT', 'MODULE_SHIPPING_NEWPOST_MIN_SUM_ORDER');
     }
     
   }
