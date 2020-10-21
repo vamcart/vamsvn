@@ -147,7 +147,7 @@
 		// получение списка пвз, занесение в базу		
 		$value = 0; 
 	
-		if ($count_pvz < 1500) {  // чтобы вдруг какой нибудь весь огромный список всех городов не загрузился
+		if ($count_pvz < 10000) {  // чтобы вдруг какой нибудь весь огромный список всех городов не загрузился
 		foreach($ret_pvz as $key => $value) {
 		if($ret_pvz[$key]['attributes']['NAME'] != '') {
 		$name_pvz1 = $ret_pvz[$key]['attributes']['NAME'] . ' (' . $ret_pvz[$key]['attributes']['ADDRESS'] . ')';
