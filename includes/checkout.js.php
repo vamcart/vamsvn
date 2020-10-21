@@ -95,7 +95,7 @@ $('#box')
 	}
 )		
 
-.on('change', 'input[name=shipping],input[name=payment]', 
+.on('change', 'input[name=shipping],input[name=payment],select[name=pvz]', 
 	function(){
 		$('#shipping_options').load(
 			url +' #shipping_options > *', {

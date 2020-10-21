@@ -32,7 +32,13 @@ $(this).parent().addClass("selected");
 <p>
 {$module_data.info}
 </p>
-{/if}     
+{/if}        
+
+{if $module_data.description != ''}
+<p>
+{$module_data.description}
+</p>
+{/if}        
 
 {if $method_data.id == "pickpoint"}
 

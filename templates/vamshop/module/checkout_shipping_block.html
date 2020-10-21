@@ -34,6 +34,11 @@ $(this).parent().addClass("selected");
 </p>
 {/if}        
 
+{if $module_data.description != ''}
+<p>
+{$module_data.description}
+</p>
+{/if}        
 
 {if $method_data.id == "pickpoint"}
 

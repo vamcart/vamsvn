@@ -31,6 +31,11 @@ $(this).addClass("selected");
     <h5 class="card-title">{$module_data.icon}</h5>
     {if $method_data.title != ''}<p class="card-text">{$method_data.title}</p>{/if}
     {if $module_data.error != ''}<p class="card-text">{$module_data.error}</p>{/if}
+    {if $module_data.description != ''}
+    <p class="card-text">
+    {$module_data.description}
+    </p>
+    {/if}     
     {if $module_data.info != ''}
     <p class="card-text">
     {$module_data.info}
