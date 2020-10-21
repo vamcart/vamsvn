@@ -107,7 +107,8 @@ function showSelected(suggestion) {
   ]));
   }
   $("#city").val(join([
-    join([address.city_type, address.city], " "),
+    //join([address.city_type, address.city], " "),
+    join([address.city], " "),
     join([address.settlement_type, address.settlement], " ")
   ]));
   //$("#street_address").val(
