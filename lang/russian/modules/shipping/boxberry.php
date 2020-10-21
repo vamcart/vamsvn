@@ -17,7 +17,7 @@
    Released under the GNU General Public License 
    ---------------------------------------------------------------------------------------*/
 
-define('MODULE_SHIPPING_BOXBERRY_TEXT_TITLE', 'Boxberry');
+define('MODULE_SHIPPING_BOXBERRY_TEXT_TITLE', 'Boxberry - Доставка курьером');
 define('MODULE_SHIPPING_BOXBERRY_TEXT_DESCRIPTION', 'Boxberry');
 
 define('MODULE_SHIPPING_BOXBERRY_TEXT_SELECT_ADDRESS','Выбрать ПВЗ');
