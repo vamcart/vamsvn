@@ -114,7 +114,8 @@ if ($order->delivery['city'] != '') {
 		$skidka = MODULE_SHIPPING_SDEK_PROCENT; // скидка на доставку
 		$min_sum = MODULE_SHIPPING_SDEK_MIN_SUM_ORDER; // сумма от которой действует доставка
 		$min_dozakaz = $sum_akcii - $_SESSION['cart']->show_total();
-		
+
+if ($order->delivery['city'] != '') {
 		if ($_SESSION['cart']->show_total() > $sum_akcii) {		
 		$shipping_skidka = ($shipping_cost / 100) * $skidka;
 		$shipping_cost = $shipping_cost - $shipping_skidka;
@@ -122,6 +123,7 @@ if ($order->delivery['city'] != '') {
 		} else {
 		$shipping_txt_min = 'При сумме товаров от <b>' . $sum_akcii . '</b> руб., на эту доставку действует скидка <font color="red"><b>' . $skidka . '%</b></font>. Осталось добавить товаров мин. на: ' .$min_dozakaz . ' руб. <br /> <b>Выберите пункт выдачи:</b>';
 		}	
+}
 
         //if ($_SESSION['cart']->show_total() > $sum_akcii) {     
 	    //$skidka_text = ', применена скидка <b>' .$skidka. '%</b> [-' . $shipping_skidka . ' руб.]</b>';	
@@ -176,8 +178,10 @@ if ($order->delivery['city'] != '') {
 		if (!$_GET['oID'])
         require_once('includes/modules/yandex-map/geokoder_yandex_kart.php');
 		
+if ($order->delivery['city'] != '') {
         // список пвз, выпадающее меню
         $pvz = vam_draw_pull_down_menu('pvz', $name_pvz, $_POST['pvz'], 'id="pvz_sdek" class="form-control"');
+}
 		
 		if($_POST['pvz'] != '') $pvz_title = ', ' . html_entity_decode($_POST['pvz']) . '';		
 
