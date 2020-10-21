@@ -130,7 +130,6 @@ function showSelected(suggestion) {
 if ( strstr($PHP_SELF, FILENAME_ADDRESS_BOOK)
 	or strstr($PHP_SELF, FILENAME_ADDRESS_BOOK_PROCESS)
 	or strstr($PHP_SELF, FILENAME_CHECKOUT)
-	or strstr($PHP_SELF, FILENAME_ADDRESS_BOOK_PROCESS)
 	or strstr($PHP_SELF, FILENAME_CHECKOUT_PAYMENT_ADDRESS)
 	or strstr($PHP_SELF, FILENAME_CHECKOUT_SHIPPING_ADDRESS)
 	or strstr($PHP_SELF, FILENAME_CREATE_ACCOUNT) ) {
@@ -156,13 +155,13 @@ function initialise(){
             language: "<?php echo $_SESSION['language_code']; ?>"
      });     
 <?php } ?>
-<?php if (ACCOUNT_STATE == 'true') { ?>
+<?php if (ACCOUNT_STATE == 'true' or ACCOUNT_STATE == 'optional') { ?>
 	  $("#state").select2({
             theme: "bootstrap",
             language: "<?php echo $_SESSION['language_code']; ?>"
      });     
 <?php } ?>
-<?php if (ACCOUNT_COUNTRY == 'true') { ?>
+<?php if (ACCOUNT_COUNTRY == 'true' or ACCOUNT_COUNTRY == 'optional') { ?>
 	  $("#country").select2({
             theme: "bootstrap",
             language: "<?php echo $_SESSION['language_code']; ?>"
