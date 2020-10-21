@@ -15,7 +15,17 @@
    Released under the GNU General Public License 
    ---------------------------------------------------------------------------------------*/
 ?>
-<meta name="robots" content="<?php echo META_ROBOTS; ?>" />
+<?php
+$block_query = "select url from ".TABLE_BLOCK." where status = 1";
+$block_query = vamDBquery($block_query);
+while ($block = vam_db_fetch_array($block_query, true)) {
+if (HTTP_SERVER.$_SERVER['REQUEST_URI'] == $block['url']) {
+echo '<meta name="robots" content="noindex" />'."\n";
+} else {
+echo '<meta name="robots" content="'.META_ROBOTS.'" />'."\n";
+}
+}
+?>
 <meta name="twitter:domain" content="<?php echo HTTP_SERVER; ?>" />
 <meta property="og:site_name" content="<?php echo STORE_NAME; ?>" />
 <meta name="twitter:card" content="summary" />

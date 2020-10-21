@@ -42,15 +42,6 @@
 <?php include(DIR_WS_MODULES.FILENAME_METATAGS); ?>
 <base href="<?php echo (($request_type == 'SSL') ? HTTPS_SERVER : HTTP_SERVER) . DIR_WS_CATALOG; ?>" />
 <?php
-$block_query = "select url from ".TABLE_BLOCK." where status = 1";
-$block_query = vamDBquery($block_query);
-while ($block = vam_db_fetch_array($block_query, true)) {
-if (HTTP_SERVER.$_SERVER['REQUEST_URI'] == $block['url']) {
-echo '<meta name="robots" content="noindex" />'."\n";
-}
-}
-?>
-<?php
 if (file_exists(dirname($_SERVER['SCRIPT_FILENAME']) . '/templates/'.CURRENT_TEMPLATE.'/css/css.php')) include('templates/'.CURRENT_TEMPLATE.'/css/css.php');
 if (file_exists(dirname($_SERVER['SCRIPT_FILENAME']) . '/templates/'.CURRENT_TEMPLATE.'/javascript/script.php')) include('templates/'.CURRENT_TEMPLATE.'/javascript/script.php');
 ?>
