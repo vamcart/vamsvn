@@ -116,8 +116,7 @@ $shipping_cost = $result['data'][0]['Cost'];
 if ($order->delivery['city'] != '') {
 	
 // Получаем список отделений новой почты
-$warehouse_city = $np->getCity($order->delivery['city'], $delivery_state[0]);
-$warehouse_result = $np->getWarehouses($warehouse_city['data'][0]['Ref']);
+$warehouse_result = $np->getWarehouses($recipient_city['data'][0]['Ref']);
 
 //echo var_dump($warehouse_result);
 
