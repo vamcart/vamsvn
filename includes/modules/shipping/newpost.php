@@ -135,6 +135,7 @@ $name_pvz[] = array(
 
         $this->quotes = array('id' => $this->code,
                             'module' => MODULE_SHIPPING_NEWPOST_TEXT_TITLE,
+                            'description' => MODULE_SHIPPING_NEWPOST_JS,
                             'methods' => array(array('id' => $this->code,
                                                      'title' => MODULE_SHIPPING_NEWPOST_TEXT_TITLE_2 . html_entity_decode($pvz_title) . ' ' . $min_vremya . ($max_vremya > 0 ? '-'.$max_vremya.vam_format_by_count($max_vremya, ' день', ' дня', ' дней'):null) . '' . $skidka_text,
                                                      'cost' => $shipping_cost)));

@@ -19,6 +19,15 @@
 
 define('MODULE_SHIPPING_NEWPOST_TEXT_TITLE', 'Новая Почта');
 define('MODULE_SHIPPING_NEWPOST_TEXT_DESCRIPTION', '');
+define('MODULE_SHIPPING_NEWPOST_JS', '
+<script>
+$(function () {
+$("select#pvz_newpost").on("change", function() {
+    $("[name=shipping]").val(["newpost_newpost"]);
+});
+});
+</script>
+');
 define('MODULE_SHIPPING_NEWPOST_TEXT_TITLE_2', '');
 define('MODULE_SHIPPING_NEWPOST_STATUS_TITLE' , 'Разрешить модуль Новая Почта');
 define('MODULE_SHIPPING_NEWPOST_STATUS_DESC' , 'Вы хотите разрешить модуль Новая Почта?');
