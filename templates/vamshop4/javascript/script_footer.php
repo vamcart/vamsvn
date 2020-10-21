@@ -143,6 +143,18 @@ if (file_exists(DIR_FS_CATALOG.'jscript/jquery/plugins/select2/i18n/' . $_SESSIO
 
 <script type="text/javascript">
 function initialise(){
+<?php if (MODULE_SHIPPING_SDEKPVZ_STATUS == 'True') { ?>
+	  $("select#pvz_sdek").select2({
+            theme: "bootstrap",
+            language: "<?php echo $_SESSION['language_code']; ?>"
+     });     
+<?php } ?>
+<?php if (MODULE_SHIPPING_NEWPOST_STATUS == 'True') { ?>
+	  $("select#pvz_newpost").select2({
+            theme: "bootstrap",
+            language: "<?php echo $_SESSION['language_code']; ?>"
+     });     
+<?php } ?>
 <?php if (ACCOUNT_STATE == 'true') { ?>
 	  $("#state").select2({
             theme: "bootstrap",
