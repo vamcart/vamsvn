@@ -204,6 +204,7 @@ $('#box')
 			'country': $('select[name=country]').val(),
 			'state': $('select[name=state]').val(),
 			'postcode': $('input[name=postcode]').val(),
+			'telephone': $('input[name=telephone]').val(),
 			'city': $('input[name=city]').val(),
 			'pvz': $('select[name=pvz]').val()
 		}
@@ -220,6 +221,7 @@ $('#box')
 				'country': $('select[name=country]').val(),
 				'state': $('select[name=state]').val(),
 				'postcode': $('input[name=postcode]').val(),
+				'telephone': $('input[name=telephone]').val(),
 				'city': $('input[name=city]').val(),
 				'pvz': $('select[name=pvz]').val()
 			}
@@ -246,7 +248,7 @@ $('#box')
 //.on('refresh', '#shipping_modules_box', function(('input[name=checkout_possible]').val());})	
 //.on$('input[name=checkout_possible]').val()
 
-.on('change', 'input[name=shipping], input[name=payment], select[name=country], select[name=state], select[name=pvz], input[name=postcode], input[name=city]', 
+.on('change', 'input[name=shipping], input[name=payment], select[name=country], select[name=state], select[name=pvz], input[name=postcode], input[name=telephone], input[name=city]', 
 	function(){
 	$('#shipping_country_box').load(
 		url +' #shipping_country', {
@@ -256,6 +258,7 @@ $('#box')
 			'state': $('select[name=state]').val(),
 			'city': $('input[name=city]').val(),
 			'pvz': $('select[name=pvz]').val(), 
+			'telephone': $('input[name=telephone]').val(),
 			'postcode': $('input[name=postcode]').val()
 		}, 
 		function(){
