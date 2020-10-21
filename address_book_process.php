@@ -123,14 +123,14 @@ if (isset ($_POST['action']) && (($_POST['action'] == 'process') || ($_POST['act
 	}
   }
 
-	if (isset($state) && ACCOUNT_STATE == 'true') {
+	if (isset($state) && (ACCOUNT_STATE == 'true' or ACCOUNT_STATE == 'optional')) {
 		$zone_id = 0;
 		$check_query = vam_db_query("select count(*) as total from ".TABLE_ZONES." where zone_country_id = '".(int) $country."'");
 		$check = vam_db_fetch_array($check_query);
 		$entry_state_has_zones = ($check['total'] > 0);
-		if ($entry_state_has_zones == true) {
+		if ($entry_state_has_zones == true && ACCOUNT_STATE == 'true') {
 			$zone_query = vam_db_query("select distinct zone_id from " . TABLE_ZONES . " where zone_country_id = '" . (int)$country . "' and zone_name = '" . vam_db_input($state) . "'"); 
-			if (vam_db_num_rows($zone_query) == 1) {
+			if (vam_db_num_rows($zone_query) == 1 && ACCOUNT_STATE == 'true') {
 				$zone = vam_db_fetch_array($zone_query);
 				$zone_id = $zone['zone_id'];
 			} else {
@@ -156,7 +156,7 @@ if (isset ($_POST['action']) && (($_POST['action'] == 'process') || ($_POST['act
 			$sql_data_array['entry_company'] = $company;
 		if (ACCOUNT_SUBURB == 'true')
 			$sql_data_array['entry_suburb'] = $suburb;
-		if (ACCOUNT_STATE == 'true') {
+		if (ACCOUNT_STATE == 'true' or ACCOUNT_STATE == 'optional') {
 			if ($zone_id > 0) {
 				$sql_data_array['entry_zone_id'] = (int) $zone_id;
 				$sql_data_array['entry_state'] = '';
