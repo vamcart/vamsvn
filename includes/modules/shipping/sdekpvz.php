@@ -110,9 +110,9 @@ if ($order->delivery['city'] != '') {
 						
 		// Расчет скидки
 		
-		$sum_akcii = MODULE_SHIPPING_SDEK_MIN_SUM; //сумма от которой начинается скидка
-		$skidka = MODULE_SHIPPING_SDEK_PROCENT; // скидка на доставку
-		$min_sum = MODULE_SHIPPING_SDEK_MIN_SUM_ORDER; // сумма от которой действует доставка
+		$sum_akcii = MODULE_SHIPPING_SDEKPVZ_MIN_SUM; //сумма от которой начинается скидка
+		$skidka = MODULE_SHIPPING_SDEKPVZ_PROCENT; // скидка на доставку
+		$min_sum = MODULE_SHIPPING_SDEKPVZ_MIN_SUM_ORDER; // сумма от которой действует доставка
 		$min_dozakaz = $sum_akcii - $_SESSION['cart']->show_total();
 
 if ($order->delivery['city'] != '') {
@@ -246,9 +246,9 @@ if ($order->delivery['city'] != '') {
       vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value,  configuration_group_id, sort_order, use_function, set_function, date_added) values ('MODULE_SHIPPING_SDEKPVZ_ZONE', '0', '6', '0', 'vam_get_zone_class_title', 'vam_cfg_pull_down_zone_classes(', now())");
       vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value,  configuration_group_id, sort_order, date_added) values ('MODULE_SHIPPING_SDEKPVZ_SORT_ORDER', '0', '6', '0', now())");
 	  
-	  vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value,  configuration_group_id, sort_order, date_added) values ('MODULE_SHIPPING_SDEK_MIN_SUM', '', '6', '0', now())");
-	  vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value,  configuration_group_id, sort_order, date_added) values ('MODULE_SHIPPING_SDEK_PROCENT', '', '6', '0', now())");
-      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value,  configuration_group_id, sort_order, date_added) values ('MODULE_SHIPPING_SDEK_MIN_SUM_ORDER', '100', '6', '0', now())");
+	  vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value,  configuration_group_id, sort_order, date_added) values ('MODULE_SHIPPING_SDEKPVZ_MIN_SUM', '', '6', '0', now())");
+	  vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value,  configuration_group_id, sort_order, date_added) values ('MODULE_SHIPPING_SDEKPVZ_PROCENT', '', '6', '0', now())");
+      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value,  configuration_group_id, sort_order, date_added) values ('MODULE_SHIPPING_SDEKPVZ_MIN_SUM_ORDER', '100', '6', '0', now())");
     }
 
     function remove() {
@@ -256,7 +256,7 @@ if ($order->delivery['city'] != '') {
     }
 
     function keys() {
-      return array('MODULE_SHIPPING_SDEKPVZ_STATUS', 'MODULE_SHIPPING_SDEKPVZ_COST', 'MODULE_SHIPPING_SDEKPVZ_COST_2', 'MODULE_SHIPPING_SDEKPVZ_API_LOGIN', 'MODULE_SHIPPING_SDEKPVZ_API_PASSWORD', 'MODULE_SHIPPING_SDEKPVZ_ZIP','MODULE_SHIPPING_SDEKPVZ_ALLOWED', 'MODULE_SHIPPING_SDEKPVZ_TAX_CLASS', 'MODULE_SHIPPING_SDEKPVZ_ZONE', 'MODULE_SHIPPING_SDEKPVZ_SORT_ORDER', 'MODULE_SHIPPING_SDEK_MIN_SUM', 'MODULE_SHIPPING_SDEK_PROCENT', 'MODULE_SHIPPING_SDEK_MIN_SUM_ORDER');
+      return array('MODULE_SHIPPING_SDEKPVZ_STATUS', 'MODULE_SHIPPING_SDEKPVZ_COST', 'MODULE_SHIPPING_SDEKPVZ_COST_2', 'MODULE_SHIPPING_SDEKPVZ_API_LOGIN', 'MODULE_SHIPPING_SDEKPVZ_API_PASSWORD', 'MODULE_SHIPPING_SDEKPVZ_ZIP','MODULE_SHIPPING_SDEKPVZ_ALLOWED', 'MODULE_SHIPPING_SDEKPVZ_TAX_CLASS', 'MODULE_SHIPPING_SDEKPVZ_ZONE', 'MODULE_SHIPPING_SDEKPVZ_SORT_ORDER', 'MODULE_SHIPPING_SDEKPVZ_MIN_SUM', 'MODULE_SHIPPING_SDEKPVZ_PROCENT', 'MODULE_SHIPPING_SDEKPVZ_MIN_SUM_ORDER');
     }
     
 private function _sdekpvz_api_communicate($request)
