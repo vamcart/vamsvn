@@ -61,6 +61,7 @@
 		$date_Execute = date('Y-m-d');			
 		$sender_postcode = MODULE_SHIPPING_NEWPOST_ZIP;
 		$total_weight = $shipping_weight;
+		$shipping_cost = 0;
 
       // если вес больше указаного в переменой то: 
 	  
@@ -88,7 +89,11 @@ $sender_city = $np->getCity(MODULE_SHIPPING_NEWPOST_CITY, MODULE_SHIPPING_NEWPOS
 $sender_city_ref = $sender_city['data'][0]['Ref'];
 // Получение кода города по названию города и области
 $delivery_state = explode(" ", $order->delivery['state']);
+if ($order->delivery['state'] != '') {
 $recipient_city = $np->getCity($order->delivery['city'], $delivery_state[0]);
+} else {
+$recipient_city = $np->getCity($order->delivery['city']);
+}
 $recipient_city_ref = $recipient_city['data'][0]['Ref'];
 $receiverCityId = $recipient_city_ref;
 // Вес товара
@@ -106,7 +111,10 @@ $result = $np->getDocumentPrice($sender_city_ref, $recipient_city_ref, 'Warehous
 
 $shipping_cost = $result['data'][0]['Cost'];
 
+}
 
+if ($order->delivery['city'] != '') {
+	
 // Получаем список отделений новой почты
 $warehouse_city = $np->getCity($order->delivery['city'], $delivery_state[0]);
 $warehouse_result = $np->getWarehouses($warehouse_city['data'][0]['Ref']);
@@ -117,12 +125,11 @@ $name_pvz = false;
 
 foreach ($warehouse_result["data"] as $pvz) {
 $name_pvz[] = array(
-                      'id' => ($api_language == "ru") ? $pvz["DescriptionRu"] : $pvz["Description"], 
-                      'text' => ($api_language == "ru") ? $pvz["DescriptionRu"] : $pvz["Description"]
+                      'id' => ($api_language == "ru") ? $pvz["DescriptionRu"] . ', ' . $pvz["CityDescriptionRu"] : $pvz["Description"] . ', ' . $pvz["CityDescription"], 
+                      'text' => ($api_language == "ru") ? $pvz["DescriptionRu"] . ', ' . $pvz["CityDescriptionRu"] : $pvz["Description"] . ', ' . $pvz["CityDescription"]
                    );
 }
 
-}
 
 //echo var_dump($name_pvz);
 		
@@ -130,7 +137,8 @@ $name_pvz[] = array(
 		
         // список пвз, выпадающее меню
         $pvz = vam_draw_pull_down_menu('pvz', $name_pvz, $_POST['pvz'], 'id="pvz_newpost" class="form-control"');
-		
+}
+
 		if($_POST['pvz'] != '') $pvz_title = ' ' . html_entity_decode($_POST['pvz']) . '';		
 
         $this->quotes = array('id' => $this->code,
