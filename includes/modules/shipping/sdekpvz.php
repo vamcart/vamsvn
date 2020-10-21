@@ -150,7 +150,7 @@
 		if ($count_pvz < 10000) {  // чтобы вдруг какой нибудь весь огромный список всех городов не загрузился
 		foreach($ret_pvz as $key => $value) {
 		if($ret_pvz[$key]['attributes']['NAME'] != '') {
-		$name_pvz1 = $ret_pvz[$key]['attributes']['NAME'] . ' (' . $ret_pvz[$key]['attributes']['ADDRESS'] . ')';
+		$name_pvz1 = $ret_pvz[$key]['attributes']['CODE'] .': ' . $ret_pvz[$key]['attributes']['ADDRESS'] . ', ' . $ret_pvz[$key]['attributes']['CITY'];
 		$name_pvz[] = array('id' => $name_pvz1, 'text' => $name_pvz1);
 		$city = $ret_pvz[$key]['attributes']['CITY']; 		
         				
