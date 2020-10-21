@@ -94,7 +94,9 @@ $recipient_city = $np->getCity($order->delivery['city'], $delivery_state[0]);
 } else {
 $recipient_city = $np->getCity($order->delivery['city']);
 }
+//echo var_dump($recipient_city);
 $recipient_city_ref = $recipient_city['data'][0]['Ref'];
+if ($recipient_city_ref != '') {
 $receiverCityId = $recipient_city_ref;
 // Вес товара
 $weight = $total_weight;
@@ -110,6 +112,7 @@ $result = $np->getDocumentPrice($sender_city_ref, $recipient_city_ref, 'Warehous
 //echo $order->delivery['state'];
 
 $shipping_cost = $result['data'][0]['Cost'];
+}
 
 }
 
