@@ -1270,6 +1270,10 @@ li.level3 {
   border: 0;
 }
 
+.wsmenu>.wsmenu-list>li>.navtext>span+span {
+  color: var(--link-color) !important;
+}
+
 @media only screen and (max-width: 991px) {
 .wsmenu .wsmenu-list>li>.wsshoptabing>.wsshopwp>.wstabitem>li>.wsmenu-click02 {
   border-left: 1px solid var(--border-gray) !important;
