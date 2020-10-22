@@ -50,7 +50,7 @@ define('MODULE_SHIPPING_BOXBERRYPVZ_ZONE_DESC' , 'Если выбрана зон
 define('MODULE_SHIPPING_BOXBERRYPVZ_SORT_ORDER_TITLE' , 'Порядок сортировки');
 define('MODULE_SHIPPING_BOXBERRYPVZ_SORT_ORDER_DESC' , 'Порядок сортировки модуля.');
 
-define('MODULE_SHIPPING_SDEK_MIN_SUM_TITLE' , 'Мин. сумма от которой действует скидка');
-define('MODULE_SHIPPING_SDEK_PROCENT_TITLE' , 'Процент скидки');
-define('MODULE_SHIPPING_SDEK_MIN_SUM_ORDER_TITLE' , 'Минимальная сумма от которой действует доставка');
+define('MODULE_SHIPPING_BOXBERRYPVZ_MIN_SUM_TITLE' , 'Мин. сумма от которой действует скидка');
+define('MODULE_SHIPPING_BOXBERRYPVZ_PROCENT_TITLE' , 'Процент скидки');
+define('MODULE_SHIPPING_BOXBERRYPVZ_MIN_SUM_ORDER_TITLE' , 'Минимальная сумма от которой действует доставка');
 ?>

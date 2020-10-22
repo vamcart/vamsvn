@@ -58,54 +58,57 @@
         
 		$aut_login = MODULE_SHIPPING_BOXBERRYPVZ_API_LOGIN;
 		$date_Execute = date('Y-m-d');			
-		$total_weight = $shipping_weight;
-		
+		$total_weight = $shipping_weight*100;
+		$boxberry_city_id = 0;
+      $shipping_cost = MODULE_SHIPPING_BOXBERRYPVZ_COST;
+      		
 		// узнаем id города
 		if($order->delivery['city'] == "спб" || $order->delivery['city'] == "СПБ") $order->delivery['city'] = "Санкт-Петербург";
 	    if($order->delivery['city'] == "Ростов" || $order->delivery['city'] == "ростов" || $order->delivery['city'] == "Ростов на дону" || $order->delivery['city'] == "ростов на дону") $order->delivery['city'] = "ростов-на-дону";
-		
+	
 if ($order->delivery['city'] != '') {
 
+	    // Узнаём код города в boxberry по названию города, указанного на странице оформления заказа в поле Город.
+
 	    $curl = curl_init();
-	    curl_setopt($curl, CURLOPT_URL, "http://api.cdek.ru/city/getListByTerm/json.php?q=".$order->delivery['city']);
+	    curl_setopt($curl, CURLOPT_URL, "https://api.boxberry.ru/json.php?token=".MODULE_SHIPPING_BOXBERRYPVZ_API_LOGIN."&method=ListCities&CountryCode=643");
 	    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 	    $data = curl_exec($curl);
 	    
 	    curl_close($curl);
 	    
-	    $senderCity = json_decode($data, $assoc=true);
-	    $senderCityId = $senderCity["geonames"][0]["id"];
-	    
-	    if ($senderCity["geonames"][0]["postCodeArray"][0] != '') {
-	    	$receiverZip = $senderCity["geonames"][0]["postCodeArray"][0];
-	    } else {
-	    	$receiverZip = $order->delivery['postcode'];
+	    $receiverCity = json_decode($data, $assoc=true);
+
+	    echo var_dump($receiverCity);
+	    	    
+	    foreach($receiverCity as $cities) {
+	    if ($cities['Name'] == $order->delivery['city']) {
+	     $boxberry_city_id = $cities["Code"];
+	    }
 	    }
 	    
-		$receiverCityId = $senderCityId;
-		
-	    //запрос расчета стоимости отправления 
-	    $ret = $this->boxberrypvz_api_calc($aut_login, $auth_Password, $date_Execute, $sender_postcode, $receiverZip, $total_weight, $receiverCityId);
-		//print_r	($ret);	
-		
-}
-		
-	    $shipping_cost = 0;
-	         
+	    if($boxberry_city_id > 0) {
+	    	
+	    //Получаем список ПВЗ для указанного города
+
+	    $curl = curl_init();
+	    curl_setopt($curl, CURLOPT_URL, "https://api.boxberry.ru/json.php?token=".MODULE_SHIPPING_BOXBERRYPVZ_API_LOGIN."&method=ListPoints&prepaid=1&CityCode=".$boxberry_city_id."&CountryCode=643");
+	    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+	    $pvz_data = curl_exec($curl);
+	    
+	    curl_close($curl);
+	    
+	    $ret_pvz = json_decode($pvz_data, $assoc=true);
+	    //echo var_dump($ret_pvz);
+	    
+	    }
+	    
+}		
+
       // если вес больше указаного в переменой то: 
 	  
 	    $min_ves = 0.1; // вес после которого цена выше
-	    
-		if ($ret['result']['price'] > 0) {
-		$shipping_cost = $ret['result']['price'];
-		}
 
-		if ($shipping_weight >= $min_ves) {			
-		$shipping_cost = $shipping_cost + MODULE_SHIPPING_BOXBERRYPVZ_COST;
-		} else {
-        $shipping_cost = $shipping_cost + MODULE_SHIPPING_BOXBERRYPVZ_COST_2; 
-        }
-						
 		// Расчет скидки
 		
 		$sum_akcii = MODULE_SHIPPING_BOXBERRYPVZ_MIN_SUM; //сумма от которой начинается скидка
@@ -127,18 +130,8 @@ if ($order->delivery['city'] != '') {
 	    //$skidka_text = ', применена скидка <b>' .$skidka. '%</b> [-' . $shipping_skidka . ' руб.]</b>';	
         //}			
 	 
-		$min_vremya = $ret['result']['deliveryPeriodMin'];
-		$max_vremya = $ret['result']['deliveryPeriodMax'];
-
-        // запрос вывода списка пвз
-if ($order->delivery['city'] != '') {
-		$ret_pvz = $this->boxberrypvz_api_pvz($receiverCityId);
-}		
-		
-      //echo var_dump($ret_pvz);		
-		
 		$count_pvz = count($ret_pvz);
-		$company = 'СДЭК';		
+		$company = 'BoxBerry';		
 							
 		if(isset($_POST['pvz'])) {
 			$_SESSION['pvz'] = $_POST['pvz'];
@@ -155,22 +148,22 @@ if ($order->delivery['city'] != '') {
 	
 		if ($count_pvz < 10000) {  // чтобы вдруг какой нибудь весь огромный список всех городов не загрузился
 		foreach($ret_pvz as $key => $value) {
-		if($ret_pvz[$key]['attributes']['NAME'] != '') {
-		$name_pvz1 = $ret_pvz[$key]['attributes']['CODE'] .': ' . $ret_pvz[$key]['attributes']['ADDRESS'] . ', ' . $ret_pvz[$key]['attributes']['CITY'];
+		if($ret_pvz[$key]['Code'] != '') {
+		$name_pvz1 = $ret_pvz[$key]['Code'] .': ' . $ret_pvz[$key]['AddressReduce'];
 		$name_pvz[] = array('id' => $name_pvz1, 'text' => $name_pvz1);
-		$city = $ret_pvz[$key]['attributes']['CITY']; 		
+		$city = $ret_pvz[$key]['CityName']; 		
+		$vremya = $ret_pvz[$key]['DeliveryPeriod'];
         				
-		$worktime = $ret_pvz[$key]['attributes']['WORKTIME']; 
+		$worktime = $ret_pvz[$key]['WorkShedule']; 
         		
 		if ($city_pvz == '' && $_POST['pvz'] != '') {
-        vam_db_query("insert into markers_geocod (name, address, city, company, worktime, telephon, lng, lat) values ('" . $name_pvz1 . "', '" . $ret_pvz[$key]['attributes']['ADDRESS'] . "', '" . $city . "', '" . $company . "', '" . $worktime . "', '" . $ret_pvz[$key]['attributes']['PHONE'] . "', '" . $ret_pvz[$key]['attributes']['COORDX'] . "', '" . $ret_pvz[$key]['attributes']['COORDY'] . "')");	
+        vam_db_query("insert into markers_geocod (name, address, city, company, worktime, telephon, lng, lat) values ('" . $name_pvz1 . "', '" . $ret_pvz[$key]['Address'] . "', '" . $city . "', '" . $company . "', '" . $worktime . "', '" . $ret_pvz[$key]['Phone'] . "', '" . $ret_pvz[$key]['attributes']['GPS'] . "', '" . $ret_pvz[$key]['GPS'] . "')");	
 		}		
         $value++;		
 		}
 		}
 		}
-        		
-		
+
         // добавление в файл результатов геокодирования
 		
 		if (!$_GET['oID'])
@@ -183,11 +176,35 @@ if ($order->delivery['city'] != '') {
 		
 		if($_POST['pvz'] != '') $pvz_title = ', ' . html_entity_decode($_POST['pvz']) . '';		
 
+
+	    //Считаем стоимость доставки в выбранный ПВЗ
+	    
+	    if ($POST['pvz']) {
+	    	$selected_pvz = strstr($_POST['pvz'], ':', true);
+	    } else {
+	    	$selected_pvz = '010';
+	    }
+	    //echo var_dump($selected_pvz);
+
+	    $curl = curl_init();
+	    curl_setopt($curl, CURLOPT_URL, "https://api.boxberry.ru/json.php?token=".MODULE_SHIPPING_BOXBERRYPVZ_API_LOGIN."&method=DeliveryCosts&weight=".$total_weight."targetstart=&target=".strstr($_POST['pvz'], ':', true)."&ordersum=&deliverysum=0&height=&width=&depth=&paysum=");
+	    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+	    $shipping_data = curl_exec($curl);
+
+	    curl_close($curl);
+	    
+	    $shipping = json_decode($shipping_data, $assoc=true);
+	    //echo var_dump($shipping);
+	    	    
+		if ($shipping['price'] > 0) {
+		$shipping_cost = $shipping['price'];
+		}
+
         $this->quotes = array('id' => $this->code,
                             'module' => MODULE_SHIPPING_BOXBERRYPVZ_TEXT_TITLE,
                             'description' => MODULE_SHIPPING_BOXBERRYPVZ_JS,
                             'methods' => array(array('id' => $this->code,
-                                                     'title' => MODULE_SHIPPING_BOXBERRYPVZ_TEXT_TITLE_2 . html_entity_decode($pvz_title) . ' ' . $min_vremya . ($max_vremya > 0 ? '-'.$max_vremya.vam_format_by_count($max_vremya, ' день', ' дня', ' дней'):null) . '' . $skidka_text,
+                                                     'title' => MODULE_SHIPPING_BOXBERRYPVZ_TEXT_TITLE_2 . html_entity_decode($pvz_title) . ($vremya > 0 ? ' - ' . $vremya.vam_format_by_count($vremya, ' день', ' дня', ' дней'):null) . '' . $skidka_text,
                                                      'cost' => $shipping_cost)));
 													 				
 				
@@ -203,8 +220,12 @@ if ($order->delivery['city'] != '') {
 	  
 	  if ($error == true) 
 	  $this->quotes['error'] = $err_msg;
+
+	    if ($boxberry_city_id == 0)
+	    $this->quotes['error'] = 'Доставка Boxberry в указанный город не осуществляется.';
+
   
-     if ($receiverCityId == '') $this->quotes['error'] = 'До пункта выдачи. Возможно нужно правильно ввести город, чтобы был расчет стоимости.';
+     if ($boxberry_city_id == '') $this->quotes['error'] = 'До пункта выдачи. Возможно нужно правильно ввести город, чтобы был расчет стоимости.';
   
       // Если символов в индексе меньше 6, или не выбран регион, или стоимость доставки меньше указаной в переменной MODULE_SHIPPING_BOXBERRYPVZ_COST, то:
 	  
@@ -217,7 +238,7 @@ if ($order->delivery['city'] != '') {
 	  $this->quotes['error'] = 'До пункта выдачи. Действует при сумме товаров <b>от ' . $min_sum . ' руб.</b>';
 	  } elseif (isset($ret['error'][0]['code']) || $shipping_cost <= MODULE_SHIPPING_BOXBERRYPVZ_COST) {
 		  
-	  $this->quotes['error'] = 'Пункты выдачи. Доставка в этом направлении не осуществляется (или попробуйте <b>ввести также индекс</b>)'; 
+	  //$this->quotes['error'] = 'Пункты выдачи. Доставка в этом направлении не осуществляется.'; 
 	  } 
 	  
 
@@ -236,7 +257,6 @@ if ($order->delivery['city'] != '') {
       vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value,  configuration_group_id, sort_order, set_function, date_added) values ('MODULE_SHIPPING_BOXBERRYPVZ_STATUS', 'True', '6', '0', 'vam_cfg_select_option(array(\'True\', \'False\'), ', now())");
       vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value,  configuration_group_id, sort_order, date_added) values ('MODULE_SHIPPING_BOXBERRYPVZ_ALLOWED', '', '6', '0', now())");
       vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value,  configuration_group_id, sort_order, date_added) values ('MODULE_SHIPPING_BOXBERRYPVZ_COST', '150', '6', '0', now())");
-      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value,  configuration_group_id, sort_order, date_added) values ('MODULE_SHIPPING_BOXBERRYPVZ_COST_2', '100', '6', '0', now())");
 	  vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value,  configuration_group_id, sort_order, date_added) values ('MODULE_SHIPPING_BOXBERRYPVZ_API_LOGIN', 'd6f33e419c16131e5325cbd84d5d6000', '6', '0', now())");
       vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value,  configuration_group_id, sort_order, use_function, set_function, date_added) values ('MODULE_SHIPPING_BOXBERRYPVZ_TAX_CLASS', '0', '6', '0', 'vam_get_tax_class_title', 'vam_cfg_pull_down_tax_classes(', now())");
       vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value,  configuration_group_id, sort_order, use_function, set_function, date_added) values ('MODULE_SHIPPING_BOXBERRYPVZ_ZONE', '0', '6', '0', 'vam_get_zone_class_title', 'vam_cfg_pull_down_zone_classes(', now())");
@@ -252,7 +272,7 @@ if ($order->delivery['city'] != '') {
     }
 
     function keys() {
-      return array('MODULE_SHIPPING_BOXBERRYPVZ_STATUS', 'MODULE_SHIPPING_BOXBERRYPVZ_COST', 'MODULE_SHIPPING_BOXBERRYPVZ_COST_2', 'MODULE_SHIPPING_BOXBERRYPVZ_API_LOGIN', 'MODULE_SHIPPING_BOXBERRYPVZ_ALLOWED', 'MODULE_SHIPPING_BOXBERRYPVZ_TAX_CLASS', 'MODULE_SHIPPING_BOXBERRYPVZ_ZONE', 'MODULE_SHIPPING_BOXBERRYPVZ_SORT_ORDER', 'MODULE_SHIPPING_BOXBERRYPVZ_MIN_SUM', 'MODULE_SHIPPING_BOXBERRYPVZ_PROCENT', 'MODULE_SHIPPING_BOXBERRYPVZ_MIN_SUM_ORDER');
+      return array('MODULE_SHIPPING_BOXBERRYPVZ_STATUS', 'MODULE_SHIPPING_BOXBERRYPVZ_COST', 'MODULE_SHIPPING_BOXBERRYPVZ_API_LOGIN', 'MODULE_SHIPPING_BOXBERRYPVZ_ALLOWED', 'MODULE_SHIPPING_BOXBERRYPVZ_TAX_CLASS', 'MODULE_SHIPPING_BOXBERRYPVZ_ZONE', 'MODULE_SHIPPING_BOXBERRYPVZ_SORT_ORDER', 'MODULE_SHIPPING_BOXBERRYPVZ_MIN_SUM', 'MODULE_SHIPPING_BOXBERRYPVZ_PROCENT', 'MODULE_SHIPPING_BOXBERRYPVZ_MIN_SUM_ORDER');
     }
    
   }
