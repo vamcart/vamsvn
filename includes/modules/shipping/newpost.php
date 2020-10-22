@@ -73,61 +73,178 @@
       	$api_language = "ua";
       }		
 
+if ($order->delivery['country']['iso_code_2'] == 'UA') {
 if ($order->delivery['city'] != '') {
 
-include_once(DIR_FS_CATALOG."vendor/novaposhta/NovaPoshtaApi2.php");
+// Узнаём ID номер города отправителя
 
-$np = new \LisDev\Delivery\NovaPoshtaApi2(
-	MODULE_SHIPPING_NEWPOST_API_LOGIN,
-	$api_language, // Язык возвращаемых данных: ru (default) | ua | en
-	FALSE, // При ошибке в запросе выбрасывать Exception: FALSE (default) | TRUE
-	'curl' // Используемый механизм запроса: curl (defalut) | file_get_content
-);
+    $sender_request = array("apiKey"=>MODULE_SHIPPING_NEWPOST_API_LOGIN, 
+                        "modelName"=>"Address",
+                        "calledMethod"=>"searchSettlements",
+                        "methodProperties"=>array(
+                        "Language"=>$api_language,
+                        "CityName"=>MODULE_SHIPPING_NEWPOST_CITY,
+                        "Limit"=>1,
+                        )
+    );
+    
+$sender_request = json_encode($sender_request); 
 
-// Получение кода города по названию города и области
-$sender_city = $np->getCity(MODULE_SHIPPING_NEWPOST_CITY, MODULE_SHIPPING_NEWPOST_STATE);
+//echo var_dump($sender_request);
 
-//echo var_dump($sender_city);
+    $curl = curl_init();
+    curl_setopt($curl, CURLOPT_URL, "https://api.novaposhta.ua/v2.0/json/");
+    curl_setopt($curl, CURLOPT_POST, true);
+    curl_setopt($curl, CURLOPT_POSTFIELDS, $sender_request);
+    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+    $sender_data = curl_exec($curl);
+    
+    //echo var_dump($sender_data);
+    
+    curl_close($curl);
+    if($sender_data === false)
+    {
+	return "Заполните поле Город в настройках модуля доставки Новая почта в Админке - Модули - Доставка.";
+    }
+    
+    $sender_city_data = json_decode(html_entity_decode($sender_data), $assoc=true);
 
-if ($sender_city['success'] == true) {
+//echo var_dump($sender_city_data);
 
-$sender_city_ref = $sender_city['data'][0]['Ref'];
-// Получение кода города по названию города и области
-$delivery_state = explode(" ", $order->delivery['state']);
-if ($order->delivery['state'] != '') {
-$recipient_city = $np->getCity($order->delivery['city'], $delivery_state[0]);
-} else {
-$recipient_city = $np->getCity($order->delivery['city']);
+if ($sender_city_data['success'] == true) {
+
+$sender_city_ref = $sender_city_data['data'][0]['Addresses'][0]['Ref'];
 }
-//echo var_dump($recipient_city);
 
-if ($recipient_city['success'] == true) {
+//echo $sender_city_ref;
 
-$recipient_city_ref = $recipient_city['data'][0]['Ref'];
+// Узнаём ID номер города  получателя
+
+    $request = array("apiKey"=>MODULE_SHIPPING_NEWPOST_API_LOGIN, 
+                        "modelName"=>"Address",
+                        "calledMethod"=>"searchSettlements",
+                        "methodProperties"=>array(
+                        "Language"=>$api_language,
+                        "CityName"=>$order->delivery['city'],
+                        "Limit"=>1,
+                        )
+    );
+    
+$request = json_encode($request); 
+
+    $curl = curl_init();
+    curl_setopt($curl, CURLOPT_URL, "https://api.novaposhta.ua/v2.0/json/");
+    curl_setopt($curl, CURLOPT_POST, true);
+    curl_setopt($curl, CURLOPT_POSTFIELDS, $request);
+    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+    $data = curl_exec($curl);
+    
+    //echo var_dump($data);
+    
+    curl_close($curl);
+    if($data === false)
+    {
+	return "Заполните поле Город для расчёта стоимость доставки.";
+    }
+    
+    $city_data = json_decode(html_entity_decode($data), $assoc=true);
+    
+    //echo var_dump($city_data);
+
+if ($city_data['success'] === true) {
+
+$recipient_city_ref = $city_data['data'][0]['Addresses'][0]['Ref'];
+
 if ($recipient_city_ref != '') {
 $receiverCityId = $recipient_city_ref;
+
 // Вес товара
 $weight = $total_weight;
 // Цена в грн
 $price = $order->info['total'];
+
 // Получение стоимости доставки груза с указанным весом и стоимостью между складами в разных городах 
-$result = $np->getDocumentPrice($sender_city_ref, $recipient_city_ref, 'WarehouseWarehouse', $weight, $price);
 
-//echo var_dump($result);		
-//echo var_dump($result['data'][0]['Cost']);		
-//echo $result['data'][0]['Cost'];
+    $calculate_request = array("apiKey"=>MODULE_SHIPPING_NEWPOST_API_LOGIN, 
+                        "modelName"=>"InternetDocument",
+                        "calledMethod"=>"getDocumentPrice",
+                        "methodProperties"=>array(
+                        "Language"=>$api_language,
+                        "CitySender"=>$sender_city_ref,
+                        "CityRecipient"=>$recipient_city_ref,
+                        "Weight"=>$weight,
+                        "ServiceType"=>"WarehouseWarehouse",
+                        "Cost"=>$price,
+                        "CargoType"=>"Cargo",
+                        "SeatsAmount"=>1
+                        )
+    );
+    
+$calculate_request = json_encode($calculate_request); 
 
-//echo $order->delivery['state'];
+//echo var_dump($calculate_request);
 
-$shipping_cost = $result['data'][0]['Cost'];
+    $curl = curl_init();
+    curl_setopt($curl, CURLOPT_URL, "https://api.novaposhta.ua/v2.0/json/");
+    curl_setopt($curl, CURLOPT_POST, true);
+    curl_setopt($curl, CURLOPT_POSTFIELDS, $calculate_request);
+    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+    $calculate_data = curl_exec($curl);
+    
+    //echo var_dump($calculate_data);
+    
+    curl_close($curl);
+    if($calculate_data === false)
+    {
+	return "Доставка в указанный город не осуществляется.";
+    }
+    
+    $calculate_city_data = json_decode(html_entity_decode($calculate_data), $assoc=true);
+
+//echo var_dump($calculate_city_data);
+
+if ($calculate_city_data['success'] == true) {
+
+$shipping_cost = $calculate_city_data['data'][0]['Cost'];
 }
+
+//echo $shipping_cost;
 
 }
 
 if ($order->delivery['city'] != '') {
 	
 // Получаем список отделений новой почты
-$warehouse_result = $np->getWarehouses($recipient_city['data'][0]['Ref']);
+
+    $request_pvz = array("apiKey"=>MODULE_SHIPPING_NEWPOST_API_LOGIN, 
+                        "modelName"=>"AddressGeneral",
+                        "calledMethod"=>"getWarehouses",
+                        "methodProperties"=>array(
+                        "Language"=>$api_language,
+                        "CityName"=>$order->delivery['city'],
+                        "Limit"=>500,
+                        )
+    );
+    
+$request_pvz = json_encode($request_pvz); 
+
+    $curl = curl_init();
+    curl_setopt($curl, CURLOPT_URL, "https://api.novaposhta.ua/v2.0/json/");
+    curl_setopt($curl, CURLOPT_POST, true);
+    curl_setopt($curl, CURLOPT_POSTFIELDS, $request_pvz);
+    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+    $data_pvz = curl_exec($curl);
+    
+    //echo var_dump($data);
+    
+    curl_close($curl);
+    if($data_pvz === false)
+    {
+	return "Не удалось загрузить список отделений новой почты для Вашего города.";
+    }
+    
+    $warehouse_result = json_decode(html_entity_decode($data_pvz), $assoc=true);
+    
 
 //echo var_dump($warehouse_result);
 
@@ -147,6 +264,7 @@ $name_pvz[] = array(
 		
         // список пвз, выпадающее меню
         $pvz = vam_draw_pull_down_menu('pvz', $name_pvz, $_POST['pvz'], 'id="pvz_newpost" class="form-control"');
+}
 }
 }
 }
@@ -188,7 +306,7 @@ $name_pvz[] = array(
 	  $this->quotes['error'] = 'До пункта выдачи. Действует при сумме товаров <b>от ' . $min_sum . ' руб.</b>';
 	  } elseif (isset($ret['error'][0]['code']) || $shipping_cost <= MODULE_SHIPPING_NEWPOST_COST) {
 		  
-	  $this->quotes['error'] = 'Пункты выдачи. Доставка в этом направлении не осуществляется (или попробуйте <b>ввести также индекс</b>)'; 
+	  $this->quotes['error'] = 'Пункты выдачи. Доставка в этом направлении не осуществляется.'; 
 	  } 
 	  
 
