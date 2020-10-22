@@ -86,6 +86,11 @@ $np = new \LisDev\Delivery\NovaPoshtaApi2(
 
 // Получение кода города по названию города и области
 $sender_city = $np->getCity(MODULE_SHIPPING_NEWPOST_CITY, MODULE_SHIPPING_NEWPOST_STATE);
+
+//echo var_dump($sender_city);
+
+if ($sender_city['success'] == true) {
+
 $sender_city_ref = $sender_city['data'][0]['Ref'];
 // Получение кода города по названию города и области
 $delivery_state = explode(" ", $order->delivery['state']);
@@ -95,6 +100,9 @@ $recipient_city = $np->getCity($order->delivery['city'], $delivery_state[0]);
 $recipient_city = $np->getCity($order->delivery['city']);
 }
 //echo var_dump($recipient_city);
+
+if ($recipient_city['success'] == true) {
+
 $recipient_city_ref = $recipient_city['data'][0]['Ref'];
 if ($recipient_city_ref != '') {
 $receiverCityId = $recipient_city_ref;
@@ -139,6 +147,8 @@ $name_pvz[] = array(
 		
         // список пвз, выпадающее меню
         $pvz = vam_draw_pull_down_menu('pvz', $name_pvz, $_POST['pvz'], 'id="pvz_newpost" class="form-control"');
+}
+}
 }
 
 		if($_POST['pvz'] != '') $pvz_title = ' ' . html_entity_decode($_POST['pvz']) . '';		
