@@ -12,15 +12,15 @@
 					{$module_data.PRODUCTS_PRICE}
 				</div>
 				{/if}
+				<div class="small">
 				{if $module_data.REVIEWS_TOTAL > 0}
-				<div class="rating-wrap small">
 					{$module_data.REVIEWS_STAR_RATING} <span class="text-muted pr-2" data-toggle="tooltip" title="{$smarty.const.TEXT_REVIEWS_RATING}">{$module_data.REVIEWS_TOTAL_RATING|number_format:1}</span>
-					<div class="label-rating"><span class="text-muted"><i class="far fa-comments"></i> {$smarty.const.TEXT_TOTAL_REVIEWS}: {$module_data.REVIEWS_TOTAL}</span></div>
-				</div>
+					<div class="label-rating"><span class="text-muted" data-toggle="tooltip" title="{$smarty.const.TEXT_TOTAL_REVIEWS}"><i class="far fa-comments"></i> {$module_data.REVIEWS_TOTAL}</span></div>
 				{/if}
 				{if $smarty.const.ENABLE_WISHLIST == 'true'}
 					<span class="wishlist-button text-muted">{$module_data.PRODUCTS_BUTTON_WISHLIST}</span>
-				{/if}					
+				{/if}	
+				</div>			
 				{if $CATEGORIES_NAME && SPECIFICATIONS_BOX_COMPARISON == "True"}<div class="desc"><label><input type="checkbox" id="s_{$module_data.PRODUCTS_ID}" name="products[]" value="{$module_data.PRODUCTS_ID}" /> {#text_compare#}</label></div>{/if}
 				{assign var=options value=$module_data.attrib}
 				{include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}module/product_options/multi_options.html"}
