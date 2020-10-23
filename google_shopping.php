@@ -182,6 +182,7 @@ while ($products = vam_db_fetch_array($products_query)) {
   vam_yml_out('  <link>' . $url . '</link>');
   vam_yml_out('  <title>' . vam_yml_clear_string($products['products_name']) . '</title>');
   vam_yml_out('  <description>' . vam_yml_clear_string($products['proddesc']) . '</description>');
+  vam_yml_out('  <g:id>' . $products['products_id'] . '</g:id>');
   vam_yml_out('  <g:price>' . ($old_price > 0 && $products['status'] == 1  ? $old_price : $price) . '</g:price>');
   vam_yml_out('  <g:availability>' . $available . '</g:availability>');
   if(vam_not_null($products['products_image'])) vam_yml_out('  <g:image_link>' . HTTP_SERVER . DIR_WS_CATALOG . DIR_WS_THUMBNAIL_IMAGES . urldecode($products['products_image']) . '</g:image_link>');
