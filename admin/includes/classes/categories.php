@@ -184,6 +184,7 @@ class categories {
                 'yml_cbid' => $yml_cbid, 
                 'categories_url' => $categories_url,
                 'label_id' => vam_db_prepare_input($categories_data['label_id']),
+                'google_category_id' => vam_db_prepare_input($categories_data['google_category_id']),
                 'icon' => vam_db_prepare_input($categories_data['icon'])
                 
                 );
@@ -324,6 +325,7 @@ class categories {
 									'products_sorting'=>$ccopy_values['products_sorting'],
 									'products_sorting2'=>$ccopy_values['products_sorting2'],
 									'label_id'=>$ccopy_values['label_id'],
+									'google_category_id'=>$ccopy_values['google_category_id'],
 									'icon'=>$ccopy_values['icon']
 									
 									);	

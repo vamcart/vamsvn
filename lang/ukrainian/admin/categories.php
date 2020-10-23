@@ -273,5 +273,6 @@ define ('TEXT_TAB_BUNDLES', 'Комплекты');
 
 define('TEXT_EDIT_LABEL', 'Ярлык категории:');
 define('TEXT_EDIT_ICON', 'Иконка категории:');
+define('TEXT_GOOGLE_CATEGORY_ID', 'Google Shopping Category ID:');
 
 ?>

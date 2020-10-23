@@ -265,6 +265,11 @@ $order_array=array(array('id' => 'ASC','text'=>'ASC (1 first)'),
             <td valign="top" class="main"><?php echo TEXT_EDIT_ICON; ?></td>
             <td valign="top" class="main"><?php echo vam_draw_input_field('icon', $cInfo->icon, 'size="40"'); ?></td>
           </tr>
+
+          <tr>
+            <td valign="top" class="main"><?php echo TEXT_GOOGLE_CATEGORY_ID; ?></td>
+            <td valign="top" class="main"><?php echo vam_draw_input_field('google_category_id', $cInfo->google_category_id, 'size="40"'); ?></td>
+          </tr>
             
           <tr>
             <td valign="top" colspan="2" class="main"><?php echo TEXT_YANDEX_MARKET; ?></td>
