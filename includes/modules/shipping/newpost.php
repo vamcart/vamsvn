@@ -303,10 +303,10 @@ $name_pvz[] = array(
 	  
 	  } elseif ($_SESSION['cart']->show_total() < $min_sum) {
 	
-	  $this->quotes['error'] = 'До пункта выдачи. Действует при сумме товаров <b>от ' . $min_sum . ' руб.</b>';
+	  $this->quotes['error'] = 'До отделения новой почты. Действует при сумме товаров <b>от ' . $min_sum . ' руб.</b>';
 	  } elseif (isset($ret['error'][0]['code']) || $shipping_cost <= MODULE_SHIPPING_NEWPOST_COST) {
 		  
-	  $this->quotes['error'] = 'Пункты выдачи. Доставка в этом направлении не осуществляется.'; 
+	  $this->quotes['error'] = 'Доставка в указанный город не осуществляется.'; 
 	  } 
 	  
 
