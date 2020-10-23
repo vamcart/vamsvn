@@ -10,28 +10,51 @@ $(this).addClass("selected");
 </script>
 <div class="card-deck payment-methods">
 {foreach name=aussen item=module_data from=$module_content}
-<div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-4">
+<div class="col-12 col-sm-12 col-xs-12 col-md-12 col-lg-12 col-xl-12">
 <div class="payment-method card card-product card-sm text-center h-100{if {$module_data.checked} == 1} selected{/if}">
 <label class="h-100 payment {$module_data.id}" for="{$module_data.id}">
-  <div class="card-header d-flex justify-content-between">
-    <div>{$module_data.selection}</div>
-    <div class="method-title"><span class="title">{$module_data.module}</span></div>
-    <div class="font-weight-bolder">{if $module_data.module_cost}<span class="badge badge-secondary font-weight-bold">{$module_data.module_cost}</span>{/if}</div>
-  </div>
-  <div class="card-body">
-    <h5 class="card-title">{$module_data.icon}</h5>
-    {if $module_data.description}<p class="card-text">{$module_data.description}</p>{/if}
-    {if $module_data.error != ''}<p class="card-text">{$module_data.error}</p>{/if}
-  </div>
-  <div class="card-footer">
-    {if {$module_data.fields}}
-    <div class="payment-fields">
-    {foreach name=aussen item=method_data from=$module_data.fields}     <p>
-    {$method_data.title}&nbsp;{$method_data.field}
-    </p>     {/foreach}
-    </div>
-    {/if}
-  </div>
+	<div class="card-body">
+	<div class="row">
+		<div class="col-md-2 my-auto">
+			<div class="mx-auto my-auto">
+			  {if $module_data.icon}
+			  {$module_data.icon}
+			  {else}
+			  <img class="img-fluid" src="images/icons/cod.png" alt="{$module_data.module}" title="{$module_data.module}" data-toggle="tooltip" />
+			  {/if}
+			</div>
+		</div>
+		<div class="col-md-8 my-auto text-left">
+			<div class="title d-flex justify-content-start">
+		    {if $module_data.selection}<div>{$module_data.selection}&nbsp;</div>{/if}
+		    <div class="font-weight-bolder"></div>
+		    <div class="method-title"><span class="title font-weight-bold text-muted">{$module_data.module}</span></div>
+			</div>
+			{if $module_data.error != ''}
+			<div class="card-text small">{$module_data.error}</div>
+			{/if}
+			{if $module_data.description != ''}
+			<div class="card-text small">
+			{$module_data.description}
+			</div>
+			{/if}     
+			{if $module_data.fields}
+			<div class="card-text small">
+		    <div class="payment-method-fields">
+		    {foreach name=aussen item=method_data from=$module_data.fields} 		    <div>
+		    {$method_data.title}&nbsp;{$method_data.field}
+		    </div> 		    {/foreach}
+		    </div>
+			</div>
+			{/if}   
+		</div>
+		<div class="col-md-2 my-auto py-2">
+				<div class="price-wrap font-weight-bold text-muted text-left">
+					{if {$module_data.module_cost} > 0}<div><strong>{$module_data.module_cost}</strong></div>{/if}
+				</div>
+		</div>
+	</div>
+	</div>
 </label>  
 </div>
 </div>
