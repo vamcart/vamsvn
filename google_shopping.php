@@ -138,7 +138,7 @@ vam_yml_out('<description>' . vam_yml_clear_string((YML_COMPANY == '' ? STORE_OW
 
 $products_short_description = vam_db_query('describe ' . TABLE_PRODUCTS_DESCRIPTION . ' products_short_description');
 $yml_select = vam_db_query('describe ' . TABLE_PRODUCTS . ' products_to_xml');
-$products_sql = "SELECT distinct p.products_id, p2c.categories_id, p.products_model, p.products_ean, p.products_quantity, p.products_image, p.products_ean, p.products_price, s.status, s.specials_new_products_price as price, p.products_tax_class_id, p.manufacturers_id, p.products_sort, GREATEST(p.products_date_added, IFNULL(p.products_last_modified, 0), IFNULL(p.products_date_available, 0)) AS base_date, pd.products_name, m.manufacturers_name, pd.products_description" .
+$products_sql = "SELECT distinct c.google_category_id, p.products_id, p2c.categories_id, p.products_model, p.products_ean, p.products_quantity, p.products_image, p.products_ean, p.products_price, s.status, s.specials_new_products_price as price, p.products_tax_class_id, p.manufacturers_id, p.products_sort, GREATEST(p.products_date_added, IFNULL(p.products_last_modified, 0), IFNULL(p.products_date_available, 0)) AS base_date, pd.products_name, m.manufacturers_name, pd.products_description" .
                 (($products_short_description > 0) ? ", pd.products_short_description " : " ") . "as proddesc " .
                 (($yml_select > 0) ? ", p.yml_bid, p.yml_cbid " : "") .
                 "FROM " . TABLE_PRODUCTS . " p
@@ -146,6 +146,7 @@ $products_sql = "SELECT distinct p.products_id, p2c.categories_id, p.products_mo
                     LEFT JOIN " . TABLE_MANUFACTURERS . " m ON (p.manufacturers_id = m.manufacturers_id)
                     LEFT JOIN " . TABLE_PRODUCTS_TO_CATEGORIES . " p2c ON (p.products_id = p2c.products_id)
                     LEFT JOIN " . TABLE_SPECIALS . " s ON (p.products_id = s.products_id)
+                    LEFT JOIN " . TABLE_CATEGORIES . " c ON (c.categories_id = p2c.categories_id)
                  WHERE p.products_status = 1" .
                    (($yml_select > 0) ? " and p.products_to_xml = 1" : "") .
                  " AND pd.language_id = " . (int)$_SESSION['languages_id'] . "
@@ -200,6 +201,9 @@ while ($products = vam_db_fetch_array($products_query)) {
   }
   if(vam_not_null($products['products_ean'])) {
     vam_yml_out('  <g:gtin>' . $products['products_ean'] . '</g:gtin>');
+  }
+  if(vam_not_null($products['google_category_id'])) {
+    vam_yml_out('  <g:google_product_category>' . $products['google_category_id'] . '</g:google_product_category>');
   }
   vam_yml_out('</item>' . "\n");
 
