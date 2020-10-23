@@ -10,7 +10,7 @@ $(this).addClass("selected");
 </script>
 <div class="card-deck payment-methods">
 {foreach name=aussen item=module_data from=$module_content}
-<div class="col-12 col-sm-12 col-xs-12 col-md-12 col-lg-12 col-xl-12">
+<div class="col-12 col-sm-6 col-xs-12 col-md-12 col-lg-12 col-xl-12">
 <div class="payment-method card card-product card-sm text-center h-100{if {$module_data.checked} == 1} selected{/if}">
 <label class="h-100 payment {$module_data.id}" for="{$module_data.id}">
 	<div class="card-body">
