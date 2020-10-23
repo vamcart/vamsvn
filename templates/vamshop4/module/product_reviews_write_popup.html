@@ -39,12 +39,12 @@ $(function($){
 		</div>
 		<div class="col-md-2">
 			<div class="text-center">
-			<div class="display-4 font-weight-bolder"><span>{$module_content[0].PRODUCT.REVIEWS_TOTAL_RATING|number_format:1}</span></div>
-			{$module_content[0].PRODUCT.REVIEWS_STAR_RATING}
+			<div class="display-4 font-weight-bolder"><span>{$PRODUCTS_REVIEWS_RATING|number_format:1}</span></div>
+			{$PRODUCTS_STAR_RATING}
 			</div>
-				{if {$module_content[0].PRODUCT.REVIEWS_TOTAL} > 0}
+				{if {$PRODUCTS_REVIEWS_COUNT} > 0}
 				<div class="rating-wrap text-center">
-             {#text_total#}: <span>{$module_content[0].PRODUCT.REVIEWS_TOTAL}</span>
+             {#text_total#}: <span>{$PRODUCTS_REVIEWS_COUNT}</span>
 				</div>
 				{/if}
 		</div>

@@ -117,6 +117,23 @@ if (isset ($_GET['action']) && $_GET['action'] == 'process' && $spam_flag == fal
 				}
 
 				$vamTemplate->assign('PRODUCTS_NAME', $product->data['products_name']);
+				
+				$vamTemplate->assign('PRODUCTS_REVIEWS_COUNT', $product->getReviewsCount());
+				$vamTemplate->assign('PRODUCTS_REVIEWS_RATING', $product->getReviewsRating());
+				
+				$rating_count = 0;
+				
+				if ($product->getReviewsCount() > 0) {
+				
+				$star_rating = '';
+				for($i=0;$i<number_format($product->getReviewsRating());$i++)	{
+				$star_rating .= '<span class="rating"><i class="fa fa-star"></i></span> ';
+				}
+				
+				$vamTemplate->assign('PRODUCTS_STAR_RATING', $star_rating);
+				
+				}
+				
 				$vamTemplate->assign('PRODUCTS_IMAGE', $product->data['products_image']);
 				$vamTemplate->assign('PRODUCTS_LINK', vam_href_link(FILENAME_PRODUCT_INFO, vam_product_link($product->data['products_id'], $product->data['products_name'])));
 				$vamTemplate->assign('REVIEWS_LINK', vam_href_link(FILENAME_PRODUCT_REVIEWS_INFO, 'products_id='.$product->data['products_id'].'&reviews_id='.$insert_id)); 
@@ -168,6 +185,23 @@ if (!$product->isProduct()) {
 		$customer_info['customers_lastname'] = TEXT_GUEST;
 	}
 	$vamTemplate->assign('PRODUCTS_NAME', $product->data['products_name']);
+	
+	$vamTemplate->assign('PRODUCTS_REVIEWS_COUNT', $product->getReviewsCount());
+	$vamTemplate->assign('PRODUCTS_REVIEWS_RATING', $product->getReviewsRating());
+	
+	$rating_count = 0;
+	
+	if ($product->getReviewsCount() > 0) {
+	
+	$star_rating = '';
+	for($i=0;$i<number_format($product->getReviewsRating());$i++)	{
+	$star_rating .= '<span class="rating"><i class="fa fa-star"></i></span> ';
+	}
+	
+	$vamTemplate->assign('PRODUCTS_STAR_RATING', $star_rating);
+	
+	}
+	
 	$vamTemplate->assign('AUTHOR', $customer_info['customers_firstname']);
 	$vamTemplate->assign('INPUT_TEXT', vam_draw_textarea_field('review', 'soft', 60, 7, $_POST['review'], 'class="form-control" id="review"', false));
 	$vamTemplate->assign('INPUT_RATING', 
