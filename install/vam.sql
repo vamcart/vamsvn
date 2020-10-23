@@ -638,15 +638,16 @@ CREATE TABLE categories (
   icon varchar(255),
   likes int(3) DEFAULT "0" NOT NULL,
   dislikes int(3) DEFAULT "0" NOT NULL,
+  google_category_id varchar(255),
   PRIMARY KEY (categories_id),
   KEY idx_categories_parent_id (parent_id)
 ) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
 INSERT INTO `categories` VALUES
-(1, '', '1.jpg', 0, 1, 'default', 0, 0, 0, 0, 'default', 3, 'p.products_sort', 'ASC', '2014-01-20 10:35:47', '2014-01-20 11:11:52', '', '', 'notebooks.html', 1, 0, 'fas fa-laptop',0,0),
-(2, '', '2.jpg', 0, 1, 'default', 0, 0, 0, 0, 'product_listing_list.html', 2, 'p.products_sort', 'ASC', '2014-01-20 10:36:08', '2014-01-20 11:11:57', '', '', 'tablets.html', 1, 3, 'fas fa-tablet-alt',0,0),
-(3, '', '3.jpg', 0, 1, 'default', 0, 0, 0, 0, 'default', 1, 'p.products_sort', 'ASC', '2014-01-20 10:36:29', '2014-01-20 11:12:01', '', '', 'smartphones.html', 1, 0, 'fas fa-mobile-alt',0,0),
-(4, '', '4.jpg', 0, 1, 'default', 0, 0, 0, 0, 'default', 4, 'p.products_sort', 'ASC', '2014-01-20 10:36:29', '2014-01-20 11:12:01', '', '', 'monitors.html', 1, 0, 'fas fa-tv',0,0);
+(1, '', '1.jpg', 0, 1, 'default', 0, 0, 0, 0, 'default', 3, 'p.products_sort', 'ASC', '2014-01-20 10:35:47', '2014-01-20 11:11:52', '', '', 'notebooks.html', 1, 0, 'fas fa-laptop',0,0,''),
+(2, '', '2.jpg', 0, 1, 'default', 0, 0, 0, 0, 'product_listing_list.html', 2, 'p.products_sort', 'ASC', '2014-01-20 10:36:08', '2014-01-20 11:11:57', '', '', 'tablets.html', 1, 3, 'fas fa-tablet-alt',0,0,''),
+(3, '', '3.jpg', 0, 1, 'default', 0, 0, 0, 0, 'default', 1, 'p.products_sort', 'ASC', '2014-01-20 10:36:29', '2014-01-20 11:12:01', '', '', 'smartphones.html', 1, 0, 'fas fa-mobile-alt',0,0,''),
+(4, '', '4.jpg', 0, 1, 'default', 0, 0, 0, 0, 'default', 4, 'p.products_sort', 'ASC', '2014-01-20 10:36:29', '2014-01-20 11:12:01', '', '', 'monitors.html', 1, 0, 'fas fa-tv',0,0,'');
 
 DROP TABLE IF EXISTS categories_description;
 CREATE TABLE categories_description (
