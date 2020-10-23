@@ -20,15 +20,14 @@ $(this).addClass("selected");
 			  {if $module_data.icon}
 			  {$module_data.icon}
 			  {else}
-			  <img class="img-fluid" src="images/icons/cod.png" alt="{$module_data.module}" title="{$module_data.module}" data-toggle="tooltip" />
+			  <img class="img-fluid" src="images/icons/cod.png" alt="{$module_data.module}" title="{$module_data.module}" />
 			  {/if}
 			</div>
 		</div>
 		<div class="col-md-8 my-auto text-left">
 			<div class="title d-flex justify-content-start">
 		    {if $module_data.selection}<div>{$module_data.selection}&nbsp;</div>{/if}
-		    <div class="font-weight-bolder"></div>
-		    <div class="method-title"><span class="title font-weight-bold text-muted">{$module_data.module}</span></div>
+		    <div class="method-title"><span class="title text-muted">{$module_data.module}</span></div>
 			</div>
 			{if $module_data.error != ''}
 			<div class="card-text small">{$module_data.error}</div>

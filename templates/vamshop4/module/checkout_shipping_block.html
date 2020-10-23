@@ -29,15 +29,14 @@ $(this).addClass("selected");
 			  {if $module_data.icon}
 			  {$module_data.icon}
 			  {else}
-			  <img class="img-fluid" src="images/icons/flat.png" alt="{$module_data.module}" title="{$module_data.module}" data-toggle="tooltip" />
+			  <img class="img-fluid" src="images/icons/flat.png" alt="{$module_data.module}" title="{$module_data.module}" />
 			  {/if}
 			</div>
 		</div>
 		<div class="col-md-8 my-auto text-left">
 			<div class="title d-flex justify-content-start">
 		    {if $method_data.radio_field}<div>{$method_data.radio_field}&nbsp;</div>{/if}
-		    <div class="font-weight-bolder"></div>
-		    <div class="method-title"><span class="title font-weight-bold text-muted">{$module_data.module}</span></div>
+		    <div class="method-title"><span class="title text-muted">{$module_data.module}</span></div>
 			</div>
 			{if $method_data.title != ''}
 			<div class="card-text small">{$method_data.title}</div>
