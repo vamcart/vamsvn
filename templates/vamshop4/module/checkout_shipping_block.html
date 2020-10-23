@@ -18,30 +18,52 @@ $(this).addClass("selected");
 <div class="card-deck shipping-methods">
 {foreach name=aussen item=module_data from=$module_content}
 {foreach name=aussen item=method_data from=$module_data.methods} 
-<div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-4">
+<div class="col-12 col-sm-12 col-xs-12 col-md-12 col-lg-12 col-xl-12">
 <div class="shipping-method card card-product card-sm text-center h-100{if {$method_data.checked} == 1} selected{/if}">
 <label class="h-100 shipping {$method_data.id}" for="{$method_data.id}">
-  <div class="card-header d-flex justify-content-between">
-    <div>{$method_data.radio_field}</div>
-    <div class="method-title"><span class="title">{$module_data.module}</span></div>
-    <div class="font-weight-bolder"></div>
-  </div>
-  <div class="card-body">
-    {if {$method_data.cost} > 0}<p class="card-text"><span class="btn btn-secondary font-weight-bold">{$method_data.price}</span></p>{/if}
-    <h5 class="card-title">{$module_data.icon}</h5>
-    {if $method_data.title != ''}<p class="card-text">{$method_data.title}</p>{/if}
-    {if $module_data.error != ''}<p class="card-text">{$module_data.error}</p>{/if}
-    {if $module_data.description != ''}
-    <p class="card-text">
-    {$module_data.description}
-    </p>
-    {/if}     
-    {if $module_data.info != ''}
-    <p class="card-text">
-    {$module_data.info}
-    </p>
-    {/if}     
-  </div>
+
+	<div class="card-body">
+	<div class="row">
+		<div class="col-md-2 my-auto">
+			<div class="mx-auto my-auto">
+			  {if $module_data.icon}
+			  {$module_data.icon}
+			  {else}
+			  <img class="img-fluid" src="images/icons/flat.png" alt="{$module_data.module}" title="{$module_data.module}" data-toggle="tooltip" />
+			  {/if}
+			</div>
+		</div>
+		<div class="col-md-8 my-auto text-left">
+			<div class="title d-flex justify-content-start">
+		    {if $method_data.radio_field}<div>{$method_data.radio_field}&nbsp;</div>{/if}
+		    <div class="font-weight-bolder"></div>
+		    <div class="method-title"><span class="title font-weight-bold text-muted">{$module_data.module}</span></div>
+			</div>
+			{if $method_data.title != ''}
+			<div class="card-text small">{$method_data.title}</div>
+			{/if}
+			{if $module_data.error != ''}
+			<div class="card-text small">{$module_data.error}</div>
+			{/if}
+			{if $module_data.description != ''}
+			<div class="card-text small">
+			{$module_data.description}
+			</div>
+			{/if}     
+			{if $module_data.info != ''}
+			<div class="card-text small">
+			{$module_data.info}
+			</div>
+			{/if}   
+		</div>
+		<div class="col-md-2 my-auto py-2">
+				<div class="price-wrap font-weight-bold text-muted text-left">
+					{if {$method_data.cost} > 0}<div><strong>{$method_data.price}</strong></div>{/if}
+				</div>
+		</div>
+	</div>
+	</div>
+
   <div class="card-footer align-bottom">
 
 {if $method_data.id == "pickpoint"}
