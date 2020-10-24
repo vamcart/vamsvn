@@ -71,7 +71,7 @@ $tooltip .= TABLE_HEADING_SHOPPING_CART . ": <br />";
         $products = vam_get_products($user_session);
         for ($i = 0, $n = sizeof($products); $i < $n; $i++) {
         	 $tooltip .= "<br />";
-          $tooltip .= $products[$i]['quantity'] . ' x ' . $products[$i]['name'];
+          $tooltip .= $products[$i]['quantity'] . ' x ' . htmlentities($products[$i]['name']);
         }
 
         if (sizeof($products) > 0) {
