@@ -13,7 +13,7 @@ $bender->enqueue("jscript/jquery/plugins/owl/owl.carousel.min.js");
 //$bender->enqueue("jscript/jquery/plugins/tiny-slider/tiny-slider.js");
 //$bender->enqueue("jscript/jquery/plugins/select2/select2.js");
 //$bender->enqueue("jscript/jquery/plugins/select2/i18n/" . $_SESSION['language_code'] . ".js");
-$bender->enqueue("jscript/jquery/plugins/scrollup/jquery.scrollup.min.js");
+//$bender->enqueue("jscript/jquery/plugins/scrollup/jquery.scrollup.min.js");
 //$bender->enqueue("jscript/jquery/plugins/zoom/jquery.zoom.js");
 //$bender->enqueue("jscript/jquery/plugins/equalheight/jquery.sameheight.js");
 $bender->enqueue("jscript/jquery/plugins/equalheight/jquery.matchheight.js");
