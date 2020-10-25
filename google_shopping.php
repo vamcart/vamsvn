@@ -187,7 +187,7 @@ while ($products = vam_db_fetch_array($products_query)) {
   vam_yml_out('  <g:price>' . number_format($vamPrice->Format($products['products_price'], false),2,'.','') . ' ' . $_SESSION['currency'] . '</g:price>');
   if ($products['price'] > 0 && $products['status'] == 1) vam_yml_out('  <g:sale_price>' . ($old_price > 0 && $products['status'] == 1  ? number_format($old_price,2,'.','') : number_format($price,2,'.','')) . ' ' . $_SESSION['currency'] . '</g:sale_price>');
   vam_yml_out('  <g:availability>' . $available . '</g:availability>');
-  if(vam_not_null($products['products_image'])) vam_yml_out('  <g:image_link>' . HTTP_SERVER . DIR_WS_CATALOG . DIR_WS_THUMBNAIL_IMAGES . urldecode($products['products_image']) . '</g:image_link>');
+  if(vam_not_null($products['products_image'])) vam_yml_out('  <g:image_link>' . HTTP_SERVER . DIR_WS_CATALOG . DIR_WS_ORIGINAL_IMAGES . urldecode($products['products_image']) . '</g:image_link>');
 		$mo_images = vam_get_products_mo_images($products['products_id']);
         if ($mo_images != false) {
             foreach ($mo_images as $img) {
