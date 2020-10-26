@@ -58,14 +58,14 @@ if (STORE_COUNTRY == 176) {
 $prefix = "+7";
 }
 if (STORE_COUNTRY == 220) {
-$prefix = "+38";
+$prefix = "+380";
 }
 
 ?>
 <script src="jscript/jquery/plugins/validate/jquery.validate.pack.js"></script>
 <script src="jscript/jquery/plugins/cleave/cleave.min.js"></script>
 <?php if ($country_code != '') { ?>
-<script src="jscript/jquery/plugins/cleave/addons/cleave-phone.<?php echo $country_code; ?>.js"></script>
+<script src="jscript/jquery/plugins/cleave/addons/cleave-phone.<?php echo $country_code; ?>-new.js"></script>
 <<?php } ?>
 <script src="jscript/modified.js"></script>
 <script><!--
