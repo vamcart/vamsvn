@@ -2,7 +2,7 @@
     "name": "VamShop",
     "short_name": "vamshop",
     "description": "Движок (CMS) для создания интернет-магазина VamShop.",
-    "start_url": "/",
+    "start_url": "/?utm_source=pwa&utm_medium=manifest&utm_campaign=manifest_start_url",
     "display": "standalone",
     "theme_color": "#fff",
     "background_color": "#fff",
