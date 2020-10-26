@@ -54,6 +54,7 @@ $form_id = 'checkout_address';
 ?>
 <script src="jscript/jquery/plugins/validate/jquery.validate.pack.js"></script>
 <script src="jscript/jquery/plugins/cleave/cleave.min.js"></script>
+<script src="jscript/jquery/plugins/cleave/addons/cleave-phone.ua.js"></script>
 <script src="jscript/modified.js"></script>
 <script><!--
 
@@ -72,12 +73,22 @@ $(document).ready(function() {
    });
 
 <?php if(PHONE_MASK != '') { ?>
-<?php if (!vam_session_is_registered('customer_id')) { ?>
+<?php if (!vam_session_is_registered('customer_id')) { 
+$prefix = false;
+$country_info = vam_get_countries_with_iso_codes(STORE_COUNTRY);
+$country_code = strtolower($country_info['countries_iso_code_2']);
+if (STORE_COUNTRY == 176) {
+$prefix = "+7";
+}
+if (STORE_COUNTRY == 220) {
+$prefix = "+38";
+}
+?>
 $(function () {
 new Cleave("#telephone", {
-  numericOnly: true,
-  blocks: [0, 3, 0, 3, 2, 2],
-  delimiters: ["(", ")", " ", "-","-"],
+  <?php if ($prefix) { ?>prefix: "<?php echo $prefix; ?>", <?php } ?>
+  phone: true,
+  phoneRegionCode: "<?php echo $country_code; ?>"
 });
 });
 <?php } ?>

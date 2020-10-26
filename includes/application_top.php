@@ -117,6 +117,7 @@ require_once (DIR_FS_INC.'vam_db_input.inc.php');
 require_once (DIR_FS_INC.'vam_db_prepare_input.inc.php');
 require_once (DIR_FS_INC.'vam_get_top_level_domain.inc.php');
 require_once (DIR_FS_INC.'vam_get_cookie_info.inc.php');
+require_once (DIR_FS_INC.'vam_get_countries_with_iso_codes.inc.php');
 
 // html basics
 require_once (DIR_FS_INC.'vam_href_link.inc.php');
