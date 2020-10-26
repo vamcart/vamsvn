@@ -64,7 +64,7 @@ $prefix = "+380";
 ?>
 <script src="jscript/jquery/plugins/validate/jquery.validate.pack.js"></script>
 <script src="jscript/jquery/plugins/cleave/cleave.min.js"></script>
-<?php if ($country_code != '') { ?>
+<?php if ($country_code != '' && STORE_COUNTRY != 220) { ?>
 <script src="jscript/jquery/plugins/cleave/addons/cleave-phone.<?php echo $country_code; ?>.js"></script>
 <<?php } ?>
 <script src="jscript/modified.js"></script>
@@ -84,7 +84,7 @@ $(document).ready(function() {
                            
    });
 
-<?php if(PHONE_MASK != '') { ?>
+<?php if(PHONE_MASK != '' && STORE_COUNTRY != 220) { ?>
 <?php if (!vam_session_is_registered('customer_id')) { 
 ?>
 $(function () {
