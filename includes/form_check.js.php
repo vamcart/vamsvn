@@ -89,7 +89,9 @@ $(document).ready(function() {
 ?>
 $(function () {
 new Cleave("#telephone", {
-  <?php if ($prefix) { ?>prefix: "<?php echo $prefix; ?>", <?php } ?>
+<?php if ($prefix) { ?>
+  prefix: "<?php echo $prefix; ?>", 
+<?php } ?>
   numericOnly: true,
 <?php if ($country_code != '') { ?>  
   phone: true,
