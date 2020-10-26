@@ -28,7 +28,9 @@
       </div>
       {if $module_data.PRODUCTS_PRICE_PLAIN > 0}
       <div class="card-footer text-center">
-         <div class="input-group justify-content-center pb-2">
+			<div class="d-flex">
+			<div class="flex-fill pr-1">
+         <div class="input-group justify-content-center">
          <div class="input-group-prepend">
 	       <span class="btn btn-secondary value-control" data-action="minus" data-target="quantity{$module_data.PRODUCTS_ID}"><i class="fa fa-minus"></i></span>
          </div>
@@ -37,8 +39,12 @@
 	       <span class="btn btn-secondary value-control" data-action="plus" data-target="quantity{$module_data.PRODUCTS_ID}"><i class="fa fa-plus"></i></span>
          </div>
          </div>
+         </div>
+			<div class="flex-fill">
          <input type="hidden" name="products_id" value="{$module_data.PRODUCTS_ID}" />
-			<button class="btn btn-inverse checkout btn-block"><i class="fas fa-shopping-cart"></i> {$smarty.const.ICON_CART}</button>
+			<button class="btn btn-inverse checkout btn-block" data-toggle="tooltip" title="{$smarty.const.ICON_CART}" aria-label="{$smarty.const.ICON_CART}"><i class="fas fa-shopping-cart"></i></button>
+         </div>
+			</div>
       </div>
       {/if}
 		</div>
