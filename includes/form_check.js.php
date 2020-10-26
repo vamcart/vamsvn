@@ -64,7 +64,9 @@ $prefix = "+38";
 ?>
 <script src="jscript/jquery/plugins/validate/jquery.validate.pack.js"></script>
 <script src="jscript/jquery/plugins/cleave/cleave.min.js"></script>
+<?php if ($country_code != '') { ?>
 <script src="jscript/jquery/plugins/cleave/addons/cleave-phone.<?php echo $country_code; ?>.js"></script>
+<<?php } ?>
 <script src="jscript/modified.js"></script>
 <script><!--
 
@@ -89,8 +91,10 @@ $(function () {
 new Cleave("#telephone", {
   <?php if ($prefix) { ?>prefix: "<?php echo $prefix; ?>", <?php } ?>
   numericOnly: true,
+<?php if ($country_code != '') { ?>  
   phone: true,
   phoneRegionCode: "<?php echo $country_code; ?>"
+<?php } ?>  
 });
 });
 <?php } ?>
