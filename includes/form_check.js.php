@@ -53,7 +53,7 @@ $form_id = 'checkout_address';
 
 ?>
 <script src="jscript/jquery/plugins/validate/jquery.validate.pack.js"></script>
-<script src="jscript/jquery/plugins/maskedinput/jquery.maskedinput.min.js"></script>
+<script src="jscript/jquery/plugins/cleave/cleave.min.js"></script>
 <script src="jscript/modified.js"></script>
 <script><!--
 
@@ -72,9 +72,16 @@ $(document).ready(function() {
    });
 
 <?php if(PHONE_MASK != '') { ?>
-$("#telephone").mask("<?php echo PHONE_MASK; ?>");
+<?php if (!vam_session_is_registered('customer_id')) { ?>
+$(function () {
+new Cleave("#telephone", {
+  numericOnly: true,
+  blocks: [0, 3, 0, 3, 2, 2],
+  delimiters: ["(", ")", " ", "-","-"],
+});
+});
 <?php } ?>
-$("#qiwi_telephone").mask("79999999999");
+<?php } ?>
    	
 	// validate signup form on keyup and submit
 	$("#<?php echo $form_id; ?>").validate({
