@@ -133,13 +133,13 @@ if ($order->delivery['city'] != '') {
 		$count_pvz = count($ret_pvz);
 		$company = 'BoxBerry';		
 							
-		if(isset($_POST['pvz'])) {
-			$_SESSION['pvz'] = $_POST['pvz'];
+		if(isset($_POST['pvz_boxberry'])) {
+			$_SESSION['pvz_boxberry'] = $_POST['pvz_boxberry'];
 		} else {
-			unset($_SESSION['pvz']);
+			unset($_SESSION['pvz_boxberry']);
 		}
 		
-		$check_city_pvz = vam_db_query("select distinct city, lat from markers_geocod where name = '" . $_SESSION['pvz'] . "' and company = '" . $company . "'");
+		$check_city_pvz = vam_db_query("select distinct city, lat from markers_geocod where name = '" . $_SESSION['pvz_boxberry'] . "' and company = '" . $company . "'");
 		$city_pvz = vam_db_fetch_array($check_city_pvz);
 				
 		
@@ -156,7 +156,7 @@ if ($order->delivery['city'] != '') {
         				
 		$worktime = $ret_pvz[$key]['WorkShedule']; 
         		
-		if ($city_pvz == '' && $_POST['pvz'] != '') {
+		if ($city_pvz == '' && $_POST['pvz_boxberry'] != '') {
         vam_db_query("insert into markers_geocod (name, address, city, company, worktime, telephon, lng, lat) values ('" . $name_pvz1 . "', '" . $ret_pvz[$key]['Address'] . "', '" . $city . "', '" . $company . "', '" . $worktime . "', '" . $ret_pvz[$key]['Phone'] . "', '" . $ret_pvz[$key]['attributes']['GPS'] . "', '" . $ret_pvz[$key]['GPS'] . "')");	
 		}		
         $value++;		
@@ -171,23 +171,23 @@ if ($order->delivery['city'] != '') {
 		
 if ($order->delivery['city'] != '') {
         // список пвз, выпадающее меню
-        $pvz = vam_draw_pull_down_menu('pvz', $name_pvz, $_POST['pvz'], 'id="pvz_boxberry" class="form-control"');
+        $pvz = vam_draw_pull_down_menu('pvz_boxberry', $name_pvz, $_POST['pvz_boxberry'], 'id="pvz_boxberry" class="form-control"');
 }
 		
-		if($_POST['pvz'] != '') $pvz_title = ', ' . html_entity_decode($_POST['pvz']) . '';		
+		if($_POST['pvz_boxberry'] != '') $pvz_title = ', ' . html_entity_decode($_POST['pvz_boxberry']) . '';		
 
 
 	    //Считаем стоимость доставки в выбранный ПВЗ
 	    
-	    if ($POST['pvz']) {
-	    	$selected_pvz = strstr($_POST['pvz'], ':', true);
+	    if ($POST['pvz_boxberry']) {
+	    	$selected_pvz = strstr($_POST['pvz_boxberry'], ':', true);
 	    } else {
 	    	$selected_pvz = '010';
 	    }
 	    //echo var_dump($selected_pvz);
 
 	    $curl = curl_init();
-	    curl_setopt($curl, CURLOPT_URL, "https://api.boxberry.ru/json.php?token=".MODULE_SHIPPING_BOXBERRYPVZ_API_LOGIN."&method=DeliveryCosts&weight=".$total_weight."targetstart=&target=".strstr($_POST['pvz'], ':', true)."&ordersum=&deliverysum=0&height=&width=&depth=&paysum=");
+	    curl_setopt($curl, CURLOPT_URL, "https://api.boxberry.ru/json.php?token=".MODULE_SHIPPING_BOXBERRYPVZ_API_LOGIN."&method=DeliveryCosts&weight=".$total_weight."targetstart=&target=".strstr($_POST['pvz_boxberry'], ':', true)."&ordersum=&deliverysum=0&height=&width=&depth=&paysum=");
 	    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 	    $shipping_data = curl_exec($curl);
 

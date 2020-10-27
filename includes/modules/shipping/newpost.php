@@ -263,13 +263,13 @@ $name_pvz[] = array(
         // добавление в файл результатов геокодирования
 		
         // список пвз, выпадающее меню
-        $pvz = vam_draw_pull_down_menu('pvz', $name_pvz, $_POST['pvz'], 'id="pvz_newpost" class="form-control"');
+        $pvz = vam_draw_pull_down_menu('pvz_newpost', $name_pvz, $_POST['pvz_newpost'], 'id="pvz_newpost" class="form-control"');
 }
 }
 }
 }
 
-		if($_POST['pvz'] != '') $pvz_title = ' ' . html_entity_decode($_POST['pvz']) . '';		
+		if($_POST['pvz_newpost'] != '') $pvz_title = ' ' . html_entity_decode($_POST['pvz_newpost']) . '';		
 
         $this->quotes = array('id' => $this->code,
                             'module' => MODULE_SHIPPING_NEWPOST_TEXT_TITLE,

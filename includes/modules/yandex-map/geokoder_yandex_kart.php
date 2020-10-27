@@ -1,5 +1,4 @@
 <?php
- 
 set_time_limit(30);
 
 ######## Геокодирование #########
@@ -141,7 +140,7 @@ $file = fopen ("includes/modules/yandex-map/data.json","r+");
   $str = $json_adress;
   if ( !$file )
   {
-    echo("Ошибка открытия файла");
+    //echo("Ошибка открытия файла");
   }
   else
   {

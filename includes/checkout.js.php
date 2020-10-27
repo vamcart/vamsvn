@@ -88,20 +88,21 @@ $('#box')
 	function(){
 		$('#payment_options').load(
 			url +' #payment_options > *', {
-				'shipping': $('input[name=shipping]:checked').val(),
-				'pvz': $('select[name=pvz]').val()
+				'shipping': $('input[name=shipping]:checked').val()
 			}
 		)
 	}
 )		
 
-.on('change', 'input[name=shipping],input[name=payment],select[name=pvz]', 
+.on('change', 'input[name=shipping],input[name=payment],select[name=pvz_boxberry],select[name=pvz_sdek],select[name=pvz_newpost]', 
 	function(){
 		$('#shipping_options').load(
 			url +' #shipping_options > *', {
 				'shipping': $('input[name=shipping]:checked').val(),
 				'payment': $('input[name=payment]:checked').val(),
-				'pvz': $('select[name=pvz]').val()
+				'pvz_boxberry': $('select[name=pvz_boxberry]').val(), 
+				'pvz_sdek': $('select[name=pvz_sdek]').val(), 
+				'pvz_newpost': $('select[name=pvz_newpost]').val(), 
 			}, 
 			function(){
 				$('#shipping_modules_box').trigger('refresh');
@@ -205,8 +206,7 @@ $('#box')
 			'state': $('select[name=state]').val(),
 			'postcode': $('input[name=postcode]').val(),
 			'telephone': $('input[name=telephone]').val(),
-			'city': $('input[name=city]').val(),
-			'pvz': $('select[name=pvz]').val()
+			'city': $('input[name=city]').val()
 		}
 	),
 	point();
@@ -222,8 +222,7 @@ $('#box')
 				'state': $('select[name=state]').val(),
 				'postcode': $('input[name=postcode]').val(),
 				'telephone': $('input[name=telephone]').val(),
-				'city': $('input[name=city]').val(),
-				'pvz': $('select[name=pvz]').val()
+				'city': $('input[name=city]').val()
 			}
 		),
 	point();
@@ -248,7 +247,7 @@ $('#box')
 //.on('refresh', '#shipping_modules_box', function(('input[name=checkout_possible]').val());})	
 //.on$('input[name=checkout_possible]').val()
 
-.on('change', 'input[name=shipping], input[name=payment], select[name=country], select[name=state], select[name=pvz], input[name=postcode], input[name=telephone], input[name=city]', 
+.on('change', 'input[name=shipping], input[name=payment], select[name=country], select[name=state], ,select[name=pvz_boxberry],select[name=pvz_sdek],select[name=pvz_newpost],input[name=postcode], input[name=telephone], input[name=city]', 
 	function(){
 	$('#shipping_country_box').load(
 		url +' #shipping_country', {
@@ -257,7 +256,9 @@ $('#box')
 			'country': $('select[name=country]').val(),
 			'state': $('select[name=state]').val(),
 			'city': $('input[name=city]').val(),
-			'pvz': $('select[name=pvz]').val(), 
+			'pvz_boxberry': $('select[name=pvz_boxberry]').val(), 
+			'pvz_sdek': $('select[name=pvz_sdek]').val(), 
+			'pvz_newpost': $('select[name=pvz_newpost]').val(), 
 			'telephone': $('input[name=telephone]').val(),
 			'postcode': $('input[name=postcode]').val()
 		}, 

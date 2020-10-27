@@ -142,13 +142,13 @@ if ($order->delivery['city'] != '') {
 		$count_pvz = count($ret_pvz);
 		$company = 'СДЭК';		
 							
-		if(isset($_POST['pvz'])) {
-			$_SESSION['pvz'] = $_POST['pvz'];
+		if(isset($_POST['pvz_sdek'])) {
+			$_SESSION['pvz_sdek'] = $_POST['pvz_sdek'];
 		} else {
-			unset($_SESSION['pvz']);
+			unset($_SESSION['pvz_sdek']);
 		}
 		
-		$check_city_pvz = vam_db_query("select distinct city, lat from markers_geocod where name = '" . $_SESSION['pvz'] . "' and company = '" . $company . "'");
+		$check_city_pvz = vam_db_query("select distinct city, lat from markers_geocod where name = '" . $_SESSION['pvz_sdek'] . "' and company = '" . $company . "'");
 		$city_pvz = vam_db_fetch_array($check_city_pvz);
 				
 		
@@ -164,7 +164,7 @@ if ($order->delivery['city'] != '') {
         				
 		$worktime = $ret_pvz[$key]['attributes']['WORKTIME']; 
         		
-		if ($city_pvz == '' && $_POST['pvz'] != '') {
+		if ($city_pvz == '' && $_POST['pvz_sdek'] != '') {
         vam_db_query("insert into markers_geocod (name, address, city, company, worktime, telephon, lng, lat) values ('" . $name_pvz1 . "', '" . $ret_pvz[$key]['attributes']['ADDRESS'] . "', '" . $city . "', '" . $company . "', '" . $worktime . "', '" . $ret_pvz[$key]['attributes']['PHONE'] . "', '" . $ret_pvz[$key]['attributes']['COORDX'] . "', '" . $ret_pvz[$key]['attributes']['COORDY'] . "')");	
 		}		
         $value++;		
@@ -180,10 +180,10 @@ if ($order->delivery['city'] != '') {
 		
 if ($order->delivery['city'] != '') {
         // список пвз, выпадающее меню
-        $pvz = vam_draw_pull_down_menu('pvz', $name_pvz, $_POST['pvz'], 'id="pvz_sdek" class="form-control"');
+        $pvz = vam_draw_pull_down_menu('pvz_sdek', $name_pvz, $_POST['pvz_sdek'], 'id="pvz_sdek" class="form-control"');
 }
 		
-		if($_POST['pvz'] != '') $pvz_title = ', ' . html_entity_decode($_POST['pvz']) . '';		
+		if($_POST['pvz_sdek'] != '') $pvz_title = ', ' . html_entity_decode($_POST['pvz_sdek']) . '';		
 
         $this->quotes = array('id' => $this->code,
                             'module' => MODULE_SHIPPING_SDEKPVZ_TEXT_TITLE,
