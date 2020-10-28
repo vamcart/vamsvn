@@ -247,7 +247,7 @@ $('#box')
 //.on('refresh', '#shipping_modules_box', function(('input[name=checkout_possible]').val());})	
 //.on$('input[name=checkout_possible]').val()
 
-.on('change', 'input[name=shipping], input[name=payment], select[name=country], select[name=state], ,select[name=pvz_boxberry],select[name=pvz_sdek],select[name=pvz_newpost],input[name=postcode], input[name=telephone], input[name=city]', 
+.on('change', 'input[name=shipping], input[name=payment], select[name=country], select[name=state],select[name=pvz_boxberry],select[name=pvz_sdek],select[name=pvz_newpost],input[name=postcode], input[name=telephone], input[name=city]', 
 	function(){
 	$('#shipping_country_box').load(
 		url +' #shipping_country', {
