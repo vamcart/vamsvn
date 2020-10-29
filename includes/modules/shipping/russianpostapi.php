@@ -1,7 +1,6 @@
 <?php
-
 /* -----------------------------------------------------------------------------------------
-   $Id: russianpostapi.php 899 2010/05/29 13:24:46 oleg_vamsoft $
+   $Id: russianpostapi.php 899 2020/05/29 13:24:46 oleg_vamsoft $
 
    Modified by Nagh
    http://www.tail.ru
@@ -88,7 +87,7 @@ var $code, $title, $description, $icon, $enabled;
       if (vam_not_null($this->icon)) $this->quotes['icon'] = vam_image($this->icon, $this->title);
 
       if (!$order->delivery['postcode']) 
-	    $this->quotes['error'] = 'Укажите почтовй индекс для расчёта стоимости доставки.';
+	    $this->quotes['error'] = 'Укажите почтовый индекс для расчёта стоимости доставки.';
 
       return $this->quotes;
     }

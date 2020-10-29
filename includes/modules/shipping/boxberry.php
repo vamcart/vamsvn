@@ -1,6 +1,6 @@
 <?php
 /* -----------------------------------------------------------------------------------------
-   $Id: boxberry.php 899 2007-02-06 21:19:57 VaM $   
+   $Id: boxberry.php 899 2020-02-06 21:19:57 VaM $   
 
    VaM Shop - open source ecommerce solution
    http://vamshop.ru
