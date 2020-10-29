@@ -188,7 +188,7 @@ if ($order->delivery['city'] != '') {
 	    //echo var_dump($selected_pvz);
 
 	    $curl = curl_init();
-	    curl_setopt($curl, CURLOPT_URL, "https://api.boxberry.ru/json.php?token=".MODULE_SHIPPING_BOXBERRYPVZ_API_LOGIN."&method=DeliveryCosts&weight=".$total_weight."targetstart=&target=".$selected_pvz."&ordersum=&deliverysum=0&height=&width=&depth=&paysum=");
+	    curl_setopt($curl, CURLOPT_URL, "https://api.boxberry.ru/json.php?token=".MODULE_SHIPPING_BOXBERRYPVZ_API_LOGIN."&method=DeliveryCosts&weight=".$total_weight."targetstart=&target=".strstr($_POST['pvz_boxberry'], ':', true)."&ordersum=&deliverysum=0&height=&width=&depth=&paysum=");
 	    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 	    $shipping_data = curl_exec($curl);
 
