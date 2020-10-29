@@ -182,12 +182,12 @@ if ($order->delivery['city'] != '') {
 	    if ($POST['pvz_boxberry']) {
 	    	$selected_pvz = strstr($_POST['pvz_boxberry'], ':', true);
 	    } else {
-	    	$selected_pvz = '010';
+	    	$selected_pvz = '99451';
 	    }
 	    //echo var_dump($selected_pvz);
 
 	    $curl = curl_init();
-	    curl_setopt($curl, CURLOPT_URL, "https://api.boxberry.ru/json.php?token=".MODULE_SHIPPING_BOXBERRYPVZ_API_LOGIN."&method=DeliveryCosts&weight=".$total_weight."targetstart=&target=".strstr($_POST['pvz_boxberry'], ':', true)."&ordersum=&deliverysum=0&height=&width=&depth=&paysum=");
+	    curl_setopt($curl, CURLOPT_URL, "https://api.boxberry.ru/json.php?token=".MODULE_SHIPPING_BOXBERRYPVZ_API_LOGIN."&method=DeliveryCosts&weight=".$total_weight."targetstart=&target=".$selected_pvz."&ordersum=&deliverysum=0&height=&width=&depth=&paysum=");
 	    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 	    $shipping_data = curl_exec($curl);
 
@@ -199,6 +199,8 @@ if ($order->delivery['city'] != '') {
 		if ($shipping['price'] > 0) {
 		$shipping_cost = $shipping['price'];
 		}
+		
+		//echo var_dump($shipping_cost);
 
         $this->quotes = array('id' => $this->code,
                             'module' => MODULE_SHIPPING_BOXBERRYPVZ_TEXT_TITLE,
@@ -220,6 +222,10 @@ if ($order->delivery['city'] != '') {
 	  
 	  if ($error == true) 
 	  $this->quotes['error'] = $err_msg;
+
+
+	    if ($POST['pvz_boxberry'])
+	    $this->quotes['error'] = 'Выберите пункт выдачи заказов для расчёта стоимости.';
 
 	    if ($boxberry_city_id == 0)
 	    $this->quotes['error'] = 'Доставка Boxberry в указанный город не осуществляется.';
