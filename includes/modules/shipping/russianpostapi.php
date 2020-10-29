@@ -87,6 +87,9 @@ var $code, $title, $description, $icon, $enabled;
 
       if (vam_not_null($this->icon)) $this->quotes['icon'] = vam_image($this->icon, $this->title);
 
+      if (!$order->delivery['postcode']) 
+	    $this->quotes['error'] = 'Укажите почтовй индекс для расчёта стоимости доставки.';
+
       return $this->quotes;
     }
 
