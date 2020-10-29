@@ -120,9 +120,9 @@ if ($order->delivery['city'] != '') {
 		if ($_SESSION['cart']->show_total() > $sum_akcii) {		
 		$shipping_skidka = ($shipping_cost / 100) * $skidka;
 		$shipping_cost = $shipping_cost - $shipping_skidka;
-		$shipping_txt_min = '<b>Выберите пункт выдачи:</b>';
+		//$shipping_txt_min = '<b>Выберите пункт выдачи:</b>';
 		} else {
-		$shipping_txt_min = 'При сумме товаров от <b>' . $sum_akcii . '</b> руб., на эту доставку действует скидка <font color="red"><b>' . $skidka . '%</b></font>. Осталось добавить товаров мин. на: ' .$min_dozakaz . ' руб. <br /> <b>Выберите пункт выдачи:</b>';
+		//$shipping_txt_min = 'При сумме товаров от <b>' . $sum_akcii . '</b> руб., на эту доставку действует скидка <font color="red"><b>' . $skidka . '%</b></font>. Осталось добавить товаров мин. на: ' .$min_dozakaz . ' руб. <br /> <b>Выберите пункт выдачи:</b>';
 		}	
 }
 
@@ -147,6 +147,7 @@ if ($order->delivery['city'] != '') {
 		$value = 0; 
 	
 		if ($count_pvz < 10000) {  // чтобы вдруг какой нибудь весь огромный список всех городов не загрузился
+		$name_pvz[] = array('id' => '', 'text' => 'Выберите пункт выдачи заказов');
 		foreach($ret_pvz as $key => $value) {
 		if($ret_pvz[$key]['Code'] != '') {
 		$name_pvz1 = $ret_pvz[$key]['Code'] .': ' . $ret_pvz[$key]['AddressReduce'];
@@ -210,7 +211,7 @@ if ($order->delivery['city'] != '') {
                                                      'cost' => $shipping_cost)));
 													 				
 				
-	    $this->quotes['info'] .= $shipping_txt_min . '<br />';		
+	    //$this->quotes['info'] .= $shipping_txt_min . '<br />';		
 
         $this->quotes['info'] .= $pvz;		
 
@@ -231,7 +232,7 @@ if ($order->delivery['city'] != '') {
 	    $this->quotes['error'] = 'Доставка Boxberry в указанный город не осуществляется.';
 
   
-     if ($boxberry_city_id == '') $this->quotes['error'] = 'До пункта выдачи. Возможно нужно правильно ввести город, чтобы был расчет стоимости.';
+     if ($boxberry_city_id == '') $this->quotes['error'] = 'Доставка в этом направлении не осуществляется.';
   
       // Если символов в индексе меньше 6, или не выбран регион, или стоимость доставки меньше указаной в переменной MODULE_SHIPPING_BOXBERRYPVZ_COST, то:
 	  

@@ -250,6 +250,7 @@ $request_pvz = json_encode($request_pvz);
 
 $name_pvz = false;
 
+$name_pvz[] = array('id' => '', 'text' => 'Выберите пункт выдачи заказов');
 foreach ($warehouse_result["data"] as $pvz) {
 $name_pvz[] = array(
                       'id' => ($api_language == "ru") ? $pvz["DescriptionRu"] . ', ' . $pvz["CityDescriptionRu"] : $pvz["Description"] . ', ' . $pvz["CityDescription"], 
@@ -280,7 +281,7 @@ $name_pvz[] = array(
 													 				
 				
 		
-	    $this->quotes['info'] .= $shipping_txt_min . '<br />';		
+	    //$this->quotes['info'] .= $shipping_txt_min . '<br />';		
 
         $this->quotes['info'] .= $pvz;		
 

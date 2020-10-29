@@ -119,9 +119,9 @@ if ($order->delivery['city'] != '') {
 		if ($_SESSION['cart']->show_total() > $sum_akcii) {		
 		$shipping_skidka = ($shipping_cost / 100) * $skidka;
 		$shipping_cost = $shipping_cost - $shipping_skidka;
-		$shipping_txt_min = '<b>Выберите пункт выдачи:</b>';
+		//$shipping_txt_min = '<b>Выберите пункт выдачи:</b>';
 		} else {
-		$shipping_txt_min = 'При сумме товаров от <b>' . $sum_akcii . '</b> руб., на эту доставку действует скидка <font color="red"><b>' . $skidka . '%</b></font>. Осталось добавить товаров мин. на: ' .$min_dozakaz . ' руб. <br /> <b>Выберите пункт выдачи:</b>';
+		//$shipping_txt_min = 'При сумме товаров от <b>' . $sum_akcii . '</b> руб., на эту доставку действует скидка <font color="red"><b>' . $skidka . '%</b></font>. Осталось добавить товаров мин. на: ' .$min_dozakaz . ' руб. <br /> <b>Выберите пункт выдачи:</b>';
 		}	
 }
 
@@ -156,6 +156,7 @@ if ($order->delivery['city'] != '') {
 		$value = 0; 
 	
 		if ($count_pvz < 10000) {  // чтобы вдруг какой нибудь весь огромный список всех городов не загрузился
+		$name_pvz[] = array('id' => '', 'text' => 'Выберите пункт выдачи заказов');
 		foreach($ret_pvz as $key => $value) {
 		if($ret_pvz[$key]['attributes']['NAME'] != '') {
 		$name_pvz1 = $ret_pvz[$key]['attributes']['CODE'] .': ' . $ret_pvz[$key]['attributes']['ADDRESS'] . ', ' . $ret_pvz[$key]['attributes']['CITY'];
@@ -193,7 +194,7 @@ if ($order->delivery['city'] != '') {
                                                      'cost' => $shipping_cost)));
 													 				
 				
-	    $this->quotes['info'] .= $shipping_txt_min . '<br />';		
+	    //$this->quotes['info'] .= $shipping_txt_min . '<br />';		
 
         $this->quotes['info'] .= $pvz;		
 
@@ -219,7 +220,7 @@ if ($order->delivery['city'] != '') {
 	  $this->quotes['error'] = 'До пункта выдачи. Действует при сумме товаров <b>от ' . $min_sum . ' руб.</b>';
 	  } elseif (isset($ret['error'][0]['code']) || $shipping_cost <= MODULE_SHIPPING_SDEKPVZ_COST) {
 		  
-	  $this->quotes['error'] = 'Пункты выдачи. Доставка в этом направлении не осуществляется (или попробуйте <b>ввести также индекс</b>)'; 
+	  $this->quotes['error'] = 'Доставка в этом направлении не осуществляется.'; 
 	  } 
 	  
 
