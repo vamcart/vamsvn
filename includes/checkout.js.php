@@ -78,7 +78,10 @@ $('#box')
 		$('#order_total_modules').load(
 			url +' #order_total_modules > *', {
 				'shipping': $('input[name=shipping]:checked').val(),
-				'payment': $('input[name=payment]:checked').val()
+				'payment': $('input[name=payment]:checked').val(),
+				'pvz_boxberry': $('select[name=pvz_boxberry]').val(), 
+				'pvz_sdek': $('select[name=pvz_sdek]').val(), 
+				'pvz_newpost': $('select[name=pvz_newpost]').val() 
 			}
 		)
 	}
@@ -88,7 +91,10 @@ $('#box')
 	function(){
 		$('#payment_options').load(
 			url +' #payment_options > *', {
-				'shipping': $('input[name=shipping]:checked').val()
+				'shipping': $('input[name=shipping]:checked').val(),
+				'pvz_boxberry': $('select[name=pvz_boxberry]').val(), 
+				'pvz_sdek': $('select[name=pvz_sdek]').val(), 
+				'pvz_newpost': $('select[name=pvz_newpost]').val() 
 			}
 		)
 	}
@@ -206,7 +212,10 @@ $('#box')
 			'state': $('select[name=state]').val(),
 			'postcode': $('input[name=postcode]').val(),
 			'telephone': $('input[name=telephone]').val(),
-			'city': $('input[name=city]').val()
+			'city': $('input[name=city]').val(),
+			'pvz_boxberry': $('select[name=pvz_boxberry]').val(), 
+			'pvz_sdek': $('select[name=pvz_sdek]').val(), 
+			'pvz_newpost': $('select[name=pvz_newpost]').val(), 
 		}
 	),
 	point();
@@ -222,7 +231,10 @@ $('#box')
 				'state': $('select[name=state]').val(),
 				'postcode': $('input[name=postcode]').val(),
 				'telephone': $('input[name=telephone]').val(),
-				'city': $('input[name=city]').val()
+				'city': $('input[name=city]').val(),
+				'pvz_boxberry': $('select[name=pvz_boxberry]').val(), 
+				'pvz_sdek': $('select[name=pvz_sdek]').val(), 
+				'pvz_newpost': $('select[name=pvz_newpost]').val() 
 			}
 		),
 	point();
@@ -235,7 +247,10 @@ $('#box')
 		$('#order_total_modules').load(
 			url +' #order_total_modules > *', {
 				'shipping': $('input[name=shipping]:checked').val(),
-				'payment': $('input[name=payment]:checked').val()
+				'payment': $('input[name=payment]:checked').val(),
+				'pvz_boxberry': $('select[name=pvz_boxberry]').val(), 
+				'pvz_sdek': $('select[name=pvz_sdek]').val(), 
+				'pvz_newpost': $('select[name=pvz_newpost]').val() 
 				}
 		),
 	point();
