@@ -4,30 +4,38 @@
 		{if $module_data.PRODUCTS_LABEL}{$module_data.PRODUCTS_LABEL}{/if}
 		{if $module_data.PRODUCTS_SPECIAL > 0}<span class="badge-offer"><b>-{$module_data.PRODUCTS_SPECIAL|round}%</b></span>{/if}
 			<div class="img-wrap"><a href="{$module_data.PRODUCTS_LINK}" title="{$module_data.PRODUCTS_NAME}"><img {if $smarty.const.ENABLE_LAZY_LOAD == 'true'}class="lazy" src="{$smarty.const.DIR_WS_IMAGES}pixel_trans.gif" data-src="{$module_data.PRODUCTS_IMAGE}"{else}src="{$module_data.PRODUCTS_IMAGE}"{/if} {if {$module_data.PRODUCTS_IMAGE_WIDTH} > 0} width="{$module_data.PRODUCTS_IMAGE_WIDTH}"{/if} {if {$module_data.PRODUCTS_IMAGE_HEIGHT} > 0} height="{$module_data.PRODUCTS_IMAGE_HEIGHT}"{/if} alt="{$module_data.PRODUCTS_NAME}"></a></div>
-			<div class="info-wrap text-center">
+			<div class="info-wrap text-left">
 				<div class="title"><a href="{$module_data.PRODUCTS_LINK}" title="{$module_data.PRODUCTS_NAME}">{$module_data.PRODUCTS_NAME}</a></div>
+				<div class="small">
+				{if $module_data.REVIEWS_TOTAL > 0}
+					<a href="{$smarty.const.FILENAME_PRODUCT_REVIEWS}?products_id={$module_data.PRODUCTS_ID}" data-toggle="tooltip" title="{$smarty.const.TEXT_REVIEWS_RATING}"><span class="text-muted pr-2">{$module_data.REVIEWS_STAR_RATING}{$module_data.REVIEWS_TOTAL_RATING|number_format:1}</span></a>
+					<div class="label-rating"><a href="{$smarty.const.FILENAME_PRODUCT_REVIEWS}?products_id={$module_data.PRODUCTS_ID}" data-toggle="tooltip" title="{$smarty.const.TEXT_TOTAL_REVIEWS}"><span class="text-muted"><i class="far fa-comments"></i> {$module_data.REVIEWS_TOTAL}</span></a></div>
+				{/if}
+				{if $smarty.const.ENABLE_WISHLIST == 'true'}
+					<span class="wishlist-button text-muted">{$module_data.PRODUCTS_BUTTON_WISHLIST}</span>
+				{/if}	
+				</div>			
+			</div>
+      </div>
+      {if $module_data.PRODUCTS_PRICE_PLAIN > 0}
+      <div class="card-footer text-left">
+			<div class="d-flex">
+			<div class="flex-fill pr-1 my-auto text-left">
+         <div class="justify-content-center">
+         <input name="products_qty" type="hidden" value="1" class="form-control text-center">
 				{if $module_data.PRODUCTS_PRICE_PLAIN > 0}
 				<div class="price-wrap font-weight-bold small text-muted">
 					{$module_data.PRODUCTS_PRICE}
 				</div>
 				{/if}
-				<div class="small">
-				{if $module_data.REVIEWS_TOTAL > 0}
-					{$module_data.REVIEWS_STAR_RATING} <span class="text-muted pr-2" data-toggle="tooltip" title="{$smarty.const.TEXT_REVIEWS_RATING}">{$module_data.REVIEWS_TOTAL_RATING|number_format:1}</span>
-					<div class="label-rating"><span class="text-muted" data-toggle="tooltip" title="{$smarty.const.TEXT_TOTAL_REVIEWS}"><i class="far fa-comments"></i> {$module_data.REVIEWS_TOTAL}</span></div>
-				{/if}
-				{if $smarty.const.ENABLE_WISHLIST == 'true'}
-					<span class="wishlist-button text-muted">{$module_data.PRODUCTS_BUTTON_WISHLIST}</span>
-				{/if}					
-				</div>
-				{if $CATEGORIES_NAME && SPECIFICATIONS_BOX_COMPARISON == "True"}<div class="desc"><label><input type="checkbox" id="s_{$module_data.PRODUCTS_ID}" name="products[]" value="{$module_data.PRODUCTS_ID}" /> {#text_compare#}</label></div>{/if}
+         </div>
+         </div>
+			<div class="text-right my-auto">
+         {$module_data.PRODUCTS_BUTTON_BUY_NOW_ICON}
+         </div>
 			</div>
       </div>
-      <div class="card-footer text-center">
-      {if $module_data.PRODUCTS_PRICE_PLAIN > 0}
-         {$module_data.PRODUCTS_BUTTON_BUY_NOW_NEW}
       {/if}
-      </div>
 		</div>
 <!-- /Product Card Simple -->
 		
