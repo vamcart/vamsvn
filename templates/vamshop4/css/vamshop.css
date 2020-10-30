@@ -2226,10 +2226,20 @@ span.productSpecialPrice
      color: var(--color-red);
    }
 
+span.productPrice 
+   {
+     display: block;
+	  color: var(--color);
+	  font-weight: normal;
+	  font-size: 18px;
+   }
+
 span.productOldPrice 
    {
-	  color: var(--color-red);
+	  color: var(--link-color);
 	  text-decoration: line-through;
+	  font-weight: normal;
+	  font-size: 14px;
    }
 
 span.errorText 

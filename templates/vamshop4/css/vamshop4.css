@@ -1636,3 +1636,7 @@ header .input-group-text,
     margin-left: -5px;
 }
 }
+
+.price .price .productPrice {
+  font-size: 24px;
+}

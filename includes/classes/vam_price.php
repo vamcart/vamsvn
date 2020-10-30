@@ -389,7 +389,7 @@ class vamPrice {
 			if ($vpeStatus == 0) {
 				return $Pprice;
 			} else {
-				return array ('formated' => $Pprice, 'plain' => $price);
+				return array ('formated' => '<span class="productPrice">'.$Pprice.'</span>', 'plain' => $price);
 			}
 		} else {
 
@@ -435,7 +435,7 @@ class vamPrice {
 			$sPrice -= $sPrice / 100 * $discount;
 		if ($format) {
 			if ($sPrice != $pPrice) {
-				$price = '<span class="productOldPrice">'.$message_old_price.$this->Format($pPrice, $format).'</span>'.$message_price.$this->checkAttributes($pID).$this->Format($sPrice, $format).'<br />'.$message_discount.$discount.'%';
+				$price = '<span class="productOldPrice">'.$message_old_price.$this->Format($pPrice, $format).'</span><span class="productPrice">'.$message_price.$this->checkAttributes($pID).$this->Format($sPrice, $format).'</spann><br />'.$message_discount.$discount;
 			} else {
 				$price = FROM.$this->Format($sPrice, $format);
 			}
