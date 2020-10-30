@@ -403,7 +403,7 @@ class vamPrice {
 		$sPrice = $pPrice - ($pPrice / 100) * $discount;
 		if ($format) {
 		if ($pPrice > 0)
-			$price = '<span class="productOldPrice">'.$message_old_price.$this->Format($pPrice, $format).'</span>'.$message_price.$this->checkAttributes($pID).$this->Format($sPrice, $format).'<br />'.$message_discount.$discount.'%';
+			$price = '<span class="productOldPrice">'.$message_old_price.$this->Format($pPrice, $format).'</span><span class="productPrice">'.$message_price.$this->checkAttributes($pID).$this->Format($sPrice, $format).'</span><br />'.$message_discount.$discount;
 			if ($vpeStatus == 0) {
 				return $price;
 			} else {
@@ -416,7 +416,7 @@ class vamPrice {
 
 	function FormatSpecial($pID, $sPrice, $pPrice, $format, $vpeStatus = 0, $message_old_price) {
 		if ($format) {
-			$price = '<span class="productOldPrice">'.$message_old_price.$this->Format($pPrice, $format).'</span>'.YOUR_SPECIAL_PRICE.$this->checkAttributes($pID).$this->Format($sPrice, $format);
+			$price = '<span class="productOldPrice">'.$message_old_price.$this->Format($pPrice, $format).'</span><span class="productPrice">'.YOUR_SPECIAL_PRICE.$this->checkAttributes($pID).$this->Format($sPrice, $format).'</span>';
 			if ($vpeStatus == 0) {
 				return $price;
 			} else {

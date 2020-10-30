@@ -5,13 +5,8 @@
 		{if $module_data.PRODUCTS_LABEL}{$module_data.PRODUCTS_LABEL}{/if}
 		{if $module_data.PRODUCTS_SPECIAL > 0}<span class="badge-offer"><b>-{$module_data.PRODUCTS_SPECIAL|round}%</b></span>{/if}
 			<div class="img-wrap"><a href="{$module_data.PRODUCTS_LINK}" title="{$module_data.PRODUCTS_NAME}"><img {if $smarty.const.ENABLE_LAZY_LOAD == 'true'}class="lazy" src="{$smarty.const.DIR_WS_IMAGES}pixel_trans.gif" data-src="{$module_data.PRODUCTS_IMAGE}"{else}src="{$module_data.PRODUCTS_IMAGE}"{/if} {if {$module_data.PRODUCTS_IMAGE_WIDTH} > 0} width="{$module_data.PRODUCTS_IMAGE_WIDTH}"{/if} {if {$module_data.PRODUCTS_IMAGE_HEIGHT} > 0} height="{$module_data.PRODUCTS_IMAGE_HEIGHT}"{/if} alt="{$module_data.PRODUCTS_NAME}"></a></div>
-			<div class="info-wrap text-center">
+			<div class="info-wrap text-left">
 				<div class="title"><a href="{$module_data.PRODUCTS_LINK}" title="{$module_data.PRODUCTS_NAME}">{$module_data.PRODUCTS_NAME}</a></div>
-				{if $module_data.PRODUCTS_PRICE_PLAIN > 0}
-				<div class="price-wrap font-weight-bold small text-muted">
-					{$module_data.PRODUCTS_PRICE}
-				</div>
-				{/if}
 				<div class="small">
 				{if $module_data.REVIEWS_TOTAL > 0}
 					{$module_data.REVIEWS_STAR_RATING} <span class="text-muted pr-2" data-toggle="tooltip" title="{$smarty.const.TEXT_REVIEWS_RATING}">{$module_data.REVIEWS_TOTAL_RATING|number_format:1}</span>
@@ -27,20 +22,19 @@
 			</div>
       </div>
       {if $module_data.PRODUCTS_PRICE_PLAIN > 0}
-      <div class="card-footer text-center">
+      <div class="card-footer text-left">
 			<div class="d-flex">
-			<div class="flex-fill pr-1">
-         <div class="input-group justify-content-center">
-         <div class="input-group-prepend">
-	       <span class="btn btn-secondary value-control" data-action="minus" data-target="quantity{$module_data.PRODUCTS_ID}"><i class="fa fa-minus"></i></span>
+			<div class="flex-fill pr-1 my-auto text-left">
+         <div class="justify-content-center">
+         <input name="products_qty" type="hidden" value="1" class="form-control text-center" id="quantity{$module_data.PRODUCTS_ID}">
+				{if $module_data.PRODUCTS_PRICE_PLAIN > 0}
+				<div class="price-wrap font-weight-bold small text-muted">
+					{$module_data.PRODUCTS_PRICE}
+				</div>
+				{/if}
          </div>
-         <input name="products_qty" type="text" value="1" class="form-control text-center" id="quantity{$module_data.PRODUCTS_ID}">
-         <div class="input-group-append">
-	       <span class="btn btn-secondary value-control" data-action="plus" data-target="quantity{$module_data.PRODUCTS_ID}"><i class="fa fa-plus"></i></span>
          </div>
-         </div>
-         </div>
-			<div class="flex-fill">
+			<div class="text-right">
          <input type="hidden" name="products_id" value="{$module_data.PRODUCTS_ID}" />
 			<button class="btn btn-inverse checkout btn-block" data-toggle="tooltip" title="{$smarty.const.ICON_CART}" aria-label="{$smarty.const.ICON_CART}"><i class="fas fa-shopping-cart"></i></button>
          </div>
