@@ -32,7 +32,7 @@
       $this->sort_order = MODULE_PAYMENT_LIQPAY_SORT_ORDER;
       $this->enabled = ((MODULE_PAYMENT_LIQPAY_STATUS == 'True') ? true : false);
 
-        $this->form_action_url = 'https://www.liqpay.com/?do=clickNbuy';
+        $this->form_action_url = 'https://www.liqpay.ua/?do=clickNbuy';
     }
 
 // class methods
