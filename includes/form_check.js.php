@@ -55,10 +55,10 @@ $prefix = false;
 $country_info = vam_get_countries_with_iso_codes(STORE_COUNTRY);
 $country_code = strtolower($country_info['countries_iso_code_2']);
 if (STORE_COUNTRY == 176) {
-$prefix = "+7";
+$prefix = "+7 ";
 }
 if (STORE_COUNTRY == 220) {
-$prefix = "+380";
+$prefix = "+380 ";
 }
 
 ?>
