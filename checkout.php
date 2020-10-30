@@ -1844,8 +1844,7 @@ $payment_fields .= '
 <script type="text/javascript">
     document.checkoutUrl.submit();
 </script>
-<br />
-<noscript><input class="btn button"type="submit" value="{$smarty.const.TEXT_CHECKOUT_PROCESS_PAYMENT}" /></noscript>
+<noscript><input class="btn button" type="submit" value="'.TEXT_CHECKOUT_PROCESS_PAYMENT.'" /></noscript>
 
 ';
 
@@ -1873,7 +1872,11 @@ $vamTemplate->assign('TEXT_ORIGIN_LOGIN', (vam_session_is_registered('customer_i
 //first check input fields and check for payment choosen
 $form_action_url = vam_href_link(FILENAME_CHECKOUT, '', 'SSL');
 //$smart_checkout_form .= vam_draw_form('smart_checkout', $form_action_url, 'post', 'onsubmit="return check_form(smart_checkout);"', true);
+if ((isset($$payment->form_action_url)) && ($sc_payment_url == true)) { 
+$smart_checkout_form .= '';
+} else {
 $smart_checkout_form .= vam_draw_form('smart_checkout', $form_action_url, 'post', '', true);
+}
  
  
 // draw process hidden field
