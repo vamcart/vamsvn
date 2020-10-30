@@ -2224,6 +2224,7 @@ span.markProductOutOfStock
 span.productSpecialPrice 
    {
      color: var(--color-red);
+	  font-size: 16px;
    }
 
 span.productPrice 
@@ -2231,7 +2232,7 @@ span.productPrice
      display: block;
 	  color: var(--color);
 	  font-weight: normal;
-	  font-size: 18px;
+	  font-size: 16px;
    }
 
 span.productOldPrice 
@@ -2239,7 +2240,7 @@ span.productOldPrice
 	  color: var(--link-color);
 	  text-decoration: line-through;
 	  font-weight: normal;
-	  font-size: 14px;
+	  font-size: 13px;
    }
 
 span.errorText 
