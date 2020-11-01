@@ -9,7 +9,7 @@
 		</div>
 		<div class="col-md-6">
 				<div class="title"><a href="{$module_data.PRODUCTS_LINK}" title="{$module_data.PRODUCTS_NAME}">{$module_data.PRODUCTS_NAME}</a></div>
-				<div class="small">
+				<div class="icons-block">
 				{if $module_data.REVIEWS_TOTAL > 0}
 					<a href="{$smarty.const.FILENAME_PRODUCT_REVIEWS}?products_id={$module_data.PRODUCTS_ID}" data-toggle="tooltip" title="{$smarty.const.TEXT_REVIEWS_RATING}"><span class="text-muted pr-2">{$module_data.REVIEWS_STAR_RATING}{$module_data.REVIEWS_TOTAL_RATING|number_format:1}</span></a>
 					<div class="label-rating"><a href="{$smarty.const.FILENAME_PRODUCT_REVIEWS}?products_id={$module_data.PRODUCTS_ID}" data-toggle="tooltip" title="{$smarty.const.TEXT_TOTAL_REVIEWS}"><span class="text-muted"><i class="far fa-comments"></i> {$module_data.REVIEWS_TOTAL}</span></a></div>
