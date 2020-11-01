@@ -434,7 +434,11 @@ function wc1c_xml_end_element_handler($parser, $name) {
 }
 
 function wc1c_xml_parse($fp) {
-  $parser = xml_parser_create();
+  //$parser = xml_parser_create();
+  $parser = xml_parser_create('UTF-8');
+
+  xml_parser_set_option($parser,XML_OPTION_TARGET_ENCODING, 'UTF-8');
+  xml_parser_set_option( $parser, XML_OPTION_CASE_FOLDING, 0 );
 
   xml_set_element_handler($parser, 'wc1c_xml_start_element_handler', 'wc1c_xml_end_element_handler');
   xml_set_character_data_handler($parser, 'wc1c_xml_character_data_handler'); 
