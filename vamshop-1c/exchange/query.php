@@ -159,7 +159,7 @@ while ($order_post = vam_db_fetch_array($orders_query)) {
 
     $products[] = array(
       'guid' => 'ORDER_DELIVERY',
-      'name' => $order->info['shipping_method'],
+      'name' => ($order->info['shipping_method'] != '') ? $order->info['shipping_method'] : 'Доставка',
       'price_per_item' => $shipping_method['value'],
       'quantity' => 1,
       'total' => $shipping_method['value'],
