@@ -364,6 +364,9 @@ define ('EP_MVS_SUPPORT', false);  // default is false
 // Extra Fields Contribution 
 define ('EP_EXTRA_FIELDS_SUPPORT', true);  // default is false
 
+// Categories 
+define ('EP_CATEGORIES_SUPPORT', true);  // default is false
+
 // UltraPics 2.05 LightBox Contrib (***FUNCTIONAL***)
 define ('EP_ULTRPICS_SUPPORT', false);  // default is false
 
@@ -634,6 +637,8 @@ if ( !empty($_GET['download']) && ($_GET['download'] == 'stream' or $_GET['downl
         foreach ($languages as $key => $lang){
             $lid = $lang['id'];
 
+if ($row['v_products_id']) {
+
             // for each language, get the description and set the vals
             $sql2 = "SELECT *
                 FROM ".TABLE_PRODUCTS_DESCRIPTION."
@@ -643,7 +648,7 @@ if ( !empty($_GET['download']) && ($_GET['download'] == 'stream' or $_GET['downl
                 ";
             $result2 = vam_db_query($sql2);
             $row2 =  vam_db_fetch_array($result2);
-
+}
             // I'm only doing this for the first language, since right now froogle is US only.. Fix later!
             // adding url for froogle, but it should be available no matter what
             if (EP_FROOGLE_SEF_URLS == true){
@@ -1686,6 +1691,9 @@ if (!empty($_POST['localfile']) or (isset($_FILES['usrfl']) && isset($_GET['spli
 <?php if (EP_EXTRA_FIELDS_SUPPORT == true) { ?>
           <a href="easypopulate.php?download=stream&dltype=extra_fields<?php if (defined('SID') && vam_not_null(SID)) { echo '&'.vam_session_name().'='.vam_session_id(); } ?>"><?php echo TEXT_EASYPOPULATE_QUICK_LINKS_7; ?> <?php echo ((EP_EXCEL_SAFE_OUTPUT == true)?".csv":".txt"); ?> <?php echo TEXT_EASYPOPULATE_QUICK_LINKS_5; ?></a><br />
 <?php } ?>
+<?php if (EP_CATEGORIES_SUPPORT == true) { ?>
+          <a href="easypopulate.php?download=stream&dltype=categories<?php if (defined('SID') && vam_not_null(SID)) { echo '&'.vam_session_name().'='.vam_session_id(); } ?>"><?php echo TEXT_EASYPOPULATE_QUICK_LINKS_CATEGORIES; ?> <?php echo ((EP_EXCEL_SAFE_OUTPUT == true)?".csv":".txt"); ?> <?php echo TEXT_EASYPOPULATE_QUICK_LINKS_5; ?></a><br />
+<?php } ?>
           <a href="easypopulate.php?download=stream&dltype=priceqty<?php if (defined('SID') && vam_not_null(SID)) { echo '&'.vam_session_name().'='.vam_session_id(); } ?>"><?php echo TEXT_EASYPOPULATE_QUICK_LINKS_8; ?><?php if (EP_SPPC_SUPPORT == true) { echo TEXT_EASYPOPULATE_QUICK_LINKS_4; } ?></b> <?php echo ((EP_EXCEL_SAFE_OUTPUT == true)?".csv":".txt"); ?> <?php echo TEXT_EASYPOPULATE_QUICK_LINKS_5; ?></a><br />
           <a href="easypopulate.php?download=stream&dltype=category<?php if (defined('SID') && vam_not_null(SID)) { echo '&'.vam_session_name().'='.vam_session_id(); } ?>"><?php echo TEXT_EASYPOPULATE_QUICK_LINKS_9; ?></b> <?php echo ((EP_EXCEL_SAFE_OUTPUT == true)?".csv":".txt"); ?> <?php echo TEXT_EASYPOPULATE_QUICK_LINKS_5; ?></a><br />
           <a href="easypopulate.php?download=stream&dltype=froogle<?php if (defined('SID') && vam_not_null(SID)) { echo '&'.vam_session_name().'='.vam_session_id(); } ?>"><?php echo TEXT_EASYPOPULATE_QUICK_LINKS_10; ?></b> <?php echo ((EP_EXCEL_SAFE_OUTPUT == true)?".csv":".txt"); ?> <?php echo TEXT_EASYPOPULATE_QUICK_LINKS_12; ?></a><br />
@@ -2273,6 +2281,60 @@ function ep_create_filelayout($dltype, $attribute_options_array, $languages, $cu
     // end of EP for extra field code ======= DEVSOFTVN================       
         break;
 
+    case 'categories':
+    // start EP for product extra field ============================= DEVSOFTVN - 10/20/2005     
+        $iii = 0;
+        $filelayout = array(
+            'v_categories_id'        => $iii++,
+            'v_categories_name'        => $iii++,
+            'v_categories_heading_title'        => $iii++,
+            'v_categories_description'        => $iii++,
+            'v_categories_meta_title'        => $iii++,
+            'v_categories_meta_description'        => $iii++,
+            'v_categories_meta_keywords'        => $iii++,
+            'v_categories_url'        => $iii++,
+            'v_categories_image'        => $iii++,
+            'v_categories_icon'        => $iii++,
+            'v_categories_sort_order'        => $iii++,
+            'v_categories_status'        => $iii++,
+            'v_categories_parent_id'        => $iii++,
+            'v_categories_yml_enable'        => $iii++,
+            'v_categories_google_category_id'        => $iii++,
+            'v_categories_label_id'        => $iii++,
+            'v_categories_likes'        => $iii++,
+            'v_categories_dislikes'        => $iii++,
+                        );
+    
+        $filelayout_sql = "SELECT
+                        c.categories_id as v_categories_id,
+                        cd.categories_name as v_categories_name,
+                        cd.categories_heading_title as v_categories_heading_title,
+                        cd.categories_description as v_categories_description,
+                        cd.categories_meta_title as v_categories_meta_title,
+                        cd.categories_meta_description as v_categories_meta_description,
+                        cd.categories_meta_keywords as v_categories_meta_keywords,
+                        c.categories_url as v_categories_url,
+                        c.categories_image as v_categories_image,
+                        c.icon as v_categories_icon,
+                        c.sort_order as v_categories_sort_order,
+                        c.categories_status as v_categories_status,
+                        c.parent_id as v_categories_parent_id,
+                        c.yml_enable as v_categories_yml_enable,
+                        c.google_category_id as v_categories_google_category_id,
+                        c.label_id as v_categories_label_id,
+                        c.likes as v_categories_likes,
+                        c.dislikes as v_categories_dislikes,        
+                        c.listing_template as v_categories_listing_template,        
+                        c.products_sorting as v_categories_products_sorting,        
+                        c.products_sorting2 as v_products_sorting2        
+                        FROM
+                        ".TABLE_CATEGORIES." as c,
+                        ".TABLE_CATEGORIES_DESCRIPTION." as cd
+                        WHERE
+                        cd.categories_id = c.categories_id
+                        ";    
+    // end of EP for extra field code ======= DEVSOFTVN================       
+        break;
 
     case 'froogle':
         // this is going to be a little interesting because we need
