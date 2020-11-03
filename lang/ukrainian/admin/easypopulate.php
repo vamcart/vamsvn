@@ -183,4 +183,6 @@ define('EASY_LABEL_TEXT_NO_MODEL', 'Не найден артикул товар�
 define('EASY_EXTRA_FIELD_UPDATED', 'Дополнительные поля обновлены');
 define('EASY_EXTRA_FIELD_ADDED', 'Дополнительные поля добавлены');
 
+define('TEXT_EASYPOPULATE_QUICK_LINKS_CATEGORIES','Скачать <b>Категории</b>');
+
 ?>
