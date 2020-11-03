@@ -1,10 +1,10 @@
 // Slide menu
 
-$(document).ready(function(){
+//$(document).ready(function(){
   $(".navbar .navbar-toggle").click();
   $('.toggle-menu').jPushMenu({closeOnClickLink: false});
   $('.dropdown-toggle').dropdown();
-});
+//});
 
 //OWL Carousel Slider
 $(".owl-carousel").owlCarousel({
@@ -91,27 +91,27 @@ $(window).on('resize', function () {
 });
 }
 
-$(document).ready(function(){
+//$(document).ready(function(){
 // Scroll to top button 
-	$(function () {
-		$.scrollUp({
-	        scrollName: 'scrollup', // Element ID
-	        scrollDistance: 200, // Distance from top/bottom before showing element (px)
-	        scrollFrom: 'top', // 'top' or 'bottom'
-	        scrollSpeed: 500, // Speed back to top (ms)
-	        easingType: 'linear', // Scroll to top easing (see http://easings.net/)
-	        animation: 'fade', // Fade, slide, none
-	        animationSpeed: 500, // Animation in speed (ms)
-	        scrollTrigger: false, // Set a custom triggering element. Can be an HTML string or jQuery object
+	//$(function () {
+		//$.scrollUp({
+	        //scrollName: 'scrollup', // Element ID
+	        //scrollDistance: 200, // Distance from top/bottom before showing element (px)
+	        //scrollFrom: 'top', // 'top' or 'bottom'
+	        //scrollSpeed: 500, // Speed back to top (ms)
+	        //easingType: 'linear', // Scroll to top easing (see http://easings.net/)
+	        //animation: 'fade', // Fade, slide, none
+	        //animationSpeed: 500, // Animation in speed (ms)
+	        //scrollTrigger: false, // Set a custom triggering element. Can be an HTML string or jQuery object
 					//scrollTarget: false, // Set a custom target element for scrolling to the top
-	        scrollText: '<i class="fa fa-chevron-up"></i>', // Text for element, can contain HTML
-	        scrollTitle: false, // Set a custom <a> title if required.
-	        scrollImg: false, // Set true to use image
-	        activeOverlay: false, // Set CSS color to display scrollUp active point, e.g '#00FFFF'
-	        zIndex: 2147483647 // Z-Index for the overlay
-		});
-	});
-});
+	        //scrollText: '<i class="fa fa-chevron-up"></i>', // Text for element, can contain HTML
+	        //scrollTitle: false, // Set a custom <a> title if required.
+	        //scrollImg: false, // Set true to use image
+	        //activeOverlay: false, // Set CSS color to display scrollUp active point, e.g '#00FFFF'
+	        //zIndex: 2147483647 // Z-Index for the overlay
+		//});
+	//});
+//});
 
 // Only apply the fixed stuff to desktop devices
 // -----------------------------------------------------------------------------
@@ -290,17 +290,17 @@ $(window).on('resize', function() {
 
 // Select tab by url
 
-$(document).ready(function(event) {
+//$(document).ready(function(event) {
     $('ul.nav.nav-tabs a:first').tab('show'); // Select first tab
     $('ul.nav.nav-tabs a[href="'+ window.location.hash+ '"]').tab('show'); // Select tab by name if provided in location hash
     $('ul.nav.nav-tabs a[data-toggle="tab"]').on('shown', function (event) {    // Update the location hash to current tab
         window.location.hash= event.target.hash;
     })
-});
+//});
 
 // Product Images Zoom
 
-$(document).ready(function(){
+//$(document).ready(function(){
 $(".image-zoom").each(function(arg, el){
     var image = $(el).find("img");
     $(el).wrap('<span style="display:inline-block"></span>')
@@ -311,7 +311,7 @@ $(".image-zoom").each(function(arg, el){
         url: image.attr("src").replace("info_images", "popup_images")
     });
 });
-});   
+//});   
 
 //Expandable Text
 //$('.read-more').expandable({

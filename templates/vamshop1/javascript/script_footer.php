@@ -12,7 +12,7 @@ $bender->enqueue("jscript/jquery/plugins/lazyload/lazyload.min.js");
 $bender->enqueue("jscript/jquery/plugins/owl/owl.carousel.min.js");
 $bender->enqueue("jscript/jquery/plugins/select2/select2.js");
 $bender->enqueue("jscript/jquery/plugins/select2/i18n/" . $_SESSION['language_code'] . ".js");
-$bender->enqueue("jscript/jquery/plugins/scrollup/jquery.scrollup.min.js");
+//$bender->enqueue("jscript/jquery/plugins/scrollup/jquery.scrollup.min.js");
 $bender->enqueue("jscript/jquery/plugins/zoom/jquery.zoom.js");
 $bender->enqueue("templates/".CURRENT_TEMPLATE."/javascript/vamshop.js");
 if (AJAX_WISHLIST == 'true') $bender->enqueue("templates/".CURRENT_TEMPLATE."/javascript/jscript_ajax_wishlist.js"); 
