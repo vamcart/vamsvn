@@ -282,7 +282,8 @@
   require_once(DIR_FS_INC . 'vam_make_alias.inc.php');
   require_once(DIR_FS_INC . 'vam_parse_input_field_data.inc.php');
   require_once (DIR_FS_INC.'vam_input_validation.inc.php');
-  
+  require_once (DIR_FS_INC.'vam_format_by_count.inc.php');
+    
   // customization for the design layout
 if (ADMIN_DROP_DOWN_NAVIGATION == 'true') {  
   define('BOX_WIDTH', 125); // how wide the boxes should be in pixels (default: 125)
