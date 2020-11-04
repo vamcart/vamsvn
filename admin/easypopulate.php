@@ -2619,7 +2619,7 @@ function process_row( $item1, $filelayout, $filelayout_count, $default_these, $e
 			categories_meta_keywords='".$v_categories_meta_keywords."' 
 			WHERE categories_id ='".$v_categories_id ."'";
 			
-			$str_err_report= " $v_categories_id | $v_categories_name_id  | $v_categories_description | <b><font color=black>".EASY_CATEGORIES_UPDATED."</font></b><br />";
+			$str_err_report= " $v_categories_id | $v_categories_name | <b><font color=black>".EASY_CATEGORIES_UPDATED."</font></b><br />";
 		} else {
 			$sql_categories_field	=	"INSERT INTO ".TABLE_CATEGORIES."
 			(
@@ -2678,7 +2678,7 @@ function process_row( $item1, $filelayout, $filelayout_count, $default_these, $e
 			'".$v_categories_meta_description."',
 			'".$v_categories_meta_keywords."'
 			);";
-			$str_err_report= " $v_categories_id | $v_categories_name | $v_categories_description | <b><font color=green>".EASY_CATEGORIES_ADDED."</font></b><br />";
+			$str_err_report= " $v_categories_id | $v_categories_name | <b><font color=green>".EASY_CATEGORIES_ADDED."</font></b><br />";
 		}
 
         $result = vam_db_query($sql_categories_field);
