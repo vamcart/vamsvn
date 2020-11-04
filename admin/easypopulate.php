@@ -2353,7 +2353,9 @@ function ep_create_filelayout($dltype, $attribute_options_array, $languages, $cu
             'v_tags_description'        => $iii++,
             'v_tags_mainpage'        => $iii++,
             'v_tags_sort_order'        => $iii++,
-            'v_tags_status'        => $iii++
+            'v_tags_status'        => $iii++,
+            'v_tags_to_products'        => $iii++,
+            'v_tags_to_categories'        => $iii++
                         );
     
         $filelayout_sql = "SELECT
@@ -2732,6 +2734,12 @@ function process_row( $item1, $filelayout, $filelayout_count, $default_these, $e
         $v_tags_mainpage    =    $items[$filelayout['v_tags_mainpage']];
         $v_tags_sort_order    =    $items[$filelayout['v_tags_sort_order']];
         $v_tags_status    =    $items[$filelayout['v_tags_status']];
+        $v_tags_to_products    =    $items[$filelayout['v_tags_to_products']];
+        $v_tags_to_categories    =    $items[$filelayout['v_tags_to_categories']];
+
+			$px_models .= $v_tags_to_products;
+
+			$row['v_tags_to_products'] = $px_models;
 
         $sql = "SELECT tags_id as v_tags_id FROM ".TABLE_TAGS." WHERE tags_id = '" . $v_tags_id . "'";
         $result = vam_db_query($sql);
@@ -2781,7 +2789,31 @@ function process_row( $item1, $filelayout, $filelayout_count, $default_these, $e
 		}
 
         $result = vam_db_query($sql_tags_field);
-        
+
+                if (isset($v_tags_to_products)){
+
+                  if (!empty($v_tags_to_products)){
+                    $products_array = explode(',',$v_tags_to_products);
+                      foreach ($products_array as $product_key => $product_value ) {
+                        vam_db_query("delete from ".TABLE_TAGS_TO_PRODUCTS." where products_id = " . $product_value . " and tags_id=".$v_tags_id."");
+                        vam_db_query("insert into ".TABLE_TAGS_TO_PRODUCTS." (tags_id, products_id) 
+                                      values ( ".$v_tags_id.", ".$product_value.")");
+                    }
+                  }
+                  }
+
+                if (isset($v_tags_to_categories)){
+
+                  if (!empty($v_tags_to_categories)){
+                    $categories_array = explode(',',$v_tags_to_categories);
+                      foreach ($categories_array as $category_key => $category_value ) {
+                        vam_db_query("delete from ".TABLE_TAGS_TO_CATEGORIES." where categories_id = " . $category_value . " and tags_id=".$v_tags_id."");
+                        vam_db_query("insert into ".TABLE_TAGS_TO_CATEGORIES." (tags_id, categories_id) 
+                                      values ( ".$v_tags_id.", ".$category_value.")");
+                    }
+                  }
+                  }
+
         echo $str_err_report;
         // end (EP for product extra fields Contrib by minhmt DEVSOFTVN) ============
         
