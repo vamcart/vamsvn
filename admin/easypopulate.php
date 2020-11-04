@@ -367,6 +367,9 @@ define ('EP_EXTRA_FIELDS_SUPPORT', true);  // default is false
 // Categories 
 define ('EP_CATEGORIES_SUPPORT', true);  // default is false
 
+// Tags 
+define ('EP_TAGS_SUPPORT', true);  // default is false
+
 // UltraPics 2.05 LightBox Contrib (***FUNCTIONAL***)
 define ('EP_ULTRPICS_SUPPORT', false);  // default is false
 
@@ -1694,6 +1697,9 @@ if (!empty($_POST['localfile']) or (isset($_FILES['usrfl']) && isset($_GET['spli
 <?php if (EP_CATEGORIES_SUPPORT == true) { ?>
           <a href="easypopulate.php?download=stream&dltype=categories<?php if (defined('SID') && vam_not_null(SID)) { echo '&'.vam_session_name().'='.vam_session_id(); } ?>"><?php echo TEXT_EASYPOPULATE_QUICK_LINKS_CATEGORIES; ?> <?php echo ((EP_EXCEL_SAFE_OUTPUT == true)?".csv":".txt"); ?> <?php echo TEXT_EASYPOPULATE_QUICK_LINKS_5; ?></a><br />
 <?php } ?>
+<?php if (EP_TAGS_SUPPORT == true) { ?>
+          <a href="easypopulate.php?download=stream&dltype=tags<?php if (defined('SID') && vam_not_null(SID)) { echo '&'.vam_session_name().'='.vam_session_id(); } ?>"><?php echo TEXT_EASYPOPULATE_QUICK_LINKS_TAGS; ?> <?php echo ((EP_EXCEL_SAFE_OUTPUT == true)?".csv":".txt"); ?> <?php echo TEXT_EASYPOPULATE_QUICK_LINKS_5; ?></a><br />
+<?php } ?>
           <a href="easypopulate.php?download=stream&dltype=priceqty<?php if (defined('SID') && vam_not_null(SID)) { echo '&'.vam_session_name().'='.vam_session_id(); } ?>"><?php echo TEXT_EASYPOPULATE_QUICK_LINKS_8; ?><?php if (EP_SPPC_SUPPORT == true) { echo TEXT_EASYPOPULATE_QUICK_LINKS_4; } ?></b> <?php echo ((EP_EXCEL_SAFE_OUTPUT == true)?".csv":".txt"); ?> <?php echo TEXT_EASYPOPULATE_QUICK_LINKS_5; ?></a><br />
           <a href="easypopulate.php?download=stream&dltype=category<?php if (defined('SID') && vam_not_null(SID)) { echo '&'.vam_session_name().'='.vam_session_id(); } ?>"><?php echo TEXT_EASYPOPULATE_QUICK_LINKS_9; ?></b> <?php echo ((EP_EXCEL_SAFE_OUTPUT == true)?".csv":".txt"); ?> <?php echo TEXT_EASYPOPULATE_QUICK_LINKS_5; ?></a><br />
           <a href="easypopulate.php?download=stream&dltype=froogle<?php if (defined('SID') && vam_not_null(SID)) { echo '&'.vam_session_name().'='.vam_session_id(); } ?>"><?php echo TEXT_EASYPOPULATE_QUICK_LINKS_10; ?></b> <?php echo ((EP_EXCEL_SAFE_OUTPUT == true)?".csv":".txt"); ?> <?php echo TEXT_EASYPOPULATE_QUICK_LINKS_12; ?></a><br />
@@ -2336,6 +2342,35 @@ function ep_create_filelayout($dltype, $attribute_options_array, $languages, $cu
     // end of EP for extra field code ======= DEVSOFTVN================       
         break;
 
+    case 'tags':
+    // start EP for product extra field ============================= DEVSOFTVN - 10/20/2005     
+        $iii = 0;
+        $filelayout = array(
+            'v_tags_id'        => $iii++,
+            'v_tags_name'        => $iii++,
+            'v_tags_url'        => $iii++,
+            'v_tags_title'        => $iii++,
+            'v_tags_description'        => $iii++,
+            'v_tags_mainpage'        => $iii++,
+            'v_tags_sort_order'        => $iii++,
+            'v_tags_status'        => $iii++
+                        );
+    
+        $filelayout_sql = "SELECT
+                        t.tags_id as v_tags_id,
+                        t.tags_name as v_tags_name,
+                        t.tags_url as v_tags_url,
+                        t.tags_title as v_tags_title,
+                        t.tags_description as v_tags_description,
+                        t.tags_mainpage as v_tags_mainpage,
+                        t.sort_order as v_tags_sort_order,
+                        t.status as v_tags_status
+                        FROM
+                        ".TABLE_TAGS." as t
+                        ";    
+    // end of EP for extra field code ======= DEVSOFTVN================       
+        break;
+        
     case 'froogle':
         // this is going to be a little interesting because we need
         // a way to map from internal names to external names
@@ -2683,6 +2718,69 @@ function process_row( $item1, $filelayout, $filelayout_count, $default_these, $e
 
         $result = vam_db_query($sql_categories_field);
         vam_db_query($sql_categories_description_field);
+        
+        echo $str_err_report;
+        // end (EP for product extra fields Contrib by minhmt DEVSOFTVN) ============
+
+    } elseif (isset($items[$filelayout['v_tags_id']]) ){    
+    
+        $v_tags_id = $items[$filelayout['v_tags_id']];
+        $v_tags_name    =    $items[$filelayout['v_tags_name']];
+        $v_tags_url    =    $items[$filelayout['v_tags_url']];
+        $v_tags_title    =    $items[$filelayout['v_tags_title']];
+        $v_tags_description    =    $items[$filelayout['v_tags_description']];
+        $v_tags_mainpage    =    $items[$filelayout['v_tags_mainpage']];
+        $v_tags_sort_order    =    $items[$filelayout['v_tags_sort_order']];
+        $v_tags_status    =    $items[$filelayout['v_tags_status']];
+
+        $sql = "SELECT tags_id as v_tags_id FROM ".TABLE_TAGS." WHERE tags_id = '" . $v_tags_id . "'";
+        $result = vam_db_query($sql);
+        $row =  vam_db_fetch_array($result);
+
+		$sql_exist	=	"SELECT tags_id FROM ".TABLE_TAGS. " WHERE tags_id ='".$row['v_tags_id']. "'";
+
+		if (vam_db_num_rows(vam_db_query($sql_exist)) > 0) {
+			
+			$sql_tags_field	=	"UPDATE ".TABLE_TAGS." SET 
+			tags_name='".$v_tags_name."', 
+			tags_url='".$v_tags_url."', 
+			tags_title='".$v_tags_title."', 
+			tags_description='".$v_tags_description."', 
+			tags_mainpage='".$v_tags_mainpage."', 
+			sort_order='".$v_tags_sort_order."', 
+			status='".$v_tags_status."' 
+
+			WHERE tags_id ='".$v_tags_id ."'";
+
+			$str_err_report= " $v_tags_id | $v_tags_name | <b><font color=black>".EASY_TAGS_UPDATED."</font></b><br />";
+		} else {
+			$sql_tags_field	=	"INSERT INTO ".TABLE_TAGS."
+			(
+			tags_id,
+			tags_name,
+			tags_url,
+			tags_title,
+			tags_description,
+			tags_mainpage,
+			sort_order,
+			status
+			) 
+			VALUES 
+			(
+			'".$v_tags_id."',
+			'".$v_tags_name."',
+			'".$v_tags_url."',
+			'".$v_tags_title."',
+			'".$v_tags_description."',
+			'".$v_tags_mainpage."',
+			'".$v_tags_sort_order."',
+			'".$v_tags_status."'
+			)";
+
+			$str_err_report= " $v_tags_id | $v_tags_name | <b><font color=green>".EASY_TAGS_ADDED."</font></b><br />";
+		}
+
+        $result = vam_db_query($sql_tags_field);
         
         echo $str_err_report;
         // end (EP for product extra fields Contrib by minhmt DEVSOFTVN) ============

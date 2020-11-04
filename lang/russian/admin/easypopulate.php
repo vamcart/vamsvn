@@ -52,6 +52,7 @@ define('TEXT_EASYPOPULATE_COMPLETE','Полный');
 define('TEXT_EASYPOPULATE_CUSTOM','Выборочный');
 define('TEXT_EASYPOPULATE_PRICE_QTY','Цена/Количество');
 define('TEXT_EASYPOPULATE_CATEGORIES','Категории');
+define('TEXT_EASYPOPULATE_TAGS','Тэги');
 define('TEXT_EASYPOPULATE_ATTRIBUTES','Атрибуты');
 define('TEXT_EASYPOPULATE_FROOGLE','Фругл');
 define('TEXT_EASYPOPULATE_FILE_FORMAT',' файл (артикул всегда добавляется в файл).');
@@ -62,6 +63,7 @@ define('TEXT_EASYPOPULATE_LABEL_URL','url ссылка');
 define('TEXT_EASYPOPULATE_LABEL_IMAGE','картинка');
 define('TEXT_EASYPOPULATE_LABEL_ATTRIBUTES','атрибуты');
 define('TEXT_EASYPOPULATE_LABEL_CATEGORIES','категория');
+define('TEXT_EASYPOPULATE_LABEL_TAGS','тэги');
 define('TEXT_EASYPOPULATE_LABEL_MANUFACTURERS','производитель');
 define('TEXT_EASYPOPULATE_LABEL_PRICE','цена');
 define('TEXT_EASYPOPULATE_LABEL_QUANTITY','количество');
@@ -187,5 +189,10 @@ define('EASY_CATEGORIES_UPDATED', 'Категории обновлены');
 define('EASY_CATEGORIES_ADDED', 'Категории добавлены');
 
 define('TEXT_EASYPOPULATE_QUICK_LINKS_CATEGORIES','Скачать <b>Категории</b>');
+
+define('EASY_TAGS_UPDATED', 'Тэги обновлены');
+define('EASY_TAGS_ADDED', 'Тэги добавлены');
+
+define('TEXT_EASYPOPULATE_QUICK_LINKS_TAGS','Скачать <b>Тэги</b>');
 
 ?>
