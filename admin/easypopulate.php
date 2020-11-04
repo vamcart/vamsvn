@@ -2326,7 +2326,7 @@ function ep_create_filelayout($dltype, $attribute_options_array, $languages, $cu
                         c.dislikes as v_categories_dislikes,        
                         c.listing_template as v_categories_listing_template,        
                         c.products_sorting as v_categories_products_sorting,        
-                        c.products_sorting2 as v_products_sorting2        
+                        c.products_sorting2 as v_categories_products_sorting2        
                         FROM
                         ".TABLE_CATEGORIES." as c,
                         ".TABLE_CATEGORIES_DESCRIPTION." as cd
@@ -2561,11 +2561,29 @@ function process_row( $item1, $filelayout, $filelayout_count, $default_these, $e
     
     } elseif (isset($items[$filelayout['v_categories_id']]) ){    
     
-        $v_categories_name = $items[$filelayout['v_categories_name']];
         $v_categories_status = $items[$filelayout['v_categories_status']];
         $v_categories_id = $items[$filelayout['v_categories_id']];
+        $v_categories_parent_id = $items[$filelayout['v_categories_parent_id']];
+        $v_categories_url    =    $items[$filelayout['v_categories_url']];
+        $v_categories_image    =    $items[$filelayout['v_categories_image']];
+        $v_categories_icon    =    $items[$filelayout['v_categories_icon']];
+        $v_categories_sort_order    =    $items[$filelayout['v_categories_sort_order']];
+        $v_categories_yml_enable    =    $items[$filelayout['v_categories_yml_enable']];
+        $v_categories_google_category_id    =    $items[$filelayout['v_categories_google_category_id']];
+        $v_categories_label_id    =    $items[$filelayout['v_categories_label_id']];
+        $v_categories_likes    =    $items[$filelayout['v_categories_likes']];
+        $v_categories_dislikes    =    $items[$filelayout['v_categories_dislikes']];
+        $v_categories_listing_template    =    $items[$filelayout['v_categories_listing_template']];
+        $v_categories_products_sorting    =    $items[$filelayout['v_categories_products_sorting']];
+        $v_categories_products_sorting2    =    $items[$filelayout['v_categories_products_sorting2']];
+
+        $v_categories_name = $items[$filelayout['v_categories_name']];
         $v_categories_description    =    $items[$filelayout['v_categories_description']];
-        
+        $v_categories_heading_title    =    $items[$filelayout['v_categories_heading_title']];
+        $v_categories_meta_title    =    $items[$filelayout['v_categories_meta_title']];
+        $v_categories_meta_description    =    $items[$filelayout['v_categories_meta_description']];
+        $v_categories_meta_keywords    =    $items[$filelayout['v_categories_meta_keywords']];
+
         $sql = "SELECT categories_id as v_categories_id FROM ".TABLE_CATEGORIES." WHERE categories_id = '" . $v_categories_id . "'";
         $result = vam_db_query($sql);
         $row =  vam_db_fetch_array($result);
@@ -2575,12 +2593,30 @@ function process_row( $item1, $filelayout, $filelayout_count, $default_these, $e
 		if (vam_db_num_rows(vam_db_query($sql_exist)) > 0) {
 			
 			$sql_categories_field	=	"UPDATE ".TABLE_CATEGORIES." SET 
-			categories_status='".$v_categories_status."' 
+			categories_status='".$v_categories_status."', 
+			categories_url='".$v_categories_url."', 
+			categories_image='".$v_categories_image."', 
+			icon='".$v_categories_icon."', 
+			sort_order='".$v_categories_sort_order."', 
+			parent_id='".$v_categories_parent_id."', 
+			yml_enable='".$v_categories_yml_enable."', 
+			google_category_id='".$v_categories_google_category_id."', 
+			label_id='".$v_categories_label_id."', 
+			likes='".$v_categories_likes."', 
+			dislikes='".$v_categories_dislikes."', 
+			listing_template='".$v_categories_listing_template."', 
+			products_sorting='".$v_categories_products_sorting."', 
+			products_sorting2='".$v_categories_products_sorting2."' 
+
 			WHERE categories_id ='".$v_categories_id ."'";
 
 			$sql_categories_description_field	=	"UPDATE ".TABLE_CATEGORIES_DESCRIPTION." SET 
 			categories_name='".$v_categories_name."', 
-			categories_description='".$v_categories_description."' 
+			categories_description='".$v_categories_description."', 
+			categories_heading_title='".$v_categories_heading_title."', 
+			categories_meta_title='".$v_categories_meta_title."', 
+			categories_meta_description='".$v_categories_meta_description."', 
+			categories_meta_keywords='".$v_categories_meta_keywords."' 
 			WHERE categories_id ='".$v_categories_id ."'";
 			
 			$str_err_report= " $v_categories_id | $v_categories_name_id  | $v_categories_description | <b><font color=black>".EASY_CATEGORIES_UPDATED."</font></b><br />";
@@ -2588,24 +2624,59 @@ function process_row( $item1, $filelayout, $filelayout_count, $default_these, $e
 			$sql_categories_field	=	"INSERT INTO ".TABLE_CATEGORIES."
 			(
 			categories_id,
-			categories_status
+			categories_status,
+			categories_url,
+			categories_image,
+			icon,
+			sort_order,
+			parent_id,
+			yml_enable,
+			google_category_id,
+			label_id,
+			likes,
+			dislikes,
+			listing_template,
+			products_sorting,
+			products_sorting2
 			) 
 			VALUES 
 			(
 			'".$v_categories_id."',
-			'".$v_categories_status."'
+			'".$v_categories_status."',
+			'".$v_categories_url."',
+			'".$v_categories_image."',
+			'".$v_categories_icon."',
+			'".$v_categories_sort_order."',
+			'".$v_categories_parent_id."',
+			'".$v_categories_yml_enable."',
+			'".$v_categories_google_category_id."',
+			'".$v_categories_label_id."',
+			'".$v_categories_likes."',
+			'".$v_categories_dislikes."',
+			'".$v_categories_listing_template."',
+			'".$v_categories_products_sorting."',
+			'".$v_categories_products_sorting2."'
 			)";
+
 			$sql_categories_description_field	=	"INSERT INTO ".TABLE_CATEGORIES_DESCRIPTION."
 			(
 			categories_id,
 			categories_name,
-			categories_description
+			categories_description,
+			categories_heading_title,
+			categories_meta_title,
+			categories_meta_description,
+			categories_meta_keywords
 			) 
 			VALUES 
 			(
 			'".$v_categories_id."',
 			'".$v_categories_name."',
-			'".$v_categories_description."'
+			'".$v_categories_description."',
+			'".$v_categories_heading_title."',
+			'".$v_categories_meta_title."',
+			'".$v_categories_meta_description."',
+			'".$v_categories_meta_keywords."'
 			);";
 			$str_err_report= " $v_categories_id | $v_categories_name | $v_categories_description | <b><font color=green>".EASY_CATEGORIES_ADDED."</font></b><br />";
 		}
