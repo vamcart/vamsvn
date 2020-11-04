@@ -2286,6 +2286,7 @@ function ep_create_filelayout($dltype, $attribute_options_array, $languages, $cu
         $iii = 0;
         $filelayout = array(
             'v_categories_id'        => $iii++,
+            'v_categories_parent_id'        => $iii++,
             'v_categories_name'        => $iii++,
             'v_categories_heading_title'        => $iii++,
             'v_categories_description'        => $iii++,
@@ -2297,7 +2298,6 @@ function ep_create_filelayout($dltype, $attribute_options_array, $languages, $cu
             'v_categories_icon'        => $iii++,
             'v_categories_sort_order'        => $iii++,
             'v_categories_status'        => $iii++,
-            'v_categories_parent_id'        => $iii++,
             'v_categories_yml_enable'        => $iii++,
             'v_categories_google_category_id'        => $iii++,
             'v_categories_label_id'        => $iii++,
@@ -2552,6 +2552,66 @@ function process_row( $item1, $filelayout, $filelayout_count, $default_these, $e
 		}
 
         $result = vam_db_query($sql_extra_field);
+        
+        echo $str_err_report;
+        // end (EP for product extra fields Contrib by minhmt DEVSOFTVN) ============
+        
+    // /////////////////////
+    // or do product deletes
+    
+    } elseif (isset($items[$filelayout['v_categories_id']]) ){    
+    
+        $v_categories_name = $items[$filelayout['v_categories_name']];
+        $v_categories_status = $items[$filelayout['v_categories_status']];
+        $v_categories_id = $items[$filelayout['v_categories_id']];
+        $v_categories_description    =    $items[$filelayout['v_categories_description']];
+        
+        $sql = "SELECT categories_id as v_categories_id FROM ".TABLE_CATEGORIES." WHERE categories_id = '" . $v_categories_id . "'";
+        $result = vam_db_query($sql);
+        $row =  vam_db_fetch_array($result);
+
+		$sql_exist	=	"SELECT categories_id FROM ".TABLE_CATEGORIES. " WHERE categories_id ='".$row['v_categories_id']. "'";
+
+		if (vam_db_num_rows(vam_db_query($sql_exist)) > 0) {
+			
+			$sql_categories_field	=	"UPDATE ".TABLE_CATEGORIES." SET 
+			categories_status='".$v_categories_status."' 
+			WHERE categories_id ='".$v_categories_id ."'";
+
+			$sql_categories_description_field	=	"UPDATE ".TABLE_CATEGORIES_DESCRIPTION." SET 
+			categories_name='".$v_categories_name."', 
+			categories_description='".$v_categories_description."' 
+			WHERE categories_id ='".$v_categories_id ."'";
+			
+			$str_err_report= " $v_categories_id | $v_categories_name_id  | $v_categories_description | <b><font color=black>".EASY_CATEGORIES_UPDATED."</font></b><br />";
+		} else {
+			$sql_categories_field	=	"INSERT INTO ".TABLE_CATEGORIES."
+			(
+			categories_id,
+			categories_status
+			) 
+			VALUES 
+			(
+			'".$v_categories_id."',
+			'".$v_categories_status."'
+			)";
+			$sql_categories_description_field	=	"INSERT INTO ".TABLE_CATEGORIES_DESCRIPTION."
+			(
+			categories_id,
+			categories_name,
+			categories_description
+			) 
+			VALUES 
+			(
+			'".$v_categories_id."',
+			'".$v_categories_name."',
+			'".$v_categories_description."'
+			);";
+			$str_err_report= " $v_categories_id | $v_categories_name | $v_categories_description | <b><font color=green>".EASY_CATEGORIES_ADDED."</font></b><br />";
+		}
+
+        $result = vam_db_query($sql_categories_field);
+        vam_db_query($sql_categories_description_field);
         
         echo $str_err_report;
         // end (EP for product extra fields Contrib by minhmt DEVSOFTVN) ============
