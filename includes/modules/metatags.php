@@ -108,7 +108,6 @@ $cat_data = vam_db_fetch_array($cat_query, true);
                                       c.categories_image from ".TABLE_CATEGORIES." c, ".TABLE_CATEGORIES_DESCRIPTION." cd
                                       where c.categories_id = '".$current_category_id."'
                                       and cd.categories_id = '".$current_category_id."'
-                                      ".$group_check."
                                       and cd.language_id = '".(int) $_SESSION['languages_id']."'");
 		$categories_meta = vam_db_fetch_array($categories_meta_query, true);
 		if ($categories_meta['categories_meta_keywords'] == '') {
