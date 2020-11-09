@@ -52,7 +52,7 @@ $cat_query = vamDBquery("SELECT
                                  );
 $cat_data = vam_db_fetch_array($cat_query, true);         
 ?>	
-<title><?php echo $title.' '.' - ' . $cat_data['categories_name']; ?></title>
+<title><?php echo $title . ' - ' . TITLE; ?></title>
 <meta name="description" content="<?php echo $description; ?>" />
 <meta name="keywords" content="<?php echo $product->data['products_meta_keywords']; ?>" />
 <meta property="og:title" content="<?php echo vam_parse_input_field_data($product->data['products_name'], array('"' => '&quot;')); ?>" />
