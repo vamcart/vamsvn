@@ -331,7 +331,7 @@ define('TEXT_CACHE_MANUFACTURERS', 'Бокс производителей');
 define('TEXT_CACHE_ALSO_PURCHASED', 'Бокс также заказывают'); 
 
 define('TEXT_NONE', '--нет--');
-define('TEXT_TOP', 'Начало');
+define('TEXT_TOP', 'Выберите');
 
 define('ERROR_DESTINATION_DOES_NOT_EXIST', 'Ошибка: Каталог не существует.');
 define('ERROR_DESTINATION_NOT_WRITEABLE', 'Ошибка: Каталог защищён от записи, установите необходимые права доступа.');
