@@ -141,16 +141,20 @@ class vamPrice {
 		}
 
 		// check discount by categories
+		if ($this->cStatus['customers_status_discount'] <= '0') {
 		if ($this->cStatus['customers_status_discount_by_category'] == '1') {
 		if ($discount = $this->CheckCategoryByCustomerStatusDiscount($_SESSION['customer_id'], $pID)) {
 			return $this->FormatSpecialDiscount($pID, $discount, $pPrice, $format, $vpeStatus, $message_old_price, YOUR_PRICE, CATEGORY_DISCOUNT);
 		}
 		}
+		}
 
 		// check discount by brands
+		if ($this->cStatus['customers_status_discount'] <= '0') {
 		if ($this->cStatus['customers_status_discount_by_brand'] == '1') {
 		if ($discount = $this->CheckBrandByCustomerStatusDiscount($_SESSION['customer_id'], $pID)) {
 			return $this->FormatSpecialDiscount($pID, $discount, $pPrice, $format, $vpeStatus, $message_old_price, YOUR_PRICE, BRAND_DISCOUNT);
+		}
 		}
 		}
 
@@ -450,7 +454,7 @@ class vamPrice {
 		$sPrice = $pPrice - ($pPrice / 100) * $discount;
 		if ($format) {
 		if ($pPrice > 0)
-			$price = '<span class="productOldPrice">'.$message_old_price.$this->Format($pPrice, $format).'</span><span class="productPrice">'.$message_price.$this->checkAttributes($pID).$this->Format($sPrice, $format).'</span><br />'.$message_discount.$discount;
+			$price = '<span class="productOldPrice">'.$message_old_price.$this->Format($pPrice, $format).'</span><span class="productPrice">'.$message_price.$this->checkAttributes($pID).$this->Format($sPrice, $format).'</span>'.$message_discount.number_format($discount).'%';
 			if ($vpeStatus == 0) {
 				return $price;
 			} else {
