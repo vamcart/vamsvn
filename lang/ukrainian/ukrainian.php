@@ -449,7 +449,7 @@ define('YOUR_SPECIAL_PRICE', '');
 define('YOUR_GRADUATED_PRICE', '');
 define('RETAIL_PRICE', '');
 define('GROUP_PRICE', '');
-define('MANUFACTURER_DISCOUNT', 'Особиста знижка на виробника');
+define('MANUFACTURER_DISCOUNT', 'Знижка');
 define('CATEGORY_DISCOUNT','Знижка ');
 define('BRAND_DISCOUNT','Знижка ');
 define('PRODUCT_DISCOUNT', 'Знижка');

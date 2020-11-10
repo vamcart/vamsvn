@@ -461,7 +461,7 @@ define('GROUP_PRICE','');
 define('MANUFACTURER_DISCOUNT','Скидка ');
 define('CATEGORY_DISCOUNT','Скидка ');
 define('BRAND_DISCOUNT','Скидка ');
-define('PRODUCT_DISCOUNT','Скидка на товар ');
+define('PRODUCT_DISCOUNT','Скидка ');
 define('PERSONAL_DISCOUNT','Скидка ');
 
 // Сборка VaM
