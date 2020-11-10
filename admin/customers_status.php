@@ -606,7 +606,7 @@ function addBrand(){
     for ($i=0, $n = $categories_count ? $categories_count+1 : 3; $i<$n; $i++) {
       //$fields .= '<input type="text" size="30" name="subcat_' . $i . '_name" value="' . (isset($categories_array[$i]['name']) ? vam_output_string($categories_array[$i]['name']) : '') . '">' . "\n";
       //$fields .= '<input class="form-control" type="text" placeholder="'.TEXT_SELECT_CATEGORY.'" name="subcat_' . $i . '_id" value="' . (isset($categories_array[$i]['id']) ? $categories_array[$i]['id'] : '') . '">' . "\n";
-      $fields .= vam_draw_pull_down_menu('subcat_' . $i . '_id', vam_get_category_tree(), (isset($categories_array[$i]['id']) ? $categories_array[$i]['id'] : ''), 'class="noselect2" data-placeholder="'.TEXT_SELECT_CATEGORY.'"') . "\n";
+      $fields .= vam_draw_pull_down_menu('subcat_' . $i . '_id', vam_get_category_tree(), (isset($categories_array[$i]['id']) ? $categories_array[$i]['id'] : ''), 'class="form-control noselect2" data-placeholder="'.TEXT_SELECT_CATEGORY.'"') . "\n";
       $fields .= '<input class="form-control" type="text" placeholder="'.TEXT_SELECT_DISCOUNT.'" name="subcat_' . $i . '_qty" value="' . (isset($categories_array[$i]['id']) ? $categories_array[$i]['discount'] : '') . '">' . "\n";
       $fields .= '<br />';
     }
@@ -623,7 +623,7 @@ function addBrand(){
     for ($i=0, $n = $brands_count ? $brands_count+1 : 3; $i<$n; $i++) {
       //$fields_brands .= '<input type="text" size="30" name="brand_' . $i . '_name" value="' . (isset($brands_array[$i]['name']) ? vam_output_string($brands_array[$i]['name']) : '') . '">' . "\n";
       //$fields_brands .= '<input class="form-control" type="text" placeholder="'.TEXT_SELECT_BRAND.'" name="brand_' . $i . '_id" value="' . (isset($brands_array[$i]['id']) ? $brands_array[$i]['id'] : '') . '">' . "\n";
-      $fields_brands .= vam_draw_pull_down_menu('brand_' . $i . '_id', $manufacturers_array, (isset($brands_array[$i]['id']) ? $brands_array[$i]['id'] : ''), 'class="noselect2" data-placeholder="'.TEXT_SELECT_BRAND.'"') . "\n";
+      $fields_brands .= vam_draw_pull_down_menu('brand_' . $i . '_id', $manufacturers_array, (isset($brands_array[$i]['id']) ? $brands_array[$i]['id'] : ''), 'class="form-control noselect2" data-placeholder="'.TEXT_SELECT_BRAND.'"') . "\n";
       $fields_brands .= '<input class="form-control" type="text" placeholder="'.TEXT_SELECT_DISCOUNT.'" name="brand_' . $i . '_qty" value="' . (isset($brands_array[$i]['id']) ? $brands_array[$i]['discount'] : '') . '">' . "\n";
       $fields_brands .= '<br />';
     }
@@ -686,7 +686,7 @@ function addBrand(){
     for ($i=0, $n = $categories_count ? $categories_count+1 : 3; $i<$n; $i++) {
       //$fields .= '<input type="text" size="30" name="subcat_' . $i . '_name" value="' . (isset($categories_array[$i]['name']) ? vam_output_string($categories_array[$i]['name']) : '') . '">' . "\n";
       //$fields .= '<input class="form-control" type="text" placeholder="'.TEXT_SELECT_CATEGORY.'" name="subcat_' . $i . '_id" value="' . (isset($categories_array[$i]['id']) ? $categories_array[$i]['id'] : '') . '">' . "\n";
-      $fields .= vam_draw_pull_down_menu('subcat_' . $i . '_id', vam_get_category_tree(), (isset($categories_array[$i]['id']) ? $categories_array[$i]['id'] : ''), 'class="noselect2" data-placeholder="'.TEXT_SELECT_CATEGORY.'"') . "\n";
+      $fields .= vam_draw_pull_down_menu('subcat_' . $i . '_id', vam_get_category_tree(), (isset($categories_array[$i]['id']) ? $categories_array[$i]['id'] : ''), 'class="form-control noselect2" data-placeholder="'.TEXT_SELECT_CATEGORY.'"') . "\n";
       $fields .= '<input class="form-control" type="text" placeholder="'.TEXT_SELECT_DISCOUNT.'" name="subcat_' . $i . '_qty" value="' . (isset($categories_array[$i]['id']) ? $categories_array[$i]['discount'] : '') . '">' . "\n";
       $fields .= '<br />';
     }
@@ -703,7 +703,7 @@ function addBrand(){
     for ($i=0, $n = $brands_count ? $brands_count+1 : 3; $i<$n; $i++) {
       //$fields_brands .= '<input type="text" size="30" name="brand_' . $i . '_name" value="' . (isset($brands_array[$i]['name']) ? vam_output_string($brands_array[$i]['name']) : '') . '">' . "\n";
       //$fields_brands .= '<input class="form-control" type="text" placeholder="'.TEXT_SELECT_BRAND.'" name="brand_' . $i . '_id" value="' . (isset($brands_array[$i]['id']) ? $brands_array[$i]['id'] : '') . '">' . "\n";
-      $fields_brands .= vam_draw_pull_down_menu('brand_' . $i . '_id', $manufacturers_array, (isset($brands_array[$i]['id']) ? $brands_array[$i]['id'] : ''), 'class="noselect2" data-placeholder="'.TEXT_SELECT_BRAND.'"') . "\n";
+      $fields_brands .= vam_draw_pull_down_menu('brand_' . $i . '_id', $manufacturers_array, (isset($brands_array[$i]['id']) ? $brands_array[$i]['id'] : ''), 'class="form-control noselect2" data-placeholder="'.TEXT_SELECT_BRAND.'"') . "\n";
       $fields_brands .= '<input class="form-control" type="text" placeholder="'.TEXT_SELECT_DISCOUNT.'" name="brand_' . $i . '_qty" value="' . (isset($brands_array[$i]['id']) ? $brands_array[$i]['discount'] : '') . '">' . "\n";
       $fields_brands .= '<br />';
     }
