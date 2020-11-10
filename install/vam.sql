@@ -881,6 +881,8 @@ CREATE TABLE customers_status (
   customers_status_write_reviews int(1) NOT NULL DEFAULT '1',
   customers_status_read_reviews int(1) NOT NULL DEFAULT '1',
   customers_status_accumulated_limit decimal(15,4) DEFAULT '0' ,
+  customers_status_discount_by_category varchar(255) NOT NULL,
+  customers_status_discount_by_brand varchar(255) NOT NULL,
   PRIMARY KEY  (customers_status_id,language_id),
   KEY idx_orders_status_name (customers_status_name)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
@@ -901,6 +903,24 @@ CREATE TABLE customers_status_history (
   customer_notified int(1) default '0',
   PRIMARY KEY  (customers_status_history_id)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+
+DROP TABLE IF EXISTS `customers_status_to_categories_discount`;
+CREATE TABLE `customers_status_to_categories_discount` (
+  `discount_id` int(11) NOT NULL auto_increment,
+  `customers_status_id` int(11) DEFAULT NULL,
+  `categories_id` int(11) DEFAULT NULL,
+  `discount` decimal(4,2) DEFAULT NULL,
+  PRIMARY KEY (discount_id)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+DROP TABLE IF EXISTS `customers_status_to_manufacturers_discount`;
+CREATE TABLE `customers_status_to_manufacturers_discount` (
+  `discount_id` int(11) NOT NULL auto_increment,
+  `customers_status_id` int(11) DEFAULT NULL,
+  `manufacturers_id` int(11) DEFAULT NULL,
+  `discount` decimal(4,2) DEFAULT NULL,
+  PRIMARY KEY (discount_id)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 DROP TABLE IF EXISTS customers_to_extra_fields;
 CREATE TABLE customers_to_extra_fields (

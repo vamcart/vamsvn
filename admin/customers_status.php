@@ -23,7 +23,8 @@
    --------------------------------------------------------------*/
 
   require('includes/application_top.php');
-
+  require_once (DIR_WS_FUNCTIONS . 'products_specifications.php');
+  
   switch ($_GET['action']) {
     case 'insert':
     case 'save':
@@ -42,6 +43,8 @@
         $customers_status_ot_discount = $_POST['customers_status_ot_discount'];
         $customers_status_graduated_prices = $_POST['customers_status_graduated_prices'];
         $customers_status_discount_attributes = $_POST['customers_status_discount_attributes'];
+        $customers_status_discount_by_category = $_POST['customers_status_discount_by_category'];
+        $customers_status_discount_by_brand = $_POST['customers_status_discount_by_brand'];
         $customers_status_add_tax_ot = $_POST['customers_status_add_tax_ot'];
         $customers_status_payment_unallowed = $_POST['customers_status_payment_unallowed'];
         $customers_status_shipping_unallowed = $_POST['customers_status_shipping_unallowed'];
@@ -73,8 +76,70 @@
           'customers_status_write_reviews' => vam_db_prepare_input($customers_status_write_reviews),
           'customers_status_read_reviews' => vam_db_prepare_input($customers_status_read_reviews),
           'customers_status_accumulated_limit' => vam_db_prepare_input($customers_status_accumulated_limit),
-          'customers_status_discount_attributes' => vam_db_prepare_input($customers_status_discount_attributes)
+          'customers_status_discount_attributes' => vam_db_prepare_input($customers_status_discount_attributes),
+          'customers_status_discount_by_category' => vam_db_prepare_input($customers_status_discount_by_category),
+          'customers_status_discount_by_brand' => vam_db_prepare_input($customers_status_discount_by_brand)
         );
+
+      	  // BOF Categories Discounts
+          if ($_POST['customers_status_discount_by_category'] == "1") {
+          	
+        if ($_GET['action'] == 'insert') {
+            $next_id_query = vam_db_query("select max(customers_status_id) as customers_status_id from " . TABLE_CUSTOMERS_STATUS . "");
+            $next_id = vam_db_fetch_array($next_id_query);
+            $customers_status_id = $next_id['customers_status_id'] + 1;
+        }          	
+            $subcats = array();
+            $subcatqty = array();
+            vam_db_query("DELETE FROM " . TABLE_CUSTOMERS_STATUS_TO_CATEGORIES . " WHERE customers_status_id = '" . (int)$customers_status_id . "'");
+            for ($i=0, $n=100; $i<$n; $i++) {
+              if (isset($_POST['subcat_' . $i . '_qty']) && ((int)$_POST['subcat_' . $i . '_qty'] > 0)) {
+                if (in_array($_POST['subcat_' . $i . '_id'], $subcats)) {
+                  $subcatqty[$_POST['subcat_' . $i . '_id']] += (int)$_POST['subcat_' . $i . '_qty'];
+                  vam_db_query('update ' . TABLE_CUSTOMERS_STATUS_TO_CATEGORIES . ' set discount = ' . (int)$subcatqty[$_POST['subcat_' . $i . '_qty']] . ' where customers_status_id = ' . (int)$customers_status_id . ' and discount_id = ' . (int)$_POST['subcat_' . $i . '_id']);
+                } else {
+                  $subcats[] = $_POST['subcat_' . $i . '_id'];
+                  $subcatqty[$_POST['subcat_' . $i . '_id']] = (int)$_POST['subcat_' . $i . '_qty'];
+                  vam_db_query("INSERT INTO " . TABLE_CUSTOMERS_STATUS_TO_CATEGORIES . " (customers_status_id, categories_id, discount) VALUES ('" . (int)$customers_status_id . "', '" . (int)$_POST['subcat_' . $i . '_id'] . "', '" . (int)$_POST['subcat_' . $i . '_qty'] . "')");
+                }
+       	      }
+            }
+            if (empty($subcats)) { 
+              vam_db_query('update ' . TABLE_CUSTOMERS_STATUS . ' set customers_status_discount_by_category = "0" where customers_status_id = ' . (int)$customers_status_id);
+            } else { 
+            }
+          }
+          // EOF Categories Discounts
+          
+      	  // BOF Brand Discounts
+          if ($_POST['customers_status_discount_by_brand'] == "1") {
+          	
+        if ($_GET['action'] == 'insert') {
+            $next_id_query = vam_db_query("select max(customers_status_id) as customers_status_id from " . TABLE_CUSTOMERS_STATUS . "");
+            $next_id = vam_db_fetch_array($next_id_query);
+            $customers_status_id = $next_id['customers_status_id'] + 1;
+        }          	
+            $subcats = array();
+            $subcatqty = array();
+            vam_db_query("DELETE FROM " . TABLE_CUSTOMERS_STATUS_TO_MANUFACTURERS . " WHERE customers_status_id = '" . (int)$customers_status_id . "'");
+            for ($i=0, $n=100; $i<$n; $i++) {
+              if (isset($_POST['brand_' . $i . '_qty']) && ((int)$_POST['brand_' . $i . '_qty'] > 0)) {
+                if (in_array($_POST['brand_' . $i . '_id'], $subcats)) {
+                  $subcatqty[$_POST['brand_' . $i . '_id']] += (int)$_POST['brand_' . $i . '_qty'];
+                  vam_db_query('update ' . TABLE_CUSTOMERS_STATUS_TO_MANUFACTURERS . ' set discount = ' . (int)$subcatqty[$_POST['subcat_' . $i . '_qty']] . ' where customers_status_id = ' . (int)$customers_status_id . ' and discount_id = ' . (int)$_POST['brand_' . $i . '_id']);
+                } else {
+                  $subcats[] = $_POST['brand_' . $i . '_id'];
+                  $subcatqty[$_POST['brand_' . $i . '_id']] = (int)$_POST['brand_' . $i . '_qty'];
+                  vam_db_query("INSERT INTO " . TABLE_CUSTOMERS_STATUS_TO_MANUFACTURERS . " (customers_status_id, manufacturers_id, discount) VALUES ('" . (int)$customers_status_id . "', '" . (int)$_POST['brand_' . $i . '_id'] . "', '" . (int)$_POST['brand_' . $i . '_qty'] . "')");
+                }
+       	      }
+            }
+            if (empty($subcats)) { 
+              vam_db_query('update ' . TABLE_CUSTOMERS_STATUS . ' set customers_status_discount_by_brand = "0" where customers_status_id = ' . (int)$customers_status_id);
+            } else { 
+            }
+          }
+          // EOF Brand Discounts          
         
         if ($_GET['action'] == 'insert') {
           if (!vam_not_null($customers_status_id)) {
@@ -140,6 +205,9 @@
 
       vam_db_query("delete from " . TABLE_CUSTOMERS_STATUS_ORDERS_STATUS . " where customers_status_id = " .  vam_db_input($cID));
 
+      vam_db_query("DELETE FROM " . TABLE_CUSTOMERS_STATUS_TO_CATEGORIES . " WHERE customers_status_id = '" . vam_db_input($cID) . "'");
+      vam_db_query("DELETE FROM " . TABLE_CUSTOMERS_STATUS_TO_MANUFACTURERS . " WHERE customers_status_id = '" . vam_db_input($cID) . "'");            
+
       // We want to drop the existing corresponding personal_offers table
       vam_db_query("drop table IF EXISTS ".TABLE_PERSONAL_OFFERS.vam_db_input($cID) . "");
       vam_db_query("ALTER TABLE `products` DROP `group_permission_" . vam_db_input($cID) . "`");
@@ -182,6 +250,156 @@
 <title><?php echo TITLE; ?></title>
 <!-- Header JS, CSS -->
 <?php require(DIR_FS_ADMIN.DIR_WS_INCLUDES . 'header_include.php'); ?>
+<?php 
+$manufacturers_array = array (array ('id' => '', 'text' => TEXT_TOP));
+$manufacturers_query = vam_db_query("select manufacturers_id, manufacturers_name from ".TABLE_MANUFACTURERS." order by manufacturers_name");
+while ($manufacturers = vam_db_fetch_array($manufacturers_query)) {
+        $manufacturers_array[] = array ('id' => $manufacturers['manufacturers_id'], 'text' => $manufacturers['manufacturers_name']);
+}
+?>
+<script type="text/javascript"><!--
+function clearCat(n) {
+  var this_subcat_id = eval("document.status.subcat_" + n + "_id");
+  var this_subcat_name = eval("document.status.subcat_" + n + "_name");
+  var this_subcat_qty = eval("document.status.subcat_" + n + "_qty");
+  var this_subcat_link = eval("document.getElementById('subcat_" + n + "_link')");
+  this_subcat_id.remove();
+  //this_subcat_name.style.display = "none";
+  this_subcat_qty.remove();
+  this_subcat_link.remove();
+}
+
+function addCat(){
+  var n = parseInt(document.getElementById('categories_i').value);
+  var HTML = document.getElementById('categories');
+  currentElement = document.createElement("input");
+  //currentElement.setAttribute("disabled","");
+  //currentElement.setAttribute("size","30");
+  //currentElement.setAttribute("type", "text");
+  //currentElement.setAttribute("name", 'subcat_' + n + '_name');
+  //currentElement.setAttribute("value", "");
+  //HTML.appendChild(currentElement);
+  currentElement = document.createElement("select");
+  //currentElement.setAttribute("size","3");
+  currentElement.setAttribute("class","form-control noselect2");
+  //currentElement.setAttribute("type", "text");
+  currentElement.setAttribute("placeholder", "<?php echo TEXT_SELECT_CATEGORY; ?>");
+  currentElement.setAttribute("name", 'subcat_' + n + '_id');
+  currentElement.setAttribute("id", 'subcat_' + n + '_id');
+
+  var this_subcat_id = eval("document.status.subcat_" + n + "_id");
+  var url = JSON.parse('<?php echo json_encode(vam_get_category_tree(), JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP | JSON_UNESCAPED_UNICOD);?>');
+
+    // empty select
+    currentElement.options.length = 0;
+
+    var ele = currentElement;
+    for (var i = 0; i < url.length; i++) {
+        // populate select element with json
+        ele.innerHTML = ele.innerHTML +
+            '<option value="' + url[i]['id'] + '">' + url[i]['text'] + '</option>';
+    }  
+    
+
+  //currentElement.setAttribute("value", "");
+  HTML.appendChild(currentElement);
+  currentElement = document.createTextNode(' ');
+  HTML.appendChild(currentElement);
+  currentElement = document.createElement("input");
+  //currentElement.setAttribute("size","3");
+  currentElement.setAttribute("class","form-control noselect2");
+  currentElement.setAttribute("type", "text");
+  currentElement.setAttribute("placeholder", "<?php echo TEXT_SELECT_DISCOUNT; ?>");
+  currentElement.setAttribute("name", 'subcat_' + n + '_qty');
+  currentElement.setAttribute("value", "");
+  HTML.appendChild(currentElement);
+  //document.createTextNode('&nbsp;');
+  HTML.appendChild(currentElement);
+  var myLink = document.createElement('a');
+  var href = document.createAttribute('href');
+  myLink.setAttribute('id','subcat_' + n + '_link');
+  myLink.setAttribute('href','javascript:');
+  myLink.setAttribute('onclick', 'clearCat(' + n + ')');
+  <?php echo "myLink.innerText = ' [x] " . TEXT_REMOVE_PRODUCT . "';\n"; ?>
+  //currentElement = document.createElement("br");
+  HTML.appendChild(currentElement);
+  HTML.appendChild(myLink);
+  document.getElementById('categories_i').value = n + 1;
+}
+
+
+function clearBrand(n) {
+  var this_brand_id = eval("document.status.brand_" + n + "_id");
+  var this_brand_name = eval("document.status.brand_" + n + "_name");
+  var this_brand_qty = eval("document.status.brand_" + n + "_qty");
+  var this_brand_link = eval("document.getElementById('brand_" + n + "_link')");
+  this_brand_id.remove();
+  //this_brand_name.style.display = "none";
+  this_brand_qty.remove();
+  this_brand_link.remove();
+}
+
+function addBrand(){
+  var n = parseInt(document.getElementById('brands_i').value);
+  var HTML = document.getElementById('brands');
+  currentElement = document.createElement("input");
+  //currentElement.setAttribute("disabled","");
+  //currentElement.setAttribute("size","30");
+  //currentElement.setAttribute("type", "text");
+  //currentElement.setAttribute("name", 'brand_' + n + '_name');
+  //currentElement.setAttribute("value", "");
+  //HTML.appendChild(currentElement);
+  currentElement = document.createElement("select");
+  //currentElement.setAttribute("size","3");
+  currentElement.setAttribute("class","form-control noselect2");
+  //currentElement.setAttribute("type", "text");
+  currentElement.setAttribute("placeholder", "<?php echo TEXT_SELECT_BRAND; ?>");
+  currentElement.setAttribute("name", 'brand_' + n + '_id');
+  currentElement.setAttribute("id", 'brand_' + n + '_id');
+
+  var this_brand_id = eval("document.status.brand_" + n + "_id");
+  var url = JSON.parse('<?php echo json_encode($manufacturers_array, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP | JSON_UNESCAPED_UNICOD);?>');
+
+    // empty select
+    currentElement.options.length = 0;
+
+    var ele = currentElement;
+    for (var i = 0; i < url.length; i++) {
+        // populate select element with json
+        ele.innerHTML = ele.innerHTML +
+            '<option value="' + url[i]['id'] + '">' + url[i]['text'] + '</option>';
+    }  
+    
+
+  //currentElement.setAttribute("value", "");
+  HTML.appendChild(currentElement);
+  currentElement = document.createTextNode(' ');
+  HTML.appendChild(currentElement);
+  currentElement = document.createElement("input");
+  //currentElement.setAttribute("size","3");
+  currentElement.setAttribute("class","form-control noselect2");
+  currentElement.setAttribute("type", "text");
+  currentElement.setAttribute("placeholder", "<?php echo TEXT_SELECT_DISCOUNT; ?>");
+  currentElement.setAttribute("name", 'brand_' + n + '_qty');
+  currentElement.setAttribute("value", "");
+  HTML.appendChild(currentElement);
+  //document.createTextNode('&nbsp;');
+  HTML.appendChild(currentElement);
+  var myLink = document.createElement('a');
+  var href = document.createAttribute('href');
+  myLink.setAttribute('id','brand_' + n + '_link');
+  myLink.setAttribute('href','javascript:');
+  myLink.setAttribute('onclick', 'clearBrand(' + n + ')');
+  <?php echo "myLink.innerText = ' [x] " . TEXT_REMOVE_PRODUCT . "';\n"; ?>
+  //currentElement = document.createElement("br");
+  HTML.appendChild(currentElement);
+  HTML.appendChild(myLink);
+  document.getElementById('brands_i').value = n + 1;
+}
+
+
+            //--></script>
+            
 </head>
 <body marginwidth="0" marginheight="0" topmargin="0" bottommargin="0" leftmargin="0" rightmargin="0" bgcolor="#FFFFFF" onload="SetFocus();">
 <!-- header //-->
@@ -234,6 +452,9 @@
   $customers_status_write_reviews_array = array(array('id' => '0', 'text' => ENTRY_NO), array('id' => '1', 'text' => ENTRY_YES));
   $customers_status_read_reviews_array = array(array('id' => '0', 'text' => ENTRY_NO), array('id' => '1', 'text' => ENTRY_YES));
 
+  $customers_status_discount_by_category_array = array(array('id' => '0', 'text' => ENTRY_NO), array('id' => '1', 'text' => ENTRY_YES));
+  $customers_status_discount_by_brand_array = array(array('id' => '0', 'text' => ENTRY_NO), array('id' => '1', 'text' => ENTRY_YES));
+
   $customers_status_query_raw = "select * from " . TABLE_CUSTOMERS_STATUS . " where language_id = '" . $_SESSION['languages_id'] . "' order by customers_status_id";
 
   $customers_status_split = new splitPageResults($_GET['page'], MAX_DISPLAY_ADMIN_PAGE, $customers_status_query_raw, $customers_status_query_numrows);
@@ -242,7 +463,7 @@
     if (((!$_GET['cID']) || ($_GET['cID'] == $customers_status['customers_status_id'])) && (!$cInfo) && (substr($_GET['action'], 0, 3) != 'new')) {
       $cInfo = new objectInfo($customers_status);
     }
-
+    
     if ( (is_object($cInfo)) && ($customers_status['customers_status_id'] == $cInfo->customers_status_id) ) {
       echo '<tr class="dataTableRowSelected" onmouseover="this.style.cursor=\'hand\'" onclick="document.location.href=\'' . vam_href_link(FILENAME_CUSTOMERS_STATUS, 'page=' . $_GET['page'] . '&cID=' . $cInfo->customers_status_id . '&action=edit') . '\'">' . "\n";
     } else {
@@ -329,6 +550,37 @@
 <?php
   $heading = array();
   $contents = array();
+  
+    // BOF Discount Categories
+    $categories_array = array();
+    if (is_object($cInfo) && $cInfo->customers_status_discount_by_category == "1") {
+      $categories_query = vam_db_query("SELECT cs2c.categories_id, cs2c.discount, cd.categories_name FROM " . TABLE_CATEGORIES_DESCRIPTION . " cd INNER JOIN " . TABLE_CUSTOMERS_STATUS_TO_CATEGORIES . " cs2c ON cs2c.categories_id=cd.categories_id WHERE cs2c.customers_status_id = '" . (int)$_GET['cID'] . "'");
+      while ($categories_contents = vam_db_fetch_array($categories_query)) {
+        $categories_array[] = array('id' => $categories_contents['categories_id'],
+                                'discount' => $categories_contents['discount'],
+                                'name' => $categories_contents['categories_name']);
+      }
+    }
+    $categories_count = count($categories_array);
+    //echo var_dump($categories_array);
+    //echo var_dump($categories_count);
+    // EOF Discount Categories  
+
+    // BOF Discount Brands
+    $brands_array = array();
+    if (is_object($cInfo) && $cInfo->customers_status_discount_by_brand == "1") {
+      $brands_query = vam_db_query("SELECT cs2m.manufacturers_id, cs2m.discount, m.manufacturers_name FROM " . TABLE_MANUFACTURERS . " m INNER JOIN " . TABLE_CUSTOMERS_STATUS_TO_MANUFACTURERS . " cs2m ON cs2m.manufacturers_id=m.manufacturers_id WHERE cs2m.customers_status_id = '" . (int)$_GET['cID'] . "'");
+      while ($brands_contents = vam_db_fetch_array($brands_query)) {
+        $brands_array[] = array('id' => $brands_contents['manufacturers_id'],
+                                'discount' => $brands_contents['discount'],
+                                'name' => $brands_contents['manufacturers_name']);
+      }
+    }
+    $brands_count = count($brands_array);
+    //echo var_dump($brands_array);
+    //echo var_dump($brands_count);
+    // EOF Discount Brands  
+  
   switch ($_GET['action']) {
     case 'new':
       $heading[] = array('text' => '<b>' . TEXT_INFO_HEADING_NEW_CUSTOMERS_STATUS . '</b>');
@@ -348,6 +600,41 @@
       $contents[] = array('text' => '<br />' . TEXT_INFO_CUSTOMERS_STATUS_SHOW_PRICE_TAX_INTRO . '<br />' . ENTRY_CUSTOMERS_STATUS_SHOW_PRICE_TAX . ' ' . vam_draw_pull_down_menu('customers_status_show_price_tax', $customers_status_show_price_tax_array, $cInfo->customers_status_show_price_tax ));
       $contents[] = array('text' => '<br />' . TEXT_INFO_CUSTOMERS_STATUS_ADD_TAX_INTRO . '<br />' . ENTRY_CUSTOMERS_STATUS_ADD_TAX . ' ' . vam_draw_pull_down_menu('customers_status_add_tax_ot', $customers_status_add_tax_ot_array, $cInfo->customers_status_add_tax_ot));
       $contents[] = array('text' => '<br />' . TEXT_INFO_CUSTOMERS_STATUS_DISCOUNT_PRICE_INTRO . '<br />' . TEXT_INFO_CUSTOMERS_STATUS_DISCOUNT_PRICE . '<br />' . vam_draw_input_field('customers_status_discount', $cInfo->customers_status_discount));
+
+      $contents[] = array('text' => '<br />' . TEXT_ATTACH_TO_CATEGORIES . '<br />' . vam_draw_pull_down_menu('customers_status_discount_by_category', $customers_status_discount_by_category_array, $cInfo->customers_status_discount_by_category));
+
+    for ($i=0, $n = $categories_count ? $categories_count+1 : 3; $i<$n; $i++) {
+      //$fields .= '<input type="text" size="30" name="subcat_' . $i . '_name" value="' . (isset($categories_array[$i]['name']) ? vam_output_string($categories_array[$i]['name']) : '') . '">' . "\n";
+      //$fields .= '<input class="form-control" type="text" placeholder="'.TEXT_SELECT_CATEGORY.'" name="subcat_' . $i . '_id" value="' . (isset($categories_array[$i]['id']) ? $categories_array[$i]['id'] : '') . '">' . "\n";
+      $fields .= vam_draw_pull_down_menu('subcat_' . $i . '_id', vam_get_category_tree(), (isset($categories_array[$i]['id']) ? $categories_array[$i]['id'] : ''), 'class="noselect2" data-placeholder="'.TEXT_SELECT_CATEGORY.'"') . "\n";
+      $fields .= '<input class="form-control" type="text" placeholder="'.TEXT_SELECT_DISCOUNT.'" name="subcat_' . $i . '_qty" value="' . (isset($categories_array[$i]['id']) ? $categories_array[$i]['discount'] : '') . '">' . "\n";
+      $fields .= '<br />';
+    }
+
+      $contents[] = array('text' => $fields);
+
+      $contents[] = array('text' => vam_draw_hidden_field('categories_i', $i,'id="categories_i"').'<div id="categories">');
+      $contents[] = array('text' => '</div>');
+                   
+      $contents[] = array('text' => '<a href="javascript:" onclick="addCat()">' . TEXT_ADD_LINE . '</a><br />');
+
+      $contents[] = array('text' => '<br />' . TEXT_ATTACH_TO_MANUFACTURERS . '<br />' . vam_draw_pull_down_menu('customers_status_discount_by_brand', $customers_status_discount_by_brand_array, $cInfo->customers_status_discount_by_brand));
+     
+    for ($i=0, $n = $brands_count ? $brands_count+1 : 3; $i<$n; $i++) {
+      //$fields_brands .= '<input type="text" size="30" name="brand_' . $i . '_name" value="' . (isset($brands_array[$i]['name']) ? vam_output_string($brands_array[$i]['name']) : '') . '">' . "\n";
+      //$fields_brands .= '<input class="form-control" type="text" placeholder="'.TEXT_SELECT_BRAND.'" name="brand_' . $i . '_id" value="' . (isset($brands_array[$i]['id']) ? $brands_array[$i]['id'] : '') . '">' . "\n";
+      $fields_brands .= vam_draw_pull_down_menu('brand_' . $i . '_id', $manufacturers_array, (isset($brands_array[$i]['id']) ? $brands_array[$i]['id'] : ''), 'class="noselect2" data-placeholder="'.TEXT_SELECT_BRAND.'"') . "\n";
+      $fields_brands .= '<input class="form-control" type="text" placeholder="'.TEXT_SELECT_DISCOUNT.'" name="brand_' . $i . '_qty" value="' . (isset($brands_array[$i]['id']) ? $brands_array[$i]['discount'] : '') . '">' . "\n";
+      $fields_brands .= '<br />';
+    }
+
+      $contents[] = array('text' => $fields_brands);
+
+      $contents[] = array('text' => vam_draw_hidden_field('brands_i', $i,'id="brands_i"').'<div id="brands">');
+      $contents[] = array('text' => '</div>');
+                   
+      $contents[] = array('text' => '<a href="javascript:" onclick="addBrand()">' . TEXT_ADD_BRAND . '</a><br />');
+      
       $contents[] = array('text' => '<br />' . TEXT_INFO_CUSTOMERS_STATUS_DISCOUNT_ATTRIBUTES_INTRO     . '<br />' . ENTRY_CUSTOMERS_STATUS_DISCOUNT_ATTRIBUTES . ' ' . vam_draw_pull_down_menu('customers_status_discount_attributes', $customers_status_discount_attributes_array, $cInfo->customers_status_discount_attributes ));
       $contents[] = array('text' => '<br />' . TEXT_INFO_CUSTOMERS_STATUS_DISCOUNT_OT_XMEMBER_INTRO . '<br /> ' . ENTRY_OT_XMEMBER . ' ' . vam_draw_pull_down_menu('customers_status_ot_discount_flag', $customers_status_ot_discount_flag_array, $cInfo->customers_status_ot_discount_flag ). '<br />' . TEXT_INFO_CUSTOMERS_STATUS_DISCOUNT_PRICE . '<br />' . vam_draw_input_field('customers_status_ot_discount', $cInfo->customers_status_ot_discount));
       $contents[] = array('text' => '<br />' . TEXT_INFO_CUSTOMERS_STATUS_GRADUATED_PRICES_INTRO . '<br />' . ENTRY_GRADUATED_PRICES . ' ' . vam_draw_pull_down_menu('customers_status_graduated_prices', $customers_status_graduated_prices_array, $cInfo->customers_status_graduated_prices ));
@@ -369,7 +656,7 @@
 }
    
       $contents[] = array('text' => '<br />' . TEXT_INFO_CUSTOMERS_STATUS_BASE . '<br />' . ENTRY_CUSTOMERS_STATUS_BASE . '<br />' . vam_draw_pull_down_menu('customers_base_status', vam_get_customers_statuses()));
-      $contents[] = array('text' => '<br />' . vam_draw_checkbox_field('default') . ' ' . TEXT_SET_DEFAULT);
+      $contents[] = array('text' => '<br />' . vam_draw_checkbox_field('default','no',false) . ' ' . TEXT_SET_DEFAULT);
       $contents[] = array('align' => 'center', 'text' => '<br /><span class="button"><button type="submit" value="' . BUTTON_INSERT . '">' . vam_image(DIR_WS_IMAGES . 'icons/buttons/submit.png', '', '12', '12') . '&nbsp;' . BUTTON_INSERT . '</button></span> <a class="button" href="' . vam_href_link(FILENAME_CUSTOMERS_STATUS, 'page=' . $_GET['page']) . '"><span>' . vam_image(DIR_WS_IMAGES . 'icons/buttons/cancel.png', '', '12', '12') . '&nbsp;' . BUTTON_CANCEL . '</span></a>');
       break;
 
@@ -393,6 +680,41 @@
       $contents[] = array('text' => '<br />' . TEXT_INFO_CUSTOMERS_STATUS_SHOW_PRICE_TAX_INTRO . '<br />' . ENTRY_CUSTOMERS_STATUS_SHOW_PRICE_TAX . ' ' . vam_draw_pull_down_menu('customers_status_show_price_tax', $customers_status_show_price_tax_array, $cInfo->customers_status_show_price_tax ));
       $contents[] = array('text' => '<br />' . TEXT_INFO_CUSTOMERS_STATUS_ADD_TAX_INTRO . '<br />' . ENTRY_CUSTOMERS_STATUS_ADD_TAX . ' ' . vam_draw_pull_down_menu('customers_status_add_tax_ot', $customers_status_add_tax_ot_array, $cInfo->customers_status_add_tax_ot));
       $contents[] = array('text' => '<br />' . TEXT_INFO_CUSTOMERS_STATUS_DISCOUNT_PRICE_INTRO . '<br />' . TEXT_INFO_CUSTOMERS_STATUS_DISCOUNT_PRICE . ' ' . vam_draw_input_field('customers_status_discount', $cInfo->customers_status_discount));
+
+      $contents[] = array('text' => '<br />' . TEXT_ATTACH_TO_CATEGORIES . '<br />' . vam_draw_pull_down_menu('customers_status_discount_by_category', $customers_status_discount_by_category_array, $cInfo->customers_status_discount_by_category));
+
+    for ($i=0, $n = $categories_count ? $categories_count+1 : 3; $i<$n; $i++) {
+      //$fields .= '<input type="text" size="30" name="subcat_' . $i . '_name" value="' . (isset($categories_array[$i]['name']) ? vam_output_string($categories_array[$i]['name']) : '') . '">' . "\n";
+      //$fields .= '<input class="form-control" type="text" placeholder="'.TEXT_SELECT_CATEGORY.'" name="subcat_' . $i . '_id" value="' . (isset($categories_array[$i]['id']) ? $categories_array[$i]['id'] : '') . '">' . "\n";
+      $fields .= vam_draw_pull_down_menu('subcat_' . $i . '_id', vam_get_category_tree(), (isset($categories_array[$i]['id']) ? $categories_array[$i]['id'] : ''), 'class="noselect2" data-placeholder="'.TEXT_SELECT_CATEGORY.'"') . "\n";
+      $fields .= '<input class="form-control" type="text" placeholder="'.TEXT_SELECT_DISCOUNT.'" name="subcat_' . $i . '_qty" value="' . (isset($categories_array[$i]['id']) ? $categories_array[$i]['discount'] : '') . '">' . "\n";
+      $fields .= '<br />';
+    }
+    
+      $contents[] = array('text' => $fields);
+
+      $contents[] = array('text' => vam_draw_hidden_field('categories_i', $i,'id="categories_i"').'<div id="categories">');
+      $contents[] = array('text' => '</div>');
+                   
+      $contents[] = array('text' => '<a href="javascript:" onclick="addCat()">' . TEXT_ADD_LINE . '</a><br />');
+
+      $contents[] = array('text' => '<br />' . TEXT_ATTACH_TO_MANUFACTURERS . '<br />' . vam_draw_pull_down_menu('customers_status_discount_by_brand', $customers_status_discount_by_brand_array, $cInfo->customers_status_discount_by_brand));
+      
+    for ($i=0, $n = $brands_count ? $brands_count+1 : 3; $i<$n; $i++) {
+      //$fields_brands .= '<input type="text" size="30" name="brand_' . $i . '_name" value="' . (isset($brands_array[$i]['name']) ? vam_output_string($brands_array[$i]['name']) : '') . '">' . "\n";
+      //$fields_brands .= '<input class="form-control" type="text" placeholder="'.TEXT_SELECT_BRAND.'" name="brand_' . $i . '_id" value="' . (isset($brands_array[$i]['id']) ? $brands_array[$i]['id'] : '') . '">' . "\n";
+      $fields_brands .= vam_draw_pull_down_menu('brand_' . $i . '_id', $manufacturers_array, (isset($brands_array[$i]['id']) ? $brands_array[$i]['id'] : ''), 'class="noselect2" data-placeholder="'.TEXT_SELECT_BRAND.'"') . "\n";
+      $fields_brands .= '<input class="form-control" type="text" placeholder="'.TEXT_SELECT_DISCOUNT.'" name="brand_' . $i . '_qty" value="' . (isset($brands_array[$i]['id']) ? $brands_array[$i]['discount'] : '') . '">' . "\n";
+      $fields_brands .= '<br />';
+    }
+
+      $contents[] = array('text' => $fields_brands);
+
+      $contents[] = array('text' => vam_draw_hidden_field('brands_i', $i,'id="brands_i"').'<div id="brands">');
+      $contents[] = array('text' => '</div>');
+                   
+      $contents[] = array('text' => '<a href="javascript:" onclick="addBrand()">' . TEXT_ADD_BRAND . '</a><br />');
+      
       $contents[] = array('text' => '<br />' . TEXT_INFO_CUSTOMERS_STATUS_DISCOUNT_ATTRIBUTES_INTRO . '<br />' . ENTRY_CUSTOMERS_STATUS_DISCOUNT_ATTRIBUTES . ' ' . vam_draw_pull_down_menu('customers_status_discount_attributes', $customers_status_discount_attributes_array, $cInfo->customers_status_discount_attributes ));
       $contents[] = array('text' => '<br />' . TEXT_INFO_CUSTOMERS_STATUS_DISCOUNT_OT_XMEMBER_INTRO . '<br /> ' . ENTRY_OT_XMEMBER . ' ' . vam_draw_pull_down_menu('customers_status_ot_discount_flag', $customers_status_ot_discount_flag_array, $cInfo->customers_status_ot_discount_flag). '<br />' . TEXT_INFO_CUSTOMERS_STATUS_DISCOUNT_PRICE . ' ' . vam_draw_input_field('customers_status_ot_discount', $cInfo->customers_status_ot_discount));
       $contents[] = array('text' => '<br />' . TEXT_INFO_CUSTOMERS_STATUS_GRADUATED_PRICES_INTRO . '<br />' . ENTRY_GRADUATED_PRICES . ' ' . vam_draw_pull_down_menu('customers_status_graduated_prices', $customers_status_graduated_prices_array, $cInfo->customers_status_graduated_prices));
@@ -419,7 +741,7 @@
 
 }
 
-      if (DEFAULT_CUSTOMERS_STATUS_ID != $cInfo->customers_status_id) $contents[] = array('text' => '<br />' . vam_draw_checkbox_field('default') . ' ' . TEXT_SET_DEFAULT);
+      if (DEFAULT_CUSTOMERS_STATUS_ID != $cInfo->customers_status_id) $contents[] = array('text' => '<br />' . vam_draw_checkbox_field('default','no',false) . ' ' . TEXT_SET_DEFAULT);
       $contents[] = array('align' => 'center', 'text' => '<br /><span class="button"><button type="submit" value="' . BUTTON_UPDATE . '">' . vam_image(DIR_WS_IMAGES . 'icons/buttons/submit.png', '', '12', '12') . '&nbsp;' . BUTTON_INSERT . '</button></span> <a class="button" href="' . vam_href_link(FILENAME_CUSTOMERS_STATUS, 'page=' . $_GET['page'] . '&cID=' . $cInfo->customers_status_id) . '"><span>' . vam_image(DIR_WS_IMAGES . 'icons/buttons/cancel.png', '', '12', '12') . '&nbsp;' . BUTTON_CANCEL . '</span></a>');
       break;
 
@@ -448,6 +770,8 @@
         $contents[] = array('text' => '<br />' . TEXT_INFO_CUSTOMERS_STATUS_DISCOUNT_OT_XMEMBER_INTRO . '<br />' . ENTRY_OT_XMEMBER . ' ' . $customers_status_ot_discount_flag_array[$cInfo->customers_status_ot_discount_flag]['text'] . ' (' . $cInfo->customers_status_ot_discount_flag . ')' . ' - ' . $cInfo->customers_status_ot_discount . '%');
         $contents[] = array('text' => '<br />' . TEXT_INFO_CUSTOMERS_STATUS_GRADUATED_PRICES_INTRO . '<br />' . ENTRY_GRADUATED_PRICES . ' ' . $customers_status_graduated_prices_array[$cInfo->customers_status_graduated_prices]['text'] . ' (' . $cInfo->customers_status_graduated_prices . ')' );
         $contents[] = array('text' => '<br />' . TEXT_INFO_CUSTOMERS_STATUS_DISCOUNT_ATTRIBUTES_INTRO . '<br />' . ENTRY_CUSTOMERS_STATUS_DISCOUNT_ATTRIBUTES . ' ' . $customers_status_discount_attributes_array[$cInfo->customers_status_discount_attributes]['text'] . ' (' . $cInfo->customers_status_discount_attributes . ')' );
+        $contents[] = array('text' => '<br />' . TEXT_INFO_CUSTOMERS_STATUS_DISCOUNT_BY_CATEGORY_INTRO . '<br />' . $customers_status_discount_by_category_array[$cInfo->customers_status_discount_by_category]['text'] );
+        $contents[] = array('text' => '<br />' . TEXT_INFO_CUSTOMERS_STATUS_DISCOUNT_BY_BRAND_INTRO . '<br />' . $customers_status_discount_by_brand_array[$cInfo->customers_status_discount_by_brand]['text'] );
         $contents[] = array('text' => '<br />' . TEXT_INFO_CUSTOMERS_STATUS_PAYMENT_UNALLOWED_INTRO . '<br />' . ENTRY_CUSTOMERS_STATUS_PAYMENT_UNALLOWED . ':<b> ' . $cInfo->customers_status_payment_unallowed.'</b>');
         $contents[] = array('text' => '<br />' . TEXT_INFO_CUSTOMERS_STATUS_SHIPPING_UNALLOWED_INTRO . '<br />' . ENTRY_CUSTOMERS_STATUS_SHIPPING_UNALLOWED . ':<b> ' . $cInfo->customers_status_shipping_unallowed.'</b>');
         $contents[] = array('text' => '<br />' . TEXT_INFO_CUSTOMERS_STATUS_ACCUMULATED_LIMIT_INTRO . '<br />' . ENTRY_CUSTOMERS_STATUS_ACCUMULATED_LIMIT_DISPLAY . ':<b> ' . $cInfo->customers_status_accumulated_limit.'</b>');

@@ -108,4 +108,21 @@ define('ENTRY_CUSTOMERS_STATUS_ACCUMULATED_LIMIT_DISPLAY','Общая сумма
 define('TEXT_INFO_CUSTOMERS_STATUS_ORDERS_STATUS_INTRO', '<b>Накопительные статусы:</b>');
 define('TEXT_INFO_CUSTOMERS_STATUS_ORDERS_STATUS_DISPLAY', 'Какие именно заказы будут учитываться при подсчёте общей суммы покупок покупателя');
 
+define('TEXT_ATTACH_TO_CATEGORIES', 'Скидка по категориям товара');
+define('TEXT_SELECT_CATEGORIES', 'Выберите категории');
+
+define('TEXT_ATTACH_TO_MANUFACTURERS', 'Скидка по брендам');
+define('TEXT_SELECT_MANUFACTURERS', 'Выберите бренды');
+
+define('TEXT_ADD_LINE', 'Добавить категорию');
+define('TEXT_ADD_BRAND', 'Добавить бренд');
+define('TEXT_REMOVE_PRODUCT', 'Удалить');
+
+define('TEXT_INFO_CUSTOMERS_STATUS_DISCOUNT_BY_CATEGORY_INTRO','<b>Скидка по категориям товара</b>');
+define('TEXT_INFO_CUSTOMERS_STATUS_DISCOUNT_BY_BRAND_INTRO','<b>Скидка по брендам</b>');
+
+define('TEXT_SELECT_CATEGORY','Выберите категорию');
+define('TEXT_SELECT_BRAND','Выберите бренд');
+define('TEXT_SELECT_DISCOUNT','Укажите скидку');
+
 ?>
