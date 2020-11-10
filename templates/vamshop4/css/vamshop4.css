@@ -1641,3 +1641,8 @@ header .input-group-text,
 .price-block .price .productPrice {
   font-size: 24px;
 }
+
+.discount {
+  font-weight: normal;
+  color: var(--color-red);
+}
