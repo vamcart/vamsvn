@@ -448,12 +448,12 @@ define('YOUR_PRICE', '');
 define('YOUR_SPECIAL_PRICE', '');
 define('YOUR_GRADUATED_PRICE', '');
 define('RETAIL_PRICE', '');
-define('GROUP_PRICE', 'Базова ціна групи');
+define('GROUP_PRICE', '');
 define('MANUFACTURER_DISCOUNT', 'Особиста знижка на виробника');
-define('CATEGORY_DISCOUNT','Скидка на категорию ');
-define('BRAND_DISCOUNT','Скидка на бренд ');
-define('PRODUCT_DISCOUNT', 'Знижка на товар');
-define('PERSONAL_DISCOUNT', 'Ваша знижка');
+define('CATEGORY_DISCOUNT','Знижка ');
+define('BRAND_DISCOUNT','Знижка ');
+define('PRODUCT_DISCOUNT', 'Знижка');
+define('PERSONAL_DISCOUNT', 'Знижка');
 // Сборка VaM
 
 define('BOX_HEADING_SEARCH', 'Пошук');
