@@ -450,6 +450,8 @@ define('YOUR_GRADUATED_PRICE', '');
 define('RETAIL_PRICE', '');
 define('GROUP_PRICE', 'Базова ціна групи');
 define('MANUFACTURER_DISCOUNT', 'Особиста знижка на виробника');
+define('CATEGORY_DISCOUNT','Скидка на категорию ');
+define('BRAND_DISCOUNT','Скидка на бренд ');
 define('PRODUCT_DISCOUNT', 'Знижка на товар');
 define('PERSONAL_DISCOUNT', 'Ваша знижка');
 // Сборка VaM

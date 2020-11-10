@@ -459,6 +459,8 @@ define('YOUR_GRADUATED_PRICE','');
 define('RETAIL_PRICE','');
 define('GROUP_PRICE','Базовая цена группы');
 define('MANUFACTURER_DISCOUNT','Личная скидка на производителя ');
+define('CATEGORY_DISCOUNT','Скидка на категорию ');
+define('BRAND_DISCOUNT','Скидка на бренд ');
 define('PRODUCT_DISCOUNT','Скидка на товар ');
 define('PERSONAL_DISCOUNT','Ваша скидка ');
 
