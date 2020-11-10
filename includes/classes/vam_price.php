@@ -70,6 +70,8 @@ class vamPrice {
 		'customers_status_discount' => ($_SESSION['customers_status']['customers_status_discount'] > 0 ? $_SESSION['customers_status']['customers_status_discount'] : $customers_status_value['customers_status_discount']),
 		'customers_status_ot_discount_flag' => $customers_status_value['customers_status_ot_discount_flag'], 
 		'customers_status_ot_discount' => $customers_status_value['customers_status_ot_discount'], 
+		'customers_status_discount_by_category' => $customers_status_value['customers_status_discount_by_category'], 
+		'customers_status_discount_by_brand' => $customers_status_value['customers_status_discount_by_brand'], 
 		'customers_status_graduated_prices' => $customers_status_value['customers_status_graduated_prices'], 
 		'customers_status_show_price' => $customers_status_value['customers_status_show_price'], 
 		'customers_status_show_price_tax' => $customers_status_value['customers_status_show_price_tax'], 
@@ -136,6 +138,20 @@ class vamPrice {
 		// check special manufacturer price
 		if ($discount = $this->CheckManufacturerDiscount($_SESSION['customer_id'], $pID)) {
 			return $this->FormatSpecialDiscount($pID, $discount, $pPrice, $format, $vpeStatus, $message_old_price, YOUR_PRICE, MANUFACTURER_DISCOUNT);
+		}
+
+		// check discount by categories
+		if ($this->cStatus['customers_status_discount_by_category'] == '1') {
+		if ($discount = $this->CheckCategoryByCustomerStatusDiscount($_SESSION['customer_id'], $pID)) {
+			return $this->FormatSpecialDiscount($pID, $discount, $pPrice, $format, $vpeStatus, $message_old_price, YOUR_PRICE, CATEGORY_DISCOUNT);
+		}
+		}
+
+		// check discount by brands
+		if ($this->cStatus['customers_status_discount_by_brand'] == '1') {
+		if ($discount = $this->CheckBrandByCustomerStatusDiscount($_SESSION['customer_id'], $pID)) {
+			return $this->FormatSpecialDiscount($pID, $discount, $pPrice, $format, $vpeStatus, $message_old_price, YOUR_PRICE, BRAND_DISCOUNT);
+		}
 		}
 
 		// check graduated
@@ -298,6 +314,37 @@ class vamPrice {
 
 		return $manufacturer['discount'];
 	}
+
+	function CheckCategoryByCustomerStatusDiscount($cID, $pID) {
+		$category_id_query = "select p2c.categories_id from ".TABLE_PRODUCTS." p, " . TABLE_PRODUCTS_TO_CATEGORIES . " p2c where p2c.products_id = p.products_id and p.products_id = '".(int)$pID."'";
+		$category_id_query = vamDBquery($category_id_query);
+		$category_id = vam_db_fetch_array($category_id_query, true);
+		if ($category_id['categories_id'] > 0) {
+		$category_discount_query = "SELECT discount FROM ".TABLE_CUSTOMERS_STATUS_TO_CATEGORIES." WHERE customers_status_id = '".(int)$this->actualGroup."' AND categories_id = '".(int)$category_id['categories_id']."'";
+		$category_discount_query = vamDBquery($category_discount_query);
+		$category_discount = vam_db_fetch_array($category_discount_query, true);
+		} else {
+		$category_discount['discount'] = 0;
+		}
+
+		return $category_discount['discount'];
+	}
+
+	function CheckBrandByCustomerStatusDiscount($cID, $pID) {
+		$product_query = "select manufacturers_id from ".TABLE_PRODUCTS." where products_id = '".(int)$pID."'";
+		$product_query = vamDBquery($product_query);
+		$product = vam_db_fetch_array($product_query, true);
+		if ($product['manufacturers_id'] > 0) {
+		$manufacturer_query = "SELECT discount FROM ".TABLE_CUSTOMERS_STATUS_TO_MANUFACTURERS." WHERE customers_status_id = '".(int)$this->actualGroup."' AND manufacturers_id = '".(int)$product['manufacturers_id']."'";
+		$manufacturer_query = vamDBquery($manufacturer_query);
+		$manufacturer = vam_db_fetch_array($manufacturer_query, true);
+		} else {
+		$manufacturer['discount'] = 0;
+		}
+
+		return $manufacturer['discount'];
+	}
+
 
 	function CalculateCurr($price) {
 		return $this->currencies[$this->actualCurr]['value'] * $price;
