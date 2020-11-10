@@ -140,20 +140,20 @@ class vamPrice {
 			return $this->FormatSpecialDiscount($pID, $discount, $pPrice, $format, $vpeStatus, $message_old_price, YOUR_PRICE, MANUFACTURER_DISCOUNT);
 		}
 
-		// check discount by categories
-		if ($this->cStatus['customers_status_discount'] <= '0') {
-		if ($this->cStatus['customers_status_discount_by_category'] == '1') {
-		if ($discount = $this->CheckCategoryByCustomerStatusDiscount($_SESSION['customer_id'], $pID)) {
-			return $this->FormatSpecialDiscount($pID, $discount, $pPrice, $format, $vpeStatus, $message_old_price, YOUR_PRICE, CATEGORY_DISCOUNT);
-		}
-		}
-		}
-
 		// check discount by brands
 		if ($this->cStatus['customers_status_discount'] <= '0') {
 		if ($this->cStatus['customers_status_discount_by_brand'] == '1') {
 		if ($discount = $this->CheckBrandByCustomerStatusDiscount($_SESSION['customer_id'], $pID)) {
 			return $this->FormatSpecialDiscount($pID, $discount, $pPrice, $format, $vpeStatus, $message_old_price, YOUR_PRICE, BRAND_DISCOUNT);
+		}
+		}
+		}
+
+		// check discount by categories
+		if ($this->cStatus['customers_status_discount'] <= '0') {
+		if ($this->cStatus['customers_status_discount_by_category'] == '1') {
+		if ($discount = $this->CheckCategoryByCustomerStatusDiscount($_SESSION['customer_id'], $pID)) {
+			return $this->FormatSpecialDiscount($pID, $discount, $pPrice, $format, $vpeStatus, $message_old_price, YOUR_PRICE, CATEGORY_DISCOUNT);
 		}
 		}
 		}
@@ -208,18 +208,18 @@ class vamPrice {
 				
 			$discount = number_format($discount);
 
-			if ($this->cStatus['customers_status_discount_by_category'] == '1') {
-			if ($this->CheckCategoryByCustomerStatusDiscount($_SESSION['customer_id'], $pID) > 0) {
-			$discount = $this->CheckCategoryByCustomerStatusDiscount($_SESSION['customer_id'], $pID);
-			}
-			} 
-		
 			if ($this->cStatus['customers_status_discount_by_brand'] == '1') {
 			if ($this->CheckBrandByCustomerStatusDiscount($_SESSION['customer_id'], $pID) > 0) {
 			$discount = $this->CheckBrandByCustomerStatusDiscount($_SESSION['customer_id'], $pID);
 			}
 			}
-	   							
+
+			if ($this->cStatus['customers_status_discount_by_category'] == '1') {
+			if ($this->CheckCategoryByCustomerStatusDiscount($_SESSION['customer_id'], $pID) > 0) {
+			$discount = $this->CheckCategoryByCustomerStatusDiscount($_SESSION['customer_id'], $pID);
+			}
+			} 
+  							
 			return $discount;
 
 		} 
