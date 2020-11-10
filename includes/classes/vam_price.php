@@ -454,7 +454,7 @@ class vamPrice {
 		$sPrice = $pPrice - ($pPrice / 100) * $discount;
 		if ($format) {
 		if ($pPrice > 0)
-			$price = '<span class="productOldPrice">'.$message_old_price.$this->Format($pPrice, $format).'</span><span class="productPrice">'.$message_price.$this->checkAttributes($pID).$this->Format($sPrice, $format).'</span>'.$message_discount.number_format($discount).'%';
+			$price = '<span class="productOldPrice">'.$message_old_price.$this->Format($pPrice, $format).'</span><span class="productPrice">'.$message_price.$this->checkAttributes($pID).$this->Format($sPrice, $format).'</span>'.(($discount > 0) ? '<span class="discount">'.$message_discount.number_format($discount).'%</span>':'');
 			if ($vpeStatus == 0) {
 				return $price;
 			} else {
