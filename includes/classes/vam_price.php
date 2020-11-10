@@ -194,7 +194,7 @@ class vamPrice {
 	function CheckDiscount($pID) {
 
 		// check if group got discount
-		if ($this->cStatus['customers_status_discount'] != '0.00' && ($this->cStatus['customers_status_discount_by_category'] == '0' or $this->cStatus['customers_status_discount_by_category'] == '0')) {
+		if ($this->cStatus['customers_status_discount'] != '0.00') {
 
 			$discount_query = "SELECT products_discount_allowed FROM ".TABLE_PRODUCTS." WHERE products_id = '".(int)$pID."'";
 			$discount_query = vamDBquery($discount_query);
@@ -207,24 +207,23 @@ class vamPrice {
 				return false;
 				
 			$discount = number_format($discount);
-							
+
+			if ($this->cStatus['customers_status_discount_by_category'] == '1') {
+			if ($this->CheckCategoryByCustomerStatusDiscount($_SESSION['customer_id'], $pID) > 0) {
+			$discount = $this->CheckCategoryByCustomerStatusDiscount($_SESSION['customer_id'], $pID);
+			}
+			} 
+		
+			if ($this->cStatus['customers_status_discount_by_brand'] == '1') {
+			if ($this->CheckBrandByCustomerStatusDiscount($_SESSION['customer_id'], $pID) > 0) {
+			$discount = $this->CheckBrandByCustomerStatusDiscount($_SESSION['customer_id'], $pID);
+			}
+			}
+	   							
 			return $discount;
 
 		} 
 		
-		if ($this->cStatus['customers_status_discount_by_category'] == '1') {
-		if ($this->CheckCategoryByCustomerStatusDiscount($_SESSION['customer_id'], $pID) > 0) {
-			$discount = $this->CheckCategoryByCustomerStatusDiscount($_SESSION['customer_id'], $pID);
-			return $discount;
-		}
-		} 
-		
-		if ($this->cStatus['customers_status_discount_by_brand'] == '1') {
-		if ($this->CheckBrandByCustomerStatusDiscount($_SESSION['customer_id'], $pID) > 0) {
-		$discount = $this->CheckBrandByCustomerStatusDiscount($_SESSION['customer_id'], $pID);
-			return $discount;
-	   }
-	   }
 		return false;
 	}
 
