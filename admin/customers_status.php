@@ -23,7 +23,6 @@
    --------------------------------------------------------------*/
 
   require('includes/application_top.php');
-  require_once (DIR_WS_FUNCTIONS . 'products_specifications.php');
   
   switch ($_GET['action']) {
     case 'insert':
