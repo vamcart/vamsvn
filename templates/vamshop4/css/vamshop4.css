@@ -1579,6 +1579,12 @@ header .input-group-text,
   padding-top: 1em;
 }
 
+#cboxContent .page 
+   {
+    background: transparent;
+    padding: 0 .5em;
+   }
+   
 .btn-secondary.dropdown-toggle {
     color: #fff;
     background-color: var(--button-background-color-hover) !important;
