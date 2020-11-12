@@ -66,7 +66,7 @@ $prefix = "+380 ";
 <script src="jscript/jquery/plugins/cleave/cleave.min.js"></script>
 <?php if ($country_code != '' && STORE_COUNTRY != 220) { ?>
 <script src="jscript/jquery/plugins/cleave/addons/cleave-phone.<?php echo $country_code; ?>.js"></script>
-<<?php } ?>
+<?php } ?>
 <script src="jscript/modified.js"></script>
 <script><!--
 
