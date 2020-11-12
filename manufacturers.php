@@ -28,18 +28,10 @@ $breadcrumb->add(TITLE_MANUFACTURERS_DEFAULT);
 
 require (DIR_WS_INCLUDES.'header.php');
 
-//fsk18 lock
-$fsk_lock = '';
-$days = '';
-if ($_SESSION['customers_status']['customers_fsk18_display'] == '0') {
-	$fsk_lock = ' and p.products_fsk18!=1';
-}
-
 	$manufacturers_query_raw = "SELECT m.*, mi.* FROM ".TABLE_MANUFACTURERS." as m 
                          left join ".TABLE_MANUFACTURERS_INFO." as mi 
                          on mi.manufacturers_id = m.manufacturers_id 
                          where mi.languages_id = '".$_SESSION['languages_id']."' and m.manufacturers_status = 1 
-                         ".$fsk_lock." 
                          order by m.sort_order, m.manufacturers_name asc";
 $manufacturers_split = new splitPageResults($manufacturers_query_raw, $_GET['page'], MAX_DISPLAY_SEARCH_RESULTS);
 
