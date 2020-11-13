@@ -60,12 +60,12 @@ $cat_data = vam_db_fetch_array($cat_query, true);
 <meta property="og:url" content="<?php echo vam_href_link(FILENAME_PRODUCT_INFO, vam_product_link($product->data['products_id'], $product->data['products_name'])); ?>" />
 <link rel="canonical" href="<?php echo vam_href_link(FILENAME_PRODUCT_INFO, vam_product_link($product->data['products_id'], $product->data['products_name'])); ?>"/>
 <meta property="og:type" content="website" />
-<?php if ($product->data['products_image'] != '') { ?><meta property="og:image" content="<?php echo HTTP_SERVER.DIR_WS_CATALOG.DIR_WS_THUMBNAIL_IMAGES . vam_parse_input_field_data($product->data['products_image'], array('"' => '&quot;')); ?>" /><?php } ?>
+<?php if ($product->data['products_image'] != '') { ?><meta property="og:image" content="<?php echo HTTP_SERVER.DIR_WS_CATALOG.DIR_WS_INFO_IMAGES . vam_parse_input_field_data($product->data['products_image'], array('"' => '&quot;')); ?>" /><?php } ?>
 <meta name="twitter:data1" content="<?php echo $vamPrice->GetPrice($product->data['products_id'], false, 1, $product->data['products_tax_class_id'], $product->data['products_price']); ?>" />
 <meta property="product:price:amount"  content="<?php echo $vamPrice->GetPrice($product->data['products_id'], false, 1, $product->data['products_tax_class_id'], $product->data['products_price']); ?>" />
 <meta property="product:price:currency" content="<?php echo $_SESSION['currency']; ?>" />
 <meta name="twitter:description" content="<?php echo $description; ?>" />
-<?php if ($product->data['products_image'] != '') { ?><meta name="twitter:image" content="<?php echo HTTP_SERVER.DIR_WS_CATALOG.DIR_WS_THUMBNAIL_IMAGES . vam_parse_input_field_data($product->data['products_image'], array('"' => '&quot;')); ?>" /><?php } ?>
+<?php if ($product->data['products_image'] != '') { ?><meta name="twitter:image" content="<?php echo HTTP_SERVER.DIR_WS_CATALOG.DIR_WS_INFO_IMAGES . vam_parse_input_field_data($product->data['products_image'], array('"' => '&quot;')); ?>" /><?php } ?>
 
 	<?php
 
