@@ -556,3 +556,17 @@ var sticky = $(".sticky-wrapper");
 sticky.css("min-height", sticky_column_height + "px");
 });  
 }
+
+//Attributes Price Change
+$(function() {
+//Dropdown	
+$(".product_options select.options").on("change", function() {
+            var myTag = $("select.options").find(":selected").attr("data-price");
+            $("span.productPrice").text(myTag);
+});
+//Radio
+$(".product_options input.options").on("click", function() {
+            var myTag = $("input.options:checked").attr("data-price");
+            $("span.productPrice").text(myTag);
+});
+});

@@ -5,9 +5,9 @@
 <!-- select -->
 <div class="form-group py-1">
 <label for="id[{$options_data.ID}]"><strong>{$options_data.NAME}:</strong>&nbsp;</label>
-<select name="id[{$options_data.ID}]" id="id[{$options_data.ID}]" class="form-control">
+<select name="id[{$options_data.ID}]" id="id[{$options_data.ID}]" class="form-control options">
 {foreach key=key_data item=item_data from=$options_data.DATA}
-<option value="{$item_data.ID}">{$item_data.TEXT}   {if $item_data.MODEL}({$item_data.MODEL}){/if} {if $item_data.PRICE_PLAIN != 0}({$item_data.PREFIX}{$item_data.PRICE}){/if}</option>
+<option data-price="{$item_data.FULL_PRICE}" value="{$item_data.ID}">{$item_data.TEXT}   {if $item_data.MODEL}({$item_data.MODEL}){/if} {if $item_data.PRICE_PLAIN != 0}({$item_data.PREFIX}{$item_data.PRICE}){/if}</option>
 {/foreach}
 </select>
 </div>
@@ -54,7 +54,7 @@
 <div class="btn-group-toggle col-6 col-sm-6 col-md-4 col-lg-4 col-xl-4">
 <div class="btn btn-default product-attribute-item card card-product card-sm text-center h-100{if $item_data@first} active{/if}">
 <label class="h-100 attribute {$options_data.ID}">
-  <input type="radio" name="id[{$options_data.ID}]" id="id[{$options_data.ID}]" value="{$item_data.ID}" {$item_data.CHECKED} />
+  <input type="radio" class="options" name="id[{$options_data.ID}]" id="id[{$options_data.ID}]" data-price="{$item_data.FULL_PRICE}" value="{$item_data.ID}" {$item_data.CHECKED} />
   <div class="card-body">
     <span class="attribute-icon"></span>
     <div class="card-text method-title py-1">{if $item_data.IMAGE}<img class="img-fluid rounded-circle border border-light" src="{$image_dir}thumbs/{$item_data.IMAGE}" border="0" alt="{$item_data.TEXT}" />{/if}</div>
