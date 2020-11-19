@@ -272,7 +272,7 @@ function filters_select_array_sort($a, $b) {
         default:
           //$field .= '<li class="filter-item' . ($link_data['display'] == 0 ? ' filter-list_toggle' : '') . '">';
           $flag_active = false;
-          if ($default == $link_data['id']) {
+          if (number_format($default) == $link_data['id']) {
             //$field .= '<span class="active">';
 // BOF products_filters-multilinks
             $flag_active = true;
