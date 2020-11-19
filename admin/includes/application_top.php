@@ -60,7 +60,7 @@
   define('SQL_CACHEDIR',DIR_FS_CATALOG.'cache/');
 
   // Define the project version
-  define('PROJECT_VERSION', 'VamShop 1.99.27');
+  define('PROJECT_VERSION', 'VamShop 1.99.28');
 
   // Set the length of the redeem code, the longer the more secure
   define('SECURITY_CODE_LENGTH', '6');
@@ -711,5 +711,8 @@ define('FILENAME_PIN_LOADER', 'pin_loader.php');
 
   define('FILENAME_BLOCK', 'block.php');
   define('TABLE_BLOCK', 'block');
+
+  define('TABLE_CUSTOMERS_STATUS_TO_CATEGORIES', 'customers_status_to_categories_discount');
+  define('TABLE_CUSTOMERS_STATUS_TO_MANUFACTURERS', 'customers_status_to_manufacturers_discount');
         
 ?>
