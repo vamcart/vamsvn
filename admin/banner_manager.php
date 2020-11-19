@@ -247,8 +247,6 @@
       $groups_array[] = array('id' => $groups['banners_group'], 'text' => $groups['banners_group']);
     }
 ?>
-<link href="includes/javascript/date-picker/css/datepicker.css" rel="stylesheet" type="text/css" />
-<script type="text/javascript" src="includes/javascript/date-picker/js/datepicker.js"></script>
       <tr>
         <td><?php echo vam_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
       </tr>
