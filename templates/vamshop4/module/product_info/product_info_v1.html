@@ -125,12 +125,6 @@
 </div>
 {/if}
 
-{if $PRODUCTS_DISCOUNT}
-<p>
-{#text_discount#}&nbsp;{$PRODUCTS_DISCOUNT}
-</p>
-{/if}
-
 {if $MODULE_tags != ''}
 {$MODULE_tags}
 {/if}
@@ -148,7 +142,6 @@
 {if $specifications}
 <div class="description specs text-muted">
 {foreach name=outer item=spec_group from=$specifications_data}
-<br />
 {foreach key=key_data item=spec from=$spec_group.DATA}
 {if $spec@iteration > 5}{break}{/if} 
 <div class="{cycle values="spec-odd,spec-even"}">
