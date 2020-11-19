@@ -2745,6 +2745,31 @@ span.productOldPrice
 	  text-decoration: line-through;
    }
 
+span.productSpecialPrice 
+   {
+     color: var(--color-red);
+	  font-size: 16px;
+   }
+
+span.productPrice 
+   {
+     display: block;
+   }
+
+.discount {
+  font-weight: normal;
+  color: #000;
+}
+
+.shop-products .price .discount {
+  display: block;
+  background: transparent;
+  margin: auto;
+  padding: auto;
+  color: #000;
+  position: static;
+}
+
 span.errorText 
    {
      color: #ff0000;
