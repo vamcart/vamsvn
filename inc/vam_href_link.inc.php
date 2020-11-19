@@ -735,6 +735,7 @@
         	$test = explode(" ", $test);
         	$test = array_filter($test);
         	$test = implode(',', $test);
+        	if (!$test) $test = 0;
         	//echo var_dump($test);
         	//echo var_dump($f_array[$specification['specifications_id']]);
           $sql = "SELECT sf.specification_filters_id,
