@@ -54,19 +54,19 @@ var url='checkout.php';
 function img_loader(){
 
 // Setup the ajax indicator
-$('body').append('<div id="load_status_bg"><div class="load_status_image"></div></div>');
+$('body').append('<div class="ajax-preloader"><span class="ajax-preloader__icon ajax-preloader__icon__in-btn"></span></div>');
 
 // Ajax activity indicator bound to ajax start/success/stop document events
 $(document).ajaxSend(function(){
-  $('#load_status_bg').show();
+  $('.ajax-preloader').show();
 });
 
 $(document).ajaxSuccess(function(){
-  $('#load_status_bg').hide();
+  $('.ajax-preloader').hide();
 });
 
 $(document).ajaxStop(function(){
-  $('#load_status_bg').remove();
+  $('.ajax-preloader').remove();
 });
 
 }
@@ -185,19 +185,19 @@ var url='checkout.php';
 function img_loader(){
 
 // Setup the ajax indicator
-$('body').append('<div id="load_status_bg"><div class="load_status_image"></div></div>');
+$('body').append('<div class="ajax-preloader"><span class="ajax-preloader__icon ajax-preloader__icon__in-btn"></span></div>');
 
 // Ajax activity indicator bound to ajax start/success/stop document events
 $(document).ajaxSend(function(){
-  $('#load_status_bg').show();
+  $('.ajax-preloader').show();
 });
 
 $(document).ajaxSuccess(function(){
-  $('#load_status_bg').hide();
+  $('.ajax-preloader').hide();
 });
 
 $(document).ajaxStop(function(){
-  $('#load_status_bg').remove();
+  $('.ajax-preloader').remove();
 });
 
 }
