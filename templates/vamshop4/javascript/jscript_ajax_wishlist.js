@@ -71,7 +71,7 @@ function doAddWishlist(id) {
 					 }
 
 
-			$(".wishlist-icon-"+id).replaceWith('<i class="fas fa-heart wishlist-icon-'+id+'""></i>');
+			$(".wishlist-icon-"+parseInt(id)).replaceWith('<i class="fas fa-heart wishlist-icon-'+parseInt(id)+'""></i>');
 			$('[data-toggle="tooltip"]').tooltip('hide');
 
     	               }
@@ -83,7 +83,7 @@ function doDelWishlist(id, prod_id) {
 	
 		var data = 'q=includes/modules/ajax/ajaxWishlist.php&';
 		if (id) {
-			var test1 = "#update_wishlist"+id+" input";
+			var test1 = "#update_wishlist"+parseInt(id)+" input";
 			var forma = $(test1);
 			forma.each(function(n,element){
 				if (element.type == "radio" || element.type == "checkbox") {

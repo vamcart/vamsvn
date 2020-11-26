@@ -32,8 +32,8 @@ function doBuyNow( id, quantity, update, get_cart, attributes, popup ) {
 		      $("#divShoppingCart").html(msg);
 			}
 
-			$(".cart-link-"+id).addClass('active');
-			$(".cart-icon-"+id).replaceWith('<i class="text-danger fas fa-cart-plus cart-icon-'+id+'""></i>');
+			$(".cart-link-"+parseInt(id)).addClass('active');
+			$(".cart-icon-"+parseInt(id)).replaceWith('<i class="text-danger fas fa-cart-plus cart-icon-'+parseInt(id)+'""></i>');
 			$('[data-toggle="tooltip"]').tooltip('hide');
 	 
 			}   
@@ -71,8 +71,8 @@ function doAddProduct(id) {
 					 }
 					 
 					 
-			$(".cart-link-"+id).addClass('active');
-			$(".cart-icon-"+id).replaceWith('<i class="text-danger fas fa-cart-plus cart-icon-'+id+'""></i>');
+			$(".cart-link-"+parseInt(id)).addClass('active');
+			$(".cart-icon-"+parseInt(id)).replaceWith('<i class="text-danger fas fa-cart-plus cart-icon-'+parseInt(id)+'""></i>');
 			$('[data-toggle="tooltip"]').tooltip('hide');
 
     	               }
