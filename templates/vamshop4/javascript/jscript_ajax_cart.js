@@ -31,6 +31,10 @@ function doBuyNow( id, quantity, update, get_cart, attributes, popup ) {
 		      $("#divShoppingCartHeader").html(msg);
 		      $("#divShoppingCart").html(msg);
 			}
+
+			$(".cart-link-"+id).addClass('active');
+			$(".cart-icon-"+id).replaceWith('<i class="text-danger fas fa-cart-plus cart-icon-'+id+'""></i>');
+			$('[data-toggle="tooltip"]').tooltip('hide');
 	 
 			}   
 			});
@@ -65,6 +69,11 @@ function doAddProduct(id) {
 					 if ($("div").is("#ajax_cart")) {
 					   $("#ajax_cart").empty().html(msg);
 					 }
+					 
+					 
+			$(".cart-link-"+id).addClass('active');
+			$(".cart-icon-"+id).replaceWith('<i class="text-danger fas fa-cart-plus cart-icon-'+id+'""></i>');
+			$('[data-toggle="tooltip"]').tooltip('hide');
 
     	               }
 		});
