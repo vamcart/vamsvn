@@ -135,6 +135,11 @@ $(document).ready(function(){
 	$('body').on('click', '.cart_delete', function(){
        doDelProduct('',$(this).val());
        img_loader();
+       
+		$(".cart-link-"+parseInt($(this).val())).removeClass('active');
+		$(".cart-icon-"+parseInt($(this).val())).replaceWith('<i class="fas fa-shopping-cart cart-icon-'+parseInt($(this).val())+'""></i>');
+		$('[data-toggle="tooltip"]').tooltip('hide');					 
+       
    });
 
    $('body').on('click', '.cart_change', function(){

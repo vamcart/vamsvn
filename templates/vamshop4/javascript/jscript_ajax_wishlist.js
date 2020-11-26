@@ -80,6 +80,8 @@ function doAddWishlist(id) {
 	}
 
 function doDelWishlist(id, prod_id) {
+
+
 	
 		var data = 'q=includes/modules/ajax/ajaxWishlist.php&';
 		if (id) {
@@ -134,6 +136,10 @@ $(document).ready(function(){
 	$('body').on('click', '.wishlist_delete', function(){
        doDelWishlist('',$(this).val());
        img_loader();
+       
+		$(".wishlist-icon-"+parseInt($(this).val())).replaceWith('<i class="far fa-heart wishlist-icon-'+parseInt($(this).val())+'""></i>');
+		$('[data-toggle="tooltip"]').tooltip('hide');					 
+					       
    });
 
    $('body').on('click', '.wishlist_change', function(){
