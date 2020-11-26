@@ -5,7 +5,7 @@
 		<div class="col-md-3">
 			<div class="img-wrap"><a href="{$module_data.PRODUCTS_LINK}" title="{$module_data.IMAGE_ALT}"><img class="img-sm" src="{$module_data.PRODUCTS_IMAGE}" alt="{$module_data.IMAGE_ALT}"></a></div>
 		</div>
-		<div class="col-md-6">
+		<div class="col-md-9">
 				<span class="title"><a href="{$module_data.PRODUCTS_LINK}" title="{$module_data.IMAGE_ALT}">{$module_data.PRODUCTS_NAME}</a></h6>
 				{if $module_data.PRODUCTS_SHIPPING_TIME neq ""}<p><span class="text-muted small">{#text_shippingtime#}&nbsp;{$module_data.PRODUCTS_SHIPPING_TIME}</span></p>{/if}
 				<div class="attributes">
@@ -14,9 +14,7 @@
 				<p class="small">{$item_data.NAME}: {$item_data.VALUE_NAME}</p>
 				{/foreach}
 				{/if}
-				</div> 					
-		</div>
-		<div class="col-md-3 my-auto">
+				</div>
 				<div class="price-wrap font-weight-bold small text-muted">
 					<div><strong>{$module_data.PRODUCTS_PRICE}</strong></div>
 					{if $module_data.PRODUCTS_QUANTITY > 1}<div><span class="text-muted small">{$module_data.PRODUCTS_SINGLE_PRICE} / {$smarty.const.TEXT_PIECE}</span></div>{/if}
