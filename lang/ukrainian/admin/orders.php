@@ -156,4 +156,8 @@ define('BUTTON_ORDERS_EXPORT','Экспорт заказов');
 
 define('ENTRY_ANSWER_TEMPLATE', 'Шаблон ответа:');
 
+define('TEXT_ORDER_HISTORY','История');
+define('TEXT_COPY_ORDER','Копировать заказ');
+define('TEXT_NEW_ORDER_FOR_CUSTOMER','Создать новый заказ для данного клиента');
+
 ?>

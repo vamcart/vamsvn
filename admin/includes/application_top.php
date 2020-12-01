@@ -714,5 +714,7 @@ define('FILENAME_PIN_LOADER', 'pin_loader.php');
 
   define('TABLE_CUSTOMERS_STATUS_TO_CATEGORIES', 'customers_status_to_categories_discount');
   define('TABLE_CUSTOMERS_STATUS_TO_MANUFACTURERS', 'customers_status_to_manufacturers_discount');
+
+  define('FILENAME_ORDER_FUNCTIONS', 'order_functions.php');
         
 ?>
