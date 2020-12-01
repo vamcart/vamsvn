@@ -78,4 +78,14 @@ define('BUS_DELETE_SUCCESS','удалён!');
 define('BUS_DELETE_WARNING','не удалён!');
 define('BUS_DELETE_CUSTOMERS','Удалить выбранных покупателей');
 
+define('TEXT_TRANSFER_ORDERS_1','Передать заказы с аккаунта');
+define('TEXT_TRANSFER_ORDERS_2','Кому передать заказы');
+define('TEXT_TRANSFER_ORDERS_3','ID номер');
+define('TEXT_TRANSFER_ORDERS_4','Имя');
+define('TEXT_TRANSFER_ORDERS_5','Email');
+define('TEXT_TRANSFER_ORDERS_6','Телефон');
+define('TEXT_TRANSFER_ORDERS_7','Укажите <strong>ID номер</strong> клиента, которому должны быть переданы заказы:');
+define('TEXT_TRANSFER_ORDERS_8','Передать заказы');
+define('TEXT_TRANSFER_ORDERS_9','Передать заказы на другой аккаунт');
+
 ?>

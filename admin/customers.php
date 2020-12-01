@@ -131,6 +131,10 @@ if ($_GET['action']) {
 			vam_redirect(vam_href_link(FILENAME_ORDERS, 'oID='.$orders_id.'&action=edit'));
 
 			break;
+		case 'transfer_order_update' :
+			vam_db_query("update ".TABLE_ORDERS." set customers_id='".vam_db_input($_GET['transfer_customer_id'])."' where customers_id = '".vam_db_input($_GET['cID'])."'");
+			vam_redirect(vam_href_link (FILENAME_CUSTOMERS, 'cID=' . $_GET['cID'].'&transfer_customer_id=' . $_GET['transfer_customer_id']));
+		break;
 		case 'statusconfirm' :
 			$customers_id = vam_db_prepare_input($_GET['cID']);
 			$customer_updated = false;
@@ -1190,16 +1194,208 @@ if ($error == true) {
       </tr></form>
 <?php
 
-} else {
+} elseif ($_GET['action'] == 'transfer_order') {
+// BOF sms_confirm
+// BOF status_update_lock
+//  $customers_query = vam_db_query("select c.payment_unallowed, c.shipping_unallowed, c.customers_gender, c.customers_vat_id, c.customers_status, c.member_flag, c.customers_firstname, c.customers_secondname,c.customers_cid, c.customers_lastname, c.customers_dob, c.customers_email_address, a.entry_company, a.entry_street_address, a.entry_suburb, a.entry_postcode, a.entry_city, a.entry_state, a.entry_zone_id, a.entry_country_id, c.customers_telephone, c.customers_fax, c.customers_newsletter, c.customers_default_address_id, c.customers_personal_discount from ".TABLE_CUSTOMERS." c left join ".TABLE_ADDRESS_BOOK." a on c.customers_default_address_id = a.address_book_id where a.customers_id = c.customers_id and c.customers_id = '".$_GET['cID']."'");
+  $customers_query = vam_db_query("select c.*, a.entry_company, a.entry_street_address, a.entry_suburb, a.entry_postcode, a.entry_city, a.entry_state, a.entry_zone_id, a.entry_country_id from ".TABLE_CUSTOMERS." c left join ".TABLE_ADDRESS_BOOK." a on c.customers_default_address_id = a.address_book_id where a.customers_id = c.customers_id and c.customers_id = '".$_GET['cID']."'");
+// EOF status_update_lock
+// EOF sms_confirm
+
+  $customers = vam_db_fetch_array($customers_query);
+  $cInfo = new objectInfo($customers);
+//var_export($cInfo);
+//echo '<pre>';var_export($cInfo);echo '</pre>';
+  $newsletter_array = array (array ('id' => '1', 'text' => ENTRY_NEWSLETTER_YES), array ('id' => '0', 'text' => ENTRY_NEWSLETTER_NO));
 ?>
+    <td class="boxCenter" valign="top">
+    <h1 class="contentBoxHeading"><?php echo TEXT_TRANSFER_ORDERS_1; ?></h1>
+
+  </td>
+  </tr>
 
   <tr>
-	<td>  
-  
+<!-- body_text //-->
+    <td class="boxCenter" valign="top"><table border="0" width="100%" cellspacing="0" cellpadding="2">
+      <tr>
+        <td class="formArea"><table border="0" cellspacing="2" cellpadding="2">
+          <tr>
+            <td class="main"><?php echo HEADING_TITLE_STATUS; ?></td>
+            <td class="main"><?php echo $customers_statuses_array[$customers['customers_status']]['text']; ?></td>
+          </tr>
+          <tr>
+            <td class="main"><?php echo ENTRY_FIRST_NAME; ?></td>
+            <td class="main"><?php echo $cInfo->customers_firstname; ?></td>
+          </tr>
+<?php
+
+  if (ACCOUNT_SECOND_NAME == 'true') {
+?>
+          <tr>
+            <td class="main"><?php echo ENTRY_SECOND_NAME; ?></td>
+            <td class="main"><?php echo $cInfo->customers_secondname; ?></td>
+          </tr>
+<?php
+
+  }
+?>
+          <tr>
+            <td class="main"><?php echo ENTRY_LAST_NAME; ?></td>
+            <td class="main"><?php echo $cInfo->customers_lastname; ?></td>
+          </tr>
+<?php
+
+  if (ACCOUNT_TELE == 'true') {
+?>
+          <tr>
+            <td class="main"><?php echo ENTRY_TELEPHONE_NUMBER; ?></td>
+            <td class="main"><?php echo $cInfo->customers_telephone; ?></td>
+          </tr>
+<?php
+
+  }
+?>
+          <tr>
+            <td class="main"><?php echo ENTRY_EMAIL_ADDRESS; ?></td>
+            <td class="main"><?php echo $cInfo->customers_email_address; ?></td>
+          </tr>
+        </table></td>
+      </tr>
+      
+<tr>
+<td class="pageHeading"><hr noshade><?php echo TEXT_TRANSFER_ORDERS_2; ?>
+
+<table>
+<br><br>
+<tr class="dataTableRow">
+<?php
+
+
+	echo vam_draw_form('customer_search', FILENAME_CUSTOMERS, '', 'GET');
+	echo vam_draw_hidden_field('action', 'transfer_order');
+	echo vam_draw_hidden_field('cID', $_GET['cID']);
+
+?>
+<td class="dataTableContent" width="40"><?php echo vam_draw_input_field('search_customer', '', 'size="30"');?></td>
+<td class="dataTableContent">
+<?php
+
+
+	echo '<span class="button"><button type="submit" value="' . BUTTON_SEARCH . '"/>' . vam_image(DIR_WS_IMAGES . 'icons/buttons/search.png', '', '12', '12') . '&nbsp;' . BUTTON_SEARCH . '</button></span>';
+?>
+</td>
+</form>
+</tr>
+</table>
+<hr noshade>
+</td>
+</tr>
+<tr>
+<td>
+
+<?php
+
+
+	// search results
+	if ($_GET['search_customer']) {
+		echo vam_draw_form('customer_search', FILENAME_CUSTOMERS.'', '', 'GET');
+		echo vam_draw_hidden_field('action', 'transfer_order_update');
+		echo vam_draw_hidden_field('cID', $_GET['cID']);
+?>
+ <table width="100%" border="0">
+  <tr>
+    <td class="dataTableHeadingContent" width="10%"><?php echo TEXT_TRANSFER_ORDERS_3; ?></td>
+    <td class="dataTableHeadingContent" width="10%"><?php echo TEXT_TRANSFER_ORDERS_4; ?></td>
+    <td class="dataTableHeadingContent" width="34%"><?php echo TEXT_TRANSFER_ORDERS_5; ?></td>
+    <td class="dataTableHeadingContent" width="42%"><?php echo TEXT_TRANSFER_ORDERS_6; ?></td>
+  </tr>
+  <?php
+
+  if (($_GET['search_customer']) && (vam_not_null($_GET['search_customer']))) {
+    $keywords = vam_db_input(vam_db_prepare_input($_GET['search_customer']));
+    $search = "and (c.customers_lastname like '%".$keywords."%' or c.customers_firstname like '%".$keywords."%' or c.customers_email_address like '%".$keywords."%' or c.customers_telephone like '%".$keywords."%')";
+//    error_log($search . "\n", 3, __FILE__.'.log');
+// BOF
+//    if (strlen(preg_replace('@[^0-9]@', '', $keywords)) > 3) {
+    if (preg_replace('@[^0-9]@', '', $keywords) == $keywords) {
+      $search = "and (c.customers_lastname like '%".$keywords."%' or c.customers_firstname like '%".$keywords."%' or c.customers_email_address like '%".$keywords."%' or c.customers_telephone like '%" . preg_replace('@[^0-9]@', '', $keywords) . "%')";
+//      error_log($search . "\n", 3, __FILE__.'.log');
+    }
+//    var_dump($search);
+// EOF
+  }
+
+  $customers_query_raw = "select
+                                  c.account_type,
+                                  c.customers_id,
+                                  c.customers_vat_id,
+                                  c.customers_vat_id_status,
+                                  c.customers_lastname,
+                                  c.customers_firstname,
+                                  c.customers_secondname,
+                                  c.customers_email_address,
+                                  c.customers_telephone,
+                                  a.entry_country_id,
+                                  c.customers_status,
+                                  c.member_flag,
+                                  ci.customers_info_date_account_created
+                                  from
+                                  ".TABLE_CUSTOMERS." c ,
+                                  ".TABLE_ADDRESS_BOOK." a,
+                                  ".TABLE_CUSTOMERS_INFO." ci
+                                  Where
+                                  c.customers_id = a.customers_id
+                                  and c.customers_default_address_id = a.address_book_id
+                                  and ci.customers_info_id = c.customers_id
+                                  ".$search."
+                                  group by c.customers_id";
+
+		$search_query = vam_db_query($customers_query_raw);
+
+		while ($search_data = vam_db_fetch_array($search_query)) {
+
+?>
+  <tr>
+    <td class="categories_view_data" style="text-align: left;"><?php echo $search_data['customers_id']; ?></td>
+    <td class="categories_view_data" style="text-align: left;"><?php echo $search_data['customers_firstname'] . $search_data['customers_lastname']; ?></td>
+    <td class="categories_view_data" style="text-align: left;"><?php echo $search_data['customers_email_address']; ?></td>
+    <td class="categories_view_data" style="text-align: left;"><?php echo $search_data['customers_telephone']; ?></td>
+  </tr>
+
+<?php
+
+
+		}
+?>
+
+<tr>
+<td colspan="4">
+<?php echo TEXT_TRANSFER_ORDERS_7; ?> <?php echo vam_draw_input_field('transfer_customer_id', '', 'size="30"');?>
+</td>
+</tr>
+
+</table>
+
+<span class="button"><button type="submit" class="button" value="<?php echo TEXT_TRANSFER_ORDERS_8; ?>" onClick="return confirm('<?php echo SAVE_ENTRY; ?>')"><?php echo vam_image(DIR_WS_IMAGES . 'icons/buttons/save.png', '', '12', '12'); ?>&nbsp;<?php echo TEXT_TRANSFER_ORDERS_8; ?></button></span>
+</form>
+<?php } ?>
+
+</td>
+</tr>      
+      
+      
+</form>
+<?php
+
+} else {
+?>
+  <tr>
+
+
           <table border="0" width="100%" cellspacing="0" cellpadding="0" class="pageHead">
         <tr>
          <td class="pageHeading" align="left">
-         <h1 class="contentBoxHeading"><?php echo HEADING_TITLE; ?></h1>   
+         <h1 class="contentBoxHeading"><?php echo HEADING_TITLE; ?></h1>
          </td>
          <td>
 
@@ -1486,7 +1682,7 @@ echo '<tr class="dataTableContent" align="center"><td colspan="7" nobr="nobr" al
 				}
 				// elari cs v3.x changed for added iplog module
 				$contents[] = array ('align' => 'center', 'text' => '<table><tr><td style="text-align: center;"><a class="button" href="'.vam_href_link(FILENAME_ORDERS, 'cID='.$cInfo->customers_id).'"><span>' . vam_image(DIR_WS_IMAGES . 'icons/buttons/categories.png', '', '12', '12') . '&nbsp;' .BUTTON_ORDERS.'</span></a></td><td style="text-align: center;"><a class="button" href="'.vam_href_link(FILENAME_MAIL, 'selected_box=tools&customer='.$cInfo->customers_email_address).'"><span>' . vam_image(DIR_WS_IMAGES . 'icons/buttons/email.png', '', '12', '12') . '&nbsp;' .BUTTON_EMAIL.'</span></a></td></tr><tr><td style="text-align: center;"><a class="button" href="'.vam_href_link(FILENAME_CUSTOMERS, vam_get_all_get_params(array ('cID', 'action')).'cID='.$cInfo->customers_id.'&action=iplog').'"><span>' . vam_image(DIR_WS_IMAGES . 'icons/buttons/ip.png', '', '12', '12') . '&nbsp;' .BUTTON_IPLOG.'</span></a></td><td style="text-align: center;"><a class="button" href="'.vam_href_link(FILENAME_CUSTOMERS, vam_get_all_get_params(array ('cID', 'action')).'cID='.$cInfo->customers_id.'&action=new_order').'" onClick="return confirm(\''.NEW_ORDER.'\')"><span>' . vam_image(DIR_WS_IMAGES . 'icons/buttons/add.png', '', '12', '12') . '&nbsp;' .BUTTON_NEW_ORDER.'</span></a></td></tr></table>');
-
+				$contents[] = array ('align' => 'center', 'text' => '<table><tr><td style="text-align: center;"><a class="button" href="'.vam_href_link(FILENAME_CUSTOMERS, vam_get_all_get_params(array ('cID', 'action')).'cID='.$cInfo->customers_id.'&action=transfer_order').'"><span>' . vam_image(DIR_WS_IMAGES . 'icons/buttons/copy.png', '', '12', '12') . '&nbsp; ' . TEXT_TRANSFER_ORDERS_9 . '</span></a></td></tr></table>');
 				$contents[] = array ('text' => '<br />'.TEXT_DATE_ACCOUNT_CREATED.' '.vam_date_short($cInfo->date_account_created));
 				$contents[] = array ('text' => '<br />'.TEXT_DATE_ACCOUNT_LAST_MODIFIED.' '.vam_date_short($cInfo->date_account_last_modified));
 				$contents[] = array ('text' => '<br />'.TEXT_INFO_DATE_LAST_LOGON.' '.vam_date_short($cInfo->date_last_logon));
