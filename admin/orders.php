@@ -631,6 +631,11 @@ if (($_GET['action'] == 'edit') && ($order_exists)) {
  <!-- Bestellbearbeitung Anfang -->
    <a class="button" href="<?php echo vam_href_link(FILENAME_EDIT_ORDERS, 'oID='.$_GET['oID'].'&cID=' . $order->customer['ID']);?>"><span><?php echo vam_image(DIR_WS_IMAGES . 'icons/buttons/edit.png', '', '12', '12'); ?>&nbsp;<?php echo BUTTON_EDIT ?></span></a>   
 <!-- Bestellbearbeitung Ende -->
+ 
+   <a class="button" href="<?php echo vam_href_link(FILENAME_ORDER_FUNCTIONS, 'order_id='.$_GET['oID'].'&cID=' . $order->customer['ID'].'&action=order');?>"><span><?php echo vam_image(DIR_WS_IMAGES . 'icons/buttons/copy.png', '', '12', '12'); ?>&nbsp;<?php echo TEXT_COPY_ORDER; ?></span></a>
+
+   <a class="button" href="<?php echo vam_href_link(FILENAME_CUSTOMERS, 'order_id='.$_GET['oID'].'&cID=' . $order->customer['ID'].'&action=new_order');?>"><span><?php echo vam_image(DIR_WS_IMAGES . 'icons/buttons/add.png', '', '12', '12'); ?>&nbsp;<?php echo TEXT_NEW_ORDER_FOR_CUSTOMER; ?></span></a>
+ 
  </td>
 
       </tr>
@@ -644,6 +649,7 @@ if (($_GET['action'] == 'edit') && ($order_exists)) {
 <?php if (ENABLE_MAP_TAB == 'true') { ?>
 				<li><a href="#map" id="getmap"><?php echo vam_image(DIR_WS_IMAGES . 'icons/tabs/map.png', '', '16', '16'); ?>&nbsp;<?php echo TEXT_ORDER_MAP; ?></a></li>
 <?php } ?>
+				<li><a href="#history"><?php echo vam_image(DIR_WS_IMAGES . 'icons/tabs/view.png', '', '16', '16'); ?>&nbsp;<?php echo TEXT_ORDER_HISTORY; ?></a></li>
 				<li><a href="#status"><?php echo vam_image(DIR_WS_IMAGES . 'icons/tabs/order-status.png', '', '16', '16'); ?>&nbsp;<?php echo TEXT_ORDER_STATUS; ?></a></li>
 			</ul>
 
@@ -1150,6 +1156,67 @@ function init() {
 			</div>
 
 <?php } ?>
+
+      <div id="history">
+
+          <?php
+
+          $street_address = (!isset($order->delivery["street_address"])) ? null : $order->delivery["street_address"];
+          $city = (!isset($order->delivery["city"])) ? null : $order->delivery["city"] . ', ';
+          $postcode = (!isset($order->delivery["postcode"])) ? null : $order->delivery["postcode"] . ', ';
+          $state = (!isset($order->delivery["state"])) ? null : $order->delivery["state"] . ', ';
+          $country = (!isset($order->delivery["country"])) ? null : $order->delivery["country"] . ', ';
+          $ship_address = $postcode . $city . $street_address;
+
+          ?>
+
+          <table border="0" width="100%">
+
+      <tr>
+        <td class="main"><table border="0" width="100%" cellspacing="2" cellpadding="0" class="contentListingTable">
+          <tr>
+            <td class="dataTableHeadingContent" align="center"><?php echo TEXT_ORDER_LOG_NAME; ?></td>
+            <td class="dataTableHeadingContent" align="center"><?php echo TEXT_ORDER_LOG_ACTION; ?></td>
+            <td class="dataTableHeadingContent" align="center"><?php echo TEXT_ORDER_LOG_VALUE; ?></td>
+            <td class="dataTableHeadingContent" align="center"><?php echo TEXT_ORDER_LOG_DATE; ?></td>
+          </tr>
+<?php
+
+// BOF sms
+  $orders_log_query = vam_db_query("select * from orders_log where orders_id = '".vam_db_input($oID)."' and customers_id= ".(int)$_SESSION['customer_id']." order by id ASC");
+// EOF sms
+  if (vam_db_num_rows($orders_log_query)) {
+
+  $rows = 0;
+
+    while ($orders_log = vam_db_fetch_array($orders_log_query)) {
+
+  $rows++;
+
+        if (($rows/2) == floor($rows/2)) {
+          $class = "even";
+        } else {
+          $class = "odd";
+        }
+
+     		$manager=$orders_log['customers_id'];
+
+      echo '          <tr >'."\n".' <td style="text-align: center;" class="dataTableContent-'.$class.'" align="center">'.vam_customers_name($manager).'</td>           '."\n".' 
+      <td  class="dataTableContent-'.$class.'" align="center">'.$orders_log['field'].'</td>'."\n".'
+      <td  class="dataTableContent-'.$class.'" align="center">'.$orders_log['value'].'</td>'."\n".'
+      <td  class="dataTableContent-'.$class.'" align="center">'.vam_datetime_short($orders_log['date_added']).'</td>'."\n".'
+      </tr>'."\n";
+    }
+  } else {
+    echo '          <tr>'."\n".'            <td class="smallText" colspan="4">'.TEXT_NO_ORDER_HISTORY.'</td>'."\n".'          </tr>'."\n";
+  }
+?>
+        </table></td>
+      </tr>
+</table>      
+
+
+      </div>
 
         <div id="status">
       

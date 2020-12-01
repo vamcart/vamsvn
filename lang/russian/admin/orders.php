@@ -160,4 +160,10 @@ define('TEXT_ORDER_HISTORY','История');
 define('TEXT_COPY_ORDER','Копировать заказ');
 define('TEXT_NEW_ORDER_FOR_CUSTOMER','Создать новый заказ для данного клиента');
 
+define('TEXT_ORDER_LOG_NAME','Имя');
+define('TEXT_ORDER_LOG_ACTION','Действие');
+define('TEXT_ORDER_LOG_VALUE','Значение');
+define('TEXT_ORDER_LOG_DATE','Дата');
+
+
 ?>
