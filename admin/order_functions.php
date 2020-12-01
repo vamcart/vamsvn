@@ -14,7 +14,7 @@ switch ($action) {
     $new_order_id = $max_order_id + 1;
         
         duplicateOrder($order_id);
-        header("Location: admin/orders.php?oID=".$new_order_id."&action=edit");
+        header("Location: ".DIR_WS_ADMIN."orders.php?oID=".$new_order_id."&action=edit");
         die();
 }
 
