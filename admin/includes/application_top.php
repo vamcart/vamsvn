@@ -716,5 +716,6 @@ define('FILENAME_PIN_LOADER', 'pin_loader.php');
   define('TABLE_CUSTOMERS_STATUS_TO_MANUFACTURERS', 'customers_status_to_manufacturers_discount');
 
   define('FILENAME_ORDER_FUNCTIONS', 'order_functions.php');
+  define('TABLE_ORDERS_LOG', 'orders_log');
         
 ?>

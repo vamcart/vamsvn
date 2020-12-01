@@ -184,6 +184,15 @@ $product['products_price']=$products_price['plain'];
                                 'allow_tax' => '0');
         vam_db_perform(TABLE_ORDERS_PRODUCTS, $sql_data_array);
         $new_product_id = vam_db_insert_id();
+
+      // Log Order Data
+      $sql_data_array = array('orders_id' => (int)$oID,
+                              'customers_id' => (int)$_SESSION['customer_id'],
+                              'field' => vam_db_input(vam_db_prepare_input('add_product')),
+                              'value' => vam_db_input(vam_db_prepare_input($product['products_name'] . ' ' . vam_db_prepare_input($product['products_price']*$_POST['add_product_quantity']) . ' qty:' . vam_db_prepare_input($_POST['add_product_quantity']))),
+                              'date_added' => 'now()',
+                              'last_modified' => 'now()');
+      vam_db_perform(TABLE_ORDERS_LOG, $sql_data_array);    
         
         if (isset($_POST['add_product_options'])) {
           foreach($_POST['add_product_options'] as $option_id => $option_value_id) {

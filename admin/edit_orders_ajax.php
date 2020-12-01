@@ -59,6 +59,15 @@ require_once (DIR_FS_INC.'vam_send_answer_template.inc.php');
   //1.  Update most the orders table
   if ($action == 'update_order_field') {
 	  vam_db_query("UPDATE " . TABLE_ORDERS . " SET " . $_GET['field'] . " = '" . vam_db_input(vam_db_prepare_input($_GET['new_value'])) . "' WHERE orders_id = '" . $_GET['oID'] . "'");
+
+      // Log Order Data
+      $sql_data_array = array('orders_id' => (int)$_GET['oID'],
+                              'customers_id' => (int)$_SESSION['customer_id'],
+                              'field' => vam_db_input(vam_db_prepare_input($_GET['field'])),
+                              'value' => vam_db_input(vam_db_prepare_input($_GET['new_value'])),
+                              'date_added' => 'now()',
+                              'last_modified' => 'now()');
+      vam_db_perform(TABLE_ORDERS_LOG, $sql_data_array);
 	  
 	  //generate responseText
 	  echo $_GET['field'];
@@ -99,7 +108,15 @@ require_once (DIR_FS_INC.'vam_send_answer_template.inc.php');
 
      //Update final_price
 	  vam_db_query("UPDATE " . TABLE_ORDERS_PRODUCTS . " SET final_price = '" . vam_db_input(vam_db_prepare_input($_GET['final_price'])) . "', allow_tax = '0'  WHERE orders_products_id = '" . $_GET['pid'] . "' AND orders_id = '" . $_GET['oID'] . "'");
-	
+
+      // Log Order Data
+      $sql_data_array = array('orders_id' => (int)$_GET['oID'],
+                              'customers_id' => (int)$_SESSION['customer_id'],
+                              'field' => vam_db_input(vam_db_prepare_input($_GET['field'].' '.$_GET['new_value'])),
+                              'value' => vam_db_input(vam_db_prepare_input($_GET['final_price'])),
+                              'date_added' => 'now()',
+                              'last_modified' => 'now()');
+      vam_db_perform(TABLE_ORDERS_LOG, $sql_data_array);
 	
 	  //generate responseText
 	  echo $_GET['field'];
@@ -109,7 +126,16 @@ require_once (DIR_FS_INC.'vam_send_answer_template.inc.php');
   //2.  Update the orders_products table for qty, tax, name, or model
 if ($action == 'update_product_field') {
 	  vam_db_query("UPDATE " . TABLE_ORDERS_PRODUCTS . " SET " . $_GET['field'] . " = '" . vam_db_input(vam_db_prepare_input($_GET['new_value'])) . "', allow_tax = '0'  WHERE orders_products_id = '" . $_GET['pid'] . "' AND orders_id = '" . $_GET['oID'] . "'");
-	
+
+      // Log Order Data
+      $sql_data_array = array('orders_id' => (int)$_GET['oID'],
+                              'customers_id' => (int)$_SESSION['customer_id'],
+                              'field' => vam_db_input(vam_db_prepare_input($_GET['field'].' '.$_GET['new_value'])),
+                              'value' => vam_db_input(vam_db_prepare_input($_GET['new_value'])),
+                              'date_added' => 'now()',
+                              'last_modified' => 'now()');
+      vam_db_perform(TABLE_ORDERS_LOG, $sql_data_array);
+      	
 	  //generate responseText
 	  echo $_GET['field'];
 
@@ -118,6 +144,15 @@ if ($action == 'update_product_field') {
   //3.  Update the orders_products table for price and final_price (interdependent values)
 if ($action == 'update_product_value_field') {
 	  vam_db_query("UPDATE " . TABLE_ORDERS_PRODUCTS . " SET products_price = '" . vam_db_input(vam_db_prepare_input($_GET['price'])) . "', final_price = '" . vam_db_input(vam_db_prepare_input($_GET['final_price'])) . "', allow_tax = '0' WHERE orders_products_id = '" . $_GET['pid'] . "' AND orders_id = '" . $_GET['oID'] . "'");
+
+      // Log Order Data
+      $sql_data_array = array('orders_id' => (int)$_GET['oID'],
+                              'customers_id' => (int)$_SESSION['customer_id'],
+                              'field' => vam_db_input(vam_db_prepare_input($_GET['field'].' '.$_GET['new_value'])),
+                              'value' => vam_db_input(vam_db_prepare_input($_GET['price'].' '.$_GET['final_price'])),
+                              'date_added' => 'now()',
+                              'last_modified' => 'now()');
+      vam_db_perform(TABLE_ORDERS_LOG, $sql_data_array);
 	  
 	  //generate responseText
 	  echo TABLE_ORDERS_PRODUCTS;
@@ -128,10 +163,28 @@ if ($action == 'update_product_value_field') {
 if ($action == 'update_attributes_field') {
 	  
 	  vam_db_query("UPDATE " . TABLE_ORDERS_PRODUCTS_ATTRIBUTES . " SET " . $_GET['field'] . " = '" . vam_db_input(vam_db_prepare_input($_GET['new_value'])) . "'  WHERE orders_products_attributes_id = '" . $_GET['aid'] . "' AND orders_products_id = '" . $_GET['pid'] . "' AND orders_id = '" . $_GET['oID'] . "'");
-	  
+
+      // Log Order Data
+      $sql_data_array = array('orders_id' => (int)$_GET['oID'],
+                              'customers_id' => (int)$_SESSION['customer_id'],
+                              'field' => vam_db_input(vam_db_prepare_input($_GET['field'])),
+                              'value' => vam_db_input(vam_db_prepare_input($_GET['new_value'])),
+                              'date_added' => 'now()',
+                              'last_modified' => 'now()');
+      vam_db_perform(TABLE_ORDERS_LOG, $sql_data_array);
+
 	  if (isset($_GET['final_price'])) {
 	    
 		vam_db_query("UPDATE " . TABLE_ORDERS_PRODUCTS . " SET final_price = '" . vam_db_input(vam_db_prepare_input($_GET['final_price'])) . "', allow_tax = '0'  WHERE orders_products_id = '" . $_GET['pid'] . "' AND orders_id = '" . $_GET['oID'] . "'");
+
+      // Log Order Data
+      $sql_data_array = array('orders_id' => (int)$_GET['oID'],
+                              'customers_id' => (int)$_SESSION['customer_id'],
+                              'field' => vam_db_input(vam_db_prepare_input($_GET['field'])),
+                              'value' => vam_db_input(vam_db_prepare_input($_GET['final_price'])),
+                              'date_added' => 'now()',
+                              'last_modified' => 'now()');
+      vam_db_perform(TABLE_ORDERS_LOG, $sql_data_array);
 	  
 	  }
 	  
@@ -143,6 +196,15 @@ if ($action == 'update_attributes_field') {
     //5.  Update the orders_products_download table 
 if ($action == 'update_downloads') {
 	  vam_db_query("UPDATE " . TABLE_ORDERS_PRODUCTS_DOWNLOAD . " SET " . $_GET['field'] . " = '" . vam_db_input(vam_db_prepare_input($_GET['new_value'])) . "' WHERE orders_products_download_id = '" . $_GET['did'] . "' AND orders_products_id = '" . $_GET['pid'] . "' AND orders_id = '" . $_GET['oID'] . "'");
+
+      // Log Order Data
+      $sql_data_array = array('orders_id' => (int)$_GET['oID'],
+                              'customers_id' => (int)$_SESSION['customer_id'],
+                              'field' => vam_db_input(vam_db_prepare_input($_GET['field'])),
+                              'value' => vam_db_input(vam_db_prepare_input($_GET['new_value'])),
+                              'date_added' => 'now()',
+                              'last_modified' => 'now()');
+      vam_db_perform(TABLE_ORDERS_LOG, $sql_data_array);
 	  
 	 //generate responseText
 	  echo $_GET['field'];
@@ -152,6 +214,15 @@ if ($action == 'update_downloads') {
   //6. Update the currency of the order
   if ($action == 'update_currency') {
   	  vam_db_query("UPDATE " . TABLE_ORDERS . " SET currency = '" . vam_db_input(vam_db_prepare_input($_GET['currency'])) . "', currency_value = '" . vam_db_input(vam_db_prepare_input($_GET['currency_value'])) . "' WHERE orders_id = '" . $_GET['oID'] . "'");
+
+      // Log Order Data
+      $sql_data_array = array('orders_id' => (int)$_GET['oID'],
+                              'customers_id' => (int)$_SESSION['customer_id'],
+                              'field' => vam_db_input(vam_db_prepare_input($_GET['currency'])),
+                              'value' => vam_db_input(vam_db_prepare_input($_GET['currency_value'])),
+                              'date_added' => 'now()',
+                              'last_modified' => 'now()');
+      vam_db_perform(TABLE_ORDERS_LOG, $sql_data_array);
   
   	 //generate responseText
 	  echo $_GET['currency'];
@@ -193,6 +264,15 @@ if ($action == 'update_downloads') {
 					vam_db_query("DELETE FROM " . TABLE_ORDERS_PRODUCTS_DOWNLOAD . "
 	                              WHERE orders_id = '" . $_GET['oID'] . "'
                                   AND orders_products_id = '" . $_GET['pid'] . "'");
+
+      // Log Order Data
+      $sql_data_array = array('orders_id' => (int)$_GET['oID'],
+                              'customers_id' => (int)$_SESSION['customer_id'],
+                              'field' => 'remove_product',
+                              'value' => vam_get_products_name($order['products_id']) . ' ' . (int)$order['products_id'],
+                              'date_added' => 'now()',
+                              'last_modified' => 'now()');
+      vam_db_perform(TABLE_ORDERS_LOG, $sql_data_array);
 								  
       //generate responseText
 	  echo TABLE_ORDERS_PRODUCTS;
@@ -204,6 +284,15 @@ if ($action == 'update_downloads') {
   if ($action == 'delete_comment') {
       
 	  vam_db_query("DELETE FROM " . TABLE_ORDERS_STATUS_HISTORY . " WHERE orders_status_history_id = '" . $_GET['cID'] . "' AND orders_id = '" . $_GET['oID'] . "'");
+
+      // Log Order Data
+      $sql_data_array = array('orders_id' => (int)$_GET['oID'],
+                              'customers_id' => (int)$_SESSION['customer_id'],
+                              'field' => 'comment',
+                              'value' => 'remove',
+                              'date_added' => 'now()',
+                              'last_modified' => 'now()');
+      vam_db_perform(TABLE_ORDERS_LOG, $sql_data_array);
 	  
 	  //generate responseText
 	  echo TABLE_ORDERS_STATUS_HISTORY;
@@ -215,6 +304,15 @@ if ($action == 'update_downloads') {
   if ($action == 'update_comment') {
       
 	  vam_db_query("UPDATE " . TABLE_ORDERS_STATUS_HISTORY . " SET comments = '" . vam_db_input(vam_db_prepare_input($_GET['comment'])) . "' WHERE orders_status_history_id = '" . $_GET['cID'] . "' AND orders_id = '" . $_GET['oID'] . "'");
+
+      // Log Order Data
+      $sql_data_array = array('orders_id' => (int)$_GET['oID'],
+                              'customers_id' => (int)$_SESSION['customer_id'],
+                              'field' => 'comment add',
+                              'value' => vam_db_input(vam_db_prepare_input($_GET['comment'])),
+                              'date_added' => 'now()',
+                              'last_modified' => 'now()');
+      vam_db_perform(TABLE_ORDERS_LOG, $sql_data_array);
 	  
 	  //generate responseText
 	  echo TABLE_ORDERS_STATUS_HISTORY;
@@ -244,6 +342,16 @@ if ($action == 'update_downloads') {
 	  if (vam_not_null($shipping['id'])) {
     vam_db_query("UPDATE " . TABLE_ORDERS . " SET shipping_method = '" . $shipping['title'] . "' WHERE orders_id = '" . $_POST['oID'] . "'");
     vam_db_query("UPDATE " . TABLE_ORDERS . " SET shipping_class = '" . $shipping['id'] . "' WHERE orders_id = '" . $_POST['oID'] . "'");
+
+      // Log Order Data
+      $sql_data_array = array('orders_id' => (int)$_GET['oID'],
+                              'customers_id' => (int)$_SESSION['customer_id'],
+                              'field' => 'shipping_method_changed',
+                              'value' => vam_db_input(vam_db_prepare_input($shipping['id'])),
+                              'date_added' => 'now()',
+                              'last_modified' => 'now()');
+      vam_db_perform(TABLE_ORDERS_LOG, $sql_data_array);
+
 	   }
 	   
 		$order = new manualOrder($oID);
@@ -397,6 +505,17 @@ if ($action == 'update_downloads') {
                                   'class' => $new_order_totals[$i]['code'], 
                                   'sort_order' => $new_order_totals[$i]['sort_order']);
           vam_db_perform(TABLE_ORDERS_TOTAL, $sql_data_array);
+          
+      // Log Order Data
+/*      $sql_data_array = array('orders_id' => (int)$_GET['oID'],
+                              'customers_id' => (int)$_SESSION['customer_id'],
+                              'field' => 'update_total '.$new_order_totals[$i]['class'],
+                              'value' => vam_db_input(vam_db_prepare_input($new_order_totals[$i]['value'])),
+                              'date_added' => 'now()',
+                              'last_modified' => 'now()');
+      vam_db_perform(TABLE_ORDERS_LOG, $sql_data_array);    */
+          
+          
         }
 
 
