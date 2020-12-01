@@ -3729,15 +3729,15 @@ function process_row( $item1, $filelayout, $filelayout_count, $default_these, $e
                   vam_db_query("delete from ".TABLE_PRODUCTS_XSELL." where products_id = " . $v_products_id . " or xsell_id = " . $v_products_id . "");
                   if (!empty($v_cross_sell)){
                     $xsells_array = explode(',',$v_cross_sell);
+                    //echo var_dump($xsells_array);
+                    //exit;
                       foreach ($xsells_array as $xs_key => $xs_model ) {
                         $cross_sell_sql = "select products_id from ".TABLE_PRODUCTS." where products_model = '" . trim($xs_model) . "' limit 1";
                         $cross_sell_result = vam_db_query($cross_sell_sql);
                         $cross_sell_row = vam_db_fetch_array($cross_sell_result);
                         
-                        vam_db_query("insert into ".TABLE_PRODUCTS_XSELL." (products_id, xsell_id, sort_order) 
-                                      values ( ".$v_products_id.", ".$cross_sell_row['products_id'].", 1)");
-                        vam_db_query("insert into ".TABLE_PRODUCTS_XSELL." (products_id, xsell_id, sort_order) 
-								  values ( ".$cross_sell_row['products_id'].", ".$v_products_id.", 1)");
+                        vam_db_query("insert into ".TABLE_PRODUCTS_XSELL." (products_id, xsell_id, sort_order) values ( ".$v_products_id.", ".$cross_sell_row['products_id'].", 1)");
+                        //vam_db_query("insert into ".TABLE_PRODUCTS_XSELL." (products_id, xsell_id, sort_order) values ( ".$cross_sell_row['products_id'].", ".$v_products_id.", 1)");
                     }
                   }
 		}
