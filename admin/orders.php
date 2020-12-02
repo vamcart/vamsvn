@@ -641,7 +641,10 @@ if (($_GET['action'] == 'edit') && ($order_exists)) {
       </tr>
 </table>
 <div id="tabs">
-
+<?php
+  $count_query = vam_db_query("SELECT count(*) as count FROM " . TABLE_ORDERS . " where customers_id='" . (int)$order->customer['ID'] . "'");
+  $count_orders = vam_db_fetch_array($count_query);
+?>
 			<ul>
 				<li><a href="#summary"><?php echo vam_image(DIR_WS_IMAGES . 'icons/tabs/customer.png', '', '16', '16'); ?>&nbsp;<?php echo TEXT_ORDER_SUMMARY; ?></a></li>
 				<li><a href="#payment"><?php echo vam_image(DIR_WS_IMAGES . 'icons/tabs/payment.png', '', '16', '16'); ?>&nbsp;<?php echo TEXT_ORDER_PAYMENT; ?></a></li>
@@ -649,7 +652,8 @@ if (($_GET['action'] == 'edit') && ($order_exists)) {
 <?php if (ENABLE_MAP_TAB == 'true') { ?>
 				<li><a href="#map" id="getmap"><?php echo vam_image(DIR_WS_IMAGES . 'icons/tabs/map.png', '', '16', '16'); ?>&nbsp;<?php echo TEXT_ORDER_MAP; ?></a></li>
 <?php } ?>
-				<li><a href="#history"><?php echo vam_image(DIR_WS_IMAGES . 'icons/tabs/view.png', '', '16', '16'); ?>&nbsp;<?php echo TEXT_ORDER_HISTORY; ?></a></li>
+				<li><a href="#history"><?php echo vam_image(DIR_WS_IMAGES . 'icons/tabs/attributes.png', '', '16', '16'); ?>&nbsp;<?php echo TEXT_ORDER_HISTORY . ' (' . (($count_orders['count'] > 0) ? $count_orders['count'] : false).')'; ?></a></li>
+				<li><a href="#log"><?php echo vam_image(DIR_WS_IMAGES . 'icons/tabs/view.png', '', '16', '16'); ?>&nbsp;<?php echo TEXT_ORDER_LOG; ?></a></li>
 				<li><a href="#status"><?php echo vam_image(DIR_WS_IMAGES . 'icons/tabs/order-status.png', '', '16', '16'); ?>&nbsp;<?php echo TEXT_ORDER_STATUS; ?></a></li>
 			</ul>
 
@@ -1159,6 +1163,80 @@ function init() {
 
       <div id="history">
 
+ <table border="0" width="100%" cellspacing="2" cellpadding="0" class="contentListingTable">
+              <tr class="dataTableHeadingRow">
+                <td class="dataTableHeadingContent"><?php echo TABLE_HEADING_CUSTOMER; ?></td>
+                <td class="dataTableHeadingContent" style="width: 50px;" align="right"><?php echo TABLE_HEADING_TELEPHONE; ?></td>
+                <td class="dataTableHeadingContent" style="width: 50px;" align="right"><?php echo TABLE_HEADING_EMAIL_ADDRESS; ?></td>
+                <td class="dataTableHeadingContent" style="width: 50px;" align="right"><?php echo TABLE_HEADING_NUMBER; ?></td>
+                <td class="dataTableHeadingContent" align="right"><?php echo TABLE_HEADING_ORDER_TOTAL; ?></td>
+                <td class="dataTableHeadingContent" style="width: 140px;" align="center"><?php echo TABLE_HEADING_DATE_PURCHASED; ?></td>
+                <td class="dataTableHeadingContent" style="width: 150px;" align="right"><?php echo TABLE_HEADING_STATUS; ?></td>
+              </tr>
+  <?php
+
+    //$cID = vam_db_prepare_input($_GET['cID']);
+    $cID = $order->customer['ID'];
+    $customers_orders_query_raw = "select o.orders_id, o.afterbuy_success, o.afterbuy_id, o.customers_name, o.customers_telephone, o.customers_email_address, o.customers_id, o.payment_method, o.shipping_method, o.shipping_class, o.date_purchased, o.last_modified, o.currency, o.currency_value, o.orders_status, s.orders_status_name, ot.text as order_total from ".TABLE_ORDERS." o left join ".TABLE_ORDERS_TOTAL." ot on (o.orders_id = ot.orders_id), ".TABLE_ORDERS_STATUS." s where o.customers_id = '".vam_db_input($cID)."' and (o.orders_status = s.orders_status_id and s.language_id = '".(int)$_SESSION['languages_id']."' and ot.class = 'ot_total') or (o.orders_status = '0' and ot.class = 'ot_total' and  s.orders_status_id = '1' and s.language_id = '".(int)$_SESSION['languages_id']."') order by orders_id DESC";
+    $customers_orders_query_raw = "select o.orders_id, o.afterbuy_success, o.afterbuy_id, o.customers_name, o.customers_telephone, o.customers_email_address, o.customers_id, o.payment_method, o.shipping_method, o.shipping_class, o.date_purchased, o.last_modified, o.currency, o.currency_value, o.orders_status, s.orders_status_name, ot.text as order_total
+    from " . TABLE_ORDERS . " o
+      left join " . TABLE_ORDERS_TOTAL . " ot on (o.orders_id = ot.orders_id)
+      left join " . TABLE_ORDERS_STATUS . " s on (o.orders_status = s.orders_status_id and s.language_id = " . (int)$_SESSION['languages_id'] . ")
+    where o.customers_id = '" . vam_db_input($cID) . "'
+      and ot.class = 'ot_total'
+    order by orders_id DESC limit 500";
+
+		$search_query = vam_db_query($customers_orders_query_raw);
+      $orders_total_count = vam_db_num_rows($search_query);
+
+		while ($search_data = vam_db_fetch_array($search_query)) {
+
+?>
+<?php
+//var_export($search_data);        // все заказы по странично
+    if (((!$_GET['oID']) || ($_GET['oID'] == $search_data['orders_id'])) && (!$oInfo)) {
+      $oInfo = new objectInfo($search_data);
+//print_r($oInfo);
+    }
+
+        if ( (is_object($oInfo)) && ($search_data['orders_id'] == $oInfo->orders_id) ) {
+            echo '<tr class="dataTableRowSelected" onmouseover="this.style.cursor=\'hand\'">' . "\n";
+        } else {
+            echo '<tr class="dataTableRow" onmouseover="this.className=\'dataTableRowOver\';this.style.cursor=\'hand\'" onmouseout="this.className=\'dataTableRow\'">' . "\n";
+        }
+
+?>
+                <td class="dataTableContent" style="width: 350px;"><?php echo '<a href="' . vam_href_link(FILENAME_ORDERS, vam_get_all_get_params(array('oID', 'page', 'action')) . 'oID=' . $search_data['orders_id'] . '&cID=' . $search_data['customers_id'] . '&action=edit') . '">' . vam_image(DIR_WS_ICONS . 'preview.gif', ICON_PREVIEW) . '</a>&nbsp;<a href="' . vam_href_link(FILENAME_ORDERS, vam_get_all_get_params(array('oID', 'page', 'action')) . 'oID=' . $search_data['orders_id'] . '&cID=' . $search_data['customers_id'] . '&action=edit') . '">' . $search_data['customers_name'] . '</a>'; ?></td>
+                <td class="dataTableContent" style="width: 150px;" align="right"><?php echo $search_data['customers_telephone']; ?></td>
+                <td class="dataTableContent" style="width: 150px;" align="right"><?php echo $search_data['customers_email_address']; ?></td>
+                <td class="dataTableContent" style="width: 150px;" align="right"><?php echo $search_data['orders_id']; ?></td>
+                <td class="dataTableContent" align="center"><?php echo strip_tags($search_data['order_total']); ?></td>
+                <td class="dataTableContent" style="width: 250px;" align="center"><?php echo vam_datetime_short($search_data['date_purchased']); ?></td>
+                <td style="padding-left: 5px; width: 150px;" class="dataTableContent" align="right"><?php echo strip_tags($search_data['orders_status_name']); ?></td>
+              </tr>
+<?php
+
+
+		}
+?>
+              <tr class="dataTableHeadingRow">
+                <td class="dataTableContent" colspan="7">
+                <br />
+                </td>
+              </tr>
+              <tr class="dataTableHeadingRow">
+                <td class="dataTableContent" colspan="7">
+                <?php echo TEXT_ORDER_TOTAL. ' '.$orders_total_count; ?>
+                </td>
+              </tr>
+
+</table>
+
+      </div>
+
+
+      <div id="log">
+
           <?php
 
           $street_address = (!isset($order->delivery["street_address"])) ? null : $order->delivery["street_address"];
@@ -1170,7 +1248,7 @@ function init() {
 
           ?>
 
-          <table border="0" width="100%">
+          <table border="0" width="100%" cellspacing="2" cellpadding="0">
 
       <tr>
         <td class="main"><table border="0" width="100%" cellspacing="2" cellpadding="0" class="contentListingTable">

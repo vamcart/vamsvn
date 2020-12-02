@@ -156,7 +156,11 @@ define('BUTTON_ORDERS_EXPORT','Экспорт заказов');
 
 define('ENTRY_ANSWER_TEMPLATE', 'Шаблон ответа:');
 
-define('TEXT_ORDER_HISTORY','История');
+define('TEXT_ORDER_HISTORY','История заказов клиента');
+define('TEXT_ORDER_LOG','Журнал событий');
+define('TEXT_ORDER_TOTAL','Всего заказов:');
+define('TABLE_HEADING_TELEPHONE','Телефон');
+define('TABLE_HEADING_EMAIL_ADDRESS','Email');
 define('TEXT_COPY_ORDER','Копировать заказ');
 define('TEXT_NEW_ORDER_FOR_CUSTOMER','Создать новый заказ для данного клиента');
 
