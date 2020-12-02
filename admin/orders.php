@@ -653,7 +653,7 @@ if (($_GET['action'] == 'edit') && ($order_exists)) {
 				<li><a href="#map" id="getmap"><?php echo vam_image(DIR_WS_IMAGES . 'icons/tabs/map.png', '', '16', '16'); ?>&nbsp;<?php echo TEXT_ORDER_MAP; ?></a></li>
 <?php } ?>
 				<li><a href="#history"><?php echo vam_image(DIR_WS_IMAGES . 'icons/tabs/attributes.png', '', '16', '16'); ?>&nbsp;<?php echo TEXT_ORDER_HISTORY . ' (' . (($count_orders['count'] > 0) ? $count_orders['count'] : false).')'; ?></a></li>
-				<li><a href="#log"><?php echo vam_image(DIR_WS_IMAGES . 'icons/tabs/view.png', '', '16', '16'); ?>&nbsp;<?php echo TEXT_ORDER_LOG; ?></a></li>
+				<li><a href="#log"><?php echo vam_image(DIR_WS_IMAGES . 'icons/tabs/edit.png', '', '16', '16'); ?>&nbsp;<?php echo TEXT_ORDER_LOG; ?></a></li>
 				<li><a href="#status"><?php echo vam_image(DIR_WS_IMAGES . 'icons/tabs/order-status.png', '', '16', '16'); ?>&nbsp;<?php echo TEXT_ORDER_STATUS; ?></a></li>
 			</ul>
 
