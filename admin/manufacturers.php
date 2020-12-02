@@ -18,6 +18,7 @@
    --------------------------------------------------------------*/
 
   require('includes/application_top.php');
+  require_once ('includes/classes/'.FILENAME_IMAGEMANIPULATOR);
   require_once (DIR_FS_INC.'vam_wysiwyg_tiny.inc.php');
 
 // BOF manufacturers meta tags	// Return the manufacturers meta title in the needed language	// TABLES: manufacturers_info
@@ -90,8 +91,19 @@
 
 	$dir_manufacturers=DIR_FS_CATALOG_IMAGES."/manufacturers";
     if ($manufacturers_image = &vam_try_upload('manufacturers_image', $dir_manufacturers)) {
+
+			$mname_arr = explode('.', $manufacturers_image->filename);
+			$mnsuffix = array_pop($mname_arr);
+			$manufacturers_image_name = strtolower($manufacturers_id.'.'.$mnsuffix);
+			
+			@ unlink(DIR_FS_CATALOG_IMAGES.'manufacturers/'.$manufacturers_image_name);
+			rename(DIR_FS_CATALOG_IMAGES.'manufacturers/'.$manufacturers_image->filename, DIR_FS_CATALOG_IMAGES.'manufacturers/old_'.$manufacturers_image_name);
+			require (DIR_WS_INCLUDES.'manufacturer_thumbnail_images.php');      
+			@ unlink(DIR_FS_CATALOG_IMAGES.'manufacturers/old_'.$manufacturers_image_name);
+
+
         vam_db_query("update " . TABLE_MANUFACTURERS . " set
-                                 manufacturers_image ='manufacturers/".$manufacturers_image->filename . "'
+                                 manufacturers_image ='manufacturers/".$manufacturers_image_name . "'
                                  where manufacturers_id = '" . vam_db_input($manufacturers_id) . "'");
     }
 
