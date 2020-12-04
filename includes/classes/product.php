@@ -437,37 +437,11 @@ $similar_products_full[] = $this->buildDataArray($products);
 
 		$module_content = array ();
 
-		$fsk_lock = "";
-		if ($_SESSION['customers_status']['customers_fsk18_display'] == '0') {
-			$fsk_lock = ' and p.products_fsk18!=1';
-		}
-		$group_check = "";
-		if (GROUP_CHECK == 'true') {
-			$group_check = " and p.group_permission_".$_SESSION['customers_status']['customers_status_id']."=1 ";
-		}
-
-                  $bundle_sum = 0;
 		              //echo TEXT_PRODUCTS_BY_BUNDLE . "</strong></td></tr>\n";
 		              $bundle_query = vamDBquery(" SELECT p.*, pd.*, pb.* FROM " . TABLE_PRODUCTS . " p INNER JOIN " . TABLE_PRODUCTS_DESCRIPTION . " pd ON pd.products_id=p.products_id INNER JOIN " . TABLE_PRODUCTS_BUNDLES . " pb ON pb.subproduct_id=pd.products_id WHERE pb.bundle_id = " . (int)$this->pID . " and pd.language_id = '" . (int)$_SESSION['languages_id'] . "'");
 		              while ($bundle_data = vam_db_fetch_array($bundle_query,true)) {
-	                  
 		              $module_content[] = $this->buildDataArray($bundle_data);	                  
-	                  
-	                  //echo '<tr><td class="main" valign="top">' ;
-	                  //echo '<a href="' . vam_href_link(FILENAME_PRODUCT_INFO, ($cPath ? 'cPath=' . $cPath . '&' : '') . 'products_id=' . $bundle_data['products_id']) . '" target="_blank">' . tep_image(DIR_WS_IMAGES . $bundle_data['products_image'], $bundle_data['products_name'], intval(SMALL_IMAGE_WIDTH / 2), intval(SMALL_IMAGE_HEIGHT / 2), 'hspace="1" vspace="1"') . '</a></td>';
-
-	                  //echo '<td class="main" align="right"><strong>' . $bundle_data['subproduct_qty'] . "&nbsp;x&nbsp;</strong></td>";
-	                  //echo  '<td class="main"><a href="' . tep_href_link(FILENAME_PRODUCT_INFO, ($cPath ? 'cPath=' . $cPath . '&' : '') . 'products_id=' . $bundle_data['products_id']) . '" target="_blank"><strong>&nbsp;(' . $bundle_data['products_model'] . ') '  . $bundle_data['products_name'] . '</strong></a>';
-	                  //if ($bundle_data['products_bundle'] == "yes") display_bundle($bundle_data['subproduct_id'], $bundle_data['products_price']);
-	                  //echo '</td>';
-	                  //echo '<td align="right" class="main"><strong>&nbsp;' .  $currencies->display_price($bundle_data['products_price'], tep_get_tax_rate($product_info['products_tax_class_id'])) . "</strong></td></tr>\n";
-	                  $bundle_sum += $bundle_data['products_price']*$bundle_data['subproduct_qty'];
 		              }
-		              //$bundle_saving = $bundle_sum - $bundle_price;
-		              //$bundle_sum = $currencies->display_price($bundle_sum, tep_get_tax_rate($product_info['products_tax_class_id']));
-		              //$bundle_saving =  $currencies->display_price($bundle_saving, tep_get_tax_rate($product_info['products_tax_class_id']));
-		              // comment out the following line to hide the "saving" text
-		              //echo '<tr><td colspan="5" class="main"><p><strong>' . TEXT_RATE_COSTS . '&nbsp;' . $bundle_sum . '</strong></td></tr><tr><td class="main" colspan="5" style="color:red"><strong>' . TEXT_IT_SAVE . '&nbsp;' . $bundle_saving . "</strong></td></tr>\n";
 		           
 
 		return $module_content;
