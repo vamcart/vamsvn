@@ -1441,3 +1441,7 @@ div.notification
 .chip .tooltip-inner {
   text-align:left;
 }
+
+#ajaxBundleFind {
+   width: 500px;
+}

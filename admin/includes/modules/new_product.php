@@ -499,21 +499,23 @@ foreach (array('product_info', 'product_options') as $key) {
 
 <!-- BOF Bundled Products -->
           <tr>
-            <td></td>
-            <td class="main" valign="top">
+            <td valign="top" colspan="2">
             <?php if ($pInfo->sold_in_bundle_only == 'yes') { $sold_in_bundle_only_checked = true; } else { $sold_in_bundle_only_checked = false; } ?>
             <?php echo vam_draw_radio_field('sold_in_bundle_only', 'no', !$sold_in_bundle_only_checked) . ENTRY_AVAILABLE_SEPARATELY . '<br />' . vam_draw_radio_field('sold_in_bundle_only', 'yes', $sold_in_bundle_only_checked) . ENTRY_IN_BUNDLE_ONLY; ?>
             </td>
           </tr>
           <tr>
-            <td class="main" valign="top">
+            <td valign="top">
               <?php echo TEXT_PRODUCTS_BUNDLE; ?>
+              <?php echo '<br />' . vam_draw_pull_down_menu('products_bundle', array(array('id'=>'no','text'=>NO),array('id'=>'yes','text'=>YES)), $pInfo->products_bundle) . '<br />'; ?>
             </td>
+          </tr>
+          <tr>
             <td class="main" valign="top">
               <table>
                 <tr>
-                  <td class="main" valign="top">
-                    <?php echo vam_draw_separator('pixel_trans.gif', '24', '15') . vam_draw_pull_down_menu('products_bundle', array(array('id'=>'no','text'=>NO),array('id'=>'yes','text'=>YES)), $pInfo->products_bundle) . '<br /><a href="javascript:" onclick="addSubproduct()">' . TEXT_ADD_LINE . '</a><br />'; ?>
+                  <td  class="main" valign="top">
+                    <?php echo vam_draw_separator('pixel_trans.gif', '24', '15') . '<a href="javascript:" onclick="addSubproduct()">' . TEXT_ADD_LINE . '</a><br />'; ?>
                   </td>
                   <td class="main" valign="top">
 <script type="text/javascript"><!--
