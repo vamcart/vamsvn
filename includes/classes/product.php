@@ -428,8 +428,12 @@ $similar_products_full[] = $this->buildDataArray($products);
 	 * 
 	 */
 
-	function getBundleProducts() {
+	function getBundleProducts($products_id_bundle = 0) {
 		global $vamPrice;
+		
+		if ($products_id_bundle > 0) {
+			$this->pID = $products_id_bundle;
+		}
 
 		$module_content = array ();
 
@@ -1138,6 +1142,7 @@ $products_special = 100-($vamPrice->CheckSpecial($array['products_id'])*100/$vam
 				'COUNT'=>$array['ID'],
 				'EXTRA_FIELDS'=>$extra_fields_data,
 				'SPECS'=>$specifications_data,
+				//'BUNDLE'=>$this->getBundleProducts($array['products_id']),
 				'PRODUCTS_ID'=>$array['products_id'],
 				'PRODUCTS_VPE' => $this->getVPEtext($array, $products_price['plain']), 
 				'PRODUCTS_VPE_TEXT' => $this->getVPEtext_value($array, $products_price['plain']), 
