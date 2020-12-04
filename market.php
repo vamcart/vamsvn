@@ -185,7 +185,7 @@ vam_yml_out('  <offers>');
 $products_short_description = vam_db_query('describe ' . TABLE_PRODUCTS_DESCRIPTION . ' products_short_description');
 $yml_select = vam_db_query('describe ' . TABLE_PRODUCTS . ' products_to_xml');
 $products_sql = "SELECT distinct p.products_id, p2c.categories_id, p.products_model, p.products_quantity, p.products_image, p.products_ean, p.products_price, s.status, s.specials_new_products_price as price, p.products_tax_class_id, p.manufacturers_id, p.products_sort, GREATEST(p.products_date_added, IFNULL(p.products_last_modified, 0), IFNULL(p.products_date_available, 0)) AS base_date, pd.products_name, m.manufacturers_name, pd.products_description" .
-                (($products_short_description > 0) ? ", pd.products_short_description " : " ") . "as proddesc " .
+                (($products_short_description > 0) ? ", pd.products_description " : " ") . "as proddesc " .
                 (($yml_select > 0) ? ", p.yml_bid, p.yml_cbid " : "") .
                 "FROM " . TABLE_PRODUCTS . " p
                     LEFT JOIN " . TABLE_PRODUCTS_DESCRIPTION . " pd ON (p.products_id = pd.products_id)
