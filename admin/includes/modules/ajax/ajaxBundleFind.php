@@ -37,7 +37,7 @@
 		}
 		$q = implode(" ",$searchwords);
 
-		$products_query = vam_db_query("select pd.products_id, pd.products_name, pd.products_keywords, p.products_model
+		$products_query = vam_db_query("select distinct pd.products_id, pd.products_name, pd.products_keywords, p.products_model
 							from " . TABLE_PRODUCTS_DESCRIPTION . " pd
 							inner join " . TABLE_PRODUCTS . " p
 							on (p.products_id = pd.products_id) LEFT JOIN products_to_categories as p2c2 ON (p2c2.products_id=p.products_id) LEFT JOIN categories as c ON (c.categories_id=p2c2.categories_id) 

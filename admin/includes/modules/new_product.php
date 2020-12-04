@@ -74,7 +74,7 @@ elseif ($_POST) {
     $bundle_array = array();
     if (isset($pInfo->products_bundle) && $pInfo->products_bundle == "yes") {
       // this product is a bundle so get contents data 
-      $bundle_query = vam_db_query("SELECT pb.subproduct_id, pb.subproduct_qty, pd.products_name FROM " . TABLE_PRODUCTS_DESCRIPTION . " pd INNER JOIN " . TABLE_PRODUCTS_BUNDLES . " pb ON pb.subproduct_id=pd.products_id WHERE pb.bundle_id = '" . (int)$_GET['pID'] . "' and language_id = '" . (int)$_SESSION['languages_id'] . "'");
+      $bundle_query = vam_db_query("SELECT distinct pb.subproduct_id, pb.subproduct_qty, pd.products_name FROM " . TABLE_PRODUCTS_DESCRIPTION . " pd INNER JOIN " . TABLE_PRODUCTS_BUNDLES . " pb ON pb.subproduct_id=pd.products_id WHERE pb.bundle_id = '" . (int)$_GET['pID'] . "' and language_id = '" . (int)$_SESSION['languages_id'] . "'");
       while ($bundle_contents = vam_db_fetch_array($bundle_query)) {
         $bundle_array[] = array('id' => $bundle_contents['subproduct_id'],
                                 'qty' => $bundle_contents['subproduct_qty'],
