@@ -21,7 +21,7 @@ $module = new vamTemplate;
 $module->assign('tpl_path', 'templates/'.CURRENT_TEMPLATE.'/');
 // include needed files
 
-$data = $product->getBundleProducts();
+$data = $product->getBundleProducts($product->data['products_id'],$product->data['products_bundle']);
 if (count($data) > 1) {
 	$module->assign('language', $_SESSION['language']);
 	$module->assign('module_content', $data);
