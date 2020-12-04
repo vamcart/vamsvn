@@ -777,7 +777,7 @@ class categories {
                 //$msrp += ($subprod['products_msrp'] * $qty);
                 $weight += ($subprod['products_weight'] * $qty);
               }
-              vam_db_query('update ' . TABLE_PRODUCTS . ' set products_quantity = 1, products_weight = "' . vam_db_input($weight) . '" where products_id = ' . (int)$products_id);
+              //vam_db_query('update ' . TABLE_PRODUCTS . ' set products_quantity = 1, products_weight = "' . vam_db_input($weight) . '" where products_id = ' . (int)$products_id);
             }
           }
           // EOF Bundled Products
