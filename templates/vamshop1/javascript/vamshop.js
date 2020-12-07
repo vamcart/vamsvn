@@ -1,10 +1,10 @@
 // Slide menu
 
-//$(document).ready(function(){
+$(document).ready(function(){
   $(".navbar .navbar-toggle").click();
   $('.toggle-menu').jPushMenu({closeOnClickLink: false});
   $('.dropdown-toggle').dropdown();
-//});
+});
 
 //OWL Carousel Slider
 $(".owl-carousel").owlCarousel({
