@@ -377,8 +377,8 @@ function updateShippingZone(field, value) {
               function(){if(xmlHttp.readyState!=4)return;if(xmlHttp.status==200){reloadDiv('totalsBlock', xmlHttp.responseText);}};
 		 
       xmlHttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-      xmlHttp.setRequestHeader("Content-length", formdata.length);
-      xmlHttp.setRequestHeader("Connection", "close");
+      //xmlHttp.setRequestHeader("Content-length", formdata.length);
+      //xmlHttp.setRequestHeader("Connection", "close");
       xmlHttp.send(formdata);
 		  
 	
