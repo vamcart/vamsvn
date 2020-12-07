@@ -353,28 +353,28 @@ if ($action == 'update_downloads') {
        if (is_array($_POST['update_totals'])) {
 	    foreach($_POST['update_totals'] as $total_index => $total_details) {
           extract($total_details, EXTR_PREFIX_ALL, "ot");
-          if ($ot_class == "ot_shipping") {
-            
-			$shipping['cost'] = $ot_value;
-            $shipping['title'] = $ot_title;
-			$shipping['id'] = $ot_id;
+        if ($ot_class == "ot_shipping") {
 
-           } // end if ($ot_class == "ot_shipping")
+			    $shipping['cost'] = $ot_value;
+          $shipping['title'] = $ot_title;
+			    $shipping['id'] = $ot_id;
+
+      // Log Order Data
+      $sql_data_array = array('orders_id' => (int)$_POST['oID'],
+                              'customers_id' => (int)$_SESSION['customer_id'],
+                              'field' => 'shipping method change',
+                              'value' => vam_db_input(vam_db_prepare_input($ot_title.' '.$ot_id . ' ' . $ot_value)),
+                              'date_added' => 'now()',
+                              'last_modified' => 'now()');
+      vam_db_perform('orders_log', $sql_data_array);
+
+        } // end if ($ot_class == "ot_shipping")
          } //end foreach
 	   } //end if is_array
 	
 	  if (vam_not_null($shipping['id'])) {
     vam_db_query("UPDATE " . TABLE_ORDERS . " SET shipping_method = '" . $shipping['title'] . "' WHERE orders_id = '" . $_POST['oID'] . "'");
     vam_db_query("UPDATE " . TABLE_ORDERS . " SET shipping_class = '" . $shipping['id'] . "' WHERE orders_id = '" . $_POST['oID'] . "'");
-
-      // Log Order Data
-      $sql_data_array = array('orders_id' => (int)$_POST['oID'],
-                              'customers_id' => (int)$_SESSION['customer_id'],
-                              'field' => 'shipping_method_changed',
-                              'value' => vam_db_input(vam_db_prepare_input($shipping['title'].' '.$shipping['id'])),
-                              'date_added' => 'now()',
-                              'last_modified' => 'now()');
-      vam_db_perform(TABLE_ORDERS_LOG, $sql_data_array);
 
 	   }
 	   
