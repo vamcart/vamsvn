@@ -203,6 +203,15 @@ $product['products_price']=$products_price['plain'];
              'options_values_price' => vam_db_prepare_input($option_value_details[$option_id][$option_value_id]['options_values_price']),
              'price_prefix' => vam_db_prepare_input($option_value_details[$option_id][$option_value_id]['price_prefix']));
             vam_db_perform(TABLE_ORDERS_PRODUCTS_ATTRIBUTES, $sql_data_array);
+            
+      // Log Order Data
+      $sql_data_array = array('orders_id' => (int)$oID,
+                              'customers_id' => (int)$_SESSION['customer_id'],
+                              'field' => vam_db_input(vam_db_prepare_input('add_product_attribute')),
+                              'value' => vam_db_input(vam_db_prepare_input(vam_db_prepare_input($option_values_names[$option_value_id]))),
+                              'date_added' => 'now()',
+                              'last_modified' => 'now()');
+      vam_db_perform('orders_log', $sql_data_array);                       
 			
 		//add on for downloads
 		if (DOWNLOAD_ENABLED == 'true' && isset($filename[$option_id])) {
