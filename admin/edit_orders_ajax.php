@@ -359,6 +359,7 @@ if ($action == 'update_downloads') {
           $shipping['title'] = $ot_title;
 			    $shipping['id'] = $ot_id;
 
+	  if (vam_not_null($shipping['id'])) {
       // Log Order Data
       $sql_data_array = array('orders_id' => (int)$_POST['oID'],
                               'customers_id' => (int)$_SESSION['customer_id'],
@@ -367,6 +368,7 @@ if ($action == 'update_downloads') {
                               'date_added' => 'now()',
                               'last_modified' => 'now()');
       vam_db_perform('orders_log', $sql_data_array);
+      }
 
         } // end if ($ot_class == "ot_shipping")
          } //end foreach
