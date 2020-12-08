@@ -209,6 +209,7 @@ while ($products = vam_db_fetch_array($products_query)) {
   vam_yml_out('  <Title>' . vam_yml_clear_string($products['products_name']) . '</Title>');
 
   vam_yml_out('  <Description><![CDATA[' . vam_yml_clear_string($products['proddesc']) . ']]></Description>');
+  vam_yml_out('  <Condition>Новое</Condition>');
   vam_yml_out('</Ad>' . "\n");
 }
 vam_yml_out('</Ads>');
