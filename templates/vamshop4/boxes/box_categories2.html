@@ -1,7 +1,17 @@
 {config_load file="$language/lang_$language.conf" section="boxes"}
-<section class="widget inner categories-widget">
-	<h3 class="widget-title">{#heading_categories#}</h3>
-	<div id ="categoriesBoxMenu">
-		{$BOX_CONTENT}
-	</div>
-</section>
+{config_load file="$language/lang_$language.conf" section="index"}
+{config_load file="$language/lang_$language.conf" section="categorie_listing"}
+  <button class="btn btn-rounded d-xl-none mb-2" type="button" data-toggle="collapse" data-target="#collapseExampleCat" aria-expanded="false" aria-controls="collapseExample">
+    <i class="fas fa-list"></i> {#heading_more_categories#}
+  </button>
+  
+  <div class="collapse dont-collapse-sm" id="collapseExampleCat">
+    <div class="well">
+    <div class="filters card-deck categories-widget">
+    <div id ="categoriesBoxMenu" class="w-100">
+      {$BOX_CONTENT}
+    </div>
+    </div>
+    </div>
+  </div>
+<br />
