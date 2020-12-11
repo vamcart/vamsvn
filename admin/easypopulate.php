@@ -1524,8 +1524,8 @@ if (!empty($_POST['localfile']) or (isset($_FILES['usrfl']) && isset($_GET['spli
                       <option value="delete"><?php echo TEXT_EASYPOPULATE_DELETE; ?></option>
                   </select>
                   <select name="import_charset">
-                      <option selected value ="cp1251" size="5">cp1251</option>
-                      <option value="utf8" size="5">utf8</option>
+                      <option selected value="utf8" size="5">utf8</option>
+                      <option value ="cp1251" size="5">cp1251</option>
                   </select>
                   <span class="button"><button type="submit" name="buttoninsert" value="<?php echo EASY_INSERT;?>"><?php echo vam_image(DIR_WS_IMAGES . 'icons/buttons/submit.png', '', '12', '12'); ?>&nbsp;<?php echo EASY_INSERT; ?></button></span>
                 <br />
@@ -1603,8 +1603,8 @@ if (!empty($_POST['localfile']) or (isset($_FILES['usrfl']) && isset($_GET['spli
           echo '&nbsp;' . TEXT_EASYPOPULATE_TYPE . '&nbsp;' . vam_draw_pull_down_menu('dltype',array( 0 => array( "id" => 'full', 'text' => TEXT_EASYPOPULATE_COMPLETE), 1 => array( "id" => 'custom', 'text' => TEXT_EASYPOPULATE_CUSTOM), 2 => array( "id" => 'priceqty', 'text' => TEXT_EASYPOPULATE_PRICE_QTY), 3 => array( "id" => 'category', 'text' => TEXT_EASYPOPULATE_CATEGORIES), 4 => array( "id" => 'attrib', 'text' => TEXT_EASYPOPULATE_ATTRIBUTES), 5 => array( "id" => 'froogle', 'text' => TEXT_EASYPOPULATE_FROOGLE)),'custom','onChange="return switchForm(this);"');
           
           echo '<select name="export_charset">
-			<option selected value ="cp1251" size="5">cp1251</option>
-			<option value="utf8" size="5">utf8</option>
+			<option selected value="utf8" size="5">utf8</option>
+			<option value ="cp1251" size="5">cp1251</option>
 			</select>';
 			
           echo '&nbsp;' . ((EP_EXCEL_SAFE_OUTPUT == true)?".csv":".txt") . TEXT_EASYPOPULATE_FILE_FORMAT; 
