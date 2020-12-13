@@ -229,7 +229,10 @@ while ($products = vam_db_fetch_array($products_query)) {
   vam_yml_out('  <url>' . $url . '</url>');
   vam_yml_out('  <delivery>true</delivery>');
   vam_yml_out('  <price>' . ($old_price > 0 && $products['status'] == 1  ? $old_price : $price) . '</price>');
-  if ($products['price'] > 0 && $products['status'] == 1) vam_yml_out('  <oldprice>' . $vamPrice->Format($products['products_price'], false) . '</oldprice>');
+  if ($products['price'] > 0 && $products['status'] == 1) {
+  	vam_yml_out('  <oldprice>' . $vamPrice->Format($products['products_price'], false) . '</oldprice>');
+  	vam_yml_out('  <enable_auto_discounts>yes</enable_auto_discounts>');
+  }
   vam_yml_out('  <currencyId>' . $current_currency . '</currencyId>');
 
   vam_yml_out('  <categoryId>' . $products['categories_id'] . '</categoryId>');
