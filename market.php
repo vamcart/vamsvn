@@ -274,7 +274,7 @@ $cat_query = vamDBquery("SELECT
 $cat_data = vam_db_fetch_array($cat_query, true);
 		
 
-  vam_yml_out('  <typePrefix>' . vam_yml_clear_string($cat_data['categories_name']) . '</typePrefix>');
+  //vam_yml_out('  <typePrefix>' . vam_yml_clear_string($cat_data['categories_name']) . '</typePrefix>');
 
   vam_yml_out('  <description>' . vam_yml_clear_string($products['proddesc']) . '</description>');
   if(YML_SALES_NOTES != "") {
