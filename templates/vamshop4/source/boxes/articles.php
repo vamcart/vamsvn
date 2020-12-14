@@ -42,7 +42,8 @@ if (!$box->isCached(CURRENT_TEMPLATE.'/boxes/box_articles.html', $cache_id) || !
     if ($tree[$counter]['parent'] == 0) {
       $tPath_new = 'tPath=' . $counter;
     } else {
-      $tPath_new = 'tPath=' . $tree[$counter]['path'];
+      //$tPath_new = 'tPath=' . $tree[$counter]['path'];
+      $tPath_new = 'tPath=' . $counter;
     }
 
 		$SEF_parameter_cat = '';

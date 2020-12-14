@@ -25,14 +25,7 @@ $box->assign('language', $_SESSION['language']);
 if (!CacheCheck()) {
 	$cache=false;
 	$box->caching = 0;
-} else {
-	$cache=true;
-	$box->caching = 1;
-	$box->cache_lifetime = CACHE_LIFETIME;
-	$box->cache_modified_check = CACHE_CHECK;
-	$cache_id = $_SESSION['language'].$_SESSION['customers_status']['customers_status_id'].$tPath;
-}
-
+} 
 if (!$box->isCached(CURRENT_TEMPLATE.'/boxes/box_articles.html', $cache_id) || !$cache) {
 
 	$box->assign('tpl_path', 'templates/'.CURRENT_TEMPLATE.'/');
@@ -41,22 +34,27 @@ if (!$box->isCached(CURRENT_TEMPLATE.'/boxes/box_articles.html', $cache_id) || !
     global $tree, $topics_string, $tPath_array;
 
     for ($i=0; $i<$tree[$counter]['level']; $i++) {
-      $topics_string .= "&nbsp;&nbsp;";
+      //$topics_string .= "&nbsp;&nbsp;";
     }
 
-    $topics_string .= '<li class="topic-'.$tree[$counter]['level'].'"><a href="';
+    $topics_string .= '<li class="list-inline-item pb-2 topic-'.$tree[$counter]['level'].'"><a href="';
 
     if ($tree[$counter]['parent'] == 0) {
       $tPath_new = 'tPath=' . $counter;
     } else {
-      $tPath_new = 'tPath=' . $tree[$counter]['path'];
+      //$tPath_new = 'tPath=' . $tree[$counter]['path'];
+      $tPath_new = 'tPath=' . $counter;
     }
 
 		$SEF_parameter_cat = '';
 		if (SEARCH_ENGINE_FRIENDLY_URLS == 'true')
 			$SEF_parameter_cat = '&category='.vam_cleanName($tree[$counter]['name']);
 
+    if ($counter > 0) {
+    $topics_string .= vam_href_link(FILENAME_ARTICLES, $tPath_new . $SEF_parameter_cat) . '"><span class="btn btn-rounded">';
+    } else {
     $topics_string .= vam_href_link(FILENAME_ARTICLES, $tPath_new . $SEF_parameter_cat) . '">';
+    }
 
     if (isset($tPath_array) && in_array($counter, $tPath_array)) {
       $topics_string .= '<b>';
@@ -73,13 +71,17 @@ if (!$box->isCached(CURRENT_TEMPLATE.'/boxes/box_articles.html', $cache_id) || !
       $topics_string .= ' -&gt;';
     }
 
-    $topics_string .= '</a>';
-
     if (SHOW_ARTICLE_COUNTS == 'true') {
       $articles_in_topic = vam_count_articles_in_topic($counter);
       if ($articles_in_topic > 0) {
         $topics_string .= '&nbsp;(' . $articles_in_topic . ')';
       }
+    }
+    
+    if ($counter > 0) {
+    $topics_string .= '</span></a>';
+    } else {
+    $topics_string .= '</a>';
     }
 
     $topics_string .= '</li>';
@@ -94,9 +96,8 @@ if (!$box->isCached(CURRENT_TEMPLATE.'/boxes/box_articles.html', $cache_id) || !
   $topics_string = '';
   $tree = array();
 
-  $topics_query = vam_db_query("select t.topics_id, td.topics_name, t.parent_id from " . TABLE_TOPICS . " t, " . TABLE_TOPICS_DESCRIPTION . " td where t.parent_id = '0' and t.topics_id = td.topics_id and td.language_id = '" . (int)$_SESSION['languages_id'] . "' order by sort_order, td.topics_name");
-
-  while ($topics = vam_db_fetch_array($topics_query))  {
+  $topics_query = vamDBquery("select t.topics_id, td.topics_name, t.parent_id from " . TABLE_TOPICS . " t, " . TABLE_TOPICS_DESCRIPTION . " td where t.parent_id = '0' and t.topics_id = td.topics_id and td.language_id = '" . (int)$_SESSION['languages_id'] . "' order by sort_order, td.topics_name");
+  while ($topics = vam_db_fetch_array($topics_query,true))  {
     $tree[$topics['topics_id']] = array('name' => $topics['topics_name'],
                                         'parent' => $topics['parent_id'],
                                         'level' => 0,
@@ -120,10 +121,10 @@ if (!$box->isCached(CURRENT_TEMPLATE.'/boxes/box_articles.html', $cache_id) || !
     foreach ($tPath_array as $key => $value) {	
       unset($parent_id);
       unset($first_id);
-      $topics_query = vam_db_query("select t.topics_id, td.topics_name, t.parent_id from " . TABLE_TOPICS . " t, " . TABLE_TOPICS_DESCRIPTION . " td where t.parent_id = '" . (int)$value . "' and t.topics_id = td.topics_id and td.language_id = '" . (int)$_SESSION['languages_id'] . "' order by sort_order, td.topics_name");
-      if (vam_db_num_rows($topics_query)) {
+      $topics_query = vamDBquery("select t.topics_id, td.topics_name, t.parent_id from " . TABLE_TOPICS . " t, " . TABLE_TOPICS_DESCRIPTION . " td where t.parent_id = '" . (int)$value . "' and t.topics_id = td.topics_id and td.language_id = '" . (int)$_SESSION['languages_id'] . "' order by sort_order, td.topics_name");
+      if (vam_db_num_rows($topics_query,true)) {
         $new_path .= $value;
-        while ($row = vam_db_fetch_array($topics_query)) {
+        while ($row = vam_db_fetch_array($topics_query,true)) {
           $tree[$row['topics_id']] = array('name' => $row['topics_name'],
                                            'parent' => $row['parent_id'],
                                            'level' => $key+1,
@@ -150,9 +151,7 @@ if (!$box->isCached(CURRENT_TEMPLATE.'/boxes/box_articles.html', $cache_id) || !
       }
     }
   }
-  if (vam_db_num_rows($topics_query,true)) {
   vam_show_topic($first_topic_element);
-  }
 
   $new_articles_string = '';
   $all_articles_string = '';
@@ -166,17 +165,21 @@ if (!$box->isCached(CURRENT_TEMPLATE.'/boxes/box_articles.html', $cache_id) || !
       $articles_new_count = '';
     }
 
+    $new_articles_string .= '<li class="list-inline-item pb-2"><a href="' . vam_href_link(FILENAME_ARTICLES_NEW, '', 'NONSSL') . '"><span class="btn btn-rounded">';
+
     if (strstr($PHP_SELF,FILENAME_ARTICLES_NEW) or strstr($PHP_SELF,FILENAME_ARTICLES_NEW)) {
-      $new_articles_string = '<b>';
+      $new_articles_string .= '<b>';
     }
 
-    $new_articles_string .= '<li><a href="' . vam_href_link(FILENAME_ARTICLES_NEW, '', 'NONSSL') . '">' . BOX_NEW_ARTICLES . '</a>';
+    $new_articles_string .= BOX_NEW_ARTICLES . (($articles_new_count > 0) ? " " . $articles_new_count : "");
 
     if (strstr($PHP_SELF,FILENAME_ARTICLES_NEW) or strstr($PHP_SELF,FILENAME_ARTICLES_NEW)) {
       $new_articles_string .= '</b>';
     }
 
-    $new_articles_string .= $articles_new_count . '</li>' . "\n";
+    $new_articles_string .= '</span></a>';
+
+    $new_articles_string .= '</li>' . "\n";
 
   }
 
@@ -189,22 +192,28 @@ if (!$box->isCached(CURRENT_TEMPLATE.'/boxes/box_articles.html', $cache_id) || !
       $articles_all_count = '';
     }
 
+    $all_articles_string .= '<li class="list-inline-item pb-2">';
+    $all_articles_string .= '<a href="' . vam_href_link(FILENAME_ARTICLES, '', 'NONSSL') . '"><span class="btn btn-rounded">';
+
     if ($topic_depth == 'top') {
-      $all_articles_string = '<b>';
+      $all_articles_string .= '<b>';
     }
 
-    $all_articles_string .= '<li><a href="' . vam_href_link(FILENAME_ARTICLES, '', 'NONSSL') . '">' . BOX_ALL_ARTICLES . '</a>';
+    $all_articles_string .= BOX_ALL_ARTICLES . (($articles_all_count > 0) ? " " . $articles_all_count : "");
 
     if ($topic_depth == 'top') {
       $all_articles_string .= '</b>';
     }
 
-    $all_articles_string .= $articles_all_count . '</li>' . "\n";
+    $all_articles_string .= '</span></a>';
+
+    $all_articles_string .= '</li>' . "\n";
 
   }
 
 
-  $box_content = $new_articles_string . $all_articles_string . $topics_string;
+  $box_content = $all_articles_string . $new_articles_string . $topics_string;
+  $box_content_articles = $box_content;
 
     $box->assign('BOX_CONTENT', $box_content);
 
