@@ -639,7 +639,8 @@ video {
   float: left;
   padding: 10px 8px 0px 8px;
   width: 67%;
-  min-height: 400px;
+  min-height: 100%;
+  height: 100%;
 }
 
 .wsmenu>.wsmenu-list>li:hover>.wsshoptabing>.wsshopwp>.wstabitem>li.wsshoplink-active>.wstitemright {
