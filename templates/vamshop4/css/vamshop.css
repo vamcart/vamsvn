@@ -166,56 +166,56 @@ textarea
    }
 
 ul#CatNavi {
-border-top: 1px transparent; 
-border-right: 1px solid #c0c1c2; 
-border-bottom: 1px solid #c0c1c2; 
-border-left: 1px solid #c0c1c2; 
+border-top: 1px solid var(--border-gray); 
+border-right: 1px solid var(--border-gray); 
+border-bottom: 1px solid var(--border-gray); 
+border-left: 1px solid var(--border-gray); 
+border-radius: .25rem;
 }
 
 ul#CatNavi li {
-border-top: 1px solid #c0c1c2; 
+border-top: 1px solid var(--border-gray); 
 }
 
 ul#CatNavi li.CatLevel0.Current {
 }
 
 ul#CatNavi li.CatLevel1 {
-border: 0px solid #c0c1c2; 
+border: 0px solid var(--border-gray); 
 }
 
 ul#CatNavi li.CatLevel2 {
-border: 0px solid #c0c1c2; 
+border: 0px solid var(--border-gray); 
 }
 
 #categoriesBoxMenu #CatNavi li a
    { 
      display: block; 
      padding: .5em 0;
-     color: #525b5a;
+     color: var(--link-color);
      text-indent: 0.4em;
-     background-color: #fff; 
+     background-color: transparent; 
      text-decoration: none;
      margin: 0; 
    }
 
 #categoriesBoxMenu #CatNavi li a:hover
    { 
-     color: #222; 
-     background-color: #fff;
+     color: var(--nav-tab-text-color-active); 
+     background-color: var(--nav-tab-background-color-active);
    }
 
 #categoriesBoxMenu #CatNavi li
    { 
-     color: #222; 
-     border-left: 0.4em solid transparent; 
-     background-color: #fff;
+     color: var(--link-color);
+     border-left: 0.4em solid var(--background-color); 
    }
 
 #categoriesBoxMenu #CatNavi li:hover
    { 
-     color: #222; 
-     border-left: 0.4em solid #c0c1c2; 
-     background-color: #fff;
+     color: var(--nav-tab-text-color-active); 
+     border-left: 0.4em solid var(--nav-tab-border-color-active); 
+     background-color: var(--nav-tab-background-color-active);
    }
 
 
@@ -264,18 +264,19 @@ border: 0px solid #c0c1c2;
 #categoriesBoxMenu #CatNavi .CurrentParent li a,
 #categoriesBoxMenu #CatNavi .CurrentParent .Current li a 
    { 
-     color: #525b5a;
+     color: var(--link-color);
    }
 
 #categoriesBoxMenu #CatNavi .Current a 
    { 
      font-weight: bold; 
+     color: var(--nav-tab-text-color-active);
    }
 
 #categoriesBoxMenu #CatNavi li.Current
    { 
-     border-left: 0.4em solid #c0c1c2; 
-     background-color: #fff;
+     border-left: 0.4em solid var(--nav-tab-border-color-active); 
+     background-color: var(--nav-tab-background-color-active); 
    }
 /*- /Список разделов */
 
