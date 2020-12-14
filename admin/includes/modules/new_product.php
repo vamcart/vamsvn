@@ -276,7 +276,7 @@ $manual_link = ($_GET['pID']) ? 'edit-product' : 'add-product';
 <!--// Products URL end //-->
           <tr>
             <td valign="top" class="main"><?php echo TEXT_PRODUCTS_QUANTITY; ?></td>
-            <td valign="top" class="main"><?php echo vam_draw_input_field('products_quantity', $pInfo->products_quantity,'size=5'); ?></td>
+            <td valign="top" class="main"><?php echo vam_draw_input_field('products_quantity', ($pInfo->products_quantity=='' ? 999 : $pInfo->products_quantity), 'size="5"'); ?></td>
           </tr>
           <tr>
             <td valign="top" class="main"><?php echo TEXT_PRODUCTS_QUANTITY_MIN; ?></td>
