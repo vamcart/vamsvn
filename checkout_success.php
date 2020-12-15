@@ -91,6 +91,8 @@ if ($gv_result = vam_db_fetch_array($gv_query)) {
 	include (DIR_WS_CLASSES.'order.php');
 	$order = new order($orders['orders_id']);
 
+	$vamTemplate->assign('ORDER_ID', $order->info['id']);	
+
 if ($order->info['payment_method'] == 'schet') {
 $vamTemplate->assign('BUTTON_SCHET_PRINT', '<a class="button" target="_blank" href="'.vam_href_link(FILENAME_PRINT_SCHET, 'oID='.$orders['orders_id']).'">'.vam_image_button('print.png', BUTTON_PRINT_SCHET).'</a>');
 }
