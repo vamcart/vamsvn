@@ -698,7 +698,7 @@ define('TEXT_REVIEWS_RATING', 'Рейтинг');
 
 define('TEXT_CHECKOUT_PROCESS_PAYMENT', 'Оплатить заказ');
 
-define('TEXT_MY_ORDERS', 'Мои заказы');
+define('TEXT_MY_ORDERS', 'Личный кабинет');
 define('TEXT_MY_PROFILE', 'Профиль');
 define('TEXT_MY_ACCOUNT', 'Аккаунт');
 define('TEXT_BACK', 'Вернуться');
