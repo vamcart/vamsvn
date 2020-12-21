@@ -23,7 +23,7 @@ define('MODULE_SHIPPING_GRASTINPVZ_JS', '
 <script>
 $(function () {
 $("select#pvz_grastin").on("change", function() {
-    $("[name=shipping]").val(["grastin_pvz_grastinpvz"]);
+    $("[name=shipping]").val(["grastinpvz_grastinpvz"]);
 });
 });
 </script>
