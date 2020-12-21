@@ -80,6 +80,7 @@ $('#box')
 				'shipping': $('input[name=shipping]:checked').val(),
 				'payment': $('input[name=payment]:checked').val(),
 				'pvz_boxberry': $('select[name=pvz_boxberry]').val(), 
+				'pvz_grastin': $('select[name=pvz_grastin]').val(), 
 				'pvz_sdek': $('select[name=pvz_sdek]').val(), 
 				'pvz_newpost': $('select[name=pvz_newpost]').val() 
 			}
@@ -93,6 +94,7 @@ $('#box')
 			url +' #payment_options > *', {
 				'shipping': $('input[name=shipping]:checked').val(),
 				'pvz_boxberry': $('select[name=pvz_boxberry]').val(), 
+				'pvz_grastin': $('select[name=pvz_grastin]').val(), 
 				'pvz_sdek': $('select[name=pvz_sdek]').val(), 
 				'pvz_newpost': $('select[name=pvz_newpost]').val() 
 			}
@@ -100,13 +102,14 @@ $('#box')
 	}
 )		
 
-.on('change', 'input[name=shipping],input[name=payment],select[name=pvz_boxberry],select[name=pvz_sdek],select[name=pvz_newpost]', 
+.on('change', 'input[name=shipping],input[name=payment],select[name=pvz_boxberry],select[name=pvz_grastin],select[name=pvz_sdek],select[name=pvz_newpost]', 
 	function(){
 		$('#shipping_options').load(
 			url +' #shipping_options > *', {
 				'shipping': $('input[name=shipping]:checked').val(),
 				'payment': $('input[name=payment]:checked').val(),
 				'pvz_boxberry': $('select[name=pvz_boxberry]').val(), 
+				'pvz_grastin': $('select[name=pvz_grastin]').val(), 
 				'pvz_sdek': $('select[name=pvz_sdek]').val(), 
 				'pvz_newpost': $('select[name=pvz_newpost]').val(), 
 			}, 
