@@ -232,7 +232,7 @@ $module_content[$k]['attrib'] = $products_options_data;
 if ($category['listing_template'] == '' or $category['listing_template'] == 'default') {
 	$files = array ();
 	if ($dir = opendir(DIR_FS_CATALOG.'templates/'.CURRENT_TEMPLATE.'/module/product_listing/')) {
-		while (($file = readdir($dir)) !== false) {
+		while (($file = scandir($dir)) !== false) {
 			if (is_file(DIR_FS_CATALOG.'templates/'.CURRENT_TEMPLATE.'/module/product_listing/'.$file) and ($file != "index.html") and (substr($file, 0, 1) !=".")) {
 				$files[] = array ('id' => $file, 'text' => $file);
 			} //if
