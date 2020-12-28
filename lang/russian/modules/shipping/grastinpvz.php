@@ -29,8 +29,8 @@ $("select#pvz_grastin").on("change", function() {
 </script>
 ');
 define('MODULE_SHIPPING_GRASTINPVZ_TEXT_TITLE_2', 'ПВЗ');
-define('MODULE_SHIPPING_GRASTINPVZ_STATUS_TITLE' , 'Разрешить модуль СДЭК');
-define('MODULE_SHIPPING_GRASTINPVZ_STATUS_DESC' , 'Вы хотите разрешить модуль СДЭК?');
+define('MODULE_SHIPPING_GRASTINPVZ_STATUS_TITLE' , 'Разрешить модуль грастин');
+define('MODULE_SHIPPING_GRASTINPVZ_STATUS_DESC' , 'Вы хотите разрешить модуль грастин?');
 define('MODULE_SHIPPING_GRASTINPVZ_ALLOWED_TITLE' , 'Разрешённые страны');
 define('MODULE_SHIPPING_GRASTINPVZ_ALLOWED_DESC' , 'Укажите коды стран, для которых будет доступен данный модуль (например RU,DE (оставьте поле пустым, если хотите что б модуль был доступен покупателям из любых стран))');
 define('MODULE_SHIPPING_GRASTINPVZ_COST_TITLE' , 'Стоимость доставки (вес выше 0.35 кг.)');
