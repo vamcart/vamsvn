@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ymaps xmlns="http://maps.yandex.ru/ymaps/1.x" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="     http://maps.yandex.ru/business/1.x http://maps.yandex.ru/schemas/business/1.x/business.xsd     http://maps.yandex.ru/geocoder/1.x http://maps.yandex.ru/schemas/geocoder/1.x/geocoder.xsd     http://maps.yandex.ru/psearch/1.x http://maps.yandex.ru/schemas/psearch/1.x/psearch.xsd     http://maps.yandex.ru/search/1.x http://maps.yandex.ru/schemas/search/1.x/search.xsd     http://maps.yandex.ru/web/1.x http://maps.yandex.ru/schemas/web/1.x/web.xsd     http://maps.yandex.ru/search/internal/1.x http://maps.yandex.ru/schemas/search/internal/1.x/internal.xsd">
+  <GeoObjectCollection>
+    <metaDataProperty xmlns="http://www.opengis.net/gml">
+      <GeocoderResponseMetaData xmlns="http://maps.yandex.ru/geocoder/1.x">
+        <request>город Нижний Новгород,  УЛ. ЛЕЙТЕНАНТА ШМИДТА,  д.1 А</request>
+        <found>1</found>
+        <results>10</results>
+      </GeocoderResponseMetaData>
+    </metaDataProperty>
+    <featureMember xmlns="http://www.opengis.net/gml">
+      <GeoObject xmlns="http://maps.yandex.ru/ymaps/1.x" xmlns:gml="http://www.opengis.net/gml" gml:id="1">
+        <metaDataProperty xmlns="http://www.opengis.net/gml">
+          <GeocoderMetaData xmlns="http://maps.yandex.ru/geocoder/1.x">
+            <kind>house</kind>
+            <text>Россия, Нижний Новгород, улица Лейтенанта Шмидта, 1А</text>
+            <precision>exact</precision>
+            <AddressDetails xmlns="urn:oasis:names:tc:ciq:xsdschema:xAL:2.0">
+              <Country>
+                <AddressLine>Нижний Новгород, улица Лейтенанта Шмидта, 1А</AddressLine>
+                <CountryNameCode>RU</CountryNameCode>
+                <CountryName>Россия</CountryName>
+                <AdministrativeArea>
+                  <AdministrativeAreaName>Нижегородская область</AdministrativeAreaName>
+                  <SubAdministrativeArea>
+                    <SubAdministrativeAreaName>городской округ Нижний Новгород</SubAdministrativeAreaName>
+                    <Locality>
+                      <LocalityName>Нижний Новгород</LocalityName>
+                      <Thoroughfare>
+                        <ThoroughfareName>улица Лейтенанта Шмидта</ThoroughfareName>
+                        <Premise>
+                          <PremiseNumber>1А</PremiseNumber>
+                        </Premise>
+                      </Thoroughfare>
+                    </Locality>
+                  </SubAdministrativeArea>
+                </AdministrativeArea>
+              </Country>
+            </AddressDetails>
+          </GeocoderMetaData>
+        </metaDataProperty>
+        <description xmlns="http://www.opengis.net/gml">Нижний Новгород, Россия</description>
+        <name xmlns="http://www.opengis.net/gml">улица Лейтенанта Шмидта, 1А</name>
+        <boundedBy xmlns="http://www.opengis.net/gml">
+          <Envelope>
+            <lowerCorner>43.915499 56.287432</lowerCorner>
+            <upperCorner>43.931956 56.296584</upperCorner>
+          </Envelope>
+        </boundedBy>
+        <Point xmlns="http://www.opengis.net/gml">
+          <pos>43.923728 56.292008</pos>
+        </Point>
+      </GeoObject>
+    </featureMember>
+  </GeoObjectCollection>
+</ymaps>
