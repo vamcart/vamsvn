@@ -248,7 +248,7 @@ class SypexDumper
             define('V_MYSQL', sxd_ver2int(mysqli_get_server_info($GLOBALS['mysqlilink'])));
         } else {
             define('V_MYSQL', 0);
-            $this->error = 'sxd.actions.tab_connects();alert('.sxd_esc(mysqli_error()).');';
+            $this->error = 'sxd.actions.tab_connects();alert('.sxd_esc(mysqli_error($GLOBALS['mysqlilink'])).');';
         }
         $this->try = false;
 
@@ -414,7 +414,7 @@ class SypexDumper
         if ($r) {
             echo "sxd.clearOpt('db');sxd.addOpt(".sxd_php2json(array('db' => $this->getDBList())).");sxd.combos.services_db.select(0,'-');";
         } else {
-            echo 'alert('.sxd_esc(mysqli_error()).');';
+            echo 'alert('.sxd_esc(mysqli_error($GLOBALS['mysqlilink'])).');';
         }
     }
     public function cfg2js($cfg)
@@ -1830,7 +1830,7 @@ function sxd_esc($str, $quoted = true)
 }
 function sxd_my_error()
 {
-    trigger_error(mysqli_error(), E_USER_ERROR);
+    trigger_error(mysqli_error($GLOBALS['mysqlilink']), E_USER_ERROR);
 }
 function sxd_shutdown()
 {
