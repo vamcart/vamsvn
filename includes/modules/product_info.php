@@ -355,7 +355,7 @@ if (!file_exists(DIR_WS_POPUP_IMAGES.$img['image_name'])) $products_mo_popup_lin
 	if ($product->data['product_template'] == '' or $product->data['product_template'] == 'default') {
 		$files = array ();
 		if ($dir = opendir(DIR_FS_CATALOG.'templates/'.CURRENT_TEMPLATE.'/module/product_info/')) {
-			while ($file = scandir($dir)) {
+			while ($file = readdir($dir)) {
 				if (is_file(DIR_FS_CATALOG.'templates/'.CURRENT_TEMPLATE.'/module/product_info/'.$file) and ($file != "index.html") and (substr($file, 0, 1) !=".")) {
 					$files[] = array ('id' => $file, 'text' => $file);
 				} //if
