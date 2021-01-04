@@ -184,7 +184,7 @@
       </div>
     </div>
     <div class="col-auto mt-1">
-         <button class="btn btn-inverse checkout active btn-block"><i class="fas fa-cart-plus"></i> {$smarty.const.BOX_HEADING_ADD_PRODUCT_ID}</button>
+         <button class="btn btn-inverse checkout active btn-block cart-link-{$PRODUCTS_ID}{if $IN_CART} active{/if}"><i class="fas fa-cart-plus"></i> {if $IN_CART}{$smarty.const.IMAGE_BUTTON_IN_CART_IN}{else}{$smarty.const.BOX_HEADING_ADD_PRODUCT_ID}{/if}</button>
     </div>
     
     {if {$PRODUCTS_QUANTITY} > 0 && {$smarty.const.ONE_CLICK_BUY} == 'true'}

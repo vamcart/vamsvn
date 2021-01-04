@@ -43,7 +43,8 @@ function doBuyNow( id, quantity, update, get_cart, attributes, popup ) {
 
 function doAddProduct(id) {
 
-		var forma = $('#cart_quantity' + id + ' :input');
+		//var forma = $('#cart_quantity' + id + ' :input');
+		var forma = $('#cart_quantity :input');
 		var data = 'q=includes/modules/ajax/ajaxCart.php&';
 		var tmp = false;
 
@@ -72,7 +73,9 @@ function doAddProduct(id) {
 					 
 					 
 			$(".cart-link-"+parseInt(id)).addClass('active');
-			$(".cart-icon-"+parseInt(id)).replaceWith('<i class="text-danger fas fa-cart-plus cart-icon-'+parseInt(id)+'""></i>');
+			//$(".cart-icon-"+parseInt(id)).replaceWith('<i class="text-danger fas fa-cart-plus cart-icon-'+parseInt(id)+'""></i>');
+			//$(".cart-link-"+parseInt(id)).prop('title', 'УЖЕ В КОРЗИНЕ');
+			//$(".cart-link-"+parseInt(id)).text('УЖЕ В КОРЗИНЕ');
 			$('[data-toggle="tooltip"]').tooltip('hide');
 
     	               }
