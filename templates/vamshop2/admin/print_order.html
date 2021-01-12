@@ -5,47 +5,44 @@
 
 
 {if $smarty.const.MODULE_PAYMENT_SCHET_STATUS == 'True'}
-<p><b>Поставщик</b> {$schet1}<br />
-<b>Адрес</b> {$schet2}<br />
-<b>Телефон</b>&nbsp;{$schet3} <b>Факс</b> {$schet4}<br />
-<b>Р/с</b> 
-{$schet5} <b>в банке</b> {$schet6}<br />
-<b>К/с</b> 
-{$schet7} <b>БИК</b> {$schet8}<br />
-<b>ИНН</b> {$schet9}&nbsp; <b>КПП</b> {$schet10}&nbsp; <b>ОГРН</b> {$schet11} <b>Код по 
-ОКПО</b> {$schet12}<br /></p>
+<p><b>{$smarty.const.TEXT_SCHET_1}</b> {$schet1}<br />
+<b>{$smarty.const.TEXT_SCHET_2}</b> {$schet2}<br />
+<b>{$smarty.const.TEXT_SCHET_3}</b>&nbsp;{$schet3} <b>{$smarty.const.TEXT_SCHET_4}</b> {$schet4}<br />
+<b>{$smarty.const.TEXT_SCHET_5}</b> 
+{$schet5} <b>{$smarty.const.TEXT_SCHET_6}</b> {$schet6}<br />
+<b>{$smarty.const.TEXT_SCHET_7}</b> 
+{$schet7} <b>{$smarty.const.TEXT_SCHET_8}</b> {$schet8}<br />
+<b>{$smarty.const.TEXT_SCHET_9}</b> {$schet9}&nbsp; <b>{$smarty.const.TEXT_SCHET_10}</b> {$schet10}&nbsp; <b>{$smarty.const.TEXT_SCHET_11}</b> {$schet11} <b>{$smarty.const.TEXT_SCHET_12}</b> {$schet12}<br /></p>
 {/if}
 {if $company_name}
-<p><b>Покупатель</b> {$company_name}</p>
+<p><b>{$smarty.const.TEXT_SCHET_13}</b> {$company_name}</p>
 {/if}
 {if $address_label_shipping!=$address_label_customer}
-<p><b>Доставка:</b> {$address_label_shipping}</p>
+<p><b>{$smarty.const.TEXT_SCHET_14}</b> {$address_label_shipping}</p>
 {else}
-<p><b>Доставка:</b> {$address_label_payment}</p>
+<p><b>{$smarty.const.TEXT_SCHET_14}</b> {$address_label_payment}</p>
 {/if}
 <p>
-{if $company_address}<b>Адрес</b> {$company_address}<br />{/if}
-{if $company_rs}<b>Р/с</b> 
-{$company_rs}{/if} {if $company_bank_name}<b>в банке</b> {$company_bank_name}<br />{/if}
-{if $company_ks}<b>К/с</b> 
-{$company_ks}{/if} {if $company_bik}<b>БИК</b> {$company_bik}<br />{/if}
-{if $company_inn}<b>ИНН</b> {$company_inn}{/if}{if $company_kpp}&nbsp; <b>КПП</b> {$company_kpp}{/if}{if $company_ogrn}&nbsp; <b>ОГРН</b> {$company_ogrn}{/if} {if $company_okpo}<b>Код по 
-ОКПО</b> {$company_okpo}{/if}<br /></p>
-<p><b>Телефон:</b> {$schet15}<br />
-<b>E-Mail:</b> {$schet16}</p>
+{if $company_address}<b>{$smarty.const.TEXT_SCHET_2}</b> {$company_address}<br />{/if}
+{if $company_rs}<b>{$smarty.const.TEXT_SCHET_5}</b> 
+{$company_rs}{/if} {if $company_bank_name}<b>{$smarty.const.TEXT_SCHET_6}</b> {$company_bank_name}<br />{/if}
+{if $company_ks}<b>{$smarty.const.TEXT_SCHET_7}</b> 
+{$company_ks}{/if} {if $company_bik}<b>{$smarty.const.TEXT_SCHET_8}</b> {$company_bik}<br />{/if}
+{if $company_inn}<b>{$smarty.const.TEXT_SCHET_9}</b> {$company_inn}{/if}{if $company_kpp}&nbsp; <b>{$smarty.const.TEXT_SCHET_10}</b> {$company_kpp}{/if}{if $company_ogrn}&nbsp; <b>{$smarty.const.TEXT_SCHET_11}</b> {$company_ogrn}{/if} {if $company_okpo}<b>{$smarty.const.TEXT_SCHET_12}</b> {$company_okpo}{/if}<br /></p>
+<p><b>{$smarty.const.TEXT_SCHET_15}</b> {$schet15}<br />
+<b>{$smarty.const.TEXT_SCHET_16}</b> {$schet16}</p>
 {$extra_fields_data}
 {if $COMMENTS}<p>{$COMMENTS}</p>{/if}
 <hr>
-<p><b><font size="5">Счет № {$oID} от {$DATE}</font></b></p>
+<p><b><font size="5">{$smarty.const.TEXT_SCHET_17} {$oID} {$smarty.const.TEXT_SCHET_30} {$DATE}</font></b></p>
 <table border="0" width="99%" id="table1" cellspacing="0">
 	<tr>
-		<td width="5%" style="border-style: solid; border-width: 1px" align="center"><b>№ п/п</b></td>
-		<td width="17%" style="border-style: solid; border-width: 1px" align="center">
-		Н/номер</td>
-		<td width="48%" style="border-style: solid; border-width: 1px" align="center"><b>Наименование товара, услуг</b></td>
-		<td width="12%" style="border-style: solid; border-width: 1px" align="center"><b>Количество</b></td>
-		<td style="border-style: solid; border-width: 1px" width="6%" align="center"><b>Цена</b></td>
-		<td width="9%" style="border-style: solid; border-width: 1px" align="center"><b>Сумма руб.</b></td>
+		<td width="5%" style="border-style: solid; border-width: 1px" align="center"><b>{$smarty.const.TEXT_SCHET_18}</b></td>
+		<td width="17%" style="border-style: solid; border-width: 1px" align="center">{$smarty.const.TEXT_SCHET_19}</td>
+		<td width="48%" style="border-style: solid; border-width: 1px" align="center"><b>{$smarty.const.TEXT_SCHET_20}</b></td>
+		<td width="12%" style="border-style: solid; border-width: 1px" align="center"><b>{$smarty.const.TEXT_SCHET_21}</b></td>
+		<td style="border-style: solid; border-width: 1px" width="6%" align="center"><b>{$smarty.const.TEXT_SCHET_22}</b></td>
+		<td width="9%" style="border-style: solid; border-width: 1px" align="center"><b>{$smarty.const.TEXT_SCHET_23}</b></td>
 	</tr>
 	
         {foreach name=aussen item=order_values from=$order_data} 
@@ -68,12 +65,12 @@
   {/foreach} 
 
 </table>
-<p><b>Сумма прописью: {$summa}. Без НДС.</b></p>
+<p><b>{$smarty.const.TEXT_SCHET_24} {$summa}. {$smarty.const.TEXT_SCHET_25}</b></p>
 <p>&nbsp;</p>
 <p><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-Директор _____________________________ /Фамилия/</b></p>
-<p><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; МП&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-Главный бухгалтер _________________________/Фамилия/</b></p>
+{$smarty.const.TEXT_SCHET_26} _____________________________ /{$smarty.const.TEXT_SCHET_27}/</b></p>
+<p><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {$smarty.const.TEXT_SCHET_29}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+{$smarty.const.TEXT_SCHET_28} _________________________/{$smarty.const.TEXT_SCHET_27}/</b></p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 

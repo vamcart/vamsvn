@@ -858,4 +858,67 @@ define('SITE_REVIEW_NEW_SUBJECT', 'Добавлен новый отзыв о м�
 
 define('NAVBAR_TITLE_FAQ1', 'Вопросы посетителей');
 
+define('TEXT_SCHET_1','Поставщик');
+define('TEXT_SCHET_2','Адрес');
+define('TEXT_SCHET_3','Телефон');
+define('TEXT_SCHET_4','Факс');
+define('TEXT_SCHET_5','Р/с');
+define('TEXT_SCHET_6','в банке');
+define('TEXT_SCHET_7','К/с');
+define('TEXT_SCHET_8','БИК');
+define('TEXT_SCHET_9','ИНН');
+define('TEXT_SCHET_10','КПП');
+define('TEXT_SCHET_11','ОГРН');
+define('TEXT_SCHET_12','Код по ОКПО');
+define('TEXT_SCHET_13','Покупатель');
+define('TEXT_SCHET_14','Доставка:');
+define('TEXT_SCHET_15','Телефон:');
+define('TEXT_SCHET_16','E-Mail:');
+define('TEXT_SCHET_17','Счет №');
+define('TEXT_SCHET_18','№ п/п');
+define('TEXT_SCHET_19','Н/номер');
+define('TEXT_SCHET_20','Наименование товара, услуг');
+define('TEXT_SCHET_21','Количество');
+define('TEXT_SCHET_22','Цена');
+define('TEXT_SCHET_23','Сумма руб.');
+define('TEXT_SCHET_24','Сумма прописью:');
+define('TEXT_SCHET_25','Без НДС.');
+define('TEXT_SCHET_26','Директор');
+define('TEXT_SCHET_27','Фамилия');
+define('TEXT_SCHET_28','Главный бухгалтер');
+define('TEXT_SCHET_29','МП');
+define('TEXT_SCHET_30','от');
+
+define('TEXT_PACKINGSLIP_1','Отправитель:');
+define('TEXT_PACKINGSLIP_2','Адрес');
+define('TEXT_PACKINGSLIP_3','Телефон');
+define('TEXT_PACKINGSLIP_4','Факс');
+define('TEXT_PACKINGSLIP_5','Р/с');
+define('TEXT_PACKINGSLIP_6','в банке');
+define('TEXT_PACKINGSLIP_7','К/с');
+define('TEXT_PACKINGSLIP_8','БИК');
+define('TEXT_PACKINGSLIP_9','ИНН');
+define('TEXT_PACKINGSLIP_10','КПП');
+define('TEXT_PACKINGSLIP_11','ОГРН');
+define('TEXT_PACKINGSLIP_12','Код по ОКПО');
+define('TEXT_PACKINGSLIP_13','Покупатель');
+define('TEXT_PACKINGSLIP_14','Доставка:');
+define('TEXT_PACKINGSLIP_15','Телефон:');
+define('TEXT_PACKINGSLIP_16','E-Mail:');
+define('TEXT_PACKINGSLIP_17','Накладная №');
+define('TEXT_PACKINGSLIP_18','№ п/п');
+define('TEXT_PACKINGSLIP_19','Артикул');
+define('TEXT_PACKINGSLIP_20','Наименование товара, услуг');
+define('TEXT_PACKINGSLIP_21','Количество');
+define('TEXT_PACKINGSLIP_22','Цена');
+define('TEXT_PACKINGSLIP_23','Сумма руб.');
+define('TEXT_PACKINGSLIP_24','Сумма прописью:');
+define('TEXT_PACKINGSLIP_25','Без НДС.');
+define('TEXT_PACKINGSLIP_26','Отпустил');
+define('TEXT_PACKINGSLIP_27','Фамилия');
+define('TEXT_PACKINGSLIP_28','Получил');
+define('TEXT_PACKINGSLIP_29','МП');
+define('TEXT_PACKINGSLIP_30','Получатель:');
+define('TEXT_PACKINGSLIP_31','от');
+
 ?>
