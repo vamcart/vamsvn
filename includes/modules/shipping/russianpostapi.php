@@ -63,7 +63,7 @@ var $code, $title, $description, $icon, $enabled;
 
 		$total_weight = $shipping_weight*1000;      
       
-      $url = file_get_contents("http://tariff.russianpost.ru/tariff/v1/calculate?json&object=3010&from=".$store_zip_code."&to=".$order->delivery['postcode']."&weight=".$total_weight."");
+      $url = file_get_contents("http://tariff.russianpost.ru/tariff/v1/calculate?json&object=27030&pack=10&from=".$store_zip_code."&to=".$order->delivery['postcode']."&weight=".$total_weight."");
 		$out = json_decode($url);
 		
 		//echo var_dump($out);
