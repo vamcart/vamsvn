@@ -48,7 +48,7 @@ $order_check = vam_db_fetch_array($order_query_check);
 	$extrfieldsinf = vamDBquery("select fields_name from " . TABLE_EXTRA_FIELDS_INFO . " where fields_id = '" . $dataexfes['fields_id'] . "' and languages_id = '" . $_SESSION['languages_id'] . "'");
 
 	$extrfieldsres = vam_db_fetch_array($extrfieldsinf,true);
-	$extra_fields .= $extrfieldsres['fields_name'] . ' : ' .
+	$extra_fields .= $extrfieldsres['fields_name'] . ': ' .
 	$rescusextrfields['value'] . "\n";
 	$vamTemplate->assign('customer_extra_fields', $extra_fields);
   }
