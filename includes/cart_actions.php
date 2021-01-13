@@ -81,20 +81,20 @@ if (isset ($_GET['action'])) {
 						$_POST['cart_quantity'][$i] = MAX_PRODUCTS_QTY;
 					$attributes = ($_POST['id'][$_POST['products_id'][$i]]) ? $_POST['id'][$_POST['products_id'][$i]] : '';
 
-          if ( ($_POST['cart_quantity'][$i] >= vam_get_products_quantity_order_min($_POST['products_id'][$i])) ) {
+          if ( ($_POST['cart_quantity'][$i] >= vam_get_products_quantity_order_min((int)$_POST['products_id'][$i])) ) {
 
-          if ( ($_POST['cart_quantity'][$i] <= vam_get_products_quantity_order_max($_POST['products_id'][$i])) ) {
+          if ( ($_POST['cart_quantity'][$i] <= vam_get_products_quantity_order_max((int)$_POST['products_id'][$i])) ) {
 
                unset($_SESSION['error_cart_msg']);
                
 					$_SESSION['cart']->add_cart($_POST['products_id'][$i], vam_remove_non_numeric($_POST['cart_quantity'][$i]), $attributes, false);
 
           } else {
-            $_SESSION['error_cart_msg'] = PRODUCTS_ORDER_QTY_MAX_TEXT_INFO . ' ' . vam_get_products_quantity_order_max($_POST['products_id'][$i]);
+            $_SESSION['error_cart_msg'] = PRODUCTS_ORDER_QTY_MAX_TEXT_INFO . ' ' . vam_get_products_quantity_order_max((int)$_POST['products_id'][$i]);
           }
 
           } else {
-            $_SESSION['error_cart_msg'] = PRODUCTS_ORDER_QTY_MIN_TEXT_INFO . ' ' . vam_get_products_quantity_order_min($_POST['products_id'][$i]);
+            $_SESSION['error_cart_msg'] = PRODUCTS_ORDER_QTY_MIN_TEXT_INFO . ' ' . vam_get_products_quantity_order_min((int)$_POST['products_id'][$i]);
           }
 
 				}
@@ -115,18 +115,18 @@ if (isset ($_GET['action'])) {
 
           unset($_SESSION['error_cart_msg']);
 
-          if ( ($_POST['products_qty'] >= vam_get_products_quantity_order_min($_POST['products_id'])) or ($_SESSION['cart']->get_quantity(vam_get_uprid($_POST['products_id'], $_POST['id'])) >= vam_get_products_quantity_order_min($_POST['products_id']) ) ) {
+          if ( ($_POST['products_qty'] >= vam_get_products_quantity_order_min((int)$_POST['products_id'])) or ($_SESSION['cart']->get_quantity(vam_get_uprid($_POST['products_id'], $_POST['id'])) >= vam_get_products_quantity_order_min((int)$_POST['products_id']) ) ) {
 
-          if ( ($_POST['products_qty'] <= vam_get_products_quantity_order_max($_POST['products_id'])) or ($_SESSION['cart']->get_quantity(vam_get_uprid($_POST['products_id'], $_POST['id'])) >= vam_get_products_quantity_order_max($_POST['products_id']) ) ) {
+          if ( ($_POST['products_qty'] <= vam_get_products_quantity_order_max((int)$_POST['products_id'])) or ($_SESSION['cart']->get_quantity(vam_get_uprid($_POST['products_id'], $_POST['id'])) >= vam_get_products_quantity_order_max((int)$_POST['products_id']) ) ) {
           
 				$_SESSION['cart']->add_cart((int) $_POST['products_id'], $_SESSION['cart']->get_quantity(vam_get_uprid($_POST['products_id'], $_POST['id'])) + vam_remove_non_numeric($_POST['products_qty']), $_POST['id']);
 
           } else {
-            $_SESSION['error_cart_msg'] = PRODUCTS_ORDER_QTY_MAX_TEXT_INFO . ' ' . vam_get_products_quantity_order_max($_POST['products_id']);
+            $_SESSION['error_cart_msg'] = PRODUCTS_ORDER_QTY_MAX_TEXT_INFO . ' ' . vam_get_products_quantity_order_max((int)$_POST['products_id']);
           }
 
           } else {
-            $_SESSION['error_cart_msg'] = PRODUCTS_ORDER_QTY_MIN_TEXT_INFO . ' ' . vam_get_products_quantity_order_min($_POST['products_id']);
+            $_SESSION['error_cart_msg'] = PRODUCTS_ORDER_QTY_MIN_TEXT_INFO . ' ' . vam_get_products_quantity_order_min((int)$_POST['products_id']);
           }
           
 			}
@@ -215,8 +215,8 @@ if (isset ($_GET['action'])) {
 
             unset($_SESSION['error_cart_msg']);
             
-          if ( (vam_get_products_quantity_order_min($_GET['BUYproducts_id']) > 1)) {
-            $_SESSION['error_cart_msg'] = PRODUCTS_ORDER_QTY_MIN_TEXT_INFO . ' ' . vam_get_products_quantity_order_min($_GET['BUYproducts_id']);
+          if ( (vam_get_products_quantity_order_min((int)$_GET['BUYproducts_id']) > 1)) {
+            $_SESSION['error_cart_msg'] = PRODUCTS_ORDER_QTY_MIN_TEXT_INFO . ' ' . vam_get_products_quantity_order_min((int)$_GET['BUYproducts_id']);
 					vam_redirect(vam_href_link(FILENAME_PRODUCT_INFO, 'products_id=' . (int) $_GET['BUYproducts_id']));
           }
 
@@ -253,8 +253,8 @@ if (isset ($_GET['action'])) {
 				$qty = (isset($_GET['products_qty']) && $_GET['products_qty']!='' ? $_GET['products_qty']:1);
             unset($_SESSION['error_cart_msg']);
             
-          if ( (vam_get_products_quantity_order_min($_GET['pid']) > 1)) {
-            $_SESSION['error_cart_msg'] = PRODUCTS_ORDER_QTY_MIN_TEXT_INFO . ' ' . vam_get_products_quantity_order_min($_GET['pid']);
+          if ( (vam_get_products_quantity_order_min((int)$_GET['pid']) > 1)) {
+            $_SESSION['error_cart_msg'] = PRODUCTS_ORDER_QTY_MIN_TEXT_INFO . ' ' . vam_get_products_quantity_order_min((int)$_GET['pid']);
          if (AJAX_CART == 'false') {
 					vam_redirect(vam_href_link(FILENAME_PRODUCT_INFO, 'products_id=' . (int) $_GET['pid']));
           } else {

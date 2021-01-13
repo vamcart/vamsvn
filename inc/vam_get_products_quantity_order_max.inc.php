@@ -16,7 +16,7 @@
 
   function vam_get_products_quantity_order_max($product_id) {
 
-    $the_products_quantity_order_max_query = vam_db_query("select products_id, products_quantity_max from " . TABLE_PRODUCTS . " where products_id = '" . $product_id . "'");
+    $the_products_quantity_order_max_query = vam_db_query("select products_id, products_quantity_max from " . TABLE_PRODUCTS . " where products_id = '" . (int)$product_id . "'");
     $the_products_quantity_order_max = vam_db_fetch_array($the_products_quantity_order_max_query);
     return $the_products_quantity_order_max['products_quantity_max'];
   }
