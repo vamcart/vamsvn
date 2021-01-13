@@ -67,7 +67,7 @@ if ($order->info['payment_method'] != '' && $order->info['payment_method'] != 'n
 // Order History
 $statuses_query = vam_db_query("select os.orders_status_name, osh.date_added, osh.comments from ".TABLE_ORDERS_STATUS." os, ".TABLE_ORDERS_STATUS_HISTORY." osh where osh.orders_id = '".(int) $_GET['order_id']."' and osh.orders_status_id = os.orders_status_id and os.language_id = '".(int) $_SESSION['languages_id']."' order by osh.date_added");
 while ($statuses = vam_db_fetch_array($statuses_query)) {
-	$history_block .= '<p>' . vam_date_short($statuses['date_added'])."\n".$statuses['orders_status_name']."\n". (empty ($statuses['comments']) ? '&nbsp;' : nl2br(htmlspecialchars($statuses['comments'])))."\n".'</p>';
+	$history_block .= '<p>' . vam_date_short($statuses['date_added'])."\n".$statuses['orders_status_name']."\n". (empty ($statuses['comments']) ? '&nbsp;' : nl2br($statuses['comments']))."\n".'</p>';
 }
 $vamTemplate->assign('HISTORY_BLOCK', $history_block);
 
