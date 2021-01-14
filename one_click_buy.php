@@ -345,7 +345,7 @@ $vamTemplate->assign('INPUT_TELEPHONE', vam_draw_input_fieldNote(array ('name' =
         }
 $vamTemplate->assign('INPUT_TEXT', vam_draw_textarea_field('message_body', 'soft', 10, 3, stripslashes($_POST['message_body'])));
 $vamTemplate->assign('FORM_END', '</form>');
-$vamTemplate->assign('BUTTON_SUBMIT', vam_image_submit('submit.png',  "Оформить заказ"));
+$vamTemplate->assign('BUTTON_SUBMIT', vam_image_submit('submit.png',  IMAGE_BUTTON_CHECKOUT));
 $vamTemplate->assign('BUTTON_CONTINUE', '<a class="button" href="javascript:window.close()">'.vam_image_button('back.png', IMAGE_BUTTON_BACK).'</a>');
 
 	$vamTemplate->caching = 0;
