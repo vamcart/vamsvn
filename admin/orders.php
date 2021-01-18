@@ -1337,7 +1337,7 @@ function init() {
 			}else{
 				echo '<font color="#FF0000">'.TEXT_VALIDATING.'</font>';
 			}
-			echo '</td>'."\n".'            <td class="dataTableContent-'.$class.'">'.nl2br(vam_db_output($orders_history['comments'])).'&nbsp;</td>'."\n".'          </tr>'."\n";
+			echo '</td>'."\n".'            <td class="dataTableContent-'.$class.'">'.nl2br($orders_history['comments']).'&nbsp;</td>'."\n".'          </tr>'."\n";
 		}
 	} else {
 		echo '          <tr>'."\n".'            <td class="smallText" colspan="5">'.TEXT_NO_ORDER_HISTORY.'</td>'."\n".'          </tr>'."\n";
