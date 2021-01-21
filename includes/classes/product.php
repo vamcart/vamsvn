@@ -441,8 +441,7 @@ $similar_products_full[] = $this->buildDataArray($products);
 		$module_content = array ();
 
 		              //echo TEXT_PRODUCTS_BY_BUNDLE . "</strong></td></tr>\n";
-		              $bundle_query = vamDBquery(" SELECT p.products_quantity,p.products_id,p.products_price,pd.products_name, pb.* FROM " . TABLE_PRODUCTS . " p, " . TABLE_PRODUCTS_BUNDLES . " pb, " . TABLE_PRODUCTS_DESCRIPTION . " pd WHERE pd.products_id = pb.subproduct_id and p.products_id = pd.products_id and pb.bundle_id = " . (int)$this->pID . " and pd.language_id = '".(int) $_SESSION['languages_id']."' limit 20");
-		              while ($bundle_data = vam_db_fetch_array($bundle_query,true)) {
+		              $bundle_query = vamDBquery(" SELECT p.products_quantity,p.manufacturers_id,p.products_id,p.products_price,pd.products_name, pb.* FROM " . TABLE_PRODUCTS . " p, " . TABLE_PRODUCTS_BUNDLES . " pb, " . TABLE_PRODUCTS_DESCRIPTION . " pd WHERE pd.products_id = pb.subproduct_id and p.products_id = pd.products_id and pb.bundle_id = " . (int)$this->pID . " and pd.language_id = '".(int) $_SESSION['languages_id']."' limit 20");		              while ($bundle_data = vam_db_fetch_array($bundle_query,true)) {
 		              $module_content[] = $this->buildDataArray($bundle_data);	                  
 		              }
 		              
