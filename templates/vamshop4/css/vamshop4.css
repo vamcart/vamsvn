@@ -307,25 +307,37 @@ a#scrollup:hover {
 
 /* /Scroll To Top */
 
-.dropdown-menu {
-  background: var(--background-color);
-}
-
 .dropdown-menu.cart {
-  min-width: 450px; 
-  margin: 1em 0 0 0;
-  position: absolute; 
-  right: 0; /* Открывать корзину вправо */ 
-  left: auto; /* Открывать корзину влево */   
+  /*right: auto;*/ /* Открывать корзину вправо */ 
+  left: auto; /* Открывать корзину влево */ 
+  /*height: 350px;
+  min-height: 350px;*/
+  max-height: 350px;
+  min-width: 400px;
+  overflow-y: auto;
+  overflow-x: hidden;  
+}	
+
+.dropdown-menu {
+
+/*min-width: 260px;
+min-height: 500px;
+*/
+z-index: 9999;
+left: auto;
+
 }
 
 @media (max-width: 992px) {
 .dropdown-menu.cart {
-  min-width: 450px; 
-  margin: 1em 0 0 0;
-  position: absolute; 
-  right: auto; /* Открывать корзину вправо */ 
-  left: 0; /* Открывать корзину влево */   
+  /*right: auto;*/ /* Открывать корзину вправо */ 
+  left: auto; /* Открывать корзину влево */ 
+  /*height: 350px;
+  min-height: 350px;*/
+  max-height: 350px;
+  min-width: 400px;
+  overflow-y: auto;
+  overflow-x: hidden;  
 }
 }
 
@@ -1024,6 +1036,16 @@ li.level3 {
 
 #checkout .form-check {
   padding-left: 0;
+}
+
+.dropdown.cart.header .sticky-wrapper {
+	position: relative;
+	/*min-height: 200vh;*/
+}
+
+.dropdown.cart.header .sticky-top {
+	position: sticky;
+	top: 0px;
 }
 
 .sticky-wrapper {
