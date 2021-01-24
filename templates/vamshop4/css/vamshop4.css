@@ -1045,6 +1045,10 @@ li.level3 {
 	/*min-height: 200vh;*/
 }
 
+.dropdown.cart.header .dropdown-menu.cart {
+  top: 20px !important;
+}
+
 .dropdown.cart.header .sticky-top {
 	position: sticky;
 	top: 0px;
