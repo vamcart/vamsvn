@@ -2988,7 +2988,7 @@ INSERT INTO countries VALUES (237,'Zaire','ZR','ZAR','1','0');
 INSERT INTO countries VALUES (238,'Zambia','ZM','ZMB','1','0');
 INSERT INTO countries VALUES (239,'Zimbabwe','ZW','ZWE','1','0');
 
-INSERT INTO currencies VALUES (1,'Рубль','RUB','','руб.',',','','0','1.0000', now());
+INSERT INTO currencies VALUES (1,'Рубль','RUB','','₽',',','','0','1.0000', now());
 
 
 INSERT INTO languages VALUES (1,'Русский','ru','icon.gif','russian',1,'utf-8');
