@@ -20,7 +20,7 @@
 define('MODULE_PAYMENT_ENOT_TEXT_TITLE', 'Enot (Visa, MasterCard, МИР)');
 define('MODULE_PAYMENT_ENOT_TEXT_PUBLIC_TITLE', 'Enot (Visa, MasterCard, МИР)');
 define('MODULE_PAYMENT_ENOT_TEXT_DESCRIPTION', '');
-define('MODULE_PAYMENT_ENOT_TEXT_ADMIN_DESCRIPTION', 'Модуль приёма оплаты Enot для физ. лиц.');
+define('MODULE_PAYMENT_ENOT_TEXT_ADMIN_DESCRIPTION', 'Модуль приёма оплаты Enot.Io. Как настроить модуль оплаты читайте в <a href="https://blog.vamshop.ru/2021/01/25/%d0%b4%d0%be%d0%b1%d0%b0%d0%b2%d0%bb%d0%b5%d0%bd-%d0%bd%d0%be%d0%b2%d1%8b%d0%b9-%d0%bc%d0%be%d0%b4%d1%83%d0%bb%d1%8c-%d0%be%d0%bf%d0%bb%d0%b0%d1%82%d1%8b-enot-io/" target="_blank"><u>официальном блоге VamShop</u></a>');
   
 define('MODULE_PAYMENT_ENOT_STATUS_TITLE' , 'Разрешить модуль Enot');
 define('MODULE_PAYMENT_ENOT_STATUS_DESC' , 'Вы хотите разрешить использование модуля при оформлении заказов?');
