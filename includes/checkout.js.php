@@ -62,10 +62,11 @@ $(document).ajaxSend(function(){
 });
 
 $(document).ajaxSuccess(function(){
-  $('.ajax-preloader').hide();
+  //$('.ajax-preloader').hide();
 });
 
 $(document).ajaxStop(function(){
+  $('.ajax-preloader').hide();
   $('.ajax-preloader').remove();
 });
 
@@ -80,7 +81,6 @@ $('#box')
 				'shipping': $('input[name=shipping]:checked').val(),
 				'payment': $('input[name=payment]:checked').val(),
 				'pvz_boxberry': $('select[name=pvz_boxberry]').val(), 
-				'pvz_grastin': $('select[name=pvz_grastin]').val(), 
 				'pvz_sdek': $('select[name=pvz_sdek]').val(), 
 				'pvz_newpost': $('select[name=pvz_newpost]').val() 
 			}
@@ -94,7 +94,6 @@ $('#box')
 			url +' #payment_options > *', {
 				'shipping': $('input[name=shipping]:checked').val(),
 				'pvz_boxberry': $('select[name=pvz_boxberry]').val(), 
-				'pvz_grastin': $('select[name=pvz_grastin]').val(), 
 				'pvz_sdek': $('select[name=pvz_sdek]').val(), 
 				'pvz_newpost': $('select[name=pvz_newpost]').val() 
 			}
@@ -102,14 +101,13 @@ $('#box')
 	}
 )		
 
-.on('change', 'input[name=shipping],input[name=payment],select[name=pvz_boxberry],select[name=pvz_grastin],select[name=pvz_sdek],select[name=pvz_newpost]', 
+.on('change', 'input[name=shipping],input[name=payment],select[name=pvz_boxberry],select[name=pvz_sdek],select[name=pvz_newpost]', 
 	function(){
 		$('#shipping_options').load(
 			url +' #shipping_options > *', {
 				'shipping': $('input[name=shipping]:checked').val(),
 				'payment': $('input[name=payment]:checked').val(),
 				'pvz_boxberry': $('select[name=pvz_boxberry]').val(), 
-				'pvz_grastin': $('select[name=pvz_grastin]').val(), 
 				'pvz_sdek': $('select[name=pvz_sdek]').val(), 
 				'pvz_newpost': $('select[name=pvz_newpost]').val(), 
 			}, 
@@ -217,7 +215,6 @@ $('#box')
 			'telephone': $('input[name=telephone]').val(),
 			'city': $('input[name=city]').val(),
 			'pvz_boxberry': $('select[name=pvz_boxberry]').val(), 
-			'pvz_grastin': $('select[name=pvz_grastin]').val(), 
 			'pvz_sdek': $('select[name=pvz_sdek]').val(), 
 			'pvz_newpost': $('select[name=pvz_newpost]').val(), 
 		}
@@ -237,7 +234,6 @@ $('#box')
 				'telephone': $('input[name=telephone]').val(),
 				'city': $('input[name=city]').val(),
 				'pvz_boxberry': $('select[name=pvz_boxberry]').val(), 
-				'pvz_grastin': $('select[name=pvz_grastin]').val(), 
 				'pvz_sdek': $('select[name=pvz_sdek]').val(), 
 				'pvz_newpost': $('select[name=pvz_newpost]').val() 
 			}
@@ -267,7 +263,7 @@ $('#box')
 //.on('refresh', '#shipping_modules_box', function(('input[name=checkout_possible]').val());})	
 //.on$('input[name=checkout_possible]').val()
 
-.on('change', 'input[name=shipping], input[name=payment], select[name=country], select[name=state],select[name=pvz_boxberry],select[name=pvz_grastin],select[name=pvz_sdek],select[name=pvz_newpost],input[name=postcode], input[name=telephone], input[name=city]', 
+.on('change', 'input[name=shipping], input[name=payment], select[name=country], select[name=state],select[name=pvz_boxberry],select[name=pvz_sdek],select[name=pvz_newpost],input[name=postcode], input[name=telephone], input[name=city]', 
 	function(){
 	$('#shipping_country_box').load(
 		url +' #shipping_country', {
@@ -277,7 +273,6 @@ $('#box')
 			'state': $('select[name=state]').val(),
 			'city': $('input[name=city]').val(),
 			'pvz_boxberry': $('select[name=pvz_boxberry]').val(), 
-			'pvz_grastin': $('select[name=pvz_grastin]').val(), 
 			'pvz_sdek': $('select[name=pvz_sdek]').val(), 
 			'pvz_newpost': $('select[name=pvz_newpost]').val(), 
 			'telephone': $('input[name=telephone]').val(),
