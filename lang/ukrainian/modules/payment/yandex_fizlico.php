@@ -17,17 +17,17 @@
    Released under the GNU General Public License 
    ---------------------------------------------------------------------------------------*/
 
-define('MODULE_PAYMENT_YANDEX_FIZLICO_TEXT_TITLE', 'Яндекс.Деньги (Карточки Visa, MasterCard, Яндекс.Деньги)');
-define('MODULE_PAYMENT_YANDEX_FIZLICO_TEXT_PUBLIC_TITLE', 'Яндекс.Деньги (Карточки Visa, MasterCard, Яндекс.Деньги)');
+define('MODULE_PAYMENT_YANDEX_FIZLICO_TEXT_TITLE', 'ЮКасса (Visa, MasterCard, МИР)');
+define('MODULE_PAYMENT_YANDEX_FIZLICO_TEXT_PUBLIC_TITLE', 'ЮКасса (Visa, MasterCard, МИР)');
 define('MODULE_PAYMENT_YANDEX_FIZLICO_TEXT_DESCRIPTION', '');
-define('MODULE_PAYMENT_YANDEX_FIZLICO_TEXT_ADMIN_DESCRIPTION', 'Модуль приёма оплаты Яндекс.Деньги для физ. лиц.');
+define('MODULE_PAYMENT_YANDEX_FIZLICO_TEXT_ADMIN_DESCRIPTION', 'Модуль приёма оплаты ЮКасса для физ. лиц.');
   
-define('MODULE_PAYMENT_YANDEX_FIZLICO_STATUS_TITLE' , 'Разрешить модуль Яндекс-деньги');
+define('MODULE_PAYMENT_YANDEX_FIZLICO_STATUS_TITLE' , 'Разрешить модуль ЮКасса');
 define('MODULE_PAYMENT_YANDEX_FIZLICO_STATUS_DESC' , 'Вы хотите разрешить использование модуля при оформлении заказов?');
 define('MODULE_PAYMENT_YANDEX_FIZLICO_ALLOWED_TITLE' , 'Разрешённые страны');
 define('MODULE_PAYMENT_YANDEX_FIZLICO_ALLOWED_DESC' , 'Укажите коды стран, для которых будет доступен данный модуль (например RU,DE (оставьте поле пустым, если хотите что б модуль был доступен покупателям из любых стран))');
-define('MODULE_PAYMENT_YANDEX_FIZLICO_SHOP_ID_TITLE' , 'Номер кошелька Яндекс.Деньги');
-define('MODULE_PAYMENT_YANDEX_FIZLICO_SHOP_ID_DESC' , 'Укажите Ваш кошелёк в яндекс.деньгах.');
+define('MODULE_PAYMENT_YANDEX_FIZLICO_SHOP_ID_TITLE' , 'Номер кошелька ЮКасса');
+define('MODULE_PAYMENT_YANDEX_FIZLICO_SHOP_ID_DESC' , 'Укажите Ваш кошелёк в юmoney.');
 define('MODULE_PAYMENT_YANDEX_FIZLICO_SECRET_KEY_TITLE' , 'Секретное слово');
 define('MODULE_PAYMENT_YANDEX_FIZLICO_SECRET_KEY_DESC' , 'В данной опции укажите Секретное слово из настроек на сайте яндекс.деньги, необходимо для уведомлений и автоматический смены статуса заказа.');
 define('MODULE_PAYMENT_YANDEX_FIZLICO_SORT_ORDER_TITLE' , 'Порядок сортировки');

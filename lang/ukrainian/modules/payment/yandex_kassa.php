@@ -17,12 +17,12 @@
    Released under the GNU General Public License 
    ---------------------------------------------------------------------------------------*/
 
-  define('MODULE_PAYMENT_YANDEX_KASSA_TEXT_TITLE', 'Яндекс.Касса (Карточки Visa, MasterCard, Яндекс.Деньги)');
-  define('MODULE_PAYMENT_YANDEX_KASSA_TEXT_PUBLIC_TITLE', 'Яндекс.Касса (Карточки Visa, MasterCard, Яндекс.Деньги)');
+  define('MODULE_PAYMENT_YANDEX_KASSA_TEXT_TITLE', 'ЮКасса (Карточки Visa, MasterCard, Яндекс.Деньги)');
+  define('MODULE_PAYMENT_YANDEX_KASSA_TEXT_PUBLIC_TITLE', 'ЮКасса (Карточки Visa, MasterCard, Яндекс.Деньги)');
   define('MODULE_PAYMENT_YANDEX_KASSA_TEXT_DESCRIPTION', 'После нажатия кнопки Подтвердить заказ Вы перейдёте на сайт платёжной системы для оплаты заказа, после оплаты Ваш заказ будет выполнен.');
-  define('MODULE_PAYMENT_YANDEX_KASSA_TEXT_ADMIN_DESCRIPTION', 'Как правильно настроить модуль оплаты Яндекс.Касса читайте в нашем <a href="http://blog.vamshop.ru/2019/08/18/%d0%bd%d0%b0%d1%81%d1%82%d1%80%d0%be%d0%b9%d0%ba%d0%b0-%d0%bc%d0%be%d0%b4%d1%83%d0%bb%d1%8f-%d0%be%d0%bf%d0%bb%d0%b0%d1%82%d1%8b-%d1%8f%d0%bd%d0%b4%d0%b5%d0%ba%d1%81-%d0%ba%d0%b0%d1%81%d1%81%d0%b0/"><u>блоге</u></a>.');
+  define('MODULE_PAYMENT_YANDEX_KASSA_TEXT_ADMIN_DESCRIPTION', 'Как правильно настроить модуль оплаты ЮКасса читайте в нашем <a href="http://blog.vamshop.ru/2019/08/18/%d0%bd%d0%b0%d1%81%d1%82%d1%80%d0%be%d0%b9%d0%ba%d0%b0-%d0%bc%d0%be%d0%b4%d1%83%d0%bb%d1%8f-%d0%be%d0%bf%d0%bb%d0%b0%d1%82%d1%8b-%d1%8f%d0%bd%d0%b4%d0%b5%d0%ba%d1%81-%d0%ba%d0%b0%d1%81%d1%81%d0%b0/"><u>блоге</u></a>.');
   
-define('MODULE_PAYMENT_YANDEX_KASSA_STATUS_TITLE' , 'Разрешить модуль Яндекс.Касса');
+define('MODULE_PAYMENT_YANDEX_KASSA_STATUS_TITLE' , 'Разрешить модуль ЮКасса');
 define('MODULE_PAYMENT_YANDEX_KASSA_STATUS_DESC' , 'Вы хотите разрешить использование модуля при оформлении заказов?');
 define('MODULE_PAYMENT_YANDEX_KASSA_ALLOWED_TITLE' , 'Разрешённые страны');
 define('MODULE_PAYMENT_YANDEX_KASSA_ALLOWED_DESC' , 'Укажите коды стран, для которых будет доступен данный модуль (например RU,DE (оставьте поле пустым, если хотите что б модуль был доступен покупателям из любых стран))');
@@ -38,11 +38,11 @@ define('MODULE_PAYMENT_YANDEX_KASSA_TEST_TITLE','Режим работы');
 define('MODULE_PAYMENT_YANDEX_KASSA_TEST_DESC','test - для тестирования работы модуля, production - для полноценного приёма оплаты.');
 define('MODULE_PAYMENT_YANDEX_KASSA_ORDER_STATUS_ID_TITLE' , 'Укажите оплаченный статус заказа');
 define('MODULE_PAYMENT_YANDEX_KASSA_ORDER_STATUS_ID_DESC' , 'Укажите оплаченный статус заказа.');
-define('MODULE_PAYMENT_YANDEX_KASSA_SEND_CHECK_TITLE' , 'Отправлять в Яндекс.Кассу данные для чеков (54-ФЗ)');
-define('MODULE_PAYMENT_YANDEX_KASSA_SEND_CHECK_DESC' , 'Необходимо для работы онлайн-кассы через Яндекс.Кассу.');
+define('MODULE_PAYMENT_YANDEX_KASSA_SEND_CHECK_TITLE' , 'Отправлять в ЮКасса данные для чеков (54-ФЗ)');
+define('MODULE_PAYMENT_YANDEX_KASSA_SEND_CHECK_DESC' , 'Необходимо для работы онлайн-кассы через ЮКассау.');
 define('MODULE_PAYMENT_YANDEX_KASSA_PAYMENT_TYPE_TITLE','Способ оплаты.');
 define('MODULE_PAYMENT_YANDEX_KASSA_PAYMENT_TYPE_DESC','Выберите способ оплаты:<br />
-Пустое значение - Выбор способа оплаты на стороне Яндекс.Кассы.<br />
+Пустое значение - Выбор способа оплаты на стороне ЮКасса.<br />
 PC - Оплата со счета Яндекс.Денег.<br />
 АС - Оплата с произвольной банковской карты.<br />
 MC - Платеж со счета мобильного телефона.<br />
