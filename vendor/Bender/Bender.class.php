@@ -51,17 +51,36 @@ class Bender
         }
     }
     // Minify CSS / Javascripts and write output
-    protected function minify( $scripts, $ext, $output, $hash )
+    protected function minify( $scripts, $ext, $output )
     {
         $path = $this->root_dir();
         //$output = preg_replace('/'.ltrim(DIR_WS_CATALOG,'/').'/','',$output,1);
         //$output = str_replace('/',DIRECTORY_SEPARATOR,$output);
         //$outfile = $path.$output;
         
-        //echo var_dump($output);
+        foreach ($scripts as $key => $value) {
+        	$files.=hash_file('sha1',DIR_FS_CATALOG.$value);
+        }
+        
+        $hash = hash('sha1',$files);
 
-        //echo $outfile;
+        $outfile = $hash.'.'.$ext;
+        $outfile_path = "templates/".CURRENT_TEMPLATE."/cache/".$outfile;
+        $outfile = $path."templates/".CURRENT_TEMPLATE."/cache/".$outfile;
 
+        if ( file_exists( $outfile ) )
+        {
+            if ( $this->ttl == -1 )
+            {
+                // never recompile
+                return true;
+            }
+            $fileage = time() - filemtime( $outfile );
+            if ( $fileage < $this->ttl )
+            {
+                return true;
+            }
+        }
         $str = $this->join_files( $scripts );
         switch ( $ext )
         {
@@ -100,48 +119,47 @@ class Bender
                 }
                 break;
         }
-        $outfile = hash('sha1', $packed).'.'.$ext;
-        $outfile_path = "templates/".CURRENT_TEMPLATE."/cache/".$outfile;
-        $outfile = $path."templates/".CURRENT_TEMPLATE."/cache/".$outfile;
-        if ( file_exists( $outfile ) )
-        {
-            if ( $this->ttl == -1 )
-            {
-                // never recompile
-                //return true;
-                return $outfile_path;
-            }
-            $fileage = time() - filemtime( $outfile );
-            if ( $fileage < $this->ttl )
-            {
-                //return true;
-                return $outfile_path;
-            }
-        }        
         file_put_contents( $outfile, $packed );
-        
-        if ($hash == true) {
-          return $outfile_path;     
-        }
     }
     // Print output for CSS or Javascript
     public function output( $output )
     {
         //$output = ltrim( $output, './' );
         global $_javascripts, $_stylesheets;
-
         switch ( $this->get_ext( $output ) )
         {
             case "css":
-                $this->check_recombine( $output, $_stylesheets );
-                //$this->minify( $_stylesheets, "css", $output, true );
-                return '<link href="' . $this->minify( $_stylesheets, "css", $output, true ) . '" rel="stylesheet" type="text/css"/>';
+
+                $path = $this->root_dir();
+                foreach ($_stylesheets as $key => $value) {
+                 $files.=hash_file('sha1',DIR_FS_CATALOG.$value);
+                }
+        
+                $hash = hash('sha1',$files);
+                $outfile = $hash.'.css';
+                $outfile_path = "templates/".CURRENT_TEMPLATE."/cache/".$outfile;
+                $outfile = $path."templates/".CURRENT_TEMPLATE."/cache/".$outfile;
+
+                $this->check_recombine( $outfile, $_stylesheets );
+                $this->minify( $_stylesheets, "css", $outfile );
+                return '<link href="' . $this->get_src( $outfile_path ) . '" rel="stylesheet" type="text/css"/>';
                 //return '<script id="loadcss">function loadCSS(e,n,o,t){"use strict";var d=window.document.createElement("link"),i=n||window.document.getElementsByTagName("script")[0],r=window.document.styleSheets;return d.rel="stylesheet",d.href=e,d.media="only x",t&&(d.onload=t),i.parentNode.insertBefore(d,i),d.onloadcssdefined=function(e){for(var n,o=0;o<r.length;o++)r[o].href&&r[o].href===d.href&&(n=!0);n?e():setTimeout(function(){d.onloadcssdefined(e)})},d.onloadcssdefined(function(){d.media=o||"all"}),d}loadCSS("' . $this->get_src( $output ) . '", document.getElementById("loadcss"));</script><noscript><link href="' . $this->get_src($output) . '" rel="stylesheet"></noscript>';    
                 break;
             case "js":
-                $this->check_recombine( $output, $_javascripts );
-                //$this->minify( $_javascripts, "js", $output, true );
-                return '<script src="' . $this->minify( $_javascripts, "js", $output, true ) . '"></script>';
+
+                $path = $this->root_dir();
+                foreach ($_javascripts as $key => $value) {
+                        $files.=hash_file('sha1',DIR_FS_CATALOG.$value);
+                }
+        
+                $hash = hash('sha1',$files);
+                $outfile = $hash.'.js';
+                $outfile_path = "templates/".CURRENT_TEMPLATE."/cache/".$outfile;
+                $outfile = $path."templates/".CURRENT_TEMPLATE."/cache/".$outfile;
+
+                $this->check_recombine( $outfile, $_javascripts );
+                $this->minify( $_javascripts, "js", $outfile );
+                return '<script src="' . $this->get_src($outfile_path) . '"></script>';
                 //return '<script>function loadJS(e,t){"use strict";var n=window.document.getElementsByTagName("script")[0],o=window.document.createElement("script");return o.src=e,o.async=!0,n.parentNode.insertBefore(o,n),t&&"function"==typeof t&&(o.onload=t),o}loadJS("' . $this->get_src($output) . '");</script>';
                 
                 break;
@@ -180,7 +198,8 @@ class Bender
         $path = $this->root_dir();
         //$output = preg_replace('/'.ltrim(DIR_WS_CATALOG,'/').'/','',$output,1);
         //$output = str_replace('/',DIRECTORY_SEPARATOR,$output);
-        $outfile = $path.$output;
+        //$outfile = $path.$output;
+        $outfile = $output;
         if ( !file_exists( $outfile ) || !is_array( $files ) )
         {
             return;
