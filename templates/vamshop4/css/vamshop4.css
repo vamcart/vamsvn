@@ -312,7 +312,7 @@ a#scrollup:hover {
   left: auto; /* Открывать корзину влево */ 
   /*height: 350px;
   min-height: 350px;*/
-  max-height: 350px;
+  max-height: 400px;
   min-width: 350px;
   overflow-y: auto;
   overflow-x: hidden;  
@@ -337,7 +337,7 @@ left: auto;
   left: auto; /* Открывать корзину влево */ 
   /*height: 350px;
   min-height: 350px;*/
-  max-height: 350px;
+  max-height: 400px;
   min-width: 350px;
   overflow-y: auto;
   overflow-x: hidden;  
