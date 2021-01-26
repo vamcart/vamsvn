@@ -49,8 +49,7 @@ function doBuyNow( id, quantity, update, get_cart, attributes, popup ) {
 
 function doAddProduct(id) {
 
-		//var forma = $('#cart_quantity' + id + ' :input');
-		var forma = $('#cart_quantity :input');
+		var forma = $('#cart_quantity' + id + ' :input');
 		var data = 'q=includes/modules/ajax/ajaxCart.php&';
 		var tmp = false;
 
