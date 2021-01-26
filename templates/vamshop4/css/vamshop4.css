@@ -313,7 +313,7 @@ a#scrollup:hover {
   /*height: 350px;
   min-height: 350px;*/
   max-height: 350px;
-  min-width: 400px;
+  min-width: 350px;
   overflow-y: auto;
   overflow-x: hidden;  
   background: var(--card-background-color);
@@ -1745,3 +1745,7 @@ header .input-group-text,
 	}
 }
 /* /Ajax Preloader */
+
+.dropdown.cart .dropdown-toggle::after {
+  border: 0px solid transparent;
+}
