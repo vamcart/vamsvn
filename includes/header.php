@@ -37,8 +37,19 @@
 <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $_SESSION['language_charset']; ?>" />
 <meta name="viewport" content="initial-scale=1.0, width=device-width" />
 <link rel="apple-touch-icon" href="<?php echo DIR_WS_CATALOG; ?>images/icons/vamshop-box-apple.png" />
+<?php
+if (DARK_THEME == 'true') {
+?>
 <link rel="manifest" href="<?php echo DIR_WS_CATALOG; ?>manifest.json" data-href-light="<?php echo DIR_WS_CATALOG; ?>manifest-light.json" data-href-dark="<?php echo DIR_WS_CATALOG; ?>manifest-dark.json">
 <link rel="icon" href="<?php echo DIR_WS_CATALOG; ?>images/icons/vamshop-box-256.png" data-href-light="<?php echo DIR_WS_CATALOG; ?>images/icons/vamshop-box-256.png" data-href-dark="<?php echo DIR_WS_CATALOG; ?>images/icons/vamshop-box-256-dark.png" sizes="256x256">
+<?php
+} else {
+?>
+<link rel="manifest" href="<?php echo DIR_WS_CATALOG; ?>manifest.json">
+<link rel="icon" href="<?php echo DIR_WS_CATALOG; ?>images/icons/vamshop-box-256.png" sizes="256x256">
+<?php
+}
+?>
 <?php include(DIR_WS_MODULES.FILENAME_METATAGS); ?>
 <base href="<?php echo (($request_type == 'SSL') ? HTTPS_SERVER : HTTP_SERVER) . DIR_WS_CATALOG; ?>" />
 <?php

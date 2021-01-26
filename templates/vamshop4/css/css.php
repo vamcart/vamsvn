@@ -1,11 +1,31 @@
+<?php
+if (DARK_THEME == 'true') {
+?>
 <meta name="supported-color-schemes" content="dark light">
 <meta name="color-scheme" content="dark light">
 <meta name="theme-color" content="">
+<?php
+} else {
+?>
+<meta name="theme-color" content="#fff">
+<?php
+}
+?>
 <link rel="preload" as="font" type="font/woff2" crossorigin href="templates/<?php echo CURRENT_TEMPLATE; ?>/webfonts/fa-solid-900.woff2"/>
 <link rel="preload" as="font" type="font/woff2" crossorigin href="templates/<?php echo CURRENT_TEMPLATE; ?>/webfonts/fa-regular-400.woff2"/>
 <link rel="preload" as="font" type="font/woff2" crossorigin href="templates/<?php echo CURRENT_TEMPLATE; ?>/webfonts/fa-brands-400.woff2"/>
+<?php
+if (DARK_THEME == 'true') {
+?>
 <link rel="stylesheet" href="templates/<?php echo CURRENT_TEMPLATE; ?>/css/dark.css" media="(prefers-color-scheme: dark)">
 <link rel="stylesheet" href="templates/<?php echo CURRENT_TEMPLATE; ?>/css/light.css" media="(prefers-color-scheme: no-preference), (prefers-color-scheme: light)">
+<?php
+} else {
+?>
+<link rel="stylesheet" href="templates/<?php echo CURRENT_TEMPLATE; ?>/css/light.css" media="(prefers-color-scheme: no-preference), (prefers-color-scheme: light), (prefers-color-scheme: dark)">
+<?php
+}
+?>
 <?php
 require_once(DIR_FS_CATALOG."vendor/Bender/Bender.class.php");
 $bender = new Bender();
