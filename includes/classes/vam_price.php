@@ -467,7 +467,12 @@ class vamPrice {
 		$sPrice = $pPrice - ($pPrice / 100) * $discount;
 		if ($format) {
 		if ($pPrice > 0)
-			$price = '<span class="productPrice">'.$message_price.$this->checkAttributes($pID).$this->Format($sPrice, $format).'</span><span class="productOldPrice">'.$message_old_price.$this->Format($pPrice, $format).'</span>'.(($discount > 0) ? '<span class="discount">'.$message_discount.number_format($discount).'%</span>':'');
+
+			$vygoda_price = number_format($this->Format($pPrice, $format),0,'','');
+			$vygoda_old = number_format($this->Format($sPrice, $format),0,'','');
+			$vygoda = $vygoda_old-$vygoda_price;
+
+			$price = '<span class="productOldPrice">'.$message_old_price.$this->Format($pPrice, $format).'</span><span class="your-discount">'.$vygoda.'<small>'.$this->currencies[$this->actualCurr]['symbol_right'].'</small></span><span class="productPrice">'.$message_price.$this->checkAttributes($pID).$this->Format($sPrice, $format).'</span>'.(($discount > 0) ? '<span class="discount">'.$message_discount.number_format($discount).'%</span>':'');
 			if ($vpeStatus == 0) {
 				return $price;
 			} else {
@@ -480,7 +485,12 @@ class vamPrice {
 
 	function FormatSpecial($pID, $sPrice, $pPrice, $format, $vpeStatus = 0, $message_old_price) {
 		if ($format) {
-			$price = '<span class="productPrice">'.YOUR_SPECIAL_PRICE.$this->checkAttributes($pID).$this->Format($sPrice, $format).'</span><span class="productOldPrice">'.$message_old_price.$this->Format($pPrice, $format).'</span>';
+
+			$vygoda_price = number_format($this->Format($pPrice, $format),0,'','');
+			$vygoda_old = number_format($this->Format($sPrice, $format),0,'','');
+			$vygoda = $vygoda_old-$vygoda_price;
+
+			$price = '<span class="productOldPrice">'.$message_old_price.$this->Format($pPrice, $format).'</span><span class="your-discount">'.$vygoda.'<small>'.$this->currencies[$this->actualCurr]['symbol_right'].'</small></span><span class="productPrice">'.YOUR_SPECIAL_PRICE.$this->checkAttributes($pID).$this->Format($sPrice, $format).'</span>';
 			if ($vpeStatus == 0) {
 				return $price;
 			} else {
@@ -499,7 +509,12 @@ class vamPrice {
 			$sPrice -= $sPrice / 100 * $discount;
 		if ($format) {
 			if ($sPrice != $pPrice) {
-				$price = '<span class="productPrice">'.$message_price.$this->checkAttributes($pID).$this->Format($sPrice, $format).'</spann><span class="productOldPrice">'.$message_old_price.$this->Format($pPrice, $format).'</span><br />'.$message_discount.$discount;
+
+				$vygoda_price = number_format($this->Format($pPrice, $format),0,'','');
+				$vygoda_old = number_format($this->Format($sPrice, $format),0,'','');
+				$vygoda = $vygoda_old-$vygoda_price;
+
+				$price = '<span class="productOldPrice">'.$message_old_price.$this->Format($pPrice, $format).'</span><span class="your-discount">'.$vygoda.'<small>'.$this->currencies[$this->actualCurr]['symbol_right'].'</small></span><span class="productPrice">'.$message_price.$this->checkAttributes($pID).$this->Format($sPrice, $format).'</span><br />'.$message_discount.$discount;
 			} else {
 				$price = FROM.$this->Format($sPrice, $format);
 			}
