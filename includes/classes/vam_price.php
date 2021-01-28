@@ -468,8 +468,8 @@ class vamPrice {
 		if ($format) {
 		if ($pPrice > 0)
 
-			$vygoda_price = number_format($this->Format($pPrice, $format),0,'','');
-			$vygoda_old = number_format($this->Format($sPrice, $format),0,'','');
+			$vygoda_price = number_format(str_replace($this->currencies[$this->actualCurr]['symbol_left'],'',$this->Format($pPrice, $format)),0,'','');
+			$vygoda_old = number_format(str_replace($this->currencies[$this->actualCurr]['symbol_left'],'',$this->Format($sPrice, $format)),0,'','');
 			$vygoda = $vygoda_old-$vygoda_price;
 
 			$price = '<span class="productOldPrice">'.$message_old_price.$this->Format($pPrice, $format).'</span><span class="your-discount">'.$vygoda.'<small>'.$this->currencies[$this->actualCurr]['symbol_right'].'</small></span><span class="productPrice">'.$message_price.$this->checkAttributes($pID).$this->Format($sPrice, $format).'</span>'.(($discount > 0) ? '<span class="discount">'.$message_discount.number_format($discount).'%</span>':'');
@@ -510,9 +510,9 @@ class vamPrice {
 		if ($format) {
 			if ($sPrice != $pPrice) {
 
-				$vygoda_price = number_format($this->Format($pPrice, $format),0,'','');
-				$vygoda_old = number_format($this->Format($sPrice, $format),0,'','');
-				$vygoda = $vygoda_old-$vygoda_price;
+				$vygoda_price = number_format(str_replace($this->currencies[$this->actualCurr]['symbol_left'],'',$this->Format($pPrice, $format)),0,'','');
+				$vygoda_old = number_format(str_replace($this->currencies[$this->actualCurr]['symbol_left'],'',$this->Format($sPrice, $format)),0,'','');
+  				$vygoda = $vygoda_old-$vygoda_price;
 
 				$price = '<span class="productOldPrice">'.$message_old_price.$this->Format($pPrice, $format).'</span><span class="your-discount">'.$vygoda.'<small>'.$this->currencies[$this->actualCurr]['symbol_right'].'</small></span><span class="productPrice">'.$message_price.$this->checkAttributes($pID).$this->Format($sPrice, $format).'</span><br />'.$message_discount.$discount;
 			} else {
