@@ -3456,4 +3456,16 @@ dd {
     margin-left: 0;
 }
 
+.your-discount {
+    padding: 0 .2em;
+    margin: 0 .5em;
+    background: #dd2c00;
+    color: #fff;
+    font-weight: 500;
+    border-radius: 2px;
+    border: 0px solid #dd2c00;
+    font-size: 12px;
+    display: inline-block;
+}
+
 /*]]>*/
