@@ -17,11 +17,14 @@
 ?>
 <?php
 $robots = '<meta name="robots" content="'.META_ROBOTS.'" />'."\n";
-$block_query = "select url from ".TABLE_BLOCK." where status = 1";
+$block_query = "select url, google from ".TABLE_BLOCK." where status = 1";
 $block_query = vamDBquery($block_query);
 while ($block = vam_db_fetch_array($block_query, true)) {
 if (HTTP_SERVER.$_SERVER['REQUEST_URI'] == $block['url']) {
 $robots = '<meta name="robots" content="noindex" />'."\n";
+if ($block['google'] == 1) {
+$robots .= '<meta name="googlebot" content="noindex,nofollow" />'."\n";
+}
 }
 }
 echo $robots;

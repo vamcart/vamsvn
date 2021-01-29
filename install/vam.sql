@@ -1029,6 +1029,7 @@ CREATE TABLE block (
    date_added datetime DEFAULT '0000-00-00 00:00:00' NOT NULL,
    last_modified datetime DEFAULT '0000-00-00 00:00:00' NOT NULL,
    status tinyint(1) DEFAULT '0' NOT NULL,
+   google varchar(255) default '1',
    PRIMARY KEY (id)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
