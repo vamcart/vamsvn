@@ -1261,7 +1261,7 @@ function init() {
 <?php
 
 // BOF sms
-  $orders_log_query = vam_db_query("select * from orders_log where orders_id = '".vam_db_input($oID)."' and customers_id= ".(int)$_SESSION['customer_id']." order by id ASC");
+  $orders_log_query = vam_db_query("select * from orders_log where orders_id = '".vam_db_input($oID)."' order by id ASC");
 // EOF sms
   if (vam_db_num_rows($orders_log_query)) {
 
