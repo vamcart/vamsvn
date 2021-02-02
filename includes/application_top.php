@@ -859,4 +859,10 @@ if (strpos($PHP_SELF, FILENAME_PRODUCT_INFO) !== FALSE || strpos($PHP_SELF, FILE
     require('includes/modules/headerstatushandler.php');
 }
   
+if (strstr($PHP_SELF, '/'.FILENAME_DEFAULT) && !isset($_GET['cat']) && $PHP_SELF == DIR_WS_CATALOG.'index.php' && $_GET) {
+			header("HTTP/1.1 301 Moved Permanently");
+			header("Location: ".DIR_WS_CATALOG."");
+			exit();	
+}
+  
 ?>
