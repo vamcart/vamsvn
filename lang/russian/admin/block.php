@@ -19,6 +19,8 @@ define('HEADING_TITLE', 'Закрыть от индексации');
 define('TABLE_HEADING_BLOCK_HEADLINE', 'URL');
 define('TABLE_HEADING_BLOCK_ACTION', 'Действие');
 define('TABLE_HEADING_BLOCK_GOOGLE', 'Google');
+define('TABLE_HEADING_BLOCK_YANDEX', 'Яндекс');
+define('TABLE_HEADING_BLOCK_EITHER', 'Все');
 define('TABLE_HEADING_BLOCK_STATUS', 'Статус');
 
 define('TEXT_BLOCK_ITEMS', 'Количество адресов:');
@@ -46,5 +48,7 @@ define('TEXT_NO_CHILD_CATEGORIES_OR_PRODUCTS', 'Добавьте адрес');
 define('TEXT_BLOCK_PAGE_URL', 'SEO URL');
 
 define('TEXT_BLOCK_PAGE_GOOGLE', 'Блокировать в гугл');
+define('TEXT_BLOCK_PAGE_YANDEX', 'Блокировать в яндекс');
+define('TEXT_BLOCK_PAGE_EITHER', 'Блокировать во всех поисковиках');
 
 ?>

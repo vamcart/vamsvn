@@ -42,6 +42,26 @@
   //      vam_redirect(vam_href_link(FILENAME_BLOCK));
         break;
 
+      case 'setyandexflag': //set the status of a news item.
+        if ( ($_GET['yandexflag'] == '0') || ($_GET['yandexflag'] == '1') ) {
+          if ($_GET['id']) {
+            vam_db_query("update " . TABLE_BLOCK . " set yandex = '" . $_GET['yandexflag'] . "' where id = '" . $_GET['id'] . "'");
+          }
+        }
+
+  //      vam_redirect(vam_href_link(FILENAME_BLOCK));
+        break;
+
+      case 'seteitherflag': //set the status of a news item.
+        if ( ($_GET['eitherflag'] == '0') || ($_GET['eitherflag'] == '1') ) {
+          if ($_GET['id']) {
+            vam_db_query("update " . TABLE_BLOCK . " set either = '" . $_GET['eitherflag'] . "' where id = '" . $_GET['id'] . "'");
+          }
+        }
+
+  //      vam_redirect(vam_href_link(FILENAME_BLOCK));
+        break;
+
       case 'delete_block_confirm': //user has confirmed deletion of news article.
         if ($_POST['id']) {
           $id = vam_db_prepare_input($_POST['id']);
@@ -54,6 +74,8 @@
       case 'insert_block': //insert a new news article.
 			$sql_data_array = array('url'   => vam_db_prepare_input($_POST['url']),
                                'google'   => vam_db_prepare_input($_POST['google']),
+                               'yandex'   => vam_db_prepare_input($_POST['yandex']),
+                               'either'   => vam_db_prepare_input($_POST['either']),
                                'date_added' => 'now()', //uses the inbuilt mysql function 'now'
                                'status'     => '1' 
 							  );
@@ -70,7 +92,9 @@
 
 		  
           $sql_data_array = array('url'  => vam_db_prepare_input($_POST['url']),
-                               'google'   => vam_db_prepare_input($_POST['google']),
+                                  'google'   => vam_db_prepare_input($_POST['google']),
+                                  'yandex'   => vam_db_prepare_input($_POST['yandex']),
+                                  'either'   => vam_db_prepare_input($_POST['either']),
                                   'date_added'  => vam_db_prepare_input($_POST['date_added']),
                                   'last_modified'  => "now()"
                                   );
@@ -132,13 +156,15 @@ $manual_link = 'delete-news';
 <?php
   if ($_GET['action'] == 'new_block') { //insert or edit a news item
     if ( isset($_GET['id']) ) { //editing exsiting news item
-      $block_query = vam_db_query("select id, url, google, date_added from " . TABLE_BLOCK . " where id = '" . $_GET['id'] . "'");
+      $block_query = vam_db_query("select id, url, google, yandex, either, date_added from " . TABLE_BLOCK . " where id = '" . $_GET['id'] . "'");
       $block = vam_db_fetch_array($block_query);
     } else { //adding new news item
       $block = array();
     }
 
 if ($block['google'] == '1' or $block['google'] == ''){ $block_google = true; } else { $glock_google = false; }        
+if ($block['yandex'] == '1' or $block['yandex'] == ''){ $block_yandex = true; } else { $glock_yandex = false; }        
+if ($block['either'] == '1' or $block['either'] == ''){ $block_either = true; } else { $glock_either = false; }        
 ?>
       <tr><?php echo vam_draw_form('new_block', FILENAME_BLOCK, isset($_GET['id']) ? vam_get_all_get_params(array('action')) . 'action=update_block' : vam_get_all_get_params(array('action')) . 'action=insert_block', 'post', 'enctype="multipart/form-data"'); ?>
         <td><table border="0" cellspacing="0" cellpadding="2" width="100%">
@@ -149,7 +175,13 @@ if ($block['google'] == '1' or $block['google'] == ''){ $block_google = true; } 
           <tr>
             <td colspan="2"><?php echo vam_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
           </tr>
-
+          <tr>
+            <td class="main"><?php echo TEXT_BLOCK_PAGE_EITHER; ?>:</td>
+            <td class="main"><?php echo '&nbsp;<label>'.vam_draw_radio_field('either', '1', $block_either) . '&nbsp;' . YES . '</label>&nbsp;<label>' . vam_draw_radio_field('either', '0', !$block_either) . '&nbsp;' . NO . '</label>'; ?></td>
+          </tr>
+          <tr>
+            <td colspan="2"><?php echo vam_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
+          </tr>
           <tr>
             <td class="main"><?php echo TEXT_BLOCK_PAGE_GOOGLE; ?>:</td>
             <td class="main"><?php echo '&nbsp;<label>'.vam_draw_radio_field('google', '1', $block_google) . '&nbsp;' . YES . '</label>&nbsp;<label>' . vam_draw_radio_field('google', '0', !$block_google) . '&nbsp;' . NO . '</label>'; ?></td>
@@ -157,7 +189,13 @@ if ($block['google'] == '1' or $block['google'] == ''){ $block_google = true; } 
           <tr>
             <td colspan="2"><?php echo vam_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
           </tr>
-          
+          <tr>
+            <td class="main"><?php echo TEXT_BLOCK_PAGE_YANDEX; ?>:</td>
+            <td class="main"><?php echo '&nbsp;<label>'.vam_draw_radio_field('yandex', '1', $block_yandex) . '&nbsp;' . YES . '</label>&nbsp;<label>' . vam_draw_radio_field('yandex', '0', !$block_yandex) . '&nbsp;' . NO . '</label>'; ?></td>
+          </tr>
+          <tr>
+            <td colspan="2"><?php echo vam_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
+          </tr>
 <?php
 if ( isset($_GET['id']) ) {
 ?>
@@ -198,13 +236,15 @@ if ( isset($_GET['id']) ) {
                 <td class="dataTableHeadingContent"><?php echo TABLE_HEADING_BLOCK_HEADLINE; ?></td>
                 <td class="dataTableHeadingContent" align="center"><?php echo TABLE_HEADING_BLOCK_STATUS; ?></td>
                 <td class="dataTableHeadingContent" align="center"><?php echo TABLE_HEADING_BLOCK_GOOGLE; ?></td>
+                <td class="dataTableHeadingContent" align="center"><?php echo TABLE_HEADING_BLOCK_YANDEX; ?></td>
+                <td class="dataTableHeadingContent" align="center"><?php echo TABLE_HEADING_BLOCK_EITHER; ?></td>
                 <td class="dataTableHeadingContent" align="right"><?php echo TABLE_HEADING_BLOCK_ACTION; ?>&nbsp;</td>
               </tr>
 <?php
     $rows = 0;
 
     $block_count = 0;
-    $block_query_raw = 'select id, google, url, status from ' . TABLE_BLOCK . ' order by date_added desc';
+    $block_query_raw = 'select id, google, yandex, either, url, status from ' . TABLE_BLOCK . ' order by date_added desc';
 
 	$block_split = new splitPageResults($_GET['page'], MAX_DISPLAY_ADMIN_PAGE, $block_query_raw, $block_query_numrows);
 
@@ -242,6 +282,22 @@ if ( isset($_GET['id']) ) {
         echo '<a href="' . vam_href_link(FILENAME_BLOCK, vam_get_all_get_params(array('id','action', 'googleflag')) . 'action=setgoogleflag&googleflag=1&id=' . $block['id']) . '">' . vam_image(DIR_WS_IMAGES . 'icon_status_green_light.gif', IMAGE_ICON_STATUS_GREEN_LIGHT, 10, 10) . '</a>&nbsp;&nbsp;' . vam_image(DIR_WS_IMAGES . 'icon_status_red.gif', IMAGE_ICON_STATUS_RED, 10, 10);
       }
 ?></td>
+                <td class="dataTableContent" align="center">
+<?php
+      if ($block['yandex'] == '1') {
+        echo vam_image(DIR_WS_IMAGES . 'icon_status_green.gif', IMAGE_ICON_STATUS_GREEN, 10, 10) . '&nbsp;&nbsp;<a href="' . vam_href_link(FILENAME_BLOCK, vam_get_all_get_params(array('id','action', 'yandexflag')) . 'action=setyandexflag&yandexflag=0&id=' . $block['id']) . '">' . vam_image(DIR_WS_IMAGES . 'icon_status_red_light.gif', IMAGE_ICON_STATUS_RED_LIGHT, 10, 10) . '</a>';
+      } else {
+        echo '<a href="' . vam_href_link(FILENAME_BLOCK, vam_get_all_get_params(array('id','action', 'yandexflag')) . 'action=setyandexflag&yandexflag=1&id=' . $block['id']) . '">' . vam_image(DIR_WS_IMAGES . 'icon_status_green_light.gif', IMAGE_ICON_STATUS_GREEN_LIGHT, 10, 10) . '</a>&nbsp;&nbsp;' . vam_image(DIR_WS_IMAGES . 'icon_status_red.gif', IMAGE_ICON_STATUS_RED, 10, 10);
+      }
+?></td>
+                <td class="dataTableContent" align="center">
+<?php
+      if ($block['either'] == '1') {
+        echo vam_image(DIR_WS_IMAGES . 'icon_status_green.gif', IMAGE_ICON_STATUS_GREEN, 10, 10) . '&nbsp;&nbsp;<a href="' . vam_href_link(FILENAME_BLOCK, vam_get_all_get_params(array('id','action', 'eitherflag')) . 'action=seteitherflag&eitherflag=0&id=' . $block['id']) . '">' . vam_image(DIR_WS_IMAGES . 'icon_status_red_light.gif', IMAGE_ICON_STATUS_RED_LIGHT, 10, 10) . '</a>';
+      } else {
+        echo '<a href="' . vam_href_link(FILENAME_BLOCK, vam_get_all_get_params(array('id','action', 'eitherflag')) . 'action=seteitherflag&eitherflag=1&id=' . $block['id']) . '">' . vam_image(DIR_WS_IMAGES . 'icon_status_green_light.gif', IMAGE_ICON_STATUS_GREEN_LIGHT, 10, 10) . '</a>&nbsp;&nbsp;' . vam_image(DIR_WS_IMAGES . 'icon_status_red.gif', IMAGE_ICON_STATUS_RED, 10, 10);
+      }
+?></td>
                 <td class="dataTableContent" align="right"><?php if ($block['id'] == $_GET['id']) { echo vam_image(DIR_WS_IMAGES . 'icon_arrow_right.gif', ''); } else { echo '<a href="' . vam_href_link(FILENAME_BLOCK, vam_get_all_get_params(array('id','action', 'flag')) . 'id=' . $block['id']) . '">' . vam_image(DIR_WS_IMAGES . 'icon_info.gif', IMAGE_ICON_INFO) . '</a>'; } ?>&nbsp;</td>
               </tr>
 <?php
@@ -249,7 +305,7 @@ if ( isset($_GET['id']) ) {
 
 ?>
               <tr>
-                <td colspan="4"><table border="0" width="100%" cellspacing="0" cellpadding="2">
+                <td colspan="6"><table border="0" width="100%" cellspacing="0" cellpadding="2">
                   <tr>
                     <td class="smallText"><?php echo '<br>' . TEXT_BLOCK_ITEMS . '&nbsp;' . $block_count; ?></td>
                     <td align="right" class="smallText"><?php echo '&nbsp;<a class="button" href="' . vam_href_link(FILENAME_BLOCK, 'action=new_block') . '"><span>' . vam_image(DIR_WS_IMAGES . 'icons/buttons/add.png', '', '12', '12') . '&nbsp;' . BUTTON_INSERT . '</span></a>'; ?>&nbsp;</td>
@@ -257,7 +313,7 @@ if ( isset($_GET['id']) ) {
                 </table></td>
               </tr>
               <tr>
-                <td colspan="4"><table border="0" width="100%" cellspacing="0" cellpadding="2">
+                <td colspan="6"><table border="0" width="100%" cellspacing="0" cellpadding="2">
                   <tr>
                     <td class="smallText" valign="top"><?php echo $block_split->display_count($block_query_numrows, MAX_DISPLAY_ADMIN_PAGE, $_GET['page'], TEXT_DISPLAY_NUMBER_OF_BLOCKS); ?></td>
                     <td class="smallText" align="right"><?php echo $block_split->display_links($block_query_numrows, MAX_DISPLAY_ADMIN_PAGE, MAX_DISPLAY_PAGE_LINKS, $_GET['page'], vam_get_all_get_params(array('page', 'action', 'x', 'y', 'id'))); ?></td>
