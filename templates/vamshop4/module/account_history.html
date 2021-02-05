@@ -8,7 +8,7 @@
 		style="cursor: pointer; padding: 18px; width: 100%; text-align: left; border: none; outline: none; transition: 0.4s; margin-bottom: 20px; display: flex; align-items: center; justify-content: space-between;">
 			{#text_oid#} {$order_data.ORDER_ID}
 			<div class="buttons">
-				{$order_data.ORDER_BUTTON} &nbsp; {$order_data.DUPLICATE_ORDER_BUTTON} &nbsp; {$order_data.DUPLICATE_CART_BUTTON}
+				{$order_data.ORDER_BUTTON} &nbsp; {$order_data.DUPLICATE_CART_BUTTON}
 			</div>
 		</button>
 		<div class="panel collapse {if $smarty.foreach.order_item.iteration == 1}show{/if}" id="order-{$order_data.ORDER_ID}">
