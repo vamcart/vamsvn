@@ -64,11 +64,11 @@ class shoppingCart {
 						foreach ($this->contents[$products_id]['attributes'] as $option => $value) {
 						           $attr_value = $this->contents[$products_id]['attributes_values'][$option];
 
-							vam_db_query("insert into ".TABLE_CUSTOMERS_BASKET_ATTRIBUTES." (customers_id, products_id, products_options_id, products_options_value_id, products_options_value_text) values ('".$_SESSION['customer_id']."', '".$products_id."', '".$option."', '".$value."', '" . vam_db_input($attr_value) . "')");
+							vam_db_query("insert into ".TABLE_CUSTOMERS_BASKET_ATTRIBUTES." (customers_id, products_id, products_options_id, products_options_value_id, products_options_value_text) values ('".$_SESSION['customer_id']."', '".vam_db_input($products_id)."', '".vam_db_input($option)."', '".vam_db_input($value)."', '" . vam_db_input($attr_value) . "')");
 						}
 					}
 				} else {
-					vam_db_query("update ".TABLE_CUSTOMERS_BASKET." set customers_basket_quantity = customers_basket_quantity+'".$qty."' where customers_id = '".$_SESSION['customer_id']."' and products_id = '".$products_id."'");
+					vam_db_query("update ".TABLE_CUSTOMERS_BASKET." set customers_basket_quantity = customers_basket_quantity+'".$qty."' where customers_id = '".$_SESSION['customer_id']."' and products_id = '".vam_db_input($products_id)."'");
 				}
 			}
 		}
@@ -80,7 +80,7 @@ class shoppingCart {
 		while ($products = vam_db_fetch_array($products_query)) {
 			$this->contents[$products['products_id']] = array ('qty' => $products['customers_basket_quantity']);
 			// attributes
-			$attributes_query = vam_db_query("select products_options_id, products_options_value_id, products_options_value_text from ".TABLE_CUSTOMERS_BASKET_ATTRIBUTES." where customers_id = '".$_SESSION['customer_id']."' and products_id = '".$products['products_id']."'");
+			$attributes_query = vam_db_query("select products_options_id, products_options_value_id, products_options_value_text from ".TABLE_CUSTOMERS_BASKET_ATTRIBUTES." where customers_id = '".$_SESSION['customer_id']."' and products_id = '".vam_db_input($products['products_id'])."'");
 			while ($attributes = vam_db_fetch_array($attributes_query)) {
 				$this->contents[$products['products_id']]['attributes'][$attributes['products_options_id']] = $attributes['products_options_value_id'];
 				if ($attributes['products_options_value_text']!='') {
@@ -158,7 +158,7 @@ class shoppingCart {
 					$this->contents[$products_id]['attributes'][$option] = $value;
 					// insert into database
 					if (isset ($_SESSION['customer_id']))
-						vam_db_query("insert into ".TABLE_CUSTOMERS_BASKET_ATTRIBUTES." (customers_id, products_id, products_options_id, products_options_value_id, products_options_value_text) values ('".$_SESSION['customer_id']."', '".$products_id."', '".$option."', '".$value."', '" . vam_db_input($attr_value) . "')");
+						vam_db_query("insert into ".TABLE_CUSTOMERS_BASKET_ATTRIBUTES." (customers_id, products_id, products_options_id, products_options_value_id, products_options_value_text) values ('".$_SESSION['customer_id']."', '".vam_db_input($products_id)."', '".vam_db_input($option)."', '".vam_db_input($value)."', '" . vam_db_input($attr_value) . "')");
 				}
 				}
 			}
@@ -206,7 +206,7 @@ class shoppingCart {
 				$this->contents[$products_id]['attributes'][$option] = $value;
 				// update database
 				if (isset ($_SESSION['customer_id']))
-					vam_db_query("update ".TABLE_CUSTOMERS_BASKET_ATTRIBUTES." set products_options_value_id = '".$value."' where customers_id = '".$_SESSION['customer_id']."' and products_id = '".$products_id."' and products_options_id = '".$option."'");
+					vam_db_query("update ".TABLE_CUSTOMERS_BASKET_ATTRIBUTES." set products_options_value_id = '".vam_db_input($value)."' where customers_id = '".$_SESSION['customer_id']."' and products_id = '".vam_db_input($products_id)."' and products_options_id = '".vam_db_input($option)."'");
 			}
 			}
 		}
