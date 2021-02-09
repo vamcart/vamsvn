@@ -318,6 +318,8 @@ a#scrollup:hover {
   overflow-x: hidden;  
   background: var(--card-background-color);
   color: var(--color);
+  padding: 0;
+  margin: 0;
 }	
 
 .dropdown-menu {
@@ -1044,18 +1046,8 @@ li.level3 {
   padding-left: 0;
 }
 
-.dropdown.cart.header .sticky-wrapper {
-	position: relative;
-	/*min-height: 200vh;*/
-}
-
 .dropdown.cart.header .dropdown-menu.cart {
   top: 60px !important;
-}
-
-.dropdown.cart.header .sticky-top {
-	position: sticky;
-	top: 0px;
 }
 
 .sticky-wrapper {
@@ -1073,6 +1065,26 @@ li.level3 {
 		top: 80px;
 	}
 }
+
+.cart-sticky-wrapper {
+	/*min-height: 650px;*/
+}
+
+.cart-sticky-top {
+  position: sticky;
+  top: 0px;
+  background: var(--box-background-color);
+  z-index: 999999;
+}
+
+.cart-dropdown .cart-sticky-top {
+  padding: .25em .5em;
+}
+
+.cart-dropdown .content {
+  padding: 0 .5em;
+}
+
 
 .checkout-cart-scroll {
   max-height: 270px;

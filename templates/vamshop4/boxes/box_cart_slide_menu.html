@@ -3,15 +3,16 @@
 {if $deny_cart neq 'true'}
 <a class="cart-link dropdown-toggle" data-display="static" data-toggle="dropdown" data-hover="dropdown" data-delay="200" aria-expanded="false" href="{$smarty.const.FILENAME_SHOPPING_CART}" aria-label="{$smarty.const.NAVBAR_TITLE_SHOPPING_CART}">{if $TOTAL_QUANTITY > 0}<em class="roundpoint pulse-button">{$TOTAL_QUANTITY}</em>{/if}<i class="fas fa-shopping-basket"></i> <span class="hidetxt">{$smarty.const.NAVBAR_TITLE_SHOPPING_CART}</span></a>
             <div class="dropdown-menu cart fade dropdown-menu-right">
-              <div class="container-fluid">
+              <div class="">
                 <div class="row">
                   <div class="col-lg-12">
 
 <div class="cart">
 {if $empty=='false'}
-<div class="widget inner shopping-cart-widget">
-	<div class="cart-dropdown">
-			<div class="content">
+<div class="widget shopping-cart-widget">
+	<div class="cart-dropdown cart-sticky-wrapper">
+	
+			<div class="cart-sticky-top">
 
 				{if $DISCOUNT}
 				<p class="subtotal">
@@ -27,6 +28,12 @@
 					<a class="btn btn-inverse viewcart mt-1" href="{$LINK_CART}"><i class="fa fa-shopping-cart"></i> {#link_cart#}</a>
 					<a class="btn btn-inverse checkout mt-1" href="{$LINK_CHECKOUT}"><i class="fa fa-check"></i> {#text_checkout#}</a>
 				</p>
+
+			</div>
+				
+			<div class="content">
+
+
 
 				<div class="products">
 					{foreach name=aussen item=products_data from=$products}
@@ -64,7 +71,7 @@
 	</div>
 </div>
 {else}
-<div class="widget inner shopping-cart-widget">
+<div class="widget shopping-cart-widget">
 	<div class="cart-dropdown">
 			<div class="content">
            {#text_empty_cart#} 
