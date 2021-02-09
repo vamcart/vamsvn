@@ -24,7 +24,7 @@
       {if $module_data.PRODUCTS_PRICE_PLAIN > 0}
       <div class="card-footer text-left">
 			<div class="d-flex">
-			<div class="flex-fill pr-1 my-auto text-left">
+			<div class="flex-fill pr-1 mt-auto text-left">
          <div class="justify-content-center">
          <input name="products_qty" type="hidden" value="1" class="form-control text-center">
 				{if $module_data.PRODUCTS_PRICE_PLAIN > 0}
@@ -34,7 +34,7 @@
 				{/if}
          </div>
          </div>
-			<div class="text-right my-auto">
+			<div class="text-right mt-auto">
          <input type="hidden" name="products_id" value="{$module_data.PRODUCTS_ID}" />
 			<button class="cart-link-{$module_data.PRODUCTS_ID} btn btn-inverse checkout btn-block{if $smarty.session.cart->in_cart({$module_data.PRODUCTS_ID}) == 1} active{/if}" data-toggle="tooltip" title="{if $smarty.session.cart->in_cart({$module_data.PRODUCTS_ID}) == 1}{$smarty.const.IMAGE_BUTTON_IN_CART_IN}{else}{$smarty.const.IMAGE_BUTTON_IN_CART}{/if}" aria-label="{if $smarty.session.cart->in_cart({$module_data.PRODUCTS_ID}) == 1}{$smarty.const.IMAGE_BUTTON_IN_CART_IN}{else}{$smarty.const.IMAGE_BUTTON_IN_CART}{/if}"><i class="cart-icon-{$module_data.PRODUCTS_ID} {if $smarty.session.cart->in_cart({$module_data.PRODUCTS_ID}) == 1}text-danger fas fa-cart-plus{else}fas fa-shopping-cart{/if}"></i></button>
          </div>

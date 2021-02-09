@@ -1766,12 +1766,6 @@ header .input-group-text,
   border: 0px solid transparent;
 }
 
-@media (max-width: 576px) {
-.price-wrap .your-discount {
-  display: none;
-}
-}
-
 .your-discount {
 padding: 0 .2em;
 margin: 0 .5em;
