@@ -250,8 +250,8 @@ class Sypex_Dumper {
     ;
     if (!V_MYSQL) $this->VAR['combos'] .= $this->error;
     $this->VAR['combos']   .= $this->getSavedJobs() . "sxd.confirms = {$this->CFG['confirm']};sxd.actions.dblist();";
-    $this->LNG['del_date']  = sprintf($this->LNG['del_date'], '<input type="text" id="del_time" class=txt style="width:24px;" maxlength="3">');
-    $this->LNG['del_count'] = sprintf($this->LNG['del_count'], '<input id="del_count" type="text" class=txt style="width:18px;" maxlength="2">');
+    $this->LNG['del_date']  = sprintf($this->LNG['del_date'], '<input type="text" id="del_time" value="0" class=txt style="width:24px;" maxlength="3">');
+    $this->LNG['del_count'] = sprintf($this->LNG['del_count'], '<input id="del_count" type="text" value="0" class=txt style="width:18px;" maxlength="2">');
 
     include('tmpl.php');
     echo sxd_tpl_page();
