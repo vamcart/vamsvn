@@ -52,7 +52,7 @@ if (number_format($_POST['withdraw_amount'],2) == number_format($order->info['to
                           'orders_status_id' => MODULE_PAYMENT_YOOMONEY_FIZLICO_ORDER_STATUS_ID,
                           'date_added' => 'now()',
                           'customer_notified' => '0',
-                          'comments' => 'YandexMoney accepted this order payment');
+                          'comments' => 'ЮMoney accepted this order payment');
   vam_db_perform('orders_status_history', $sql_data_arrax);
 
   //echo 'OK'.$inv_id;
