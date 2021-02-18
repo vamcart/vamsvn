@@ -19,6 +19,7 @@
 
 define('MODULE_PAYMENT_YANDEX_FIZLICO_TEXT_TITLE', 'ЮКасса (Visa, MasterCard, МИР)');
 define('MODULE_PAYMENT_YANDEX_FIZLICO_TEXT_PUBLIC_TITLE', 'ЮКасса (Visa, MasterCard, МИР)');
+define('MODULE_PAYMENT_YANDEX_FIZLICO_TEXT_PUBLIC_DESCRIPTION', '');
 define('MODULE_PAYMENT_YANDEX_FIZLICO_TEXT_DESCRIPTION', '');
 define('MODULE_PAYMENT_YANDEX_FIZLICO_TEXT_ADMIN_DESCRIPTION', 'Модуль приёма оплаты ЮКасса для физ. лиц.');
   
