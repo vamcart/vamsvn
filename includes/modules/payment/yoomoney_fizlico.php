@@ -27,6 +27,7 @@
       $this->code = 'yoomoney_fizlico';
       $this->title = MODULE_PAYMENT_YOOMONEY_FIZLICO_TEXT_TITLE;
       $this->public_title = MODULE_PAYMENT_YOOMONEY_FIZLICO_TEXT_PUBLIC_TITLE;
+      $this->public_description = MODULE_PAYMENT_YOOMONEY_FIZLICO_TEXT_PUBLIC_DESCRIPTION;
       $this->description = MODULE_PAYMENT_YOOMONEY_FIZLICO_TEXT_ADMIN_DESCRIPTION;
       $this->icon = DIR_WS_ICONS . 'yoomoney.png';
       $this->sort_order = MODULE_PAYMENT_YOOMONEY_FIZLICO_SORT_ORDER;
@@ -84,7 +85,8 @@
       if (vam_not_null($this->icon)) $icon = vam_image($this->icon, $this->title);
 
       return array('id' => $this->code,
-      				'icon' => $icon,
+      				 'icon' => $icon,
+      				 'description' => $this->public_description,
                    'module' => $this->public_title);
 
     }

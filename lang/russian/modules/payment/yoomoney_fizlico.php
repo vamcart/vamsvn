@@ -19,6 +19,7 @@
 
   define('MODULE_PAYMENT_YOOMONEY_FIZLICO_TEXT_TITLE', 'ЮMoney - Оплата карточкой Visa, MasterCard, МИР');
   define('MODULE_PAYMENT_YOOMONEY_FIZLICO_TEXT_PUBLIC_TITLE', 'ЮMoney - Оплата карточкой Visa, MasterCard, МИР');
+  define('MODULE_PAYMENT_YOOMONEY_FIZLICO_TEXT_PUBLIC_DESCRIPTION', '');
   define('MODULE_PAYMENT_YOOMONEY_FIZLICO_TEXT_ADMIN_DESCRIPTION', 'Модуль оплаты ЮMoney<br />Как правильно настроить модуль читайте <a href="https://blog.vamshop.ru/2021/02/18/%d0%bd%d0%be%d0%b2%d1%8b%d0%b9-%d0%bc%d0%be%d0%b4%d1%83%d0%bb%d1%8c-%d0%be%d0%bf%d0%bb%d0%b0%d1%82%d1%8b-%d1%8emoney/" target="_blank"><u>здесь</u></a>.');
   define('MODULE_PAYMENT_YOOMONEY_FIZLICO_TEXT_DESCRIPTION', 'После нажатия кнопки Подтвердить заказ Вы перейдёте на сайт платёжной системы для оплаты заказа, после оплаты Ваш заказ будет выполнен.');
   
