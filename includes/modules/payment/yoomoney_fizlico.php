@@ -210,7 +210,7 @@ if ($_SERVER["HTTP_X_FORWARDED_FOR"]) {
                                   'cc_owner' => $order->info['cc_owner'],
                                   'cc_number' => $order->info['cc_number'],
                                   'cc_expires' => $order->info['cc_expires'],
-                                  'date_purchased' => 'now()',
+                                  'date_purchased' => date("Y-m-d H:i:s"),
                                   'orders_status' => $order->info['order_status'],
                                   'currency' => $order->info['currency'],
                                   'currency_value' => $order->info['currency_value']);
@@ -220,7 +220,7 @@ if ($_SERVER["HTTP_X_FORWARDED_FOR"]) {
           $insert_id = vam_db_insert_id();
 
 			$customer_notification = (SEND_EMAILS == 'true') ? '1' : '0';
-			$sql_data_array = array ('orders_id' => $insert_id, 'orders_status_id' => $order->info['order_status'], 'date_added' => 'now()', 'customer_notified' => $customer_notification, 'comments' => $order->info['comments']);
+			$sql_data_array = array ('orders_id' => $insert_id, 'orders_status_id' => $order->info['order_status'], 'date_added' => date("Y-m-d H:i:s"), 'customer_notified' => $customer_notification, 'comments' => $order->info['comments']);
 			vam_db_perform(TABLE_ORDERS_STATUS_HISTORY, $sql_data_array);
 
           for ($i=0, $n=sizeof($order_totals); $i<$n; $i++) {
