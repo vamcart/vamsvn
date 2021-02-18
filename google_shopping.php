@@ -195,7 +195,7 @@ while ($products = vam_db_fetch_array($products_query)) {
             }
         }
   if(YML_VENDOR == "true" && $products['manufacturers_id'] != 0) {
-    vam_yml_out('  <g:brand>' . vam_yml_clear_string($products['manufacturers_name']) . '</g:brand');
+    vam_yml_out('  <g:brand>' . vam_yml_clear_string($products['manufacturers_name']) . '</g:brand>');
   }
   if(YML_VENDORCODE == "true" && vam_not_null($products['products_model'])) {
     vam_yml_out('  <g:mpn>' . $products['products_model'] . '</g:mpn>');
