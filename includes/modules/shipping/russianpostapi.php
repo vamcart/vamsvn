@@ -61,7 +61,7 @@ var $code, $title, $description, $icon, $enabled;
 
 		$store_zip_code = MODULE_SHIPPING_RUSSIANPOSTAPI_CITY;
 
-		$total_weight = number_format($shipping_weight*1000);      
+		$total_weight = number_format($shipping_weight*1000,0,'.','');      
       
       $url = file_get_contents("http://tariff.russianpost.ru/tariff/v1/calculate?json&object=27030&pack=10&from=".$store_zip_code."&to=".$order->delivery['postcode']."&weight=".$total_weight."");
 		$out = json_decode($url);
