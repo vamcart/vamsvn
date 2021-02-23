@@ -393,9 +393,9 @@ if ($_SERVER["HTTP_X_FORWARDED_FOR"]) {
 
 // Создаём платёж
 
-include_once(DIR_FS_CATALOG.'vendor/yandex-checkout-sdk-php/lib/autoload.php');
+include_once(DIR_FS_CATALOG.'vendor/yookassa-sdk-php/lib/autoload.php');
 
-    $client = new YandexCheckout\Client();
+    $client = new YooKassa\Client();
     
     $client->setAuth(MODULE_PAYMENT_YOOKASSA_SHOP_ID, MODULE_PAYMENT_YOOKASSA_SECRET_KEY);
 
