@@ -267,6 +267,216 @@ $total_format = $vamPrice->Format($products_price['plain'],true);
 	// send mail to customer
 	//vam_php_mail(EMAIL_SUPPORT_ADDRESS, EMAIL_SUPPORT_NAME, $to_email_address, $to_name, EMAIL_SUPPORT_FORWARDING_STRING, EMAIL_SUPPORT_REPLY_ADDRESS, EMAIL_SUPPORT_REPLY_ADDRESS_NAME, '', '', NAVBAR_TITLE_ASK, $html_mail, $txt_mail);
 
+
+// Google Conversion tracking
+	include (DIR_WS_CLASSES.'order.php');
+	$order = new order($insert_id);
+
+if ($insert_id && (GOOGLE_CONVERSION == 'true' or GOOGLE_TAG_MANAGER == 'true')) {
+
+// ############## Google Analytics - start ###############
+
+// Get order id
+	$order_id = $order->info['id'];
+
+// Get order info for Analytics "Transaction line" (affiliation, city, state, country, total, tax and shipping)
+
+// Set value for  "affiliation"
+
+	$analytics_affiliation = STORE_NAME;
+
+
+// Get info for "city", "state", "country"
+    $orders_query = vam_db_query("select customers_city, customers_state, customers_country from " . TABLE_ORDERS . " where orders_id = '" . $order_id . "' AND customers_id = '" . (int)$_SESSION['customer_id'] . "'");
+    $orders = vam_db_fetch_array($orders_query);
+
+    $totals_query = vam_db_query("select value, class from " . TABLE_ORDERS_TOTAL . " where orders_id = '" . (int)$order_id . "' order by sort_order");
+// Set values for "total", "tax" and "shipping"
+    $analytics_total = '';
+    $analytics_tax = '';
+    $analytics_shipping = '';
+    
+     while ($totals = vam_db_fetch_array($totals_query)) {
+
+        if ($totals['class'] == 'ot_total') {
+            $analytics_total = $totals['value'];
+            $total_flag = 'true';
+        } else if ($totals['class'] == 'ot_tax') {
+            $analytics_tax = $totals['value'];
+            $tax_flag = 'true';
+        } else if ($totals['class'] == 'ot_shipping') {
+            $analytics_shipping = $totals['value'];
+			{ if ($analytics_shipping === "0.0000") $analytics_shipping = ''; }
+            $shipping_flag = 'true';
+        }
+
+     }
+
+
+// Prepare the Analytics "Transaction line" string
+
+	$transaction_string = '
+	
+  "transaction_id": "' . $order_id . '",
+  "affiliation": "' . STORE_NAME . '",
+  "value": ' . $analytics_total . ',
+  "currency": "' . $order->info['currency'] . '",
+  "tax": ' . (($analytics_tax > 0) ? $analytics_tax : 0) . ',
+  "shipping": ' . (($analytics_shipping > 0) ? $analytics_shipping : 0) . ',
+	
+	';
+
+// Get products info for Analytics "Item lines"
+
+	$item_string = '';
+    $items_query = vam_db_query("select products_id, products_model, products_name, final_price, products_quantity from " . TABLE_ORDERS_PRODUCTS . " where orders_id = '" . $order_id . "' order by products_name");
+    while ($items = vam_db_fetch_array($items_query)) {
+		$category_query = vam_db_query("select p2c.categories_id, cd.categories_name from " . TABLE_PRODUCTS_TO_CATEGORIES . " p2c, " . TABLE_CATEGORIES_DESCRIPTION . " cd where p2c.products_id = '" . $items['products_id'] . "' AND cd.categories_id = p2c.categories_id AND cd.language_id = '" . (int)$_SESSION['languages_id'] . "'");
+		$category = vam_db_fetch_array($category_query);
+		
+	  $item_string .=  
+	  
+  '{'."\n".'
+	  
+      "id": "' . htmlspecialchars($items['products_model']) . '",
+      "name": "' . htmlspecialchars($items['products_name']) . '",
+      "category": "' . htmlspecialchars($category['categories_name']) . '",
+      "quantity": ' . $items['products_quantity'] . ',
+      "price": \'' . $items['final_price'] . '\'
+	  
+  },'."\n";
+
+
+    }
+
+// ############## Google Analytics - end ###############
+
+$tracking_code .= '
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id='. GOOGLE_CONVERSION_ID .'"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag(\'js\', new Date());
+
+  gtag(\'config\', \''. GOOGLE_CONVERSION_ID .'\');
+
+  gtag(\'event\', \'purchase\', {
+' . $transaction_string . '
+  "items": [
+' . $item_string . '
+  ]
+
+  });
+
+
+</script>
+
+		    ';
+
+	$vamTemplate->assign('google_tracking', 'true');
+	$vamTemplate->assign('tracking_code', $tracking_code);
+
+}
+
+if ($insert_id > 0 && YANDEX_METRIKA == 'true') {
+
+	$order_id = $order->info['id'];
+
+// Get order info for Analytics "Transaction line" (affiliation, city, state, country, total, tax and shipping)
+
+// Set value for  "affiliation"
+
+	$analytics_affiliation = STORE_NAME;
+
+
+// Get info for "city", "state", "country"
+    $orders_query = vam_db_query("select customers_city, customers_state, currency, customers_country from " . TABLE_ORDERS . " where orders_id = '" . $order_id . "' AND customers_id = '" . (int)$_SESSION['customer_id'] . "'");
+    $orders = vam_db_fetch_array($orders_query);
+
+    $totals_query = vam_db_query("select value, class from " . TABLE_ORDERS_TOTAL . " where orders_id = '" . (int)$order_id . "' order by sort_order");
+// Set values for "total", "tax" and "shipping"
+    $analytics_total = '';
+    $analytics_tax = '';
+    $analytics_shipping = '';
+    
+     while ($totals = vam_db_fetch_array($totals_query)) {
+
+        if ($totals['class'] == 'ot_total') {
+            $analytics_total = $totals['value'];
+            $total_flag = 'true';
+        } else if ($totals['class'] == 'ot_tax') {
+            $analytics_tax = $totals['value'];
+            $tax_flag = 'true';
+        } else if ($totals['class'] == 'ot_shipping') {
+            $analytics_shipping = $totals['value'];
+			{ if ($analytics_shipping === "0.0000") $analytics_shipping = ''; }
+            $shipping_flag = 'true';
+        }
+
+     }
+
+// Prepare the Analytics "Transaction line" string
+
+	$transaction_string = 'order_id: "' . $order_id . '",'."\n".'order_price: ' . number_format($analytics_total,2,'.','') . ','."\n".'currency: "' . $orders['currency'] . '",'."\n".'exchange_rate: 1,';
+
+// Get products info for Analytics "Item lines"
+
+	$item_string = '';
+    $items_query = vam_db_query("select products_id, products_model, products_name, products_price, final_price, products_quantity from " . TABLE_ORDERS_PRODUCTS . " where orders_id = '" . $order_id . "' order by products_name");
+    while ($items = vam_db_fetch_array($items_query)) {
+		$category_query = vam_db_query("select p2c.categories_id, cd.categories_name from " . TABLE_PRODUCTS_TO_CATEGORIES . " p2c, " . TABLE_CATEGORIES_DESCRIPTION . " cd where p2c.products_id = '" . $items['products_id'] . "' AND cd.categories_id = p2c.categories_id AND cd.language_id = '" . (int)$_SESSION['languages_id'] . "'");
+		$category = vam_db_fetch_array($category_query);
+		
+	  $item_string .=  '{'."\n".'id: "' . htmlspecialchars($items['products_id']) . '",'."\n".'name: "' . htmlspecialchars($items['products_name']) . '",'."\n".'price: ' . number_format($items['products_price'],2,'.','') . ','."\n".'quantity: ' . number_format($items['products_quantity']) . ''."\n".'},'."\n";
+    }
+
+// ############## Yandex Metrika - end ###############
+
+
+$tracking_code .= '
+<script>
+window.dataLayer = window.dataLayer || [];
+</script>			
+<script>
+dataLayer.push({
+    "ecommerce": {
+        "purchase": {
+            "actionField": {
+                "id" : "'.$insert_id.'"
+            },
+            "products": [
+                '.$item_string.'	
+            ]
+        }
+    }
+});
+	
+</script>
+<!-- Yandex.Metrika counter -->
+<script>
+   (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+   m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+   (window, document, "script", "https://cdn.jsdelivr.net/npm/yandex-metrica-watch/tag.js", "ym");
+
+   ym('.YANDEX_METRIKA_ID.', "init", {
+        id:'.YANDEX_METRIKA_ID.',
+        clickmap:true,
+        trackLinks:true,
+        accurateTrackBounce:true,
+        webvisor:true,
+        trackHash:true,
+        ecommerce:"dataLayer"
+   });
+</script>
+<!-- /Yandex.Metrika counter -->
+		    ';
+
+	$vamTemplate->assign('google_tracking', 'true');
+	$vamTemplate->assign('tracking_code', $tracking_code);
+
+}
+
 if (!CacheCheck()) {
 	$vamTemplate->caching = 0;
 	$vamTemplate->display(CURRENT_TEMPLATE.'/module/one_click_buy_ok.html');
