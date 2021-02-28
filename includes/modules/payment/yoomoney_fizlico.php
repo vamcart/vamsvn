@@ -212,7 +212,7 @@ if ($_SERVER["HTTP_X_FORWARDED_FOR"]) {
                                   'cc_owner' => $order->info['cc_owner'],
                                   'cc_number' => $order->info['cc_number'],
                                   'cc_expires' => $order->info['cc_expires'],
-                                  'date_purchased' => date("Y-m-d H:i:s"),
+                                  'date_purchased' => $order->info['date_purchased'],
                                   'orders_status' => $order->info['order_status'],
                                   'currency' => $order->info['currency'],
                                   'currency_value' => $order->info['currency_value']);
@@ -477,7 +477,7 @@ $vamTemplate = new vamTemplate;
 		$shipping_method = $order->info['shipping_method'];
 	}
 	$vamTemplate->assign('SHIPPING_METHOD', $shipping_method);
-	$vamTemplate->assign('DATE', vam_date_long($order->info['date_purchased']));
+	$vamTemplate->assign('DATE', $order->info['date_purchased']);
 
 	$vamTemplate->assign('NAME', $order->customer['firstname'] . ' ' . $order->customer['lastname']);
 	$vamTemplate->assign('COMMENTS', $order->info['comments']);
