@@ -164,6 +164,11 @@ $.getScript("' . $server . '", function() {
 $vamTemplate->assign('KUPIVKREDIT_CODE', $kupi_v_kredit);
 }
 
+if ($order->info['payment_method'] != 'no_payment' && $order->info['payment_method'] != '' && $order->info['payment_method'] == 'yandex') {
+	include (DIR_WS_LANGUAGES . '/' . $_SESSION['language'] . '/modules/payment/' . $order->info['payment_method'] . '.php');
+	$vamTemplate->assign('PAYMENT_METHOD', constant(MODULE_PAYMENT_ . strtoupper($order->info['payment_method']) . _TEXT_DESCRIPTION));
+}
+
 // Google Conversion tracking
 if ($order->info['id'] > 0 && (GOOGLE_CONVERSION == 'true' or GOOGLE_TAG_MANAGER == 'true')) {
 
