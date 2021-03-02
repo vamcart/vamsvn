@@ -212,7 +212,7 @@ if ($_SERVER["HTTP_X_FORWARDED_FOR"]) {
                                   'cc_owner' => $order->info['cc_owner'],
                                   'cc_number' => $order->info['cc_number'],
                                   'cc_expires' => $order->info['cc_expires'],
-                                  'date_purchased' => $order->info['date_purchased'],
+                                  'date_purchased' => date("Y-m-d H:i:s"),
                                   'orders_status' => $order->info['order_status'],
                                   'currency' => $order->info['currency'],
                                   'currency_value' => $order->info['currency_value']);
