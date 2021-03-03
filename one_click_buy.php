@@ -221,15 +221,89 @@ $products_price = $vamPrice->GetPrice($product->data['products_id'], $format = t
         vam_db_perform(TABLE_ORDERS_PRODUCTS, $sql_data_array);
         $order_products_id = vam_db_insert_id();
 
+        $attributes = $_POST['id'];
+        
+			if (is_array($attributes)) {
+				foreach ($attributes as $option => $value) {
+
+             $attr_value = NULL;
+            $blank_value = FALSE;
+            if (strstr($option, 'txt_')) {
+              if (trim($value) == NULL)
+              {
+                $blank_value = TRUE;
+              } else {
+                $option_1 = substr($option, strlen('txt_'));
+                $option_2 = preg_split('/_/', $option_1);
+                $option = $option_2[0];
+                $attr_value = htmlspecialchars(stripslashes($value), ENT_QUOTES);
+                $value = $option_2[1];
+                $this->contents[$products_id]['attributes_values'][$option] = $attr_value;
+              }
+            }
+
+			if (!$blank_value)
+            {
+					//$this->contents[$products_id]['attributes'][$option] = $value;
+					// insert into database
+					//if (isset ($_SESSION['customer_id']))
+						//vam_db_query("insert into ".TABLE_CUSTOMERS_BASKET_ATTRIBUTES." (customers_id, products_id, products_options_id, products_options_value_id, products_options_value_text) values ('".$_SESSION['customer_id']."', '".vam_db_input($product->data['products_id'])."', '".vam_db_input($option)."', '".vam_db_input($value)."', '" . vam_db_input($attr_value) . "')");
+			
+				$attributes = vam_db_query("select popt.products_options_name,
+								                                             poval.products_options_values_name,
+								                                             pa.guid,
+								                                             pa.options_values_price,
+								                                             pa.price_prefix
+								                                             from ".TABLE_PRODUCTS_OPTIONS." popt, ".TABLE_PRODUCTS_OPTIONS_VALUES." poval, ".TABLE_PRODUCTS_ATTRIBUTES." pa
+								                                             where pa.products_id = '".vam_get_prid($product->data['products_id'])."'
+								                                             and pa.options_id = '".vam_db_input($option)."'
+								                                             and pa.options_id = popt.products_options_id
+								                                             and pa.options_values_id = '".vam_db_input($value)."'
+								                                             and pa.options_values_id = poval.products_options_values_id
+								                                             and popt.language_id = '".$_SESSION['languages_id']."'
+								                                             and poval.language_id = '".$_SESSION['languages_id']."'");
+
+			// update attribute stock
+			vam_db_query("UPDATE ".TABLE_PRODUCTS_ATTRIBUTES." set
+						                               attributes_stock=attributes_stock - '1'
+						                               where
+						                               products_id='".$product->data['products_id']."'
+						                               and options_values_id='".vam_db_input($value)."'
+						                               and options_id='".vam_db_input($option)."'
+						                               ");
+
+			$attributes_values = vam_db_fetch_array($attributes);
+
+			$sql_data_array = array ('orders_id' => $insert_id, 
+                                  'orders_products_id' => $order_products_id, 
+                                  'guid' => $attributes_values['guid'], 
+                                  'products_options' => $attributes_values['products_options_name'], 
+                                  'products_options_values' => $attributes_values['products_options_values_name'], 
+                                  'options_values_price' => $attributes_values['options_values_price'], 
+                                  'price_prefix' => $attributes_values['price_prefix']
+                                 );
+			vam_db_perform(TABLE_ORDERS_PRODUCTS_ATTRIBUTES, $sql_data_array);				
+			
+			
+        $sql_data_array = array('products_price' => $products_price['plain']+$attributes_values['options_values_price'], 'final_price' => $products_price['plain']+$attributes_values['options_values_price']);
+
+        vam_db_perform(TABLE_ORDERS_PRODUCTS, $sql_data_array, 'update', 'orders_products_id = \''.$order_products_id.'\'');			
+			
+				}
+				
+				
+				}
+			}    
+
 // Include Language Text
 include_once(DIR_WS_LANGUAGES.$_SESSION['language'].'/modules/order_total/ot_subtotal.php');
 include_once(DIR_WS_LANGUAGES.$_SESSION['language'].'/modules/order_total/ot_shipping.php');
 include_once(DIR_WS_LANGUAGES.$_SESSION['language'].'/modules/order_total/ot_total.php');
 
-$total_format = $vamPrice->Format($products_price['plain'],true);
+$total_format = $vamPrice->Format($products_price['plain']+$attributes_values['options_values_price'],true);
 												
         // Subtotal
-        $sql_data_array = array('orders_id' => $insert_id, 'title' => MODULE_ORDER_TOTAL_SUBTOTAL_TITLE, 'text' => $total_format, 'value' => $products_price['plain'], 'class' => 'ot_subtotal', 'sort_order' => 10);
+        $sql_data_array = array('orders_id' => $insert_id, 'title' => MODULE_ORDER_TOTAL_SUBTOTAL_TITLE, 'text' => $total_format, 'value' => $products_price['plain']+$attributes_values['options_values_price'], 'class' => 'ot_subtotal', 'sort_order' => 10);
         vam_db_perform(TABLE_ORDERS_TOTAL, $sql_data_array);
 
         // Shipping
@@ -237,19 +311,27 @@ $total_format = $vamPrice->Format($products_price['plain'],true);
         vam_db_perform(TABLE_ORDERS_TOTAL, $sql_data_array);
 
         // Total
-        $sql_data_array = array('orders_id' => $insert_id, 'title' => MODULE_ORDER_TOTAL_TOTAL_TITLE, 'text' => '<b>'.$total_format.'</b>', 'value' => $products_price['plain'], 'class' => 'ot_total', 'sort_order' => 99);
+        $sql_data_array = array('orders_id' => $insert_id, 'title' => MODULE_ORDER_TOTAL_TOTAL_TITLE, 'text' => '<b>'.$total_format.'</b>', 'value' => $products_price['plain']+$attributes_values['options_values_price'], 'class' => 'ot_total', 'sort_order' => 99);
         vam_db_perform(TABLE_ORDERS_TOTAL, $sql_data_array);
 
         $customer_notification = (SEND_EMAILS == 'true') ? '1' : '0';
         $sql_data_array = array('orders_id' => $insert_id, 'orders_status_id' => 1, 'date_added' => 'now()', 'customer_notified' => 1, 'comments' => ONE_CLICK_BUY_NAVBAR_TITLE);
         vam_db_perform(TABLE_ORDERS_STATUS_HISTORY, $sql_data_array);
+        
 }
 
+// Google Conversion tracking
+	include (DIR_WS_CLASSES.'order.php');
+	$order = new order($insert_id);
+
+	$order_total = $order->getTotalData($insert_id);
+		$vamTemplate->assign('order_data', $order->getOrderData($insert_id));
+		$vamTemplate->assign('order_total', $order_total['data']);
 			
 		$vamTemplate->assign('PRODUCTS_NAME', $product_info['products_name']);
 		$vamTemplate->assign('PRODUCTS_IMAGE', $product_info['products_image']);
-      $products_price = $vamPrice->GetPrice($product_info['products_id'], $format = true, 1, $product_info['products_tax_class_id'], $product_info['products_price'], 1);
-		$vamTemplate->assign('PRODUCTS_PRICE', $products_price['formated']);
+      //$products_price = $vamPrice->GetPrice($product_info['products_id'], $format = true, 1, $product_info['products_tax_class_id'], $product_info['products_price'], 1);
+		$vamTemplate->assign('PRODUCTS_PRICE', $order->info['total']);
 		$vamTemplate->assign('PRODUCTS_MODEL', $product_info['products_model']);
 		$vamTemplate->assign('TEXT_MESSAGE', $_POST['message_body']);
 		$vamTemplate->assign('TEXT_FIRSTNAME', $firstname);
@@ -267,10 +349,6 @@ $total_format = $vamPrice->Format($products_price['plain'],true);
 	// send mail to customer
 	//vam_php_mail(EMAIL_SUPPORT_ADDRESS, EMAIL_SUPPORT_NAME, $to_email_address, $to_name, EMAIL_SUPPORT_FORWARDING_STRING, EMAIL_SUPPORT_REPLY_ADDRESS, EMAIL_SUPPORT_REPLY_ADDRESS_NAME, '', '', NAVBAR_TITLE_ASK, $html_mail, $txt_mail);
 
-
-// Google Conversion tracking
-	include (DIR_WS_CLASSES.'order.php');
-	$order = new order($insert_id);
 
 if ($insert_id && (GOOGLE_CONVERSION == 'true' or GOOGLE_TAG_MANAGER == 'true')) {
 
@@ -530,6 +608,8 @@ $product_info = vam_db_fetch_array($product_info_query);
 
 include ('includes/header.php');
 
+include (DIR_WS_MODULES.'product_attributes_one_click_buy.php');
+		
 $breadcrumb->add(NAVBAR_TITLE_ASK, vam_href_link(FILENAME_ONE_CLICK_BUY, 'products_id='.$product->data['products_id'], 'SSL'));
 
 $vamTemplate->assign('PRODUCTS_NAME', $product_info['products_name']);

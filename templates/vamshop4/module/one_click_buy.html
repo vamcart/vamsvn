@@ -31,6 +31,13 @@ $(function($){
 <!-- форма -->
 <fieldset class="form">
 <legend>{$PRODUCTS_NAME}</legend>
+<span class="price">{$PRODUCTS_PRICE}</span>
+{if $MODULE_product_options !=''}
+<div class="inner product_options">
+{$MODULE_product_options}
+</div>
+{/if}
+
 <p>{#text_firstname#} {$INPUT_FIRSTNAME}</p>
 <!--<p>{#text_lastname#} {$INPUT_LASTNAME}</p>-->
 <p>{#text_telephone#} {$INPUT_TELEPHONE}</p>
