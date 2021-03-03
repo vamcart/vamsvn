@@ -648,7 +648,8 @@
       }
       $categories_url = $categories_url_data['categories_url'];
       $categories_url = str_replace(array('.html', '.htm'), '', $categories_url);
-      $categories_url = strtolower(vam_cleanName($categories_url));
+      //$categories_url = strtolower(vam_cleanName($categories_url));
+      $categories_url = strtolower($categories_url);
 
       $f_array = array();
 //error_log(__LINE__ . ': ' . ' $get=' . var_export($get, true) . "\n", 3, __FILE__.'.log');
@@ -707,7 +708,7 @@
         }
 //error_log(__LINE__ . ': ' . ' $specification[specification_seo_url]=' . var_export($specification['specification_seo_url'], true) . "\n", 3, __FILE__.'.log');
         $specification['specification_seo_url'] = strtolower(vam_cleanName(trim($specification['specification_seo_url'])));
-        $specification['specification_seo_url'] = preg_replace('@\-[\-]+@', '-', $specification['specification_seo_url']);
+        $specification['specification_seo_url'] = preg_replace('@\-[\-]+@', '/', $specification['specification_seo_url']);
 //error_log(__LINE__ . ': ' . ' $specification[specification_seo_url]=' . var_export($specification['specification_seo_url'], true) . "\n", 3, __FILE__.'.log');
         if (is_array($f_array[$specification['specifications_id']])) {
           sort($f_array[$specification['specifications_id']]);
@@ -756,25 +757,25 @@
           $filter_values_array[] = $filter_values['filter'];
         }
 //error_log(__LINE__ . ': ' . ' $filter_values_array=' . var_export($filter_values_array, true) . "\n", 3, __FILE__.'.log');
-        $specifications_values = implode('-', $filter_values_array);
+        $specifications_values = implode('/', $filter_values_array);
 //        $specifications_values = (is_array($f_array[$specification['specifications_id']]) ? implode('-', $f_array[$specification['specifications_id']]) : $f_array[$specification['specifications_id']]);
 // EOF use filter_id
 //error_log(__LINE__ . ': ' . ' $specifications_values=' . var_export($specifications_values, true) . "\n", 3, __FILE__.'.log');
         $specifications_values = vam_cleanName($specifications_values);
-        $specifications_values = preg_replace('@\-[\-]+@', '-', $specifications_values);
+        $specifications_values = preg_replace('@\-[\-]+@', '/', $specifications_values);
         $specifications_values = strtolower($specifications_values);
 //error_log(__LINE__ . ': ' . ' $specifications_values=' . var_export($specifications_values, true) . "\n", 3, __FILE__.'.log');
         if ($specification['products_column_name'] == 'manufacturers_id') {
           $specifications_uri_parts[] = $specifications_values;
         } else {
-          $specifications_uri_parts[] = $specification['specification_seo_url'] . '-' . $specifications_values;
+          $specifications_uri_parts[] = $specification['specification_seo_url'] . '/' . $specifications_values;
         }
       }
 //error_log(__LINE__ . ': ' . ' $specifications_uri_parts=' . var_export($specifications_uri_parts, true) . "\n", 3, __FILE__.'.log');
-      $uri_page = implode('-', $specifications_uri_parts);
+      $uri_page = implode('/', $specifications_uri_parts);
 //error_log(__LINE__ . ': ' . ' $uri_page=' . var_export($uri_page, true) . "\n", 3, __FILE__.'.log');
-      $uri_page = preg_replace('@\-[\-]+@', '-', $uri_page);
-      $uri_page = trim($uri_page, '-');
+      $uri_page = preg_replace('@\-[\-]+@', '/', $uri_page);
+      $uri_page = trim($uri_page, '/');
 //error_log(__LINE__ . ': ' . ' $uri_page=' . var_export($uri_page, true) . "\n", 3, __FILE__.'.log');
       if ($uri_page == '') {
         return vam_href_link_original($page, $parameters, $connection, $add_session_id, $search_engine_safe);
