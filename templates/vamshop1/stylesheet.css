@@ -3747,3 +3747,27 @@ width: 100%;
     font-size: 12px;
     display: inline-block;
 }
+
+.filter-box .title {
+     font-weight: bold;
+     display:block; 
+     padding: .5em 0;
+}   
+
+.circle.text-danger {
+
+color: red;
+font-weight: bold;
+padding-left: .5em;
+
+}
+
+.filter_count {
+margin-left: .5em;
+}
+
+.filter-box .list-group-item {
+
+padding-bottom: .5em;
+
+}    
