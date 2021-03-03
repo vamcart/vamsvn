@@ -47,9 +47,9 @@ $module_content = array();
 
 $reviews_query = "select rd.*, r.*, p.*, pd.* from ".TABLE_REVIEWS." r left join ".TABLE_PRODUCTS." p on (r.products_id = p.products_id) left join ".TABLE_PRODUCTS_DESCRIPTION." pd on (p.products_id = pd.products_id and pd.language_id = '".(int) $_SESSION['languages_id']."'), ".TABLE_REVIEWS_DESCRIPTION." rd where r.reviews_id = '".(int) $_GET['reviews_id']."' and rd.languages_id = '".(int) $_SESSION['languages_id']."' and r.reviews_id = rd.reviews_id and p.products_status = '1'";
 
-$reviews_query = vamDBquery($reviews_query);
+$reviews_query = vamDBquery($reviews_query, true);
 
-if (!vam_db_num_rows($reviews_query)) {
+if (!vam_db_num_rows($reviews_query, true)) {
 //header("HTTP/1.1 404 Not Found");
 vam_redirect(vam_href_link(FILENAME_REVIEWS));
 }
