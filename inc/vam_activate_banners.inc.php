@@ -19,7 +19,7 @@
 
 // Auto activate banners
   function vam_activate_banners() {
-    $banners_query = vam_db_query("select banners_id, date_scheduled from " . TABLE_BANNERS . " where date_scheduled != ''");
+    $banners_query = vam_db_query("select banners_id, date_scheduled from " . TABLE_BANNERS . " where date_scheduled != '0000-00-00'");
     if (vam_db_num_rows($banners_query)) {
       while ($banners = vam_db_fetch_array($banners_query)) {
         if (date('Y-m-d H:i:s') >= $banners['date_scheduled']) {
