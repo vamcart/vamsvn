@@ -1,11 +1,11 @@
-{config_load file="$language/lang_$language.conf" section="pohozhie"}
+{config_load file="$language/lang_$language.conf" section="similar"}
 <h3>{#heading_text#}</h3>
 <div class="page">
 <div class="pageItem">
 <!-- start: products listing -->
 <div class="row-fluid shop-products">
 	<ul class="thumbnails">
-		{foreach name=aussen item=module_data from=$pohozhie_tovary}
+		{foreach name=aussen item=module_data from=$similar_products}
 		{if {$smarty.get.cat} > 0}
 		<li class="item span3{if $smarty.foreach.aussen.index % 4 == 0} first{/if}">
 		{else}
