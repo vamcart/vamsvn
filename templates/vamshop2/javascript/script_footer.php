@@ -35,16 +35,16 @@ function initialise(){
      });     
 <?php } ?>
 <?php if (MODULE_SHIPPING_BOXBERRYPVZ_STATUS == 'True') { ?>
-	  $("select#pvz_boxberry").select2({
-            theme: "bootstrap",
-            language: "<?php echo $_SESSION['language_code']; ?>"
-     });     
+	  //$("select#pvz_boxberry").select2({
+            //theme: "bootstrap",
+            //language: "<?php echo $_SESSION['language_code']; ?>"
+     //});     
 <?php } ?>
 <?php if (MODULE_SHIPPING_NEWPOST_STATUS == 'True') { ?>
-	  $("select#pvz_newpost").select2({
-            theme: "bootstrap",
-            language: "<?php echo $_SESSION['language_code']; ?>"
-     });     
+	  //$("select#pvz_newpost").select2({
+            //theme: "bootstrap",
+            //language: "<?php echo $_SESSION['language_code']; ?>"
+     //});     
 <?php } ?>
 <?php if (ACCOUNT_STATE == 'true' or ACCOUNT_STATE == 'optional') { ?>
 	  $("#state").select2({
