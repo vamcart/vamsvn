@@ -69,15 +69,42 @@
 if ($order->delivery['city'] != '') {
 
 	    // Узнаём код города в boxberry по названию города, указанного на странице оформления заказа в поле Город.
+        
+		
+		// get HASH ID for filename
+		//$id=BoxCity
+		//md5($query);
 
+
+		// cache File Name
+		$file=SQL_CACHEDIR.'boxcity.vam';
+	    //$gzfile=SQL_CACHEDIR.$id.'.gz';
+
+		// file life time
+		$expire = 24000; // 48 hours
+
+		if (file_exists($file) && filemtime($file) > (time() - $expire)) {
+
+		// get cached resulst
+        $data = file_get_contents($file);
+		} 
+		else {
+		if (file_exists($file)) @unlink($file);
+		
 	    $curl = curl_init();
 	    curl_setopt($curl, CURLOPT_URL, "https://api.boxberry.ru/json.php?token=".MODULE_SHIPPING_BOXBERRYPVZ_API_LOGIN."&method=ListCities&CountryCode=643");
 	    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 	    $data = curl_exec($curl);
-	    
 	    curl_close($curl);
+		
+		//$stream = $data;
+		$fp = fopen($file,"w");
+        fwrite($fp, $data);
+        fclose($fp);
+		
+	    }
 	    
-	    $receiverCity = json_decode($data, $assoc=true);
+		$receiverCity = json_decode($data, $assoc=true);
 
 	    //echo var_dump($receiverCity);
 	    	    
@@ -88,8 +115,22 @@ if ($order->delivery['city'] != '') {
 	    }
 	    
 	    if($boxberry_city_id > 0) {
-	    	
+	    $total = $order->info['total'];	
 	    //Получаем список ПВЗ для указанного города
+		// cache File Name
+		$file2=SQL_CACHEDIR.'boxPVZ'.$boxberry_city_id.'.vam';
+	    //$gzfile=SQL_CACHEDIR.$id.'.gz';
+
+		// file life time
+		$expire = 18000; // 24 hours
+
+		if (file_exists($file2) && filemtime($file2) > (time() - $expire)) {
+
+		// get cached resulst
+        $pvz_data = file_get_contents($file2);
+		} 
+		else {
+		if (file_exists($file2)) @unlink($file2);
 
 	    $curl = curl_init();
 	    curl_setopt($curl, CURLOPT_URL, "https://api.boxberry.ru/json.php?token=".MODULE_SHIPPING_BOXBERRYPVZ_API_LOGIN."&method=ListPoints&prepaid=1&CityCode=".$boxberry_city_id."&CountryCode=643");
@@ -98,6 +139,12 @@ if ($order->delivery['city'] != '') {
 	    
 	    curl_close($curl);
 	    
+		//$stream = $data;
+		$fp2 = fopen($file2,"w");
+        fwrite($fp2, $pvz_data);
+        fclose($fp2);
+		
+	    }
 	    $ret_pvz = json_decode($pvz_data, $assoc=true);
 	    //echo var_dump($ret_pvz);
 	    
@@ -188,7 +235,7 @@ if ($order->delivery['city'] != '') {
 	    //echo var_dump($selected_pvz);
 
 	    $curl = curl_init();
-	    curl_setopt($curl, CURLOPT_URL, "https://api.boxberry.ru/json.php?token=".MODULE_SHIPPING_BOXBERRYPVZ_API_LOGIN."&method=DeliveryCosts&weight=".$total_weight."targetstart=&target=".strstr($_POST['pvz_boxberry'], ':', true)."&ordersum=&deliverysum=0&height=&width=&depth=&paysum=");
+	    curl_setopt($curl, CURLOPT_URL, "https://api.boxberry.ru/json.php?token=".MODULE_SHIPPING_BOXBERRYPVZ_API_LOGIN."&method=DeliveryCosts&weight=".$total_weight."targetstart=&target=".strstr($_POST['pvz_boxberry'], ':', true)."&ordersum=".$total."&deliverysum=0&height=15&width=15&depth=15&paysum=");
 	    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 	    $shipping_data = curl_exec($curl);
 

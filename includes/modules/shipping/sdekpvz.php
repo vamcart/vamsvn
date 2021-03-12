@@ -68,13 +68,35 @@
 		
 if ($order->delivery['city'] != '') {
 
+		// cache File Name
+		$iddd=md5($order->delivery['city']);
+		$file=SQL_CACHEDIR.$iddd.'sdekcity.vam';
+	    //$gzfile=SQL_CACHEDIR.$id.'.gz';
+
+		// file life time
+		$expire = 60*60*24; // 24 hours
+
+		if (file_exists($file) && filemtime($file) > (time() - $expire)) {
+
+		// get cached resulst
+        $data = file_get_contents($file);
+		} 
+		else {
+		if (file_exists($file)) @unlink($file);
+
 	    $curl = curl_init();
 	    curl_setopt($curl, CURLOPT_URL, "http://api.cdek.ru/city/getListByTerm/json.php?q=".$order->delivery['city']);
 	    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 	    $data = curl_exec($curl);
 	    
 	    curl_close($curl);
-	    
+	    //$stream = $data;
+		$fp = fopen($file,"w");
+        fwrite($fp, $data);
+        fclose($fp);
+		
+	    }
+		
 	    $senderCity = json_decode($data, $assoc=true);
 	    $senderCityId = $senderCity["geonames"][0]["id"];
 	    
@@ -304,7 +326,7 @@ private function sdekpvz_api_calc($autlogin, $authPassword, $dateExecute, $sende
 					'receiverCityId' => $idCity,
 					'tariffId' => '136',
 					'goods' => array(array('weight' => $weight,
-										   'volume' => '0.01' )));
+										   'volume' => '0.02' )));
 
 
 	
@@ -318,8 +340,30 @@ private function sdekpvz_api_calc($autlogin, $authPassword, $dateExecute, $sende
 }   
 
  private function sdekpvz_api_pvz($cityId) {  
-	$ret_pvz = file_get_contents("https://integration.cdek.ru/pvzlist.php?cityid=" . $cityId);
+ 
+     // cache File Name
+		$file3=SQL_CACHEDIR.'sdekPVZ'.$cityId.'.vam';
+	    //$gzfile=SQL_CACHEDIR.$id.'.gz';
 
+		// file life time
+		$expire = 60*60*24; // 24 hours
+
+		if (file_exists($file3) && filemtime($file3) > (time() - $expire)) {
+
+		// get cached resulst
+        $ret_pvz = file_get_contents($file3);
+		} 
+		else {
+		if (file_exists($file3)) @unlink($file3);
+		
+		$ret_pvz = file_get_contents("https://integration.cdek.ru/pvzlist.php?cityid=" . $cityId);
+         
+		 //$stream = $data;
+		$fp2 = fopen($file3,"w");
+        fwrite($fp2, $ret_pvz);
+        fclose($fp2);
+		
+	    }
 	// разбор xml
     $p = xml_parser_create();
     xml_parse_into_struct($p, $ret_pvz, $vals, $index);
