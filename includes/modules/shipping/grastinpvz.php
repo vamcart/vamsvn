@@ -106,6 +106,26 @@ $xmll = '
 </File>
 ';
         
+
+		// get HASH ID for filename
+		//$id=BoxCity
+		//md5($query);
+
+
+		// cache File Name
+		$file=SQL_CACHEDIR.'grastinanswer.vam';
+	    //$gzfile=SQL_CACHEDIR.$id.'.gz';
+
+		// file life time
+		$expire = 24000; // 48 hours
+
+		if (file_exists($file) && filemtime($file) > (time() - $expire)) {
+
+		// get cached resulst
+        $result = file_get_contents($file);
+		} 
+		else {
+		if (file_exists($file)) @unlink($file);
         
         $url = 'http://api.grastin.ru/api.php';
         $ch = curl_init();
@@ -117,6 +137,13 @@ $xmll = '
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
         $result = curl_exec($ch);
         curl_close($ch);
+
+		//$stream = $data;
+		$fp = fopen($file,"w");
+        fwrite($fp, $result);
+        fclose($fp);
+        
+}
 
 //echo var_dump($result);
 
@@ -184,8 +211,8 @@ if ($order->delivery['city'] != '') {
 			unset($_SESSION['pvz_grastin']);
 		}
 		
-		$check_city_pvz = vam_db_query("select distinct city, lat from markers_geocod where name = '" . $_SESSION['pvz_grastin'] . "' and company = '" . $company . "'");
-		$city_pvz = vam_db_fetch_array($check_city_pvz);
+		//$check_city_pvz = vam_db_query("select distinct city, lat from markers_geocod where name = '" . $_SESSION['pvz_grastin'] . "' and company = '" . $company . "'");
+		//$city_pvz = vam_db_fetch_array($check_city_pvz);
 				
 		
 		// получение списка пвз, занесение в базу		
@@ -201,9 +228,9 @@ if ($order->delivery['city'] != '') {
         				
 		$worktime = $grastin_pvz->timetable; 
         		
-		if ($city_pvz == '' && $_POST['pvz_grastin'] != '') {
-        vam_db_query("insert into markers_geocod (name, address, city, company, worktime, telephon, lng, lat) values ('" . $name_pvz1 . "', '" . $grastin_pvz->Name . "', '" . $city . "', '" . $company . "', '" . $worktime . "', '" . $grastin_pvz->phone . "', '" . $grastin_pvz->latitude . "', '" . $grastin_pvz->longitude . "')");	
-		}		
+		//if ($city_pvz == '' && $_POST['pvz_grastin'] != '') {
+        //vam_db_query("insert into markers_geocod (name, address, city, company, worktime, telephon, lng, lat) values ('" . $name_pvz1 . "', '" . $grastin_pvz->Name . "', '" . $city . "', '" . $company . "', '" . $worktime . "', '" . $grastin_pvz->phone . "', '" . $grastin_pvz->latitude . "', '" . $grastin_pvz->longitude . "')");	
+		//}		
         $value++;		
 		}
 		}
@@ -212,8 +239,8 @@ if ($order->delivery['city'] != '') {
 		
         // добавление в файл результатов геокодирования
 		
-		if (!$_GET['oID'])
-        require_once('includes/modules/yandex-map/geokoder_yandex_kart.php');
+		//if (!$_GET['oID'])
+        //require_once('includes/modules/yandex-map/geokoder_yandex_kart.php');
 		
 if ($order->delivery['city'] != '') {
         // список пвз, выпадающее меню
@@ -295,63 +322,6 @@ if ($order->delivery['city'] != '') {
       return array('MODULE_SHIPPING_GRASTINPVZ_STATUS', 'MODULE_SHIPPING_GRASTINPVZ_COST', 'MODULE_SHIPPING_GRASTINPVZ_COST_2', 'MODULE_SHIPPING_GRASTINPVZ_API_LOGIN', 'MODULE_SHIPPING_GRASTINPVZ_ALLOWED', 'MODULE_SHIPPING_GRASTINPVZ_TAX_CLASS', 'MODULE_SHIPPING_GRASTINPVZ_ZONE', 'MODULE_SHIPPING_GRASTINPVZ_SORT_ORDER', 'MODULE_SHIPPING_GRASTINPVZ_MIN_SUM', 'MODULE_SHIPPING_GRASTINPVZ_PROCENT', 'MODULE_SHIPPING_GRASTINPVZ_MIN_SUM_ORDER');
     }
     
-private function _grastinpvz_api_communicate($request)
-{
-
-if ($_SESSION['cart']->show_total() > $min_sum) {
-	
-	
-    $curl = curl_init();
-    curl_setopt($curl, CURLOPT_URL, 'http://api.edostavka.ru/calculator/calculate_price_by_json.php');
-    curl_setopt($curl, CURLOPT_POST, true);
-    curl_setopt($curl, CURLOPT_POSTFIELDS, json_encode($request));
-    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-	curl_setopt($curl, CURLOPT_TIMEOUT, 5);
-	curl_setopt($curl, CURLOPT_CONNECTTIMEOUT, 5);
-	curl_setopt($curl, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
-    $data = curl_exec($curl);
-    
-    curl_close($curl);
-    if($data === false)
-    {
-	return '10000 server error';
-    }
-    
-    $js = json_decode($data, $assoc=true);
-    return $js;
-	
-	}
-}
-
-private function grastinpvz_api_calc($autlogin, $authPassword, $dateExecute, $senderPostcode, $receiverPostcode, $weight, $idCity)
-{	
-	    if ($authPassword != '') {
-        //аутентификация
-        $secure = md5($dateExecute . '&' . $authPassword);
-		
-    }
-    $request = array('version' => '1.0',
-					'authLogin' => $autlogin,
-					'secure' => $secure,
-					'dateExecute' => $dateExecute, 
-					'senderCityPostCode' => $senderPostcode,
-					'receiverCityPostCode' => $receiverPostcode,
-					'receiverCityId' => $idCity,
-					'tariffId' => '136',
-					'goods' => array(array('weight' => $weight,
-										   'volume' => '0.01' )));
-
-
-	
-	 //print_r($request);
-
-    $ret = $this->_grastinpvz_api_communicate($request);
-    
-    //echo var_dump($ret);
-	
-	return $ret;
-}   
-
  private function grastinpvz_api_pvz($cityId) {  
 
 $xmll = '<File>
@@ -359,6 +329,21 @@ $xmll = '<File>
         <Method>selfpickup</Method>
 </File>';
         
+
+     // cache File Name
+		$file3=SQL_CACHEDIR.'grastinPVZ'.$cityId.'.vam';
+	    //$gzfile=SQL_CACHEDIR.$id.'.gz';
+
+		// file life time
+		$expire = 60*60*24; // 24 hours
+
+		if (file_exists($file3) && filemtime($file3) > (time() - $expire)) {
+
+		// get cached resulst
+        $vals = file_get_contents($file3);
+		} 
+		else {
+		if (file_exists($file3)) @unlink($file3);
         
         $url = 'http://api.grastin.ru/api.php';
         $ch = curl_init();
@@ -370,6 +355,13 @@ $xmll = '<File>
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
         $vals = curl_exec($ch);
         curl_close($ch);
+
+		//$stream = $data;
+		$fp = fopen($file3,"w");
+        fwrite($fp, $vals);
+        fclose($fp);
+        
+     }
 
     return $vals; 
  }

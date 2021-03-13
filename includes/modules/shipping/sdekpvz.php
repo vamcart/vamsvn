@@ -170,8 +170,8 @@ if ($order->delivery['city'] != '') {
 			unset($_SESSION['pvz_sdek']);
 		}
 		
-		$check_city_pvz = vam_db_query("select distinct city, lat from markers_geocod where name = '" . $_SESSION['pvz_sdek'] . "' and company = '" . $company . "'");
-		$city_pvz = vam_db_fetch_array($check_city_pvz);
+		//$check_city_pvz = vam_db_query("select distinct city, lat from markers_geocod where name = '" . $_SESSION['pvz_sdek'] . "' and company = '" . $company . "'");
+		//$city_pvz = vam_db_fetch_array($check_city_pvz);
 				
 		
 		// получение списка пвз, занесение в базу		
@@ -187,9 +187,9 @@ if ($order->delivery['city'] != '') {
         				
 		$worktime = $ret_pvz[$key]['attributes']['WORKTIME']; 
         		
-		if ($city_pvz == '' && $_POST['pvz_sdek'] != '') {
-        vam_db_query("insert into markers_geocod (name, address, city, company, worktime, telephon, lng, lat) values ('" . $name_pvz1 . "', '" . $ret_pvz[$key]['attributes']['ADDRESS'] . "', '" . $city . "', '" . $company . "', '" . $worktime . "', '" . $ret_pvz[$key]['attributes']['PHONE'] . "', '" . $ret_pvz[$key]['attributes']['COORDX'] . "', '" . $ret_pvz[$key]['attributes']['COORDY'] . "')");	
-		}		
+		//if ($city_pvz == '' && $_POST['pvz_sdek'] != '') {
+        //vam_db_query("insert into markers_geocod (name, address, city, company, worktime, telephon, lng, lat) values ('" . $name_pvz1 . "', '" . $ret_pvz[$key]['attributes']['ADDRESS'] . "', '" . $city . "', '" . $company . "', '" . $worktime . "', '" . $ret_pvz[$key]['attributes']['PHONE'] . "', '" . $ret_pvz[$key]['attributes']['COORDX'] . "', '" . $ret_pvz[$key]['attributes']['COORDY'] . "')");	
+		//}		
         $value++;		
 		}
 		}
@@ -198,8 +198,8 @@ if ($order->delivery['city'] != '') {
 		
         // добавление в файл результатов геокодирования
 		
-		if (!$_GET['oID'])
-        require_once('includes/modules/yandex-map/geokoder_yandex_kart.php');
+		//if (!$_GET['oID'])
+        //require_once('includes/modules/yandex-map/geokoder_yandex_kart.php');
 		
 if ($order->delivery['city'] != '') {
         // список пвз, выпадающее меню

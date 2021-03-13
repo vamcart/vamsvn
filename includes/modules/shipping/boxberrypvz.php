@@ -186,8 +186,8 @@ if ($order->delivery['city'] != '') {
 			unset($_SESSION['pvz_boxberry']);
 		}
 		
-		$check_city_pvz = vam_db_query("select distinct city, lat from markers_geocod where name = '" . $_SESSION['pvz_boxberry'] . "' and company = '" . $company . "'");
-		$city_pvz = vam_db_fetch_array($check_city_pvz);
+		//$check_city_pvz = vam_db_query("select distinct city, lat from markers_geocod where name = '" . $_SESSION['pvz_boxberry'] . "' and company = '" . $company . "'");
+		//$city_pvz = vam_db_fetch_array($check_city_pvz);
 				
 		
 		// получение списка пвз, занесение в базу		
@@ -204,9 +204,9 @@ if ($order->delivery['city'] != '') {
         				
 		$worktime = $ret_pvz[$key]['WorkShedule']; 
         		
-		if ($city_pvz == '' && $_POST['pvz_boxberry'] != '') {
-        vam_db_query("insert into markers_geocod (name, address, city, company, worktime, telephon, lng, lat) values ('" . $name_pvz1 . "', '" . $ret_pvz[$key]['Address'] . "', '" . $city . "', '" . $company . "', '" . $worktime . "', '" . $ret_pvz[$key]['Phone'] . "', '" . $ret_pvz[$key]['attributes']['GPS'] . "', '" . $ret_pvz[$key]['GPS'] . "')");	
-		}		
+		//if ($city_pvz == '' && $_POST['pvz_boxberry'] != '') {
+        //vam_db_query("insert into markers_geocod (name, address, city, company, worktime, telephon, lng, lat) values ('" . $name_pvz1 . "', '" . $ret_pvz[$key]['Address'] . "', '" . $city . "', '" . $company . "', '" . $worktime . "', '" . $ret_pvz[$key]['Phone'] . "', '" . $ret_pvz[$key]['attributes']['GPS'] . "', '" . $ret_pvz[$key]['GPS'] . "')");	
+		//}		
         $value++;		
 		}
 		}
@@ -214,8 +214,8 @@ if ($order->delivery['city'] != '') {
 
         // добавление в файл результатов геокодирования
 		
-		if (!$_GET['oID'])
-        require_once('includes/modules/yandex-map/geokoder_yandex_kart.php');
+		//if (!$_GET['oID'])
+        //require_once('includes/modules/yandex-map/geokoder_yandex_kart.php');
 		
 if ($order->delivery['city'] != '') {
         // список пвз, выпадающее меню

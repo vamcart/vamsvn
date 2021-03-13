@@ -76,6 +76,7 @@
 if ($order->delivery['country']['iso_code_2'] == 'UA') {
 if ($order->delivery['city'] != '') {
 
+
 // Узнаём ID номер города отправителя
 
     $sender_request = array("apiKey"=>MODULE_SHIPPING_NEWPOST_API_LOGIN, 
@@ -92,6 +93,21 @@ $sender_request = json_encode($sender_request);
 
 //echo var_dump($sender_request);
 
+		// cache File Name
+		$file=SQL_CACHEDIR.'newpostCity'.MODULE_SHIPPING_NEWPOST_CITY.'.vam';
+	    //$gzfile=SQL_CACHEDIR.$id.'.gz';
+
+		// file life time
+		$expire = 78000; // 24 hours
+
+		if (file_exists($file) && filemtime($file) > (time() - $expire)) {
+
+		// get cached resulst
+        $sender_data = file_get_contents($file);
+		} 
+		else {
+		if (file_exists($file)) @unlink($file);
+
     $curl = curl_init();
     curl_setopt($curl, CURLOPT_URL, "https://api.novaposhta.ua/v2.0/json/");
     curl_setopt($curl, CURLOPT_POST, true);
@@ -102,6 +118,15 @@ $sender_request = json_encode($sender_request);
     //echo var_dump($sender_data);
     
     curl_close($curl);
+    
+		//$stream = $data;
+		$fp2 = fopen($file,"w");
+        fwrite($fp2, $sender_data);
+        fclose($fp2);
+		
+	    }    
+    
+    
     if($sender_data === false)
     {
 	return "Заполните поле Город в настройках модуля доставки Новая почта в Админке - Модули - Доставка.";
@@ -132,6 +157,21 @@ $sender_city_ref = $sender_city_data['data'][0]['Addresses'][0]['Ref'];
     
 $request = json_encode($request); 
 
+		// cache File Name
+		$file2=SQL_CACHEDIR.'newpostCityDelivery'.$order->delivery['city'].'.vam';
+	    //$gzfile=SQL_CACHEDIR.$id.'.gz';
+
+		// file life time
+		$expire2 = 78000; // 24 hours
+
+		if (file_exists($file2) && filemtime($file2) > (time() - $expire2)) {
+
+		// get cached resulst
+        $data = file_get_contents($file2);
+		} 
+		else {
+		if (file_exists($file2)) @unlink($file2);
+
     $curl = curl_init();
     curl_setopt($curl, CURLOPT_URL, "https://api.novaposhta.ua/v2.0/json/");
     curl_setopt($curl, CURLOPT_POST, true);
@@ -142,6 +182,13 @@ $request = json_encode($request);
     //echo var_dump($data);
     
     curl_close($curl);
+
+		$fp3 = fopen($file2,"w");
+        fwrite($fp3, $data);
+        fclose($fp3);
+		
+	    }
+	    
     if($data === false)
     {
 	return "Заполните поле Город для расчёта стоимость доставки.";
@@ -184,6 +231,21 @@ $calculate_request = json_encode($calculate_request);
 
 //echo var_dump($calculate_request);
 
+		// cache File Name
+		$file3=SQL_CACHEDIR.'newpostCalculate'.$weight.'-'.$recipient_city_ref.'.vam';
+	    //$gzfile=SQL_CACHEDIR.$id.'.gz';
+
+		// file life time
+		$expire3 = 78000; // 24 hours
+
+		if (file_exists($file3) && filemtime($file3) > (time() - $expire3)) {
+
+		// get cached resulst
+        $calculate_data = file_get_contents($file3);
+		} 
+		else {
+		if (file_exists($file3)) @unlink($file3);
+
     $curl = curl_init();
     curl_setopt($curl, CURLOPT_URL, "https://api.novaposhta.ua/v2.0/json/");
     curl_setopt($curl, CURLOPT_POST, true);
@@ -194,6 +256,14 @@ $calculate_request = json_encode($calculate_request);
     //echo var_dump($calculate_data);
     
     curl_close($curl);
+    
+		$fp4 = fopen($file3,"w");
+        fwrite($fp4, $calculate_data);
+        fclose($fp4);
+		
+	    }
+	        
+    
     if($calculate_data === false)
     {
 	return "Доставка в указанный город не осуществляется.";
@@ -228,6 +298,21 @@ if ($order->delivery['city'] != '') {
     
 $request_pvz = json_encode($request_pvz); 
 
+		// cache File Name
+		$file4=SQL_CACHEDIR.'newpostPVZ'.$order->delivery['city'].'.vam';
+	    //$gzfile=SQL_CACHEDIR.$id.'.gz';
+
+		// file life time
+		$expire4 = 78000; // 24 hours
+
+		if (file_exists($file4) && filemtime($file4) > (time() - $expire4)) {
+
+		// get cached resulst
+        $data_pvz = file_get_contents($file4);
+		} 
+		else {
+		if (file_exists($file3)) @unlink($file3);
+
     $curl = curl_init();
     curl_setopt($curl, CURLOPT_URL, "https://api.novaposhta.ua/v2.0/json/");
     curl_setopt($curl, CURLOPT_POST, true);
@@ -238,6 +323,13 @@ $request_pvz = json_encode($request_pvz);
     //echo var_dump($data);
     
     curl_close($curl);
+    
+		$fp5 = fopen($file4,"w");
+        fwrite($fp5, $data_pvz);
+        fclose($fp5);
+		
+	    }    
+    
     if($data_pvz === false)
     {
 	return "Не удалось загрузить список отделений новой почты для Вашего города.";
@@ -260,8 +352,6 @@ $name_pvz[] = array(
 
 
 //echo var_dump($name_pvz);
-		
-        // добавление в файл результатов геокодирования
 		
         // список пвз, выпадающее меню
         $pvz = vam_draw_pull_down_menu('pvz_newpost', $name_pvz, $_POST['pvz_newpost'], 'id="pvz_newpost" class="form-control"');
