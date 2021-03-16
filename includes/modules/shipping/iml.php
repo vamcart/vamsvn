@@ -84,7 +84,7 @@
 	$response = curl_exec($curl);
 	$result = json_decode($response, true); // результат запроса  
 	
-	echo var_dump($response);
+	//echo var_dump($response);
                 
         $shipping_cost = $result['Price']+$cost;
         
