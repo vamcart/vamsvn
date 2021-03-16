@@ -67,7 +67,11 @@
        
        if ($login != '') {
 
-	$url = "http://api.iml.ru/GetPrice?Job=C24&RegionFrom=".MODULE_SHIPPING_IML_CITY."&RegionTo=".$order->delivery['city']."&volume=1&Weigth=".$total_weight."&SpecialCode=1"; // url запроса
+//старый api
+	//$url = "http://api.iml.ru/GetPrice?Job=C24&RegionFrom=".MODULE_SHIPPING_IML_CITY."&RegionTo=".$order->delivery['city']."&volume=1&Weigth=".$total_weight."&SpecialCode=1"; // url запроса
+//новый api v5	
+	$url = "http://api.iml.ru/v5/GetPrice?job=24&weigth=".$total_weight."&volume=1&regionFrom=".MODULE_SHIPPING_IML_CITY."&regionTo=".$order->delivery['city'];
+
 	//логин и пароль, подходят от личного кабинета
 	$curl = curl_init($url);
 	curl_setopt($curl, CURLOPT_HEADER, false);
@@ -80,7 +84,7 @@
 	$response = curl_exec($curl);
 	$result = json_decode($response, true); // результат запроса  
 	
-	//echo var_dump($response);
+	echo var_dump($response);
                 
         $shipping_cost = $result['Price']+$cost;
         
