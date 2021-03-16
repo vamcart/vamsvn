@@ -19,20 +19,12 @@
 
 
 ?>
-<script type="text/javascript">
-    function set_first_shipping()	{
-        if(!$('input[name=shipping]:checked').length){
-        $('input[name=shipping]:first').prop('checked','checked').change();
-        }
-    }
-</script>
 <?php
 // if the customer is logged on - show this javascript
 if (vam_session_is_registered('customer_id')) { ?>
 <script>
 $(document).ready(function() {
 $(init);
-set_first_shipping();
 function init()
 	{
 
@@ -168,7 +160,6 @@ $(hidePay);
 	;}
 
 $(init);
-set_first_shipping();
 function init()
 	{
 
