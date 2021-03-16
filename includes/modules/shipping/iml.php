@@ -102,8 +102,11 @@
 
       if (vam_not_null($this->icon)) $this->quotes['icon'] = vam_image($this->icon, $this->title);
 
-      if (!$order->delivery['postcode']) 
-	    $this->quotes['error'] = 'Укажите почтовый индекс для расчёта стоимости доставки.';
+      if (!$order->delivery['city']) 
+	    $this->quotes['error'] = 'Укажите город для расчёта стоимости доставки.';
+
+      if (!$result['Price'] && $order->delivery['city']) 
+	    $this->quotes['error'] = 'Доставка в данный город невозможна.';
 
       return $this->quotes;
     }
