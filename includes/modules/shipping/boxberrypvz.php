@@ -294,9 +294,12 @@ if ($order->delivery['city'] != '') {
 		  
 	  //$this->quotes['error'] = 'Пункты выдачи. Доставка в этом направлении не осуществляется.'; 
 	  } 
-	  
+
       if (!$shipping['price'] && !$_POST['pvz_boxberry']) 
 	    $this->quotes['error'] = 'Выберите пункт выдачи заказов.';
+
+      if (!$order->delivery['city']) 
+	    $this->quotes['error'] = 'Укажите город.';
 		
       return $this->quotes;
     }
