@@ -74,7 +74,7 @@ if ($order->delivery['city'] != '') {
 	    //$gzfile=SQL_CACHEDIR.$id.'.gz';
 
 		// file life time
-		$expire = 60*60*24; // 24 hours
+		$expire = 240000; // 240 hours
 
 		if (file_exists($file) && filemtime($file) > (time() - $expire)) {
 
@@ -346,7 +346,7 @@ private function sdekpvz_api_calc($autlogin, $authPassword, $dateExecute, $sende
 	    //$gzfile=SQL_CACHEDIR.$id.'.gz';
 
 		// file life time
-		$expire = 60*60*24; // 24 hours
+		$expire = 240000; // 240 hours
 
 		if (file_exists($file3) && filemtime($file3) > (time() - $expire)) {
 

@@ -81,7 +81,7 @@ if ($order->delivery['city'] != '') {
 	    //$gzfile=SQL_CACHEDIR.$id.'.gz';
 
 		// file life time
-		$expire = 24000; // 48 hours
+		$expire = 240000; // 240 hours
 
 		if (file_exists($file) && filemtime($file) > (time() - $expire)) {
 
@@ -122,7 +122,7 @@ if ($order->delivery['city'] != '') {
 	    //$gzfile=SQL_CACHEDIR.$id.'.gz';
 
 		// file life time
-		$expire = 18000; // 24 hours
+		$expire = 240000; // 240 hours
 
 		if (file_exists($file2) && filemtime($file2) > (time() - $expire)) {
 
@@ -247,7 +247,7 @@ if ($order->delivery['city'] != '') {
 		if ($shipping['price'] > 0) {
 		$shipping_cost = $shipping['price'];
 		}
-		
+
 		//echo var_dump($shipping_cost);
 
         $this->quotes = array('id' => $this->code,
@@ -295,7 +295,9 @@ if ($order->delivery['city'] != '') {
 	  //$this->quotes['error'] = 'Пункты выдачи. Доставка в этом направлении не осуществляется.'; 
 	  } 
 	  
-
+      if (!$shipping['price'] && !$_POST['pvz_boxberry']) 
+	    $this->quotes['error'] = 'Выберите пункт выдачи заказов.';
+		
       return $this->quotes;
     }
 

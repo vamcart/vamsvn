@@ -98,7 +98,7 @@ $sender_request = json_encode($sender_request);
 	    //$gzfile=SQL_CACHEDIR.$id.'.gz';
 
 		// file life time
-		$expire = 78000; // 24 hours
+		$expire = 240000; // 240 hours
 
 		if (file_exists($file) && filemtime($file) > (time() - $expire)) {
 
@@ -162,7 +162,7 @@ $request = json_encode($request);
 	    //$gzfile=SQL_CACHEDIR.$id.'.gz';
 
 		// file life time
-		$expire2 = 78000; // 24 hours
+		$expire2 = 240000; // 24 hours
 
 		if (file_exists($file2) && filemtime($file2) > (time() - $expire2)) {
 
@@ -236,7 +236,7 @@ $calculate_request = json_encode($calculate_request);
 	    //$gzfile=SQL_CACHEDIR.$id.'.gz';
 
 		// file life time
-		$expire3 = 78000; // 24 hours
+		$expire3 = 240000; // 24 hours
 
 		if (file_exists($file3) && filemtime($file3) > (time() - $expire3)) {
 
@@ -303,7 +303,7 @@ $request_pvz = json_encode($request_pvz);
 	    //$gzfile=SQL_CACHEDIR.$id.'.gz';
 
 		// file life time
-		$expire4 = 78000; // 24 hours
+		$expire4 = 240000; // 240 hours
 
 		if (file_exists($file4) && filemtime($file4) > (time() - $expire4)) {
 

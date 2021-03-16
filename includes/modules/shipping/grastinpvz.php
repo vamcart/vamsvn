@@ -117,7 +117,7 @@ $xmll = '
 	    //$gzfile=SQL_CACHEDIR.$id.'.gz';
 
 		// file life time
-		$expire = 24000; // 48 hours
+		$expire = 240000; // 240 hours
 
 		if (file_exists($file) && filemtime($file) > (time() - $expire)) {
 
@@ -335,7 +335,7 @@ $xmll = '<File>
 	    //$gzfile=SQL_CACHEDIR.$id.'.gz';
 
 		// file life time
-		$expire = 60*60*24; // 24 hours
+		$expire = 240000; // 240 hours
 
 		if (file_exists($file3) && filemtime($file3) > (time() - $expire)) {
 
