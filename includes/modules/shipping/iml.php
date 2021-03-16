@@ -79,8 +79,10 @@
 	curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
 	$response = curl_exec($curl);
 	$result = json_decode($response, true); // результат запроса  
+	
+	//echo var_dump($response);
                 
-        $shipping_cost = $results['price']+$cost;
+        $shipping_cost = $result['Price']+$cost;
         
       }
 	    
