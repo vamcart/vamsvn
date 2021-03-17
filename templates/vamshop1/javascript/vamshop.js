@@ -4,8 +4,7 @@ $(document).ready(function(){
   $(".navbar .navbar-toggle").click();
   $('.toggle-menu').jPushMenu({closeOnClickLink: false});
   $('.dropdown-toggle').dropdown();
-});
-
+  
   $('.dropdown-sub a.drop').on("click", function(e){
   	
 	if($(this).hasClass('opened')){
@@ -27,6 +26,8 @@ $(document).ready(function(){
     e.preventDefault();
   });
 
+
+});
 //OWL Carousel Slider
 $(".owl-carousel").owlCarousel({
     margin: 30,
