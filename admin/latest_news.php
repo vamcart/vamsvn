@@ -423,10 +423,10 @@ echo vam_draw_pull_down_menu('item_language',$languages_array,$languages_selecte
         
         $contents = array('form'    => vam_draw_form('news', FILENAME_LATEST_NEWS, vam_get_all_get_params(array('action')) . 'action=delete_latest_news_confirm') . vam_draw_hidden_field('news_id', $_GET['news_id']));
         $contents[] = array('text'  => TEXT_DELETE_ITEM_INTRO);
-        $contents[] = array('text'  => '<br><b>' . $selected_item['headline'] . '</b>');
+        $contents[] = array('text'  => '<br><b>' . $nInfo->headline . '</b>');
         
         $contents[] = array('align' => 'center',
-                            'text'  => '<br><span class="button"><button type="submit" value="' . BUTTON_DELETE .'">' . vam_image(DIR_WS_IMAGES . 'icons/buttons/delete.png', '', '12', '12') . '&nbsp;' . BUTTON_DELETE . '</button></span><a class="button" href="' . vam_href_link(FILENAME_LATEST_NEWS,  vam_get_all_get_params(array ('news_id', 'action')).'news_id=' . $selected_item['news_id']) . '"><span>' . vam_image(DIR_WS_IMAGES . 'icons/buttons/cancel.png', '', '12', '12') . '&nbsp;' . BUTTON_CANCEL . '</span></a>');
+                            'text'  => '<br><span class="button"><button type="submit" value="' . BUTTON_DELETE .'">' . vam_image(DIR_WS_IMAGES . 'icons/buttons/delete.png', '', '12', '12') . '&nbsp;' . BUTTON_DELETE . '</button></span><a class="button" href="' . vam_href_link(FILENAME_LATEST_NEWS,  vam_get_all_get_params(array ('news_id', 'action')).'news_id=' . $nInfo->headline) . '"><span>' . vam_image(DIR_WS_IMAGES . 'icons/buttons/cancel.png', '', '12', '12') . '&nbsp;' . BUTTON_CANCEL . '</span></a>');
         break;
 
       default:
