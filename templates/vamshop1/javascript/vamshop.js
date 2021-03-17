@@ -6,6 +6,27 @@ $(document).ready(function(){
   $('.dropdown-toggle').dropdown();
 });
 
+  $('.dropdown-sub a.drop').on("click", function(e){
+  	
+	if($(this).hasClass('opened')){
+		$(this).removeClass('opened');
+	}else{
+		
+		$(this).parent().parent().find('.opened').each(function(index) {
+			if($(this).hasClass('opened')){
+				$(this).next('ul').toggle();
+				$(this).removeClass('opened');
+			}
+		});
+		$(this).addClass('opened');
+		
+	}
+	  	
+    $(this).next('ul').toggle();
+    e.stopPropagation();
+    e.preventDefault();
+  });
+
 //OWL Carousel Slider
 $(".owl-carousel").owlCarousel({
     margin: 30,

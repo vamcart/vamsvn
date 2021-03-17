@@ -71,7 +71,7 @@ function vam_category2_get_subcategory( $owner_cat_id, $owner_cat_name = '', $ow
             };
         };
 
-        $categories_string2 .= '<li'.((vam_has_category_subcategories($owner_cat_id)) ? " class=\"dropdown-submenu\"" : "").'><a'.((vam_has_category_subcategories($owner_cat_id)) ? " class=\"drop\" " : " ").'href="' . $cPath_new_url . '">' . $owner_cat_name . $products_count_string . '</a>'."\n";
+        $categories_string2 .= '<li'.((vam_has_category_subcategories($owner_cat_id)) ? " class=\"dropdown-sub\"" : "").'><a'.((vam_has_category_subcategories($owner_cat_id)) ? " class=\"drop\" " : " ").'href="' . $cPath_new_url . '">' . $owner_cat_name . $products_count_string . '</a>'."\n";
 
     };  // if ( $owner_cat_id )
 
