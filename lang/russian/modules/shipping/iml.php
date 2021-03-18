@@ -17,8 +17,18 @@
    Released under the GNU General Public License 
    ---------------------------------------------------------------------------------------*/
 
-define('MODULE_SHIPPING_IML_TEXT_TITLE', 'IML - Доставка курьером');
+define('MODULE_SHIPPING_IML_TEXT_TITLE', 'IML - Пункт выдачи заказов');
 define('MODULE_SHIPPING_IML_TEXT_DESCRIPTION', 'IML');
+
+define('MODULE_SHIPPING_IML_JS', '
+<script>
+$(function () {
+$("select#pvz_iml").on("change", function() {
+    $("[name=shipping]").val(["iml_iml"]);
+});
+});
+</script>
+');
 
 define('MODULE_SHIPPING_IML_TEXT_SELECT_ADDRESS','Выбрать ПВЗ');
 define('MODULE_SHIPPING_IML_TEXT_ADDRESS_HELP','(откроется во всплывающем окне)');
@@ -26,6 +36,8 @@ define('MODULE_SHIPPING_IML_TEXT_ADDRESS','На указанный адрес д
 define('MODULE_SHIPPING_IML_TEXT_ANOTHER_ADDRESS','Выбрать другой адрес');
 
 define('MODULE_SHIPPING_IML_TEXT_WAY', 'Заказ будет доставлен на указанный адрес.');
+
+define('MODULE_SHIPPING_IML_TEXT_TITLE_2', 'ПВЗ');
 
 define('MODULE_SHIPPING_IML_STATUS_TITLE' , 'Разрешить модуль iml');
 define('MODULE_SHIPPING_IML_STATUS_DESC' , 'Вы хотите разрешить модуль iml?');
