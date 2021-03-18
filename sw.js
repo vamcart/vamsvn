@@ -57,4 +57,21 @@ workbox.routing.registerRoute(
   })
 );
 
+
+var FALLBACK_HTML_URL = "/db_error.htm";
+
+workbox.precaching.precacheAndRoute([FALLBACK_HTML_URL]);
+
+workbox.routing.setDefaultHandler(new workbox.strategies.NetworkOnly());
+
+workbox.routing.setCatchHandler(({event}) => {
+  switch (event.request.destination) {
+    case "document":
+      return caches.match(FALLBACK_HTML_URL);
+      break;
+    default:
+      return Response.error();
+  }
+});
+
 }
