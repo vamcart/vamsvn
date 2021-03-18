@@ -188,11 +188,55 @@ if ($order->delivery['city'] != '') {
 	$shipping_data = curl_exec($curl);
 	    
 	    $shipping = json_decode($shipping_data, $assoc=true);
+	    
 	    //echo var_dump($shipping);
 	    	    
 		if ($shipping['Price'] > 0) {
 		$shipping_cost = $shipping['Price'];
 		}
+
+// Получаем время доставки
+
+	    $vremya = date('d',strtotime($shipping['DeliveryDate']))-date("d");
+
+	    //Получаем список ПВЗ для указанного города
+		// cache File Name
+		$file5=SQL_CACHEDIR.'imlPVZ'.$iml_city_id.'.vam';
+	    //$gzfile=SQL_CACHEDIR.$id.'.gz';
+
+		// file life time
+		$expire = 240000; // 240 hours
+
+		if (file_exists($file5) && filemtime($file5) > (time() - $expire)) {
+
+		// get cached resulst
+        $iml_pvz_data = file_get_contents($file5);
+		} 
+		else {
+		if (file_exists($file5)) @unlink($file5);
+
+	$url = "http://list.iml.ru/sd?type=json&RegionCode=".$iml_city_id; // url запроса
+	//логин и пароль, подходят от личного кабинета
+	$curl = curl_init($url);
+	curl_setopt($curl, CURLOPT_HEADER, false);
+	curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+	//для получения ответа в формате XML раскомментируйте строку ниже
+	//curl_setopt($curl, CURLOPT_HTTPHEADER, array("Accept:application/xml; charset=utf-8"));  
+	curl_setopt($curl, CURLOPT_USERPWD, $login.":".$pass);
+	curl_setopt($curl, CURLOPT_SSLVERSION, 3);
+	curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
+	$iml_pvz_data = curl_exec($curl);
+	    
+	    curl_close($curl);
+	    
+		//$stream = $data;
+		$fp2 = fopen($file5,"w");
+        fwrite($fp2, $iml_pvz_data);
+        fclose($fp2);
+		
+	    }
+	    $ret_pvz_iml = json_decode($iml_pvz_data, $assoc=true);
+	    //echo var_dump($ret_pvz_iml);
 
 		//echo var_dump($shipping_cost);
 
