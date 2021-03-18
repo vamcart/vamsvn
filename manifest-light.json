@@ -23,11 +23,6 @@
             "type": "image/png"
         },
         {
-            "src": "images/icons/vamshop-box-256.png",
-            "sizes": "256x256",
-            "type": "image/png"
-        },
-        {
             "src": "images/icons/vamshop-box-256-maskable.png",
             "sizes": "284x284",
             "type": "image/png",
