@@ -58,7 +58,7 @@
         
 		$aut_login = MODULE_SHIPPING_BOXBERRYPVZ_API_LOGIN;
 		$date_Execute = date('Y-m-d');			
-		$total_weight = $shipping_weight*100;
+		$total_weight = $shipping_weight*1000;
 		$boxberry_city_id = 0;
       $shipping_cost = MODULE_SHIPPING_BOXBERRYPVZ_COST;
       		
