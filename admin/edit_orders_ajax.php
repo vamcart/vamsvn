@@ -75,32 +75,6 @@ require_once (DIR_FS_INC.'vam_send_answer_template.inc.php');
   }
   
   //2.  Update the orders_products table for qty, tax, name, or model
-if ($action == 'update_product_field') {
-	  vam_db_query("UPDATE " . TABLE_ORDERS_PRODUCTS . " SET " . $_GET['field'] . " = '" . vam_db_input(vam_db_prepare_input($_GET['new_value'])) . "', allow_tax = '0'  WHERE orders_products_id = '" . $_GET['pid'] . "' AND orders_id = '" . $_GET['oID'] . "'");
-
-	  //  Update Inventory Quantity
-    $order_products_id_query = vam_db_query("
-    SELECT products_id, products_quantity
-    FROM " . TABLE_ORDERS_PRODUCTS . "
-    WHERE orders_id = '" . (int)$_GET['oID'] . "'
-    AND orders_products_id = '" . (int)$_GET['pid'] . "'");
-    $order_products_id = vam_db_fetch_array($order_products_id_query);
-
-      // Log Order Data
-      $sql_data_array = array('orders_id' => (int)$_GET['oID'],
-                              'customers_id' => (int)$_SESSION['customer_id'],
-                              'field' => vam_db_input(vam_db_prepare_input($_GET['field'].'  '.vam_get_products_name($order_products_id['products_id']))),
-                              'value' => vam_db_input(vam_db_prepare_input($_GET['new_value'])),
-                              'date_added' => 'now()',
-                              'last_modified' => 'now()');
-      vam_db_perform(TABLE_ORDERS_LOG, $sql_data_array);
-      	
-	  //generate responseText
-	  echo $_GET['field'];
-
-  }
-    
-  //2.  Update the orders_products table for qty, tax, name, or model
   if ($action == 'update_product_field') {
 			
 		if ($_GET['field'] == 'products_quantity') {
@@ -156,6 +130,32 @@ if ($action == 'update_product_field') {
 	  echo $_GET['field'];
 
   }
+  
+  //2.  Update the orders_products table for qty, tax, name, or model
+if ($action == 'update_product_field') {
+	  vam_db_query("UPDATE " . TABLE_ORDERS_PRODUCTS . " SET " . $_GET['field'] . " = '" . vam_db_input(vam_db_prepare_input($_GET['new_value'])) . "', allow_tax = '0'  WHERE orders_products_id = '" . $_GET['pid'] . "' AND orders_id = '" . $_GET['oID'] . "'");
+
+	  //  Update Inventory Quantity
+    $order_products_id_query = vam_db_query("
+    SELECT products_id, products_quantity
+    FROM " . TABLE_ORDERS_PRODUCTS . "
+    WHERE orders_id = '" . (int)$_GET['oID'] . "'
+    AND orders_products_id = '" . (int)$_GET['pid'] . "'");
+    $order_products_id = vam_db_fetch_array($order_products_id_query);
+
+      // Log Order Data
+      $sql_data_array = array('orders_id' => (int)$_GET['oID'],
+                              'customers_id' => (int)$_SESSION['customer_id'],
+                              'field' => vam_db_input(vam_db_prepare_input($_GET['field'].'  '.vam_get_products_name($order_products_id['products_id']))),
+                              'value' => vam_db_input(vam_db_prepare_input($_GET['new_value'])),
+                              'date_added' => 'now()',
+                              'last_modified' => 'now()');
+      vam_db_perform(TABLE_ORDERS_LOG, $sql_data_array);
+      	
+	  //generate responseText
+	  echo $_GET['field'];
+
+  }  
   
   //3.  Update the orders_products table for price and final_price (interdependent values)
 if ($action == 'update_product_value_field') {
