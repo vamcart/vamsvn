@@ -1,0 +1,78 @@
+{config_load file="$language/lang_$language.conf" section="contact_us"}
+<script src="jscript/modified.js"></script>
+<script>
+{literal}
+$(function($){
+
+    $('.form-anti-bot, .form-anti-bot-2').hide(); // hide inputs from users
+    var answer = $('.form-anti-bot input#anti-bot-a').val(); // get answer
+    $('.form-anti-bot input#anti-bot-q').val( answer ); // set answer into other input
+
+    if ( $('form#contact_us input#anti-bot-q').length == 0 ) {
+        var current_date = new Date();
+        var current_year = current_date.getFullYear();
+        $('form#contact_us').append('<input type="hidden" name="anti-bot-q" id="anti-bot-q" value="'+current_year+'" />'); // add whole input with answer via javascript to form
+    }
+
+});
+{/literal}
+</script>
+<!-- Скругленные углы -->
+<div class="page">
+<!-- Заголовок страницы -->
+<h1>{$CONTACT_HEADING}</h1>
+<!-- /Заголовок страницы -->
+<!-- Содержимое страницы -->
+<div class="pageContent">
+{if $error_message!=''}
+<div class="contacterror">{$error_message}</div>
+{/if}
+{if $success!='1'}
+{$FORM_ACTION}
+{$CONTACT_CONTENT}
+<!-- форма -->
+
+    <div class="form-group">
+      <label for="name">{#text_name#}</label>
+      {$INPUT_NAME}
+    </div>
+    <div class="form-group">
+      <label for="email">{#text_email#}</label>
+      {$INPUT_EMAIL}
+    </div>
+    <div class="form-group">
+      <label for="message_body">{#text_message#}</label>
+      {$INPUT_TEXT}
+    </div>
+
+<!-- /форма -->
+<div class="form-anti-bot" style="clear:both;">
+	<strong>Current <span style="display:none;">month</span> <span style="display:inline;">ye@r</span> <span style="display:none;">day</span></strong> <span class="required">*</span>
+	<input type="hidden" name="anti-bot-a" id="anti-bot-a" value="{$smarty.now|date_format:"%Y"}" />
+	<input type="text" name="anti-bot-q" id="anti-bot-q" size="30" value="19" />
+</div>
+<div class="form-anti-bot-2" style="display:none;">
+	<strong>Leave this field empty</strong> <span class="required">*</span>
+	<input type="text" name="anti-bot-e-email-url" id="anti-bot-e-email-url" size="30" value=""/>
+</div>
+<!-- /Содержимое страницы -->
+<!-- /Скругленные углы -->
+<div>
+{$BUTTON_SUBMIT}
+</div>
+<br />
+{if $smarty.const.DISPLAY_PRIVACY_TEXT == 'true'}
+<div>
+{$smarty.const.PRIVACY_TEXT}
+</div>
+{/if}
+{$FORM_END}
+{else}
+<!-- Скругленные углы -->
+{#text_success#}
+<div>
+{$BUTTON_CONTINUE}
+</div>
+{/if}
+</div>
+</div>

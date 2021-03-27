@@ -1,0 +1,108 @@
+{if $options!=''}
+{foreach name=outer item=options_data from=$options}
+{if $options_data.TYPE eq '1'}
+
+<!-- select -->
+<div class="form-group py-1">
+<label for="id[{$options_data.ID}]"><strong>{$options_data.NAME}:</strong>&nbsp;</label>
+<select name="id[{$options_data.ID}]" id="id[{$options_data.ID}]" class="form-control options">
+{foreach key=key_data item=item_data from=$options_data.DATA}
+<option data-price="{$item_data.FULL_PRICE}" value="{$item_data.ID}">{$item_data.TEXT}   {if $item_data.MODEL}({$item_data.MODEL}){/if} {if $item_data.PRICE_PLAIN != 0}({$item_data.PREFIX}{$item_data.PRICE}){/if}</option>
+{/foreach}
+</select>
+</div>
+<!-- /select -->
+
+{elseif $options_data.TYPE eq '2'}
+
+<!-- text -->
+<div class="form-group py-1">
+
+<strong>{$options_data.NAME}:</strong>
+{foreach key=key_data item=item_data from=$options_data.DATA}
+<label for="id[{$options_data.ID}]"><strong>{$item_data.TEXT}</strong>&nbsp;</label>
+<input name="id[{$options_data.ID}]" id="id[{$options_data.ID}]" type="hidden" value="{$item_data.ID}" />
+<input name="id[txt_{$options_data.ID}_{$item_data.ID}]" type="text" size="{$options_data.SIZE}" maxlength="{$options_data.LENGTH}" class="form-control col-3" />{if $item_data.MODEL}({$item_data.MODEL}){/if} {if $item_data.PRICE_PLAIN != 0}({$item_data.PREFIX}{$item_data.PRICE}){/if}
+{if $item_data.DESCRIPTION}<br />{$item_data.DESCRIPTION}{/if}<br />
+{/foreach}
+</div>
+<!-- /text -->
+
+{elseif $options_data.TYPE eq '3'}
+
+<!-- textarea -->
+<div class="form-group py-1">
+<strong>{$options_data.NAME}:</strong>
+{foreach key=key_data item=item_data from=$options_data.DATA}
+<label for="id[{$options_data.ID}]"><strong>{$item_data.TEXT}</strong>&nbsp;</label>
+<input name="id[{$options_data.ID}]" id="id[{$options_data.ID}]" type="hidden" value="{$item_data.ID}" />
+<textarea name="id[txt_{$options_data.ID}_{$item_data.ID}]" cols="20" rows="{$options_data.ROWS}" class="form-control"></textarea>
+{if $item_data.MODEL}({$item_data.MODEL}){/if} {if $item_data.PRICE_PLAIN != 0}({$item_data.PREFIX}{$item_data.PRICE}){/if}
+{if $item_data.DESCRIPTION}<br />{$item_data.DESCRIPTION}{/if}<br />
+{/foreach}
+</div>
+<!-- /textarea -->
+
+{elseif $options_data.TYPE eq '4'}
+
+<!-- radio -->
+<div class="py-1">
+<strong>{$options_data.NAME}:</strong>
+<br />
+<div class="card-deck product-attributes" data-toggle="buttons">
+{foreach key=key_data item=item_data from=$options_data.DATA}
+<div class="btn-group-toggle col-6 col-sm-6 col-md-4 col-lg-4 col-xl-4">
+<div class="btn btn-default product-attribute-item card card-product card-sm text-center h-100{if $item_data@first} active{/if}">
+<label class="h-100 attribute {$options_data.ID}">
+  <input type="radio" class="options" name="id[{$options_data.ID}]" id="id[{$options_data.ID}]" data-price="{$item_data.FULL_PRICE}" value="{$item_data.ID}" {$item_data.CHECKED} />
+  <div class="card-body">
+    <span class="attribute-icon"></span>
+    <div class="card-text method-title py-1">{if $item_data.IMAGE}<img class="img-fluid rounded-circle border border-light" src="{$image_dir}thumbs/{$item_data.IMAGE}" border="0" alt="{$item_data.TEXT}" />{/if}</div>
+    {if $item_data.TEXT}<div class="card-text card-title py-1">{$item_data.TEXT}</div>{/if}
+    {if $item_data.PRICE_PLAIN != 0}<div class="small"><span class="text-muted">{$item_data.PREFIX}{$item_data.PRICE}</span></div>{/if}
+    {if $item_data.SHORT_DESCRIPTION}<div class="card-text py-1">{$item_data.SHORT_DESCRIPTION}</div>{/if}
+    {if $item_data.DESCRIPTION}<div class="card-text py-1">{$item_data.DESCRIPTION}</div>{/if}
+    {if $item_data.LINK}<div class="card-text py-1"><a href="http://{$item_data.LINK}" target="_blank"><img src="{$tpl_path}img/info.gif" border="0" alt="{$item_data.TEXT}" /></a></div>{/if}
+  </div>
+  <div class="card-footer">
+  </div>
+</label>  
+</div>
+</div>
+{/foreach}
+</div>
+
+</div>
+<!-- /radio -->
+
+{elseif $options_data.TYPE eq '5'}
+
+<!-- checkbox -->
+<div class="form-group py-1">
+<strong>{$options_data.NAME}:</strong>
+{foreach key=key_data item=item_data from=$options_data.DATA}
+<label>
+<input type="checkbox" name="id[{$options_data.ID}]" id="id[{$options_data.ID}]" value="{$item_data.ID}" />&nbsp;
+{$item_data.TEXT} {if $item_data.PRICE_PLAIN != 0}({$item_data.PREFIX}{$item_data.PRICE}){/if}
+{if $item_data.DESCRIPTION}<br />{$item_data.DESCRIPTION}{/if}<br />
+</label>
+{/foreach}
+</div>
+<!-- /checkbox -->
+
+{elseif $options_data.TYPE eq '6'}
+
+<!-- readonly -->
+<div class="form-group py-1">
+<strong>{$options_data.NAME}:</strong>&nbsp;
+{foreach key=key_data item=item_data from=$options_data.DATA}
+<input type="hidden" name="id[{$options_data.ID}]" id="id[{$options_data.ID}]" value="{$item_data.ID}" />
+{if $item_data.MODEL}({$item_data.MODEL}){/if} {$item_data.TEXT} {if $item_data.PRICE_PLAIN != 0}({$item_data.PREFIX}{$item_data.PRICE}){/if}
+{if $item_data.DESCRIPTION}<br />{$item_data.DESCRIPTION}{/if}<br />
+{/foreach}
+</div>
+<!-- /readonly -->
+
+{/if}
+{/foreach}
+{/if}

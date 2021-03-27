@@ -1,0 +1,271 @@
+extends partials/layout
+
+//- Override default config variables
+append config
+  - var pageTitle = 'Vendor Page'
+  - var parentMenu = 'Shop'
+
+//- Navbar
+block navbar
+  include partials/navbar-marketplace
+
+//- Page Content
+block content
+
+  // Header
+  .page-title-overlap.bg-accent.pt-4
+    .container.d-flex.flex-wrap.flex-sm-nowrap.justify-content-center.justify-content-sm-between.align-items-center.pt-2
+      .d-flex.align-items-center.pb-3
+        .img-thumbnail.rounded-circle.flex-shrink-0(style='width: 6.375rem;')
+          img(src='img/marketplace/account/avatar.png' alt='Createx Studio').rounded-circle
+        .ps-3
+          h3.text-light.fs-lg.mb-0 Createx Studio
+          span.d-block.text-light.fs-ms.opacity-60.py-1 Member since November 2017
+          span.badge.bg-success
+            i.ci-check.me-1
+            | Available for freelance
+      
+      .d-flex
+        .text-sm-end.me-5
+          .text-light.fs-base Total sales
+          h3.text-light 426
+        .text-sm-end
+          .text-light.fs-base Seller rating
+          +star-rating(4)
+          .text-light.opacity-60.fs-xs Based on 98 reviews
+
+  .container.mb-5.pb-3
+    .bg-light.shadow-lg.rounded-3.overflow-hidden
+      .row
+
+        // Sidebar
+        aside.col-lg-4.pe-xl-5
+          .bg-white.h-100.border-end.p-4
+            .p-2
+              h6 About
+              p.fs-ms.text-muted Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium viras doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
+              hr.my-4
+              h6 Contacts
+              ul.list-unstyled.fs-sm
+                li
+                  a(href='mailto:contact@example.com').nav-link-style.d-flex.align-items-center
+                    i.ci-mail.opacity-60.me-2
+                    | contact@example.com
+                li
+                  a(href='#').nav-link-style.d-flex.align-items-center
+                    i.ci-globe.opacity-60.me-2
+                    | www.createx.studio
+              a(href='#').btn-social.bs-facebook.bs-outline.bs-sm.me-2.mb-2
+                i.ci-facebook
+              a(href='#').btn-social.bs-twitter.bs-outline.bs-sm.me-2.mb-2
+                i.ci-twitter
+              a(href='#').btn-social.bs-dribbble.bs-outline.bs-sm.me-2.mb-2
+                i.ci-dribbble
+              a(href='#').btn-social.bs-behance.bs-outline.bs-sm.me-2.mb-2
+                i.ci-behance
+              hr.my-4
+              h6.pb-1 Send message
+              form(method='post' novalidate).needs-validation.pb-2
+                .mb-3
+                  textarea(rows='6' placeholder='Your message' required).form-control
+                  .invalid-feedback Please wirte your message!
+                button(type='submit').btn.btn-primary.btn-sm.d-block.w-100 Send
+
+
+        // Content
+        section.col-lg-8.pt-lg-4.pb-md-4
+          .pt-2.px-4.ps-lg-0.pe-xl-5
+            h2.h3.pt-2.pb-4.mb-4.text-center.text-sm-start.border-bottom
+              | Products
+              span.badge.bg-faded-accent.fs-sm.text-body.align-middle.ms-2 6
+            
+            .row.pt-2
+
+              // Product
+              .col-sm-6.mb-grid-gutter
+                .card.product-card-alt
+                  .product-thumb
+                    button(type='button').btn-wishlist.btn-sm
+                      i.ci-heart
+                    .product-card-actions
+                      a(href='marketplace-single.html').btn.btn-light.btn-icon.btn-shadow.fs-base.mx-2
+                        i.ci-eye
+                      button(type='button').btn.btn-light.btn-icon.btn-shadow.fs-base.mx-2
+                        i.ci-cart
+                    a(href='marketplace-single.html').product-thumb-overlay
+                    img(src='img/marketplace/products/04.jpg' alt='Product')
+                  .card-body
+                    .d-flex.flex-wrap.justify-content-between.align-items-start.pb-2
+                      .text-muted.fs-xs.me-1
+                        | by 
+                        a(href='#').product-meta.fw-medium Createx Std. 
+                        | in 
+                        a(href='#').product-meta.fw-medium Graphics
+                      +star-rating(5)
+                    h3.product-title.fs-sm.mb-2
+                      a(href='marketplace-single.html') Flat-line E-Commerce Icons (AI)
+                    .d-flex.flex-wrap.justify-content-between.align-items-center
+                      .fs-sm.me-2
+                        i.ci-download.text-muted.me-1
+                        | 26
+                        span.fs-xs.ms-1 Sales
+                      .bg-faded-accent.text-accent.rounded-1.py-1.px-2 $18.<small>00</small>
+
+              // Product
+              .col-sm-6.mb-grid-gutter
+                .card.product-card-alt
+                  .product-thumb
+                    button(type='button').btn-wishlist.btn-sm
+                      i.ci-heart
+                    .product-card-actions
+                      a(href='marketplace-single.html').btn.btn-light.btn-icon.btn-shadow.fs-base.mx-2
+                        i.ci-eye
+                      button(type='button').btn.btn-light.btn-icon.btn-shadow.fs-base.mx-2
+                        i.ci-cart
+                    a(href='marketplace-single.html').product-thumb-overlay
+                    img(src='img/marketplace/products/01.jpg' alt='Product')
+                  .card-body
+                    .d-flex.flex-wrap.justify-content-between.align-items-start.pb-2
+                      .text-muted.fs-xs.me-1
+                        | by 
+                        a(href='#').product-meta.fw-medium Createx Std. 
+                        | in 
+                        a(href='#').product-meta.fw-medium UI Design
+                      +star-rating(4)
+                    h3.product-title.fs-sm.mb-2
+                      a(href='marketplace-single.html') Square Style Mobile UI Kit (Sketch)
+                    .d-flex.flex-wrap.justify-content-between.align-items-center
+                      .fs-sm.me-2
+                        i.ci-download.text-muted.me-1
+                        | 153
+                        span.fs-xs.ms-1 Sales
+                      .bg-faded-accent.text-accent.rounded-1.py-1.px-2 $24.<small>00</small>
+
+              // Product
+              .col-sm-6.mb-grid-gutter
+                .card.product-card-alt
+                  .product-thumb
+                    button(type='button').btn-wishlist.btn-sm
+                      i.ci-heart
+                    .product-card-actions
+                      a(href='marketplace-single.html').btn.btn-light.btn-icon.btn-shadow.fs-base.mx-2
+                        i.ci-eye
+                      button(type='button').btn.btn-light.btn-icon.btn-shadow.fs-base.mx-2
+                        i.ci-cart
+                    a(href='marketplace-single.html').product-thumb-overlay
+                    img(src='img/marketplace/products/05.jpg' alt='Product')
+                  .card-body
+                    .d-flex.flex-wrap.justify-content-between.align-items-start.pb-2
+                      .text-muted.fs-xs.me-1
+                        | by 
+                        a(href='#').product-meta.fw-medium Createx Std. 
+                        | in 
+                        a(href='#').product-meta.fw-medium UI Design
+                      +star-rating(4)
+                    h3.product-title.fs-sm.mb-2
+                      a(href='marketplace-single.html') Minimal Mobile App UI Kit (Sketch)
+                    .d-flex.flex-wrap.justify-content-between.align-items-center
+                      .fs-sm.me-2
+                        i.ci-download.text-muted.me-1
+                        | 117
+                        span.fs-xs.ms-1 Sales
+                      .bg-faded-accent.text-accent.rounded-1.py-1.px-2 $23.<small>00</small>
+
+              // Product
+              .col-sm-6.mb-grid-gutter
+                .card.product-card-alt
+                  .product-thumb
+                    button(type='button').btn-wishlist.btn-sm
+                      i.ci-heart
+                    .product-card-actions
+                      a(href='marketplace-single.html').btn.btn-light.btn-icon.btn-shadow.fs-base.mx-2
+                        i.ci-eye
+                      button(type='button').btn.btn-light.btn-icon.btn-shadow.fs-base.mx-2
+                        i.ci-cart
+                    a(href='marketplace-single.html').product-thumb-overlay
+                    img(src='img/marketplace/products/02.jpg' alt='Product')
+                  .card-body
+                    .d-flex.flex-wrap.justify-content-between.align-items-start.pb-2
+                      .text-muted.fs-xs.me-1
+                        | by 
+                        a(href='#').product-meta.fw-medium Createx Std. 
+                        | in 
+                        a(href='#').product-meta.fw-medium Graphics
+                      +star-rating(5)
+                    h3.product-title.fs-sm.mb-2
+                      a(href='marketplace-single.html') Floating Phone and Tablet Mockup (PSD)
+                    .d-flex.flex-wrap.justify-content-between.align-items-center
+                      .fs-sm.me-2
+                        i.ci-download.text-muted.me-1
+                        | 109
+                        span.fs-xs.ms-1 Sales
+                      .bg-faded-accent.text-accent.rounded-1.py-1.px-2 $15.<small>00</small>
+
+              // Product
+              .col-sm-6.mb-grid-gutter
+                .card.product-card-alt
+                  .product-thumb
+                    button(type='button').btn-wishlist.btn-sm
+                      i.ci-heart
+                    .product-card-actions
+                      a(href='marketplace-single.html').btn.btn-light.btn-icon.btn-shadow.fs-base.mx-2
+                        i.ci-eye
+                      button(type='button').btn.btn-light.btn-icon.btn-shadow.fs-base.mx-2
+                        i.ci-cart
+                    a(href='marketplace-single.html').product-thumb-overlay
+                    img(src='img/marketplace/products/06.jpg' alt='Product')
+                  .card-body
+                    .d-flex.flex-wrap.justify-content-between.align-items-start.pb-2
+                      .text-muted.fs-xs.me-1
+                        | by 
+                        a(href='#').product-meta.fw-medium Createx Std. 
+                        | in 
+                        a(href='#').product-meta.fw-medium Graphics
+                      +star-rating(5)
+                    h3.product-title.fs-sm.mb-2
+                      a(href='marketplace-single.html') Travel &amp; Landmark Icon Pack (AI)
+                    .d-flex.flex-wrap.justify-content-between.align-items-center
+                      .fs-sm.me-2
+                        i.ci-download.text-muted.me-1
+                        | 21
+                        span.fs-xs.ms-1 Sales
+                      .bg-faded-accent.text-accent.rounded-1.py-1.px-2 $17.<small>00</small>
+
+              // Product
+              .col-sm-6.mb-grid-gutter
+                .card.product-card-alt
+                  .product-thumb
+                    button(type='button').btn-wishlist.btn-sm
+                      i.ci-heart
+                    .product-card-actions
+                      a(href='marketplace-single.html').btn.btn-light.btn-icon.btn-shadow.fs-base.mx-2
+                        i.ci-eye
+                      button(type='button').btn.btn-light.btn-icon.btn-shadow.fs-base.mx-2
+                        i.ci-cart
+                    a(href='marketplace-single.html').product-thumb-overlay
+                    img(src='img/marketplace/products/03.jpg' alt='Product')
+                  .card-body
+                    .d-flex.flex-wrap.justify-content-between.align-items-start.pb-2
+                      .text-muted.fs-xs.me-1
+                        | by 
+                        a(href='#').product-meta.fw-medium Createx Std. 
+                        | in 
+                        a(href='#').product-meta.fw-medium Graphics
+                      +star-rating(4)
+                    h3.product-title.fs-sm.mb-2
+                      a(href='marketplace-single.html') Project Devices Showcase (PSD)
+                    .d-flex.flex-wrap.justify-content-between.align-items-center
+                      .fs-sm.me-2
+                        i.ci-download.text-muted.me-1
+                        | 95
+                        span.fs-xs.ms-1 Sales
+                      .bg-faded-accent.text-accent.rounded-1.py-1.px-2 $18.<small>00</small>
+
+
+//- Footer
+block footer
+  include partials/footer-marketplace
+
+//- Handheld toolbar
+block toolbar
+  include partials/toolbar-marketplace

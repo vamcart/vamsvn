@@ -1,0 +1,130 @@
+{config_load file="$language/lang_$language.conf" section="checkout_success"}
+{config_load file="$language/lang_$language.conf" section="reviews"}
+
+<div class="page">
+<div class="pageСontent text-center">
+{$FORM_ACTION}
+
+{$KUPIVKREDIT_CODE}
+
+<h1 class="text-success text-center"><i class="far fa-check-circle fa-7x"></i></h1>
+
+<h2 class="text-center font-weight-bold">{#heading_success#}</h1>
+
+<p>
+{#text_success#}
+</p>
+
+<p>
+{#text_thankyou#}
+</p>
+
+{$PAYMENT_METHOD}
+
+{if $GV_SEND_LINK}
+<p>
+{#gv_has_vouchera#} {$GV_SEND_LINK} {#gv_has_voucherb#}
+</p>
+{/if}
+
+<p>
+{$BUTTON_SCHET_PRINT}
+</p>
+
+<p>
+{$BUTTON_PACKINGSLIP_PRINT}
+</p>
+
+<p>
+{$BUTTON_KVITANCIA_PRINT}
+</p>
+
+
+<!-- Google Conversion-tracking start !-->
+{if $google_tracking eq 'true'}
+{$tracking_code}
+{/if}
+<!-- Google Conversion-tracking end !-->
+
+{if $downloads_content neq ''}
+  {$downloads_content}
+{/if}
+{$FORM_END}
+
+</div>
+</div>
+
+<script type="text/javascript">
+{literal}
+$(function($){
+
+    $('.form-anti-bot, .form-anti-bot-2').hide(); // hide inputs from users
+    var answer = $('.form-anti-bot input#anti-bot-a').val(); // get answer
+    $('.form-anti-bot input#anti-bot-q').val( answer ); // set answer into other input
+
+    if ( $('form#product_reviews_write input#anti-bot-q').length == 0 ) {
+        var current_date = new Date();
+        var current_year = current_date.getFullYear();
+        $('form#product_reviews_write').append('<input type="hidden" name="anti-bot-q" id="anti-bot-q" value="'+current_year+'" />'); // add whole input with answer via javascript to form
+    }
+
+});
+{/literal}
+</script>
+
+<form name="product_reviews_write" id="product_reviews_write" action="{$smarty.const.FILENAME_SITE_REVIEWS_WRITE}?action=process" method="post" enctype="multipart/form-data" cf="true">
+
+<div class="page">
+<h1>{$smarty.const.TEXT_SITE_REVIEW_HEADER}</h1>
+<div class="pageContent">
+
+  <div class="card card-product">
+	<div class="card-body">
+
+	<div class="row">
+		<div class="col-md-12">
+
+    <div class="form-group">
+      <label for="rating">{#text_rating#}</label>
+      <br />
+      <div class="form-check form-check-inline rating-block">
+
+<fieldset class="star-rating">
+<input type="radio" name="rating" value="5" id="star5" class="star-rating"><label for="star5" title="{$smarty.const.TEXT_STAR_5}"><span>{$smarty.const.RATING_STAR_5}</span></label>
+<input type="radio" name="rating" value="4" id="star4" class="star-rating"><label for="star4" title="{$smarty.const.TEXT_STAR_4}"><span>{$smarty.const.RATING_STAR_4}</span></label>
+<input type="radio" name="rating" value="3" id="star3" class="star-rating"><label for="star3" title="{$smarty.const.TEXT_STAR_3}"><span>{$smarty.const.RATING_STAR_3}</span></label>
+<input type="radio" name="rating" value="2" id="star2" class="star-rating"><label for="star2" title="{$smarty.const.TEXT_STAR_2}"><span>{$smarty.const.RATING_STAR_2}</span></label>
+<input type="radio" name="rating" value="1" id="star1" class="star-rating"><label for="star1" title="{$smarty.const.TEXT_STAR_1}"><span>{$smarty.const.RATING_STAR_1}</span></label>
+</fieldset>      
+      
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="review">{#text_input#}</label>
+      <textarea name="review" id="review" cols="60" rows="7" class="form-control"></textarea>
+    </div>
+
+    <button type="submit" class="btn btn-defaul btn-inverse"><i class="fa fa-comment"></i> {$smarty.const.TEXT_SITE_REVIEW_ADD}</button>
+
+		</div>
+	</div>
+	
+	</div>
+</div>
+
+<div class="form-anti-bot" style="clear:both;">
+	<strong>Current <span style="display:none;">month</span> <span style="display:inline;">ye@r</span> <span style="display:none;">day</span></strong> <span class="required">*</span>
+	<input type="hidden" name="anti-bot-a" id="anti-bot-a" value="{$smarty.now|date_format:"%Y"}" />
+	<input type="text" name="anti-bot-q" id="anti-bot-q" size="30" value="19" />
+</div>
+<div class="form-anti-bot-2" style="display:none;">
+	<strong>Leave this field empty</strong> <span class="required">*</span>
+	<input type="text" name="anti-bot-e-email-url" id="anti-bot-e-email-url" size="30" value=""/>
+</div>
+<!-- /форма -->
+
+</form>
+
+</div>
+</div>

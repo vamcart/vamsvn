@@ -1,0 +1,18 @@
+// Toolbar for handheld devices (Shop)
+if isToolbar
+  .handheld-toolbar
+    .d-table.table-layout-fixed.w-100
+      a(href='#' data-bs-toggle='offcanvas' data-bs-target='#shop-sidebar').d-table-cell.handheld-toolbar-item
+        span.handheld-toolbar-icon: i.ci-filter-alt
+        span.handheld-toolbar-label Filters
+      a(href='account-wishlist.html').d-table-cell.handheld-toolbar-item
+        span.handheld-toolbar-icon: i.ci-heart
+        span.handheld-toolbar-label Wishlist
+      a(href='javascript:void(0)' data-bs-toggle='collapse' data-bs-target='#navbarCollapse' onclick='window.scrollTo(0, 0)').d-table-cell.handheld-toolbar-item
+        span.handheld-toolbar-icon: i.ci-menu
+        span.handheld-toolbar-label Menu
+      a(href='shop-cart.html').d-table-cell.handheld-toolbar-item
+        span.handheld-toolbar-icon
+          i.ci-cart
+          span.badge.bg-primary.rounded-pill.ms-1 4
+        span.handheld-toolbar-label $265.00

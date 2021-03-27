@@ -1,0 +1,17 @@
+	<div class="box h-100">
+			<div class="itemside">
+				<div class="aside align-top">
+					<span class="icon-wrap icon-md round">
+						{if $module_data.NEWS_ICON != ''}
+						<img class="img-fluid" src="{$module_data.NEWS_ICON}" border="0" alt="{$module_data.NEWS_HEADING}" />
+						{else}
+						<i class="fa fa-lightbulb text-warning"></i>
+						{/if}
+					</span>
+				</div>
+				<div class="text-wrap">
+					<div class="title"><a href="{$module_data.NEWS_LINK_MORE}">{$module_data.NEWS_HEADING}</a></div>
+					{$module_data.NEWS_CONTENT|vam_truncate:$smarty.const.MAX_DISPLAY_LATEST_NEWS_CONTENT:"...":true}
+				</div>
+			</div>
+	</div>

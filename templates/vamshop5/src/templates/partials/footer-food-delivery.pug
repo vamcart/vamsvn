@@ -1,0 +1,73 @@
+// Footer
+footer.bg-darker.pt-5
+  .container.pt-2
+    .row.pb-2
+      .col-lg-2.col-sm-4.pb-2.mb-4
+        .mt-n1
+          a(href='#').d-inline-block.align-middle
+            img(src='img/footer-logo-light.png' width='117' alt='Cartzilla').d-block.mb-4
+        .btn-group.dropdown.disable-autohide
+          button(type='button' data-bs-toggle='dropdown').btn.btn-outline-light.border-light.btn-sm.dropdown-toggle.px-2
+            img(src='img/flags/en.png' width='20' alt='English').me-2
+            | Eng / $
+          ul.dropdown-menu.my-1
+            li.dropdown-item
+              select.form-select.form-select-sm
+                option(value='usd') $ USD
+                option(value='eur') € EUR
+                option(value='ukp') £ UKP
+                option(value='jpy') ¥ JPY
+            li
+              a(href='#').dropdown-item.pb-1
+                img(src='img/flags/fr.png' width='20' alt='Français').me-2
+                | Français
+            li
+              a(href='#').dropdown-item.pb-1
+                img(src='img/flags/de.png' width='20' alt='Deutsch').me-2
+                | Deutsch
+            li
+              a(href='#').dropdown-item
+                img(src='img/flags/it.png' width='20' alt='Italiano').me-2
+                | Italiano
+      .col-lg-2.col-sm-4
+        .widget.widget-links.widget-light.pb-2.mb-4
+          h3.widget-title.text-light Join us
+          ul.widget-list
+            li.widget-list-item: a(href='#').widget-list-link Careers
+            li.widget-list-item: a(href='#').widget-list-link Restaurants
+            li.widget-list-item: a(href='#').widget-list-link Become a Courier
+            li.widget-list-item: a(href='#').widget-list-link About
+      .col-lg-2.col-sm-4
+        .widget.widget-links.widget-light.pb-2.mb-4
+          h3.widget-title.text-light Let us help you
+          ul.widget-list
+            li.widget-list-item: a(href='#').widget-list-link Help Center
+            li.widget-list-item: a(href='#').widget-list-link Support
+            li.widget-list-item: a(href='#').widget-list-link Contacts
+      .col-lg-2.col-sm-4
+        .widget.widget-links.widget-light.pb-2.mb-4
+          h3.widget-title.text-light Follow us
+          ul.widget-list
+            li.widget-list-item: a(href='#').widget-list-link Facebook
+            li.widget-list-item: a(href='#').widget-list-link Twitter
+            li.widget-list-item: a(href='#').widget-list-link Instagram
+      .col-lg-4.col-sm-8
+        .widget.pb-2.mb-4
+          h3.widget-title.text-light.pb-1 Download our app
+          .d-flex.flex-wrap
+            a(href='#' role='button').btn-market.btn-apple.border.border-light.me-3.mb-2
+              span.btn-market-subtitle Download on the
+              span.btn-market-title App Store
+            a(href='#' role='button').btn-market.btn-google.border.border-light.mb-2
+              span.btn-market-subtitle Download on the
+              span.btn-market-title Google Play
+    hr.hr-light.mt-md-2.mb-3
+    .d-md-flex.justify-content-between.pt-4.pb-1
+      .pb-4.fs-xs.text-light.opacity-50.text-center.text-md-start
+        | © All rights reserved. Made by 
+        a(href='https://createx.studio/' target='_blank' rel='noopener').text-light Createx Studio
+      .widget.widget-links.widget-light.pb-4
+        ul.widget-list.d-flex.flex-wrap.justify-content-center.justify-content-md-start
+          li.widget-list-item.ms-4: a(href='#').widget-list-link.fs-ms Privacy Policy
+          li.widget-list-item.ms-4: a(href='#').widget-list-link.fs-ms Terms &amp; Conditions
+          li.widget-list-item.ms-4: a(href='#').widget-list-link.fs-ms Cookies Policy

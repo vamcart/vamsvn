@@ -1,0 +1,56 @@
+{config_load file="$language/lang_$language.conf" section="articles"} 
+<h1>{#heading_text#}</h1>
+
+{if $no_new_articles=='true'}
+<p>
+{#text_no_new_articles#}
+</p>
+{else}
+
+<form name="articles_search" id="articles_search" action="articles.php" method="get" class="form-inline" autocomplete="off">
+<input type="hidden" name="description" value="1" />
+<div class="input-group">
+<input type="text" name="akeywords" class="form-control" id="quick_find_keyword" placeholder="{#text_search#}" aria-label="{#text_search#}">
+<div class="input-group-append">
+<button class="btn btn-primary fas fa-search" type="submit" aria-label="{#text_search#}">
+</button>
+</div>
+</div>
+</form>
+
+<hr />
+
+{if $AUTHOR_IMAGE}
+<p>
+<img class="img-fluid" src="{$smarty.const.DIR_WS_CATALOG}{$smarty.const.DIR_WS_IMAGES}articles/authors/{$AUTHOR_IMAGE}" class="img-responsive" alt="{$AUTHOR_NAME|htmlentities|strip_tags}" />
+</p>
+{/if}
+
+<h5>{#text_categories#}:</h5> 
+<ul class="list-inline">
+{$TOPICS}
+</ul>
+
+{if $ARTICLE_KEYWORDS_NUM > 1}
+<h5>{$smarty.const.TEXT_TAGS}:</h5> 
+<ul class="list-inline">
+{foreach name=tags item=tag from=$ARTICLE_KEYWORDS_ARRAY_TAGS}
+{if {$tag.NAME} != ''}
+<li class="list-inline-item pb-2">	
+<a href="{$tag.LINK}"><span class="btn btn-rounded">{$tag.NAME}</span></a>
+</li>
+{/if}
+{/foreach}
+</ul>
+{/if}
+
+{foreach name=aussen item=module_data from=$module_content} 
+{include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/item/item-article.html"}
+{/foreach}
+
+<div class="clear"></div>
+<div class="navigation">
+<span class="right">{$NAVIGATION_BAR}</span>{$NAVIGATION_BAR_PAGES}
+</div>
+<div class="clear"></div>
+{/if}

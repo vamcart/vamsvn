@@ -1,0 +1,18 @@
+// Dashboard header
+.page-title-overlap.bg-accent.pt-4
+  .container.d-flex.flex-wrap.flex-sm-nowrap.justify-content-center.justify-content-sm-between.align-items-center.pt-2
+    .d-flex.align-items-center.pb-3
+      .img-thumbnail.rounded-circle.position-relative.flex-shrink-0(style='width: 6.375rem;')
+        img(src='img/marketplace/account/avatar.png' alt='Createx Studio').rounded-circle
+      .ps-3
+        h3.text-light.fs-lg.mb-0 Createx Studio
+        span.d-block.text-light.fs-ms.opacity-60.py-1 Member since November 2019
+    
+    .d-flex
+      .text-sm-end.me-5
+        .text-light.fs-base Total sales
+        h3.text-light 426
+      .text-sm-end
+        .text-light.fs-base Seller rating
+        +star-rating(4)
+        .text-light.opacity-60.fs-xs Based on 98 reviews

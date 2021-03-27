@@ -1,0 +1,243 @@
+extends partials/layout
+
+//- Override default config variables
+append config
+  - var pageTitle = 'Account Settings'
+  - var parentMenu = 'Account'
+
+//- Navbar + Modal
+block navbar
+  include partials/modal-payment
+  include partials/navbar-marketplace
+
+//- Page Content
+block content
+
+  //- dashboard-header.pug template
+  include partials/dashboard-header
+
+  .container.mb-5.pb-3
+    .bg-light.shadow-lg.rounded-3.overflow-hidden
+      .row
+
+        // Sidebar
+        aside.col-lg-4.pe-xl-5
+          //- sidebar-dashboard.pug template
+          include partials/sidebar-dashboard
+
+        // Content
+        section.col-lg-8.pt-lg-4.pb-4.mb-3
+          .pt-2.px-4.ps-lg-0.pe-xl-5
+            h2.h3.py-2.text-center.text-sm-start Settings
+
+            // Tabs
+            ul(role='tablist').nav.nav-tabs.nav-justified
+              li.nav-item
+                a(href='#profile' data-bs-toggle='tab' role='tab').nav-link.px-0.active
+                  .d-none.d-lg-block
+                    i.ci-user.opacity-60.me-2
+                    | Profile
+                  .d-lg-none.text-center
+                    i.ci-user.opacity-60.d-block.fs-xl.mb-2
+                    span.fs-ms Profile
+              li.nav-item
+                a(href='#notifications' data-bs-toggle='tab' role='tab').nav-link.px-0
+                  .d-none.d-lg-block
+                    i.ci-bell.opacity-60.me-2
+                    | Notifications
+                  .d-lg-none.text-center
+                    i.ci-bell.opacity-60.d-block.fs-xl.mb-2
+                    span.fs-ms Notifications
+              li.nav-item
+                a(href='#payment' data-bs-toggle='tab' role='tab').nav-link.px-0
+                  .d-none.d-lg-block
+                    i.ci-card.opacity-60.me-2
+                    | Payment methods
+                  .d-lg-none.text-center
+                    i.ci-card.opacity-60.d-block.fs-xl.mb-2
+                    span.fs-ms Payment
+            
+            // Tab content
+            .tab-content
+
+              // Profile
+              #profile.tab-pane.fade.show.active(role='tabpanel')
+                .bg-secondary.rounded-3.p-4.mb-4
+                  .d-flex.align-items-center
+                    img(src='img/marketplace/account/avatar.png' width='90' alt='Createx Studio').rounded
+                    .ps-3
+                      button(type='button').btn.btn-light.btn-shadow.btn-sm.mb-2
+                        i.ci-loading.me-2
+                        | Change <span class='d-none d-sm-inline'>avatar</span>
+                      .p.mb-0.fs-ms.text-muted Upload JPG, GIF or PNG image. 300 x 300 required.
+                .row.gx-4.gy-3
+                  .col-sm-6
+                    label(for='dashboard-fn').form-label First Name
+                    input(type='text' id='dashboard-fn' value='John').form-control
+                  .col-sm-6
+                    label(for='dashboard-ln').form-label Last Name
+                    input(type='text' id='dashboard-ln' value='Doe').form-control
+                  .col-sm-6
+                    label(for='dashboard-email').form-label Email address
+                    input(type='text' id='dashboard-email' value='contact@example.com' disabled).form-control
+                  .col-sm-6
+                    label(for='dashboard-profile-name').form-label Profile Name
+                    input(type='text' id='dashboard-profile-name' value='Createx Studio').form-control
+                  .col-sm-6
+                    label(for='dashboard-country').form-label Country
+                    select(id='dashboard-country').form-select
+                      option(value) Select country
+                      option(value='Argentina') Argentina
+                      option(value='Belgium') Belgium
+                      option(value='France') France
+                      option(value='Germany') Germany
+                      option(value='Madagascar' selected) Madagascar
+                      option(value='Spain') Spain
+                      option(value='UK') United Kingdom
+                      option(value='USA') USA
+                  .col-sm-6
+                    label(for='dashboard-city').form-label City
+                    input(type='text' id='dashboard-city' value='Antananarivo').form-control
+                  .col-sm-6
+                    label(for='dashboard-address').form-label Address Line
+                    input(type='text' id='dashboard-address' value='Some Cool Street, 22/1').form-control
+                  .col-sm-6
+                    label(for='dashboard-zip').form-label ZIP Code
+                    input(type='text' id='dashboard-zip').form-control
+                  .col-12
+                    hr.mt-2.mb-4
+                    .d-sm-flex.justify-content-between.align-items-center
+                      .form-check
+                        input(type='checkbox' id='freelancer' checked).form-check-input
+                        label(for='freelancer').form-check-label I'm available for freelance
+                      button(type='button').btn.btn-primary.mt-3.mt-sm-0 Save changes
+
+              // Notifications
+              #notifications.tab-pane.fade(role='tabpanel')
+                .bg-secondary.rounded-3.p-4
+                  .form-check.form-switch
+                    input(type='checkbox' id='nf-disable-all' data-master-checkbox-for='#notifocation-settings').form-check-input
+                    label(for='nf-disable-all').form-check-label.fw-medium Enable/disable all notifications
+                #notifocation-settings
+                  .border-bottom.p-4
+                    .form-check.form-switch
+                      input(type='checkbox' id='nf-product-sold' checked).form-check-input
+                      label(for='nf-product-sold').form-check-label Product sold notifications
+                    .form-text Send an email when someone purchased one of my products
+                  .border-bottom.p-4
+                    .form-check.form-switch
+                      input(type='checkbox' id='nf-product-updated' checked).form-check-input
+                      label(for='nf-product-updated').form-check-label Product update notifications
+                    .form-text Send an email when a product I've purchased is updated
+                  .border-bottom.p-4
+                    .form-check.form-switch
+                      input(type='checkbox' id='nf-product-comment' checked).form-check-input
+                      label(for='nf-product-comment').form-check-label Product comment notifications
+                    .form-text Send an email when someone comments on one of my products
+                  .border-bottom.p-4
+                    .form-check.form-switch
+                      input(type='checkbox' id='nf-product-review' checked).form-check-input
+                      label(for='nf-product-review').form-check-label Product review notification
+                    .form-text Send an email when someone leaves a review with their rating
+                  .border-bottom.p-4
+                    .form-check.form-switch
+                      input(type='checkbox' id='nf-daily-summary').form-check-input
+                      label(for='nf-daily-summary').form-check-label Daily summary emails
+                    .form-text Send me a daily summary of all products sold, commented or reviewed
+                .text-sm-end.mt-4
+                  button(type='button' class='btn btn-primary') Save changes
+
+              // Payment methods
+              #payment.tab-pane.fade(role='tabpanel')
+                .bg-secondary.rounded-3.p-4.mb-4
+                  p.fs-sm.text-muted.mb-0 Primary payment method is used by default
+                .table-responsive.fs-md.mb-4
+                  table.table.table-hover.mb-0
+                    thead
+                      tr
+                        th Your credit / debit cards
+                        th Name on card
+                        th Expires on
+                        th
+                    tbody
+                      tr
+                        td.py-3.align-middle
+                          .d-flex.align-items-center
+                            img(src='img/card-visa.png' width='39' alt='Visa')
+                            .ps-2
+                              span.fw-medium.text-heading.me-1 Visa
+                              | ending in 4999
+                              span.align-middle.badge.badge-info.ms-2 Primary
+                        td.py-3.align-middle John doe
+                        td.py-3.align-middle 08 / 2019
+                        td.py-3.align-middle
+                          a(href='#' data-bs-toggle='tooltip' title='Edit').nav-link-style.me-2
+                            i.ci-edit
+                          a(href='#' data-bs-toggle='tooltip' title='Remove').nav-link-style.text-danger
+                            .ci-trash
+                      tr
+                        td.py-3.align-middle
+                          .d-flex.align-items-center
+                            img(src='img/card-master.png' width='39' alt='MesterCard')
+                            .ps-2
+                              span.fw-medium.text-heading.me-1 MasterCard
+                              | ending in 0015
+                        td.py-3.align-middle John doe
+                        td.py-3.align-middle 11 / 2021
+                        td.py-3.align-middle
+                          a(href='#' data-bs-toggle='tooltip' title='Edit').nav-link-style.me-2
+                            i.ci-edit
+                          a(href='#' data-bs-toggle='tooltip' title='Remove').nav-link-style.text-danger
+                            .ci-trash
+                      tr
+                        td.py-3.align-middle
+                          .d-flex.align-items-center
+                            img(src='img/card-paypal.png' width='39' alt='PayPal')
+                            .ps-2
+                              span.fw-medium.text-heading.me-1 PayPal
+                              | j.doe@example.com
+                        td.py-3.align-middle &mdash;
+                        td.py-3.align-middle &mdash;
+                        td.py-3.align-middle
+                          a(href='#' data-bs-toggle='tooltip' title='Edit').nav-link-style.me-2
+                            i.ci-edit
+                          a(href='#' data-bs-toggle='tooltip' title='Remove').nav-link-style.text-danger
+                            .ci-trash
+                      tr
+                        td.py-3.align-middle
+                          .d-flex.align-items-center
+                            img(src='img/card-visa.png' width='39' alt='Visa')
+                            .ps-2
+                              span.fw-medium.text-heading.me-1 Visa
+                              | ending in 6073
+                        td.py-3.align-middle John doe
+                        td.py-3.align-middle 09 / 2021
+                        td.py-3.align-middle
+                          a(href='#' data-bs-toggle='tooltip' title='Edit').nav-link-style.me-2
+                            i.ci-edit
+                          a(href='#' data-bs-toggle='tooltip' title='Remove').nav-link-style.text-danger
+                            .ci-trash
+                      tr
+                        td.py-3.align-middle
+                          .d-flex.align-items-center
+                            img(src='img/card-visa.png' width='39' alt='Visa')
+                            .ps-2
+                              span.fw-medium.text-heading.me-1 Visa
+                              | ending in 9791
+                        td.py-3.align-middle John doe
+                        td.py-3.align-middle 05 / 2021
+                        td.py-3.align-middle
+                          a(href='#' data-bs-toggle='tooltip' title='Edit').nav-link-style.me-2
+                            i.ci-edit
+                          a(href='#' data-bs-toggle='tooltip' title='Remove').nav-link-style.text-danger
+                            .ci-trash
+                .text-sm-end
+                  a(href='#add-payment' class='btn btn-primary' data-bs-toggle='modal') Add payment method
+
+//- Footer
+block footer
+  include partials/footer-marketplace
+
+//- Handheld toolbar
+block toolbar
+  include partials/toolbar-marketplace

@@ -1,0 +1,1032 @@
+//- Include config.pug file that holds all variables
+block config
+  include ../helpers/config
+
+//- Mixins - reusable code snippets
+include ../helpers/mixins
+
+doctype html
+html(lang="en")
+
+  //- head.pug template
+  include head 
+  
+  // Body
+  body.bg-secondary
+      
+    //- modal-signin.pug template
+    include modal-signin
+
+
+    // Navbar
+    header.bg-light.shadow-sm.fixed-top(data-fixed-element)
+      .navbar.navbar-expand-lg.navbar-light
+        .container-fluid
+          a(href='index.html').navbar-brand.d-none.d-sm-block.me-3.me-xl-4.flex-shrink-0
+            img(src='img/logo-dark.png' width='142' alt='Cartzilla')
+          a(href='index.html').navbar-brand.d-sm-none.me-2
+            img(src='img/logo-icon.png' width='74' alt='Cartzilla')
+          
+          // Search
+          .input-group.d-none.d-lg-flex.flex-nowrap.mx-4
+            i.ci-search.position-absolute.top-50.start-0.translate-middle-y.ms-3
+            input(type='text' placeholder='Search for products').form-control.rounded-start.w-100
+            select.form-select.flex-shrink-0(style='width: 14rem;')
+              option All categories
+              option Bakery
+              option Fruits and Vegetables
+              option Dairy and Eggs
+              option Meat and Poultry
+              option Fish and Seafood
+              option Sauces and Spices
+              option Canned Food and Oil
+              option Alcoholic Beverages
+              option Soft Drinks and Juice
+              option Packets, Cereals
+              option Frozen
+              option Snaks, Sweets and Chips
+              option Personal hygiene
+              option Kitchenware
+          
+          // Toolbar
+          .navbar-toolbar.d-flex.flex-shrink-0.align-items-center.ms-xl-2
+            button(type='button' data-bs-toggle='offcanvas' data-bs-target='#sideNav').navbar-toggler
+              span.navbar-toggler-icon
+            a(href='#searchBox' data-bs-toggle='collapse' role='button' aria-expanded='false', aria-controls='searchBox').navbar-tool.d-flex.d-lg-none
+              span.navbar-tool-tooltip Search
+              .navbar-tool-icon-box: i.navbar-tool-icon.ci-search
+            a(href='#').navbar-tool.d-none.d-lg-flex
+              span.navbar-tool-tooltip Wishlist
+              .navbar-tool-icon-box: i.navbar-tool-icon.ci-heart
+            a(href='#signin-modal' data-bs-toggle='modal').navbar-tool.ms-1.ms-lg-0.me-n1.me-lg-2
+              .navbar-tool-icon-box: i.navbar-tool-icon.ci-user
+              .navbar-tool-text.ms-n3
+                small Hello, Sign in
+                | My Account
+            .navbar-tool.dropdown.ms-3
+              a(href='grocery-checkout.html').navbar-tool-icon-box.bg-secondary.dropdown-toggle
+                span.navbar-tool-label 3
+                i.navbar-tool-icon.ci-cart
+              a(href='grocery-checkout.html').navbar-tool-text
+                small My Cart
+                | $25.00
+              .dropdown-menu.dropdown-menu-end
+                .widget.widget-cart.px-3.pt-2.pb-3(style='width: 20rem;')
+                  div(style='height: 15rem;' data-simplebar data-simplebar-auto-hide='false')
+                    .widget-cart-item.pb-2.border-bottom
+                      button(type='button' class='btn-close text-danger' aria-label='Remove')
+                        span(aria-hidden='true') &times;
+                      .d-flex.align-items-center
+                        a(href='grocery-single.html').d-block
+                          img(src='img/grocery/cart/th01.jpg' width='64' alt='Product')
+                        .ps-2
+                          h6.widget-product-title
+                            a(href='grocery-single.html') Frozen Oven-ready Poultry
+                          .widget-product-meta
+                            span.text-accent.me-2
+                              | $15.
+                              small 00
+                            span.text-muted x 1
+                    .widget-cart-item.py-2.border-bottom
+                      button(type='button' class='btn-close text-danger' aria-label='Remove')
+                        span(aria-hidden='true') &times;
+                      .d-flex.align-items-center
+                        a(href='grocery-single.html').d-block
+                          img(src='img/grocery/cart/th02.jpg' width='64' alt='Product')
+                        .ps-2
+                          h6.widget-product-title
+                            a(href='grocery-single.html') Nut Chocolate Paste (750g)
+                          .widget-product-meta
+                            span.text-accent.me-2
+                              | $6.
+                              small 50
+                            span.text-muted x 1
+                    .widget-cart-item.py-2.border-bottom
+                      button(type='button' class='btn-close text-danger' aria-label='Remove')
+                        span(aria-hidden='true') &times;
+                      .d-flex.align-items-center
+                        a(href='grocery-single.html').d-block
+                          img(src='img/grocery/cart/th03.jpg' width='64' alt='Product')
+                        .ps-2
+                          h6.widget-product-title
+                            a(href='grocery-single.html') Mozzarella Mini Cheese
+                          .widget-product-meta
+                            span.text-accent.me-2
+                              | $3.
+                              small 50
+                            span.text-muted x 1
+                  .d-flex.flex-wrap.justify-content-between.align-items-center.pt-3
+                    .fs-sm.me-2.py-2
+                      span.text-muted Total:
+                      span.text-accent.fs-base.ms-1
+                        | $25.
+                        small 00
+                    a(href='grocery-checkout.html').btn.btn-primary.btn-sm
+                      i.ci-card.me-2.fs-base.align-middle
+                      | Checkout
+                      i.ci-arrow-right.ms-1.me-n1
+
+      // Search collapse
+      #searchBox.collapse
+        .card.pt-2.pb-4.border-0.rounded-0
+          .container
+            .input-group
+              i.ci-search.position-absolute.top-50.start-0.translate-middle-y.ms-3
+              input(type='text' placeholder='Search for products').form-control.rounded-start
+      
+
+    // Sidebar menu
+    aside#sideNav.offcanvas.offcanvas-expand.w-100.border-end.zindex-lg-5.pt-lg-5(style='max-width: 21.875rem;')
+      .pt-2.d-none.d-lg-block
+      ul(role='tablist' style='min-height: 3rem;').nav.nav-tabs.nav-justified.mt-4.mt-lg-5.mb-0
+        li.nav-item
+          a(href='#categories' data-bs-toggle='tab' role='tab').nav-link.fw-medium.active Categories
+        li.nav-item
+          a(href='#menu' data-bs-toggle='tab' role='tab').nav-link.fw-medium Menu
+        li.nav-item.d-lg-none
+          a(href='#' data-bs-dismiss='offcanvas' role='tab').nav-link.fs-sm
+            i.ci-close.fs-xs.me-2
+            | Close
+      .offcanvas-body.px-0.pt-3.pb-0(data-simplebar)
+        .tab-content
+
+          // Categories
+          #categories.sidebar-nav.tab-pane.fade.show.active(role='tabpanel')
+            .widget.widget-categories
+              #shop-categories.accordion
+                // Special offers
+                .accordion-item.border-bottom
+                  h3.accordion-header.px-grid-gutter
+                    a(href='#').nav-link-style.d-block.fs-md.fw-normal.py-3
+                      span.d-flex.align-items-center
+                        i.ci-discount.fs-lg.text-danger.mt-n1.me-2
+                        | Special Offers
+                // Bakery
+                .accordion-item.border-bottom
+                  h3.accordion-header.px-grid-gutter
+                    button(type='button' data-bs-toggle='collapse' data-bs-target='#bakery' aria-expanded='false' aria-controls='bakery').accordion-button.collapsed.py-3
+                      span.d-flex.align-items-center
+                        i.ci-bread.fs-lg.opacity-60.mt-n1.me-2
+                        | Bakery
+                  #bakery.collapse(data-bs-parent='#shop-categories')
+                    .px-grid-gutter.pt-1.pb-4
+                      .widget.widget-links
+                        ul.widget-list
+                          li.widget-list-item
+                            a(href='#').widget-list-link View all
+                          li.widget-list-item
+                            a(href='#').widget-list-link Bread
+                            ul.widget-list.pt-1
+                              li.widget-list-item
+                                a(href='#').widget-list-link Baguette
+                              li.widget-list-item
+                                a(href='#').widget-list-link Loaves
+                              li.widget-list-item
+                                a(href='#').widget-list-link Ciabatta
+                              li.widget-list-item
+                                a(href='#').widget-list-link Wheat bread
+                              li.widget-list-item
+                                a(href='#').widget-list-link Corn bread
+                              li.widget-list-item
+                                a(href='#').widget-list-link Rye bread
+                              li.widget-list-item
+                                a(href='#').widget-list-link Rye wheat bread
+                          li.widget-list-item
+                            a(href='#').widget-list-link Bagels
+                            ul.widget-list.pt-1
+                              li.widget-list-item
+                                a(href='#').widget-list-link Puff pastry
+                              li.widget-list-item
+                                a(href='#').widget-list-link Stuffed buns
+                              li.widget-list-item
+                                a(href='#').widget-list-link Buns, sweet cheese danish
+                          li.widget-list-item
+                            a(href='#').widget-list-link Pita and Flatbread
+                // Fruits and Vegetables
+                .accordion-item.border-bottom
+                  h3.accordion-header.px-grid-gutter
+                    button(type='button' data-bs-toggle='collapse' data-bs-target='#fruits' aria-expanded='false' aria-controls='fruits').accordion-button.collapsed.py-3
+                      span.d-flex.align-items-center
+                        i.ci-apple.fs-lg.opacity-60.mt-n1.me-2
+                        | Fruits and Vegetables
+                  #fruits.collapse(data-bs-parent='#shop-categories')
+                    .px-grid-gutter.pt-1.pb-4
+                      .widget.widget-links
+                        ul.widget-list
+                          li.widget-list-item
+                            a(href='#').widget-list-link View all
+                          li.widget-list-item
+                            a(href='#').widget-list-link Fruits
+                            ul.widget-list.pt-1
+                              li.widget-list-item
+                                a(href='#').widget-list-link Pears, apples, quinces
+                              li.widget-list-item
+                                a(href='#').widget-list-link Bananas, pineapples, kiwi
+                              li.widget-list-item
+                                a(href='#').widget-list-link Citrus
+                              li.widget-list-item
+                                a(href='#').widget-list-link Peaches, plums, apricots
+                              li.widget-list-item
+                                a(href='#').widget-list-link Grapes
+                              li.widget-list-item
+                                a(href='#').widget-list-link Exotic fruits
+                              li.widget-list-item
+                                a(href='#').widget-list-link Berries
+                          li.widget-list-item
+                            a(href='#').widget-list-link Vegetables
+                          li.widget-list-item
+                            a(href='#').widget-list-link Mushrooms
+                          li.widget-list-item
+                            a(href='#').widget-list-link Fresh greens
+                          li.widget-list-item
+                            a(href='#').widget-list-link Dried fruits
+                // Dairy and Eggs
+                .accordion-item.border-bottom
+                  h3.accordion-header.px-grid-gutter
+                    button(type='button' data-bs-toggle='collapse' data-bs-target='#dairy' aria-expanded='false' aria-controls='dairy').accordion-button.collapsed.py-3
+                      span.d-flex.align-items-center
+                        i.ci-cheese.fs-lg.opacity-60.mt-n1.me-2
+                        | Dairy and Eggs
+                  #dairy.collapse(data-bs-parent='#shop-categories')
+                    .px-grid-gutter.pt-1.pb-4
+                      .widget.widget-links
+                        ul.widget-list
+                          li.widget-list-item
+                            a(href='#').widget-list-link View all
+                          li.widget-list-item
+                            a(href='#').widget-list-link Milk
+                            ul.widget-list.pt-1
+                              li.widget-list-item
+                                a(href='#').widget-list-link Pasteurized milk
+                              li.widget-list-item
+                                a(href='#').widget-list-link Condensed milk
+                              li.widget-list-item
+                                a(href='#').widget-list-link Sterilized milk
+                              li.widget-list-item
+                                a(href='#').widget-list-link Baked milk
+                              li.widget-list-item
+                                a(href='#').widget-list-link Powder milk
+                              li.widget-list-item
+                                a(href='#').widget-list-link Coconut milk
+                          li.widget-list-item
+                            a(href='#').widget-list-link Cheese
+                            ul.widget-list.pt-1
+                              li.widget-list-item
+                                a(href='#').widget-list-link Hard cheese
+                              li.widget-list-item
+                                a(href='#').widget-list-link Semi-hard cheese
+                              li.widget-list-item
+                                a(href='#').widget-list-link Pickled
+                              li.widget-list-item
+                                a(href='#').widget-list-link Soft cheese
+                              li.widget-list-item
+                                a(href='#').widget-list-link Cream-cheese
+                          li.widget-list-item
+                            a(href='#').widget-list-link Sour cream
+                          li.widget-list-item
+                            a(href='#').widget-list-link Yogurt
+                          li.widget-list-item
+                            a(href='#').widget-list-link Sour-milk drinks
+                          li.widget-list-item
+                            a(href='#').widget-list-link Butter and margarine
+                          li.widget-list-item
+                            a(href='#').widget-list-link Desserts
+                          li.widget-list-item
+                            a(href='#').widget-list-link Cream
+                          li.widget-list-item
+                            a(href='#').widget-list-link Eggs
+                // Meat and Poultry
+                .accordion-item.border-bottom
+                  h3.accordion-header.px-grid-gutter
+                    button(type='button' data-bs-toggle='collapse' data-bs-target='#meat' aria-expanded='false' aria-controls='meat').accordion-button.collapsed.py-3
+                      span.d-flex.align-items-center
+                        i.ci-ham-leg.fs-lg.opacity-60.mt-n1.me-2
+                        | Meat and Poultry
+                  #meat.collapse(data-bs-parent='#shop-categories')
+                    .px-grid-gutter.pt-1.pb-4
+                      .widget.widget-links
+                        ul.widget-list
+                          li.widget-list-item
+                            a(href='#').widget-list-link View all
+                          li.widget-list-item
+                            a(href='#').widget-list-link Fresh meat
+                            ul.widget-list.pt-1
+                              li.widget-list-item
+                                a(href='#').widget-list-link Pork
+                              li.widget-list-item
+                                a(href='#').widget-list-link Beef
+                              li.widget-list-item
+                                a(href='#').widget-list-link Rabbit
+                              li.widget-list-item
+                                a(href='#').widget-list-link Chicken
+                              li.widget-list-item
+                                a(href='#').widget-list-link Turkey
+                              li.widget-list-item
+                                a(href='#').widget-list-link Lamb
+                              li.widget-list-item
+                                a(href='#').widget-list-link Duck
+                              li.widget-list-item
+                                a(href='#').widget-list-link Minced meat
+                              li.widget-list-item
+                                a(href='#').widget-list-link Frozen ready-to-cook
+                          li.widget-list-item
+                            a(href='#').widget-list-link Sausages
+                          li.widget-list-item
+                            a(href='#').widget-list-link Meat delicatessen
+                            ul.widget-list.pt-1
+                              li.widget-list-item
+                                a(href='#').widget-list-link Ham
+                              li.widget-list-item
+                                a(href='#').widget-list-link Cold boiled pork
+                              li.widget-list-item
+                                a(href='#').widget-list-link Bacon
+                              li.widget-list-item
+                                a(href='#').widget-list-link Smoked meat
+                              li.widget-list-item
+                                a(href='#').widget-list-link Jamon
+                              li.widget-list-item
+                                a(href='#').widget-list-link Cooled meals
+                // Fish and Seafood
+                .accordion-item.border-bottom
+                  h3.accordion-header.px-grid-gutter
+                    button(type='button' data-bs-toggle='collapse' data-bs-target='#fish' aria-expanded='false' aria-controls='fish').accordion-button.collapsed.py-3
+                      span.d-flex.align-items-center
+                        i.ci-fish.fs-lg.opacity-60.me-2
+                        | Fish and Seafood
+                  #fish.collapse(data-bs-parent='#shop-categories')
+                    .px-grid-gutter.pt-1.pb-4
+                      .widget.widget-links
+                        ul.widget-list
+                          li.widget-list-item
+                            a(href='#').widget-list-link View all
+                          li.widget-list-item
+                            a(href='#').widget-list-link Fresh fish
+                          li.widget-list-item
+                            a(href='#').widget-list-link Prepared fish
+                            ul.widget-list.pt-1
+                              li.widget-list-item
+                                a(href='#').widget-list-link Light-salted fish
+                              li.widget-list-item
+                                a(href='#').widget-list-link Marinated fish
+                              li.widget-list-item
+                                a(href='#').widget-list-link Butter with fish
+                              li.widget-list-item
+                                a(href='#').widget-list-link Smoked fish
+                              li.widget-list-item
+                                a(href='#').widget-list-link Dried fish
+                          li.widget-list-item
+                            a(href='#').widget-list-link Seafood
+                          li.widget-list-item
+                            a(href='#').widget-list-link Sushi
+                // Sauces and Spices
+                .accordion-item.border-bottom
+                  h3.accordion-header.px-grid-gutter
+                    button(type='button' data-bs-toggle='collapse' data-bs-target='#sauces' aria-expanded='false' aria-controls='sauces').accordion-button.collapsed.py-3
+                      span.d-flex.align-items-center
+                        i.ci-fish.fs-lg.opacity-60.me-2
+                        | Sauces and Spices
+                  #sauces.collapse(data-bs-parent='#shop-categories')
+                    .px-grid-gutter.pt-1.pb-4
+                      .widget.widget-links
+                        ul.widget-list
+                          li.widget-list-item
+                            a(href='#').widget-list-link View all
+                          li.widget-list-item
+                            a(href='#').widget-list-link Mayonnese
+                          li.widget-list-item
+                            a(href='#').widget-list-link Sauces
+                            ul.widget-list.pt-1
+                              li.widget-list-item
+                                a(href='#').widget-list-link Cooking base
+                              li.widget-list-item
+                                a(href='#').widget-list-link Mustard
+                              li.widget-list-item
+                                a(href='#').widget-list-link Soy sauce
+                              li.widget-list-item
+                                a(href='#').widget-list-link Tomato paste
+                              li.widget-list-item
+                                a(href='#').widget-list-link Barbecue sauce
+                              li.widget-list-item
+                                a(href='#').widget-list-link Tartar
+                              li.widget-list-item
+                                a(href='#').widget-list-link Hot sauces
+                              li.widget-list-item
+                                a(href='#').widget-list-link Balsamic sauce
+                              li.widget-list-item
+                                a(href='#').widget-list-link Salad dressing
+                              li.widget-list-item
+                                a(href='#').widget-list-link Curry sauce
+                              li.widget-list-item
+                                a(href='#').widget-list-link Garlic sauce
+                              li.widget-list-item
+                                a(href='#').widget-list-link Pesto sauce
+                          li.widget-list-item
+                            a(href='#').widget-list-link Ketchup
+                          li.widget-list-item
+                            a(href='#').widget-list-link Herbs and spices
+                          li.widget-list-item
+                            a(href='#').widget-list-link Salt
+                // Canned Food and Oil
+                .accordion-item.border-bottom
+                  h3.accordion-header.px-grid-gutter
+                    button(type='button' data-bs-toggle='collapse' data-bs-target='#canned' aria-expanded='false' aria-controls='canned').accordion-button.collapsed.py-3
+                      span.d-flex.align-items-center
+                        i.ci-canned-food.fs-lg.opacity-60.me-2
+                        | Canned Food and Oil
+                  #canned.collapse(data-bs-parent='#shop-categories')
+                    .px-grid-gutter.pt-1.pb-4
+                      .widget.widget-links
+                        ul.widget-list
+                          li.widget-list-item
+                            a(href='#').widget-list-link View all
+                          li.widget-list-item
+                            a(href='#').widget-list-link Oils and vinegar
+                          li.widget-list-item
+                            a(href='#').widget-list-link Canned meat
+                          li.widget-list-item
+                            a(href='#').widget-list-link Canned fish
+                          li.widget-list-item
+                            a(href='#').widget-list-link Canned fruit
+                          li.widget-list-item
+                            a(href='#').widget-list-link Canned vegetables
+                          li.widget-list-item
+                            a(href='#').widget-list-link Salads and pickles
+                          li.widget-list-item
+                            a(href='#').widget-list-link Olives
+                          li.widget-list-item
+                            a(href='#').widget-list-link Pate
+                          li.widget-list-item
+                            a(href='#').widget-list-link Jam, fruit paste, confiture
+                          li.widget-list-item
+                            a(href='#').widget-list-link Honey
+                // Alcoholic Beverages
+                .accordion-item.border-bottom
+                  h3.accordion-header.px-grid-gutter
+                    button(type='button' data-bs-toggle='collapse' data-bs-target='#alcoholic' aria-expanded='false' aria-controls='alcoholic').accordion-button.collapsed.py-3
+                      span.d-flex.align-items-center
+                        i.ci-wine.fs-lg.opacity-60.me-2
+                        | Alcoholic Beverages
+                  #alcoholic.collapse(data-bs-parent='#shop-categories')
+                    .px-grid-gutter.pt-1.pb-4
+                      .widget.widget-links
+                        ul.widget-list
+                          li.widget-list-item
+                            a(href='#').widget-list-link View all
+                          li.widget-list-item
+                            a(href='#').widget-list-link Beer
+                          li.widget-list-item
+                            a(href='#').widget-list-link Wine
+                          li.widget-list-item
+                            a(href='#').widget-list-link Champagne and sparkling wine
+                          li.widget-list-item
+                            a(href='#').widget-list-link Alcopops
+                          li.widget-list-item
+                            a(href='#').widget-list-link Hard liquor
+                          li.widget-list-item
+                            a(href='#').widget-list-link Liquor
+                // Soft Drinks and Juice
+                .accordion-item.border-bottom
+                  h3.accordion-header.px-grid-gutter
+                    button(type='button' data-bs-toggle='collapse' data-bs-target='#drinks' aria-expanded='false' aria-controls='drinks').accordion-button.collapsed.py-3
+                      span.d-flex.align-items-center
+                        i.ci-juice.fs-lg.opacity-60.me-2
+                        | Soft Drinks and Juice
+                  #drinks.collapse(data-bs-parent='#shop-categories')
+                    .px-grid-gutter.pt-1.pb-4
+                      .widget.widget-links
+                        ul.widget-list
+                          li.widget-list-item
+                            a(href='#').widget-list-link View all
+                          li.widget-list-item
+                            a(href='#').widget-list-link Mineral water
+                          li.widget-list-item
+                            a(href='#').widget-list-link Juice
+                          li.widget-list-item
+                            a(href='#').widget-list-link Nectar
+                          li.widget-list-item
+                            a(href='#').widget-list-link Smoothie
+                          li.widget-list-item
+                            a(href='#').widget-list-link Fruit drincs
+                          li.widget-list-item
+                            a(href='#').widget-list-link Soda
+                          li.widget-list-item
+                            a(href='#').widget-list-link Tea
+                          li.widget-list-item
+                            a(href='#').widget-list-link Coffee
+                          li.widget-list-item
+                            a(href='#').widget-list-link Ice tea
+                          li.widget-list-item
+                            a(href='#').widget-list-link Cocoa drinks
+                          li.widget-list-item
+                            a(href='#').widget-list-link Hot chocolate
+                          li.widget-list-item
+                            a(href='#').widget-list-link Topping
+                // Packets, Cereals
+                .accordion-item.border-bottom
+                  h3.accordion-header.px-grid-gutter
+                    button(type='button' data-bs-toggle='collapse' data-bs-target='#packets' aria-expanded='false' aria-controls='packets').accordion-button.collapsed.py-3
+                      span.d-flex.align-items-center
+                        i.ci-corn.fs-lg.opacity-60.me-2
+                        | Packets, Cereals
+                  #packets.collapse(data-bs-parent='#shop-categories')
+                    .px-grid-gutter.pt-1.pb-4
+                      .widget.widget-links
+                        ul.widget-list
+                          li.widget-list-item
+                            a(href='#').widget-list-link View all
+                          li.widget-list-item
+                            a(href='#').widget-list-link Pasta
+                          li.widget-list-item
+                            a(href='#').widget-list-link Cereal
+                          li.widget-list-item
+                            a(href='#').widget-list-link Flour
+                          li.widget-list-item
+                            a(href='#').widget-list-link Porridge and muesli
+                          li.widget-list-item
+                            a(href='#').widget-list-link Snack meals
+                          li.widget-list-item
+                            a(href='#').widget-list-link For baking
+                          li.widget-list-item
+                            a(href='#').widget-list-link Sugar and sweetener
+                          li.widget-list-item
+                            a(href='#').widget-list-link Soy food
+                          li.widget-list-item
+                            a(href='#').widget-list-link Supplements
+                // Frozen
+                .accordion-item.border-bottom
+                  h3.accordion-header.px-grid-gutter
+                    button(type='button' data-bs-toggle='collapse' data-bs-target='#frozen' aria-expanded='false' aria-controls='frozen').accordion-button.collapsed.py-3
+                      span.d-flex.align-items-center
+                        i.ci-frozen.fs-lg.opacity-60.me-2
+                        | Frozen
+                  #frozen.collapse(data-bs-parent='#shop-categories')
+                    .px-grid-gutter.pt-1.pb-4
+                      .widget.widget-links
+                        ul.widget-list
+                          li.widget-list-item
+                            a(href='#').widget-list-link View all
+                          li.widget-list-item
+                            a(href='#').widget-list-link Fish
+                          li.widget-list-item
+                            a(href='#').widget-list-link Meat and poultry
+                          li.widget-list-item
+                            a(href='#').widget-list-link Salads
+                          li.widget-list-item
+                            a(href='#').widget-list-link Seafood
+                          li.widget-list-item
+                            a(href='#').widget-list-link Pizza and breads
+                          li.widget-list-item
+                            a(href='#').widget-list-link Ready meals
+                          li.widget-list-item
+                            a(href='#').widget-list-link Fruits
+                          li.widget-list-item
+                            a(href='#').widget-list-link Vegetables
+                          li.widget-list-item
+                            a(href='#').widget-list-link Ice-cream
+                          li.widget-list-item
+                            a(href='#').widget-list-link Frozen bakery
+                // Personal hygiene
+                .accordion-item.border-bottom
+                  h3.accordion-header.px-grid-gutter
+                    button(type='button' data-bs-toggle='collapse' data-bs-target='#hygiene' aria-expanded='false' aria-controls='hygiene').accordion-button.collapsed.py-3
+                      span.d-flex.align-items-center
+                        i.ci-toothbrush.fs-lg.opacity-60.me-2
+                        | Personal hygiene
+                  #hygiene.collapse(data-bs-parent='#shop-categories')
+                    .px-grid-gutter.pt-1.pb-4
+                      .widget.widget-links
+                        ul.widget-list
+                          li.widget-list-item
+                            a(href='#').widget-list-link View all
+                          li.widget-list-item
+                            a(href='#').widget-list-link Oral care
+                          li.widget-list-item
+                            a(href='#').widget-list-link Cotton pads
+                          li.widget-list-item
+                            a(href='#').widget-list-link For ladies
+                          li.widget-list-item
+                            a(href='#').widget-list-link For shaving and epilation
+                          li.widget-list-item
+                            a(href='#').widget-list-link Cosmetic wipes
+                          li.widget-list-item
+                            a(href='#').widget-list-link Soap
+                // Kitchenware
+                .accordion-item.border-bottom
+                  h3.accordion-header.px-grid-gutter
+                    button(type='button' data-bs-toggle='collapse' data-bs-target='#kitchenware' aria-expanded='false' aria-controls='kitchenware').accordion-button.collapsed.py-3
+                      span.d-flex.align-items-center
+                        i.ci-pot.fs-lg.opacity-60.me-2
+                        | Kitchenware
+                  #kitchenware.collapse(data-bs-parent='#shop-categories')
+                    .px-grid-gutter.pt-1.pb-4
+                      .widget.widget-links
+                        ul.widget-list
+                          li.widget-list-item
+                            a(href='#').widget-list-link View all
+                          li.widget-list-item
+                            a(href='#').widget-list-link Glasses, decanters
+                          li.widget-list-item
+                            a(href='#').widget-list-link Cookware
+                          li.widget-list-item
+                            a(href='#').widget-list-link Tableware
+                          li.widget-list-item
+                            a(href='#').widget-list-link Kitchenware
+                          li.widget-list-item
+                            a(href='#').widget-list-link Food storage
+                          li.widget-list-item
+                            a(href='#').widget-list-link Disposable tableware
+
+          // Menu
+          #menu.sidebar-nav.tab-pane.fade(role='tabpanel')
+            .widget.widget-categories
+              #shop-menu.accordion
+                // Homepages
+                .accordion-item.border-bottom
+                  h3.accordion-header.px-grid-gutter
+                     button(type='button' data-bs-toggle='collapse' data-bs-target='#home' aria-expanded='false' aria-controls='home').accordion-button.collapsed.py-3
+                      | Homepages
+                  #home.collapse(data-bs-parent='#shop-menu')
+                    .px-grid-gutter.pt-1.pb-4
+                      .widget.widget-links
+                        ul.widget-list
+                          li.widget-list-item
+                            a(href='home-fashion-store-v1.html').widget-list-link Fashion Store v.1
+                          li.widget-list-item
+                            a(href='home-electronics-store.html').widget-list-link Electronics Store
+                          li.widget-list-item
+                            a(href='home-marketplace.html').widget-list-link Multi-vendor Marketplace
+                          li.widget-list-item
+                            a(href='home-grocery-store.html').widget-list-link Grocery Store
+                          li.widget-list-item
+                            a(href='home-food-delivery.html').widget-list-link Food Delivery Service
+                          li.widget-list-item
+                            a(href='home-fashion-store-v2.html').widget-list-link Fashion Store v.2
+                          li.widget-list-item
+                            a(href='home-single-store.html').widget-list-link Single Product/Brand Store
+                // Shop
+                .accordion-item.border-bottom
+                  h3.accordion-header.px-grid-gutter
+                    button(type='button' data-bs-toggle='collapse' data-bs-target='#shop' aria-expanded='false' aria-controls='shop').accordion-button.collapsed.py-3
+                      | Shop
+                  #shop.collapse(data-bs-parent='#shop-menu')
+                    .px-grid-gutter.pt-1.pb-4
+                      .widget.widget-links
+                        ul.widget-list
+                          li.widget-list-item
+                            a(href='#').widget-list-link.fw-medium Shop Layouts
+                            ul.widget-list.pt-1
+                              li.widget-list-item
+                                a(href='shop-grid-ls.html').widget-list-link Shop Grid - Left Sidebar
+                              li.widget-list-item
+                                a(href='shop-grid-rs.html').widget-list-link Shop Grid - Right Sidebar
+                              li.widget-list-item
+                                a(href='shop-grid-ft.html').widget-list-link Shop Grid - Filters on Top
+                              li.widget-list-item
+                                a(href='shop-list-ls.html').widget-list-link Shop List - Left Sidebar
+                              li.widget-list-item
+                                a(href='shop-list-rs.html').widget-list-link Shop List - Right Sidebar
+                              li.widget-list-item
+                                a(href='shop-list-ft.html').widget-list-link Shop List - Filters on Top
+                          li.widget-list-item
+                            a(href='#').widget-list-link.fw-medium Marketplace
+                            ul.widget-list.pt-1
+                              li.widget-list-item
+                                a(href='marketplace-category.html').widget-list-link Category Page
+                              li.widget-list-item
+                                a(href='marketplace-single.html').widget-list-link Single Item Page
+                              li.widget-list-item
+                                a(href='marketplace-vendor.html').widget-list-link Vendor Page
+                              li.widget-list-item
+                                a(href='marketplace-cart.html').widget-list-link Cart
+                              li.widget-list-item
+                                a(href='marketplace-checkout.html').widget-list-link Checkout
+                          li.widget-list-item
+                            a(href='#').widget-list-link.fw-medium Grocery Store
+                            ul.widget-list.pt-1
+                              li.widget-list-item
+                                a(href='grocery-catalog.html').widget-list-link Product Catalog
+                              li.widget-list-item
+                                a(href='grocery-single.html').widget-list-link Single Product Page
+                              li.widget-list-item
+                                a(href='grocery-checkout.html').widget-list-link Checkout
+                          li.widget-list-item
+                            a(href='#').widget-list-link.fw-medium Food Delivery
+                            ul.widget-list.pt-1
+                              li.widget-list-item
+                                a(href='food-delivery-category.html').widget-list-link Category Page
+                              li.widget-list-item
+                                a(href='food-delivery-single.html').widget-list-link Single Item (Restaurant)
+                              li.widget-list-item
+                                a(href='food-delivery-cart.html').widget-list-link Cart (Your Order)
+                              li.widget-list-item
+                                a(href='food-delivery-checkout.html').widget-list-link Checkout (Address &amp; Payment)
+                          li.widget-list-item
+                            a(href='#').widget-list-link.fw-medium Shop pages
+                            ul.widget-list.pt-1
+                              li.widget-list-item
+                                a(href='shop-categories.html').widget-list-link Shop Categories
+                              li.widget-list-item
+                                a(href='shop-single-v1.html').widget-list-link Product Page v.1
+                              li.widget-list-item
+                                a(href='shop-single-v2.html').widget-list-link Product Page v.2
+                              li.widget-list-item
+                                a(href='shop-cart.html').widget-list-link Cart
+                              li.widget-list-item
+                                a(href='checkout-details.html').widget-list-link Checkout - Details
+                              li.widget-list-item
+                                a(href='checkout-shipping.html').widget-list-link Checkout - Shipping
+                              li.widget-list-item
+                                a(href='checkout-payment.html').widget-list-link Checkout - Payment
+                              li.widget-list-item
+                                a(href='checkout-review.html').widget-list-link Checkout - Review
+                              li.widget-list-item
+                                a(href='checkout-complete.html').widget-list-link Checkout - Complete
+                              li.widget-list-item
+                                a(href='order-tracking.html').widget-list-link Order Tracking
+                              li.widget-list-item
+                                a(href='comparison.html').widget-list-link Product Comparison
+                // Account
+                .accordion-item.border-bottom
+                  h3.accordion-header.px-grid-gutter
+                    button(type='button' data-bs-toggle='collapse' data-bs-target='#account' aria-expanded='false' aria-controls='account').accordion-button.collapsed.py-3
+                      | Account
+                  #account.collapse(data-bs-parent='#shop-menu')
+                    .px-grid-gutter.pt-1.pb-4
+                      .widget.widget-links
+                        ul.widget-list
+                          li.widget-list-item
+                            a(href='#').widget-list-link.fw-medium Shop User Account
+                            ul.widget-list.pt-1
+                              li.widget-list-item
+                                a(href='account-orders.html').widget-list-link Orders History
+                              li.widget-list-item
+                                a(href='account-profile.html').widget-list-link Profile Settings
+                              li.widget-list-item
+                                a(href='account-address.html').widget-list-link Account Addresses
+                              li.widget-list-item
+                                a(href='account-payment.html').widget-list-link Payment Methods
+                              li.widget-list-item
+                                a(href='account-wishlist.html').widget-list-link Wishlist
+                              li.widget-list-item
+                                a(href='account-tickets.html').widget-list-link My Tickets
+                              li.widget-list-item
+                                a(href='account-single-ticket.html').widget-list-link Single Ticket
+                          li.widget-list-item
+                            a(href='#').widget-list-link.fw-medium Vendor Dashboard
+                            ul.widget-list.pt-1
+                              li.widget-list-item
+                                a(href='dashboard-settings.html').widget-list-link Settings
+                              li.widget-list-item
+                                a(href='dashboard-purchases.html').widget-list-link Purchases
+                              li.widget-list-item
+                                a(href='dashboard-favorites.html').widget-list-link Favorites
+                              li.widget-list-item
+                                a(href='dashboard-sales.html').widget-list-link Sales
+                              li.widget-list-item
+                                a(href='dashboard-products.html').widget-list-link Products
+                              li.widget-list-item
+                                a(href='dashboard-add-new-product.html').widget-list-link Add New Product
+                              li.widget-list-item
+                                a(href='dashboard-payouts.html').widget-list-link Payouts
+                          li.widget-list-item
+                            a(href='account-signin.html').widget-list-link Sign In / Sign Up
+                          li.widget-list-item
+                            a(href='account-password-recovery.html').widget-list-link Password Recovery
+                // Pages
+                .accordion-item.border-bottom
+                  h3.accordion-header.px-grid-gutter
+                    button(type='button' data-bs-toggle='collapse' data-bs-target='#pages' aria-expanded='false' aria-controls='pages').accordion-button.collapsed.py-3
+                      | Pages
+                  #pages.collapse(data-bs-parent='#shop-menu')
+                    .px-grid-gutter.pt-1.pb-4
+                      .widget.widget-links
+                        ul.widget-list
+                          li.widget-list-item
+                            a(href='about.html').widget-list-link About Us
+                          li.widget-list-item
+                            a(href='contacts.html').widget-list-link Contacts
+                          li.widget-list-item
+                            a(href='#').widget-list-link.fw-medium Help Center
+                            ul.widget-list.pt-1
+                              li.widget-list-item
+                                a(href='help-topics.html').widget-list-link Help Topics
+                              li.widget-list-item
+                                a(href='help-single-topic.html').widget-list-link Single Topic
+                              li.widget-list-item
+                                a(href='help-submit-request.html').widget-list-link Submit a Request
+                          li.widget-list-item
+                            a(href='#').widget-list-link.fw-medium 404 Not Found
+                            ul.widget-list.pt-1
+                              li.widget-list-item
+                                a(href='404-simple.html').widget-list-link 404 - Simple Text
+                              li.widget-list-item
+                                a(href='404-illustration.html').widget-list-link 404 - Illustration
+                // Blog
+                .accordion-item.border-bottom
+                  h3.accordion-header.px-grid-gutter
+                    button(type='button' data-bs-toggle='collapse' data-bs-target='#blog' aria-expanded='false' aria-controls='blog').accordion-button.collapsed.py-3
+                      | Blog
+                  #blog.collapse(data-bs-parent='#shop-menu')
+                    .px-grid-gutter.pt-1.pb-4
+                      .widget.widget-links
+                        ul.widget-list
+                          li.widget-list-item
+                            a(href='#').widget-list-link.fw-medium Blog List Layouts
+                            ul.widget-list.pt-1
+                              li.widget-list-item
+                                a(href='blog-list-sidebar.html').widget-list-link List with Sidebar
+                              li.widget-list-item
+                                a(href='blog-list.html').widget-list-link List no Sidebar
+                          li.widget-list-item
+                            a(href='#').widget-list-link.fw-medium Blog Grid Layouts
+                            ul.widget-list.pt-1
+                              li.widget-list-item
+                                a(href='blog-grid-sidebar.html').widget-list-link Grid with Sidebar
+                              li.widget-list-item
+                                a(href='blog-grid.html').widget-list-link Grid no Sidebar
+                          li.widget-list-item
+                            a(href='#').widget-list-link.fw-medium Single Post Layouts
+                            ul.widget-list.pt-1
+                              li.widget-list-item
+                                a(href='blog-single-sidebar.html').widget-list-link Article with Sidebar
+                              li.widget-list-item
+                                a(href='blog-single.html').widget-list-link Article no Sidebar
+                // Docs
+                .accordion-item.border-bottom
+                  h3.accordion-header.px-grid-gutter
+                    button(type='button' data-bs-toggle='collapse' data-bs-target='#docs' aria-expanded='false' aria-controls='docs').accordion-button.collapsed.py-3
+                      | Docs / Components
+                  #docs.collapse(data-bs-parent='#shop-menu')
+                    .px-grid-gutter.pt-1.pb-4
+                      .widget.widget-links
+                        ul.widget-list
+                          li.widget-list-item
+                            a(href='docs/dev-setup.html').widget-list-link Documentation
+                          li.widget-list-item
+                            a(href='components/typography.html').widget-list-link Components
+                          li.widget-list-item
+                            a(href='docs/changelog.html').widget-list-link
+                              | Changelog
+                              span.badge.bg-success.ms-2 v1.4
+                          li.widget-list-item
+                            a(href='mailto:contact@createx.studio').widget-list-link Support
+
+      .offcanvas-cap.d-block.px-grid-gutter.pt-5.pb-4.mb-2
+        .d-flex.mb-3
+          i.ci-support.h4.mb-0.fw-normal.text-primary.mt-1.me-1
+          .ps-2
+            .text-muted.fs-sm Support
+            a(href='tel:+100331697720').nav-link-style.fs-md +1 (00) 33 169 7720
+        .d-flex.mb-3
+          i.ci-mail.h5.mb-0.fw-normal.text-primary.mt-1.me-1
+          .ps-2
+            .text-muted.fs-sm Email
+            a(href='mailto:customer@example.com').nav-link-style.fs-md customer@example.com
+        h6.pt-2.pb-1 Follow us
+        a(href="#").btn-social.bs-outline.bs-twitter.me-2.mb-2
+          i.ci-twitter
+        a(href="#").btn-social.bs-outline.bs-facebook.me-2.mb-2
+          i.ci-facebook
+        a(href="#").btn-social.bs-outline.bs-instagram.me-2.mb-2
+          i.ci-instagram
+        a(href="#").btn-social.bs-outline.bs-youtube.me-2.mb-2
+          i.ci-youtube
+
+
+    // Page
+    main.offcanvas-enabled(style='padding-top: 5rem;')
+      section.ps-lg-4.pe-lg-3.pt-4
+        .px-3.pt-2
+
+          // Page title + breadcrumb
+          if breadcrumbs.length
+            nav(aria-label='breadcrumb').mb-4
+              ol.breadcrumb.flex-lg-nowrap
+                li.breadcrumb-item
+                  a( href='home-grocery-store.html').text-nowrap
+                    i.ci-home
+                    | Home
+                each breadcrumb in breadcrumbs
+                  if breadcrumb.link
+                    li.breadcrumb-item.text-nowrap
+                      - var linkatts = {'href': breadcrumb.link}
+                      a()&attributes(linkatts)= breadcrumb.title
+                  else
+                    li.breadcrumb-item.text-nowrap.active(aria-current='page')= breadcrumb.title
+
+          // Content
+          block content
+
+      // Footer
+      footer.bg-dark.pt-5
+        .px-lg-3.pt-2.pb-4
+          .mx-auto.px-3(style='max-width: 80rem;')
+            .row
+              .col-xl-2.col-lg-3.col-sm-4.pb-2.mb-4
+                .mt-n1
+                  a(href='#').d-inline-block.align-middle
+                    img(src='img/footer-logo-light.png' width='117' alt='Cartzilla').d-block.mb-4
+                .btn-group.dropdown.disable-autohide
+                  button(type='button' data-bs-toggle='dropdown').btn.btn-outline-light.border-light.btn-sm.dropdown-toggle.px-2
+                    img(src='img/flags/en.png' width='20' alt='English').me-2
+                    | Eng / $
+                  ul.dropdown-menu.my-1
+                    li.dropdown-item
+                      select.form-select.form-select-sm
+                        option(value='usd') $ USD
+                        option(value='eur') € EUR
+                        option(value='ukp') £ UKP
+                        option(value='jpy') ¥ JPY
+                    li
+                      a(href='#').dropdown-item.pb-1
+                        img(src='img/flags/fr.png' width='20' alt='Français').me-2
+                        | Français
+                    li
+                      a(href='#').dropdown-item.pb-1
+                        img(src='img/flags/de.png' width='20' alt='Deutsch').me-2
+                        | Deutsch
+                    li
+                      a(href='#').dropdown-item
+                        img(src='img/flags/it.png' width='20' alt='Italiano').me-2
+                        | Italiano
+              .col-xl-3.col-lg-4.col-sm-4
+                .widget.widget-links.widget-light.pb-2.mb-4
+                  h3.widget-title.text-light Product catalog
+                  ul.widget-list
+                    li.widget-list-item: a(href='#').widget-list-link Special offers
+                    li.widget-list-item: a(href='#').widget-list-link Bakery
+                    li.widget-list-item: a(href='#').widget-list-link Fruits and Vegetables
+                    li.widget-list-item: a(href='#').widget-list-link Dairy and Eggs
+                    li.widget-list-item: a(href='#').widget-list-link Meat and Poultry
+                    li.widget-list-item: a(href='#').widget-list-link Fish and Seafood
+                    li.widget-list-item: a(href='#').widget-list-link Sauces and Spices
+                    li.widget-list-item: a(href='#').widget-list-link Canned Food and Oil
+                    li.widget-list-item: a(href='#').widget-list-link Alcoholic Beverages
+                    li.widget-list-item: a(href='#').widget-list-link Soft Drinks and Juice
+                    li.widget-list-item: a(href='#').widget-list-link Packets, Cereals and Poultry
+                    li.widget-list-item: a(href='#').widget-list-link Frozen
+                    li.widget-list-item: a(href='#').widget-list-link Personal hygiene
+                    li.widget-list-item: a(href='#').widget-list-link Kitchenware
+              .col-xl-3.col-lg-4.col-sm-4
+                .widget.widget-links.widget-light.pb-2.mb-4
+                  h3.widget-title.text-light Company
+                  ul.widget-list
+                    li.widget-list-item: a(href='#').widget-list-link About us
+                    li.widget-list-item: a(href='#').widget-list-link Store locator
+                    li.widget-list-item: a(href='#').widget-list-link Careers at Cartzilla
+                    li.widget-list-item: a(href='#').widget-list-link Contacts
+                    li.widget-list-item: a(href='#').widget-list-link Help center
+                    li.widget-list-item: a(href='#').widget-list-link Actions and News
+                .widget.widget-light.pb-2.mb-4
+                  h3.widget-title.text-light Follow us
+                  a(href="#").btn-social.bs-light.bs-twitter.me-2.mb-2
+                    i.ci-twitter
+                  a(href="#").btn-social.bs-light.bs-facebook.me-2.mb-2
+                    i.ci-facebook
+                  a(href="#").btn-social.bs-light.bs-instagram.me-2.mb-2
+                    i.ci-instagram
+                  a(href="#").btn-social.bs-light.bs-youtube.me-2.mb-2
+                    i.ci-youtube
+              .col-xl-4.col-sm-8
+                .widget.pb-2.mb-4
+                  h3.widget-title.text-light.pb-1 Stay informed
+                  form(action='https://studio.us12.list-manage.com/subscribe/post?u=c7103e2c981361a6639545bd5&amp;id=29ca296126' method='post' name='mc-embedded-subscribe-form' target='_blank' novalidate).subscription-form.validate
+                    .input-group.flex-nowrap
+                      i.ci-mail.position-absolute.top-50.translate-middle-y.text-muted.fs-base.ms-3
+                      input(type='email' name='EMAIL' placeholder='Your email' required).form-control.rounded-start
+                      button(type='submit' name='subscribe').btn.btn-primary Subscribe*
+                    // real people should not fill this in and expect good things - do not remove this or risk form bot signups
+                    div(style='position: absolute; left: -5000px;' aria-hidden='true')
+                      input(type='text' name='b_c7103e2c981361a6639545bd5_29ca296126' tabindex='-1').subscription-form-antispam
+                    .form-text.text-light.opacity-50 *Subscribe to our newsletter to receive early discount offers, updates and new products info.
+                    .subscription-status
+                .widget.pb-2.mb-4
+                  h3.widget-title.text-light.pb-1 Download our app
+                  .d-flex.flex-wrap
+                    .me-2.mb-2
+                      a(href='#' role='button').btn-market.btn-apple
+                        span.btn-market-subtitle Download on the
+                        span.btn-market-title App Store
+                    .mb-2
+                      a(href='#' role='button').btn-market.btn-google
+                        span.btn-market-subtitle Download on the
+                        span.btn-market-title Google Play
+        .bg-darker.px-lg-3.py-3
+          .d-sm-flex.justify-content-between.align-items-center.mx-auto.px-3(style='max-width: 80rem;')
+            .fs-xs.text-light.opacity-50.text-center.text-sm-start.py-3
+              | © All rights reserved. Made by 
+              a(href='https://createx.studio/' target='_blank' rel='noopener').text-light Createx Studio
+            .py-3
+              img(src='img/cards-alt.png' width='187' alt='Payment methods').d-block.mx-auto.mx-sm-start
+
+
+    // Back To Top Button
+    a(href='#top' data-scroll data-fixed-element).btn-scroll-top
+      span.btn-scroll-top-tooltip.text-muted.fs-sm.me-2 Top
+      i.btn-scroll-top-icon.ci-arrow-up    
+    
+    // Vendor scrits: js libraries and plugins
+    +vendor-scripts
+
+    // Main theme script
+    script()&attributes(isNestedFile ? {'src': '../js/theme.min.js'} : {'src': 'js/theme.min.js'})

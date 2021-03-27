@@ -1,0 +1,89 @@
+extends partials/layout
+
+//- Override default config variables
+append config
+  - var pageTitle = 'Profile info'
+  - var breadcrumbs = [{'title': 'Account', 'link': '#'}, {'title': 'Profile info'}]
+  - var parentMenu = 'Account'
+
+//- Navbar
+block navbar
+  include partials/navbar-3-level-light
+
+//- Page title
+block page-title
+  include partials/page-title-shop
+
+//- Page Content
+block content
+
+  .container.pb-5.mb-2.mb-md-4
+    .row
+
+      // Sidebar
+      aside.col-lg-4.pt-4.pt-lg-0.pe-xl-5
+        //- sidebar-account.pug template
+        include partials/sidebar-account
+
+      // Content  
+      section.col-lg-8
+
+        // Toolbar
+        .d-none.d-lg-flex.justify-content-between.align-items-center.pt-lg-3.pb-4.pb-lg-5.mb-lg-3
+          h6.fs-base.text-light.mb-0 Update you profile details below:
+          a(href='account-signin.html').btn.btn-primary.btn-sm
+            i.ci-sign-out.me-2
+            | Sign out
+        
+        // Profile form
+        form
+          .bg-secondary.rounded-3.p-4.mb-4
+            .d-flex.align-items-center
+              img(src='img/shop/account/avatar.jpg' width='90' alt='Susan Gardner').rounded
+              .ps-3
+                button(type='button').btn.btn-light.btn-shadow.btn-sm.mb-2
+                  i.ci-loading.me-2
+                  | Change avatar
+                .p.mb-0.fs-ms.text-muted Upload JPG, GIF or PNG image. 300 x 300 required.
+          .row.gx-4.gy-3
+            .col-sm-6
+              label(for='account-fn').form-label First Name
+              input(type='text' id='account-fn' value='Susan').form-control
+            .col-sm-6
+              label(for='account-ln').form-label Last Name
+              input(type='text' id='account-ln' value='Gardner').form-control
+            .col-sm-6
+              label(for='account-email').form-label Email Address
+              input(type='email' id='account-email' value='s.gardner@example.com' disabled).form-control
+            .col-sm-6
+              label(for='account-phone').form-label Phone Number
+              input(type='text' id='account-phone' value='+7 (805) 348 95 72' required).form-control
+            .col-sm-6
+              label(for='account-pass').form-label New Password
+              .password-toggle
+                input(type='password' id='account-pass').form-control
+                label(aria-label='Show/hide password').password-toggle-btn
+                  input(type="checkbox").password-toggle-check
+                  span.password-toggle-indicator
+            .col-sm-6
+              label(for='account-confirm-pass').form-label Confirm Password
+              .password-toggle
+                input(type='password' id='account-confirm-pass').form-control
+                label(aria-label='Show/hide password').password-toggle-btn
+                  input(type="checkbox").password-toggle-check
+                  span.password-toggle-indicator
+            .col-12
+              hr.mt-2.mb-3
+              .d-flex.flex-wrap.justify-content-between.align-items-center
+                .form-check
+                  input(type='checkbox' id='subscribe_me' checked).form-check-input
+                  label(for='subscribe_me').form-check-label Subscribe me to Newsletter
+                button(type='button' class='btn btn-primary mt-3 mt-sm-0') Update profile
+
+//- Footer
+block footer
+  include partials/footer-dark
+
+//- Handheld toolbar
+block toolbar
+  include partials/toolbar

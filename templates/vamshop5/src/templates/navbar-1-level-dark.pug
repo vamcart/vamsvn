@@ -1,0 +1,34 @@
+extends partials/layout
+
+//- Override default config variables
+append config
+  - var parentMenu = 'Pages'
+
+//- Navbar
+block navbar
+  include partials/navbar-1-level-dark
+  
+//- Page Content
+block content
+  .container.py-5
+    .row.justify-content-center
+      .col-lg-9
+        .alert.alert-secondary.py-5.px-lg-5.text-center.mb-5
+          i.h2.ci-announcement.text-primary.mb-4
+          h1.h4.pb-2 1 Level Dark Navbar
+          p.fs-md.pb-2 This page is showcasing navigation bar variant with enabled sticky behavior. Sticky means that navbar is locked into place so that it does not disappear when the user scrolls down the page. Such behavior makes it accessible from anywhere on the website without having to scroll. This feature is optional meaning you can disable it in code. Please use the navbar code example from this page in your project if you like this navbar variant. For more details about components used inside navbar please refer to the documentation.
+          a(href='components/navbar.html').btn.btn-primary.btn-shadow
+            i.ci-book.mt-n1.me-2
+            | Navbar Component Docs
+        p This is dummy text to build page content for longer scroll to show navbar sticky behavior. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sit amet justo donec enim. Venenatis tellus in metus vulputate eu scelerisque felis imperdiet proin. Pharetra convallis posuere morbi leo urna. Eget nulla facilisi etiam dignissim diam quis. Venenatis tellus in metus vulputate eu scelerisque felis imperdiet proin. Eget nullam non nisi est. Sapien nec sagittis aliquam malesuada bibendum. Proin libero nunc consequat interdum varius sit. Non quam lacus suspendisse faucibus interdum. Vel facilisis volutpat est velit egestas.
+        p This is dummy text to build page content for longer scroll to show navbar sticky behavior. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sit amet justo donec enim. Venenatis tellus in metus vulputate eu scelerisque felis imperdiet proin. Pharetra convallis posuere morbi leo urna. Eget nulla facilisi etiam dignissim diam quis. Venenatis tellus in metus vulputate eu scelerisque felis imperdiet proin. Eget nullam non nisi est. Sapien nec sagittis aliquam malesuada bibendum. Proin libero nunc consequat interdum varius sit. Non quam lacus suspendisse faucibus interdum. Vel facilisis volutpat est velit egestas.
+        p This is dummy text to build page content for longer scroll to show navbar sticky behavior. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sit amet justo donec enim. Venenatis tellus in metus vulputate eu scelerisque felis imperdiet proin. Pharetra convallis posuere morbi leo urna. Eget nulla facilisi etiam dignissim diam quis. Venenatis tellus in metus vulputate eu scelerisque felis imperdiet proin. Eget nullam non nisi est. Sapien nec sagittis aliquam malesuada bibendum. Proin libero nunc consequat interdum varius sit. Non quam lacus suspendisse faucibus interdum. Vel facilisis volutpat est velit egestas.
+        p This is dummy text to build page content for longer scroll to show navbar sticky behavior. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sit amet justo donec enim. Venenatis tellus in metus vulputate eu scelerisque felis imperdiet proin. Pharetra convallis posuere morbi leo urna. Eget nulla facilisi etiam dignissim diam quis. Venenatis tellus in metus vulputate eu scelerisque felis imperdiet proin. Eget nullam non nisi est. Sapien nec sagittis aliquam malesuada bibendum. Proin libero nunc consequat interdum varius sit. Non quam lacus suspendisse faucibus interdum. Vel facilisis volutpat est velit egestas.
+
+//- Footer
+block footer
+  include partials/footer-dark
+
+//- Handheld toolbar
+block toolbar
+  include partials/toolbar

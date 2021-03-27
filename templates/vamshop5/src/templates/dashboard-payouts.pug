@@ -1,0 +1,109 @@
+extends partials/layout
+
+//- Override default config variables
+append config
+  - var pageTitle = 'Payouts'
+  - var parentMenu = 'Account'
+
+//- Navbar
+block navbar
+  include partials/navbar-marketplace
+
+//- Page Content
+block content
+
+  //- dashboard-header.pug template
+  include partials/dashboard-header
+
+  .container.mb-5.pb-3
+    .bg-light.shadow-lg.rounded-3.overflow-hidden
+      .row
+
+        // Sidebar
+        aside.col-lg-4.pe-xl-5
+          //- sidebar-dashboard.pug template
+          include partials/sidebar-dashboard
+
+        // Content
+        section.col-lg-8.pt-lg-4.pb-4.mb-3
+          .pt-2.px-4.ps-lg-0.pe-xl-5
+            h2.h3.py-2.text-center.text-sm-start Payouts
+            .row.mx-n2.py-2
+              .col-sm-6.px-2.mb-4
+                .bg-secondary.h-100.rounded-3.p-4
+                  h3.h5 Next payout
+                  p.fs-sm Your current earnings of <span class='fw-medium'>$1,375.00</span> will be sent to you 8/15/2019
+              .col-sm-6.px-2.mb-4
+                .bg-secondary.h-100.rounded-3.p-4
+                  h3.h5 Payout method
+                  .d-flex.flex-wrap.align-items-center.py-1.mb-2
+                    img(src='img/marketplace/account/paypal-logo.png' width='100' alt='PayPal').d-block.mb-2.me-2
+                    span.fs-xs.mb-2 john.doe@example.com
+                  a(href='#').btn.btn-primary.btn-sm Change payout method
+            h3.h5.pb-2 Payout history
+            .table-responsive
+              table.table.table-layout-fixed.fs-sm.mb-0
+                thead
+                  tr
+                    th Amount
+                    th Payout method
+                    th Date processed
+                tbody
+                  tr
+                    td $1,233.84
+                    td PayPal
+                    td July 16, 2019
+                  tr
+                    td $805.79
+                    td PayPal
+                    td July 1, 2019
+                  tr
+                    td $1,564.98
+                    td PayPal
+                    td June 17, 2019
+                  tr
+                    td $697.79
+                    td PayPal
+                    td June 2, 2019
+                  tr
+                    td $2,060.80
+                    td Payoneer
+                    td May 15, 2019
+                  tr
+                    td $754.30
+                    td Payoneer
+                    td May 1, 2019
+                  tr
+                    td $1,372.26
+                    td Payoneer
+                    td April 16, 2019
+                  tr
+                    td $1,296.41
+                    td SWIFT
+                    td April 3, 2019
+                  tr
+                    td $339.57
+                    td SWIFT
+                    td March 17, 2019
+                  tr
+                    td $493.24
+                    td SWIFT
+                    td February 28, 2019
+            hr.mb-grid-gutter
+
+            // Pagination
+            nav.d-md-flex.justify-content-between.align-items-center.text-center.text-md-start(aria-label='Page navigation')
+              .d-md-flex.align-items-center.w-100
+                span.fs-sm.text-muted.me-md-3 Showing 10 of 52 records
+                .progress.w-100.my-3.mx-auto.mx-md-0(style='max-width: 10rem; height: 4px;')
+                  .progress-bar(role='progressbar' style='width: 20%;' aria-valuenow='20' aria-valuemin='0' aria-valuemax='100')
+              button(type='button').btn.btn-outline-primary.btn-sm
+                | More records
+
+//- Footer
+block footer
+  include partials/footer-marketplace
+
+//- Handheld toolbar
+block toolbar
+  include partials/toolbar-marketplace

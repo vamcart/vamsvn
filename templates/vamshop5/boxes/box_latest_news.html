@@ -1,0 +1,10 @@
+{config_load file="$language/lang_$language.conf" section="boxes"}
+<section class="widget inner categories-widget">
+	<h3 class="widget-title">{#heading_news#}</h3>
+		<ul class="icons clearfix">
+			{foreach name=aussen item=module_data from=$module_content}
+			<li>{$module_data.NEWS_DATA} - <a href="{$module_data.NEWS_LINK_MORE}">{$module_data.NEWS_HEADING}</a><br />
+			{$module_data.NEWS_CONTENT|vam_truncate:$smarty.const.MAX_DISPLAY_LATEST_NEWS_CONTENT:" ..."}</li>
+			{/foreach}  
+		</ul>
+</section>

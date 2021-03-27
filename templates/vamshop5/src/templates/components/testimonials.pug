@@ -1,0 +1,341 @@
+extends ../partials/layout-components
+
+//- Override default config variables
+append config
+  - var vendorStyles = ['prismjs/themes/prism.css', 'prismjs/plugins/toolbar/prism-toolbar.css', 'prismjs/plugins/line-numbers/prism-line-numbers.css']
+  - var vendorScripts = ['prismjs/components/prism-core.min.js', 'prismjs/components/prism-markup.min.js', 'prismjs/components/prism-clike.min.js', 'prismjs/components/prism-javascript.min.js', 'prismjs/components/prism-pug.min.js', 'prismjs/plugins/toolbar/prism-toolbar.min.js', 'prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js', 'prismjs/plugins/line-numbers/prism-line-numbers.min.js']
+  - var pageTitle = 'Testimonials / reviews'
+  - var pageSubtitle = 'Component is designed to showcase testimonials from satisfied clients or reviews of the products on your website.'
+  - var isPageTitleBadge = true
+  - var anchorNav = [{'title': 'Testimonial', 'link': '#testimonial'}, {'title': 'Testimonials carousel', 'link': '#testimonials-carousel'}, {'title': 'Product review', 'link': '#product-review'}, {'title': 'Post comment', 'link': '#post-comment'}]
+  
+//- Page Content
+block content
+
+  // Testimonial
+  section#testimonial.pb-5.mb-md-2
+    h2.h5.mb-3 Testimonial
+    .card.border-0.shadow
+      .card-header
+        ul(role='tablist').nav.nav-tabs.card-header-tabs
+          li.nav-item
+            a(href='#result1' data-bs-toggle='tab' role='tab' aria-controls='result1' aria-selected='true').nav-link.active Result
+          li.nav-item
+            a(href='#html1' data-bs-toggle='tab' role='tab' aria-controls='html1' aria-selected='false').nav-link HTML
+          li.nav-item
+            a(href='#pug1' data-bs-toggle='tab' role='tab' aria-controls='pug1' aria-selected='false').nav-link Pug
+      .card-body
+        .tab-content
+          #result1.tab-pane.fade.show.active(role='tabpanel')
+            blockquote.testimonial.mb-2(style='max-width: 25rem;')
+              .card.border-0.shadow-sm
+                span.testimonial-mark
+                .card-body.fs-md
+                  | Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+              footer.d-flex.justify-content-center.align-items-center.pt-4
+                img(src='../img/testimonials/01.jpg' width='50' alt='Mary Grant').rounded
+                .ps-3
+                  h6.fs-sm.mb-n1 Mary Alice Grant
+                  span.fs-ms.text-muted Desperate housewife
+          #html1.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-html').
+                &lt;!-- Testimonial --&gt;
+                &lt;blockquote class=&quot;testimonial&quot;&gt;
+                  &lt;div class=&quot;card border-0 shadow-sm&quot;&gt;
+                    &lt;span class=&quot;testimonial-mark&quot;&gt;&lt;/span&gt;
+                    &lt;div class=&quot;card-body fs-md&quot;&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.&lt;/div&gt;
+                  &lt;/div&gt;
+                  &lt;footer class=&quot;d-flex justify-content-center align-items-center pt-4&quot;&gt;
+                    &lt;img class=&quot;rounded&quot; width=&quot;50&quot; src=&quot;path-to-picture&quot; alt=&quot;Mary Grant&quot;/&gt;
+                    &lt;div class=&quot;ps-3&quot;&gt;
+                      &lt;h6 class=&quot;fs-sm mb-n1&quot;&gt;Mary Alice Grant&lt;/h6&gt;
+                      &lt;span class=&quot;fs-ms text-muted&quot;&gt;Desperate housewife&lt;/span&gt;
+                    &lt;/div&gt;
+                  &lt;/footer&gt;
+                &lt;/blockquote&gt;
+          #pug1.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-pug').
+                // Testimonial
+                blockquote.testimonial
+                  .card.border-0.shadow-sm
+                    span.testimonial-mark
+                    .card-body.fs-md
+                      | Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                  footer.d-flex.justify-content-center.align-items-center.pt-4
+                    img(src=&quot;path-to-picture&quot;, width=&quot;50&quot;, &quot;Mary Grant&quot;).rounded
+                    .ps-3
+                      h6.fs-sm.mb-n1 Mary Alice Grant
+                      span.fs-ms.text-muted Desperate housewife
+
+  // Testimonials carousel
+  section#testimonials-carousel.pb-5.mb-md-2
+    h2.h5.mb-3 Testimonials carousel
+    .card.border-0.shadow
+      .card-header
+        ul(role='tablist').nav.nav-tabs.card-header-tabs
+          li.nav-item
+            a(href='#result2' data-bs-toggle='tab' role='tab' aria-controls='result2' aria-selected='true').nav-link.active Result
+          li.nav-item
+            a(href='#html2' data-bs-toggle='tab' role='tab' aria-controls='html2' aria-selected='false').nav-link HTML
+          li.nav-item
+            a(href='#pug2' data-bs-toggle='tab' role='tab' aria-controls='pug2' aria-selected='false').nav-link Pug
+      .card-body
+        .tab-content
+          #result2.tab-pane.fade.show.active(role='tabpanel')
+            .tns-carousel.pt-2
+              .tns-carousel-inner(data-carousel-options='{"items": 2, "controls": false, "responsive": {"0":{"items":1},"750":{"items":2, "gutter": 20},"991":{"items":3, "gutter": 30}}}')
+                blockquote.testimonial.mb-2
+                  .card.border-0.shadow-sm
+                    span.testimonial-mark
+                    .card-body.fs-md
+                      | Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                  footer.d-flex.justify-content-center.align-items-center.pt-4
+                    img(src='../img/testimonials/01.jpg' width='50' alt='Mary Grant').rounded
+                    .ps-3
+                      h6.fs-sm.mb-n1 Mary Alice Grant
+                      span.fs-ms.text-muted Desperate housewife
+                blockquote.testimonial.mb-2
+                  .card.border-0.shadow-sm
+                    span.testimonial-mark
+                    .card-body.fs-md
+                      | Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                  footer.d-flex.justify-content-center.align-items-center.pt-4
+                    img(src='../img/testimonials/02.jpg' width='50' alt='Mary Grant').rounded
+                    .ps-3
+                      h6.fs-sm.mb-n1 Adrian Lewis
+                      span.fs-ms.text-muted Shopaholic
+                blockquote.testimonial.mb-2
+                  .card.border-0.shadow-sm
+                    span.testimonial-mark
+                    .card-body.fs-md
+                      | Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                  footer.d-flex.justify-content-center.align-items-center.pt-4
+                    img(src='../img/testimonials/04.jpg' width='50' alt='Mary Grant').rounded
+                    .ps-3
+                      h6.fs-sm.mb-n1 Sara Palson
+                      span.fs-ms.text-muted Merchant
+                blockquote.testimonial.mb-2
+                  .card.border-0.shadow-sm
+                    span.testimonial-mark
+                    .card-body.fs-md
+                      | Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                  footer.d-flex.justify-content-center.align-items-center.pt-4
+                    img(src='../img/testimonials/03.jpg' width='50' alt='Mary Grant').rounded
+                    .ps-3
+                      h6.fs-sm.mb-n1 Richard Davis
+                      span.fs-ms.text-muted Shopaholic
+          #html2.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-html').
+                &lt;!-- Testimonials carousel --&gt;
+                &lt;div class=&quot;tns-carousel&quot;&gt;
+                  &lt;div class=&quot;tns-carousel-inner&quot; data-carousel-options='{&quot;items&quot;: 2, &quot;controls&quot;: false, &quot;responsive&quot;: {&quot;0&quot;:{&quot;items&quot;:1},&quot;750&quot;:{&quot;items&quot;:2, &quot;gutter&quot;: 20},&quot;991&quot;:{&quot;items&quot;:3, &quot;gutter&quot;: 30}}}'&gt;
+                    &lt;blockquote class=&quot;testimonial mb-2&quot;&gt;
+                      &lt;div class=&quot;card border-0 shadow-sm&quot;&gt;&lt;span class=&quot;testimonial-mark&quot;&gt;&lt;/span&gt;
+                        &lt;div class=&quot;card-body fs-md&quot;&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.&lt;/div&gt;
+                      &lt;/div&gt;
+                      &lt;footer class=&quot;d-flex justify-content-center align-items-center pt-4&quot;&gt;
+                        &lt;img class=&quot;rounded&quot; width=&quot;50&quot; src=&quot;path-to-picture&quot; alt=&quot;Mary Grant&quot;/&gt;
+                        &lt;div class=&quot;ps-3&quot;&gt;
+                          &lt;h6 class=&quot;fs-sm mb-n1&quot;&gt;Mary Alice Grant&lt;/h6&gt;
+                          &lt;span class=&quot;fs-ms text-muted&quot;&gt;Desperate housewife&lt;/span&gt;
+                        &lt;/div&gt;
+                      &lt;/footer&gt;
+                    &lt;/blockquote&gt;
+
+                    &lt;blockquote class=&quot;testimonial mb-2&quot;&gt;
+                      ...
+                    &lt;/blockquote&gt;
+
+                    &lt;!-- Add as many testimonials as you need --&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+          #pug2.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-pug').
+                // Testimonials carousel
+                .tns-carousel
+                  .tns-carousel-inner(data-carousel-options='{&quot;items&quot;: 2, &quot;controls&quot;: false, &quot;responsive&quot;: {&quot;0&quot;:{&quot;items&quot;:1},&quot;750&quot;:{&quot;items&quot;:2, &quot;gutter&quot;: 20},&quot;991&quot;:{&quot;items&quot;:3, &quot;gutter&quot;: 30}}}')
+
+                    blockquote.testimonial.mb-2
+                      .card.border-0.shadow-sm
+                        span.testimonial-mark
+                        .card-body.fs-md
+                          | Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                      footer.d-flex.justify-content-center.align-items-center.pt-4
+                        img(src=&quot;path-to-picture&quot;, width=&quot;50&quot;, alt=&quot;Mary Grant&quot;).rounded
+                        .ps-3
+                          h6.fs-sm.mb-n1 Mary Alice Grant
+                          span.fs-ms.text-muted Desperate housewife
+
+                    blockquote.testimonial.mb-2
+                      ...
+
+                    //- Add as many testimonials as you need
+
+  // Product review
+  section#product-review.pb-5.mb-md-2
+    h2.h5.mb-3 Product review
+    .card.border-0.shadow
+      .card-header
+        ul(role='tablist').nav.nav-tabs.card-header-tabs
+          li.nav-item
+            a(href='#result3' data-bs-toggle='tab' role='tab' aria-controls='result3' aria-selected='true').nav-link.active Result
+          li.nav-item
+            a(href='#html3' data-bs-toggle='tab' role='tab' aria-controls='html3' aria-selected='false').nav-link HTML
+          li.nav-item
+            a(href='#pug3' data-bs-toggle='tab' role='tab' aria-controls='pug3' aria-selected='false').nav-link Pug
+      .card-body
+        .tab-content
+          #result3.tab-pane.fade.show.active(role='tabpanel')
+            .product-review.py-2(style='max-width: 45rem;')
+              .d-flex.mb-3
+                .d-flex.align-items-center.me-4.pe-2
+                  img(src='../img/shop/reviews/01.jpg' width='50' alt='Rafael Marquez').rounded-circle
+                  .ps-3
+                    h6.fs-sm.mb-0 Rafael Marquez
+                    span.fs-ms.text-muted June 28, 2019
+                div
+                  +star-rating(4)
+                  .fs-ms.text-muted 83% of users found this review helpful
+              p.fs-md.mb-2 Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est...
+              ul.list-unstyled.fs-ms.pt-1
+                li.mb-1
+                  span.fw-medium Pros:&nbsp;
+                  | Consequuntur magni, voluptatem sequi, tempora
+                li.mb-1
+                  span.fw-medium Cons:&nbsp;
+                  | Architecto beatae, quis autem
+              .text-nowrap
+                button(type='button').btn-like 15
+                button(type='button').btn-dislike 3
+          #html3.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-html').
+                &lt;!-- Product review --&gt;
+                &lt;div class=&quot;product-review&quot;&gt;
+                  &lt;div class=&quot;d-flex mb-3&quot;&gt;
+                    &lt;div class=&quot;d-flex align-items-center me-4 pe-2&quot;&gt;
+                      &lt;img class=&quot;rounded-circle&quot; width=&quot;50&quot; src=&quot;path-to-picture&quot; alt=&quot;Rafael Marquez&quot;/&gt;
+                      &lt;div class=&quot;ps-3&quot;&gt;
+                        &lt;h6 class=&quot;fs-sm mb-0&quot;&gt;Rafael Marquez&lt;/h6&gt;
+                        &lt;span class=&quot;fs-ms text-muted&quot;&gt;June 28, 2019&lt;/span&gt;
+                      &lt;/div&gt;
+                    &lt;/div&gt;
+                    &lt;div&gt;
+                      &lt;div class=&quot;star-rating&quot;&gt;
+                        &lt;i class=&quot;star-rating-icon ci-star-filled active&quot;&gt;&lt;/i&gt;
+                        &lt;i class=&quot;star-rating-icon ci-star-filled active&quot;&gt;&lt;/i&gt;
+                        &lt;i class=&quot;star-rating-icon ci-star-filled active&quot;&gt;&lt;/i&gt;
+                        &lt;i class=&quot;star-rating-icon ci-star-filled active&quot;&gt;&lt;/i&gt;
+                        &lt;i class=&quot;star-rating-icon ci-star&quot;&gt;&lt;/i&gt;
+                      &lt;/div&gt;
+                      &lt;div class=&quot;fs-ms text-muted&quot;&gt;83% of users found this review helpful&lt;/div&gt;
+                    &lt;/div&gt;
+                  &lt;/div&gt;
+                  &lt;p class=&quot;fs-md mb-2&quot;&gt;Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est...&lt;/p&gt;
+                  &lt;ul class=&quot;list-unstyled fs-ms pt-1&quot;&gt;
+                    &lt;li class=&quot;mb-1&quot;&gt;
+                      &lt;span class=&quot;fw-medium&quot;&gt;Pros: &lt;/span&gt;Consequuntur magni, voluptatem sequi, tempora
+                    &lt;/li&gt;
+                    &lt;li class=&quot;mb-1&quot;&gt;
+                      &lt;span class=&quot;fw-medium&quot;&gt;Cons: &lt;/span&gt;Architecto beatae, quis autem
+                    &lt;/li&gt;
+                  &lt;/ul&gt;
+                  &lt;div class=&quot;text-nowrap&quot;&gt;
+                    &lt;button class=&quot;btn-like&quot; type=&quot;button&quot;&gt;15&lt;/button&gt;
+                    &lt;button class=&quot;btn-dislike&quot; type=&quot;button&quot;&gt;3&lt;/button&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+          #pug3.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-pug').
+                // Product review
+                .product-review
+                  .d-flex.mb-3
+                    .d-flex.align-items-center.me-4.pe-2
+                      img(src=&quot;path-to-picture&quot;, width=&quot;50&quot;, alt=&quot;Rafael Marquez&quot;).rounded-circle
+                      .ps-3
+                        h6.fs-sm.mb-0 Rafael Marquez
+                        span.fs-ms.text-muted June 28, 2019
+                    div
+                      +star-rating(4)
+                      .fs-ms.text-muted 83% of users found this review helpful
+                  p.fs-md.mb-2 Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est...
+                  ul.list-unstyled.fs-ms.pt-1
+                    li.mb-1
+                      span.fw-medium Pros:&nbsp;
+                      | Consequuntur magni, voluptatem sequi, tempora
+                    li.mb-1
+                      span.fw-medium Cons:&nbsp;
+                      | Architecto beatae, quis autem
+                  .text-nowrap
+                    button(type=&quot;button&quot;).btn-like 15
+                    button(type=&quot;button&quot;).btn-dislike 3
+
+  // Post comment
+  section#post-comment.pb-5.mb-md-2
+    h2.h5.mb-3 Post comment
+    .card.border-0.shadow
+      .card-header
+        ul(role='tablist').nav.nav-tabs.card-header-tabs
+          li.nav-item
+            a(href='#result4' data-bs-toggle='tab' role='tab' aria-controls='result4' aria-selected='true').nav-link.active Result
+          li.nav-item
+            a(href='#html4' data-bs-toggle='tab' role='tab' aria-controls='html4' aria-selected='false').nav-link HTML
+          li.nav-item
+            a(href='#pug4' data-bs-toggle='tab' role='tab' aria-controls='pug4' aria-selected='false').nav-link Pug
+      .card-body
+        .tab-content
+          #result4.tab-pane.fade.show.active(role='tabpanel')
+            .d-flex.align-items-start.py-2(style='max-width: 45rem;')
+              img(src='../img/testimonials/04.jpg' width='50' alt='Laura Willson').rounded-circle
+              .ps-3
+                .d-flex.justify-content-between.align-items-center.mb-2
+                  h6.fs-md.mb-0 Laura Willson
+                  a(href='#').nav-link-style.fs-sm.fw-medium
+                    i.ci-reply.me-2
+                    | Reply
+                p.fs-md.mb-1 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                span.fs-ms.text-muted
+                  i.ci-time.align-middle.me-2
+                  | Sep 7, 2019
+          #html4.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-html').
+                &lt;!-- Post comment --&gt;
+                &lt;div class=&quot; d-flex align-items-start&quot;&gt;
+                  &lt;img class=&quot;rounded-circle&quot; width=&quot;50&quot; src=&quot;path-to-picture&quot; alt=&quot;Laura Willson&quot;/&gt;
+                  &lt;div class=&quot;ps-3&quot;&gt;
+                    &lt;div class=&quot;d-flex justify-content-between align-items-center mb-2&quot;&gt;
+                      &lt;h6 class=&quot;fs-md mb-0&quot;&gt;Laura Willson&lt;/h6&gt;
+                      &lt;a class=&quot;nav-link-style fs-sm fw-medium&quot; href=&quot;#&quot;&gt;
+                        &lt;i class=&quot;ci-reply me-2&quot;&gt;&lt;/i&gt;
+                        Reply
+                      &lt;/a&gt;
+                    &lt;/div&gt;
+                    &lt;p class=&quot;fs-md mb-1&quot;&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.&lt;/p&gt;
+                    &lt;span class=&quot;fs-ms text-muted&quot;&gt;
+                      &lt;i class=&quot;ci-time align-middle me-2&quot;&gt;&lt;/i&gt;
+                      Sep 7, 2019
+                    &lt;/span&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+          #pug4.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-pug').
+                // Post comment
+                .d-flex.align-items-start
+                  img(src=&quot;path-to-picture&quot;, width=&quot;50&quot;, alt=&quot;Laura Willson&quot;).rounded-circle
+                  .ps-3
+                    .d-flex.justify-content-between.align-items-center.mb-2
+                      h6.fs-md.mb-0 Laura Willson
+                      a(href=&quot;#&quot;).nav-link-style.fs-sm.fw-medium
+                        i.ci-reply.me-2
+                        | Reply
+                    p.fs-md.mb-1 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                    span.fs-ms.text-muted
+                      i.ci-time.align-middle.me-2
+                      | Sep 7, 2019

@@ -1,0 +1,646 @@
+// Toolbar with expandable filters
+#shop-filters.collapse
+  .row.pt-4
+    .col-lg-4.col-sm-6
+
+      // Categories
+      .card.mb-grid-gutter
+        .card-body.px-4
+          .widget.widget-categories
+            h3.widget-title Categories
+            #shop-categories.accordion.mt-n1
+
+              // Shoes
+              .accordion-item
+                h3.accordion-header
+                  a(href='#shoes' role='button' data-bs-toggle='collapse' aria-expanded='false' aria-controls='shoes').accordion-button.collapsed
+                    | Shoes
+                #shoes.accordion-collapse.collapse(data-bs-parent='#shop-categories')
+                  .accordion-body
+                    .widget.widget-links.widget-filter
+                      .input-group.input-group-sm.mb-2
+                        input(type='text' placeholder='Search').widget-filter-search.form-control.rounded-end
+                        i.ci-search.position-absolute.top-50.end-0.translate-middle-y.fs-sm.me-3
+                      ul(style='height: 12rem;' data-simplebar data-simplebar-auto-hide='false').widget-list.widget-filter-list.pt-1
+                        li.widget-list-item.widget-filter-item
+                          a(href='#').widget-list-link.d-flex.justify-content-between.align-items-center
+                            span.widget-filter-item-text View all
+                            span.fs-xs.text-muted.ms-3 1,953
+                        li.widget-list-item.widget-filter-item
+                          a(href='#').widget-list-link.d-flex.justify-content-between.align-items-center
+                            span.widget-filter-item-text Pumps &amp; High Heels
+                            span.fs-xs.text-muted.ms-3 247
+                        li.widget-list-item.widget-filter-item
+                          a(href='#').widget-list-link.d-flex.justify-content-between.align-items-center
+                            span.widget-filter-item-text Ballerinas &amp; Flats
+                            span.fs-xs.text-muted.ms-3 156
+                        li.widget-list-item.widget-filter-item
+                          a(href='#').widget-list-link.d-flex.justify-content-between.align-items-center
+                            span.widget-filter-item-text Sandals
+                            span.fs-xs.text-muted.ms-3 310
+                        li.widget-list-item.widget-filter-item
+                          a(href='#').widget-list-link.d-flex.justify-content-between.align-items-center
+                            span.widget-filter-item-text Sneakers
+                            span.fs-xs.text-muted.ms-3 402
+                        li.widget-list-item.widget-filter-item
+                          a(href='#').widget-list-link.d-flex.justify-content-between.align-items-center
+                            span.widget-filter-item-text Boots
+                            span.fs-xs.text-muted.ms-3 393
+                        li.widget-list-item.widget-filter-item
+                          a(href='#').widget-list-link.d-flex.justify-content-between.align-items-center
+                            span.widget-filter-item-text Ankle Boots
+                            span.fs-xs.text-muted.ms-3 50
+                        li.widget-list-item.widget-filter-item
+                          a(href='#').widget-list-link.d-flex.justify-content-between.align-items-center
+                            span.widget-filter-item-text Loafers
+                            span.fs-xs.text-muted.ms-3 93
+                        li.widget-list-item.widget-filter-item
+                          a(href='#').widget-list-link.d-flex.justify-content-between.align-items-center
+                            span.widget-filter-item-text Slip-on
+                            span.fs-xs.text-muted.ms-3 122
+                        li.widget-list-item.widget-filter-item
+                          a(href='#').widget-list-link.d-flex.justify-content-between.align-items-center
+                            span.widget-filter-item-text Flip Flops
+                            span.fs-xs.text-muted.ms-3 116
+                        li.widget-list-item.widget-filter-item
+                          a(href='#').widget-list-link.d-flex.justify-content-between.align-items-center
+                            span.widget-filter-item-text Clogs &amp; Mules
+                            span.fs-xs.text-muted.ms-3 24
+                        li.widget-list-item.widget-filter-item
+                          a(href='#').widget-list-link.d-flex.justify-content-between.align-items-center
+                            span.widget-filter-item-text Athletic Shoes
+                            span.fs-xs.text-muted.ms-3 31
+                        li.widget-list-item.widget-filter-item
+                          a(href='#').widget-list-link.d-flex.justify-content-between.align-items-center
+                            span.widget-filter-item-text Oxfords
+                            span.fs-xs.text-muted.ms-3 9
+                        li.widget-list-item.widget-filter-item
+                          a(href='#').widget-list-link.d-flex.justify-content-between.align-items-center
+                            span.widget-filter-item-text Smart Shoes
+                            span.fs-xs.text-muted.ms-3 18
+
+              // Clothing
+              .accordion-item
+                h3.accordion-header
+                  a(href='#clothing' role='button' data-bs-toggle='collapse' aria-expanded='true' aria-controls='clothing').accordion-button
+                    | Clothing
+                #clothing.accordion-collapse.collapse.show(data-bs-parent='#shop-categories')
+                  .accordion-body
+                    .widget.widget-links.widget-filter
+                      .input-group.input-group-sm.mb-2
+                        input(type='text' placeholder='Search').widget-filter-search.form-control.rounded-end
+                        i.ci-search.position-absolute.top-50.end-0.translate-middle-y.fs-sm.me-3
+                      ul(style='height: 12rem;' data-simplebar data-simplebar-auto-hide='false').widget-list.widget-filter-list.pt-1
+                        li.widget-list-item.widget-filter-item
+                          a(href='#').widget-list-link.d-flex.justify-content-between.align-items-center
+                            span.widget-filter-item-text View all
+                            span.fs-xs.text-muted.ms-3 2,548
+                        li.widget-list-item.widget-filter-item
+                          a(href='#').widget-list-link.d-flex.justify-content-between.align-items-center
+                            span.widget-filter-item-text Blazers &amp; Suits
+                            span.fs-xs.text-muted.ms-3 235
+                        li.widget-list-item.widget-filter-item
+                          a(href='#').widget-list-link.d-flex.justify-content-between.align-items-center
+                            span.widget-filter-item-text Blouses
+                            span.fs-xs.text-muted.ms-3 410
+                        li.widget-list-item.widget-filter-item
+                          a(href='#').widget-list-link.d-flex.justify-content-between.align-items-center
+                            span.widget-filter-item-text Cardigans &amp; Jumpers
+                            span.fs-xs.text-muted.ms-3 107
+                        li.widget-list-item.widget-filter-item
+                          a(href='#').widget-list-link.d-flex.justify-content-between.align-items-center
+                            span.widget-filter-item-text Dresses
+                            span.fs-xs.text-muted.ms-3 93
+                        li.widget-list-item.widget-filter-item
+                          a(href='#').widget-list-link.d-flex.justify-content-between.align-items-center
+                            span.widget-filter-item-text Hoodie &amp; Sweatshirts
+                            span.fs-xs.text-muted.ms-3 122
+                        li.widget-list-item.widget-filter-item
+                          a(href='#').widget-list-link.d-flex.justify-content-between.align-items-center
+                            span.widget-filter-item-text Jackets &amp; Coats
+                            span.fs-xs.text-muted.ms-3 116
+                        li.widget-list-item.widget-filter-item
+                          a(href='#').widget-list-link.d-flex.justify-content-between.align-items-center
+                            span.widget-filter-item-text Jeans
+                            span.fs-xs.text-muted.ms-3 215
+                        li.widget-list-item.widget-filter-item
+                          a(href='#').widget-list-link.d-flex.justify-content-between.align-items-center
+                            span.widget-filter-item-text Lingerie
+                            span.fs-xs.text-muted.ms-3 150
+                        li.widget-list-item.widget-filter-item
+                          a(href='#').widget-list-link.d-flex.justify-content-between.align-items-center
+                            span.widget-filter-item-text Maternity Wear
+                            span.fs-xs.text-muted.ms-3 8
+                        li.widget-list-item.widget-filter-item
+                          a(href='#').widget-list-link.d-flex.justify-content-between.align-items-center
+                            span.widget-filter-item-text Nightwear
+                            span.fs-xs.text-muted.ms-3 26
+                        li.widget-list-item.widget-filter-item
+                          a(href='#').widget-list-link.d-flex.justify-content-between.align-items-center
+                            span.widget-filter-item-text Shirts
+                            span.fs-xs.text-muted.ms-3 164
+                        li.widget-list-item.widget-filter-item
+                          a(href='#').widget-list-link.d-flex.justify-content-between.align-items-center
+                            span.widget-filter-item-text Shorts
+                            span.fs-xs.text-muted.ms-3 147
+                        li.widget-list-item.widget-filter-item
+                          a(href='#').widget-list-link.d-flex.justify-content-between.align-items-center
+                            span.widget-filter-item-text Socks &amp; Tights
+                            span.fs-xs.text-muted.ms-3 139
+                        li.widget-list-item.widget-filter-item
+                          a(href='#').widget-list-link.d-flex.justify-content-between.align-items-center
+                            span.widget-filter-item-text Sportswear
+                            span.fs-xs.text-muted.ms-3 65
+                        li.widget-list-item.widget-filter-item
+                          a(href='#').widget-list-link.d-flex.justify-content-between.align-items-center
+                            span.widget-filter-item-text Swimwear
+                            span.fs-xs.text-muted.ms-3 18
+                        li.widget-list-item.widget-filter-item
+                          a(href='#').widget-list-link.d-flex.justify-content-between.align-items-center
+                            span.widget-filter-item-text T-shirts &amp; Vests
+                            span.fs-xs.text-muted.ms-3 209
+                        li.widget-list-item.widget-filter-item
+                          a(href='#').widget-list-link.d-flex.justify-content-between.align-items-center
+                            span.widget-filter-item-text Tops
+                            span.fs-xs.text-muted.ms-3 132
+                        li.widget-list-item.widget-filter-item
+                          a(href='#').widget-list-link.d-flex.justify-content-between.align-items-center
+                            span.widget-filter-item-text Trousers
+                            span.fs-xs.text-muted.ms-3 105
+                        li.widget-list-item.widget-filter-item
+                          a(href='#').widget-list-link.d-flex.justify-content-between.align-items-center
+                            span.widget-filter-item-text Underwear
+                            span.fs-xs.text-muted.ms-3 87
+
+              // Bags
+              .accordion-item
+                h3.accordion-header
+                  a(href='#bags' role='button' data-bs-toggle='collapse' aria-expanded='false' aria-controls='bags').accordion-button.collapsed
+                    | Bags
+                #bags.accordion-collapse.collapse(data-bs-parent='#shop-categories')
+                  .accordion-body
+                    .widget.widget-links.widget-filter
+                      .input-group.input-group-sm.mb-2
+                        input(type='text' placeholder='Search').widget-filter-search.form-control.rounded-end
+                        i.ci-search.position-absolute.top-50.end-0.translate-middle-y.fs-sm.me-3
+                      ul(style='height: 12rem;' data-simplebar data-simplebar-auto-hide='false').widget-list.widget-filter-list.pt-1
+                        li.widget-list-item.widget-filter-item
+                          a(href='#').widget-list-link.d-flex.justify-content-between.align-items-center
+                            span.widget-filter-item-text View all
+                            span.fs-xs.text-muted.ms-3 801
+                        li.widget-list-item.widget-filter-item
+                          a(href='#').widget-list-link.d-flex.justify-content-between.align-items-center
+                            span.widget-filter-item-text Handbags
+                            span.fs-xs.text-muted.ms-3 238
+                        li.widget-list-item.widget-filter-item
+                          a(href='#').widget-list-link.d-flex.justify-content-between.align-items-center
+                            span.widget-filter-item-text Backpacks
+                            span.fs-xs.text-muted.ms-3 116
+                        li.widget-list-item.widget-filter-item
+                          a(href='#').widget-list-link.d-flex.justify-content-between.align-items-center
+                            span.widget-filter-item-text Wallets
+                            span.fs-xs.text-muted.ms-3 104
+                        li.widget-list-item.widget-filter-item
+                          a(href='#').widget-list-link.d-flex.justify-content-between.align-items-center
+                            span.widget-filter-item-text Luggage
+                            span.fs-xs.text-muted.ms-3 115
+                        li.widget-list-item.widget-filter-item
+                          a(href='#').widget-list-link.d-flex.justify-content-between.align-items-center
+                            span.widget-filter-item-text Lumbar Packs
+                            span.fs-xs.text-muted.ms-3 17
+                        li.widget-list-item.widget-filter-item
+                          a(href='#').widget-list-link.d-flex.justify-content-between.align-items-center
+                            span.widget-filter-item-text Duffle Bags
+                            span.fs-xs.text-muted.ms-3 9
+                        li.widget-list-item.widget-filter-item
+                          a(href='#').widget-list-link.d-flex.justify-content-between.align-items-center
+                            span.widget-filter-item-text Bag / Travel Accessories
+                            span.fs-xs.text-muted.ms-3 93
+                        li.widget-list-item.widget-filter-item
+                          a(href='#').widget-list-link.d-flex.justify-content-between.align-items-center
+                            span.widget-filter-item-text Diaper Bags
+                            span.fs-xs.text-muted.ms-3 5
+                        li.widget-list-item.widget-filter-item
+                          a(href='#').widget-list-link.d-flex.justify-content-between.align-items-center
+                            span.widget-filter-item-text Lunch Bags
+                            span.fs-xs.text-muted.ms-3 8
+                        li.widget-list-item.widget-filter-item
+                          a(href='#').widget-list-link.d-flex.justify-content-between.align-items-center
+                            span.widget-filter-item-text Messenger Bags
+                            span.fs-xs.text-muted.ms-3 2
+                        li.widget-list-item.widget-filter-item
+                          a(href='#').widget-list-link.d-flex.justify-content-between.align-items-center
+                            span.widget-filter-item-text Laptop Bags
+                            span.fs-xs.text-muted.ms-3 31
+                        li.widget-list-item.widget-filter-item
+                          a(href='#').widget-list-link.d-flex.justify-content-between.align-items-center
+                            span.widget-filter-item-text Briefcases
+                            span.fs-xs.text-muted.ms-3 45
+                        li.widget-list-item.widget-filter-item
+                          a(href='#').widget-list-link.d-flex.justify-content-between.align-items-center
+                            span.widget-filter-item-text Sport Bags
+                            span.fs-xs.text-muted.ms-3 18
+
+              // Sunglasses
+              .accordion-item
+                h3.accordion-header
+                  a(href='#sunglasses' role='button' data-bs-toggle='collapse' aria-expanded='false' aria-controls='sunglasses').accordion-button.collapsed
+                    | Sunglasses
+                #sunglasses.collapse(data-bs-parent='#shop-categories')
+                  .accordion-body
+                    .widget.widget-links
+                      ul.widget-list
+                        li.widget-list-item
+                          a(href='#').widget-list-link.d-flex.justify-content-between.align-items-center
+                            span View all
+                            span.fs-xs.text-muted.ms-3 1,842
+                        li.widget-list-item
+                          a(href='#').widget-list-link.d-flex.justify-content-between.align-items-center
+                            span Fashion Sunglasses
+                            span.fs-xs.text-muted.ms-3 953
+                        li.widget-list-item
+                          a(href='#').widget-list-link.d-flex.justify-content-between.align-items-center
+                            span Sport Sunglasses
+                            span.fs-xs.text-muted.ms-3 589
+                        li.widget-list-item
+                          a(href='#').widget-list-link.d-flex.justify-content-between.align-items-center
+                            span Classic Sunglasses
+                            span.fs-xs.text-muted.ms-3 300
+
+              // Watches
+              .accordion-item
+                h3.accordion-header
+                  a(href='#watches' role='button' data-bs-toggle='collapse' aria-expanded='false' aria-controls='watches').accordion-button.collapsed
+                    | Watches
+                #watches.accordion-collapse.collapse(data-bs-parent='#shop-categories')
+                  .accordion-body
+                    .widget.widget-links
+                      ul.widget-list
+                        li.widget-list-item
+                          a(href='#').widget-list-link.d-flex.justify-content-between.align-items-center
+                            span View all
+                            span.fs-xs.text-muted.ms-3 734
+                        li.widget-list-item
+                          a(href='#').widget-list-link.d-flex.justify-content-between.align-items-center
+                            span Fashion Watches
+                            span.fs-xs.text-muted.ms-3 572
+                        li.widget-list-item
+                          a(href='#').widget-list-link.d-flex.justify-content-between.align-items-center
+                            span Casual Watches
+                            span.fs-xs.text-muted.ms-3 110
+                        li.widget-list-item
+                          a(href='#').widget-list-link.d-flex.justify-content-between.align-items-center
+                            span Luxury Watches
+                            span.fs-xs.text-muted.ms-3 34
+                        li.widget-list-item
+                          a(href='#').widget-list-link.d-flex.justify-content-between.align-items-center
+                            span Sport Watches
+                            span.fs-xs.text-muted.ms-3 18
+
+              // Accessories
+              .accordion-item
+                h3.accordion-header
+                  a(href='#accessories' role='button' data-bs-toggle='collapse' aria-expanded='false' aria-controls='accessories').accordion-button.collapsed
+                    | Accessories
+                #accessories.accordion-collapse.collapse(data-bs-parent='#shop-categories')
+                  .accordion-body
+                    .widget.widget-links
+                      ul.widget-list
+                        li.widget-list-item
+                          a(href='#').widget-list-link.d-flex.justify-content-between.align-items-center
+                            span View all
+                            span.fs-xs.text-muted.ms-3 920
+                        li.widget-list-item
+                          a(href='#').widget-list-link.d-flex.justify-content-between.align-items-center
+                            span Belts
+                            span.fs-xs.text-muted.ms-3 364
+                        li.widget-list-item
+                          a(href='#').widget-list-link.d-flex.justify-content-between.align-items-center
+                            span Hats
+                            span.fs-xs.text-muted.ms-3 405
+                        li.widget-list-item
+                          a(href='#').widget-list-link.d-flex.justify-content-between.align-items-center
+                            span Jewelry
+                            span.fs-xs.text-muted.ms-3 131
+                        li.widget-list-item
+                          a(href='#').widget-list-link.d-flex.justify-content-between.align-items-center
+                            span Cosmetics
+                            span.fs-xs.text-muted.ms-3 20
+    
+    .col-lg-4.col-sm-6
+                
+      // Price range
+      .card.mb-grid-gutter
+        .card-body.px-4
+          .widget
+            h3.widget-title Price range
+            .range-slider(data-start-min='250' data-start-max='680' data-min='0' data-max='1000' data-step='1')
+              .range-slider-ui
+              .d-flex.pb-1
+                .w-50.pe-2.me-2
+                  .input-group.input-group-sm
+                    span.input-group-text $
+                    input(type='text').form-control.range-slider-value-min
+                .w-50.ps-2
+                  .input-group.input-group-sm
+                    span.input-group-text $
+                    input(type='text').form-control.range-slider-value-max
+
+      // Filter by Brand
+      .card.mb-grid-gutter
+        .card-body.px-4
+          .widget.widget-filter
+            h3.widget-title Brand
+            .input-group.input-group-sm.mb-2
+              input(type='text' placeholder='Search').widget-filter-search.form-control.rounded-end.pe-5
+              i.ci-search.position-absolute.top-50.end-0.translate-middle-y.fs-sm.me-3
+            ul(style='max-height: 11rem;' data-simplebar data-simplebar-auto-hide='false').widget-list.widget-filter-list.list-unstyled.pt-1
+              li.widget-filter-item.d-flex.justify-content-between.align-items-center.mb-1
+                .form-check
+                  input(type='checkbox', id='adidas').form-check-input
+                  label.form-check-label.widget-filter-item-text(for='adidas') Adidas
+                span.fs-xs.text-muted 425
+              li.widget-filter-item.d-flex.justify-content-between.align-items-center.mb-1
+                .form-check
+                  input(type='checkbox', id='ataylor').form-check-input
+                  label.form-check-label.widget-filter-item-text(for='ataylor') Ann Taylor
+                span.fs-xs.text-muted 15
+              li.widget-filter-item.d-flex.justify-content-between.align-items-center.mb-1
+                .form-check
+                  input(type='checkbox', id='armani').form-check-input
+                  label.form-check-label.widget-filter-item-text(for='armani') Armani
+                span.fs-xs.text-muted 18
+              li.widget-filter-item.d-flex.justify-content-between.align-items-center.mb-1
+                .form-check
+                  input(type='checkbox', id='banana').form-check-input
+                  label.form-check-label.widget-filter-item-text(for='banana') Banana Republic
+                span.fs-xs.text-muted 103
+              li.widget-filter-item.d-flex.justify-content-between.align-items-center.mb-1
+                .form-check
+                  input(type='checkbox', id='bilabong').form-check-input
+                  label.form-check-label.widget-filter-item-text(for='bilabong') Bilabong
+                span.fs-xs.text-muted 27
+              li.widget-filter-item.d-flex.justify-content-between.align-items-center.mb-1
+                .form-check
+                  input(type='checkbox', id='birkenstock').form-check-input
+                  label.form-check-label.widget-filter-item-text(for='birkenstock') Birkenstock
+                span.fs-xs.text-muted 10
+              li.widget-filter-item.d-flex.justify-content-between.align-items-center.mb-1
+                .form-check
+                  input(type='checkbox', id='klein').form-check-input
+                  label.form-check-label.widget-filter-item-text(for='klein') Calvin Klein
+                span.fs-xs.text-muted 365
+              li.widget-filter-item.d-flex.justify-content-between.align-items-center.mb-1
+                .form-check
+                  input(type='checkbox', id='columbia').form-check-input
+                  label.form-check-label.widget-filter-item-text(for='columbia') Columbia
+                span.fs-xs.text-muted 508
+              li.widget-filter-item.d-flex.justify-content-between.align-items-center.mb-1
+                .form-check
+                  input(type='checkbox', id='converse').form-check-input
+                  label.form-check-label.widget-filter-item-text(for='converse') Converse
+                span.fs-xs.text-muted 176
+              li.widget-filter-item.d-flex.justify-content-between.align-items-center.mb-1
+                .form-check
+                  input(type='checkbox', id='dockers').form-check-input
+                  label.form-check-label.widget-filter-item-text(for='dockers') Dockers
+                span.fs-xs.text-muted 54
+              li.widget-filter-item.d-flex.justify-content-between.align-items-center.mb-1
+                .form-check
+                  input(type='checkbox', id='fruit').form-check-input
+                  label.form-check-label.widget-filter-item-text(for='fruit') Fruit of the Loom
+                span.fs-xs.text-muted 739
+              li.widget-filter-item.d-flex.justify-content-between.align-items-center.mb-1
+                .form-check
+                  input(type='checkbox', id='hanes').form-check-input
+                  label.form-check-label.widget-filter-item-text(for='hanes') Hanes
+                span.fs-xs.text-muted 92
+              li.widget-filter-item.d-flex.justify-content-between.align-items-center.mb-1
+                .form-check
+                  input(type='checkbox', id='choo').form-check-input
+                  label.form-check-label.widget-filter-item-text(for='choo') Jimmy Choo
+                span.fs-xs.text-muted 17
+              li.widget-filter-item.d-flex.justify-content-between.align-items-center.mb-1
+                .form-check
+                  input(type='checkbox', id='levis').form-check-input
+                  label.form-check-label.widget-filter-item-text(for='levis') Levi's
+                span.fs-xs.text-muted 361
+              li.widget-filter-item.d-flex.justify-content-between.align-items-center.mb-1
+                .form-check
+                  input(type='checkbox', id='lee').form-check-input
+                  label.form-check-label.widget-filter-item-text(for='lee') Lee
+                span.fs-xs.text-muted 264
+              li.widget-filter-item.d-flex.justify-content-between.align-items-center.mb-1
+                .form-check
+                  input(type='checkbox', id='wearhouse').form-check-input
+                  label.form-check-label.widget-filter-item-text(for='wearhouse') Men's Wearhouse
+                span.fs-xs.text-muted 75
+              li.widget-filter-item.d-flex.justify-content-between.align-items-center.mb-1
+                .form-check
+                  input(type='checkbox', id='newbalance').form-check-input
+                  label.form-check-label.widget-filter-item-text(for='newbalance') New Balance
+                span.fs-xs.text-muted 218
+              li.widget-filter-item.d-flex.justify-content-between.align-items-center.mb-1
+                .form-check
+                  input(type='checkbox', id='nike').form-check-input
+                  label.form-check-label.widget-filter-item-text(for='nike') Nike
+                span.fs-xs.text-muted 810
+              li.widget-filter-item.d-flex.justify-content-between.align-items-center.mb-1
+                .form-check
+                  input(type='checkbox', id='navy').form-check-input
+                  label.form-check-label.widget-filter-item-text(for='navy') Old Navy
+                span.fs-xs.text-muted 147
+              li.widget-filter-item.d-flex.justify-content-between.align-items-center.mb-1
+                .form-check
+                  input(type='checkbox', id='polo').form-check-input
+                  label.form-check-label.widget-filter-item-text(for='polo') Polo Ralph Lauren
+                span.fs-xs.text-muted 64
+              li.widget-filter-item.d-flex.justify-content-between.align-items-center.mb-1
+                .form-check
+                  input(type='checkbox', id='puma').form-check-input
+                  label.form-check-label.widget-filter-item-text(for='puma') Puma
+                span.fs-xs.text-muted 370
+              li.widget-filter-item.d-flex.justify-content-between.align-items-center.mb-1
+                .form-check
+                  input(type='checkbox', id='reebok').form-check-input
+                  label.form-check-label.widget-filter-item-text(for='reebok') Reebok
+                span.fs-xs.text-muted 506
+              li.widget-filter-item.d-flex.justify-content-between.align-items-center.mb-1
+                .form-check
+                  input(type='checkbox', id='skechers').form-check-input
+                  label.form-check-label.widget-filter-item-text(for='skechers') Skechers
+                span.fs-xs.text-muted 209
+              li.widget-filter-item.d-flex.justify-content-between.align-items-center.mb-1
+                .form-check
+                  input(type='checkbox', id='hilfiger').form-check-input
+                  label.form-check-label.widget-filter-item-text(for='hilfiger') Tommy Hilfiger
+                span.fs-xs.text-muted 487
+              li.widget-filter-item.d-flex.justify-content-between.align-items-center.mb-1
+                .form-check
+                  input(type='checkbox', id='armour').form-check-input
+                  label.form-check-label.widget-filter-item-text(for='armour') Under Armour
+                span.fs-xs.text-muted 90
+              li.widget-filter-item.d-flex.justify-content-between.align-items-center.mb-1
+                .form-check
+                  input(type='checkbox', id='urban').form-check-input
+                  label.form-check-label.widget-filter-item-text(for='urban') Urban Outfitters
+                span.fs-xs.text-muted 152
+              li.widget-filter-item.d-flex.justify-content-between.align-items-center.mb-1
+                .form-check
+                  input(type='checkbox', id='vsecret').form-check-input
+                  label.form-check-label.widget-filter-item-text(for='vsecret') Victoria's Secret
+                span.fs-xs.text-muted 238
+              li.widget-filter-item.d-flex.justify-content-between.align-items-center.mb-1
+                .form-check
+                  input(type='checkbox', id='wolverine').form-check-input
+                  label.form-check-label.widget-filter-item-text(for='wolverine') Wolverine
+                span.fs-xs.text-muted 29
+              li.widget-filter-item.d-flex.justify-content-between.align-items-center
+                .form-check
+                  input(type='checkbox', id='wrangler').form-check-input
+                  label.form-check-label.widget-filter-item-text(for='wrangler') Wrangler
+                span.fs-xs.text-muted 115
+    
+    .col-lg-4.col-sm-6
+
+      // Filter by Size
+      .card.mb-grid-gutter
+        .card-body.px-4
+          .widget.widget-filter
+            h3.widget-title Size
+            .input-group.input-group-sm.mb-2
+              input(type='text' placeholder='Search').widget-filter-search.form-control.rounded-end.pe-5
+              i.ci-search.position-absolute.top-50.end-0.translate-middle-y.fs-sm.me-3
+            ul(style='max-height: 11.5rem;' data-simplebar data-simplebar-auto-hide='false').widget-list.widget-filter-list.list-unstyled.pt-1
+              li.widget-filter-item.d-flex.justify-content-between.align-items-center.mb-1
+                .form-check
+                  input(type='checkbox' id='size-xs').form-check-input
+                  label.form-check-label.widget-filter-item-text(for='size-xs') XS
+                span.fs-xs.text-muted 34
+              li.widget-filter-item.d-flex.justify-content-between.align-items-center.mb-1
+                .form-check
+                  input(type='checkbox' id='size-s').form-check-input
+                  label.form-check-label.widget-filter-item-text(for='size-s') S
+                span.fs-xs.text-muted 57
+              li.widget-filter-item.d-flex.justify-content-between.align-items-center.mb-1
+                .form-check
+                  input(type='checkbox' id='size-m').form-check-input
+                  label.form-check-label.widget-filter-item-text(for='size-m') M
+                span.fs-xs.text-muted 198
+              li.widget-filter-item.d-flex.justify-content-between.align-items-center.mb-1
+                .form-check
+                  input(type='checkbox' id='size-l').form-check-input
+                  label.form-check-label.widget-filter-item-text(for='size-l') L
+                span.fs-xs.text-muted 72
+              li.widget-filter-item.d-flex.justify-content-between.align-items-center.mb-1
+                .form-check
+                  input(type='checkbox' id='size-xl').form-check-input
+                  label.form-check-label.widget-filter-item-text(for='size-xl') XL
+                span.fs-xs.text-muted 46
+              li.widget-filter-item.d-flex.justify-content-between.align-items-center.mb-1
+                .form-check
+                  input(type='checkbox' id='size-39').form-check-input
+                  label.form-check-label.widget-filter-item-text(for='size-39') 39
+                span.fs-xs.text-muted 112
+              li.widget-filter-item.d-flex.justify-content-between.align-items-center.mb-1
+                .form-check
+                  input(type='checkbox' id='size-40').form-check-input
+                  label.form-check-label.widget-filter-item-text(for='size-40') 40
+                span.fs-xs.text-muted 85
+              li.widget-filter-item.d-flex.justify-content-between.align-items-center.mb-1
+                .form-check
+                  input(type='checkbox' id='size-41').form-check-input
+                  label.form-check-label.widget-filter-item-text(for='size-40') 41
+                span.fs-xs.text-muted 210
+              li.widget-filter-item.d-flex.justify-content-between.align-items-center.mb-1
+                .form-check
+                  input(type='checkbox' id='size-42').form-check-input
+                  label.form-check-label.widget-filter-item-text(for='size-42') 42
+                span.fs-xs.text-muted 57
+              li.widget-filter-item.d-flex.justify-content-between.align-items-center.mb-1
+                .form-check
+                  input(type='checkbox' id='size-43').form-check-input
+                  label.form-check-label.widget-filter-item-text(for='size-43') 43
+                span.fs-xs.text-muted 30
+              li.widget-filter-item.d-flex.justify-content-between.align-items-center.mb-1
+                .form-check
+                  input(type='checkbox' id='size-44').form-check-input
+                  label.form-check-label.widget-filter-item-text(for='size-44') 44
+                span.fs-xs.text-muted 61
+              li.widget-filter-item.d-flex.justify-content-between.align-items-center.mb-1
+                .form-check
+                  input(type='checkbox' id='size-45').form-check-input
+                  label.form-check-label.widget-filter-item-text(for='size-45') 45
+                span.fs-xs.text-muted 23
+              li.widget-filter-item.d-flex.justify-content-between.align-items-center.mb-1
+                .form-check
+                  input(type='checkbox' id='size-46').form-check-input
+                  label.form-check-label.widget-filter-item-text(for='size-46') 46
+                span.fs-xs.text-muted 19
+              li.widget-filter-item.d-flex.justify-content-between.align-items-center.mb-1
+                .form-check
+                  input(type='checkbox' id='size-47').form-check-input
+                  label.form-check-label.widget-filter-item-text(for='size-47') 47
+                span.fs-xs.text-muted 15
+              li.widget-filter-item.d-flex.justify-content-between.align-items-center.mb-1
+                .form-check
+                  input(type='checkbox' id='size-48').form-check-input
+                  label.form-check-label.widget-filter-item-text(for='size-48') 48
+                span.fs-xs.text-muted 12
+              li.widget-filter-item.d-flex.justify-content-between.align-items-center.mb-1
+                .form-check
+                  input(type='checkbox' id='size-49').form-check-input
+                  label.form-check-label.widget-filter-item-text(for='size-49') 49
+                span.fs-xs.text-muted 8
+              li.widget-filter-item.d-flex.justify-content-between.align-items-center
+                .form-check
+                  input(type='checkbox' id='size-50').form-check-input
+                  label.form-check-label.widget-filter-item-text(for='size-50') 50
+                span.fs-xs.text-muted 6
+      
+      // Filter by Color
+      .card.mb-grid-gutter
+        .card-body.px-4
+          .widget
+            h3.widget-title Color
+            .d-flex.flex-wrap
+              .form-check.form-option.text-center.mb-2.mx-1(style='width: 4rem;')
+                input(type='checkbox' id='color-blue-gray').form-check-input
+                label(for='color-blue-gray').form-option-label.rounded-circle
+                  span(style='background-color: #b3c8db;').form-option-color.rounded-circle
+                label(for='color-blue-gray').d-block.fs-xs.text-muted.mt-n1 Blue-gray
+              .form-check.form-option.text-center.mb-2.mx-1(style='width: 4rem;')
+                input(type='checkbox' id='color-burgundy').form-check-input
+                label(for='color-burgundy').form-option-label.rounded-circle
+                  span(style='background-color: #ca7295;').form-option-color.rounded-circle
+                label(for='color-burgundy').d-block.fs-xs.text-muted.mt-n1 Burgundy
+              .form-check.form-option.text-center.mb-2.mx-1(style='width: 4rem;')
+                input(type='checkbox' id='color-teal').form-check-input
+                label(for='color-teal').form-option-label.rounded-circle
+                  span(style='background-color: #91c2c3;').form-option-color.rounded-circle
+                label(for='color-teal').d-block.fs-xs.text-muted.mt-n1 Teal
+              .form-check.form-option.text-center.mb-2.mx-1(style='width: 4rem;')
+                input(type='checkbox' id='color-brown').form-check-input
+                label(for='color-brown').form-option-label.rounded-circle
+                  span(style='background-color: #9a8480;').form-option-color.rounded-circle
+                label(for='color-brown').d-block.fs-xs.text-muted.mt-n1 Brown
+              .form-check.form-option.text-center.mb-2.mx-1(style='width: 4rem;')
+                input(type='checkbox' id='color-coral-red').form-check-input
+                label(for='color-coral-red').form-option-label.rounded-circle
+                  span(style='background-color: #ff7072;').form-option-color.rounded-circle
+                label(for='color-coral-red').d-block.fs-xs.text-muted.mt-n1 Coral red
+              .form-check.form-option.text-center.mb-2.mx-1(style='width: 4rem;')
+                input(type='checkbox' id='color-navy').form-check-input
+                label(for='color-navy').form-option-label.rounded-circle
+                  span(style='background-color: #696dc8;').form-option-color.rounded-circle
+                label(for='color-navy').d-block.fs-xs.text-muted.mt-n1 Navy
+              .form-check.form-option.text-center.mb-2.mx-1(style='width: 4rem;')
+                input(type='checkbox' id='color-charcoal').form-check-input
+                label(for='color-charcoal').form-option-label.rounded-circle
+                  span(style='background-color: #4e4d4d;').form-option-color.rounded-circle
+                label(for='color-charcoal').d-block.fs-xs.text-muted.mt-n1 Charcoal
+              .form-check.form-option.text-center.mb-2.mx-1(style='width: 4rem;')
+                input(type='checkbox' id='color-sky-blue').form-check-input
+                label(for='color-sky-blue').form-option-label.rounded-circle
+                  span(style='background-color: #8bcdf5;').form-option-color.rounded-circle
+                label(for='color-sky-blue').d-block.fs-xs.text-muted.mt-n1 Sky blue

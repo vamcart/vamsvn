@@ -1,0 +1,443 @@
+extends partials/layout-grocery
+
+//- Override default config variables
+append config
+  - var pageTitle = 'Grocery Store'
+  - var parentMenu = 'Home'
+  
+//- Page Content
+block content
+
+  // Slider
+  section.tns-carousel.mb-3.mb-md-5
+    .tns-carousel-inner(data-carousel-options='{"items": 1, "mode": "gallery", "nav": false, "responsive": {"0": {"nav": true, "controls": false}, "576": {"nav": false, "controls": true}}}')
+      // Slide 1
+      div
+        .rounded-3.px-md-5.text-center.text-xl-start(style='background-color: #59c879;')
+          .d-xl-flex.justify-content-between.align-items-center.px-4.px-sm-5.mx-auto(style='max-width: 1226px;')
+            .py-5.me-xl-4.mx-auto.mx-xl-0(style='max-width: 490px;')
+              h2.h1.text-light Fresh Foods a Click Away
+              p.text-light.pb-4 Order any goods from our store online and we deliver them to your door at a time convenient for you.
+              h5.text-light.pb-3 On the go? Try our mobile app
+              .d-flex.flex-wrap.justify-content-center.justify-content-xl-start
+                a(href='#' role='button').btn-market.btn-apple.me-2.mb-2
+                  span.btn-market-subtitle Download on the
+                  span.btn-market-title App Store
+                a(href='#' role='button').btn-market.btn-google.mb-2
+                  span.btn-market-subtitle Download on the
+                  span.btn-market-title Google Play
+            div: img(src='img/grocery/slider/slide01.jpg' alt='Image')
+      // Slide 2
+      div
+        .rounded-3.px-md-5.text-center.text-xl-start(style='background-color: #1a6fb0;')
+          .d-xl-flex.justify-content-between.align-items-center.px-4.px-sm-5.mx-auto(style='max-width: 1226px;')
+            .py-5.me-xl-4.mx-auto.mx-xl-0(style='max-width: 490px;')
+              h2.h1.text-light 24/7 Delivery Service
+              p.text-light.pb-4 Order any goods from our store online and we deliver them to your door at a time convenient for you.
+              h5.text-light.pb-3 On the go? Try our mobile app
+              .d-flex.flex-wrap.justify-content-center.justify-content-xl-start
+                a(href='#' role='button').btn-market.btn-apple.me-2.mb-2
+                  span.btn-market-subtitle Download on the
+                  span.btn-market-title App Store
+                a(href='#' role='button').btn-market.btn-google.mb-2
+                  span.btn-market-subtitle Download on the
+                  span.btn-market-title Google Play
+            div: img(src='img/grocery/slider/slide02.jpg' alt='Image')
+  
+
+  // How it works
+  section.pt-4.mb-4.mb-md-5
+    h2.h3.text-center.mb-grid-gutter.pt-2 How it works?
+    .row.g-0.bg-light.rounded-3
+      .col-xl-4.col-lg-12.col-md-4.border-end
+        .py-3
+          .d-flex.align-items-center.mx-auto.py-3.px-3(style='max-width: 362px;')
+            .display-3.fw-normal.opacity-15.me-4 01
+            .ps-2
+              img(src='img/grocery/steps/01.png' width='72' alt='Order online').d-block.my-2
+              p.mb-3.pt-1 You order your favorite products online
+          hr.d-md-none.d-lg-block.d-xl-none
+      .col-xl-4.col-lg-12.col-md-4.border-end
+        .py-3
+          .d-flex.align-items-center.mx-auto.py-3.px-3(style='max-width: 362px;')
+            .display-3.fw-normal.opacity-15.me-4 02
+            .ps-2
+              img(src='img/grocery/steps/02.png' width='72' alt='Grocery collected').d-block.my-2
+              p.mb-3.pt-1 A personal assistant collects the products from your list
+          hr.d-md-none.d-lg-block.d-xl-none
+      .col-xl-4.col-lg-12.col-md-4
+        .py-3
+          .d-flex.align-items-center.mx-auto.py-3.px-3(style='max-width: 362px;')
+            .display-3.fw-normal.opacity-15.me-4 03
+            .ps-2
+              img(src='img/grocery/steps/03.png' width='72' alt='Delivery').d-block.my-2
+              p.mb-3.pt-1 We deliver to the door at a time convenient for you
+    
+
+  // Discounted products (Carousel)
+  section.pt-3.pt-md-4
+    // Heading
+    .d-flex.flex-wrap.justify-content-between.align-items-center.pt-1.border-bottom.pb-4.mb-4
+      h2.h3.mb-0.pt-3.me-3 Discounted products
+      .pt-3
+        a(href='grocery-catalog.html').btn.btn-outline-accent.btn-sm
+          | More products
+          i.ci-arrow-right.ms-1.me-n1
+
+    .tns-carousel.tns-controls-static.tns-controls-outside.tns-nav-enabled.pt-2
+      .tns-carousel-inner(data-carousel-options='{"items": 2, "gutter": 16, "controls": true, "autoHeight": true, "responsive": {"0":{"items":1}, "480":{"items":2}, "720":{"items":3}, "991":{"items":2}, "1140":{"items":3}, "1300":{"items":4}, "1500":{"items":5}}}')
+
+        // Product
+        div
+          .card.product-card.card-static.pb-3
+            span.badge.bg-danger.badge-shadow Sale
+            button(type='button' data-bs-toggle='tooltip' data-bs-placement='left' title='Add to wishlist').btn-wishlist.btn-sm
+              i.ci-heart
+            a(href='grocery-single.html').card-img-top.d-block.overflow-hidden
+              img(src='img/grocery/catalog/01.jpg' alt='Product')
+            .card-body.py-2
+              a(href='#').product-meta.d-block.fs-xs.pb-1 Fruits and Vegetables
+              h3.product-title.fs-sm.text-truncate
+                a(href='grocery-single.html') Coconut, Indonesia (piece)
+              .product-price
+                span.text-accent $1.<small>99</small>
+                del.fs-sm.text-muted $2.<small>99</small>
+            .product-floating-btn
+              button(type='button').btn.btn-primary.btn-shadow.btn-sm
+                | +
+                i.ci-cart.fs-base.ms-1
+
+        // Product
+        div
+          .card.product-card.card-static.pb-3
+            span.badge.bg-danger.badge-shadow Sale
+            button(type='button' data-bs-toggle='tooltip' data-bs-placement='left' title='Add to wishlist').btn-wishlist.btn-sm
+              i.ci-heart
+            a(href='grocery-single.html').card-img-top.d-block.overflow-hidden
+              img(src='img/grocery/catalog/02.jpg' alt='Product')
+            .card-body.py-2
+              a(href='#').product-meta.d-block.fs-xs.pb-1 Dairy and Eggs
+              h3.product-title.fs-sm.text-truncate
+                a(href='grocery-single.html') Soft Creme Cheese (200g)
+              .product-price
+                span.text-accent $2.<small>99</small>
+                del.fs-sm.text-muted $3.<small>99</small>
+            .product-floating-btn
+              button(type='button').btn.btn-primary.btn-shadow.btn-sm
+                | +
+                i.ci-cart.fs-base.ms-1
+
+        // Product
+        div
+          .card.product-card.card-static.pb-3
+            span.badge.bg-danger.badge-shadow Sale
+            button(type='button' data-bs-toggle='tooltip' data-bs-placement='left' title='Add to wishlist').btn-wishlist.btn-sm
+              i.ci-heart
+            a(href='grocery-single.html').card-img-top.d-block.overflow-hidden
+              img(src='img/grocery/catalog/03.jpg' alt='Product')
+            .card-body.py-2
+              a(href='#').product-meta.d-block.fs-xs.pb-1 Soft Drinks and Juice
+              h3.product-title.fs-sm.text-truncate
+                a(href='grocery-single.html') Pepsi Soda Can (.33ml)
+              .product-price
+                span.text-accent $1.<small>00</small>
+                del.fs-sm.text-muted $1.<small>25</small>
+            .product-floating-btn
+              button(type='button').btn.btn-primary.btn-shadow.btn-sm
+                | +
+                i.ci-cart.fs-base.ms-1
+
+        // Product
+        div
+          .card.product-card.card-static.pb-3
+            span.badge.bg-danger.badge-shadow Sale
+            button(type='button' data-bs-toggle='tooltip' data-bs-placement='left' title='Add to wishlist').btn-wishlist.btn-sm
+              i.ci-heart
+            a(href='grocery-single.html').card-img-top.d-block.overflow-hidden
+              img(src='img/grocery/catalog/04.jpg' alt='Product')
+            .card-body.py-2
+              a(href='#').product-meta.d-block.fs-xs.pb-1 Fruits and Vegetables
+              h3.product-title.fs-sm.text-truncate
+                a(href='grocery-single.html') Fresh Orange, Spain (1kg)
+              .product-price
+                span.text-accent $1.<small>15</small>
+                del.fs-sm.text-muted $1.<small>75</small>
+            .product-floating-btn
+              button(type='button').btn.btn-primary.btn-shadow.btn-sm
+                | +
+                i.ci-cart.fs-base.ms-1
+
+        // Product
+        div
+          .card.product-card.card-static.pb-3
+            span.badge.bg-danger.badge-shadow Sale
+            button(type='button' data-bs-toggle='tooltip' data-bs-placement='left' title='Add to wishlist').btn-wishlist.btn-sm
+              i.ci-heart
+            a(href='grocery-single.html').card-img-top.d-block.overflow-hidden
+              img(src='img/grocery/catalog/05.jpg' alt='Product')
+            .card-body.py-2
+              a(href='#').product-meta.d-block.fs-xs.pb-1 Personal hygiene
+              h3.product-title.fs-sm.text-truncate
+                a(href='grocery-single.html') Moisture Body Lotion (250ml)
+              .product-price
+                span.text-accent $4.<small>20</small>
+                del.fs-sm.text-muted $5.<small>99</small>
+            .product-floating-btn
+              button(type='button').btn.btn-primary.btn-shadow.btn-sm
+                | +
+                i.ci-cart.fs-base.ms-1
+
+        // Product
+        div
+          .card.product-card.card-static.pb-3
+            span.badge.bg-danger.badge-shadow Sale
+            button(type='button' data-bs-toggle='tooltip' data-bs-placement='left' title='Add to wishlist').btn-wishlist.btn-sm
+              i.ci-heart
+            a(href='grocery-single.html').card-img-top.d-block.overflow-hidden
+              img(src='img/grocery/catalog/06.jpg' alt='Product')
+            .card-body.py-2
+              a(href='#').product-meta.d-block.fs-xs.pb-1 Snacks, Sweets and Chips
+              h3.product-title.fs-sm.text-truncate
+                a(href='grocery-single.html') Nut Chocolate Paste (750g)
+              .product-price
+                span.text-accent $6.<small>50</small>
+                del.fs-sm.text-muted $7.<small>99</small>
+            .product-floating-btn
+              button(type='button').btn.btn-primary.btn-shadow.btn-sm
+                | +
+                i.ci-cart.fs-base.ms-1
+
+        // Product
+        div
+          .card.product-card.card-static.pb-3
+            span.badge.bg-danger.badge-shadow Sale
+            button(type='button' data-bs-toggle='tooltip' data-bs-placement='left' title='Add to wishlist').btn-wishlist.btn-sm
+              i.ci-heart
+            a(href='grocery-single.html').card-img-top.d-block.overflow-hidden
+              img(src='img/grocery/catalog/07.jpg' alt='Product')
+            .card-body.py-2
+              a(href='#').product-meta.d-block.fs-xs.pb-1 Dairy and Eggs
+              h3.product-title.fs-sm.text-truncate
+                a(href='grocery-single.html') Mozzarella Mini Cheese
+              .product-price
+                span.text-accent $3.<small>50</small>
+                del.fs-sm.text-muted $4.<small>99</small>
+            .product-floating-btn
+              button(type='button').btn.btn-primary.btn-shadow.btn-sm
+                | +
+                i.ci-cart.fs-base.ms-1
+  
+  
+  // Bestsellers (Carousel)
+  section.pt-5.pb-4
+    // Heading
+    .d-flex.flex-wrap.justify-content-between.align-items-center.pt-1.border-bottom.pb-4.mb-4
+      h2.h3.mb-0.pt-3.me-3 Bestsellers
+      .pt-3
+        a(href='grocery-catalog.html').btn.btn-outline-accent.btn-sm
+          | More products
+          i.ci-arrow-right.ms-1.me-n1
+
+    .tns-carousel.tns-controls-static.tns-controls-outside.tns-dots-enabled.pt-2
+      .tns-carousel-inner(data-carousel-options='{"items": 2, "gutter": 16, "controls": true, "autoHeight": true, "responsive": {"0":{"items":1}, "480":{"items":2}, "720":{"items":3}, "991":{"items":2}, "1140":{"items":3}, "1300":{"items":4}, "1500":{"items":5}}}')
+
+        // Product
+        div
+          .card.product-card.card-static.pb-3
+            button(type='button' data-bs-toggle='tooltip' data-bs-placement='left' title='Add to wishlist').btn-wishlist.btn-sm
+              i.ci-heart
+            a(href='grocery-single.html').card-img-top.d-block.overflow-hidden
+              img(src='img/grocery/catalog/08.jpg' alt='Product')
+            .card-body.py-2
+              a(href='#').product-meta.d-block.fs-xs.pb-1 Dairy and Eggs
+              h3.product-title.fs-sm.text-truncate
+                a(href='grocery-single.html') Mozzarella Cheese (125g)
+              .product-price
+                span.text-accent $4.<small>30</small>
+            .product-floating-btn
+              button(type='button').btn.btn-primary.btn-shadow.btn-sm
+                | +
+                i.ci-cart.fs-base.ms-1
+
+        // Product
+        div
+          .card.product-card.card-static.pb-3
+            button(type='button' data-bs-toggle='tooltip' data-bs-placement='left' title='Add to wishlist').btn-wishlist.btn-sm
+              i.ci-heart
+            a(href='grocery-single.html').card-img-top.d-block.overflow-hidden
+              img(src='img/grocery/catalog/09.jpg' alt='Product')
+            .card-body.py-2
+              a(href='#').product-meta.d-block.fs-xs.pb-1 Personal hygiene
+              h3.product-title.fs-sm.text-truncate
+                a(href='grocery-single.html') Men’s Shampoo (400ml)
+              .product-price
+                span.text-accent $5.<small>99</small>
+            .product-floating-btn
+              button(type='button').btn.btn-primary.btn-shadow.btn-sm
+                | +
+                i.ci-cart.fs-base.ms-1
+
+        // Product
+        div
+          .card.product-card.card-static.pb-3
+            button(type='button' data-bs-toggle='tooltip' data-bs-placement='left' title='Add to wishlist').btn-wishlist.btn-sm
+              i.ci-heart
+            a(href='grocery-single.html').card-img-top.d-block.overflow-hidden
+              img(src='img/grocery/catalog/10.jpg' alt='Product')
+            .card-body.py-2
+              a(href='#').product-meta.d-block.fs-xs.pb-1 Meat and Poultry
+              h3.product-title.fs-sm.text-truncate
+                a(href='grocery-single.html') Frozen Oven-ready Poultry
+              .product-price
+                span.text-accent $12.<small>00</small>
+            .product-floating-btn
+              button(type='button').btn.btn-primary.btn-shadow.btn-sm
+                | +
+                i.ci-cart.fs-base.ms-1
+
+        // Product
+        div
+          .card.product-card.card-static.pb-3
+            button(type='button' data-bs-toggle='tooltip' data-bs-placement='left' title='Add to wishlist').btn-wishlist.btn-sm
+              i.ci-heart
+            a(href='grocery-single.html').card-img-top.d-block.overflow-hidden
+              img(src='img/grocery/catalog/11.jpg' alt='Product')
+            .card-body.py-2
+              a(href='#').product-meta.d-block.fs-xs.pb-1 Snacks, Sweets and Chips
+              h3.product-title.fs-sm.text-truncate
+                a(href='grocery-single.html') Dark Chocolate with Nuts
+              .product-price
+                span.text-accent $2.<small>50</small>
+            .product-floating-btn
+              button(type='button').btn.btn-primary.btn-shadow.btn-sm
+                | +
+                i.ci-cart.fs-base.ms-1
+
+        // Product
+        div
+          .card.product-card.card-static.pb-3
+            button(type='button' data-bs-toggle='tooltip' data-bs-placement='left' title='Add to wishlist').btn-wishlist.btn-sm
+              i.ci-heart
+            a(href='grocery-single.html').card-img-top.d-block.overflow-hidden
+              img(src='img/grocery/catalog/12.jpg' alt='Product')
+            .card-body.py-2
+              a(href='#').product-meta.d-block.fs-xs.pb-1 Canned Food and Oil
+              h3.product-title.fs-sm.text-truncate
+                a(href='grocery-single.html') Corn Oil Bottle (500ml)
+              .product-price
+                span.text-accent $3.<small>10</small>
+            .product-floating-btn
+              button(type='button').btn.btn-primary.btn-shadow.btn-sm
+                | +
+                i.ci-cart.fs-base.ms-1
+
+        // Product
+        div
+          .card.product-card.card-static.pb-3
+            button(type='button' data-bs-toggle='tooltip' data-bs-placement='left' title='Add to wishlist').btn-wishlist.btn-sm
+              i.ci-heart
+            a(href='grocery-single.html').card-img-top.d-block.overflow-hidden
+              img(src='img/grocery/catalog/13.jpg' alt='Product')
+            .card-body.py-2
+              a(href='#').product-meta.d-block.fs-xs.pb-1 Fish and Seafood
+              h3.product-title.fs-sm.text-truncate
+                a(href='grocery-single.html') Steak Salmon Fillet (1kg)
+              .product-price
+                span.text-accent $17.<small>99</small>
+            .product-floating-btn
+              button(type='button').btn.btn-primary.btn-shadow.btn-sm
+                | +
+                i.ci-cart.fs-base.ms-1
+
+        // Product
+        div
+          .card.product-card.card-static.pb-3
+            button(type='button' data-bs-toggle='tooltip' data-bs-placement='left' title='Add to wishlist').btn-wishlist.btn-sm
+              i.ci-heart
+            a(href='grocery-single.html').card-img-top.d-block.overflow-hidden
+              img(src='img/grocery/catalog/14.jpg' alt='Product')
+            .card-body.py-2
+              a(href='#').product-meta.d-block.fs-xs.pb-1 Canned Food and Oil
+              h3.product-title.fs-sm.text-truncate
+                a(href='grocery-single.html') Sardine in Tomato Sauce (105g)
+              .product-price
+                span.text-accent $3.<small>25</small>
+            .product-floating-btn
+              button(type='button').btn.btn-primary.btn-shadow.btn-sm
+                | +
+                i.ci-cart.fs-base.ms-1
+  
+
+  // Reviews
+  section.py-5.bg-light.rounded-3.my-4.my-md-5.px-3.px-sm-4
+    h2.h3.py-4.text-center Customer reviews
+    .tns-carousel.mb-3
+      .tns-carousel-inner(data-carousel-options='{"items": 2, "gutter": 20, "controls": false, "autoplay": true, "autoplayTimeout": 5000, "responsive": {"0":{"items":1}, "576":{"items":2},"1200":{"items":3},"1560":{"items":4}}}')
+        blockquote.mb-2
+          .card.border-0
+            .card-body.px-3.fs-md.text-muted
+              .mb-2
+                +star-rating(4)
+              | Lorem ipsum dolor sit amet, quia non consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua porro quisquam est.
+          footer.d-flex.justify-content-center.align-items-center.pt-4
+            img(src='img/testimonials/03.jpg' width='50' alt='Richard Davis').rounded-circle
+            .ps-3
+              h6.fs-sm.mb-n1 Richard Davis
+              span.fs-ms.text-muted.opacity-75 Feb 14, 2020
+        blockquote.mb-2
+          .card.border-0
+            .card-body.px-3.fs-md.text-muted
+              .mb-2
+                +star-rating(5)
+              | Lorem ipsum dolor sit amet, quia non consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua porro quisquam est.
+          footer.d-flex.justify-content-center.align-items-center.pt-4
+            img(src='img/testimonials/04.jpg' width='50' alt='Laura Willson').rounded-circle
+            .ps-3
+              h6.fs-sm.mb-n1 Laura Willson
+              span.fs-ms.text-muted.opacity-75 Feb 05, 2020
+        blockquote.mb-2
+          .card.border-0
+            .card-body.px-3.fs-md.text-muted
+              .mb-2
+                +star-rating(3)
+              | Lorem ipsum dolor sit amet, quia non consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua porro quisquam est.
+          footer.d-flex.justify-content-center.align-items-center.pt-4
+            img(src='img/testimonials/01.jpg' width='50' alt='Mary Grant').rounded-circle
+            .ps-3
+              h6.fs-sm.mb-n1 Mary Alice Grant
+              span.fs-ms.text-muted.opacity-75 Jan 27, 2020
+        blockquote.mb-2
+          .card.border-0
+            .card-body.px-3.fs-md.text-muted
+              .mb-2
+                +star-rating(4)
+              | Lorem ipsum dolor sit amet, quia non consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua porro quisquam est.
+          footer.d-flex.justify-content-center.align-items-center.pt-4
+            img(src='img/shop/reviews/01.jpg' width='50' alt='Rafael Marquez').rounded-circle
+            .ps-3
+              h6.fs-sm.mb-n1 Rafael Marquez
+              span.fs-ms.text-muted.opacity-75 Dec 19, 2020
+        blockquote.mb-2
+          .card.border-0
+            .card-body.px-3.fs-md.text-muted
+              .mb-2
+                +star-rating(5)
+              | Lorem ipsum dolor sit amet, quia non consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua porro quisquam est.
+          footer.d-flex.justify-content-center.align-items-center.pt-4
+            img(src='img/testimonials/02.jpg' width='50' alt='Adrian Lewis').rounded-circle
+            .ps-3
+              h6.fs-sm.mb-n1 Adrian Lewis
+              span.fs-ms.text-muted.opacity-75 Dec 13, 2020
+        blockquote.mb-2
+          .card.border-0
+            .card-body.px-3.fs-md.text-muted
+              .mb-2
+                +star-rating(3)
+              | Lorem ipsum dolor sit amet, quia non consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua porro quisquam est.
+          footer.d-flex.justify-content-center.align-items-center.pt-4
+            img(src='img/shop/reviews/03.jpg' width='50' alt='Daniel Adams').rounded-circle
+            .ps-3
+              h6.fs-sm.mb-n1 Daniel Adams
+              span.fs-ms.text-muted.opacity-75 Dec 04, 2020
+
+  .pb-3

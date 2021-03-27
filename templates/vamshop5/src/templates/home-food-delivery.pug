@@ -1,0 +1,227 @@
+extends partials/layout
+
+//- Override default config variables
+append config
+  - var pageTitle = 'Food Delivery Service'
+  - var parentMenu = 'Home'
+
+//- Navbar
+block navbar
+  include partials/navbar-food-delivery
+
+
+//- Page Content
+block content        
+
+  // Hero section
+  section.bg-darker.bg-size-cover.bg-position-center.py-5.py-lg-10(style='background-image: url(img/food-delivery/hero-bg.jpg);')
+    .container.pb-5
+      .row.justify-content-center.pb-5
+        .col-xl-6.col-lg-7.col-md-8.col-sm-10.text-center
+          h5.text-light.fw-light #1 Food Delivery Service since 2010
+          .h1.text-light.mb-3.pb-4
+            | We deliver your favorite food fresh &amp; fast in
+            .dropdown.d-inline-block.ms-1
+              a(href='#' data-bs-toggle='dropdown').dropdown-toggle New York
+              .dropdown-menu.dropdown-menu-end
+                a(href='#').dropdown-item.fs-base Los Angeles
+                a(href='#').dropdown-item.fs-base Chicago
+                a(href='#').dropdown-item.fs-base Houston
+                a(href='#').dropdown-item.fs-base Philadelphia
+                a(href='#').dropdown-item.fs-base San Diego
+                a(href='#').dropdown-item.fs-base Miami
+          a(href='#cuisine' data-scroll).btn.btn-primary What do you want to eat?
+
+    
+  // Categories (cuisine) grid
+  section#cuisine.container.py-4.my-lg-3.py-sm-5
+    h2.text-center.pt-4.pt-sm-3 Trending food in your city
+    p.text-muted.text-center.mb-5 Choose what you want and we dilever it to you
+    .row
+      .col-md-4.col-sm-6.mb-grid-gutter
+        a(href='food-delivery-category.html').card.border-0.shadow
+          img(src='img/food-delivery/category/01.jpg' alt='Burgers & Fries').card-img-top
+          .card-body.py-4.text-center
+            h3.h5.mt-1 Burgers &amp; Fries
+      .col-md-4.col-sm-6.mb-grid-gutter
+        a(href='food-delivery-category.html').card.border-0.shadow
+          img(src='img/food-delivery/category/02.jpg' alt='Noodles').card-img-top
+          .card-body.py-4.text-center
+            h3.h5.mt-1 Noodles
+      .col-md-4.col-sm-6.mb-grid-gutter
+        a(href='food-delivery-category.html').card.border-0.shadow
+          img(src='img/food-delivery/category/03.jpg' alt='Sushi & Rolls').card-img-top
+          .card-body.py-4.text-center
+            h3.h5.mt-1 Sushi &amp; Rolls
+      .col-md-4.col-sm-6.mb-grid-gutter
+        a(href='food-delivery-category.html').card.border-0.shadow
+          img(src='img/food-delivery/category/04.jpg' alt='Pizza & Pasta').card-img-top
+          .card-body.py-4.text-center
+            h3.h5.mt-1 Pizza &amp; Pasta
+      .col-md-4.col-sm-6.mb-grid-gutter
+        a(href='food-delivery-category.html').card.border-0.shadow
+          img(src='img/food-delivery/category/05.jpg' alt='Coffee & Desserts').card-img-top
+          .card-body.py-4.text-center
+            h3.h5.mt-1 Coffee &amp; Desserts
+      .col-md-4.col-sm-6.mb-grid-gutter
+        a(href='food-delivery-category.html').card.border-0.shadow
+          img(src='img/food-delivery/category/06.jpg' alt='Healthy & Food').card-img-top
+          .card-body.py-4.text-center
+            h3.h5.mt-1 Healthy &amp; Food
+
+
+
+  // Mobile app CTA
+  section.bg-primary.bg-size-cover.bg-position-center.pt-5(style='background-image: url(img/food-delivery/mobile-app-bg.jpg);')
+    .container.pt-2.pt-sm-0
+      .row.align-items-center
+        .col-xl-4.col-lg-5.col-sm-6.offset-xl-2.offset-lg-1.mt-md-n5.text-center.text-sm-start
+          h2.text-light.mb-3 Order food on the go with Cartzilla App
+          p.text-light.opacity-70.mb-0.d-block.d-sm-none.d-md-block Pay with in app wallet, collect loyalty points, track your orders in real time and much more.
+          .mt-4.pt-2
+            a(href='#' role='button').btn-market.btn-apple.me-3.mb-2
+              span.btn-market-subtitle Download on the
+              span.btn-market-title App Store
+            a(href='#' role='button').btn-market.btn-google.mb-2
+              span.btn-market-subtitle Download on the
+              span.btn-market-title Google Play
+        .col-lg-5.col-sm-6.offset-lg-1.pt-5.pt-sm-3
+          img(src='img/food-delivery/phone.png' width='331' alt='Mobile App Screen').d-block.mx-auto.mx-sm-0
+  
+
+  // Become Courier / Partner CTA
+  section.container.pb-4.pt-lg-5.pb-sm-5
+    .row.pt-4.mt-2.mt-lg-3.mb-md-2
+      .col-lg-6.mb-grid-gutter
+        .d-block.d-sm-flex.justify-content-between.align-items-center.bg-faded-info.rounded-3
+          .pt-5.py-sm-5.px-4.ps-md-5.pe-md-0.text-center.text-sm-start
+            h2 Become a Courier
+            p.text-muted.pb-2 Earn competitive salary as delivery courier working flexible schedule.
+            a(href='#').btn.btn-primary Start earning
+          img(src='img/food-delivery/courier.png' width='272' alt='Become a Courier').d-block.mx-auto.mx-sm-0
+      .col-lg-6.mb-grid-gutter
+        .d-block.d-sm-flex.justify-content-between.align-items-center.bg-faded-warning.rounded-3
+          .pt-5.py-sm-5.px-4.ps-md-5.pe-md-0.text-center.text-sm-start
+            h2 Become a Partner
+            p.text-muted.pb-2 Grow your business by reaching new customers.
+            a(href='#').btn.btn-primary Partner with us
+          img(src='img/food-delivery/chef.png' width='269' alt='Become a Partner').d-block.mx-auto.mx-sm-0
+  
+
+  // Popular restaurants logo grid
+  section.container.pb-4.pt-2.pt-sm-0.pt-md-2.pb-sm-5
+    h2.text-center Popular restaurants in your city
+    p.text-muted.pb-4.text-center Check the best restaurants near you
+    .row.pb-2.pb-sm-0.pb-md-3
+      .col-md-3.col-sm-4.col-6
+        a(href='food-delivery-single.html').d-block.bg-white.shadow-sm.rounded-3.py-3.py-sm-4.mb-grid-gutter
+          img(src='img/food-delivery/restaurants/logos/01.png' style='width: 150px;' alt='Brand').d-block.mx-auto
+      .col-md-3.col-sm-4.col-6
+        a(href='food-delivery-single.html').d-block.bg-white.shadow-sm.rounded-3.py-3.py-sm-4.mb-grid-gutter
+          img(src='img/food-delivery/restaurants/logos/02.png' style='width: 150px;' alt='Brand').d-block.mx-auto
+      .col-md-3.col-sm-4.col-6
+        a(href='food-delivery-single.html').d-block.bg-white.shadow-sm.rounded-3.py-3.py-sm-4.mb-grid-gutter
+          img(src='img/food-delivery/restaurants/logos/03.png' style='width: 150px;' alt='Brand').d-block.mx-auto
+      .col-md-3.col-sm-4.col-6
+        a(href='food-delivery-single.html').d-block.bg-white.shadow-sm.rounded-3.py-3.py-sm-4.mb-grid-gutter
+          img(src='img/food-delivery/restaurants/logos/04.png' style='width: 150px;' alt='Brand').d-block.mx-auto
+      .col-md-3.col-sm-4.col-6
+        a(href='food-delivery-single.html').d-block.bg-white.shadow-sm.rounded-3.py-3.py-sm-4.mb-grid-gutter
+          img(src='img/food-delivery/restaurants/logos/05.png' style='width: 150px;' alt='Brand').d-block.mx-auto
+      .col-md-3.col-sm-4.col-6
+        a(href='food-delivery-single.html').d-block.bg-white.shadow-sm.rounded-3.py-3.py-sm-4.mb-grid-gutter
+          img(src='img/food-delivery/restaurants/logos/06.png' style='width: 150px;' alt='Brand').d-block.mx-auto
+      .col-md-3.col-sm-4.col-6
+        a(href='food-delivery-single.html').d-block.bg-white.shadow-sm.rounded-3.py-3.py-sm-4.mb-grid-gutter
+          img(src='img/food-delivery/restaurants/logos/07.png' style='width: 150px;' alt='Brand').d-block.mx-auto
+      .col-md-3.col-sm-4.col-6
+        a(href='food-delivery-single.html').d-block.bg-white.shadow-sm.rounded-3.py-3.py-sm-4.mb-grid-gutter
+          img(src='img/food-delivery/restaurants/logos/08.png' style='width: 150px;' alt='Brand').d-block.mx-auto
+      .col-md-3.col-sm-4.col-6
+        a(href='food-delivery-single.html').d-block.bg-white.shadow-sm.rounded-3.py-3.py-sm-4.mb-grid-gutter
+          img(src='img/food-delivery/restaurants/logos/09.png' style='width: 150px;' alt='Brand').d-block.mx-auto
+      .col-md-3.col-sm-4.col-6
+        a(href='food-delivery-single.html').d-block.bg-white.shadow-sm.rounded-3.py-3.py-sm-4.mb-grid-gutter
+          img(src='img/food-delivery/restaurants/logos/10.png' style='width: 150px;' alt='Brand').d-block.mx-auto
+      .col-md-3.col-sm-4.col-6
+        a(href='food-delivery-single.html').d-block.bg-white.shadow-sm.rounded-3.py-3.py-sm-4.mb-grid-gutter
+          img(src='img/food-delivery/restaurants/logos/11.png' style='width: 150px;' alt='Brand').d-block.mx-auto
+      .col-md-3.col-sm-4.col-6
+        a(href='food-delivery-single.html').d-block.bg-white.shadow-sm.rounded-3.py-3.py-sm-4.mb-grid-gutter
+          img(src='img/food-delivery/restaurants/logos/12.png' style='width: 150px;' alt='Brand').d-block.mx-auto
+
+
+  // Reviews
+  section.bg-secondary.py-5
+    .container.py-md-4.pt-3.pb-0.py-sm-3
+      h2.text-center.mb-4.mb-md-5 Customer reviews
+      .tns-carousel.mb-3
+        .tns-carousel-inner(data-carousel-options='{"items": 2, "controls": false, "responsive": {"0":{"items":1, "gutter":20}, "576":{"items":2, "gutter":20},"850":{"items":3, "gutter":20},"1080":{"items":4, "gutter":25}}}')
+          blockquote.mb-2
+            .card.card-body.fs-md.text-muted.border-0.shadow-sm
+              .mb-2
+                +star-rating(4)
+              | Lorem ipsum dolor sit amet, quia non consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            footer.d-flex.justify-content-center.align-items-center.pt-4
+              img(src='img/testimonials/03.jpg' width='50' alt='Richard Davis').rounded-circle
+              .ps-3
+                h6.fs-sm.mb-n1 Richard Davis
+                span.fs-ms.text-muted.opacity-75 Feb 14, 2020
+          blockquote.mb-2
+            .card.card-body.fs-md.text-muted.border-0.shadow-sm
+              .mb-2
+                +star-rating(5)
+              | Lorem ipsum dolor sit amet, quia non consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            footer.d-flex.justify-content-center.align-items-center.pt-4
+              img(src='img/testimonials/04.jpg' width='50' alt='Laura Willson').rounded-circle
+              .ps-3
+                h6.fs-sm.mb-n1 Laura Willson
+                span.fs-ms.text-muted.opacity-75 Feb 05, 2020
+          blockquote.mb-2
+            .card.card-body.fs-md.text-muted.border-0.shadow-sm
+              .mb-2
+                +star-rating(3)
+              | Lorem ipsum dolor sit amet, quia non consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            footer.d-flex.justify-content-center.align-items-center.pt-4
+              img(src='img/testimonials/01.jpg' width='50' alt='Mary Grant').rounded-circle
+              .ps-3
+                h6.fs-sm.mb-n1 Mary Alice Grant
+                span.fs-ms.text-muted.opacity-75 Jan 27, 2020
+          blockquote.mb-2
+            .card.card-body.fs-md.text-muted.border-0.shadow-sm
+              .mb-2
+                +star-rating(4)
+              | Lorem ipsum dolor sit amet, quia non consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            footer.d-flex.justify-content-center.align-items-center.pt-4
+              img(src='img/shop/reviews/01.jpg' width='50' alt='Rafael Marquez').rounded-circle
+              .ps-3
+                h6.fs-sm.mb-n1 Rafael Marquez
+                span.fs-ms.text-muted.opacity-75 Dec 19, 2020
+          blockquote.mb-2
+            .card.card-body.fs-md.text-muted.border-0.shadow-sm
+              .mb-2
+                +star-rating(5)
+              | Lorem ipsum dolor sit amet, quia non consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            footer.d-flex.justify-content-center.align-items-center.pt-4
+              img(src='img/testimonials/02.jpg' width='50' alt='Adrian Lewis').rounded-circle
+              .ps-3
+                h6.fs-sm.mb-n1 Adrian Lewis
+                span.fs-ms.text-muted.opacity-75 Dec 13, 2020
+          blockquote.mb-2
+            .card.card-body.fs-md.text-muted.border-0.shadow-sm
+              .mb-2
+                +star-rating(3)
+              | Lorem ipsum dolor sit amet, quia non consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            footer.d-flex.justify-content-center.align-items-center.pt-4
+              img(src='img/shop/reviews/03.jpg' width='50' alt='Daniel Adams').rounded-circle
+              .ps-3
+                h6.fs-sm.mb-n1 Daniel Adams
+                span.fs-ms.text-muted.opacity-75 Dec 04, 2020
+
+//- Footer
+block footer
+  include partials/footer-food-delivery
+
+//- Handheld toolbar
+block toolbar
+  include partials/toolbar-food-delivery

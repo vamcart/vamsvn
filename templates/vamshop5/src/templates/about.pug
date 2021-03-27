@@ -1,0 +1,144 @@
+extends partials/layout
+
+//- Override default config variables
+append config
+  - var parentMenu = 'Pages'
+
+//- Navbar
+block navbar
+  include partials/navbar-3-level-light
+  
+//- Page Content
+block content
+
+  main.container-fluid.px-0
+
+    // Row: Shop online
+    section.row.g-0
+      .col-md-6.bg-position-center.bg-size-cover.bg-secondary(style='min-height: 15rem; background-image: url(img/about/01.jpg);')
+      .col-md-6.px-3.px-md-5.py-5
+        .mx-auto(style='max-width: 35rem;').py-lg-5
+          h2.h3.pb-3 Search, Select, Buy online
+          p.fs-sm.pb-3.text-muted Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam id purus at risus pellentesque faucibus a quis eros. In eu fermentum leo. Integer ut eros lacus. Proin ut accumsan leo. Morbi vitae est eget dolor consequat aliquam eget quis dolor. Mauris rutrum fermentum erat, at euismod lorem pharetra nec. Duis erat lectus, ultrices euismod sagittis at, pharetra eu nisl. Phasellus id ante at velit tincidunt hendrerit. Aenean dolor dolor tristique nec. Tristique nulla aliquet enim tortor at auctor urna nunc. Sit amet aliquam id diam maecenas ultricies mi eget.
+          a(href='shop-grid-ls.html').btn.btn-primary.btn-shadow View products
+    
+    // Row: Delivery
+    section.row.g-0
+      .col-md-6.bg-position-center.bg-size-cover.bg-secondary.order-md-2(style='min-height: 15rem; background-image: url(img/about/02.jpg);')
+      .col-md-6.px-3.px-md-5.py-5.order-md-1
+        .mx-auto(style='max-width: 35rem;').py-lg-5
+          h2.h3.pb-3 Fast delivery worldwide
+          p.fs-sm.pb-3.text-muted Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam id purus at risus pellentesque faucibus a quis eros. In eu fermentum leo. Integer ut eros lacus. Proin ut accumsan leo. Morbi vitae est eget dolor consequat aliquam eget quis dolor. Mauris rutrum fermentum erat, at euismod lorem pharetra nec. Duis erat lectus, ultrices euismod sagittis at, pharetra eu nisl. Phasellus id ante at velit tincidunt hendrerit. Aenean dolor dolor tristique nec. Tristique nulla aliquet enim tortor at auctor urna nunc. Sit amet aliquam id diam maecenas ultricies mi eget.
+          a(href='#').btn.btn-accent.btn-shadow Shipping details
+
+    // Row: Mobile app
+    section.row.g-0
+      .col-md-6.bg-position-center.bg-size-cover.bg-secondary(style='min-height: 15rem; background-image: url(img/about/03.jpg);')
+      .col-md-6.px-3.px-md-5.py-5
+        .mx-auto(style='max-width: 35rem;').py-lg-5
+          h2.h3.pb-3 Great mobile app. Shop on the go
+          p.fs-sm.pb-3.text-muted Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam id purus at risus pellentesque faucibus a quis eros. In eu fermentum leo. Integer ut eros lacus. Proin ut accumsan leo. Morbi vitae est eget dolor consequat aliquam eget quis dolor. Mauris rutrum fermentum erat, at euismod. Duis erat lectus, ultrices euismod sagittis at dolor tristique nec. Tristique nulla aliquet enim tortor at auctor urna nunc. Sit amet aliquam id diam maecenas ultricies mi eget.
+          a(href='#' role='button').btn-market.btn-apple.me-3.mb-3
+            span.btn-market-subtitle Download on the
+            span.btn-market-title App Store
+          a(href='#' role='button').btn-market.btn-google.mb-3
+            span.btn-market-subtitle Download on the
+            span.btn-market-title Google Play
+    
+    // Section: Shopping outlets
+    section.row.g-0
+      .col-md-6.bg-position-center.bg-size-cover.bg-secondary.order-md-2(style='min-height: 15rem; background-image: url(img/about/04.jpg);')
+      .col-md-6.px-3.px-md-5.py-5.order-md-1
+        .mx-auto(style='max-width: 35rem;').py-lg-5
+          h2.h3.pb-3 Shop offline. Cozy outlet stores
+          p.fs-sm.pb-3.text-muted Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam id purus at risus pellentesque faucibus a quis eros. In eu fermentum leo. Integer ut eros lacus. Proin ut accumsan leo. Morbi vitae est eget dolor consequat aliquam eget quis dolor. Mauris rutrum fermentum erat, at euismod lorem pharetra nec. Duis erat lectus, ultrices euismod sagittis at, pharetra eu nisl. Phasellus id ante at velit tincidunt hendrerit. Aenean dolor dolor tristique nec. Tristique nulla aliquet enim tortor at auctor urna nunc. Sit amet aliquam id diam maecenas ultricies mi eget.
+          a(href='contacts.html').btn.btn-warning.btn-shadow See outlet stores
+    hr
+
+    // Section: Team
+    section.container.py-3.py-lg-5.mt-4.mb-3
+      h2.h3.my-2 Our core team
+      p.fs-sm.text-muted People behind your great shopping experience
+      .row.pt-3
+        .col-lg-4.col-sm-6.mb-grid-gutter
+          .d-flex.align-items-center
+            img(src='img/team/03.jpg' width='96' alt='Jonathan Doe').rounded-circle
+            .ps-3
+              h6.fs-base.pt-1.mb-1 Jonathan Doe
+              p.fs-ms.text-muted.mb-0 CEO, Co-founder
+              a(href='mailto:johndoe@example.com').nav-link-style.fs-ms.text-nowrap
+                i.ci-mail.me-2
+                | johndoe@example.com
+        .col-lg-4.col-sm-6.mb-grid-gutter
+          .d-flex.align-items-center
+            img(src='img/team/04.jpg' width='96' alt='Barbara Palson').rounded-circle
+            .ps-3
+              h6.fs-base.pt-1.mb-1 Barbara Palson
+              p.fs-ms.text-muted.mb-0 Chief of Marketing
+              a(href='mailto:b.palson@example.com').nav-link-style.fs-ms.text-nowrap
+                i.ci-mail.me-2
+                | b.palson@example.com
+        .col-lg-4.col-sm-6.mb-grid-gutter
+          .d-flex.align-items-center
+            img(src='img/team/06.jpg' width='96' alt='William Smith').rounded-circle
+            .ps-3
+              h6.fs-base.pt-1.mb-1 William Smith
+              p.fs-ms.text-muted.mb-0 Financial director
+              a(href='mailto:w.smith@example.com').nav-link-style.fs-ms.text-nowrap
+                i.ci-mail.me-2
+                | w.smith@example.com
+        .col-lg-4.col-sm-6.mb-grid-gutter
+          .d-flex.align-items-center
+            img(src='img/team/02.jpg' width='96' alt='Amanda Gallaher').rounded-circle
+            .ps-3
+              h6.fs-base.pt-1.mb-1 Amanda Gallaher
+              p.fs-ms.text-muted.mb-0 Lead UX designer
+              a(href='mailto:a.gallaher@example.com').nav-link-style.fs-ms.text-nowrap
+                i.ci-mail.me-2
+                | a.gallaher@example.com
+        .col-lg-4.col-sm-6.mb-grid-gutter
+          .d-flex.align-items-center
+            img(src='img/team/01.jpg' width='96' alt='Benjamin Miller').rounded-circle
+            .ps-3
+              h6.fs-base.pt-1.mb-1 Benjamin Miller
+              p.fs-ms.text-muted.mb-0 Website development
+              a(href='mailto:b.miller@example.com').nav-link-style.fs-ms.text-nowrap
+                i.ci-mail.me-2
+                | b.miller@example.com
+        .col-lg-4.col-sm-6.mb-grid-gutter
+          .d-flex.align-items-center
+            img(src='img/team/07.jpg' width='96' alt='Miguel Rodrigez').rounded-circle
+            .ps-3
+              h6.fs-base.pt-1.mb-1 Miguel Rodrigez
+              p.fs-ms.text-muted.mb-0 Content manager
+              a(href='mailto:b.miller@example.com').nav-link-style.fs-ms.text-nowrap
+                i.ci-mail.me-2
+                | m.rodrigez@example.com
+    
+    // Section: We are hiring
+    hr
+    section.row.g-0
+      .col-md-6.bg-position-center.bg-size-cover.bg-secondary.order-md-2(style='min-height: 15rem; background-image: url(img/about/05.jpg);')
+      .col-md-6.px-3.px-md-5.py-5.order-md-1
+        .mx-auto(style='max-width: 35rem;').py-lg-5
+          h2.h3.mb-2 We are hiring new talents
+          p.fs-sm.text-muted.pb-2 If you want to be part of our team please submit you CV using the form below:
+          form(method='post' novalidate).needs-validation.row.g-4
+            .col-sm-6
+              input(type='text' placeholder='Your name' required).form-control
+            .col-sm-6
+              input(type='email' placeholder='Your email' required).form-control
+            .col-12
+              textarea(rows='4' placeholder='Message' required).form-control
+            .col-12
+              input(type='file' required).form-control
+            .col-12
+              button(type='submit').btn.btn-info.btn-shadow Submit your CV
+
+//- Footer
+block footer
+  include partials/footer-dark
+
+//- Handheld toolbar
+block toolbar
+  include partials/toolbar

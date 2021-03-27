@@ -1,0 +1,58 @@
+// Sign in / sign up modal
+#signin-modal.modal.fade(tabindex='-1' role='dialog')
+  .modal-dialog.modal-dialog-centered(role='document')
+    .modal-content
+      .modal-header.bg-secondary
+        ul(role='tablist').nav.nav-tabs.card-header-tabs
+          li.nav-item
+            a(href='#signin-tab' data-bs-toggle='tab' role='tab' aria-selected='true').nav-link.fw-medium.active
+              i.ci-unlocked.me-2.mt-n1
+              | Sign in
+          li.nav-item
+            a(href='#signup-tab' data-bs-toggle='tab' role='tab' aria-selected='false').nav-link.fw-medium
+              i.ci-user.me-2.mt-n1
+              | Sign up
+        button(type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close')
+      .modal-body.tab-content.py-4
+        form(autocomplete='off' novalidate)#signin-tab.needs-validation.tab-pane.fade.show.active
+          .mb-3
+            label(for='si-email').form-label Email address
+            input(type='email' id='si-email' placeholder='johndoe@example.com' required).form-control
+            .invalid-feedback Please provide a valid email address.
+          .mb-3
+            label(for='si-password').form-label Password
+            .password-toggle
+              input(type='password' id='si-password' required).form-control
+              label(aria-label='Show/hide password').password-toggle-btn
+                input(type='checkbox').password-toggle-check
+                span.password-toggle-indicator
+          .mb-3.d-flex.flex-wrap.justify-content-between
+            .form-check.mb-2
+              input(type='checkbox' id='si-remember').form-check-input
+              label(for='si-remember').form-check-label Remember me
+            a(href='#').fs-sm Forgot password?
+          button(type='submit').btn.btn-primary.btn-shadow.d-block.w-100 Sign in
+        form(autocomplete='off' novalidate)#signup-tab.needs-validation.tab-pane.fade
+          .mb-3
+            label(for='su-name').form-label Full name
+            input(type='text' id='su-name' placeholder='John Doe' required).form-control
+            .invalid-feedback Please fill in your name.
+          .mb-3
+            label(for='su-email') Email address
+            input(type='email' id='su-email' placeholder='johndoe@example.com' required).form-control
+            .invalid-feedback Please provide a valid email address.
+          .mb-3
+            label(for='su-password').form-label Password
+            .password-toggle
+              input(type='password' id='su-password' required).form-control
+              label(aria-label='Show/hide password').password-toggle-btn
+                input(type='checkbox').password-toggle-check
+                span.password-toggle-indicator
+          .mb-3
+            label(for='su-password-confirm').form-label Confirm password
+            .password-toggle
+              input(type='password' id='su-password-confirm' required).form-control
+              label(aria-label='Show/hide password').password-toggle-btn
+                input(type='checkbox').password-toggle-check
+                span.password-toggle-indicator
+          button(type='submit').btn.btn-primary.btn-shadow.d-block.w-100 Sign up

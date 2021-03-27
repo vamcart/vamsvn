@@ -1,0 +1,144 @@
+extends partials/layout-grocery
+
+//- Override default config variables
+append config
+  - var pageTitle = 'Grocery - Checkout'
+  - var breadcrumbs = [{'title': 'Checkout'}]
+  - var parentMenu = 'Home'
+  
+//- Page Content
+block content
+
+  // Checkout form
+  form(novalidate).needs-validation
+    .row.g-0.pb-5.mb-xl-3
+
+      // Delivery details
+      .col-xl-6.mb-3
+        h1.h2.mb-4 Checkout
+        h2.h5.mb-4 Delivery details
+        .d-flex.flex-wrap.justify-content-between.align-items-center.rounded-3.border.py-2.px-3.mb-4
+          .d-flex.align-items-center.me-3.py-2
+            img(src='img/grocery/newyork.jpg' width='50' alt='New York').rounded-circle
+            .ps-3
+              .fs-ms.text-muted Your city is:
+              .fs-md.fw-medium.text-heading New York, USA
+          .py-2
+            a(href='#').btn.btn-light.btn-sm.btn-shadow.mt-3.mt-sm-0
+              i.ci-edit.me-2
+              | Change city
+        .row.gx-4.gy-3
+          .col-sm-6
+            label(for='co-fn').form-label First name <span class='text-danger'>*</span>
+            input(type='text' id='co-fn' required).form-control
+            .invalid-feedback Please enter your first name!
+          .col-sm-6
+            label(for='co-ln').form-label Last name <span class='text-danger'>*</span>
+            input(type='text' id='co-ln' required).form-control
+            .invalid-feedback Please enter your last name!
+          .col-sm-6
+            label(for='co-ln').form-label Phone number <span class='text-danger'>*</span>
+            input(type='tel' id='co-phone' required).form-control
+            .invalid-feedback Please enter your phone number!
+          .col-sm-6
+            label(for='co-fn').form-label Email address
+            input(type='email' id='co-email').form-control.bg-image-none
+          .col-sm-12
+            label(for='co-address').form-label Address <span class='text-danger'>*</span>
+            input(type='text' id='co-address' required).form-control
+            .invalid-feedback Please enter your address!
+          .col-sm-12
+            label(for='co-note').form-label Order note
+            textarea(id='co-note' rows='6' placeholder='Please write here any additional information...').form-control.bg-image-none
+        .rounded-3.border.p-4.my-3
+          h2.h6.pb-2 Do you have a coupon code?
+          .d-flex
+            input(type='text' placeholder='Coupon code').form-control.bg-image-none.me-3
+            button(type='button').btn.btn-outline-primary Apply code
+        
+
+      // Order summary + payment
+      .col-xl-5.offset-xl-1.mb-2
+        .bg-light.rounded-3.py-5.px-4.px-xxl-5
+          h2.h5.pb-3 Your order
+          .d-flex.align-items-center.pb-2.border-bottom
+            a(href='grocery-single.html').d-block.flex-shrink-0
+              img(src='img/grocery/cart/th01.jpg' width='64' alt='Product')
+            .ps-2
+              h6.widget-product-title
+                a(href='grocery-single.html') Frozen Oven-ready Poultry
+              .widget-product-meta
+                span.text-accent.me-2
+                  | $15.
+                  small 00
+                span.text-muted x 1
+          .d-flex.align-items-center.py-2.border-bottom
+            a(href='grocery-single.html').d-block.flex-shrink-0
+              img(src='img/grocery/cart/th02.jpg' width='64' alt='Product')
+            .ps-2
+              h6.widget-product-title
+                a(href='grocery-single.html') TNut Chocolate Paste (750g)
+              .widget-product-meta
+                span.text-accent.me-2
+                  | $6.
+                  small 50
+                span.text-muted x 1
+          .d-flex.align-items-center.py-2.border-bottom
+            a(href='grocery-single.html').d-block.flex-shrink-0
+              img(src='img/grocery/cart/th03.jpg' width='64' alt='Product')
+            .ps-2
+              h6.widget-product-title
+                a(href='grocery-single.html') Mozzarella Mini Cheese
+              .widget-product-meta
+                span.text-accent.me-2
+                  | $3.
+                  small 50
+                span.text-muted x 1
+          ul.list-unstyled.fs-sm.pt-4.pb-2.border-bottom
+            li.d-flex.justify-content-between.align-items-center
+              span.me-2 Subtotal:
+              span.text-end.fw-medium $25.<small>00</small>
+            li.d-flex.justify-content-between.align-items-center
+              span.me-2 Delivery:
+              span.text-end.fw-medium $7.<small>00</small>
+          h3.fw-normal.text-center.my-4.py-2
+            | $32.
+            small 00
+          #payment-methods.accordion.accordio-flush.shadow-sm.rounded-3.mb-4
+            .accordion-item.border-bottom
+              .accordion-header.py-3.px-3
+                .form-check.d-table(data-bs-toggle='collapse' data-bs-target='#credit-card')
+                  input(type='radio' name='license' id='payment-card' checked).form-check-input
+                  label(for='payment-card').form-check-label.fw-medium.text-dark
+                    | Credit card
+                    i.ci-card.text-muted.fs-lg.align-middle.mt-n1.ms-2
+              #credit-card.collapse.show(data-bs-parent='#payment-methods')
+                .accordion-body.py-2
+                  input(type='text' placeholder='Card number').form-control.bg-image-none.mb-3
+                  .row
+                    .col-6.mb-3
+                      input(type='text' placeholder='MM/YY').form-control.bg-image-none
+                    .col-6.mb-3
+                      input(type='text' placeholder='CVC').form-control.bg-image-none
+            .accordion-item.border-bottom
+              .accordion-header.py-3.px-3
+                .form-check.d-table(data-bs-toggle='collapse' data-bs-target='#paypal')
+                  input(type='radio' name='license' id='payment-paypal').form-check-input
+                  label(for='payment-paypal').form-check-label.fw-medium.text-dark
+                    | PayPal
+                    i.ci-paypal.text-muted.fs-base.align-middle.mt-n1.ms-2
+              #paypal.collapse(data-bs-parent='#payment-methods')
+                .accordion-body.pt-2
+                  a(href='#').btn.btn-primary.btn-sm Proceed with PayPal
+            .accordion-item
+              .accordion-header.py-3.px-3
+                .form-check.d-table(data-bs-toggle='collapse' data-bs-target='#cash')
+                  input(type='radio' name='license' id='payment-cash').form-check-input
+                  label(for='payment-cash').form-check-label.fw-medium.text-dark
+                    | Cash on delivery
+                    i.ci-wallet.text-muted.fs-lg.align-middle.mt-n1.ms-2
+              #cash.collapse(data-bs-parent='#payment-methods')
+                .accordion-body.pt-2
+                  p.fs-sm.mb-0 I will pay with cash to the courier on delivery.
+          .pt-2
+            button(type='submit').btn.btn-primary.d-block.w-100 Place Order

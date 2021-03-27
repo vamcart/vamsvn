@@ -1,0 +1,55 @@
+extends partials/layout
+
+//- Override default config variables
+append config
+  - var pageTitle = '404 - Simple Text'
+  - var parentMenu = 'Pages'
+
+//- Navbar
+block navbar
+  include partials/navbar-3-level-light
+
+//- Page Content
+block content
+
+  .container.py-5.mb-lg-3
+    .row.justify-content-center.pt-lg-4.text-center
+      .col-lg-5.col-md-7.col-sm-9
+        h1.display-404.py-lg-3 404
+        h2.h3.mb-4 We can't seem to find the page you are looking for.
+        p.fs-md.mb-4: u Here are some helpful links instead:
+    .row.justify-content-center
+      .col-xl-8.col-lg-10
+        .row
+          .col-sm-4.mb-3
+            a(href='index.html').card.h-100.border-0.shadow-sm
+              .card-body
+                .d-flex.align-items-center
+                  i.ci-home.text-primary.h4.mb-0
+                  .ps-3
+                    h5.fs-sm.mb-0 Homepage
+                    span.text-muted.fs-ms Return to homepage
+          .col-sm-4.mb-3
+            a(href='#').card.h-100.border-0.shadow-sm
+              .card-body
+                .d-flex.align-items-center
+                  i.ci-search.text-success.h4.mb-0
+                  .ps-3
+                    h5.fs-sm.mb-0 Search
+                    span.text-muted.fs-ms Find with advanced search
+          .col-sm-4.mb-3
+            a(href='help-topics.html').card.h-100.border-0.shadow-sm
+              .card-body
+                .d-flex.align-items-center
+                  i.ci-help.text-info.h4.mb-0
+                  .ps-3
+                    h5.fs-sm.mb-0 Help &amp; Support
+                    span.text-muted.fs-ms Visit our help center
+
+//- Footer
+block footer
+  include partials/footer-dark
+
+//- Handheld toolbar
+block toolbar
+  include partials/toolbar

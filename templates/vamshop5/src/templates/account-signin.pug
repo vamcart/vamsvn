@@ -1,0 +1,93 @@
+extends partials/layout
+
+//- Override default config variables
+append config
+  - var pageTitle = 'Account Sign In'
+  - var parentMenu = 'Account'
+
+//- Navbar
+block navbar
+  include partials/navbar-3-level-light
+  
+//- Page Content
+block content
+
+  .container.py-4.py-lg-5.my-4
+    .row
+      .col-md-6
+        .card.border-0.shadow
+          .card-body
+            h2.h4.mb-1 Sign in
+            .py-3
+              h3.d-inline-block.align-middle.fs-base.fw-medium.mb-2.me-2 With social account:
+              .d-inline-block.align-middle
+                a(href='#' data-bs-toggle='tooltip' title='Sign in with Google').btn-social.bs-google.me-2.mb-2
+                  i.ci-google
+                a(href='#' data-bs-toggle='tooltip' title='Sign in with Facebook').btn-social.bs-facebook.me-2.mb-2
+                  i.ci-facebook
+                a(href='#' data-bs-toggle='tooltip' title='Sign in with Twitter').btn-social.bs-twitter.me-2.mb-2
+                  i.ci-twitter
+            hr
+            h3.fs-base.pt-4.pb-2 Or using form below
+            form(novalidate).needs-validation
+              .input-group.mb-3
+                i.ci-mail.position-absolute.top-50.translate-middle-y.text-muted.fs-base.ms-3
+                input(type='email' placeholder='Email' required).form-control.rounded-start
+              .input-group.mb-3
+                i.ci-locked.position-absolute.top-50.translate-middle-y.text-muted.fs-base.ms-3
+                .password-toggle.w-100
+                  input(type='password' placeholder='Password' required).form-control
+                  label(aria-label='Show/hide password').password-toggle-btn
+                    input(type='checkbox').password-toggle-check
+                    span.password-toggle-indicator
+              .d-flex.flex-wrap.justify-content-between
+                .form-check
+                  input(type='checkbox' checked)#remember_me.form-check-input
+                  label(for='remember_me').form-check-label Remember me
+                a(href='account-password-recovery.html').nav-link-inline.fs-sm Forgot password?
+              hr.mt-4
+              .text-end.pt-4
+                button(type='submit').btn.btn-primary
+                  i.ci-sign-in.me-2.ms-n21
+                  | Sign In
+      .col-md-6.pt-4.mt-3.mt-md-0
+        h2.h4.mb-3 No account? Sign up
+        p.fs-sm.text-muted.mb-4 Registration takes less than a minute but gives you full control over your orders.
+        form(novalidate).needs-validation
+          .row.gx-4.gy-3
+            .col-sm-6
+                label(for='reg-fn').form-label First Name
+                input(type='text' required)#reg-fn.form-control
+                .invalid-feedback Please enter your first name!
+            .col-sm-6
+                label(for='reg-ln').form-label Last Name
+                input(type='text' required)#reg-ln.form-control
+                .invalid-feedback Please enter your last name!
+            .col-sm-6
+                label(for='reg-email').form-label E-mail Address
+                input(type='email' required)#reg-email.form-control
+                .invalid-feedback Please enter valid email address!
+            .col-sm-6
+                label(for='reg-phone').form-label Phone Number
+                input(type='text' required)#reg-phone.form-control
+                .invalid-feedback Please enter your phone number!
+            .col-sm-6
+                label(for='reg-password').form-label Password
+                input(type='password' required)#reg-password.form-control
+                .invalid-feedback Please enter password!
+            .col-sm-6
+                label(for='reg-password-confirm').form-label Confirm Password
+                input(type='password' required)#reg-password-confirm.form-control
+                .invalid-feedback Passwords do not match!
+            .col-12.text-end
+              button(type='submit').btn.btn-primary
+                i.ci-user.me-2.ms-n1
+                | Sign Up
+
+//- Footer
+block footer
+  include partials/footer-dark
+
+//- Handheld toolbar
+block toolbar
+  include partials/toolbar

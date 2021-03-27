@@ -1,0 +1,199 @@
+{config_load file="$language/lang_$language.conf" section="reviews"}
+<script type="text/javascript">
+{literal}
+$(function($){
+
+    $('.form-anti-bot, .form-anti-bot-2').hide(); // hide inputs from users
+    var answer = $('.form-anti-bot input#anti-bot-a').val(); // get answer
+    $('.form-anti-bot input#anti-bot-q').val( answer ); // set answer into other input
+
+    if ( $('form#product_reviews_write input#anti-bot-q').length == 0 ) {
+        var current_date = new Date();
+        var current_year = current_date.getFullYear();
+        $('form#product_reviews_write').append('<input type="hidden" name="anti-bot-q" id="anti-bot-q" value="'+current_year+'" />'); // add whole input with answer via javascript to form
+    }
+
+});
+{/literal}
+</script>
+
+
+<div>
+  <div class="card card-product">
+	<div class="card-body">
+	<div class="row">
+		{if $PRODUCT_LABEL}{$PRODUCT_LABEL}{/if}
+		{if $PRODUCTS_SPECIAL > 0}<span class="badge-offer"><b>-{$PRODUCTS_SPECIAL|round}%</b></span>{/if}
+		<div class="col-md-2">
+			<div class="img-wrap"><a href="{$PRODUCTS_URL_INFO}" title="{$IMAGE_ALT}"><img src="{$PRODUCTS_IMAGE}" alt="{$IMAGE_ALT}"></a></div>
+		</div>
+		<div class="col-md-3">
+				<div class="title"><a href="{$PRODUCTS_URL_INFO}" title="{$IMAGE_ALT}">{$PRODUCTS_NAME}</a></div>
+				{if {$PRODUCTS_SHORT_DESCRIPTION} != ''}
+				<div class="desc mb-2 small">
+				{$PRODUCTS_SHORT_DESCRIPTION|vam_truncate:$smarty.const.MAX_DISPLAY_SHORT_DESCRIPTION:"...":true}
+				</div>
+				{/if}
+				<div class="price-wrap font-weight-bold small text-muted text-dark b">
+					<div><strong>{$PRODUCTS_PRICE}</strong></div>
+					</div>
+		</div>
+		<div class="col-md-2">
+			<div class="text-center">
+			<div class="display-4 font-weight-bolder"><span>{$PRODUCTS_REVIEWS_RATING|number_format:1}</span></div>
+			{$PRODUCTS_STAR_RATING}
+			</div>
+				{if {$PRODUCTS_REVIEWS_COUNT} > 0}
+				<div class="rating-wrap text-center">
+             {#text_total#}: <span>{$PRODUCTS_REVIEWS_COUNT}</span>
+				</div>
+				{/if}
+		</div>
+		<div class="col-md-2">
+		<div class="line pb-2">
+		<span class="progress-label">5</span>
+		<div class="progress">
+		  <div class="progress-bar font-weight-bolder{if $PRODUCTS_RATING_FIVE == 0} text-dark{/if}" role="progressbar" style="width: {$PRODUCTS_RATING_FIVE_PERCENT}%" aria-valuenow="{$PRODUCTS_RATING_FIVE_PERCENT}" aria-valuemin="0" aria-valuemax="100">
+		  {$PRODUCTS_RATING_FIVE_PERCENT}%
+		  </div>
+		</div>		
+		</div>		
+		<div class="line pb-2">
+		<span class="progress-label">4</span>
+		<div class="progress">
+		  <div class="progress-bar font-weight-bolder{if $PRODUCTS_RATING_FOUR == 0} text-dark{/if}" role="progressbar" style="width: {$PRODUCTS_RATING_FOUR_PERCENT}%" aria-valuenow="{$PRODUCTS_RATING_FOUR_PERCENT}" aria-valuemin="0" aria-valuemax="100">
+		  {$PRODUCTS_RATING_FOUR_PERCENT}%
+		  </div>
+		</div>
+		</div>		
+		<div class="line pb-2">
+		<span class="progress-label">3</span>
+		<div class="progress">
+		  <div class="progress-bar font-weight-bolder{if $PRODUCTS_RATING_THREE == 0} text-dark{/if}" role="progressbar" style="width: {$PRODUCTS_RATING_THREE_PERCENT}%" aria-valuenow="{$PRODUCTS_RATING_THREE_PERCENT}" aria-valuemin="0" aria-valuemax="100">
+		  {$PRODUCTS_RATING_THREE_PERCENT}%
+		  </div>
+		</div>
+		</div>		
+		<div class="line pb-2">
+		<span class="progress-label">2</span>
+		<div class="progress">
+		  <div class="progress-bar font-weight-bolder{if $PRODUCTS_RATING_TWO == 0} text-dark{/if}" role="progressbar" style="width: {$PRODUCTS_RATING_TWO_PERCENT}%" aria-valuenow="{$PRODUCTS_RATING_TWO_PERCENT}" aria-valuemin="0" aria-valuemax="100">
+		  {$PRODUCTS_RATING_TWO_PERCENT}%
+		  </div>
+		</div>
+		</div>		
+		<div class="line pb-2">
+		<span class="progress-label">1</span>
+		<div class="progress">
+		  <div class="progress-bar font-weight-bolder{if $PRODUCTS_RATING_ONE == 0} text-dark{/if}" role="progressbar" style="width: {$PRODUCTS_RATING_ONE_PERCENT}%" aria-valuenow="{$PRODUCTS_RATING_ONE_PERCENT}" aria-valuemin="0" aria-valuemax="100">
+		  {$PRODUCTS_RATING_ONE_PERCENT}%
+		  </div>
+		</div>
+		</div>
+		</div>
+		<div class="col-md-3">
+			<div class="action-wrap text-center">
+           {$PRODUCTS_BUY_NOW}	
+			</div>
+		</div>
+	</div>
+	
+	</div>
+</div>
+</div>
+
+
+
+
+
+
+
+<div class="page">
+<h1>{#heading_reviews_write#}</h1>
+<div class="pageContent">
+{if $upload}<div class="contacterror">{$upload}</div>{/if}
+{if $error}
+<div class="contacterror">{$error}</div>
+{else}
+{$FORM_ACTION}
+
+
+
+  <div class="card card-product">
+	<div class="card-body">
+
+	<div class="row">
+		<div class="col-md-12">
+
+{if $smarty.const.REVIEWS_IMAGES_UPLOAD == 'true'}
+<script>
+$(document).ready(function()
+{
+	$("#fileuploader").uploadFile({
+	url:"{$smarty.const.DIR_WS_CATALOG}index_ajax.php?q=includes/modules/ajax/ajaxUpload.php&type=reviews_images&products_id={$smarty.get.products_id}",
+	allowedTypes:"png,gif,jpg,jpeg,webp",
+	fileName:"myfile",
+	showDone: false,
+	showPreview: true,
+	statusBarWidth: "250px",
+	dragdropWidth: "auto",	
+	dragDropStr: "",
+	uploadButtonClass: "button",
+	showFileCounter: false,
+	dragDropStr: "",
+	abortStr: "{$smarty.const.UPLOAD_TEXT_ABORT}",
+	cancelStr: "{$smarty.const.UPLOAD_TEXT_CANCEL}",
+	deletelStr: "{$smarty.const.UPLOAD_TEXT_DELETE}",
+	doneStr: "{$smarty.const.UPLOAD_TEXT_DONE}",
+	multiDragErrorStr: "{$smarty.const.UPLOAD_TEXT_MULTI_ERROR}",
+	extErrorStr: "{$smarty.const.UPLOAD_TEXT_EXT_ERROR}",
+	sizeErrorStr: "{$smarty.const.UPLOAD_TEXT_SIZE_ERROR}",
+	uploadErrorStr: "{$smarty.const.UPLOAD_TEXT_UPLOAD_ERROR}",
+	maxFileCountErrorStr: "{$smarty.const.UPLOAD_TEXT_COUNT_ERROR}",
+	downloadStr: "{$smarty.const.UPLOAD_TEXT_DOWNLOAD}"	
+	});
+});
+</script>
+{/if}
+
+    <div class="form-group">
+      <label for="rating">{#text_rating#}</label>
+      <br />
+      <div class="form-check form-check-inline rating-block"><fieldset class="star-rating" id="starrating">{$INPUT_RATING}</fieldset></div>
+    </div>
+
+    <div class="form-group">
+      <label for="review">{#text_input#}</label>
+      {$INPUT_TEXT}
+    </div>
+
+{if $smarty.const.REVIEWS_IMAGES_UPLOAD == 'true'}
+
+    <div class="form-group">
+      <div id="fileuploader"><span class="button"><i class="fas fa-plus-circle text-success"></i> {$smarty.const.REVIEW_PHOTO_HEADER}</span></div>
+    </div>	
+{/if}
+
+{$BUTTON_SUBMIT}
+
+		</div>
+	</div>
+	
+	</div>
+</div>
+
+<div class="form-anti-bot" style="clear:both;">
+	<strong>Current <span style="display:none;">month</span> <span style="display:inline;">ye@r</span> <span style="display:none;">day</span></strong> <span class="required">*</span>
+	<input type="hidden" name="anti-bot-a" id="anti-bot-a" value="{$smarty.now|date_format:"%Y"}" />
+	<input type="text" name="anti-bot-q" id="anti-bot-q" size="30" value="19" />
+</div>
+<div class="form-anti-bot-2" style="display:none;">
+	<strong>Leave this field empty</strong> <span class="required">*</span>
+	<input type="text" name="anti-bot-e-email-url" id="anti-bot-e-email-url" size="30" value=""/>
+</div>
+<!-- /форма -->
+
+{$FORM_END}
+{/if}
+</div>
+</div>

@@ -1,0 +1,202 @@
+//- Include config.pug file that holds all variables
+block config
+  include ../helpers/config
+
+//- Mixins - reusable code snippets
+include ../helpers/mixins
+  
+//- Override default config variables
+append config
+  - var isNestedFile = true
+  - var isCodeHighlighting = true
+
+doctype html
+html(lang="en")
+
+  //- head.pug template
+  include head 
+  
+  // Body
+  body
+    
+    main.container-fluid
+
+      // Main content
+      section.offcanvas-enabled.row.pb-3.pb-md-4
+        .col-xxl-9
+
+          // Navbar
+          header(data-scroll-header data-fixed-element).navbar.navbar-expand.navbar-light.fixed-top.bg-light.shadow-sm.px-3.px-lg-4
+            a(href='typography.html').navbar-brand.d-lg-none
+              img(src='../img/logo-dark.png' width='142' alt='Cartzilla')
+            ul.navbar-nav.ms-auto.d-none.d-lg-flex
+              li.nav-item
+                a(href='../index.html').nav-link
+                  i.ci-eye.align-middle.mt-n1.me-2
+                  | Live preview
+              li.nav-item: .nav-link.disabled.text-border.px-1 |
+              li.nav-item
+                a(href='../docs/dev-setup.html').nav-link
+                  i.ci-book.align-middle.mt-n1.me-2
+                  | Documentation
+              li.nav-item: .nav-link.disabled.text-border.px-1 |
+            button(type='button' data-bs-toggle='offcanvas' data-bs-target='#components-nav').navbar-toggler.d-block.d-lg-none.ms-auto
+              span.navbar-toggler-icon
+            a(href='https://themes.getbootstrap.com/product/cartzilla-bootstrap-e-commerce-template-ui-kit/' target='_blank' rel='noopener').btn.btn-primary.btn-shadow.ms-2.ms-lg-4
+              i.ci-cart.me-2.d-none.d-sm-inline-block
+              | Buy now
+      
+          // Side navigation
+          aside#components-nav.offcanvas.offcanvas-expand.bg-dark
+            .offcanvas-cap.bg-darker.d-none.d-lg-block
+              a(href='typography.html').navbar-brand.py-1
+                img(src='../img/logo-light.png' width='142' alt='Cartzilla')
+              span.badge.bg-info Components
+            .offcanvas-cap.bg-darker.align-items-center.d-flex.d-lg-none
+              .d-flex.align-items-center
+                h5.text-light.mb-0.me-2 Menu
+                span.badge.bg-info Components
+              button(type='button' data-bs-dismiss='offcanvas' aria-label='Close').btn-close.btn-close-white
+            .offcanvas-body(data-simplebar data-simplebar-auto-hide='true')
+              .pt-4.pb-3.mt-lg-3
+                .d-flex.d-lg-none.pb-4.mb-4.border-bottom.border-light
+                  a(href='../index.html').btn.btn-outline-light.btn-sm.me-3
+                    i.ci-eye.align-middle.mt-n1.me-2
+                    | Live demo
+                  a(href='../docs/dev-setup.html').btn.btn-light.btn-sm.ps-2
+                    i.ci-book.align-middle.mt-n1.me-2
+                    | Documentation
+                .widget.widget-links.widget-light.border-bottom.border-light.mb-4.pb-4.me-n3
+                  h3.widget-title.text-white Content
+                  ul.widget-list
+                    li()&attributes(pageTitle === 'Typography' ? {'class': 'widget-list-item active'} : {'class': 'widget-list-item'})
+                      a(href='typography.html').widget-list-link Typography
+                    li()&attributes(pageTitle === 'Icon font' ? {'class': 'widget-list-item active'} : {'class': 'widget-list-item'})
+                      a(href='icon-font.html').widget-list-link Icon font
+                    li()&attributes(pageTitle === 'Code' ? {'class': 'widget-list-item active'} : {'class': 'widget-list-item'})
+                      a(href='code.html').widget-list-link Code
+                    li()&attributes(pageTitle === 'Images & figures' ? {'class': 'widget-list-item active'} : {'class': 'widget-list-item'})
+                      a(href='images.html').widget-list-link Images &amp; figures
+                    li()&attributes(pageTitle === 'Tables' ? {'class': 'widget-list-item active'} : {'class': 'widget-list-item'})
+                      a(href='tables.html').widget-list-link Tables
+                .widget.widget-links.widget-light.border-bottom.border-light.mb-4.pb-4.me-n3
+                  h3.widget-title.text-white Components
+                  ul.widget-list
+                    li()&attributes(pageTitle === 'Accordion' ? {'class': 'widget-list-item active'} : {'class': 'widget-list-item'})
+                      a(href='accordion.html').widget-list-link Accordion
+                    li()&attributes(pageTitle === 'Alerts' ? {'class': 'widget-list-item active'} : {'class': 'widget-list-item'})
+                      a(href='alerts.html').widget-list-link Alerts
+                    li()&attributes(pageTitle === 'Badges' ? {'class': 'widget-list-item active'} : {'class': 'widget-list-item'})
+                      a(href='badge.html').widget-list-link Badges
+                    li()&attributes(pageTitle === 'Blog components' ? {'class': 'widget-list-item active'} : {'class': 'widget-list-item'})
+                      a(href='blog-components.html').widget-list-link Blog components
+                    li()&attributes(pageTitle === 'Breadcrumb' ? {'class': 'widget-list-item active'} : {'class': 'widget-list-item'})
+                      a(href='breadcrumb.html').widget-list-link Breadcrumb
+                    li()&attributes(pageTitle === 'Buttons' ? {'class': 'widget-list-item active'} : {'class': 'widget-list-item'})
+                      a(href='buttons.html').widget-list-link Buttons
+                    li()&attributes(pageTitle === 'Button group' ? {'class': 'widget-list-item active'} : {'class': 'widget-list-item'})
+                      a(href='button-group.html').widget-list-link Button group
+                    li()&attributes(pageTitle === 'Cards' ? {'class': 'widget-list-item active'} : {'class': 'widget-list-item'})
+                      a(href='cards.html').widget-list-link Cards
+                    li()&attributes(pageTitle === 'Carousel' ? {'class': 'widget-list-item active'} : {'class': 'widget-list-item'})
+                      a(href='carousel.html').widget-list-link Carousel
+                    li()&attributes(pageTitle === 'Charts' ? {'class': 'widget-list-item active'} : {'class': 'widget-list-item'})
+                      a(href='charts.html').widget-list-link Charts
+                    li()&attributes(pageTitle === 'Collapse' ? {'class': 'widget-list-item active'} : {'class': 'widget-list-item'})
+                      a(href='collapse.html').widget-list-link Collapse
+                    li()&attributes(pageTitle === 'Contacts card' ? {'class': 'widget-list-item active'} : {'class': 'widget-list-item'})
+                      a(href='contacts-card.html').widget-list-link Contacts card
+                    li()&attributes(pageTitle === 'Countdown' ? {'class': 'widget-list-item active'} : {'class': 'widget-list-item'})
+                      a(href='countdown.html').widget-list-link Countdown
+                    li()&attributes(pageTitle === 'Dropdowns' ? {'class': 'widget-list-item active'} : {'class': 'widget-list-item'})
+                      a(href='dropdowns.html').widget-list-link Dropdowns
+                    li()&attributes(pageTitle === 'Footer' ? {'class': 'widget-list-item active'} : {'class': 'widget-list-item'})
+                      a(href='footer.html').widget-list-link Footer
+                    li()&attributes(pageTitle === 'Forms' ? {'class': 'widget-list-item active'} : {'class': 'widget-list-item'})
+                      a(href='forms.html').widget-list-link Forms
+                    li()&attributes(pageTitle === 'Gallery' ? {'class': 'widget-list-item active'} : {'class': 'widget-list-item'})
+                      a(href='gallery.html').widget-list-link Gallery
+                    li()&attributes(pageTitle === 'Input group' ? {'class': 'widget-list-item active'} : {'class': 'widget-list-item'})
+                      a(href='input-group.html').widget-list-link Input group
+                    li()&attributes(pageTitle === 'List group' ? {'class': 'widget-list-item active'} : {'class': 'widget-list-item'})
+                      a(href='list-group.html').widget-list-link List group
+                    li()&attributes(pageTitle === 'Modal' ? {'class': 'widget-list-item active'} : {'class': 'widget-list-item'})
+                      a(href='modal.html').widget-list-link Modal
+                    li()&attributes(pageTitle === 'Navbar' ? {'class': 'widget-list-item active'} : {'class': 'widget-list-item'})
+                      a(href='navbar.html').widget-list-link Navbar
+                    li()&attributes(pageTitle === 'Pagination' ? {'class': 'widget-list-item active'} : {'class': 'widget-list-item'})
+                      a(href='pagination.html').widget-list-link Pagination
+                    li()&attributes(pageTitle === 'Pills' ? {'class': 'widget-list-item active'} : {'class': 'widget-list-item'})
+                      a(href='pills.html').widget-list-link Pills
+                    li()&attributes(pageTitle === 'Popovers' ? {'class': 'widget-list-item active'} : {'class': 'widget-list-item'})
+                      a(href='popovers.html').widget-list-link Popovers
+                    li()&attributes(pageTitle === 'Progress' ? {'class': 'widget-list-item active'} : {'class': 'widget-list-item'})
+                      a(href='progress.html').widget-list-link Progress
+                    li()&attributes(pageTitle === 'Shop components' ? {'class': 'widget-list-item active'} : {'class': 'widget-list-item'})
+                      a(href='shop-components.html').widget-list-link Shop components
+                    li()&attributes(pageTitle === 'Social buttons' ? {'class': 'widget-list-item active'} : {'class': 'widget-list-item'})
+                      a(href='social-buttons.html').widget-list-link Social buttons
+                    li()&attributes(pageTitle === 'Spinners' ? {'class': 'widget-list-item active'} : {'class': 'widget-list-item'})
+                      a(href='spinners.html').widget-list-link Spinners
+                    li()&attributes(pageTitle === 'Steps' ? {'class': 'widget-list-item active'} : {'class': 'widget-list-item'})
+                      a(href='steps.html').widget-list-link Steps
+                    li()&attributes(pageTitle === 'Tabs' ? {'class': 'widget-list-item active'} : {'class': 'widget-list-item'})
+                      a(href='tabs.html').widget-list-link Tabs
+                    li()&attributes(pageTitle === 'Team' ? {'class': 'widget-list-item active'} : {'class': 'widget-list-item'})
+                      a(href='team.html').widget-list-link Team
+                    li()&attributes(pageTitle === 'Testimonials / reviews' ? {'class': 'widget-list-item active'} : {'class': 'widget-list-item'})
+                      a(href='testimonials.html').widget-list-link Testimonials / reviews
+                    li()&attributes(pageTitle === 'Toasts' ? {'class': 'widget-list-item active'} : {'class': 'widget-list-item'})
+                      a(href='toasts.html').widget-list-link Toasts
+                    li()&attributes(pageTitle === 'Tooltips' ? {'class': 'widget-list-item active'} : {'class': 'widget-list-item'})
+                      a(href='tooltips.html').widget-list-link Tooltips
+                    li()&attributes(pageTitle === 'Video button' ? {'class': 'widget-list-item active'} : {'class': 'widget-list-item'})
+                      a(href='video-button.html').widget-list-link Video button
+                    li()&attributes(pageTitle === 'widgets' ? {'class': 'widget-list-item active'} : {'class': 'widget-list-item'})
+                      a(href='widgets.html').widget-list-link Widgets
+                .widget.widget-links.widget-light.mb-4.pb-2
+                  h3.widget-title.text-white Utilities
+                  ul.widget-list
+                    li.widget-list-item
+                      a(href='https://getbootstrap.com/docs/5.0/utilities/borders/' target='_blank' rel='noopener').widget-list-link Bootstrap
+                    li()&attributes(pageTitle === 'Cartzilla utilities' ? {'class': 'widget-list-item active'} : {'class': 'widget-list-item'})
+                      a(href='utilities.html').widget-list-link Cartzilla
+
+          // Page title
+          .border-bottom.mt-lg-2.pt-5.pb-2.mb-5
+            h1.mt-3.mt-lg-4.pt-5 !{pageTitle}
+            .d-flex.flex-wrap.flex-md-nowrap.justify-content-between
+              p.text-muted !{pageSubtitle}
+              if Object.keys(pageTitleLink).length
+                p.fs-sm.ps-md-4
+                  a()&attributes({'href': pageTitleLink.link, 'class': 'text-nowrap', 'target': '_blank', 'rel': 'noopener'})= pageTitleLink.title
+                    i.ci-arrow-right.align-middle.ms-1
+              if isPageTitleBadge
+                .ps-md-4.mb-3
+                  span.badge.bg-info Cartzilla component
+
+          block content
+
+        if anchorNav.length
+          // Quick (anchor) navigation
+          .col-xxl-3.d-none.d-xxl-block.ps-5
+            aside.sticky-top.pt-5
+              .pt-5.mt-5
+                .widget.widget-links.ps-4.border-start
+                  h3.widget-title Jump to
+                  ul.widget-list
+                    each item in anchorNav
+                      li.widget-list-item
+                        - var linkatts = {'href': item.link}
+                        a(class='widget-list-link', 'data-scroll')&attributes(linkatts)= item.title
+
+    // Back To Top Button
+    a(href='#top' data-scroll data-fixed-element).btn-scroll-top
+      span.btn-scroll-top-tooltip.text-muted.fs-sm.me-2 Top
+      i.btn-scroll-top-icon.ci-arrow-up    
+    
+    // Vendor scrits: js libraries and plugins
+    +vendor-scripts
+
+    // Main theme script
+    script()&attributes(isNestedFile ? {'src': '../js/theme.min.js'} : {'src': 'js/theme.min.js'})

@@ -1,0 +1,43 @@
+{config_load file="$language/lang_$language.conf" section="gift_cart"}
+{config_load file="$language/lang_$language.conf" section="shopping_cart"}
+
+{if $ACTIVATE_GIFT=='true'}
+{if $GV_AMOUNT neq ''}
+<div>{#text_info#}</div>
+<br />
+<div>{#voucher_balance#} <span class="bold">{$GV_AMOUNT}</span></div>
+<br />
+<div>{#text_send_to_friend#} <a href="{$GV_SEND_TO_FRIEND_LINK}">{#box_send_to_friend#}</a></div>
+<br />
+{/if}
+{if $COUPON_AMOUNT2 neq ''}
+<div>{#voucher_redeemed#}</div>
+<br />
+<div>{$COUPON_AMOUNT2}</div>
+<br />
+{/if}
+{if $COUPON_HELP_LINK neq ''}
+<div>{#cart_coupon#} {$COUPON_HELP_LINK} {#cart_coupon_info#}</a></div>
+{/if}
+{if $C_FLAG == 'true'}
+<!-- форма -->
+{$FORM_ACTION}
+<div class="input-group">
+  <input type="text" name="gv_redeem_code" class="form-control form-control-sm" placeholder="{#text_promo_code#}" aria-label="{#text_promo_code#}" aria-describedby="button-apply">
+  <div class="input-group-append">
+    <button class="btn btn-primary btn-sm" type="submit" id="button-apply"><i class="fas fa-check"></i> {$smarty.const.TEXT_BUTTON_SUBMIT}</button>
+  </div>
+</div>
+{$FORM_END}
+<br />
+
+<!-- /форма -->
+{else}
+<p>
+{#create_account#}
+</p>
+<p>
+<a href="{$LINK_ACCOUNT}"><span class="bold">{#text_create_account#}</span></a>
+</p>
+{/if}
+{/if}

@@ -1,0 +1,198 @@
+extends partials/layout-grocery
+
+//- Override default config variables
+append config
+  - var pageTitle = 'Grocery - Single product'
+  - var breadcrumbs = [{'title': 'Product catalog', 'link': 'grocery-catalog.html'}, {'title': 'Single product'}]
+  - var parentMenu = 'Home'
+  
+//- Page Content
+block content
+
+  // Product Gallery + description
+  section.row.g-0.mx-n2.pb-5.mb-xl-3
+    .col-xl-7.px-2.mb-3
+      .h-100.bg-light.rounded-3.p-4
+        .product-gallery
+          .product-gallery-preview.order-sm-2
+            #first.product-gallery-preview-item.active
+              img(src='img/grocery/single/01.jpg' alt='Product image')
+            #second.product-gallery-preview-item
+              img(src='img/grocery/single/02.jpg' alt='Product image')
+            #third.product-gallery-preview-item
+              img(src='img/grocery/single/03.jpg' alt='Product image')
+          .product-gallery-thumblist.order-sm-1
+            a(href='#first').product-gallery-thumblist-item.active
+              img(src='img/grocery/single/th01.jpg' alt='Product thumb')
+            a(href='#second').product-gallery-thumblist-item
+              img(src='img/grocery/single/th02.jpg' alt='Product thumb')
+            a(href='#third').product-gallery-thumblist-item
+              img(src='img/grocery/single/th03.jpg' alt='Product thumb')
+
+    .col-xl-5.px-2.mb-3
+      .h-100.bg-light.rounded-3.py-5.px-4.px-sm-5
+        a(href='#').product-meta.d-block.fs-sm.pb-2 Packets, Cereals
+        h1.h2 Muesli Fitness Nutritious Energy, Gluten Free (500g)
+        .h2.fw-normal.text-accent $4.<small>99</small>
+        .d-flex.flex-wrap.align-items-center.pt-4.pb-2.mb-3
+          select(style='width: 5rem;').form-select.me-3.mb-3
+            option(value='1') 1
+            option(value='2') 2
+            option(value='3') 3
+            option(value='4') 4
+            option(value='5') 5
+          button(type='submit').btn.btn-primary.btn-shadow.me-3.mb-3
+            i.ci-cart.fs-lg.me-2
+            | Add to Cart
+          button(type='submit' data-bs-toggle='tooltip' title='Add to Wishlist').btn.btn-icon.btn-secondary.mb-3
+            i.ci-heart.fs-lg
+        h6 Product description
+        ul.list-unstyled.fs-sm.pt-2.mb-0
+          li
+            i.ci-check-circle.text-success.me-2
+            | Natural ingredients
+          li
+            i.ci-check-circle.text-success.me-2
+            | No dyes and flavor enhancers
+          li
+            i.ci-check-circle.text-success.me-2
+            | Gluten free
+          li
+            i.ci-check-circle.text-success.me-2
+            | Vitamins B2, B3, B5 and B6
+          li
+            i.ci-check-circle.text-success.me-2
+            | Tastes better with milk
+
+
+  // Related products
+  section.pb-5.mb-2.mb-xl-4
+    h2.h3.pb-2.mb-grid-gutter.text-center You may also like
+    .tns-carousel.tns-controls-static.tns-controls-outside.tns-nav-enabled
+      .tns-carousel-inner(data-carousel-options='{"items": 2, "gutter": 16, "controls": true, "responsive": {"0":{"items":1}, "480":{"items":2}, "720":{"items":3}, "991":{"items":2}, "1140":{"items":3}, "1300":{"items":4}, "1500":{"items":5}}}')
+
+        // Product
+        div
+          .card.product-card.card-static.pb-3
+            button(type='button' data-bs-toggle='tooltip' data-bs-placement='left' title='Add to wishlist').btn-wishlist.btn-sm
+              i.ci-heart
+            a(href='grocery-single.html').card-img-top.d-block.overflow-hidden
+              img(src='img/grocery/catalog/08.jpg' alt='Product')
+            .card-body.py-2
+              a(href='#').product-meta.d-block.fs-xs.pb-1 Dairy and Eggs
+              h3.product-title.fs-sm
+                a(href='grocery-single.html') Mozzarella Cheese (125g)
+              .product-price
+                span.text-accent $4.<small>30</small>
+            .product-floating-btn
+              button(type='button').btn.btn-primary.btn-shadow.btn-sm
+                | +
+                i.ci-cart.fs-base.ms-1
+
+        // Product
+        div
+          .card.product-card.card-static.pb-3
+            button(type='button' data-bs-toggle='tooltip' data-bs-placement='left' title='Add to wishlist').btn-wishlist.btn-sm
+              i.ci-heart
+            a(href='grocery-single.html').card-img-top.d-block.overflow-hidden
+              img(src='img/grocery/catalog/09.jpg' alt='Product')
+            .card-body.py-2
+              a(href='#').product-meta.d-block.fs-xs.pb-1 Personal hygiene
+              h3.product-title.fs-sm.text-truncate
+                a(href='grocery-single.html') Men’s Shampoo (400ml)
+              .product-price
+                span.text-accent $5.<small>99</small>
+            .product-floating-btn
+              button(type='button').btn.btn-primary.btn-shadow.btn-sm
+                | +
+                i.ci-cart.fs-base.ms-1
+
+        // Product
+        div
+          .card.product-card.card-static.pb-3
+            button(type='button' data-bs-toggle='tooltip' data-bs-placement='left' title='Add to wishlist').btn-wishlist.btn-sm
+              i.ci-heart
+            a(href='grocery-single.html').card-img-top.d-block.overflow-hidden
+              img(src='img/grocery/catalog/10.jpg' alt='Product')
+            .card-body.py-2
+              a(href='#').product-meta.d-block.fs-xs.pb-1 Meat and Poultry
+              h3.product-title.fs-sm.text-truncate
+                a(href='grocery-single.html') Frozen Oven-ready Poultry
+              .product-price
+                span.text-accent $12.<small>00</small>
+            .product-floating-btn
+              button(type='button').btn.btn-primary.btn-shadow.btn-sm
+                | +
+                i.ci-cart.fs-base.ms-1
+
+        // Product
+        div
+          .card.product-card.card-static.pb-3
+            button(type='button' data-bs-toggle='tooltip' data-bs-placement='left' title='Add to wishlist').btn-wishlist.btn-sm
+              i.ci-heart
+            a(href='grocery-single.html').card-img-top.d-block.overflow-hidden
+              img(src='img/grocery/catalog/11.jpg' alt='Product')
+            .card-body.py-2
+              a(href='#').product-meta.d-block.fs-xs.pb-1 Snacks, Sweets and Chips
+              h3.product-title.fs-sm.text-truncate
+                a(href='grocery-single.html') Dark Chocolate with Nuts
+              .product-price
+                span.text-accent $2.<small>50</small>
+            .product-floating-btn
+              button(type='button').btn.btn-primary.btn-shadow.btn-sm
+                | +
+                i.ci-cart.fs-base.ms-1
+
+        // Product
+        div
+          .card.product-card.card-static.pb-3
+            button(type='button' data-bs-toggle='tooltip' data-bs-placement='left' title='Add to wishlist').btn-wishlist.btn-sm
+              i.ci-heart
+            a(href='grocery-single.html').card-img-top.d-block.overflow-hidden
+              img(src='img/grocery/catalog/12.jpg' alt='Product')
+            .card-body.py-2
+              a(href='#').product-meta.d-block.fs-xs.pb-1 Canned Food and Oil
+              h3.product-title.fs-sm.text-truncate
+                a(href='grocery-single.html') Corn Oil Bottle (500ml)
+              .product-price
+                span.text-accent $3.<small>10</small>
+            .product-floating-btn
+              button(type='button').btn.btn-primary.btn-shadow.btn-sm
+                | +
+                i.ci-cart.fs-base.ms-1
+
+        // Product
+        div
+          .card.product-card.card-static.pb-3
+            button(type='button' data-bs-toggle='tooltip' data-bs-placement='left' title='Add to wishlist').btn-wishlist.btn-sm
+              i.ci-heart
+            a(href='grocery-single.html').card-img-top.d-block.overflow-hidden
+              img(src='img/grocery/catalog/13.jpg' alt='Product')
+            .card-body.py-2
+              a(href='#').product-meta.d-block.fs-xs.pb-1 Fish and Seafood
+              h3.product-title.fs-sm.text-truncate
+                a(href='grocery-single.html') Steak Salmon Fillet (1kg)
+              .product-price
+                span.text-accent $17.<small>99</small>
+            .product-floating-btn
+              button(type='button').btn.btn-primary.btn-shadow.btn-sm
+                | +
+                i.ci-cart.fs-base.ms-1
+
+        // Product
+        div
+          .card.product-card.card-static.pb-3
+            button(type='button' data-bs-toggle='tooltip' data-bs-placement='left' title='Add to wishlist').btn-wishlist.btn-sm
+              i.ci-heart
+            a(href='grocery-single.html').card-img-top.d-block.overflow-hidden
+              img(src='img/grocery/catalog/14.jpg' alt='Product')
+            .card-body.py-2
+              a(href='#').product-meta.d-block.fs-xs.pb-1 Canned Food and Oil
+              h3.product-title.fs-sm.text-truncate
+                a(href='grocery-single.html') Sardine in Tomato Sauce (105g)
+              .product-price
+                span.text-accent $3.<small>25</small>
+            .product-floating-btn
+              button(type='button').btn.btn-primary.btn-shadow.btn-sm
+                | +
+                i.ci-cart.fs-base.ms-1

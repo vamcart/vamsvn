@@ -1,0 +1,53 @@
+// Quick View Modal
+#quick-view.modal-quick-view.modal.fade(tabindex='-1')
+  .modal-dialog.modal-dialog-centered.modal-xl
+    .modal-content
+      .modal-header
+        h4.modal-title Pizza with Salami and Olives
+        button(type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close')
+      .modal-body
+        .row
+
+          // Product gallery
+          .col-lg-7.col-md-6.pe-lg-0
+            img(src='img/food-delivery/restaurants/single/large-preview.jpg' alt='Pizza')
+
+          // Product details
+          .col-lg-5.col-md-6.pt-4.pt-lg-0
+            .product-details.ms-auto.pb-3
+              .mb-3
+                span.h3.fw-normal.text-accent.me-1 $15.<small>99</small>
+              form.mb-grid-gutter
+                .row.mx-n2
+                  .col-6.px-2
+                    .mb-3
+                      label(for='pizza-size').form-label Size:
+                      select#pizza-size.form-select
+                        option(value='small') Small
+                        option(value='medium') Medium
+                        option(value='large') Large
+                  .col-6.px-2
+                    .mb-3
+                      label(for='pizza-base').form-label Base:
+                      select#pizza-base.form-select
+                        option(value='standard') Standard
+                        option(value='thin') Thin
+                .mb-3.d-flex.align-items-center
+                  select(style='width: 5rem;').form-select.me-3
+                    option(value='1') 1
+                    option(value='2') 2
+                    option(value='3') 3
+                    option(value='4') 4
+                    option(value='5') 5
+                  button(type='submit').btn.btn-primary.btn-shadow.d-block.w-100
+                    i.ci-cart.fs-lg.me-2
+                    | Add to Cart
+              h5.h6.mb-3.pb-3.border-bottom
+                i.ci-announcement.text-muted.fs-lg.align-middle.mt-n1.me-2
+                | Product info
+              h6.fs-sm.mb-2 Ingredients:
+              p.fs-sm Salami, Olives, Bell pepper, Mushrooms, Mozzarella, Parmesan
+              h6.fs-sm.mb-2 Allergies
+              p.fs-sm Gluten, Dairy
+              h6.fs-sm.mb-2 Calories
+              p.fs-sm.mb-0 811

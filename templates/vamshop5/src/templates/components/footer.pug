@@ -1,0 +1,1133 @@
+extends ../partials/layout-components
+
+//- Override default config variables
+append config
+  - var vendorStyles = ['prismjs/themes/prism.css', 'prismjs/plugins/toolbar/prism-toolbar.css', 'prismjs/plugins/line-numbers/prism-line-numbers.css']
+  - var vendorScripts = ['prismjs/components/prism-core.min.js', 'prismjs/components/prism-markup.min.js', 'prismjs/components/prism-clike.min.js', 'prismjs/components/prism-javascript.min.js', 'prismjs/components/prism-pug.min.js', 'prismjs/plugins/toolbar/prism-toolbar.min.js', 'prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js', 'prismjs/plugins/line-numbers/prism-line-numbers.min.js']
+  - var pageTitle = 'Footer'
+  - var pageSubtitle = 'The bottom section of a webpage. Typically contains navigation, widgets and relevant copyright information.'
+  - var isPageTitleBadge = true
+  - var anchorNav = [{'title': 'Light version', 'link': '#footer-light'}, {'title': 'Dark version', 'link': '#footer-dark'}]
+  
+//- Page Content
+block content
+
+  // Light version
+  section#footer-light.pb-5.mb-md-2
+    h2.h5.mb-3 Light version
+    .card.border-0.shadow
+      .card-header
+        ul(role='tablist').nav.nav-tabs.card-header-tabs
+          li.nav-item
+            a(href='#result1' data-bs-toggle='tab' role='tab' aria-controls='result1' aria-selected='true').nav-link.active Result
+          li.nav-item
+            a(href='#html1' data-bs-toggle='tab' role='tab' aria-controls='html1' aria-selected='false').nav-link HTML
+          li.nav-item
+            a(href='#pug1' data-bs-toggle='tab' role='tab' aria-controls='pug1' aria-selected='false').nav-link Pug
+      .card-body
+        .tab-content
+          #result1.tab-pane.fade.show.active(role='tabpanel')
+            footer.bg-secondary.pt-5
+              .px-4
+                .row.pb-2
+                  .col-lg-4.col-sm-6
+                    .widget.widget-links.pb-2.mb-4
+                      h3.widget-title Shop departments
+                      ul.widget-list
+                        li.widget-list-item: a(href='#').widget-list-link Sneakers &amp; Athletic
+                        li.widget-list-item: a(href='#').widget-list-link Athletic Apparel
+                        li.widget-list-item: a(href='#').widget-list-link Sandals
+                        li.widget-list-item: a(href='#').widget-list-link Jeans
+                        li.widget-list-item: a(href='#').widget-list-link Shirts &amp; Tops
+                        li.widget-list-item: a(href='#').widget-list-link Shorts
+                        li.widget-list-item: a(href='#').widget-list-link T-Shirts
+                        li.widget-list-item: a(href='#').widget-list-link Swimwear
+                        li.widget-list-item: a(href='#').widget-list-link Clogs &amp; Mules
+                        li.widget-list-item: a(href='#').widget-list-link Bags &amp; Wallets
+                        li.widget-list-item: a(href='#').widget-list-link Accessories
+                        li.widget-list-item: a(href='#').widget-list-link Sunglasses &amp; Eyewear
+                        li.widget-list-item: a(href='#').widget-list-link Watches
+                  .col-lg-4.col-sm-6
+                    .widget.widget-links.pb-2.mb-4
+                      h3.widget-title Account &amp; shipping info
+                      ul.widget-list
+                        li.widget-list-item: a(href='#').widget-list-link Your account
+                        li.widget-list-item: a(href='#').widget-list-link Shipping rates &amp; policies
+                        li.widget-list-item: a(href='#').widget-list-link Refunds &amp; replacements
+                        li.widget-list-item: a(href='#').widget-list-link Order tracking
+                        li.widget-list-item: a(href='#').widget-list-link Delivery info
+                        li.widget-list-item: a(href='#').widget-list-link Taxes &amp; fees
+                    .widget.widget-links.pb-2.mb-4
+                      h3.widget-title About us
+                      ul.widget-list
+                        li.widget-list-item: a(href='#').widget-list-link About company
+                        li.widget-list-item: a(href='#').widget-list-link Our team
+                        li.widget-list-item: a(href='#').widget-list-link Careers
+                        li.widget-list-item: a(href='#').widget-list-link News
+                  .col-lg-4
+                    .widget.pb-2.mb-4
+                      h3.widget-title.pb-1 Stay informed
+                      form.input-group.flex-nowrap
+                        i.ci-mail.position-absolute.top-50.translate-middle-y.text-muted.fs-base.ms-3
+                        input(type='email' placeholder='Your email' required).form-control.rounded-start
+                        button(type='submit').btn.btn-primary Subscribe*
+                      .form-text *Subscribe to our newsletter to receive early discount offers, updates and new products info.
+                    .widget.pb-2.mb-4
+                      h3.widget-title.pb-1 Download our app
+                      .d-flex.flex-wrap
+                        .me-2.mb-2
+                          a(href='#' role='button').btn-market.btn-apple
+                            span.btn-market-subtitle Download on the
+                            span.btn-market-title App Store
+                        .mb-2
+                          a(href='#' role='button').btn-market.btn-google
+                            span.btn-market-subtitle Download on the
+                            span.btn-market-title Google Play
+              .pt-5.px-4(style='background-color: #ecf2f7;')
+                .row.pb-3
+                  .col-xl-3.col-sm-6.mb-4
+                    .d-flex
+                      i.ci-rocket.text-primary(style='font-size: 2.25rem;')
+                      .ps-3
+                        h6.fs-base.mb-1 Fast and free delivery
+                        p.mb-0.fs-ms.text-muted Free delivery for all orders over $200
+                  .col-xl-3.col-sm-6.mb-4
+                    .d-flex
+                      i.ci-currency-exchange.text-primary(style='font-size: 2.25rem;')
+                      .ps-3
+                        h6.fs-base.mb-1 Money back guarantee
+                        p.mb-0.fs-ms.text-muted We return money within 30 days
+                  .col-xl-3.col-sm-6.mb-4
+                    .d-flex
+                      i.ci-support.text-primary(style='font-size: 2.25rem;')
+                      .ps-3
+                        h6.fs-base.mb-1 24/7 customer support
+                        p.mb-0.fs-ms.text-muted Friendly 24/7 customer support
+                  .col-xl-3.col-sm-6.mb-4
+                    .d-flex
+                      i.ci-card.text-primary(style='font-size: 2.25rem;')
+                      .ps-3
+                        h6.fs-base.mb-1 Secure online payment
+                        p.mb-0.fs-ms.text-muted We possess SSL / Secure сertificate
+                hr.mb-5
+                .row.pb-2
+                  .col-md-6.text-center.text-md-start.mb-4
+                    .text-nowrap.mb-4
+                      a(href='#').d-inline-block.align-middle.mt-n1.me-3
+                        img(src='../img/footer-logo-dark.png' width='117' alt='Cartzilla').d-block
+                      .btn-group.dropdown.disable-autohide
+                        button(type='button' data-bs-toggle='dropdown').btn.btn-outline-secondary.btn-sm.dropdown-toggle.px-2
+                          img(src='../img/flags/en.png' width='20' alt='English').me-2
+                          | Eng / $
+                        ul.dropdown-menu.my-1
+                          li.dropdown-item
+                            select.form-select.form-select-sm
+                              option(value='usd') $ USD
+                              option(value='eur') € EUR
+                              option(value='ukp') £ UKP
+                              option(value='jpy') ¥ JPY
+                          li
+                            a(href='#').dropdown-item.pb-1
+                              img(src='../img/flags/fr.png' width='20' alt='Français').me-2
+                              | Français
+                          li
+                            a(href='#').dropdown-item.pb-1
+                              img(src='../img/flags/de.png' width='20' alt='Deutsch').me-2
+                              | Deutsch
+                          li
+                            a(href='#').dropdown-item
+                              img(src='../img/flags/it.png' width='20' alt='Italiano').me-2
+                              | Italiano
+                    .widget.widget-links
+                      ul.widget-list.d-flex.flex-wrap.justify-content-center.justify-content-md-start
+                        li.widget-list-item.me-4: a(href='#').widget-list-link Outlets
+                        li.widget-list-item.me-4: a(href='#').widget-list-link Affiliates
+                        li.widget-list-item.me-4: a(href='#').widget-list-link Support
+                        li.widget-list-item.me-4: a(href='#').widget-list-link Privacy
+                        li.widget-list-item.me-4: a(href='#').widget-list-link Terms of use
+                  .col-md-6.text-center.text-md-end.mb-4
+                    .mb-3
+                      a(href="#").btn-social.bs-outline.bs-twitter.ms-2.mb-2
+                        i.ci-twitter
+                      a(href="#").btn-social.bs-outline.bs-facebook.ms-2.mb-2
+                        i.ci-facebook
+                      a(href="#").btn-social.bs-outline.bs-instagram.ms-2.mb-2
+                        i.ci-instagram
+                      a(href="#").btn-social.bs-outline.bs-pinterest.ms-2.mb-2
+                        i.ci-pinterest
+                      a(href="#").btn-social.bs-outline.bs-youtube.ms-2.mb-2
+                        i.ci-youtube
+                    img(src='../img/cards-alt.png' width='187' alt='Payment methods').d-inline-block
+                .pb-4.fs-xs.text-muted.text-center.text-md-start
+                  | © All rights reserved. Made by 
+                  a(href='#').text-muted Createx Studio
+          #html1.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-html').
+                &lt;!-- Light footer --&gt;
+                &lt;footer class=&quot;bg-secondary pt-5&quot;&gt;
+                  &lt;div class=&quot;container&quot;&gt;
+                    &lt;div class=&quot;row pb-2&quot;&gt;
+                      &lt;div class=&quot;col-md-4 col-sm-6&quot;&gt;
+                        &lt;div class=&quot;widget widget-links pb-2 mb-4&quot;&gt;
+                          &lt;h3 class=&quot;widget-title&quot;&gt;Shop departments&lt;/h3&gt;
+                          &lt;ul class=&quot;widget-list&quot;&gt;
+                            &lt;li class=&quot;widget-list-item&quot;&gt;
+                              &lt;a href=&quot;#&quot; class=&quot;widget-list-link&quot;&gt;Sneakers &amp; Athletic&lt;/a&gt;
+                            &lt;/li&gt;
+                            &lt;li class=&quot;widget-list-item&quot;&gt;
+                              &lt;a href=&quot;#&quot; class=&quot;widget-list-link&quot;&gt;Athletic Apparel&lt;/a&gt;
+                            &lt;/li&gt;
+                            &lt;li class=&quot;widget-list-item&quot;&gt;
+                              &lt;a href=&quot;#&quot; class=&quot;widget-list-link&quot;&gt;Sandals&lt;/a&gt;
+                            &lt;/li&gt;
+                            &lt;li class=&quot;widget-list-item&quot;&gt;
+                              &lt;a href=&quot;#&quot; class=&quot;widget-list-link&quot;&gt;Jeans&lt;/a&gt;
+                            &lt;/li&gt;
+                            &lt;li class=&quot;widget-list-item&quot;&gt;
+                              &lt;a href=&quot;#&quot; class=&quot;widget-list-link&quot;&gt;Shirts &amp; Tops&lt;/a&gt;
+                            &lt;/li&gt;
+                            &lt;li class=&quot;widget-list-item&quot;&gt;
+                              &lt;a href=&quot;#&quot; class=&quot;widget-list-link&quot;&gt;Shorts&lt;/a&gt;
+                            &lt;/li&gt;
+                            &lt;li class=&quot;widget-list-item&quot;&gt;
+                              &lt;a href=&quot;#&quot; class=&quot;widget-list-link&quot;&gt;T-Shirts&lt;/a&gt;
+                            &lt;/li&gt;
+                            &lt;li class=&quot;widget-list-item&quot;&gt;
+                              &lt;a href=&quot;#&quot; class=&quot;widget-list-link&quot;&gt;Swimwear&lt;/a&gt;
+                            &lt;/li&gt;
+                            &lt;li class=&quot;widget-list-item&quot;&gt;
+                              &lt;a href=&quot;#&quot; class=&quot;widget-list-link&quot;&gt;Clogs &amp; Mules&lt;/a&gt;
+                            &lt;/li&gt;
+                            &lt;li class=&quot;widget-list-item&quot;&gt;
+                              &lt;a href=&quot;#&quot; class=&quot;widget-list-link&quot;&gt;Bags &amp; Wallets&lt;/a&gt;
+                            &lt;/li&gt;
+                            &lt;li class=&quot;widget-list-item&quot;&gt;
+                              &lt;a href=&quot;#&quot; class=&quot;widget-list-link&quot;&gt;Accessories&lt;/a&gt;
+                            &lt;/li&gt;
+                            &lt;li class=&quot;widget-list-item&quot;&gt;
+                              &lt;a href=&quot;#&quot; class=&quot;widget-list-link&quot;&gt;Sunglasses &amp; Eyewear&lt;/a&gt;
+                            &lt;/li&gt;
+                            &lt;li class=&quot;widget-list-item&quot;&gt;
+                              &lt;a href=&quot;#&quot; class=&quot;widget-list-link&quot;&gt;Watches&lt;/a&gt;
+                            &lt;/li&gt;
+                          &lt;/ul&gt;
+                        &lt;/div&gt;
+                      &lt;/div&gt;
+                      &lt;div class=&quot;col-md-4 col-sm-6&quot;&gt;
+                        &lt;div class=&quot;widget widget-links pb-2 mb-4&quot;&gt;
+                          &lt;h3 class=&quot;widget-title&quot;&gt;Account &amp; shipping info&lt;/h3&gt;
+                          &lt;ul class=&quot;widget-list&quot;&gt;
+                            &lt;li class=&quot;widget-list-item&quot;&gt;
+                              &lt;a href=&quot;#&quot; class=&quot;widget-list-link&quot;&gt;Your account&lt;/a&gt;
+                            &lt;/li&gt;
+                            &lt;li class=&quot;widget-list-item&quot;&gt;
+                              &lt;a href=&quot;#&quot; class=&quot;widget-list-link&quot;&gt;Shipping rates &amp; policies&lt;/a&gt;
+                            &lt;/li&gt;
+                            &lt;li class=&quot;widget-list-item&quot;&gt;
+                              &lt;a href=&quot;#&quot; class=&quot;widget-list-link&quot;&gt;Refunds &amp; replacements&lt;/a&gt;
+                            &lt;/li&gt;
+                            &lt;li class=&quot;widget-list-item&quot;&gt;
+                              &lt;a href=&quot;#&quot; class=&quot;widget-list-link&quot;&gt;Order tracking&lt;/a&gt;
+                            &lt;/li&gt;
+                            &lt;li class=&quot;widget-list-item&quot;&gt;
+                              &lt;a href=&quot;#&quot; class=&quot;widget-list-link&quot;&gt;Delivery info&lt;/a&gt;
+                            &lt;/li&gt;
+                            &lt;li class=&quot;widget-list-item&quot;&gt;
+                              &lt;a href=&quot;#&quot; class=&quot;widget-list-link&quot;&gt;Taxes &amp; fees&lt;/a&gt;
+                            &lt;/li&gt;
+                          &lt;/ul&gt;
+                        &lt;/div&gt;
+                        &lt;div class=&quot;widget widget-links pb-2 mb-4&quot;&gt;
+                          &lt;h3 class=&quot;widget-title&quot;&gt;About us&lt;/h3&gt;
+                          &lt;ul class=&quot;widget-list&quot;&gt;
+                            &lt;li class=&quot;widget-list-item&quot;&gt;
+                              &lt;a href=&quot;#&quot; class=&quot;widget-list-link&quot;&gt;About company&lt;/a&gt;
+                            &lt;/li&gt;
+                            &lt;li class=&quot;widget-list-item&quot;&gt;
+                              &lt;a href=&quot;#&quot; class=&quot;widget-list-link&quot;&gt;Our team&lt;/a&gt;
+                            &lt;/li&gt;
+                            &lt;li class=&quot;widget-list-item&quot;&gt;
+                              &lt;a href=&quot;#&quot; class=&quot;widget-list-link&quot;&gt;Careers&lt;/a&gt;
+                            &lt;/li&gt;
+                            &lt;li class=&quot;widget-list-item&quot;&gt;
+                              &lt;a href=&quot;#&quot; class=&quot;widget-list-link&quot;&gt;News&lt;/a&gt;
+                            &lt;/li&gt;
+                          &lt;/ul&gt;
+                        &lt;/div&gt;
+                      &lt;/div&gt;
+                      &lt;div class=&quot;col-md-4&quot;&gt;
+                        &lt;div class=&quot;widget pb-2 mb-4&quot;&gt;
+                          &lt;h3 class=&quot;widget-title pb-1&quot;&gt;Stay informed&lt;/h3&gt;
+                          &lt;form class=&quot;input-group flex-nowrap&quot;&gt;
+                            &lt;i class=&quot;ci-mail position-absolute top-50 translate-middle-y text-muted fs-base ms-3&quot;&gt;&lt;/i&gt;
+                            &lt;input class=&quot;form-control rounded-start&quot; type=&quot;email&quot; placeholder=&quot;Your email&quot; required&gt;
+                            &lt;button class=&quot;btn btn-primary&quot; type=&quot;submit&quot;&gt;Subscribe*&lt;/button&gt;
+                          &lt;/form&gt;
+                          &lt;div class=&quot;form-text&quot;&gt;*Subscribe to our newsletter to receive early discount offers, updates and new products info.&lt;/div&gt;
+                        &lt;/div&gt;
+                        &lt;div class=&quot;widget pb-2 mb-4&quot;&gt;
+                          &lt;h3 class=&quot;widget-title pb-1&quot;&gt;Download our app&lt;/h3&gt;
+                          &lt;div class=&quot;d-flex flex-wrap&quot;&gt;
+                            &lt;div class=&quot;me-2 mb-2&quot;&gt;
+                              &lt;a class=&quot;btn-market btn-apple&quot; href=&quot;#&quot; role=&quot;button&quot;&gt;
+                                &lt;span class=&quot;btn-market-subtitle&quot;&gt;Download on the&lt;/span&gt;
+                                &lt;span class=&quot;btn-market-title&quot;&gt;App Store&lt;/span&gt;
+                              &lt;/a&gt;
+                            &lt;/div&gt;
+                            &lt;div class=&quot;mb-2&quot;&gt;
+                              &lt;a class=&quot;btn-market btn-google&quot; href=&quot;#&quot; role=&quot;button&quot;&gt;
+                                &lt;span class=&quot;btn-market-subtitle&quot;&gt;Download on the&lt;/span&gt;
+                                &lt;span class=&quot;btn-market-title&quot;&gt;Google Play&lt;/span&gt;
+                              &lt;/a&gt;
+                            &lt;/div&gt;
+                          &lt;/div&gt;
+                        &lt;/div&gt;
+                      &lt;/div&gt;
+                    &lt;/div&gt;
+                  &lt;/div&gt;
+                  &lt;div class=&quot;pt-5&quot; style=&quot;background-color: #ecf2f7;&quot;&gt;
+                    &lt;div class=&quot;container&quot;&gt;
+                      &lt;div class=&quot;row pb-3&quot;&gt;
+                        &lt;div class=&quot;col-md-3 col-sm-6 mb-4&quot;&gt;
+                          &lt;div class=&quot;d-flex&quot;&gt;
+                            &lt;i class=&quot;ci-rocket text-primary&quot; style=&quot;font-size: 2.25rem;&quot;&gt;&lt;/i&gt;
+                            &lt;div class=&quot;ps-3&quot;&gt;
+                              &lt;h6 class=&quot;fs-base mb-1&quot;&gt;Fast and free delivery&lt;/h6&gt;
+                              &lt;p class=&quot;mb-0 fs-ms text-muted&quot;&gt;Free delivery for all orders over $200&lt;/p&gt;
+                            &lt;/div&gt;
+                          &lt;/div&gt;
+                        &lt;/div&gt;
+                        &lt;div class=&quot;col-md-3 col-sm-6 mb-4&quot;&gt;
+                          &lt;div class=&quot;d-flex&quot;&gt;
+                            &lt;i class=&quot;ci-currency-exchange text-primary&quot; style=&quot;font-size: 2.25rem;&quot;&gt;&lt;/i&gt;
+                            &lt;div class=&quot;ps-3&quot;&gt;
+                              &lt;h6 class=&quot;fs-base mb-1&quot;&gt;Money back guarantee&lt;/h6&gt;
+                              &lt;p class=&quot;mb-0 fs-ms text-muted&quot;&gt;We return money within 30 days&lt;/p&gt;
+                            &lt;/div&gt;
+                          &lt;/div&gt;
+                        &lt;/div&gt;
+                        &lt;div class=&quot;col-md-3 col-sm-6 mb-4&quot;&gt;
+                          &lt;div class=&quot;d-flex&quot;&gt;
+                            &lt;i class=&quot;ci-support text-primary&quot; style=&quot;font-size: 2.25rem;&quot;&gt;&lt;/i&gt;
+                            &lt;div class=&quot;ps-3&quot;&gt;
+                              &lt;h6 class=&quot;fs-base mb-1&quot;&gt;24/7 customer support&lt;/h6&gt;
+                              &lt;p class=&quot;mb-0 fs-ms text-muted&quot;&gt;Friendly 24/7 customer support&lt;/p&gt;
+                            &lt;/div&gt;
+                          &lt;/div&gt;
+                        &lt;/div&gt;
+                        &lt;div class=&quot;col-md-3 col-sm-6 mb-4&quot;&gt;
+                          &lt;div class=&quot;d-flex&quot;&gt;
+                            &lt;i class=&quot;ci-card text-primary&quot; style=&quot;font-size: 2.25rem;&quot;&gt;&lt;/i&gt;
+                            &lt;div class=&quot;ps-3&quot;&gt;
+                              &lt;h6 class=&quot;fs-base mb-1&quot;&gt;Secure online payment&lt;/h6&gt;
+                              &lt;p class=&quot;mb-0 fs-ms text-muted&quot;&gt;We possess SSL / Secure сertificate&lt;/p&gt;
+                            &lt;/div&gt;
+                          &lt;/div&gt;
+                        &lt;/div&gt;
+                      &lt;/div&gt;
+                      &lt;hr class=&quot;mb-5&quot;&gt;
+                      &lt;div class=&quot;row pb-2&quot;&gt;
+                        &lt;div class=&quot;col-md-6 text-center text-md-start mb-4&quot;&gt;
+                          &lt;div class=&quot;text-nowrap mb-4&quot;&gt;
+                            &lt;a class=&quot;d-inline-block align-middle mt-n1 me-3&quot; href=&quot;#&quot;&gt;
+                              &lt;img class=&quot;d-block&quot; width=&quot;117&quot; src=&quot;path-to-logo&quot; alt=&quot;Cartzilla&quot;/&gt;
+                            &lt;/a&gt;
+                            &lt;div class=&quot;btn-group dropdown disable-autohide&quot;&gt;
+                              &lt;button class=&quot;btn btn-outline-secondary btn-sm dropdown-toggle px-2&quot; type=&quot;button&quot; data-bs-toggle=&quot;dropdown&quot;&gt;
+                                &lt;img class=&quot;me-2&quot; width=&quot;20&quot; src=&quot;path-to-image&quot; alt=&quot;English&quot;/&gt;
+                                Eng / $
+                              &lt;/button&gt;
+                              &lt;ul class=&quot;dropdown-menu my-1&quot;&gt;
+                                &lt;li class=&quot;dropdown-item&quot;&gt;
+                                  &lt;select class=&quot;form-select form-select-sm&quot;&gt;
+                                    &lt;option value=&quot;usd&quot;&gt;$ USD&lt;/option&gt;
+                                    &lt;option value=&quot;eur&quot;&gt;€ EUR&lt;/option&gt;
+                                    &lt;option value=&quot;ukp&quot;&gt;£ UKP&lt;/option&gt;
+                                    &lt;option value=&quot;jpy&quot;&gt;¥ JPY&lt;/option&gt;
+                                  &lt;/select&gt;
+                                &lt;/li&gt;
+                                &lt;li&gt;
+                                  &lt;a class=&quot;dropdown-item pb-1&quot; href=&quot;#&quot;&gt;
+                                    &lt;img class=&quot;me-2&quot; width=&quot;20&quot; src=&quot;path-to-image&quot; alt=&quot;Français&quot;/&gt;
+                                    Français
+                                  &lt;/a&gt;
+                                &lt;/li&gt;
+                                &lt;li&gt;
+                                  &lt;a class=&quot;dropdown-item pb-1&quot; href=&quot;#&quot;&gt;
+                                    &lt;img class=&quot;me-2&quot; width=&quot;20&quot; src=&quot;path-to-image&quot; alt=&quot;Deutsch&quot;/&gt;
+                                    Deutsch
+                                  &lt;/a&gt;
+                                &lt;/li&gt;
+                                &lt;li&gt;
+                                  &lt;a class=&quot;dropdown-item&quot; href=&quot;#&quot;&gt;
+                                    &lt;img class=&quot;me-2&quot; width=&quot;20&quot; src=&quot;path-to-image&quot; alt=&quot;Italiano&quot;/&gt;
+                                    Italiano
+                                  &lt;/a&gt;
+                                &lt;/li&gt;
+                              &lt;/ul&gt;
+                            &lt;/div&gt;
+                          &lt;/div&gt;
+                          &lt;div class=&quot;widget widget-links&quot;&gt;
+                            &lt;ul class=&quot;widget-list d-flex flex-wrap justify-content-center justify-content-md-start&quot;&gt;
+                              &lt;li class=&quot;widget-list-item me-4&quot;&gt;
+                                &lt;a href=&quot;#&quot; class=&quot;widget-list-link&quot;&gt;Outlets&lt;/a&gt;
+                              &lt;/li&gt;
+                              &lt;li class=&quot;widget-list-item me-4&quot;&gt;
+                                &lt;a href=&quot;#&quot; class=&quot;widget-list-link&quot;&gt;Affiliates&lt;/a&gt;
+                              &lt;/li&gt;
+                              &lt;li class=&quot;widget-list-item me-4&quot;&gt;
+                                &lt;a href=&quot;#&quot; class=&quot;widget-list-link&quot;&gt;Support&lt;/a&gt;
+                              &lt;/li&gt;
+                              &lt;li class=&quot;widget-list-item me-4&quot;&gt;
+                                &lt;a href=&quot;#&quot; class=&quot;widget-list-link&quot;&gt;Privacy&lt;/a&gt;
+                              &lt;/li&gt;
+                              &lt;li class=&quot;widget-list-itemme-4&quot;&gt;
+                                &lt;a href=&quot;#&quot; class=&quot;widget-list-link&quot;&gt;Terms of use&lt;/a&gt;
+                              &lt;/li&gt;
+                            &lt;/ul&gt;
+                          &lt;/div&gt;
+                        &lt;/div&gt;
+                        &lt;div class=&quot;col-md-6 text-center text-md-end mb-4&quot;&gt;
+                          &lt;div class=&quot;mb-3&quot;&gt;
+                            &lt;a class=&quot;btn-social bs-outline bs-twitter ms-2 mb-2&quot; href=&quot;#&quot;&gt;&lt;i class=&quot;ci-twitter&quot;&gt;&lt;/i&gt;&lt;/a&gt;
+                            &lt;a class=&quot;btn-social bs-outline bs-facebook ms-2 mb-2&quot; href=&quot;#&quot;&gt;&lt;i class=&quot;ci-facebook&quot;&gt;&lt;/i&gt;&lt;/a&gt;
+                            &lt;a class=&quot;btn-social bs-outline bs-instagram ms-2 mb-2&quot; href=&quot;#&quot;&gt;&lt;i class=&quot;ci-instagram&quot;&gt;&lt;/i&gt;&lt;/a&gt;
+                            &lt;a class=&quot;btn-social bs-outline bs-pinterest ms-2 mb-2&quot; href=&quot;#&quot;&gt;&lt;i class=&quot;ci-pinterest&quot;&gt;&lt;/i&gt;&lt;/a&gt;
+                            &lt;a class=&quot;btn-social bs-outline bs-youtube ms-2 mb-2&quot; href=&quot;#&quot;&gt;&lt;i class=&quot;ci-youtube&quot;&gt;&lt;/i&gt;&lt;/a&gt;
+                          &lt;/div&gt;
+                          &lt;img class=&quot;d-inline-block&quot; width=&quot;187&quot; src=&quot;path-to-image&quot; alt=&quot;Payment methods&quot;/&gt;
+                        &lt;/div&gt;
+                      &lt;/div&gt;
+                      &lt;div class=&quot;pb-4 fs-xs text-muted text-center text-md-start&quot;&gt;© All rights reserved. Made by &lt;a class=&quot;text-muted&quot; href=&quot;#&quot;&gt;Createx Studio&lt;/a&gt;&lt;/div&gt;
+                    &lt;/div&gt;
+                  &lt;/div&gt;
+                &lt;/footer&gt;
+          #pug1.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-pug').
+                // Light footer
+                footer.bg-secondary.pt-5
+                  .container
+                    .row.pb-2
+                      .col-md-4.col-sm-6
+                        .widget.widget-links.pb-2.mb-4
+                          h3.widget-title Shop departments
+                          ul.widget-list
+                            li.widget-list-item
+                              a.widget-list-link(href=&quot;#&quot;) Sneakers &amp;amp; Athletic
+                            li.widget-list-item
+                              a.widget-list-link(href=&quot;#&quot;) Athletic Apparel
+                            li.widget-list-item
+                              a.widget-list-link(href=&quot;#&quot;) Sandals
+                            li.widget-list-item
+                              a.widget-list-link(href=&quot;#&quot;) Jeans
+                            li.widget-list-item
+                              a.widget-list-link(href=&quot;#&quot;) Shirts &amp;amp; Tops
+                            li.widget-list-item
+                              a.widget-list-link(href=&quot;#&quot;) Shorts
+                            li.widget-list-item
+                              a.widget-list-link(href=&quot;#&quot;) T-Shirts
+                            li.widget-list-item
+                              a.widget-list-link(href=&quot;#&quot;) Swimwear
+                            li.widget-list-item
+                              a.widget-list-link(href=&quot;#&quot;) Clogs &amp;amp; Mules
+                            li.widget-list-item
+                              a.widget-list-link(href=&quot;#&quot;) Bags &amp;amp; Wallets
+                            li.widget-list-item
+                              a.widget-list-link(href=&quot;#&quot;) Accessories
+                            li.widget-list-item  
+                              a.widget-list-link(href=&quot;#&quot;) Sunglasses &amp;amp; Eyewear
+                            li.widget-list-item
+                              a.widget-list-link(href=&quot;#&quot;) Watches
+                      .col-md-4.col-sm-6
+                        .widget.widget-links.pb-2.mb-4
+                          h3.widget-title Account &amp;amp; shipping info
+                          ul.widget-list
+                            li.widget-list-item
+                              a.widget-list-link(href=&quot;#&quot;) Your account
+                            li.widget-list-item
+                              a.widget-list-link(href=&quot;#&quot;) Shipping rates &amp;amp; policies
+                            li.widget-list-item
+                              a.widget-list-link(href=&quot;#&quot;) Refunds &amp;amp; replacements
+                            li.widget-list-item
+                              a.widget-list-link(href=&quot;#&quot;) Order tracking
+                            li.widget-list-item
+                              a.widget-list-link(href=&quot;#&quot;) Delivery info
+                            li.widget-list-item
+                              a.widget-list-link(href=&quot;#&quot;) Taxes &amp;amp; fees
+                        .widget.widget-links.pb-2.mb-4
+                          h3.widget-title About us
+                          ul.widget-list
+                            li.widget-list-item
+                              a.widget-list-link(href=&quot;#&quot;) About company
+                            li.widget-list-item
+                              a.widget-list-link(href=&quot;#&quot;) Our team
+                            li.widget-list-item
+                              a.widget-list-link(href=&quot;#&quot;) Careers
+                            li.widget-list-item
+                              a.widget-list-link(href=&quot;#&quot;) News
+                      .col-md-4
+                        .widget.pb-2.mb-4
+                          h3.widget-title.pb-1 Stay informed
+                          form.input-group.flex-nowrap
+                            i.ci-mail.position-absolute.top-50.translate-middle-y.text-muted.fs-base.ms-3
+                            input(type=&quot;email&quot;, placeholder=&quot;Your email&quot;, requied).form-control.rounded-start
+                            button(type=&quot;submit&quot;).btn.btn-primary
+                              | Subscribe*
+                          .form-text *Subscribe to our newsletter to receive early discount offers, updates and new products info.
+                        .widget.pb-2.mb-4
+                          h3.widget-title.pb-1 Download our app
+                          .d-flex.flex-wrap
+                            .me-2.mb-2
+                              a(href=&quot;#&quot;, role=&quot;button&quot;).btn-market.btn-apple
+                                span.btn-market-subtitle Download on the
+                                span.btn-market-title App Store
+                            .mb-2
+                              a(href=&quot;#&quot;, role=&quot;button&quot;).btn-market.btn-google
+                                span.btn-market-subtitle Download on the
+                                span.btn-market-title Google Play
+                  .pt-5(style=&quot;background-color: #ecf2f7;&quot;)
+                    .container
+                      .row.pb-3
+                        .col-md-3.col-sm-6.mb-4
+                          .d-flex
+                            i.ci-rocket.text-primary(style=&quot;font-size: 2.25rem;&quot;)
+                            .ps-3
+                              h6.fs-base.mb-1 Fast and free delivery
+                              p.mb-0.fs-ms.text-muted Free delivery for all orders over $200
+                        .col-md-3.col-sm-6.mb-4
+                          .d-flex
+                            i.ci-currency-exchange.text-primary(style=&quot;font-size: 2.25rem;&quot;)
+                            .ps-3
+                              h6.fs-base.mb-1 Money back guarantee
+                              p.mb-0.fs-ms.text-muted We return money within 30 days
+                        .col-md-3.col-sm-6.mb-4
+                          .d-flex
+                            i.ci-support.text-primary(style=&quot;font-size: 2.25rem;&quot;)
+                            .ps-3
+                              h6.fs-base.mb-1 24/7 customer support
+                              p.mb-0.fs-ms.text-muted Friendly 24/7 customer support
+                        .col-md-3.col-sm-6.mb-4
+                          .d-flex
+                            i.ci-card.text-primary(style=&quot;font-size: 2.25rem;&quot;)
+                            .ps-3
+                              h6.fs-base.mb-1 Secure online payment
+                              p.mb-0.fs-ms.text-muted We possess SSL / Secure сertificate
+                      hr.mb-5
+                      .row.pb-2
+                        .col-md-6.text-center.text-md-start.mb-4
+                          .text-nowrap.mb-4
+                            a(href=&quot;#&quot;).d-inline-block.align-middle.mt-n1.me-3
+                              img(src=&quot;path-to-logo&quot;, width=&quot;117&quot;, alt=&quot;Cartzilla&quot;).d-block
+                            .btn-group.dropdown.disable-autohide
+                              button(type=&quot;button&quot;, data-bs-toggle=&quot;dropdown&quot;).btn.btn-outline-secondary.btn-sm.dropdown-toggle.px-2
+                                img(src=&quot;path-to-image&quot;, width=&quot;20&quot;, alt=&quot;English&quot;).me-2
+                                | Eng / $
+                              ul.dropdown-menu.my-1
+                                li.dropdown-item
+                                  select.form-select.form-select-sm
+                                    option(value=&quot;usd&quot;) $ USD
+                                    option(value=&quot;eur&quot;) € EUR
+                                    option(value=&quot;ukp&quot;) £ UKP
+                                    option(value=&quot;jpy&quot;) ¥ JPY
+                                li
+                                  a(href=&quot;#&quot;).dropdown-item.pb-1
+                                    img(src=&quot;path-to-image&quot;, width=&quot;20&quot;, alt=&quot;Français&quot;).me-2
+                                    | Français
+                                li
+                                  a(href=&quot;#&quot;).dropdown-item.pb-1
+                                    img(src=&quot;path-to-image&quot;, width=&quot;20&quot;, alt=&quot;Deutsch&quot;).me-2
+                                    | Deutsch
+                                li
+                                  a(href=&quot;#&quot;).dropdown-item
+                                    img(src=&quot;path-to-image&quot;, width=&quot;20&quot;, alt=&quot;Italiano&quot;)(width=&quot;20&quot;).me-2
+                                    | Italiano
+                          .widget.widget-links
+                            ul.widget-list.d-flex.flex-wrap.justify-content-center.justify-content-md-start
+                              li.widget-list-item.me-4
+                                a.widget-list-link(href=&quot;#&quot;) Outlets
+                              li.widget-list-item.me-4
+                                a.widget-list-link(href=&quot;#&quot;) Affiliates
+                              li.widget-list-item.me-4
+                                a.widget-list-link(href=&quot;#&quot;) Support
+                              li.widget-list-item.me-4
+                                a.widget-list-link(href=&quot;#&quot;) Privacy
+                              li.widget-list-item.me-4
+                                a.widget-list-link(href=&quot;#&quot;) Terms of use
+                        .col-md-6.text-center.text-md-end.mb-4
+                          .mb-3
+                            a(href=&quot;#&quot;).btn-social.bs-outline.bs-twitter.ms-2.mb-2
+                              i.ci-twitter
+                            a(href=&quot;#&quot;).btn-social.bs-outline.bs-facebook.ms-2.mb-2
+                              i.ci-facebook
+                            a(href=&quot;#&quot;).btn-social.bs-outline.bs-instagram.ms-2.mb-2
+                              i.ci-instagram
+                            a(href=&quot;#&quot;).btn-social.bs-outline.bs-pinterest.ms-2.mb-2
+                              i.ci-pinterest
+                            a(href=&quot;#&quot;).btn-social.bs-outline.bs-youtube.ms-2.mb-2
+                              i.ci-youtube
+                          img(src=&quot;path-to-image&quot; width=&quot;187&quot; alt=&quot;Payment methods&quot;).d-inline-block
+                      .pb-4.fs-xs.text-muted.text-center.text-md-start
+                        | © All rights reserved. Made by 
+                        a.text-muted(href=&quot;#&quot;) Createx Studio
+
+  // Dark version
+  section#footer-dark.pb-5.mb-md-2
+    h2.h5.mb-3 Dark version
+    .card.border-0.shadow
+      .card-header
+        ul(role='tablist').nav.nav-tabs.card-header-tabs
+          li.nav-item
+            a(href='#result2' data-bs-toggle='tab' role='tab' aria-controls='result2' aria-selected='true').nav-link.active Result
+          li.nav-item
+            a(href='#html2' data-bs-toggle='tab' role='tab' aria-controls='html2' aria-selected='false').nav-link HTML
+          li.nav-item
+            a(href='#pug2' data-bs-toggle='tab' role='tab' aria-controls='pug2' aria-selected='false').nav-link Pug
+      .card-body
+        .tab-content
+          #result2.tab-pane.fade.show.active(role='tabpanel')
+            footer.bg-dark.pt-5
+              .px-4
+                .row.pb-2
+                  .col-lg-4.col-sm-6
+                    .widget.widget-links.widget-light.pb-2.mb-4
+                      h3.widget-title.text-light Shop departments
+                      ul.widget-list
+                        li.widget-list-item: a(href='#').widget-list-link Sneakers &amp; Athletic
+                        li.widget-list-item: a(href='#').widget-list-link Athletic Apparel
+                        li.widget-list-item: a(href='#').widget-list-link Sandals
+                        li.widget-list-item: a(href='#').widget-list-link Jeans
+                        li.widget-list-item: a(href='#').widget-list-link Shirts &amp; Tops
+                        li.widget-list-item: a(href='#').widget-list-link Shorts
+                        li.widget-list-item: a(href='#').widget-list-link T-Shirts
+                        li.widget-list-item: a(href='#').widget-list-link Swimwear
+                        li.widget-list-item: a(href='#').widget-list-link Clogs &amp; Mules
+                        li.widget-list-item: a(href='#').widget-list-link Bags &amp; Wallets
+                        li.widget-list-item: a(href='#').widget-list-link Accessories
+                        li.widget-list-item: a(href='#').widget-list-link Sunglasses &amp; Eyewear
+                        li.widget-list-item: a(href='#').widget-list-link Watches
+                  .col-lg-4.col-sm-6
+                    .widget.widget-links.widget-light.pb-2.mb-4
+                      h3.widget-title.text-light Account &amp; shipping info
+                      ul.widget-list
+                        li.widget-list-item: a(href='#').widget-list-link Your account
+                        li.widget-list-item: a(href='#').widget-list-link Shipping rates &amp; policies
+                        li.widget-list-item: a(href='#').widget-list-link Refunds &amp; replacements
+                        li.widget-list-item: a(href='#').widget-list-link Order tracking
+                        li.widget-list-item: a(href='#').widget-list-link Delivery info
+                        li.widget-list-item: a(href='#').widget-list-link Taxes &amp; fees
+                    .widget.widget-links.widget-light.pb-2.mb-4
+                      h3.widget-title.text-light About us
+                      ul.widget-list
+                        li.widget-list-item: a(href='#').widget-list-link About company
+                        li.widget-list-item: a(href='#').widget-list-link Our team
+                        li.widget-list-item: a(href='#').widget-list-link Careers
+                        li.widget-list-item: a(href='#').widget-list-link News
+                  .col-lg-4
+                    .widget.pb-2.mb-4
+                      h3.widget-title.text-light.pb-1 Stay informed
+                      form.input-group.flex-nowrap
+                        i.ci-mail.position-absolute.top-50.translate-middle-y.text-muted.fs-base.ms-3
+                        input(type='email' placeholder='Your email' required).form-control.rounded-start
+                        button(type='submit').btn.btn-primary Subscribe*
+                      .form-text.text-light.opacity-50 *Subscribe to our newsletter to receive early discount offers, updates and new products info.
+                    .widget.pb-2.mb-4
+                      h3.widget-title.text-light.pb-1 Download our app
+                      .d-flex.flex-wrap
+                        .me-2.mb-2
+                          a(href='#' role='button').btn-market.btn-apple
+                            span.btn-market-subtitle Download on the
+                            span.btn-market-title App Store
+                        .mb-2
+                          a(href='#' role='button').btn-market.btn-google
+                            span.btn-market-subtitle Download on the
+                            span.btn-market-title Google Play
+              .pt-5.px-4.bg-darker
+                .row.pb-3
+                  .col-xl-3.col-sm-6.mb-4
+                    .d-flex
+                      i.ci-rocket.text-primary(style='font-size: 2.25rem;')
+                      .ps-3
+                        h6.fs-base.text-light.mb-1 Fast and free delivery
+                        p.mb-0.fs-ms.text-light.opacity-50 Free delivery for all orders over $200
+                  .col-xl-3.col-sm-6.mb-4
+                    .d-flex
+                      i.ci-currency-exchange.text-primary(style='font-size: 2.25rem;')
+                      .ps-3
+                        h6.fs-base.text-light.mb-1 Money back guarantee
+                        p.mb-0.fs-ms.text-light.opacity-50 We return money within 30 days
+                  .col-xl-3.col-sm-6.mb-4
+                    .d-flex
+                      i.ci-support.text-primary(style='font-size: 2.25rem;')
+                      .ps-3
+                        h6.fs-base.text-light.mb-1 24/7 customer support
+                        p.mb-0.fs-ms.text-light.opacity-50 Friendly 24/7 customer support
+                  .col-xl-3.col-sm-6.mb-4
+                    .d-flex
+                      i.ci-card.text-primary(style='font-size: 2.25rem;')
+                      .ps-3
+                        h6.fs-base.text-light.mb-1 Secure online payment
+                        p.mb-0.fs-ms.text-light.opacity-50 We possess SSL / Secure сertificate
+                hr.hr-light.mb-5
+                .row.pb-2
+                  .col-md-6.text-center.text-md-start.mb-4
+                    .text-nowrap.mb-4
+                      a(href='#').d-inline-block.align-middle.mt-n1.me-3
+                        img(src='../img/footer-logo-light.png' width='117' alt='Cartzilla').d-block
+                      .btn-group.dropdown.disable-autohide
+                        button(type='button' data-bs-toggle='dropdown').btn.btn-outline-light.border-light.btn-sm.dropdown-toggle.px-2
+                          img(src='../img/flags/en.png' width='20' alt='English').me-2
+                          | Eng / $
+                        ul.dropdown-menu.my-1
+                          li.dropdown-item
+                            select.form-select.form-select-sm
+                              option(value='usd') $ USD
+                              option(value='eur') € EUR
+                              option(value='ukp') £ UKP
+                              option(value='jpy') ¥ JPY
+                          li
+                            a(href='#').dropdown-item.pb-1
+                              img(src='../img/flags/fr.png' width='20' alt='Français').me-2
+                              | Français
+                          li
+                            a(href='#').dropdown-item.pb-1
+                              img(src='../img/flags/de.png' width='20' alt='Deutsch').me-2
+                              | Deutsch
+                          li
+                            a(href='#').dropdown-item
+                              img(src='../img/flags/it.png' width='20' alt='Italiano').me-2
+                              | Italiano
+                    .widget.widget-links.widget-light
+                      ul.widget-list.d-flex.flex-wrap.justify-content-center.justify-content-md-start
+                        li.widget-list-item.me-4: a(href='#').widget-list-link Outlets
+                        li.widget-list-item.me-4: a(href='#').widget-list-link Affiliates
+                        li.widget-list-item.me-4: a(href='#').widget-list-link Support
+                        li.widget-list-item.me-4: a(href='#').widget-list-link Privacy
+                        li.widget-list-item.me-4: a(href='#').widget-list-link Terms of use
+                  .col-md-6.text-center.text-md-end.mb-4
+                    .mb-3
+                      a(href="#").btn-social.bs-light.bs-twitter.ms-2.mb-2
+                        i.ci-twitter
+                      a(href="#").btn-social.bs-light.bs-facebook.ms-2.mb-2
+                        i.ci-facebook
+                      a(href="#").btn-social.bs-light.bs-instagram.ms-2.mb-2
+                        i.ci-instagram
+                      a(href="#").btn-social.bs-light.bs-pinterest.ms-2.mb-2
+                        i.ci-pinterest
+                      a(href="#").btn-social.bs-light.bs-youtube.ms-2.mb-2
+                        i.ci-youtube
+                    img(src='../img/cards-alt.png' width='187' alt='Payment methods').d-inline-block
+                .pb-4.fs-xs.text-light.opacity-50.text-center.text-md-start
+                  | © All rights reserved. Made by 
+                  a(href='#').text-light Createx Studio
+          #html2.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-html').
+                &lt;!-- Dark footer --&gt;
+                &lt;footer class=&quot;bg-dark pt-5&quot;&gt;
+                  &lt;div class=&quot;container&quot;&gt;
+                    &lt;div class=&quot;row pb-2&quot;&gt;
+                      &lt;div class=&quot;col-md-4 col-sm-6&quot;&gt;
+                        &lt;div class=&quot;widget widget-links widget-light pb-2 mb-4&quot;&gt;
+                          &lt;h3 class=&quot;widget-title text-light&quot;&gt;Shop departments&lt;/h3&gt;
+                          &lt;ul class=&quot;widget-list&quot;&gt;
+                            &lt;li class=&quot;widget-list-item&quot;&gt;
+                              &lt;a href=&quot;#&quot; class=&quot;widget-list-link&quot;&gt;Sneakers &amp; Athletic&lt;/a&gt;
+                            &lt;/li&gt;
+                            &lt;li class=&quot;widget-list-item&quot;&gt;
+                              &lt;a href=&quot;#&quot; class=&quot;widget-list-link&quot;&gt;Athletic Apparel&lt;/a&gt;
+                            &lt;/li&gt;
+                            &lt;li class=&quot;widget-list-item&quot;&gt;
+                              &lt;a href=&quot;#&quot; class=&quot;widget-list-link&quot;&gt;Sandals&lt;/a&gt;
+                            &lt;/li&gt;
+                            &lt;li class=&quot;widget-list-item&quot;&gt;
+                              &lt;a href=&quot;#&quot; class=&quot;widget-list-link&quot;&gt;Jeans&lt;/a&gt;
+                            &lt;/li&gt;
+                            &lt;li class=&quot;widget-list-item&quot;&gt;
+                              &lt;a href=&quot;#&quot; class=&quot;widget-list-link&quot;&gt;Shirts &amp; Tops&lt;/a&gt;
+                            &lt;/li&gt;
+                            &lt;li class=&quot;widget-list-item&quot;&gt;
+                              &lt;a href=&quot;#&quot; class=&quot;widget-list-link&quot;&gt;Shorts&lt;/a&gt;
+                            &lt;/li&gt;
+                            &lt;li class=&quot;widget-list-item&quot;&gt;
+                              &lt;a href=&quot;#&quot; class=&quot;widget-list-link&quot;&gt;T-Shirts&lt;/a&gt;
+                            &lt;/li&gt;
+                            &lt;li class=&quot;widget-list-item&quot;&gt;
+                              &lt;a href=&quot;#&quot; class=&quot;widget-list-link&quot;&gt;Swimwear&lt;/a&gt;
+                            &lt;/li&gt;
+                            &lt;li class=&quot;widget-list-item&quot;&gt;
+                              &lt;a href=&quot;#&quot; class=&quot;widget-list-link&quot;&gt;Clogs &amp; Mules&lt;/a&gt;
+                            &lt;/li&gt;
+                            &lt;li class=&quot;widget-list-item&quot;&gt;
+                              &lt;a href=&quot;#&quot; class=&quot;widget-list-link&quot;&gt;Bags &amp; Wallets&lt;/a&gt;
+                            &lt;/li&gt;
+                            &lt;li class=&quot;widget-list-item&quot;&gt;
+                              &lt;a href=&quot;#&quot; class=&quot;widget-list-link&quot;&gt;Accessories&lt;/a&gt;
+                            &lt;/li&gt;
+                            &lt;li class=&quot;widget-list-item&quot;&gt;
+                              &lt;a href=&quot;#&quot; class=&quot;widget-list-link&quot;&gt;Sunglasses &amp; Eyewear&lt;/a&gt;
+                            &lt;/li&gt;
+                            &lt;li class=&quot;widget-list-item&quot;&gt;
+                              &lt;a href=&quot;#&quot; class=&quot;widget-list-link&quot;&gt;Watches&lt;/a&gt;
+                            &lt;/li&gt;
+                          &lt;/ul&gt;
+                        &lt;/div&gt;
+                      &lt;/div&gt;
+                      &lt;div class=&quot;col-md-4 col-sm-6&quot;&gt;
+                        &lt;div class=&quot;widget widget-links widget-light pb-2 mb-4&quot;&gt;
+                          &lt;h3 class=&quot;widget-title text-light&quot;&gt;Account &amp; shipping info&lt;/h3&gt;
+                          &lt;ul class=&quot;widget-list&quot;&gt;
+                            &lt;li class=&quot;widget-list-item&quot;&gt;
+                              &lt;a href=&quot;#&quot; class=&quot;widget-list-link&quot;&gt;Your account&lt;/a&gt;
+                            &lt;/li&gt;
+                            &lt;li class=&quot;widget-list-item&quot;&gt;
+                              &lt;a href=&quot;#&quot; class=&quot;widget-list-link&quot;&gt;Shipping rates &amp; policies&lt;/a&gt;
+                            &lt;/li&gt;
+                            &lt;li class=&quot;widget-list-item&quot;&gt;
+                              &lt;a href=&quot;#&quot; class=&quot;widget-list-link&quot;&gt;Refunds &amp; replacements&lt;/a&gt;
+                            &lt;/li&gt;
+                            &lt;li class=&quot;widget-list-item&quot;&gt;
+                              &lt;a href=&quot;#&quot; class=&quot;widget-list-link&quot;&gt;Order tracking&lt;/a&gt;
+                            &lt;/li&gt;
+                            &lt;li class=&quot;widget-list-item&quot;&gt;
+                              &lt;a href=&quot;#&quot; class=&quot;widget-list-link&quot;&gt;Delivery info&lt;/a&gt;
+                            &lt;/li&gt;
+                            &lt;li class=&quot;widget-list-item&quot;&gt;
+                              &lt;a href=&quot;#&quot; class=&quot;widget-list-link&quot;&gt;Taxes &amp; fees&lt;/a&gt;
+                            &lt;/li&gt;
+                          &lt;/ul&gt;
+                        &lt;/div&gt;
+                        &lt;div class=&quot;widget widget-links widget-light pb-2 mb-4&quot;&gt;
+                          &lt;h3 class=&quot;widget-title&quot;&gt;About us&lt;/h3&gt;
+                          &lt;ul class=&quot;widget-list&quot;&gt;
+                            &lt;li class=&quot;widget-list-item&quot;&gt;
+                              &lt;a href=&quot;#&quot; class=&quot;widget-list-link&quot;&gt;About company&lt;/a&gt;
+                            &lt;/li&gt;
+                            &lt;li class=&quot;widget-list-item&quot;&gt;
+                              &lt;a href=&quot;#&quot; class=&quot;widget-list-link&quot;&gt;Our team&lt;/a&gt;
+                            &lt;/li&gt;
+                            &lt;li class=&quot;widget-list-item&quot;&gt;
+                              &lt;a href=&quot;#&quot; class=&quot;widget-list-link&quot;&gt;Careers&lt;/a&gt;
+                            &lt;/li&gt;
+                            &lt;li class=&quot;widget-list-item&quot;&gt;
+                              &lt;a href=&quot;#&quot; class=&quot;widget-list-link&quot;&gt;News&lt;/a&gt;
+                            &lt;/li&gt;
+                          &lt;/ul&gt;
+                        &lt;/div&gt;
+                      &lt;/div&gt;
+                      &lt;div class=&quot;col-md-4&quot;&gt;
+                        &lt;div class=&quot;widget pb-2 mb-4&quot;&gt;
+                          &lt;h3 class=&quot;widget-title text-light pb-1&quot;&gt;Stay informed&lt;/h3&gt;
+                          &lt;form class=&quot;input-group flex-nowrap&quot;&gt;
+                            &lt;i class=&quot;ci-mail position-absolute top-50 translate-middle-y text-muted fs-base ms-3&quot;&gt;&lt;/i&gt;
+                            &lt;input class=&quot;form-control rounded-start&quot; type=&quot;email&quot; placeholder=&quot;Your email&quot; required&gt;
+                            &lt;button class=&quot;btn btn-primary&quot; type=&quot;submit&quot;&gt;Subscribe*&lt;/button&gt;
+                          &lt;/form&gt;
+                          &lt;div class=&quot;form-text text-light opacity-50&quot;&gt;*Subscribe to our newsletter to receive early discount offers, updates and new products info.&lt;/div&gt;
+                        &lt;/div&gt;
+                        &lt;div class=&quot;widget pb-2 mb-4&quot;&gt;
+                          &lt;h3 class=&quot;widget-title text-light pb-1&quot;&gt;Download our app&lt;/h3&gt;
+                          &lt;div class=&quot;d-flex flex-wrap&quot;&gt;
+                            &lt;div class=&quot;me-2 mb-2&quot;&gt;
+                              &lt;a class=&quot;btn-market btn-apple&quot; href=&quot;#&quot; role=&quot;button&quot;&gt;
+                                &lt;span class=&quot;btn-market-subtitle&quot;&gt;Download on the&lt;/span&gt;
+                                &lt;span class=&quot;btn-market-title&quot;&gt;App Store&lt;/span&gt;
+                              &lt;/a&gt;
+                            &lt;/div&gt;
+                            &lt;div class=&quot;mb-2&quot;&gt;
+                              &lt;a class=&quot;btn-market btn-google&quot; href=&quot;#&quot; role=&quot;button&quot;&gt;
+                                &lt;span class=&quot;btn-market-subtitle&quot;&gt;Download on the&lt;/span&gt;
+                                &lt;span class=&quot;btn-market-title&quot;&gt;Google Play&lt;/span&gt;
+                              &lt;/a&gt;
+                            &lt;/div&gt;
+                          &lt;/div&gt;
+                        &lt;/div&gt;
+                      &lt;/div&gt;
+                    &lt;/div&gt;
+                  &lt;/div&gt;
+                  &lt;div class=&quot;pt-5 bg-darker&quot;&gt;
+                    &lt;div class=&quot;container&quot;&gt;
+                      &lt;div class=&quot;row pb-3&quot;&gt;
+                        &lt;div class=&quot;col-md-3 col-sm-6 mb-4&quot;&gt;
+                          &lt;div class=&quot;d-flex&quot;&gt;
+                            &lt;i class=&quot;ci-rocket text-primary&quot; style=&quot;font-size: 2.25rem;&quot;&gt;&lt;/i&gt;
+                            &lt;div class=&quot;ps-3&quot;&gt;
+                              &lt;h6 class=&quot;fs-base text-light mb-1&quot;&gt;Fast and free delivery&lt;/h6&gt;
+                              &lt;p class=&quot;mb-0 fs-ms text-light opacity-50&quot;&gt;Free delivery for all orders over $200&lt;/p&gt;
+                            &lt;/div&gt;
+                          &lt;/div&gt;
+                        &lt;/div&gt;
+                        &lt;div class=&quot;col-md-3 col-sm-6 mb-4&quot;&gt;
+                          &lt;div class=&quot;d-flex&quot;&gt;
+                            &lt;i class=&quot;ci-currency-exchange text-primary&quot; style=&quot;font-size: 2.25rem;&quot;&gt;&lt;/i&gt;
+                            &lt;div class=&quot;ps-3&quot;&gt;
+                              &lt;h6 class=&quot;fs-base text-light mb-1&quot;&gt;Money back guarantee&lt;/h6&gt;
+                              &lt;p class=&quot;mb-0 fs-ms text-light opacity-50&quot;&gt;We return money within 30 days&lt;/p&gt;
+                            &lt;/div&gt;
+                          &lt;/div&gt;
+                        &lt;/div&gt;
+                        &lt;div class=&quot;col-md-3 col-sm-6 mb-4&quot;&gt;
+                          &lt;div class=&quot;d-flex&quot;&gt;
+                            &lt;i class=&quot;ci-support text-primary&quot; style=&quot;font-size: 2.25rem;&quot;&gt;&lt;/i&gt;
+                            &lt;div class=&quot;ps-3&quot;&gt;
+                              &lt;h6 class=&quot;fs-base text-light mb-1&quot;&gt;24/7 customer support&lt;/h6&gt;
+                              &lt;p class=&quot;mb-0 fs-ms text-light opacity-50&quot;&gt;Friendly 24/7 customer support&lt;/p&gt;
+                            &lt;/div&gt;
+                          &lt;/div&gt;
+                        &lt;/div&gt;
+                        &lt;div class=&quot;col-md-3 col-sm-6 mb-4&quot;&gt;
+                          &lt;div class=&quot;d-flex&quot;&gt;
+                            &lt;i class=&quot;ci-card text-primary&quot; style=&quot;font-size: 2.25rem;&quot;&gt;&lt;/i&gt;
+                            &lt;div class=&quot;ps-3&quot;&gt;
+                              &lt;h6 class=&quot;fs-base text-light mb-1&quot;&gt;Secure online payment&lt;/h6&gt;
+                              &lt;p class=&quot;mb-0 fs-ms text-light opacity-50&quot;&gt;We possess SSL / Secure сertificate&lt;/p&gt;
+                            &lt;/div&gt;
+                          &lt;/div&gt;
+                        &lt;/div&gt;
+                      &lt;/div&gt;
+                      &lt;hr class=&quot;hr-light mb-5&quot;&gt;
+                      &lt;div class=&quot;row pb-2&quot;&gt;
+                        &lt;div class=&quot;col-md-6 text-center text-md-start mb-4&quot;&gt;
+                          &lt;div class=&quot;text-nowrap mb-4&quot;&gt;
+                            &lt;a class=&quot;d-inline-block align-middle mt-n1 me-3&quot; href=&quot;#&quot;&gt;
+                              &lt;img class=&quot;d-block&quot; width=&quot;117&quot; src=&quot;path-to-logo&quot; alt=&quot;Cartzilla&quot;/&gt;
+                            &lt;/a&gt;
+                            &lt;div class=&quot;btn-group dropdown disable-autohide&quot;&gt;
+                              &lt;button class=&quot;btn btn-outline-light border-light btn-sm dropdown-toggle px-2&quot; type=&quot;button&quot; data-bs-toggle=&quot;dropdown&quot;&gt;
+                                &lt;img class=&quot;me-2&quot; width=&quot;20&quot; src=&quot;path-to-image&quot; alt=&quot;English&quot;/&gt;
+                                Eng / $
+                              &lt;/button&gt;
+                              &lt;ul class=&quot;dropdown-menu my-1&quot;&gt;
+                                &lt;li class=&quot;dropdown-item&quot;&gt;
+                                  &lt;select class=&quot;form-select form-select-sm&quot;&gt;
+                                    &lt;option value=&quot;usd&quot;&gt;$ USD&lt;/option&gt;
+                                    &lt;option value=&quot;eur&quot;&gt;€ EUR&lt;/option&gt;
+                                    &lt;option value=&quot;ukp&quot;&gt;£ UKP&lt;/option&gt;
+                                    &lt;option value=&quot;jpy&quot;&gt;¥ JPY&lt;/option&gt;
+                                  &lt;/select&gt;
+                                &lt;/li&gt;
+                                &lt;li&gt;
+                                  &lt;a class=&quot;dropdown-item pb-1&quot; href=&quot;#&quot;&gt;
+                                    &lt;img class=&quot;me-2&quot; width=&quot;20&quot; src=&quot;path-to-image&quot; alt=&quot;Français&quot;/&gt;
+                                    Français
+                                  &lt;/a&gt;
+                                &lt;/li&gt;
+                                &lt;li&gt;
+                                  &lt;a class=&quot;dropdown-item pb-1&quot; href=&quot;#&quot;&gt;
+                                    &lt;img class=&quot;me-2&quot; width=&quot;20&quot; src=&quot;path-to-image&quot; alt=&quot;Deutsch&quot;/&gt;
+                                    Deutsch
+                                  &lt;/a&gt;
+                                &lt;/li&gt;
+                                &lt;li&gt;
+                                  &lt;a class=&quot;dropdown-item&quot; href=&quot;#&quot;&gt;
+                                    &lt;img class=&quot;me-2&quot; width=&quot;20&quot; src=&quot;path-to-image&quot; alt=&quot;Italiano&quot;/&gt;
+                                    Italiano
+                                  &lt;/a&gt;
+                                &lt;/li&gt;
+                              &lt;/ul&gt;
+                            &lt;/div&gt;
+                          &lt;/div&gt;
+                          &lt;div class=&quot;widget widget-links widget-light&quot;&gt;
+                            &lt;ul class=&quot;widget-list d-flex flex-wrap justify-content-center justify-content-md-start&quot;&gt;
+                              &lt;li class=&quot;widget-list-item me-4&quot;&gt;
+                                &lt;a href=&quot;#&quot; class=&quot;widget-list-link&quot;&gt;Outlets&lt;/a&gt;
+                              &lt;/li&gt;
+                              &lt;li class=&quot;widget-list-item me-4&quot;&gt;
+                                &lt;a href=&quot;#&quot; class=&quot;widget-list-link&quot;&gt;Affiliates&lt;/a&gt;
+                              &lt;/li&gt;
+                              &lt;li class=&quot;widget-list-item me-4&quot;&gt;
+                                &lt;a href=&quot;#&quot; class=&quot;widget-list-link&quot;&gt;Support&lt;/a&gt;
+                              &lt;/li&gt;
+                              &lt;li class=&quot;widget-list-item me-4&quot;&gt;
+                                &lt;a href=&quot;#&quot; class=&quot;widget-list-link&quot;&gt;Privacy&lt;/a&gt;
+                              &lt;/li&gt;
+                              &lt;li class=&quot; widget-list-itemme-4&quot;&gt;
+                                &lt;a href=&quot;#&quot; class=&quot;widget-list-link&quot;&gt;Terms of use&lt;/a&gt;
+                              &lt;/li&gt;
+                            &lt;/ul&gt;
+                          &lt;/div&gt;
+                        &lt;/div&gt;
+                        &lt;div class=&quot;col-md-6 text-center text-md-end mb-4&quot;&gt;
+                          &lt;div class=&quot;mb-3&quot;&gt;
+                            &lt;a class=&quot;btn-social bs-light bs-twitter ms-2 mb-2&quot; href=&quot;#&quot;&gt;&lt;i class=&quot;ci-twitter&quot;&gt;&lt;/i&gt;&lt;/a&gt;
+                            &lt;a class=&quot;btn-social bs-light bs-facebook ms-2 mb-2&quot; href=&quot;#&quot;&gt;&lt;i class=&quot;ci-facebook&quot;&gt;&lt;/i&gt;&lt;/a&gt;
+                            &lt;a class=&quot;btn-social bs-light bs-instagram ms-2 mb-2&quot; href=&quot;#&quot;&gt;&lt;i class=&quot;ci-instagram&quot;&gt;&lt;/i&gt;&lt;/a&gt;
+                            &lt;a class=&quot;btn-social bs-light bs-pinterest ms-2 mb-2&quot; href=&quot;#&quot;&gt;&lt;i class=&quot;ci-pinterest&quot;&gt;&lt;/i&gt;&lt;/a&gt;
+                            &lt;a class=&quot;btn-social bs-light bs-youtube ms-2 mb-2&quot; href=&quot;#&quot;&gt;&lt;i class=&quot;ci-youtube&quot;&gt;&lt;/i&gt;&lt;/a&gt;
+                          &lt;/div&gt;
+                          &lt;img class=&quot;d-inline-block&quot; width=&quot;187&quot; src=&quot;path-to-image&quot; alt=&quot;Payment methods&quot;/&gt;
+                        &lt;/div&gt;
+                      &lt;/div&gt;
+                      &lt;div class=&quot;pb-4 fs-xs text-light opacity-50 text-center text-md-start&quot;&gt;© All rights reserved. Made by &lt;a class=&quot;text-light&quot; href=&quot;#&quot;&gt;Createx Studio&lt;/a&gt;&lt;/div&gt;
+                    &lt;/div&gt;
+                  &lt;/div&gt;
+                &lt;/footer&gt;
+          #pug2.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-pug').
+                // Dark footer
+                footer.bg-dark.pt-5
+                  .container
+                    .row.pb-2
+                      .col-md-4.col-sm-6
+                        .widget.widget-links.widget-light.pb-2.mb-4
+                          h3.widget-title.text-light Shop departments
+                          ul.widget-list
+                            li.widget-list-item
+                              a.widget-list-link(href=&quot;#&quot;) Sneakers &amp;amp; Athletic
+                            li.widget-list-item
+                              a.widget-list-link(href=&quot;#&quot;) Athletic Apparel
+                            li.widget-list-item
+                              a.widget-list-link(href=&quot;#&quot;) Sandals
+                            li.widget-list-item
+                              a.widget-list-link(href=&quot;#&quot;) Jeans
+                            li.widget-list-item
+                              a.widget-list-link(href=&quot;#&quot;) Shirts &amp;amp; Tops
+                            li.widget-list-item
+                              a.widget-list-link(href=&quot;#&quot;) Shorts
+                            li.widget-list-item
+                              a.widget-list-link(href=&quot;#&quot;) T-Shirts
+                            li.widget-list-item
+                              a.widget-list-link(href=&quot;#&quot;) Swimwear
+                            li.widget-list-item
+                              a.widget-list-link(href=&quot;#&quot;) Clogs &amp;amp; Mules
+                            li.widget-list-item
+                              a.widget-list-link(href=&quot;#&quot;) Bags &amp;amp; Wallets
+                            li.widget-list-item
+                              a.widget-list-link(href=&quot;#&quot;) Accessories
+                            li.widget-list-item 
+                              a.widget-list-link(href=&quot;#&quot;) Sunglasses &amp;amp; Eyewear
+                            li.widget-list-item
+                              a.widget-list-link(href=&quot;#&quot;) Watches
+                      .col-md-4.col-sm-6
+                        .widget.widget-links.widget-light.pb-2.mb-4
+                          h3.widget-title.text-light Account &amp;amp; shipping info
+                          ul.widget-list
+                            li.widget-list-item
+                              a.widget-list-link(href=&quot;#&quot;) Your account
+                            li.widget-list-item
+                              a.widget-list-link(href=&quot;#&quot;) Shipping rates &amp;amp; policies
+                            li.widget-list-item
+                              a.widget-list-link(href=&quot;#&quot;) Refunds &amp;amp; replacements
+                            li.widget-list-item
+                              a.widget-list-link(href=&quot;#&quot;) Order tracking
+                            li.widget-list-item
+                              a.widget-list-link(href=&quot;#&quot;) Delivery info
+                            li.widget-list-item
+                              a.widget-list-link(href=&quot;#&quot;) Taxes &amp;amp; fees
+                        .widget.widget-links.widget-light.pb-2.mb-4
+                          h3.widget-title.text-light About us
+                          ul.widget-list
+                            li.widget-list-item
+                              a.widget-list-link(href=&quot;#&quot;) About company
+                            li.widget-list-item
+                              a.widget-list-link(href=&quot;#&quot;) Our team
+                            li.widget-list-item
+                              a.widget-list-link(href=&quot;#&quot;) Careers
+                            li.widget-list-item
+                              a.widget-list-link(href=&quot;#&quot;) News
+                      .col-md-4
+                        .widget.pb-2.mb-4
+                          h3.widget-title.text-light.pb-1 Stay informed
+                          form.input-group.flex-nowrap
+                            i.ci-mail.position-absolute.top-50.translate-middle-y.text-muted.fs-base.ms-3
+                            input(type=&quot;email&quot;, placeholder=&quot;Your email&quot;, required).form-control.rounded-start
+                            button(type=&quot;submit&quot;).btn.btn-primary
+                              | Subscribe*
+                          .form-text.text-light.opacity-50 *Subscribe to our newsletter to receive early discount offers, updates and new products info.
+                        .widget.pb-2.mb-4
+                          h3.widget-title.text-light.pb-1 Download our app
+                          .d-flex.flex-wrap
+                            .me-2.mb-2
+                              a(href=&quot;#&quot;, role=&quot;button&quot;).btn-market.btn-apple
+                                span.btn-market-subtitle Download on the
+                                span.btn-market-title App Store
+                            .mb-2
+                              a(href=&quot;#&quot;, role=&quot;button&quot;).btn-market.btn-google
+                                span.btn-market-subtitle Download on the
+                                span.btn-market-title Google Play
+                  .pt-5.bg-darker
+                    .container
+                      .row.pb-3
+                        .col-md-3.col-sm-6.mb-4
+                          .d-flex
+                            i.ci-rocket.text-primary(style=&quot;font-size: 2.25rem;&quot;)
+                            .ps-3
+                              h6.fs-base.text-light.mb-1 Fast and free delivery
+                              p.mb-0.fs-ms.text-light.opacity-50 Free delivery for all orders over $200
+                        .col-md-3.col-sm-6.mb-4
+                          .d-flex
+                            i.ci-currency-exchange.text-primary(style=&quot;font-size: 2.25rem;&quot;)
+                            .ps-3
+                              h6.fs-base.text-light.mb-1 Money back guarantee
+                              p.mb-0.fs-ms.text-light.opacity-50 We return money within 30 days
+                        .col-md-3.col-sm-6.mb-4
+                          .d-flex
+                            i.ci-support.text-primary(style=&quot;font-size: 2.25rem;&quot;)
+                            .ps-3
+                              h6.fs-base.text-light.mb-1 24/7 customer support
+                              p.mb-0.fs-ms.text-light.opacity-50 Friendly 24/7 customer support
+                        .col-md-3.col-sm-6.mb-4
+                          .d-flex
+                            i.ci-card.text-primary(style=&quot;font-size: 2.25rem;&quot;)
+                            .ps-3
+                              h6.fs-base.text-light.mb-1 Secure online payment
+                              p.mb-0.fs-ms.text-light.opacity-50 We possess SSL / Secure сertificate
+                      hr.hr-light.mb-5
+                      .row.pb-2
+                        .col-md-6.text-center.text-md-start.mb-4
+                          .text-nowrap.mb-4
+                            a(href=&quot;#&quot;).d-inline-block.align-middle.mt-n1.me-3
+                              img(src=&quot;path-to-logo&quot;, width=&quot;117&quot;, alt=&quot;Cartzilla&quot;).d-block
+                            .btn-group.dropdown.disable-autohide
+                              button(type=&quot;button&quot;, data-bs-toggle=&quot;dropdown&quot;).btn.btn-outline-light.border-light.btn-sm.dropdown-toggle.px-2
+                                img(src=&quot;path-to-image&quot;, width=&quot;20&quot;, alt=&quot;English&quot;).me-2
+                                | Eng / $
+                              ul.dropdown-menu.my-1
+                                li.dropdown-item
+                                  select.form-select.form-select-sm
+                                    option(value=&quot;usd&quot;) $ USD
+                                    option(value=&quot;eur&quot;) € EUR
+                                    option(value=&quot;ukp&quot;) £ UKP
+                                    option(value=&quot;jpy&quot;) ¥ JPY
+                                li
+                                  a(href=&quot;#&quot;).dropdown-item.pb-1
+                                    img(src=&quot;path-to-image&quot;, width=&quot;20&quot;, alt=&quot;Français&quot;).me-2
+                                    | Français
+                                li
+                                  a(href=&quot;#&quot;).dropdown-item.pb-1
+                                    img(src=&quot;path-to-image&quot;, width=&quot;20&quot;, alt=&quot;Deutsch&quot;).me-2
+                                    | Deutsch
+                                li
+                                  a(href=&quot;#&quot;).dropdown-item
+                                    img(src=&quot;path-to-image&quot;, width=&quot;20&quot;, alt=&quot;Italiano&quot;).me-2
+                                    | Italiano
+                          .widget.widget-links.widget-light
+                            ul.widget-list.d-flex.flex-wrap.justify-content-center.justify-content-md-start
+                              li.widget-list-item.me-4
+                                a.widget-list-link(href=&quot;#&quot;) Outlets
+                              li.widget-list-item.me-4
+                                a.widget-list-link(href=&quot;#&quot;) Affiliates
+                              li.widget-list-item.me-4
+                                a.widget-list-link(href=&quot;#&quot;) Support
+                              li.widget-list-item.me-4
+                                a.widget-list-link(href=&quot;#&quot;) Privacy
+                              li.widget-list-item.me-4
+                                a.widget-list-link(href=&quot;#&quot;) Terms of use
+                        .col-md-6.text-center.text-md-end.mb-4
+                          .mb-3
+                            a(href=&quot;#&quot;).btn-social.bs-light.bs-twitter.ms-2.mb-2
+                              i.ci-twitter
+                            a(href=&quot;#&quot;).btn-social.bs-light.bs-facebook.ms-2.mb-2
+                              i.ci-facebook
+                            a(href=&quot;#&quot;).btn-social.bs-light.bs-instagram.ms-2.mb-2
+                              i.ci-instagram
+                            a(href=&quot;#&quot;).btn-social.bs-light.bs-pinterest.ms-2.mb-2
+                              i.ci-pinterest
+                            a(href=&quot;#&quot;).btn-social.bs-light.bs-youtube.ms-2.mb-2
+                              i.ci-youtube
+                          img(src=&quot;path-to-image&quot;, width=&quot;187&quot;, alt=&quot;Payment methods&quot;).d-inline-block
+                      .pb-4.fs-xs.text-light.opacity-50.text-center.text-md-start
+                        | © All rights reserved. Made by 
+                        a.text-light(href=&quot;#&quot;) Createx Studio

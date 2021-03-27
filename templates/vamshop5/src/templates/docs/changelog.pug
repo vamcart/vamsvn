@@ -1,0 +1,359 @@
+extends ../partials/layout-docs
+
+//- Override default config variables
+append config
+  - var pageTitle = 'Changelog'
+  - var isNestedFile = true
+  
+//- Page Content
+block content
+
+  h2.h4.pb-2
+    span.text-primary v2.0&nbsp;
+    | &ndash;&nbsp;
+    | February 10, 2021
+  ul.list-unstyled
+    li.d-flex.align-items-start.mb-3
+      span.badge.bg-info.fs-sm.pt-1.me-3 New
+      div 
+        u.fw-medium Rebuilt Cartzilla core to fully support Bootstrap v5.0.0-beta1
+        ul.fs-md.ps-3.pt-2
+          li Dropped jQuery entirely. Redesigned Cartzilla JS to be modular (ES6 modules) and library agnostic.
+          li Renamed custom CSS classes to follow the Bootstrap 5 naming
+          li Rewrote Cartzilla utility classes to support new Bootstrap 5 Utility API
+          li No longer supports IE &lt;=11
+    li.d-flex.align-items-start.mb-3
+      span.badge.bg-info.fs-sm.pt-1.me-3 New
+      div Off-canvas component that replaced the old one
+    li.d-flex.align-items-start.mb-3
+      span.badge.bg-info.fs-sm.pt-1.me-3 New
+      div
+        | Product Bundle component. 
+        a(href='../components/shop-components.html#product-bundle' target='_blank' rel='noopener').fs-sm View demo<i class='ci-arrow-right fs-xs ms-1'></i>
+    li.d-flex.align-items-start.mb-3
+      span.badge.bg-success.fs-sm.pt-1.me-3 Updated
+      div
+        | Added navbar support for new dark dropdowns. It is possible to have 100% dark navbar now. 
+        a(href='../navbar-3-level-dark.html' target='_blank' rel='noopener').fs-sm View demo<i class='ci-arrow-right fs-xs ms-1'></i>
+    li.d-flex.align-items-start.mb-3
+      span.badge.bg-success.fs-sm.pt-1.me-3 Updated
+      div
+        | Cartzilla icon font. Added half start, filled thumb upd/down, etc. icons. 
+        a(href='../components/icon-font.html' target='_blank' rel='noopener').fs-sm See all icons<i class='ci-arrow-right fs-xs ms-1'></i>
+    li.d-flex.align-items-start.mb-3
+      span.badge.bg-success.fs-sm.pt-1.me-3 Updated
+      div
+        | Comment Like/Dislike buttons to have active (filled) state. 
+        a(href='../components/buttons.html#buttons-like-dislike' target='_blank' rel='noopener').fs-sm View demo<i class='ci-arrow-right fs-xs ms-1'></i>
+    li.d-flex.align-items-start.mb-3
+      span.badge.bg-success.fs-sm.pt-1.me-3 Updated
+      div Added half-star to product rating pug mixin. It's now possible to display 3.5 stars (<code>+star-rating(3.5)</code>)
+    li.d-flex.align-items-start.mb-3
+      span.badge.bg-success.fs-sm.pt-1.me-3 Updated
+      div All plugins, npm modules and dependencies to latest versions
+    li.d-flex.align-items-start.mb-3
+      span.badge.bg-success.fs-sm.pt-1.me-3 Updated
+      div Removed transparent navigation bar (<code>navbar-floating</code>) due to bad compatibility with Bootstrap 5
+    li.d-flex.align-items-start.mb-3
+      span.badge.bg-success.fs-sm.pt-1.me-3 Updated
+      div Documentation
+    li.d-flex.align-items-start.mb-3
+      span.badge.bg-warning.fs-sm.pt-1.me-3 Fixed
+      div Minor bug fixes and improvements
+  
+  hr.my-5
+
+  h2.h4.pb-2
+    span.text-primary v1.4&nbsp;
+    | &ndash;&nbsp;
+    | July 13, 2020
+  ul.list-unstyled
+    li.d-flex.align-items-start.mb-3
+      span.badge.bg-info.fs-sm.pt-1.me-3 New
+      div
+        u.fw-medium Food Delivery Service Demo:
+        ul.fs-md.ps-3.pt-2
+          li
+            span.fw-medium Front Page (Homepage). 
+            a(href='../home-food-delivery.html' target='_blank' rel='noopener').fs-sm View demo<i class='ci-arrow-right fs-xs ms-1'></i>
+          li
+            span.fw-medium Category Page. 
+            a(href='../food-delivery-category.html' target='_blank' rel='noopener').fs-sm View demo<i class='ci-arrow-right fs-xs ms-1'></i>
+          li
+            span.fw-medium Single Item (Restaurant) Page. 
+            a(href='../food-delivery-single.html' target='_blank' rel='noopener').fs-sm View demo<i class='ci-arrow-right fs-xs ms-1'></i>
+          li
+            span.fw-medium Cart (Your Order). 
+            a(href='../food-delivery-cart.html' target='_blank' rel='noopener').fs-sm View demo<i class='ci-arrow-right fs-xs ms-1'></i>
+          li
+            span.fw-medium Checkout (Address &amp; Payment). 
+            a(href='../food-delivery-checkout.html' target='_blank' rel='noopener').fs-sm View demo<i class='ci-arrow-right fs-xs ms-1'></i>
+    li.d-flex.align-items-start.mb-3
+      span.badge.bg-info.fs-sm.pt-1.me-3 New
+      div
+        span Single Post no Sidebar Template&nbsp;&nbsp;
+        a(href='../blog-single.html' target='_blank' rel='noopener').fs-sm View demo<i class='ci-arrow-right fs-xs ms-1'></i>
+    li.d-flex.align-items-start.mb-3
+      span.badge.bg-success.fs-sm.pt-1.me-3 Updated
+      div Bootstrap to latest stable version 4.5.0
+    li.d-flex.align-items-start.mb-3
+      span.badge.bg-success.fs-sm.pt-1.me-3 Updated
+      div All plugins, npm modules and dependencies to latest versions
+    li.d-flex.align-items-start.mb-3
+      span.badge.bg-success.fs-sm.pt-1.me-3 Updated
+      div Changed CSS class name of transparent navigation bar from <code>navbar-transparent</code> to <code>navbar-floating</code>. Updated <code>stickyNavbar()</code> function inside <code>theme.js</code>
+    li.d-flex.align-items-start.mb-3
+      span.badge.bg-success.fs-sm.pt-1.me-3 Updated
+      div <code>ajaxifySubscribeForm()</code> inside <code>theme.js</code>. Rewrote code from jQuery to vanilla JavaScript
+    li.d-flex.align-items-start.mb-3
+      span.badge.bg-success.fs-sm.pt-1.me-3 Updated
+      div Redesigned the structure of PUG templates dependencies: Moved <code>navbar</code> and <code>footer</code> partials from <code>layout.pug</code> to page templates. Now template inheritance works via <code>block</code> keyword. These changes made the compilation process 1.5x faster when you channge something in <code>navbar</code> or <code>footer</code> partials. Plus now you have more flexibility to adjust navigation bars and footers for individual pages.
+    li.d-flex.align-items-start.mb-3
+      span.badge.bg-success.fs-sm.pt-1.me-3 Updated
+      div <code>package.json</code> and <code>gulpfile.js</code> files. Now all 3rd party plugins and libraries are installed via npm automatically when you run <code>npn install</code> command (previously manually) and moved from <code>node_modules</code> to <code>dist</code> folder by Gulp on project init. Read more about how add new vendor plugins to the project in <a href='install-vendor-plugin.html' target='_blank' rel='noopener'>this article</a>
+    li.d-flex.align-items-start.mb-3
+      span.badge.bg-success.fs-sm.pt-1.me-3 Updated
+      div Getting started and components documentation: Fixed components code examples. Updated section: <a href='navbar-footer.html' target='_blank' rel='noopener'>Navbar / Page title / Footer variants (Pug)</a>. Added section: <a href='install-vendor-plugin.html' target='_blank' rel='noopener'>Installing Vendor plugins with npm and Gulp</a>
+    li.d-flex.align-items-start.mb-3
+      span.badge.bg-success.fs-sm.pt-1.me-3 Updated
+      div Sketch file: added new Food Delivery Service demo frontpage mockup
+    li.d-flex.align-items-start.mb-3
+      span.badge.bg-warning.fs-sm.pt-1.me-3 Fixed
+      div Minor bug fixes and improvements
+  
+  hr.my-5
+
+  h2.h4.pb-2
+    span.text-primary v1.3&nbsp;
+    | &ndash;&nbsp;
+    | February 29, 2020
+  ul.list-unstyled
+    li.d-flex.align-items-start.mb-3
+      span.badge.bg-info.fs-sm.pt-1.me-3 New
+      div
+        u.fw-medium Grocery Store Demo:
+        ul.fs-md.ps-3.pt-2
+          li
+            span.fw-medium Front Page (Homepage). 
+            a(href='../home-grocery-store.html' target='_blank' rel='noopener').fs-sm View demo<i class='ci-arrow-right fs-xs ms-1'></i>
+          li
+            span.fw-medium Product Catalog Page. 
+            a(href='../grocery-catalog.html' target='_blank' rel='noopener').fs-sm View demo<i class='ci-arrow-right fs-xs ms-1'></i>
+          li
+            span.fw-medium Single Product Page. 
+            a(href='../grocery-single.html' target='_blank' rel='noopener').fs-sm View demo<i class='ci-arrow-right fs-xs ms-1'></i>
+          li
+            span.fw-medium Checkout Page Template. 
+            a(href='../grocery-checkout.html' target='_blank' rel='noopener').fs-sm View demo<i class='ci-arrow-right fs-xs ms-1'></i>
+    li.d-flex.align-items-start.mb-3
+      span.badge.bg-info.fs-sm.pt-1.me-3 New
+      div
+        span.fw-medium Single Product / Brand Store&nbsp;&nbsp;
+        a(href='../home-single-store.html' target='_blank' rel='noopener').fs-sm View demo<i class='ci-arrow-right fs-xs ms-1'></i>
+    li.d-flex.align-items-start.mb-3
+      span.badge.bg-info.fs-sm.pt-1.me-3 New
+      div Navbar with Side Menu. See live example on Grocery Store Demo page
+    li.d-flex.align-items-start.mb-3
+      span.badge.bg-info.fs-sm.pt-1.me-3 New
+      div Transparent Navbar version. See live example on Single Product/Brand Store Demo page
+    li.d-flex.align-items-start.mb-3
+      span.badge.bg-info.fs-sm.pt-1.me-3 New
+      div Javascript behavior when radio buttons behave like tabs by switching linked content. See live example on Single Product/Brand Demo page (Choose your style section)
+    li.d-flex.align-items-start.mb-3
+      span.badge.bg-info.fs-sm.pt-1.me-3 New
+      div Added empty state for Cart dropdown. See live example on Single Product/Brand Demo page
+    li.d-flex.align-items-start.mb-3
+      span.badge.bg-success.fs-sm.pt-1.me-3 Updated
+      div Replaced <code>Salvattore.js</code> with <code>Shuffle.js</code> and <code>imagesLoaded.js</code> for masonry grid (particularly Blog grid) layouts
+    li.d-flex.align-items-start.mb-3
+      span.badge.bg-success.fs-sm.pt-1.me-3 Updated
+      div Color presets (radio buttons) now changing labels dynamically via Javascript. See it in action on Shop Single Product pages v1 and v2
+    li.d-flex.align-items-start.mb-3
+      span.badge.bg-success.fs-sm.pt-1.me-3 Updated
+      div Added new icons to Cartzilla icon font
+    li.d-flex.align-items-start.mb-3
+      span.badge.bg-success.fs-sm.pt-1.me-3 Updated
+      div Sketch file with new demo page design mockups
+    li.d-flex.align-items-start.mb-3
+      span.badge.bg-success.fs-sm.pt-1.me-3 Updated
+      div Security patch: Added <code>rel='noopener'</code> to all links with <code>target='_blank'</code> attribute. For more info read <a href='https://developers.google.com/web/tools/lighthouse/audits/noopener' target='_blank' rel='noopener'>this article</a>
+    li.d-flex.align-items-start.mb-3
+      span.badge.bg-success.fs-sm.pt-1.me-3 Updated
+      div Node modules to latest versions
+    li.d-flex.align-items-start.mb-3
+      span.badge.bg-warning.fs-sm.pt-1.me-3 Fixed
+      div Handheld Toolbar styles: Removed <code>padding-bottom</code> that equals to Toolbar height from <code>body</code> by default. Now you can add bottom padding to <code>body</code> by applyoing css class <code>toolbar-enabled</code> to <code>body</code>. If you use PUG it applies automatically if <code>var isToolbar = true</code> is added to particular page template or globally enabled via <code>templates/helpers/config.pug</code>. It's done to ensure that you can remove bottom padding from <code>body</code> without editing core theme styles if you don't need Handheld Toolbar.
+    li.d-flex.align-items-start.mb-3
+      span.badge.bg-warning.fs-sm.pt-1.me-3 Fixed
+      div SCSS maps in theme <code>_variable.scss</code>. Special thanks to Kevin Ramharak for the fix suggestion
+    li.d-flex.align-items-start.mb-3
+      span.badge.bg-warning.fs-sm.pt-1.me-3 Fixed
+      div Minor bug fixes and improvements
+        
+  hr.my-5
+
+  h2.h4.pb-2
+    span.text-primary v1.2&nbsp;
+    | &ndash;&nbsp;
+    | December 20, 2019
+  ul.list-unstyled
+    li.d-flex.align-items-start.mb-3
+      span.badge.bg-info.fs-sm.pt-1.me-3 New
+      div Added new Toolbar for Handheld devices that is fixed to bottom (similar to iOS) and holds all important buttons like Menu, Cart, Wishlist, Sidebar togglers, etc. This will improve user experience on handheld devices.
+    li.d-flex.align-items-start.mb-3
+      span.badge.bg-info.fs-sm.pt-1.me-3 New
+      div Added .gitignore file to the download package that tells git which files (or patterns) it should ignore. Make sure to enable hidden files visibility on your system.
+    li.d-flex.align-items-start.mb-3
+      span.badge.bg-success.fs-sm.pt-1.me-3 Updated
+      div Navigation bars (Headers): added tooltips for action buttons. Added separate wishlist button for cases when wishlist is available not only for registered users.
+    li.d-flex.align-items-start.mb-3
+      span.badge.bg-success.fs-sm.pt-1.me-3 Updated
+      div 404 Error page templates
+    li.d-flex.align-items-start.mb-3
+      span.badge.bg-success.fs-sm.pt-1.me-3 Updated
+      div JavaScript plugins to latest versions
+    li.d-flex.align-items-start.mb-3
+      span.badge.bg-success.fs-sm.pt-1.me-3 Updated
+      div Node modules to latest versions
+    li.d-flex.align-items-start.mb-3
+      span.badge.bg-warning.fs-sm.pt-1.me-3 Fixed
+      div Documentation typos and wrong content.
+    li.d-flex.align-items-start.mb-3
+      span.badge.bg-warning.fs-sm.pt-1.me-3 Fixed
+      div Minor bug fixes and improvements
+        
+  hr.my-5
+
+  h2.h4.pb-2
+    span.text-primary v1.1&nbsp;
+    | &ndash;&nbsp;
+    | November 30, 2019
+  ul.list-unstyled
+    li.d-flex.align-items-start.mb-3
+      span.badge.bg-info.fs-sm.pt-1.me-3 New
+      div
+        u.fw-medium Digital Products Marketplace Demo:
+        ul.fs-md.ps-3.pt-2
+          li
+            span.fw-medium Front Page (Homepage). 
+            a(href='../home-marketplace.html' target='_blank' rel='noopener').fs-sm View demo<i class='ci-arrow-right fs-xs ms-1'></i>
+          li
+            span.fw-medium Catalog (Category) page with filters. 
+            a(href='../marketplace-category.html' target='_blank' rel='noopener').fs-sm View demo<i class='ci-arrow-right fs-xs ms-1'></i>
+          li
+            span.fw-medium Single Item Page. 
+            a(href='../marketplace-single.html' target='_blank' rel='noopener').fs-sm View demo<i class='ci-arrow-right fs-xs ms-1'></i>
+          li
+            span.fw-medium Vendor (Seller) Page. 
+            a(href='../marketplace-vendor.html' target='_blank' rel='noopener').fs-sm View demo<i class='ci-arrow-right fs-xs ms-1'></i>
+          li
+            span.fw-medium Cart page template. 
+            a(href='../marketplace-cart.html' target='_blank' rel='noopener').fs-sm View demo<i class='ci-arrow-right fs-xs ms-1'></i>
+          li
+            span.fw-medium Checkout page template. 
+            a(href='../marketplace-checkout.html' target='_blank' rel='noopener').fs-sm View demo<i class='ci-arrow-right fs-xs ms-1'></i>
+    li.d-flex.align-items-start.mb-3
+      span.badge.bg-info.fs-sm.pt-1.me-3 New
+      div
+        u.fw-medium Marketplace Vendor / User Dashboard:
+        ul.fs-md.ps-3.pt-2
+          li
+            span.fw-medium Profile Settings. 
+            a(href='../dashboard-settings.html' target='_blank' rel='noopener').fs-sm View demo<i class='ci-arrow-right fs-xs ms-1'></i>
+          li
+            span.fw-medium Purchases. 
+            a(href='../dashboard-purchases.html' target='_blank' rel='noopener').fs-sm View demo<i class='ci-arrow-right fs-xs ms-1'></i>
+          li
+            span.fw-medium Favorites. 
+            a(href='../dashboard-favorites.html' target='_blank' rel='noopener').fs-sm View demo<i class='ci-arrow-right fs-xs ms-1'></i>
+          li
+            span.fw-medium Sales. 
+            a(href='../dashboard-sales.html' target='_blank' rel='noopener').fs-sm View demo<i class='ci-arrow-right fs-xs ms-1'></i>
+          li
+            span.fw-medium Products. 
+            a(href='../dashboard-products.html' target='_blank' rel='noopener').fs-sm View demo<i class='ci-arrow-right fs-xs ms-1'></i>
+          li
+            span.fw-medium Add New Product. 
+            a(href='../dashboard-add-new-product.html' target='_blank' rel='noopener').fs-sm View demo<i class='ci-arrow-right fs-xs ms-1'></i>
+          li
+            span.fw-medium Payouts. 
+            a(href='../dashboard-payouts.html' target='_blank' rel='noopener').fs-sm View demo<i class='ci-arrow-right fs-xs ms-1'></i>
+    li.d-flex.align-items-start.mb-3
+      span.badge.bg-info.fs-sm.pt-1.me-3 New
+      div
+        span.fw-medium Electronics Store Homepage. 
+        a(href='../home-electronics-store.html' target='_blank' rel='noopener').fs-sm View demo<i class='ci-arrow-right fs-xs ms-1'></i>
+    li.d-flex.align-items-start.mb-3
+      span.badge.bg-info.fs-sm.pt-1.me-3 New
+      div
+        span.fw-medium Single Product Page v2. 
+        a(href='../shop-single-v2.html' target='_blank' rel='noopener').fs-sm View demo<i class='ci-arrow-right fs-xs ms-1'></i>
+    li.d-flex.align-items-start.mb-3
+      span.badge.bg-info.fs-sm.pt-1.me-3 New
+      div
+        | Product Comparison Page (Table). 
+        a(href='../comparison.html' target='_blank' rel='noopener').fs-sm View demo<i class='ci-arrow-right fs-xs ms-1'></i>
+    li.d-flex.align-items-start.mb-3
+      span.badge.bg-info.fs-sm.pt-1.me-3 New
+      div Navbar Versions for: Marketplace and Electronics Store
+    li.d-flex.align-items-start.mb-3
+      span.badge.bg-info.fs-sm.pt-1.me-3 New
+      div Footer Version for: Marketplace
+    li.d-flex.align-items-start.mb-3
+      span.badge.bg-info.fs-sm.pt-1.me-3 New
+      div Qucik View Popup v2 (for Electronics Store)
+    li.d-flex.align-items-start.mb-3
+      span.badge.bg-info.fs-sm.pt-1.me-3 New
+      div
+        | 404 Error Page Template (Text variant). 
+        a(href='../404-simple.html' target='_blank' rel='noopener').fs-sm View demo<i class='ci-arrow-right fs-xs ms-1'></i>
+    li.d-flex.align-items-start.mb-3
+      span.badge.bg-info.fs-sm.pt-1.me-3 New
+      div
+        | Charts Component. 
+        a(href='../components/charts.html' target='_blank' rel='noopener').fs-sm View demo<i class='ci-arrow-right fs-xs ms-1'></i>
+    li.d-flex.align-items-start.mb-3
+      span.badge.bg-info.fs-sm.pt-1.me-3 New
+      div
+        | Countdown Timer Component. 
+        a(href='../components/countdown.html' target='_blank' rel='noopener').fs-sm View demo<i class='ci-arrow-right fs-xs ms-1'></i>
+    li.d-flex.align-items-start.mb-3
+      span.badge.bg-info.fs-sm.pt-1.me-3 New
+      div Product Card for Digital (Downloadable) Products
+    li.d-flex.align-items-start.mb-3
+      span.badge.bg-info.fs-sm.pt-1.me-3 New
+      div Drag &amp; Drop File Uploader. See updated Forms component page for more details
+    li.d-flex.align-items-start.mb-3
+      span.badge.bg-success.fs-sm.pt-1.me-3 Updated
+      div Bootstrap to latest version 4.4.1
+    li.d-flex.align-items-start.mb-3
+      span.badge.bg-success.fs-sm.pt-1.me-3 Updated
+      div Homepage Hero Slider. Added Animations to Slider Text Layers
+    li.d-flex.align-items-start.mb-3
+      span.badge.bg-success.fs-sm.pt-1.me-3 Updated
+      div
+        | Icon Font. Added new Icons to the collection. 
+        a(href='../components/icon-font.html' target='_blank' rel='noopener').fs-sm See available icons<i class='ci-arrow-right fs-xs ms-1'></i>
+    li.d-flex.align-items-start.mb-3
+      span.badge.bg-success.fs-sm.pt-1.me-3 Updated
+      div
+        code _variables.scss 
+        | Added <code>$path-to-fonts</code> variable. Now it's easier to change theme font via <code>_user-variables.scss</code>
+    li.d-flex.align-items-start.mb-3
+      span.badge.bg-success.fs-sm.pt-1.me-3 Updated
+      div Sketch file. Added new page mockups
+    li.d-flex.align-items-start.mb-3
+      span.badge.bg-success.fs-sm.pt-1.me-3 Updated
+      div Documentation and Components
+    li.d-flex.align-items-start.mb-3
+      span.badge.bg-warning.fs-sm.pt-1.me-3 Fixed
+      div Minor bug fixes and improvements
+
+  hr.my-5
+
+  h2.h4.pb-1
+    span.text-primary v1.0&nbsp;
+    | &ndash;&nbsp;
+    | October 21, 2019
+  ul.list-unstyled.mb-4.pb-3
+    li Initial release

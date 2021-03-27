@@ -1,0 +1,61 @@
+<script>
+{literal}
+$(document).ready(function() {
+$(".payment-method").on("click",function(){
+$(".payment-method").removeClass("selected");
+$(this).addClass("selected");
+});
+});
+{/literal}
+</script>
+<div class="card-deck payment-methods">
+{foreach name=aussen item=module_data from=$module_content}
+<div class="col-12 col-sm-6 col-xs-12 col-md-12 col-lg-12 col-xl-12">
+<div class="payment-method card card-product card-sm text-center h-100{if {$module_data.checked} == 1} selected{/if}">
+<label class="h-100 payment {$module_data.id}" for="{$module_data.id}">
+	<div class="card-body">
+	<div class="row">
+		<div class="col-md-2 my-auto">
+			<div class="mx-auto my-auto">
+			  {if $module_data.icon}
+			  {$module_data.icon}
+			  {else}
+			  <img class="img-fluid" src="images/icons/cod.png" alt="{$module_data.module}" title="{$module_data.module}" />
+			  {/if}
+			</div>
+		</div>
+		<div class="col-md-8 my-auto text-left">
+			<div class="title d-flex justify-content-start">
+		    {if $module_data.selection}<div>{$module_data.selection}&nbsp;</div>{/if}
+		    <div class="method-title"><span class="title text-muted">{$module_data.module}</span></div>
+			</div>
+			{if $module_data.error != ''}
+			<div class="card-text small">{$module_data.error}</div>
+			{/if}
+			{if $module_data.description != ''}
+			<div class="card-text small">
+			{$module_data.description}
+			</div>
+			{/if}     
+			{if $module_data.fields}
+			<div class="card-text small">
+		    <div class="payment-method-fields">
+		    {foreach name=aussen item=method_data from=$module_data.fields} 		    <div>
+		    {$method_data.title}&nbsp;{$method_data.field}
+		    </div> 		    {/foreach}
+		    </div>
+			</div>
+			{/if}   
+		</div>
+		<div class="col-md-2 my-auto py-2">
+				<div class="price-wrap font-weight-bold text-muted text-left">
+					{if {$module_data.module_cost} > 0}<div><strong>{$module_data.module_cost}</strong></div>{/if}
+				</div>
+		</div>
+	</div>
+	</div>
+</label>  
+</div>
+</div>
+{/foreach}
+</div>

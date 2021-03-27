@@ -1,0 +1,79 @@
+{config_load file="$language/lang_$language.conf" section="login"}<script src="jscript/modified.js"></script>
+<script type="text/javascript">
+{literal}
+src="captcha.php";
+function reload(){
+        document.captcha.src='loading.gif';
+        document.captcha.src=src+'?rand='+Math.random();
+}
+{/literal}
+</script>
+<div class="page">
+<div class="pageContent">
+{$FORM_ACTION}
+{if $info_message!=''}<div class="contacterror">{$info_message}</div>
+{/if}
+
+
+
+<div class="">
+<div class="justify-content-center">
+<div class="login-form mx-auto">
+
+<div class="card card-product card-sm">
+<div class="card-header">
+<span class="h5">{$smarty.const.NAVBAR_TITLE_LOGIN}</span>
+</div>
+<div class="card-body">
+
+  <div class="form-row">
+    <div class="form-group col-md-12">
+      <label for="lastname">{#text_email#}</label>
+      {$INPUT_MAIL}
+    </div>
+    <div class="form-group col-md-12">
+      <label for="lastname">{#text_password#}</label>
+      {$INPUT_PASSWORD}
+    <small class="form-text text-muted text-right"><a href="{$LINK_LOST_PASSWORD}">{#text_lost_password#}</a></small>
+    </div>
+    {if $CAPTCHA_IMG !=''}
+    <div class="form-group col-md-12">
+      <p>{$CAPTCHA_IMG} <a href="javascript:void(0)" title="{#text_update#}" onclick="reload()">{#text_update#}</a> {$CAPTCHA_INPUT}</p>
+    </div>
+    {/if}
+    {if {$smarty.const.ALLOW_AUTOLOGON} == 'true'}
+    <div class="form-group form-check ml-2">
+      {$INPUT_REMEMBER}
+      <label class="form-check-label" for="remember_me">{$smarty.const.ENTRY_REMEMBER_ME}</label>
+    </div>  
+    {/if}  
+  </div>
+
+
+
+</div>
+<div class="card-footer text-center">
+<button type="submit" class="btn btn-primary btn-block"><i class="far fa-check-square"></i> {$smarty.const.IMAGE_BUTTON_CONTINUE}</button>
+
+{if {$smarty.const.SOCIAL_LOGIN} == "true"}
+<div class="social-login mt-2 mb-2"><span class="text-muted">{$smarty.const.TEXT_SOCIAL_LOGIN}:</span></div>
+<a class="btn btn-outline-info btn-block" href="https://oauth.vk.com/authorize?client_id={$smarty.const.VK_OAUTH_CLIENT_ID}&redirect_uri={$smarty.const.HTTP_SERVER}{$smarty.const.DIR_WS_CATALOG}{$smarty.const.FILENAME_CREATE_ACCOUNT}?social_login=vk&response_type=code&display=page&scope=email"><i class="fab fa-vk" title="{$smarty.const.TEXT_SOCIAL_LOGIN_VK}"></i> {$smarty.const.TEXT_SOCIAL_LOGIN_VK}</a>
+<a class="btn btn-outline-secondary btn-block" href="{$smarty.const.HTTP_SERVER}{$smarty.const.DIR_WS_CATALOG}{$smarty.const.FILENAME_CREATE_ACCOUNT}?social_login=google"><i class="fab fa-google" title="{$smarty.const.TEXT_SOCIAL_LOGIN_GOOGLE}"></i> {$smarty.const.TEXT_SOCIAL_LOGIN_GOOGLE}</a>
+<a class="btn btn-outline-primary btn-block" href="https://www.facebook.com/dialog/oauth?client_id={$smarty.const.FACEBOOK_OAUTH_CLIENT_ID}&redirect_uri={$smarty.const.HTTP_SERVER}{$smarty.const.DIR_WS_CATALOG}{$smarty.const.FILENAME_CREATE_ACCOUNT}?social_login=fb&response_type=code&display=page&scope=public_profile,email"><i class="fab fa-facebook" title="{$smarty.const.TEXT_SOCIAL_LOGIN_FACEBOOK}"></i> {$smarty.const.TEXT_SOCIAL_LOGIN_FACEBOOK}</a>
+{/if}
+
+
+</div>
+</div>
+
+<span class="form-text text-muted text-left"><a href="{$smarty.const.FILENAME_CREATE_ACCOUNT}"><i class="far fa-user-circle"></i> {$smarty.const.NAVBAR_TITLE_CREATE_ACCOUNT}</a></span>
+
+
+</div>
+</div>
+</div>
+
+<div class="clear"></div>
+{$FORM_END}
+</div>
+</div>

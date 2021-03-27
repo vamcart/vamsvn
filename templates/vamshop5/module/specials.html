@@ -1,0 +1,29 @@
+{config_load file="$language/lang_$language.conf" section="specials"} 
+{config_load file="$language/lang_$language.conf" section="index"} 
+<div class="page">
+<h1>{#heading_text#}</h1>
+
+<div class="pageContent">
+
+<div class="specialCategory pb-3">
+{$SPECIAL_CATEGORY}
+</div>
+
+<div class="card-deck">
+{foreach name=aussen item=module_data from=$module_content}
+<div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-3">
+{include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/product-card/product-card-attributes.html"}
+</div>
+{/foreach}  
+</div>
+
+<div class="clear"></div>
+<div class="navigation">
+<span class="right">{$NAVBAR}</span>{$NAVBAR_PAGES}
+</div>
+<div class="clear"></div>
+
+</div>
+
+</div>
+

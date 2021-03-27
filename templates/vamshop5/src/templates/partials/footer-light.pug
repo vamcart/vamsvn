@@ -1,0 +1,157 @@
+// Footer
+footer.bg-secondary.pt-5
+  .container
+    .row.pb-2
+      .col-md-4.col-sm-6
+        .widget.widget-links.pb-2.mb-4
+          h3.widget-title Shop departments
+          if (navbarTemplate === 'navbar-electro-store')
+            ul.widget-list
+              li.widget-list-item: a(href='#').widget-list-link Computers &amp; Accessories
+              li.widget-list-item: a(href='#').widget-list-link Smartphones &amp; Tablets
+              li.widget-list-item: a(href='#').widget-list-link TV, Video &amp; Audio
+              li.widget-list-item: a(href='#').widget-list-link Kitchen Electronics
+              li.widget-list-item: a(href='#').widget-list-link Office Electronics
+              li.widget-list-item: a(href='#').widget-list-link Cameras, Photo &amp; Video
+              li.widget-list-item: a(href='#').widget-list-link Headphones
+              li.widget-list-item: a(href='#').widget-list-link Wearable electronics
+              li.widget-list-item: a(href='#').widget-list-link Printers &amp; Ink
+              li.widget-list-item: a(href='#').widget-list-link Video Games
+              li.widget-list-item: a(href='#').widget-list-link Car Electronics
+              li.widget-list-item: a(href='#').widget-list-link Smart Home, IoT
+              li.widget-list-item: a(href='#').widget-list-link Software
+          else
+            ul.widget-list
+              li.widget-list-item: a(href='#').widget-list-link Sneakers &amp; Athletic
+              li.widget-list-item: a(href='#').widget-list-link Athletic Apparel
+              li.widget-list-item: a(href='#').widget-list-link Sandals
+              li.widget-list-item: a(href='#').widget-list-link Jeans
+              li.widget-list-item: a(href='#').widget-list-link Shirts &amp; Tops
+              li.widget-list-item: a(href='#').widget-list-link Shorts
+              li.widget-list-item: a(href='#').widget-list-link T-Shirts
+              li.widget-list-item: a(href='#').widget-list-link Swimwear
+              li.widget-list-item: a(href='#').widget-list-link Clogs &amp; Mules
+              li.widget-list-item: a(href='#').widget-list-link Bags &amp; Wallets
+              li.widget-list-item: a(href='#').widget-list-link Accessories
+              li.widget-list-item: a(href='#').widget-list-link Sunglasses &amp; Eyewear
+              li.widget-list-item: a(href='#').widget-list-link Watches
+      .col-md-4.col-sm-6
+        .widget.widget-links.pb-2.mb-4
+          h3.widget-title Account &amp; shipping info
+          ul.widget-list
+            li.widget-list-item: a(href='#').widget-list-link Your account
+            li.widget-list-item: a(href='#').widget-list-link Shipping rates &amp; policies
+            li.widget-list-item: a(href='#').widget-list-link Refunds &amp; replacements
+            li.widget-list-item: a(href='#').widget-list-link Order tracking
+            li.widget-list-item: a(href='#').widget-list-link Delivery info
+            li.widget-list-item: a(href='#').widget-list-link Taxes &amp; fees
+        .widget.widget-links.pb-2.mb-4
+          h3.widget-title About us
+          ul.widget-list
+            li.widget-list-item: a(href='#').widget-list-link About company
+            li.widget-list-item: a(href='#').widget-list-link Our team
+            li.widget-list-item: a(href='#').widget-list-link Careers
+            li.widget-list-item: a(href='#').widget-list-link News
+      .col-md-4
+        .widget.pb-2.mb-4
+          h3.widget-title.pb-1 Stay informed
+          form(action='https://studio.us12.list-manage.com/subscribe/post?u=c7103e2c981361a6639545bd5&amp;id=29ca296126' method='post' name='mc-embedded-subscribe-form' target='_blank' novalidate).subscription-form.validate
+            .input-group.flex-nowrap
+              i.ci-mail.position-absolute.top-50.translate-middle-y.text-muted.fs-base.ms-3
+              input(type='email' name='EMAIL' placeholder='Your email' required).form-control.rounded-start
+              button(type='submit' name='subscribe').btn.btn-primary Subscribe*
+            // real people should not fill this in and expect good things - do not remove this or risk form bot signups
+            div(style='position: absolute; left: -5000px;' aria-hidden='true')
+              input(type='text' name='b_c7103e2c981361a6639545bd5_29ca296126' tabindex='-1').subscription-form-antispam
+            .form-text *Subscribe to our newsletter to receive early discount offers, updates and new products info.
+            .subscription-status
+        .widget.pb-2.mb-4
+          h3.widget-title.pb-1 Download our app
+          .d-flex.flex-wrap
+            .me-2.mb-2
+              a(href='#' role='button').btn-market.btn-apple
+                span.btn-market-subtitle Download on the
+                span.btn-market-title App Store
+            .mb-2
+              a(href='#' role='button').btn-market.btn-google
+                span.btn-market-subtitle Download on the
+                span.btn-market-title Google Play
+  .pt-5(style='background-color: #ecf2f7;')
+    .container
+      .row.pb-3
+        .col-md-3.col-sm-6.mb-4
+          .d-flex
+            i.ci-rocket.text-primary(style='font-size: 2.25rem;')
+            .ps-3
+              h6.fs-base.mb-1 Fast and free delivery
+              p.mb-0.fs-ms.text-muted Free delivery for all orders over $200
+        .col-md-3.col-sm-6.mb-4
+          .d-flex
+            i.ci-currency-exchange.text-primary(style='font-size: 2.25rem;')
+            .ps-3
+              h6.fs-base.mb-1 Money back guarantee
+              p.mb-0.fs-ms.text-muted We return money within 30 days
+        .col-md-3.col-sm-6.mb-4
+          .d-flex
+            i.ci-support.text-primary(style='font-size: 2.25rem;')
+            .ps-3
+              h6.fs-base.mb-1 24/7 customer support
+              p.mb-0.fs-ms.text-muted Friendly 24/7 customer support
+        .col-md-3.col-sm-6.mb-4
+          .d-flex
+            i.ci-card.text-primary(style='font-size: 2.25rem;')
+            .ps-3
+              h6.fs-base.mb-1 Secure online payment
+              p.mb-0.fs-ms.text-muted We possess SSL / Secure сertificate
+      hr.mb-5
+      .row.pb-2
+        .col-md-6.text-center.text-md-start.mb-4
+          .text-nowrap.mb-4
+            a(href='#').d-inline-block.align-middle.mt-n1.me-3
+              img(src='img/footer-logo-dark.png' width='117' alt='Cartzilla').d-block
+            .btn-group.dropdown.disable-autohide
+              button(type='button' data-bs-toggle='dropdown').btn.btn-outline-secondary.btn-sm.dropdown-toggle.px-2
+                img(src='img/flags/en.png' width='20' alt='English').me-2
+                | Eng / $
+              ul.dropdown-menu.my-1
+                li.dropdown-item
+                  select.form-select.form-select-sm
+                    option(value='usd') $ USD
+                    option(value='eur') € EUR
+                    option(value='ukp') £ UKP
+                    option(value='jpy') ¥ JPY
+                li
+                  a(href='#').dropdown-item.pb-1
+                    +image('img/flags/fr.png', 'Français')(width='20').me-2
+                    | Français
+                li
+                  a(href='#').dropdown-item.pb-1
+                    +image('img/flags/de.png', 'Deutsch')(width='20').me-2
+                    | Deutsch
+                li
+                  a(href='#').dropdown-item
+                    +image('img/flags/it.png', 'Italiano')(width='20').me-2
+                    | Italiano
+          .widget.widget-links
+            ul.widget-list.d-flex.flex-wrap.justify-content-center.justify-content-md-start
+              li.widget-list-item.me-4: a(href='#').widget-list-link Outlets
+              li.widget-list-item.me-4: a(href='#').widget-list-link Affiliates
+              li.widget-list-item.me-4: a(href='#').widget-list-link Support
+              li.widget-list-item.me-4: a(href='#').widget-list-link Privacy
+              li.widget-list-item.me-4: a(href='#').widget-list-link Terms of use
+        .col-md-6.text-center.text-md-end.mb-4
+          .mb-3
+            a(href="#").btn-social.bs-outline.bs-twitter.ms-2.mb-2
+              i.ci-twitter
+            a(href="#").btn-social.bs-outline.bs-facebook.ms-2.mb-2
+              i.ci-facebook
+            a(href="#").btn-social.bs-outline.bs-instagram.ms-2.mb-2
+              i.ci-instagram
+            a(href="#").btn-social.bs-outline.bs-pinterest.ms-2.mb-2
+              i.ci-pinterest
+            a(href="#").btn-social.bs-outline.bs-youtube.ms-2.mb-2
+              i.ci-youtube
+          +image('img/cards-alt.png', 'Payment methods')(width='187').d-inline-block
+      .pb-4.fs-xs.text-muted.text-center.text-md-start
+        | © All rights reserved. Made by 
+        a(href='https://createx.studio/' target='_blank' rel='noopener').text-muted Createx Studio

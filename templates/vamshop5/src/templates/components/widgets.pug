@@ -1,0 +1,1731 @@
+extends ../partials/layout-components
+
+//- Override default config variables
+append config
+  - var vendorStyles = ['prismjs/themes/prism.css', 'prismjs/plugins/toolbar/prism-toolbar.css', 'prismjs/plugins/line-numbers/prism-line-numbers.css', 'nouislider/distribute/nouislider.min.css']
+  - var vendorScripts = ['prismjs/components/prism-core.min.js', 'prismjs/components/prism-markup.min.js', 'prismjs/components/prism-clike.min.js', 'prismjs/components/prism-javascript.min.js', 'prismjs/components/prism-pug.min.js', 'prismjs/plugins/toolbar/prism-toolbar.min.js', 'prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js', 'prismjs/plugins/line-numbers/prism-line-numbers.min.js', 'nouislider/distribute/nouislider.min.js']
+  - var pageTitle = 'Widgets'
+  - var pageSubtitle = 'Collection of tiny components to use inside sidebar area or footer.'
+  - var isPageTitleBadge = true
+  - var anchorNav = [{'title': 'Categories', 'link': '#widget-categories'}, {'title': 'Price range', 'link': '#widget-range'}, {'title': 'Links', 'link': '#widget-links'}, {'title': 'Featured products list', 'link': '#widget-products-list'}, {'title': 'Featured products carousel', 'link': '#widget-products-carousel'}, {'title': 'Shopping cart', 'link': '#widget-cart'}, {'title': 'Tag cloud', 'link': '#widget-tags'}, {'title': 'Filter (checkboxes)', 'link': '#widget-filter'}, {'title': 'Subscription (MailChimp Ajax)', 'link': '#widget-subscription'}, {'title': 'Contact details', 'link': '#widget-contacts'}]
+  
+//- Page Content
+block content
+
+  .alert.alert-info.d-flex.mt-n3.mb-5(role='alert')
+    .alert-icon
+      i.ci-announcement
+    p.fs-md.text-break.mb-0 <strong>Range slider</strong> widget depends on <strong>noUISlider plugin</strong>. Make sure to link to <strong>noUISlider css and js</strong> files in your document: <strong>vendor/nouislider/distribute/nouislider.min.css</strong> and <strong>vendor/nouislider/distribute/nouislider.min.js</strong>. Use this page as a reference.
+
+
+  // Categories
+  section#widget-categories.pb-5.mb-md-2
+    h2.h5.mb-3 Categories
+    .card.border-0.shadow
+      .card-header
+        ul(role='tablist').nav.nav-tabs.card-header-tabs
+          li.nav-item
+            a(href='#result1' data-bs-toggle='tab' role='tab' aria-controls='result1' aria-selected='true').nav-link.active Result
+          li.nav-item
+            a(href='#html1' data-bs-toggle='tab' role='tab' aria-controls='html1' aria-selected='false').nav-link HTML
+          li.nav-item
+            a(href='#pug1' data-bs-toggle='tab' role='tab' aria-controls='pug1' aria-selected='false').nav-link Pug
+      .card-body
+        .tab-content
+          #result1.tab-pane.fade.show.active(role='tabpanel')
+            .widget.widget-categories(style='max-width: 22rem;')
+              h3.widget-title Shop categories
+              #shop-categories.accordion
+
+                // Clothing
+                .accordion-item
+                  h3.accordion-header
+                    a(href='#clothing' role='button' data-bs-toggle='collapse' aria-expanded='true' aria-controls='clothing').accordion-button
+                      | Clothing
+                  #clothing.accordion-collapse.collapse.show(data-bs-parent='#shop-categories')
+                    .accordion-body
+                      .widget.widget-links.widget-filter
+                        .input-group.input-group-sm.mb-2
+                          input(type='text' placeholder='Search').widget-filter-search.form-control.rounded-end
+                          i.ci-search.position-absolute.top-50.end-0.translate-middle-y.fs-sm.me-3
+                        ul(style='height: 12rem;' data-simplebar data-simplebar-auto-hide='false').widget-list.widget-filter-list.pt-1
+                          li.widget-list-item.widget-filter-item
+                            a(href='#').widget-list-link.d-flex.justify-content-between.align-items-center
+                              span.widget-filter-item-text View all
+                              span.fs-xs.text-muted.ms-3 2,548
+                          li.widget-list-item.widget-filter-item
+                            a(href='#').widget-list-link.d-flex.justify-content-between.align-items-center
+                              span.widget-filter-item-text Blazers &amp; Suits
+                              span.fs-xs.text-muted.ms-3 235
+                          li.widget-list-item.widget-filter-item
+                            a(href='#').widget-list-link.d-flex.justify-content-between.align-items-center
+                              span.widget-filter-item-text Blouses
+                              span.fs-xs.text-muted.ms-3 410
+                          li.widget-list-item.widget-filter-item
+                            a(href='#').widget-list-link.d-flex.justify-content-between.align-items-center
+                              span.widget-filter-item-text Cardigans &amp; Jumpers
+                              span.fs-xs.text-muted.ms-3 107
+                          li.widget-list-item.widget-filter-item
+                            a(href='#').widget-list-link.d-flex.justify-content-between.align-items-center
+                              span.widget-filter-item-text Dresses
+                              span.fs-xs.text-muted.ms-3 93
+                          li.widget-list-item.widget-filter-item
+                            a(href='#').widget-list-link.d-flex.justify-content-between.align-items-center
+                              span.widget-filter-item-text Hoodie &amp; Sweatshirts
+                              span.fs-xs.text-muted.ms-3 122
+                          li.widget-list-item.widget-filter-item
+                            a(href='#').widget-list-link.d-flex.justify-content-between.align-items-center
+                              span.widget-filter-item-text Jackets &amp; Coats
+                              span.fs-xs.text-muted.ms-3 116
+                          li.widget-list-item.widget-filter-item
+                            a(href='#').widget-list-link.d-flex.justify-content-between.align-items-center
+                              span.widget-filter-item-text Jeans
+                              span.fs-xs.text-muted.ms-3 215
+                          li.widget-list-item.widget-filter-item
+                            a(href='#').widget-list-link.d-flex.justify-content-between.align-items-center
+                              span.widget-filter-item-text Lingerie
+                              span.fs-xs.text-muted.ms-3 150
+                          li.widget-list-item.widget-filter-item
+                            a(href='#').widget-list-link.d-flex.justify-content-between.align-items-center
+                              span.widget-filter-item-text Maternity Wear
+                              span.fs-xs.text-muted.ms-3 8
+                          li.widget-list-item.widget-filter-item
+                            a(href='#').widget-list-link.d-flex.justify-content-between.align-items-center
+                              span.widget-filter-item-text Nightwear
+                              span.fs-xs.text-muted.ms-3 26
+                          li.widget-list-item.widget-filter-item
+                            a(href='#').widget-list-link.d-flex.justify-content-between.align-items-center
+                              span.widget-filter-item-text Shirts
+                              span.fs-xs.text-muted.ms-3 164
+                          li.widget-list-item.widget-filter-item
+                            a(href='#').widget-list-link.d-flex.justify-content-between.align-items-center
+                              span.widget-filter-item-text Shorts
+                              span.fs-xs.text-muted.ms-3 147
+                          li.widget-list-item.widget-filter-item
+                            a(href='#').widget-list-link.d-flex.justify-content-between.align-items-center
+                              span.widget-filter-item-text Socks &amp; Tights
+                              span.fs-xs.text-muted.ms-3 139
+                          li.widget-list-item.widget-filter-item
+                            a(href='#').widget-list-link.d-flex.justify-content-between.align-items-center
+                              span.widget-filter-item-text Sportswear
+                              span.fs-xs.text-muted.ms-3 65
+                          li.widget-list-item.widget-filter-item
+                            a(href='#').widget-list-link.d-flex.justify-content-between.align-items-center
+                              span.widget-filter-item-text Swimwear
+                              span.fs-xs.text-muted.ms-3 18
+                          li.widget-list-item.widget-filter-item
+                            a(href='#').widget-list-link.d-flex.justify-content-between.align-items-center
+                              span.widget-filter-item-text T-shirts &amp; Vests
+                              span.fs-xs.text-muted.ms-3 209
+                          li.widget-list-item.widget-filter-item
+                            a(href='#').widget-list-link.d-flex.justify-content-between.align-items-center
+                              span.widget-filter-item-text Tops
+                              span.fs-xs.text-muted.ms-3 132
+                          li.widget-list-item.widget-filter-item
+                            a(href='#').widget-list-link.d-flex.justify-content-between.align-items-center
+                              span.widget-filter-item-text Trousers
+                              span.fs-xs.text-muted.ms-3 105
+                          li.widget-list-item.widget-filter-item
+                            a(href='#').widget-list-link.d-flex.justify-content-between.align-items-center
+                              span.widget-filter-item-text Underwear
+                              span.fs-xs.text-muted.ms-3 87
+
+                // Shoes
+                .accordion-item
+                  h3.accordion-header
+                    a(href='#shoes' role='button' data-bs-toggle='collapse' aria-expanded='false' aria-controls='shoes').accordion-button.collapsed
+                      | Shoes
+                  #shoes.accordion-collapse.collapse(data-bs-parent='#shop-categories')
+                    .accordion-body
+                      .widget.widget-links.widget-filter
+                        .input-group.input-group-sm.mb-2
+                          input(type='text' placeholder='Search').widget-filter-search.form-control.rounded-end
+                          i.ci-search.position-absolute.top-50.end-0.translate-middle-y.fs-sm.me-3
+                        ul(style='height: 12rem;' data-simplebar data-simplebar-auto-hide='false').widget-list.widget-filter-list.pt-1
+                          li.widget-list-item.widget-filter-item
+                            a(href='#').widget-list-link.d-flex.justify-content-between.align-items-center
+                              span.widget-filter-item-text View all
+                              span.fs-xs.text-muted.ms-3 1,953
+                          li.widget-list-item.widget-filter-item
+                            a(href='#').widget-list-link.d-flex.justify-content-between.align-items-center
+                              span.widget-filter-item-text Pumps &amp; High Heels
+                              span.fs-xs.text-muted.ms-3 247
+                          li.widget-list-item.widget-filter-item
+                            a(href='#').widget-list-link.d-flex.justify-content-between.align-items-center
+                              span.widget-filter-item-text Ballerinas &amp; Flats
+                              span.fs-xs.text-muted.ms-3 156
+                          li.widget-list-item.widget-filter-item
+                            a(href='#').widget-list-link.d-flex.justify-content-between.align-items-center
+                              span.widget-filter-item-text Sandals
+                              span.fs-xs.text-muted.ms-3 310
+                          li.widget-list-item.widget-filter-item
+                            a(href='#').widget-list-link.d-flex.justify-content-between.align-items-center
+                              span.widget-filter-item-text Sneakers
+                              span.fs-xs.text-muted.ms-3 402
+                          li.widget-list-item.widget-filter-item
+                            a(href='#').widget-list-link.d-flex.justify-content-between.align-items-center
+                              span.widget-filter-item-text Boots
+                              span.fs-xs.text-muted.ms-3 393
+                          li.widget-list-item.widget-filter-item
+                            a(href='#').widget-list-link.d-flex.justify-content-between.align-items-center
+                              span.widget-filter-item-text Ankle Boots
+                              span.fs-xs.text-muted.ms-3 50
+                          li.widget-list-item.widget-filter-item
+                            a(href='#').widget-list-link.d-flex.justify-content-between.align-items-center
+                              span.widget-filter-item-text Loafers
+                              span.fs-xs.text-muted.ms-3 93
+                          li.widget-list-item.widget-filter-item
+                            a(href='#').widget-list-link.d-flex.justify-content-between.align-items-center
+                              span.widget-filter-item-text Slip-on
+                              span.fs-xs.text-muted.ms-3 122
+                          li.widget-list-item.widget-filter-item
+                            a(href='#').widget-list-link.d-flex.justify-content-between.align-items-center
+                              span.widget-filter-item-text Flip Flops
+                              span.fs-xs.text-muted.ms-3 116
+                          li.widget-list-item.widget-filter-item
+                            a(href='#').widget-list-link.d-flex.justify-content-between.align-items-center
+                              span.widget-filter-item-text Clogs &amp; Mules
+                              span.fs-xs.text-muted.ms-3 24
+                          li.widget-list-item.widget-filter-item
+                            a(href='#').widget-list-link.d-flex.justify-content-between.align-items-center
+                              span.widget-filter-item-text Athletic Shoes
+                              span.fs-xs.text-muted.ms-3 31
+                          li.widget-list-item.widget-filter-item
+                            a(href='#').widget-list-link.d-flex.justify-content-between.align-items-center
+                              span.widget-filter-item-text Oxfords
+                              span.fs-xs.text-muted.ms-3 9
+                          li.widget-list-item.widget-filter-item
+                            a(href='#').widget-list-link.d-flex.justify-content-between.align-items-center
+                              span.widget-filter-item-text Smart Shoes
+                              span.fs-xs.text-muted.ms-3 18
+
+                // Bags
+                .accordion-item
+                  h3.accordion-header
+                    a(href='#bags' role='button' data-bs-toggle='collapse' aria-expanded='false' aria-controls='bags').accordion-button.collapsed
+                      | Bags
+                  #bags.accordion-collapse.collapse(data-bs-parent='#shop-categories')
+                    .accordion-body
+                      .widget.widget-links.widget-filter
+                        .input-group.input-group-sm.mb-2
+                          input(type='text' placeholder='Search').widget-filter-search.form-control.rounded-end
+                          i.ci-search.position-absolute.top-50.end-0.translate-middle-y.fs-sm.me-3
+                        ul(style='height: 12rem;' data-simplebar data-simplebar-auto-hide='false').widget-list.widget-filter-list.pt-1
+                          li.widget-list-item.widget-filter-item
+                            a(href='#').widget-list-link.d-flex.justify-content-between.align-items-center
+                              span.widget-filter-item-text View all
+                              span.fs-xs.text-muted.ms-3 801
+                          li.widget-list-item.widget-filter-item
+                            a(href='#').widget-list-link.d-flex.justify-content-between.align-items-center
+                              span.widget-filter-item-text Handbags
+                              span.fs-xs.text-muted.ms-3 238
+                          li.widget-list-item.widget-filter-item
+                            a(href='#').widget-list-link.d-flex.justify-content-between.align-items-center
+                              span.widget-filter-item-text Backpacks
+                              span.fs-xs.text-muted.ms-3 116
+                          li.widget-list-item.widget-filter-item
+                            a(href='#').widget-list-link.d-flex.justify-content-between.align-items-center
+                              span.widget-filter-item-text Wallets
+                              span.fs-xs.text-muted.ms-3 104
+                          li.widget-list-item.widget-filter-item
+                            a(href='#').widget-list-link.d-flex.justify-content-between.align-items-center
+                              span.widget-filter-item-text Luggage
+                              span.fs-xs.text-muted.ms-3 115
+                          li.widget-list-item.widget-filter-item
+                            a(href='#').widget-list-link.d-flex.justify-content-between.align-items-center
+                              span.widget-filter-item-text Lumbar Packs
+                              span.fs-xs.text-muted.ms-3 17
+                          li.widget-list-item.widget-filter-item
+                            a(href='#').widget-list-link.d-flex.justify-content-between.align-items-center
+                              span.widget-filter-item-text Duffle Bags
+                              span.fs-xs.text-muted.ms-3 9
+                          li.widget-list-item.widget-filter-item
+                            a(href='#').widget-list-link.d-flex.justify-content-between.align-items-center
+                              span.widget-filter-item-text Bag / Travel Accessories
+                              span.fs-xs.text-muted.ms-3 93
+                          li.widget-list-item.widget-filter-item
+                            a(href='#').widget-list-link.d-flex.justify-content-between.align-items-center
+                              span.widget-filter-item-text Diaper Bags
+                              span.fs-xs.text-muted.ms-3 5
+                          li.widget-list-item.widget-filter-item
+                            a(href='#').widget-list-link.d-flex.justify-content-between.align-items-center
+                              span.widget-filter-item-text Lunch Bags
+                              span.fs-xs.text-muted.ms-3 8
+                          li.widget-list-item.widget-filter-item
+                            a(href='#').widget-list-link.d-flex.justify-content-between.align-items-center
+                              span.widget-filter-item-text Messenger Bags
+                              span.fs-xs.text-muted.ms-3 2
+                          li.widget-list-item.widget-filter-item
+                            a(href='#').widget-list-link.d-flex.justify-content-between.align-items-center
+                              span.widget-filter-item-text Laptop Bags
+                              span.fs-xs.text-muted.ms-3 31
+                          li.widget-list-item.widget-filter-item
+                            a(href='#').widget-list-link.d-flex.justify-content-between.align-items-center
+                              span.widget-filter-item-text Briefcases
+                              span.fs-xs.text-muted.ms-3 45
+                          li.widget-list-item.widget-filter-item
+                            a(href='#').widget-list-link.d-flex.justify-content-between.align-items-center
+                              span.widget-filter-item-text Sport Bags
+                              span.fs-xs.text-muted.ms-3 18
+
+                // Sunglasses
+                .accordion-item
+                  h3.accordion-header
+                    a(href='#sunglasses' role='button' data-bs-toggle='collapse' aria-expanded='false' aria-controls='sunglasses').accordion-button.collapsed
+                      | Sunglasses
+                  #sunglasses.accordion-collapse.collapse(data-bs-parent='#shop-categories')
+                    .accordion-body
+                      .widget.widget-links
+                        ul.widget-list
+                          li.widget-list-item
+                            a(href='#').widget-list-link.d-flex.justify-content-between.align-items-center
+                              span View all
+                              span.fs-xs.text-muted.ms-3 1,842
+                          li.widget-list-item
+                            a(href='#').widget-list-link.d-flex.justify-content-between.align-items-center
+                              span Fashion Sunglasses
+                              span.fs-xs.text-muted.ms-3 953
+                          li.widget-list-item
+                            a(href='#').widget-list-link.d-flex.justify-content-between.align-items-center
+                              span Sport Sunglasses
+                              span.fs-xs.text-muted.ms-3 589
+                          li.widget-list-item
+                            a(href='#').widget-list-link.d-flex.justify-content-between.align-items-center
+                              span Classic Sunglasses
+                              span.fs-xs.text-muted.ms-3 300
+
+                // Watches
+                .accordion-item
+                  h3.accordion-header
+                    a(href='#watches' role='button' data-bs-toggle='collapse' aria-expanded='false' aria-controls='watches').accordion-button.collapsed
+                      | Watches
+                  #watches.accordion-collapse.collapse(data-bs-parent='#shop-categories')
+                    .accordion-body
+                      .widget.widget-links
+                        ul.widget-list
+                          li.widget-list-item
+                            a(href='#').widget-list-link.d-flex.justify-content-between.align-items-center
+                              span View all
+                              span.fs-xs.text-muted.ms-3 734
+                          li.widget-list-item
+                            a(href='#').widget-list-link.d-flex.justify-content-between.align-items-center
+                              span Fashion Watches
+                              span.fs-xs.text-muted.ms-3 572
+                          li.widget-list-item
+                            a(href='#').widget-list-link.d-flex.justify-content-between.align-items-center
+                              span Casual Watches
+                              span.fs-xs.text-muted.ms-3 110
+                          li.widget-list-item
+                            a(href='#').widget-list-link.d-flex.justify-content-between.align-items-center
+                              span Luxury Watches
+                              span.fs-xs.text-muted.ms-3 34
+                          li.widget-list-item
+                            a(href='#').widget-list-link.d-flex.justify-content-between.align-items-center
+                              span Sport Watches
+                              span.fs-xs.text-muted.ms-3 18
+
+                // Accessories
+                .accordion-item
+                  .accordion-header
+                    a(href='#accessories' role='button' data-bs-toggle='collapse' aria-expanded='false' aria-controls='accessories').accordion-button.collapsed
+                      | Accessories
+                  #accessories.accordion-collapse.collapse(data-bs-parent='#shop-categories')
+                    .accordion-body
+                      .widget.widget-links
+                        ul.widget-list
+                          li.widget-list-item
+                            a(href='#').widget-list-link.d-flex.justify-content-between.align-items-center
+                              span View all
+                              span.fs-xs.text-muted.ms-3 920
+                          li.widget-list-item
+                            a(href='#').widget-list-link.d-flex.justify-content-between.align-items-center
+                              span Belts
+                              span.fs-xs.text-muted.ms-3 364
+                          li.widget-list-item
+                            a(href='#').widget-list-link.d-flex.justify-content-between.align-items-center
+                              span Hats
+                              span.fs-xs.text-muted.ms-3 405
+                          li.widget-list-item
+                            a(href='#').widget-list-link.d-flex.justify-content-between.align-items-center
+                              span Jewelry
+                              span.fs-xs.text-muted.ms-3 131
+                          li.widget-list-item
+                            a(href='#').widget-list-link.d-flex.justify-content-between.align-items-center
+                              span Cosmetics
+                              span.fs-xs.text-muted.ms-3 20
+          #html1.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-html').
+                &lt;!-- Widget: Categories --&gt;
+                &lt;div class=&quot;widget widget-categories&quot;&gt;
+                  &lt;h3 class=&quot;widget-title&quot;&gt;Shop categories&lt;/h3&gt;
+                  &lt;div id=&quot;shop-categories&quot; class=&quot;accordion&quot;&gt;
+
+                    &lt;!-- Category with search bar and scrollbar (more items) --&gt;
+                    &lt;div class=&quot;accordion-item&quot;&gt;
+                      &lt;h3 class=&quot;accordion-header&quot;&gt;
+                        &lt;a href=&quot;#clothing&quot; class=&quot;accordion-button&quot; role=&quot;button&quot; data-bs-toggle=&quot;collapse&quot; aria-expanded=&quot;true&quot; aria-controls=&quot;clothing&quot;&gt;
+                          Clothing
+                        &lt;/a&gt;
+                      &lt;/h3&gt;
+                      &lt;div id=&quot;clothing&quot; class=&quot;accordion-collapse collapse show&quot; data-bs-parent=&quot;#shop-categories&quot;&gt;
+                        &lt;div class=&quot;accordion-body&quot;&gt;
+                          &lt;div class=&quot;widget widget-links widget-filter&quot;&gt;
+
+                            &lt;!-- Search --&gt;
+                            &lt;div class=&quot;input-group input-group-sm mb-2&quot;&gt;
+                              &lt;input type=&quot;text&quot; class=&quot;widget-filter-search form-control rounded-end&quot; placeholder=&quot;Search&quot;&gt;
+                              &lt;i class=&quot;ci-search position-absolute top-50 end-0 translate-middle-y fs-sm me-3&quot;&gt;&lt;/i&gt;
+                            &lt;/div&gt;
+
+                            &lt;!-- Sub-categories --&gt;
+                            &lt;ul class=&quot;widget-list widget-filter-list pt-1&quot; style=&quot;height: 12rem;&quot; data-simplebar data-simplebar-auto-hide=&quot;false&quot;&gt;
+                              &lt;li class=&quot;widget-list-item widget-filter-item&quot;&gt;
+                                &lt;a href=&quot;#&quot; class=&quot;widget-list-link d-flex justify-content-between align-items-center&quot;&gt;
+                                  &lt;span class=&quot;widget-filter-item-text&quot;&gt;View all&lt;/span&gt;
+                                  &lt;span class=&quot;fs-xs text-muted ms-3&quot;&gt;2,548&lt;/span&gt;
+                                &lt;/a&gt;
+                              &lt;/li&gt;
+                              &lt;li class=&quot;widget-list-item widget-filter-item&quot;&gt;
+                                &lt;a href=&quot;#&quot; class=&quot;widget-list-link d-flex justify-content-between align-items-center&quot;&gt;
+                                  &lt;span class=&quot;widget-filter-item-text&quot;&gt;Blazers &amp;amp; Suits&lt;/span&gt;
+                                  &lt;span class=&quot;fs-xs text-muted ms-3&quot;&gt;235&lt;/span&gt;
+                                &lt;/a&gt;
+                              &lt;/li&gt;
+                              &lt;li class=&quot;widget-list-item widget-filter-item&quot;&gt;
+                                &lt;a href=&quot;#&quot; class=&quot;widget-list-link d-flex justify-content-between align-items-center&quot;&gt;
+                                  &lt;span class=&quot;widget-filter-item-text&quot;&gt;Blouses&lt;/span&gt;
+                                  &lt;span class=&quot;fs-xs text-muted ms-3&quot;&gt;410&lt;/span&gt;
+                                &lt;/a&gt;
+                              &lt;/li&gt;
+                              ...
+                            &lt;/ul&gt;
+                          &lt;/div&gt;
+                        &lt;/div&gt;
+                      &lt;/div&gt;
+                    &lt;/div&gt;
+
+                    &lt;!-- Category without search bar and scrollbar (less items) --&gt;
+                    &lt;div class=&quot;accordion-item&quot;&gt;
+                      &lt;h3 class=&quot;accordion-header&quot;&gt;
+                        &lt;a href=&quot;#sunglasses&quot; class=&quot;accordion-button collapsed&quot; role=&quot;button&quot; data-bs-toggle=&quot;collapse&quot; aria-expanded=&quot;false&quot; aria-controls=&quot;sunglasses&quot;&gt;
+                          Sunglasses
+                        &lt;/a&gt;
+                      &lt;/h3&gt;
+                      &lt;div id=&quot;sunglasses&quot; class=&quot;accordion-collapse collapse&quot; data-bs-parent=&quot;#shop-categories&quot;&gt;
+                        &lt;div class=&quot;accordion-body&quot;&gt;
+
+                          &lt;!-- Sub-categories --&gt;
+                          &lt;div class=&quot;widget widget-links&quot;&gt;
+                            &lt;ul class=&quot;widget-list&quot;&gt;
+                              &lt;li class=&quot;widget-list-item&quot;&gt;
+                                &lt;a href=&quot;#&quot; class=&quot;widget-list-link d-flex justify-content-between align-items-center&quot;&gt;
+                                  &lt;span&gt;View all&lt;/span&gt;
+                                  &lt;span class=&quot;fs-xs text-muted ms-3&quot;&gt;1,842&lt;/span&gt;
+                                &lt;/a&gt;
+                              &lt;/li&gt;
+                              &lt;li class=&quot;widget-list-item&quot;&gt;
+                                &lt;a href=&quot;#&quot; class=&quot;widget-list-link d-flex justify-content-between align-items-center&quot;&gt;
+                                  &lt;span&gt;Fashion Sunglasses&lt;/span&gt;
+                                  &lt;span class=&quot;fs-xs text-muted ms-3&quot;&gt;953&lt;/span&gt;
+                                &lt;/a&gt;
+                              &lt;/li&gt;
+                              &lt;li class=&quot;widget-list-item&quot;&gt;
+                                &lt;a href=&quot;#&quot; class=&quot;widget-list-link d-flex justify-content-between align-items-center&quot;&gt;
+                                  &lt;span&gt;Sport Sunglasses&lt;/span&gt;
+                                  &lt;span class=&quot;fs-xs text-muted ms-3&quot;&gt;589&lt;/span&gt;
+                                &lt;/a&gt;
+                              &lt;/li&gt;
+                              ...
+                            &lt;/ul&gt;
+                          &lt;/div&gt;
+                        &lt;/div&gt;
+                      &lt;/div&gt;
+                    &lt;/div&gt;
+
+                    &lt;!-- Add as many categories and sub-categories as you need --&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+          #pug1.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-pug').
+                // Widget: Categories
+                .widget.widget-categories
+                  h3.widget-title Shop categories
+                  #shop-categories.accordion
+
+                    // Category with search bar and scrollbar (more items)
+                    .accordion
+                      h3.accordion-header
+                        a(href=&quot;#clothing&quot;, role=&quot;button&quot;, data-bs-toggle=&quot;collapse&quot;, aria-expanded=&quot;true&quot;, aria-controls=&quot;clothing&quot;).accordion-button
+                          | Clothing
+                      #clothing.accordion-collapse.collapse.show(data-bs-parent=&quot;#shop-categories&quot;)
+                        .accordion-body
+                          .widget.widget-links.widget-filter
+                          
+                            // Search
+                            .input-group.input-group-sm.mb-2
+                              input(type=&quot;text&quot;, placeholder=&quot;Search&quot;).widget-filter-search.form-control.rounded-end
+                              i.ci-search.position-absolute.top-50.end-0.translate-middle-y.fs-sm.me-3
+
+                            // Sub-categories
+                            ul(style=&quot;height: 12rem;&quot;, data-simplebar, data-simplebar-auto-hide=&quot;false&quot;).widget-list.widget-filter-list.pt-1
+                              li.widget-list-item.widget-filter-item
+                                a(href=&quot;#&quot;).widget-list-link.d-flex.justify-content-between.align-items-center
+                                  span.widget-filter-item-text View all
+                                  span.fs-xs.text-muted.ms-3 2,548
+                              li.widget-list-item.widget-filter-item
+                                a(href=&quot;#&quot;).widget-list-link.d-flex.justify-content-between.align-items-center
+                                  span.widget-filter-item-text Blazers &amp;amp; Suits
+                                  span.fs-xs.text-muted.ms-3 235
+                              li.widget-list-item.widget-filter-item
+                                a(href=&quot;#&quot;).widget-list-link.d-flex.justify-content-between.align-items-center
+                                  span.widget-filter-item-text Blouses
+                                  span.fs-xs.text-muted.ms-3 410
+                              ...
+
+                    // Category without search bar and scrollbar (less items)
+                    .accordion
+                      h3.accordion-header
+                        a(href=&quot;#sunglasses&quot; role=&quot;button&quot; data-bs-toggle=&quot;collapse&quot; aria-expanded=&quot;false&quot; aria-controls=&quot;sunglasses&quot;).accordion-button.collapsed
+                          | Sunglasses
+                      #sunglasses.accordion-collapse.collapse(data-bs-parent=&quot;#shop-categories&quot;)
+                        .accordion-body
+
+                          // Sub-categories
+                          .widget.widget-links
+                            ul.widget-list
+                              li.widget-list-item
+                                a(href=&quot;#&quot;).widget-list-link.d-flex.justify-content-between.align-items-center
+                                  span View all
+                                  span.fs-xs.text-muted.ms-3 1,842
+                              li.widget-list-item
+                                a(href=&quot;#&quot;).widget-list-link.d-flex.justify-content-between.align-items-center
+                                  span Fashion Sunglasses
+                                  span.fs-xs.text-muted.ms-3 953
+                              li.widget-list-item
+                                a(href=&quot;#&quot;).widget-list-link.d-flex.justify-content-between.align-items-center
+                                  span Sport Sunglasses
+                                  span.fs-xs.text-muted.ms-3 589
+                              li.widget-list-item
+                                a(href=&quot;#&quot;).widget-list-link.d-flex.justify-content-between.align-items-center
+                                  span Classic Sunglasses
+                                  span.fs-xs.text-muted.ms-3 300
+                    
+                    // Add as many categories and sub-categories as you need
+
+  // Price range
+  section#widget-range.pb-5.mb-md-2
+    h2.h5.mb-3 Price range
+    .card.border-0.shadow
+      .card-header
+        ul(role='tablist').nav.nav-tabs.card-header-tabs
+          li.nav-item
+            a(href='#result2' data-bs-toggle='tab' role='tab' aria-controls='result2' aria-selected='true').nav-link.active Result
+          li.nav-item
+            a(href='#html2' data-bs-toggle='tab' role='tab' aria-controls='html2' aria-selected='false').nav-link HTML
+          li.nav-item
+            a(href='#pug2' data-bs-toggle='tab' role='tab' aria-controls='pug2' aria-selected='false').nav-link Pug
+      .card-body
+        .tab-content
+          #result2.tab-pane.fade.show.active(role='tabpanel')
+            .widget(style='max-width: 20rem;')
+              h3.widget-title Price range
+              .range-slider(data-start-min='250' data-start-max='680' data-min='0' data-max='1000' data-step='1')
+                .range-slider-ui
+                .d-flex
+                  .w-50.pe-2.me-2
+                    .input-group.input-group-sm
+                      span.input-group-text $
+                      input(type='text').form-control.range-slider-value-min
+                  .w-50.ps-2
+                    .input-group.input-group-sm
+                      span.input-group-text $
+                      input(type='text').form-control.range-slider-value-max
+          #html2.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-html').
+                &lt;!-- Widget: Range slider
+                        Data API:
+                        data-start-min - position of the slider's left handle
+                        data-start-max - position of the slider's right handle
+                        data-min - range minimum
+                        data-max - range maximum
+                        data-step - range step
+                --&gt;
+                &lt;div class=&quot;widget&quot;&gt;
+                  &lt;h3 class=&quot;widget-title&quot;&gt;Price range&lt;/h3&gt;
+                  &lt;div class=&quot;range-slider&quot; data-start-min=&quot;250&quot; data-start-max=&quot;680&quot; data-min=&quot;0&quot; data-max=&quot;1000&quot; data-step=&quot;1&quot;&gt;
+                    &lt;div class=&quot;range-slider-ui&quot;&gt;&lt;/div&gt;
+                    &lt;div class=&quot;d-flex&quot;&gt;
+                      &lt;div class=&quot;w-50 pe-2 me-2&quot;&gt;
+                        &lt;div class=&quot;input-group input-group-sm&quot;&gt;
+                          &lt;span class=&quot;input-group-text&quot;&gt;$&lt;/span&gt;
+                          &lt;input class=&quot;form-control range-slider-value-min&quot; type=&quot;text&quot;&gt;
+                        &lt;/div&gt;
+                      &lt;/div&gt;
+                      &lt;div class=&quot;w-50 ps-2&quot;&gt;
+                        &lt;div class=&quot;input-group input-group-sm&quot;&gt;
+                          &lt;span class=&quot;input-group-text&quot;&gt;$&lt;/span&gt;
+                          &lt;input class=&quot;form-control range-slider-value-max&quot; type=&quot;text&quot;&gt;
+                        &lt;/div&gt;
+                      &lt;/div&gt;
+                    &lt;/div&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+          #pug2.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-pug').
+                // Widget: Range slider
+                // Data API:
+                // data-start-min - position of the slider's left handle
+                // data-start-max - position of the slider's right handle
+                // data-min - range minimum
+                // data-max - range maximum
+                // data-step - range step
+                .widget
+                  h3.widget-title Price range
+                  .range-slider(data-start-min=&quot;250&quot;, data-start-max=&quot;680&quot;, data-min=&quot;0&quot;, data-max=&quot;1000&quot;, data-step=&quot;1&quot;)
+                    .range-slider-ui
+                    .d-flex
+                      .w-50.pe-2.me-2
+                        .input-group.input-group-sm
+                          span.input-group-text $
+                          input(type=&quot;text&quot;).form-control.range-slider-value-min
+                      .w-50.ps-2
+                        .input-group.input-group-sm
+                          span.input-group-text $
+                          input(type=&quot;text&quot;).form-control.range-slider-value-max
+
+  // Links
+  section#widget-links.pb-5.mb-md-2
+    h2.h5.mb-3 Links
+    .card.border-0.shadow
+      .card-header
+        ul(role='tablist').nav.nav-tabs.card-header-tabs
+          li.nav-item
+            a(href='#result3' data-bs-toggle='tab' role='tab' aria-controls='result3' aria-selected='true').nav-link.active Result
+          li.nav-item
+            a(href='#html3' data-bs-toggle='tab' role='tab' aria-controls='html3' aria-selected='false').nav-link HTML
+          li.nav-item
+            a(href='#pug3' data-bs-toggle='tab' role='tab' aria-controls='pug3' aria-selected='false').nav-link Pug
+      .card-body
+        .tab-content
+          #result3.tab-pane.fade.show.active(role='tabpanel')
+            .widget.widget-links
+              h3.widget-title Useful links
+              ul.widget-list
+                li.widget-list-item: a(href='#').widget-list-link Your account
+                li.widget-list-item: a(href='#').widget-list-link Shipping rates &amp; policies
+                li.widget-list-item: a(href='#').widget-list-link Refunds &amp; replacements
+                li.widget-list-item: a(href='#').widget-list-link Taxes
+                li.widget-list-item: a(href='#').widget-list-link Delivery info
+                li.widget-list-item: a(href='#').widget-list-link Affiliate program
+          #html3.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-html').
+                &lt;!-- Widget: Links --&gt;
+                &lt;div class=&quot;widget widget-links&quot;&gt;
+                  &lt;h3 class=&quot;widget-title&quot;&gt;Useful links&lt;/h3&gt;
+                  &lt;ul class=&quot;widget-list&quot;&gt;
+                    &lt;li class=&quot;widget-list-item&quot;&gt;
+                      &lt;a href=&quot;#&quot; class=&quot;widget-list-link&quot;&gt;Your account&lt;/a&gt;
+                    &lt;/li&gt;
+                    &lt;li class=&quot;widget-list-item&quot;&gt;
+                      &lt;a href=&quot;#&quot; class=&quot;widget-list-link&quot;&gt;Shipping rates &amp;amp; policies&lt;/a&gt;
+                    &lt;/li&gt;
+                    &lt;li class=&quot;widget-list-item&quot;&gt;
+                      &lt;a href=&quot;#&quot; class=&quot;widget-list-link&quot;&gt;Refunds &amp;amp; replacements&lt;/a&gt;
+                    &lt;/li&gt;
+                    &lt;li class=&quot;widget-list-item&quot;&gt;
+                      &lt;a href=&quot;#&quot; class=&quot;widget-list-link&quot;&gt;Taxes&lt;/a&gt;
+                    &lt;/li&gt;
+                    &lt;li class=&quot;widget-list-item&quot;&gt;
+                      &lt;a href=&quot;#&quot; class=&quot;widget-list-link&quot;&gt;Delivery info&lt;/a&gt;
+                    &lt;/li&gt;
+                    &lt;li class=&quot;widget-list-item&quot;&gt;
+                      &lt;a href=&quot;#&quot; class=&quot;widget-list-link&quot;&gt;Affiliate program&lt;/a&gt;
+                    &lt;/li&gt;
+                  &lt;/ul&gt;
+                &lt;/div&gt;
+          #pug3.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-pug').
+                // Widget: Links
+                .widget.widget-links
+                  h3.widget-title Useful links
+                  ul.widget-list
+                    li.widget-list-item
+                      a.widget-list-link(href=&quot;#&quot;) Your account
+                    li.widget-list-item
+                      a.widget-list-link(href=&quot;#&quot;) Shipping rates &amp;amp; policies
+                    li.widget-list-item
+                      a.widget-list-link(href=&quot;#&quot;) Refunds &amp;amp; replacements
+                    li.widget-list-item
+                      a.widget-list-link(href=&quot;#&quot;) Taxes
+                    li.widget-list-item
+                      a.widget-list-link(href=&quot;#&quot;) Delivery info
+                    li.widget-list-item
+                      a.widget-list-link(href=&quot;#&quot;) Affiliate program
+
+  // Featured products list
+  section#widget-products-list.pb-5.mb-md-2
+    h2.h5.mb-3 Featured products list
+    .card.border-0.shadow
+      .card-header
+        ul(role='tablist').nav.nav-tabs.card-header-tabs
+          li.nav-item
+            a(href='#result4' data-bs-toggle='tab' role='tab' aria-controls='result4' aria-selected='true').nav-link.active Result
+          li.nav-item
+            a(href='#html4' data-bs-toggle='tab' role='tab' aria-controls='html4' aria-selected='false').nav-link HTML
+          li.nav-item
+            a(href='#pug4' data-bs-toggle='tab' role='tab' aria-controls='pug4' aria-selected='false').nav-link Pug
+      .card-body
+        .tab-content
+          #result4.tab-pane.fade.show.active(role='tabpanel')
+            .widget(style='max-width: 22rem;')
+              h3.widget-title Featured products
+              .d-flex.align-items-center.pb-2.border-bottom
+                a(href='#').flex-shrink-0
+                  img(src='../img/shop/cart/widget/01.jpg' width='64' alt='Product')
+                .ps-2
+                  h6.widget-product-title
+                    a(href='#') Women Colorblock Sneakers
+                  .widget-product-meta
+                    span.text-accent.me-2
+                      | $150.
+                      small 00
+              .d-flex.align-items-center.py-2.border-bottom
+                a(href='#').flex-shrink-0
+                  img(src='../img/shop/cart/widget/02.jpg' width='64' alt='Product')
+                .ps-2
+                  h6.widget-product-title
+                    a(href='#') TH Jeans City Backpack
+                  .widget-product-meta
+                    span.text-accent.me-2
+                      | $79.
+                      small 50
+              .d-flex.align-items-center.py-2.border-bottom
+                a(href='#').flex-shrink-0
+                  img(src='../img/shop/cart/widget/03.jpg' width='64' alt='Product')
+                .ps-2
+                  h6.widget-product-title
+                    a(href='#') 3-Color Sun Stash Hat
+                  .widget-product-meta
+                    span.text-accent.me-2
+                      | $22.
+                      small 50
+              .d-flex.align-items-center.py-2
+                a(href='#').flex-shrink-0
+                  img(src='../img/shop/cart/widget/04.jpg' width='64' alt='Product')
+                .ps-2
+                  h6.widget-product-title
+                    a(href='#') Cotton Polo Regular Fit
+                  .widget-product-meta
+                    span.text-accent.me-2
+                      | $9.
+                      small 00
+          #html4.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-html').
+                &lt;!-- Widget: Featured products list --&gt;
+                &lt;div class=&quot;widget&quot;&gt;
+                  &lt;h3 class=&quot;widget-title&quot;&gt;Featured products&lt;/h3&gt;
+
+                  &lt;!-- Item --&gt;
+                  &lt;div class=&quot;d-flex align-items-center pb-2 border-bottom&quot;&gt;
+                    &lt;a class=&quot;flex-shrink-0&quot; href=&quot;#&quot;&gt;
+                      &lt;img src=&quot;path-to-image&quot; width=&quot;64&quot; alt=&quot;Product&quot;/&gt;
+                    &lt;/a&gt;
+                    &lt;div class=&quot;ps-2&quot;&gt;
+                      &lt;h6 class=&quot;widget-product-title&quot;&gt;&lt;a href=&quot;#&quot;&gt;Women Colorblock Sneakers&lt;/a&gt;&lt;/h6&gt;
+                      &lt;div class=&quot;widget-product-meta&quot;&gt;
+                        &lt;span class=&quot;text-accent me-2&quot;&gt;$150.&lt;small&gt;00&lt;/small&gt;&lt;/span&gt;
+                      &lt;/div&gt;
+                    &lt;/div&gt;
+                  &lt;/div&gt;
+
+                  &lt;!-- Item --&gt;
+                  &lt;div class=&quot;d-flex align-items-center py-2 border-bottom&quot;&gt;
+                    &lt;a class=&quot;flex-shrink-0&quot; href=&quot;#&quot;&gt;
+                      &lt;img src=&quot;path-to-image&quot; width=&quot;64&quot; alt=&quot;Product&quot;/&gt;
+                    &lt;/a&gt;
+                    &lt;div class=&quot;ps-2&quot;&gt;
+                      &lt;6 class=&quot;widget-product-title&quot;&gt;&lt;a href=&quot;#&quot;&gt;TH Jeans City Backpack&lt;/a&gt;&lt;/h6&gt;
+                      &lt;div class=&quot;widget-product-meta&quot;&gt;
+                        &lt;span class=&quot;text-accent me-2&quot;&gt;$79.&lt;small&gt;00&lt;/small&gt;&lt;/span&gt;
+                      &lt;/div&gt;
+                    &lt;/div&gt;
+                  &lt;/div&gt;
+
+                  &lt;!-- Item --&gt;
+                  &lt;div class=&quot;d-flex align-items-center py-2 border-bottom&quot;&gt;
+                    &lt;a class=&quot;flex-shrink-0&quot; href=&quot;#&quot;&gt;
+                      &lt;img src=&quot;path-to-image&quot; width=&quot;64&quot; alt=&quot;Product&quot;/&gt;
+                    &lt;/a&gt;
+                    &lt;div class=&quot;ps-2y&quot;&gt;
+                      &lt;h6 class=&quot;widget-product-title&quot;&gt;&lt;a href=&quot;#&quot;&gt;3-Color Sun Stash Hat&lt;/a&gt;&lt;/h6&gt;
+                      &lt;div class=&quot;widget-product-meta&quot;&gt;
+                        &lt;span class=&quot;text-accent me-2&quot;&gt;$22.&lt;small&gt;00&lt;/small&gt;&lt;/span&gt;
+                      &lt;/div&gt;
+                    &lt;/div&gt;
+                  &lt;/div&gt;
+
+                  &lt;!-- Item --&gt;
+                  &lt;div class=&quot;d-flex align-items-center py-2&quot;&gt;
+                    &lt;a class=&quot;flex-shrink-0&quot; href=&quot;#&quot;&gt;
+                      &lt;img src=&quot;path-to-image&quot; width=&quot;64&quot; alt=&quot;Product&quot;/&gt;
+                    &lt;/a&gt;
+                    &lt;div class=&quot;ps-2&quot;&gt;
+                      &lt;h6 class=&quot;widget-product-title&quot;&gt;&lt;a href=&quot;#&quot;&gt;Cotton Polo Regular Fit&lt;/a&gt;&lt;/h6&gt;
+                      &lt;div class=&quot;widget-product-meta&quot;&gt;
+                        &lt;span class=&quot;text-accent me-2&quot;&gt;$9.&lt;small&gt;00&lt;/small&gt;&lt;/span&gt;
+                      &lt;/div&gt;
+                    &lt;/div&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+          #pug4.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-pug').
+                // Widget: Featured products list
+                .widget
+                  h3.widget-title Featured products
+                  
+                  // Item
+                  .d-flex.align-items-center.pb-2.border-bottom
+                    a(href=&quot;#&quot;).flex-shrink-0
+                      img(src=&quot;path-to-image&quot;, width=&quot;64&quot;, alt=&quot;Product&quot;)
+                    .ps-2
+                      h6.widget-product-title
+                        a(href=&quot;#&quot;) Women Colorblock Sneakers
+                      .widget-product-meta
+                        span.text-accent.me-2
+                          | $150.
+                          small 00
+                  
+                  // Item
+                  .d-flex.align-items-center.py-2.border-bottom
+                    a(href=&quot;#&quot;).flex-shrink-0
+                      img(src=&quot;path-to-image&quot;, width=&quot;64&quot;, alt=&quot;Product&quot;)
+                    .ps-2
+                      h6.widget-product-title
+                        a(href=&quot;#&quot;) TH Jeans City Backpack
+                      .widget-product-meta
+                        span.text-accent.me-2
+                          | $79.
+                          small 50
+                  
+                  // Item
+                  .d-flex.align-items-center.py-2.border-bottom
+                    a(href=&quot;#&quot;).flex-shrink-0
+                      img(src=&quot;path-to-image&quot;, width=&quot;64&quot;, alt=&quot;Product&quot;)
+                    .ps-2
+                      h6.widget-product-title
+                        a(href=&quot;#&quot;) 3-Color Sun Stash Hat
+                      .widget-product-meta
+                        span.text-accent.me-2
+                          | $22.
+                          small 50
+
+                  // Item
+                  .d-flex.align-items-center.py-2
+                    a(href=&quot;#&quot;).flex-shrink-0
+                      img(src=&quot;path-to-image&quot;, width=&quot;64&quot;, alt=&quot;Product&quot;)
+                    .ps-2
+                      h6.widget-product-title
+                        a(href=&quot;#&quot;) Cotton Polo Regular Fit
+                      .widget-product-meta
+                        span.text-accent.me-2
+                          | $9.
+                          small 00
+
+  // Featured products carousel
+  section#widget-products-carousel.pb-5.mb-md-2
+    h2.h5.mb-3 Featured products carousel
+    .card.border-0.shadow
+      .card-header
+        ul(role='tablist').nav.nav-tabs.card-header-tabs
+          li.nav-item
+            a(href='#result5' data-bs-toggle='tab' role='tab' aria-controls='result5' aria-selected='true').nav-link.active Result
+          li.nav-item
+            a(href='#html5' data-bs-toggle='tab' role='tab' aria-controls='html5' aria-selected='false').nav-link HTML
+          li.nav-item
+            a(href='#pug5' data-bs-toggle='tab' role='tab' aria-controls='pug5' aria-selected='false').nav-link Pug
+      .card-body
+        .tab-content
+          #result5.tab-pane.fade.show.active(role='tabpanel')
+            .widget(style='max-width: 22rem;')
+              h3.widget-title Featured products
+              .tns-carousel.tns-nav-start
+                .tns-carousel-inner(data-carousel-options='{"controls": false}')
+                  div
+                    .d-flex.align-items-center
+                      a(href='#').flex-shrink-0
+                        img(src='../img/shop/cart/widget/01.jpg' width='64' alt='Product')
+                      .ps-2
+                        h6.widget-product-title
+                          a(href='#') Women Colorblock Sneakers
+                        .widget-product-meta
+                          span.text-accent.me-2
+                            | $150.
+                            small 00
+                  div
+                    .d-flex.align-items-center
+                      a(href='#').flex-shrink-0
+                        img(src='../img/shop/cart/widget/02.jpg' width='64' alt='Product')
+                      .ps-2
+                        h6.widget-product-title
+                          a(href='#') TH Jeans City Backpack
+                        .widget-product-meta
+                          span.text-accent.me-2
+                            | $79.
+                            small 50
+                  div
+                    .d-flex.align-items-center
+                      a(href='#').flex-shrink-0
+                        img(src='../img/shop/cart/widget/03.jpg' width='64' alt='Product')
+                      .ps-2
+                        h6.widget-product-title
+                          a(href='#') 3-Color Sun Stash Hat
+                        .widget-product-meta
+                          span.text-accent.me-2
+                            | $22.
+                            small 50
+                  div
+                    .d-flex.align-items-center
+                      a(href='#').flex-shrink-0
+                        img(src='../img/shop/cart/widget/04.jpg' width='64' alt='Product')
+                      .ps-2
+                        h6.widget-product-title
+                          a(href='#') Cotton Polo Regular Fit
+                        .widget-product-meta
+                          span.text-accent.me-2
+                            | $9.
+                            small 00
+          #html5.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-html').
+                &lt;!-- Widget: Featured products carousel --&gt;
+                &lt;div class=&quot;widget&quot;&gt;
+                  &lt;h3 class=&quot;widget-title&quot;&gt;Featured products&lt;/h3&gt;
+                  &lt;div class=&quot;tns-carousel tns-nav-start&quot;&gt;
+                    &lt;div class=&quot;tns-carousel-inner&quot; data-carousel-options='{&quot;controls&quot;: false}'&gt;
+
+                      &lt;!-- Item --&gt;
+                      &lt;div&gt;
+                        &lt;div class=&quot;d-flex align-items-center&quot;&gt;
+                          &lt;a class=&quot;flex-shrink-0&quot; href=&quot;#&quot;&gt;
+                            &lt;img src=&quot;path-to-image&quot; width=&quot;64&quot; alt=&quot;Product&quot;/&gt;
+                          &lt;/a&gt;
+                          &lt;div class=&quot;ps-2&quot;&gt;
+                            &lt;h6 class=&quot;widget-product-title&quot;&gt;&lt;a href=&quot;#&quot;&gt;Women Colorblock Sneakers&lt;/a&gt;&lt;/h6&gt;
+                            &lt;div class=&quot;widget-product-meta&quot;&gt;
+                              &lt;span class=&quot;text-accent me-2&quot;&gt;$150.&lt;small&gt;00&lt;/small&gt;&lt;/span&gt;
+                            &lt;/div&gt;
+                          &lt;/div&gt;
+                        &lt;/div&gt;
+                      &lt;/div&gt;
+
+                      &lt;!-- Item --&gt;
+                      &lt;div&gt;
+                        &lt;div class=&quot;d-flex align-items-center&quot;&gt;
+                          &lt;a class=&quot;flex-shrink-0&quot; href=&quot;#&quot;&gt;
+                            &lt;img src=&quot;path-to-image&quot; width=&quot;64&quot; alt=&quot;Product&quot;/&gt;
+                          &lt;/a&gt;
+                          &lt;div class=&quot;ps-2&quot;&gt;
+                            &lt;6 class=&quot;widget-product-title&quot;&gt;&lt;a href=&quot;#&quot;&gt;TH Jeans City Backpack&lt;/a&gt;&lt;/h6&gt;
+                            &lt;div class=&quot;widget-product-meta&quot;&gt;
+                              &lt;span class=&quot;text-accent me-2&quot;&gt;$79.&lt;small&gt;00&lt;/small&gt;&lt;/span&gt;
+                            &lt;/div&gt;
+                          &lt;/div&gt;
+                        &lt;/div&gt;
+                      &lt;/div&gt;
+
+                      &lt;!-- Item --&gt;
+                      &lt;div&gt;
+                        &lt;div class=&quot;d-flex align-items-center&quot;&gt;
+                          &lt;a class=&quot;flex-shrink-0&quot; href=&quot;#&quot;&gt;
+                            &lt;img src=&quot;path-to-image&quot; width=&quot;64&quot; alt=&quot;Product&quot;/&gt;
+                          &lt;/a&gt;
+                          &lt;div class=&quot;ps-2&quot;&gt;
+                            &lt;h6 class=&quot;widget-product-title&quot;&gt;&lt;a href=&quot;#&quot;&gt;3-Color Sun Stash Hat&lt;/a&gt;&lt;/h6&gt;
+                            &lt;div class=&quot;widget-product-meta&quot;&gt;
+                              &lt;span class=&quot;text-accent me-2&quot;&gt;$22.&lt;small&gt;00&lt;/small&gt;&lt;/span&gt;
+                            &lt;/div&gt;
+                          &lt;/div&gt;
+                        &lt;/div&gt;
+                      &lt;/div&gt;
+
+                      &lt;!-- Item --&gt;
+                      &lt;div&gt;
+                        &lt;div class=&quot;d-flex align-items-center&quot;&gt;
+                          &lt;a class=&quot;flex-shrink-0&quot; href=&quot;#&quot;&gt;
+                            &lt;img src=&quot;path-to-image&quot; width=&quot;64&quot; alt=&quot;Product&quot;/&gt;
+                          &lt;/a&gt;
+                          &lt;div class=&quot;ps-2&quot;&gt;
+                            &lt;h6 class=&quot;widget-product-title&quot;&gt;&lt;a href=&quot;#&quot;&gt;Cotton Polo Regular Fit&lt;/a&gt;&lt;/h6&gt;
+                            &lt;div class=&quot;widget-product-meta&quot;&gt;
+                              &lt;span class=&quot;text-accent me-2&quot;&gt;$9.&lt;small&gt;00&lt;/small&gt;&lt;/span&gt;
+                            &lt;/div&gt;
+                          &lt;/div&gt;
+                        &lt;/div&gt;
+                      &lt;/div&gt;
+                    &lt;/div&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+          #pug5.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-pug').
+                // Widget: Featured products carousel
+                .widget
+                  h3.widget-title Featured products
+
+                  .tns-carousel.tns-nav-start
+                    .tns-carousel-inner(data-carousel-options='{&quot;controls&quot;: false}')
+                  
+                      // Item
+                      div
+                        .d-flex.align-items-center
+                          a(href=&quot;#&quot;).flex-shrink-0
+                            img(src=&quot;path-to-image&quot;, width=&quot;64&quot;, alt=&quot;Product&quot;)
+                          .ps-2
+                            h6.widget-product-title
+                              a(href=&quot;#&quot;) Women Colorblock Sneakers
+                            .widget-product-meta
+                              span.text-accent.me-2
+                                | $150.
+                                small 00
+                      
+                      // Item
+                      div
+                        .d-flex.align-items-center
+                          a(href=&quot;#&quot;).flex-shrink-0
+                            img(src=&quot;path-to-image&quot;, width=&quot;64&quot;, alt=&quot;Product&quot;)
+                          .ps-2
+                            h6.widget-product-title
+                              a(href=&quot;#&quot;) TH Jeans City Backpack
+                            .widget-product-meta
+                              span.text-accent.me-2
+                                | $79.
+                                small 50
+                      
+                      // Item
+                      div
+                        .d-flex.align-items-center
+                          a(href=&quot;#&quot;).flex-shrink-0
+                            img(src=&quot;path-to-image&quot;, width=&quot;64&quot;, alt=&quot;Product&quot;)
+                          .ps-2
+                            h6.widget-product-title
+                              a(href=&quot;#&quot;) 3-Color Sun Stash Hat
+                            .widget-product-meta
+                              span.text-accent.me-2
+                                | $22.
+                                small 50
+
+                      // Item
+                      div
+                        .d-flex.align-items-center
+                          a(href=&quot;#&quot;).flex-shrink-0
+                            img(src=&quot;path-to-image&quot;, width=&quot;64&quot;, alt=&quot;Product&quot;)
+                          .ps-2
+                            h6.widget-product-title
+                              a(href=&quot;#&quot;) Cotton Polo Regular Fit
+                            .widget-product-meta
+                              span.text-accent.me-2
+                                | $9.
+                                small 00
+
+  // Shopping cart
+  section#widget-cart.pb-5.mb-md-2
+    h2.h5.mb-3 Shopping cart
+    .card.border-0.shadow
+      .card-header
+        ul(role='tablist').nav.nav-tabs.card-header-tabs
+          li.nav-item
+            a(href='#result6' data-bs-toggle='tab' role='tab' aria-controls='result6' aria-selected='true').nav-link.active Result
+          li.nav-item
+            a(href='#html6' data-bs-toggle='tab' role='tab' aria-controls='html6' aria-selected='false').nav-link HTML
+          li.nav-item
+            a(href='#pug6' data-bs-toggle='tab' role='tab' aria-controls='pug6' aria-selected='false').nav-link Pug
+      .card-body
+        .tab-content
+          #result6.tab-pane.fade.show.active(role='tabpanel')
+            .widget.widget-cart(style='max-width: 22rem;')
+              h3.widget-title Your cart
+              div(style='max-height: 15rem;' data-simplebar data-simplebar-auto-hide='false')
+                .widget-cart-item.pb-2.border-bottom
+                  button(type='button' class='btn-close text-danger' aria-label='Remove')
+                    span(aria-hidden='true') &times;
+                  .d-flex.align-items-center
+                    a(href='#').flex-shrink-0
+                      img(src='../img/shop/cart/widget/01.jpg' width='64' alt='Product')
+                    .ps-2
+                      h6.widget-product-title
+                        a(href='#') Women Colorblock Sneakers
+                      .widget-product-meta
+                        span.text-accent.me-2
+                          | $150.
+                          small 00
+                        span.text-muted x 1
+                .widget-cart-item.py-2.border-bottom
+                  button(type='button' class='btn-close text-danger' aria-label='Remove')
+                    span(aria-hidden='true') &times;
+                  .d-flex.align-items-center
+                    a(href='#').flex-shrink-0
+                      img(src='../img/shop/cart/widget/02.jpg' width='64' alt='Product')
+                    .ps-2
+                      h6.widget-product-title
+                        a(href='#') TH Jeans City Backpack
+                      .widget-product-meta
+                        span.text-accent.me-2
+                          | $79.
+                          small 50
+                        span.text-muted x 1
+                .widget-cart-item.py-2.border-bottom
+                  button(type='button' class='btn-close text-danger' aria-label='Remove')
+                    span(aria-hidden='true') &times;
+                  .d-flex.align-items-center
+                    a(href='#').flex-shrink-0
+                      img(src='../img/shop/cart/widget/03.jpg' width='64' alt='Product')
+                    .ps-2
+                      h6.widget-product-title
+                        a(href='#') 3-Color Sun Stash Hat
+                      .widget-product-meta
+                        span.text-accent.me-2
+                          | $22.
+                          small 50
+                        span.text-muted x 1
+                .widget-cart-item.py-2.border-bottom
+                  button(type='button' class='btn-close text-danger' aria-label='Remove')
+                    span(aria-hidden='true') &times;
+                  .d-flex.align-items-center
+                    a(href='#').flex-shrink-0
+                      img(src='../img/shop/cart/widget/04.jpg' width='64' alt='Product')
+                    .ps-2
+                      h6.widget-product-title
+                        a(href='#') Cotton Polo Regular Fit
+                      .widget-product-meta
+                        span.text-accent.me-2
+                          | $9.
+                          small 00
+                        span.text-muted x 1
+              .d-flex.flex-wrap.justify-content-between.align-items-center.py-3
+                .fs-sm.me-2.py-2
+                  span.text-muted Subtotal:
+                  span.text-accent.fs-base.ms-1
+                    | $265.
+                    small 00
+                a(href='#').btn.btn-outline-secondary.btn-sm
+                  | Expand cart
+                  i.ci-arrow-right.ms-1.me-n1
+              a(href='#').btn.btn-primary.btn-sm.d-block.w-100
+                i.ci-card.me-2.fs-base.align-middle
+                | Checkout
+          #html6.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-html').
+                &lt;!-- Widget: Shopping cart --&gt;
+                &lt;div class=&quot;widget widget-cart&quot;&gt;
+                  &lt;h3 class=&quot;widget-title&quot;&gt;Your cart&lt;/h3&gt;
+
+                  &lt;!-- Scrollable area --&gt;
+                  &lt;div style=&quot;max-height: 15rem;&quot; data-simplebar data-simplebar-auto-hide=&quot;false&quot;&gt;
+
+                    &lt;!-- Item --&gt;
+                    &lt;div class=&quot;widget-cart-item pb-2 border-bottom&quot;&gt;
+                      &lt;button class=&quot;btn-close text-danger&quot; type=&quot;button&quot; aria-label=&quot;Remove&quot;&gt;
+                        &lt;span aria-hidden=&quot;true&quot;&gt;&amp;times;&lt;/span&gt;
+                      &lt;/button&gt;
+                      &lt;div class=&quot;d-flex align-items-center&quot;&gt;
+                        &lt;a class=&quot;flex-shrink-0&quot; href=&quot;#&quot;&gt;
+                          &lt;img src=&quot;path-to-image&quot; width=&quot;64&quot; alt=&quot;Product&quot;/&gt;
+                        &lt;/a&gt;
+                        &lt;div class=&quot;ps-2&quot;&gt;
+                          &lt;h6 class=&quot;widget-product-title&quot;&gt;&lt;a href=&quot;#&quot;&gt;Women Colorblock Sneakers&lt;/a&gt;&lt;/h6&gt;
+                          &lt;div class=&quot;widget-product-meta&quot;&gt;
+                            &lt;span class=&quot;text-accent me-2&quot;&gt;$150.&lt;small&gt;00&lt;/small&gt;&lt;/span&gt;
+                            &lt;span class=&quot;text-muted&quot;&gt;x 1&lt;/span&gt;
+                          &lt;/div&gt;
+                        &lt;/div&gt;
+                      &lt;/div&gt;
+                    &lt;/div&gt;
+
+                    &lt;!-- Item --&gt;
+                    &lt;div class=&quot;widget-cart-item py-2 border-bottom&quot;&gt;
+                      &lt;button class=&quot;btn-close text-danger&quot; type=&quot;button&quot; aria-label=&quot;Remove&quot;&gt;
+                        &lt;span aria-hidden=&quot;true&quot;&gt;&amp;times;&lt;/span&gt;
+                      &lt;/button&gt;
+                      &lt;div class=&quot;d-flex align-items-center&quot;&gt;
+                        &lt;a class=&quot;flex-shrink-0&quot; href=&quot;#&quot;&gt;
+                          &lt;img src=&quot;path-to-image&quot; width=&quot;64&quot; alt=&quot;Product&quot;/&gt;
+                        &lt;/a&gt;
+                        &lt;div class=&quot;ps-2&quot;&gt;
+                          &lt;6 class=&quot;widget-product-title&quot;&gt;&lt;a href=&quot;#&quot;&gt;TH Jeans City Backpack&lt;/a&gt;&lt;/h6&gt;
+                          &lt;div class=&quot;widget-product-meta&quot;&gt;
+                            &lt;span class=&quot;text-accent me-2&quot;&gt;$79.&lt;small&gt;00&lt;/small&gt;&lt;/span&gt;
+                            &lt;span class=&quot;text-muted&quot;&gt;x 1&lt;/span&gt;
+                          &lt;/div&gt;
+                        &lt;/div&gt;
+                      &lt;/div&gt;
+                    &lt;/div&gt;
+
+                    &lt;!-- Item --&gt;
+                    &lt;div class=&quot;widget-cart-item py-2 border-bottom&quot;&gt;
+                      &lt;button class=&quot;btn-close text-danger&quot; type=&quot;button&quot; aria-label=&quot;Remove&quot;&gt;
+                        &lt;span aria-hidden=&quot;true&quot;&gt;&amp;times;&lt;/span&gt;
+                      &lt;/button&gt;
+                      &lt;div class=&quot;d-flex align-items-center&quot;&gt;
+                        &lt;a class=&quot;flex-shrink-0&quot; href=&quot;#&quot;&gt;
+                          &lt;img src=&quot;path-to-image&quot; width=&quot;64&quot; alt=&quot;Product&quot;/&gt;
+                        &lt;/a&gt;
+                        &lt;div class=&quot;ps-2&quot;&gt;
+                          &lt;h6 class=&quot;widget-product-title&quot;&gt;&lt;a href=&quot;#&quot;&gt;3-Color Sun Stash Hat&lt;/a&gt;&lt;/h6&gt;
+                          &lt;div class=&quot;widget-product-meta&quot;&gt;
+                            &lt;span class=&quot;text-accent me-2&quot;&gt;$22.&lt;small&gt;00&lt;/small&gt;&lt;/span&gt;
+                            &lt;span class=&quot;text-muted&quot;&gt;x 1&lt;/span&gt;
+                          &lt;/div&gt;
+                        &lt;/div&gt;
+                      &lt;/div&gt;
+                    &lt;/div&gt;
+
+                    &lt;!-- Item --&gt;
+                    &lt;div class=&quot;widget-cart-item py-2 border-bottom&quot;&gt;
+                      &lt;button class=&quot;btn-close text-danger&quot; type=&quot;button&quot; aria-label=&quot;Remove&quot;&gt;
+                        &lt;span aria-hidden=&quot;true&quot;&gt;&amp;times;&lt;/span&gt;
+                      &lt;/button&gt;
+                      &lt;div class=&quot;d-flex align-items-center&quot;&gt;
+                        &lt;a class=&quot;flex-shrink-0&quot; href=&quot;#&quot;&gt;
+                          &lt;img src=&quot;path-to-image&quot; width=&quot;64&quot; alt=&quot;Product&quot;/&gt;
+                        &lt;/a&gt;
+                        &lt;div class=&quot;ps-2&quot;&gt;
+                          &lt;h6 class=&quot;widget-product-title&quot;&gt;&lt;a href=&quot;#&quot;&gt;Cotton Polo Regular Fit&lt;/a&gt;&lt;/h6&gt;
+                          &lt;div class=&quot;widget-product-meta&quot;&gt;
+                            &lt;span class=&quot;text-accent me-2&quot;&gt;$9.&lt;small&gt;00&lt;/small&gt;&lt;/span&gt;
+                            &lt;span class=&quot;text-muted&quot;&gt;x 1&lt;/span&gt;
+                          &lt;/div&gt;
+                        &lt;/div&gt;
+                      &lt;/div&gt;
+                    &lt;/div&gt;
+                  &lt;/div&gt;
+
+                  &lt;!-- Footer --&gt;
+                  &lt;div class=&quot;d-flex flex-wrap justify-content-between align-items-center py-3&quot;&gt;
+                    &lt;div class=&quot;fs-sm me-2 py-2&quot;&gt;
+                      &lt;span class=&quot;text-muted&quot;&gt;Subtotal:&lt;/span&gt;
+                      &lt;span class=&quot;text-accent fs-base ms-1&quot;&gt;$265.&lt;small&gt;00&lt;/small&gt;&lt;/span&gt;
+                    &lt;/div&gt;
+                    &lt;a class=&quot;btn btn-outline-secondary btn-sm&quot; href=&quot;#&quot;&gt;
+                      Expand cart
+                      &lt;i class=&quot;ci-arrow-right ms-1 me-n1&quot;&gt;&lt;/i&gt;
+                    &lt;/a&gt;
+                  &lt;/div&gt;
+                  &lt;a class=&quot;btn btn-primary btn-sm d-block w-100&quot; href=&quot;#&quot;&gt;
+                    &lt;i class=&quot;ci-card me-2 fs-base align-middle&quot;&gt;&lt;/i&gt;
+                    Checkout
+                  &lt;/a&gt;
+                &lt;/div&gt;
+          #pug6.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-pug').
+                // Widget: Shopping cart
+                .widget.widget-cart
+                  h3.widget-title Your cart
+
+                  // Scrollable area
+                  div(style=&quot;max-height: 15rem;&quot;, data-simplebar, data-simplebar-auto-hide=&quot;false&quot;)
+                  
+                    // Item
+                    .widget-cart-item.pb-2.border-bottom
+                      button(type=&quot;button&quot;, class=&quot;btn-close text-danger&quot;, aria-label=&quot;Remove&quot;)
+                        span(aria-hidden=&quot;true&quot;) &amp;times;
+                      .d-flex.align-items-center
+                        a(href=&quot;#&quot;).flex-shrink-0
+                          img(src=&quot;path-to-image&quot;, width=&quot;64&quot;, alt=&quot;Product&quot;)
+                        .ps-2
+                          h6.widget-product-title
+                            a(href=&quot;#&quot;) Women Colorblock Sneakers
+                          .widget-product-meta
+                            span.text-accent.me-2
+                              | $150.
+                              small 00
+                            span.text-muted x 1
+                    
+                    // Item
+                    .widget-cart-item.py-2.border-bottom
+                      button(type=&quot;button&quot;, class=&quot;btn-close text-danger&quot;, aria-label=&quot;Remove&quot;)
+                        span(aria-hidden=&quot;true&quot;) &amp;times;
+                      .d-flex.align-items-center
+                        a(href=&quot;#&quot;).flex-shrink-0
+                          img(src=&quot;path-to-image&quot;, width=&quot;64&quot;, alt=&quot;Product&quot;)
+                        .ps-2
+                          h6.widget-product-title
+                            a(href=&quot;#&quot;) TH Jeans City Backpack
+                          .widget-product-meta
+                            span.text-accent.me-2
+                              | $79.
+                              small 50
+                            span.text-muted x 1
+                    
+                    // Item
+                    .widget-cart-item.py-2.border-bottom
+                      button(type=&quot;button&quot;, class=&quot;btn-close text-danger&quot;, aria-label=&quot;Remove&quot;)
+                        span(aria-hidden=&quot;true&quot;) &amp;times;
+                      .d-flex.align-items-center
+                        a(href=&quot;#&quot;).flex-shrink-0
+                          img(src=&quot;path-to-image&quot;, width=&quot;64&quot;, alt=&quot;Product&quot;)
+                        .ps-2
+                          h6.widget-product-title
+                            a(href=&quot;#&quot;) 3-Color Sun Stash Hat
+                          .widget-product-meta
+                            span.text-accent.me-2
+                              | $22.
+                              small 50
+                            span.text-muted x 1
+
+                    // Item
+                    .widget-cart-item.py-2.border-bottom
+                      button(type=&quot;button&quot;, class=&quot;btn-close text-danger&quot;, aria-label=&quot;Remove&quot;)
+                        span(aria-hidden=&quot;true&quot;) &amp;times;
+                      .d-flex.align-items-center
+                        a(href=&quot;#&quot;).flex-shrink-0
+                          img(src=&quot;path-to-image&quot;, width=&quot;64&quot;, alt=&quot;Product&quot;)
+                        .ps-2
+                          h6.widget-product-title
+                            a(href=&quot;#&quot;) Cotton Polo Regular Fit
+                          .widget-product-meta
+                            span.text-accent.me-2
+                              | $9.
+                              small 00
+                            span.text-muted x 1
+
+                  // Footer
+                  .d-flex.flex-wrap.justify-content-between.align-items-center.py-3
+                    .fs-sm.me-2.py-2
+                      span.text-muted Subtotal:
+                      span.text-accent.fs-base.ms-1
+                        | $265.
+                        small 00
+                    a(href=&quot;#&quot;).btn.btn-outline-secondary.btn-sm
+                      | Expand cart
+                      i.ci-arrow-right.ms-1.me-n1
+                  a(href=&quot;#&quot;).btn.btn-primary.btn-sm.d-block.w-100
+                    i.ci-card.me-2.fs-base.align-middle
+                    | Checkout
+
+  // Tag cloud
+  section#widget-tags.pb-5.mb-md-2
+    h2.h5.mb-3 Tag cloud
+    .card.border-0.shadow
+      .card-header
+        ul(role='tablist').nav.nav-tabs.card-header-tabs
+          li.nav-item
+            a(href='#result7' data-bs-toggle='tab' role='tab' aria-controls='result7' aria-selected='true').nav-link.active Result
+          li.nav-item
+            a(href='#html7' data-bs-toggle='tab' role='tab' aria-controls='html7' aria-selected='false').nav-link HTML
+          li.nav-item
+            a(href='#pug7' data-bs-toggle='tab' role='tab' aria-controls='pug7' aria-selected='false').nav-link Pug
+      .card-body
+        .tab-content
+          #result7.tab-pane.fade.show.active(role='tabpanel')
+            .widget(style='max-width: 25rem;')
+              h3.widget-title Popular tags
+              a(href='#').btn-tag.me-2.mb-2 #fashion
+              a(href='#').btn-tag.me-2.mb-2 #gadgets
+              a(href='#').btn-tag.me-2.mb-2 #online shopping
+              a(href='#').btn-tag.me-2.mb-2 #travel
+              a(href='#').btn-tag.me-2.mb-2 #top brands
+              a(href='#').btn-tag.me-2.mb-2 #cartzilla news
+              a(href='#').btn-tag.active.me-2.mb-2 #active tag
+          #html7.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-html').
+                &lt;!-- Widget: Tag cloud --&gt;
+                &lt;div class=&quot;widget&quot;&gt;
+                  &lt;h3 class=&quot;widget-title&quot;&gt;Popular tags&lt;/h3&gt;
+                  &lt;a href=&quot;#&quot; class=&quot;btn-tag me-2 mb-2&quot;&gt;#cartzilla news&lt;/a&gt;
+                  &lt;a href=&quot;#&quot; class=&quot;btn-tag active me-2 mb-2&quot;&gt;#active tag&lt;/a&gt;
+                  ...
+                &lt;/div&gt;
+          #pug7.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-pug').
+                // Widget: Tag cloud
+                .widget
+                  h3.widget-title Popular tags
+                  a(href=&quot;#&quot;).btn-tag.me-2.mb-2 #cartzilla news
+                  a(href=&quot;#&quot;).btn-tag.active.me-2.mb-2 #active tag
+                  ...
+
+  // Filter (checkboxes)
+  section#widget-filter.pb-5.mb-md-2
+    h2.h5.mb-3 Filter (checkboxes)
+    .card.border-0.shadow
+      .card-header
+        ul(role='tablist').nav.nav-tabs.card-header-tabs
+          li.nav-item
+            a(href='#result8' data-bs-toggle='tab' role='tab' aria-controls='result8' aria-selected='true').nav-link.active Result
+          li.nav-item
+            a(href='#html8' data-bs-toggle='tab' role='tab' aria-controls='html8' aria-selected='false').nav-link HTML
+          li.nav-item
+            a(href='#pug8' data-bs-toggle='tab' role='tab' aria-controls='pug8' aria-selected='false').nav-link Pug
+      .card-body
+        .tab-content
+          #result8.tab-pane.fade.show.active(role='tabpanel')
+            .widget.widget-filter.pb-2(style='max-width: 20rem;')
+              h3.widget-title Filter by brand
+              .input-group.input-group-sm.mb-2
+                input(type='text' placeholder='Search').widget-filter-search.form-control.rounded-end.pe-5
+                i.ci-search.position-absolute.top-50.end-0.translate-middle-y.fs-sm.me-3
+              ul(style='max-height: 13rem;' data-simplebar data-simplebar-auto-hide='false').widget-list.widget-filter-list.list-unstyled.pt-1
+                li.widget-filter-item.d-flex.justify-content-between.align-items-center.mb-1
+                  .form-check
+                    input(type='checkbox', id='adidas').form-check-input
+                    label.form-check-label.widget-filter-item-text(for='adidas') Adidas
+                  span.fs-xs.text-muted 425
+                li.widget-filter-item.d-flex.justify-content-between.align-items-center.mb-1
+                  .form-check
+                    input(type='checkbox', id='ataylor').form-check-input
+                    label.form-check-label.widget-filter-item-text(for='ataylor') Ann Taylor
+                  span.fs-xs.text-muted 15
+                li.widget-filter-item.d-flex.justify-content-between.align-items-center.mb-1
+                  .form-check
+                    input(type='checkbox', id='armani').form-check-input
+                    label.form-check-label.widget-filter-item-text(for='armani') Armani
+                  span.fs-xs.text-muted 18
+                li.widget-filter-item.d-flex.justify-content-between.align-items-center.mb-1
+                  .form-check
+                    input(type='checkbox', id='banana').form-check-input
+                    label.form-check-label.widget-filter-item-text(for='banana') Banana Republic
+                  span.fs-xs.text-muted 103
+                li.widget-filter-item.d-flex.justify-content-between.align-items-center.mb-1
+                  .form-check
+                    input(type='checkbox', id='bilabong').form-check-input
+                    label.form-check-label.widget-filter-item-text(for='bilabong') Bilabong
+                  span.fs-xs.text-muted 27
+                li.widget-filter-item.d-flex.justify-content-between.align-items-center.mb-1
+                  .form-check
+                    input(type='checkbox', id='birkenstock').form-check-input
+                    label.form-check-label.widget-filter-item-text(for='birkenstock') Birkenstock
+                  span.fs-xs.text-muted 10
+                li.widget-filter-item.d-flex.justify-content-between.align-items-center.mb-1
+                  .form-check
+                    input(type='checkbox', id='klein').form-check-input
+                    label.form-check-label.widget-filter-item-text(for='klein') Calvin Klein
+                  span.fs-xs.text-muted 365
+                li.widget-filter-item.d-flex.justify-content-between.align-items-center.mb-1
+                  .form-check
+                    input(type='checkbox', id='columbia').form-check-input
+                    label.form-check-label.widget-filter-item-text(for='columbia') Columbia
+                  span.fs-xs.text-muted 508
+                li.widget-filter-item.d-flex.justify-content-between.align-items-center.mb-1
+                  .form-check
+                    input(type='checkbox', id='converse').form-check-input
+                    label.form-check-label.widget-filter-item-text(for='converse') Converse
+                  span.fs-xs.text-muted 176
+                li.widget-filter-item.d-flex.justify-content-between.align-items-center.mb-1
+                  .form-check
+                    input(type='checkbox', id='dockers').form-check-input
+                    label.form-check-label.widget-filter-item-text(for='dockers') Dockers
+                  span.fs-xs.text-muted 54
+                li.widget-filter-item.d-flex.justify-content-between.align-items-center.mb-1
+                  .form-check
+                    input(type='checkbox', id='fruit').form-check-input
+                    label.form-check-label.widget-filter-item-text(for='fruit') Fruit of the Loom
+                  span.fs-xs.text-muted 739
+                li.widget-filter-item.d-flex.justify-content-between.align-items-center.mb-1
+                  .form-check
+                    input(type='checkbox', id='hanes').form-check-input
+                    label.form-check-label.widget-filter-item-text(for='hanes') Hanes
+                  span.fs-xs.text-muted 92
+                li.widget-filter-item.d-flex.justify-content-between.align-items-center.mb-1
+                  .form-check
+                    input(type='checkbox', id='choo').form-check-input
+                    label.form-check-label.widget-filter-item-text(for='choo') Jimmy Choo
+                  span.fs-xs.text-muted 17
+                li.widget-filter-item.d-flex.justify-content-between.align-items-center.mb-1
+                  .form-check
+                    input(type='checkbox', id='levis').form-check-input
+                    label.form-check-label.widget-filter-item-text(for='levis') Levi's
+                  span.fs-xs.text-muted 361
+                li.widget-filter-item.d-flex.justify-content-between.align-items-center.mb-1
+                  .form-check
+                    input(type='checkbox', id='lee').form-check-input
+                    label.form-check-label.widget-filter-item-text(for='lee') Lee
+                  span.fs-xs.text-muted 264
+                li.widget-filter-item.d-flex.justify-content-between.align-items-center.mb-1
+                  .form-check
+                    input(type='checkbox', id='wearhouse').form-check-input
+                    label.form-check-label.widget-filter-item-text(for='wearhouse') Men's Wearhouse
+                  span.fs-xs.text-muted 75
+                li.widget-filter-item.d-flex.justify-content-between.align-items-center.mb-1
+                  .form-check
+                    input(type='checkbox', id='newbalance').form-check-input
+                    label.form-check-label.widget-filter-item-text(for='newbalance') New Balance
+                  span.fs-xs.text-muted 218
+                li.widget-filter-item.d-flex.justify-content-between.align-items-center.mb-1
+                  .form-check
+                    input(type='checkbox', id='nike').form-check-input
+                    label.form-check-label.widget-filter-item-text(for='nike') Nike
+                  span.fs-xs.text-muted 810
+                li.widget-filter-item.d-flex.justify-content-between.align-items-center.mb-1
+                  .form-check
+                    input(type='checkbox', id='navy').form-check-input
+                    label.form-check-label.widget-filter-item-text(for='navy') Old Navy
+                  span.fs-xs.text-muted 147
+                li.widget-filter-item.d-flex.justify-content-between.align-items-center.mb-1
+                  .form-check
+                    input(type='checkbox', id='polo').form-check-input
+                    label.form-check-label.widget-filter-item-text(for='polo') Polo Ralph Lauren
+                  span.fs-xs.text-muted 64
+                li.widget-filter-item.d-flex.justify-content-between.align-items-center.mb-1
+                  .form-check
+                    input(type='checkbox', id='puma').form-check-input
+                    label.form-check-label.widget-filter-item-text(for='puma') Puma
+                  span.fs-xs.text-muted 370
+                li.widget-filter-item.d-flex.justify-content-between.align-items-center.mb-1
+                  .form-check
+                    input(type='checkbox', id='reebok').form-check-input
+                    label.form-check-label.widget-filter-item-text(for='reebok') Reebok
+                  span.fs-xs.text-muted 506
+                li.widget-filter-item.d-flex.justify-content-between.align-items-center.mb-1
+                  .form-check
+                    input(type='checkbox', id='skechers').form-check-input
+                    label.form-check-label.widget-filter-item-text(for='skechers') Skechers
+                  span.fs-xs.text-muted 209
+                li.widget-filter-item.d-flex.justify-content-between.align-items-center.mb-1
+                  .form-check
+                    input(type='checkbox', id='hilfiger').form-check-input
+                    label.form-check-label.widget-filter-item-text(for='hilfiger') Tommy Hilfiger
+                  span.fs-xs.text-muted 487
+                li.widget-filter-item.d-flex.justify-content-between.align-items-center.mb-1
+                  .form-check
+                    input(type='checkbox', id='armour').form-check-input
+                    label.form-check-label.widget-filter-item-text(for='armour') Under Armour
+                  span.fs-xs.text-muted 90
+                li.widget-filter-item.d-flex.justify-content-between.align-items-center.mb-1
+                  .form-check
+                    input(type='checkbox', id='urban').form-check-input
+                    label.form-check-label.widget-filter-item-text(for='urban') Urban Outfitters
+                  span.fs-xs.text-muted 152
+                li.widget-filter-item.d-flex.justify-content-between.align-items-center.mb-1
+                  .form-check
+                    input(type='checkbox', id='vsecret').form-check-input
+                    label.form-check-label.widget-filter-item-text(for='vsecret') Victoria's Secret
+                  span.fs-xs.text-muted 238
+                li.widget-filter-item.d-flex.justify-content-between.align-items-center.mb-1
+                  .form-check
+                    input(type='checkbox', id='wolverine').form-check-input
+                    label.form-check-label.widget-filter-item-text(for='wolverine') Wolverine
+                  span.fs-xs.text-muted 29
+                li.widget-filter-item.d-flex.justify-content-between.align-items-center.mb-1
+                  .form-check
+                    input(type='checkbox', id='wrangler').form-check-input
+                    label.form-check-label.widget-filter-item-text(for='wrangler') Wrangler
+                  span.fs-xs.text-muted 115
+          #html8.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-html').
+                &lt;!-- Widget: Filter (checkboxes) --&gt;
+                &lt;div class=&quot;widget widget-filter&quot;&gt;
+                  &lt;h3 class=&quot;widget-title&quot;&gt;Filter by brand&lt;/h3&gt;
+                  &lt;div class=&quot;input-group input-group-sm mb-2&quot;&gt;
+                    &lt;input type=&quot;text&quot; class=&quot;widget-filter-search form-control rounded-end pe-5&quot; placeholder=&quot;Search&quot;&gt;
+                    &lt;i class=&quot;ci-search position-absolute top-50 end-0 translate-middle-y fs-sm me-3&quot;&gt;&lt;/i&gt;
+                  &lt;/div&gt;
+                  &lt;ul class=&quot;widget-list widget-filter-list list-unstyled pt-1&quot; style=&quot;max-height: 13rem;&quot; data-simplebar data-simplebar-auto-hide=&quot;false&quot;&gt;
+                    &lt;li class=&quot;widget-filter-item d-flex justify-content-between align-items-center mb-1&quot;&gt;
+                      &lt;div class=&quot;form-check&quot;&gt;
+                        &lt;input type=&quot;checkbox&quot; id=&quot;adidas&quot; class=&quot;form-check-input&quot;&gt;
+                        &lt;label class=&quot;form-check-label widget-filter-item-text&quot; for=&quot;adidas&quot;&gt;Adidas&lt;/label&gt;
+                      &lt;/div&gt;
+                      &lt;span class=&quot;fs-xs text-muted&quot;&gt;425&lt;/span&gt;
+                    &lt;/li&gt;
+                    &lt;li class=&quot;widget-filter-item d-flex justify-content-between align-items-center mb-1&quot;&gt;
+                      &lt;div class=&quot;form-check&quot;&gt;
+                        &lt;input type=&quot;checkbox&quot; id=&quot;ataylor&quot; class=&quot;form-check-input&quot;&gt;
+                        &lt;label class=&quot;form-check-label widget-filter-item-text&quot; for=&quot;ataylor&quot;&gt;Ann Taylor&lt;/label&gt;
+                      &lt;/div&gt;
+                      &lt;span class=&quot;fs-xs text-muted&quot;&gt;15&lt;/span&gt;
+                    &lt;/li&gt;
+                    &lt;!-- Add as many items as you need --&gt;
+                  &lt;/ul&gt;
+                &lt;/div&gt;
+          #pug8.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-pug').
+                // Widget: Filter (checkboxes)
+                .widget.widget-filter
+                  h3.widget-title Filter by brand
+                  .input-group.input-group-sm.mb-2
+                    input(type=&quot;text&quot;, placeholder=&quot;Search&quot;).widget-filter-search.form-control.rounded-end.pe-5
+                    i.ci-search.position-absolute.top-50.end-0.translate-middle-y.fs-sm.me-3
+                  ul(style=&quot;max-height: 13rem;&quot;, data-simplebar, data-simplebar-auto-hide=&quot;false&quot;).widget-list.widget-filter-list.list-unstyled.pt-1
+                    li.widget-filter-item.d-flex.justify-content-between.align-items-center.mb-1
+                      .form-check
+                        input(type=&quot;checkbox&quot;, id=&quot;adidas&quot;).form-check-input
+                        label.form-check-label.widget-filter-item-text(for=&quot;adidas&quot;) Adidas
+                      span.fs-xs.text-muted 425
+                    li.widget-filter-item.d-flex.justify-content-between.align-items-center.mb-1
+                      .form-check
+                        input(type=&quot;checkbox&quot;, id=&quot;ataylor&quot;).form-check-input
+                        label.form-check-label.widget-filter-item-text(for=&quot;ataylor&quot;) Ann Taylor
+                      span.fs-xs.text-muted 15
+                    //- Add as many items as you need
+
+  // Subscription (MailChimp Ajax)
+  section#widget-subscription.pb-5.mb-md-2
+    h2.h5.mb-3 Subscription (MailChimp Ajax)
+    .card.border-0.shadow
+      .card-header
+        ul(role='tablist').nav.nav-tabs.card-header-tabs
+          li.nav-item
+            a(href='#result9' data-bs-toggle='tab' role='tab' aria-controls='result9' aria-selected='true').nav-link.active Result
+          li.nav-item
+            a(href='#html9' data-bs-toggle='tab' role='tab' aria-controls='html9' aria-selected='false').nav-link HTML
+          li.nav-item
+            a(href='#pug9' data-bs-toggle='tab' role='tab' aria-controls='pug9' aria-selected='false').nav-link Pug
+      .card-body
+        .tab-content
+          #result9.tab-pane.fade.show.active(role='tabpanel')
+            .widget.pb-2(style='max-width: 24rem;')
+              h3.widget-title Subscribe
+              form(action='https://studio.us12.list-manage.com/subscribe/post?u=c7103e2c981361a6639545bd5&amp;id=29ca296126' method='post' name='mc-embedded-subscribe-form' target='_blank' novalidate).subscription-form.validate
+                .input-group.flex-nowrap
+                  i.ci-mail.position-absolute.top-50.translate-middle-y.text-muted.fs-base.ms-3
+                  input(type='email' name='EMAIL' placeholder='Your email' required).form-control.rounded-start
+                  button(type='submit' name='subscribe').btn.btn-primary Subscribe*
+                // real people should not fill this in and expect good things - do not remove this or risk form bot signups
+                div(style='position: absolute; left: -5000px;' aria-hidden='true')
+                  input(type='text' name='b_c7103e2c981361a6639545bd5_29ca296126' tabindex='-1').subscription-form-antispam
+                .form-text *Subscribe to our newsletter to receive early discount offers, updates and new products info.
+                .subscription-status
+          #html9.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-html').
+                &lt;!-- Widget: Subscription (MailChimp Ajax)
+                        Instructions how to get MailChimp action link:
+                        1. Log in to your MailChimp Dashboard / Audience / Manage Audience / Signup forms / Embedded forms
+                        2. In the provided code find form action link and copy it
+                        3. Paste it to the form action attribute below
+                        4. Also in the form code provided by MailChimp find antispam input and copy it name attribute contents
+                        5. Paste what you have copied from name attribute to the name attribute of input with class &quot;subscription-form-antispam&quot;
+                --&gt;
+                &lt;div class=&quot;widget&quot;&gt;
+                  &lt;h3 class=&quot;widget-title&quot;&gt;Subscribe&lt;/h3&gt;
+                  &lt;form class=&quot;subscription-form validate&quot; action=&quot;mailchimp-embedded-form-atcion-link&quot; method=&quot;post&quot; name=&quot;mc-embedded-subscribe-form&quot; target=&quot;_blank&quot; novalidate&gt;
+                    &lt;div class=&quot;input-group flex-nowrap&quot;&gt;
+                      &lt;i class=&quot;ci-mail position-absolute top-50 translate-middle-y text-muted fs-base ms-3&quot;&gt;&lt;/i&gt;
+                      &lt;input class=&quot;form-control rounded-start&quot; type=&quot;email&quot; name=&quot;EMAIL&quot; placeholder=&quot;Your email&quot; required&gt;
+                      &lt;button class=&quot;btn btn-primary&quot; type=&quot;submit&quot; name=&quot;subscribe&quot;&gt;Subscribe*&lt;/button&gt;
+                    &lt;/div&gt;
+                    &lt;!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups--&gt;
+                    &lt;div style=&quot;position: absolute; left: -5000px;&quot; aria-hidden=&quot;true&quot;&gt;
+                      &lt;input type=&quot;text&quot; class=&quot;subscription-form-antispam&quot; name=&quot;mailchimp-embedded-form-antispam-name-attribute&quot; tabindex=&quot;-1&quot;&gt;
+                    &lt;/div&gt;
+                    &lt;div class=&quot;form-text&quot;&gt;*Subscribe to our newsletter to receive early discount offers, updates and new products info.&lt;/div&gt;
+                    &lt;div class=&quot;subscription-status&quot;&gt;&lt;/div&gt;
+                  &lt;/form&gt;
+                &lt;/div&gt;
+          #pug9.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-pug').
+                // Widget: Subscription (MailChimp Ajax)
+                // Instructions how to get MailChimp action link:
+                // 1. Log in to your MailChimp Dashboard / Audience / Manage Audience / Signup forms / Embedded forms
+                // 2. In the provided code find form action link and copy it
+                // 3. Paste it to the form action attribute below
+                // 4. Also in the form code provided by MailChimp find antispam input and copy it name attribute contents
+                // 5. Paste what you have copied from name attribute to the name attribute of input with class &quot;subscription-form-antispam&quot;
+                form(action=&quot;mailchimp-embedded-form-atcion-link&quot;, method=&quot;post&quot;, name=&quot;mc-embedded-subscribe-form&quot;, target=&quot;_blank&quot;, novalidate).subscription-form.validate
+                  .input-group.flex-nowrap
+                    i.ci-mail.position-absolute.top-50.translate-middle-y.text-muted.fs-base.ms-3
+                    input(type=&quot;email&quot;, name=&quot;EMAIL&quot;, placeholder=&quot;Your email&quot;, required).form-control.rounded-start
+                    button(type=&quot;submit&quot;, name=&quot;subscribe&quot;).btn.btn-primary Subscribe*
+                  // real people should not fill this in and expect good things - do not remove this or risk form bot signups
+                  div(style=&quot;position: absolute; left: -5000px;&quot; aria-hidden=&quot;true&quot;)
+                    input(type=&quot;text&quot;, name=&quot;mailchimp-embedded-form-antispam-name-attribute&quot;, tabindex=&quot;-1&quot;).subscription-form-antispam
+                  .form-text *Subscribe to our newsletter to receive early discount offers, updates and new products info.
+                  .subscription-status
+
+  // Contact details
+  section#widget-contacts.pb-5.mb-md-2
+    h2.h5.mb-3 Contact details
+    .card.border-0.shadow
+      .card-header
+        ul(role='tablist').nav.nav-tabs.card-header-tabs
+          li.nav-item
+            a(href='#result10' data-bs-toggle='tab' role='tab' aria-controls='result10' aria-selected='true').nav-link.active Result
+          li.nav-item
+            a(href='#html10' data-bs-toggle='tab' role='tab' aria-controls='html10' aria-selected='false').nav-link HTML
+          li.nav-item
+            a(href='#pug10' data-bs-toggle='tab' role='tab' aria-controls='pug10' aria-selected='false').nav-link Pug
+      .card-body
+        .tab-content
+          #result10.tab-pane.fade.show.active(role='tabpanel')
+            .widget(style='max-width: 18rem;')
+              ul.widget-list
+                li.d-flex.pb-3.border-bottom
+                  i.ci-location.fs-lg.mt-2.text-primary
+                  .ps-3
+                    span.fs-ms.text-muted Find us
+                    a(href='#').d-block.text-heading.fs-sm 769, Industrial Dr, West Chicago, IL 60185, USA
+                li.d-flex.pt-2.pb-3.border-bottom
+                  i.ci-phone.fs-lg.mt-2.mb-0.text-primary
+                  .ps-3
+                    span.fs-ms.text-muted Call us
+                    a(href='tel:+184725276533').d-block.text-heading.fs-sm +1 (847) 252 765 33
+                li.d-flex.pt-2
+                  i.ci-mail.fs-lg.mt-2.mb-0.text-primary
+                  .ps-3
+                    span.fs-ms.text-muted Write us
+                    a(href='mailto:email@example.com').d-block.text-heading.fs-sm email@example.com
+          #html10.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-html').
+                &lt;!-- Widget: Contact details --&gt;
+                &lt;div class=&quot;widget&quot;&gt;
+                  &lt;ul class=&quot;widget-list&quot;&gt;
+                    &lt;li class=&quot;d-flex pb-3 border-bottom&quot;&gt;
+                      &lt;i class=&quot;ci-location fs-lg mt-2 text-primary&quot;&gt;&lt;/i&gt;
+                      &lt;div class=&quot;ps-3&quot;&gt;
+                        &lt;span class=&quot;fs-ms text-muted&quot;&gt;Find us&lt;/span&gt;
+                        &lt;a class=&quot;d-block text-heading fs-sm&quot; href=&quot;#&quot;&gt;769, Industrial Dr, West Chicago, IL 60185, USA&lt;/a&gt;
+                      &lt;/div&gt;
+                    &lt;/li&gt;
+                    &lt;li class=&quot;d-flex pt-2 pb-3 border-bottom&quot;&gt;
+                      &lt;i class=&quot;ci-phone fs-lg mt-2 text-primary&quot;&gt;&lt;/i&gt;
+                      &lt;div class=&quot;ps-3&quot;&gt;
+                        &lt;span class=&quot;fs-ms text-muted&quot;&gt;Call us&lt;/span&gt;
+                        &lt;a class=&quot;d-block text-heading fs-sm&quot; href=&quot;tel:+184725276533&quot;&gt;+1 (847) 252 765 33&lt;/a&gt;
+                      &lt;/div&gt;
+                    &lt;/li&gt;
+                    &lt;li class=&quot;d-flex pt-2&quot;&gt;
+                      &lt;i class=&quot;ci-mail fs-lg mt-2 text-primary&quot;&gt;&lt;/i&gt;
+                      &lt;div class=&quot;ps-3&quot;&gt;
+                        &lt;span class=&quot;fs-ms text-muted&quot;&gt;Write us&lt;/span&gt;
+                        &lt;a class=&quot;d-block text-heading fs-sm&quot; href=&quot;mailto:email@example.com&quot;&gt;email@example.com&lt;/a&gt;
+                      &lt;/div&gt;
+                    &lt;/li&gt;
+                  &lt;/ul&gt;
+                &lt;/div&gt;
+          #pug10.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-pug').
+                // Widget: Contact details
+                .widget
+                  ul.widget-list
+                    li.d-flex.pb-3.border-bottom
+                      i.ci-location.fs-lg.mt-2.text-primary
+                      .ps-3
+                        span.fs-ms.text-muted Find us
+                        a.d-block.text-heading.fs-sm(href=&quot;#&quot;) 769, Industrial Dr, West Chicago, IL 60185, USA
+                    li.d-flex.pt-2.pb-3.border-bottom
+                      i.ci-phone.fs-lg.mt-2.text-primary
+                      .ps-3
+                        span.fs-ms.text-muted Call us
+                        a.d-block.text-heading.fs-sm(href=&quot;tel:+184725276533&quot;) +1 (847) 252 765 33
+                    li.d-flex.pt-2
+                      i.ci-mail.fs-lg.mt-2.text-primary
+                      .ps-3
+                        span.fs-ms.text-muted Write us
+                        a.d-block.text-heading.fs-sm(href=&quot;mailto:email@example.com&quot;) email@example.com

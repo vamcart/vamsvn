@@ -1,0 +1,166 @@
+// Navbar for Food Delivery Service demo
+// Remove "navbar-sticky" class to make navigation bar scrollable with the page.
+header.navbar.d-block.navbar-sticky.navbar-expand-lg.navbar-light.bg-light
+  .container
+    a(href='index.html').navbar-brand.d-none.d-sm-block.me-4.order-lg-1
+      img(src='img/logo-dark.png' width='142' alt='Cartzilla')
+    a(href='index.html').navbar-brand.d-sm-none.me-2.order-lg-1
+      img(src='img/logo-icon.png' width='74' alt='Cartzilla')
+    
+    .navbar-toolbar.d-flex.align-items-center.order-lg-3
+      button(type='button' data-bs-toggle='collapse' data-bs-target='#navbarCollapse').navbar-toggler
+        span.navbar-toggler-icon
+      a(href='javascript:void(0)' data-bs-toggle='collapse' data-bs-target='#searchBox' role='button' aria-expanded='false', aria-controls='searchBox').navbar-tool.d-none.d-lg-flex
+        span.navbar-tool-tooltip Search
+        .navbar-tool-icon-box: i.navbar-tool-icon.ci-search
+      a(href='#signin-modal' data-bs-toggle='modal').navbar-tool.ms-2
+        span.navbar-tool-tooltip Account
+        .navbar-tool-icon-box: i.navbar-tool-icon.ci-user
+      if pageTitle !== 'Food Delivery Service'
+        .navbar-tool.dropdown.ms-3
+          a(href='food-delivery-cart.html').navbar-tool-icon-box.bg-secondary.dropdown-toggle
+            span.navbar-tool-label 3
+            i.navbar-tool-icon.ci-cart
+
+          // Cart dropdown
+          .dropdown-menu.dropdown-menu-end
+            .widget.widget-cart.px-3.pt-2.pb-3(style='width: 20rem;')
+              div(style='height: 15rem;' data-simplebar data-simplebar-auto-hide='false')
+                .widget-cart-item.pb-2.border-bottom
+                  button(type='button' class='btn-close text-danger' aria-label='Remove')
+                    span(aria-hidden='true') &times;
+                  .d-flex.align-items-center
+                    a(href='#').d-block
+                      img(src='img/food-delivery/cart/th01.jpg' width='64' alt='Pizza')
+                    .ps-2
+                      h6.widget-product-title
+                        a(href='#') Pizza Pepperoni with Tomatoes
+                      .widget-product-meta
+                        span.text-accent.me-2
+                          | $9.
+                          small 00
+                        span.text-muted x 1
+                .widget-cart-item.py-2.border-bottom
+                  button(type='button' class='btn-close text-danger' aria-label='Remove')
+                    span(aria-hidden='true') &times;
+                  .d-flex.align-items-center
+                    a(href='#').d-block
+                      img(src='img/food-delivery/cart/th02.jpg' width='64' alt='Burger')
+                    .ps-2
+                      h6.widget-product-title
+                        a(href='#') Beef Burger with Fries
+                      .widget-product-meta
+                        span.text-accent.me-2
+                          | $12.
+                          small 00
+                        span.text-muted x 1
+                .widget-cart-item.py-2.border-bottom
+                  button(type='button' class='btn-close text-danger' aria-label='Remove')
+                    span(aria-hidden='true') &times;
+                  .d-flex.align-items-center
+                    a(href='#').d-block
+                      img(src='img/food-delivery/cart/th03.jpg' width='64' alt='Drink')
+                    .ps-2
+                      h6.widget-product-title
+                        a(href='#') Coca Cola Can, 335ml
+                      .widget-product-meta
+                        span.text-accent.me-2
+                          | $1.
+                          small 00
+                        span.text-muted x 3
+              .d-flex.flex-wrap.justify-content-between.align-items-center.py-3
+                .fs-sm.me-2.py-2
+                  span.text-muted Total:
+                  span.text-accent.fs-base.ms-1
+                    | $24.
+                    small 00
+                a(href='food-delivery-cart.html').btn.btn-outline-secondary.btn-sm
+                  | Expand cart
+                  i.ci-arrow-right.ms-1.me-n1
+              a(href='food-delivery-checkout.html').btn.btn-primary.btn-sm.d-block.w-100
+                i.ci-card.me-2.fs-base.align-middle
+                | Checkout
+    
+    #navbarCollapse.collapse.navbar-collapse.me-auto.order-lg-2
+
+      // Search (mobile)
+      div.d-lg-none.py-3
+        .input-group
+          i.ci-search.position-absolute.top-50.start-0.translate-middle-y.ms-3
+          input(type='text' placeholder='What do you need?').form-control.rounded-start
+
+      // Location dropdown
+      ul.navbar-nav.navbar-mega-nav.ms-lg-4.pe-lg-2.me-lg-2
+        li.nav-item.dropdown
+          a(href='#' data-bs-toggle='dropdown').nav-link.dropdown-toggle.ps-lg-0
+            i.ci-location.me-2
+            | New York
+          ul.dropdown-menu
+            li: a(href='#').dropdown-item Los Angeles
+            li: a(href='#').dropdown-item Chicago
+            li: a(href='#').dropdown-item Houston
+            li: a(href='#').dropdown-item Philadelphia
+            li: a(href='#').dropdown-item San Diego
+            li: a(href='#').dropdown-item Miami
+      
+      // Primary menu
+      ul.navbar-nav
+        li.nav-item.dropdown
+          a(href='#' data-bs-toggle='dropdown').nav-link.dropdown-toggle Cuisine
+          .dropdown-menu.px-2.ps-0.pb-4
+            .d-flex
+              .mega-dropdown-column.pt-4.px-3(style='width: 12rem;')
+                .widget.mb-3
+                  a(href='food-delivery-category.html').d-block
+                    img(src='img/food-delivery/icons/burger.svg' width='60' alt='Burgers & Fries').d-block.mx-auto.mb-3
+                    h6.fs-base.text-center Burgers &amp; Fries
+              .mega-dropdown-column.pt-4.px-3(style='width: 12rem;')
+                .widget.mb-3
+                  a(href='food-delivery-category.html').d-block
+                    img(src='img/food-delivery/icons/noodles.svg' width='60' alt='Noodles').d-block.mx-auto.mb-3
+                    h6.fs-base.text-center Noodles
+              .mega-dropdown-column.pt-4.px-3(style='width: 12rem;')
+                .widget.mb-3
+                  a(href='food-delivery-category.html').d-block
+                    img(src='img/food-delivery/icons/pizza.svg' width='60' alt='Pizza & Pasta').d-block.mx-auto.mb-3
+                    h6.fs-base.text-center Pizza &amp; Pasta
+            .d-flex
+              .mega-dropdown-column.pt-4.px-3(style='width: 12rem;')
+                .widget.mb-3
+                  a(href='food-delivery-category.html').d-block
+                    img(src='img/food-delivery/icons/steak.svg' width='60' alt='Grill & Steaks').d-block.mx-auto.mb-3
+                    h6.fs-base.text-center Grill &amp; Steaks
+              .mega-dropdown-column.pt-4.px-3(style='width: 12rem;')
+                .widget.mb-3
+                  a(href='food-delivery-category.html').d-block
+                    img(src='img/food-delivery/icons/fish.svg' width='60' alt='Fish & Seafood').d-block.mx-auto.mb-3
+                    h6.fs-base.text-center Fish &amp; Seafood
+              .mega-dropdown-column.pt-4.px-3(style='width: 12rem;')
+                .widget.mb-3
+                  a(href='food-delivery-category.html').d-block
+                    img(src='img/food-delivery/icons/healthy.svg' width='60' alt='Healthy Food').d-block.mx-auto.mb-3
+                    h6.fs-base.text-center Healthy Food
+            .d-flex
+              .mega-dropdown-column.pt-4.px-3(style='width: 12rem;')
+                .widget.mb-3
+                  a(href='food-delivery-category.html').d-block
+                    img(src='img/food-delivery/icons/cuisine.svg' width='60' alt='Haute Cuisine').d-block.mx-auto.mb-3
+                    h6.fs-base.text-center Haute Cuisine
+              .mega-dropdown-column.pt-4.px-3(style='width: 12rem;')
+                .widget.mb-3
+                  a(href='food-delivery-category.html').d-block
+                    img(src='img/food-delivery/icons/chicken.svg' width='60' alt='Chicken & Snaks').d-block.mx-auto.mb-3
+                    h6.fs-base.text-center Chicken &amp; Snaks
+              .mega-dropdown-column.pt-4.px-3(style='width: 12rem;')
+                .widget.mb-3
+                  a(href='food-delivery-category.html').d-block
+                    img(src='img/food-delivery/icons/coffee.svg' width='60' alt='Coffee & Desserts').d-block.mx-auto.mb-3
+                    h6.fs-base.text-center Coffee &amp; Desserts
+        li.nav-item: a(href='index.html').nav-link Back to main demo
+
+  // Search collapse
+  #searchBox.search-box.collapse
+    .container.py-2
+      .input-group
+        i.ci-search.position-absolute.top-50.start-0.translate-middle-y.ms-3
+        input(type='text' placeholder='What do you need?').form-control.rounded-start

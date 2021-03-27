@@ -1,0 +1,401 @@
+extends ../partials/layout-components
+
+//- Override default config variables
+append config
+  - var vendorStyles = ['prismjs/themes/prism.css', 'prismjs/plugins/toolbar/prism-toolbar.css', 'prismjs/plugins/line-numbers/prism-line-numbers.css']
+  - var vendorScripts = ['prismjs/components/prism-core.min.js', 'prismjs/components/prism-markup.min.js', 'prismjs/components/prism-clike.min.js', 'prismjs/components/prism-javascript.min.js', 'prismjs/components/prism-pug.min.js', 'prismjs/plugins/toolbar/prism-toolbar.min.js', 'prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js', 'prismjs/plugins/line-numbers/prism-line-numbers.min.js']
+  - var pageTitle = 'Steps'
+  - var pageSubtitle = 'Series of steps or conditions that the user needs to complete in order to accomplish a goal.'
+  - var isPageTitleBadge = true
+  - var anchorNav = [{'title': 'Dark skin', 'link': '#steps-dark'}, {'title': 'Light skin', 'link': '#steps-light'}, {'title': 'Based on media tabs', 'link': '#steps-media-tabs'}]
+  
+//- Page Content
+block content
+
+  // Dark skin
+  section#steps-dark.pb-5.mb-md-2
+    h2.h5.mb-3 Dark skin
+    .card.border-0.shadow
+      .card-header
+        ul(role='tablist').nav.nav-tabs.card-header-tabs
+          li.nav-item
+            a(href='#result1' data-bs-toggle='tab' role='tab' aria-controls='result1' aria-selected='true').nav-link.active Result
+          li.nav-item
+            a(href='#html1' data-bs-toggle='tab' role='tab' aria-controls='html1' aria-selected='false').nav-link HTML
+          li.nav-item
+            a(href='#pug1' data-bs-toggle='tab' role='tab' aria-controls='pug1' aria-selected='false').nav-link Pug
+      .card-body
+        .tab-content
+          #result1.tab-pane.fade.show.active(role='tabpanel')
+            .steps.steps-dark.mt-3
+              a(href='#').step-item.active
+                .step-progress
+                  span.step-count 1
+                .step-label
+                  i.ci-cart
+                  | Cart
+              a(href='#').step-item.active.current
+                .step-progress
+                  span.step-count 2
+                .step-label
+                  i.ci-user-circle
+                  | Your details
+              a(href='#').step-item
+                .step-progress
+                  span.step-count 3
+                .step-label
+                  i.ci-package
+                  | Shipping
+              a(href='#').step-item
+                .step-progress
+                  span.step-count 4
+                .step-label
+                  i.ci-card
+                  | Payment
+          #html1.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-html').
+                &lt;!-- Steps dark skin  --&gt;
+                &lt;div class=&quot;steps steps-dark&quot;&gt;
+
+                  &lt;!-- Step: active --&gt;
+                  &lt;a href=&quot;#&quot; class=&quot;step-item active&quot;&gt;
+                    &lt;div class=&quot;step-progress&quot;&gt;
+                      &lt;span class=&quot;step-count&quot;&gt;1&lt;/span&gt;
+                    &lt;/div&gt;
+                    &lt;div class=&quot;step-label&quot;&gt;
+                      &lt;i class=&quot;ci-cart&quot;&gt;&lt;/i&gt;
+                      Cart
+                    &lt;/div&gt;
+                  &lt;/a&gt;
+
+                  &lt;!-- Step: active, current --&gt;
+                  &lt;a href=&quot;#&quot; class=&quot;step-item active current&quot;&gt;
+                    &lt;div class=&quot;step-progress&quot;&gt;
+                      &lt;span class=&quot;step-count&quot;&gt;2&lt;/span&gt;
+                    &lt;/div&gt;
+                    &lt;div class=&quot;step-label&quot;&gt;
+                      &lt;i class=&quot;ci-user-circle&quot;&gt;&lt;/i&gt;
+                      Your details
+                    &lt;/div&gt;
+                  &lt;/a&gt;
+
+                  &lt;!-- Step --&gt;
+                  &lt;a href=&quot;#&quot; class=&quot;step-item&quot;&gt;
+                    &lt;div class=&quot;step-progress&quot;&gt;
+                      &lt;span class=&quot;step-count&quot;&gt;3&lt;/span&gt;
+                    &lt;/div&gt;
+                    &lt;div class=&quot;step-label&quot;&gt;
+                      &lt;i class=&quot;ci-package&quot;&gt;&lt;/i&gt;
+                      Shipping
+                    &lt;/div&gt;
+                  &lt;/a&gt;
+
+                  &lt;!-- Step --&gt;
+                  &lt;a href=&quot;#&quot; class=&quot;step-item&quot;&gt;
+                    &lt;div class=&quot;step-progress&quot;&gt;
+                      &lt;span class=&quot;step-count&quot;&gt;4&lt;/span&gt;
+                    &lt;/div&gt;
+                    &lt;div class=&quot;step-label&quot;&gt;
+                      &lt;i class=&quot;ci-card&quot;&gt;&lt;/i&gt;
+                      Payment
+                    &lt;/div&gt;
+                  &lt;/a&gt;
+                &lt;/div&gt;
+          #pug1.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-pug').
+                // Steps dark skin
+                .steps.steps-dark
+                  a(href=&quot;#&quot;).step-item.active
+                    .step-progress
+                      span.step-count 1
+                    .step-label
+                      i.ci-cart
+                      | Cart
+                  
+                  // Step
+                  a(href=&quot;#&quot;).step-item.active.current
+                    .step-progress
+                      span.step-count 2
+                    .step-label
+                      i.ci-user-circle
+                      | Your details
+
+                  // Step
+                  a(href=&quot;#&quot;).step-item
+                    .step-progress
+                      span.step-count 3
+                    .step-label
+                      i.ci-package
+                      | Shipping
+
+                  // Step
+                  a(href=&quot;#&quot;).step-item
+                    .step-progress
+                      span.step-count 4
+                    .step-label
+                      i.ci-card
+                      | Payment
+
+  // Light skin
+  section#steps-light.pb-5.mb-md-2
+    h2.h5.mb-3 Light skin
+    .card.border-0.shadow
+      .card-header
+        ul(role='tablist').nav.nav-tabs.card-header-tabs
+          li.nav-item
+            a(href='#result2' data-bs-toggle='tab' role='tab' aria-controls='result2' aria-selected='true').nav-link.active Result
+          li.nav-item
+            a(href='#html2' data-bs-toggle='tab' role='tab' aria-controls='html2' aria-selected='false').nav-link HTML
+          li.nav-item
+            a(href='#pug2' data-bs-toggle='tab' role='tab' aria-controls='pug2' aria-selected='false').nav-link Pug
+      .card-body
+        .tab-content
+          #result2.tab-pane.bg-dark.pt-5.px-4.pb-4.fade.show.active(style='margin: -1.25rem;', role='tabpanel')
+            .steps.steps-light
+              a(href='#').step-item.active
+                .step-progress
+                  span.step-count 1
+                .step-label
+                  i.ci-cart
+                  | Cart
+              a(href='#').step-item.active.current
+                .step-progress
+                  span.step-count 2
+                .step-label
+                  i.ci-user-circle
+                  | Your details
+              a(href='#').step-item
+                .step-progress
+                  span.step-count 3
+                .step-label
+                  i.ci-package
+                  | Shipping
+              a(href='#').step-item
+                .step-progress
+                  span.step-count 4
+                .step-label
+                  i.ci-card
+                  | Payment
+          #html2.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-html').
+                &lt;!-- Steps light skin  --&gt;
+                &lt;div class=&quot;steps steps-light&quot;&gt;
+
+                  &lt;!-- Step: active --&gt;
+                  &lt;a href=&quot;#&quot; class=&quot;step-item active&quot;&gt;
+                    &lt;div class=&quot;step-progress&quot;&gt;
+                      &lt;span class=&quot;step-count&quot;&gt;1&lt;/span&gt;
+                    &lt;/div&gt;
+                    &lt;div class=&quot;step-label&quot;&gt;
+                      &lt;i class=&quot;ci-cart&quot;&gt;&lt;/i&gt;
+                      Cart
+                    &lt;/div&gt;
+                  &lt;/a&gt;
+
+                  &lt;!-- Step: active, current --&gt;
+                  &lt;a href=&quot;#&quot; class=&quot;step-item active current&quot;&gt;
+                    &lt;div class=&quot;step-progress&quot;&gt;
+                      &lt;span class=&quot;step-count&quot;&gt;2&lt;/span&gt;
+                    &lt;/div&gt;
+                    &lt;div class=&quot;step-label&quot;&gt;
+                      &lt;i class=&quot;ci-user-circle&quot;&gt;&lt;/i&gt;
+                      Your details
+                    &lt;/div&gt;
+                  &lt;/a&gt;
+
+                  &lt;!-- Step --&gt;
+                  &lt;a href=&quot;#&quot; class=&quot;step-item&quot;&gt;
+                    &lt;div class=&quot;step-progress&quot;&gt;
+                      &lt;span class=&quot;step-count&quot;&gt;3&lt;/span&gt;
+                    &lt;/div&gt;
+                    &lt;div class=&quot;step-label&quot;&gt;
+                      &lt;i class=&quot;ci-package&quot;&gt;&lt;/i&gt;
+                      Shipping
+                    &lt;/div&gt;
+                  &lt;/a&gt;
+
+                  &lt;!-- Step --&gt;
+                  &lt;a href=&quot;#&quot; class=&quot;step-item&quot;&gt;
+                    &lt;div class=&quot;step-progress&quot;&gt;
+                      &lt;span class=&quot;step-count&quot;&gt;4&lt;/span&gt;
+                    &lt;/div&gt;
+                    &lt;div class=&quot;step-label&quot;&gt;
+                      &lt;i class=&quot;ci-card&quot;&gt;&lt;/i&gt;
+                      Payment
+                    &lt;/div&gt;
+                  &lt;/a&gt;
+                &lt;/div&gt;
+          #pug2.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-pug').
+                // Steps light skin
+                .steps.steps-light
+                  a(href=&quot;#&quot;).step-item.active
+                    .step-progress
+                      span.step-count 1
+                    .step-label
+                      i.ci-cart
+                      | Cart
+                  
+                  // Step
+                  a(href=&quot;#&quot;).step-item.active.current
+                    .step-progress
+                      span.step-count 2
+                    .step-label
+                      i.ci-user-circle
+                      | Your details
+
+                  // Step
+                  a(href=&quot;#&quot;).step-item
+                    .step-progress
+                      span.step-count 3
+                    .step-label
+                      i.ci-package
+                      | Shipping
+
+                  // Step
+                  a(href=&quot;#&quot;).step-item
+                    .step-progress
+                      span.step-count 4
+                    .step-label
+                      i.ci-card
+                      | Payment
+
+  // Based on media tabs
+  section#steps-media-tabs.pb-5.mb-md-2
+    h2.h5.mb-3 Based on media tabs
+    .card.border-0.shadow
+      .card-header
+        ul(role='tablist').nav.nav-tabs.card-header-tabs
+          li.nav-item
+            a(href='#result3' data-bs-toggle='tab' role='tab' aria-controls='result3' aria-selected='true').nav-link.active Result
+          li.nav-item
+            a(href='#html3' data-bs-toggle='tab' role='tab' aria-controls='html3' aria-selected='false').nav-link HTML
+          li.nav-item
+            a(href='#pug3' data-bs-toggle='tab' role='tab' aria-controls='pug3' aria-selected='false').nav-link Pug
+      .card-body
+        .tab-content
+          #result3.tab-pane.fade.show.active(role='tabpanel')
+            ul.nav.nav-tabs.media-tabs.nav-justified
+              li.nav-item
+                .nav-link.completed
+                  .d-flex.align-items-center
+                    .media-tab-media
+                      i.ci-bag
+                    .ps-3
+                      .media-tab-subtitle.text-muted.fs-xs.mb-1 First step
+                      h6.media-tab-title.text-nowrap.mb-0 Order placed
+              li.nav-item
+                .nav-link.active
+                  .d-flex.align-items-center
+                    .media-tab-media
+                      i.ci-settings
+                    .ps-3
+                      .media-tab-subtitle.text-muted.fs-xs.mb-1 Second step
+                      h6.media-tab-title.text-nowrap.mb-0 Processing order
+              li.nav-item
+                .nav-link
+                  .d-flex.align-items-center
+                    .media-tab-media
+                      i.ci-star
+                    .ps-3
+                      .media-tab-subtitle.text-muted.fs-xs.mb-1 Third step
+                      h6.media-tab-title.text-nowrap.mb-0 Quality check
+              li.nav-item
+                .nav-link
+                  .d-flex.align-items-center
+                    .media-tab-media
+                      i.ci-package
+                    .ps-3
+                      .media-tab-subtitle.text-muted.fs-xs.mb-1 Fourth step
+                      h6.media-tab-title.text-nowrap.mb-0 Product dispatched
+          #html3.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-html').
+                &lt;!-- Steps based on media tabs --&gt;
+                &lt;ul class=&quot;nav nav-tabs media-tabs nav-justified&quot;&gt;
+                  &lt;li class=&quot;nav-item&quot;&gt;
+                    &lt;div class=&quot;nav-link completed&quot;&gt;
+                      &lt;div class=&quot;d-flex align-items-center&quot;&gt;
+                        &lt;div class=&quot;media-tab-media&quot;&gt;&lt;i class=&quot;ci-bag&quot;&gt;&lt;/i&gt;&lt;/div&gt;
+                        &lt;div class=&quot;ps-3&quot;&gt;
+                          &lt;div class=&quot;media-tab-subtitle text-muted fs-xs mb-1&quot;&gt;First step&lt;/div&gt;
+                          &lt;h6 class=&quot;media-tab-title text-nowrap mb-0&quot;&gt;Order placed&lt;/h6&gt;
+                        &lt;/div&gt;
+                      &lt;/div&gt;
+                    &lt;/div&gt;
+                  &lt;/li&gt;
+                  &lt;li class=&quot;nav-item&quot;&gt;
+                    &lt;div class=&quot;nav-link active&quot;&gt;
+                      &lt;div class=&quot;d-flex align-items-center&quot;&gt;
+                        &lt;div class=&quot;media-tab-media&quot;&gt;&lt;i class=&quot;ci-settings&quot;&gt;&lt;/i&gt;&lt;/div&gt;
+                        &lt;div class=&quot;ps-3&quot;&gt;
+                          &lt;div class=&quot;media-tab-subtitle text-muted fs-xs mb-1&quot;&gt;Second step&lt;/div&gt;
+                          &lt;h6 class=&quot;media-tab-title text-nowrap mb-0&quot;&gt;Processing order&lt;/h6&gt;
+                        &lt;/div&gt;
+                      &lt;/div&gt;
+                    &lt;/div&gt;
+                  &lt;/li&gt;
+                  &lt;li class=&quot;nav-item&quot;&gt;
+                    &lt;div class=&quot;nav-link&quot;&gt;
+                      &lt;div class=&quot;d-flex align-items-center&quot;&gt;
+                        &lt;div class=&quot;media-tab-media&quot;&gt;&lt;i class=&quot;ci-star&quot;&gt;&lt;/i&gt;&lt;/div&gt;
+                        &lt;div class=&quot;ps-3&quot;&gt;
+                          &lt;div class=&quot;media-tab-subtitle text-muted fs-xs mb-1&quot;&gt;Third step&lt;/div&gt;
+                          &lt;h6 class=&quot;media-tab-title text-nowrap mb-0&quot;&gt;Quality check&lt;/h6&gt;
+                        &lt;/div&gt;
+                      &lt;/div&gt;
+                    &lt;/div&gt;
+                  &lt;/li&gt;
+                  &lt;li class=&quot;nav-item&quot;&gt;
+                    &lt;div class=&quot;nav-link&quot;&gt;
+                      &lt;div class=&quot;d-flex align-items-center&quot;&gt;
+                        &lt;div class=&quot;media-tab-media&quot;&gt;&lt;i class=&quot;ci-package&quot;&gt;&lt;/i&gt;&lt;/div&gt;
+                        &lt;div class=&quot;ps-3&quot;&gt;
+                          &lt;div class=&quot;media-tab-subtitle text-muted fs-xs mb-1&quot;&gt;Fourth step&lt;/div&gt;
+                          &lt;h6 class=&quot;media-tab-title text-nowrap mb-0&quot;&gt;Product dispatched&lt;/h6&gt;
+                        &lt;/div&gt;
+                      &lt;/div&gt;
+                    &lt;/div&gt;
+                  &lt;/li&gt;
+                &lt;/ul&gt;
+          #pug3.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-pug').
+                // Steps based on media tabs
+                ul.nav.nav-tabs.media-tabs.nav-justified
+                  li.nav-item
+                    .nav-link.completed
+                      .d-flex.align-items-center
+                        .media-tab-media
+                          i.ci-bag
+                        .ps-3
+                          .media-tab-subtitle.text-muted.fs-xs.mb-1 First step
+                          h6.media-tab-title.text-nowrap.mb-0 Order placed
+                  li.nav-item
+                    .nav-link.active
+                      .d-flex.align-items-center
+                        .media-tab-media
+                          i.ci-settings
+                        .ps-3
+                          .media-tab-subtitle.text-muted.fs-xs.mb-1 Second step
+                          h6.media-tab-title.text-nowrap.mb-0 Processing order
+                  li.nav-item
+                    .nav-link
+                      .d-flex.align-items-center
+                        .media-tab-media
+                          i.ci-star
+                        .ps-3
+                          .media-tab-subtitle.text-muted.fs-xs.mb-1 Third step
+                          h6.media-tab-title.text-nowrap.mb-0 Quality check
+                  li.nav-item
+                    .nav-link
+                      .d-flex.align-items-center
+                        .media-tab-media
+                          i.ci-package
+                        .ps-3
+                          .media-tab-subtitle.text-muted.fs-xs.mb-1 Fourth step
+                          h6.media-tab-title.text-nowrap.mb-0 Product dispatched

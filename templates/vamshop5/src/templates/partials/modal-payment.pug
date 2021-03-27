@@ -1,0 +1,33 @@
+// Add Payment Method
+form(method='post' id='add-payment' tabindex='-1' novalidate).needs-validation.modal.fade
+  .modal-dialog.modal-lg
+    .modal-content
+      .modal-header
+        h5.modal-title Add a payment method
+        button(type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close')
+      .modal-body
+        .form-check.mb-4
+          input(type='radio' id='paypal' name='payment-method').form-check-input
+          label(for='paypal').form-check-label
+            | PayPal
+            img(src='img/card-paypal.png' width='39' alt='PayPal').d-inline-block.align-middle.ms-2
+        .form-check.mb-4
+          input(type='radio' id='card' name='payment-method' checked).form-check-input
+          label(for='card').form-check-label
+            | Credit / Debit card
+            img(src='img/cards.png' width='187' alt='Credit card').d-inline-block.align-middle.ms-2
+        .row.g-3.mb-2
+          .col-sm-6
+            input(type='text' name='number' placeholder='Card Number' required).form-control
+            .invalid-feedback Please fill in the card number!
+          .col-sm-6
+            input(type='text' name='name' placeholder='Full Name' required).form-control
+            .invalid-feedback Please provide name on the card!
+          .col-sm-3
+            input(type='text' name='expiry' placeholder='MM/YY' required).form-control
+            .invalid-feedback Please provide card expiration date!
+          .col-sm-3
+            input(type='text' name='cvc' placeholder='CVC' required).form-control
+            .invalid-feedback Please provide card CVC code!
+          .col-sm-6
+            button(type='submit').btn.btn-primary.d-block.w-100 Register this card

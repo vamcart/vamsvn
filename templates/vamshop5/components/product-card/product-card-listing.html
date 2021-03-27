@@ -1,0 +1,60 @@
+  <div class="card card-product h-100">
+	<div class="card-body">
+	<div class="row">
+		{if $module_data.PRODUCTS_LABEL}{$module_data.PRODUCTS_LABEL}{/if}
+		{if $module_data.PRODUCTS_SPECIAL > 0}<span class="badge-offer"><b>-{$module_data.PRODUCTS_SPECIAL|round}%</b></span>{/if}
+		<div class="col-md-3">
+			<div class="img-wrap"><a href="{$module_data.PRODUCTS_LINK}" title="{$module_data.PRODUCTS_NAME}"><img {if $smarty.const.ENABLE_LAZY_LOAD == 'true'}class="lazy" src="{$smarty.const.DIR_WS_IMAGES}pixel_trans.gif" data-src="{$module_data.PRODUCTS_IMAGE}"{else}src="{$module_data.PRODUCTS_IMAGE}"{/if} {if {$module_data.PRODUCTS_IMAGE_WIDTH} > 0} width="{$module_data.PRODUCTS_IMAGE_WIDTH}"{/if} {if {$module_data.PRODUCTS_IMAGE_HEIGHT} > 0} height="{$module_data.PRODUCTS_IMAGE_HEIGHT}"{/if} alt="{$module_data.PRODUCTS_NAME}"></a></div>
+		</div>
+		<div class="col-md-6">
+				<div class="title"><a href="{$module_data.PRODUCTS_LINK}" title="{$module_data.PRODUCTS_NAME}">{$module_data.PRODUCTS_NAME}</a></div>
+				{if $module_data.REVIEWS_TOTAL > 0}
+				<div class="rating-wrap small">
+					{$module_data.REVIEWS_STAR_RATING} <span class="text-muted pr-2" data-toggle="tooltip" title="{$smarty.const.TEXT_REVIEWS_RATING}">{$module_data.REVIEWS_TOTAL_RATING|number_format:1}</span>
+					<div class="label-rating"><span class="text-muted"><i class="far fa-comments"></i> {$smarty.const.TEXT_TOTAL_REVIEWS}: {$module_data.REVIEWS_TOTAL}</span></div>
+				</div>
+				{/if}
+				{if {$module_data.PRODUCTS_SHORT_DESCRIPTION}}<div class="small">{$module_data.PRODUCTS_SHORT_DESCRIPTION|strip_tags|vam_truncate:{$smarty.const.MAX_DISPLAY_SHORT_DESCRIPTION}:"...":true}</div>{/if}
+				{if $module_data.EXTRA_FIELDS}
+				<div class="description extra_fields text-muted">
+				{foreach item=extra_fields from=$module_data.EXTRA_FIELDS}
+				{if $extra_fields@iteration > 5}{break}{/if} 
+				<div class="{cycle values="spec-odd,spec-even"}">
+				<span class="spec-name">{$extra_fields.NAME}:</span> <span class="spec-value font-weight-bold">{$extra_fields.VALUE}</span><br />
+				</div>
+				{/foreach}
+				</div>
+				{/if}
+				{if $module_data.SPECS}
+				<div class="description specs text-muted">
+				<!-- Specifications -->
+				{foreach name=outer item=spec_group from=$module_data.SPECS}
+				<br />
+				{foreach key=key_data item=spec from=$spec_group.DATA}
+				{if $spec@iteration > 5}{break}{/if} 
+				<div class="{cycle values="spec-odd,spec-even"}">
+				<span class="spec-name">{$spec.NAME}:</span> <span class="spec-value font-weight-bold">{$spec.VALUE}</span><br />
+				</div>
+				{/foreach}
+				{/foreach}
+				<br />
+				</div>
+				{/if}
+				{if $CATEGORIES_NAME && SPECIFICATIONS_BOX_COMPARISON == "True"}<div class="description"><label><input type="checkbox" id="s_{$module_data.PRODUCTS_ID}" name="products[]" value="{$module_data.PRODUCTS_ID}" /> {#text_compare#}</label></div>{/if}
+
+		</div>
+		<div class="col-md-3 my-auto">
+			<div class="action-wrap text-center">
+				{if $module_data.PRODUCTS_PRICE_PLAIN > 0}
+				<div class="price-wrap text-center font-weight-bold">
+					{$module_data.PRODUCTS_PRICE}
+				</div>
+				{/if}
+				<div>
+					{if $module_data.PRODUCTS_PRICE_PLAIN > 0}{$module_data.PRODUCTS_BUTTON_BUY_NOW_NEW}{/if}
+				</div>
+			</div>
+		</div>
+	</div>
+	</div>
+</div>

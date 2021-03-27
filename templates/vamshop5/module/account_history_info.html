@@ -1,0 +1,171 @@
+{config_load file="$language/lang_$language.conf" section="account_history_info"}
+{config_load file="$language/lang_$language.conf" section="print_order"}
+{config_load file="$language/lang_$language.conf" section="product_info"}
+{if $downloads_content neq ''}
+<!-- Файлы -->
+{$downloads_content}
+<!-- /Файлы -->
+{/if}
+
+<div class="page">
+  <div class="buttons" style="float: right;">
+    {$DUPLICATE_CART_BUTTON}
+  </div>
+<h1>{#heading_history_info#}</h1>
+<div class="pageContent">
+<!-- Информация о заказе -->
+
+<p>
+<span class="bold">{#text_oid#}</span> {$ORDER_NUMBER} ({$ORDER_STATUS})
+</p>
+
+<p>
+<span class="bold">{#text_date#}</span> {$ORDER_DATE}
+</p>
+
+<!-- Адрес доставки -->
+<dl class="ordersAddress">
+<dt class="ordersAddress">
+</dt>
+
+<dd class="ordersAddress">
+<span class="bold">{#text_shipping_address#}:</span>
+</dd>
+
+<dd class="ordersAddress">
+{$DELIVERY_LABEL}
+</dd>
+
+</dl>
+<!-- /Адрес доставки -->
+
+{if $BILLING_LABEL}
+<!-- Адрес клиента -->
+<dl class="ordersAddress">
+<dt class="ordersAddress">
+</dt>
+
+<dd class="ordersAddress">
+<span class="bold">{#text_payment_address#}:</span>
+</dd>
+
+<dd class="ordersAddress">
+{$BILLING_LABEL}
+</dd>
+
+</dl>
+<!-- /Адрес клиента -->
+{/if}
+<div class="clear"></div>
+
+<p>
+<span class="bold">{#text_shipping_method#}</span> {$SHIPPING_METHOD}
+</p>
+
+{if $PAYMENT_METHOD}
+<p>
+<span class="bold">{#text_payment_method#}</span> {$PAYMENT_METHOD}
+</p>
+{/if}
+
+{if $ORDER_COMMENTS!=''}
+<p>
+<span class="bold">{#text_comments#}</span>
+</p>
+<p>
+<!--{$ORDER_COMMENTS}-->
+</p>
+{/if}
+
+{if $PAYMENT_INFORMATION!=''}
+<p>
+<span class="bold">{#text_payment_info#}</span>
+</p>
+<p>
+{$PAYMENT_INFORMATION}
+</p>
+{/if}
+
+<!-- /Информация о заказе -->
+
+<!-- История заказа -->
+<div class="module">
+<div class="moduleContent">
+
+<p>
+<span class="bold">{#title_history#}</span>
+</p>
+
+{$HISTORY_BLOCK}
+
+</div>
+</div>
+<!-- /История заказа -->
+
+<!-- Заказанные товары -->
+<div class="module">
+<div class="moduleContent">
+
+<p>
+<span class="bold">{#heading_products#}</span>
+</p>
+
+	<table width="100%" border="0" cellpadding="3" cellspacing="0">
+        <tr> 
+          <td colspan="2"><span class="bold">{#head_units#}</span></td>
+          <td><span class="bold">{#head_products#}</span></td>
+          <td><span class="bold">{#head_artnr#}</span></td>
+          <td><span class="bold">{#head_single_price#}</span></td>
+          <td width="150"><span class="bold">{#head_price#}</span></td>
+        </tr>
+        {foreach name=aussen item=order_values from=$order_data} 
+        <tr> 
+          <td width="20"><span class="bold">{$order_values.PRODUCTS_QTY}</span></td>
+          <td width="20"><span class="bold">x</span></td>
+          <td><span class="bold"><a href="{$order_values.PRODUCTS_LINK}">{$order_values.PRODUCTS_NAME}</a></span><em>{$order_values.PRODUCTS_ATTRIBUTES}</em>{if $order_values.PRODUCTS_SHIPPING_TIME neq ''}<br />
+            {#text_shippingtime#} {$order_values.PRODUCTS_SHIPPING_TIME}<br />{/if}</td>
+          <td>{$order_values.PRODUCTS_MODEL}<em>{$order_values.PRODUCTS_ATTRIBUTES_MODEL}</em></td>
+          <td>{$order_values.PRODUCTS_SINGLE_PRICE}</td>
+          <td width="150"><span class="bold">{$order_values.PRODUCTS_PRICE}</span></td>
+        </tr>
+        {/foreach} </table>
+	<table width="100%" border="0" cellpadding="3" cellspacing="0">
+  {foreach name=aussen item=order_total_values from=$order_total}
+  <tr> 
+    <td nowrap="nowrap" width="100%"><div align="right">{$order_total_values.TITLE} 
+              {$order_total_values.TEXT}</div></td>
+  </tr>
+  {/foreach} 
+</table>
+
+</div>
+</div>
+<!-- /Заказанные товары -->
+
+<div class="clear"></div>
+<div class="navigation">
+<span class="right">{$BUTTON_PRINT}</span>
+{$BUTTON_BACK}
+</div>
+<div class="clear"></div>
+
+<div class="pageContentFooter">
+<p>
+<span class="bold">{#title_print#}</span>
+</p>
+<p>
+{#text_print#}
+</p>
+<p>
+{$BUTTON_SCHET_PRINT}
+</p>
+<p>
+{$BUTTON_PACKINGSLIP_PRINT}
+</p>
+<p>
+{$BUTTON_KVITANCIA_PRINT}
+</p>
+</div>
+
+</div>
+</div>

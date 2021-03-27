@@ -1,0 +1,116 @@
+{config_load file="$language/lang_$language.conf" section="index"}
+
+{if $smarty.get.keywords}<h1>{$smarty.get.keywords|capitalize} {if {$smarty.get.page} && {$smarty.get.page} > 0} {$smarty.const.TEXT_PAGE_IN_CAT} {$smarty.get.page}{/if}</h1>{/if}
+
+{if $CATEGORIES_NAME}
+<h1>{if $CATEGORIES_HEADING_TITLE}{$CATEGORIES_HEADING_TITLE}{else}{$CATEGORIES_NAME}{/if}{if $MANUFACTURERS_NAME} {$MANUFACTURERS_NAME}{/if} {$FILTER}</h1>
+{/if}
+
+<div class="page">
+<div class="pageItem">
+
+{if $CATEGORIES_NAME}
+{$MODULE_tags}
+{/if}
+
+{if {$FILTERS}}
+  <button class="btn btn-rounded d-sm-none d-md-block mb-2" type="button" data-toggle="collapse" data-target="#collapseExampleFilter" aria-expanded="false" aria-controls="collapseExampleFilter">
+    <i class="fas fa-filter"></i> {$smarty.const.BOX_HEADING_PRODUCTS_FILTER}
+  </button>
+  
+  <div class="collapse dont-collapse-xl" id="collapseExampleFilter">
+    <div class="well">
+    <div class="filters card-deck">
+      {$FILTERS}
+    </div>
+    </div>
+  </div>
+{/if}
+
+<div class="d-flex justify-content-start">
+{if $MANUFACTURER_DROPDOWN != ''}
+<div class="brands py-2 pr-2">
+{$MANUFACTURER_DROPDOWN}
+</div>
+{/if}
+
+<div class="dropdown py-2">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownSortButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    {#text_sort#}
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownSortButton">
+	<a class="dropdown-item{if {$smarty.get.sort == "name"} && {$smarty.get.direction == "asc"}} active{/if} mt-1" href="{$LINK_sort_name_asc}">{#text_sort_name_asc#}</a>  
+	<a class="dropdown-item{if {$smarty.get.sort == "name"} && {$smarty.get.direction == "desc"}} active{/if} mt-1" href="{$LINK_sort_name_desc}">{#text_sort_name_desc#}</a>
+	<a class="dropdown-item{if {$smarty.get.sort == "price"} && {$smarty.get.direction == "asc"}} active{/if} mt-1" href="{$LINK_sort_price_asc}">{#text_sort_price_asc#}</a>  
+	<a class="dropdown-item{if {$smarty.get.sort == "price"} && {$smarty.get.direction == "desc"}} active{/if} mt-1" href="{$LINK_sort_price_desc}">{#text_sort_price_desc#}</a>
+	<a class="dropdown-item{if {$smarty.get.sort == "ordered"} && {$smarty.get.direction == "asc"}} active{/if} mt-1" href="{$LINK_sort_ordered_asc}">{#text_sort_ordered_asc#}</a>
+	<a class="dropdown-item{if {$smarty.get.sort == "ordered"} && {$smarty.get.direction == "desc"}} active{/if} mt-1" href="{$LINK_sort_ordered_desc}">{#text_sort_ordered_desc#}</a>
+	<a class="dropdown-item{if {$smarty.get.sort == "id"} && {$smarty.get.direction == "asc"}} active{/if} mt-1" href="{$LINK_sort_id_asc}">{#text_sort_id_asc#}</a>  
+	<a class="dropdown-item{if {$smarty.get.sort == "id"} && {$smarty.get.direction == "desc"}} active{/if} mt-1" href="{$LINK_sort_id_desc}">{#text_sort_id_desc#}</a>
+	<a class="dropdown-item{if {$smarty.get.sort == "quantity"} && {$smarty.get.direction == "asc"}} active{/if} mt-1" href="{$LINK_sort_quantity_asc}">{#text_sort_quantity_asc#}</a>
+	<a class="dropdown-item{if {$smarty.get.sort == "quantity"} && {$smarty.get.direction == "desc"}} active{/if} mt-1" href="{$LINK_sort_quantity_desc}">{#text_sort_quantity_desc#}</a>
+  </div>
+</div>
+
+</div>
+
+
+<div class="clear"></div>
+</div>
+
+</div>
+
+{if $CATEGORIES_NAME && SPECIFICATIONS_BOX_COMPARISON == "True"}
+<form action="{$smarty.const.FILENAME_COMPARISON}">{/if}
+
+{foreach name=aussen item=module_data from=$module_content}
+{if $smarty.const.PRODUCT_LISTING_ATTRIBUTES == 'true'}
+{include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/product-card/product-card-listing-attributes.html"}
+{else}
+{include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/product-card/product-card-listing-buy-button.html"}
+{/if}
+{/foreach}
+
+{if $CATEGORIES_NAME && SPECIFICATIONS_BOX_COMPARISON == "True"}
+<div class="pt-2">
+<input type="hidden" name="cat" value="{$smarty.get.cat}" />
+{$BUTTON_COMPARE}
+</form>
+</div>
+{/if}
+
+<div class="navigation">
+<span class="right">{$NAVIGATION}</span>{$NAVIGATION_PAGES}
+</div>
+<div class="clear"></div>
+
+{if $CATEGORIES_HEADING_TITLE or $CATEGORIES_DESCRIPTION}
+<div class="page py-2">
+<div class="pageItem read-more">
+
+{if ($CATEGORIES_DESCRIPTION or $FILTER_DESCRIPTION) and !$smarty.get.page}
+{$CATEGORIES_DESCRIPTION}
+{$FILTER_DESCRIPTION}
+{/if}
+
+<div class="clear"></div>
+</div>
+
+</div>
+{/if}
+
+{if $MANUFACTURERS_DESCRIPTION and !$smarty.get.page}
+<div class="page">
+<div class="pageItem read-more">
+{$MANUFACTURERS_DESCRIPTION}
+<div class="clear"></div>
+</div>
+
+</div>
+{/if}
+
+{if $CATEGORIES_NAME}
+{$MODULE_latest_news}
+{$MODULE_faq}
+{$MODULE_articles}
+{/if}

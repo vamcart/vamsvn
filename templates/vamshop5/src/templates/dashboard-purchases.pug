@@ -1,0 +1,164 @@
+extends partials/layout
+
+//- Override default config variables
+append config
+  - var pageTitle = 'Purchases'
+  - var parentMenu = 'Account'
+
+//- Navbar
+block navbar
+  include partials/navbar-marketplace
+
+//- Page Content
+block content
+
+  //- dashboard-header.pug template
+  include partials/dashboard-header
+
+  .container.mb-5.pb-3
+    .bg-light.shadow-lg.rounded-3.overflow-hidden
+      .row
+
+        // Sidebar
+        aside.col-lg-4.pe-xl-5
+          //- sidebar-dashboard.pug template
+          include partials/sidebar-dashboard
+
+        // Content
+        section.col-lg-8.pt-lg-4.pb-4.mb-3
+          .pt-2.px-4.ps-lg-0.pe-xl-5
+
+            // Title
+            .d-sm-flex.flex-wrap.justify-content-between.align-items-center.border-bottom
+              h2.h3.py-2.me-2.text-center.text-sm-start Your purchases
+              .py-2
+                .d-flex.flex-nowrap.align-items-center.pb-3
+                  label(for='sorting').form-label.fw-normal.text-nowrap.mb-0.me-2 Sort by:
+                  select#sorting.form-select.form-select-sm.me-2
+                    option Date Purchased
+                    option Product Name
+                    option Price
+                    option Your Rating
+                    option Updates
+                  button(type='button').btn.btn-outline-secondary.btn-sm.px-2
+                    i.ci-arrow-up
+            
+            // Products list
+
+            // Product
+            .d-block.d-sm-flex.align-items-center.py-4.border-bottom
+              a(href='marketplace-single.html' style='width: 12.5rem;').d-block.mb-3.mb-sm-0.me-sm-4.ms-sm-0.mx-auto
+                img(src='img/marketplace/products/th01.jpg' alt='Product').rounded-3
+              .text-center.text-sm-start
+                h3.h6.product-title.mb-2
+                  a(href='marketplace-single.html') Top View Smartwatch 3D Render
+                .text-accent.fs-sm.mb-1 Standard license
+                .form-check.d-table.text-start.mx-auto.mx-sm-0
+                  input(type='checkbox' id='update-info-1' checked).form-check-input
+                  label(for='update-info-1').form-check-label.fs-ms Notify me when this product is updated
+                .d-flex.align-items-center.justify-content-center.justify-content-sm-start.pt-2
+                  .my-2
+                    button(type='button').btn.btn-primary.btn-sm.me-3
+                      i.ci-download.me-1
+                      | Download
+                  a(href='#').d-block.text-muted.text-center.my-2
+                    +star-rating(0)
+                    .fs-xs Reate this product
+
+            // Product
+            .d-block.d-sm-flex.align-items-center.py-4.border-bottom
+              a(href='marketplace-single.html' style='width: 12.5rem;').d-block.mb-3.mb-sm-0.me-sm-4.ms-sm-0.mx-auto
+                img(src='img/marketplace/products/th02.jpg' alt='Product').rounded-3
+              .text-center.text-sm-start
+                h3.h6.product-title.mb-2
+                  a(href='marketplace-single.html') UI Isometric Devices Pack (PSD)
+                .text-accent.fs-sm.mb-1 Extended license
+                .form-check.d-table.text-start.mx-auto.mx-sm-0
+                  input(type='checkbox' id='update-info-2' checked).form-check-input
+                  label(for='update-info-2').form-check-label.fs-ms Notify me when this product is updated
+                .d-flex.align-items-center.justify-content-center.justify-content-sm-start.pt-2
+                  .my-2
+                    button(type='button').btn.btn-primary.btn-sm.me-3
+                      i.ci-download.me-1
+                      | Download
+                  a(href='#').d-block.text-muted.text-center.my-2
+                    +star-rating(4)
+                    .fs-xs You rated this product
+
+            // Product
+            .d-block.d-sm-flex.align-items-center.py-4.border-bottom
+              a(href='marketplace-single.html' style='width: 12.5rem;').d-block.mb-3.mb-sm-0.me-sm-4.ms-sm-0.mx-auto
+                img(src='img/marketplace/products/th03.jpg' alt='Product').rounded-3
+              .text-center.text-sm-start
+                h3.h6.product-title.mb-2
+                  a(href='marketplace-single.html') Cartzilla - Multipurpose E-Commerce Template
+                .text-accent.fs-sm.mb-1 Standard license
+                .form-check.d-table.text-start.mx-auto.mx-sm-0
+                  input(type='checkbox' id='update-info-3' checked).form-check-input
+                  label(for='update-info-3').form-check-label.fs-ms Notify me when this product is updated
+                .d-flex.align-items-center.justify-content-center.justify-content-sm-start.pt-2
+                  .my-2
+                    button(type='button').btn.btn-primary.btn-sm.me-3
+                      i.ci-download.me-1
+                      | Download
+                  a(href='#').d-block.text-muted.text-center.my-2
+                    +star-rating(5)
+                    .fs-xs You rated this product
+
+            // Product
+            .d-block.d-sm-flex.align-items-center.py-4.border-bottom
+              a(href='marketplace-single.html' style='width: 12.5rem;').d-block.mb-3.mb-sm-0.me-sm-4.ms-sm-0.mx-auto
+                img(src='img/marketplace/products/th04.jpg' alt='Product').rounded-3
+              .text-center.text-sm-start
+                h3.h6.product-title.mb-2
+                  a(href='marketplace-single.html') Hardcover Book Catalog Mockup (PSD)
+                .text-accent.fs-sm.mb-1 Standard license
+                .form-check.d-table.text-start.mx-auto.mx-sm-0
+                  input(type='checkbox' id='update-info-4').form-check-input
+                  label(for='update-info-4').form-check-label.fs-ms Notify me when this product is updated
+                .d-flex.align-items-center.justify-content-center.justify-content-sm-start.pt-2
+                  .my-2
+                    button(type='button').btn.btn-primary.btn-sm.me-3
+                      i.ci-download.me-1
+                      | Download
+                  a(href='#').d-block.text-muted.text-center.my-2
+                    +star-rating(3.5)
+                    .fs-xs Reate this product
+
+            // Product
+            .d-block.d-sm-flex.align-items-center.py-4.border-bottom
+              a(href='marketplace-single.html' style='width: 12.5rem;').d-block.mb-3.mb-sm-0.me-sm-4.ms-sm-0.mx-auto
+                img(src='img/marketplace/products/th05.jpg' alt='Product').rounded-3
+              .text-center.text-sm-start
+                h3.h6.product-title.mb-2
+                  a(href='marketplace-single.html') Photo of Business Meeting
+                .text-accent.fs-sm.mb-1 Standard license
+                .form-check.d-table.text-start.mx-auto.mx-sm-0
+                  input(type='checkbox' id='update-info-5').form-check-input
+                  label(for='update-info-5').form-check-label.fs-ms Notify me when this product is updated
+                .d-flex.align-items-center.justify-content-center.justify-content-sm-start.pt-2
+                  .my-2
+                    button(type='button').btn.btn-primary.btn-sm.me-3
+                      i.ci-download.me-1
+                      | Download
+                  a(href='#').d-block.text-muted.text-center.my-2
+                    +star-rating(0)
+                    .fs-xs Reate this product
+
+
+            // Pagination
+            nav.d-md-flex.justify-content-between.align-items-center.text-center.text-md-start.mt-4(aria-label='Page navigation')
+              .d-md-flex.align-items-center.w-100
+                span.fs-sm.text-muted.me-md-3 Showing 5 of 9 products
+                .progress.w-100.my-3.mx-auto.mx-md-0(style='max-width: 10rem; height: 4px;')
+                  .progress-bar(role='progressbar' style='width: 56%;' aria-valuenow='56' aria-valuemin='0' aria-valuemax='100')
+              button(type='button').btn.btn-outline-primary.btn-sm
+                | More products
+
+//- Footer
+block footer
+  include partials/footer-marketplace
+
+//- Handheld toolbar
+block toolbar
+  include partials/toolbar-marketplace

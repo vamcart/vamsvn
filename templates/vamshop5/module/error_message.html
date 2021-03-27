@@ -1,0 +1,14 @@
+{config_load file="$language/lang_$language.conf" section="error_handler"}<div class="text-center">
+<h1 class="text-success text-center"><i class="fa fa-question fa-7x"></i></h1>
+{$FORM_ACTION}{if $CATEGORIES_NAME}{$CATEGORIES_NAME}<br />{/if}
+{if $CATEGORIES_DESCRIPTION}{$CATEGORIES_DESCRIPTION}<br />{/if}
+<p>{#text_search_again#}</p>
+<!-- форма -->
+<fieldset class="form">
+<legend>{#text_search#}</legend>
+<p>{$INPUT_SEARCH}</p>
+<p>{$BUTTON_SUBMIT}</p>
+</fieldset>
+<!-- /форма -->
+</div>
+{$FORM_END}

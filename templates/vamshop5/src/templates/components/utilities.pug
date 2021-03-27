@@ -1,0 +1,322 @@
+extends ../partials/layout-components
+
+//- Override default config variables
+append config
+  - var vendorStyles = ['prismjs/themes/prism.css', 'prismjs/plugins/toolbar/prism-toolbar.css', 'prismjs/plugins/line-numbers/prism-line-numbers.css']
+  - var vendorScripts = ['prismjs/components/prism-core.min.js', 'prismjs/components/prism-markup.min.js', 'prismjs/components/prism-clike.min.js', 'prismjs/components/prism-javascript.min.js', 'prismjs/components/prism-pug.min.js', 'prismjs/plugins/toolbar/prism-toolbar.min.js', 'prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js', 'prismjs/plugins/line-numbers/prism-line-numbers.min.js']
+  - var pageTitle = 'Cartzilla utilities'
+  - var pageSubtitle = 'Custom Cartzilla utility classes.'
+  - var isPageTitleBadge = true
+  - var anchorNav = [{'title': 'Faded background colors', 'link': '#faded-bg'}, {'title': 'Text shadow', 'link': '#text-shadow'}, {'title': 'Opacity', 'link': '#opacity'}, {'title': 'Translucent image overlay', 'link': '#image-overlay'}]
+  
+//- Page Content
+block content
+
+  // Faded background colors
+  section#faded-bg.pb-5.mb-md-2
+    h2.h5.mb-3 Faded background colors
+    .card.border-0.shadow
+      .card-header
+        ul(role='tablist').nav.nav-tabs.card-header-tabs
+          li.nav-item
+            a(href='#result1' data-bs-toggle='tab' role='tab' aria-controls='result1' aria-selected='true').nav-link.active Result
+          li.nav-item
+            a(href='#html1' data-bs-toggle='tab' role='tab' aria-controls='html1' aria-selected='false').nav-link HTML
+          li.nav-item
+            a(href='#pug1' data-bs-toggle='tab' role='tab' aria-controls='pug1' aria-selected='false').nav-link Pug
+      .card-body
+        .tab-content
+          #result1.tab-pane.fade.show.active(role='tabpanel')
+            .bg-faded-primary.p-4.text-center.mb-3
+              h5.text-primary.mb-0.py-2 Primary faded background
+            .bg-faded-accent.p-4.text-center.mb-3
+              h5.text-accent.mb-0.py-2 Accent faded background
+            .bg-secondary.p-4.text-center.mb-3
+              h5.mb-0.py-2 Secondary background
+            .bg-faded-info.p-4.text-center.mb-3
+              h5.text-info.mb-0.py-2 Info faded background
+            .bg-faded-success.p-4.text-center.mb-3
+              h5.text-success.mb-0.py-2 Success faded background
+            .bg-faded-warning.p-4.text-center.mb-3
+              h5.text-warning.mb-0.py-2 Warning faded background
+            .bg-faded-danger.p-4.text-center.mb-3
+              h5.text-danger.mb-0.py-2 Danger faded background
+            .bg-faded-dark.p-4.text-center
+              h5.text-dark.mb-0.py-2 Dark faded background
+          #html1.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-html').
+                &lt;!-- Primary faded background --&gt;
+                &lt;div class=&quot;bg-faded-primary&quot;&gt;...&lt;/div&gt;
+                
+                &lt;!-- Accent background --&gt;
+                &lt;div class=&quot;bg-faded-accent&quot;&gt;...&lt;/div&gt;
+                
+                &lt;!-- Secondary background --&gt;
+                &lt;div class=&quot;bg-secondary&quot;&gt;...&lt;/div&gt;
+                
+                &lt;!-- Info faded background --&gt;
+                &lt;div class=&quot;bg-faded-info&quot;&gt;...&lt;/div&gt;
+                
+                &lt;!-- Success faded background --&gt;
+                &lt;div class=&quot;bg-faded-success&quot;&gt;...&lt;/div&gt;
+                
+                &lt;!-- Warning faded background --&gt;
+                &lt;div class=&quot;bg-faded-warning&quot;&gt;...&lt;/div&gt;
+                
+                &lt;!-- Danger faded background --&gt;
+                &lt;div class=&quot;bg-faded-danger&quot;&gt;...&lt;/div&gt;
+                
+                &lt;!-- Dark faded background --&gt;
+                &lt;div class=&quot;bg-faded-dark&quot;&gt;...&lt;/div&gt;
+          #pug1.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-pug').
+                // Primary faded background
+                .bg-faded-primary
+                  | ...
+                
+                // Accent faded background
+                .bg-faded-accent
+                  | ...
+                
+                // Secondary background
+                .bg-secondary
+                  | ...
+                
+                // Info faded background
+                .bg-faded-info
+                  | ...
+                
+                // Success faded background
+                .bg-faded-success
+                  | ...
+                
+                // Warning faded background
+                .bg-faded-warning
+                  | ...
+                
+                // Danger faded background
+                .bg-faded-danger
+                  | ...
+                
+                // Dark faded background
+                .bg-faded-dark
+                  | ...
+
+  // Text shadow
+  section#text-shadow.pb-5.mb-md-2
+    h2.h5.mb-3 Text shadow
+    .card.border-0.shadow
+      .card-header
+        ul(role='tablist').nav.nav-tabs.card-header-tabs
+          li.nav-item
+            a(href='#result2' data-bs-toggle='tab' role='tab' aria-controls='result2' aria-selected='true').nav-link.active Result
+          li.nav-item
+            a(href='#html2' data-bs-toggle='tab' role='tab' aria-controls='html2' aria-selected='false').nav-link HTML
+          li.nav-item
+            a(href='#pug2' data-bs-toggle='tab' role='tab' aria-controls='pug2' aria-selected='false').nav-link Pug
+      .card-body
+        .tab-content
+          #result2.tab-pane.fade.show.active(role='tabpanel')
+            h2.text-white.text-shadow Text shadow
+          #html2.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-html').
+                &lt;!-- Text shadow --&gt;
+                &lt;h2 class=&quot;text-white text-shadow&quot;&gt;Text shadow&lt;/h2&gt;
+          #pug2.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-pug').
+                // Text shadow
+                h2.text-white.text-shadow Text shadow
+
+  // Opacity
+  section#opacity.pb-5.mb-md-2
+    h2.h5.mb-3 Opacity
+    .card.border-0.shadow
+      .card-header
+        ul(role='tablist').nav.nav-tabs.card-header-tabs
+          li.nav-item
+            a(href='#result3' data-bs-toggle='tab' role='tab' aria-controls='result3' aria-selected='true').nav-link.active Result
+          li.nav-item
+            a(href='#html3' data-bs-toggle='tab' role='tab' aria-controls='html3' aria-selected='false').nav-link HTML
+          li.nav-item
+            a(href='#pug3' data-bs-toggle='tab' role='tab' aria-controls='pug3' aria-selected='false').nav-link Pug
+      .card-body
+        .tab-content
+          #result3.tab-pane.fade.show.active(role='tabpanel')
+            .d-flex.flex-wrap.pt-2
+              span.text-dark.opacity-25.mb-3.me-4 Opacity 25%
+              span.text-dark.opacity-50.mb-3.me-4 Opacity 50%
+              span.text-dark.opacity-60.mb-3.me-4 Opacity 60%
+              span.text-dark.opacity-70.mb-3.me-4 Opacity 70%
+              span.text-dark.opacity-75.mb-3.me-4 Opacity 75%
+              span.text-dark.opacity-80.mb-3.me-4 Opacity 80%
+              span.text-dark.opacity-90.mb-3.me-4 Opacity 90%
+              span.text-dark.opacity-100.mb-3 Opacity 100%
+          #html3.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-html').
+                &lt;!-- Opacity --&gt;
+                &lt;div class=&quot;opacity-25&quot;&gt;&lt;/div&gt;
+                &lt;div class=&quot;opacity-50&quot;&gt;&lt;/div&gt;
+                &lt;div class=&quot;opacity-60&quot;&gt;&lt;/div&gt;
+                &lt;div class=&quot;opacity-70&quot;&gt;&lt;/div&gt;
+                &lt;div class=&quot;opacity-75&quot;&gt;&lt;/div&gt;
+                &lt;div class=&quot;opacity-80&quot;&gt;&lt;/div&gt;
+                &lt;div class=&quot;opacity-90&quot;&gt;&lt;/div&gt;
+                &lt;div class=&quot;opacity-100&quot;&gt;&lt;/div&gt;
+          #pug3.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-pug').
+                // Opacity
+                .opacity-25
+                .opacity-50
+                .opacity-60
+                .opacity-70
+                .opacity-75
+                .opacity-80
+                .opacity-90
+                .opacity-100
+
+  // Translucent image overlay
+  section#image-overlay.pb-5.mb-md-2
+    h2.h5.mb-3 Translucent image overlay
+    .card.border-0.shadow
+      .card-header
+        ul(role='tablist').nav.nav-tabs.card-header-tabs
+          li.nav-item
+            a(href='#result4' data-bs-toggle='tab' role='tab' aria-controls='result4' aria-selected='true').nav-link.active Result
+          li.nav-item
+            a(href='#html4' data-bs-toggle='tab' role='tab' aria-controls='html4' aria-selected='false').nav-link HTML
+          li.nav-item
+            a(href='#pug4' data-bs-toggle='tab' role='tab' aria-controls='pug4' aria-selected='false').nav-link Pug
+      .card-body
+        .tab-content
+          #result4.tab-pane.fade.show.active(role='tabpanel')
+            .row.g-3
+              .col-md-4.col-sm-6
+                .position-relative.bg-size-cover.bg-position-center.py-5(style='background-image: url(../img/components/images/02.jpg);')
+                  .position-absolute.top-0.start-0.w-100.h-100.bg-black.opacity-50
+                  .position-relative.fw-medium.text-white.text-shadow.text-center.zindex-5.py-5 Black overlay
+              .col-md-4.col-sm-6
+                .position-relative.bg-size-cover.bg-position-center.py-5(style='background-image: url(../img/components/images/03.jpg);')
+                  .position-absolute.top-0.start-0.w-100.h-100.bg-primary.opacity-70
+                  .position-relative.fw-medium.text-white.text-shadow.text-center.zindex-5.py-5 Primary overlay
+              .col-md-4.col-sm-6
+                .position-relative.bg-size-cover.bg-position-center.py-5(style='background-image: url(../img/components/images/01.jpg);')
+                  .position-absolute.top-0.start-0.w-100.h-100.bg-accent.opacity-70
+                  .position-relative.fw-medium.text-white.text-shadow.text-center.zindex-5.py-5 Accent overlay
+              .col-md-4.col-sm-6
+                .position-relative.bg-size-cover.bg-position-center.py-5(style='background-image: url(../img/components/images/03.jpg);')
+                  .position-absolute.top-0.start-0.w-100.h-100.bg-success.opacity-70
+                  .position-relative.fw-medium.text-white.text-shadow.text-center.zindex-5.py-5 Success overlay
+              .col-md-4.col-sm-6
+                .position-relative.bg-size-cover.bg-position-center.py-5(style='background-image: url(../img/components/images/01.jpg);')
+                  .position-absolute.top-0.start-0.w-100.h-100.bg-warning.opacity-70
+                  .position-relative.fw-medium.text-white.text-shadow.text-center.zindex-5.py-5 Warning overlay
+              .col-md-4.col-sm-6
+                .position-relative.bg-size-cover.bg-position-center.py-5(style='background-image: url(../img/components/images/02.jpg);')
+                  .position-absolute.top-0.start-0.w-100.h-100.bg-danger.opacity-70
+                  .position-relative.fw-medium.text-white.text-shadow.text-center.zindex-5.py-5 Danger overlay
+              .col-md-4.col-sm-6
+                .position-relative.bg-size-cover.bg-position-center.py-5(style='background-image: url(../img/components/images/01.jpg);')
+                  .position-absolute.top-0.start-0.w-100.h-100.bg-info.opacity-70
+                  .position-relative.fw-medium.text-white.text-shadow.text-center.zindex-5.py-5 Info overlay
+              .col-md-4.col-sm-6
+                .position-relative.bg-size-cover.bg-position-center.py-5(style='background-image: url(../img/components/images/02.jpg);')
+                  .position-absolute.top-0.start-0.w-100.h-100.bg-white.opacity-70
+                  .position-relative.fw-medium.text-center.zindex-5.py-5 White overlay
+          #html4.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-html').
+                &lt;!-- Black overlay --&gt;
+                &lt;div class=&quot;position-relative bg-size-cover bg-position-center py-5&quot; style=&quot;background-image: url(path-tobg-image);&quot;&gt;
+                  &lt;div class=&quot;position-absolute top-0 start-0 w-100 h-100 bg-black opacity-50&quot;&gt;&lt;/div&gt;
+                  &lt;div class=&quot;position-relative fw-medium text-white text-shadow text-center zindex-5 py-5&quot;&gt;Black overlay&lt;/div&gt;
+                &lt;/div&gt;
+
+                &lt;!-- Primary overlay --&gt;
+                &lt;div class=&quot;position-relative bg-size-cover bg-position-center py-5&quot; style=&quot;background-image: url(path-tobg-image);&quot;&gt;
+                  &lt;div class=&quot;position-absolute top-0 start-0 w-100 h-100 bg-primary opacity-70&quot;&gt;&lt;/div&gt;
+                  &lt;div class=&quot;position-relative fw-medium text-white text-shadow text-center zindex-5 py-5&quot;&gt;Primary overlay&lt;/div&gt;
+                &lt;/div&gt;
+                
+                &lt;!-- Accent overlay --&gt;
+                &lt;div class=&quot;position-relative bg-size-cover bg-position-center py-5&quot; style=&quot;background-image: url(path-tobg-image);&quot;&gt;
+                  &lt;div class=&quot;position-absolute top-0 start-0 w-100 h-100 bg-accent opacity-70&quot;&gt;&lt;/div&gt;
+                  &lt;div class=&quot;position-relative fw-medium text-white text-shadow text-center zindex-5 py-5&quot;&gt;Accent overlay&lt;/div&gt;
+                &lt;/div&gt;
+                
+                &lt;!-- Success overlay --&gt;
+                &lt;div class=&quot;position-relative bg-size-cover bg-position-center py-5&quot; style=&quot;background-image: url(path-tobg-image);&quot;&gt;
+                  &lt;div class=&quot;position-absolute top-0 start-0 w-100 h-100 bg-success opacity-70&quot;&gt;&lt;/div&gt;
+                  &lt;div class=&quot;position-relative fw-medium text-white text-shadow text-center zindex-5 py-5&quot;&gt;Success overlay&lt;/div&gt;
+                &lt;/div&gt;
+                
+                &lt;!-- Warning overlay --&gt;
+                &lt;div class=&quot;position-relative bg-size-cover bg-position-center py-5&quot; style=&quot;background-image: url(path-tobg-image);&quot;&gt;
+                  &lt;div class=&quot;position-absolute top-0 start-0 w-100 h-100 bg-warning opacity-70&quot;&gt;&lt;/div&gt;
+                  &lt;div class=&quot;position-relative fw-medium text-white text-shadow text-center zindex-5 py-5&quot;&gt;Warning overlay&lt;/div&gt;
+                &lt;/div&gt;
+                
+                &lt;!-- Danger overlay --&gt;
+                &lt;div class=&quot;position-relative bg-size-cover bg-position-center py-5&quot; style=&quot;background-image: url(path-tobg-image);&quot;&gt;
+                  &lt;div class=&quot;position-absolute top-0 start-0 w-100 h-100 bg-danger opacity-70&quot;&gt;&lt;/div&gt;
+                  &lt;div class=&quot;position-relative fw-medium text-white text-shadow text-center zindex-5 py-5&quot;&gt;Danger overlay&lt;/div&gt;
+                &lt;/div&gt;
+                
+                &lt;!-- Info overlay --&gt;
+                &lt;div class=&quot;position-relative bg-size-cover bg-position-center py-5&quot; style=&quot;background-image: url(path-tobg-image);&quot;&gt;
+                  &lt;div class=&quot;position-absolute top-0 start-0 w-100 h-100 bg-info opacity-70&quot;&gt;&lt;/div&gt;
+                  &lt;div class=&quot;position-relative fw-medium text-white text-shadow text-center zindex-5 py-5&quot;&gt;Info overlay&lt;/div&gt;
+                &lt;/div&gt;
+                
+                &lt;!-- White overlay --&gt;
+                &lt;div class=&quot;position-relative bg-size-cover bg-position-center py-5&quot; style=&quot;background-image: url(path-tobg-image);&quot;&gt;
+                  &lt;div class=&quot;position-absolute top-0 start-0 w-100 h-100 bg-white opacity-70&quot;&gt;&lt;/div&gt;
+                  &lt;div class=&quot;position-relative fw-medium text-center zindex-5 py-5&quot;&gt;White overlay&lt;/div&gt;
+                &lt;/div&gt;
+          #pug4.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-pug').
+                // Black overlay
+                .position-relative.bg-size-cover.bg-position-center.py-5(style=&quot;background-image: url(path-to-bg-image);&quot;)
+                  .position-absolute.top-0.start-0.w-100.h-100.bg-black.opacity-50
+                  .position-relative.fw-medium.text-white.text-shadow.text-center.zindex-5.py-5 Black overlay
+
+                // Primary overlay
+                .position-relative.bg-size-cover.bg-position-center.py-5(style=&quot;background-image: url(path-to-bg-image);&quot;)
+                  .position-absolute.top-0.start-0.w-100.h-100.bg-primary.opacity-70
+                  .position-relative.fw-medium.text-white.text-shadow.text-center.zindex-5.py-5 Primary overlay
+
+                // Accent overlay
+                .position-relative.bg-size-cover.bg-position-center.py-5(style=&quot;background-image: url(path-to-bg-image);&quot;)
+                  .position-absolute.top-0.start-0.w-100.h-100.bg-accent.opacity-70
+                  .position-relative.fw-medium.text-white.text-shadow.text-center.zindex-5.py-5 Accent overlay
+                
+                // Success overlay
+                .position-relative.bg-size-cover.bg-position-center.py-5(style=&quot;background-image: url(path-to-bg-image);&quot;)
+                  .position-absolute.top-0.start-0.w-100.h-100.bg-success.opacity-70
+                  .position-relative.fw-medium.text-white.text-shadow.text-center.zindex-5.py-5 Success overlay
+
+                // Warning overlay
+                .position-relative.bg-size-cover.bg-position-center.py-5(style=&quot;background-image: url(path-to-bg-image);&quot;)
+                  .position-absolute.top-0.start-0.w-100.h-100.bg-warning.opacity-70
+                  .position-relative.fw-medium.text-white.text-shadow.text-center.zindex-5.py-5 Warning overlay
+                
+                // Danger overlay
+                .position-relative.bg-size-cover.bg-position-center.py-5(style=&quot;background-image: url(path-to-bg-image);&quot;)
+                  .position-absolute.top-0.start-0.w-100.h-100.bg-danger.opacity-70
+                  .position-relative.fw-medium.text-white.text-shadow.text-center.zindex-5.py-5 Danger overlay
+                
+                // Info overlay
+                .position-relative.bg-size-cover.bg-position-center.py-5(style=&quot;background-image: url(path-to-bg-image);&quot;)
+                  .position-absolute.top-0.start-0.w-100.h-100.bg-info.opacity-70
+                  .position-relative.fw-medium.text-white.text-shadow.text-center.zindex-5.py-5 Info overlay
+
+                // White overlay
+                .position-relative.bg-size-cover.bg-position-center.py-5(style=&quot;background-image: url(path-to-bg-image);&quot;)
+                  .position-absolute.top-0.start-0.w-100.h-100.bg-white.opacity-70
+                  .position-relative.fw-medium.text-center.zindex-5.py-5 White overlay

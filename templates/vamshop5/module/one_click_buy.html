@@ -1,0 +1,72 @@
+{config_load file="$language/lang_$language.conf" section="one_click_buy"}
+<script type="text/javascript">
+{literal}
+$(function($){
+
+    $('.form-anti-bot, .form-anti-bot-2').hide(); // hide inputs from users
+    var answer = $('.form-anti-bot input#anti-bot-a').val(); // get answer
+    $('.form-anti-bot input#anti-bot-q').val( answer ); // set answer into other input
+
+    if ( $('form#one_click_buy input#anti-bot-q').length == 0 ) {
+        var current_date = new Date();
+        var current_year = current_date.getFullYear();
+        $('form#one_click_buy').append('<input type="hidden" name="anti-bot-q" id="anti-bot-q" value="'+current_year+'" />'); // add whole input with answer via javascript to form
+    }
+
+});
+{/literal}
+</script>
+
+<div class="page">
+<h2>{#heading_text#}</h2>
+<div class="pageContent">
+
+{$FORM_ACTION}
+
+{if $error!=''}
+<div class="contacterror">
+{$error}
+</div>
+{/if}
+<!-- форма -->
+<fieldset class="form">
+<legend>{$PRODUCTS_NAME}</legend>
+<span class="price">{$PRODUCTS_PRICE}</span>
+{if $MODULE_product_options !=''}
+<div class="inner product_options">
+{$MODULE_product_options}
+</div>
+{/if}
+
+<p>{#text_firstname#} {$INPUT_FIRSTNAME}</p>
+<!--<p>{#text_lastname#} {$INPUT_LASTNAME}</p>-->
+<p>{#text_telephone#} {$INPUT_TELEPHONE}</p>
+<!--<p>{#text_email#} {$INPUT_EMAIL}</p>-->
+<!--<p>{#text_message#} {$INPUT_TEXT}</p>-->
+</fieldset>
+<div class="form-anti-bot" style="clear:both;">
+	<strong>Current <span style="display:none;">month</span> <span style="display:inline;">ye@r</span> <span style="display:none;">day</span></strong> <span class="required">*</span>
+	<input type="hidden" name="anti-bot-a" id="anti-bot-a" value="{$smarty.now|date_format:"%Y"}" />
+	<input type="text" name="anti-bot-q" id="anti-bot-q" size="30" value="19" />
+</div>
+<div class="form-anti-bot-2" style="display:none;">
+	<strong>Leave this field empty</strong> <span class="required">*</span>
+	<input type="text" name="anti-bot-e-email-url" id="anti-bot-e-email-url" size="30" value=""/>
+</div>
+<!-- /форма -->
+
+<div class="pageContentFooter">
+{$BUTTON_SUBMIT}
+</div>
+<br />
+{if $smarty.const.DISPLAY_PRIVACY_TEXT == 'true'}
+<div>
+{$smarty.const.PRIVACY_TEXT}
+</div>
+{/if}
+{$FORM_END}
+
+<br />
+
+</div>
+</div>

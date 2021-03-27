@@ -1,0 +1,15 @@
+// Toolbar for handheld devices (Food delivery)
+if isToolbar
+  .handheld-toolbar
+    .d-table.table-layout-fixed.w-100
+      a(href='#signin-modal' data-bs-toggle='modal').d-table-cell.handheld-toolbar-item
+        span.handheld-toolbar-icon: i.ci-user
+        span.handheld-toolbar-label Account
+      a(href='javascript:void(0)' data-bs-toggle='collapse' data-bs-target='#navbarCollapse' onclick='window.scrollTo(0, 0)').d-table-cell.handheld-toolbar-item
+        span.handheld-toolbar-icon: i.ci-menu
+        span.handheld-toolbar-label Menu
+      a(href='food-delivery-cart.html').d-table-cell.handheld-toolbar-item
+        span.handheld-toolbar-icon
+          i.ci-cart
+          span.badge.bg-primary.rounded-pill.ms-1 3
+        span.handheld-toolbar-label $24.00

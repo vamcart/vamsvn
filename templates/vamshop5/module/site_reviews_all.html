@@ -1,0 +1,46 @@
+{config_load file="$language/lang_$language.conf" section="boxes"} {config_load file="$language/lang_$language.conf" section="reviews"} <div class="module">
+<div class="moduleContent" itemscope itemtype="http://schema.org/LocalBusiness">
+<meta itemprop="name" content="{$smarty.const.STORE_NAME}" />
+<meta itemprop="priceRange" content="$$$" />
+<span itemprop="address" itemscope itemtype="http://schema.org/PostalAddress"><meta itemprop="name" content="{$smarty.const.STORE_NAME_ADDRESS|strip_tags}" /></span>
+<meta itemprop="image" content="{$smarty.const.HTTP_SERVER}{$smarty.const.DIR_WS_CATALOG}images/icons/vamshop-box-512.png" />
+<meta itemprop="telephone" content="{$smarty.const.STORE_TELEPHONE}" />
+<meta itemprop="url" content="{$smarty.const.HTTP_SERVER}{$smarty.const.DIR_WS_CATALOG}" />
+<meta itemProp="openingHours" content="Mo 09:00-21:00" />
+<meta itemProp="openingHours" content="Tu 09:00-21:00" />
+<meta itemProp="openingHours" content="We 09:00-21:00" />
+<meta itemProp="openingHours" content="Th 09:00-21:00" />
+<meta itemProp="openingHours" content="Fr 09:00-21:00" />
+<meta itemProp="openingHours" content="Sa 09:00-21:00" />
+<meta itemProp="openingHours" content="Su 09:00-21:00" />
+{if $smarty.const.STORE_FACEBOOK != ''}<meta itemProp="sameAs" content="https://facebook.com/{$smarty.const.STORE_FACEBOOK}" />{/if}
+{if $smarty.const.STORE_INSTAGRAM != ''}<meta itemProp="sameAs" content="https://instagram.com/{$smarty.const.STORE_INSTAGRAM}" />{/if}
+{if $smarty.const.STORE_TELEGRAM != ''}<meta itemProp="sameAs" content="https://t.me/{$smarty.const.STORE_TELEGRAM}" />{/if}
+{if $smarty.const.STORE_VK != ''}<meta itemProp="sameAs" content="https://vk.com/{$smarty.const.STORE_VK}" />{/if}
+{if $smarty.const.STORE_VIBER != ''}<meta itemProp="sameAs" content="viber://chat?number={$smarty.const.STORE_VIBER}" />{/if}
+{if $smarty.const.STORE_TWITTER != ''}<meta itemProp="sameAs" content="https://twitter.com/{$smarty.const.STORE_TWITTER}" />{/if}
+{if $smarty.const.STORE_YOUTUBE != ''}<meta itemProp="sameAs" content="https://youtube.com/{$smarty.const.STORE_YOUTUBE}" />{/if}
+{if $smarty.const.STORE_WHATSAPP != ''}<meta itemProp="sameAs" content="https://wa.me/{$smarty.const.STORE_WHATSAPP}" />{/if}
+{if $smarty.const.STORE_SKYPE != ''}<meta itemProp="sameAs" content="skype:{$smarty.const.STORE_SKYPE}?call" />{/if}
+{if $smarty.const.STORE_ICQ != ''}<meta itemProp="sameAs" content="https://icq.com/{$smarty.const.STORE_ICQ}" />{/if}
+
+<span itemscope="" itemProp="aggregateRating" itemType="http://schema.org/AggregateRating">
+{if $REVIEWS_TOTAL > 0}<meta itemProp="reviewCount" content="{$REVIEWS_TOTAL}"/>{/if}
+{if $REVIEWS_RATING_MAX > 0}<meta itemProp="bestRating" content="{$REVIEWS_RATING_MAX}"/>{/if}
+{if $REVIEWS_RATING_MIN > 0}<meta itemProp="worstRating" content="{$REVIEWS_RATING_MIN}"/>{/if}
+{if $REVIEWS_RATING_TOTAL > 0}<meta itemProp="ratingCount" content="{$REVIEWS_RATING_TOTAL}"/>{/if}
+{if $REVIEWS_RATING_VALUE > 0}<meta itemProp="ratingValue" content="{$REVIEWS_RATING_VALUE|number_format:2}"/></span>{/if}
+
+<div class="owl-carousel owl-theme">
+{foreach name=aussen item=module_data from=$module_content}
+{include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/product-card/product-card-site-review.html"}
+{/foreach}
+</div>
+{#text_total#}: <strong>{$REVIEWS_TOTAL}</strong>
+</div>
+<div class="text-left pt-2">
+<a class="btn btn-rounded" href="{$REVIEWS_ALL_LINK}"><i class="far fa-comments"></i> {$smarty.const.TEXT_ALL_SITE_REVIEWS}</a>
+&nbsp;
+<a class="btn btn-rounded" href="{$smarty.const.FILENAME_SITE_REVIEWS_WRITE}"><i class="fas fa-comment-medical"></i> {$smarty.const.NAVBAR_TITLE_REVIEWS_WRITE}</a>
+</div>
+</div>

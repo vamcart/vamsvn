@@ -1,0 +1,144 @@
+{config_load file="$language/lang_$language.conf" section="account"}{config_load file="$language/lang_$language.conf" section="account_history_info"}<div class="page">
+<h1>{#heading_account#}</h1>
+<div class="pageContent">
+<!-- Приветствие -->
+{$error_message}
+
+<p>
+{#title_welcome#}
+</p>
+<p>
+{#text_welcome#}
+</p>
+{if $LINK_LOGIN}
+<ul class="accountLinks">
+<li class="accountLinks"><a class="btn btn-primary" href="{$LINK_LOGIN}"><i class="fas fa-user"></i> {#text_login#}</a></li>
+</ul>
+{/if}
+{if $LINK_LOGIN}
+{if {$smarty.const.SOCIAL_LOGIN} == "true"}
+<br />
+<ul class="list-inline">
+<li class="list-inline-item">{$smarty.const.TEXT_SOCIAL_LOGIN}:</li>
+<li class="list-inline-item"><a href="https://oauth.vk.com/authorize?client_id={$smarty.const.VK_OAUTH_CLIENT_ID}&redirect_uri={$smarty.const.HTTP_SERVER}{$smarty.const.DIR_WS_CATALOG}{$smarty.const.FILENAME_CREATE_ACCOUNT}?social_login=vk&response_type=code&display=page&scope=email"><i class="fab fa-vk" title="{$smarty.const.TEXT_SOCIAL_LOGIN_VK}"></i> {$smarty.const.TEXT_SOCIAL_LOGIN_VK}</a></li>
+<li class="list-inline-item"><a href="{$smarty.const.HTTP_SERVER}{$smarty.const.DIR_WS_CATALOG}{$smarty.const.FILENAME_CREATE_ACCOUNT}?social_login=google"><i class="fab fa-google" title="{$smarty.const.TEXT_SOCIAL_LOGIN_GOOGLE}"></i> {$smarty.const.TEXT_SOCIAL_LOGIN_GOOGLE}</a></li>
+<li class="list-inline-item"><a href="https://www.facebook.com/dialog/oauth?client_id={$smarty.const.FACEBOOK_OAUTH_CLIENT_ID}&redirect_uri={$smarty.const.HTTP_SERVER}{$smarty.const.DIR_WS_CATALOG}{$smarty.const.FILENAME_CREATE_ACCOUNT}?social_login=fb&response_type=code&display=page&scope=public_profile,email"><i class="fab fa-facebook" title="{$smarty.const.TEXT_SOCIAL_LOGIN_FACEBOOK}"></i> {$smarty.const.TEXT_SOCIAL_LOGIN_FACEBOOK}</a></li>
+</ul>
+<br />
+{/if}
+{/if}
+<!-- /Приветствие -->
+
+<!-- Личные данные -->
+<div class="module">
+<div class="moduleContent">
+<p>
+{#title_account#}
+</p>
+<ul class="accountLinks">
+<li class="accountLinks"><a href="{$LINK_EDIT}">{#text_edit#}</a></li>
+<li class="accountLinks"><a href="{$LINK_ADDRESS}">{#text_address#}</a></li>
+<li class="accountLinks"><a href="{$LINK_PASSWORD}">{#text_password#}</a></li>
+</ul>
+</div>
+</div>
+<!-- /Личные данные -->
+
+{if $order_content}
+<!-- Заказы -->
+<div class="module">
+<div class="moduleContent">
+<div class="duplicate-order">
+
+<p>
+{#title_orders#}&nbsp;<a href="{$LINK_ALL}">{#text_all#}</a>
+</p>
+
+{foreach name=aussen item=order_data from=$order_content name=order_item}
+	<button class="accordion collapsed bg-white text-primary" data-toggle="collapse" data-target="#order-{$order_data.ORDER_ID}" 
+	style="cursor: pointer; padding: 18px; width: 100%; text-align: left; border: none; outline: none; transition: 0.4s; margin-bottom: 20px; display: flex; align-items: center; justify-content: space-between;">
+		{$smarty.const.TEXT_DUPLICATE_ORDER_ORDER_NUMBER}: {$order_data.ORDER_ID}
+		<div class="buttons">
+			{$order_data.ORDER_BUTTON} &nbsp; {$order_data.DUPLICATE_CART_BUTTON}
+		</div>
+	</button>
+	<div class="panel collapse" id="order-{$order_data.ORDER_ID}">
+		{foreach $order_data.ORDER_INFO->products item=order_product}
+			<div class="row">
+				<div class="col-md-2">
+					<a href="{$order_product['product_info']->data['products_page_url']}">
+						<img class="product-image" style="width: 100%;" src="{$order_product['product_info']->data['products_image']}" />
+					</a>
+				</div>
+				<div class="col-md-6">
+					<p style="margin-bottom: 0;"><a href="{$order_product['product_info']->data['products_page_url']}"><b style="font-weight: bold;">{$order_product['name']}</b></a></p>
+					<em>{$order_product['attributes']}</em>
+					<br/><br/><b>{$smarty.const.TEXT_DUPLICATE_ORDER_PRICE}: {$order_product['final_price']|number_format:0:".":""} {if {$smarty.session.currency} == 'RUB'}руб.{/if}</b>
+				</div>
+				<div class="col-md-2" style="display: flex; align-items: center; justify-content: center;">
+					<p>{$order_product['qty']} {$smarty.const.TEXT_PIECE}</p>
+				</div>
+				<div class="col-md-2" style="display: flex; align-items: center; justify-content: center;">
+					<p>{$order_product['final_price']|number_format:0:".":""} {if {$smarty.session.currency} == 'RUB'}руб.{/if}</p>
+				</div>
+			</div>
+			<hr/>
+		{/foreach}
+		<p>
+			{#text_date#} {$order_data.ORDER_DATE}
+		</p>
+		<p>
+			{#text_shipping_method#} {$order_data.ORDER_INFO->info['shipping_method']}
+		</p>
+		<p>
+			{#text_shipped#} {$order_data.ORDER_INFO->delivery['country']}, {$order_data.ORDER_INFO->delivery['city']}, {$order_data.ORDER_INFO->delivery['street_address']}
+		</p>
+		<p>
+			{#text_articles#} {$order_data.ORDER_PRODUCTS}
+		</p>
+		<p>
+			{#text_total#} {$order_data.ORDER_TOTAL}&nbsp;&nbsp;{#text_status#} {$order_data.ORDER_STATUS} 
+		</p>
+	</div>
+{/foreach}
+
+</div>
+</div>
+</div>
+<!-- /Заказы -->
+{/if}
+
+<!-- Уведомления -->
+<div class="module">
+<div class="moduleContent">
+<p>
+{#title_notification#}
+</p>
+<ul class="accountLinks">
+<li class="accountLinks"><a href="{$LINK_NEWSLETTER}">{#text_newsletter#}</a></li>
+</ul>
+</div>
+</div>
+<!-- /Уведомления -->
+
+{if $smarty.const.DISPLAY_LAST_VIEWED =='true'}
+{if $products_history}
+<!-- Просмотренные товары -->
+<div class="page">
+<p>
+{#title_viewed_products#}
+</p>
+<div class="card-deck">
+{foreach name=history_products item=module_data from=$products_history} 
+<div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-3">
+{include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/product-card/product-card-details.html"}
+</div>
+{/foreach} 
+</div>
+</div>
+<div class="clear"></div>
+<!-- /Просмотренные товары -->
+{/if}
+{/if}
+</div>
+</div>

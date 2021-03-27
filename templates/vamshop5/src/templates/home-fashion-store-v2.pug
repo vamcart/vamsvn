@@ -1,0 +1,840 @@
+extends partials/layout
+
+//- Override default config variables
+append config
+  - var pageTitle = 'Fashion Store v.2'
+  - var parentMenu = 'Home'
+
+//- Navbar
+block navbar
+  include partials/navbar-3-level-light
+  
+//- Page Content
+block content
+
+  // Hero slider
+  section.tns-carousel.tns-controls-lg.mb-4.mb-lg-5
+    .tns-carousel-inner(data-carousel-options='{"mode": "gallery", "responsive": {"0":{"nav":true, "controls": false},"992":{"nav":false, "controls": true}}}')
+      
+      // Item
+      .px-lg-5(style='background-color: #f5b1b0;')
+        .d-lg-flex.justify-content-between.align-items-center.ps-lg-4
+          img(src='img/home/hero-slider/02.jpg' alt='Women Sportswear').d-block.order-lg-2.me-lg-n5.flex-shrink-0
+          .position-relative.mx-auto.me-lg-n5.py-5.px-4.mb-lg-5.order-lg-1(style='max-width: 42rem; z-index: 10;')
+            .pb-lg-5.mb-lg-5.text-center.text-lg-start.text-lg-nowrap
+              h3.h2.text-light.fw-light.pb-1.from-bottom Hurry up! Limited time offer.
+              h2.text-light.display-5.from-bottom.delay-1 Women Sportswear Sale
+              p.fs-lg.text-light.pb-3.from-bottom.delay-2 Sneakers, Keds, Sweatshirts, Hoodies &amp; much more...
+              .d-table.scale-up.delay-4.mx-auto.mx-lg-0
+                a(href='shop-grid-ls.html').btn.btn-primary
+                  | Shop Now
+                  i.ci-arrow-right.ms-2.me-n1
+
+      // Item
+      .px-lg-5(style='background-color: #3aafd2;')
+        .d-lg-flex.justify-content-between.align-items-center.ps-lg-4
+          img(src='img/home/hero-slider/01.jpg' alt='Summer Collection').d-block.order-lg-2.me-lg-n5.flex-shrink-0
+          .position-relative.mx-auto.me-lg-n5.py-5.px-4.mb-lg-5.order-lg-1(style='max-width: 42rem; z-index: 10;')
+            .pb-lg-5.mb-lg-5.text-center.text-lg-start.text-lg-nowrap
+              h3.h2.text-light.fw-light.pb-1.from-start Has just arrived!
+              h2.text-light.display-5.from-start.delay-1 Huge Summer Collection
+              p.fs-lg.text-light.pb-3.from-start.delay-2 Swimwear, Tops, Shorts, Sunglasses &amp; much more...
+              .d-table.scale-up.delay-4.mx-auto.mx-lg-0
+                a(href='shop-grid-ls.html').btn.btn-primary
+                  | Shop Now
+                  i.ci-arrow-right.ms-2.me-n1
+
+      // Item
+      .px-lg-5(style='background-color: #eba170;')
+        .d-lg-flex.justify-content-between.align-items-center.ps-lg-4
+          img(src='img/home/hero-slider/03.jpg' alt='Men Accessories').d-block.order-lg-2.me-lg-n5.flex-shrink-0
+          .position-relative.mx-auto.me-lg-n5.py-5.px-4.mb-lg-5.order-lg-1(style='max-width: 42rem; z-index: 10;')
+            .pb-lg-5.mb-lg-5.text-center.text-lg-start.text-lg-nowrap
+              h3.h2.text-light.fw-light.pb-1.from-top Complete your look with
+              h2.text-light.display-5.from-top.delay-1 New Men's Accessories
+              p.fs-lg.text-light.pb-3.from-top.delay-2 Hats &amp; Caps, Sunglasses, Bags &amp; much more...
+              .d-table.scale-up.delay-4.mx-auto.mx-lg-0
+                a(href='shop-grid-ls.html').btn.btn-primary
+                  | Shop Now
+                  i.ci-arrow-right.ms-2.me-n1
+  
+  
+  // Category (Women)
+  section.container.pt-lg-3.mb-4.mb-sm-5
+    .row
+
+      // Banner with controls
+      .col-md-5
+        .d-flex.flex-column.h-100.overflow-hidden.rounded-3(style='background-color: #f6f8fb;')
+          .d-flex.justify-content-between.px-grid-gutter.py-grid-gutter
+            div
+              h3.mb-1 For Women
+              a(href='shop-grid-ls.html').fs-md
+                | Shop for women
+                i.ci-arrow-right.fs-xs.align-middle.ms-1
+            #for-women.tns-carousel-controls
+              button(type='button')
+                i.ci-arrow-left
+              button(type='button')
+                i.ci-arrow-right
+          a(href='shop-grid-ls.html').d-none.d-md-block.mt-auto
+            img(src='img/home/categories/cat-lg02.jpg' alt='For Women').d-block.w-100
+
+      // Product grid (carousel)
+      .col-md-7.pt-4.pt-md-0
+        .tns-carousel
+          .tns-carousel-inner(data-carousel-options='{"nav": false, "controlsContainer": "#for-women"}')
+
+            // Carousel item
+            div
+              .row.mx-n2
+                .col-lg-4.col-6.px-0.px-sm-2.mb-sm-4
+                  .card.product-card.card-static
+                    button(type='button' data-bs-toggle='tooltip' data-bs-placement='left' title='Add to wishlist').btn-wishlist.btn-sm
+                      i.ci-heart
+                    a(href='shop-single-v1.html').card-img-top.d-block.overflow-hidden
+                      img(src='img/shop/catalog/09.jpg' alt='Product')
+                    .card-body.py-2
+                      a(href='#').product-meta.d-block.fs-xs.pb-1 Cosmetics
+                      h3.product-title.fs-sm
+                        a(href='shop-single-v1.html') Metallic Lipstick (Crimson)
+                      .d-flex.justify-content-between
+                        .product-price
+                          span.text-accent $12.<small>99</small>
+                        +star-rating(3.5)
+                .col-lg-4.col-6.px-0.px-sm-2.mb-sm-4
+                  .card.product-card.card-static
+                    button(type='button' data-bs-toggle='tooltip' data-bs-placement='left' title='Add to wishlist').btn-wishlist.btn-sm
+                      i.ci-heart
+                    a(href='shop-single-v1.html').card-img-top.d-block.overflow-hidden
+                      img(src='img/shop/catalog/26.jpg' alt='Product')
+                    .card-body.py-2
+                      a(href='#').product-meta.d-block.fs-xs.pb-1 Shoes
+                      h3.product-title.fs-sm
+                        a(href='shop-single-v1.html') Textile Platform Sneakers
+                      .d-flex.justify-content-between
+                        .product-price
+                          span.text-accent $59.<small>99</small>
+                        +star-rating(5)
+                .col-lg-4.col-6.px-0.px-sm-2.mb-sm-4
+                  .card.product-card.card-static
+                    span.badge.badge-danger.badge-shadow Sale
+                    button(type='button' data-bs-toggle='tooltip' data-bs-placement='left' title='Add to wishlist').btn-wishlist.btn-sm
+                      i.ci-heart
+                    a(href='shop-single-v1.html').card-img-top.d-block.overflow-hidden
+                      img(src='img/shop/catalog/27.jpg' alt='Product')
+                    .card-body.py-2
+                      a(href='#').product-meta.d-block.fs-xs.pb-1 Accessories
+                      h3.product-title.fs-sm
+                        a(href='shop-single-v1.html') Polarized Sunglasses
+                      .d-flex.justify-content-between
+                        .product-price
+                          span.text-accent $17.<small>99</small>
+                          del.fs-sm.text-muted 28.<small>99</small>
+                        +star-rating(2.5)
+                .col-lg-4.col-6.px-0.px-sm-2.mb-sm-4
+                  .card.product-card.card-static
+                    button(type='button' data-bs-toggle='tooltip' data-bs-placement='left' title='Add to wishlist').btn-wishlist.btn-sm
+                      i.ci-heart
+                    a(href='shop-single-v1.html').card-img-top.d-block.overflow-hidden
+                      img(src='img/shop/catalog/28.jpg' alt='Product')
+                    .card-body.py-2
+                      a(href='#').product-meta.d-block.fs-xs.pb-1 Shoes
+                      h3.product-title.fs-sm
+                        a(href='shop-single-v1.html') Leather Platform Sandals
+                      .d-flex.justify-content-between
+                        .product-price
+                          span.text-accent $79.<small>99</small>
+                        +star-rating(4)
+                .col-lg-4.col-6.px-0.px-sm-2.mb-sm-4.d-none.d-lg-block
+                  .card.product-card.card-static
+                    button(type='button' data-bs-toggle='tooltip' data-bs-placement='left' title='Add to wishlist').btn-wishlist.btn-sm
+                      i.ci-heart
+                    a(href='shop-single-v1.html').card-img-top.d-block.overflow-hidden
+                      img(src='img/shop/catalog/29.jpg' alt='Product')
+                    .card-body.py-2
+                      a(href='#').product-meta.d-block.fs-xs.pb-1 Shorts
+                      h3.product-title.fs-sm
+                        a(href='shop-single-v1.html') Short Chino Shorts
+                      .d-flex.justify-content-between
+                        .product-price
+                          span.text-accent $24.<small>99</small>
+                        +star-rating(4.5)
+                .col-lg-4.col-6.px-0.px-sm-2.mb-sm-4.d-none.d-lg-block
+                  .card.product-card.card-static
+                    button(type='button' data-bs-toggle='tooltip' data-bs-placement='left' title='Add to wishlist').btn-wishlist.btn-sm
+                      i.ci-heart
+                    a(href='shop-single-v1.html').card-img-top.d-block.overflow-hidden
+                      img(src='img/shop/catalog/30.jpg' alt='Product')
+                    .card-body.py-2
+                      a(href='#').product-meta.d-block.fs-xs.pb-1 T-shirts
+                      h3.product-title.fs-sm
+                        a(href='shop-single-v1.html') T-shirt with Motif
+                      .d-flex.justify-content-between
+                        .product-price
+                          span.text-accent $13.<small>99</small>
+                        +star-rating(4)
+
+            // Carousel item
+            div
+              .row.mx-n2
+                .col-lg-4.col-6.px-0.px-sm-2.mb-sm-4
+                  .card.product-card.card-static
+                    button(type='button' data-bs-toggle='tooltip' data-bs-placement='left' title='Add to wishlist').btn-wishlist.btn-sm
+                      i.ci-heart
+                    a(href='shop-single-v1.html').card-img-top.d-block.overflow-hidden
+                      img(src='img/shop/catalog/01.jpg' alt='Product')
+                    .card-body.py-2
+                      a(href='#').product-meta.d-block.fs-xs.pb-1 Shoes
+                      h3.product-title.fs-sm
+                        a(href='shop-single-v1.html') Colorblock Sneakers
+                      .d-flex.justify-content-between
+                        .product-price
+                          span.text-accent $154.<small>99</small>
+                        +star-rating(4.5)
+                .col-lg-4.col-6.px-0.px-sm-2.mb-sm-4
+                  .card.product-card.card-static
+                    button(type='button' data-bs-toggle='tooltip' data-bs-placement='left' title='Add to wishlist').btn-wishlist.btn-sm
+                      i.ci-heart
+                    a(href='shop-single-v1.html').card-img-top.d-block.overflow-hidden
+                      img(src='img/shop/catalog/02.jpg' alt='Product')
+                    .card-body.py-2
+                      a(href='#').product-meta.d-block.fs-xs.pb-1 Blouse
+                      h3.product-title.fs-sm
+                        a(href='shop-single-v1.html') Cotton Lace Blouse
+                      .d-flex.justify-content-between
+                        .product-price
+                          span.text-accent $37.<small>50</small>
+                        +star-rating(3)
+                .col-lg-4.col-6.px-0.px-sm-2.mb-sm-4
+                  .card.product-card.card-static
+                    button(type='button' data-bs-toggle='tooltip' data-bs-placement='left' title='Add to wishlist').btn-wishlist.btn-sm
+                      i.ci-heart
+                    a(href='shop-single-v1.html').card-img-top.d-block.overflow-hidden
+                      img(src='img/shop/catalog/03.jpg' alt='Product')
+                    .card-body.py-2
+                      a(href='#').product-meta.d-block.fs-xs.pb-1 Shorts
+                      h3.product-title.fs-sm
+                        a(href='shop-single-v1.html') Mom High Waist Shorts
+                      .d-flex.justify-content-between
+                        .product-price
+                          span.text-accent $39.<small>50</small>
+                        +star-rating(5)
+                .col-lg-4.col-6.px-0.px-sm-2.mb-sm-4
+                  .card.product-card.card-static
+                    button(type='button' data-bs-toggle='tooltip' data-bs-placement='left' title='Add to wishlist').btn-wishlist.btn-sm
+                      i.ci-heart
+                    a(href='shop-single-v1.html').card-img-top.d-block.overflow-hidden
+                      img(src='img/shop/catalog/04.jpg' alt='Product')
+                    .card-body.py-2
+                      a(href='#').product-meta.d-block.fs-xs.pb-1 Sportswear
+                      h3.product-title.fs-sm
+                        a(href='shop-single-v1.html') Sports Jacket
+                      .d-flex.justify-content-between
+                        .product-price
+                          span.text-accent $68.<small>40</small>
+                        +star-rating(4)
+                .col-lg-4.col-6.px-0.px-sm-2.mb-sm-4.d-none.d-lg-block
+                  .card.product-card.card-static
+                    button(type='button' data-bs-toggle='tooltip' data-bs-placement='left' title='Add to wishlist').btn-wishlist.btn-sm
+                      i.ci-heart
+                    a(href='shop-single-v1.html').card-img-top.d-block.overflow-hidden
+                      img(src='img/shop/catalog/31.jpg' alt='Product')
+                    .card-body.py-2
+                      a(href='#').product-meta.d-block.fs-xs.pb-1 Shorts
+                      h3.product-title.fs-sm
+                        a(href='shop-single-v1.html') Leather Platform Sandals
+                      .d-flex.justify-content-between
+                        .product-price
+                          span.text-accent $67.<small>95</small>
+                        +star-rating(2.5)
+                .col-lg-4.col-6.px-0.px-sm-2.mb-sm-4.d-none.d-lg-block
+                  .card.product-card.card-static
+                    button(type='button' data-bs-toggle='tooltip' data-bs-placement='left' title='Add to wishlist').btn-wishlist.btn-sm
+                      i.ci-heart
+                    a(href='shop-single-v1.html').card-img-top.d-block.overflow-hidden
+                      img(src='img/shop/catalog/07.jpg' alt='Product')
+                    .card-body.py-2
+                      a(href='#').product-meta.d-block.fs-xs.pb-1 T-shirts
+                      h3.product-title.fs-sm
+                        a(href='shop-single-v1.html') Two-Piece Bikini
+                      .d-flex.justify-content-between
+                        .product-price
+                          span.text-accent $18.<small>99</small>
+                        +star-rating(4)
+  
+
+  // Category (Men)
+  section.container.pt-lg-4.mb-4.mb-sm-5
+    .row
+
+      // Banner with controls
+      .col-md-5.order-md-2
+        .d-flex.flex-column.h-100.overflow-hidden.rounded-3(style='background-color: #f6f8fb;')
+          .d-flex.justify-content-between.px-grid-gutter.py-grid-gutter
+            .order-md-2
+              h3.mb-1 For Men
+              a(href='shop-grid-ls.html').fs-md
+                | Shop for men
+                i.ci-arrow-right.fs-xs.align-middle.ms-1
+            #for-men.tns-carousel-controls.order-md-1
+              button(type='button')
+                i.ci-arrow-left
+              button(type='button')
+                i.ci-arrow-right
+          a(href='shop-grid-ls.html').d-none.d-md-block.mt-auto
+            img(src='img/home/categories/cat-lg01.jpg' alt='For Men').d-block.w-100
+      
+      // Product grid (carousel)
+      .col-md-7.pt-4.pt-md-0.order-md-1
+        .tns-carousel
+          .tns-carousel-inner(data-carousel-options='{"nav": false, "controlsContainer": "#for-men"}')
+
+            // Carousel item
+            div
+              .row.mx-n2
+                .col-lg-4.col-6.px-0.px-sm-2.mb-sm-4
+                  .card.product-card.card-static
+                    button(type='button' data-bs-toggle='tooltip' data-bs-placement='left' title='Add to wishlist').btn-wishlist.btn-sm
+                      i.ci-heart
+                    a(href='shop-single-v1.html').card-img-top.d-block.overflow-hidden
+                      img(src='img/shop/catalog/32.jpg' alt='Product')
+                    .card-body.py-2
+                      a(href='#').product-meta.d-block.fs-xs.pb-1 Hats &amp; Caps
+                      h3.product-title.fs-sm
+                        a(href='shop-single-v1.html') Cap with Appliqué
+                      .d-flex.justify-content-between
+                        .product-price
+                          span.text-accent $15.<small>99</small>
+                        +star-rating(5)
+                .col-lg-4.col-6.px-0.px-sm-2.mb-sm-4
+                  .card.product-card.card-static
+                    button(type='button' data-bs-toggle='tooltip' data-bs-placement='left' title='Add to wishlist').btn-wishlist.btn-sm
+                      i.ci-heart
+                    a(href='shop-single-v1.html').card-img-top.d-block.overflow-hidden
+                      img(src='img/shop/catalog/33.jpg' alt='Product')
+                    .card-body.py-2
+                      a(href='#').product-meta.d-block.fs-xs.pb-1 T-shirts
+                      h3.product-title.fs-sm
+                        a(href='shop-single-v1.html') Regular Fit Cotton Shirt
+                      .d-flex.justify-content-between
+                        .product-price
+                          span.text-accent $19.<small>99</small>
+                        +star-rating(3.5)
+                .col-lg-4.col-6.px-0.px-sm-2.mb-sm-4
+                  .card.product-card.card-static
+                    button(type='button' data-bs-toggle='tooltip' data-bs-placement='left' title='Add to wishlist').btn-wishlist.btn-sm
+                      i.ci-heart
+                    a(href='shop-single-v1.html').card-img-top.d-block.overflow-hidden
+                      img(src='img/shop/catalog/34.jpg' alt='Product')
+                    .card-body.py-2
+                      a(href='#').product-meta.d-block.fs-xs.pb-1 Accessories
+                      h3.product-title.fs-sm
+                        a(href='shop-single-v1.html') Polarized Sunglasses
+                      .d-flex.justify-content-between
+                        .product-price
+                          span.text-accent $37.<small>99</small>
+                        +star-rating(4)
+                .col-lg-4.col-6.px-0.px-sm-2.mb-sm-4
+                  .card.product-card.card-static
+                    button(type='button' data-bs-toggle='tooltip' data-bs-placement='left' title='Add to wishlist').btn-wishlist.btn-sm
+                      i.ci-heart
+                    a(href='shop-single-v1.html').card-img-top.d-block.overflow-hidden
+                      img(src='img/shop/catalog/35.jpg' alt='Product')
+                    .card-body.py-2
+                      a(href='#').product-meta.d-block.fs-xs.pb-1 Shoes
+                      h3.product-title.fs-sm
+                        a(href='shop-single-v1.html') Leather Men’s Sneakers
+                      .d-flex.justify-content-between
+                        .product-price
+                          span.text-accent $45.<small>99</small>
+                        +star-rating(4)
+                .col-lg-4.col-6.px-0.px-sm-2.mb-sm-4.d-none.d-lg-block
+                  .card.product-card.card-static
+                    span.badge.badge-info.badge-shadow Popular
+                    button(type='button' data-bs-toggle='tooltip' data-bs-placement='left' title='Add to wishlist').btn-wishlist.btn-sm
+                      i.ci-heart
+                    a(href='shop-single-v1.html').card-img-top.d-block.overflow-hidden
+                      img(src='img/shop/catalog/36.jpg' alt='Product')
+                    .card-body.py-2
+                      a(href='#').product-meta.d-block.fs-xs.pb-1 Bags
+                      h3.product-title.fs-sm
+                        a(href='shop-single-v1.html') Swedish Backpack
+                      .d-flex.justify-content-between
+                        .product-price
+                          span.text-accent $68.<small>95</small>
+                        +star-rating(2.5)
+                .col-lg-4.col-6.px-0.px-sm-2.mb-sm-4.d-none.d-lg-block
+                  .card.product-card.card-static
+                    button(type='button' data-bs-toggle='tooltip' data-bs-placement='left' title='Add to wishlist').btn-wishlist.btn-sm
+                      i.ci-heart
+                    a(href='shop-single-v1.html').card-img-top.d-block.overflow-hidden
+                      img(src='img/shop/catalog/37.jpg' alt='Product')
+                    .card-body.py-2
+                      a(href='#').product-meta.d-block.fs-xs.pb-1 Accessories
+                      h3.product-title.fs-sm
+                        a(href='shop-single-v1.html') Stainless Steel Watches
+                      .d-flex.justify-content-between
+                        .product-price
+                          span.text-accent $542.<small>80</small>
+                        +star-rating(4.5)
+
+            // Carousel item
+            div
+              .row.mx-n2
+                .col-lg-4.col-6.px-0.px-sm-2.mb-sm-4
+                  .card.product-card.card-static
+                    button(type='button' data-bs-toggle='tooltip' data-bs-placement='left' title='Add to wishlist').btn-wishlist.btn-sm
+                      i.ci-heart
+                    a(href='shop-single-v1.html').card-img-top.d-block.overflow-hidden
+                      img(src='img/shop/catalog/11.jpg' alt='Product')
+                    .card-body.py-2
+                      a(href='#').product-meta.d-block.fs-xs.pb-1 Sandals
+                      h3.product-title.fs-sm
+                        a(href='shop-single-v1.html') Soft Footbed Sandals
+                      .d-flex.justify-content-between
+                        .product-price
+                          span.text-accent $99.<small>50</small>
+                        +star-rating(4.5)
+                .col-lg-4.col-6.px-0.px-sm-2.mb-sm-4
+                  .card.product-card.card-static
+                    button(type='button' data-bs-toggle='tooltip' data-bs-placement='left' title='Add to wishlist').btn-wishlist.btn-sm
+                      i.ci-heart
+                    a(href='shop-single-v1.html').card-img-top.d-block.overflow-hidden
+                      img(src='img/shop/catalog/38.jpg' alt='Product')
+                    .card-body.py-2
+                      a(href='#').product-meta.d-block.fs-xs.pb-1 Shorts
+                      h3.product-title.fs-sm
+                        a(href='shop-single-v1.html') Silver Ringe Cargo Short
+                      .d-flex.justify-content-between
+                        .product-price
+                          span.text-accent $45.<small>00</small>
+                        +star-rating(3.5)
+                .col-lg-4.col-6.px-0.px-sm-2.mb-sm-4
+                  .card.product-card.card-static
+                    button(type='button' data-bs-toggle='tooltip' data-bs-placement='left' title='Add to wishlist').btn-wishlist.btn-sm
+                      i.ci-heart
+                    a(href='shop-single-v1.html').card-img-top.d-block.overflow-hidden
+                      img(src='img/shop/catalog/10.jpg' alt='Product')
+                    .card-body.py-2
+                      a(href='#').product-meta.d-block.fs-xs.pb-1 Shorts
+                      h3.product-title.fs-sm
+                        a(href='shop-single-v1.html') Multicolor Bracelets
+                      .d-flex.justify-content-between
+                        .product-price
+                          span.text-accent $7.<small>99</small>
+                        +star-rating(4)
+                .col-lg-4.col-6.px-0.px-sm-2.mb-sm-4
+                  .card.product-card.card-static
+                    button(type='button' data-bs-toggle='tooltip' data-bs-placement='left' title='Add to wishlist').btn-wishlist.btn-sm
+                      i.ci-heart
+                    a(href='shop-single-v1.html').card-img-top.d-block.overflow-hidden
+                      img(src='img/shop/catalog/39.jpg' alt='Product')
+                    .card-body.py-2
+                      a(href='#').product-meta.d-block.fs-xs.pb-1 T-shirts
+                      h3.product-title.fs-sm
+                        a(href='shop-single-v1.html') 3-pack T-shirts Slim Fit
+                      .d-flex.justify-content-between
+                        .product-price
+                          span.text-accent $21.<small>70</small>
+                        +star-rating(5)
+                .col-lg-4.col-6.px-0.px-sm-2.mb-sm-4.d-none.d-lg-block
+                  .card.product-card.card-static
+                    button(type='button' data-bs-toggle='tooltip' data-bs-placement='left' title='Add to wishlist').btn-wishlist.btn-sm
+                      i.ci-heart
+                    a(href='shop-single-v1.html').card-img-top.d-block.overflow-hidden
+                      img(src='img/shop/catalog/12.jpg' alt='Product')
+                    .card-body.py-2
+                      a(href='#').product-meta.d-block.fs-xs.pb-1 Hats &amp; Caps
+                      h3.product-title.fs-sm
+                        a(href='shop-single-v1.html') 3-Color Sun Stash Hat
+                      .d-flex.justify-content-between
+                        .product-price
+                          span.text-accent $25.<small>9</small>
+                        +star-rating(3.5)
+                .col-lg-4.col-6.px-0.px-sm-2.mb-sm-4.d-none.d-lg-block
+                  .card.product-card.card-static
+                    button(type='button' data-bs-toggle='tooltip' data-bs-placement='left' title='Add to wishlist').btn-wishlist.btn-sm
+                      i.ci-heart
+                    a(href='shop-single-v1.html').card-img-top.d-block.overflow-hidden
+                      img(src='img/shop/catalog/06.jpg' alt='Product')
+                    .card-body.py-2
+                      a(href='#').product-meta.d-block.fs-xs.pb-1 Bags
+                      h3.product-title.fs-sm
+                        a(href='shop-single-v1.html') TH Jeans City Backpack
+                      .d-flex.justify-content-between
+                        .product-price
+                          span.text-accent $79.<small>50</small>
+                        +star-rating(4)
+  
+
+  // Category (Kids)
+  section.container.pt-lg-4.mb-4.mb-md-5
+    .row
+
+      // Banner with controls
+      .col-md-5
+        .d-flex.flex-column.h-100.overflow-hidden.rounded-3(style='background-color: #f6f8fb;')
+          .d-flex.justify-content-between.px-grid-gutter.py-grid-gutter
+            div
+              h3.mb-1 For Kids
+              a(href='shop-grid-ls.html').fs-md
+                | Shop for kids
+                i.ci-arrow-right.fs-xs.align-middle.ms-1
+            #for-kids.tns-carousel-controls
+              button(type='button')
+                i.ci-arrow-left
+              button(type='button')
+                i.ci-arrow-right
+          a(href='shop-grid-ls.html').d-none.d-md-block.mt-auto
+            img(src='img/home/categories/cat-lg03.jpg' alt='For Kids').d-block.w-100
+
+      // Product grid (carousel)
+      .col-md-7.pt-4.pt-md-0
+        .tns-carousel
+          .tns-carousel-inner(data-carousel-options='{"nav": false, "controlsContainer": "#for-kids"}')
+
+            // Carousel item
+            div
+              .row.mx-n2
+                .col-lg-4.col-6.px-0.px-sm-2.mb-sm-4
+                  .card.product-card.card-static
+                    button(type='button' data-bs-toggle='tooltip' data-bs-placement='left' title='Add to wishlist').btn-wishlist.btn-sm
+                      i.ci-heart
+                    a(href='shop-single-v1.html').card-img-top.d-block.overflow-hidden
+                      img(src='img/shop/catalog/40.jpg' alt='Product')
+                    .card-body.py-2
+                      a(href='#').product-meta.d-block.fs-xs.pb-1 Clothing
+                      h3.product-title.fs-sm
+                        a(href='shop-single-v1.html') Girl’s Denim Jacket
+                      .d-flex.justify-content-between
+                        .product-price
+                          span.text-accent $24.<small>99</small>
+                        +star-rating(5)
+                .col-lg-4.col-6.px-0.px-sm-2.mb-sm-4
+                  .card.product-card.card-static
+                    span.badge.badge-success.badge-shadow Trending
+                    button(type='button' data-bs-toggle='tooltip' data-bs-placement='left' title='Add to wishlist').btn-wishlist.btn-sm
+                      i.ci-heart
+                    a(href='shop-single-v1.html').card-img-top.d-block.overflow-hidden
+                      img(src='img/shop/catalog/41.jpg' alt='Product')
+                    .card-body.py-2
+                      a(href='#').product-meta.d-block.fs-xs.pb-1 Shoes
+                      h3.product-title.fs-sm
+                        a(href='shop-single-v1.html') Textile Ballet Flats
+                      .d-flex.justify-content-between
+                        .product-price
+                          span.text-accent $16.<small>50</small>
+                        +star-rating(3.5)
+                .col-lg-4.col-6.px-0.px-sm-2.mb-sm-4
+                  .card.product-card.card-static
+                    button(type='button' data-bs-toggle='tooltip' data-bs-placement='left' title='Add to wishlist').btn-wishlist.btn-sm
+                      i.ci-heart
+                    a(href='shop-single-v1.html').card-img-top.d-block.overflow-hidden
+                      img(src='img/shop/catalog/42.jpg' alt='Product')
+                    .card-body.py-2
+                      a(href='#').product-meta.d-block.fs-xs.pb-1 T-shirts
+                      h3.product-title.fs-sm
+                        a(href='shop-single-v1.html') Boys T-shirt with Motif
+                      .d-flex.justify-content-between
+                        .product-price
+                          span.text-accent $17.<small>99</small>
+                        +star-rating(4)
+                .col-lg-4.col-6.px-0.px-sm-2.mb-sm-4
+                  .card.product-card.card-static
+                    button(type='button' data-bs-toggle='tooltip' data-bs-placement='left' title='Add to wishlist').btn-wishlist.btn-sm
+                      i.ci-heart
+                    a(href='shop-single-v1.html').card-img-top.d-block.overflow-hidden
+                      img(src='img/shop/catalog/43.jpg' alt='Product')
+                    .card-body.py-2
+                      a(href='#').product-meta.d-block.fs-xs.pb-1 Accessories
+                      h3.product-title.fs-sm
+                        a(href='shop-single-v1.html') Dotted Shoulder Bag
+                      .d-flex.justify-content-between
+                        .product-price
+                          span.text-accent $23.<small>00</small>
+                        +star-rating(4.5)
+                .col-lg-4.col-6.px-0.px-sm-2.mb-sm-4.d-none.d-lg-block
+                  .card.product-card.card-static
+                    button(type='button' data-bs-toggle='tooltip' data-bs-placement='left' title='Add to wishlist').btn-wishlist.btn-sm
+                      i.ci-heart
+                    a(href='shop-single-v1.html').card-img-top.d-block.overflow-hidden
+                      img(src='img/shop/catalog/44.jpg' alt='Product')
+                    .card-body.py-2
+                      a(href='#').product-meta.d-block.fs-xs.pb-1 Hats &amp; Caps
+                      h3.product-title.fs-sm
+                        a(href='shop-single-v1.html') 2-pack Cotton Sun Hats
+                      .d-flex.justify-content-between
+                        .product-price
+                          span.text-accent $18.<small>00</small>
+                        +star-rating(2.5)
+                .col-lg-4.col-6.px-0.px-sm-2.mb-sm-4.d-none.d-lg-block
+                  .card.product-card.card-static
+                    button(type='button' data-bs-toggle='tooltip' data-bs-placement='left' title='Add to wishlist').btn-wishlist.btn-sm
+                      i.ci-heart
+                    a(href='shop-single-v1.html').card-img-top.d-block.overflow-hidden
+                      img(src='img/shop/catalog/08.jpg' alt='Product')
+                    .card-body.py-2
+                      a(href='#').product-meta.d-block.fs-xs.pb-1 Toys
+                      h3.product-title.fs-sm
+                        a(href='shop-single-v1.html') Soft Panda Teddy Bear
+                      .d-flex.justify-content-between
+                        .product-price
+                          span.text-accent $14.<small>99</small>
+                        +star-rating(4)
+
+            // Carousel item
+            div
+              .row.mx-n2
+                .col-lg-4.col-6.px-0.px-sm-2.mb-sm-4
+                  .card.product-card.card-static
+                    button(type='button' data-bs-toggle='tooltip' data-bs-placement='left' title='Add to wishlist').btn-wishlist.btn-sm
+                      i.ci-heart
+                    a(href='shop-single-v1.html').card-img-top.d-block.overflow-hidden
+                      img(src='img/shop/catalog/45.jpg' alt='Product')
+                    .card-body.py-2
+                      a(href='#').product-meta.d-block.fs-xs.pb-1 T-shirts
+                      h3.product-title.fs-sm
+                        a(href='shop-single-v1.html') Outlined Star Chevron Tee
+                      .d-flex.justify-content-between
+                        .product-price
+                          span.text-accent $10.<small>99</small>
+                        +star-rating(2.5)
+                .col-lg-4.col-6.px-0.px-sm-2.mb-sm-4
+                  .card.product-card.card-static
+                    button(type='button' data-bs-toggle='tooltip' data-bs-placement='left' title='Add to wishlist').btn-wishlist.btn-sm
+                      i.ci-heart
+                    a(href='shop-single-v1.html').card-img-top.d-block.overflow-hidden
+                      img(src='img/shop/catalog/46.jpg' alt='Product')
+                    .card-body.py-2
+                      a(href='#').product-meta.d-block.fs-xs.pb-1 Hats &amp; Caps
+                      h3.product-title.fs-sm
+                        a(href='shop-single-v1.html') Banana Embroidery Cap
+                      .d-flex.justify-content-between
+                        .product-price
+                          span.text-accent $15.<small>99</small>
+                        +star-rating(5)
+                .col-lg-4.col-6.px-0.px-sm-2.mb-sm-4
+                  .card.product-card.card-static
+                    button(type='button' data-bs-toggle='tooltip' data-bs-placement='left' title='Add to wishlist').btn-wishlist.btn-sm
+                      i.ci-heart
+                    a(href='shop-single-v1.html').card-img-top.d-block.overflow-hidden
+                      img(src='img/shop/catalog/47.jpg' alt='Product')
+                    .card-body.py-2
+                      a(href='#').product-meta.d-block.fs-xs.pb-1 Shoes
+                      h3.product-title.fs-sm
+                        a(href='shop-single-v1.html') Big Kid Sneakers
+                      .d-flex.justify-content-between
+                        .product-price
+                          span.text-accent $42.<small>50</small>
+                        +star-rating(4)
+                .col-lg-4.col-6.px-0.px-sm-2.mb-sm-4
+                  .card.product-card.card-static
+                    button(type='button' data-bs-toggle='tooltip' data-bs-placement='left' title='Add to wishlist').btn-wishlist.btn-sm
+                      i.ci-heart
+                    a(href='shop-single-v1.html').card-img-top.d-block.overflow-hidden
+                      img(src='img/shop/catalog/48.jpg' alt='Product')
+                    .card-body.py-2
+                      a(href='#').product-meta.d-block.fs-xs.pb-1 Clothing
+                      h3.product-title.fs-sm
+                        a(href='shop-single-v1.html') Boy's Printed Shorts
+                      .d-flex.justify-content-between
+                        .product-price
+                          span.text-accent $18.<small>99</small>
+                        +star-rating(3.5)
+                .col-lg-4.col-6.px-0.px-sm-2.mb-sm-4.d-none.d-lg-block
+                  .card.product-card.card-static
+                    button(type='button' data-bs-toggle='tooltip' data-bs-placement='left' title='Add to wishlist').btn-wishlist.btn-sm
+                      i.ci-heart
+                    a(href='shop-single-v1.html').card-img-top.d-block.overflow-hidden
+                      img(src='img/shop/catalog/49.jpg' alt='Product')
+                    .card-body.py-2
+                      a(href='#').product-meta.d-block.fs-xs.pb-1 Toys
+                      h3.product-title.fs-sm
+                        a(href='shop-single-v1.html') Unicorn Soft Toy
+                      .d-flex.justify-content-between
+                        .product-price
+                          span.text-accent $22.<small>50</small>
+                        +star-rating(5)
+                .col-lg-4.col-6.px-0.px-sm-2.mb-sm-4.d-none.d-lg-block
+                  .card.product-card.card-static
+                    button(type='button' data-bs-toggle='tooltip' data-bs-placement='left' title='Add to wishlist').btn-wishlist.btn-sm
+                      i.ci-heart
+                    a(href='shop-single-v1.html').card-img-top.d-block.overflow-hidden
+                      img(src='img/shop/catalog/50.jpg' alt='Product')
+                    .card-body.py-2
+                      a(href='#').product-meta.d-block.fs-xs.pb-1 Swimwear
+                      h3.product-title.fs-sm
+                        a(href='shop-single-v1.html') Pool Santorini Tankini
+                      .d-flex.justify-content-between
+                        .product-price
+                          span.text-accent $20.<small>00</small>
+                        +star-rating(3)
+   
+  
+  // Shop by brand
+  section.container.py-lg-4
+    h2.h3.text-center.pb-4 Shop by brand
+    .row
+      .col-md-3.col-sm-4.col-6
+        a(href='#').d-block.bg-white.shadow-sm.rounded-3.py-3.py-sm-4.mb-grid-gutter
+          img(src='img/shop/brands/01.png' style='width: 150px;' alt='Brand').d-block.mx-auto
+      .col-md-3.col-sm-4.col-6
+        a(href='#').d-block.bg-white.shadow-sm.rounded-3.py-3.py-sm-4.mb-grid-gutter
+          img(src='img/shop/brands/02.png' style='width: 150px;' alt='Brand').d-block.mx-auto
+      .col-md-3.col-sm-4.col-6
+        a(href='#').d-block.bg-white.shadow-sm.rounded-3.py-3.py-sm-4.mb-grid-gutter
+          img(src='img/shop/brands/03.png' style='width: 150px;' alt='Brand').d-block.mx-auto
+      .col-md-3.col-sm-4.col-6
+        a(href='#').d-block.bg-white.shadow-sm.rounded-3.py-3.py-sm-4.mb-grid-gutter
+          img(src='img/shop/brands/04.png' style='width: 150px;' alt='Brand').d-block.mx-auto
+      .col-md-3.col-sm-4.col-6
+        a(href='#').d-block.bg-white.shadow-sm.rounded-3.py-3.py-sm-4.mb-grid-gutter
+          img(src='img/shop/brands/05.png' style='width: 150px;' alt='Brand').d-block.mx-auto
+      .col-md-3.col-sm-4.col-6
+        a(href='#').d-block.bg-white.shadow-sm.rounded-3.py-3.py-sm-4.mb-grid-gutter
+          img(src='img/shop/brands/06.png' style='width: 150px;' alt='Brand').d-block.mx-auto
+      .col-md-3.col-sm-4.col-6
+        a(href='#').d-block.bg-white.shadow-sm.rounded-3.py-3.py-sm-4.mb-grid-gutter
+          img(src='img/shop/brands/07.png' style='width: 150px;' alt='Brand').d-block.mx-auto
+      .col-md-3.col-sm-4.col-6
+        a(href='#').d-block.bg-white.shadow-sm.rounded-3.py-3.py-sm-4.mb-grid-gutter
+          img(src='img/shop/brands/08.png' style='width: 150px;' alt='Brand').d-block.mx-auto
+      .col-md-3.col-sm-4.col-6
+        a(href='#').d-block.bg-white.shadow-sm.rounded-3.py-3.py-sm-4.mb-grid-gutter
+          img(src='img/shop/brands/09.png' style='width: 150px;' alt='Brand').d-block.mx-auto
+      .col-md-3.col-sm-4.col-6
+        a(href='#').d-block.bg-white.shadow-sm.rounded-3.py-3.py-sm-4.mb-grid-gutter
+          img(src='img/shop/brands/10.png' style='width: 150px;' alt='Brand').d-block.mx-auto
+      .col-md-3.col-sm-4.col-6
+        a(href='#').d-block.bg-white.shadow-sm.rounded-3.py-3.py-sm-4.mb-grid-gutter
+          img(src='img/shop/brands/11.png' style='width: 150px;' alt='Brand').d-block.mx-auto
+      .col-md-3.col-sm-4.col-6
+        a(href='#').d-block.bg-white.shadow-sm.rounded-3.py-3.py-sm-4.mb-grid-gutter
+          img(src='img/shop/brands/12.png' style='width: 150px;' alt='Brand').d-block.mx-auto
+  
+
+  // Product widgets
+  section.container.pt-md-3.pb-4.pb-md-5.mb-lg-2
+    .row
+      .col-lg-4.col-md-6.mb-2.py-3
+        .widget
+          h3.widget-title Bestsellers
+          .d-flex.align-items-center.pb-2.border-bottom
+            a(href='shop-single-v1.html').d-block
+              img(src='img/shop/cart/widget/01.jpg' width='64' alt='Product')
+            .ps-2
+              h6.widget-product-title
+                a(href='shop-single-v1.html') Women Colorblock Sneakers
+              .widget-product-meta
+                span.text-accent.me-2
+                  | $150.
+                  small 00
+          .d-flex.align-items-center.py-2.border-bottom
+            a(href='shop-single-v1.html').d-block
+              img(src='img/shop/cart/widget/02.jpg' width='64' alt='Product')
+            .ps-2
+              h6.widget-product-title
+                a(href='shop-single-v1.html') TH Jeans City Backpack
+              .widget-product-meta
+                span.text-accent.me-2
+                  | $79.
+                  small 50
+          .d-flex.align-items-center.py-2.border-bottom
+            a(href='shop-single-v1.html').d-block
+              img(src='img/shop/cart/widget/03.jpg' width='64' alt='Product')
+            .ps-2
+              h6.widget-product-title
+                a(href='shop-single-v1.html') 3-Color Sun Stash Hat
+              .widget-product-meta
+                span.text-accent.me-2
+                  | $22.
+                  small 50
+          .d-flex.align-items-center.py-2
+            a(href='shop-single-v1.html').d-block
+              img(src='img/shop/cart/widget/04.jpg' width='64' alt='Product')
+            .ps-2
+              h6.widget-product-title
+                a(href='shop-single-v1.html') Cotton Polo Regular Fit
+              .widget-product-meta
+                span.text-accent.me-2
+                  | $9.
+                  small 00
+          p.mb-0 ...
+          a(href='shop-grid-ls.html').fs-sm
+            | View more
+            i.ci-arrow-right.fs-xs.ms-1
+      .col-lg-4.col-md-6.mb-2.py-3
+        .widget
+          h3.widget-title New arrivals
+          .d-flex.align-items-center.pb-2.border-bottom
+            a(href='shop-single-v1.html').d-block
+              img(src='img/shop/widget/02.jpg' width='64' alt='Product')
+            .ps-2
+              h6.widget-product-title
+                a(href='shop-single-v1.html') Cap with Appliqué
+              .widget-product-meta
+                span.text-accent.me-2
+                  | $15.
+                  small 99
+          .d-flex.align-items-center.py-2.border-bottom
+            a(href='shop-single-v1.html').d-block
+              img(src='img/shop/widget/01.jpg' width='64' alt='Product')
+            .ps-2
+              h6.widget-product-title
+                a(href='shop-single-v1.html') Girl's T-shirt with Motif
+              .widget-product-meta
+                span.text-accent.me-2
+                  | $14.
+                  small 50
+          .d-flex.align-items-center.py-2.border-bottom
+            a(href='shop-single-v1.html').d-block
+              img(src='img/shop/widget/03.jpg' width='64' alt='Product')
+            .ps-2
+              h6.widget-product-title
+                a(href='shop-single-v1.html') Leather Platform Sandals
+              .widget-product-meta
+                span.text-accent.me-2
+                  | $78.
+                  small 00
+          .d-flex.align-items-center.py-2
+            a(href='shop-single-v1.html').d-block
+              img(src='img/shop/widget/04.jpg' width='64' alt='Product')
+            .ps-2
+              h6.widget-product-title
+                a(href='shop-single-v1.html') Regular Fit Cotton Shirt
+              .widget-product-meta
+                span.text-accent.me-2
+                  | $17.
+                  small 99
+          p.mb-0 ...
+          a(href='shop-grid-ls.html').fs-sm
+            | View more
+            i.ci-arrow-right.fs-xs.ms-1
+      .col-md-4.col-sm-6.d-none.d-lg-block
+        a(href='shop-grid-ls.html').d-block
+          img(src='img/home/banners/v-banner.jpg' alt='Promo banner').d-block.rounded-3
+  
+  // Blog + Instagram info cards
+  section.container-fluid.px-0
+    .row.g-0
+      .col-md-6
+        a(href='blog-list-sidebar.html').card.border-0.rounded-0.text-decoration-none.py-md-4.bg-faded-primary
+          .card-body.text-center
+            i.ci-edit.h3.mt-2.mb-4.text-primary
+            h3.h5.mb-1 Read the blog
+            p.text-muted.fs-sm Latest store, fashion news and trends
+      .col-md-6
+        a(href='#').card.border-0.rounded-0.text-decoration-none.py-md-4.bg-faded-accent
+          .card-body.text-center
+            i.ci-instagram.h3.mt-2.mb-4.text-accent
+            h3.h5.mb-1 Follow on Instagram
+            p.text-muted.fs-sm #ShopWithCartzilla
+
+//- Footer
+block footer
+  include partials/footer-dark
+
+//- Handheld toolbar
+block toolbar
+  include partials/toolbar

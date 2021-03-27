@@ -1,0 +1,683 @@
+extends partials/layout
+
+//- Override default config variables
+append config
+  - var vendorStyles = ['drift-zoom/dist/drift-basic.min.css']
+  - var vendorScripts = ['drift-zoom/dist/Drift.min.js']
+  - var pageTitle = 'Fashion Store v.1'
+  - var parentMenu = 'Home'
+
+//- Navbar + Quick View Modal
+block navbar
+  include partials/modal-quick-view
+  include partials/navbar-3-level-light
+  
+//- Page Content
+block content
+
+  // Hero slider
+  section.tns-carousel.tns-controls-lg
+    .tns-carousel-inner(data-carousel-options='{"mode": "gallery", "responsive": {"0":{"nav":true, "controls": false},"992":{"nav":false, "controls": true}}}')
+
+      // Item
+      .px-lg-5(style='background-color: #3aafd2;')
+        .d-lg-flex.justify-content-between.align-items-center.ps-lg-4
+          img(src='img/home/hero-slider/01.jpg' alt='Summer Collection').d-block.order-lg-2.me-lg-n5.flex-shrink-0
+          .position-relative.mx-auto.me-lg-n5.py-5.px-4.mb-lg-5.order-lg-1(style='max-width: 42rem; z-index: 10;')
+            .pb-lg-5.mb-lg-5.text-center.text-lg-start.text-lg-nowrap
+              h3.h2.text-light.fw-light.pb-1.from-start Has just arrived!
+              h2.text-light.display-5.from-start.delay-1 Huge Summer Collection
+              p.fs-lg.text-light.pb-3.from-start.delay-2 Swimwear, Tops, Shorts, Sunglasses &amp; much more...
+              .d-table.scale-up.delay-4.mx-auto.mx-lg-0
+                a(href='shop-grid-ls.html').btn.btn-primary
+                  | Shop Now
+                  i.ci-arrow-right.ms-2.me-n1
+      
+      // Item
+      .px-lg-5(style='background-color: #f5b1b0;')
+        .d-lg-flex.justify-content-between.align-items-center.ps-lg-4
+          img(src='img/home/hero-slider/02.jpg' alt='Women Sportswear').d-block.order-lg-2.me-lg-n5.flex-shrink-0
+          .position-relative.mx-auto.me-lg-n5.py-5.px-4.mb-lg-5.order-lg-1(style='max-width: 42rem; z-index: 10;')
+            .pb-lg-5.mb-lg-5.text-center.text-lg-start.text-lg-nowrap
+              h3.h2.text-light.fw-light.pb-1.from-bottom Hurry up! Limited time offer.
+              h2.text-light.display-5.from-bottom.delay-1 Women Sportswear Sale
+              p.fs-lg.text-light.pb-3.from-bottom.delay-2 Sneakers, Keds, Sweatshirts, Hoodies &amp; much more...
+              .d-table.scale-up.delay-4.mx-auto.mx-lg-0
+                a(href='shop-grid-ls.html').btn.btn-primary
+                  | Shop Now
+                  i.ci-arrow-right.ms-2.me-n1
+
+      // Item
+      .px-lg-5(style='background-color: #eba170;')
+        .d-lg-flex.justify-content-between.align-items-center.ps-lg-4
+          img(src='img/home/hero-slider/03.jpg' alt='Men Accessories').d-block.order-lg-2.me-lg-n5.flex-shrink-0
+          .position-relative.mx-auto.me-lg-n5.py-5.px-4.mb-lg-5.order-lg-1(style='max-width: 42rem; z-index: 10;')
+            .pb-lg-5.mb-lg-5.text-center.text-lg-start.text-lg-nowrap
+              h3.h2.text-light.fw-light.pb-1.from-top Complete your look with
+              h2.text-light.display-5.from-top.delay-1 New Men's Accessories
+              p.fs-lg.text-light.pb-3.from-top.delay-2 Hats &amp; Caps, Sunglasses, Bags &amp; much more...
+              .d-table.scale-up.delay-4.mx-auto.mx-lg-0
+                a(href='shop-grid-ls.html').btn.btn-primary
+                  | Shop Now
+                  i.ci-arrow-right.ms-2.me-n1
+
+
+  // Popular categories
+  section.container.position-relative.pt-3.pt-lg-0.pb-5.mt-lg-n10(style='z-index: 10;')
+    .row
+      .col-xl-8.col-lg-9
+        .card.border-0.shadow-lg
+          .card-body.px-3.pt-grid-gutter.pb-0
+            .row.g-0.ps-1
+              .col-sm-4.px-2.mb-grid-gutter
+                a(href='shop-grid-ls.html').d-block.text-center.text-decoration-none.me-1
+                  img(src='img/home/categories/cat-sm01.jpg' alt='Men').d-block.rounded.mb-3
+                  h3.fs-base.pt-1.mb-0 Men
+              .col-sm-4.px-2.mb-grid-gutter
+                a(href='shop-grid-ls.html').d-block.text-center.text-decoration-none.me-1
+                  img(src='img/home/categories/cat-sm02.jpg' alt='Women').d-block.rounded.mb-3
+                  h3.fs-base.pt-1.mb-0 Women
+              .col-sm-4.px-2.mb-grid-gutter
+                a(href='shop-grid-ls.html').d-block.text-center.text-decoration-none.me-1
+                  img(src='img/home/categories/cat-sm03.jpg' alt='Kids').d-block.rounded.mb-3
+                  h3.fs-base.pt-1.mb-0 Kids
+  
+  
+  // Products grid (Trending products)
+  section.container.pt-md-3.pb-5.mb-md-3
+    h2.h3.text-center Trending products
+    .row.pt-4.mx-n2
+
+      // Product
+      .col-lg-3.col-md-4.col-sm-6.px-2.mb-4
+        .card.product-card
+          button(type='button' data-bs-toggle='tooltip' data-bs-placement='left' title='Add to wishlist').btn-wishlist.btn-sm
+            i.ci-heart
+          a(href='shop-single-v1.html').card-img-top.d-block.overflow-hidden
+            img(src='img/shop/catalog/01.jpg' alt='Product')
+          .card-body.py-2
+            a(href='#').product-meta.d-block.fs-xs.pb-1 Sneakers &amp; Keds
+            h3.product-title.fs-sm
+              a(href='shop-single-v1.html') Women Colorblock Sneakers
+            .d-flex.justify-content-between
+              .product-price
+                span.text-accent $154.<small>00</small>
+              +star-rating(3.5)
+          .card-body.card-body-hidden
+            .text-center.pb-2
+              .form-check.form-option.form-check-inline.mb-2
+                input(type='radio', name='size1', id='s-75').form-check-input
+                label.form-option-label(for='s-75') 7.5
+              .form-check.form-option.form-check-inline.mb-2
+                input(type='radio', name='size1', id='s-80' checked).form-check-input
+                label.form-option-label(for='s-80') 8
+              .form-check.form-option.form-check-inline.mb-2
+                input(type='radio', name='size1', id='s-85').form-check-input
+                label.form-option-label(for='s-85') 8.5
+              .form-check.form-option.form-check-inline.mb-2
+                input(type='radio', name='size1', id='s-90').form-check-input
+                label.form-option-label(for='s-90') 9
+            button(type='button').btn.btn-primary.btn-sm.d-block.w-100.mb-2
+              i.ci-cart.fs-sm.me-1
+              | Add to Cart
+            .text-center
+              a(href='#quick-view' data-bs-toggle='modal').nav-link-style.fs-ms
+                i.ci-eye.align-middle.me-1
+                | Quick view
+        hr.d-sm-none
+
+      // Product
+      .col-lg-3.col-md-4.col-sm-6.px-2.mb-4
+        .card.product-card
+          span.badge.badge-danger.badge-shadow Sale
+          button(type='button' data-bs-toggle='tooltip' data-bs-placement='left' title='Add to wishlist').btn-wishlist.btn-sm
+            i.ci-heart
+          a(href='shop-single-v1.html').card-img-top.d-block.overflow-hidden
+            img(src='img/shop/catalog/02.jpg' alt='Product')
+          .card-body.py-2
+            a(href='#').product-meta.d-block.fs-xs.pb-1 Women’s T-shirt
+            h3.product-title.fs-sm
+              a(href='shop-single-v1.html') Cotton Lace Blouse
+            .d-flex.justify-content-between
+              .product-price
+                span.text-accent $28.<small>50</small>
+                del.fs-sm.text-muted $38.<small>50</small>
+              +star-rating(3)
+          .card-body.card-body-hidden
+            .text-center.pb-2
+              .form-check.form-option.form-check-inline.mb-2
+                input(type='radio' name='color1' id='white' checked).form-check-input
+                label(for='white').form-option-label.rounded-circle
+                  span(style='background-color: #eaeaeb;').form-option-color.rounded-circle
+              .form-check.form-option.form-check-inline.mb-2
+                input(type='radio' name='color1' id='blue').form-check-input
+                label(for='blue').form-option-label.rounded-circle
+                  span(style='background-color: #d1dceb;').form-option-color.rounded-circle
+              .form-check.form-option.form-check-inline.mb-2
+                input(type='radio' name='color1' id='yellow').form-check-input
+                label(for='yellow').form-option-label.rounded-circle
+                  span(style='background-color: #f4e6a2;').form-option-color.rounded-circle
+              .form-check.form-option.form-check-inline.mb-2
+                input(type='radio' name='color1' id='pink').form-check-input
+                label(for='pink').form-option-label.rounded-circle
+                  span(style='background-color: #f3dcff;').form-option-color.rounded-circle
+            .d-flex.mb-2
+              select.form-select.form-select-sm.me-2
+                option XS
+                option S
+                option M
+                option L
+                option XL
+              button(type='button').btn.btn-primary.btn-sm
+                i.ci-cart.fs-sm.me-1
+                | Add to Cart
+            .text-center
+              a(href='#quick-view' data-bs-toggle='modal').nav-link-style.fs-ms
+                i.ci-eye.align-middle.me-1
+                | Quick view
+        hr.d-sm-none
+
+      // Product
+      .col-lg-3.col-md-4.col-sm-6.px-2.mb-4
+        .card.product-card
+          button(type='button' data-bs-toggle='tooltip' data-bs-placement='left' title='Add to wishlist').btn-wishlist.btn-sm
+            i.ci-heart
+          a(href='shop-single-v1.html').card-img-top.d-block.overflow-hidden
+            img(src='img/shop/catalog/03.jpg' alt='Product')
+          .card-body.py-2
+            a(href='#').product-meta.d-block.fs-xs.pb-1 Women’s Shorts
+            h3.product-title.fs-sm
+              a(href='shop-single-v1.html') Mom High Waist Shorts
+            .d-flex.justify-content-between
+              .product-price
+                span.text-accent $39.<small>50</small>
+              +star-rating(5)
+          .card-body.card-body-hidden
+            .text-center.pb-2
+              .form-check.form-option.form-check-inline.mb-2
+                input(type='radio', name='size2', id='xs').form-check-input
+                label.form-option-label(for='xs') XS
+              .form-check.form-option.form-check-inline.mb-2
+                input(type='radio', name='size2', id='s' checked).form-check-input
+                label.form-option-label(for='s') S
+              .form-check.form-option.form-check-inline.mb-2
+                input(type='radio', name='size2', id='m').form-check-input
+                label.form-option-label(for='m') M
+              .form-check.form-option.form-check-inline.mb-2
+                input(type='radio', name='size2', id='l').form-check-input
+                label.form-option-label(for='l') L
+            button(type='button').btn.btn-primary.btn-sm.d-block.w-100.mb-2
+              i.ci-cart.fs-sm.me-1
+              | Add to Cart
+            .text-center
+              a(href='#quick-view' data-bs-toggle='modal').nav-link-style.fs-ms
+                i.ci-eye.align-middle.me-1
+                | Quick view
+        hr.d-sm-none
+
+      // Product
+      .col-lg-3.col-md-4.col-sm-6.px-2.mb-4
+        .card.product-card
+          button(type='button' data-bs-toggle='tooltip' data-bs-placement='left' title='Add to wishlist').btn-wishlist.btn-sm
+            i.ci-heart
+          a(href='shop-single-v1.html').card-img-top.d-block.overflow-hidden
+            img(src='img/shop/catalog/07.jpg' alt='Product')
+          .card-body.py-2
+            a(href='#').product-meta.d-block.fs-xs.pb-1 Women's Swimwear
+            h3.product-title.fs-sm
+              a(href='shop-single-v1.html') Two-Piece Bikini in Print
+            .d-flex.justify-content-between
+              .product-price
+                span.text-accent $18.<small>99</small>
+              +star-rating(4)
+          .card-body.card-body-hidden
+            .text-center.pb-2
+              .form-check.form-option.form-check-inline.mb-2
+                input(type='radio', name='size4', id='xs3' checked).form-check-input
+                label.form-option-label(for='xs3') XS
+              .form-check.form-option.form-check-inline.mb-2
+                input(type='radio', name='size4', id='s3').form-check-input
+                label.form-option-label(for='s3') S
+              .form-check.form-option.form-check-inline.mb-2
+                input(type='radio', name='size4', id='m3').form-check-input
+                label.form-option-label(for='m3') M
+            button(type='button').btn.btn-primary.btn-sm.d-block.w-100.mb-2
+              i.ci-cart.fs-sm.me-1
+              | Add to Cart
+            .text-center
+              a(href='#quick-view' data-bs-toggle='modal').nav-link-style.fs-ms
+                i.ci-eye.align-middle.me-1
+                | Quick view
+        hr.d-sm-none
+
+      // Product
+      .col-lg-3.col-md-4.col-sm-6.px-2.mb-4
+        .card.product-card
+          button(type='button' data-bs-toggle='tooltip' data-bs-placement='left' title='Add to wishlist').btn-wishlist.btn-sm
+            i.ci-heart
+          a(href='shop-single-v1.html').card-img-top.d-block.overflow-hidden
+            img(src='img/shop/catalog/04.jpg' alt='Product')
+          .card-body.py-2
+            a(href='#').product-meta.d-block.fs-xs.pb-1 Sportswear
+            h3.product-title.fs-sm
+              a(href='shop-single-v1.html') Women Sports Jacket
+            .d-flex.justify-content-between
+              .product-price
+                span.text-accent $68.<small>40</small>
+              +star-rating(4.5)
+          .card-body.card-body-hidden
+            .text-center.pb-2
+              .form-check.form-option.form-check-inline.mb-2
+                input(type='radio', name='size3', id='xs2' checked).form-check-input
+                label.form-option-label(for='xs2') XS
+              .form-check.form-option.form-check-inline.mb-2
+                input(type='radio', name='size3', id='s2').form-check-input
+                label.form-option-label(for='s2') S
+              .form-check.form-option.form-check-inline.mb-2
+                input(type='radio', name='size3', id='m2').form-check-input
+                label.form-option-label(for='m2') M
+              .form-check.form-option.form-check-inline.mb-2
+                input(type='radio', name='size3', id='l2').form-check-input
+                label.form-option-label(for='l2') L
+            button(type='button').btn.btn-primary.btn-sm.d-block.w-100.mb-2
+              i.ci-cart.fs-sm.me-1
+              | Add to Cart
+            .text-center
+              a(href='#quick-view' data-bs-toggle='modal').nav-link-style.fs-ms
+                i.ci-eye.align-middle.me-1
+                | Quick view
+        hr.d-sm-none
+
+      // Product
+      .col-lg-3.col-md-4.col-sm-6.px-2.mb-4
+        .card.product-card
+          button(type='button' data-bs-toggle='tooltip' data-bs-placement='left' title='Add to wishlist').btn-wishlist.btn-sm
+            i.ci-heart
+          a(href='shop-single-v1.html').card-img-top.d-block.overflow-hidden
+            img(src='img/shop/catalog/05.jpg' alt='Product')
+          .card-body.py-2
+            a(href='#').product-meta.d-block.fs-xs.pb-1 Men’s Sunglasses
+            h3.product-title.fs-sm
+              a(href='shop-single-v1.html') Polarized Sunglasses
+            .d-flex.justify-content-between
+              .product-price
+                span.text-muted.fs-sm Out of stock
+              +star-rating(4)
+          .card-body.card-body-hidden
+            a(href='shop-single-v1.html').btn.btn-secondary.btn-sm.d-block.w-100.mb-2 View details
+            .text-center
+              a(href='#quick-view' data-bs-toggle='modal').nav-link-style.fs-ms
+                i.ci-eye.align-middle.me-1
+                | Quick view
+        hr.d-sm-none
+
+      // Product
+      .col-lg-3.col-md-4.col-sm-6.px-2.mb-4
+        .card.product-card
+          button(type='button' data-bs-toggle='tooltip' data-bs-placement='left' title='Add to wishlist').btn-wishlist.btn-sm
+            i.ci-heart
+          a(href='shop-single-v1.html').card-img-top.d-block.overflow-hidden
+            img(src='img/shop/catalog/06.jpg' alt='Product')
+          .card-body.py-2
+            a(href='#').product-meta.d-block.fs-xs.pb-1 Backpacks
+            h3.product-title.fs-sm
+              a(href='shop-single-v1.html') TH Jeans City Backpack
+            .d-flex.justify-content-between
+              .product-price
+                span.text-accent $79.<small>50</small>
+              +star-rating(2.5)
+          .card-body.card-body-hidden
+            .text-center.pb-2
+              .form-check.form-option.form-check-inline.mb-2
+                input(type='radio' name='color2' id='khaki' checked).form-check-input
+                label(for='khaki').form-option-label.rounded-circle
+                  span(style='background-color: #97947c;').form-option-color.rounded-circle
+              .form-check.form-option.form-check-inline.mb-2
+                input(type='radio' name='color2' id='jeans').form-check-input
+                label(for='jeans').form-option-label.rounded-circle
+                  span(style='background-color: #99a8be;').form-option-color.rounded-circle
+              .form-check.form-option.form-check-inline.mb-2
+                input(type='radio' name='color2' id='white2').form-check-input
+                label(for='white2').form-option-label.rounded-circle
+                  span(style='background-color: #eaeaeb;').form-option-color.rounded-circle
+            button(type='button').btn.btn-primary.btn-sm.d-block.w-100.mb-2
+              i.ci-cart.fs-sm.me-1
+              | Add to Cart
+            .text-center
+              a(href='#quick-view' data-bs-toggle='modal').nav-link-style.fs-ms
+                i.ci-eye.align-middle.me-1
+                | Quick view
+        hr.d-sm-none
+
+      // Product
+      .col-lg-3.col-md-4.col-sm-6.px-2.mb-4
+        .card.product-card
+          button(type='button' data-bs-toggle='tooltip' data-bs-placement='left' title='Add to wishlist').btn-wishlist.btn-sm
+            i.ci-heart
+          a(href='shop-single-v1.html').card-img-top.d-block.overflow-hidden
+            img(src='img/shop/catalog/25.jpg' alt='Product')
+          .card-body.py-2
+            a(href='#').product-meta.d-block.fs-xs.pb-1 Women's Sneakers
+            h3.product-title.fs-sm
+              a(href='shop-single-v1.html') Leather High-Top Sneakers
+            .d-flex.justify-content-between
+              .product-price
+                span.text-accent $215.<small>00</small>
+              +star-rating(4)
+          .card-body.card-body-hidden
+            .text-center.pb-2
+              .form-check.form-option.form-check-inline.mb-2
+                input(type='radio', name='size5', id='s4-80').form-check-input
+                label.form-option-label(for='s4-80') 8
+              .form-check.form-option.form-check-inline.mb-2
+                input(type='radio', name='size5', id='s4-85' checked).form-check-input
+                label.form-option-label(for='s4-85') 8.5
+              .form-check.form-option.form-check-inline.mb-2
+                input(type='radio', name='size5', id='s4-90').form-check-input
+                label.form-option-label(for='s4-90') 9
+              .form-check.form-option.form-check-inline.mb-2
+                input(type='radio', name='size5', id='s4-95').form-check-input
+                label.form-option-label(for='s4-95') 9.5
+            button(type='button').btn.btn-primary.btn-sm.d-block.w-100.mb-2
+              i.ci-cart.fs-sm.me-1
+              | Add to Cart
+            .text-center
+              a(href='#quick-view' data-bs-toggle='modal').nav-link-style.fs-ms
+                i.ci-eye.align-middle.me-1
+                | Quick view
+        hr.d-sm-none
+    .text-center.pt-3
+      a(href='shop-grid-ls.html').btn.btn-outline-accent
+        | More products
+        i.ci-arrow-right.ms-1
+
+ 
+  // Banners
+  section.container.pb-4.mb-md-3
+    .row
+      .col-md-8.mb-4
+        .d-sm-flex.justify-content-between.align-items-center.bg-secondary.overflow-hidden.rounded-3
+          .py-4.my-2.my-md-0.py-md-5.px-4.ms-md-3.text-center.text-sm-start
+            h4.fs-lg.fw-light.mb-2 Hurry up! Limited time offer
+            h3.mb-4 Converse All Star on Sale
+            a(href='#').btn.btn-primary.btn-shadow.btn-sm Shop Now
+          img(src='img/shop/catalog/banner.jpg' alt='Shop Converse').d-block.ms-auto
+      .col-md-4.mb-4
+        .d-flex.flex-column.h-100.justify-content-center.bg-size-cover.bg-position-center.rounded-3(style='background-image: url(img/blog/banner-bg.jpg);')
+          .py-4.my-2.px-4.text-center
+            .py-1
+              h5.mb-2 Your Add Banner Here
+              p.fs-sm.text-muted Hurry up to reserve your spot
+              a(href='#').btn.btn-primary.btn-shadow.btn-sm Contact us
+  
+  
+  // Featured category (Hoodie)
+  section.container.mb-4.pb-3.pb-sm-0.mb-sm-5
+    .row
+
+      // Banner with controls
+      .col-md-5
+        .d-flex.flex-column.h-100.overflow-hidden.rounded-3(style='background-color: #e2e9ef;')
+          .d-flex.justify-content-between.px-grid-gutter.py-grid-gutter
+            div
+              h3.mb-1 Hoodie day
+              a(href='shop-grid-ls.html').fs-md
+                | Shop hoodies
+                i.ci-arrow-right.fs-xs.align-middle.ms-1
+            #hoodie-day.tns-carousel-controls
+              button(type='button')
+                i.ci-arrow-left
+              button(type='button')
+                i.ci-arrow-right
+          a(href='shop-grid-ls.html').d-none.d-md-block.mt-auto
+            img(src='img/home/categories/cat-lg04.jpg' alt='For Women').d-block.w-100
+
+      // Product grid (carousel)
+      .col-md-7.pt-4.pt-md-0
+        .tns-carousel
+          .tns-carousel-inner(data-carousel-options='{"nav": false, "controlsContainer": "#hoodie-day"}')
+
+            // Carousel item
+            div
+              .row.mx-n2
+                .col-lg-4.col-6.px-0.px-sm-2.mb-sm-4
+                  .card.product-card.card-static
+                    button(type='button' data-bs-toggle='tooltip' data-bs-placement='left' title='Add to wishlist').btn-wishlist.btn-sm
+                      i.ci-heart
+                    a(href='shop-single-v1.html').card-img-top.d-block.overflow-hidden
+                      img(src='img/shop/catalog/20.jpg' alt='Product')
+                    .card-body.py-2
+                      a(href='#').product-meta.d-block.fs-xs.pb-1 Hoodies &amp; Sweatshirts
+                      h3.product-title.fs-sm
+                        a(href='shop-single-v1.html') Block-colored Hooded Top
+                      .d-flex.justify-content-between
+                        .product-price
+                          span.text-accent $24.<small>99</small>
+                        +star-rating(4)
+                .col-lg-4.col-6.px-0.px-sm-2.mb-sm-4
+                  .card.product-card.card-static
+                    button(type='button' data-bs-toggle='tooltip' data-bs-placement='left' title='Add to wishlist').btn-wishlist.btn-sm
+                      i.ci-heart
+                    a(href='shop-single-v1.html').card-img-top.d-block.overflow-hidden
+                      img(src='img/shop/catalog/21.jpg' alt='Product')
+                    .card-body.py-2
+                      a(href='#').product-meta.d-block.fs-xs.pb-1 Hoodies &amp; Sweatshirts
+                      h3.product-title.fs-sm
+                        a(href='shop-single-v1.html') Block-colored Hooded Top
+                      .d-flex.justify-content-between
+                        .product-price
+                          span.text-accent $26.<small>99</small>
+                        +star-rating(5)
+                .col-lg-4.col-6.px-0.px-sm-2.mb-sm-4
+                  .card.product-card.card-static
+                    span.badge.badge-danger.badge-shadow Sale
+                    button(type='button' data-bs-toggle='tooltip' data-bs-placement='left' title='Add to wishlist').btn-wishlist.btn-sm
+                      i.ci-heart
+                    a(href='shop-single-v1.html').card-img-top.d-block.overflow-hidden
+                      img(src='img/shop/catalog/23.jpg' alt='Product')
+                    .card-body.py-2
+                      a(href='#').product-meta.d-block.fs-xs.pb-1 Hoodies &amp; Sweatshirts
+                      h3.product-title.fs-sm
+                        a(href='shop-single-v1.html') Block-colored Hooded Top
+                      .d-flex.justify-content-between
+                        .product-price
+                          span.text-accent $17.<small>99</small>
+                          del.fs-sm.text-muted 24.<small>99</small>
+                        +star-rating(3.5)
+                .col-lg-4.col-6.px-0.px-sm-2.mb-sm-4
+                  .card.product-card.card-static
+                    button(type='button' data-bs-toggle='tooltip' data-bs-placement='left' title='Add to wishlist').btn-wishlist.btn-sm
+                      i.ci-heart
+                    a(href='shop-single-v1.html').card-img-top.d-block.overflow-hidden
+                      img(src='img/shop/catalog/51.jpg' alt='Product')
+                    .card-body.py-2
+                      a(href='#').product-meta.d-block.fs-xs.pb-1 Hoodies &amp; Sweatshirts
+                      h3.product-title.fs-sm
+                        a(href='shop-single-v1.html') Mono Color Hooded Top
+                      .d-flex.justify-content-between
+                        .product-price
+                          span.text-accent $21.<small>99</small>
+                        +star-rating(5)
+                .col-lg-4.col-6.px-0.px-sm-2.mb-sm-4.d-none.d-lg-block
+                  .card.product-card.card-static
+                    button(type='button' data-bs-toggle='tooltip' data-bs-placement='left' title='Add to wishlist').btn-wishlist.btn-sm
+                      i.ci-heart
+                    a(href='shop-single-v1.html').card-img-top.d-block.overflow-hidden
+                      img(src='img/shop/catalog/24.jpg' alt='Product')
+                    .card-body.py-2
+                      a(href='#').product-meta.d-block.fs-xs.pb-1 Hoodies &amp; Sweatshirts
+                      h3.product-title.fs-sm
+                        a(href='shop-single-v1.html') Block-colored Hooded Top
+                      .d-flex.justify-content-between
+                        .product-price
+                          span.text-accent $24.<small>99</small>
+                        +star-rating(2.5)
+                .col-lg-4.col-6.px-0.px-sm-2.mb-sm-4.d-none.d-lg-block
+                  .card.product-card.card-static
+                    button(type='button' data-bs-toggle='tooltip' data-bs-placement='left' title='Add to wishlist').btn-wishlist.btn-sm
+                      i.ci-heart
+                    a(href='shop-single-v1.html').card-img-top.d-block.overflow-hidden
+                      img(src='img/shop/catalog/54.jpg' alt='Product')
+                    .card-body.py-2
+                      a(href='#').product-meta.d-block.fs-xs.pb-1 Hoodies &amp; Sweatshirts
+                      h3.product-title.fs-sm
+                        a(href='shop-single-v1.html') Mono Color Hooded Top
+                      .d-flex.justify-content-between
+                        .product-price
+                          span.text-accent $21.<small>99</small>
+                        +star-rating(4)
+
+            // Carousel item
+            div
+              .row.mx-n2
+                .col-lg-4.col-6.px-0.px-sm-2.mb-sm-4.d-none.d-lg-block
+                  .card.product-card.card-static
+                    button(type='button' data-bs-toggle='tooltip' data-bs-placement='left' title='Add to wishlist').btn-wishlist.btn-sm
+                      i.ci-heart
+                    a(href='shop-single-v1.html').card-img-top.d-block.overflow-hidden
+                      img(src='img/shop/catalog/53.jpg' alt='Product')
+                    .card-body.py-2
+                      a(href='#').product-meta.d-block.fs-xs.pb-1 Hoodies &amp; Sweatshirts
+                      h3.product-title.fs-sm
+                        a(href='shop-single-v1.html') Mono Color Hooded Top
+                      .d-flex.justify-content-between
+                        .product-price
+                          span.text-accent $21.<small>99</small>
+                        +star-rating(4.5)
+                .col-lg-4.col-6.px-0.px-sm-2.mb-sm-4.d-none.d-lg-block
+                  .card.product-card.card-static
+                    button(type='button' data-bs-toggle='tooltip' data-bs-placement='left' title='Add to wishlist').btn-wishlist.btn-sm
+                      i.ci-heart
+                    a(href='shop-single-v1.html').card-img-top.d-block.overflow-hidden
+                      img(src='img/shop/catalog/52.jpg' alt='Product')
+                    .card-body.py-2
+                      a(href='#').product-meta.d-block.fs-xs.pb-1 Hoodies &amp; Sweatshirts
+                      h3.product-title.fs-sm
+                        a(href='shop-single-v1.html') Printed Hooded Top
+                      .d-flex.justify-content-between
+                        .product-price
+                          span.text-accent $25.<small>99</small>
+                        +star-rating(3.5)
+                .col-lg-4.col-6.px-0.px-sm-2.mb-sm-4
+                  .card.product-card.card-static
+                    button(type='button' data-bs-toggle='tooltip' data-bs-placement='left' title='Add to wishlist').btn-wishlist.btn-sm
+                      i.ci-heart
+                    a(href='shop-single-v1.html').card-img-top.d-block.overflow-hidden
+                      img(src='img/shop/catalog/22.jpg' alt='Product')
+                    .card-body.py-2
+                      a(href='#').product-meta.d-block.fs-xs.pb-1 Hoodies &amp; Sweatshirts
+                      h3.product-title.fs-sm
+                        a(href='shop-single-v1.html') Block-colored Hooded Top
+                      .d-flex.justify-content-between
+                        .product-price
+                          span.text-accent $24.<small>99</small>
+                        +star-rating(5)
+                .col-lg-4.col-6.px-0.px-sm-2.mb-sm-4
+                  .card.product-card.card-static
+                    button(type='button' data-bs-toggle='tooltip' data-bs-placement='left' title='Add to wishlist').btn-wishlist.btn-sm
+                      i.ci-heart
+                    a(href='shop-single-v1.html').card-img-top.d-block.overflow-hidden
+                      img(src='img/shop/catalog/56.jpg' alt='Product')
+                    .card-body.py-2
+                      a(href='#').product-meta.d-block.fs-xs.pb-1 Hoodies &amp; Sweatshirts
+                      h3.product-title.fs-sm
+                        a(href='shop-single-v1.html') Printed Hooded Top
+                      .d-flex.justify-content-between
+                        .product-price
+                          span.text-accent $25.<small>99</small>
+                        +star-rating(4)
+                .col-lg-4.col-6.px-0.px-sm-2.mb-sm-4
+                  .card.product-card.card-static
+                    button(type='button' data-bs-toggle='tooltip' data-bs-placement='left' title='Add to wishlist').btn-wishlist.btn-sm
+                      i.ci-heart
+                    a(href='shop-single-v1.html').card-img-top.d-block.overflow-hidden
+                      img(src='img/shop/catalog/55.jpg' alt='Product')
+                    .card-body.py-2
+                      a(href='#').product-meta.d-block.fs-xs.pb-1 Hoodies &amp; Sweatshirts
+                      h3.product-title.fs-sm
+                        a(href='shop-single-v1.html') Block-colored Hooded Top
+                      .d-flex.justify-content-between
+                        .product-price
+                          span.text-accent $24.<small>99</small>
+                        +star-rating(2.5)
+                .col-lg-4.col-6.px-0.px-sm-2.mb-sm-4
+                  .card.product-card.card-static
+                    button(type='button' data-bs-toggle='tooltip' data-bs-placement='left' title='Add to wishlist').btn-wishlist.btn-sm
+                      i.ci-heart
+                    a(href='shop-single-v1.html').card-img-top.d-block.overflow-hidden
+                      img(src='img/shop/catalog/57.jpg' alt='Product')
+                    .card-body.py-2
+                      a(href='#').product-meta.d-block.fs-xs.pb-1 Hoodies &amp; Sweatshirts
+                      h3.product-title.fs-sm
+                        a(href='shop-single-v1.html') Block-colored Hooded Top
+                      .d-flex.justify-content-between
+                        .product-price
+                          span.text-accent $23.<small>99</small>
+                        +star-rating(3)
+
+   
+  // Shop by brand
+  section.container.py-lg-4.mb-4
+    h2.h3.text-center.pb-4 Shop by brand
+    .row
+      .col-md-3.col-sm-4.col-6
+        a(href='#').d-block.bg-white.shadow-sm.rounded-3.py-3.py-sm-4.mb-grid-gutter
+          img(src='img/shop/brands/01.png' style='width: 150px;' alt='Brand').d-block.mx-auto
+      .col-md-3.col-sm-4.col-6
+        a(href='#').d-block.bg-white.shadow-sm.rounded-3.py-3.py-sm-4.mb-grid-gutter
+          img(src='img/shop/brands/02.png' style='width: 150px;' alt='Brand').d-block.mx-auto
+      .col-md-3.col-sm-4.col-6
+        a(href='#').d-block.bg-white.shadow-sm.rounded-3.py-3.py-sm-4.mb-grid-gutter
+          img(src='img/shop/brands/03.png' style='width: 150px;' alt='Brand').d-block.mx-auto
+      .col-md-3.col-sm-4.col-6
+        a(href='#').d-block.bg-white.shadow-sm.rounded-3.py-3.py-sm-4.mb-grid-gutter
+          img(src='img/shop/brands/04.png' style='width: 150px;' alt='Brand').d-block.mx-auto
+      .col-md-3.col-sm-4.col-6
+        a(href='#').d-block.bg-white.shadow-sm.rounded-3.py-3.py-sm-4.mb-grid-gutter
+          img(src='img/shop/brands/05.png' style='width: 150px;' alt='Brand').d-block.mx-auto
+      .col-md-3.col-sm-4.col-6
+        a(href='#').d-block.bg-white.shadow-sm.rounded-3.py-3.py-sm-4.mb-grid-gutter
+          img(src='img/shop/brands/06.png' style='width: 150px;' alt='Brand').d-block.mx-auto
+      .col-md-3.col-sm-4.col-6
+        a(href='#').d-block.bg-white.shadow-sm.rounded-3.py-3.py-sm-4.mb-grid-gutter
+          img(src='img/shop/brands/07.png' style='width: 150px;' alt='Brand').d-block.mx-auto
+      .col-md-3.col-sm-4.col-6
+        a(href='#').d-block.bg-white.shadow-sm.rounded-3.py-3.py-sm-4.mb-grid-gutter
+          img(src='img/shop/brands/08.png' style='width: 150px;' alt='Brand').d-block.mx-auto
+      .col-md-3.col-sm-4.col-6
+        a(href='#').d-block.bg-white.shadow-sm.rounded-3.py-3.py-sm-4.mb-grid-gutter
+          img(src='img/shop/brands/09.png' style='width: 150px;' alt='Brand').d-block.mx-auto
+      .col-md-3.col-sm-4.col-6
+        a(href='#').d-block.bg-white.shadow-sm.rounded-3.py-3.py-sm-4.mb-grid-gutter
+          img(src='img/shop/brands/10.png' style='width: 150px;' alt='Brand').d-block.mx-auto
+      .col-md-3.col-sm-4.col-6
+        a(href='#').d-block.bg-white.shadow-sm.rounded-3.py-3.py-sm-4.mb-grid-gutter
+          img(src='img/shop/brands/11.png' style='width: 150px;' alt='Brand').d-block.mx-auto
+      .col-md-3.col-sm-4.col-6
+        a(href='#').d-block.bg-white.shadow-sm.rounded-3.py-3.py-sm-4.mb-grid-gutter
+          img(src='img/shop/brands/12.png' style='width: 150px;' alt='Brand').d-block.mx-auto
+  
+  
+  // Blog + Instagram info cards
+  section.container-fluid.px-0
+    .row.g-0
+      .col-md-6
+        a(href='blog-list-sidebar.html').card.border-0.rounded-0.text-decoration-none.py-md-4.bg-faded-primary
+          .card-body.text-center
+            i.ci-edit.h3.mt-2.mb-4.text-primary
+            h3.h5.mb-1 Read the blog
+            p.text-muted.fs-sm Latest store, fashion news and trends
+      .col-md-6
+        a(href='#').card.border-0.rounded-0.text-decoration-none.py-md-4.bg-faded-accent
+          .card-body.text-center
+            i.ci-instagram.h3.mt-2.mb-4.text-accent
+            h3.h5.mb-1 Follow on Instagram
+            p.text-muted.fs-sm #ShopWithCartzilla
+
+//- Footer
+block footer
+  include partials/footer-dark
+
+//- Handheld toolbar
+block toolbar
+  include partials/toolbar

@@ -1,0 +1,83 @@
+// Sidebar
+#blog-sidebar.offcanvas.offcanvas-collapse.offcanvas-end.border-start.ms-lg-auto(style='max-width: 22rem;')
+  .offcanvas-cap.align-items-center.shadow-sm
+    h2.h5.mb-0 Sidebar
+    button(type='button' class='btn-close ms-auto' data-bs-dismiss='offcanvas' aria-label='Close')
+
+  .offcanvas-body.py-grid-gutter.py-lg-1.px-lg-4(data-simplebar data-simplebar-auto-hide='true')
+
+    // Categories
+    .widget.widget-links.mb-grid-gutter.pb-grid-gutter.border-bottom.mx-lg-2
+      h3.widget-title Blog categories
+      ul.widget-list
+        li.widget-list-item
+          a(href='#').widget-list-link.d-flex.justify-content-between.align-items-center
+            span Online shopping
+            span.fs-xs.text-muted.ms-3 18
+        li.widget-list-item
+          a(href='#').widget-list-link.d-flex.justify-content-between.align-items-center
+            span Fashion
+            span.fs-xs.text-muted.ms-3 25
+        li.widget-list-item
+          a(href='#').widget-list-link.d-flex.justify-content-between.align-items-center
+            span Personal finance
+            span.fs-xs.text-muted.ms-3 13
+        li.widget-list-item
+          a(href='#').widget-list-link.d-flex.justify-content-between.align-items-center
+            span Travel &amp; vacation
+            span.fs-xs.text-muted.ms-3 7
+        li.widget-list-item
+          a(href='#').widget-list-link.d-flex.justify-content-between.align-items-center
+            span Lifestyle
+            span.fs-xs.text-muted.ms-3 34
+        li.widget-list-item
+          a(href='#').widget-list-link.d-flex.justify-content-between.align-items-center
+            span Technology
+            span.fs-xs.text-muted.ms-3 6
+
+    // Trending posts
+    .widget.mb-grid-gutter.pb-grid-gutter.border-bottom.mx-lg-2
+      h3.widget-title Trending posts
+      .d-flex.align-items-center.mb-3
+        a(href='blog-single.html').flex-shrink-0
+          img(src='img/blog/widget/01.jpg' width='64' alt='Post image').rounded
+        .ps-3
+          h6.blog-entry-title.fs-sm.mb-0
+            a(href='blog-single.html') Retro Cameras are Trending. Why so Popular?
+          span.fs-ms.text-muted
+            | by <a href='#' class='blog-entry-meta-link'>Andy Williams</a>
+      .d-flex.align-items-center.mb-3
+        a(href='blog-single.html').flex-shrink-0
+          img(src='img/blog/widget/02.jpg' width='64' alt='Post image').rounded
+        .ps-3
+          h6.blog-entry-title.fs-sm.mb-0
+            a(href='blog-single.html') New Trends in Suburban Fashion
+          span.fs-ms.text-muted
+            | by <a href='#' class='blog-entry-meta-link'>Susan Mayer</a>
+      .d-flex.align-items-center
+        a(href='blog-single.html').flex-shrink-0
+          img(src='img/blog/widget/03.jpg' width='64' alt='Post image').rounded
+        .ps-3
+          h6.blog-entry-title.fs-sm.mb-0
+            a(href='blog-single.html') Augmented Reality - Game Changing Technology
+          span.fs-ms.text-muted
+            | by <a href='#' class='blog-entry-meta-link'>John Doe</a>
+
+    // Popular tags
+    .widget.pb-grid-gutter.mx-lg-2
+      h3.widget-title Popular tags
+      a(href='#').btn-tag.me-2.mb-2 #fashion
+      a(href='#').btn-tag.me-2.mb-2 #gadgets
+      a(href='#').btn-tag.me-2.mb-2 #online shopping
+      a(href='#').btn-tag.me-2.mb-2 #top brands
+      a(href='#').btn-tag.me-2.mb-2 #travel
+      a(href='#').btn-tag.me-2.mb-2 #cartzilla news
+      a(href='#').btn-tag.me-2.mb-2 #personal finance
+      a(href='#').btn-tag.me-2.mb-2 #tips &amp; tricks
+
+    // Promo banner
+    .bg-size-cover.bg-position-center.rounded-3.py-5.mx-lg-2(style='background-image: url(img/blog/banner-bg.jpg);')
+      .py-5.px-4.text-center
+        h5.mb-2 Your Add Banner Here
+        p.fs-sm.text-muted Hurry up to reserve your spot
+        a(href='#').btn.btn-primary.btn-shadow.btn-sm Contact us

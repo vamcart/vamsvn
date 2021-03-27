@@ -1,0 +1,51 @@
+//- Account sidebar
+.bg-white.rounded-3.shadow-lg.pt-1.mb-5.mb-lg-0
+  .d-md-flex.justify-content-between.align-items-center.text-center.text-md-start.p-4
+    .d-md-flex.align-items-center
+      .img-thumbnail.rounded-circle.position-relative.flex-shrink-0.mx-auto.mb-2.mx-md-0.mb-md-0(style='width: 6.375rem;')
+        span(data-bs-toggle='tooltip' title='Reward points').badge.bg-warning.position-absolute.end-0.mt-n2 384
+        img(src='img/shop/account/avatar.jpg' alt='Susan Gardner').rounded-circle
+      .ps-md-3
+        h3.fs-base.mb-0 Susan Gardner
+        span.text-accent.fs-sm s.gardner@example.com
+    a(href='#account-menu' data-bs-toggle='collapse' aria-expanded='false').btn.btn-primary.d-lg-none.mb-2.mt-3.mt-md-0
+      i.ci-menu.me-2
+      | Account menu
+  #account-menu.d-lg-block.collapse
+    .bg-secondary.px-4.py-3
+      h3.fs-sm.mb-0.text-muted Dashboard
+    ul.list-unstyled.mb-0
+      li.border-bottom.mb-0
+        a(href='account-orders.html')&attributes(pageTitle === 'My orders' ? {'class': 'nav-link-style d-flex align-items-center px-4 py-3 active'} : {'class': 'nav-link-style d-flex align-items-center px-4 py-3'})
+          i.ci-bag.opacity-60.me-2
+          | Orders
+          span.fs-sm.text-muted.ms-auto 1
+      li.border-bottom.mb-0
+        a(href='account-wishlist.html')&attributes(pageTitle === 'My wishlist' ? {'class': 'nav-link-style d-flex align-items-center px-4 py-3 active'} : {'class': 'nav-link-style d-flex align-items-center px-4 py-3'})
+          i.ci-heart.opacity-60.me-2
+          | Wishlist
+          span.fs-sm.text-muted.ms-auto 3
+      li.mb-0
+        a(href='account-tickets.html')&attributes(pageTitle === 'Support tickets' ? {'class': 'nav-link-style d-flex align-items-center px-4 py-3 active'} : {'class': 'nav-link-style d-flex align-items-center px-4 py-3'})
+          i.ci-help.opacity-60.me-2
+          | Support tickets
+          span.fs-sm.text-muted.ms-auto 1
+    .bg-secondary.px-4.py-3
+      h3.fs-sm.mb-0.text-muted Account settings
+    ul.list-unstyled.mb-0
+      li.border-bottom.mb-0
+        a(href='account-profile.html')&attributes(pageTitle === 'Profile info' ? {'class': 'nav-link-style d-flex align-items-center px-4 py-3 active'} : {'class': 'nav-link-style d-flex align-items-center px-4 py-3'})
+          i.ci-user.opacity-60.me-2
+          | Profile info
+      li.border-bottom.mb-0
+        a(href='account-address.html')&attributes(pageTitle === 'My addresses' ? {'class': 'nav-link-style d-flex align-items-center px-4 py-3 active'} : {'class': 'nav-link-style d-flex align-items-center px-4 py-3'})
+          i.ci-location.opacity-60.me-2
+          | Addresses
+      li.mb-0
+        a(href='account-payment.html')&attributes(pageTitle === 'My payment methods' ? {'class': 'nav-link-style d-flex align-items-center px-4 py-3 active'} : {'class': 'nav-link-style d-flex align-items-center px-4 py-3'})
+          i.ci-card.opacity-60.me-2
+          | Payment methods
+      li.d-lg-none.border-top.mb-0
+        a(href='account-signin.html').nav-link-style.d-flex.align-items-center.px-4.py-3
+          i.ci-sign-out.opacity-60.me-2
+          | Sign out

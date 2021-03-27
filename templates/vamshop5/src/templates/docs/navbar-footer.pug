@@ -1,0 +1,32 @@
+extends ../partials/layout-docs
+
+//- Override default config variables
+append config
+  - var pageTitle = 'Navbar, Page title and Footer templates (Pug)'
+  - var isNestedFile = true
+  
+//- Page Content
+block content
+  .pb-5
+    p You can easily switch between differen pre-built Navbar, Page title and Footer variants using Pug templates.
+    h5.mb-3 Navbar
+    p: u Here is how to change Navbar and Page title variant inside any page template:
+    img(src='../img/docs/navbar.png' alt='Change Navbar template').d-block.img-thumbnail.mb-4
+    p: u And this is the list of available templates:
+    ul.list-unstyled.pb-2
+      li: code navbar-1-level-light
+      li: code navbar-1-level-dark
+      li: code navbar-2-level-light
+      li: code navbar-2-level-dark
+      li: code navbar-3-level-light
+      li: code navbar-3-level-dark
+      li: code navbar-electro-store
+      li: code navbar-marketplace
+    h5.mb-3 Footer
+    p: u Here is how to change Footer variant inside any page template:
+    img(src='../img/docs/footer.png' alt='Change Footer template').d-block.img-thumbnail.mb-4
+    p: u And this is the list of available templates:
+    ul.list-unstyled.mb-0
+      li: code footer-dark
+      li: code footer-light
+      li: code footer-marketplace

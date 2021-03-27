@@ -1,0 +1,460 @@
+{config_load file="$language/lang_$language.conf" section="create_account"}
+<div class="page">
+<div class="pageContent">
+<script>
+{literal}
+$(function($){
+
+    $('.form-anti-bot, .form-anti-bot-2').hide(); // hide inputs from users
+    var answer = $('.form-anti-bot input#anti-bot-a').val(); // get answer
+    $('.form-anti-bot input#anti-bot-q').val( answer ); // set answer into other input
+
+    if ( $('form#smart_checkout input#anti-bot-q').length == 0 ) {
+        var current_date = new Date();
+        var current_year = current_date.getFullYear();
+        $('form#smart_checkout').append('<input type="hidden" name="anti-bot-q" id="anti-bot-q" value="'+current_year+'" />'); // add whole input with answer via javascript to form
+    }
+
+});
+{/literal}
+</script>
+<div id="load_status"></div>
+{$FORM_ACTION}
+
+<div class="row">
+<div class="col-xl-9">
+
+<!--<h1>{#heading_checkout#}</h1>-->
+<div id="box">
+<div id="checkout">
+{$PAYMENT_FIELDS}
+{if $error!=''}
+<div class="CheckoutError">
+{$error}
+</div>
+{/if}
+
+<!--
+{if $TEXT_ORIGIN_LOGIN}<p>{$TEXT_ORIGIN_LOGIN}</p>{/if}
+-->
+
+<div id="shipping_box" class="sm_layout_box">
+{if !$smarty.session.customer_id}
+<h3>{$TITLE_SHIPPING_ADDRESS}</h3>
+{else}
+<div class="row">
+{if $ADDRESS_LABEL_SHIPPING_ADDRESS}
+<div class="col-md-6">
+<div class="no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative bg-white">
+<div class="col p-4 d-flex flex-column position-static">
+<h5 class="mb-0 font-weight-bold">{$TITLE_SHIPPING_ADDRESS}</h5>
+<div class="mb-1 text-muted"></div>
+<p class="card-text mb-auto">{$ADDRESS_LABEL_SHIPPING_ADDRESS}</p>
+{$BUTTON_SHIPPING_ADDRESS}
+</div>
+</div>
+</div>
+{/if}
+{if $sc_payment_address_show}
+{if $ADDRESS_LABEL_PAYMENT_ADDRESS}
+<div class="col-md-6">
+<div class="no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative bg-white">
+<div class="col p-4 d-flex flex-column position-static">
+<h5 class="mb-0 font-weight-bold">{$TITLE_PAYMENT_ADDRESS}</h5>
+<div class="mb-1 text-muted"></div>
+<p class="card-text mb-auto">{$ADDRESS_LABEL_PAYMENT_ADDRESS}</p>
+{$BUTTON_PAYMENT_ADDRESS}
+</div>
+</div>
+</div>
+{/if}
+{/if}
+</div>
+{/if}
+
+{if !$smarty.session.customer_id}
+
+{if $gender=='1'} 
+  <div class="form-group">
+      <label for="gender">{#text_gender#}</label>
+      {$INPUT_MALE}
+      {$INPUT_FEMALE}
+  </div>
+{/if}
+
+{if $birthdate=='1'} 
+  <div class="form-group">
+      <label for="dob">{#text_birthdate#}</label>
+      {$INPUT_DOB}
+  </div>
+{/if}
+
+  <div class="form-row">
+    <div class="form-group {if $secondname=='1'}col-md-4{else}col-md-6{/if}">
+      <label for="firstname">{#text_firstname#}</label>
+      {$INPUT_FIRSTNAME}
+    </div>
+    {if $secondname=='1'}
+    <div class="form-group col-md-6">
+      <label for="secondname">{#text_secondname#}</label>
+      {$INPUT_SECONDNAME}
+    </div>
+    {/if}
+    {if $lastname=='1'}
+    <div class="form-group {if $secondname=='1'}col-md-4{else}col-md-6{/if}">
+      <label for="lastname">{#text_lastname#}</label>
+      {$INPUT_LASTNAME}
+    </div>
+    {/if}
+  </div>
+
+{if $company=='1'} 
+  <div class="form-group">
+      <label for="company">{#text_company#}</label>
+      {$INPUT_COMPANY}
+  </div>
+{/if}
+<div id="shipping_address">
+
+  <div class="form-row">
+    {if $street_address=='1'}
+    <div class="form-group {if $suburb=='1'}col-md-6{else}col-md-12{/if}">
+      <label for="address">{#text_street#}</label>
+      {$INPUT_STREET}
+    </div>
+    {/if}
+    {if $suburb=='1'}
+    <div class="form-group col-md-6">
+      <label for="suburb">{#text_suburb#}</label>
+      {$INPUT_SUBURB}
+    </div>
+    {/if}
+  </div>
+
+  <div class="form-row">
+  {if $city=='1'}
+    <div class="form-group col-md-9">
+      <label for="city">{#text_city#}</label>
+      {$INPUT_CITY}
+    </div>
+  {/if}
+  {if $postcode=='1'}
+    <div class="form-group col-md-3">
+      <label for="postcode">{#text_code#}</label>
+      {$INPUT_CODE}
+    </div>
+  {/if}
+  </div>
+
+  <div class="form-row">
+    {if $country=='1'}
+    <div class="form-group col-md-6">
+      <label for="country">{#text_country#}</label>
+      <div id="shipping_country_box">
+      <div id="shipping_country">
+      {$SELECT_COUNTRY}
+      </div>
+      </div>
+    </div>
+    {else}
+    <div id="shipping_country_box">
+    <div id="shipping_country">
+    <input type="hidden" name="country" id="country" value="{$smarty.const.STORE_COUNTRY}" />
+    </div><!--div end shipping_country -->
+    </div><!--div end shipping_country_box -->
+    {/if}
+    {if $state=='1'}
+    <div class="form-group col-md-6">
+      <label for="state">{#text_state#}</label>
+      <div id="shipping_state_box">
+      <div id="shipping_state">
+      <span id="stateXML">{$INPUT_STATE}</span>
+      </div>
+      </div>
+    </div>
+    {else}
+    <div id="shipping_state_box">
+    <div id="shipping_state">    <input type="hidden" name="state" id="state" value="{$smarty.const.STORE_STATE}" />
+    </div><!--div end shipping_state -->
+    </div><!--div end shipping_state_box -->
+    {/if}
+  </div>
+
+</div> <!--div end shipping_address -->
+{/if}
+</div> <!--div end shipping_box --> 
+
+{if $sc_payment_address_show && $street_address_payment == '1'}
+<div id="payment_address_box"  class="sm_layout_box">
+{if !$smarty.session.customer_id}
+<div id="payment_address_checkbox">
+<div class="form-check mb-4">
+  {$PAYMENT_ADDRESS_CHECKBOX}
+  <label class="form-check-label" for="pay_show">
+    {$smarty.const.TEXT_SHIPPING_SAME_AS_PAYMENT}
+  </label>
+</div>
+</div>
+<div id="payment_address">
+<h3>{$TITLE_PAYMENT_ADDRESS}</h3>
+{if $gender_payment=='1'} 
+  <div class="form-group">
+      <label for="gender_payment">{#text_gender#}</label>
+      {$INPUT_MALE_PAYMENT}
+      {$INPUT_FEMALE_PAYMENT}
+  </div>
+{/if}
+
+{if $birthdate_payment=='1'} 
+  <div class="form-group">
+      <label for="dob_payment">{#text_birthdate#}</label>
+      {$INPUT_DOB_PAYMENT}
+  </div>
+{/if}
+
+  <div class="form-row">
+    <div class="form-group {if $secondname_payment=='1'}col-md-4{else}col-md-6{/if}">
+      <label for="firstname_payment">{#text_firstname#}</label>
+      {$INPUT_FIRSTNAME_PAYMENT}
+    </div>
+    {if $secondname_payment=='1'}
+    <div class="form-group col-md-6">
+      <label for="secondname_payment">{#text_secondname#}</label>
+      {$INPUT_SECONDNAME_PAYMENT}
+    </div>
+    {/if}
+    {if $lastname_payment=='1'}
+    <div class="form-group {if $secondname_payment=='1'}col-md-4{else}col-md-6{/if}">
+      <label for="lastname_payment">{#text_lastname#}</label>
+      {$INPUT_LASTNAME_PAYMENT}
+    </div>
+    {/if}
+  </div>
+
+{if $company_payment=='1'} 
+  <div class="form-group">
+      <label for="company_payment">{#text_company#}</label>
+      {$INPUT_COMPANY_PAYMENT}
+  </div>
+{/if}
+  <div class="form-row">
+    {if $street_address_payment=='1'}
+    <div class="form-group {if $suburb_payment=='1'}col-md-6{else}col-md-12{/if}">
+      <label for="address_payment">{#text_street#}</label>
+      {$INPUT_STREET_PAYMENT}
+    </div>
+    {/if}
+    {if $suburb_payment=='1'}
+    <div class="form-group col-md-6">
+      <label for="suburb_payment">{#text_suburb#}</label>
+      {$INPUT_SUBURB_PAYMENT}
+    </div>
+    {/if}
+  </div>
+
+  <div class="form-row">
+  {if $city_payment=='1'}
+    <div class="form-group col-md-9">
+      <label for="city_payment">{#text_city#}</label>
+      {$INPUT_CITY_PAYMENT}
+    </div>
+  {/if}
+  {if $postcode_payment=='1'}
+    <div class="form-group col-md-3">
+      <label for="postcode_payment">{#text_code#}</label>
+      {$INPUT_CODE_PAYMENT}
+    </div>
+  {/if}
+  </div>
+
+  <div class="form-row">
+    {if $country_payment=='1'}
+    <div class="form-group col-md-6">
+      <label for="country_payment">{#text_country#}</label>
+      <div id="payment_country_box">
+      <div id="payment_country">
+      {$SELECT_COUNTRY_PAYMENT}
+      </div>
+      </div>
+    </div>
+    {else}
+    <div id="payment_country_box">
+    <div id="payment_country">
+    <input type="hidden" name="country_payment" id="country_payment" value="{$smarty.const.STORE_COUNTRY}" />
+    </div><!--div end shipping_country -->
+    </div><!--div end shipping_country_box -->
+    {/if}
+    {if $state=='1'}
+    <div class="form-group col-md-6">
+      <label for="state_payment">{#text_state#}</label>
+      <div id="payment_state_box">
+      <div id="payment_state">
+      <span id="payment_stateXML">{$INPUT_STATE_PAYMENT}</span>
+      </div>
+      </div>
+    </div>
+    {else}
+    <div id="payment_state_box">
+    <div id="payment_state">    <input type="hidden" name="state_payment" id="state_payment" value="{$smarty.const.STORE_STATE}" />
+    </div><!--div end shipping_state -->
+    </div><!--div end shipping_state_box -->
+    {/if}
+  </div>
+
+</div><!--div end payment_address -->
+{/if}
+</div><!--div end payment_address_box -->
+{/if}
+
+{if !$smarty.session.customer_id}
+<div id="contact_box" class="sm_layout_box">
+<h3>{$TITLE_CONTACT_ADDRESS}</h3>
+
+  <div class="form-row">
+    {if $telephone=='1'}
+    <div class="form-group {if $fax=='1'}col-md-4{else}col-md-6{/if}">
+      <label for="tel">{#text_tel#}</label>
+      {$INPUT_TEL}
+    </div>
+    {/if}
+    {if $fax=='1'}
+    <div class="form-group col-md-6">
+      <label for="fax">{#text_fax#}</label>
+      {$INPUT_FAX}
+    </div>
+    {/if}
+    {if $email=='1'}
+    <div class="form-group {if $fax=='1'}col-md-4{else}col-md-6{/if}">
+      <label for="email">{#text_email#}</label>
+      {$INPUT_EMAIL}
+    </div>
+    {/if}
+  </div>
+
+{if $INPUT_CUSTOMERS_EXTRA_FIELDS}
+{foreach item=customers_extra_filelds from=$INPUT_CUSTOMERS_EXTRA_FIELDS}  <div class="form-group {if $suburb=='1'}col-md-6{else}col-md-12{/if}">
+    <label for="address">{$customers_extra_filelds.NAME}:</label>
+    {$customers_extra_filelds.VALUE}
+  </div>
+{/foreach}
+{/if}
+</div> <!--div end contact_box -->   
+{/if}
+
+{if !$smarty.session.customer_id}
+<div id="password_box" class="sm_layout_box">
+<!--
+{if $TITLE_CONTACT_PASSWORD}<h3>{$TITLE_CONTACT_PASSWORD}</h3>{/if}
+-->
+<div id="password_checkbox">
+{$PASSWORD_CHECKBOX}
+</div>
+{if $create_password=='1'}
+<div id="password_fields">
+<!--<p>{$TEXT_CONTACT_PASSWORD}</p>-->
+</div> <!--div end password_fields --> 
+{/if}
+</div> <!--div end password_box -->  
+{/if}
+
+{if $shipping=='true'}
+{if $smarty.const.MODULE_SHIPPING_PICKPOINT_STATUS == 'True'}
+<input type="hidden" name="to_pickpoint_id" id="to_pickpoint_id" value="">
+<input type="hidden" name="to_pickpoint_address" id="to_pickpoint_address" value="">
+{/if}
+{if $smarty.const.MODULE_SHIPPING_BOXBERRY_STATUS == 'True'}
+<input type="hidden" name="to_boxberry_id" id="to_boxberry_id" value="">
+<input type="hidden" name="to_boxberry_address" id="to_boxberry_address" value="">
+{/if}
+<div id="shipping_modules_box" class="sm_layout_box">
+<h3>{$TITLE_SHIPPING_MODULES}</h3>
+<div id="shipping_options"> 
+{$SHIPPING_BLOCK}
+</div> <!--div end shipping_options-->
+</div> <!--div end shipping_modules_box --> 
+{/if}
+
+<div id="payment_options" class="sm_layout_box"> 
+<h3>{$TITLE_PAYMENT_MODULES}</h3>
+{$PAYMENT_BLOCK}
+</div> <!--div end payment_options-->
+
+{if $GV_COVER!='true'}
+{$module_gift}
+{else}
+{#text_gccover#}
+{/if}
+
+{if $comments=='1'}
+<div id="comment_box" class="sm_layout_box">
+<div class="form-group">
+  <label for="comments"><h3>{$TITLE_COMMENTS}</h3></label>
+  {$COMMENTS}
+</div>
+</div><!--div end comment_box--> 
+{/if}
+
+{if $conditions=='true'}
+<div id="conditions" class="sm_layout_box">
+{$AGB_checkbox} {$smarty.const.SC_CONDITION} {$AGB_LINK} {$smarty.const.SC_CONDITION_END}
+</div><!--div end conditions --> 
+{/if}
+
+{if $smarty.const.DISPLAY_PRIVACY_TEXT == 'true'}
+<div>
+<small>
+{$smarty.const.PRIVACY_TEXT}
+</small>
+</div>
+{/if}
+
+<div class="form-anti-bot" style="clear:both;">
+	<strong>Current <span style="display:none;">month</span> <span style="display:inline;">ye@r</span> <span style="display:none;">day</span></strong> <span class="required">*</span>
+	<input type="hidden" name="anti-bot-a" id="anti-bot-a" value="{$smarty.now|date_format:"%Y"}" />
+	<input type="text" name="anti-bot-q" id="anti-bot-q" size="30" value="19" />
+</div>
+<div class="form-anti-bot-2" style="display:none;">
+	<strong>Leave this field empty</strong> <span class="required">*</span>
+	<input type="text" name="anti-bot-e-email-url" id="anti-bot-e-email-url" size="30" value=""/>
+</div>
+
+</div><!-- Div end checkout -->
+</div><!-- Div end checkout_container -->
+
+</div>
+
+
+<div class="col-xl-3">
+<div class="sticky-wrapper">
+<div class="sticky-top">
+<div id="order_total_modules" class="sm_layout_box">
+<div class="card card-product card-sm">
+<div class="card-header">
+<span class="h5">{$TITLE_TOTALS}</span>
+</div>
+<div class="card-body">
+<div class="info-wrap">
+{$ORDER_TOTALS}
+<hr />
+</div>
+</div>
+<div class="card-footer text-center">
+<button type="submit" class="btn btn-primary btn-block"><i class="fa fa-shopping-cart"></i> {$smarty.const.IMAGE_BUTTON_CHECKOUT}</button></div>
+</div>
+</div>
+
+{$FORM_END}
+
+{$MODULE_gift_cart}
+
+{$MODULE_order_details_checkout}
+
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+</div>

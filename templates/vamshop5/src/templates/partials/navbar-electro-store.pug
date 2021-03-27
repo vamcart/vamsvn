@@ -1,0 +1,192 @@
+// Navbar Electronics Store
+header.shadow-sm
+
+  // Topbar
+  .topbar.topbar-dark.bg-dark
+    .container
+      div
+        .topbar-text.dropdown.disable-autohide
+          a(href='#' data-bs-toggle='dropdown').topbar-link.dropdown-toggle
+            img(src='img/flags/en.png' width='20' alt='English').me-2
+            | Eng / $
+          ul.dropdown-menu.my-1
+            li.dropdown-item
+              select.form-select.form-select-sm
+                option(value='usd') $ USD
+                option(value='eur') € EUR
+                option(value='ukp') £ UKP
+                option(value='jpy') ¥ JPY
+            li
+              a(href='#').dropdown-item.pb-1
+                img(src='img/flags/fr.png' width='20' alt='Français').me-2
+                | Français
+            li
+              a(href='#').dropdown-item.pb-1
+                img(src='img/flags/de.png' width='20' alt='Deutsch').me-2
+                | Deutsch
+            li
+              a(href='#').dropdown-item
+                img(src='img/flags/it.png' width='20' alt='Italiano').me-2
+                | Italiano
+        .topbar-text.text-nowrap.d-none.d-md-inline-block.border-start.border-light.ps-3.ms-3
+          span.text-muted.me-1 Available 24/7 at
+          a(href='tel:00331697720').topbar-link (00) 33 169 7720
+      .topbar-text.dropdown.d-md-none.ms-auto
+        a(href='#' data-bs-toggle='dropdown').topbar-link.dropdown-toggle Wishlist / Compare / Track
+        ul.dropdown-menu.dropdown-menu-end
+          li
+            a(href='account-wishlist.html').dropdown-item
+              i.ci-heart.text-muted.me-2
+              | Wishlist (3)
+          li
+            a(href='comparison.html').dropdown-item
+              i.ci-compare.text-muted.me-2
+              | Compare (3)
+          li
+            a(href='order-tracking.html').dropdown-item
+              i.ci-location.text-muted.me-2
+              | Order tracking
+      .d-none.d-md-block.ms-3.text-nowrap
+        a(href='account-wishlist.html').topbar-link.d-none.d-md-inline-block
+          i.ci-heart.mt-n1
+          | Wishlist (3)
+        a(href='comparison.html').topbar-link.ms-3.ps-3.border-start.border-light.d-none.d-md-inline-block
+          i.ci-compare.mt-n1
+          | Compare (3)
+        a(href='order-tracking.html').topbar-link.ms-3.border-start.border-light.ps-3.d-none.d-md-inline-block
+          i.ci-location.mt-n1
+          | Order tracking
+
+  // Remove "navbar-sticky" class to make navigation bar scrollable with the page.
+  .navbar-sticky.bg-light
+    .navbar.navbar-expand-lg.navbar-light
+      .container
+        a(href='index.html').navbar-brand.d-none.d-sm-block.me-3.flex-shrink-0
+          img(src='img/logo-dark.png' width='142' alt='Cartzilla')
+        a(href='index.html').navbar-brand.d-sm-none.me-2
+          img(src='img/logo-icon.png' width='74' alt='Cartzilla')
+
+        // Search
+        .input-group.d-none.d-lg-flex.flex-nowrap.mx-4
+          i.ci-search.position-absolute.top-50.start-0.translate-middle-y.ms-3
+          input(type='text' placeholder='Search for products').form-control.rounded-start.w-100
+          select.form-select.flex-shrink-0(style='width: 10.5rem;')
+            option All categories
+            option Computers
+            option Smartphones
+            option TV, Video, Audio
+            option Cameras
+            option Headphones
+            option Wearables
+            option Printers
+            option Video Games
+            option Home Music
+            option Data Storage
+        
+        // Toolbar
+        .navbar-toolbar.d-flex.flex-shrink-0.align-items-center
+          button(type='button' data-bs-toggle='collapse' data-bs-target='#navbarCollapse').navbar-toggler
+            span.navbar-toggler-icon
+          a(href='#').navbar-tool.navbar-stuck-toggler
+            span.navbar-tool-tooltip Toggle menu
+            .navbar-tool-icon-box: i.navbar-tool-icon.ci-menu
+          a(href='#signin-modal' data-bs-toggle='modal').navbar-tool.ms-1.ms-lg-0.me-n1.me-lg-2
+            .navbar-tool-icon-box: i.navbar-tool-icon.ci-user
+            .navbar-tool-text.ms-n3
+              small Hello, Sign in
+              | My Account
+          .navbar-tool.dropdown.ms-3
+            a(href='shop-cart.html').navbar-tool-icon-box.bg-secondary.dropdown-toggle
+              span.navbar-tool-label 4
+              i.navbar-tool-icon.ci-cart
+            a(href='shop-cart.html').navbar-tool-text
+              small My Cart
+              | $1,247.00
+
+            // Cart dropdown
+            .dropdown-menu.dropdown-menu-end
+              .widget.widget-cart.px-3.pt-2.pb-3(style='width: 20rem;')
+                div(style='height: 15rem;' data-simplebar data-simplebar-auto-hide='false')
+                  .widget-cart-item.pb-2.border-bottom
+                    button(type='button' class='btn-close text-danger' aria-label='Remove')
+                      span(aria-hidden='true') &times;
+                    .d-flex.align-items-center
+                      a(href='shop-single-v2.html').d-block.flex-shrink-0
+                        img(src='img/shop/cart/widget/05.jpg' width='64' alt='Product')
+                      .ps-2
+                        h6.widget-product-title
+                          a(href='shop-single-v2.html') Bluetooth Headphones
+                        .widget-product-meta
+                          span.text-accent.me-2
+                            | $259.
+                            small 00
+                          span.text-muted x 1
+                  .widget-cart-item.py-2.border-bottom
+                    button(type='button' class='btn-close text-danger' aria-label='Remove')
+                      span(aria-hidden='true') &times;
+                    .d-flex.align-items-center
+                      a(href='shop-single-v2.html').d-block.flex-shrink-0
+                        img(src='img/shop/cart/widget/06.jpg' width='64' alt='Product')
+                      .ps-2
+                        h6.widget-product-title
+                          a(href='shop-single-v2.html') Cloud Security Camera
+                        .widget-product-meta
+                          span.text-accent.me-2
+                            | $122.
+                            small 00
+                          span.text-muted x 1
+                  .widget-cart-item.py-2.border-bottom
+                    button(type='button' class='btn-close text-danger' aria-label='Remove')
+                      span(aria-hidden='true') &times;
+                    .d-flex.align-items-center
+                      a(href='shop-single-v2.html').d-block.flex-shrink-0
+                        img(src='img/shop/cart/widget/07.jpg' width='64' alt='Product')
+                      .ps-2
+                        h6.widget-product-title
+                          a(href='shop-single-v2.html') Android Smartphone S10
+                        .widget-product-meta
+                          span.text-accent.me-2
+                            | $799.
+                            small 00
+                          span.text-muted x 1
+                  .widget-cart-item.py-2.border-bottom
+                    button(type='button' class='btn-close text-danger' aria-label='Remove')
+                      span(aria-hidden='true') &times;
+                    .d-flex.align-items-center
+                      a(href='shop-single-v2.html').d-block.flex-shrink-0
+                        img(src='img/shop/cart/widget/08.jpg' width='64' alt='Product')
+                      .ps-2
+                        h6.widget-product-title
+                          a(href='shop-single-v2.html') Android Smart TV Box
+                        .widget-product-meta
+                          span.text-accent.me-2
+                            | $67.
+                            small 00
+                          span.text-muted x 1
+                .d-flex.flex-wrap.justify-content-between.align-items-center.py-3
+                  .fs-sm.me-2.py-2
+                    span.text-muted Subtotal:
+                    span.text-accent.fs-base.ms-1
+                      | $1,247.
+                      small 00
+                  a(href='shop-cart.html').btn.btn-outline-secondary.btn-sm
+                    | Expand cart
+                    i.ci-arrow-right.ms-1.me-n1
+                a(href='checkout-details.html').btn.btn-primary.btn-sm.d-block.w-100
+                  i.ci-card.me-2.fs-base.align-middle
+                  | Checkout
+
+    .navbar.navbar-expand-lg.navbar-light.navbar-stuck-menu.mt-n2.pt-0.pb-2
+      .container
+        #navbarCollapse.collapse.navbar-collapse
+
+          // Search
+          .input-group.d-lg-none.my-3
+            i.ci-search.position-absolute.top-50.start-0.translate-middle-y.ms-3
+            input(type='text' placeholder='Search for products').form-control.rounded-start
+
+          //- menu-departments-electronics.pug
+          include menu-departments-electronics
+
+          //- menu-primary.pug
+          include menu-primary

@@ -1,0 +1,17 @@
+{config_load file="$language/lang_$language.conf" section="boxes"}
+<section class="widget inner">
+	<h3 class="widget-title">{#heading_guestnewsletter#}</h3>
+		{$FORM_ACTION}
+			<div class="control-group">
+			<label class="control-label" for="newsletter_email">{#text_email#}</label>
+				<div class="controls">
+					<input type="text" name="email" id="newsletter_email" placeholder="{#text_email#}">
+				</div>
+			</div>
+			<div class="control-group">
+				<div class="controls">
+					<button type="submit" class="btn btn-inverse"><i class="fa fa-check"></i> {$smarty.const.IMAGE_BUTTON_CONTINUE}</button>
+				</div>
+			</div>
+		{$FORM_END}
+</section>

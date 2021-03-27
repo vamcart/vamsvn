@@ -1,0 +1,185 @@
+// Navbar Marketplace
+// Remove "navbar-sticky" class to make navigation bar scrollable with the page.
+header.bg-light.shadow-sm.navbar-sticky
+  .navbar.navbar-expand-lg.navbar-light
+    .container
+      a(href='index.html').navbar-brand.d-none.d-sm-block.flex-shrink-0.me-4.order-lg-1
+        img(src='img/logo-dark.png' width='142' alt='Cartzilla')
+      a(href='index.html').navbar-brand.d-sm-none.me-2.order-lg-1
+        img(src='img/logo-icon.png' width='74' alt='Cartzilla')
+      
+      // Toolbar
+      .navbar-toolbar.d-flex.align-items-center.order-lg-3
+        //- Mobile menu toggler
+        button(type='button' data-bs-toggle='collapse' data-bs-target='#navbarCollapse').navbar-toggler
+          span.navbar-toggler-icon
+        //- Search
+        a(href='javascript:void(0)' data-bs-toggle='collapse' data-bs-target='#searchBox' role='button' aria-expanded='false', aria-controls='searchBox').navbar-tool.d-none.d-lg-flex
+          span.navbar-tool-tooltip Search
+          .navbar-tool-icon-box: i.navbar-tool-icon.ci-search
+        //- Favorites
+        a(href='dashboard-favorites.html').navbar-tool.d-none.d-lg-flex
+          span.navbar-tool-tooltip Favorites
+          .navbar-tool-icon-box: i.navbar-tool-icon.ci-heart
+        //- Account dropdown
+        .navbar-tool.dropdown.ms-2
+          a(href='dashboard-sales.html').navbar-tool-icon-box.border.dropdown-toggle
+            img(src='img/marketplace/account/avatar-sm.png' width='32' alt='Createx Studio')
+          a(href='dashboard-sales.html').navbar-tool-text.ms-n1
+            small Createx Std.
+            | $1,375.00
+          .dropdown-menu.dropdown-menu-end
+            div(style='min-width: 14rem;')
+              h6.dropdown-header Account
+              a(href='dashboard-settings.html').dropdown-item.d-flex.align-items-center
+                i.ci-settings.opacity-60.me-2
+                | Settings
+              a(href='dashboard-purchases.html').dropdown-item.d-flex.align-items-center
+                i.ci-basket.opacity-60.me-2
+                | Purchases
+              a(href='dashboard-favorites.html').dropdown-item.d-flex.align-items-center
+                i.ci-heart.opacity-60.me-2
+                | Favorites
+                span.fs-xs.text-muted.ms-auto 4
+              .dropdown-divider
+              h6.dropdown-header Seller Dashboard
+              a(href='dashboard-sales.html').dropdown-item.d-flex.align-items-center
+                i.ci-dollar.opacity-60.me-2
+                | Sales
+                span.fs-xs.text-muted.ms-auto $1,375.00
+              a(href='dashboard-products.html').dropdown-item.d-flex.align-items-center
+                i.ci-package.opacity-60.me-2
+                | Products
+                span.fs-xs.text-muted.ms-auto 5
+              a(href='dashboard-add-new-product.html').dropdown-item.d-flex.align-items-center
+                i.ci-cloud-upload.opacity-60.me-2
+                | Add New Product
+              a(href='dashboard-payouts.html').dropdown-item.d-flex.align-items-center
+                i.ci-currency-exchange.opacity-60.me-2
+                | Payouts
+              .dropdown-divider
+              a(href='account-signin.html').dropdown-item.d-flex.align-items-center
+                i.ci-sign-out.opacity-60.me-2
+                | Sign Out
+        //- Cart
+        .navbar-tool.ms-4
+          a(href='marketplace-cart.html').navbar-tool-icon-box.bg-secondary.dropdown-toggle
+            span.navbar-tool-label 3
+            i.navbar-tool-icon.ci-cart
+
+      #navbarCollapse.collapse.navbar-collapse.me-auto.order-lg-2
+
+        // Search
+        .input-group.d-lg-none.my-3
+          i.ci-search.position-absolute.top-50.start-0.translate-middle-y.text-muted.fs-base.ms-3
+          input(type='text' placeholder='Search marketplace').form-control.rounded-start
+        
+        // Categories dropdown
+        ul.navbar-nav.navbar-mega-nav.pe-lg-2.me-lg-2
+          li.nav-item.dropdown
+            a(href='#' data-bs-toggle='dropdown').nav-link.dropdown-toggle.ps-lg-0
+              i.ci-menu.align-middle.mt-n1.me-2
+              | Categories
+            ul.dropdown-menu.py-1
+              li.dropdown
+                a(href='#' data-bs-toggle='dropdown').dropdown-item.dropdown-toggle Photos
+                ul.dropdown-menu
+                  li.dropdown-item.product-title.fw-medium
+                    a(href='marketplace-category.html')
+                      | All Photos
+                      i.ci-arrow-right.fs-xs.ms-1
+                  li.dropdown-divider
+                  li: a(href='marketplace-category.html').dropdown-item Abstract
+                  li: a(href='marketplace-category.html').dropdown-item Animals
+                  li: a(href='marketplace-category.html').dropdown-item Architecture
+                  li: a(href='marketplace-category.html').dropdown-item Beauty &amp; Fashion
+                  li: a(href='marketplace-category.html').dropdown-item Business
+                  li: a(href='marketplace-category.html').dropdown-item Education
+                  li: a(href='marketplace-category.html').dropdown-item Food &amp; Drink
+                  li: a(href='marketplace-category.html').dropdown-item Holidays
+                  li: a(href='marketplace-category.html').dropdown-item Industrial
+                  li: a(href='marketplace-category.html').dropdown-item People
+                  li: a(href='marketplace-category.html').dropdown-item Sports
+                  li: a(href='marketplace-category.html').dropdown-item Technology
+              li.dropdown
+                a(href='#' data-bs-toggle='dropdown').dropdown-item.dropdown-toggle Graphics
+                ul.dropdown-menu
+                  li.dropdown-item.product-title.fw-medium
+                    a(href='#')
+                      | All Graphics
+                      i.ci-arrow-right.fs-xs.ms-1
+                  li.dropdown-divider
+                  li: a(href='marketplace-category.html').dropdown-item Icons
+                  li: a(href='marketplace-category.html').dropdown-item Illustartions
+                  li: a(href='marketplace-category.html').dropdown-item Patterns
+                  li: a(href='marketplace-category.html').dropdown-item Textures
+                  li: a(href='marketplace-category.html').dropdown-item Web Elements
+              li.dropdown
+                a(href='#' data-bs-toggle='dropdown').dropdown-item.dropdown-toggle UI Design
+                ul.dropdown-menu
+                  li.dropdown-item.product-title.fw-medium
+                    a(href='marketplace-category.html')
+                      | All UI Design
+                      i.ci-arrow-right.fs-xs.ms-1
+                  li.dropdown-divider
+                  li: a(href='marketplace-category.html').dropdown-item PSD Templates
+                  li: a(href='marketplace-category.html').dropdown-item Sketch Templates
+                  li: a(href='marketplace-category.html').dropdown-item Adobe XD Templates
+                  li: a(href='marketplace-category.html').dropdown-item Figma Templates
+              li.dropdown
+                a(href='#' data-bs-toggle='dropdown').dropdown-item.dropdown-toggle Web Themes
+                ul.dropdown-menu
+                  li.dropdown-item.product-title.fw-medium
+                    a(href='marketplace-category.html')
+                      | All Web Themes
+                      i.ci-arrow-right.fs-xs.ms-1
+                  li.dropdown-divider
+                  li: a(href='marketplace-category.html').dropdown-item WordPress Themes
+                  li: a(href='marketplace-category.html').dropdown-item Bootstrap Themes
+                  li: a(href='marketplace-category.html').dropdown-item eCommerce Templates
+                  li: a(href='marketplace-category.html').dropdown-item Muse Templates
+                  li: a(href='marketplace-category.html').dropdown-item Plugins
+              li.dropdown
+                a(href='#' data-bs-toggle='dropdown').dropdown-item.dropdown-toggle Fonts
+                ul.dropdown-menu
+                  li.dropdown-item.product-title.fw-medium
+                    a(href='marketplace-category.html')
+                      | All Fonts
+                      i.ci-arrow-right.fs-xs.ms-1
+                  li.dropdown-divider
+                  li: a(href='marketplace-category.html').dropdown-item Blackletter
+                  li: a(href='marketplace-category.html').dropdown-item Display
+                  li: a(href='marketplace-category.html').dropdown-item Non Western
+                  li: a(href='marketplace-category.html').dropdown-item Sans Serif
+                  li: a(href='marketplace-category.html').dropdown-item Script
+                  li: a(href='marketplace-category.html').dropdown-item Serif
+                  li: a(href='marketplace-category.html').dropdown-item Slab Serif
+                  li: a(href='marketplace-category.html').dropdown-item Symbols
+              li.dropdown
+                a(href='#' data-bs-toggle='dropdown').dropdown-item.dropdown-toggle Add-Ons
+                ul.dropdown-menu
+                  li.dropdown-item.product-title.fw-medium
+                    a(href='marketplace-category.html')
+                      | All Add-Ons
+                      i.ci-arrow-right.fs-xs.ms-1
+                  li.dropdown-divider
+                  li: a(href='marketplace-category.html').dropdown-item Photoshop Add-Ons
+                  li: a(href='marketplace-category.html').dropdown-item Illustrator Add-Ons
+                  li: a(href='marketplace-category.html').dropdown-item Sketch Plugins
+                  li: a(href='marketplace-category.html').dropdown-item Procreate Brushes
+                  li: a(href='marketplace-category.html').dropdown-item InDesign Palettes
+                  li: a(href='marketplace-category.html').dropdown-item Lightroom Presets
+                  li: a(href='marketplace-category.html').dropdown-item Other Software
+        
+        // Primary menu
+        ul.navbar-nav
+          li.nav-item
+            a(href='index.html').nav-link Back to main demo
+
+  // Search collapse
+  #searchBox.search-box.collapse
+    .card.pt-2.pb-4.border-0.rounded-0
+      .container
+        .input-group
+          i.ci-search.position-absolute.top-50.start-0.translate-middle-y.text-muted.fs-base.ms-3
+          input(type='text' placeholder='Search marketplace').form-control.rounded-start

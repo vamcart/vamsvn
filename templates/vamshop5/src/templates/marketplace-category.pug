@@ -1,0 +1,454 @@
+extends partials/layout
+
+//- Override default config variables
+append config
+  - var pageTitle = 'Marketplace category'
+  - var breadcrumbs = [{'title': 'Market', 'link': 'home-marketplace.html'}, {'title': 'Inside category'}]
+  - var parentMenu = 'Shop'
+
+//- Navbar
+block navbar
+  include partials/navbar-marketplace
+
+//- Page Title
+block page-title
+
+  // Used for marketplace templates with filters on top
+  .bg-accent.pt-4.pb-5
+    .container.pt-2.pb-3.pt-lg-3.pb-lg-4
+      .d-lg-flex.justify-content-between.pb-3
+        .order-lg-2.mb-3.mb-lg-0.pt-lg-2
+          +breadcrumb('light')
+        .order-lg-1.pe-lg-4.text-center.text-lg-start
+          h1.h3.text-light.mb-0 !{pageTitle}
+
+  
+//- Page Content
+block content
+
+  .container.pb-5.mb-2.mb-md-4
+
+    // Toolbar
+    .bg-light.shadow-lg.rounded-3.mt-n5.mb-4
+      .d-flex.align-items-center.ps-2
+
+        // Search
+        .input-group
+          i.ci-search.position-absolute.top-50.start-0.translate-middle-y.fs-md.ms-3
+          input(type='text' placeholder='Search in this category...').form-control.border-0.shadow-none
+
+        // Sort
+        .d-flex.align-items-center
+          .dropdown.py-4.border-start
+            a(href='#' data-bs-toggle='dropdown').nav-link-style.fs-md.fw-medium.dropdown-toggle.p-4
+              span.d-inline-block.py-1
+                i.ci-thumb-up.align-middle.opacity-60.mt-n1.me-2
+                | Popular
+            ul.dropdown-menu.dropdown-menu-end
+              li
+                a(href='#').dropdown-item
+                  i.ci-flag.me-2.opacity-60
+                  | Newest
+              li
+                a(href='#').dropdown-item
+                  i.ci-rocket.me-2.opacity-60
+                  | Bestsellers
+              li
+                a(href='#').dropdown-item
+                  i.ci-loading.me-2.opacity-60
+                  | Updated
+              li
+                a(href='#').dropdown-item
+                  i.ci-arrow-down.me-2.opacity-60
+                  | Low Price
+              li
+                a(href='#').dropdown-item
+                  i.ci-arrow-up.me-2.opacity-60
+                  | High Price
+
+        // Pagination
+        .d-none.d-md-flex.align-items-center.border-start.ps-4
+          span.fs-md.text-nowrap.me-4 Pages&nbsp; 1 / 5
+          a(href='#').nav-link-style.p-4.border-start
+            span.d-inline-block.py-1
+              i.ci-arrow-left
+          a(href='#').nav-link-style.p-4.border-start
+            span.d-inline-block.py-1
+              i.ci-arrow-right
+
+    // Products grid
+    .row.pt-3.mx-n2
+
+      // Product
+      .col-lg-3.col-md-4.col-sm-6.px-2.mb-grid-gutter
+        .card.product-card-alt
+          .product-thumb
+            button(type='button').btn-wishlist.btn-sm
+              i.ci-heart
+            .product-card-actions
+              a(href='marketplace-single.html').btn.btn-light.btn-icon.btn-shadow.fs-base.mx-2
+                i.ci-eye
+              button(type='button').btn.btn-light.btn-icon.btn-shadow.fs-base.mx-2
+                i.ci-cart
+            a(href='marketplace-single.html').product-thumb-overlay
+            img(src='img/marketplace/products/02.jpg' alt='Product')
+          .card-body
+            .d-flex.flex-wrap.justify-content-between.align-items-start.pb-2
+              .text-muted.fs-xs.me-1
+                | by 
+                a(href='#').product-meta.fw-medium Createx Std. 
+                | in 
+                a(href='#').product-meta.fw-medium Graphics
+              +star-rating(5)
+            h3.product-title.fs-sm.mb-2
+              a(href='marketplace-single.html') Floating Phone and Tablet Mockup
+            .d-flex.flex-wrap.justify-content-between.align-items-center
+              .fs-sm.me-2
+                i.ci-download.text-muted.me-1
+                | 109
+                span.fs-xs.ms-1 Sales
+              .bg-faded-accent.text-accent.rounded-1.py-1.px-2 $15.<small>00</small>
+
+      // Product
+      .col-lg-3.col-md-4.col-sm-6.px-2.mb-grid-gutter
+        .card.product-card-alt
+          .product-thumb
+            button(type='button').btn-wishlist.btn-sm
+              i.ci-heart
+            .product-card-actions
+              a(href='marketplace-single.html').btn.btn-light.btn-icon.btn-shadow.fs-base.mx-2
+                i.ci-eye
+              button(type='button').btn.btn-light.btn-icon.btn-shadow.fs-base.mx-2
+                i.ci-cart
+            a(href='marketplace-single.html').product-thumb-overlay
+            img(src='img/marketplace/products/03.jpg' alt='Product')
+          .card-body
+            .d-flex.flex-wrap.justify-content-between.align-items-start.pb-2
+              .text-muted.fs-xs.me-1
+                | by 
+                a(href='#').product-meta.fw-medium Createx Std. 
+                | in 
+                a(href='#').product-meta.fw-medium Graphics
+              +star-rating(4)
+            h3.product-title.fs-sm.mb-2
+              a(href='marketplace-single.html') Project Devices Showcase (PSD)
+            .d-flex.flex-wrap.justify-content-between.align-items-center
+              .fs-sm.me-2
+                i.ci-download.text-muted.me-1
+                | 95
+                span.fs-xs.ms-1 Sales
+              .bg-faded-accent.text-accent.rounded-1.py-1.px-2 $18.<small>00</small>
+
+      // Product
+      .col-lg-3.col-md-4.col-sm-6.px-2.mb-grid-gutter
+        .card.product-card-alt
+          .product-thumb
+            button(type='button').btn-wishlist.btn-sm
+              i.ci-heart
+            .product-card-actions
+              a(href='marketplace-single.html').btn.btn-light.btn-icon.btn-shadow.fs-base.mx-2
+                i.ci-eye
+              button(type='button').btn.btn-light.btn-icon.btn-shadow.fs-base.mx-2
+                i.ci-cart
+            a(href='marketplace-single.html').product-thumb-overlay
+            img(src='img/marketplace/products/08.jpg' alt='Product')
+          .card-body
+            .d-flex.flex-wrap.justify-content-between.align-items-start.pb-2
+              .text-muted.fs-xs.me-1
+                | by 
+                a(href='#').product-meta.fw-medium pixels 
+                | in 
+                a(href='#').product-meta.fw-medium Graphics
+              +star-rating(3.5)
+            h3.product-title.fs-sm.mb-2
+              a(href='marketplace-single.html') Business Card Branding Mockup
+            .d-flex.flex-wrap.justify-content-between.align-items-center
+              .fs-sm.me-2
+                i.ci-download.text-muted.me-1
+                | 316
+                span.fs-xs.ms-1 Sales
+              .bg-faded-accent.text-accent.rounded-1.py-1.px-2 $17.<small>00</small>
+
+      // Product
+      .col-lg-3.col-md-4.col-sm-6.px-2.mb-grid-gutter
+        .card.product-card-alt
+          .product-thumb
+            button(type='button').btn-wishlist.btn-sm
+              i.ci-heart
+            .product-card-actions
+              a(href='marketplace-single.html').btn.btn-light.btn-icon.btn-shadow.fs-base.mx-2
+                i.ci-eye
+              button(type='button').btn.btn-light.btn-icon.btn-shadow.fs-base.mx-2
+                i.ci-cart
+            a(href='marketplace-single.html').product-thumb-overlay
+            img(src='img/marketplace/products/07.jpg' alt='Product')
+          .card-body
+            .d-flex.flex-wrap.justify-content-between.align-items-start.pb-2
+              .text-muted.fs-xs.me-1
+                | by 
+                a(href='#').product-meta.fw-medium pixels 
+                | in 
+                a(href='#').product-meta.fw-medium Graphics
+              +star-rating(4)
+            h3.product-title.fs-sm.mb-2
+              a(href='marketplace-single.html') Gravity Device Mockups (PSD)
+            .d-flex.flex-wrap.justify-content-between.align-items-center
+              .fs-sm.me-2
+                i.ci-download.text-muted.me-1
+                | 234
+                span.fs-xs.ms-1 Sales
+              .bg-faded-accent.text-accent.rounded-1.py-1.px-2 $16.<small>00</small>
+
+      // Product
+      .col-lg-3.col-md-4.col-sm-6.px-2.mb-grid-gutter
+        .card.product-card-alt
+          .product-thumb
+            button(type='button').btn-wishlist.btn-sm
+              i.ci-heart
+            .product-card-actions
+              a(href='marketplace-single.html').btn.btn-light.btn-icon.btn-shadow.fs-base.mx-2
+                i.ci-eye
+              button(type='button').btn.btn-light.btn-icon.btn-shadow.fs-base.mx-2
+                i.ci-cart
+            a(href='marketplace-single.html').product-thumb-overlay
+            img(src='img/marketplace/products/01.jpg' alt='Product')
+          .card-body
+            .d-flex.flex-wrap.justify-content-between.align-items-start.pb-2
+              .text-muted.fs-xs.me-1
+                | by 
+                a(href='#').product-meta.fw-medium Createx Std. 
+                | in 
+                a(href='#').product-meta.fw-medium UI Design
+              +star-rating(2.5)
+            h3.product-title.fs-sm.mb-2
+              a(href='marketplace-single.html') Square Style Mobile UI Kit (Sketch)
+            .d-flex.flex-wrap.justify-content-between.align-items-center
+              .fs-sm.me-2
+                i.ci-download.text-muted.me-1
+                | 153
+                span.fs-xs.ms-1 Sales
+              .bg-faded-accent.text-accent.rounded-1.py-1.px-2 $24.<small>00</small>
+
+      // Product
+      .col-lg-3.col-md-4.col-sm-6.px-2.mb-grid-gutter
+        .card.product-card-alt
+          .product-thumb
+            button(type='button').btn-wishlist.btn-sm
+              i.ci-heart
+            .product-card-actions
+              a(href='marketplace-single.html').btn.btn-light.btn-icon.btn-shadow.fs-base.mx-2
+                i.ci-eye
+              button(type='button').btn.btn-light.btn-icon.btn-shadow.fs-base.mx-2
+                i.ci-cart
+            a(href='marketplace-single.html').product-thumb-overlay
+            img(src='img/marketplace/products/04.jpg' alt='Product')
+          .card-body
+            .d-flex.flex-wrap.justify-content-between.align-items-start.pb-2
+              .text-muted.fs-xs.me-1
+                | by 
+                a(href='#').product-meta.fw-medium Createx Std. 
+                | in 
+                a(href='#').product-meta.fw-medium Graphics
+              +star-rating(5)
+            h3.product-title.fs-sm.mb-2
+              a(href='marketplace-single.html') Flat-line E-Commerce Icons (AI)
+            .d-flex.flex-wrap.justify-content-between.align-items-center
+              .fs-sm.me-2
+                i.ci-download.text-muted.me-1
+                | 26
+                span.fs-xs.ms-1 Sales
+              .bg-faded-accent.text-accent.rounded-1.py-1.px-2 $18.<small>00</small>
+
+      // Product
+      .col-lg-3.col-md-4.col-sm-6.px-2.mb-grid-gutter
+        .card.product-card-alt
+          .product-thumb
+            button(type='button').btn-wishlist.btn-sm
+              i.ci-heart
+            .product-card-actions
+              a(href='marketplace-single.html').btn.btn-light.btn-icon.btn-shadow.fs-base.mx-2
+                i.ci-eye
+              button(type='button').btn.btn-light.btn-icon.btn-shadow.fs-base.mx-2
+                i.ci-cart
+            a(href='marketplace-single.html').product-thumb-overlay
+            img(src='img/marketplace/products/09.jpg' alt='Product')
+          .card-body
+            .d-flex.flex-wrap.justify-content-between.align-items-start.pb-2
+              .text-muted.fs-xs.me-1
+                | by 
+                a(href='#').product-meta.fw-medium pixels 
+                | in 
+                a(href='#').product-meta.fw-medium UI Design
+              +star-rating(4)
+            h3.product-title.fs-sm.mb-2
+              a(href='marketplace-single.html') Isometric Device Mockups (PSD)
+            .d-flex.flex-wrap.justify-content-between.align-items-center
+              .fs-sm.me-2
+                i.ci-download.text-muted.me-1
+                | 36
+                span.fs-xs.ms-1 Sales
+              .bg-faded-accent.text-accent.rounded-1.py-1.px-2 $16.<small>00</small>
+
+      // Product
+      .col-lg-3.col-md-4.col-sm-6.px-2.mb-grid-gutter
+        .card.product-card-alt
+          .product-thumb
+            button(type='button').btn-wishlist.btn-sm
+              i.ci-heart
+            .product-card-actions
+              a(href='marketplace-single.html').btn.btn-light.btn-icon.btn-shadow.fs-base.mx-2
+                i.ci-eye
+              button(type='button').btn.btn-light.btn-icon.btn-shadow.fs-base.mx-2
+                i.ci-cart
+            a(href='marketplace-single.html').product-thumb-overlay
+            img(src='img/marketplace/products/10.jpg' alt='Product')
+          .card-body
+            .d-flex.flex-wrap.justify-content-between.align-items-start.pb-2
+              .text-muted.fs-xs.me-1
+                | by 
+                a(href='#').product-meta.fw-medium theDesigner 
+                | in 
+                a(href='#').product-meta.fw-medium Graphics
+              +star-rating(3)
+            h3.product-title.fs-sm.mb-2
+              a(href='marketplace-single.html') Coffe Paper Cup Mockup
+            .d-flex.flex-wrap.justify-content-between.align-items-center
+              .fs-sm.me-2
+                i.ci-download.text-muted.me-1
+                | 57
+                span.fs-xs.ms-1 Sales
+              .bg-faded-accent.text-accent.rounded-1.py-1.px-2 $10.<small>00</small>
+
+      // Product
+      .col-lg-3.col-md-4.col-sm-6.px-2.mb-grid-gutter
+        .card.product-card-alt
+          .product-thumb
+            button(type='button').btn-wishlist.btn-sm
+              i.ci-heart
+            .product-card-actions
+              a(href='marketplace-single.html').btn.btn-light.btn-icon.btn-shadow.fs-base.mx-2
+                i.ci-eye
+              button(type='button').btn.btn-light.btn-icon.btn-shadow.fs-base.mx-2
+                i.ci-cart
+            a(href='marketplace-single.html').product-thumb-overlay
+            img(src='img/marketplace/products/06.jpg' alt='Product')
+          .card-body
+            .d-flex.flex-wrap.justify-content-between.align-items-start.pb-2
+              .text-muted.fs-xs.me-1
+                | by 
+                a(href='#').product-meta.fw-medium Createx Std. 
+                | in 
+                a(href='#').product-meta.fw-medium Graphics
+              +star-rating(5)
+            h3.product-title.fs-sm.mb-2
+              a(href='marketplace-single.html') Travel &amp; Landmark Icon Pack (AI)
+            .d-flex.flex-wrap.justify-content-between.align-items-center
+              .fs-sm.me-2
+                i.ci-download.text-muted.me-1
+                | 21
+                span.fs-xs.ms-1 Sales
+              .bg-faded-accent.text-accent.rounded-1.py-1.px-2 $17.<small>00</small>
+
+      // Product
+      .col-lg-3.col-md-4.col-sm-6.px-2.mb-grid-gutter
+        .card.product-card-alt
+          .product-thumb
+            button(type='button').btn-wishlist.btn-sm
+              i.ci-heart
+            .product-card-actions
+              a(href='marketplace-single.html').btn.btn-light.btn-icon.btn-shadow.fs-base.mx-2
+                i.ci-eye
+              button(type='button').btn.btn-light.btn-icon.btn-shadow.fs-base.mx-2
+                i.ci-cart
+            a(href='marketplace-single.html').product-thumb-overlay
+            img(src='img/marketplace/products/05.jpg' alt='Product')
+          .card-body
+            .d-flex.flex-wrap.justify-content-between.align-items-start.pb-2
+              .text-muted.fs-xs.me-1
+                | by 
+                a(href='#').product-meta.fw-medium Createx Std. 
+                | in 
+                a(href='#').product-meta.fw-medium UI Design
+              +star-rating(4)
+            h3.product-title.fs-sm.mb-2
+              a(href='marketplace-single.html') Minimal Mobile App UI Kit (Sketch)
+            .d-flex.flex-wrap.justify-content-between.align-items-center
+              .fs-sm.me-2
+                i.ci-download.text-muted.me-1
+                | 117
+                span.fs-xs.ms-1 Sales
+              .bg-faded-accent.text-accent.rounded-1.py-1.px-2 $23.<small>00</small>
+
+      // Product
+      .col-lg-3.col-md-4.col-sm-6.px-2.mb-grid-gutter
+        .card.product-card-alt
+          .product-thumb
+            button(type='button').btn-wishlist.btn-sm
+              i.ci-heart
+            .product-card-actions
+              a(href='marketplace-single.html').btn.btn-light.btn-icon.btn-shadow.fs-base.mx-2
+                i.ci-eye
+              button(type='button').btn.btn-light.btn-icon.btn-shadow.fs-base.mx-2
+                i.ci-cart
+            a(href='marketplace-single.html').product-thumb-overlay
+            img(src='img/marketplace/products/11.jpg' alt='Product')
+          .card-body
+            .d-flex.flex-wrap.justify-content-between.align-items-start.pb-2
+              .text-muted.fs-xs.me-1
+                | by 
+                a(href='#').product-meta.fw-medium pixels 
+                | in 
+                a(href='#').product-meta.fw-medium Graphics
+              +star-rating(3.5)
+            h3.product-title.fs-sm.mb-2
+              a(href='marketplace-single.html') Printed T-Shirt Mockup (PSD)
+            .d-flex.flex-wrap.justify-content-between.align-items-center
+              .fs-sm.me-2
+                i.ci-download.text-muted.me-1
+                | 94
+                span.fs-xs.ms-1 Sales
+              .bg-faded-accent.text-accent.rounded-1.py-1.px-2 $12.<small>00</small>
+
+      // Product
+      .col-lg-3.col-md-4.col-sm-6.px-2.mb-grid-gutter
+        .card.product-card-alt
+          .product-thumb
+            button(type='button').btn-wishlist.btn-sm
+              i.ci-heart
+            .product-card-actions
+              a(href='marketplace-single.html').btn.btn-light.btn-icon.btn-shadow.fs-base.mx-2
+                i.ci-eye
+              button(type='button').btn.btn-light.btn-icon.btn-shadow.fs-base.mx-2
+                i.ci-cart
+            a(href='marketplace-single.html').product-thumb-overlay
+            img(src='img/marketplace/products/12.jpg' alt='Product')
+          .card-body
+            .d-flex.flex-wrap.justify-content-between.align-items-start.pb-2
+              .text-muted.fs-xs.me-1
+                | by 
+                a(href='#').product-meta.fw-medium pixels 
+                | in 
+                a(href='#').product-meta.fw-medium Graphics
+              +star-rating(4)
+            h3.product-title.fs-sm.mb-2
+              a(href='marketplace-single.html') Corporate Branding Mockup (PSD)
+            .d-flex.flex-wrap.justify-content-between.align-items-center
+              .fs-sm.me-2
+                i.ci-download.text-muted.me-1
+                | 122
+                span.fs-xs.ms-1 Sales
+              .bg-faded-accent.text-accent.rounded-1.py-1.px-2 $18.<small>00</small>
+
+  
+    hr.my-3
+
+    //- pagination.pug template
+    include partials/pagination
+
+//- Footer
+block footer
+  include partials/footer-marketplace
+
+//- Handheld toolbar
+block toolbar
+  include partials/toolbar-marketplace

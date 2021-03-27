@@ -1,0 +1,11 @@
+{config_load file="$language/lang_$language.conf" section="boxes"} <div class="module">
+<h3><a href="{$smarty.const.FILENAME_ARTICLES}">{#heading_articles#}</a></h3>
+<div class="moduleContent">
+{foreach name=aussen item=module_data from=$module_content} 
+{include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/item/item-article.html"}
+{/foreach}
+</div>
+<div class="text-left pt-2">
+<a class="btn btn-rounded" href="{$smarty.const.FILENAME_ARTICLES}"><span>{$smarty.const.TEXT_ALL_ARTICLES}</span></a>
+</div>
+</div>

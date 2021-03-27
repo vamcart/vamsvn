@@ -1,0 +1,1381 @@
+extends ../partials/layout-components
+
+//- Override default config variables
+append config
+  - var vendorStyles = ['prismjs/themes/prism.css', 'prismjs/plugins/toolbar/prism-toolbar.css', 'prismjs/plugins/line-numbers/prism-line-numbers.css']
+  - var vendorScripts = ['prismjs/components/prism-core.min.js', 'prismjs/components/prism-markup.min.js', 'prismjs/components/prism-clike.min.js', 'prismjs/components/prism-javascript.min.js', 'prismjs/components/prism-pug.min.js', 'prismjs/plugins/toolbar/prism-toolbar.min.js', 'prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js', 'prismjs/plugins/line-numbers/prism-line-numbers.min.js']
+  - var pageTitle = 'Navbar'
+  - var pageSubtitle = 'Responsive navigation header that includes support for branding, navigation, and more.'
+  - var pageTitleLink = {'title': 'Bootstrap docs', 'link': 'https://getbootstrap.com/docs/5.0/components/navbar/'}
+  - var anchorNav = [{'title': 'Basic example', 'link': '#navbar-basic'}, {'title': 'Color schemes', 'link': '#navbar-color-shemes'}, {'title': 'Topbar', 'link': '#navbar-topbar'}, {'title': 'Topbar + Navbar', 'link': '#navbar-twolevel'}, {'title': 'Multilevel light navbar', 'link': '#navbar-multilevel-light'}, {'title': 'Multilevel dark navbar', 'link': '#navbar-multilevel-dark'}]
+  
+//- Page Content
+block content
+
+  // Basic example
+  section#navbar-basic.pb-5.mb-md-2
+    h2.h5.mb-3 Basic example
+    .card.border-0
+      .card-header
+        ul(role='tablist').nav.nav-tabs.card-header-tabs
+          li.nav-item
+            a(href='#result1' data-bs-toggle='tab' role='tab' aria-controls='result1' aria-selected='true').nav-link.active Result
+          li.nav-item
+            a(href='#html1' data-bs-toggle='tab' role='tab' aria-controls='html1' aria-selected='false').nav-link HTML
+          li.nav-item
+            a(href='#pug1' data-bs-toggle='tab' role='tab' aria-controls='pug1' aria-selected='false').nav-link Pug
+      .card-body.px-0.pb-3
+        .tab-content
+          #result1.tab-pane.fade.show.active(role='tabpanel')
+            header.navbar.navbar-expand-lg.navbar-light.shadow-sm.px-3.rounded
+              a(href='#').navbar-brand.d-none.d-lg-block.order-lg-1
+                img(src='../img/logo-dark.png' width='142' alt='Cartzilla')
+              a(href='#').navbar-brand.d-lg-none.me-2
+                img(src='../img/logo-icon.png' width='74' alt='Cartzilla')
+              .navbar-toolbar.d-flex.align-items-center.order-lg-3
+                button(type='button' data-bs-toggle='collapse' data-bs-target='#navbarCollapse').navbar-toggler
+                  span.navbar-toggler-icon
+                a(href='#').navbar-tool
+                  .navbar-tool-icon-box: i.navbar-tool-icon.ci-search
+                a(href='#').navbar-tool.ms-1.me-n1
+                  .navbar-tool-icon-box: i.navbar-tool-icon.ci-user
+                a(href='#').navbar-tool.ms-3
+                  .navbar-tool-icon-box.bg-secondary
+                    span.navbar-tool-label 4
+                    i.navbar-tool-icon.ci-cart
+              #navbarCollapse.collapse.navbar-collapse.me-auto.order-lg-2
+                hr.d-lg-none.mt-3.mb-2
+                ul.navbar-nav
+                  li.nav-item.active
+                    a(href='#').nav-link Home
+                  li.nav-item
+                    a(href='#').nav-link Link
+                  li.nav-item.dropdown
+                    a(href='#' data-bs-toggle='dropdown').nav-link.dropdown-toggle Dropdown
+                    ul.dropdown-menu
+                      li: a(href='#').dropdown-item Action link
+                      li.dropdown
+                        a(href='#' data-bs-toggle='dropdown').dropdown-item.dropdown-toggle Dropdown
+                        ul.dropdown-menu
+                          li: a(href='#').dropdown-item Action link
+                          li: a(href='#').dropdown-item Another action
+                          li: a(href='#').dropdown-item Something else here
+                          li: a(href='#').dropdown-item Yet another link
+                      li: a(href='#').dropdown-item Another action
+                      li.dropdown-divider 
+                      li: a(href='#').dropdown-item Something else here
+                  li.nav-item
+                    a(href='#' tabindex='-1' aria-disabled='true').nav-link.disabled Disabled
+          #html1.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-html').
+                &lt;!-- Basic navbar --&gt;
+                &lt;header class=&quot;navbar navbar-expand-lg navbar-light shadow-sm&quot;&gt;
+                  &lt;div class=&quot;container&quot;&gt;
+
+                    &lt;!-- Brand --&gt;
+                    &lt;a class=&quot;navbar-brand d-none d-lg-block order-lg-1&quot; href=&quot;#&quot;&gt;
+                      &lt;img width=&quot;142&quot; src=&quot;path-to-logo&quot; alt=&quot;Cartzilla&quot;/&gt;
+                    &lt;/a&gt;
+                    &lt;a class=&quot;navbar-brand d-lg-none me-2&quot; href=&quot;#&quot;&gt;
+                      &lt;img width=&quot;74&quot; src=&quot;path-to-logo&quot; alt=&quot;Cartzilla&quot;/&gt;
+                    &lt;/a&gt;
+
+                    &lt;!-- Toolbar --&gt;
+                    &lt;div class=&quot;navbar-toolbar d-flex align-items-center order-lg-3&quot;&gt;
+                      &lt;button class=&quot;navbar-toggler&quot; type=&quot;button&quot; data-bs-toggle=&quot;collapse&quot; data-bs-target=&quot;#navbarCollapse&quot;&gt;
+                        &lt;span class=&quot;navbar-toggler-icon&quot;&gt;&lt;/span&gt;
+                      &lt;/button&gt;
+                      &lt;a class=&quot;navbar-tool&quot; href=&quot;#&quot;&gt;
+                        &lt;div class=&quot;navbar-tool-icon-box&quot;&gt;&lt;i class=&quot;navbar-tool-icon ci-search&quot;&gt;&lt;/i&gt;&lt;/div&gt;
+                      &lt;/a&gt;
+                      &lt;a class=&quot;navbar-tool ms-1 me-n1&quot; href=&quot;#&quot;&gt;
+                        &lt;div class=&quot;navbar-tool-icon-box&quot;&gt;
+                          &lt;i class=&quot;navbar-tool-icon ci-user&quot;&gt;&lt;/i&gt;
+                        &lt;/div&gt;
+                      &lt;/a&gt;
+                      &lt;a class=&quot;navbar-tool ms-3&quot; href=&quot;#&quot;&gt;
+                        &lt;div class=&quot;navbar-tool-icon-box bg-secondary&quot;&gt;
+                          &lt;span class=&quot;navbar-tool-label&quot;&gt;4&lt;/span&gt;
+                          &lt;i class=&quot;navbar-tool-icon ci-cart&quot;&gt;&lt;/i&gt;
+                        &lt;/div&gt;
+                      &lt;/a&gt;
+                    &lt;/div&gt;
+
+                    &lt;!-- Collapsible menu --&gt;
+                    &lt;div class=&quot;collapse navbar-collapse me-auto order-lg-2&quot; id=&quot;navbarCollapse&quot;&gt;
+                      &lt;hr class=&quot;d-lg-none mt-3 mb-2&quot;&gt;
+                      &lt;ul class=&quot;navbar-nav&quot;&gt;
+                        &lt;li class=&quot;nav-item active&quot;&gt;&lt;a class=&quot;nav-link&quot; href=&quot;#&quot;&gt;Home&lt;/a&gt;&lt;/li&gt;
+                        &lt;li class=&quot;nav-item&quot;&gt;&lt;a class=&quot;nav-link&quot; href=&quot;#&quot;&gt;Link&lt;/a&gt;&lt;/li&gt;
+                        &lt;li class=&quot;nav-item dropdown&quot;&gt;
+                          &lt;a class=&quot;nav-link dropdown-toggle&quot; href=&quot;#&quot; data-bs-toggle=&quot;dropdown&quot;&gt;Dropdown&lt;/a&gt;
+                          &lt;ul class=&quot;dropdown-menu&quot;&gt;
+                            &lt;li&gt;&lt;a class=&quot;dropdown-item&quot; href=&quot;#&quot;&gt;Action link&lt;/a&gt;&lt;/li&gt;
+                            &lt;li class=&quot;dropdown&quot;&gt;
+                              &lt;a class=&quot;dropdown-item dropdown-toggle&quot; href=&quot;#&quot; data-bs-toggle=&quot;dropdown&quot;&gt;Dropdown&lt;/a&gt;
+                              &lt;ul class=&quot;dropdown-menu&quot;&gt;
+                                &lt;li&gt;&lt;a class=&quot;dropdown-item&quot; href=&quot;#&quot;&gt;Action link&lt;/a&gt;&lt;/li&gt;
+                                &lt;li&gt;&lt;a class=&quot;dropdown-item&quot; href=&quot;#&quot;&gt;Another action&lt;/a&gt;&lt;/li&gt;
+                                &lt;li&gt;&lt;a class=&quot;dropdown-item&quot; href=&quot;#&quot;&gt;Something else here&lt;/a&gt;&lt;/li&gt;
+                                &lt;li&gt;&lt;a class=&quot;dropdown-item&quot; href=&quot;#&quot;&gt;Yet another link&lt;/a&gt;&lt;/li&gt;
+                              &lt;/ul&gt;
+                            &lt;/li&gt;
+                            &lt;li&gt;&lt;a class=&quot;dropdown-item&quot; href=&quot;#&quot;&gt;Another action&lt;/a&gt;&lt;/li&gt;
+                            &lt;li class=&quot;dropdown-divider&quot;&gt;&lt;/li&gt;
+                            &lt;li&gt;&lt;a class=&quot;dropdown-item&quot; href=&quot;#&quot;&gt;Something else here&lt;/a&gt;&lt;/li&gt;
+                          &lt;/ul&gt;
+                        &lt;/li&gt;
+                        &lt;li class=&quot;nav-item&quot;&gt;
+                          &lt;a class=&quot;nav-link disabled&quot; href=&quot;#&quot; tabindex=&quot;-1&quot; aria-disabled=&quot;true&quot;&gt;Disabled&lt;/a&gt;
+                        &lt;/li&gt;
+                      &lt;/ul&gt;
+                    &lt;/div&gt;
+                  &lt;/div&gt;
+                &lt;/header&gt;
+          #pug1.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-pug').
+                // Basic navbar
+                header.navbar.navbar-expand-lg.navbar-light.shadow-sm
+                  .container
+
+                    // Brand
+                    a(href=&quot;#&quot;).navbar-brand.d-none.d-lg-block.order-lg-1
+                      img(src=&quot;path-to-logo&quot; width=&quot;142&quot; alt=&quot;Cartzilla&quot;)
+                    a(href=&quot;#&quot;).navbar-brand.d-lg-none.me-2
+                      img(src=&quot;path-to-logo&quot; width=&quot;74&quot; alt=&quot;Cartzilla&quot;)
+                    
+                    // Toolbar
+                    .navbar-toolbar.d-flex.align-items-center.order-lg-3
+                      button(type=&quot;button&quot;, data-bs-toggle=&quot;collapse&quot;, data-bs-target=&quot;#navbarCollapse&quot;).navbar-toggler
+                        span.navbar-toggler-icon
+                      a(href=&quot;#&quot;).navbar-tool
+                        .navbar-tool-icon-box: i.navbar-tool-icon.ci-search
+                      a(href=&quot;#&quot;).navbar-tool.ms-1.me-n1
+                        .navbar-tool-icon-box: i.navbar-tool-icon.ci-user
+                      a(href=&quot;#&quot;).navbar-tool.ms-3
+                        .navbar-tool-icon-box.bg-secondary
+                          span.navbar-tool-label 4
+                          i.navbar-tool-icon.ci-cart
+
+                    // Collapsible menu
+                    #navbarCollapse.collapse.navbar-collapse.me-auto.order-lg-2
+                      hr.d-lg-none.mt-3.mb-2
+                      ul.navbar-nav
+                        li.nav-item.active
+                          a.nav-link(href=&quot;#&quot;) Home
+                        li.nav-item
+                          a.nav-link(href=&quot;#&quot;) Link
+                        li.nav-item.dropdown
+                          a.nav-link.dropdown-toggle(href=&quot;#&quot;, data-bs-toggle=&quot;dropdown&quot;) Dropdown
+                          ul.dropdown-menu
+                            li
+                              a.dropdown-item(href=&quot;#&quot;) Action link
+                            li.dropdown
+                              a(href=&quot;#&quot;, data-bs-toggle=&quot;dropdown&quot;).dropdown-item.dropdown-toggle
+                                | Dropdown
+                              ul.dropdown-menu
+                                li
+                                  a.dropdown-item(href=&quot;#&quot;) Action link
+                                li
+                                  a.dropdown-item(href=&quot;#&quot;) Another action
+                                li
+                                  a.dropdown-item(href=&quot;#&quot;) Something else here
+                                li
+                                  a.dropdown-item(href=&quot;#&quot;) Yet another link
+                            li
+                              a.dropdown-item(href=&quot;#&quot;) Another action
+                            li.dropdown-divider 
+                            li
+                              a.dropdown-item(href=&quot;#&quot;) Something else here
+                        li.nav-item
+                          a.nav-link.disabled(href=&quot;#&quot;, tabindex=&quot;-1&quot;, aria-disabled=&quot;true&quot;) Disabled
+
+  // Color schemes
+  section#navbar-color-shemes.pb-5.mb-md-2
+    h2.h5.mb-3 Color schemes
+    .card.border-0
+      .card-header
+        ul(role='tablist').nav.nav-tabs.card-header-tabs
+          li.nav-item
+            a(href='#result2' data-bs-toggle='tab' role='tab' aria-controls='result2' aria-selected='true').nav-link.active Result
+          li.nav-item
+            a(href='#html2' data-bs-toggle='tab' role='tab' aria-controls='html2' aria-selected='false').nav-link HTML
+          li.nav-item
+            a(href='#pug2' data-bs-toggle='tab' role='tab' aria-controls='pug2' aria-selected='false').nav-link Pug
+      .card-body.px-0.pb-3
+        .tab-content
+          #result2.tab-pane.fade.show.active(role='tabpanel')
+            header.navbar.navbar-expand-lg.navbar-dark.bg-dark.mb-4.px-3.rounded
+              a(href='#').navbar-brand.d-none.d-lg-block.me-3.order-lg-1
+                img(src='../img/logo-light.png' width='142' alt='Cartzilla')
+              a(href='#').navbar-brand.d-lg-none.me-2
+                img(src='../img/logo-icon-light.png' width='74' alt='Cartzilla')
+              .navbar-toolbar.d-flex.align-items-center.order-lg-3
+                button(type='button' data-bs-toggle='collapse' data-bs-target='#navbarDarkCollapse').navbar-toggler
+                  span.navbar-toggler-icon
+                a(href='#').navbar-tool
+                  .navbar-tool-icon-box: i.navbar-tool-icon.ci-search
+                a(href='#').navbar-tool.ms-1.me-n1
+                  .navbar-tool-icon-box: i.navbar-tool-icon.ci-user
+                a(href='#').navbar-tool.ms-3
+                  .navbar-tool-icon-box.bg-secondary
+                    span.navbar-tool-label 4
+                    i.navbar-tool-icon.ci-cart
+              #navbarDarkCollapse.collapse.navbar-collapse.me-auto.order-lg-2
+                hr.hr-light.d-lg-none.mt-3.mb-2
+                ul.navbar-nav
+                  li.nav-item.active
+                    a(href='#').nav-link Home
+                  li.nav-item
+                    a(href='#').nav-link Features
+                  li.nav-item
+                    a(href='#').nav-link Pricing
+                  li.nav-item
+                    a(href='#').nav-link About
+
+            header.navbar.navbar-expand-lg.navbar-dark.bg-accent.mb-4.px-3.rounded
+              a(href='#').navbar-brand.d-none.d-lg-block.me-3.order-lg-1
+                img(src='../img/logo-light.png' width='142' alt='Cartzilla')
+              a(href='#').navbar-brand.d-lg-none.me-2
+                img(src='../img/logo-icon-light.png' width='74' alt='Cartzilla')
+              .navbar-toolbar.d-flex.align-items-center.order-lg-3
+                button(type='button' data-bs-toggle='collapse' data-bs-target='#navbarAccentCollapse').navbar-toggler
+                  span.navbar-toggler-icon
+                a(href='#').navbar-tool
+                  .navbar-tool-icon-box: i.navbar-tool-icon.ci-search
+                a(href='#').navbar-tool.ms-1.me-n1
+                  .navbar-tool-icon-box: i.navbar-tool-icon.ci-user
+                a(href='#').navbar-tool.ms-3
+                  .navbar-tool-icon-box.bg-secondary
+                    span.navbar-tool-label 4
+                    i.navbar-tool-icon.ci-cart
+              #navbarAccentCollapse.collapse.navbar-collapse.me-auto.order-lg-2
+                hr.hr-light.d-lg-none.mt-3.mb-2
+                ul.navbar-nav
+                  li.nav-item.active
+                    a(href='#').nav-link Home
+                  li.nav-item
+                    a(href='#').nav-link Features
+                  li.nav-item
+                    a(href='#').nav-link Pricing
+                  li.nav-item
+                    a(href='#').nav-link About
+
+            header(style='background-color: #f2f5fc;').navbar.navbar-expand-lg.navbar-light.px-3.rounded
+              a(href='#').navbar-brand.d-none.d-lg-block.me-3.order-lg-1
+                img(src='../img/logo-dark.png' width='142' alt='Cartzilla')
+              a(href='#').navbar-brand.d-lg-none.me-2
+                img(src='../img/logo-icon.png' width='74' alt='Cartzilla')
+              .navbar-toolbar.d-flex.align-items-center.order-lg-3
+                button(type='button' data-bs-toggle='collapse' data-bs-target='#navbarCustomCollapse').navbar-toggler
+                  span.navbar-toggler-icon
+                a(href='#').navbar-tool
+                  .navbar-tool-icon-box: i.navbar-tool-icon.ci-search
+                a(href='#').navbar-tool.ms-1.me-n1
+                  .navbar-tool-icon-box: i.navbar-tool-icon.ci-user
+                a(href='#').navbar-tool.ms-3
+                  .navbar-tool-icon-box.bg-secondary
+                    span.navbar-tool-label 4
+                    i.navbar-tool-icon.ci-cart
+              #navbarCustomCollapse.collapse.navbar-collapse.me-auto.order-lg-2
+                hr.d-lg-none.mt-3.mb-2
+                ul.navbar-nav
+                  li.nav-item.active
+                    a(href='#').nav-link Home
+                  li.nav-item
+                    a(href='#').nav-link Features
+                  li.nav-item
+                    a(href='#').nav-link Pricing
+                  li.nav-item
+                    a(href='#').nav-link About
+          #html2.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-html').
+                &lt;!-- Dark navbar --&gt;
+                &lt;header class=&quot;navbar navbar-expand-lg navbar-dark bg-dark&quot;&gt;
+                  &lt;div class=&quot;container&quot;&gt;
+                    &lt;!-- Navbar content --&gt;
+                  &lt;/div&gt;
+                &lt;/header&gt;
+
+                &lt;!-- Accent navbar --&gt;
+                &lt;header class=&quot;navbar navbar-expand-lg navbar-dark bg-accent&quot;&gt;
+                  &lt;div class=&quot;container&quot;&gt;
+                    &lt;!-- Navbar content --&gt;
+                  &lt;/div&gt;
+                &lt;/header&gt;
+                
+                &lt;!-- Custom color navbar --&gt;
+                &lt;header class=&quot;navbar navbar-expand-lg navbar-light&quot; style=&quot;background-color: #f2f5fc;&quot;&gt;
+                  &lt;div class=&quot;container&quot;&gt;
+                    &lt;!-- Navbar content --&gt;
+                  &lt;/div&gt;
+                &lt;/header&gt;
+          #pug2.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-pug').
+                // Dark navbar
+                header.navbar.navbar-expand-lg.navbar-dark.bg-dark
+                  .container
+                    //- Navbar content
+
+                // Accent navbar
+                header.navbar.navbar-expand-lg.navbar-accent.bg-dark
+                  .container
+                    //- Navbar content
+                    
+                // Custom color navbar
+                header.navbar.navbar-expand-lg.bg-light(style=&quot;background-color: #f2f5fc;&quot;)
+                  .container
+                    //- Navbar content
+
+  // Topbar
+  section#navbar-topbar.pb-5.mb-md-2
+    h2.h5.mb-3 Topbar
+    .card.border-0
+      .card-header
+        ul(role='tablist').nav.nav-tabs.card-header-tabs
+          li.nav-item
+            a(href='#result3' data-bs-toggle='tab' role='tab' aria-controls='result3' aria-selected='true').nav-link.active Result
+          li.nav-item
+            a(href='#html3' data-bs-toggle='tab' role='tab' aria-controls='html3' aria-selected='false').nav-link HTML
+          li.nav-item
+            a(href='#pug3' data-bs-toggle='tab' role='tab' aria-controls='pug3' aria-selected='false').nav-link Pug
+      .card-body.px-0.pb-3
+        .tab-content
+          #result3.tab-pane.fade.show.active(role='tabpanel')
+            .topbar.topbar-light.bg-secondary.mb-4.px-3.rounded
+              .topbar-text.dropdown.d-md-none
+                a(href='#' data-bs-toggle='dropdown').topbar-link.dropdown-toggle Useful links
+                ul.dropdown-menu
+                  li
+                    a(href='tel:00331697720').dropdown-item
+                      i.ci-support.text-muted.me-2
+                      | (00) 33 169 7720
+                  li
+                    a(href='#').dropdown-item
+                      i.ci-location.text-muted.me-2
+                      | Order tracking
+              .topbar-text.text-nowrap.d-none.d-md-inline-block
+                i.ci-support
+                span.text-muted.me-1 Support
+                a(href='tel:00331697720').topbar-link (00) 33 169 7720
+              .topbar-text.d-none.d-md-inline-block Free shipping for order over $200
+              .ms-3.text-nowrap
+                a(href='#').topbar-link.me-4.d-none.d-md-inline-block
+                  i.ci-location
+                  | Order tracking
+                .topbar-text.dropdown.disable-autohide
+                  a(href='#' data-bs-toggle='dropdown').topbar-link.dropdown-toggle
+                    img(src='../img/flags/en.png' width='20' alt='English').me-2
+                    | Eng / $
+                  ul.dropdown-menu.dropdown-menu-end
+                    li.dropdown-item
+                      select.form-select.form-select-sm
+                        option(value='usd') $ USD
+                        option(value='eur') € EUR
+                        option(value='ukp') £ UKP
+                        option(value='jpy') ¥ JPY
+                    li
+                      a(href='#').dropdown-item.pb-1
+                        img(src='../img/flags/fr.png' width='20' alt='Français').me-2
+                        | Français
+                    li
+                      a(href='#').dropdown-item.pb-1
+                        img(src='../img/flags/de.png' width='20' alt='Deutsch').me-2
+                        | Deutsch
+                    li
+                      a(href='#').dropdown-item
+                        img(src='../img/flags/it.png' width='20' alt='Italiano').me-2
+                        | Italiano
+
+            .topbar.topbar-dark.bg-dark.px-3.rounded
+              .topbar-text.dropdown.d-md-none
+                a(href='#' data-bs-toggle='dropdown').topbar-link.dropdown-toggle Useful links
+                ul.dropdown-menu
+                  li
+                    a(href='tel:00331697720').dropdown-item
+                      i.ci-support.text-muted.me-2
+                      | (00) 33 169 7720
+                  li
+                    a(href='#').dropdown-item
+                      i.ci-location.text-muted.me-2
+                      | Order tracking
+              .topbar-text.text-nowrap.d-none.d-md-inline-block
+                i.ci-support
+                span.text-muted.me-1 Support
+                a(href='tel:00331697720').topbar-link (00) 33 169 7720
+              .topbar-text.d-none.d-md-inline-block Free shipping for order over $200
+              .ms-3.text-nowrap
+                a(href='#').topbar-link.me-4.d-none.d-md-inline-block
+                  i.ci-location
+                  | Order tracking
+                .topbar-text.dropdown.disable-autohide
+                  a(href='#' data-bs-toggle='dropdown').topbar-link.dropdown-toggle
+                    img(src='../img/flags/en.png' width='20' alt='English').me-2
+                    | Eng / $
+                  ul.dropdown-menu.dropdown-menu-end
+                    li.dropdown-item
+                      select.form-select.form-select-sm
+                        option(value='usd') $ USD
+                        option(value='eur') € EUR
+                        option(value='ukp') £ UKP
+                        option(value='jpy') ¥ JPY
+                    li
+                      a(href='#').dropdown-item.pb-1
+                        img(src='../img/flags/fr.png' width='20' alt='Français').me-2
+                        | Français
+                    li
+                      a(href='#').dropdown-item.pb-1
+                        img(src='../img/flags/de.png' width='20' alt='Deutsch').me-2
+                        | Deutsch
+                    li
+                      a(href='#').dropdown-item
+                        img(src='../img/flags/it.png' width='20' alt='Italiano').me-2
+                        | Italiano
+          #html3.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-html').
+                &lt;!-- Light topbar --&gt;
+                &lt;div class=&quot;topbar topbar-light bg-secondary&quot;&gt;
+                  &lt;div class=&quot;container&quot;&gt;
+                    &lt;div class=&quot;topbar-text dropdown d-md-none&quot;&gt;
+                      &lt;a class=&quot;topbar-link dropdown-toggle&quot; href=&quot;#&quot; data-bs-toggle=&quot;dropdown&quot;&gt;Useful links&lt;/a&gt;
+                      &lt;ul class=&quot;dropdown-menu&quot;&gt;
+                        &lt;li&gt;
+                          &lt;a class=&quot;dropdown-item&quot; href=&quot;tel:00331697720&quot;&gt;
+                            &lt;i class=&quot;ci-support text-muted me-2&quot;&gt;&lt;/i&gt;
+                            (00) 33 169 7720
+                          &lt;/a&gt;
+                        &lt;/li&gt;
+                        &lt;li&gt;
+                          &lt;a class=&quot;dropdown-item&quot; href=&quot;#&quot;&gt;
+                            &lt;i class=&quot;ci-location text-muted me-2&quot;&gt;&lt;/i&gt;
+                            Order tracking
+                          &lt;/a&gt;
+                        &lt;/li&gt;
+                      &lt;/ul&gt;
+                    &lt;/div&gt;
+                    &lt;div class=&quot;topbar-text text-nowrap d-none d-md-inline-block&quot;&gt;
+                      &lt;i class=&quot;ci-support&quot;&gt;&lt;/i&gt;
+                      &lt;span class=&quot;text-muted me-1&quot;&gt;Support&lt;/span&gt;
+                      &lt;a class=&quot;topbar-link&quot; href=&quot;tel:00331697720&quot;&gt;(00) 33 169 7720&lt;/a&gt;
+                    &lt;/div&gt;
+                    &lt;div class=&quot;topbar-text d-none d-md-inline-block&quot;&gt;Free shipping for order over $200&lt;/div&gt;
+                    &lt;div class=&quot;ms-3 text-nowrap&quot;&gt;
+                      &lt;a class=&quot;topbar-link me-4 d-none d-md-inline-block&quot; href=&quot;#&quot;&gt;
+                        &lt;i class=&quot;ci-location&quot;&gt;&lt;/i&gt;
+                        Order tracking
+                      &lt;/a&gt;
+                      &lt;div class=&quot;topbar-text dropdown disable-autohide&quot;&gt;
+                        &lt;a class=&quot;topbar-link dropdown-toggle&quot; href=&quot;#&quot; data-bs-toggle=&quot;dropdown&quot;&gt;
+                          &lt;img class=&quot;me-2&quot; width=&quot;20&quot; src=&quot;path-to-image&quot; alt=&quot;English&quot;/&gt;
+                          Eng / $
+                        &lt;/a&gt;
+                        &lt;ul class=&quot;dropdown-menu dropdown-menu-end&quot;&gt;
+                          &lt;li class=&quot;dropdown-item&quot;&gt;
+                            &lt;select class=&quot;form-select form-select-sm&quot;&gt;
+                              &lt;option value=&quot;usd&quot;&gt;$ USD&lt;/option&gt;
+                              &lt;option value=&quot;eur&quot;&gt;€ EUR&lt;/option&gt;
+                              &lt;option value=&quot;ukp&quot;&gt;£ UKP&lt;/option&gt;
+                              &lt;option value=&quot;jpy&quot;&gt;¥ JPY&lt;/option&gt;
+                            &lt;/select&gt;
+                          &lt;/li&gt;
+                          &lt;li&gt;
+                            &lt;a class=&quot;dropdown-item pb-1&quot; href=&quot;#&quot;&gt;
+                              &lt;img class=&quot;me-2&quot; width=&quot;20&quot; src=&quot;path-to-image&quot; alt=&quot;Français&quot;/&gt;
+                              Français
+                            &lt;/a&gt;
+                          &lt;/li&gt;
+                          &lt;li&gt;
+                            &lt;a class=&quot;dropdown-item pb-1&quot; href=&quot;#&quot;&gt;
+                              &lt;img class=&quot;me-2&quot; width=&quot;20&quot; src=&quot;path-to-image&quot; alt=&quot;Deutsch&quot;/&gt;
+                              Deutsch
+                            &lt;/a&gt;
+                          &lt;/li&gt;
+                          &lt;li&gt;
+                            &lt;a class=&quot;dropdown-item&quot; href=&quot;#&quot;&gt;
+                            &lt;img class=&quot;me-2&quot; width=&quot;20&quot; src=&quot;path-to-image&quot; alt=&quot;Italiano&quot;/&gt;
+                            Italiano
+                            &lt;/a&gt;
+                          &lt;/li&gt;
+                        &lt;/ul&gt;
+                      &lt;/div&gt;
+                    &lt;/div&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+
+                &lt;!-- Dark topbar --&gt;
+                &lt;div class=&quot;topbar topbar-dark bg-dark&quot;&gt;
+                  &lt;div class=&quot;container&quot;&gt;
+                     &lt;!-- Topbar content --&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+          #pug3.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-pug').
+                // Light topbar
+                .topbar.topbar-light.bg-secondary
+                  .container
+                    .topbar-text.dropdown.d-md-none
+                      a(href=&quot;#&quot;, data-bs-toggle=&quot;dropdown&quot;).topbar-link.dropdown-toggle Useful links
+                      ul.dropdown-menu
+                        li
+                          a(href=&quot;tel:00331697720&quot;).dropdown-item
+                            i.ci-support.text-muted.me-2
+                            | (00) 33 169 7720
+                        li
+                          a(href=&quot;#&quot;).dropdown-item
+                            i.ci-location.text-muted.me-2
+                            | Order tracking
+                    .topbar-text.text-nowrap.d-none.d-md-inline-block
+                      i.ci-support
+                      span.text-muted.me-1 Support
+                      a.topbar-link(href=&quot;tel:00331697720&quot;) (00) 33 169 7720
+                    .topbar-text.d-none.d-md-inline-block Free shipping for order over $200
+                    .ms-3.text-nowrap
+                      a(href=&quot;#&quot;).topbar-link.me-4.d-none.d-md-inline-block
+                        i.ci-location
+                        | Order tracking
+                      .topbar-text.dropdown.disable-autohide
+                        a(href=&quot;#&quot;, data-bs-toggle=&quot;dropdown&quot;).topbar-link.dropdown-toggle
+                          img(src=&quot;path-to-image&quot; width=&quot;20&quot; alt=&quot;English&quot;).me-2
+                          | Eng / $
+                        ul.dropdown-menu.dropdown-menu-end
+                          li.dropdown-item
+                            select.form-select.form-select-sm
+                              option(value=&quot;usd&quot;) $ USD
+                              option(value=&quot;eur&quot;) € EUR
+                              option(value=&quot;ukp&quot;) £ UKP
+                              option(value=&quot;jpy&quot;) ¥ JPY
+                          li
+                            a(href=&quot;#&quot;).dropdown-item.pb-1
+                              img(src=&quot;path-to-image&quot; width=&quot;20&quot; alt=&quot;Français&quot;).me-2
+                              | Français
+                          li
+                            a(href=&quot;#&quot;).dropdown-item.pb-1
+                              img(src=&quot;path-to-image&quot; width=&quot;20&quot; alt=&quot;Deutsch&quot;).me-2
+                              | Deutsch
+                          li
+                            a(href=&quot;#&quot;).dropdown-item
+                              img(src=&quot;path-to-image&quot; width=&quot;20&quot; alt=&quot;Italiano&quot;).me-2
+                              | Italiano
+
+                // Dark topbar
+                .topbar.topbar-dark.bg-dark
+                  .container
+                    //- Topbar content
+
+  // Topbar + Navbar
+  section#navbar-twolevel.pb-5.mb-md-2
+    h2.h5.mb-3 Topbar + Navbar
+    .card.border-0
+      .card-header
+        ul(role='tablist').nav.nav-tabs.card-header-tabs
+          li.nav-item
+            a(href='#result4' data-bs-toggle='tab' role='tab' aria-controls='result4' aria-selected='true').nav-link.active Result
+          li.nav-item
+            a(href='#html4' data-bs-toggle='tab' role='tab' aria-controls='html4' aria-selected='false').nav-link HTML
+          li.nav-item
+            a(href='#pug4' data-bs-toggle='tab' role='tab' aria-controls='pug4' aria-selected='false').nav-link Pug
+      .card-body.px-0.pb-3
+        .tab-content
+          #result4.tab-pane.fade.show.active(role='tabpanel')
+            header.shadow-sm
+              .topbar.topbar-dark.bg-dark.px-3
+                .topbar-text.dropdown.d-md-none
+                  a(href='#' data-bs-toggle='dropdown').topbar-link.dropdown-toggle Useful links
+                  ul.dropdown-menu
+                    li
+                      a(href='tel:00331697720').dropdown-item
+                        i.ci-support.text-muted.me-2
+                        | (00) 33 169 7720
+                    li
+                      a(href='#').dropdown-item
+                        i.ci-location.text-muted.me-2
+                        | Order tracking
+                .topbar-text.text-nowrap.d-none.d-md-inline-block
+                  i.ci-support
+                  span.text-muted.me-1 Support
+                  a(href='tel:00331697720').topbar-link (00) 33 169 7720
+                .topbar-text.d-none.d-md-inline-block Free shipping for order over $200
+                .ms-3.text-nowrap
+                  a(href='#').topbar-link.me-4.d-none.d-md-inline-block
+                    i.ci-location
+                    | Order tracking
+                  .topbar-text.dropdown.disable-autohide
+                    a(href='#' data-bs-toggle='dropdown').topbar-link.dropdown-toggle
+                      img(src='../img/flags/en.png' width='20' alt='English').me-2
+                      | Eng / $
+                    ul.dropdown-menu.dropdown-menu-end
+                      li.dropdown-item
+                        select.form-select.form-select-sm
+                          option(value='usd') $ USD
+                          option(value='eur') € EUR
+                          option(value='ukp') £ UKP
+                          option(value='jpy') ¥ JPY
+                      li
+                        a(href='#').dropdown-item.pb-1
+                          img(src='../img/flags/fr.png' width='20' alt='Français').me-2
+                          | Français
+                      li
+                        a(href='#').dropdown-item.pb-1
+                          img(src='../img/flags/de.png' width='20' alt='Deutsch').me-2
+                          | Deutsch
+                      li
+                        a(href='#').dropdown-item
+                          img(src='../img/flags/it.png' width='20' alt='Italiano').me-2
+                          | Italiano
+
+              .navbar.navbar-expand-lg.navbar-light.px-3.rounded
+                a(href='#').navbar-brand.d-none.d-lg-block.me-3.order-lg-1
+                  img(src='../img/logo-dark.png' width='142' alt='Cartzilla')
+                a(href='#').navbar-brand.d-lg-none.me-2
+                  img(src='../img/logo-icon.png' width='74' alt='Cartzilla')
+                .navbar-toolbar.d-flex.align-items-center.order-lg-3
+                  button(type='button' data-bs-toggle='collapse' data-bs-target='#navbarCollapse2').navbar-toggler
+                    span.navbar-toggler-icon
+                  a(href='#').navbar-tool
+                    .navbar-tool-icon-box: i.navbar-tool-icon.ci-search
+                  a(href='#').navbar-tool.ms-1.me-n1
+                    .navbar-tool-icon-box: i.navbar-tool-icon.ci-user
+                  a(href='#').navbar-tool.ms-3
+                    .navbar-tool-icon-box.bg-secondary
+                      span.navbar-tool-label 4
+                      i.navbar-tool-icon.ci-cart
+                #navbarCollapse2.collapse.navbar-collapse.me-auto.order-lg-2
+                  hr.d-lg-none.mt-3.mb-2
+                  ul.navbar-nav
+                    li.nav-item.active
+                      a(href='#').nav-link Home
+                    li.nav-item
+                      a(href='#').nav-link Link
+                    li.nav-item.dropdown
+                      a(href='#' data-bs-toggle='dropdown').nav-link.dropdown-toggle Dropdown
+                      ul.dropdown-menu
+                        li: a(href='#').dropdown-item Action link
+                        li.dropdown
+                          a(href='#' data-bs-toggle='dropdown').dropdown-item.dropdown-toggle Dropdown
+                          ul.dropdown-menu
+                            li: a(href='#').dropdown-item Action link
+                            li: a(href='#').dropdown-item Another action
+                            li: a(href='#').dropdown-item Something else here
+                            li: a(href='#').dropdown-item Yet another link
+                        li: a(href='#').dropdown-item Another action
+                        li.dropdown-divider 
+                        li: a(href='#').dropdown-item Something else here
+                    li.nav-item
+                      a(href='#' tabindex='-1' aria-disabled='true').nav-link.disabled Disabled
+          #html4.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-html').
+                &lt;!-- Topbar + Navbar --&gt;
+                &lt;header&gt;
+                  &lt;div class=&quot;topbar topbar-dark bg-dark&quot;&gt;
+                    &lt;div class=&quot;container&quot;&gt;
+                      &lt;!-- Topbar content --&gt;
+                    &lt;/div&gt;
+                  &lt;/div&gt;
+
+                  &lt;div class=&quot;navbar navbar-expand-lg navbar-light shadow-sm&quot;&gt;
+                    &lt;div class=&quot;container&quot;&gt;
+                      &lt;!-- Navbar content --&gt;
+                    &lt;/div&gt;
+                  &lt;/div&gt;
+                &lt;/header&gt;
+          #pug4.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-pug').
+                // Topbar + Navbar
+                header.shadow-sm
+                  .topbar.topbar-dark.bg-dark
+                    .container
+                      //- Topbar content
+
+                  .navbar.navbar-expand-lg.navbar-light
+                    .container
+                      //- Navbar content
+
+  // Multilevel light navbar
+  section#navbar-multilevel-light.pb-5.mb-md-2
+    h2.h5.mb-3 Multilevel light navbar
+    .card.border-0
+      .card-header
+        ul(role='tablist').nav.nav-tabs.card-header-tabs
+          li.nav-item
+            a(href='#result5' data-bs-toggle='tab' role='tab' aria-controls='result5' aria-selected='true').nav-link.active Result
+          li.nav-item
+            a(href='#html5' data-bs-toggle='tab' role='tab' aria-controls='html5' aria-selected='false').nav-link HTML
+          li.nav-item
+            a(href='#pug5' data-bs-toggle='tab' role='tab' aria-controls='pug5' aria-selected='false').nav-link Pug
+      .card-body.px-0.pb-3
+        .tab-content
+          #result5.tab-pane.fade.show.active(role='tabpanel')
+            header.shadow-sm
+              .topbar.topbar-dark.bg-dark.px-3
+                .topbar-text.dropdown.d-md-none
+                  a(href='#' data-bs-toggle='dropdown').topbar-link.dropdown-toggle Useful links
+                  ul.dropdown-menu
+                    li
+                      a(href='tel:00331697720').dropdown-item
+                        i.ci-support.text-muted.me-2
+                        | (00) 33 169 7720
+                    li
+                      a(href='#').dropdown-item
+                        i.ci-location.text-muted.me-2
+                        | Order tracking
+                .topbar-text.text-nowrap.d-none.d-md-inline-block
+                  i.ci-support
+                  span.text-muted.me-1 Support
+                  a(href='tel:00331697720').topbar-link (00) 33 169 7720
+                .topbar-text.d-none.d-md-inline-block Free shipping for order over $200
+                .ms-3.text-nowrap
+                  a(href='#').topbar-link.me-4.d-none.d-md-inline-block
+                    i.ci-location
+                    | Order tracking
+                  .topbar-text.dropdown.disable-autohide
+                    a(href='#' data-bs-toggle='dropdown').topbar-link.dropdown-toggle
+                      img(src='../img/flags/en.png' width='20' alt='English').me-2
+                      | Eng / $
+                    ul.dropdown-menu.dropdown-menu-end
+                      li.dropdown-item
+                        select.form-select.form-select-sm
+                          option(value='usd') $ USD
+                          option(value='eur') € EUR
+                          option(value='ukp') £ UKP
+                          option(value='jpy') ¥ JPY
+                      li
+                        a(href='#').dropdown-item.pb-1
+                          img(src='../img/flags/fr.png' width='20' alt='Français').me-2
+                          | Français
+                      li
+                        a(href='#').dropdown-item.pb-1
+                          img(src='../img/flags/de.png' width='20' alt='Deutsch').me-2
+                          | Deutsch
+                      li
+                        a(href='#').dropdown-item
+                          img(src='../img/flags/it.png' width='20' alt='Italiano').me-2
+                          | Italiano
+
+              .navbar.navbar-expand-lg.navbar-light.bg-light.px-3
+                a(href='#').navbar-brand.d-none.d-lg-block.me-3.flex-shrink-0
+                  img(src='../img/logo-dark.png' width='142' alt='Cartzilla')
+                a(href='#').navbar-brand.d-lg-none.me-2
+                  img(src='../img/logo-icon.png' width='74' alt='Cartzilla')
+                .input-group.d-none.d-lg-flex.flex-nowrap.mx-4
+                  input(type='text' placeholder='Search for products').form-control.rounded-end.pe-5
+                  i.ci-search.position-absolute.top-50.end-0.translate-middle-y.text-muted.fs-base.me-3
+                .navbar-toolbar.d-flex.align-items-center
+                  button(type='button' data-bs-toggle='collapse' data-bs-target='#navbarCollapse3').navbar-toggler
+                    span.navbar-toggler-icon
+                  a(href='#').navbar-tool.d-lg-none
+                    .navbar-tool-icon-box: i.navbar-tool-icon.ci-search
+                  a(href='#').navbar-tool.ms-1.ms-lg-0.me-n1.me-lg-2
+                    .navbar-tool-icon-box: i.navbar-tool-icon.ci-user
+                    .navbar-tool-text.ms-n2
+                      small Hello, Sign in
+                      | My Account
+                  a(href='#').navbar-tool.ms-3
+                    .navbar-tool-icon-box.bg-secondary
+                      span.navbar-tool-label 4
+                      i.navbar-tool-icon.ci-cart
+                    .navbar-tool-text
+                      small My Cart
+                      | $265.00
+
+              .navbar.navbar-expand-lg.navbar-light.bg-light.mt-n2.pt-0.pb-2.px-3.px-lg-0
+                #navbarCollapse3.collapse.navbar-collapse
+                  hr.d-lg-none.mt-3.mb-2
+                  ul.navbar-nav.navbar-mega-nav.pe-lg-2.me-lg-2
+                    li.nav-item.dropdown
+                      a(href='#').nav-link.dropdown-toggle
+                        i.ci-view-grid.me-2
+                        | Departments
+                  ul.navbar-nav
+                    li.nav-item
+                      a(href='#').nav-link Home
+                    li.nav-item
+                      a(href='#').nav-link Shop
+                    li.nav-item
+                      a(href='#').nav-link Pages
+                    li.nav-item
+                      a(href='#').nav-link Blog
+                    li.nav-item
+                      a(href='#').nav-link Components
+          #html5.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-html').
+                &lt;!-- Multilevel light navbar --&gt;
+                &lt;header class=&quot;shadow-sm&quot;&gt;
+                  &lt;div class=&quot;topbar topbar-dark bg-dark&quot;&gt;
+                    &lt;div class=&quot;container&quot;&gt;
+                      &lt;div class=&quot;topbar-text dropdown d-md-none&quot;&gt;
+                        &lt;a class=&quot;topbar-link dropdown-toggle&quot; href=&quot;#&quot; data-bs-toggle=&quot;dropdown&quot;&gt;Useful links&lt;/a&gt;
+                        &lt;ul class=&quot;dropdown-menu&quot;&gt;
+                          &lt;li&gt;
+                            &lt;a class=&quot;dropdown-item&quot; href=&quot;tel:00331697720&quot;&gt;
+                              &lt;i class=&quot;ci-support text-muted me-2&quot;&gt;&lt;/i&gt;
+                              (00) 33 169 7720
+                            &lt;/a&gt;
+                          &lt;/li&gt;
+                          &lt;li&gt;
+                            &lt;a class=&quot;dropdown-item&quot; href=&quot;#&quot;&gt;
+                              &lt;i class=&quot;ci-location text-muted me-2&quot;&gt;&lt;/i&gt;
+                              Order tracking
+                            &lt;/a&gt;
+                          &lt;/li&gt;
+                        &lt;/ul&gt;
+                      &lt;/div&gt;
+                      &lt;div class=&quot;topbar-text text-nowrap d-none d-md-inline-block&quot;&gt;
+                        &lt;i class=&quot;ci-support&quot;&gt;&lt;/i&gt;
+                        &lt;span class=&quot;text-muted me-1&quot;&gt;Support&lt;/span&gt;
+                        &lt;a class=&quot;topbar-link&quot; href=&quot;tel:00331697720&quot;&gt;(00) 33 169 7720&lt;/a&gt;
+                      &lt;/div&gt;
+                      &lt;div class=&quot;topbar-text d-none d-md-inline-block&quot;&gt;Free shipping for order over $200&lt;/div&gt;
+                      &lt;div class=&quot;ms-3 text-nowrap&quot;&gt;
+                        &lt;a class=&quot;topbar-link me-4 d-none d-md-inline-block&quot; href=&quot;#&quot;&gt;
+                          &lt;i class=&quot;ci-location&quot;&gt;&lt;/i&gt;
+                          Order tracking
+                        &lt;/a&gt;
+                        &lt;div class=&quot;topbar-text dropdown disable-autohide&quot;&gt;
+                          &lt;a class=&quot;topbar-link dropdown-toggle&quot; href=&quot;#&quot; data-bs-toggle=&quot;dropdown&quot;&gt;
+                            &lt;img class=&quot;me-2&quot; width=&quot;20&quot; src=&quot;path-to-image&quot; alt=&quot;English&quot;/&gt;
+                            Eng / $
+                          &lt;/a&gt;
+                          &lt;ul class=&quot;dropdown-menu dropdown-menu-end&quot;&gt;
+                            &lt;li class=&quot;dropdown-item&quot;&gt;
+                              &lt;select class=&quot;form-select form-select-sm&quot;&gt;
+                                &lt;option value=&quot;usd&quot;&gt;$ USD&lt;/option&gt;
+                                &lt;option value=&quot;eur&quot;&gt;€ EUR&lt;/option&gt;
+                                &lt;option value=&quot;ukp&quot;&gt;£ UKP&lt;/option&gt;
+                                &lt;option value=&quot;jpy&quot;&gt;¥ JPY&lt;/option&gt;
+                              &lt;/select&gt;
+                            &lt;/li&gt;
+                            &lt;li&gt;
+                              &lt;a class=&quot;dropdown-item pb-1&quot; href=&quot;#&quot;&gt;
+                                &lt;img class=&quot;me-2&quot; width=&quot;20&quot; src=&quot;path-to-image&quot; alt=&quot;Français&quot;/&gt;
+                                Français
+                              &lt;/a&gt;
+                            &lt;/li&gt;
+                            &lt;li&gt;
+                              &lt;a class=&quot;dropdown-item pb-1&quot; href=&quot;#&quot;&gt;
+                                &lt;img class=&quot;me-2&quot; width=&quot;20&quot; src=&quot;path-to-image&quot; alt=&quot;Deutsch&quot;/&gt;
+                                Deutsch
+                              &lt;/a&gt;
+                            &lt;/li&gt;
+                            &lt;li&gt;
+                              &lt;a class=&quot;dropdown-item pb-1&quot; href=&quot;#&quot;&gt;
+                                &lt;img class=&quot;me-2&quot; width=&quot;20&quot; src=&quot;path-to-image&quot; alt=&quot;Italiano&quot;/&gt;
+                                Italiano
+                              &lt;/a&gt;
+                            &lt;/li&gt;
+                          &lt;/ul&gt;
+                        &lt;/div&gt;
+                      &lt;/div&gt;
+                    &lt;/div&gt;
+                  &lt;/div&gt;
+
+                  &lt;div class=&quot;navbar navbar-expand-lg navbar-light bg-light&quot;&gt;
+                    &lt;div class=&quot;container&quot;&gt;
+                      &lt;a class=&quot;navbar-brand d-none d-lg-block me-3 flex-shrink-0&quot; href=&quot;#&quot;&gt;
+                        &lt;img width=&quot;142&quot; src=&quot;path-to-logo&quot; alt=&quot;Cartzilla&quot;/&gt;
+                      &lt;/a&gt;
+                      &lt;a class=&quot;navbar-brand d-lg-none me-2&quot; href=&quot;#&quot;&gt;
+                        &lt;img width=&quot;74&quot; src=&quot;path-to-logo&quot; alt=&quot;Cartzilla&quot;/&gt;
+                      &lt;/a&gt;
+                      &lt;div class=&quot;input-group d-none d-lg-flex flex-nowrap mx-4&quot;&gt;
+                        &lt;input class=&quot;form-control pe-5&quot; type=&quot;text&quot; placeholder=&quot;Search for products&quot;&gt;
+                        &lt;i class=&quot;ci-search position-absolute top-50 end-0 translate-middle-y text-muted fs-base me-3&quot;&gt;&lt;/i&gt;
+                      &lt;/div&gt;
+                      &lt;div class=&quot;navbar-toolbar d-flex align-items-center&quot;&gt;
+                        &lt;button class=&quot;navbar-toggler&quot; type=&quot;button&quot; data-bs-toggle=&quot;collapse&quot; data-bs-target=&quot;#navbarCollapse&quot;&gt;
+                          &lt;span class=&quot;navbar-toggler-icon&quot;&gt;&lt;/span&gt;
+                        &lt;/button&gt;
+                        &lt;a class=&quot;navbar-tool d-lg-none&quot; href=&quot;#&quot;&gt;
+                          &lt;div class=&quot;navbar-tool-icon-box&quot;&gt;
+                            &lt;i class=&quot;navbar-tool-icon ci-search&quot;&gt;&lt;/i&gt;
+                          &lt;/div&gt;
+                        &lt;/a&gt;
+                        &lt;a class=&quot;navbar-tool ms-1 ms-lg-0 me-n1 me-lg-2&quot; href=&quot;#&quot;&gt;
+                          &lt;div class=&quot;navbar-tool-icon-box&quot;&gt;
+                            &lt;i class=&quot;navbar-tool-icon ci-user&quot;&gt;&lt;/i&gt;
+                          &lt;/div&gt;
+                          &lt;div class=&quot;navbar-tool-text ms-n2&quot;&gt;&lt;small&gt;Hello, Sign in&lt;/small&gt;My Account&lt;/div&gt;
+                        &lt;/a&gt;
+                        &lt;a class=&quot;navbar-tool ms-3&quot; href=&quot;#&quot;&gt;
+                          &lt;div class=&quot;navbar-tool-icon-box bg-secondary&quot;&gt;
+                            &lt;span class=&quot;navbar-tool-label&quot;&gt;4&lt;/span&gt;
+                            &lt;i class=&quot;navbar-tool-icon ci-cart&quot;&gt;&lt;/i&gt;
+                          &lt;/div&gt;
+                          &lt;div class=&quot;navbar-tool-text&quot;&gt;&lt;small&gt;My Cart&lt;/small&gt;$265.00&lt;/div&gt;
+                        &lt;/a&gt;
+                      &lt;/div&gt;
+                    &lt;/div&gt;
+                  &lt;/div&gt;
+
+                  &lt;div class=&quot;navbar navbar-expand-lg navbar-light bg-light mt-n2 pt-0 pb-2 px-3 px-lg-0&quot;&gt;
+                    &lt;div class=&quot;container&quot;&gt;
+                      &lt;div class=&quot;collapse navbar-collapse&quot; id=&quot;navbarCollapse&quot;&gt;
+                        &lt;hr class=&quot;d-lg-none mt-3 mb-2&quot;&gt;
+                        &lt;ul class=&quot;navbar-nav navbar-mega-nav pe-lg-2 me-lg-2&quot;&gt;
+                          &lt;li class=&quot;nav-item dropdown&quot;&gt;
+                            &lt;a class=&quot;nav-link dropdown-toggle ps-0&quot; href=&quot;#&quot;&gt;
+                              &lt;i class=&quot;ci-view-grid me-2&quot;&gt;&lt;/i&gt;
+                              Departments
+                            &lt;/a&gt;
+                          &lt;/li&gt;
+                        &lt;/ul&gt;
+                        &lt;ul class=&quot;navbar-nav&quot;&gt;
+                          &lt;li class=&quot;nav-item&quot;&gt;&lt;a class=&quot;nav-link&quot; href=&quot;#&quot;&gt;Home&lt;/a&gt;&lt;/li&gt;
+                          &lt;li class=&quot;nav-item&quot;&gt;&lt;a class=&quot;nav-link&quot; href=&quot;#&quot;&gt;Shop&lt;/a&gt;&lt;/li&gt;
+                          &lt;li class=&quot;nav-item&quot;&gt;&lt;a class=&quot;nav-link&quot; href=&quot;#&quot;&gt;Pages&lt;/a&gt;&lt;/li&gt;
+                          &lt;li class=&quot;nav-item&quot;&gt;&lt;a class=&quot;nav-link&quot; href=&quot;#&quot;&gt;Blog&lt;/a&gt;&lt;/li&gt;
+                          &lt;li class=&quot;nav-item&quot;&gt;&lt;a class=&quot;nav-link&quot; href=&quot;#&quot;&gt;Components&lt;/a&gt;&lt;/li&gt;
+                        &lt;/ul&gt;
+                      &lt;/div&gt;
+                    &lt;/div&gt;
+                  &lt;/div&gt;
+                &lt;/header&gt;
+          #pug5.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-pug').
+                // Multilevel light navbar
+                header.shadow-sm
+                  .topbar.topbar-dark.bg-dark
+                    .container
+                      .topbar-text.dropdown.d-md-none
+                        a(href=&quot;#&quot;, data-bs-toggle=&quot;dropdown&quot;).topbar-link.dropdown-toggle
+                          | Useful links
+                        ul.dropdown-menu
+                          li
+                            a(href=&quot;tel:00331697720&quot;).dropdown-item
+                              i.ci-support.text-muted.me-2
+                              | (00) 33 169 7720
+                          li
+                            a(href=&quot;#&quot;).dropdown-item
+                              i.ci-location.text-muted.me-2
+                              | Order tracking
+                      .topbar-text.text-nowrap.d-none.d-md-inline-block
+                        i.ci-support
+                        span.text-muted.me-1 Support
+                        a(href=&quot;tel:00331697720&quot;).topbar-link
+                          | (00) 33 169 7720
+                      .topbar-text.d-none.d-md-inline-block Free shipping for order over $200
+                      .ms-3.text-nowrap
+                        a(href=&quot;#&quot;).topbar-link.me-4.d-none.d-md-inline-block
+                          i.ci-location
+                          | Order tracking
+                        .topbar-text.dropdown.disable-autohide
+                          a(href=&quot;#&quot;, data-bs-toggle=&quot;dropdown&quot;).topbar-link.dropdown-toggle
+                            img(src=&quot;path-to-image&quot;, width=&quot;20&quot;, alt=&quot;English&quot;).me-2
+                            | Eng / $
+                          ul.dropdown-menu.dropdown-menu-end
+                            li.dropdown-item
+                              select.form-select.form-select-sm
+                                option(value=&quot;usd&quot;) $ USD
+                                option(value=&quot;eur&quot;) € EUR
+                                option(value=&quot;ukp&quot;) £ UKP
+                                option(value=&quot;jpy&quot;) ¥ JPY
+                            li
+                              a(href=&quot;#&quot;).dropdown-item.pb-1
+                                img(src=&quot;path-to-image&quot; width=&quot;20&quot; alt=&quot;Français&quot;).me-2
+                                | Français
+                            li
+                              a(href=&quot;#&quot;).dropdown-item.pb-1
+                                img(src=&quot;path-to-image&quot; width=&quot;20&quot; alt=&quot;Deutsch&quot;).me-2
+                                | Deutsch
+                            li
+                              a(href=&quot;#&quot;).dropdown-item
+                                img(src=&quot;path-to-image&quot; width=&quot;20&quot; alt=&quot;Italiano&quot;).me-2
+                                | Italiano
+
+                  .navbar.navbar-expand-lg.navbar-light.bg-light
+                    .container
+                      a(href=&quot;#&quot;).navbar-brand.d-none.d-lg-block.me-3.flex-shrink-0
+                        img(src=&quot;path-to-logo&quot;, width=&quot;142&quot;, &quot;Cartzilla&quot;)
+                      a(href=&quot;#&quot;).navbar-brand.d-lg-none.me-2
+                        img(src=&quot;path-to-logo&quot;, width=&quot;74&quot;, &quot;Cartzilla&quot;)
+                      .input-group.d-none.d-lg-flex.flex-nowrap.mx-4
+                        input(type=&quot;text&quot;, placeholder=&quot;Search for products&quot;).form-control.rounded-end.pe-5
+                        i.ci-search.position-absolute.top-50.end-0.translate-middle-y.text-muted.fs-base.me-3
+                      .navbar-toolbar.d-flex.align-items-center
+                        button(type=&quot;button&quot;, data-bs-toggle=&quot;collapse&quot;, data-bs-target=&quot;#navbarCollapse&quot;).navbar-toggler
+                          span.navbar-toggler-icon
+                        a(href=&quot;#&quot;).navbar-tool.d-lg-none
+                          .navbar-tool-icon-box: i.navbar-tool-icon.ci-search
+                        a(href=&quot;#&quot;).navbar-tool.ms-1.ms-lg-0.me-n1.me-lg-2
+                          .navbar-tool-icon-box: i.navbar-tool-icon.ci-user
+                          .navbar-tool-text.ms-n2
+                            small Hello, Sign in
+                            | My Account
+                        a(href=&quot;#&quot;).navbar-tool.ms-3
+                          .navbar-tool-icon-box.bg-secondary
+                            span.navbar-tool-label 4
+                            i.navbar-tool-icon.ci-cart
+                          .navbar-tool-text
+                            small My Cart
+                            | $265.00
+
+                  .navbar.navbar-expand-lg.navbar-light.bg-light.mt-n2.pt-0.pb-2.px-3.px-lg-0
+                    .container
+                      #navbarCollapse.collapse.navbar-collapse
+                        hr.d-lg-none.mt-3.mb-2
+                        ul.navbar-nav.navbar-mega-nav.pe-lg-2.me-lg-2
+                          li.nav-item.dropdown
+                            a(href=&quot;#&quot;).nav-link.dropdown-toggle.ps-0
+                              i.ci-view-grid.me-2
+                              | Departments
+                        ul.navbar-nav
+                          li.nav-item
+                            a.nav-link(href=&quot;#&quot;) Home
+                          li.nav-item
+                            a.nav-link(href=&quot;#&quot;) Shop
+                          li.nav-item
+                            a.nav-link(href=&quot;#&quot;) Pages
+                          li.nav-item
+                            a.nav-link(href=&quot;#&quot;) Blog
+                          li.nav-item
+                            a.nav-link(href=&quot;#&quot;) Components
+
+  // Multilevel dark navbar
+  section#navbar-multilevel-dark.pb-5.mb-md-2
+    h2.h5.mb-3 Multilevel dark navbar
+    .card.border-0
+      .card-header
+        ul(role='tablist').nav.nav-tabs.card-header-tabs
+          li.nav-item
+            a(href='#result6' data-bs-toggle='tab' role='tab' aria-controls='result6' aria-selected='true').nav-link.active Result
+          li.nav-item
+            a(href='#html6' data-bs-toggle='tab' role='tab' aria-controls='html6' aria-selected='false').nav-link HTML
+          li.nav-item
+            a(href='#pug6' data-bs-toggle='tab' role='tab' aria-controls='pug6' aria-selected='false').nav-link Pug
+      .card-body.px-0.pb-3
+        .tab-content
+          #result6.tab-pane.fade.show.active(role='tabpanel')
+            header
+              .topbar.topbar-dark.bg-darker.px-3
+                .topbar-text.dropdown.d-md-none
+                  a(href='#' data-bs-toggle='dropdown').topbar-link.dropdown-toggle Useful links
+                  ul.dropdown-menu
+                    li
+                      a(href='tel:00331697720').dropdown-item
+                        i.ci-support.text-muted.me-2
+                        | (00) 33 169 7720
+                    li
+                      a(href='#').dropdown-item
+                        i.ci-location.text-muted.me-2
+                        | Order tracking
+                .topbar-text.text-nowrap.d-none.d-md-inline-block
+                  i.ci-support
+                  span.text-muted.me-1 Support
+                  a(href='tel:00331697720').topbar-link (00) 33 169 7720
+                .topbar-text.d-none.d-md-inline-block Free shipping for order over $200
+                .ms-3.text-nowrap
+                  a(href='#').topbar-link.me-4.d-none.d-md-inline-block
+                    i.ci-location
+                    | Order tracking
+                  .topbar-text.dropdown.disable-autohide
+                    a(href='#' data-bs-toggle='dropdown').topbar-link.dropdown-toggle
+                      img(src='../img/flags/en.png' width='20' alt='English').me-2
+                      | Eng / $
+                    ul.dropdown-menu.dropdown-menu-end
+                      li.dropdown-item
+                        select.form-select.form-select-sm
+                          option(value='usd') $ USD
+                          option(value='eur') € EUR
+                          option(value='ukp') £ UKP
+                          option(value='jpy') ¥ JPY
+                      li
+                        a(href='#').dropdown-item.pb-1
+                          img(src='../img/flags/fr.png' width='20' alt='Français').me-2
+                          | Français
+                      li
+                        a(href='#').dropdown-item.pb-1
+                          img(src='../img/flags/de.png' width='20' alt='Deutsch').me-2
+                          | Deutsch
+                      li
+                        a(href='#').dropdown-item
+                          img(src='../img/flags/it.png' width='20' alt='Italiano').me-2
+                          | Italiano
+
+              .navbar.navbar-expand-lg.navbar-dark.bg-dark.px-3
+                a(href='#').navbar-brand.d-none.d-lg-block.me-3.flex-shrink-0
+                  img(src='../img/logo-light.png' width='142' alt='Cartzilla')
+                a(href='#').navbar-brand.d-lg-none.me-2
+                  img(src='../img/logo-icon-light.png' width='74' alt='Cartzilla')
+                .input-group.d-none.d-lg-flex.flex-nowrap.mx-4
+                  input(type='text' placeholder='Search for products').form-control.rounded-end.pe-5
+                  i.ci-search.position-absolute.top-50.end-0.translate-middle-y.text-muted.fs-base.me-3
+                .navbar-toolbar.d-flex.align-items-center
+                  button(type='button' data-bs-toggle='collapse' data-bs-target='#navbarCollapse4').navbar-toggler
+                    span.navbar-toggler-icon
+                  a(href='#').navbar-tool.d-lg-none
+                    .navbar-tool-icon-box: i.navbar-tool-icon.ci-search
+                  a(href='#').navbar-tool.ms-1.ms-lg-0.me-n1.me-lg-2
+                    .navbar-tool-icon-box: i.navbar-tool-icon.ci-user
+                    .navbar-tool-text.ms-n2
+                      small Hello, Sign in
+                      | My Account
+                  a(href='#').navbar-tool.ms-3
+                    .navbar-tool-icon-box.bg-secondary
+                      span.navbar-tool-label 4
+                      i.navbar-tool-icon.ci-cart
+                    .navbar-tool-text
+                      small My Cart
+                      | $265.00
+
+              .navbar.navbar-expand-lg.navbar-dark.bg-dark.mt-n2.pt-0.pb-2.px-3.px-lg-0
+                #navbarCollapse4.collapse.navbar-collapse
+                  hr.hr-light.d-lg-none.mt-3.mb-2
+                  ul.navbar-nav.navbar-mega-nav.pe-lg-2.me-lg-2
+                    li.nav-item.dropdown
+                      a(href='#').nav-link.dropdown-toggle
+                        i.ci-view-grid.me-2
+                        | Departments
+                  ul.navbar-nav
+                    li.nav-item
+                      a(href='#').nav-link Home
+                    li.nav-item
+                      a(href='#').nav-link Shop
+                    li.nav-item
+                      a(href='#').nav-link Pages
+                    li.nav-item
+                      a(href='#').nav-link Blog
+                    li.nav-item
+                      a(href='#').nav-link Components
+          #html6.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-html').
+                &lt;!-- Multilevel dark navbar --&gt;
+                &lt;header&gt;
+                  &lt;div class=&quot;topbar topbar-dark bg-darker&quot;&gt;
+                    &lt;div class=&quot;container&quot;&gt;
+                      &lt;div class=&quot;topbar-text dropdown d-md-none&quot;&gt;
+                        &lt;a class=&quot;topbar-link dropdown-toggle&quot; href=&quot;#&quot; data-bs-toggle=&quot;dropdown&quot;&gt;Useful links&lt;/a&gt;
+                        &lt;ul class=&quot;dropdown-menu&quot;&gt;
+                          &lt;li&gt;
+                            &lt;a class=&quot;dropdown-item&quot; href=&quot;tel:00331697720&quot;&gt;
+                              &lt;i class=&quot;ci-support text-muted me-2&quot;&gt;&lt;/i&gt;
+                              (00) 33 169 7720
+                            &lt;/a&gt;
+                          &lt;/li&gt;
+                          &lt;li&gt;
+                            &lt;a class=&quot;dropdown-item&quot; href=&quot;#&quot;&gt;
+                              &lt;i class=&quot;ci-location text-muted me-2&quot;&gt;&lt;/i&gt;
+                              Order tracking
+                            &lt;/a&gt;
+                          &lt;/li&gt;
+                        &lt;/ul&gt;
+                      &lt;/div&gt;
+                      &lt;div class=&quot;topbar-text text-nowrap d-none d-md-inline-block&quot;&gt;
+                        &lt;i class=&quot;ci-support&quot;&gt;&lt;/i&gt;
+                        &lt;span class=&quot;text-muted me-1&quot;&gt;Support&lt;/span&gt;
+                        &lt;a class=&quot;topbar-link&quot; href=&quot;tel:00331697720&quot;&gt;(00) 33 169 7720&lt;/a&gt;
+                      &lt;/div&gt;
+                      &lt;div class=&quot;topbar-text d-none d-md-inline-block&quot;&gt;Free shipping for order over $200&lt;/div&gt;
+                      &lt;div class=&quot;ms-3 text-nowrap&quot;&gt;
+                        &lt;a class=&quot;topbar-link me-4 d-none d-md-inline-block&quot; href=&quot;#&quot;&gt;
+                          &lt;i class=&quot;ci-location&quot;&gt;&lt;/i&gt;
+                          Order tracking
+                        &lt;/a&gt;
+                        &lt;div class=&quot;topbar-text dropdown disable-autohide&quot;&gt;
+                          &lt;a class=&quot;topbar-link dropdown-toggle&quot; href=&quot;#&quot; data-bs-toggle=&quot;dropdown&quot;&gt;
+                            &lt;img class=&quot;me-2&quot; width=&quot;20&quot; src=&quot;path-to-image&quot; alt=&quot;English&quot;/&gt;
+                            Eng / $
+                          &lt;/a&gt;
+                          &lt;ul class=&quot;dropdown-menu dropdown-menu-end&quot;&gt;
+                            &lt;li class=&quot;dropdown-item&quot;&gt;
+                              &lt;select class=&quot;form-select form-select-sm&quot;&gt;
+                                &lt;option value=&quot;usd&quot;&gt;$ USD&lt;/option&gt;
+                                &lt;option value=&quot;eur&quot;&gt;€ EUR&lt;/option&gt;
+                                &lt;option value=&quot;ukp&quot;&gt;£ UKP&lt;/option&gt;
+                                &lt;option value=&quot;jpy&quot;&gt;¥ JPY&lt;/option&gt;
+                              &lt;/select&gt;
+                            &lt;/li&gt;
+                            &lt;li&gt;
+                              &lt;a class=&quot;dropdown-item pb-1&quot; href=&quot;#&quot;&gt;
+                                &lt;img class=&quot;me-2&quot; width=&quot;20&quot; src=&quot;path-to-image&quot; alt=&quot;Français&quot;/&gt;
+                                Français
+                              &lt;/a&gt;
+                            &lt;/li&gt;
+                            &lt;li&gt;
+                              &lt;a class=&quot;dropdown-item pb-1&quot; href=&quot;#&quot;&gt;
+                                &lt;img class=&quot;me-2&quot; width=&quot;20&quot; src=&quot;path-to-image&quot; alt=&quot;Deutsch&quot;/&gt;
+                                Deutsch
+                              &lt;/a&gt;
+                            &lt;/li&gt;
+                            &lt;li&gt;
+                              &lt;a class=&quot;dropdown-item pb-1&quot; href=&quot;#&quot;&gt;
+                                &lt;img class=&quot;me-2&quot; width=&quot;20&quot; src=&quot;path-to-image&quot; alt=&quot;Italiano&quot;/&gt;
+                                Italiano
+                              &lt;/a&gt;
+                            &lt;/li&gt;
+                          &lt;/ul&gt;
+                        &lt;/div&gt;
+                      &lt;/div&gt;
+                    &lt;/div&gt;
+                  &lt;/div&gt;
+
+                  &lt;div class=&quot;navbar navbar-expand-lg navbar-dark bg-dark&quot;&gt;
+                    &lt;div class=&quot;container&quot;&gt;
+                      &lt;a class=&quot;navbar-brand d-none d-lg-block me-3 flex-shrink-0&quot; href=&quot;#&quot;&gt;
+                        &lt;img width=&quot;142&quot; src=&quot;path-to-logo&quot; alt=&quot;Cartzilla&quot;/&gt;
+                      &lt;/a&gt;
+                      &lt;a class=&quot;navbar-brand d-lg-none me-2&quot; href=&quot;#&quot;&gt;
+                        &lt;img width=&quot;74&quot; src=&quot;path-to-logo&quot; alt=&quot;Cartzilla&quot;/&gt;
+                      &lt;/a&gt;
+                      &lt;div class=&quot;input-group d-none d-lg-flex flex-nowrap mx-4&quot;&gt;
+                        &lt;input class=&quot;form-control rounded-end pe-5&quot; type=&quot;text&quot; placeholder=&quot;Search for products&quot;&gt;
+                        &lt;i class=&quot;ci-search position-absolute top-50 end-0 translate-middle-y text-muted fs-base me-3&quot;&gt;&lt;/i&gt;
+                      &lt;/div&gt;
+                      &lt;div class=&quot;navbar-toolbar d-flex align-items-center&quot;&gt;
+                        &lt;button class=&quot;navbar-toggler&quot; type=&quot;button&quot; data-bs-toggle=&quot;collapse&quot; data-bs-target=&quot;#navbarCollapse&quot;&gt;
+                          &lt;span class=&quot;navbar-toggler-icon&quot;&gt;&lt;/span&gt;
+                        &lt;/button&gt;
+                        &lt;a class=&quot;navbar-tool d-lg-none&quot; href=&quot;#&quot;&gt;
+                          &lt;div class=&quot;navbar-tool-icon-box&quot;&gt;
+                            &lt;i class=&quot;navbar-tool-icon ci-search&quot;&gt;&lt;/i&gt;
+                          &lt;/div&gt;
+                        &lt;/a&gt;
+                        &lt;a class=&quot;navbar-tool ms-1 ms-lg-0 me-n1 me-lg-2&quot; href=&quot;#&quot;&gt;
+                          &lt;div class=&quot;navbar-tool-icon-box&quot;&gt;
+                            &lt;i class=&quot;navbar-tool-icon ci-user&quot;&gt;&lt;/i&gt;
+                          &lt;/div&gt;
+                          &lt;div class=&quot;navbar-tool-text ms-n2&quot;&gt;&lt;small&gt;Hello, Sign in&lt;/small&gt;My Account&lt;/div&gt;
+                        &lt;/a&gt;
+                        &lt;a class=&quot;navbar-tool ms-3&quot; href=&quot;#&quot;&gt;
+                          &lt;div class=&quot;navbar-tool-icon-box bg-secondary&quot;&gt;
+                            &lt;span class=&quot;navbar-tool-label&quot;&gt;4&lt;/span&gt;
+                            &lt;i class=&quot;navbar-tool-icon ci-cart&quot;&gt;&lt;/i&gt;
+                          &lt;/div&gt;
+                          &lt;div class=&quot;navbar-tool-text&quot;&gt;&lt;small&gt;My Cart&lt;/small&gt;$265.00&lt;/div&gt;
+                        &lt;/a&gt;
+                      &lt;/div&gt;
+                    &lt;/div&gt;
+                  &lt;/div&gt;
+
+                  &lt;div class=&quot;navbar navbar-expand-lg navbar-dark bg-dark mt-n2 pt-0 pb-2 px-3 px-lg-0&quot;&gt;
+                    &lt;div class=&quot;container&quot;&gt;
+                      &lt;div class=&quot;collapse navbar-collapse&quot; id=&quot;navbarCollapse&quot;&gt;
+                        &lt;hr class=&quot;hr-light d-lg-none mt-3 mb-2&quot;&gt;
+                        &lt;ul class=&quot;navbar-nav navbar-mega-nav pe-lg-2 me-lg-2&quot;&gt;
+                          &lt;li class=&quot;nav-item dropdown&quot;&gt;
+                            &lt;a class=&quot;nav-link dropdown-toggle ps-0&quot; href=&quot;#&quot;&gt;
+                              &lt;i class=&quot;ci-view-grid me-2&quot;&gt;&lt;/i&gt;
+                              Departments
+                            &lt;/a&gt;
+                          &lt;/li&gt;
+                        &lt;/ul&gt;
+                        &lt;ul class=&quot;navbar-nav&quot;&gt;
+                          &lt;li class=&quot;nav-item&quot;&gt;&lt;a class=&quot;nav-link&quot; href=&quot;#&quot;&gt;Home&lt;/a&gt;&lt;/li&gt;
+                          &lt;li class=&quot;nav-item&quot;&gt;&lt;a class=&quot;nav-link&quot; href=&quot;#&quot;&gt;Shop&lt;/a&gt;&lt;/li&gt;
+                          &lt;li class=&quot;nav-item&quot;&gt;&lt;a class=&quot;nav-link&quot; href=&quot;#&quot;&gt;Pages&lt;/a&gt;&lt;/li&gt;
+                          &lt;li class=&quot;nav-item&quot;&gt;&lt;a class=&quot;nav-link&quot; href=&quot;#&quot;&gt;Blog&lt;/a&gt;&lt;/li&gt;
+                          &lt;li class=&quot;nav-item&quot;&gt;&lt;a class=&quot;nav-link&quot; href=&quot;#&quot;&gt;Components&lt;/a&gt;&lt;/li&gt;
+                        &lt;/ul&gt;
+                      &lt;/div&gt;
+                    &lt;/div&gt;
+                  &lt;/div&gt;
+                &lt;/header&gt;
+          #pug6.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-pug').
+                // Multilevel dark navbar
+                header
+                  .topbar.topbar-dark.bg-darker
+                    .container
+                      .topbar-text.dropdown.d-md-none
+                        a(href=&quot;#&quot;, data-bs-toggle=&quot;dropdown&quot;).topbar-link.dropdown-toggle
+                          | Useful links
+                        ul.dropdown-menu
+                          li
+                            a(href=&quot;tel:00331697720&quot;).dropdown-item
+                              i.ci-support.text-muted.me-2
+                              | (00) 33 169 7720
+                          li
+                            a(href=&quot;#&quot;).dropdown-item
+                              i.ci-location.text-muted.me-2
+                              | Order tracking
+                      .topbar-text.text-nowrap.d-none.d-md-inline-block
+                        i.ci-support
+                        span.text-muted.me-1 Support
+                        a(href=&quot;tel:00331697720&quot;).topbar-link
+                          | (00) 33 169 7720
+                      .topbar-text.d-none.d-md-inline-block Free shipping for order over $200
+                      .ms-3.text-nowrap
+                        a(href=&quot;#&quot;).topbar-link.me-4.d-none.d-md-inline-block
+                          i.ci-location
+                          | Order tracking
+                        .topbar-text.dropdown.disable-autohide
+                          a(href=&quot;#&quot;, data-bs-toggle=&quot;dropdown&quot;).topbar-link.dropdown-toggle
+                            img(src=&quot;path-to-image&quot;, width=&quot;20&quot;, alt=&quot;English&quot;).me-2
+                            | Eng / $
+                          ul.dropdown-menu.dropdown-menu-end
+                            li.dropdown-item
+                              select.form-select.form-select-sm
+                                option(value=&quot;usd&quot;) $ USD
+                                option(value=&quot;eur&quot;) € EUR
+                                option(value=&quot;ukp&quot;) £ UKP
+                                option(value=&quot;jpy&quot;) ¥ JPY
+                            li
+                              a(href=&quot;#&quot;).dropdown-item.pb-1
+                                img(src=&quot;path-to-image&quot;, width=&quot;20&quot;, alt=&quot;Français&quot;).me-2
+                                | Français
+                            li
+                              a(href=&quot;#&quot;).dropdown-item.pb-1
+                                img(src=&quot;path-to-image&quot;, width=&quot;20&quot;, alt=&quot;Deutsch&quot;).me-2
+                                | Deutsch
+                            li
+                              a(href=&quot;#&quot;).dropdown-item
+                                img(src=&quot;path-to-image&quot;, width=&quot;20&quot;, alt=&quot;Italiano&quot;).me-2
+                                | Italiano
+
+                  .navbar.navbar-expand-lg.navbar-dark.bg-dark
+                    .container
+                      a(href=&quot;#&quot;).navbar-brand.d-none.d-lg-block.me-3.flex-shrink-0
+                        img(src=&quot;path-to-logo&quot;, width=&quot;142&quot;, alt=&quot;Cartzilla&quot;)
+                      a(href=&quot;#&quot;).navbar-brand.d-lg-none.me-2
+                        img(src=&quot;path-to-logo&quot;, width=&quot;74&quot;, alt=&quot;Cartzilla&quot;)
+                      .input-group.d-none.d-lg-flex.flex-nowrap.mx-4
+                        input(type=&quot;text&quot;, placeholder=&quot;Search for products&quot;).form-control.rounded-end.pe-5
+                        i.ci-search.position-absolute.top-50.end-0.translate-middle-y.text-muted.fs-base.me-3
+                      .navbar-toolbar.d-flex.align-items-center
+                        button(type=&quot;button&quot;, data-bs-toggle=&quot;collapse&quot;, data-bs-target=&quot;#navbarCollapse&quot;).navbar-toggler
+                          span.navbar-toggler-icon
+                        a(href=&quot;#&quot;).navbar-tool.d-lg-none
+                          .navbar-tool-icon-box: i.navbar-tool-icon.ci-search
+                        a(href=&quot;#&quot;).navbar-tool.ms-1.ms-lg-0.me-n1.me-lg-2
+                          .navbar-tool-icon-box: i.navbar-tool-icon.ci-user
+                          .navbar-tool-text.ms-n2
+                            small Hello, Sign in
+                            | My Account
+                        a(href=&quot;#&quot;).navbar-tool.ms-3
+                          .navbar-tool-icon-box.bg-secondary
+                            span.navbar-tool-label 4
+                            i.navbar-tool-icon.ci-cart
+                          .navbar-tool-text
+                            small My Cart
+                            | $265.00
+
+                  .navbar.navbar-expand-lg.navbar-dark.bg-dark.mt-n2.pt-0.pb-2.px-3.px-lg-0
+                    .container
+                      #navbarCollapse.collapse.navbar-collapse
+                        hr.hr-light.d-lg-none.mt-3.mb-2
+                        ul.navbar-nav.navbar-mega-nav.pe-lg-2.me-lg-2
+                          li.nav-item.dropdown
+                            a(href=&quot;#&quot;).nav-link.dropdown-toggle.ps-0
+                              i.ci-view-grid.me-2
+                              | Departments
+                        ul.navbar-nav
+                          li.nav-item
+                            a.nav-link(href=&quot;#&quot;) Home
+                          li.nav-item
+                            a.nav-link(href=&quot;#&quot;) Shop
+                          li.nav-item
+                            a.nav-link(href=&quot;#&quot;) Pages
+                          li.nav-item
+                            a.nav-link(href=&quot;#&quot;) Blog
+                          li.nav-item
+                            a.nav-link(href=&quot;#&quot;) Components

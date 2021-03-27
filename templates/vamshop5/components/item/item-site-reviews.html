@@ -1,0 +1,43 @@
+  <div class="card card-product h-100">
+	<div class="card-body">
+	<div class="row">
+		<div class="col-md-3 my-auto">
+			<div class="img-wrap">
+			<span class="icon-wrap icon-lg round bg-warning">
+				<i class="fa fa-lightbulb white"></i>
+			</span>
+			</div>
+		</div>
+		<div class="col-md-6">
+			
+				<div class="rating-wrap small">
+					<div class="label-rating"><span class="bold">{#text_rating#}</span> <span><span>{$module_data.STAR_RATING}</span></span></div>
+					<div class="label-rating"><span class="bold">{#text_date#}</span> <span>{$module_data.DATE|date_format:"%Y-%m-%d"}</span></div>
+					<div class="desc"><span class="bold">{#text_author#}</span> <span><span>{$module_data.AUTHOR}</span></span></div>
+				</div>
+				{if {$module_data.TEXT}}
+				<span class="font-weight-bold text-secondary">{$smarty.const.TEXT_CUSTOMER_REVIEW}</span>
+				<div class="desc">
+				{$module_data.TEXT|strip_tags}
+				</div>
+				<br />
+				{/if}
+				{if {$module_data.ANSWER} != ''}
+				<span class="font-weight-bold text-primary">{$smarty.const.TEXT_STORE_ANSWER}</span>
+				<div class="desc">
+				{$module_data.ANSWER}
+				</div>
+				<br />
+				{/if}
+
+		</div>
+		<div class="col-md-3 my-auto text-center">
+			<div class="action-wrap">
+				<div>
+					<a class="btn btn-add-to-cart btn-block" href="{$module_data.LINK}">{$smarty.const.TEXT_READ_REVIEW}</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	</div>
+</div>

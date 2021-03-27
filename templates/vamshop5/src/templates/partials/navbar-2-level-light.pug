@@ -1,0 +1,52 @@
+// Navbar 2 Level (Light)
+header.bg-light.shadow-sm
+
+  //- topbar.pug template
+  include topbar
+
+  // Remove "navbar-sticky" class to make navigation bar scrollable with the page.
+  .navbar-sticky
+    .navbar.navbar-expand-lg.navbar-light.bg-light
+      .container
+        a(href='index.html').navbar-brand.d-none.d-sm-block.me-4.order-lg-1
+          img(src='img/logo-dark.png' width='142' alt='Cartzilla')
+        a(href='index.html').navbar-brand.d-sm-none.me-2.order-lg-1
+          img(src='img/logo-icon.png' width='74' alt='Cartzilla')
+        
+        .navbar-toolbar.d-flex.align-items-center.order-lg-3
+          button(type='button' data-bs-toggle='collapse' data-bs-target='#navbarCollapse').navbar-toggler
+            span.navbar-toggler-icon
+          a(href='javascript:void(0)' data-bs-toggle='collapse' data-bs-target='#searchBox' role='button' aria-expanded='false', aria-controls='searchBox').navbar-tool.d-none.d-lg-flex
+            span.navbar-tool-tooltip Search
+            .navbar-tool-icon-box: i.navbar-tool-icon.ci-search
+          a(href='account-wishlist.html').navbar-tool.d-none.d-lg-flex
+            span.navbar-tool-tooltip Wishlist
+            .navbar-tool-icon-box: i.navbar-tool-icon.ci-heart
+          a(href='#signin-modal' data-bs-toggle='modal').navbar-tool.ms-1.me-n1
+            span.navbar-tool-tooltip Account
+            .navbar-tool-icon-box: i.navbar-tool-icon.ci-user
+          .navbar-tool.dropdown.ms-3
+            a(href='shop-cart.html').navbar-tool-icon-box.bg-secondary.dropdown-toggle
+              span.navbar-tool-label 4
+              i.navbar-tool-icon.ci-cart
+
+            //- cart-dropdown.pug template
+            include cart-dropdown
+
+        #navbarCollapse.collapse.navbar-collapse.me-auto.order-lg-2
+
+          // Search
+          .input-group.d-lg-none.my-3
+            i.ci-search.position-absolute.top-50.start-0.translate-middle-y.text-muted.fs-base.ms-3
+            input(type='text' placeholder='Search for products').form-control.rounded-start
+
+          //- menu-primary.pug
+          include menu-primary
+
+    // Search collapse
+    #searchBox.search-box.collapse
+      .card.pt-2.pb-4.border-0.rounded-0
+        .container
+          .input-group
+            i.ci-search.position-absolute.top-50.start-0.translate-middle-y.text-muted.fs-base.ms-3
+            input(type='text' placeholder='Search marketplace').form-control.rounded-start

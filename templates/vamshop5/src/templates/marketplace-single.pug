@@ -1,0 +1,571 @@
+extends partials/layout
+
+//- Override default config variables
+append config
+  - var vendorStyles = ['lightgallery.js/dist/css/lightgallery.min.css']
+  - var vendorScripts = ['lightgallery.js/dist/js/lightgallery.min.js', 'lg-fullscreen.js/dist/lg-fullscreen.min.js', 'lg-zoom.js/dist/lg-zoom.min.js']
+  - var pageTitle = 'Isometric Device Mockups Bundle'
+  - var breadcrumbs = [{'title': 'Market', 'link': 'marketplace-category.html'}, {'title': 'Single Item'}]
+  - var parentMenu = 'Shop'
+
+//- Navbar
+block navbar
+  include partials/navbar-marketplace
+
+//- Page Title
+block page-title
+  include partials/page-title-marketplace
+  
+//- Page Content
+block content
+
+  // Shadow box
+  section.container.mb-3.pb-3
+    .bg-light.shadow-lg.rounded-3.overflow-hidden
+      .row
+
+        // Content
+        section.col-lg-8.pt-2.pt-lg-4.pb-4.mb-lg-3
+          .pt-3.px-4.pe-lg-0.ps-xl-5
+
+            // Product gallery
+            .gallery
+              a(href='img/marketplace/single/01.jpg' data-sub-html='<h6 class="fs-sm text-light">Simple iPhone X Mockups</h6>').gallery-item.rounded-3.mb-grid-gutter
+                img(src='img/marketplace/single/01.jpg' alt='Gallery preview')
+                span.gallery-item-caption Simple iPhone X Mockups
+              .row
+                .col-sm-6
+                  a(href='img/marketplace/single/02.jpg' data-sub-html='<h6 class="fs-sm text-light">UI Psd iPhone X Monochrome</h6>').gallery-item.rounded-3.mb-grid-gutter
+                    img(src='img/marketplace/single/02.jpg' alt='Gallery preview')
+                    span.gallery-item-caption UI Psd iPhone X Monochrome
+                .col-sm-6
+                  a(href='img/marketplace/single/03.jpg' data-sub-html='<h6 class="fs-sm text-light">iPhone 11 Clay Mockup</h6>').gallery-item.rounded-3.mb-grid-gutter
+                    img(src='img/marketplace/single/03.jpg' alt='Gallery preview')
+                    span.gallery-item-caption iPhone 11 Clay Mockup
+
+            // Wishlist + Sharing
+            .d-flex.flex-wrap.justify-content-between.align-items-center.border-top.pt-3
+              .py-2.me-2
+                button(type='button').btn.btn-outline-accent
+                  i.ci-heart.fs-lg.me-2
+                  | Add to Favorites
+              .py-2
+                i.ci-share-alt.fs-lg.align-middle.text-muted.me-2
+                a(href='#').btn-social.bs-outline.bs-facebook.bs-sm.ms-2
+                  i.ci-facebook
+                a(href='#').btn-social.bs-outline.bs-twitter.bs-sm.ms-2
+                  i.ci-twitter
+                a(href='#').btn-social.bs-outline.bs-pinterest.bs-sm.ms-2
+                  i.ci-pinterest
+                a(href='#').btn-social.bs-outline.bs-instagram.bs-sm.ms-2
+                  i.ci-instagram
+
+        // Sidebar
+        aside.col-lg-4.ps-xl-5
+          hr.d-lg-none
+          .bg-white.h-100.p-4.ms-auto.border-start
+            .px-lg-2
+              #licenses.accordion.accordion-flush
+                .accordion-item.border-bottom
+                  .accordion-header.d-flex.justify-content-between.align-items-center.py-3
+                    .form-check(data-bs-toggle='collapse' data-bs-target='#standard-license')
+                      input(type='radio' name='license' id='license-std' checked).form-check-input
+                      label(for='license-std').form-check-label.fw-medium.text-dark Standard license
+                    h5.mb-0.text-accent.fw-normal
+                      | $18.
+                      small 00
+                  #standard-license.accordion-collapse.collapse.show(data-bs-parent='#licenses')
+                    .accordion-body.py-0.pb-2
+                      ul.list-unstyled.fs-sm
+                        li.d-flex.align-items-center
+                          i.ci-check-circle.text-success.me-1
+                          span.fs-ms Quality verified
+                        li.d-flex.align-items-center
+                          i.ci-check-circle.text-success.me-1
+                          span.fs-ms Use for a single project
+                        li.d-flex.align-items-center
+                          i.ci-check-circle.text-success.me-1
+                          span.fs-ms Non-paying users only
+                .accordion-item
+                  .accordion-header.d-flex.justify-content-between.align-items-center.py-3
+                    .form-check(data-bs-toggle='collapse' data-bs-target='#extended-license')
+                      input(type='radio' name='license' id='license-ext').form-check-input
+                      label(for='license-ext').form-check-label.fw-medium.text-dark Extended license
+                    h5.mb-0.text-accent.fw-normal
+                      | $299.
+                      small 00
+                  #extended-license.accordion-collapse.collapse.border-0(data-bs-parent='#licenses')
+                    .accordion-body.py-0.pb-2
+                      ul.list-unstyled.fs-sm
+                        li.d-flex.align-items-center
+                          i.ci-check-circle.text-success.me-1
+                          span.fs-ms Quality verified
+                        li.d-flex.align-items-center
+                          i.ci-check-circle.text-success.me-1
+                          span.fs-ms Use for a single project
+                        li.d-flex.align-items-center
+                          i.ci-check-circle.text-success.me-1
+                          span.fs-ms Paying users allowed
+              hr
+              button(type='button').btn.btn-primary.btn-shadow.d-block.w-100.mt-4
+                i.ci-cart.fs-lg.me-2
+                | Add to Cart
+              .bg-secondary.rounded.p-3.mt-4.mb-2
+                a(href='#').d-flex.align-items-center
+                  img(src='img/testimonials/01.jpg' width='50' alt='Sara Palson').rounded-circle
+                  .ps-2
+                    span.fs-ms.text-muted Created by
+                    h6.fs-sm.mb-0
+                      | Sara Palson
+              .bg-secondary.rounded.p-3.mb-2
+                i.ci-download.h5.text-muted.align-middle.mb-0.mt-n1.me-2
+                span.d-inline-block.h6.mb-0.me-1 715
+                span.fs-sm Sales
+              .bg-secondary.rounded.p-3.mb-4
+                +star-rating(4)
+                span.fs-ms.ms-2 4.1/5
+                .fs-ms.text-muted based on 74 reviews
+              ul.list-unstyled.fs-sm
+                li.d-flex.justify-content-between.mb-3.pb-3.border-bottom
+                  span.text-dark.fw-medium Last update
+                  span.text-muted April 27, 2019
+                li.d-flex.justify-content-between.mb-3.pb-3.border-bottom
+                  span.text-dark.fw-medium Released
+                  span.text-muted February 13, 2019
+                li.d-flex.justify-content-between.mb-3.pb-3.border-bottom
+                  span.text-dark.fw-medium Category
+                  a(href='#').product-meta Graphics
+                li.d-flex.justify-content-between.mb-3.pb-3.border-bottom
+                  span.text-dark.fw-medium Compatible with
+                  span.text-muted Photoshop CS5
+                li.d-flex.justify-content-between.mb-3.pb-3.border-bottom
+                  span.text-dark.fw-medium File type
+                  span.text-muted PSD, JPG
+                li.d-flex.justify-content-between.pb-3.border-bottom
+                  span.text-dark.fw-medium File size
+                  span.text-muted 56 MB
+
+
+  // Product description + Reviews + Comments
+  section.container.mb-4.mb-lg-5
+  
+    // Nav tabs
+    ul(class='nav nav-tabs' role='tablist')
+      li.nav-item
+        a(href='#details' class='nav-link p-4 active' data-bs-toggle='tab' role='tab')
+          | Product details
+      li.nav-item
+        a(href='#reviews' class='nav-link p-4' data-bs-toggle='tab' role='tab')
+          | Reviews
+      li.nav-item
+        a(href='#comments' class='nav-link p-4' data-bs-toggle='tab' role='tab')
+          | Comments
+    
+    .tab-content.pt-2
+
+      // Product details tab
+      #details.tab-pane.fade.show.active(role='tabpanel')
+        .row
+          .col-lg-8
+            p.fs-md Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            h3.h5.pt-2 Main features
+            ul.fs-md
+              li Nemo enim ipsam voluptatem quia voluptas sit
+              li Ut enim ad minima veniam, quis nostrum exercitationem
+              li Duis aute irure dolor in reprehenderit in voluptate
+              li At vero eos et accusamus et iusto odio dignissimos
+              li Omnis voluptas assumenda est omnis dolor
+              li Quis autem vel eum iure reprehenderit qui in ea voluptate
+      
+      // Reviews tab
+      #reviews.tab-pane.fade(role='tabpanel')
+
+        // Reviews
+        .row.pt-2.pb-3
+          .col-lg-4.col-md-5
+            h3.h4.mb-4 74 Reviews
+            .star-rating.me-2
+              i.ci-star-filled.fs-sm.text-accent.me-1
+              i.ci-star-filled.fs-sm.text-accent.me-1
+              i.ci-star-filled.fs-sm.text-accent.me-1
+              i.ci-star-filled.fs-sm.text-accent.me-1
+              i.ci-star.fs-sm.text-muted.me-1
+            span.d-inline-block.align-middle 4.1 Overall rating
+            p.pt-3.fs-sm.text-muted
+              | 58 out of 74 (77%)
+              br
+              | Customers recommended this product
+          .col-lg-8.col-md-7
+            .d-flex.align-items-center.mb-2
+              .text-nowrap.me-3
+                span.d-inline-block.align-middle.text-muted 5
+                i.ci-star-filled.fs-xs.ms-1
+              .w-100
+                .progress(style='height: 4px;')
+                  .progress-bar.bg-success(role='progressbar' style='width: 60%;' aria-valuenow='60' aria-valuemin='0' aria-valuemax='100')
+              span.text-muted.ms-3 43
+            .d-flex.align-items-center.mb-2
+              .text-nowrap.me-3
+                span.d-inline-block.align-middle.text-muted 4
+                i.ci-star-filled.fs-xs.ms-1
+              .w-100
+                .progress(style='height: 4px;')
+                  .progress-bar(role='progressbar' style='width: 27%; background-color: #a7e453;' aria-valuenow='27' aria-valuemin='0' aria-valuemax='100')
+              span.text-muted.ms-3 16
+            .d-flex.align-items-center.mb-2
+              .text-nowrap.me-3
+                span.d-inline-block.align-middle.text-muted 3
+                i.ci-star-filled.fs-xs.ms-1
+              .w-100
+                .progress(style='height: 4px;')
+                  .progress-bar(role='progressbar' style='width: 17%; background-color: #ffda75;' aria-valuenow='17' aria-valuemin='0' aria-valuemax='100')
+              span.text-muted.ms-3 9
+            .d-flex.align-items-center.mb-2
+              .text-nowrap.me-3
+                span.d-inline-block.align-middle.text-muted 2
+                i.ci-star-filled.fs-xs.ms-1
+              .w-100
+                .progress(style='height: 4px;')
+                  .progress-bar(role='progressbar' style='width: 9%; background-color: #fea569;' aria-valuenow='9' aria-valuemin='0' aria-valuemax='100')
+              span.text-muted.ms-3 4
+            .d-flex.align-items-center
+              .text-nowrap.me-3
+                span.d-inline-block.align-middle.text-muted 1
+                i.ci-star-filled.fs-xs.ms-1
+              .w-100
+                .progress(style='height: 4px;')
+                  .progress-bar.bg-danger(role='progressbar' style='width: 4%;' aria-valuenow='4' aria-valuemin='0' aria-valuemax='100')
+              span.text-muted.ms-3 2
+        hr.mt-4.mb-3
+        .row.py-4
+
+          // Reviews list
+          .col-md-7
+            .d-flex.justify-content-end.pb-4
+              .d-flex.align-items-center.flex-nowrap
+                label(for='sort-reviews').fs-sm.text-muted.text-nowrap.me-2.d-none.d-sm-block Sort by:
+                select#sort-reviews.form-select.form-select-sm
+                  option Newest
+                  option Oldest
+                  option Popular
+                  option High rating
+                  option Low rating
+            
+            // Review
+            .product-review.pb-4.mb-4.border-bottom
+              .d-flex.mb-3
+                .d-flex.align-items-center.me-4.pe-2
+                  img(src='img/shop/reviews/01.jpg' width='50' alt='Rafael Marquez').rounded-circle
+                  .ps-3
+                    h6.fs-sm.mb-0 Rafael Marquez
+                    span.fs-ms.text-muted June 28, 2019
+                div
+                  +star-rating(4)
+                  .fs-ms.text-muted 83% of users found this review helpful
+              p.fs-md.mb-2 Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est...
+              ul.list-unstyled.fs-ms.pt-1
+                li.mb-1
+                  span.fw-medium Pros:&nbsp;
+                  | Consequuntur magni, voluptatem sequi, tempora
+                li.mb-1
+                  span.fw-medium Cons:&nbsp;
+                  | Architecto beatae, quis autem
+              .text-nowrap
+                button(type='button').btn-like 15
+                button(type='button').btn-dislike 3
+            
+            // Review
+            .product-review.pb-4.mb-4.border-bottom
+              .d-flex.mb-3
+                .d-flex.align-items-center.me-4.pe-2
+                  img(src='img/shop/reviews/02.jpg' width='50' alt='Barbara Palson').rounded-circle
+                  .ps-3
+                    h6.fs-sm.mb-0 Barbara Palson
+                    span.fs-ms.text-muted May 17, 2019
+                div
+                  +star-rating(5)
+                  .fs-ms.text-muted 99% of users found this review helpful
+              p.fs-md.mb-2 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+              ul.list-unstyled.fs-ms.pt-1
+                li.mb-1
+                  span.fw-medium Pros:&nbsp;
+                  | Consequuntur magni, voluptatem sequi, tempora
+                li.mb-1
+                  span.fw-medium Cons:&nbsp;
+                  | Architecto beatae, quis autem
+              .text-nowrap
+                button(type='button').btn-like 34
+                button(type='button').btn-dislike 1
+            
+            // Review
+            .product-review.pb-4.mb-4.border-bottom
+              .d-flex.mb-3
+                .d-flex.align-items-center.me-4.pe-2
+                  img(src='img/shop/reviews/03.jpg' width='50' alt='Daniel Adams').rounded-circle
+                  .ps-3
+                    h6.fs-sm.mb-0 Daniel Adams
+                    span.fs-ms.text-muted May 8, 2019
+                div
+                  +star-rating(3.5)
+                  .fs-ms.text-muted 75% of users found this review helpful
+              p.fs-md.mb-2 Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem.
+              ul.list-unstyled.fs-ms.pt-1
+                li.mb-1
+                  span.fw-medium Pros:&nbsp;
+                  | Consequuntur magni, voluptatem sequi
+                li.mb-1
+                  span.fw-medium Cons:&nbsp;
+                  | Architecto beatae,  quis autem, voluptatem sequ
+              .text-nowrap
+                button(type='button').btn-like 26
+                button(type='button').btn-dislike 9
+            
+            .text-center
+              button(type='button').btn.btn-outline-accent
+                i.ci-reload.me-2
+                | Load more reviews
+
+          // Leave review form
+          .col-md-5.mt-2.pt-4.mt-md-0.pt-md-0
+            .bg-secondary.py-grid-gutter.px-grid-gutter.rounded-3
+              h3.h4.pb-2 Write a review
+              form(method='post' novalidate).needs-validation
+                .mb-3
+                  label(for='review-name').form-label
+                    | Your name
+                    span.text-danger *
+                  input(type='text' required)#review-name.form-control
+                  .invalid-feedback Please enter your name!
+                  small.form-text.text-muted Will be displayed on the comment.
+                .mb-3
+                  label(for='review-email').form-label
+                    | Your email
+                    span.text-danger *
+                  input(type='email' required)#review-email.form-control
+                  .invalid-feedback Please provide valid email address!
+                  small.form-text.text-muted Authentication only - we won't spam you.
+                .mb-3
+                  label(for='review-rating').form-label
+                    | Rating
+                    span.text-danger *
+                  select(required)#review-rating.form-select
+                    option(value='') Choose rating
+                    option(value='5') 5 stars
+                    option(value='4') 4 stars
+                    option(value='3') 3 stars
+                    option(value='2') 2 stars
+                    option(value='1') 1 star
+                  .invalid-feedback Please choose rating!
+                .mb-3
+                  label(for='review-text').form-label
+                    | Review
+                    span.text-danger *
+                  textarea(rows='6' required)#review-text.form-control
+                  .invalid-feedback Please write a review!
+                  small.form-text.text-muted Your review must be at least 50 characters.
+                .mb-3
+                  label(for='review-pros').form-label Pros
+                  textarea(rows='2' placeholder='Separated by commas')#review-pros.form-control
+                .mb-3.mb-4
+                  label(for='review-cons').form-label Cons
+                  textarea(rows='2' placeholder='Separated by commas')#review-cons.form-control
+                button(type='submit').btn.btn-primary.btn-shadow.d-block.w-100
+                  | Submit a Review
+      
+      // Comments tab
+      #comments.tab-pane.fade(role='tabpanel')
+        .row
+          .col-lg-8
+
+            // comment
+            .d-flex.align-items-start.py-4.border-bottom
+              img(src='img/testimonials/04.jpg' width='50' alt='Laura Willson').rounded-circle
+              .ps-3
+                .d-flex.justify-content-between.align-items-center.mb-2
+                  h6.fs-md.mb-0 Laura Willson
+                  a(href='#').nav-link-style.fs-sm.fw-medium
+                    i.ci-reply.me-2
+                    | Reply
+                p.fs-md.mb-1 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat cupidatat non proident, sunt in culpa qui.
+                span.fs-ms.text-muted
+                  i.ci-time.align-middle.me-2
+                  | Sep 7, 2019
+
+                // comment reply
+                .d-flex.align-items-start.border-top.pt-4.mt-4
+                  img(src='img/testimonials/01.jpg' width='50' alt='Sara Palson').rounded-circle
+                  .ps-3
+                    .d-flex.justify-content-between.align-items-center.mb-2
+                      h6.fs-md.mb-0 Sara Palson
+                    p.fs-md.mb-1 Egestas sed sed risus pretium quam vulputate dignissim. A diam sollicitudin tempor id eu nisl. Ut porttitor leo a diam. Bibendum at varius vel pharetra vel turpis nunc.
+                    span.fs-ms.text-muted
+                      i.ci-time.align-middle.me-2
+                      | Sep 13, 2019
+
+            // comment
+            .d-flex.align-items-start.py-4
+              img(src='img/testimonials/02.jpg' width='50' alt='Benjamin Miller').rounded-circle
+              .ps-3
+                .d-flex.justify-content-between.align-items-center.mb-2
+                  h6.fs-md.mb-0 Benjamin Miller
+                  a(href='#').nav-link-style.fs-sm.fw-medium
+                    i.ci-reply.me-2
+                    | Reply
+                p.fs-md.mb-1 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat cupidatat non proident, sunt in culpa qui.
+                span.fs-ms.text-muted
+                  i.ci-time.align-middle.me-2
+                  | Aug 15, 2019
+            
+            // Post comment form
+            .card.border-0.shadow.my-2
+              .card-body
+                .d-flex.align-items-start
+                  img(src='img/marketplace/account/avatar-sm.png' width='50' alt='Createx Studio').rounded-circle.border.p-2
+                  form(novalidate).needs-validation.w-100.ms-3
+                    .mb-3
+                      textarea(rows='4' placeholder='Write comment...' required).form-control
+                      .invalid-feedback Please write your comment.
+                    button(type='submit').btn.btn-primary.btn-sm Post comment
+
+
+  // Related products carousel
+  section.container.mb-5.pb-lg-3
+    .d-flex.flex-wrap.justify-content-between.align-items-center.border-bottom.pb-4.mb-4
+      h2.h3.mb-0.pt-2 Related mockups
+      .pt-2
+        a(href='marketplace-category.html').btn.btn-outline-accent.btn-sm
+          | More mockups
+          i.ci-arrow-end.ms-1.me-n1
+
+    // Carousel
+    .tns-carousel
+      .tns-carousel-inner(data-carousel-options='{"items": 2, "gutter": 16, "controls": false, "nav": true, "responsive": {"0":{"items":1},"500":{"items":2 },"768":{"items":3}, "992":{"items":4}}}')
+
+        // Product
+        div
+          .card.product-card-alt
+            .product-thumb
+              button(type='button').btn-wishlist.btn-sm
+                i.ci-heart
+              .product-card-actions
+                a(href='#').btn.btn-light.btn-icon.btn-shadow.fs-base.mx-2
+                  i.ci-eye
+                button(type='button').btn.btn-light.btn-icon.btn-shadow.fs-base.mx-2
+                  i.ci-cart
+              a(href='#').product-thumb-overlay
+              img(src='img/marketplace/products/02.jpg' alt='Product')
+            .card-body
+              .d-flex.flex-wrap.justify-content-between.align-items-start.pb-2
+                .text-muted.fs-xs.me-1
+                  | by 
+                  a(href='#').product-meta.fw-medium Createx Std. 
+                  | in 
+                  a(href='#').product-meta.fw-medium Graphics
+                +star-rating(5)
+              h3.product-title.fs-sm.mb-2
+                a(href='#') Floating Phone and Tablet Mockup
+              .d-flex.flex-wrap.justify-content-between.align-items-center
+                .fs-sm.me-2
+                  i.ci-download.text-muted.me-1
+                  | 109
+                  span.fs-xs.ms-1 Sales
+                .bg-faded-accent.text-accent.rounded-1.py-1.px-2 $15.<small>00</small>
+
+        // Product
+        div
+          .card.product-card-alt
+            .product-thumb
+              button(type='button').btn-wishlist.btn-sm
+                i.ci-heart
+              .product-card-actions
+                a(href='#').btn.btn-light.btn-icon.btn-shadow.fs-base.mx-2
+                  i.ci-eye
+                button(type='button').btn.btn-light.btn-icon.btn-shadow.fs-base.mx-2
+                  i.ci-cart
+              a(href='#').product-thumb-overlay
+              img(src='img/marketplace/products/03.jpg' alt='Product')
+            .card-body
+              .d-flex.flex-wrap.justify-content-between.align-items-start.pb-2
+                .text-muted.fs-xs.me-1
+                  | by 
+                  a(href='#').product-meta.fw-medium Createx Std. 
+                  | in 
+                  a(href='#').product-meta.fw-medium Graphics
+                +star-rating(3.5)
+              h3.product-title.fs-sm.mb-2
+                a(href='#') Project Devices Showcase (PSD)
+              .d-flex.flex-wrap.justify-content-between.align-items-center
+                .fs-sm.me-2
+                  i.ci-download.text-muted.me-1
+                  | 95
+                  span.fs-xs.ms-1 Sales
+                .bg-faded-accent.text-accent.rounded-1.py-1.px-2 $18.<small>00</small>
+
+        // Product
+        div
+          .card.product-card-alt
+            .product-thumb
+              button(type='button').btn-wishlist.btn-sm
+                i.ci-heart
+              .product-card-actions
+                a(href='#').btn.btn-light.btn-icon.btn-shadow.fs-base.mx-2
+                  i.ci-eye
+                button(type='button').btn.btn-light.btn-icon.btn-shadow.fs-base.mx-2
+                  i.ci-cart
+              a(href='#').product-thumb-overlay
+              img(src='img/marketplace/products/08.jpg' alt='Product')
+            .card-body
+              .d-flex.flex-wrap.justify-content-between.align-items-start.pb-2
+                .text-muted.fs-xs.me-1
+                  | by 
+                  a(href='#').product-meta.fw-medium pixels 
+                  | in 
+                  a(href='#').product-meta.fw-medium Graphics
+                +star-rating(4.5)
+              h3.product-title.fs-sm.mb-2
+                a(href='#') Business Card Branding Mockup
+              .d-flex.flex-wrap.justify-content-between.align-items-center
+                .fs-sm.me-2
+                  i.ci-download.text-muted.me-1
+                  | 316
+                  span.fs-xs.ms-1 Sales
+                .bg-faded-accent.text-accent.rounded-1.py-1.px-2 $17.<small>00</small>
+
+        // Product
+        div
+          .card.product-card-alt
+            .product-thumb
+              button(type='button').btn-wishlist.btn-sm
+                i.ci-heart
+              .product-card-actions
+                a(href='#').btn.btn-light.btn-icon.btn-shadow.fs-base.mx-2
+                  i.ci-eye
+                button(type='button').btn.btn-light.btn-icon.btn-shadow.fs-base.mx-2
+                  i.ci-cart
+              a(href='#').product-thumb-overlay
+              img(src='img/marketplace/products/07.jpg' alt='Product')
+            .card-body
+              .d-flex.flex-wrap.justify-content-between.align-items-start.pb-2
+                .text-muted.fs-xs.me-1
+                  | by 
+                  a(href='#').product-meta.fw-medium pixels 
+                  | in 
+                  a(href='#').product-meta.fw-medium Graphics
+                +star-rating(4)
+              h3.product-title.fs-sm.mb-2
+                a(href='#') Gravity Device Mockups (PSD)
+              .d-flex.flex-wrap.justify-content-between.align-items-center
+                .fs-sm.me-2
+                  i.ci-download.text-muted.me-1
+                  | 234
+                  span.fs-xs.ms-1 Sales
+                .bg-faded-accent.text-accent.rounded-1.py-1.px-2 $16.<small>00</small>
+
+
+//- Footer
+block footer
+  include partials/footer-marketplace
+
+//- Handheld toolbar
+block toolbar
+  include partials/toolbar-marketplace

@@ -1,0 +1,102 @@
+// Footer
+footer.bg-dark.pt-5
+  .container.pt-2.pb-3
+    .row
+      .col-md-6.text-center.text-md-start.mb-4
+        .text-nowrap.mb-3
+          a(href='#').d-inline-block.align-middle.mt-n2.me-2
+            img(src='img/footer-logo-light.png' width='117' alt='Cartzilla').d-block
+          span.d-inline-block.align-middle.h5.fw-light.text-white.mb-0 Marketplace
+        p.fs-sm.text-white.opacity-70.pb-1 High quality items created by our global community.
+        h6.d-inline-block.pe-3.me-3.border-end.border-light
+          span.text-primary 65,478 
+          span.fw-normal.text-white Products
+        h6.d-inline-block.pe-3.me-3.border-end.border-light
+          span.text-primary 2,521 
+          span.fw-normal.text-white Members
+        h6.d-inline-block.me-3
+          span.text-primary 897 
+          span.fw-normal.text-white Vendors
+        .widget.mt-4.text-md-nowrap.text-center.text-md-start
+          a(href="#").btn-social.bs-light.bs-twitter.me-2.mb-2
+            i.ci-twitter
+          a(href="#").btn-social.bs-light.bs-facebook.me-2.mb-2
+            i.ci-facebook
+          a(href="#").btn-social.bs-light.bs-dribbble.me-2.mb-2
+            i.ci-dribbble
+          a(href="#").btn-social.bs-light.bs-behance.me-2.mb-2
+            i.ci-behance
+          a(href="#").btn-social.bs-light.bs-pinterest.me-2.mb-2
+            i.ci-pinterest
+      
+      // Mobile dropdown menu (visible on screens below md)
+      .col-12.d-md-none.text-center.mb-4.pb-2
+        .btn-group.dropdown.d-block.mx-auto.mb-3
+          button(type='button' data-bs-toggle='dropdown').btn.btn-outline-light.border-light.dropdown-toggle
+            | Categories
+          ul.dropdown-menu.my-1
+            li: a(href='#').dropdown-item Photos
+            li: a(href='#').dropdown-item Graphics
+            li: a(href='#').dropdown-item UI Design
+            li: a(href='#').dropdown-item Web Themes
+            li: a(href='#').dropdown-item Fonts
+            li: a(href='#').dropdown-item Add-Ons
+        .btn-group.dropdown.d-block.mx-auto
+          button(type='button' data-bs-toggle='dropdown').btn.btn-outline-light.border-light.dropdown-toggle
+            | For members
+          ul.dropdown-menu.my-1
+            li: a(href='#').dropdown-item Licenses
+            li: a(href='#').dropdown-item Return policy
+            li: a(href='#').dropdown-item Payment methods
+            li: a(href='#').dropdown-item Become a vendor
+            li: a(href='#').dropdown-item Become an affiliate
+            li: a(href='#').dropdown-item Marketplace benefits
+
+      // Desktop menu (visible on screens above md)
+      .col-md-3.d-none.d-md-block.text-center.text-md-start.mb-4
+        .widget.widget-links.widget-light.pb-2
+          h3.widget-title.text-light Categories
+          ul.widget-list
+            li.widget-list-item: a(href='#').widget-list-link Photos
+            li.widget-list-item: a(href='#').widget-list-link Graphics
+            li.widget-list-item: a(href='#').widget-list-link UI Design
+            li.widget-list-item: a(href='#').widget-list-link Web Themes
+            li.widget-list-item: a(href='#').widget-list-link Fonts
+            li.widget-list-item: a(href='#').widget-list-link Add-Ons
+      .col-md-3.d-none.d-md-block.text-center.text-md-start.mb-4
+        .widget.widget-links.widget-light.pb-2
+          h3.widget-title.text-light For members
+          ul.widget-list
+            li.widget-list-item: a(href='#').widget-list-link Licenses
+            li.widget-list-item: a(href='#').widget-list-link Return policy
+            li.widget-list-item: a(href='#').widget-list-link Payment methods
+            li.widget-list-item: a(href='#').widget-list-link Become a vendor
+            li.widget-list-item: a(href='#').widget-list-link Become an affiliate
+            li.widget-list-item: a(href='#').widget-list-link Marketplace benefits
+
+  // Second row
+  .pt-5.bg-darker
+    .container
+      .widget.w-100.mb-4.pb-3.text-center.mx-auto(style='max-width: 28rem;')
+        h3.widget-title.text-light.pb-1 Subscribe to newsletter
+        form(action='https://studio.us12.list-manage.com/subscribe/post?u=c7103e2c981361a6639545bd5&amp;id=29ca296126' method='post' name='mc-embedded-subscribe-form' target='_blank' novalidate).subscription-form.validate
+          .input-group.flex-nowrap
+            i.ci-mail.position-absolute.top-50.translate-middle-y.text-muted.fs-base.ms-3
+            input(type='email' name='EMAIL' placeholder='Your email' required).form-control.rounded-start
+            button(type='submit' name='subscribe').btn.btn-primary Subscribe*
+          // real people should not fill this in and expect good things - do not remove this or risk form bot signups
+          div(style='position: absolute; left: -5000px;' aria-hidden='true')
+            input(type='text' name='b_c7103e2c981361a6639545bd5_29ca296126' tabindex='-1').subscription-form-antispam
+          .form-text.text-light.opacity-50 *Receive early discount offers, updates and new products info.
+          .subscription-status
+      hr.hr-light.mb-3
+      .d-md-flex.justify-content-between.pt-4
+        .pb-4.fs-xs.text-light.opacity-50.text-center.text-md-start
+          | © All rights reserved. Made by 
+          a(href='https://createx.studio/' target='_blank' rel='noopener').text-light Createx Studio
+        .widget.widget-links.widget-light.pb-4
+          ul.widget-list.d-flex.flex-wrap.justify-content-center.justify-content-md-start
+            li.widget-list-item.ms-4: a(href='#').widget-list-link.fs-ms Help Center
+            li.widget-list-item.ms-4: a(href='#').widget-list-link.fs-ms Affiliates
+            li.widget-list-item.ms-4: a(href='#').widget-list-link.fs-ms Support
+            li.widget-list-item.ms-4: a(href='#').widget-list-link.fs-ms Terms &amp; Conditions

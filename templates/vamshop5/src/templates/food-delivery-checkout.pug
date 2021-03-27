@@ -1,0 +1,123 @@
+extends partials/layout
+
+//- Override default config variables
+append config
+  - var pageTitle = 'Food Delivery - Checkout'
+  - var parentMenu = 'Shop'
+  - var breadcrumbs = [{'title': 'Cart', 'link': 'food-delivery-cart.html'}, {'title': 'Checkout'}]
+
+//- Navbar
+block navbar
+  include partials/navbar-food-delivery
+
+//- Page Content
+block content
+  .container.pt-4.pb-3.py-sm-4
+    +breadcrumb('dark')
+    .rounded-3.shadow-lg.mt-4.mb-5
+      ul.nav.nav-tabs.nav-justified.mb-sm-4
+        li.nav-item
+          a(href='food-delivery-cart.html').nav-link.fs-lg.fw-medium.py-4 1. Your order
+        li.nav-item
+          a(href='food-delivery-checkout.html').nav-link.fs-lg.fw-medium.py-4.active 2. Checkout
+      form(novalidate).needs-validation.px-3.px-sm-4.px-xl-5.pt-sm-1.pb-4.pb-sm-5
+        .row.pb-4.pt-3
+          .col-sm-6.mb-4
+            label(for='fd-name').form-label
+              | Your name
+              sup.text-danger.ms-1 *
+            input(type='text' required)#fd-name.form-control
+            .invalid-feedback Please enter your name!
+          .col-sm-6.mb-4
+            label(for='fd-phone').form-label
+              | Phone number
+              sup.text-danger.ms-1 *
+            input(type='text' required)#fd-phone.form-control
+            .invalid-feedback Please enter your phone number!
+          .col-sm-6.mb-4
+            label(for='fd-time').form-label
+              | Delivery time
+              sup.text-danger.ms-1 *
+            select#fd-time.form-select
+              option(value='asap') As soon as possible
+              option(value='11:00am') by 11:00 AM
+              option(value='11:15am') by 11:15 AM
+              option(value='11:30am') by 11:30 AM
+              option(value='11:45am') by 11:45 AM
+              option(value='12:00pm') by 12:00 PM
+              option(value='12:15pm') by 12:15 PM
+              option(value='12:30pm') by 12:30 PM
+              option(value='12:45pm') by 12:45 PM
+              option(value='1:00pm') by 1:00 PM
+          .col-sm-6.mb-4
+            .fs-sm.fw-medium.mb-3 Drop-off options
+            .form-check.form-check-inline
+              input(type='radio' name='dropoff' checked)#hand-to-me.form-check-input
+              label(for='hand-to-me').form-check-label Hand it to me
+            .form-check.form-check-inline
+              input(type='radio' name='dropoff')#at-door.form-check-input
+              label(for='at-door').form-check-label Leave it at my door
+        h2.h5.pb-3 Delivery address
+        .row.mb-4
+          .col-sm-6.mb-4
+            label(for='fd-city').form-label
+              | City
+              sup.text-danger.ms-1 *
+            select#fd-city.form-select
+              option(value='new-york') New York
+              option(value='los-angeles') Los Angeles
+              option(value='chicago') Chicago
+              option(value='houston') Houston
+              option(value='philadelphia') Philadelphia
+              option(value='san-diego') San Diego
+              option(value='miami') Miami
+          .col-sm-6.mb-4
+            label(for='fd-address').form-label
+              | Address
+              sup.text-danger.ms-1 *
+            input(type='text' placeholder='Street, Apartment number or suite' required)#fd-address.form-control
+            .invalid-feedback Please enter your address!
+          .col-12.mb-4
+            label(for='fd-comments').form-label.mb-3
+              span.badge.bg-info.fs-xs.me-2 Note
+              | Additional comments
+            textarea(rows='5')#fd-comments.form-control
+        .row
+          .col-sm-6.mb-4.mb-sm-0
+            h2.h5.pb-2 Cash on delivery
+            .form-check.form-check-inline.mb-3
+              input(type='radio' name='payment' checked)#cash.form-check-input
+              label(for='cash').form-check-label Pay with cash to the courier
+            .d-flex.align-items-center
+              label(for='fd-change').form-label.fw-normal.text-nowrap.me-3.mb-0 I need change from
+              .input-group.flex-nowrap(style='width: 8rem;')
+                span.input-group-text: i.ci-dollar
+                input(type='text')#fd-change.form-control.bg-none.pe-3
+            h2.h5.mt-3.pt-4.pb-2 Online payment
+            .form-check.form-check-inline.pb-4
+              input(type='radio' name='payment')#online.form-check-input
+              label(for='online').form-check-label
+                | Pay with:&nbsp;&nbsp;&nbsp;
+                img(src='img/cards.png' style='width: 187px;' alt='Cerdit Cards').d-inline-block.align-middle
+            button(type='submit').btn.btn-primary.d-block.w-100.mt-3 Complete order
+          .col-sm-6
+            .d-fle.flex-column.h-100.rounded-3.bg-secondary.px-3.px-sm-4.py-4
+              h2.h5.pb-3 Your total
+              .d-flex.justify-content-between.fs-md.border-bottom.pb-3.mb-3
+                span Subtotal:
+                span.text-heading $24.<small>00</small>
+              .d-flex.justify-content-between.fs-md.border-bottom.pb-3.mb-3
+                span Delivery:
+                span.text-heading $6.<small>00</small>
+              .d-flex.justify-content-between.fs-md.mb-2
+                span Total:
+                span.text-heading.fw-medium $30.<small>00</small>
+
+
+//- Footer
+block footer
+  include partials/footer-food-delivery
+
+//- Handheld toolbar
+block toolbar
+  include partials/toolbar-food-delivery

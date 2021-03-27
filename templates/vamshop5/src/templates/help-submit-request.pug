@@ -1,0 +1,76 @@
+extends partials/layout
+
+//- Override default config variables
+append config
+  - var pageTitle = 'Submit a request'
+  - var breadcrumbs = [{'title': 'Help center', 'link': 'help-topics.html'}, {'title': 'Submit request'}]
+  - var parentMenu = 'Pages'
+
+//- Navbar
+block navbar
+  include partials/navbar-3-level-light
+
+//- Page title
+block page-title
+  include partials/page-title-light
+  
+//- Page Content
+block content
+
+  .container.py-5.mt-md-2.mb-md-4
+    .row
+      .col-lg-3
+
+        //- sidebar-help-center.pug template
+        include partials/sidebar-help-center
+
+      .col-lg-9
+        .alert.alert-info.d-flex.fs-sm.mb-4(role='alert')
+          .alert-icon
+            i.ci-announcement
+          div Our friendly Support team is always here to help you. Begin by selecting a topic we can help you with.
+        form(novalidate).needs-validation
+          .row.gx-4.gy-3
+            .col-sm-6
+              label(for='help-topic').form-label Select a topic <strong class='text-danger'>*</strong>
+              select(required)#help-topic.form-select
+                option(value) —
+                option(value='Managing Account') Managing Account
+                option(value='Working with Dashboard') Working with Dashboard
+                option(value='Payment Methods') Payment Methods
+                option(value='Delivery Information') Delivery Information
+                option(value='Refund Policy') Refund Policy
+                option(value='Affiliate Program') Affiliate Program
+              .invalid-feedback Please choose a topic!
+            .col-sm-6
+              label(for='help-subject').form-label Request Subject 
+              input(type='text')#help-subject.form-control
+            .col-12
+              label(for='help-message').form-label Request Message <strong class='text-danger'>*</strong>
+              textarea(rows='6' required)#help-message.form-control
+              .invalid-feedback Please provide a detailed description of your problem!
+            .col-sm-6
+              label(for='help-name').form-label Your Name <strong class='text-danger'>*</strong>
+              input(type='text' required)#help-name.form-control
+              .invalid-feedback Please enter your name!
+            .col-sm-6
+              label(for='help-email').form-label Your Email <strong class='text-danger'>*</strong>
+              input(type='email' required)#help-email.form-control
+              .invalid-feedback Please enter valid email address!
+            .col-sm-6
+              label(for='help-url').form-label Include a relevant URL
+              input(type='text')#help-url.form-control
+            .col-sm-6
+              label(for='help-file').form-label Attachments
+              input(type='file' id='help-file').form-control
+            .col-12.pt-2
+              button(type='submit').btn.btn-primary.me-4 Submit a request
+              a(href='#').nav-link-style.fw-medium.d-inline-block.align-middle.fs-sm.py-2: u Privacy policy
+
+//- Footer
+block footer
+  include partials/footer-dark
+
+//- Handheld toolbar
+block toolbar
+  include partials/toolbar-help

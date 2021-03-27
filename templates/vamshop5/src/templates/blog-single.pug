@@ -1,0 +1,210 @@
+extends partials/layout
+
+//- Override default config variables
+append config
+  - var vendorStyles = ['lightgallery.js/dist/css/lightgallery.min.css']
+  - var vendorScripts = ['lightgallery.js/dist/js/lightgallery.min.js', 'lg-fullscreen.js/dist/lg-fullscreen.min.js', 'lg-zoom.js/dist/lg-zoom.min.js']
+  - var pageTitle = 'Single post no sidebar'
+  - var breadcrumbs = [{'title': 'Blog', 'link': '#'}, {'title': 'Single post'}]
+  - var parentMenu = 'Blog'
+
+//- Navbar
+block navbar
+  include partials/navbar-3-level-light
+
+//- Page title
+block page-title
+  include partials/page-title-light
+  
+//- Page Content
+block content
+
+  .container.pb-5
+    .row.justify-content-center.pt-5.mt-md-2
+      .col-lg-9
+
+        // Post meta
+        .d-flex.flex-wrap.justify-content-between.align-items-center.pb-4.mt-n1
+          .d-flex.align-items-center.fs-sm.mb-2
+            a(href='#').blog-entry-meta-link
+              .blog-entry-author-ava
+                img(src='img/blog/meta/02.jpg' alt='Cynthia Gomez')
+              | Cynthia Gomez
+            span.blog-entry-meta-divider
+            a(href='#').blog-entry-meta-link Jul 17
+          .fs-sm.mb-2
+            a(href='#comments' data-scroll).blog-entry-meta-link.text-nowrap
+              i.ci-message
+              | 3
+        
+        // Gallery
+        .gallery.row.pb-2
+          .col-sm-8
+            a(href='img/blog/single/01.jpg' data-bs-sub-html='<h6 class="fs-sm text-light">Gallery image caption #1</h6>').gallery-item.rounded-3.mb-grid-gutter
+              img(src='img/blog/single/th01.jpg' alt='Gallery image')
+              span.gallery-item-caption Gallery image caption #1
+          .col-sm-4
+            a(href='img/blog/single/02.jpg' data-bs-sub-html='<h6 class="fs-sm text-light">Gallery image caption #2</h6>').gallery-item.rounded-3.mb-grid-gutter
+              img(src='img/blog/single/th02.jpg' alt='Gallery image')
+              span.gallery-item-caption Gallery image caption #2
+            a(href='img/blog/single/03.jpg' data-bs-sub-html='<h6 class="fs-sm text-light">Gallery image caption #3</h6>').gallery-item.rounded-3.mb-grid-gutter
+              img(src='img/blog/single/th03.jpg' alt='Gallery image')
+              span.gallery-item-caption Gallery image caption #3
+        
+        // Post content
+        p Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Ut enim ad minima veniam, quis nostrum exercitationem occaecat cupidatat non proident.
+        p Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        blockquote.testimonial.my-4.pt-4.pb-2
+          .card.border-0.shadow-sm
+            span.testimonial-mark
+            .card-body.fs-md
+              | Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum.
+          footer.d-flex.align-items-center.justify-content-center.pt-4
+            img(src='img/testimonials/01.jpg' width='50' alt='Mary Grant').rounded
+            .ps-3
+              h6.fs-sm.mb-n1 Mary Alice Grant
+              span.fs-ms.text-muted Shopoholic
+        p At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est.
+
+        // Post tags + sharing
+        .d-flex.flex-wrap.justify-content-between.pt-2.pb-4.mb-1
+          .mt-3.me-3
+            a(href='#').btn-tag.me-2.mb-2 #merchandise
+            a(href='#').btn-tag.mb-2 #printed tshirts
+          .mt-3
+            span.d-inline-block.align-middle.text-muted.fs-sm.me-3.mt-1.mb-2 Share post:
+            a(href='#').btn-social.bs-facebook.me-2.mb-2
+              i.ci-facebook
+            a(href='#').btn-social.bs-twitter.me-2.mb-2
+              i.ci-twitter
+            a(href='#').btn-social.bs-pinterest.me-2.mb-2
+              i.ci-pinterest
+        
+        // Post navigation
+        nav.entry-navigation(aria-label='Post navigation')
+          a(href='#' data-bs-toggle='popover' data-bs-placement='top' data-bs-trigger='hover' data-bs-html='true' data-bs-content='<div class="d-flex align-items-center"><img src="img/blog/navigation/01.jpg" width="60" class="rounded" alt="Post thumb"><div class="ps-3"><h6 class="fs-sm fw-semibold mb-0">How to choose perfect shoes for running</h6><span class="d-block fs-xs text-muted">by Susan Mayer</span></div></div>').entry-navigation-link
+            i.ci-arrow-left.me-2
+            span.d-none.d-sm-inline Prev post
+          a(href='blog-list.html').entry-navigation-link
+            i.ci-view-list.me-2
+            span.d-none.d-sm-inline All posts
+          a(href='#' data-bs-toggle='popover' data-bs-placement='top' data-bs-trigger='hover' data-bs-html='true' data-bs-content='<div class="d-flex align-items-center"><img src="img/blog/navigation/02.jpg" width="60" class="rounded" alt="Post thumb"><div class="ps-3"><h6  class="fs-sm fw-semibold mb-0">Factors behind smart watches popularity</h6><span class="d-block fs-xs text-muted">by Logan Coleman</span></div></div>').entry-navigation-link
+            span.d-none.d-sm-inline Next post
+            i.ci-arrow-right.ms-2
+        
+        // Comments
+        #comments.pt-2.mt-5
+          h2.h4
+            | Comments
+            span.badge.bg-secondary.fs-sm.text-body.align-middle.ms-2 3
+
+          // comment
+          .d-flex.align-items-start.py-4.border-bottom
+            img(src='img/testimonials/04.jpg' width='50' alt='Laura Willson').rounded-circle
+            .ps-3
+              .d-flex.justify-content-between.align-items-center.mb-2
+                h6.fs-md.mb-0 Laura Willson
+                a(href='#').nav-link-style.fs-sm.fw-medium
+                  i.ci-reply.me-2
+                  | Reply
+              p.fs-md.mb-1 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat cupidatat non proident, sunt in culpa qui.
+              span.fs-ms.text-muted
+                i.ci-time.align-middle.me-2
+                | Sep 7, 2019
+
+              // comment reply
+              .d-flex.align-items-start.border-top.pt-4.mt-4
+                img(src='img/testimonials/03.jpg' width='50' alt='Michael Davis').rounded-circle
+                .ps-3
+                  .d-flex.justify-content-between.align-items-center.mb-2
+                    h6.fs-md.mb-0 Michael Davis
+                  p.fs-md.mb-1 Egestas sed sed risus pretium quam vulputate dignissim. A diam sollicitudin tempor id eu nisl. Ut porttitor leo a diam. Bibendum at varius vel pharetra vel turpis nunc.
+                  span.fs-ms.text-muted
+                    i.ci-time.align-middle.me-2
+                    | Sep 13, 2019
+
+          // comment
+          .d-flex.align-items-start.py-4
+            img(src='img/testimonials/02.jpg' width='50' alt='Benjamin Miller').rounded-circle
+            .ps-3
+              .d-flex.justify-content-between.align-items-center.mb-2
+                h6.fs-md.mb-0 Benjamin Miller
+                a(href='#').nav-link-style.fs-sm.fw-medium
+                  i.ci-reply.me-2
+                  | Reply
+              p.fs-md.mb-1 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat cupidatat non proident, sunt in culpa qui.
+              span.fs-ms.text-muted
+                i.ci-time.align-middle.me-2
+                | Aug 15, 2019
+          
+          // Post comment form
+          .card.border-0.shadow.mt-2.mb-4
+            .card-body
+              .d-flex.align-items-start
+                img(src='img/testimonials/01.jpg' width='50' alt='Mary Alice').rounded-circle
+                form(novalidate).w-100.needs-validation.ms-3
+                  .mb-3
+                    textarea(rows='4' placeholder='Write comment...' required).form-control
+                    .invalid-feedback Please write your comment.
+                  button(type='submit').btn.btn-primary.btn-sm Post comment
+        
+
+  // Related posts
+  .bg-secondary.py-5
+    .container.py-3
+      h2.h4.text-center.pb-4 You may also like
+      .tns-carousel
+        .tns-carousel-inner(data-carousel-options='{"items": 2, "controls": false, "autoHeight": true, "responsive": {"0":{"items":1},"500":{"items":2, "gutter": 20},"900":{"items":3, "gutter": 20}, "1100":{"items":3, "gutter": 30}}}')
+          
+          // article
+          article
+            a(href='#').blog-entry-thumb.mb-3
+              img(src='img/blog/03.jpg' alt='Post')
+            .d-flex.align-items-center.fs-sm.mb-2
+              a(href='#').blog-entry-meta-link by Rafael Marquez
+              span.blog-entry-meta-divider
+              a(href='#').blog-entry-meta-link Sep 16
+            h3.h6.blog-entry-title
+              a(href='#') We Launched Regular Drone Delivery in California. Watch Demo Video
+          
+          // article
+          article
+            a(href='#').blog-entry-thumb.mb-3
+              img(src='img/blog/04.jpg' alt='Post')
+            .d-flex.align-items-center.fs-sm.mb-2
+              a(href='#').blog-entry-meta-link by Emma Gallaher
+              span.blog-entry-meta-divider
+              a(href='#').blog-entry-meta-link Sep 5
+            h3.h6.blog-entry-title
+              a(href='#') Payments Made Easy. How New Technology will Affect E-Commerce Industry Worldwide?
+          
+          // article
+          article
+            a(href='#').blog-entry-thumb.mb-3
+              img(src='img/blog/02.jpg' alt='Post')
+            .d-flex.align-items-center.fs-sm.mb-2
+              a(href='#').blog-entry-meta-link by Emma Gallaher
+              span.blog-entry-meta-divider
+              a(href='#').blog-entry-meta-link Aug 28
+            h3.h6.blog-entry-title
+              a(href='#') Shopping Tips. Complete Guide of Places Where to Buy Cheap and Get Cashback
+          
+          // article
+          article
+            a(href='#').blog-entry-thumb.mb-3
+              img(src='img/blog/01.jpg' alt='Post')
+            .d-flex.align-items-center.fs-sm.mb-2
+              a(href='#').blog-entry-meta-link by Emma Gallaher
+              span.blog-entry-meta-divider
+              a(href='#').blog-entry-meta-link Aug 28
+            h3.h6.blog-entry-title
+              a(href='#') Top 10 New Trends in Suburban High Fashion
+
+
+//- Footer
+block footer
+  include partials/footer-dark
+
+//- Handheld toolbar
+block toolbar
+  include partials/toolbar

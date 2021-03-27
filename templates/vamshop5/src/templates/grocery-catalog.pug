@@ -1,0 +1,323 @@
+extends partials/layout-grocery
+
+//- Override default config variables
+append config
+  - var pageTitle = 'Grocery - Product catalog'
+  - var breadcrumbs = [{'title': 'Product catalog'}]
+  - var parentMenu = 'Home'
+  
+//- Page Content
+block content
+
+  // Sorting
+  section.d-md-flex.justify-content-between.align-items-center.mb-4.pb-2
+    h1.h2.mb-3.mb-md-0.me-3 Product catalog
+    .d-flex.align-items-center
+      .d-none.d-sm-block.py-2.fs-sm.text-muted.text-nowrap.me-2 Sort by:
+      ul.nav.nav-tabs.fs-sm.mb-0
+        li.nav-item
+          a(href='#').nav-link.active Popular
+        li.nav-item
+          a(href='#').nav-link Cheap
+        li.nav-item
+          a(href='#').nav-link Expensive
+  
+
+  // Product grid
+  .row.g-0.mx-n2
+
+    // Product
+    .col-xl-3.col-lg-6.col-md-4.col-sm-6.px-2.mb-3
+      .card.product-card.card-static.pb-3
+        button(type='button' data-bs-toggle='tooltip' data-bs-placement='left' title='Add to wishlist').btn-wishlist.btn-sm
+          i.ci-heart
+        a(href='grocery-single.html').card-img-top.d-block.overflow-hidden
+          img(src='img/grocery/catalog/01.jpg' alt='Product')
+        .card-body.py-2
+          a(href='#').product-meta.d-block.fs-xs.pb-1 Fruits and Vegetables
+          h3.product-title.fs-sm.text-truncate
+            a(href='grocery-single.html') Coconut, Indonesia (piece)
+          .product-price
+            span.text-accent $2.<small>99</small>
+        .product-floating-btn
+          button(type='button').btn.btn-primary.btn-shadow.btn-sm
+            | +
+            i.ci-cart.fs-base.ms-1
+
+    // Product
+    .col-xl-3.col-lg-6.col-md-4.col-sm-6.px-2.mb-3
+      .card.product-card.card-static.pb-3
+        button(type='button' data-bs-toggle='tooltip' data-bs-placement='left' title='Add to wishlist').btn-wishlist.btn-sm
+          i.ci-heart
+        a(href='grocery-single.html').card-img-top.d-block.overflow-hidden
+          img(src='img/grocery/catalog/02.jpg' alt='Product')
+        .card-body.py-2
+          a(href='#').product-meta.d-block.fs-xs.pb-1 Dairy and Eggs
+          h3.product-title.fs-sm.text-truncate
+            a(href='grocery-single.html') Soft Creme Cheese (200g)
+          .product-price
+            span.text-accent $3.<small>99</small>
+        .product-floating-btn
+          button(type='button').btn.btn-primary.btn-shadow.btn-sm
+            | +
+            i.ci-cart.fs-base.ms-1
+
+    // Product
+    .col-xl-3.col-lg-6.col-md-4.col-sm-6.px-2.mb-3
+      .card.product-card.card-static.pb-3
+        span.badge.bg-danger.badge-shadow Sale
+        button(type='button' data-bs-toggle='tooltip' data-bs-placement='left' title='Add to wishlist').btn-wishlist.btn-sm
+          i.ci-heart
+        a(href='grocery-single.html').card-img-top.d-block.overflow-hidden
+          img(src='img/grocery/catalog/03.jpg' alt='Product')
+        .card-body.py-2
+          a(href='#').product-meta.d-block.fs-xs.pb-1 Soft Drinks and Juice
+          h3.product-title.fs-sm.text-truncate
+            a(href='grocery-single.html') Pepsi Soda Can (.33ml)
+          .product-price
+            span.text-accent $1.<small>00</small>
+            del.fs-sm.text-muted $1.<small>25</small>
+        .product-floating-btn
+          button(type='button').btn.btn-primary.btn-shadow.btn-sm
+            | +
+            i.ci-cart.fs-base.ms-1
+
+    // Product
+    .col-xl-3.col-lg-6.col-md-4.col-sm-6.px-2.mb-3
+      .card.product-card.card-static.pb-3
+        button(type='button' data-bs-toggle='tooltip' data-bs-placement='left' title='Add to wishlist').btn-wishlist.btn-sm
+          i.ci-heart
+        a(href='grocery-single.html').card-img-top.d-block.overflow-hidden
+          img(src='img/grocery/catalog/04.jpg' alt='Product')
+        .card-body.py-2
+          a(href='#').product-meta.d-block.fs-xs.pb-1 Fruits and Vegetables
+          h3.product-title.fs-sm.text-truncate
+            a(href='grocery-single.html') Fresh Orange, Spain (1kg)
+          .product-price
+            span.text-accent $1.<small>75</small>
+        .product-floating-btn
+          button(type='button').btn.btn-primary.btn-shadow.btn-sm
+            | +
+            i.ci-cart.fs-base.ms-1
+
+    // Product
+    .col-xl-3.col-lg-6.col-md-4.col-sm-6.px-2.mb-3
+      .card.product-card.card-static.pb-3
+        button(type='button' data-bs-toggle='tooltip' data-bs-placement='left' title='Add to wishlist').btn-wishlist.btn-sm
+          i.ci-heart
+        a(href='grocery-single.html').card-img-top.d-block.overflow-hidden
+          img(src='img/grocery/catalog/05.jpg' alt='Product')
+        .card-body.py-2
+          a(href='#').product-meta.d-block.fs-xs.pb-1 Personal hygiene
+          h3.product-title.fs-sm.text-truncate
+            a(href='grocery-single.html') Moisture Body Lotion (250ml)
+          .product-price
+            span.text-accent $5.<small>20</small>
+        .product-floating-btn
+          button(type='button').btn.btn-primary.btn-shadow.btn-sm
+            | +
+            i.ci-cart.fs-base.ms-1
+
+    // Product
+    .col-xl-3.col-lg-6.col-md-4.col-sm-6.px-2.mb-3
+      .card.product-card.card-static.pb-3
+        span.badge.bg-info.badge-shadow New
+        button(type='button' data-bs-toggle='tooltip' data-bs-placement='left' title='Add to wishlist').btn-wishlist.btn-sm
+          i.ci-heart
+        a(href='grocery-single.html').card-img-top.d-block.overflow-hidden
+          img(src='img/grocery/catalog/06.jpg' alt='Product')
+        .card-body.py-2
+          a(href='#').product-meta.d-block.fs-xs.pb-1 Snacks, Sweets and Chips
+          h3.product-title.fs-sm.text-truncate
+            a(href='grocery-single.html') Nut Chocolate Paste (750g)
+          .product-price
+            span.text-accent $7.<small>50</small>
+        .product-floating-btn
+          button(type='button').btn.btn-primary.btn-shadow.btn-sm
+            | +
+            i.ci-cart.fs-base.ms-1
+
+    // Product
+    .col-xl-3.col-lg-6.col-md-4.col-sm-6.px-2.mb-3
+      .card.product-card.card-static.pb-3
+        button(type='button' data-bs-toggle='tooltip' data-bs-placement='left' title='Add to wishlist').btn-wishlist.btn-sm
+          i.ci-heart
+        a(href='grocery-single.html').card-img-top.d-block.overflow-hidden
+          img(src='img/grocery/catalog/07.jpg' alt='Product')
+        .card-body.py-2
+          a(href='#').product-meta.d-block.fs-xs.pb-1 Dairy and Eggs
+          h3.product-title.fs-sm.text-truncate
+            a(href='grocery-single.html') Mozzarella Mini Cheese
+          .product-price
+            span.text-accent $4.<small>99</small>
+        .product-floating-btn
+          button(type='button').btn.btn-primary.btn-shadow.btn-sm
+            | +
+            i.ci-cart.fs-base.ms-1
+
+    // Product
+    .col-xl-3.col-lg-6.col-md-4.col-sm-6.px-2.mb-3
+      .card.product-card.card-static.pb-3
+        button(type='button' data-bs-toggle='tooltip' data-bs-placement='left' title='Add to wishlist').btn-wishlist.btn-sm
+          i.ci-heart
+        a(href='grocery-single.html').card-img-top.d-block.overflow-hidden
+          img(src='img/grocery/catalog/08.jpg' alt='Product')
+        .card-body.py-2
+          a(href='#').product-meta.d-block.fs-xs.pb-1 Dairy and Eggs
+          h3.product-title.fs-sm.text-truncate
+            a(href='grocery-single.html') Mozzarella Cheese (125g)
+          .product-price
+            span.text-accent $4.<small>30</small>
+        .product-floating-btn
+          button(type='button').btn.btn-primary.btn-shadow.btn-sm
+            | +
+            i.ci-cart.fs-base.ms-1
+
+    // Product
+    .col-xl-3.col-lg-6.col-md-4.col-sm-6.px-2.mb-3
+      .card.product-card.card-static.pb-3
+        button(type='button' data-bs-toggle='tooltip' data-bs-placement='left' title='Add to wishlist').btn-wishlist.btn-sm
+          i.ci-heart
+        a(href='grocery-single.html').card-img-top.d-block.overflow-hidden
+          img(src='img/grocery/catalog/09.jpg' alt='Product')
+        .card-body.py-2
+          a(href='#').product-meta.d-block.fs-xs.pb-1 Personal hygiene
+          h3.product-title.fs-sm.text-truncate
+            a(href='grocery-single.html') Men’s Shampoo (400ml)
+          .product-price
+            span.text-accent $5.<small>99</small>
+        .product-floating-btn
+          button(type='button').btn.btn-primary.btn-shadow.btn-sm
+            | +
+            i.ci-cart.fs-base.ms-1
+
+    // Product
+    .col-xl-3.col-lg-6.col-md-4.col-sm-6.px-2.mb-3
+      .card.product-card.card-static.pb-3
+        button(type='button' data-bs-toggle='tooltip' data-bs-placement='left' title='Add to wishlist').btn-wishlist.btn-sm
+          i.ci-heart
+        a(href='grocery-single.html').card-img-top.d-block.overflow-hidden
+          img(src='img/grocery/catalog/10.jpg' alt='Product')
+        .card-body.py-2
+          a(href='#').product-meta.d-block.fs-xs.pb-1 Meat and Poultry
+          h3.product-title.fs-sm.text-truncate
+            a(href='grocery-single.html') Frozen Oven-ready Poultry
+          .product-price
+            span.text-accent $12.<small>00</small>
+        .product-floating-btn
+          button(type='button').btn.btn-primary.btn-shadow.btn-sm
+            | +
+            i.ci-cart.fs-base.ms-1
+
+    // Product
+    .col-xl-3.col-lg-6.col-md-4.col-sm-6.px-2.mb-3
+      .card.product-card.card-static.pb-3
+        span.badge.bg-warning.badge-shadow Popular
+        button(type='button' data-bs-toggle='tooltip' data-bs-placement='left' title='Add to wishlist').btn-wishlist.btn-sm
+          i.ci-heart
+        a(href='grocery-single.html').card-img-top.d-block.overflow-hidden
+          img(src='img/grocery/catalog/11.jpg' alt='Product')
+        .card-body.py-2
+          a(href='#').product-meta.d-block.fs-xs.pb-1 Snacks, Sweets and Chips
+          h3.product-title.fs-sm.text-truncate
+            a(href='grocery-single.html') Dark Chocolate with Nuts
+          .product-price
+            span.text-accent $2.<small>50</small>
+        .product-floating-btn
+          button(type='button').btn.btn-primary.btn-shadow.btn-sm
+            | +
+            i.ci-cart.fs-base.ms-1
+
+    // Product
+    .col-xl-3.col-lg-6.col-md-4.col-sm-6.px-2.mb-3
+      .card.product-card.card-static.pb-3
+        button(type='button' data-bs-toggle='tooltip' data-bs-placement='left' title='Add to wishlist').btn-wishlist.btn-sm
+          i.ci-heart
+        a(href='grocery-single.html').card-img-top.d-block.overflow-hidden
+          img(src='img/grocery/catalog/12.jpg' alt='Product')
+        .card-body.py-2
+          a(href='#').product-meta.d-block.fs-xs.pb-1 Canned Food and Oil
+          h3.product-title.fs-sm.text-truncate
+            a(href='grocery-single.html') Corn Oil Bottle (500ml)
+          .product-price
+            span.text-accent $3.<small>10</small>
+        .product-floating-btn
+          button(type='button').btn.btn-primary.btn-shadow.btn-sm
+            | +
+            i.ci-cart.fs-base.ms-1
+
+    // Product
+    .col-xl-3.col-lg-6.col-md-4.col-sm-6.px-2.mb-3
+      .card.product-card.card-static.pb-3
+        button(type='button' data-bs-toggle='tooltip' data-bs-placement='left' title='Add to wishlist').btn-wishlist.btn-sm
+          i.ci-heart
+        a(href='grocery-single.html').card-img-top.d-block.overflow-hidden
+          img(src='img/grocery/catalog/13.jpg' alt='Product')
+        .card-body.py-2
+          a(href='#').product-meta.d-block.fs-xs.pb-1 Fish and Seafood
+          h3.product-title.fs-sm.text-truncate
+            a(href='grocery-single.html') Steak Salmon Fillet (1kg)
+          .product-price
+            span.text-accent $17.<small>99</small>
+        .product-floating-btn
+          button(type='button').btn.btn-primary.btn-shadow.btn-sm
+            | +
+            i.ci-cart.fs-base.ms-1
+
+    // Product
+    .col-xl-3.col-lg-6.col-md-4.col-sm-6.px-2.mb-3
+      .card.product-card.card-static.pb-3
+        button(type='button' data-bs-toggle='tooltip' data-bs-placement='left' title='Add to wishlist').btn-wishlist.btn-sm
+          i.ci-heart
+        a(href='grocery-single.html').card-img-top.d-block.overflow-hidden
+          img(src='img/grocery/catalog/14.jpg' alt='Product')
+        .card-body.py-2
+          a(href='#').product-meta.d-block.fs-xs.pb-1 Canned Food and Oil
+          h3.product-title.fs-sm.text-truncate
+            a(href='grocery-single.html') Sardine in Tomato Sauce (105g)
+          .product-price
+            span.text-accent $3.<small>25</small>
+        .product-floating-btn
+          button(type='button').btn.btn-primary.btn-shadow.btn-sm
+            | +
+            i.ci-cart.fs-base.ms-1
+
+    // Product
+    .col-xl-3.col-lg-6.col-md-4.col-sm-6.px-2.mb-3
+      .card.product-card.card-static.pb-3
+        button(type='button' data-bs-toggle='tooltip' data-bs-placement='left' title='Add to wishlist').btn-wishlist.btn-sm
+          i.ci-heart
+        a(href='grocery-single.html').card-img-top.d-block.overflow-hidden
+          img(src='img/grocery/catalog/15.jpg' alt='Product')
+        .card-body.py-2
+          a(href='#').product-meta.d-block.fs-xs.pb-1 Packets, Cereals
+          h3.product-title.fs-sm.text-truncate
+            a(href='grocery-single.html') Italian Pasta (500g)
+          .product-price
+            span.text-accent $2.<small>99</small>
+        .product-floating-btn
+          button(type='button').btn.btn-primary.btn-shadow.btn-sm
+            | +
+            i.ci-cart.fs-base.ms-1
+
+    // Product
+    .col-xl-3.col-lg-6.col-md-4.col-sm-6.px-2.mb-3
+      .card.product-card.card-static.pb-3
+        button(type='button' data-bs-toggle='tooltip' data-bs-placement='left' title='Add to wishlist').btn-wishlist.btn-sm
+          i.ci-heart
+        a(href='grocery-single.html').card-img-top.d-block.overflow-hidden
+          img(src='img/grocery/catalog/16.jpg' alt='Product')
+        .card-body.py-2
+          a(href='#').product-meta.d-block.fs-xs.pb-1 Packets, Cereals
+          h3.product-title.fs-sm.text-truncate
+            a(href='grocery-single.html') Rice Cakes with Chia Seeds
+          .product-price
+            span.text-accent $1.<small>40</small>
+        .product-floating-btn
+          button(type='button').btn.btn-primary.btn-shadow.btn-sm
+            | +
+            i.ci-cart.fs-base.ms-1
+
+  .py-4.pb-md-5.mb-4
+    //- pagination.pug template
+    include partials/pagination

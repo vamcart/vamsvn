@@ -1,0 +1,106 @@
+extends partials/layout
+
+//- Override default config variables
+append config
+  - var vendorStyles = ['chartist/dist/chartist.min.css']
+  - var vendorScripts = ['chartist/dist/chartist.min.js']
+  - var pageTitle = 'Sales'
+  - var parentMenu = 'Account'
+
+//- Navbar
+block navbar
+  include partials/navbar-marketplace
+
+//- Page Content
+block content
+
+  //- dashboard-header.pug template
+  include partials/dashboard-header
+
+  .container.mb-5.pb-3
+    .bg-light.shadow-lg.rounded-3.overflow-hidden
+      .row
+
+        // Sidebar
+        aside.col-lg-4.pe-xl-5
+          //- sidebar-dashboard.pug template
+          include partials/sidebar-dashboard
+
+        // Content
+        section.col-lg-8.pt-lg-4.pb-4.mb-3
+          .pt-2.px-4.ps-lg-0.pe-xl-5
+            h2.h3.py-2.text-center.text-sm-start Your sales / earnings
+            .row.mx-n2.pt-2
+              .col-md-4.col-sm-6.px-2.mb-4
+                .bg-secondary.h-100.rounded-3.p-4.text-center
+                  h3.fs-sm.text-muted Earnings (before taxes)
+                  p.h2.mb-2 $1,690.<small>50</small>
+                  p.fs-ms.text-muted.mb-0 Sales 8/1/2021 - 8/15/2021
+              .col-md-4.col-sm-6.px-2.mb-4
+                .bg-secondary.h-100.rounded-3.p-4.text-center
+                  h3.fs-sm.text-muted Your balance
+                  p.h2.mb-2 $1,375.<small>00</small>
+                  p.fs-ms.text-muted.mb-0 To be paid on 8/15/2021
+              .col-md-4.col-sm-12.px-2.mb-4
+                .bg-secondary.h-100.rounded-3.p-4.text-center
+                  h3.fs-sm.text-muted Lifetime earnings
+                  p.h2.mb-2 $9,156.<small>74</small>
+                  p.fs-ms.text-muted.mb-0 Based on list price
+            
+            .row.mx-n2
+              .col-lg-8.px-2
+                .card.mb-4
+                  .card-body
+                    h3.fs-sm.pb-3.mb-3.border-bottom
+                      | Sales value, USD 
+                      span.fw-normal.fs-xs.text-muted (Past 2 weeks)
+                    .ct-chart.ct-perfect-fourth(data-line-chart='{"labels": ["22 Jul", "", "24 Jul", "", "26 Jul", "", "28 Jul", "", "30 Jul", "", "01 Aug", "", "03 Aug", "", "05 Aug"], "series": [[0, 100, 200, 150, 50, 0, 0, 50, 0, 50, 50, 50, 0, 100, 0]]}')
+                .card.mb-4.mb-lg-2
+                  .card-body
+                    h3.fs-sm.pb-3.mb-3.border-bottom
+                      | Order count 
+                      span.fw-normal.fs-xs.text-muted (Past 2 weeks)
+                    .ct-chart.ct-perfect-fourth(data-line-chart='{"labels": ["22 Jul", "", "24 Jul", "", "26 Jul", "", "28 Jul", "", "30 Jul", "", "01 Aug", "", "03 Aug", "", "05 Aug"], "series": [[0, 2, 4, 3, 1, 0, 0, 1, 0, 1, 1, 1, 0, 2, 0]]}' data-options='{"axisY": {"onlyInteger": true}}')
+                    
+              .col-lg-4.px-2
+                .card
+                  .card-body
+                    h3.fs-sm.pb-3.mb-0.border-bottom Your top countries
+                    .d-flex.justify-content-between.align-items-center.fs-sm.py-2.border-bottom
+                      .d-flex.align-items-start.py-1
+                        img(src='img/marketplace/account/flags/usa.png' width='20' alt='USA')
+                        .ps-1 United States
+                      span $452
+                    .d-flex.justify-content-between.align-items-center.fs-sm.py-2.border-bottom
+                      .d-flex.align-items-start.py-1
+                        img(src='img/marketplace/account/flags/sweden.png' width='20' alt='Sweden')
+                        .ps-1 Sweden
+                      span $318
+                    .d-flex.justify-content-between.align-items-center.fs-sm.py-2.border-bottom
+                      .d-flex.align-items-start.py-1
+                        img(src='img/marketplace/account/flags/india.png' width='20' alt='India')
+                        .ps-1 India
+                      span $106
+                    .d-flex.justify-content-between.align-items-center.fs-sm.py-2.border-bottom
+                      .d-flex.align-items-start.py-1
+                        img(src='img/marketplace/account/flags/france.png' width='20' alt='France')
+                        .ps-1 France
+                      span $82
+                    .d-flex.justify-content-between.align-items-center.fs-sm.py-2.border-bottom
+                      .d-flex.align-items-start.py-1
+                        img(src='img/marketplace/account/flags/argentina.png' width='20' alt='Argentina')
+                        .ps-1 Argentina
+                      span $40
+                    .d-flex.justify-content-between.align-items-center.fs-sm.pt-2
+                      .d-flex.align-items-start.py-1
+                        img(src='img/marketplace/account/flags/south-africa.png' width='20' alt='South Africa')
+                        .ps-1 South Africa
+                      span $17
+
+//- Footer
+block footer
+  include partials/footer-marketplace
+
+//- Handheld toolbar
+block toolbar
+  include partials/toolbar-marketplace

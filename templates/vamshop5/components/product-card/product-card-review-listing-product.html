@@ -1,0 +1,59 @@
+  <div class="card card-product h-100" itemprop="review" itemscope itemtype="http://schema.org/Review">
+	<div class="card-body">
+	<div class="row">
+		<div class="col-md-2 text-center my-auto">
+			<span class="icon-wrap icon-lg round bg-warning">
+			<i class="fa fa-lightbulb white"></i>
+			</span>
+		</div>
+		<div class="col-md-7">
+			
+				<meta itemprop="itemReviewed" content="{$module_data.PRODUCT.PRODUCTS_NAME}">
+				{if $module_data.PRODUCT.REVIEWS_TOTAL > 0}
+				<div class="rating-wrap small">
+					<div class="label-rating"><span class="bold">{#text_rating#}</span> <span itemprop="reviewRating" itemscope itemtype="http://schema.org/Rating"><span itemprop="ratingValue" content="{$module_data.REVIEW.RATING}">{$module_data.REVIEW.STAR_RATING}</span></span></div>
+					<div class="label-rating"><span class="bold">{#text_date#}</span> <span content="{$module_data.REVIEW.DATE|date_format:"%Y-%m-%d"}" itemprop="datePublished">{$module_data.REVIEW.DATE}</span></div>
+					<div class="desc"><span class="bold">{#text_author#}</span> <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">{$module_data.REVIEW.AUTHOR}</span></span></div>
+					{if $module_data.REVIEW.CUSTOMER}<div class="desc"><span class="btn btn-rounded btn-sm"><i class="fas fa-user-check"></i> {$smarty.const.TEXT_BADGE_CUSTOMER}</span></div>{/if}
+				</div>
+				{/if}
+				{if {$module_data.REVIEW.TEXT}}
+				<span class="font-weight-bold text-secondary">{$smarty.const.TEXT_CUSTOMER_REVIEW}</span>
+				<div class="desc" itemprop="reviewBody">
+				{$module_data.REVIEW.TEXT|strip_tags}
+				</div>
+				<br />
+				{/if}
+				{if {$module_data.REVIEW.REVIEWS_IMAGES}}
+				<div class="owl-carousel owl-theme">
+				{foreach name=aussen item=reviews_images from=$module_data.REVIEW.REVIEWS_IMAGES}
+				<div class="card card-product card-sm h-100">
+					<div class="card-body">
+					{if {$reviews_images.IMAGE} != ''}
+					<div class="img-wrap">
+					<a class="lightbox" href="{$smarty.const.DIR_WS_CATALOG}{$smarty.const.DIR_WS_IMAGES}reviews/{$reviews_images.IMAGE}" title="{$PRODUCTS_NAME}"><img {if $smarty.const.ENABLE_LAZY_LOAD == 'true'}class="lazy" src="{$smarty.const.DIR_WS_IMAGES}pixel_trans.gif" data-src="{$smarty.const.DIR_WS_CATALOG}{$smarty.const.DIR_WS_IMAGES}reviews/{$reviews_images.IMAGE}"{else}src="{$reviews_images.IMAGE}"{/if} height="150" alt="{$PRODUCTS_NAME}"></a>
+					</div>
+					{/if}
+					</div>
+				</div>
+				{/foreach}
+				</div>
+				{/if}
+				{if {$module_data.REVIEW.ANSWER} != ''}
+				<span class="font-weight-bold text-primary">{$smarty.const.TEXT_STORE_ANSWER}</span>
+				<div class="desc">
+				{$module_data.REVIEW.ANSWER}
+				</div>
+				<br />
+				{/if}
+		</div>
+		<div class="col-md-3 my-auto text-center">
+			<div class="action-wrap">
+				<div class="desc">
+				<a class="btn btn-rounded btn-block" href="{$module_data.REVIEW.REVIEWS_LINK}"><i class="far fa-comment"></i> {#text_read#}</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	</div>
+</div>

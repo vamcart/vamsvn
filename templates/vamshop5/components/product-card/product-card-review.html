@@ -1,0 +1,33 @@
+<!-- Product Card Simple -->
+		<div class="card card-sm card-product h-100">
+      <div class="card-body">
+		{if $module_data.PRODUCT.PRODUCTS_LABEL}{$module_data.PRODUCT.PRODUCTS_LABEL}{/if}
+		{if $module_data.PRODUCT.PRODUCTS_SPECIAL > 0}<span class="badge-offer"><b>-{$module_data.PRODUCT.PRODUCTS_SPECIAL|round}%</b></span>{/if}
+			<div class="img-wrap"><a href="{$module_data.PRODUCT.PRODUCTS_LINK}"><img {if $smarty.const.ENABLE_LAZY_LOAD == 'true'}class="lazy" src="{$smarty.const.DIR_WS_IMAGES}pixel_trans.gif" data-src="{$module_data.PRODUCT.PRODUCTS_IMAGE}"{else}src="{$module_data.PRODUCT.PRODUCTS_IMAGE}"{/if} {if {$module_data.PRODUCT.PRODUCTS_IMAGE_WIDTH} > 0} width="{$module_data.PRODUCT.PRODUCTS_IMAGE_WIDTH}"{/if} {if {$module_data.PRODUCT.PRODUCTS_IMAGE_HEIGHT} > 0} height="{$module_data.PRODUCT.PRODUCTS_IMAGE_HEIGHT}"{/if} alt="{$module_data.PRODUCT.PRODUCTS_NAME}"></a></div>
+			<div class="info-wrap text-center">
+				<div class="title"><a href="{$module_data.PRODUCT.PRODUCTS_LINK}">{$module_data.PRODUCT.PRODUCTS_NAME}</a></div>
+				{if $module_data.PRODUCT.PRODUCTS_PRICE_PLAIN > 0}
+				<div class="price-wrap font-weight-bold small text-muted">
+					{$module_data.PRODUCT.PRODUCTS_PRICE}
+				</div>
+				{/if}
+				<div class="desc">&nbsp;{if $module_data.REVIEW.CUSTOMER}<span class="btn btn-rounded btn-sm"><i class="fas fa-user-check" data-toggle="tooltip" title="{$smarty.const.TEXT_BADGE_CUSTOMER}"></i></span>{/if}</div>
+				{if $module_data.REVIEW.RATING > 0}
+				<div class="rating-wrap small">
+					{$module_data.REVIEW.STAR_RATING}
+				</div>
+				{/if}
+				<span class="font-weight-bold text-secondary">{$smarty.const.TEXT_CUSTOMER_REVIEW}</span>
+				<div>{$module_data.REVIEW.TEXT|vam_truncate:$smarty.const.MAX_DISPLAY_REVIEW_TEXT:"...":true}</div>
+				{if {$module_data.REVIEW.ANSWER} != ''}
+				<span class="font-weight-bold text-primary">{$smarty.const.TEXT_STORE_ANSWER}</span>
+				<div>{$module_data.REVIEW.ANSWER}</div>
+				{/if}
+			</div>
+      </div>
+		<div class="category card-footer text-center">
+		<a class="btn btn-rounded btn-block" href="{$module_data.REVIEW.URL}"><i class="far fa-comment"></i> {#text_read#}</a>
+		</div>
+		</div>
+<!-- /Product Card Simple -->
+		

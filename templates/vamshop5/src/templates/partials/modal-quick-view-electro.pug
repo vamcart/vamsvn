@@ -1,0 +1,113 @@
+// Quick View Modal
+#quick-view-electro.modal-quick-view.modal.fade(tabindex='-1')
+  .modal-dialog.modal-xl
+    .modal-content
+      .modal-header
+        h4.modal-title.product-title
+          a(href='shop-single-v2.html' data-bs-toggle='tooltip' data-bs-placement='right' title='Go to product page')
+            | Smartwatch Youth Edition
+            i.ci-arrow-right.fs-lg.ms-2
+        button(type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close')
+      .modal-body
+        .row
+
+          // Product gallery
+          .col-lg-7.pe-lg-0
+            .product-gallery
+              .product-gallery-preview.order-sm-2
+                #first.product-gallery-preview-item.active
+                  img(src='img/shop/single/gallery/05.jpg' data-zoom='img/shop/single/gallery/05.jpg' alt='Product image').image-zoom
+                  .image-zoom-pane
+                #second.product-gallery-preview-item
+                  img(src='img/shop/single/gallery/06.jpg' data-zoom='img/shop/single/gallery/06.jpg' alt='Product image').image-zoom
+                  .image-zoom-pane
+                #third.product-gallery-preview-item
+                  img(src='img/shop/single/gallery/07.jpg' data-zoom='img/shop/single/gallery/07.jpg' alt='Product image').image-zoom
+                  .image-zoom-pane
+                #fourth.product-gallery-preview-item
+                  img(src='img/shop/single/gallery/08.jpg' data-zoom='img/shop/single/gallery/08.jpg' alt='Product image').image-zoom
+                  .image-zoom-pane
+              .product-gallery-thumblist.order-sm-1
+                a(href='#first').product-gallery-thumblist-item.active
+                  img(src='img/shop/single/gallery/th05.jpg' alt='Product thumb')
+                a(href='#second').product-gallery-thumblist-item
+                  img(src='img/shop/single/gallery/th06.jpg' alt='Product thumb')
+                a(href='#third').product-gallery-thumblist-item
+                  img(src='img/shop/single/gallery/th07.jpg' alt='Product thumb')
+                a(href='#fourth').product-gallery-thumblist-item
+                  img(src='img/shop/single/gallery/th08.jpg' alt='Product thumb')
+
+          // Product details
+          .col-lg-5.pt-4.pt-lg-0.image-zoom-pane
+            .product-details.ms-auto.pb-3
+              .mb-2
+                +star-rating(4)
+                span.d-inline-block.fs-sm.text-body.align-middle.mt-1.ms-1 74 Reviews
+              .h3.fw-normal.text-accent.mb-3.me-1 $124.<small>99</small>
+              .fs-sm.mb-4
+                span.text-heading.fw-medium.me-1 Color:
+                span#colorOptionText.text-muted Dark blue/Orange
+              .position-relative.me-n4.mb-3
+                .form-check.form-option.form-check-inline.mb-2
+                  input(type='radio' name='color' id='color1' data-bs-label='colorOptionText' value='Dark blue/Orange' checked).form-check-input
+                  label(for='color1').form-option-label.rounded-circle
+                    span(style='background-color: #f25540;').form-option-color.rounded-circle
+                .form-check.form-option.form-check-inline.mb-2
+                  input(type='radio' name='color' id='color2' data-bs-label='colorOptionText' value='Dark gray/Green').form-check-input
+                  label(for='color2').form-option-label.rounded-circle
+                    span(style='background-color: #65805b;').form-option-color.rounded-circle
+                .form-check.form-option.form-check-inline.mb-2
+                  input(type='radio' name='color' id='color3' data-bs-label='colorOptionText' value='White').form-check-input
+                  label(for='color3').form-option-label.rounded-circle
+                    span(style='background-color: #f5f5f5;').form-option-color.rounded-circle
+                .form-check.form-option.form-check-inline.mb-2
+                  input(type='radio' name='color' id='color4' data-bs-label='colorOptionText' value='Black').form-check-input
+                  label(for='color4').form-option-label.rounded-circle
+                    span(style='background-color: #333;').form-option-color.rounded-circle
+                .product-badge.product-available.mt-n1
+                  i.ci-security-check
+                  | Product available
+              .d-flex.align-items-center.pt-2.pb-4
+                select(style='width: 5rem;').form-select.me-3
+                  option(value='1') 1
+                  option(value='2') 2
+                  option(value='3') 3
+                  option(value='4') 4
+                  option(value='5') 5
+                button(type='button').btn.btn-primary.btn-shadow.d-block.w-100
+                  i.ci-cart.fs-lg.me-2
+                  | Add to Cart
+              .d-flex.mb-4
+                .w-100.me-3
+                  button(type='button').btn.btn-secondary.d-block.w-100
+                    i.ci-heart.fs-lg.me-2
+                    | <span class='d-none d-sm-inline'>Add to </span>Wishlist
+                .w-100
+                  button(type='button').btn.btn-secondary.d-block.w-100
+                    i.ci-compare.fs-lg.me-2
+                    | Compare
+              h5.h6.mb-3.py-2.border-bottom
+                i.ci-announcement.text-muted.fs-lg.align-middle.mt-n1.me-2
+                | Product info
+              h6.fs-sm.mb-2 General
+              ul.fs-sm.pb-2
+                li
+                  span.text-muted Model: 
+                  | Amazfit Smartwatch
+                li
+                  span.text-muted Gender: 
+                  | Unisex
+                li
+                  span.text-muted OS campitibility: 
+                  | Android / iOS
+              h6.fs-sm.mb-2 Physical specs
+              ul.fs-sm.pb-2
+                li
+                  span.text-muted Shape: 
+                  | Rectangular
+                li
+                  span.text-muted Body material: 
+                  | Plastics / Ceramics
+                li
+                  span.text-muted Band material: 
+                  | Silicone

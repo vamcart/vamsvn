@@ -1,0 +1,210 @@
+extends partials/layout
+
+//- Override default config variables
+append config
+  - var vendorScripts = ['card/dist/card.js']
+  - var pageTitle = 'Checkout'
+  - var breadcrumbs = [{'title': 'Market', 'link': 'marketplace-category.html'}, {'title': 'Checkout'}]
+  - var parentMenu = 'Shop'
+
+//- Navbar
+block navbar
+  include partials/navbar-marketplace
+
+//- Page Title
+block page-title
+  include partials/page-title-marketplace
+  
+//- Page Content
+block content
+
+  .container.mb-5.pb-3
+    .bg-light.shadow-lg.rounded-3.overflow-hidden
+      .row
+
+        // Content
+        section.col-lg-8.pt-2.pt-lg-4.pb-4.mb-3
+          .pt-2.px-4.pe-lg-0.ps-xl-5
+
+            // Title
+            h2.h6.border-bottom.pb-3.mb-3 Billing details
+
+            // Billing detail
+            .row.pb-4.gx-4.gy-3
+              .col-sm-6
+                label(for='mc-fn').form-label First name <span class='text-danger'>*</span>
+                input(type='text' value='Jonathan')#mc-fn.form-control
+              .col-sm-6
+                label(for='mc-ln').form-label Last name <span class='text-danger'>*</span>
+                input(type='text' value='Doe')#mc-ln.form-control
+              .col-12
+                label(for='mc-email').form-label Email address <span class='text-danger'>*</span>
+                input(type='email' value='contact@createx.studio')#mc-email.form-control
+              .col-sm-6
+                label(for='mc-company').form-label Company
+                input(type='text' value='Createx Studio')#mc-company.form-control
+              .col-sm-6
+                label(for='mc-country').form-label Country <span class='text-danger'>*</span>
+                select(id='mc-country').form-select
+                  option(value) Select country
+                  option(value='Argentina') Argentina
+                  option(value='Belgium') Belgium
+                  option(value='France') France
+                  option(value='Germany') Germany
+                  option(value='Madagascar' selected) Madagascar
+                  option(value='Spain') Spain
+                  option(value='UK') United Kingdom
+                  option(value='USA') USA
+
+            // Order preview on mobile (screens small than 991px)
+            .widget.mb-3.d-lg-none
+              h2.widget-title Order summary
+              .d-flex.align-items-center.pb-2.border-bottom
+                a(href='marketplace-single.html').d-block.flex-shrink-0.me-2
+                  img(src='img/marketplace/products/widget/01.jpg' width='64' alt='Product').rounded-1
+                .ps-1
+                  h6.widget-product-title
+                    a(href='marketplace-single.html') UI Isometric Devices Pack
+                  .widget-product-meta
+                    span.text-accent.border-end.pe-2.me-2
+                      | $23.
+                      small 99
+                    span.fs-xs.text-muted Standard license
+              .d-flex.align-items-center.py-2.border-bottom
+                a(href='marketplace-single.html').d-block.flex-shrink-0.me-2
+                  img(src='img/marketplace/products/widget/02.jpg' width='64' alt='Product').rounded-1
+                .ps-1
+                  h6.widget-product-title
+                    a(href='marketplace-single.html') Project Devices Showcase
+                  .widget-product-meta
+                    span.text-accent.border-end.pe-2.me-2
+                      | $18.
+                      small 99
+                    span.fs-xs.text-muted Standard license
+              .d-flex.align-items-center.py-2.border-bottom
+                a(href='marketplace-single.html').d-block.flex-shrink-0.me-2
+                  img(src='img/marketplace/products/widget/03.jpg' width='64' alt='Product').rounded-1
+                .ps-1
+                  h6.widget-product-title
+                    a(href='marketplace-single.html') Gravity Devices UI Mockup
+                  .widget-product-meta
+                    span.text-accent.border-end.pe-2.me-2
+                      | $15.
+                      small 99
+                    span.fs-xs.text-muted Standard license
+              ul.list-unstyled.fs-sm.py-3
+                li.d-flex.justify-content-between.align-items-center
+                  span.me-2 Subtotal:
+                  span.text-end $58.<small>97</small>
+                li.d-flex.justify-content-between.align-items-center
+                  span.me-2 Taxes:
+                  span.text-end $10.<small>45</small>
+                li.d-flex.justify-content-between.align-items-center.fs-base
+                  span.me-2 Total:
+                  span.text-end $69.<small>42</small>
+        
+            // Payment methods accordion
+            div(id='payment-method' role='tablist').accordion.mb-2
+              .accordion-item
+                h3.accordion-header
+                  a(href='#card' data-bs-toggle='collapse').accordion-button
+                    i.ci-card.fs-lg.me-2.mt-n1.align-middle
+                    | Pay with Credit Card
+                div(id='card' data-bs-parent='#payment-method' role='tabpanel').accordion-collapse.collapse.show
+                  .accordion-body
+                    p.fs-sm
+                      | We accept following credit cards:&nbsp;&nbsp;
+                      img(src='img/cards.png' style='width: 187px;' alt='Cerdit Cards').d-inline-block.align-middle
+                    .credit-card-wrapper
+                    form.credit-card-form.row.g-3
+                      .col-sm-6
+                        input(type='text' name='number' placeholder='Card Number' required).form-control
+                      .col-sm-6
+                        input(type='text' name='name' placeholder='Full Name' required).form-control
+                      .col-sm-3
+                        input(type='text' name='expiry' placeholder='MM/YY' required).form-control
+                      .col-sm-3
+                        input(type='text' name='cvc' placeholder='CVC' required).form-control
+                      .col-sm-6
+                        button(type='submit').btn.btn-primary.d-block.w-100 Place order
+              .accordion-item
+                h3.accordion-header
+                  a(href='#paypal' data-bs-toggle='collapse').accordion-button.collapsed
+                    i.ci-paypal.me-2.align-middle
+                    | Pay with PayPal
+                div(id='paypal' data-bs-parent='#payment-method' role='tabpanel').accordion-collapse.collapse
+                  .accordion-body.fs-sm
+                    p <span class='fw-medium'>PayPal</span> - the safer, easier way to pay
+                    button(type='button').btn.btn-primary Checkout with PayPal
+              .accordion-item
+                h3.accordion-header
+                  a(href='#points' data-bs-toggle='collapse').accordion-button.collapsed
+                    i.ci-money-bag.me-2
+                    | Pay with my account balance
+                div(id='points' data-bs-parent='#payment-method' role='tabpanel').accordion-collapse.collapse
+                  .accordion-body
+                    p
+                      | You currently have
+                      span.fw-medium &nbsp;$1,375.<small>00</small>
+                      | &nbsp;on your account balance.
+                    button(type='submit').btn.btn-primary Pay with account balance
+
+
+        // Sidebar
+        // Order preview on desktop (screens larger than 991px)
+        aside.col-lg-4.d-none.d-lg-block.ps-xl-5
+          hr.d-lg-none
+          .p-4.h-100.ms-auto.border-start
+            .widget.px-lg-2.py-2.mb-3
+              h2.widget-title.text-center Order summary
+              .d-flex.align-items-center.pb-2.border-bottom
+                a(href='marketplace-single.html').d-block.flex-shrink-0.me-2
+                  img(src='img/marketplace/products/widget/01.jpg' width='64' alt='Product').rounded-1
+                .ps-1
+                  h6.widget-product-title
+                    a(href='marketplace-single.html') UI Isometric Devices Pack
+                  .widget-product-meta
+                    span.text-accent.border-end.pe-2.me-2
+                      | $23.
+                      small 00
+                    span.fs-xs.text-muted Standard license
+              .d-flex.align-items-center.py-2.border-bottom
+                a(href='marketplace-single.html').d-block.flex-shrink-0.me-2
+                  img(src='img/marketplace/products/widget/02.jpg' width='64' alt='Product').rounded-1
+                .ps-1
+                  h6.widget-product-title
+                    a(href='marketplace-single.html') Project Devices Showcase
+                  .widget-product-meta
+                    span.text-accent.border-end.pe-2.me-2
+                      | $18.
+                      small 00
+                    span.fs-xs.text-muted Standard license
+              .d-flex.align-items-center.py-2.border-bottom
+                a(href='marketplace-single.html').d-block.flex-shrink-0.me-2
+                  img(src='img/marketplace/products/widget/03.jpg' width='64' alt='Product').rounded-1
+                .ps-1
+                  h6.widget-product-title
+                    a(href='marketplace-single.html') Gravity Devices UI Mockup
+                  .widget-product-meta
+                    span.text-accent.border-end.pe-2.me-2
+                      | $15.
+                      small 00
+                    span.fs-xs.text-muted Standard license
+              ul.list-unstyled.fs-sm.pt-3.pb-2.border-bottom
+                li.d-flex.justify-content-between.align-items-center
+                  span.me-2 Subtotal:
+                  span.text-end $56.<small>00</small>
+                li.d-flex.justify-content-between.align-items-center
+                  span.me-2 Taxes:
+                  span.text-end $9.<small>30</small>
+              h3.fw-normal.text-center.my-4
+                | $65.
+                small 30
+
+//- Footer
+block footer
+  include partials/footer-marketplace
+
+//- Handheld toolbar
+block toolbar
+  include partials/toolbar-marketplace

@@ -1,0 +1,80 @@
+{config_load file="$language/lang_$language.conf" section="checkout_shipping_address"}
+<div class="page">
+<h1>{#heading_address#}</h1>
+<div class="pageContent">
+{$FORM_ACTION}
+{if $error!=''}
+{$error}
+{/if}
+
+
+<p>{$BUTTON_NEW}</p>
+
+<p>
+<span class="bold">{#title_current_address#}</span>
+</p>
+
+<!-- Адрес -->
+<dl class="AddressBook">
+<dt class="AddressBook">
+</dt>
+
+<dd class="AddressBook">
+{#text_current_address#}
+</dd>
+
+</dl>
+<!-- /Адрес -->
+
+<!-- Адрес по умолчанию -->
+<dl class="AddressBook">
+<dt class="AddressBook">
+<span class="bold">{#title_current_address#}</span>
+<br />
+<img src="{$tpl_path}img/arrow_south_east.gif" alt="" />
+</dt>
+
+<dd class="AddressBook">
+{$ADDRESS_LABEL}
+</dd>
+
+</dl>
+<!-- /Адрес по умолчанию -->
+<div class="clear"></div>
+
+{if $BLOCK_ADDRESS}
+<p>
+<span class="bold">{#title_old_addresses#}</span>
+</p>
+
+<p>
+{#text_old_addresses#}
+</p>
+
+{$BLOCK_ADDRESS}
+
+{else}
+
+{if $MODULE_new_address}
+{$MODULE_new_address}
+{/if}
+
+<p>
+<span class="bold">{#title_continue#}</span>
+</p>
+
+<p>
+{#text_continue#}
+</p>
+
+{/if}
+
+<div class="clear"></div>
+<div class="navigation">
+<span class="right">{$BUTTON_CONTINUE}</span>
+{$BUTTON_BACK}
+</div>
+<div class="clear"></div>
+{$FORM_END}
+</div>
+</div>

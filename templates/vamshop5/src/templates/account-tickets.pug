@@ -1,0 +1,101 @@
+extends partials/layout
+
+//- Override default config variables
+append config
+  - var pageTitle = 'Support tickets'
+  - var breadcrumbs = [{'title': 'Account', 'link': '#'}, {'title': 'Support tickets'}]
+  - var parentMenu = 'Account'
+
+//- Navbar + Modal
+block navbar
+  include partials/modal-ticket
+  include partials/navbar-3-level-light
+
+//- Page title
+block page-title
+  include partials/page-title-shop
+
+//- Page Content
+block content
+
+  .container.pb-5.mb-2.mb-md-4
+    .row
+
+      // Sidebar
+      aside.col-lg-4.pt-4.pt-lg-0.pe-xl-5
+        //- sidebar-account.pug template
+        include partials/sidebar-account
+
+      // Content  
+      section.col-lg-8
+
+        // Toolbar
+        .d-flex.justify-content-between.align-items-center.pt-lg-2.pb-4.pb-lg-5.mb-lg-3
+          .d-flex.align-items-center
+            label(for='ticket-sort').d-none.d-lg-block.fs-sm.text-light.text-nowrap.opacity-75.me-2 Sort tickets:
+            label(for='ticket-sort').d-lg-none.fs-sm.text-nowrap.opacity-75.me-2 Sort tickets:
+            select#ticket-sort.form-select
+              option All
+              option Open
+              option Closed
+          a(href='account-signin.html').btn.btn-primary.btn-sm.d-none.d-lg-inline-block
+            i.ci-sign-out.me-2
+            | Sign out
+        
+        // Tickets list
+        .table-responsive.fs-md.mb-4
+          table.table.table-hover.mb-0
+            thead
+              tr
+                th Ticket Subject
+                th Date Submitted | Updated
+                th Type
+                th Priority
+                th Status
+            tbody
+              tr
+                td.py-3
+                  a(href='account-single-ticket.html').nav-link-style.fw-medium My new ticket
+                td.py-3 09/27/2019 | 09/30/2019
+                td.py-3 Website problem
+                td.py-3
+                  span.badge.bg-warning.m-0 High
+                td.py-3
+                  span.badge.bg-success.m-0 Open
+              tr
+                td.py-3
+                  a(href='account-single-ticket.html').nav-link-style.fw-medium Another ticket
+                td.py-3 08/21/2019 | 08/23/2019
+                td.py-3 Partner request
+                td.py-3
+                  span.badge.bg-info.m-0 Medium
+                td.py-3
+                  span.badge.bg-secondary.m-0 Closed
+              tr
+                td.py-3
+                  a(href='account-single-ticket.html').nav-link-style.fw-medium Yet another ticket
+                td.py-3 11/19/2018 | 11/20/2018
+                td.py-3 Complaint
+                td.py-3
+                  span.badge.bg-danger.m-0 Urgent
+                td.py-3
+                  span.badge.bg-secondary.m-0 Closed
+              tr
+                td.py-3
+                  a(href='account-single-ticket.html').nav-link-style.fw-medium My old ticket
+                td.py-3 06/19/2018 | 06/20/2018
+                td.py-3 Info inquiry
+                td.py-3
+                  span.badge.bg-success.m-0 Low
+                td.py-3
+                  span.badge.bg-secondary.m-0 Closed
+        .text-end
+          button(class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#open-ticket') Submit new ticket
+
+//- Footer
+block footer
+  include partials/footer-dark
+
+//- Handheld toolbar
+block toolbar
+  include partials/toolbar

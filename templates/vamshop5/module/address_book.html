@@ -1,0 +1,97 @@
+{config_load file="$language/lang_$language.conf" section="address_book"}
+<div class="page">
+<h1>{#heading_address#}</h1>
+<div class="pageContent">
+{$FORM_ACTION}
+{if $error!=''}
+<div class="contacterror">{$error}</div>
+{/if} 
+
+<p>
+<span class="bold">{#title_standard#}</span>
+</p>
+
+<!-- Адрес -->
+<dl class="AddressBook">
+<dt class="AddressBook">
+</dt>
+
+<dd class="AddressBook">
+{#text_standard#}
+</dd>
+
+<dd class="AddressBook">
+{$DELIVERY_LABEL}
+</dd>
+
+</dl>
+<!-- /Адрес -->
+
+<!-- Адрес по умолчанию -->
+<dl class="AddressBook">
+<dt class="AddressBook">
+<span class="bold">{#title_standard#}</span>
+<br />
+<img src="{$tpl_path}img/arrow_south_east.gif" alt="" />
+</dt>
+
+<dd class="AddressBook">
+{$ADDRESS_DEFAULT}
+</dd>
+
+</dl>
+<!-- /Адрес по умолчанию -->
+<div class="clear"></div>
+
+<p>
+<span class="bold">{#title_addresses#}</span>
+</p>
+
+<!-- Список адресов -->
+{foreach name=aussen item=addresses from=$addresses_data} 
+<div class="clear"></div>
+<dl class="AddressBookList">
+<dt class="AddressBookList">
+</dt>
+
+<dd class="AddressBookList">
+<span class="bold">{$addresses.NAME}</span>
+</dd>
+
+<dd class="AddressBookList">
+{if $addresses.PRIMARY=='1'}<em>({#title_standard#})</em>{/if}
+</dd>
+
+<dd class="AddressBookList">
+{$addresses.ADDRESS}
+</dd>
+
+</dl>
+
+<dl class="AddressBookList">
+<dt class="AddressBookList">
+</dt>
+
+<dd class="AddressBookList">
+{$addresses.BUTTON_EDIT}
+</dd>
+
+<dd class="AddressBookList">
+{$addresses.BUTTON_DELETE}
+</dd>
+
+</dl>
+{/foreach}
+<div class="clear"></div>
+<!-- /Список адресов -->
+
+<p>
+{$ADDRESS_COUNT}
+</p>
+
+<div class="pageContentFooter">
+{$BUTTON_BACK}&nbsp;{$BUTTON_NEW}
+</div>
+
+</div>
+</div>

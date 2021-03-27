@@ -1,0 +1,422 @@
+extends ../partials/layout-components
+
+//- Override default config variables
+append config
+  - var vendorStyles = ['prismjs/themes/prism.css', 'prismjs/plugins/toolbar/prism-toolbar.css', 'prismjs/plugins/line-numbers/prism-line-numbers.css']
+  - var vendorScripts = ['prismjs/components/prism-core.min.js', 'prismjs/components/prism-markup.min.js', 'prismjs/components/prism-clike.min.js', 'prismjs/components/prism-javascript.min.js', 'prismjs/components/prism-pug.min.js', 'prismjs/plugins/toolbar/prism-toolbar.min.js', 'prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js', 'prismjs/plugins/line-numbers/prism-line-numbers.min.js']
+  - var pageTitle = 'Team'
+  - var pageSubtitle = 'Component to display team members on the website.'
+  - var isPageTitleBadge = true
+  - var anchorNav = [{'title': 'Style 1', 'link': '#team-style1'}, {'title': 'Horizontal layout', 'link': '#team-horizontal'}, {'title': 'Style 2 (inside card)', 'link': '#team-style2'}]
+  
+//- Page Content
+block content
+
+  // Style 1
+  section#team-style1.pb-5.mb-md-2
+    h2.h5.mb-3 Style 1
+    .card.border-0.shadow
+      .card-header
+        ul(role='tablist').nav.nav-tabs.card-header-tabs
+          li.nav-item
+            a(href='#result1' data-bs-toggle='tab' role='tab' aria-controls='result1' aria-selected='true').nav-link.active Result
+          li.nav-item
+            a(href='#html1' data-bs-toggle='tab' role='tab' aria-controls='html1' aria-selected='false').nav-link HTML
+          li.nav-item
+            a(href='#pug1' data-bs-toggle='tab' role='tab' aria-controls='pug1' aria-selected='false').nav-link Pug
+      .card-body
+        .tab-content
+          #result1.tab-pane.fade.show.active(role='tabpanel')
+            .row
+              .col-xl-10
+                .row
+                  .col-sm-6
+                    .mb-4.mb-sm-0.pt-1
+                      img(src='../img/team/01.jpg' width='96' alt='William Smith').d-inline-block.rounded.mb-3
+                      h6.pt-1.mb-1 William Smith
+                      p.fs-sm.text-muted CEO, Co-founder at Company Ltd.
+                      a(href='#').btn-social.bs-facebook.bs-sm.me-2.mb-2
+                        i.ci-facebook
+                      a(href='#').btn-social.bs-twitter.bs-sm.me-2.mb-2
+                        i.ci-twitter
+                      a(href='#').btn-social.bs-linkedin.bs-sm.me-2.mb-2
+                        i.ci-linkedin
+                      a(href='#').btn-social.bs-google.bs-sm.me-2.mb-2
+                        i.ci-google
+                  .col-sm-6
+                    .mb-4.mb-sm-0.pt-1.text-center
+                      img(src='../img/team/02.jpg' width='96' alt='Amanda Gallaher').d-inline-block.rounded-circle.mb-3
+                      h6.pt-1.mb-1 Amanda Gallaher
+                      p.fs-sm.text-muted Chief of Marketing at Company Ltd.
+                      a(href='#').btn-social.bs-twitter.bs-outline.bs-sm.me-2.mb-2
+                        i.ci-twitter
+                      a(href='#').btn-social.bs-messenger.bs-outline.bs-sm.me-2.mb-2
+                        i.ci-messenger
+                      a(href='#').btn-social.bs-pinterest.bs-outline.bs-sm.me-2.mb-2
+                        i.ci-pinterest
+                      a(href='#').btn-social.bs-linkedin.bs-outline.bs-sm.me-2.mb-2
+                        i.ci-linkedin
+          #html1.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-html').
+                &lt;!-- Team Style 1: Left aligned + rounded picture + solid socials --&gt;
+                &lt;div class=&quot;text-start&quot;&gt;
+                  &lt;img src=&quot;path-to-image&quot; class=&quot;d-inline-block rounded mb-3&quot; width=&quot;96&quot; alt=&quot;William Smith&quot;&gt;
+                  &lt;h6 class=&quot;pt-1 mb-1&quot;&gt;William Smith&lt;/h6&gt;
+                  &lt;p class=&quot;fs-sm text-muted&quot;&gt;CEO, Co-founder at Company Ltd.&lt;/p&gt;
+                  &lt;a href=&quot;#&quot; class=&quot;btn-social bs-facebook bs-sm&quot;&gt;
+                    &lt;i class=&quot;ci-facebook&quot;&gt;&lt;/i&gt;
+                  &lt;/a&gt;
+                  &lt;a href=&quot;#&quot; class=&quot;btn-social bs-twitter bs-sm&quot;&gt;
+                    &lt;i class=&quot;ci-twitter&quot;&gt;&lt;/i&gt;
+                  &lt;/a&gt;
+                  &lt;a href=&quot;#&quot; class=&quot;btn-social bs-linkedin bs-sm&quot;&gt;
+                    &lt;i class=&quot;ci-linkedin&quot;&gt;&lt;/i&gt;
+                  &lt;/a&gt;
+                  &lt;a href=&quot;#&quot; class=&quot;btn-social bs-google bs-sm&quot;&gt;
+                    &lt;i class=&quot;ci-google&quot;&gt;&lt;/i&gt;
+                  &lt;/a&gt;
+                &lt;/div&gt;
+
+                &lt;!-- Team Style 1: Center aligned + round picture + outline socials --&gt;
+                &lt;div class=&quot;text-center&quot;&gt;
+                  &lt;img src=&quot;path-to-image&quot; class=&quot;d-inline-block rounded-circle mb-3&quot; width=&quot;96&quot; alt=&quot;Amanda Gallaher&quot;&gt;
+                  &lt;h6 class=&quot;pt-1 mb-1&quot;&gt;Amanda Gallaher&lt;/h6&gt;
+                  &lt;p class=&quot;fs-sm text-muted&quot;&gt;Chief of Marketing at Company Ltd.&lt;/p&gt;
+                  &lt;a href=&quot;#&quot; class=&quot;btn-social bs-twitter bs-outline bs-sm&quot;&gt;
+                    &lt;i class=&quot;ci-twitter&quot;&gt;&lt;/i&gt;
+                  &lt;/a&gt;
+                  &lt;a href=&quot;#&quot; class=&quot;btn-social bs-messenger bs-outline bs-sm&quot;&gt;
+                    &lt;i class=&quot;ci-messenger&quot;&gt;&lt;/i&gt;
+                  &lt;/a&gt;
+                  &lt;a href=&quot;#&quot; class=&quot;btn-social bs-pinterest bs-outline bs-sm&quot;&gt;
+                    &lt;i class=&quot;ci-pinterest&quot;&gt;&lt;/i&gt;
+                  &lt;/a&gt;
+                  &lt;a href=&quot;#&quot; class=&quot;btn-social bs-linkedin bs-outline bs-sm&quot;&gt;
+                    &lt;i class=&quot;ci-linkedin&quot;&gt;&lt;/i&gt;
+                  &lt;/a&gt;
+                &lt;/div&gt;
+          #pug1.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-pug').
+                // Team Style 1: Left aligned + rounded picture + solid socials
+                .text-start
+                  img(src=&quot;path-to-image&quot;, width=&quot;96&quot;, alt=&quot;William Smith&quot;).d-inline-block.rounded.mb-3
+                  h6.pt-1.mb-1 William Smith
+                  p.fs-sm.text-muted CEO, Co-founder at Company Ltd.
+                  a(href=&quot;#&quot;).btn-social.bs-facebook.bs-sm.me-2.mb-2
+                    i.ci-facebook
+                  a(href=&quot;#&quot;).btn-social.bs-twitter.bs-sm.me-2.mb-2
+                    i.ci-twitter
+                  a(href=&quot;#&quot;).btn-social.bs-linkedin.bs-sm.me-2.mb-2
+                    i.ci-linkedin
+                  a(href=&quot;#&quot;).btn-social.bs-google.bs-sm.me-2.mb-2
+                    i.ci-google
+
+                // Team Style 1: Center aligned + round picture + outline socials
+                .text-center
+                  img(src=&quot;path-to-image&quot;, width=&quot;96&quot;, alt=&quot;Amanda Gallaher&quot;).d-inline-block.rounded-circle.mb-3
+                  h6.pt-1.mb-1 Amanda Gallaher
+                  p.fs-sm.text-muted Chief of Marketing at Company Ltd.
+                  a(href=&quot;#&quot;).btn-social.bs-twitter.bs-outline.bs-sm.me-2.mb-2
+                    i.ci-twitter
+                  a(href=&quot;#&quot;).btn-social.bs-messenger.bs-outline.bs-sm.me-2.mb-2
+                    i.ci-messenger
+                  a(href=&quot;#&quot;).btn-social.bs-pinterest.bs-outline.bs-sm.me-2.mb-2
+                    i.ci-pinterest
+                  a(href=&quot;#&quot;).btn-social.bs-linkedin.bs-outline.bs-sm.me-2.mb-2
+                    i.ci-linkedin
+
+  // Horizontal layout
+  section#team-horizontal.pb-5.mb-md-2
+    h2.h5.mb-3 Horizontal layout
+    .card.border-0.shadow
+      .card-header
+        ul(role='tablist').nav.nav-tabs.card-header-tabs
+          li.nav-item
+            a(href='#result2' data-bs-toggle='tab' role='tab' aria-controls='result2' aria-selected='true').nav-link.active Result
+          li.nav-item
+            a(href='#html2' data-bs-toggle='tab' role='tab' aria-controls='html2' aria-selected='false').nav-link HTML
+          li.nav-item
+            a(href='#pug2' data-bs-toggle='tab' role='tab' aria-controls='pug2' aria-selected='false').nav-link Pug
+      .card-body
+        .tab-content
+          #result2.tab-pane.fade.show.active(role='tabpanel')
+            .row
+              .col-xl-11
+                .row
+                  .col-md-6
+                    .d-flex.align-items-start.pt-1.mb-4.mb-md-0
+                      img(src='../img/team/03.jpg' width='96' alt='Jonathan Doe').d-inline-block.rounded
+                      .ps-3
+                        h6.pt-1.mb-1 Jonathan Doe
+                        p.fs-sm.text-muted CEO, Co-founder at Company Ltd.
+                        a(href='#').btn-social.bs-facebook.rounded-circle.bs-sm.me-2.mb-2
+                          i.ci-facebook
+                        a(href='#').btn-social.bs-twitter.rounded-circle.bs-sm.me-2.mb-2
+                          i.ci-twitter
+                        a(href='#').btn-social.bs-linkedin.rounded-circle.bs-sm.me-2.mb-2
+                          i.ci-linkedin
+                        a(href='#').btn-social.bs-google.rounded-circle.bs-sm.me-2.mb-2
+                          i.ci-google
+                  .col-md-6
+                    .d-flex.align-items-start.pt-1.mb-4.mb-md-0
+                      .text-end.pe-3
+                        h6.pt-1.mb-1 Barbara Palson
+                        p.fs-sm.text-muted Chief of Marketing at Company Ltd.
+                        a(href='#').btn-social.bs-twitter.bs-outline.rounded-circle.bs-sm.me-2.mb-2
+                          i.ci-twitter
+                        a(href='#').btn-social.bs-messenger.bs-outline.rounded-circle.bs-sm.me-2.mb-2
+                          i.ci-messenger
+                        a(href='#').btn-social.bs-pinterest.bs-outline.rounded-circle.bs-sm.me-2.mb-2
+                          i.ci-pinterest
+                        a(href='#').btn-social.bs-linkedin.bs-outline.rounded-circle.bs-sm.me-2.mb-2
+                          i.ci-linkedin
+                      img(src='../img/team/04.jpg' width='96' alt='Barbara Palson').d-inline-block.rounded-circle
+          #html2.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-html').
+                &lt;!-- Horizontal layout: Picture on the left + rounded picture + solid round socials --&gt;
+                &lt;div class=&quot;d-flex align-items-start&quot;&gt;
+                  &lt;img class=&quot;d-inline-block rounded&quot; width=&quot;96&quot; src=&quot;path-to-image&quot; alt=&quot;Jonathan Doe&quot;/&gt;
+                  &lt;div class=&quot;ps-3&quot;&gt;
+                    &lt;h6 class=&quot;pt-1 mb-1&quot;&gt;Jonathan Doe&lt;/h6&gt;
+                    &lt;p class=&quot;fs-sm text-muted&quot;&gt;CEO, Co-founder at Company Ltd.&lt;/p&gt;
+                    &lt;a class=&quot;btn-social bs-facebook rounded-circle bs-sm me-2 mb-2&quot; href=&quot;#&quot;&gt;
+                      &lt;i class=&quot;ci-facebook&quot;&gt;&lt;/i&gt;
+                    &lt;/a&gt;
+                    &lt;a class=&quot;btn-social bs-twitter rounded-circle bs-sm me-2 mb-2&quot; href=&quot;#&quot;&gt;
+                      &lt;i class=&quot;ci-twitter&quot;&gt;&lt;/i&gt;
+                    &lt;/a&gt;
+                    &lt;a class=&quot;btn-social bs-linkedin rounded-circle bs-sm me-2 mb-2&quot; href=&quot;#&quot;&gt;
+                      &lt;i class=&quot;ci-linkedin&quot;&gt;&lt;/i&gt;
+                    &lt;/a&gt;
+                    &lt;a class=&quot;btn-social bs-google rounded-circle bs-sm me-2 mb-2&quot; href=&quot;#&quot;&gt;
+                      &lt;i class=&quot;ci-google&quot;&gt;&lt;/i&gt;
+                    &lt;/a&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+                
+                &lt;!-- Horizontal layout: Picture on the right + round picture + outline round socials --&gt;
+                &lt;div class=&quot;d-flex align-items-start&quot;&gt;
+                  &lt;div class=&quot;text-end pe-3&quot;&gt;
+                    &lt;h6 class=&quot;pt-1 mb-1&quot;&gt;Barbara Palson&lt;/h6&gt;
+                    &lt;p class=&quot;fs-sm text-muted&quot;&gt;Chief of Marketing at Company Ltd.&lt;/p&gt;
+                    &lt;a class=&quot;btn-social bs-twitter bs-outline rounded-circle bs-sm me-2 mb-2&quot; href=&quot;#&quot;&gt;
+                      &lt;i class=&quot;ci-twitter&quot;&gt;&lt;/i&gt;
+                    &lt;/a&gt;
+                    &lt;a class=&quot;btn-social bs-messenger bs-outline rounded-circle bs-sm me-2 mb-2&quot; href=&quot;#&quot;&gt;
+                      &lt;i class=&quot;ci-messenger&quot;&gt;&lt;/i&gt;
+                    &lt;/a&gt;
+                    &lt;a class=&quot;btn-social bs-pinterest bs-outline rounded-circle bs-sm me-2 mb-2&quot; href=&quot;#&quot;&gt;
+                      &lt;i class=&quot;ci-pinterest&quot;&gt;&lt;/i&gt;
+                    &lt;/a&gt;
+                    &lt;a class=&quot;btn-social bs-linkedin bs-outline rounded-circle bs-sm me-2 mb-2&quot; href=&quot;#&quot;&gt;
+                      &lt;i class=&quot;ci-linkedin&quot;&gt;&lt;/i&gt;
+                    &lt;/a&gt;
+                  &lt;/div&gt;
+                  &lt;img class=&quot;d-inline-block rounded-circle&quot; width=&quot;96&quot; src=&quot;path-to-image&quot; alt=&quot;Barbara Palson&quot;/&gt;
+                &lt;/div&gt;
+          #pug2.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-pug').
+                // Horizontal layout: Picture on the left + rounded picture + solid round socials
+                .d-flex.align-items-start
+                  img(src=&quot;path-to-image&quot;, width=&quot;96&quot;, alt=&quot;Jonathan Doe&quot;).d-inline-block.rounded
+                  .ps-3
+                    h6.pt-1.mb-1 Jonathan Doe
+                    p.fs-sm.text-muted CEO, Co-founder at Company Ltd.
+                    a(href=&quot;#&quot;).btn-social.bs-facebook.rounded-circle.bs-sm.me-2.mb-2
+                      i.ci-facebook
+                    a(href=&quot;#&quot;).btn-social.bs-twitter.rounded-circle.bs-sm.me-2.mb-2
+                      i.ci-twitter
+                    a(href=&quot;#&quot;).btn-social.bs-linkedin.rounded-circle.bs-sm.me-2.mb-2
+                      i.ci-linkedin
+                    a(href=&quot;#&quot;).btn-social.bs-google.rounded-circle.bs-sm.me-2.mb-2
+                      i.ci-google
+
+                // Horizontal layout: Picture on the right + round picture + outline round socials
+                .d-flex.align-items-start
+                  .text-end.pe-3
+                    h6.pt-1.mb-1 Barbara Palson
+                    p.fs-sm.text-muted Chief of Marketing at Company Ltd.
+                    a(href=&quot;#&quot;).btn-social.bs-twitter.bs-outline.rounded-circle.bs-sm.me-2.mb-2
+                      i.ci-twitter
+                    a(href=&quot;#&quot;).btn-social.bs-messenger.bs-outline.rounded-circle.bs-sm.me-2.mb-2
+                      i.ci-messenger
+                    a(href=&quot;#&quot;).btn-social.bs-pinterest.bs-outline.rounded-circle.bs-sm.me-2.mb-2
+                      i.ci-pinterest
+                    a(href=&quot;#&quot;).btn-social.bs-linkedin.bs-outline.rounded-circle.bs-sm.me-2.mb-2
+                      i.ci-linkedin
+                  img(src=&quot;path-to-image&quot;, width=&quot;96&quot;, alt=&quot;Barbara Palson&quot;).d-inline-block.rounded-circle
+
+  // Style 2 (inside card)
+  section#team-style2.pb-5.mb-md-2
+    h2.h5.mb-3 Style 2 (inside card)
+    .card.border-0.shadow
+      .card-header
+        ul(role='tablist').nav.nav-tabs.card-header-tabs
+          li.nav-item
+            a(href='#result3' data-bs-toggle='tab' role='tab' aria-controls='result3' aria-selected='true').nav-link.active Result
+          li.nav-item
+            a(href='#html3' data-bs-toggle='tab' role='tab' aria-controls='html3' aria-selected='false').nav-link HTML
+          li.nav-item
+            a(href='#pug3' data-bs-toggle='tab' role='tab' aria-controls='pug3' aria-selected='false').nav-link Pug
+      .card-body
+        .tab-content
+          #result3.tab-pane.fade.show.active(role='tabpanel')
+            .row
+              .col-xl-11
+                .row
+                  .col-md-6
+                    .card.text-center.mb-grid-gutter.mb-md-0.mx-auto(style='max-width: 22rem;')
+                      .card-body
+                        img(src='../img/team/05.jpg' width='96' alt='Benjamin Miller').d-inline-block.rounded.mb-3
+                        h6.pt-1.mb-1 Benjamin Miller
+                        p.fs-sm.text-muted Lead Accountant at Company Ltd.
+                        ul.fs-sm.list-unstyled.mb-4
+                          li.mb-0
+                            i.ci-phone.me-2
+                            a(href='tel:00331697720').nav-link-style 00 33 169 7720
+                          li.mb-0
+                            i.ci-mail.me-2
+                            a(href='mailto:ben.miller@example.com').nav-link-style ben.miller@example.com
+                        a(href='#').btn-social.bs-facebook.bs-sm.me-2.mb-2
+                          i.ci-facebook
+                        a(href='#').btn-social.bs-twitter.bs-sm.me-2.mb-2
+                          i.ci-twitter
+                        a(href='#').btn-social.bs-linkedin.bs-sm.me-2.mb-2
+                          i.ci-linkedin
+                        a(href='#').btn-social.bs-google.bs-sm.me-2.mb-2
+                          i.ci-google
+                  .col-md-6
+                    .card.text-center.border-0.shadow.mb-grid-gutter.mb-md-0.mx-auto(style='max-width: 22rem;')
+                      .card-body
+                        img(src='../img/team/06.jpg' width='96' alt='Richard Williams').d-inline-block.rounded-circle.mb-3
+                        h6.pt-1.mb-1 Richard Williams
+                        p.fs-sm.text-muted Financial Director at Company Ltd.
+                        ul.fs-sm.list-unstyled.mb-4
+                          li.mb-0
+                            i.ci-phone.me-2
+                            a(href='tel:00331697720').nav-link-style 00 33 169 7720
+                          li.mb-0
+                            i.ci-mail.me-2
+                            a(href='mailto:r.williams@example.com').nav-link-style r.williams@example.com
+                        a(href='#').btn-social.bs-twitter.bs-outline.bs-sm.me-2.mb-2
+                          i.ci-twitter
+                        a(href='#').btn-social.bs-messenger.bs-outline.bs-sm.me-2.mb-2
+                          i.ci-messenger
+                        a(href='#').btn-social.bs-pinterest.bs-outline.bs-sm.me-2.mb-2
+                          i.ci-pinterest
+                        a(href='#').btn-social.bs-linkedin.bs-outline.bs-sm.me-2.mb-2
+                          i.ci-linkedin
+          #html3.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-html').
+                &lt;!-- Card border: Rounded picture + solid socials --&gt;
+                &lt;div class=&quot;card text-center&quot;&gt;
+                  &lt;div class=&quot;card-body&quot;&gt;
+                    &lt;img class=&quot;d-inline-block rounded mb-3&quot; width=&quot;96&quot; src=&quot;path-to-image&quot; alt=&quot;Benjamin Miller&quot;/&gt;
+                    &lt;h6 class=&quot;pt-1 mb-1&quot;&gt;Benjamin Miller&lt;/h6&gt;
+                    &lt;p class=&quot;fs-sm text-muted&quot;&gt;Lead Accountant at Company Ltd.&lt;/p&gt;
+                    &lt;ul class=&quot;fs-sm list-unstyled mb-4&quot;&gt;
+                      &lt;li class=&quot;mb-0&quot;&gt;
+                        &lt;i class=&quot;ci-phone me-2&quot;&gt;&lt;/i&gt;
+                        &lt;a class=&quot;nav-link-style&quot; href=&quot;tel:00331697720&quot;&gt;00 33 169 7720&lt;/a&gt;
+                      &lt;/li&gt;
+                      &lt;li class=&quot;mb-0&quot;&gt;
+                        &lt;i class=&quot;ci-mail me-2&quot;&gt;&lt;/i&gt;
+                        &lt;a class=&quot;nav-link-style&quot; href=&quot;mailto:ben.miller@example.com&quot;&gt;ben.miller@example.com&lt;/a&gt;
+                      &lt;/li&gt;
+                    &lt;/ul&gt;
+                    &lt;a class=&quot;btn-social bs-facebook bs-sm me-2 mb-2&quot; href=&quot;#&quot;&gt;
+                      &lt;i class=&quot;ci-facebook&quot;&gt;&lt;/i&gt;
+                    &lt;/a&gt;
+                    &lt;a class=&quot;btn-social bs-twitter bs-sm me-2 mb-2&quot; href=&quot;#&quot;&gt;
+                      &lt;i class=&quot;ci-twitter&quot;&gt;&lt;/i&gt;
+                    &lt;/a&gt;
+                    &lt;a class=&quot;btn-social bs-linkedin bs-sm me-2 mb-2&quot; href=&quot;#&quot;&gt;
+                      &lt;i class=&quot;ci-linkedin&quot;&gt;&lt;/i&gt;
+                    &lt;/a&gt;
+                    &lt;a class=&quot;btn-social bs-google bs-sm me-2 mb-2&quot; href=&quot;#&quot;&gt;
+                      &lt;i class=&quot;ci-google&quot;&gt;&lt;/i&gt;
+                    &lt;/a&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+                
+                &lt;!-- Card shadow: Round picture + outline socials --&gt;
+                &lt;div class=&quot;card text-center border-0 shadow&quot;&gt;
+                  &lt;div class=&quot;card-body&quot;&gt;
+                    &lt;img class=&quot;d-inline-block rounded-circle mb-3&quot; width=&quot;96&quot; src=&quot;path-to-image&quot; alt=&quot;Richard Williams&quot;/&gt;
+                    &lt;h6 class=&quot;pt-1 mb-1&quot;&gt;Richard Williams&lt;/h6&gt;
+                    &lt;p class=&quot;fs-sm text-muted&quot;&gt;Financial Director at Company Ltd.&lt;/p&gt;
+                    &lt;ul class=&quot;fs-sm list-unstyled mb-4&quot;&gt;
+                      &lt;li class=&quot;mb-0&quot;&gt;
+                        &lt;i class=&quot;ci-phone me-2&quot;&gt;&lt;/i&gt;
+                        &lt;a class=&quot;nav-link-style&quot; href=&quot;tel:00331697720&quot;&gt;00 33 169 7720&lt;/a&gt;
+                      &lt;/li&gt;
+                      &lt;li class=&quot;mb-0&quot;&gt;
+                        &lt;i class=&quot;ci-mail me-2&quot;&gt;&lt;/i&gt;
+                        &lt;a class=&quot;nav-link-style&quot; href=&quot;mailto:r.williams@example.com&quot;&gt;r.williams@example.com&lt;/a&gt;
+                      &lt;/li&gt;
+                    &lt;/ul&gt;
+                    &lt;a class=&quot;btn-social bs-twitter bs-outline bs-sm me-2 mb-2&quot; href=&quot;#&quot;&gt;
+                      &lt;i class=&quot;ci-twitter&quot;&gt;&lt;/i&gt;
+                    &lt;/a&gt;
+                    &lt;a class=&quot;btn-social bs-messenger bs-outline bs-sm me-2 mb-2&quot; href=&quot;#&quot;&gt;
+                      &lt;i class=&quot;ci-messenger&quot;&gt;&lt;/i&gt;
+                    &lt;/a&gt;
+                    &lt;a class=&quot;btn-social bs-pinterest bs-outline bs-sm me-2 mb-2&quot; href=&quot;#&quot;&gt;
+                      &lt;i class=&quot;ci-pinterest&quot;&gt;&lt;/i&gt;
+                    &lt;/a&gt;
+                    &lt;a class=&quot;btn-social bs-linkedin bs-outline bs-sm me-2 mb-2&quot; href=&quot;#&quot;&gt;
+                      &lt;i class=&quot;ci-linkedin&quot;&gt;&lt;/i&gt;
+                    &lt;/a&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+          #pug3.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-pug').
+                // Card border: Rounded picture + solid socials
+                .card.text-center
+                  .card-body
+                    img(src=&quot;path-to-image&quot;, width=&quot;96&quot;, alt=&quot;Benjamin Miller&quot;).d-inline-block.rounded.mb-3
+                    h6.pt-1.mb-1 Benjamin Miller
+                    p.fs-sm.text-muted Lead Accountant at Company Ltd.
+                    ul.fs-sm.list-unstyled.mb-4
+                      li.mb-0
+                        i.ci-phone.me-2
+                        a(href=&quot;tel:00331697720&quot;).nav-link-style 00 33 169 7720
+                      li.mb-0
+                        i.ci-mail.me-2
+                        a(href=&quot;mailto:ben.miller@example.com&quot;).nav-link-style ben.miller@example.com
+                    a(href=&quot;#&quot;).btn-social.bs-facebook.bs-sm.me-2.mb-2
+                      i.ci-facebook
+                    a(href=&quot;#&quot;).btn-social.bs-twitter.bs-sm.me-2.mb-2
+                      i.ci-twitter
+                    a(href=&quot;#&quot;).btn-social.bs-linkedin.bs-sm.me-2.mb-2
+                      i.ci-linkedin
+                    a(href=&quot;#&quot;).btn-social.bs-google.bs-sm.me-2.mb-2
+                      i.ci-google
+
+                // Card shadow: Round picture + outline socials
+                .card.text-center.border-0.shadow
+                  .card-body
+                    img(src=&quot;path-to-image&quot;, width=&quot;96&quot;, alt=&quot;Richard Williams&quot;).d-inline-block.rounded-circle.mb-3
+                    h6.pt-1.mb-1 Richard Williams
+                    p.fs-sm.text-muted Financial Director at Company Ltd.
+                    ul.fs-sm.list-unstyled.mb-4
+                      li.mb-0
+                        i.ci-phone.me-2
+                        a(href=&quot;tel:00331697720&quot;).nav-link-style 00 33 169 7720
+                      li.mb-0
+                        i.ci-mail.me-2
+                        a(href=&quot;mailto:r.williams@example.com&quot;).nav-link-style r.williams@example.com
+                    a(href=&quot;#&quot;).btn-social.bs-twitter.bs-outline.bs-sm.me-2.mb-2
+                      i.ci-twitter
+                    a(href=&quot;#&quot;).btn-social.bs-messenger.bs-outline.bs-sm.me-2.mb-2
+                      i.ci-messenger
+                    a(href=&quot;#&quot;).btn-social.bs-pinterest.bs-outline.bs-sm.me-2.mb-2
+                      i.ci-pinterest
+                    a(href=&quot;#&quot;).btn-social.bs-linkedin.bs-outline.bs-sm.me-2.mb-2
+                      i.ci-linkedin

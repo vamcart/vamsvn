@@ -1,0 +1,65 @@
+{config_load file="$language/lang_$language.conf" section="shopping_cart"}
+{config_load file="$language/lang_$language.conf" section="product_info"}
+
+<div class="row">
+<div class="col-xl-9">
+
+{foreach from=$module_content key=category_name item=cart_data}
+<h3>{$category_name}</h3>
+<div class="card-deck">
+{foreach name=aussen item=module_data from=$cart_data}
+<div class="col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4">
+{include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/item/item-cart.html"}
+</div>
+
+{/foreach}
+</div>
+{/foreach}
+
+</div>
+
+<div class="col-xl-3">
+
+<h3>{$smarty.const.TEXT_CHECKOUT_ALTERNATIVE}</h3>
+
+<div class="card card-product card-sm">
+<div class="card-body">
+<div class="info-wrap">
+{if $TOTAL_QUANTITY > 0}
+<dl class="dlist-align">
+  <dt>{$smarty.const.TEXT_PRODUCTS_TOTAL}:</dt>
+  <dd class="text-right">{$TOTAL_QUANTITY}</dd>
+</dl>
+{/if}
+{if $UST_CONTENT}
+<dl class="dlist-align">
+  <dt>{$UST_CONTENT_NAME}:</dt>
+  <dd class="text-right">{$UST_CONTENT_VALUE}</dd>
+</dl>
+{/if}
+{if $TOTAL_DISCOUNT_VALUE}
+<dl class="dlist-align">
+  <dt>{$TOTAL_DISCOUNT_NAME}</dt>
+  <dd class="text-right">-{$TOTAL_DISCOUNT_VALUE}</dd>
+</dl>
+{/if}
+{if $TOTAL_SUBTOTAL_VALUE}
+<dl class="dlist-align">
+  <dt>{$TOTAL_SUBTOTAL_NAME}</dt>
+  <dd class="text-right"><strong>{$TOTAL_SUBTOTAL_VALUE}</strong></dd>
+</dl>
+{/if}
+<hr />
+</div>
+</div>
+<div class="card-footer text-center">
+<a class="btn btn-add-to-cart btn-block" href="{$smarty.const.FILENAME_CHECKOUT}"><i class="fa fa-shopping-cart"></i> {$smarty.const.IMAGE_BUTTON_CHECKOUT}</a></div>
+</div>
+
+
+{if $MODULE_cross_selling_cart}
+{$MODULE_cross_selling_cart}
+{/if}
+</div>
+
+</div>

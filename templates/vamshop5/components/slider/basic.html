@@ -1,0 +1,33 @@
+{if {$slider_basic|@count} > 1} 
+
+  <link href="jscript/sequencejs/themes/basic/css/sequence-theme.basic.css" rel="stylesheet" media="all">
+
+  <div id="sequence" class="seq">
+
+    <div class="seq-screen">
+      <ul class="seq-canvas">
+        {foreach item=banner from=$slider_basic}
+        <li class="seq-step{counter name=slide1}" id="step{counter name=slide2}">
+          <div class="seq-content">
+            <h2 data-seq class="seq-title">{$banner.title}</h2>
+            <h3 data-seq class="seq-subtitle">{$banner.description}</h3>
+            <a class="seq-button" href="{$banner.url}" target="_blank" tabindex="-1">{#text_view_now#} →</a>
+          </div>
+        </li>
+        {/foreach}
+      </ul>
+    </div>
+
+    <ul rel="sequence" class="seq-pagination">
+      {foreach item=banner_nav from=$slider_basic}
+      <li><a href="#step{counter name=nav1}" title="{#text_go_to_slide#} {counter name=nav3}">{$banner_nav.title}</a></li>
+      {/foreach}
+    </ul>
+  </div>
+
+  <script src="jscript/sequencejs/imagesloaded.pkgd.min.js"></script>
+  <script src="jscript/sequencejs/hammer.min.js"></script>
+  <script src="jscript/sequencejs/sequence.min.js"></script>
+  <script src="jscript/sequencejs/themes/basic/scripts/sequence-theme.basic.js"></script>
+
+{/if}  

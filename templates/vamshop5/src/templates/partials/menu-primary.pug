@@ -1,0 +1,220 @@
+// Primary menu
+ul.navbar-nav
+  li()&attributes(parentMenu === 'Home' ? {'class': 'nav-item dropdown active'} : {'class': 'nav-item dropdown'})
+    a(href='#' data-bs-toggle='dropdown').nav-link.dropdown-toggle Home
+    ul.dropdown-menu
+      li.dropdown.position-static.mb-0
+        a(href='home-fashion-store-v1.html').dropdown-item.py-2.border-bottom
+          span.d-block.text-heading Fashion Store v.1
+          small.d-block.text-muted Classic shop layout
+        .dropdown-menu.h-100.animation-none.mt-0.p-3
+          a(href='home-fashion-store-v1.html' style='width: 250px;').d-block
+            img(src='img/home/preview/th01.jpg' alt='Fashion Store v.1')
+      li.dropdown.position-static.mb-0
+        a(href='home-electronics-store.html').dropdown-item.py-2.border-bottom
+          span.d-block.text-heading Electronics Store
+          small.d-block.text-muted Slider + Promo banners
+        .dropdown-menu.h-100.animation-none.mt-0.p-3
+          a(href='home-electronics-store.html' style='width: 250px;').d-block
+            img(src='img/home/preview/th03.jpg' alt='Electronics Store')
+      li.dropdown.position-static.mb-0
+        a(href='home-marketplace.html').dropdown-item.py-2.border-bottom
+          span.d-block.text-heading Marketplace
+          small.d-block.text-muted Multi-vendor, digital goods
+        .dropdown-menu.h-100.animation-none.mt-0.p-3
+          a(href='home-marketplace.html' style='width: 250px;').d-block
+            img(src='img/home/preview/th04.jpg' alt='Marketplace')
+      li.dropdown.position-static.mb-0
+        a(href='home-grocery-store.html').dropdown-item.py-2.border-bottom
+          span.d-block.text-heading Grocery Store
+          small.d-block.text-muted Full width + Side menu
+        .dropdown-menu.h-100.animation-none.mt-0.p-3
+          a(href='home-grocery-store.html' style='width: 250px;').d-block
+            img(src='img/home/preview/th06.jpg' alt='Grocery Store')
+      li.dropdown.position-static.mb-0
+        a(href='home-food-delivery.html').dropdown-item.py-2.border-bottom
+          span.d-block.text-heading Food Delivery Service
+          small.d-block.text-muted Food &amp; Beverages delivery
+        .dropdown-menu.h-100.animation-none.mt-0.p-3
+          a(href='home-food-delivery.html' style='width: 250px;').d-block
+            img(src='img/home/preview/th07.jpg' alt='Food Delivery Service')
+      li.dropdown.position-static.mb-0
+        a(href='home-fashion-store-v2.html').dropdown-item.py-2.border-bottom
+          span.d-block.text-heading Fashion Store v.2
+          small.d-block.text-muted Slider + Featured categories
+        .dropdown-menu.h-100.animation-none.mt-0.p-3
+          a(href='home-fashion-store-v2.html' style='width: 250px;').d-block
+            img(src='img/home/preview/th02.jpg' alt='Fashion Store v.2')
+      li.dropdown.position-static.mb-0
+        a(href='home-single-store.html').dropdown-item.py-2
+          span.d-block.text-heading Single Product Store
+          small.d-block.text-muted Single product / mono brand
+        .dropdown-menu.h-100.animation-none.mt-0.p-3
+          a(href='home-single-store.html' style='width: 250px;').d-block
+            img(src='img/home/preview/th05.jpg' alt='Single Product / Brand Store')
+  li()&attributes(parentMenu === 'Shop' ? {'class': 'nav-item dropdown active'} : {'class': 'nav-item dropdown'})
+    a(href='#' data-bs-toggle='dropdown').nav-link.dropdown-toggle Shop
+    .dropdown-menu.p-0
+      .d-flex.flex-wrap.flex-sm-nowrap.px-2
+        .mega-dropdown-column.pt-1.pt-lg-4.pb-4.px-2.px-lg-3
+          .widget.widget-links.mb-4
+            h6.fs-base.mb-3 Shop layouts
+            ul.widget-list
+              li.widget-list-item: a(href='shop-grid-ls.html').widget-list-link Shop Grid - Left Sidebar
+              li.widget-list-item: a(href='shop-grid-rs.html').widget-list-link Shop Grid - Right Sidebar
+              li.widget-list-item: a(href='shop-grid-ft.html').widget-list-link Shop Grid - Filters on Top
+              li.widget-list-item: a(href='shop-list-ls.html').widget-list-link Shop List - Left Sidebar
+              li.widget-list-item: a(href='shop-list-rs.html').widget-list-link Shop List - Right Sidebar
+              li.widget-list-item: a(href='shop-list-ft.html').widget-list-link Shop List - Filters on Top
+          .widget.widget-links
+            h6.fs-base.mb-3 Marketplace
+            ul.widget-list
+              li.widget-list-item: a(href='marketplace-category.html').widget-list-link Category Page
+              li.widget-list-item: a(href='marketplace-single.html').widget-list-link Single Item Page
+              li.widget-list-item: a(href='marketplace-vendor.html').widget-list-link Vendor Page
+              li.widget-list-item: a(href='marketplace-cart.html').widget-list-link Cart
+              li.widget-list-item: a(href='marketplace-checkout.html').widget-list-link Checkout
+        .mega-dropdown-column.pt-1.pt-lg-4.pb-4.px-2.px-lg-3
+          .widget.widget-links
+            h6.fs-base.mb-3 Shop pages
+            ul.widget-list
+              li.widget-list-item: a(href='shop-categories.html').widget-list-link Shop Categories
+              li.widget-list-item: a(href='shop-single-v1.html').widget-list-link Product Page v.1
+              li.widget-list-item: a(href='shop-single-v2.html').widget-list-link Product Page v.2
+              li.widget-list-item: a(href='shop-cart.html').widget-list-link Cart
+              li.widget-list-item: a(href='checkout-details.html').widget-list-link Checkout - Details
+              li.widget-list-item: a(href='checkout-shipping.html').widget-list-link Checkout - Shipping
+              li.widget-list-item: a(href='checkout-payment.html').widget-list-link Checkout - Payment
+              li.widget-list-item: a(href='checkout-review.html').widget-list-link Checkout - Review
+              li.widget-list-item: a(href='checkout-complete.html').widget-list-link Checkout - Complete
+              li.widget-list-item: a(href='order-tracking.html').widget-list-link Order Tracking
+              li.widget-list-item: a(href='comparison.html').widget-list-link Product Comparison
+        .mega-dropdown-column.pt-1.pt-lg-4.pb-4.px-2.px-lg-3
+          .widget.widget-links.mb-4
+            h6.fs-base.mb-3 Grocery store
+            ul.widget-list
+              li.widget-list-item: a(href='grocery-catalog.html').widget-list-link Product Catalog
+              li.widget-list-item: a(href='grocery-single.html').widget-list-link Single Product Page
+              li.widget-list-item: a(href='grocery-checkout.html').widget-list-link Checkout
+          .widget.widget-links
+            h6.fs-base.mb-3 Food Delivery
+            ul.widget-list
+              li.widget-list-item: a(href='food-delivery-category.html').widget-list-link Category Page
+              li.widget-list-item: a(href='food-delivery-single.html').widget-list-link Single Item (Restaurant)
+              li.widget-list-item: a(href='food-delivery-cart.html').widget-list-link Cart (Your Order)
+              li.widget-list-item: a(href='food-delivery-checkout.html').widget-list-link Checkout (Address &amp; Payment)
+  li()&attributes(parentMenu === 'Account' ? {'class': 'nav-item dropdown active'} : {'class': 'nav-item dropdown'})
+    a(href='#' data-bs-toggle='dropdown').nav-link.dropdown-toggle Account
+    ul.dropdown-menu
+      li.dropdown
+        a(href='#' data-bs-toggle='dropdown').dropdown-item.dropdown-toggle Shop User Account
+        ul.dropdown-menu
+          li: a(href='account-orders.html').dropdown-item Orders History
+          li: a(href='account-profile.html').dropdown-item Profile Settings
+          li: a(href='account-address.html').dropdown-item Account Addresses
+          li: a(href='account-payment.html').dropdown-item Payment Methods
+          li: a(href='account-wishlist.html').dropdown-item Wishlist
+          li: a(href='account-tickets.html').dropdown-item My Tickets
+          li: a(href='account-single-ticket.html').dropdown-item Single Ticket
+      li.dropdown
+        a(href='#' data-bs-toggle='dropdown').dropdown-item.dropdown-toggle Vendor Dashboard
+        ul.dropdown-menu
+          li: a(href='dashboard-settings.html').dropdown-item Settings
+          li: a(href='dashboard-purchases.html').dropdown-item Purchases
+          li: a(href='dashboard-favorites.html').dropdown-item Favorites
+          li: a(href='dashboard-sales.html').dropdown-item Sales
+          li: a(href='dashboard-products.html').dropdown-item Products
+          li: a(href='dashboard-add-new-product.html').dropdown-item Add New Product
+          li: a(href='dashboard-payouts.html').dropdown-item Payouts
+      li: a(href='account-signin.html').dropdown-item Sign In / Sign Up
+      li: a(href='account-password-recovery.html').dropdown-item Password Recovery
+  li()&attributes(parentMenu === 'Pages' ? {'class': 'nav-item dropdown active'} : {'class': 'nav-item dropdown'})
+    a(href='#' data-bs-toggle='dropdown').nav-link.dropdown-toggle Pages
+    ul.dropdown-menu
+      li.dropdown
+        a(href='#').dropdown-item.dropdown-toggle Navbar Variants
+        ul.dropdown-menu
+          li: a(href='navbar-1-level-light.html').dropdown-item 1 Level Light
+          li: a(href='navbar-1-level-dark.html').dropdown-item 1 Level Dark
+          li: a(href='navbar-2-level-light.html').dropdown-item 2 Level Light
+          li: a(href='navbar-2-level-dark.html').dropdown-item 2 Level Dark
+          li: a(href='navbar-3-level-light.html').dropdown-item 3 Level Light
+          li: a(href='navbar-3-level-dark.html').dropdown-item 3 Level Dark
+          li: a(href='home-electronics-store.html').dropdown-item Electronics Store
+          li: a(href='home-marketplace.html').dropdown-item Marketplace
+          li: a(href='home-grocery-store.html').dropdown-item Side Menu (Grocery)
+      li.dropdown-divider
+      li: a(href='about.html').dropdown-item About Us
+      li: a(href='contacts.html').dropdown-item Contacts
+      li.dropdown
+        a(href='#' data-bs-toggle='dropdown').dropdown-item.dropdown-toggle Help Center
+        ul.dropdown-menu
+          li: a(href='help-topics.html').dropdown-item Help Topics
+          li: a(href='help-single-topic.html').dropdown-item Single Topic
+          li: a(href='help-submit-request.html').dropdown-item Submit a Request
+      li.dropdown
+        a(href='#' data-bs-toggle='dropdown').dropdown-item.dropdown-toggle 404 Not Found
+        ul.dropdown-menu
+          li: a(href='404-simple.html').dropdown-item 404 - Simple Text
+          li: a(href='404-illustration.html').dropdown-item 404 - Illustration
+  li()&attributes(parentMenu === 'Blog' ? {'class': 'nav-item dropdown active'} : {'class': 'nav-item dropdown'})
+    a(href='#' data-bs-toggle='dropdown').nav-link.dropdown-toggle Blog
+    ul.dropdown-menu
+      li.dropdown
+        a(href='#' data-bs-toggle='dropdown').dropdown-item.dropdown-toggle Blog List Layouts
+        ul.dropdown-menu
+          li: a(href='blog-list-sidebar.html').dropdown-item List with Sidebar
+          li: a(href='blog-list.html').dropdown-item List no Sidebar
+      li.dropdown
+        a(href='#').dropdown-item.dropdown-toggle Blog Grid Layouts
+        ul.dropdown-menu
+          li: a(href='blog-grid-sidebar.html').dropdown-item Grid with Sidebar
+          li: a(href='blog-grid.html').dropdown-item Grid no Sidebar
+      li.dropdown
+        a(href='#' data-bs-toggle='dropdown').dropdown-item.dropdown-toggle Single Post Layouts
+        ul.dropdown-menu
+          li: a(href='blog-single-sidebar.html').dropdown-item Article with Sidebar
+          li: a(href='blog-single.html').dropdown-item Article no Sidebar
+  li.nav-item.dropdown
+    a(href='#' data-bs-toggle='dropdown').nav-link.dropdown-toggle Docs / Components
+    ul.dropdown-menu
+      li
+        a(href='docs/dev-setup.html').dropdown-item
+          .d-flex
+            .lead.text-muted.pt-1
+              i.ci-book
+            .ms-2
+              span.d-block.text-heading Documentation
+              small.d-block.text-muted Kick-start customization
+      li.dropdown-divider
+      li
+        a(href='components/typography.html').dropdown-item
+          .d-flex
+            .lead.text-muted.pt-1
+              i.ci-server
+            .ms-2
+              span.d-block.text-heading
+                | Components
+                span.badge.bg-info.ms-2 40+
+              small.d-block.text-muted Faster page building
+      li.dropdown-divider
+      li
+        a(href='docs/changelog.html').dropdown-item
+          .d-flex
+            .lead.text-muted.pt-1
+              i.ci-edit
+            .ms-2
+              span.d-block.text-heading
+                | Changelog
+                span.badge.bg-success.ms-2 v2.0
+              small.d-block.text-muted Regular updates
+      li.dropdown-divider
+      li
+        a(href='mailto:support@createx.studio').dropdown-item
+          .d-flex
+            .lead.text-muted.pt-1
+              i.ci-help
+            .ms-2
+              span.d-block.text-heading Support
+              small.d-block.text-muted support@createx.studio
+

@@ -1,0 +1,97 @@
+extends partials/layout
+
+//- Override default config variables
+append config
+  - var pageTitle = 'Add New Product'
+  - var parentMenu = 'Account'
+
+//- Navbar
+block navbar
+  include partials/navbar-marketplace
+
+//- Page Content
+block content
+
+  //- dashboard-header.pug template
+  include partials/dashboard-header
+
+  .container.mb-5.pb-3
+    .bg-light.shadow-lg.rounded-3.overflow-hidden
+      .row
+
+        // Sidebar
+        aside.col-lg-4.pe-xl-5
+          //- sidebar-dashboard.pug template
+          include partials/sidebar-dashboard
+
+        // Content
+        section.col-lg-8.pt-lg-4.pb-4.mb-3
+          .pt-2.px-4.ps-lg-0.pe-xl-5
+
+            // Title
+            .d-sm-flex.flex-wrap.justify-content-between.align-items-center.pb-2
+              h2.h3.py-2.me-2.text-center.text-sm-start Add New Product
+              .py-2
+                select#unp-category.form-select.me-2
+                  option Select category
+                  option Photos
+                  option Graphics
+                  option UI Design
+                  option Web Themes
+                  option Fonts
+                  option Add-Ons
+            form
+              .mb-3.pb-2
+                label(for='unp-product-name').form-label Product name
+                input(type='text')#unp-product-name.form-control
+                .form-text Maximum 100 characters. No HTML or emoji allowed.
+              .file-drop-area.mb-3
+                .file-drop-icon.ci-cloud-upload
+                span.file-drop-message Drag and drop here to upload product screenshot
+                input(type='file').file-drop-input
+                button(type='button').file-drop-btn.btn.btn-primary.btn-sm.mb-2 Or select file
+                .form-text 1000 x 800px ideal size for hi-res displays
+              .mb-3.py-2
+                label(for='unp-product-description').form-label Product description
+                textarea(rows='6')#unp-product-description.form-control
+                .bg-secondary.p-3.fs-ms.rounded-bottom
+                  span.d-inline-block.fw-medium.me-2.my-1 Markdown supported:
+                  em.d-inline-block.border-end.pe-2.me-2.my-1 *Italic*
+                  strong.d-inline-block.border-end.pe-2.me-2.my-1 **Bold**
+                  span.d-inline-block.border-end.pe-2.me-2.my-1 - List item
+                  span.d-inline-block.border-end.pe-2.me-2.my-1 ##Heading##
+                  span.d-inline-block --- Horizontal rule
+              .row
+                .col-sm-6.mb-3
+                  label(for='unp-standard-price').form-label Standard license price
+                  .input-group
+                    span.input-group-text
+                      i.ci-dollar
+                    input(type='text')#unp-standard-price.form-control
+                  .form-text Average marketplace price for this category is $15.
+                .col-sm-6.mb-3
+                  label(for='unp-extended-price').form-label Extended license price
+                  .input-group
+                    span.input-group-text
+                      i.ci-dollar
+                    input(type='text')#unp-extended-price.form-control
+                  .form-text Typically 10x of the Standard license price.
+              .mb-3.py-2
+                label(for='unp-product-tags').form-label Product tags
+                textarea(rows='4')#unp-product-tags.form-control
+                .form-text Up to 10 keywords that describe your item. Tags should all be in lowercase and separated by commas.
+              .mb-3.pb-2
+                label(for='unp-product-files').form-label Product files for sale
+                input(type='file')#unp-product-files.form-control
+                .form-text Maximum file size is 1GB
+              button(type='submit').btn.btn-primary.d-block.w-100
+                i.ci-cloud-upload.fs-lg.me-2
+                | Upload Product
+
+//- Footer
+block footer
+  include partials/footer-marketplace
+
+//- Handheld toolbar
+block toolbar
+  include partials/toolbar-marketplace

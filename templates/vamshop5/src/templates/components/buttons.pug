@@ -1,0 +1,729 @@
+extends ../partials/layout-components
+
+//- Override default config variables
+append config
+  - var vendorStyles = ['prismjs/themes/prism.css', 'prismjs/plugins/toolbar/prism-toolbar.css', 'prismjs/plugins/line-numbers/prism-line-numbers.css']
+  - var vendorScripts = ['prismjs/components/prism-core.min.js', 'prismjs/components/prism-markup.min.js', 'prismjs/components/prism-clike.min.js', 'prismjs/components/prism-javascript.min.js', 'prismjs/components/prism-pug.min.js', 'prismjs/plugins/toolbar/prism-toolbar.min.js', 'prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js', 'prismjs/plugins/line-numbers/prism-line-numbers.min.js']
+  - var pageTitle = 'Buttons'
+  - var pageSubtitle = 'Custom button styles for actions in forms, dialogs, etc.'
+  - var pageTitleLink = {'title': 'Bootstrap docs', 'link': 'https://getbootstrap.com/docs/5.0/components/buttons/'}
+  - var anchorNav = [{'title': 'Solid (default)', 'link': '#buttons-solid'}, {'title': 'Outline', 'link': '#buttons-outline'}, {'title': 'Button shadow', 'link': '#buttons-shadow'}, {'title': 'Icons', 'link': '#buttons-icons'}, {'title': 'Market buttons', 'link': '#buttons-market'}, {'title': 'Shapes', 'link': '#buttons-shapes'}, {'title': 'Sizes', 'link': '#buttons-sizes'}, {'title': 'States', 'link': '#buttons-states'}, {'title': 'Like / dislike buttons', 'link': '#buttons-like-dislike'}]
+  
+//- Page Content
+block content
+
+  // Solid (default)
+  section#buttons-solid.pb-5.mb-md-2
+    h2.h5.mb-3 Solid (default)
+    .card.border-0.shadow
+      .card-header
+        ul(role='tablist').nav.nav-tabs.card-header-tabs
+          li.nav-item
+            a(href='#result1' data-bs-toggle='tab' role='tab' aria-controls='result1' aria-selected='true').nav-link.active Result
+          li.nav-item
+            a(href='#html1' data-bs-toggle='tab' role='tab' aria-controls='html1' aria-selected='false').nav-link HTML
+          li.nav-item
+            a(href='#pug1' data-bs-toggle='tab' role='tab' aria-controls='pug1' aria-selected='false').nav-link Pug
+      .card-body
+        .tab-content
+          #result1.tab-pane.fade.show.active(role='tabpanel')
+            button(type='button').btn.btn-primary.mb-2.me-1 Primary
+            button(type='button').btn.btn-accent.mb-2.me-1 Accent
+            button(type='button').btn.btn-secondary.mb-2.me-1 Secondary
+            button(type='button').btn.btn-success.mb-2.me-1 Success
+            button(type='button').btn.btn-danger.mb-2.me-1 Danger
+            button(type='button').btn.btn-warning.mb-2.me-1 Warning
+            button(type='button').btn.btn-info.mb-2.me-1 Info
+            .d-inline-block.p-2.bg-dark.mb-2.me-1
+              button(type='button').btn.btn-light Light
+            button(type='button').btn.btn-dark.mb-2 Dark
+            button(type='button').btn.btn-link.mb-2 Link
+          #html1.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-html').
+                &lt;!-- Primary button --&gt;
+                &lt;button type=&quot;button&quot; class=&quot;btn btn-primary&quot;&gt;Primary&lt;/button&gt;
+
+                &lt;!-- Accent button --&gt;
+                &lt;button type=&quot;button&quot; class=&quot;btn btn-accent&quot;&gt;Accent&lt;/button&gt;
+
+                &lt;!-- Secondary button --&gt;
+                &lt;button type=&quot;button&quot; class=&quot;btn btn-secondary&quot;&gt;Secondary&lt;/button&gt;
+
+                &lt;!-- Success button --&gt;
+                &lt;button type=&quot;button&quot; class=&quot;btn btn-success&quot;&gt;Success&lt;/button&gt;
+
+                &lt;!-- Danger button --&gt;
+                &lt;button type=&quot;button&quot; class=&quot;btn btn-danger&quot;&gt;Danger&lt;/button&gt;
+
+                &lt;!-- Warning button --&gt;
+                &lt;button type=&quot;button&quot; class=&quot;btn btn-warning&quot;&gt;Warning&lt;/button&gt;
+
+                &lt;!-- Info button --&gt;
+                &lt;button type=&quot;button&quot; class=&quot;btn btn-info&quot;&gt;Info&lt;/button&gt;
+
+                &lt;!-- Light button --&gt;
+                &lt;button type=&quot;button&quot; class=&quot;btn btn-light&quot;&gt;Info&lt;/button&gt;
+
+                &lt;!-- Dark button --&gt;
+                &lt;button type=&quot;button&quot; class=&quot;btn btn-dark&quot;&gt;Dark&lt;/button&gt;
+
+                &lt;!-- Link button --&gt;
+                &lt;button type=&quot;button&quot; class=&quot;btn btn-link&quot;&gt;Link&lt;/button&gt;
+          #pug1.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-pug').
+                // Primary button
+                button(type=&quot;button&quot;).btn.btn-primary
+                  | Primary
+
+                // Accent button
+                button(type=&quot;button&quot;).btn.btn-accent
+                  | Accent
+
+                // Secondary button
+                button(type=&quot;button&quot;).btn.btn-secondary
+                  | Secondary
+
+                // Success button
+                button(type=&quot;button&quot;).btn.btn-success
+                  | Success
+
+                // Danger button
+                button(type=&quot;button&quot;).btn.btn-danger
+                  | Danger
+
+                // Warning button
+                button(type=&quot;button&quot;).btn.btn-warning
+                  | Warning
+
+                // Info button
+                button(type=&quot;button&quot;).btn.btn-info
+                  | Info
+
+                // Light button
+                button(type=&quot;button&quot;).btn.btn-light
+                  | Light
+
+                // Dark button
+                button(type=&quot;button&quot;).btn.btn-dark
+                  | Dark
+
+                // Link button
+                button(type=&quot;button&quot;).btn.btn-link
+                  | Link
+
+  // Outline
+  section#buttons-outline.pb-5.mb-md-2
+    h2.h5.mb-3 Outline
+    .card.border-0.shadow
+      .card-header
+        ul(role='tablist').nav.nav-tabs.card-header-tabs
+          li.nav-item
+            a(href='#result2' data-bs-toggle='tab' role='tab' aria-controls='result2' aria-selected='true').nav-link.active Result
+          li.nav-item
+            a(href='#html2' data-bs-toggle='tab' role='tab' aria-controls='html2' aria-selected='false').nav-link HTML
+          li.nav-item
+            a(href='#pug2' data-bs-toggle='tab' role='tab' aria-controls='pug2' aria-selected='false').nav-link Pug
+      .card-body
+        .tab-content
+          #result2.tab-pane.fade.show.active(role='tabpanel')
+            button(type='button').btn.btn-outline-primary.mb-2.me-1 Primary
+            button(type='button').btn.btn-outline-accent.mb-2.me-1 Accent
+            button(type='button').btn.btn-outline-secondary.mb-2.me-1 Secondary
+            button(type='button').btn.btn-outline-success.mb-2.me-1 Success
+            button(type='button').btn.btn-outline-danger.mb-2.me-1 Danger
+            button(type='button').btn.btn-outline-warning.mb-2.me-1 Warning
+            button(type='button').btn.btn-outline-info.mb-2.me-1 Info
+            .d-inline-block.p-2.bg-dark.mb-2.me-1
+              button(type='button').btn.btn-outline-light Light
+            button(type='button').btn.btn-outline-dark.mb-2 Dark
+          #html2.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-html').
+                &lt;!-- Primary button --&gt;
+                &lt;button type=&quot;button&quot; class=&quot;btn btn-outline-primary&quot;&gt;Primary&lt;/button&gt;
+
+                &lt;!-- Accent button --&gt;
+                &lt;button type=&quot;button&quot; class=&quot;btn btn-outline-accent&quot;&gt;Accent&lt;/button&gt;
+
+                &lt;!-- Secondary button --&gt;
+                &lt;button type=&quot;button&quot; class=&quot;btn btn-outline-secondary&quot;&gt;Secondary&lt;/button&gt;
+
+                &lt;!-- Success button --&gt;
+                &lt;button type=&quot;button&quot; class=&quot;btn btn-outline-success&quot;&gt;Success&lt;/button&gt;
+
+                &lt;!-- Danger button --&gt;
+                &lt;button type=&quot;button&quot; class=&quot;btn btn-outline-danger&quot;&gt;Danger&lt;/button&gt;
+
+                &lt;!-- Warning button --&gt;
+                &lt;button type=&quot;button&quot; class=&quot;btn btn-outline-warning&quot;&gt;Warning&lt;/button&gt;
+
+                &lt;!-- Info button --&gt;
+                &lt;button type=&quot;button&quot; class=&quot;btn btn-outline-info&quot;&gt;Info&lt;/button&gt;
+
+                &lt;!-- Light button --&gt;
+                &lt;button type=&quot;button&quot; class=&quot;btn btn-outline-light&quot;&gt;Info&lt;/button&gt;
+
+                &lt;!-- Dark button --&gt;
+                &lt;button type=&quot;button&quot; class=&quot;btn btn-outline-dark&quot;&gt;Dark&lt;/button&gt;
+          #pug2.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-pug').
+                // Primary button
+                button(type=&quot;button&quot;).btn.btn-outline-primary
+                  | Primary
+
+                // Accent button
+                button(type=&quot;button&quot;).btn.btn-outline-accent
+                  | Accent
+
+                // Secondary button
+                button(type=&quot;button&quot;).btn.btn-outline-secondary
+                  | Secondary
+
+                // Success button
+                button(type=&quot;button&quot;).btn.btn-outline-success
+                  | Success
+
+                // Danger button
+                button(type=&quot;button&quot;).btn.btn-outline-danger
+                  | Danger
+
+                // Warning button
+                button(type=&quot;button&quot;).btn.btn-outline-warning
+                  | Warning
+
+                // Info button
+                button(type=&quot;button&quot;).btn.btn-outline-info
+                  | Info
+
+                // Light button
+                button(type=&quot;button&quot;).btn.btn-outline-light
+                  | Light
+
+                // Dark button
+                button(type=&quot;button&quot;).btn.btn-outline-dark
+                  | Dark
+
+  // Button shadow
+  section#buttons-shadow.pb-5.mb-md-2
+    h2.h5.mb-3 Button shadow (solid buttons only)
+    .card.border-0.shadow
+      .card-header
+        ul(role='tablist').nav.nav-tabs.card-header-tabs
+          li.nav-item
+            a(href='#result3' data-bs-toggle='tab' role='tab' aria-controls='result3' aria-selected='true').nav-link.active Result
+          li.nav-item
+            a(href='#html3' data-bs-toggle='tab' role='tab' aria-controls='html3' aria-selected='false').nav-link HTML
+          li.nav-item
+            a(href='#pug3' data-bs-toggle='tab' role='tab' aria-controls='pug3' aria-selected='false').nav-link Pug
+      .card-body
+        .tab-content
+          #result3.tab-pane.fade.show.active(role='tabpanel')
+            button(type='button').btn.btn-primary.btn-shadow.mb-2.me-1 Primary
+            button(type='button').btn.btn-accent.btn-shadow.mb-2.me-1 Accent
+            button(type='button').btn.btn-secondary.btn-shadow.mb-2.me-1 Secondary
+            button(type='button').btn.btn-success.btn-shadow.mb-2.me-1 Success
+            button(type='button').btn.btn-danger.btn-shadow.mb-2.me-1 Danger
+            button(type='button').btn.btn-warning.btn-shadow.mb-2.me-1 Warning
+            button(type='button').btn.btn-info.btn-shadow.mb-2.me-1 Info
+            button(type='button').btn.btn-light.btn-shadow.mb-2.me-1 Light
+            button(type='button').btn.btn-dark.btn-shadow.mb-2 Dark
+          #html3.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-html').
+                &lt;!-- Primary button --&gt;
+                &lt;button type=&quot;button&quot; class=&quot;btn btn-primary btn-shadow&quot;&gt;Primary&lt;/button&gt;
+
+                &lt;!-- Accent button --&gt;
+                &lt;button type=&quot;button&quot; class=&quot;btn btn-accent btn-shadow&quot;&gt;Accent&lt;/button&gt;
+
+                &lt;!-- Secondary button --&gt;
+                &lt;button type=&quot;button&quot; class=&quot;btn btn-secondary btn-shadow&quot;&gt;Secondary&lt;/button&gt;
+
+                &lt;!-- Success button --&gt;
+                &lt;button type=&quot;button&quot; class=&quot;btn btn-success btn-shadow&quot;&gt;Success&lt;/button&gt;
+
+                &lt;!-- Danger button --&gt;
+                &lt;button type=&quot;button&quot; class=&quot;btn btn-danger btn-shadow&quot;&gt;Danger&lt;/button&gt;
+
+                &lt;!-- Warning button --&gt;
+                &lt;button type=&quot;button&quot; class=&quot;btn btn-warning btn-shadow&quot;&gt;Warning&lt;/button&gt;
+
+                &lt;!-- Info button --&gt;
+                &lt;button type=&quot;button&quot; class=&quot;btn btn-info btn-shadow&quot;&gt;Info&lt;/button&gt;
+
+                &lt;!-- Light button --&gt;
+                &lt;button type=&quot;button&quot; class=&quot;btn btn-light btn-shadow&quot;&gt;Info&lt;/button&gt;
+
+                &lt;!-- Dark button --&gt;
+                &lt;button type=&quot;button&quot; class=&quot;btn btn-dark btn-shadow&quot;&gt;Dark&lt;/button&gt;
+          #pug3.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-pug').
+                // Primary button
+                button(type=&quot;button&quot;).btn.btn-primary.btn-shadow
+                  | Primary
+
+                // Accent button
+                button(type=&quot;button&quot;).btn.btn-accent.btn-shadow
+                  | Accent
+
+                // Secondary button
+                button(type=&quot;button&quot;).btn.btn-secondary.btn-shadow
+                  | Secondary
+
+                // Success button
+                button(type=&quot;button&quot;).btn.btn-success.btn-shadow
+                  | Success
+
+                // Danger button
+                button(type=&quot;button&quot;).btn.btn-danger.btn-shadow
+                  | Danger
+
+                // Warning button
+                button(type=&quot;button&quot;).btn.btn-warning.btn-shadow
+                  | Warning
+
+                // Info button
+                button(type=&quot;button&quot;).btn.btn-info.btn-shadow
+                  | Info
+
+                // Light button
+                button(type=&quot;button&quot;).btn.btn-light.btn-shadow
+                  | Light
+
+                // Dark button
+                button(type=&quot;button&quot;).btn.btn-dark.btn-shadow
+                  | Dark
+
+  // Icons
+  section#buttons-icons.pb-5.mb-md-2
+    h2.h5.mb-3 Icons
+    .card.border-0.shadow
+      .card-header
+        ul(role='tablist').nav.nav-tabs.card-header-tabs
+          li.nav-item
+            a(href='#result4' data-bs-toggle='tab' role='tab' aria-controls='result4' aria-selected='true').nav-link.active Result
+          li.nav-item
+            a(href='#html4' data-bs-toggle='tab' role='tab' aria-controls='html4' aria-selected='false').nav-link HTML
+          li.nav-item
+            a(href='#pug4' data-bs-toggle='tab' role='tab' aria-controls='pug4' aria-selected='false').nav-link Pug
+      .card-body
+        .tab-content
+          #result4.tab-pane.fade.show.active(role='tabpanel')
+            button(type='button').btn.btn-primary.mb-2.me-2
+              i.ci-user.me-2
+              | Profile
+            button(type='button').btn.btn-secondary.btn-icon.mb-2.me-2
+              i.ci-edit
+            button(type='button').btn.btn-outline-danger.btn-icon.mb-2.me-2
+              i.ci-trash
+            button(type='button').btn.btn-success.btn-icon.mb-2.me-2
+              i.ci-check
+            button(type='button').btn.btn-warning.rounded-pill.btn-icon.mb-2.me-2
+              i.ci-star
+            button(type='button').btn.btn-outline-info.rounded-pill.btn-icon.mb-2.me-2
+              i.ci-bookmark
+          #html4.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-html').
+                &lt;!-- Primary button with text and icon --&gt;
+                &lt;button type=&quot;button&quot; class=&quot;btn btn-primary&quot;&gt;
+                  &lt;i class=&quot;ci-user me-2&quot;&gt;&lt;/i&gt;
+                  Profile
+                &lt;/button&gt;
+
+                &lt;!-- Secondary solid icon button --&gt;
+                &lt;button type=&quot;button&quot; class=&quot;btn btn-secondary btn-icon&quot;&gt;
+                  &lt;i class=&quot;ci-edit&quot;&gt;&lt;/i&gt;
+                &lt;/button&gt;
+
+                &lt;!-- Danger outline icon button --&gt;
+                &lt;button type=&quot;button&quot; class=&quot;btn btn-outline-danger btn-icon&quot;&gt;
+                  &lt;i class=&quot;ci-trash&quot;&gt;&lt;/i&gt;
+                &lt;/button&gt;
+
+                &lt;!-- Success solid icon button --&gt;
+                &lt;button type=&quot;button&quot; class=&quot;btn btn-success btn-icon&quot;&gt;
+                  &lt;i class=&quot;ci-check&quot;&gt;&lt;/i&gt;
+                &lt;/button&gt;
+
+                &lt;!-- Warning pill solid icon button --&gt;
+                &lt;button type=&quot;button&quot; class=&quot;btn btn-warning rounded-pill btn-icon&quot;&gt;
+                  &lt;i class=&quot;ci-star&quot;&gt;&lt;/i&gt;
+                &lt;/button&gt;
+
+                &lt;!-- Info pill outline icon button --&gt;
+                &lt;button type=&quot;button&quot; class=&quot;btn btn-outline-info rounded-pill btn-icon&quot;&gt;
+                  &lt;i class=&quot;ci-bookmark&quot;&gt;&lt;/i&gt;
+                &lt;/button&gt;
+          #pug4.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-pug').
+                // Primary button with text and icon
+                button(type=&quot;button&quot;).btn.btn-primary
+                  i.ci-user.me-2
+                  | Profile
+
+                // Secondary solid icon button
+                button(type=&quot;button&quot;).btn.btn-secondary.btn-icon
+                  i.ci-edit
+
+                // Danger outline icon button
+                button(type=&quot;button&quot;).btn.btn-outline-danger.btn-icon
+                  i.ci-trash
+
+                // Success solid icon button
+                button(type=&quot;button&quot;).btn.btn-success.btn-icon
+                  i.ci-check
+
+                // Warning pill solid icon button
+                button(type=&quot;button&quot;).btn.btn-warning.rounded-pill.btn-icon
+                  i.ci-star
+
+                // Info pill outline icon button
+                button(type=&quot;button&quot;).btn.btn-outline-info.rounded-pill.btn-icon
+                  i.ci-bookmark
+
+  // Market buttons
+  section#buttons-market.pb-5.mb-md-2
+    h2.h5.mb-3 Market buttons
+    .card.border-0.shadow
+      .card-header
+        ul(role='tablist').nav.nav-tabs.card-header-tabs
+          li.nav-item
+            a(href='#result5' data-bs-toggle='tab' role='tab' aria-controls='result5' aria-selected='true').nav-link.active Result
+          li.nav-item
+            a(href='#html5' data-bs-toggle='tab' role='tab' aria-controls='html5' aria-selected='false').nav-link HTML
+          li.nav-item
+            a(href='#pug5' data-bs-toggle='tab' role='tab' aria-controls='pug5' aria-selected='false').nav-link Pug
+      .card-body
+        .tab-content
+          #result5.tab-pane.fade.show.active(role='tabpanel')
+            a(href='#' role='button').btn-market.btn-apple.me-2.mb-3
+              span.btn-market-subtitle Download on the
+              span.btn-market-title App Store
+            a(href='#' role='button').btn-market.btn-google.me-2.mb-3
+              span.btn-market-subtitle Download on the
+              span.btn-market-title Google Play
+            a(href='#' role='button').btn-market.btn-windows.me-2.mb-3
+              span.btn-market-subtitle Download on the
+              span.btn-market-title Windows Store
+            a(href='#' role='button').btn-market.btn-amazon.mb-3
+              span.btn-market-subtitle Order now at
+              span.btn-market-title Amazon.com
+          #html5.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-html').
+                &lt;!-- App Store button --&gt;
+                &lt;a href=&quot;#&quot; class=&quot;btn-market btn-apple&quot; role=&quot;button&quot;&gt;
+                  &lt;span class=&quot;btn-market-subtitle&quot;&gt;Download on the&lt;/span&gt;
+                  &lt;span class=&quot;btn-market-title&quot;&gt;App Store&lt;/span&gt;
+                &lt;/a&gt;
+
+                &lt;!-- Google Play button --&gt;
+                &lt;a href=&quot;#&quot; class=&quot;btn-market btn-google&quot; role=&quot;button&quot;&gt;
+                  &lt;span class=&quot;btn-market-subtitle&quot;&gt;Download on the&lt;/span&gt;
+                  &lt;span class=&quot;btn-market-title&quot;&gt;Google Play&lt;/span&gt;
+                &lt;/a&gt;
+
+                &lt;!-- Windows store button --&gt;
+                &lt;a href=&quot;#&quot; class=&quot;btn-market btn-windows&quot; role=&quot;button&quot;&gt;
+                  &lt;span class=&quot;btn-market-subtitle&quot;&gt;Download on the&lt;/span&gt;
+                  &lt;span class=&quot;btn-market-title&quot;&gt;Windows Store&lt;/span&gt;
+                &lt;/a&gt;
+
+                &lt;!-- Amazon button --&gt;
+                &lt;a href=&quot;#&quot; class=&quot;btn-market btn-amazon&quot; role=&quot;button&quot;&gt;
+                  &lt;span class=&quot;btn-market-subtitle&quot;&gt;Order now at&lt;/span&gt;
+                  &lt;span class=&quot;btn-market-title&quot;&gt;Amazon.com&lt;/span&gt;
+                &lt;/a&gt;
+          #pug5.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-pug').
+                // App Store button
+                a(href=&quot;#&quot;, role=&quot;button&quot;).btn-market.btn-apple
+                  span.btn-market-subtitle Download on the
+                  span.btn-market-title App Store
+
+                // Google Play button
+                a(href=&quot;#&quot;, role=&quot;button&quot;).btn-market.btn-google
+                  span.btn-market-subtitle Download on the
+                  span.btn-market-title Google Play
+
+                // Windows store button
+                a(href=&quot;#&quot;, role=&quot;button&quot;).btn-market.btn-windows
+                  span.btn-market-subtitle Download on the
+                  span.btn-market-title Windows Store
+
+                // Amazon button
+                a(href=&quot;#&quot;, role=&quot;button&quot;).btn-market.btn-amazon
+                  span.btn-market-subtitle Order now at
+                  span.btn-market-title Amazon.com
+
+  // Shapes
+  section#buttons-shapes.pb-5.mb-md-2
+    h2.h5.mb-3 Shapes
+    .card.border-0.shadow
+      .card-header
+        ul(role='tablist').nav.nav-tabs.card-header-tabs
+          li.nav-item
+            a(href='#result6' data-bs-toggle='tab' role='tab' aria-controls='result6' aria-selected='true').nav-link.active Result
+          li.nav-item
+            a(href='#html6' data-bs-toggle='tab' role='tab' aria-controls='html6' aria-selected='false').nav-link HTML
+          li.nav-item
+            a(href='#pug6' data-bs-toggle='tab' role='tab' aria-controls='pug6' aria-selected='false').nav-link Pug
+      .card-body
+        .tab-content
+          #result6.tab-pane.fade.show.active(role='tabpanel')
+            button(type='button').btn.btn-primary.mb-2.me-1 Rounded
+            button(type='button').btn.btn-primary.rounded-pill.mb-2.me-1 Pill button
+            button(type='button').btn.btn-primary.rounded-0.mb-2 Square
+            .pt-2
+            button(type='button').btn.btn-outline-primary.mb-2.me-1 Rounded
+            button(type='button').btn.btn-outline-primary.rounded-pill.mb-2.me-1 Pill button
+            button(type='button').btn.btn-outline-primary.rounded-0.mb-2 Square
+          #html6.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-html').
+                &lt;!-- Rounded solid button --&gt;
+                &lt;button type=&quot;button&quot; class=&quot;btn btn-primary&quot;&gt;Rounded&lt;/button&gt;
+
+                &lt;!-- Pill solid button --&gt;
+                &lt;button type=&quot;button&quot; class=&quot;btn btn-primary rounded-pill&quot;&gt;Pill button&lt;/button&gt;
+
+                &lt;!-- Square solid button --&gt;
+                &lt;button type=&quot;button&quot; class=&quot;btn btn-primary rounded-0&quot;&gt;Square&lt;/button&gt;
+                
+                &lt;!-- Rounded outline button --&gt;
+                &lt;button type=&quot;button&quot; class=&quot;btn btn-outline-primary&quot;&gt;Rounded&lt;/button&gt;
+
+                &lt;!-- Pill outline button --&gt;
+                &lt;button type=&quot;button&quot; class=&quot;btn btn-outline-primary rounded-pill&quot;&gt;Pill button&lt;/button&gt;
+
+                &lt;!-- Square outline button --&gt;
+                &lt;button type=&quot;button&quot; class=&quot;btn btn-outline-primary rounded-0&quot;&gt;Square&lt;/button&gt;
+          #pug6.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-pug').
+                // Rounded solid button
+                button(type=&quot;button&quot;).btn.btn-primary
+                  | Rounded
+
+                // Pill solid button
+                button(type=&quot;button&quot;).btn.btn-primary.rounded-pill
+                  | Pill button
+
+                // Square solid button
+                button(type=&quot;button&quot;).btn.btn-primary.rounded-0
+                  | Square
+
+                // Rounded outline button
+                button(type=&quot;button&quot;).btn.btn-outline-primary
+                  | Rounded
+
+                // Pill outline button
+                button(type=&quot;button&quot;).btn.btn-outline-primary.rounded-pill
+                  | Pill button
+
+                // Square outline button
+                button(type=&quot;button&quot;).btn.btn-outline-primary.rounded-0
+                  | Square
+
+  // Sizes
+  section#buttons-sizes.pb-5.mb-md-2
+    h2.h5.mb-3 Sizes
+    .card.border-0.shadow
+      .card-header
+        ul(role='tablist').nav.nav-tabs.card-header-tabs
+          li.nav-item
+            a(href='#result7' data-bs-toggle='tab' role='tab' aria-controls='result7' aria-selected='true').nav-link.active Result
+          li.nav-item
+            a(href='#html7' data-bs-toggle='tab' role='tab' aria-controls='html7' aria-selected='false').nav-link HTML
+          li.nav-item
+            a(href='#pug7' data-bs-toggle='tab' role='tab' aria-controls='pug7' aria-selected='false').nav-link Pug
+      .card-body
+        .tab-content
+          #result7.tab-pane.fade.show.active(role='tabpanel')
+            button(type='button').btn.btn-primary.btn-lg.mb-2.me-1 Large button
+            button(type='button').btn.btn-primary.mb-2.me-1 Normal button
+            button(type='button').btn.btn-primary.btn-sm.mb-2 Small button
+            .pt-2
+            button(type='button').btn.btn-outline-primary.btn-lg.mb-2.me-1 Large button
+            button(type='button').btn.btn-outline-primary.mb-2.me-1 Normal button
+            button(type='button').btn.btn-outline-primary.btn-sm.mb-2 Small button
+            .row.pt-2
+              .col-sm-6
+                button(type='button').btn.btn-primary.d-block.w-100.mb-3 Block level button
+              .col-sm-6
+                button(type='button').btn.btn-outline-primary.d-block.w-100.mb-3 Block level button
+          #html7.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-html').
+                &lt;!-- Large solid button --&gt;
+                &lt;button type=&quot;button&quot; class=&quot;btn btn-primary btn-lg&quot;&gt;Large button&lt;/button&gt;
+
+                &lt;!-- Normal solid button --&gt;
+                &lt;button type=&quot;button&quot; class=&quot;btn btn-primary&quot;&gt;Normal button&lt;/button&gt;
+
+                &lt;!-- Small solid button --&gt;
+                &lt;button type=&quot;button&quot; class=&quot;btn btn-primary btn-sm&quot;&gt;Small button&lt;/button&gt;
+
+                &lt;!-- Large outline button --&gt;
+                &lt;button type=&quot;button&quot; class=&quot;btn btn-outline-primary btn-lg&quot;&gt;Large button&lt;/button&gt;
+
+                &lt;!-- Normal outline button --&gt;
+                &lt;button type=&quot;button&quot; class=&quot;btn btn-outline-primary&quot;&gt;Normal button&lt;/button&gt;
+
+                &lt;!-- Small outline button --&gt;
+                &lt;button type=&quot;button&quot; class=&quot;btn btn-outline-primary btn-sm&quot;&gt;Small button&lt;/button&gt;
+
+                &lt;!-- Block solid button --&gt;
+                &lt;button type=&quot;button&quot; class=&quot;btn btn-primary d-block w-100&quot;&gt;Block level button&lt;/button&gt;
+
+                &lt;!-- Block outline button --&gt;
+                &lt;button type=&quot;button&quot; class=&quot;btn btn-outline-primary d-block w-100&quot;&gt;Block level button&lt;/button&gt;
+          #pug7.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-pug').
+                // Large solid button
+                button(type=&quot;button&quot;).btn.btn-primary.btn-lg Large button
+
+                // Normal solid button
+                button(type=&quot;button&quot;).btn.btn-primary Normal button
+
+                // Small solid button
+                button(type=&quot;button&quot;).btn.btn-primary.btn-sm Small button
+
+                // Large outline button
+                button(type=&quot;button&quot;).btn.btn-outline-primary.btn-lg Large button
+
+                // Normal outline button
+                button(type=&quot;button&quot;).btn.btn-outline-primary Normal button
+
+                // Small outline button
+                button(type=&quot;button&quot;).btn.btn-outline-primary.btn-sm Small button
+
+                // Block solid button
+                button(type=&quot;button&quot;).btn.btn-primary.d-block.w-100 Block level button
+
+                // Block outline button
+                button(type=&quot;button&quot;).btn.btn-outline-primary.d-block.w-100 Block level button
+
+  // States
+  section#buttons-states.pb-5.mb-md-2
+    h2.h5.mb-3 States
+    .card.border-0.shadow
+      .card-header
+        ul(role='tablist').nav.nav-tabs.card-header-tabs
+          li.nav-item
+            a(href='#result8' data-bs-toggle='tab' role='tab' aria-controls='result8' aria-selected='true').nav-link.active Result
+          li.nav-item
+            a(href='#html8' data-bs-toggle='tab' role='tab' aria-controls='html8' aria-selected='false').nav-link HTML
+          li.nav-item
+            a(href='#pug8' data-bs-toggle='tab' role='tab' aria-controls='pug8' aria-selected='false').nav-link Pug
+      .card-body
+        .tab-content
+          #result8.tab-pane.fade.show.active(role='tabpanel')
+            button(type='button').btn.btn-primary.active.mb-2.me-1 Active
+            button(type='button').btn.btn-secondary.active.mb-2.me-1 Active
+            button(type='button' disabled).btn.btn-primary.mb-2.me-1 Disabled
+            button(type='button' disabled).btn.btn-secondary.mb-2.me-1 Disabled
+            button(type='button' data-bs-toggle='button').btn.btn-primary.mb-2.me-1 Button toggle
+            button(type='button').btn.btn-primary.mb-2.me-1
+              span(role='status' aria-hidden='true').spinner-border.spinner-border-sm.me-2
+              | Loading...
+            button(type=type='button').btn.btn-secondary.mb-2
+              span(role='status' aria-hidden='true').spinner-grow.spinner-grow-sm.me-2
+              | Loading...  
+          #html8.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-html').
+                &lt;!-- Button states --&gt;
+                &lt;button type=&quot;button&quot; class=&quot;btn btn-primary active&quot;&gt;Active&lt;/button&gt;
+                &lt;button type=&quot;button&quot; class=&quot;btn btn-secondary active&quot;&gt;Active&lt;/button&gt;
+                &lt;button type=&quot;button&quot; class=&quot;btn btn-primary&quot; disabled&gt;Disabled&lt;/button&gt;
+                &lt;button type=&quot;button&quot; class=&quot;btn btn-secondary&quot; disabled&gt;Disabled&lt;/button&gt;
+                &lt;button type=&quot;button&quot; class=&quot;btn btn-primary&quot; data-bs-toggle=&quot;button&quot;&gt;Button toggle&lt;/button&gt;
+                &lt;button type=&quot;button&quot; class=&quot;btn btn-primary&quot;&gt;
+                  &lt;span class=&quot;spinner-border spinner-border-sm me-2&quot; role=&quot;status&quot; aria-hidden=&quot;true&quot;&gt;&lt;/span&gt;
+                  Loading...
+                &lt;/button&gt;
+                &lt;button type=&quot;button&quot; class=&quot;btn btn-secondary&quot;&gt;
+                  &lt;span class=&quot;spinner-grow spinner-grow-sm me-2&quot; role=&quot;status&quot; aria-hidden=&quot;true&quot;&gt;&lt;/span&gt;
+                  Loading...
+                &lt;/button&gt;
+          #pug8.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-pug').
+                // Button states
+                button(type=&quot;button&quot;).btn.btn-primary.active Active
+                button(type=&quot;button&quot;).btn.btn-secondary.active Active
+                button(type=&quot;button&quot;, disabled).btn.btn-primary Disabled
+                button(type=&quot;button&quot;, disabled).btn.btn-secondary Disabled
+                button(type=&quot;button&quot;, data-bs-toggle=&quot;button&quot;).btn.btn-primary Button toggle
+                button(type=&quot;button&quot;).btn.btn-primary
+                  span(role=&quot;status&quot;, aria-hidden=&quot;true&quot;).spinner-border.spinner-border-sm.me-2
+                  | Loading...
+                button(type=&quot;button&quot;).btn.btn-secondary
+                  span(role=&quot;status&quot;, aria-hidden=&quot;true&quot;).spinner-grow.spinner-grow-sm.me-2
+                  | Loading...  
+
+  // Like / dislike buttons
+  section#buttons-like-dislike.pb-5.mb-md-2
+    h2.h5.mb-3 Like / dislike buttons
+    .card.border-0.shadow
+      .card-header
+        ul(role='tablist').nav.nav-tabs.card-header-tabs
+          li.nav-item
+            a(href='#result9' data-bs-toggle='tab' role='tab' aria-controls='result9' aria-selected='true').nav-link.active Result
+          li.nav-item
+            a(href='#html9' data-bs-toggle='tab' role='tab' aria-controls='html9' aria-selected='false').nav-link HTML
+          li.nav-item
+            a(href='#pug9' data-bs-toggle='tab' role='tab' aria-controls='pug9' aria-selected='false').nav-link Pug
+      .card-body
+        .tab-content
+          #result9.tab-pane.fade.show.active(role='tabpanel')
+            .d-flex.flex-wrap.pt-2
+              .mb-3.me-5
+                h6.mb-3 Idle state
+                .text-nowrap
+                  button(type='button').btn-like 16
+                  button(type='button').btn-dislike 4
+              div
+                h6.mb-3 Active state
+                .text-nowrap
+                  button(type='button').btn-like.active 16
+                  button(type='button').btn-dislike.active 4
+          #html9.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-html').
+                &lt;!-- Like / dislike idle state --&gt;
+                &lt;div class=&quot;text-nowrap&quot;&gt;
+                  &lt;button type=&quot;button&quot; class=&quot;btn-like&quot;&gt;16&lt;/button&gt;
+                  &lt;button type=&quot;button&quot; class=&quot;btn-dislike&quot;&gt;4&lt;/button&gt;
+                &lt;/div&gt;
+
+                &lt;!-- Like / dislike active state --&gt;
+                &lt;div class=&quot;text-nowrap&quot;&gt;
+                  &lt;button type=&quot;button&quot; class=&quot;btn-like active&quot;&gt;16&lt;/button&gt;
+                  &lt;button type=&quot;button&quot; class=&quot;btn-dislike active&quot;&gt;4&lt;/button&gt;
+                &lt;/div&gt;
+          #pug9.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-pug').
+                // Like / dislike idle state
+                .text-nowrap
+                  button(type=&quot;button&quot;).btn-like
+                    | 16
+                  button(type=&quot;button&quot;).btn-dislike
+                    | 4
+                
+                // Like / dislike active state
+                .text-nowrap
+                  button(type=&quot;button&quot;).btn-like.active
+                    | 16
+                  button(type=&quot;button&quot;).btn-dislike.active
+                    | 4

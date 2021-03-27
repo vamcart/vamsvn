@@ -1,0 +1,41 @@
+{config_load file="$language/lang_$language.conf" section="latest_news"} 
+{if $ONE eq 1}
+{assign var="module_data" value=$module_content[0]}
+<div class="page">
+<h1>{$module_data.NEWS_HEADING}</h1>
+<div class="pageContent">
+
+<small>{$module_data.NEWS_DATA}</small>
+<p>{$module_data.NEWS_CONTENT}</p>
+
+<div class="pageContentFooter">
+<a href="{$NEWS_LINK}" class="contents">{#other_news#}</a>
+</div>
+
+</div>
+</div>
+
+{else}
+
+<div class="page">
+<h1>{#heading_text#}</h1>
+<div class="pageContent">
+
+<div class="row">
+{foreach name=aussen item=module_data from=$module_content}<div class="col-md-12 mb-3">	
+	{include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/item/item-news.html"}
+</div>
+{/foreach} 
+</div>
+
+<div class="clear"></div>
+<div class="navigation">
+<span class="right">{$NAVIGATION_BAR}</span>{$NAVIGATION_BAR_PAGES}
+</div>
+<div class="clear"></div>
+
+</div>
+</div>
+
+{/if}
+

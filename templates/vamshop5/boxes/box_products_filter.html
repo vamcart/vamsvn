@@ -1,0 +1,13 @@
+{config_load file="$language/lang_$language.conf" section="boxes"}
+{config_load file="$language/lang_$language.conf" section="index"}
+  <button class="btn btn-rounded d-xl-none mb-2" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+    <i class="fas fa-filter"></i> {#text_product_filters#}
+  </button>
+  
+  <div class="collapse dont-collapse-sm" id="collapseExample">
+    <div class="well">
+    <div class="filters card-deck">
+      {$BOX_CONTENT}
+    </div>
+    </div>
+  </div>

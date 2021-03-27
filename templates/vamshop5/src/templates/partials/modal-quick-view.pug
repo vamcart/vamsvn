@@ -1,0 +1,105 @@
+// Quick View Modal
+#quick-view.modal-quick-view.modal.fade(tabindex='-1')
+  .modal-dialog.modal-xl
+    .modal-content
+      .modal-header
+        h4.modal-title.product-title
+          a(href='shop-single-v1.html' data-bs-toggle='tooltip' data-bs-placement='right' title='Go to product page')
+            | Sports Hooded Sweatshirt
+            i.ci-arrow-right.fs-lg.ms-2
+        button(type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close')
+      .modal-body
+        .row
+
+          // Product gallery
+          .col-lg-7.pe-lg-0
+            .product-gallery
+              .product-gallery-preview.order-sm-2
+                #first.product-gallery-preview-item.active
+                  img(src='img/shop/single/gallery/01.jpg' data-zoom='img/shop/single/gallery/01.jpg' alt='Product image').image-zoom
+                  .image-zoom-pane
+                #second.product-gallery-preview-item
+                  img(src='img/shop/single/gallery/02.jpg' data-zoom='img/shop/single/gallery/02.jpg' alt='Product image').image-zoom
+                  .image-zoom-pane
+                #third.product-gallery-preview-item
+                  img(src='img/shop/single/gallery/03.jpg' data-zoom='img/shop/single/gallery/03.jpg' alt='Product image').image-zoom
+                  .image-zoom-pane
+                #fourth.product-gallery-preview-item
+                  img(src='img/shop/single/gallery/04.jpg' data-zoom='img/shop/single/gallery/04.jpg' alt='Product image').image-zoom
+                  .image-zoom-pane
+              .product-gallery-thumblist.order-sm-1
+                a(href='#first').product-gallery-thumblist-item.active
+                  img(src='img/shop/single/gallery/th01.jpg' alt='Product thumb')
+                a(href='#second').product-gallery-thumblist-item
+                  img(src='img/shop/single/gallery/th02.jpg' alt='Product thumb')
+                a(href='#third').product-gallery-thumblist-item
+                  img(src='img/shop/single/gallery/th03.jpg' alt='Product thumb')
+                a(href='#fourth').product-gallery-thumblist-item
+                  img(src='img/shop/single/gallery/th04.jpg' alt='Product thumb')
+
+          // Product details
+          .col-lg-5.pt-4.pt-lg-0.image-zoom-pane
+            .product-details.ms-auto.pb-3
+              .d-flex.justify-content-between.align-items-center.mb-2
+                a(href='shop-single-v1.html#reviews')
+                  +star-rating(4)
+                  span.d-inline-block.fs-sm.text-body.align-middle.mt-1.ms-1 74 Reviews
+                button(type='button' data-bs-toggle='tooltip' title='Add to wishlist').btn-wishlist
+                  i.ci-heart
+              .mb-3
+                span.h3.fw-normal.text-accent.me-1 $18.<small>99</small>
+                del.text-muted.fs-lg.me-3 $25.<small>00</small>
+                span.badge.bg-danger.badge-shadow.align-middle.mt-n2 Sale
+              .fs-sm.mb-4
+                span.text-heading.fw-medium.me-1 Color:
+                span#colorOptionText.text-muted Red/Dark blue/White
+              .position-relative.me-n4.mb-3
+                .form-check.form-option.form-check-inline.mb-2
+                  input(type='radio' name='color' id='color1' data-bs-label='colorOptionText' value='Red/Dark blue/White' checked).form-check-input
+                  label(for='color1').form-option-label.rounded-circle
+                    span(style='background-image: url(img/shop/single/color-opt-1.png)').form-option-color.rounded-circle
+                .form-check.form-option.form-check-inline.mb-2
+                  input(type='radio' name='color' id='color2' data-bs-label='colorOptionText' value='Beige/White/Black').form-check-input
+                  label(for='color2').form-option-label.rounded-circle
+                    span(style='background-image: url(img/shop/single/color-opt-2.png)').form-option-color.rounded-circle
+                .form-check.form-option.form-check-inline.mb-2
+                  input(type='radio' name='color' id='color3' data-bs-label='colorOptionText' value='Dark grey/White/Mustard').form-check-input
+                  label(for='color3').form-option-label.rounded-circle
+                    span(style='background-image: url(img/shop/single/color-opt-3.png)').form-option-color.rounded-circle
+                .product-badge.product-available.mt-n1
+                  i.ci-security-check
+                  | Product available
+              form.mb-grid-gutter
+                .mb-3
+                  label(for='product-size').fw-medium.pb-1 Size:
+                  select(required)#product-size.form-select
+                    option(value='') Select size
+                    option(value='xs') XS
+                    option(value='s') S
+                    option(value='m') M
+                    option(value='l') L
+                    option(value='xl') XL
+                .mb-3.d-flex.align-items-center
+                  select(style='width: 5rem;').form-select.me-3
+                    option(value='1') 1
+                    option(value='2') 2
+                    option(value='3') 3
+                    option(value='4') 4
+                    option(value='5') 5
+                  button(type='submit').btn.btn-primary.btn-shadow.d-block.w-100
+                    i.ci-cart.fs-lg.me-2
+                    | Add to Cart
+              h5.h6.mb-3.pb-2.border-bottom
+                i.ci-announcement.text-muted.fs-lg.align-middle.mt-n1.me-2
+                | Product info
+              h6.fs-sm.mb-2 Style
+              ul.fs-sm.ps-4
+                li Hooded top
+              h6.fs-sm.mb-2 Composition
+              ul.fs-sm.ps-4
+                li Elastic rib: Cotton 95%, Elastane 5%
+                li Lining: Cotton 100%
+                li Cotton 80%, Polyester 20%
+              h6.fs-sm.mb-2 Art. No.
+              ul.fs-sm.ps-4.mb-0
+                li 183260098

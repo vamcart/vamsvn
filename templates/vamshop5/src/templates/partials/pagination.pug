@@ -1,0 +1,27 @@
+// Pagination
+nav.d-flex.justify-content-between.pt-2(aria-label='Page navigation')
+  ul.pagination
+    li.page-item
+      a(href='#').page-link
+        i.ci-arrow-left.me-2
+        | Prev
+  ul.pagination
+    li.page-item.d-sm-none
+      span.page-link.page-link-static 1 / 5
+    li.page-item.active.d-none.d-sm-block(aria-current='page')
+      span.page-link
+        | 1
+        span.visually-hidden (current)
+    li.page-item.d-none.d-sm-block
+      a(href='#').page-link 2
+    li.page-item.d-none.d-sm-block
+      a(href='#').page-link 3
+    li.page-item.d-none.d-sm-block
+      a(href='#').page-link 4
+    li.page-item.d-none.d-sm-block
+      a(href='#').page-link 5
+  ul.pagination
+    li.page-item
+      a(href='#' aria-label='Next').page-link
+        | Next
+        i.ci-arrow-right.ms-2

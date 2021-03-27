@@ -1,0 +1,340 @@
+extends partials/layout
+
+//- Override default config variables
+append config
+  - var pageTitle = 'Food Delivery - Category'
+  - var parentMenu = 'Shop'
+  - var breadcrumbs = [{'title': 'Restaurants', 'link': '#'}, {'title': "Domino's Pizza"}]
+
+//- Navbar + Quick view modal
+block navbar
+  include partials/navbar-food-delivery
+  include partials/modal-quick-view-food
+
+//- Page Content
+block content
+
+  // Page title
+  section.bg-darker.bg-size-cover.bg-position-center.py-5(style='background-image: url(img/food-delivery/restaurants/single/pt-bg.jpg);')
+    .container.py-md-4
+      +breadcrumb('light')
+      h1.text-light.text-center.text-lg-start.py-3 Domino's Pizza
+
+  
+  // Page navigation
+  nav.container.mt-n5
+    .d-flex.align-items-center.bg-white.rounded-3.shadow-lg.py-2.ps-sm-2.pe-4.pe-lg-2
+      img(src='img/food-delivery/restaurants/logos/02.png' width='150' alt='Brand').d-block.rounded-3
+      .ps-lg-3.w-100.text-end
+
+        // For desktop
+        ul.nav.nav-tabs.d-none.d-lg-flex.border-0.mb-0
+          li.nav-item
+            a(href='#').nav-link.active Pizza
+          li.nav-item
+            a(href='#').nav-link Sides
+          li.nav-item
+            a(href='#').nav-link Drinks
+          li.nav-item
+            a(href='#').nav-link Dessert
+        
+        // For mobile
+        .btn-group.dropdown.d-lg-none.ms-auto
+          button(type='button' data-bs-toggle='dropdown' aria-haspopup='true' aria-expanded='false').btn.btn-primary.dropdown-toggle
+              i.ci-menu.fs-base.me-2
+              | Menu
+          .dropdown-menu.dropdown-menu-end
+            a(href='#').dropdown-item.fs-base.active
+              | Pizza    
+            a(href='#').dropdown-item.fs-base
+              | Sides    
+            a(href='#').dropdown-item.fs-base
+              | Drinks    
+            a(href='#').dropdown-item.fs-base
+              | Dessert    
+
+  // Menu (Products grid)
+  section.container.tab-content.py-4.py-sm-5
+    h2.text-center.pt-2.pt-sm-0.mb-sm-5 Pizza
+    .row.pt-3.pt-sm-0
+
+      // Item
+      .col-lg-3.col-md-4.col-sm-6.mb-grid-gutter
+        .card.product-card.border.pb-2
+          a(href='#quick-view' data-bs-toggle='modal').d-block
+            img(src='img/food-delivery/restaurants/single/01.jpg' alt='Pizza').card-img-top
+          .card-body.pt-1.pb-2
+            h3.product-title.fs-md
+              a(href='#quick-view' data-bs-toggle='modal') Pizza Vegano Delux
+            p.fs-ms.text-muted Broccoli, Mushrooms, Bell pepper, Corn, Onion, Mozzarella, Parmesan
+            .d-flex.mb-1
+              .form-check.form-option.form-check-justified.mb-2
+                input(type='radio' name='size1' id='s1' checked).form-check-input
+                label(for='s1').form-option-label Small
+              .form-check.form-option.form-check-justified.mb-2
+                input(type='radio' name='size1' id='m1').form-check-input
+                label(for='m1').form-option-label Medium
+              .form-check.form-option.form-check-justified.mb-2
+                input(type='radio' name='size1' id='l1').form-check-input
+                label(for='l1').form-option-label Large
+            .d-flex.mb-3
+              .form-check.form-option.form-check-justified.mb-2
+                input(type='radio' name='base1' id='standard1' checked).form-check-input
+                label(for='standard1').form-option-label Standard
+              .form-check.form-option.form-check-justified.mb-2
+                input(type='radio' name='base1' id='thin1').form-check-input
+                label(for='thin1').form-option-label Thin
+            .d-flex.align-items-center.justify-content-between
+              .product-price
+                span.text-accent $12.99
+              button(type='button').btn.btn-primary.btn-sm
+                | +
+                i.ci-cart.fs-base.ms-1
+
+      // Item
+      .col-lg-3.col-md-4.col-sm-6.mb-grid-gutter
+        .card.product-card.border.pb-2
+          a(href='#quick-view' data-bs-toggle='modal').d-block
+            img(src='img/food-delivery/restaurants/single/02.jpg' alt='Pizza').card-img-top
+          .card-body.pt-1.pb-2
+            h3.product-title.fs-md
+              a(href='#quick-view' data-bs-toggle='modal') Pizza Peperoni with Tomatoes
+            p.fs-ms.text-muted Pepperoni, Tomatoes, Paprika, Chili, Mozzarella, Parmesan
+            .d-flex.mb-1
+              .form-check.form-option.form-check-justified.mb-2
+                input(type='radio' name='size2' id='s2' checked).form-check-input
+                label(for='s2').form-option-label Small
+              .form-check.form-option.form-check-justified.mb-2
+                input(type='radio' name='size2' id='m2').form-check-input
+                label(for='m2').form-option-label Medium
+              .form-check.form-option.form-check-justified.mb-2
+                input(type='radio' name='size2' id='l2').form-check-input
+                label(for='l2').form-option-label Large
+            .d-flex.mb-3
+              .form-check.form-option.form-check-justified.mb-2
+                input(type='radio' name='base2' id='standard2' checked).form-check-input
+                label(for='standard2').form-option-label Standard
+              .form-check.form-option.form-check-justified.mb-2
+                input(type='radio' name='base2' id='thin2').form-check-input
+                label(for='thin2').form-option-label Thin
+            .d-flex.align-items-center.justify-content-between
+              .product-price
+                span.text-accent $14.99
+              button(type='button').btn.btn-primary.btn-sm
+                | +
+                i.ci-cart.fs-base.ms-1
+
+      // Item
+      .col-lg-3.col-md-4.col-sm-6.mb-grid-gutter
+        .card.product-card.border.pb-2
+          a(href='#quick-view' data-bs-toggle='modal').d-block
+            img(src='img/food-delivery/restaurants/single/03.jpg' alt='Pizza').card-img-top
+          .card-body.pt-1.pb-2
+            h3.product-title.fs-md
+              a(href='#quick-view' data-bs-toggle='modal') Pizza with Salami and Olives
+            p.fs-ms.text-muted Salami, Olives, Bell pepper, Mushrooms, Mozzarella, Parmesan
+            .d-flex.mb-1
+              .form-check.form-option.form-check-justified.mb-2
+                input(type='radio' name='size3' id='s3' checked).form-check-input
+                label(for='s3').form-option-label Small
+              .form-check.form-option.form-check-justified.mb-2
+                input(type='radio' name='size3' id='m3').form-check-input
+                label(for='m3').form-option-label Medium
+              .form-check.form-option.form-check-justified.mb-2
+                input(type='radio' name='size3' id='l3').form-check-input
+                label(for='l3').form-option-label Large
+            .d-flex.mb-3
+              .form-check.form-option.form-check-justified.mb-2
+                input(type='radio' name='base3' id='standard3' checked).form-check-input
+                label(for='standard3').form-option-label Standard
+              .form-check.form-option.form-check-justified.mb-2
+                input(type='radio' name='base3' id='thin3').form-check-input
+                label(for='thin3').form-option-label Thin
+            .d-flex.align-items-center.justify-content-between
+              .product-price
+                span.text-accent $15.99
+              button(type='button').btn.btn-primary.btn-sm
+                | +
+                i.ci-cart.fs-base.ms-1
+
+      // Item
+      .col-lg-3.col-md-4.col-sm-6.mb-grid-gutter
+        .card.product-card.border.pb-2
+          a(href='#quick-view' data-bs-toggle='modal').d-block
+            img(src='img/food-delivery/restaurants/single/04.jpg' alt='Pizza').card-img-top
+          .card-body.pt-1.pb-2
+            h3.product-title.fs-md
+              a(href='#quick-view' data-bs-toggle='modal') Pizza Quattro Formaggi
+            p.fs-ms.text-muted Mozzarella, Parmesan, Monterey Jack, Pecorino Romano, Asiago
+            .d-flex.mb-1
+              .form-check.form-option.form-check-justified.mb-2
+                input(type='radio' name='size4' id='s4' checked).form-check-input
+                label(for='s4').form-option-label Small
+              .form-check.form-option.form-check-justified.mb-2
+                input(type='radio' name='size4' id='m4').form-check-input
+                label(for='m4').form-option-label Medium
+              .form-check.form-option.form-check-justified.mb-2
+                input(type='radio' name='size4' id='l4').form-check-input
+                label(for='l4').form-option-label Large
+            .d-flex.mb-3
+              .form-check.form-option.form-check-justified.mb-2
+                input(type='radio' name='base4' id='standard4' checked).form-check-input
+                label(for='standard4').form-option-label Standard
+              .form-check.form-option.form-check-justified.mb-2
+                input(type='radio' name='base4' id='thin4').form-check-input
+                label(for='thin4').form-option-label Thin
+            .d-flex.align-items-center.justify-content-between
+              .product-price
+                span.text-accent $14.99
+              button(type='button').btn.btn-primary.btn-sm
+                | +
+                i.ci-cart.fs-base.ms-1
+
+      // Item
+      .col-lg-3.col-md-4.col-sm-6.mb-grid-gutter
+        .card.product-card.border.pb-2
+          a(href='#quick-view' data-bs-toggle='modal').d-block
+            img(src='img/food-delivery/restaurants/single/05.jpg' alt='Pizza').card-img-top
+          .card-body.pt-1.pb-2
+            h3.product-title.fs-md
+              a(href='#quick-view' data-bs-toggle='modal') Pizza Margherita
+            p.fs-ms.text-muted Mozzarella, Parmesan, Basil, Fresh tomatoes, Tomato sauce
+            .d-flex.mb-1
+              .form-check.form-option.form-check-justified.mb-2
+                input(type='radio' name='size5' id='s5' checked).form-check-input
+                label(for='s5').form-option-label Small
+              .form-check.form-option.form-check-justified.mb-2
+                input(type='radio' name='size5' id='m5').form-check-input
+                label(for='m5').form-option-label Medium
+              .form-check.form-option.form-check-justified.mb-2
+                input(type='radio' name='size5' id='l5').form-check-input
+                label(for='l5').form-option-label Large
+            .d-flex.mb-3
+              .form-check.form-option.form-check-justified.mb-2
+                input(type='radio' name='base5' id='standard5' checked).form-check-input
+                label(for='standard5').form-option-label Standard
+              .form-check.form-option.form-check-justified.mb-2
+                input(type='radio' name='base5' id='thin5').form-check-input
+                label(for='thin5').form-option-label Thin
+            .d-flex.align-items-center.justify-content-between
+              .product-price
+                span.text-accent $10.99
+              button(type='button').btn.btn-primary.btn-sm
+                | +
+                i.ci-cart.fs-base.ms-1
+
+      // Item
+      .col-lg-3.col-md-4.col-sm-6.mb-grid-gutter
+        .card.product-card.border.pb-2
+          a(href='#quick-view' data-bs-toggle='modal').d-block
+            img(src='img/food-delivery/restaurants/single/06.jpg' alt='Pizza').card-img-top
+          .card-body.pt-1.pb-2
+            h3.product-title.fs-md
+              a(href='#quick-view' data-bs-toggle='modal') Pizza with Minced Meat
+            p.fs-ms.text-muted Minced meat, Bacon, Jalapeño, Mozzarella, Parmesan, Olives, Tomatoes
+            .d-flex.mb-1
+              .form-check.form-option.form-check-justified.mb-2
+                input(type='radio' name='size6' id='s6' checked).form-check-input
+                label(for='s6').form-option-label Small
+              .form-check.form-option.form-check-justified.mb-2
+                input(type='radio' name='size6' id='m6').form-check-input
+                label(for='m6').form-option-label Medium
+              .form-check.form-option.form-check-justified.mb-2
+                input(type='radio' name='size6' id='l6').form-check-input
+                label(for='l6').form-option-label Large
+            .d-flex.mb-3
+              .form-check.form-option.form-check-justified.mb-2
+                input(type='radio' name='base6' id='standard6' checked).form-check-input
+                label(for='standard6').form-option-label Standard
+              .form-check.form-option.form-check-justified.mb-2
+                input(type='radio' name='base6' id='thin6').form-check-input
+                label(for='thin6').form-option-label Thin
+            .d-flex.align-items-center.justify-content-between
+              .product-price
+                span.text-accent $15.99
+              button(type='button').btn.btn-primary.btn-sm
+                | +
+                i.ci-cart.fs-base.ms-1
+
+      // Item
+      .col-lg-3.col-md-4.col-sm-6.mb-grid-gutter
+        .card.product-card.border.pb-2
+          a(href='#quick-view' data-bs-toggle='modal').d-block
+            img(src='img/food-delivery/restaurants/single/07.jpg' alt='Pizza').card-img-top
+          .card-body.pt-1.pb-2
+            h3.product-title.fs-md
+              a(href='#quick-view' data-bs-toggle='modal') Pizza Hot Salami
+            p.fs-ms.text-muted Salami, Chilli, Jalapeño, Mozzarella, Parmesan, Tomato sauce
+            .d-flex.mb-1
+              .form-check.form-option.form-check-justified.mb-2
+                input(type='radio' name='size7' id='s7' checked).form-check-input
+                label(for='s7').form-option-label Small
+              .form-check.form-option.form-check-justified.mb-2
+                input(type='radio' name='size7' id='m7').form-check-input
+                label(for='m7').form-option-label Medium
+              .form-check.form-option.form-check-justified.mb-2
+                input(type='radio' name='size7' id='l7').form-check-input
+                label(for='l7').form-option-label Large
+            .d-flex.mb-3
+              .form-check.form-option.form-check-justified.mb-2
+                input(type='radio' name='base7' id='standard7' checked).form-check-input
+                label(for='standard7').form-option-label Standard
+              .form-check.form-option.form-check-justified.mb-2
+                input(type='radio' name='base7' id='thin7').form-check-input
+                label(for='thin7').form-option-label Thin
+            .d-flex.align-items-center.justify-content-between
+              .product-price
+                span.text-accent $14.99
+              button(type='button').btn.btn-primary.btn-sm
+                | +
+                i.ci-cart.fs-base.ms-1
+
+      // Item
+      .col-lg-3.col-md-4.col-sm-6.mb-grid-gutter
+        .card.product-card.border.pb-2
+          a(href='#quick-view' data-bs-toggle='modal').d-block
+            img(src='img/food-delivery/restaurants/single/08.jpg' alt='Pizza').card-img-top
+          .card-body.pt-1.pb-2
+            h3.product-title.fs-md
+              a(href='#quick-view' data-bs-toggle='modal') Pizza with Grilled Meat
+            p.fs-ms.text-muted Grilled meat, Tomatoes, Bell pepper, Onion, Mozzarella, Parmesan
+            .d-flex.mb-1
+              .form-check.form-option.form-check-justified.mb-2
+                input(type='radio' name='size8' id='s8' checked).form-check-input
+                label(for='s8').form-option-label Small
+              .form-check.form-option.form-check-justified.mb-2
+                input(type='radio' name='size8' id='m8').form-check-input
+                label(for='m8').form-option-label Medium
+              .form-check.form-option.form-check-justified.mb-2
+                input(type='radio' name='size8' id='l8').form-check-input
+                label(for='l8').form-option-label Large
+            .d-flex.mb-3
+              .form-check.form-option.form-check-justified.mb-2
+                input(type='radio' name='base8' id='standard8' checked).form-check-input
+                label(for='standard8').form-option-label Standard
+              .form-check.form-option.form-check-justified.mb-2
+                input(type='radio' name='base8' id='thin8').form-check-input
+                label(for='thin8').form-option-label Thin
+            .d-flex.align-items-center.justify-content-between
+              .product-price
+                span.text-accent $16.99
+              button(type='button').btn.btn-primary.btn-sm
+                | +
+                i.ci-cart.fs-base.ms-1
+    
+    // Load more button
+    nav.d-md-flex.justify-content-between.align-items-center.text-center.text-md-start.pt-2.pb-4.mb-md-2(aria-label='Page navigation')
+      .d-md-flex.align-items-center.w-100
+        span.fs-sm.text-muted.me-md-3 Showing 8 of 24 items
+        .progress.w-100.my-3.mx-auto.mx-md-0(style='max-width: 10rem; height: 4px;')
+          .progress-bar.bg-dark(role='progressbar' style='width: 18%;' aria-valuenow='18' aria-valuemin='0' aria-valuemax='100')
+      button(type='button').btn.btn-outline-secondary Load more items
+
+
+//- Footer
+block footer
+  include partials/footer-food-delivery
+
+//- Handheld toolbar
+block toolbar
+  include partials/toolbar-food-delivery

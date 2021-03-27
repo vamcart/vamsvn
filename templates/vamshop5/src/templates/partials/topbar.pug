@@ -1,0 +1,50 @@
+// Topbar
+.topbar.topbar-dark.bg-dark
+  .container
+    .topbar-text.dropdown.d-md-none
+      a(href='#' data-bs-toggle='dropdown').topbar-link.dropdown-toggle Useful links
+      ul.dropdown-menu
+        li
+          a(href='tel:00331697720').dropdown-item
+            i.ci-support.text-muted.me-2
+            | (00) 33 169 7720
+        li
+          a(href='order-tracking.html').dropdown-item
+            i.ci-location.text-muted.me-2
+            | Order tracking
+    .topbar-text.text-nowrap.d-none.d-md-inline-block
+      i.ci-support
+      span.text-muted.me-1 Support
+      a(href='tel:00331697720').topbar-link (00) 33 169 7720
+    .tns-carousel.tns-controls-static.d-none.d-md-block
+      .tns-carousel-inner(data-carousel-options='{"mode": "gallery", "nav": false}')
+        .topbar-text Free shipping for order over $200
+        .topbar-text We return money within 30 days
+        .topbar-text Friendly 24/7 customer support
+    .ms-3.text-nowrap
+      a(href='order-tracking.html').topbar-link.me-4.d-none.d-md-inline-block
+        i.ci-location
+        | Order tracking
+      .topbar-text.dropdown.disable-autohide
+        a(href='#' data-bs-toggle='dropdown').topbar-link.dropdown-toggle
+          img(src='img/flags/en.png' width='20' alt='English').me-2
+          | Eng / $
+        ul.dropdown-menu.dropdown-menu-end
+          li.dropdown-item
+            select.form-select.form-select-sm
+              option(value='usd') $ USD
+              option(value='eur') € EUR
+              option(value='ukp') £ UKP
+              option(value='jpy') ¥ JPY
+          li
+            a(href='#').dropdown-item.pb-1
+              img(src='img/flags/fr.png' width='20' alt='Français').me-2
+              | Français
+          li
+            a(href='#').dropdown-item.pb-1
+              img(src='img/flags/de.png' width='20' alt='Deutsch').me-2
+              | Deutsch
+          li
+            a(href='#').dropdown-item
+              img(src='img/flags/it.png' width='20' alt='Italiano').me-2
+              | Italiano

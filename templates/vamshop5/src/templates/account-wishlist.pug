@@ -1,0 +1,106 @@
+extends partials/layout
+
+//- Override default config variables
+append config
+  - var pageTitle = 'My wishlist'
+  - var breadcrumbs = [{'title': 'Account', 'link': '#'}, {'title': 'Wishlist'}]
+  - var parentMenu = 'Account'
+
+//- Navbar
+block navbar
+  include partials/navbar-3-level-light
+
+//- Page title
+block page-title
+  include partials/page-title-shop
+
+//- Page Content
+block content
+
+  .container.pb-5.mb-2.mb-md-4
+    .row
+
+      // Sidebar
+      aside.col-lg-4.pt-4.pt-lg-0.pe-xl-5
+        //- sidebar-account.pug template
+        include partials/sidebar-account
+
+      // Content  
+      section.col-lg-8
+
+        // Toolbar
+        .d-none.d-lg-flex.justify-content-between.align-items-center.pt-lg-3.pb-4.pb-lg-5.mb-lg-3
+          h6.fs-base.text-light.mb-0 List of items you added to wishlist:
+          a(href='account-signin.html').btn.btn-primary.btn-sm
+            i.ci-sign-out.me-2
+            | Sign out
+        
+        // Wishlist
+
+        // Item
+        .d-sm-flex.justify-content-between.mt-lg-4.mb-4.pb-3.pb-sm-2.border-bottom
+          .d-block.d-sm-flex.align-items-start.text-center.text-sm-start
+            a(href='shop-single-v1.html' style='width: 10rem;').d-block.flex-shrink-0.mx-auto.me-sm-4
+              img(src='img/shop/cart/02.jpg' alt='Product')
+            .pt-2
+              h3.product-title.fs-base.mb-2
+                a(href='shop-single-v1.html') TH Jeans City Backpack
+              .fs-sm
+                span.text-muted.me-2 Brand:
+                | Tommy Hilfiger
+              .fs-sm
+                span.text-muted.me-2 Color:
+                | Khaki
+              .fs-lg.text-accent.pt-2 $79.<small>50</small>
+          .pt-2.ps-sm-3.mx-auto.mx-sm-0.text-center
+            button(type='button').btn.btn-outline-danger.btn-sm
+              i.ci-trash.me-2
+              | Remove
+
+        // Item
+        .d-sm-flex.justify-content-between.my-4.pb-3.pb-sm-2.border-bottom
+          .d-block.d-sm-flex.align-items-start.text-center.text-sm-start
+            a(href='shop-single-v1.html' style='width: 10rem;').d-block.flex-shrink-0.mx-auto.me-sm-4
+              img(src='img/shop/cart/03.jpg' alt='Product')
+            .pt-2
+              h3.product-title.fs-base.mb-2
+                a(href='shop-single-v1.html') 3-Color Sun Stash Hat
+              .fs-sm
+                span.text-muted.me-2 Brand:
+                | The North Face
+              .fs-sm
+                span.text-muted.me-2 Color:
+                | Pink / Beige / Dark blue
+              .fs-lg.text-accent.pt-2 $22.<small>50</small>
+          .pt-2.ps-sm-3.mx-auto.mx-sm-0.text-center
+            button(type='button').btn.btn-outline-danger.btn-sm
+              i.ci-trash.me-2
+              | Remove
+
+        // Item
+        .d-sm-flex.justify-content-between.mt-4
+          .d-block.d-sm-flex.align-items-start.text-center.text-sm-start
+            a(href='shop-single-v1.html' style='width: 10rem;').d-block.flex-shrink-0.mx-auto.me-sm-4
+              img(src='img/shop/cart/04.jpg' alt='Product')
+            .pt-2
+              h3.product-title.fs-base.mb-2
+                a(href='shop-single-v1.html') Cotton Polo Regular Fit
+              .fs-sm
+                span.text-muted.me-2 Size:
+                | 42
+              .fs-sm
+                span.text-muted.me-2 Color:
+                | Light blue
+              .fs-lg.text-accent.pt-2 $9.<small>00</small>
+          .pt-2.ps-sm-3.mx-auto.mx-sm-0.text-center
+            button(type='button').btn.btn-outline-danger.btn-sm
+              i.ci-trash.me-2
+              | Remove
+
+//- Footer
+block footer
+  include partials/footer-dark
+
+//- Handheld toolbar
+block toolbar
+  include partials/toolbar

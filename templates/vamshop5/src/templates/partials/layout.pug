@@ -1,0 +1,44 @@
+//- Include config.pug file that holds all variables
+block config
+  include ../helpers/config
+
+//- Mixins - reusable code snippets
+include ../helpers/mixins
+
+doctype html
+html(lang="en")
+
+  //- head.pug template
+  include head 
+  
+  // Body
+  body()&attributes(isToolbar ? {'class': 'handheld-toolbar-enabled'} : '')
+      
+    //- modal-signin.pug template
+    include modal-signin
+
+    //- Navbar
+    block navbar
+
+    //- Page title
+    block page-title
+
+    //- Page Content
+    block content
+
+    //- Footer
+    block footer
+
+    //- Toolbar for handheld devices
+    block toolbar
+
+    // Back To Top Button
+    a(href='#top' data-scroll).btn-scroll-top
+      span.btn-scroll-top-tooltip.text-muted.fs-sm.me-2 Top
+      i.btn-scroll-top-icon.ci-arrow-up    
+    
+    // Vendor scrits: js libraries and plugins
+    +vendor-scripts
+
+    // Main theme script
+    script()&attributes(isNestedFile ? {'src': '../js/theme.min.js'} : {'src': 'js/theme.min.js'})

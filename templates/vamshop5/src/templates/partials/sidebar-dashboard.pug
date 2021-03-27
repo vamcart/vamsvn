@@ -1,0 +1,53 @@
+//- Dashboard sidebar
+
+// Account menu toggler (hidden on screens larger 992px)
+.d-block.d-lg-none.p-4
+  a(href='#account-menu' data-bs-toggle='collapse').btn.btn-outline-accent.d-block
+    i.ci-menu.me-2
+    | Account menu
+
+// Actual menu
+.h-100.border-end.mb-2
+  #account-menu.d-lg-block.collapse
+    .bg-secondary.p-4
+      h3.fs-sm.mb-0.text-muted Account
+    ul.list-unstyled.mb-0
+      li.border-bottom.mb-0
+        a(href='dashboard-settings.html')&attributes(pageTitle === 'Account Settings' ? {'class': 'nav-link-style d-flex align-items-center px-4 py-3 active'} : {'class': 'nav-link-style d-flex align-items-center px-4 py-3'})
+          i.ci-settings.opacity-60.me-2
+          | Settings
+      li.border-bottom.mb-0
+        a(href='dashboard-purchases.html')&attributes(pageTitle === 'Purchases' ? {'class': 'nav-link-style d-flex align-items-center px-4 py-3 active'} : {'class': 'nav-link-style d-flex align-items-center px-4 py-3'})
+          i.ci-basket.opacity-60.me-2
+          | Purchases
+      li.mb-0
+        a(href='dashboard-favorites.html')&attributes(pageTitle === 'Favorites' ? {'class': 'nav-link-style d-flex align-items-center px-4 py-3 active'} : {'class': 'nav-link-style d-flex align-items-center px-4 py-3'})
+          i.ci-heart.opacity-60.me-2
+          | Favorites
+          span.fs-sm.text-muted.ms-auto 4
+    .bg-secondary.p-4
+      h3.fs-sm.mb-0.text-muted Seller Dashboard
+    ul.list-unstyled.mb-0
+      li.border-bottom.mb-0
+        a(href='dashboard-sales.html')&attributes(pageTitle === 'Sales' ? {'class': 'nav-link-style d-flex align-items-center px-4 py-3 active'} : {'class': 'nav-link-style d-flex align-items-center px-4 py-3'})
+          i.ci-dollar.opacity-60.me-2
+          | Sales
+          span.fs-sm.text-muted.ms-auto $1,375.00
+      li.border-bottom.mb-0
+        a(href='dashboard-products.html')&attributes(pageTitle === 'Products' ? {'class': 'nav-link-style d-flex align-items-center px-4 py-3 active'} : {'class': 'nav-link-style d-flex align-items-center px-4 py-3'})
+          i.ci-package.opacity-60.me-2
+          | Products
+          span.fs-sm.text-muted.ms-auto 5
+      li.border-bottom.mb-0
+        a(href='dashboard-add-new-product.html')&attributes(pageTitle === 'Add New Product' ? {'class': 'nav-link-style d-flex align-items-center px-4 py-3 active'} : {'class': 'nav-link-style d-flex align-items-center px-4 py-3'})
+          i.ci-cloud-upload.opacity-60.me-2
+          | Add New Product
+      li.border-bottom.mb-0
+        a(href='dashboard-payouts.html')&attributes(pageTitle === 'Payouts' ? {'class': 'nav-link-style d-flex align-items-center px-4 py-3 active'} : {'class': 'nav-link-style d-flex align-items-center px-4 py-3'})
+          i.ci-currency-exchange.opacity-60.me-2
+          | Payouts
+      li.mb-0
+        a(href='account-signin.html').nav-link-style.d-flex.align-items-center.px-4.py-3
+          i.ci-sign-out.opacity-60.me-2
+          | Sign out
+    hr

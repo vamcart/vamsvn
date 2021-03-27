@@ -1,0 +1,49 @@
+{config_load file="$language/lang_$language.conf" section="wishlist"}
+<div id="ajax_wishlist">
+
+<div class="page">
+<div class="pageСontent">
+
+{if $wishlist_empty==true}
+
+<p>
+{#text_empty#}
+</p>
+
+
+<div class="pageContentFooter">
+{$BUTTON_CONTINUE}
+</div>
+
+{else}
+{$FORM_ACTION}
+{$HIDDEN_OPTIONS}
+
+{$MODULE_wishlist_details}
+
+<div class="clear"></div>
+<div class="navigation">
+{if $smarty.const.AJAX_WISHLIST == 'false'}{$BUTTON_RELOAD}{/if}
+</div>
+<div class="clear"></div>
+{$FORM_END}
+{/if}
+</div>
+</div>
+</div>
+
+{if $smarty.const.DISPLAY_LAST_VIEWED =='true'}
+{if $products_history}
+<div class="module">
+<h3>{#title_viewed_products#}</h3>
+<div class="moduleContent">
+<div class="owl-carousel owl-theme">
+{foreach name=aussen item=module_data from=$products_history}
+{include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/product-card/product-card-details.html"}
+{/foreach}
+</div>
+<div class="clear"></div>
+</div>
+</div>
+{/if}
+{/if}

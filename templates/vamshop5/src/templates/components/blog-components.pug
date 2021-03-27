@@ -1,0 +1,430 @@
+extends ../partials/layout-components
+
+//- Override default config variables
+append config
+  - var vendorStyles = ['prismjs/themes/prism.css', 'prismjs/plugins/toolbar/prism-toolbar.css', 'prismjs/plugins/line-numbers/prism-line-numbers.css']
+  - var vendorScripts = ['prismjs/components/prism-core.min.js', 'prismjs/components/prism-markup.min.js', 'prismjs/components/prism-clike.min.js', 'prismjs/components/prism-javascript.min.js', 'prismjs/components/prism-pug.min.js', 'prismjs/plugins/toolbar/prism-toolbar.min.js', 'prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js', 'prismjs/plugins/line-numbers/prism-line-numbers.min.js']
+  - var pageTitle = 'Blog components'
+  - var pageSubtitle = 'Components that are related to the blog / news module of the website.'
+  - var isPageTitleBadge = true
+  - var anchorNav = [{'title': 'Post preview (List)', 'link': '#post-preview-list'}, {'title': 'Post preview (Grid)', 'link': '#post-preview-grid'}, {'title': 'Featured post', 'link': '#featured-post'}, {'title': 'Related posts carousel', 'link': '#related-posts-carousel'}]
+  
+//- Page Content
+block content
+
+  // Post preview (List)
+  section#post-preview-list.pb-5.mb-md-2
+    h2.h5.mb-3 Post preview (List)
+    .card.border-0.shadow
+      .card-header
+        ul(role='tablist').nav.nav-tabs.card-header-tabs
+          li.nav-item
+            a(href='#result1' data-bs-toggle='tab' role='tab' aria-controls='result1' aria-selected='true').nav-link.active Result
+          li.nav-item
+            a(href='#html1' data-bs-toggle='tab' role='tab' aria-controls='html1' aria-selected='false').nav-link HTML
+          li.nav-item
+            a(href='#pug1' data-bs-toggle='tab' role='tab' aria-controls='pug1' aria-selected='false').nav-link Pug
+      .card-body
+        .tab-content
+          #result1.tab-pane.fade.show.active(role='tabpanel')
+            article.blog-list.pt-3.pb-2(style='max-width: 51rem;')
+              .blog-start-column
+                .d-flex.align-items-center.fs-sm.pb-2.mb-1
+                  a(href='#').blog-entry-meta-link
+                    .blog-entry-author-ava
+                      img(src='../img/blog/meta/03.jpg' alt='Paul Woodred')
+                    | Paul Woodred
+                  span.blog-entry-meta-divider
+                  a(href='#').blog-entry-meta-link Jul 6
+                h2.h5.blog-entry-title
+                  a(href='#') Shopping Tips. Places Where to Buy Cheap
+              .blog-end-column
+                a(href='#').blog-entry-thumb.mb-3
+                  img(src='../img/blog/02.jpg' alt='Post')
+                .d-flex.justify-content-between.mb-1
+                  .fs-sm.text-muted.pe-2.mb-2
+                    | in <a href='#' class='blog-entry-meta-link'>Shopping</a>, <a href='#' class='blog-entry-meta-link'>Personal finance</a>
+                  .fs-sm.mb-2
+                    a(href='#').blog-entry-meta-link.text-nowrap
+                      i.ci-message
+                      | 15
+                p.fs-sm Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation… <a href='#' class='blog-entry-meta-link fw-medium'>[Read more]</a>
+          #html1.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-html').
+                &lt;!-- Post preview (List) --&gt;
+                &lt;article class=&quot;blog-list&quot;&gt;
+                  &lt;div class=&quot;blog-start-column&quot;&gt;
+                    &lt;div class=&quot;d-flex align-items-center fs-sm pb-2 mb-1&quot;&gt;
+                      &lt;a class=&quot;blog-entry-meta-link&quot; href=&quot;#&quot;&gt;
+                        &lt;div class=&quot;blog-entry-author-ava&quot;&gt;
+                          &lt;img src=&quot;path-to-image&quot; alt=&quot;Paul Woodred&quot;&gt;
+                        &lt;/div&gt;
+                        Paul Woodred
+                      &lt;/a&gt;
+                      &lt;span class=&quot;blog-entry-meta-divider&quot;&gt;&lt;/span&gt;
+                      &lt;a class=&quot;blog-entry-meta-link&quot; href=&quot;#&quot;&gt;Jul 6&lt;/a&gt;
+                    &lt;/div&gt;
+                    &lt;h2 class=&quot;h5 blog-entry-title&quot;&gt;&lt;a href=&quot;#&quot;&gt;Shopping Tips. Places Where to Buy Cheap&lt;/a&gt;&lt;/h2&gt;
+                  &lt;/div&gt;
+                  &lt;div class=&quot;blog-end-column&quot;&gt;
+                    &lt;a class=&quot;blog-entry-thumb mb-3&quot; href=&quot;#&quot;&gt;&lt;img src=&quot;path-to-image&quot; alt=&quot;Post&quot;&gt;&lt;/a&gt;
+                    &lt;div class=&quot;d-flex justify-content-between mb-1&quot;&gt;
+                      &lt;div class=&quot;fs-sm text-muted pe-2 mb-2&quot;&gt;
+                        in &lt;a href=&quot;#&quot; class=&quot;blog-entry-meta-link&quot;&gt;Shopping&lt;/a&gt;, &lt;a href=&quot;#&quot; class=&quot;blog-entry-meta-link&quot;&gt;Personal finance&lt;/a&gt;
+                      &lt;/div&gt;
+                      &lt;div class=&quot;fs-sm mb-2&quot;&gt;
+                        &lt;a class=&quot;blog-entry-meta-link text-nowrap&quot; href=&quot;#&quot;&gt;
+                          &lt;i class=&quot;ci-message&quot;&gt;&lt;/i&gt;
+                          15
+                        &lt;/a&gt;
+                      &lt;/div&gt;
+                    &lt;/div&gt;
+                    &lt;p class=&quot;fs-sm&quot;&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation… &lt;a href=&quot;#&quot; class=&quot;blog-entry-meta-link fw-medium&quot;&gt;[Read more]&lt;/a&gt;&lt;/p&gt;
+                  &lt;/div&gt;
+                &lt;/article&gt;
+          #pug1.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-pug').
+                // Post preview (List)
+                article.blog-list
+                  .blog-start-column
+                    .d-flex.align-items-center.fs-sm.pb-2.mb-1
+                      a(href=&quot;#&quot;).blog-entry-meta-link
+                        .blog-entry-author-ava
+                          img(src=&quot;path-to-image&quot;, alt=&quot;Paul Woodred&quot;)
+                        | Paul Woodred
+                      span.blog-entry-meta-divider
+                      a(href=&quot;#&quot;).blog-entry-meta-link Jul 6
+                    h2.h5.blog-entry-title
+                      a(href=&quot;#&quot;) Shopping Tips. Places Where to Buy Cheap
+                  .blog-end-column
+                    a(href=&quot;#&quot;).blog-entry-thumb.mb-3
+                      img(src=&quot;path-to-image&quot;, alt=&quot;Post&quot;)
+                    .d-flex.justify-content-between.mb-1
+                      .fs-sm.text-muted.pe-2.mb-2
+                        | in &lt;a href=&quot;#&quot; class=&quot;blog-entry-meta-link&quot;&gt;Shopping&lt;/a&gt;, &lt;a href=&quot;#&quot; class=&quot;blog-entry-meta-link&quot;&gt;Personal finance&lt;/a&gt;
+                      .fs-sm.mb-2
+                        a(href=&quot;#&quot;).blog-entry-meta-link.text-nowrap
+                          i.ci-message
+                          | 15
+                    p.fs-sm Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation… &lt;a href=&quot;#&quot; class=&quot;blog-entry-meta-link fw-medium&quot;&gt;[Read more]&lt;/a&gt;
+
+  // Post preview (Grid)
+  section#post-preview-grid.pb-5.mb-md-2
+    h2.h5.mb-3 Post preview (Grid)
+    .card.border-0.shadow
+      .card-header
+        ul(role='tablist').nav.nav-tabs.card-header-tabs
+          li.nav-item
+            a(href='#result2' data-bs-toggle='tab' role='tab' aria-controls='result2' aria-selected='true').nav-link.active Result
+          li.nav-item
+            a(href='#html2' data-bs-toggle='tab' role='tab' aria-controls='html2' aria-selected='false').nav-link HTML
+          li.nav-item
+            a(href='#pug2' data-bs-toggle='tab' role='tab' aria-controls='pug2' aria-selected='false').nav-link Pug
+      .card-body
+        .tab-content
+          #result2.tab-pane.fade.show.active(role='tabpanel')
+            article.card(style='max-width: 24rem;')
+              a(href='#').blog-entry-thumb
+                img(src='../img/blog/04.jpg' alt='Post').card-img-top
+              .card-body
+                h2.h6.blog-entry-title
+                  a(href='#') Payments Made Easy. How New Technology will Affect E-Commerce Industry Worldwide?
+                p.fs-sm Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua enim ad minim...
+                a(href='#').btn-tag.me-2.mb-2 Shopping
+                a(href='#').btn-tag.me-2.mb-2 Technology
+              .card-footer.d-flex.align-items-center.fs-xs
+                a(href='#').blog-entry-meta-link
+                  .blog-entry-author-ava
+                    img(src='../img/blog/meta/01.jpg' alt='Emma Gallaher')
+                  | Emma Gallaher
+                .ms-auto.text-nowrap
+                  a(href='#').blog-entry-meta-link.text-nowrap May 13
+                  span.blog-entry-meta-divider.mx-2
+                  a(href='#').blog-entry-meta-link.text-nowrap
+                    i.ci-message
+                    | 28
+          #html2.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-html').
+                &lt;!-- Post preview (Grid) --&gt;
+                &lt;article class=&quot;card&quot;&gt;
+                  &lt;a class=&quot;blog-entry-thumb&quot; href=&quot;#&quot;&gt;
+                    &lt;img class=&quot;card-img-top&quot; src=&quot;path-to-image&quot; alt=&quot;Post&quot;&gt;
+                  &lt;/a&gt;
+                  &lt;div class=&quot;card-body&quot;&gt;
+                    &lt;h2 class=&quot;h6 blog-entry-title&quot;&gt;
+                      &lt;a href=&quot;#&quot;&gt;Payments Made Easy. How New Technology will Affect E-Commerce Industry Worldwide?&lt;/a&gt;
+                    &lt;/h2&gt;
+                    &lt;p class=&quot;fs-sm&quot;&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua enim ad minim...&lt;/p&gt;
+                    &lt;a class=&quot;btn-tag me-2 mb-2&quot; href=&quot;#&quot;&gt;Shopping&lt;/a&gt;
+                    &lt;a class=&quot;btn-tag me-2 mb-2&quot; href=&quot;#&quot;&gt;Technology&lt;/a&gt;
+                  &lt;/div&gt;
+                  &lt;div class=&quot;card-footer d-flex align-items-center fs-xs&quot;&gt;
+                    &lt;a class=&quot;blog-entry-meta-link&quot; href=&quot;#&quot;&gt;
+                      &lt;div class=&quot;blog-entry-author-ava&quot;&gt;
+                        &lt;img src=&quot;path-to-image&quot; alt=&quot;Emma Gallaher&quot;&gt;
+                      &lt;/div&gt;
+                      Emma Gallaher
+                    &lt;/a&gt;
+                    &lt;div class=&quot;ms-auto text-nowrap&quot;&gt;
+                      &lt;a class=&quot;blog-entry-meta-link text-nowrap&quot; href=&quot;#&quot;&gt;May 13&lt;/a&gt;
+                      &lt;span class=&quot;blog-entry-meta-divider mx-2&quot;&gt;&lt;/span&gt;
+                      &lt;a class=&quot;blog-entry-meta-link text-nowrap&quot; href=&quot;#&quot;&gt;
+                        &lt;i class=&quot;ci-message&quot;&gt;&lt;/i&gt;
+                        28
+                      &lt;/a&gt;
+                    &lt;/div&gt;
+                  &lt;/div&gt;
+                &lt;/article&gt;
+          #pug2.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-pug').
+                // Post preview (Grid)
+                article.card
+                  a(href=&quot;#&quot;).blog-entry-thumb
+                    img(src=&quot;path-to-image&quot;, alt=&quot;Post&quot;).card-img-top
+                  .card-body
+                    h2.h6.blog-entry-title
+                      a(href=&quot;#&quot;) Payments Made Easy. How New Technology will Affect E-Commerce Industry Worldwide?
+                    p.fs-sm Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua enim ad minim...
+                    a.btn-tag.me-2.mb-2(href=&quot;#&quot;) Shopping
+                    a.btn-tag.me-2.mb-2(href=&quot;#&quot;) Technology
+                  .card-footer.d-flex.align-items-center.fs-xs
+                    a(href=&quot;#&quot;).blog-entry-meta-link
+                      .blog-entry-author-ava
+                        img(src=&quot;path-to-image&quot;, alt=&quot;Emma Gallaher&quot;)
+                      | Emma Gallaher
+                    .ms-auto.text-nowrap
+                      a.blog-entry-meta-link.text-nowrap(href=&quot;#&quot;) May 13
+                      span.blog-entry-meta-divider.mx-2
+                      a.blog-entry-meta-link.text-nowrap(href=&quot;#&quot;)
+                        i.ci-message
+                        | 28
+
+  // Featured post
+  section#featured-post.pb-5.mb-md-2
+    h2.h5.mb-3 Featured post
+    .card.border-0.shadow
+      .card-header
+        ul(role='tablist').nav.nav-tabs.card-header-tabs
+          li.nav-item
+            a(href='#result3' data-bs-toggle='tab' role='tab' aria-controls='result3' aria-selected='true').nav-link.active Result
+          li.nav-item
+            a(href='#html3' data-bs-toggle='tab' role='tab' aria-controls='html3' aria-selected='false').nav-link HTML
+          li.nav-item
+            a(href='#pug3' data-bs-toggle='tab' role='tab' aria-controls='pug3' aria-selected='false').nav-link Pug
+      .card-body
+        .tab-content
+          #result3.tab-pane.fade.show.active(role='tabpanel')
+            article(style='max-width: 37rem;')
+              a(href='#').blog-entry-thumb.mb-3
+                span.blog-entry-meta-label.fs-sm
+                  i.ci-time
+                  | Sep 10
+                img(src='../img/blog/featured/01.jpg' alt='Featured post')
+              .d-flex.justify-content-between.mb-2.pt-1
+                h2.h5.blog-entry-title.mb-0
+                  a(href='#') Healthy Food - New Way of Living
+                a(href='#').blog-entry-meta-link.fs-sm.text-nowrap.ms-3.pt-1
+                  i.ci-message
+                  | 13
+              .d-flex.align-items-center.fs-sm
+                a(href='#').blog-entry-meta-link
+                  .blog-entry-author-ava
+                    img(src='../img/blog/meta/04.jpg' alt='Olivia Reyes')
+                  | Olivia Reyes
+                span.blog-entry-meta-divider
+                .fs-sm.text-muted
+                  | in <a href='#' class='blog-entry-meta-link'>Lifestyle</a>, <a href='#' class='blog-entry-meta-link'>Nutrition</a>
+          #html3.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-html').
+                &lt;!-- Featured post --&gt;
+                &lt;article&gt;
+                  &lt;a class=&quot;blog-entry-thumb mb-3&quot; href=&quot;#&quot;&gt;
+                    &lt;span class=&quot;blog-entry-meta-label fs-sm&quot;&gt;
+                      &lt;i class=&quot;ci-time&quot;&gt;&lt;/i&gt;
+                      Sep 10
+                    &lt;/span&gt;
+                    &lt;img src=&quot;path-to-image&quot; alt=&quot;Featured post&quot;&gt;
+                  &lt;/a&gt;
+                  &lt;div class=&quot;d-flex justify-content-between mb-2 pt-1&quot;&gt;
+                    &lt;h2 class=&quot;h5 blog-entry-title mb-0&quot;&gt;
+                      &lt;a href=&quot;#&quot;&gt;Healthy Food - New Way of Living&lt;/a&gt;
+                    &lt;/h2&gt;
+                    &lt;a class=&quot;blog-entry-meta-link fs-sm text-nowrap ms-3 pt-1&quot; href=&quot;#&quot;&gt;
+                      &lt;i class=&quot;ci-message&quot;&gt;&lt;/i&gt;
+                      13
+                    &lt;/a&gt;
+                  &lt;/div&gt;
+                  &lt;div class=&quot;d-flex align-items-center fs-sm&quot;&gt;
+                    &lt;a class=&quot;blog-entry-meta-link&quot; href=&quot;#&quot;&gt;
+                      &lt;div class=&quot;blog-entry-author-ava&quot;&gt;
+                        &lt;img src=&quot;path-to-image&quot; alt=&quot;Olivia Reyes&quot;&gt;
+                      &lt;/div&gt;
+                      Olivia Reyes
+                    &lt;/a&gt;
+                    &lt;span class=&quot;blog-entry-meta-divider&quot;&gt;&lt;/span&gt;
+                    &lt;div class=&quot;fs-sm text-muted&quot;&gt;
+                      in &lt;a href=&quot;#&quot; class=&quot;blog-entry-meta-link&quot;&gt;Lifestyle&lt;/a&gt;, &lt;a href=&quot;#&quot; class=&quot;blog-entry-meta-link&quot;&gt;Nutrition&lt;/a&gt;
+                    &lt;/div&gt;
+                  &lt;/div&gt;
+                &lt;/article&gt;
+          #pug3.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-pug').
+                // Featured post
+                article
+                  a(href=&quot;#&quot;).blog-entry-thumb.mb-3
+                    span.blog-entry-meta-label.fs-sm
+                      i.ci-time
+                      | Sep 10
+                    img(src=&quot;path-to-image&quot;, alt=&quot;Featured post&quot;)
+                  .d-flex.justify-content-between.mb-2.pt-1
+                    h2.h5.blog-entry-title.mb-0
+                      a(href=&quot;#&quot;) Healthy Food - New Way of Living
+                    a(href=&quot;#&quot;).blog-entry-meta-link.fs-sm.text-nowrap.ms-3.pt-1
+                      i.ci-message
+                      | 13
+                  .d-flex.align-items-center.fs-sm
+                    a(href=&quot;#&quot;).blog-entry-meta-link
+                      .blog-entry-author-ava
+                        img(src=&quot;path-to-image&quot;, alt=&quot;Olivia Reyes&quot;)
+                      | Olivia Reyes
+                    span.blog-entry-meta-divider
+                    .fs-sm.text-muted
+                      | in &lt;a href=&quot;#&quot; class=&quot;blog-entry-meta-link&quot;&gt;Lifestyle&lt;/a&gt;, &lt;a href=&quot;#&quot; class=&quot;blog-entry-meta-link&quot;&gt;Nutrition&lt;/a&gt;
+
+  // Related posts carousel
+  section#related-posts-carousel.pb-5.mb-md-2
+    h2.h5.mb-3 Related posts carousel
+    .card.border-0.shadow
+      .card-header
+        ul(role='tablist').nav.nav-tabs.card-header-tabs
+          li.nav-item
+            a(href='#result4' data-bs-toggle='tab' role='tab' aria-controls='result4' aria-selected='true').nav-link.active Result
+          li.nav-item
+            a(href='#html4' data-bs-toggle='tab' role='tab' aria-controls='html4' aria-selected='false').nav-link HTML
+          li.nav-item
+            a(href='#pug4' data-bs-toggle='tab' role='tab' aria-controls='pug4' aria-selected='false').nav-link Pug
+      .card-body
+        .tab-content
+          #result4.tab-pane.fade.show.active(role='tabpanel')
+            .tns-carousel
+              .tns-carousel-inner(data-carousel-options='{"items": 2, "controls": false, "autoHeight": true, "responsive": {"0":{"items":1},"500":{"items":2, "gutter": 20},"900":{"items":3, "gutter": 20}, "1100":{"items":3, "gutter": 30}}}')
+                
+                // Article
+                article
+                  a(href='#').blog-entry-thumb.mb-3
+                    img(src='../img/blog/03.jpg' alt='Post').rounded
+                  .d-flex.align-items-center.fs-sm.mb-2
+                    a(href='#').blog-entry-meta-link by Rafael Marquez
+                    span.blog-entry-meta-divider
+                    a(href='#').blog-entry-meta-link Sep 16
+                  h3.h6.blog-entry-title
+                    a(href='#') We Launched Regular Drone Delivery in California. Watch Demo Video
+                
+                // Article
+                article
+                  a(href='#').blog-entry-thumb.mb-3
+                    img(src='../img/blog/04.jpg' alt='Post').rounded
+                  .d-flex.align-items-center.fs-sm.mb-2
+                    a(href='#').blog-entry-meta-link by Emma Gallaher
+                    span.blog-entry-meta-divider
+                    a(href='#').blog-entry-meta-link Sep 5
+                  h3.h6.blog-entry-title
+                    a(href='#') Payments Made Easy. How New Technology will Affect E-Commerce Industry Worldwide?
+                
+                // Article
+                article
+                  a(href='#').blog-entry-thumb.mb-3
+                    img(src='../img/blog/02.jpg' alt='Post').rounded
+                  .d-flex.align-items-center.fs-sm.mb-2
+                    a(href='#').blog-entry-meta-link by Emma Gallaher
+                    span.blog-entry-meta-divider
+                    a(href='#').blog-entry-meta-link Aug 28
+                  h3.h6.blog-entry-title
+                    a(href='#') Shopping Tips. Complete Guide of Places Where to Buy Cheap and Get Cashback
+                
+                // Article
+                article
+                  a(href='#').blog-entry-thumb.mb-3
+                    img(src='../img/blog/01.jpg' alt='Post').rounded
+                  .d-flex.align-items-center.fs-sm.mb-2
+                    a(href='#').blog-entry-meta-link by Emma Gallaher
+                    span.blog-entry-meta-divider
+                    a(href='#').blog-entry-meta-link Aug 28
+                  h3.h6.blog-entry-title
+                    a(href='#') Top 10 New Trends in Suburban High Fashion
+          #html4.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-html').
+                &lt;!-- Related posts carousel --&gt;
+                &lt;div class=&quot;tns-carousel&quot;&gt;
+                  &lt;div class=&quot;tns-carousel-inner&quot; data-carousel-options='{&quot;items&quot;: 2, &quot;controls&quot;: false, &quot;autoHeight&quot;: true, &quot;responsive&quot;: {&quot;0&quot;:{&quot;items&quot;:1},&quot;740&quot;:{&quot;items&quot;:2, &quot;gutter&quot;: 20},&quot;900&quot;:{&quot;items&quot;:3, &quot;gutter&quot;: 20}, &quot;1100&quot;:{&quot;items&quot;:3, &quot;gutter&quot;: 30}}}'&gt;
+
+                    &lt;!-- Article --&gt;
+                    &lt;article&gt;
+                      &lt;a class=&quot;blog-entry-thumb mb-3&quot; href=&quot;#&quot;&gt;
+                        &lt;img class=&quot;rounded&quot; src=&quot;path-to-image&quot; alt=&quot;Post&quot;&gt;
+                      &lt;/a&gt;
+                      &lt;div class=&quot;d-flex align-items-center fs-sm mb-2&quot;&gt;
+                        &lt;a class=&quot;blog-entry-meta-link&quot; href=&quot;#&quot;&gt;by Rafael Marquez&lt;/a&gt;
+                        &lt;span class=&quot;blog-entry-meta-divider&quot;&gt;&lt;/span&gt;
+                        &lt;a class=&quot;blog-entry-meta-link&quot; href=&quot;#&quot;&gt;Sep 16&lt;/a&gt;
+                      &lt;/div&gt;
+                      &lt;h3 class=&quot;h6 blog-entry-title&quot;&gt;
+                        &lt;a href=&quot;#&quot;&gt;We Launched Regular Drone Delivery in California. Watch Demo Video&lt;/a&gt;
+                      &lt;/h3&gt;
+                    &lt;/article&gt;
+
+                    &lt;!-- Article --&gt;
+                    &lt;article&gt;
+                      &lt;a class=&quot;blog-entry-thumb mb-3&quot; href=&quot;#&quot;&gt;
+                        &lt;img class=&quot;rounded&quot; src=&quot;path-to-image&quot; alt=&quot;Post&quot;&gt;
+                      &lt;/a&gt;
+                      &lt;div class=&quot;d-flex align-items-center fs-sm mb-2&quot;&gt;
+                        &lt;a class=&quot;blog-entry-meta-link&quot; href=&quot;#&quot;&gt;by Emma Gallaher&lt;/a&gt;
+                        &lt;span class=&quot;blog-entry-meta-divider&quot;&gt;&lt;/span&gt;
+                        &lt;a class=&quot;blog-entry-meta-link&quot; href=&quot;#&quot;&gt;Sep 5&lt;/a&gt;
+                      &lt;/div&gt;
+                      &lt;h3 class=&quot;h6 blog-entry-title&quot;&gt;
+                        &lt;a href=&quot;#&quot;&gt;Payments Made Easy. How New Technology will Affect E-Commerce Industry Worldwide?&lt;/a&gt;
+                      &lt;/h3&gt;
+                    &lt;/article&gt;
+
+                    &lt;!-- Add as many articles as you need --&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+          #pug4.tab-pane.fade(role='tabpanel')
+            pre.line-numbers
+              code(class='lang-pug').
+                // Related posts carousel
+                .tns-carousel
+                  .tns-carousel-inner(data-carousel-options='{&quot;items&quot;: 2, &quot;controls&quot;: false, &quot;autoHeight&quot;: true, &quot;responsive&quot;: {&quot;0&quot;:{&quot;items&quot;:1},&quot;740&quot;:{&quot;items&quot;:2, &quot;gutter&quot;: 20},&quot;900&quot;:{&quot;items&quot;:3, &quot;gutter&quot;: 20}, &quot;1100&quot;:{&quot;items&quot;:3, &quot;gutter&quot;: 30}}}')
+                    
+                    // Article
+                    article
+                      a(href=&quot;#&quot;).blog-entry-thumb.mb-3
+                        img(src=&quot;path-to-image&quot;, alt=&quot;Post&quot;).rounded
+                      .d-flex.align-items-center.fs-sm.mb-2
+                        a.blog-entry-meta-link(href=&quot;#&quot;) by Rafael Marquez
+                        span.blog-entry-meta-divider
+                        a.blog-entry-meta-link(href=&quot;#&quot;) Sep 16
+                      h3.h6.blog-entry-title
+                        a(href=&quot;#&quot;) We Launched Regular Drone Delivery in California. Watch Demo Video
+                    
+                    // Article
+                    article
+                      a(href=&quot;#&quot;).blog-entry-thumb.mb-3
+                        img(src=&quot;path-to-image&quot;, alt=&quot;Post&quot;).rounded
+                      .d-flex.align-items-center.fs-sm.mb-2
+                        a.blog-entry-meta-link(href=&quot;#&quot;) by Emma Gallaher
+                        span.blog-entry-meta-divider
+                        a.blog-entry-meta-link(href=&quot;#&quot;) Sep 5
+                      h3.h6.blog-entry-title
+                        a(href=&quot;#&quot;) Payments Made Easy. How New Technology will Affect E-Commerce Industry Worldwide?
+                    
+                    // Add as many articles as you need

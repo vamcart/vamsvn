@@ -1,0 +1,295 @@
+extends partials/layout
+
+//- Override default config variables
+append config
+  - var parentMenu = 'Home'
+
+//- Navbar
+block navbar
+
+  // Navbar
+  // Remove "navbar-sticky" class to make navigation bar scrollable with the page.
+  header.bg-light.shadow-sm.navbar-sticky
+    .navbar.navbar-expand-lg.navbar-light
+      .container
+        a(href='index.html').navbar-brand.d-none.d-sm-block.me-4.order-lg-1
+          img(src='img/logo-dark.png' width='142' alt='Cartzilla')
+        a(href='index.html').navbar-brand.d-sm-none.me-2.order-lg-1
+          img(src='img/logo-icon.png' width='74' alt='Cartzilla')
+        
+        .navbar-toolbar.d-flex.align-items-center.order-lg-3
+          button(type='button' data-bs-toggle='collapse' data-bs-target='#navbarCollapse').navbar-toggler
+            span.navbar-toggler-icon
+          a(href='https://themes.getbootstrap.com/product/cartzilla-bootstrap-e-commerce-template-ui-kit/' target='_blank' rel='noopener').btn.btn-primary.btn-shadow
+            i.ci-cart.me-2
+            | Buy now
+
+        #navbarCollapse.collapse.navbar-collapse.me-auto.order-lg-2
+
+          hr.my-3
+
+          //- menu-primary.pug
+          include partials/menu-primary
+
+  
+//- Page Content
+block content
+
+  // Hero section
+  section.bg-accent.bg-position-center.bg-size-cover.py-3.py-sm-5(style='background-image: url(img/intro/intro-hero.jpg);')
+    .container.py-5
+      .row.pt-md-5.pb-lg-5.justify-content-center
+        .col-xl-7.col-lg-8.col-md-10.text-center.py-xl-3
+          h1.text-light.pb-sm-3 <span class='fw-light'>Multipurpose</span> Bootstrap 5<br>E-Commerce <span class='fw-light'>Template</span>
+          span.d-inline-block.h5.text-light.fw-light.mx-2.opacity-70 Single / Multi-vendor
+          span.d-inline-block.h3.text-light.fw-light.mx-2 Marketplace
+          span.d-inline-block.h4.text-light.fw-light.mx-2.opacity-70 Fashion
+          span.d-inline-block.h3.text-light.fw-light.mx-2.opacity-90 Electronics
+          span.d-inline-block.h6.text-light.fw-light.mx-2.opacity-60 Cart
+          span.d-inline-block.h3.text-light.fw-light.mx-2 Grocery store
+          span.d-inline-block.h5.text-light.fw-light.mx-2.opacity-80 Checkout
+          span.d-inline-block.h4.text-light.fw-light.mx-2 Food Delivery
+          span.d-inline-block.fs-lg.text-light.fw-light.mx-2.opacity-60 Account / Dasboard
+          .py-4.py-sm-5
+            a(href='#demos' data-scroll).btn.btn-primary.btn-lg
+              | View Demos
+              i.ci-arrow-down-circle.ms-2
+
+  // Demos section
+  section#demos.container.pt-5.pb-3.pb-lg-5
+    .text-center.pt-md-4.pb-2
+      h2 <span class='fw-light'>Explore</span> Cartzilla Demos
+      p.text-muted Explore the collection of carefully built homepages. More to come soon!
+    .row.pt-4
+      .col-sm-6.mb-4
+        .card.product-card-alt
+          .product-thumb.border
+            .product-card-actions
+              a(href='home-fashion-store-v1.html').btn.btn-light.btn-icon.btn-shadow.fs-base.mx-2
+                i.ci-eye
+              a(href='https://themes.getbootstrap.com/product/cartzilla-bootstrap-e-commerce-template-ui-kit/' target='_blank' rel='noopener').btn.btn-light.btn-icon.btn-shadow.fs-base.mx-2
+                i.ci-cart
+            a(href='home-fashion-store-v1.html').product-thumb-overlay
+            img(src='img/home/preview/01.jpg' alt='Fashion Store v.1')
+          .card-body.text-center
+            h3.product-title.fs-lg.pt-2
+              a(href='home-fashion-store-v1.html') Fashion Store v.1
+      .col-sm-6.mb-4
+        .card.product-card-alt
+          .product-thumb.border
+            .product-card-actions
+              a(href='home-electronics-store.html').btn.btn-light.btn-icon.btn-shadow.fs-base.mx-2
+                i.ci-eye
+              a(href='https://themes.getbootstrap.com/product/cartzilla-bootstrap-e-commerce-template-ui-kit/' target='_blank' rel='noopener').btn.btn-light.btn-icon.btn-shadow.fs-base.mx-2
+                i.ci-cart
+            a(href='home-electronics-store.html').product-thumb-overlay
+            img(src='img/home/preview/03.jpg' alt='Electronics Store')
+          .card-body.text-center
+            h3.product-title.fs-lg.pt-2
+              a(href='home-electronics-store.html') Electronics Store
+      .col-sm-6.mb-4
+        .card.product-card-alt
+          .product-thumb.border
+            .product-card-actions
+              a(href='home-food-delivery.html').btn.btn-light.btn-icon.btn-shadow.fs-base.mx-2
+                i.ci-eye
+              a(href='https://themes.getbootstrap.com/product/cartzilla-bootstrap-e-commerce-template-ui-kit/' target='_blank' rel='noopener').btn.btn-light.btn-icon.btn-shadow.fs-base.mx-2
+                i.ci-cart
+            a(href='home-food-delivery.html').product-thumb-overlay
+            img(src='img/home/preview/07.jpg' alt='Food Delivery Service')
+          .card-body.text-center
+            h3.product-title.fs-lg.pt-2
+              a(href='home-food-delivery.html') Food Delivery Service
+      .col-sm-6.mb-4
+        .card.product-card-alt
+          .product-thumb.border
+            .product-card-actions
+              a(href='home-marketplace.html').btn.btn-light.btn-icon.btn-shadow.fs-base.mx-2
+                i.ci-eye
+              a(href='https://themes.getbootstrap.com/product/cartzilla-bootstrap-e-commerce-template-ui-kit/' target='_blank' rel='noopener').btn.btn-light.btn-icon.btn-shadow.fs-base.mx-2
+                i.ci-cart
+            a(href='home-marketplace.html').product-thumb-overlay
+            img(src='img/home/preview/04.jpg' alt='Multi-vendor Marketplace')
+          .card-body.text-center
+            h3.product-title.fs-lg.pt-2
+              a(href='home-marketplace.html') Multi-vendor Marketplace
+      .col-sm-6.mb-4
+        .card.product-card-alt
+          .product-thumb.border
+            .product-card-actions
+              a(href='home-grocery-store.html').btn.btn-light.btn-icon.btn-shadow.fs-base.mx-2
+                i.ci-eye
+              a(href='https://themes.getbootstrap.com/product/cartzilla-bootstrap-e-commerce-template-ui-kit/' target='_blank' rel='noopener').btn.btn-light.btn-icon.btn-shadow.fs-base.mx-2
+                i.ci-cart
+            a(href='home-grocery-store.html').product-thumb-overlay
+            img(src='img/home/preview/06.jpg' alt='Grocery Store')
+          .card-body.text-center
+            h3.product-title.fs-lg.pt-2
+              a(href='home-grocery-store.html') Grocery Store
+      .col-sm-6.mb-4
+        .card.product-card-alt
+          .product-thumb.border
+            .product-card-actions
+              a(href='home-fashion-store-v2.html').btn.btn-light.btn-icon.btn-shadow.fs-base.mx-2
+                i.ci-eye
+              a(href='https://themes.getbootstrap.com/product/cartzilla-bootstrap-e-commerce-template-ui-kit/' target='_blank' rel='noopener').btn.btn-light.btn-icon.btn-shadow.fs-base.mx-2
+                i.ci-cart
+            a(href='home-fashion-store-v2.html').product-thumb-overlay
+            img(src='img/home/preview/02.jpg' alt='Fashion Store v.2')
+          .card-body.text-center
+            h3.product-title.fs-lg.pt-2
+              a(href='home-fashion-store-v2.html') Fashion Store v.2
+      .col-sm-6.mb-4
+        .card.product-card-alt
+          .product-thumb.border
+            .product-card-actions
+              a(href='home-single-store.html').btn.btn-light.btn-icon.btn-shadow.fs-base.mx-2
+                i.ci-eye
+              a(href='https://themes.getbootstrap.com/product/cartzilla-bootstrap-e-commerce-template-ui-kit/' target='_blank' rel='noopener').btn.btn-light.btn-icon.btn-shadow.fs-base.mx-2
+                i.ci-cart
+            a(href='home-single-store.html').product-thumb-overlay
+            img(src='img/home/preview/05.jpg' alt='Single Product / Brand Store')
+          .card-body.text-center
+            h3.product-title.fs-lg.pt-2
+              a(href='home-single-store.html') Single Product / Brand Store
+      .col-sm-6.mb-4
+        .card.product-card-alt
+          .product-thumb
+            img(src='img/home/preview/coming.png' alt='Coming Soon')
+          .card-body.text-center
+            h3.fs-lg.pt-2 Coming Soon
+
+  
+  // Cartzilla pages section
+  section.bg-dark.py-5
+    .container.py-3.py-lg-4
+      .row.align-items-center
+        .col-xl-4.col-lg-5.pb-4.pb-lg-0
+          h2.text-light <span class='fw-light'>Complete</span> E-Commerce Front-End <span class='fw-light'>Solution</span>
+          p.text-light.opacity-70 All you need for your next e-commerce project
+          ul.text-light.list-unstyled.pt-3
+            li
+              i.ci-check-circle.text-success.me-2
+              | Shop Grid / List Layout Options
+            li
+              i.ci-check-circle.text-success.me-2
+              | Multiple Product Page Variations
+            li
+              i.ci-check-circle.text-success.me-2
+              | Complete Order Workflow: Cart + Checkout
+            li
+              i.ci-check-circle.text-success.me-2
+              | Shop Customer Account Pages
+            li
+              i.ci-check-circle.text-success.me-2
+              | Vendor Dashboard for Multi-vendor Marketplaces
+            li
+              i.ci-check-circle.text-success.me-2
+              | Ready for any Content: Fashion, Electronics, Digital (Downloadable) Products, etc.
+            li
+              i.ci-check-circle.text-success.me-2
+              | Blog Pages: Blog Layouts + Single Post
+            li
+              i.ci-check-circle.text-success.me-2
+              | Help Center / Support Pages
+            li
+              i.ci-check-circle.text-success.me-2
+              | Secondary Pages: About, Contacts, 404, etc.
+            li
+              i.ci-check-circle.text-success.me-2
+              | 40+ Flexible Components
+        .col-lg-7.offset-xl-1
+          img(src='img/intro/pages-showcase.jpg' alt='Cartzilla pages')
+  
+
+  // Cartzill handheld toolbar
+  section.bg-secondary.py-4
+    .container.pt-4.pt-md-0
+      .row.align-items-center
+        .col-xl-4.offset-xl-1.col-lg-5.offset-lg-1.col-md-6.text-center.text-md-left
+          span.badge.badge-info.fs-sm.mb-4 From v1.2
+          h2 <span class='fw-light'>Even More</span> Mobile Friendly <span class='fw-light'>Interface</span>
+          p.text-muted.pb-2 New <span class='fw-medium'>Toolbar</span> designed specifically for handheld devices to further improve user experience.
+          p.fs-sm Scan QR code below to test on your device:
+          img(src='img/intro/qrcode.png' width='150' alt='QR code')
+        .col-md-6
+          img(src='img/intro/handheld-toolbar.jpg' alt='Toolbar').d-block.mx-auto
+
+
+  // Cartzilla features section
+  section.py-5
+    .container.py-3.py-lg-4
+      h2.text-center.mb-4 Cartzilla Feature <span class='fw-light'>Highlights</span>
+      .row.text-center.pt-4
+        .col-lg-3.col-md-4.col-sm-6.mb-grid-gutter.pb-2
+          img(src='img/intro/features/01.png' width='90' alt='Gulp icon').inline-block.mb-3
+          h6 Kick-start Your Development
+          p.fs-ms.text-muted.mb-0 Start your development process fast and easy with Node.js and Gulp setup. Configuration files are included in download package. Full tasks automation.
+        .col-lg-3.col-md-4.col-sm-6.mb-grid-gutter.pb-2
+          img(src='img/intro/features/02.png' width='90' alt='Sass icon').inline-block.mb-3
+          h6 Easy to Customize with Sass
+          p.fs-ms.text-muted.mb-0 Cartzilla is built using Sass. Easily change colors, typography and much more. It is the most mature, stable, and powerful CSS extension language in the world.
+        .col-lg-3.col-md-4.col-sm-6.mb-grid-gutter.pb-2
+          img(src='img/intro/features/03.png' width='90' alt='Pug icon').inline-block.mb-3
+          h6 Pug - Node Templating Engine
+          p.fs-ms.text-muted.mb-0 No need to write huge amount of HTML, if you don’t want to. Pug provides features not available in plain HTML like variables, includes, mixins, functions, etc.
+        .col-lg-3.col-md-4.col-sm-6.mb-grid-gutter.pb-2
+          img(src='img/intro/features/04.png' width='90' alt='Bootstrap icon').inline-block.mb-3
+          h6 Built With Bootstrap 5
+          p.fs-ms.text-muted.mb-0 Cartzilla is the powerful e-commerce front-end solution based on Bootstrap 5 - the world's most popular responsive, mobile-first front-end component library.
+        .col-lg-3.col-md-4.col-sm-6.mb-grid-gutter.pb-2
+          img(src='img/intro/features/05.png' width='90' alt='Web Components icon').inline-block.mb-3
+          h6 40+ Flexible Components
+          p.fs-ms.text-muted.mb-0 Besides styling all default Bootstrap 5 components Cartzilla introduces lots of new flexible, customizable and reusable elements you can use across the website.
+        .col-lg-3.col-md-4.col-sm-6.mb-grid-gutter.pb-2
+          img(src='img/intro/features/06.png' width='90' alt='Mobile Friendly icon').inline-block.mb-3
+          h6 Mobile Friendly Interface
+          p.fs-ms.text-muted.mb-0 It's not a surprise that nowadays over 70% of users shop online using their mobile devices. Cartzilla is 100% responsive and optimized for small touch screens.
+        .col-lg-3.col-md-4.col-sm-6.mb-grid-gutter.pb-2
+          img(src='img/intro/features/07.png' width='90' alt='Google Fonts icon').inline-block.mb-3
+          h6 Google Fonts
+          p.fs-ms.text-muted.mb-0 Cartzilla uses Google fonts which are free, fast to load and of very high quality. Currently Google fonts library includes 870+ font families to choose from.
+        .col-lg-3.col-md-4.col-sm-6.mb-grid-gutter.pb-2
+          img(src='img/intro/features/08.png' width='90' alt='Touch icon').inline-block.mb-3
+          h6 Touch-enabled Sliders
+          p.fs-ms.text-muted.mb-0 In the era of touch screens it's important to ensure great user experience on handheld devices, especially when it comes to such frequently used interface component as slider.
+        .col-lg-3.col-md-4.col-sm-6.mb-grid-gutter.pb-2
+          img(src='img/intro/features/09.png' width='90' alt='Vector icon').inline-block.mb-3
+          h6 Vector Based HD Ready Icons
+          p.fs-ms.text-muted.mb-0 Cartzilla is equiped with font-based icon pack to ensure that infographics and interface icons look sharp on any device with any screen resolution and pixel density.
+        .col-lg-3.col-md-4.col-sm-6.mb-grid-gutter.pb-2
+          img(src='img/intro/features/10.png' width='90' alt='HTML5 icon').inline-block.mb-3
+          h6 W3C Valid HTML Code
+          p.fs-ms.text-muted.mb-0 All HTML files are checked via W3C validator to ensure 100% valid code. As you probably know invalid HTML limits innovation, but Cartzilla is innovative at its core.
+        .col-lg-3.col-md-4.col-sm-6.mb-grid-gutter.pb-2
+          img(src='img/intro/features/11.png' width='90' alt='JavaScript icon').inline-block.mb-3
+          h6 Future-proof JavaScript
+          p.fs-ms.text-muted.mb-0 Cartzilla core scripts as well as all dependencies are written in vanilla JS. And now with Bootstrap 5 we finally drops jQuery and uses ES6 modules.
+        .col-lg-3.col-md-4.col-sm-6.mb-grid-gutter.pb-2
+          img(src='img/intro/features/12.png' width='90' alt='Documentation icon').inline-block.mb-3
+          h6 Detailed Documentation
+          p.fs-ms.text-muted.mb-0 Download package includes links to online documentation. It covers all crucial information about how to get started, customize template and components usage.
+      h6.text-center And much more...
+
+
+//- Footer
+block footer
+
+  // Footer
+  footer.border-top.py-5
+    .container.text-center.pt-3.pt-lg-4
+      h3.fw-light Still not convinced?
+      h2.pb-4 Add premium support and lifetime updates to this.
+      a(href='https://themes.getbootstrap.com/product/cartzilla-bootstrap-e-commerce-template-ui-kit/' target='_blank' rel='noopener').btn.btn-primary.btn-lg
+        i.ci-cart.me-2
+        | Buy Cartzilla
+      hr.my-5
+      .fs-ms.text-muted.text-center
+        | © All rights reserved. Made by 
+        a(href='https://createx.studio/' target='_blank' rel='noopener').text-muted Createx Studio
+
+
+//- Handheld toolbar
+block toolbar
+  include partials/toolbar
+  

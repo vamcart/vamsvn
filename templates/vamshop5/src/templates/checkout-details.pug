@@ -1,0 +1,176 @@
+extends partials/layout
+
+//- Override default config variables
+append config
+  - var pageTitle = 'Checkout'
+  - var breadcrumbs = [{'title': 'Shop', 'link': 'shop-grid-ls.html'}, {'title': 'Checkout'}]
+  - var parentMenu = 'Shop'
+
+//- Navbar
+block navbar
+  include partials/navbar-3-level-light
+
+//- Page title
+block page-title
+  include partials/page-title-shop
+  
+//- Page Content
+block content
+
+  .container.pb-5.mb-2.mb-md-4
+    .row
+
+      section.col-lg-8
+
+        // Steps
+        .steps.steps-light.pt-2.pb-3.mb-5
+          a(href='shop-cart.html').step-item.active
+            .step-progress
+              span.step-count 1
+            .step-label
+              i.ci-cart
+              | Cart
+          a(href='checkout-details.html').step-item.active.current
+            .step-progress
+              span.step-count 2
+            .step-label
+              i.ci-user-circle
+              | Details
+          a(href='checkout-shipping.html').step-item
+            .step-progress
+              span.step-count 3
+            .step-label
+              i.ci-package
+              | Shipping
+          a(href='checkout-payment.html').step-item
+            .step-progress
+              span.step-count 4
+            .step-label
+              i.ci-card
+              | Payment
+          a(href='checkout-review.html').step-item
+            .step-progress
+              span.step-count 5
+            .step-label
+              i.ci-check-circle
+              | Review
+
+        // Autor info
+        .d-sm-flex.justify-content-between.align-items-center.bg-secondary.p-4.rounded-3.mb-grid-gutter
+          .d-flex.align-items-center
+            .img-thumbnail.rounded-circle.position-relative.flex-shrink-0
+              span(data-bs-toggle='tooltip' title='Reward points').badge.bg-warning.position-absolute.end-0.mt-n2 384
+              img(src='img/shop/account/avatar.jpg' width='90' alt='Susan Gardner').rounded-circle
+            .ps-3
+              h3.fs-base.mb-0 Susan Gardner
+              span.text-accent.fs-sm s.gardner@example.com
+          a(href='account-profile.html').btn.btn-light.btn-sm.btn-shadow.mt-3.mt-sm-0
+            i.ci-edit.me-2
+            | Edit profile
+        
+        // Shipping address
+        h2.h6.pt-1.pb-3.mb-3.border-bottom Shipping address
+        .row
+          .col-sm-6
+            .mb-3
+              label(for='checkout-fn').form-label First Name
+              input(type='text')#checkout-fn.form-control
+          .col-sm-6
+            .mb-3
+              label(for='checkout-ln').form-label Last Name
+              input(type='text')#checkout-ln.form-control
+        .row
+          .col-sm-6
+            .mb-3
+              label(for='checkout-email').form-label E-mail Address
+              input(type='email')#checkout-email.form-control
+          .col-sm-6
+            .mb-3
+              label(for='checkout-phone').form-label Phone Number
+              input(type='text')#checkout-phone.form-control
+        .row
+          .col-sm-6
+            .mb-3
+              label(for='checkout-company').form-label Company
+              input(type='text')#checkout-company.form-control
+          .col-sm-6
+            .mb-3
+              label(for='checkout-country').form-label Country
+              select#checkout-country.form-select
+                option Choose country
+                option Australia
+                option Canada
+                option France
+                option Germany
+                option Switzerland
+                option USA
+        .row
+          .col-sm-6
+            .mb-3
+              label(for='checkout-city').form-label Country
+              select#checkout-city.form-select
+                option Choose city
+                option Amsterdam
+                option Berlin
+                option Geneve
+                option New York
+                option Paris
+          .col-sm-6
+            .mb-3
+              label(for='checkout-zip').form-label ZIP Code
+              input(type='text')#checkout-zip.form-control
+        .row
+          .col-sm-6
+            .mb-3
+              label(for='checkout-address-1').form-label Address 1
+              input(type='text')#checkout-address-1.form-control
+          .col-sm-6
+            .mb-3
+              label(for='checkout-address-2').form-label Address 2
+              input(type='text')#checkout-address-2.form-control
+
+        h6.mb-3.py-3.border-bottom Billing address
+        .form-check
+          input(type='checkbox' checked)#same-address.form-check-input
+          label(for='same-address').form-check-label Same as shipping address
+
+        // Navigation (desktop)
+        .d-none.d-lg-flex.pt-4.mt-3
+          .w-50.pe-3
+            a(href='shop-cart.html').btn.btn-secondary.d-block.w-100
+              i.ci-arrow-left.mt-sm-0.me-1
+              span.d-none.d-sm-inline Back to Cart
+              span.d-inline.d-sm-none Back
+          .w-50.ps-2
+            a(href='checkout-shipping.html').btn.btn-primary.d-block.w-100
+              span.d-none.d-sm-inline Proceed to Shipping
+              span.d-inline.d-sm-none Next
+              i.ci-arrow-right.mt-sm-0.ms-1
+          
+      // Sidebar
+      aside.col-lg-4.pt-4.pt-lg-0.ps-xl-5
+        //- sidebar-checkout.pug template
+        include partials/sidebar-checkout
+        
+    // Navigation (mobile)
+    .row.d-lg-none
+      .col-lg-8
+        .d-flex.pt-4.mt-3
+          .w-50.pe-3
+            a(href='shop-cart.html').btn.btn-secondary.d-block.w-100
+              i.ci-arrow-left.mt-sm-0.me-1
+              span.d-none.d-sm-inline Back to Cart
+              span.d-inline.d-sm-none Back
+          .w-50.ps-2
+            a(href='checkout-shipping.html').btn.btn-primary.d-block.w-100
+              span.d-none.d-sm-inline Proceed to Shipping
+              span.d-inline.d-sm-none Next
+              i.ci-arrow-right.mt-sm-0.ms-1
+
+//- Footer
+block footer
+  include partials/footer-dark
+
+//- Handheld toolbar
+block toolbar
+  include partials/toolbar

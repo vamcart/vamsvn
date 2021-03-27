@@ -1,0 +1,35 @@
+	<div class="box h-100">
+			<div class="itemside">
+				<div class="aside align-top">
+					<span class="icon-wrap icon-md round bg-warning">
+						<i class="fa fa-lightbulb white"></i>
+					</span>
+				</div>
+				<div class="text-wrap" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+					<div class="title"><a href="{$module_data.FAQ_LINK_MORE}"><span itemprop="name">{$module_data.FAQ_QUESTION}</span></a></div>
+					<div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+					<div itemprop="text">
+					{$module_data.FAQ_ANSWER}
+						{if {$module_data.FAQ_SHOW_POPULAR_PRODUCTS} == '1'} 
+						{$smarty.const.TITLE_SPECIALS_DEFAULT} {$module_data.CATEGORY_NAME}:<br/>
+						<ul>					
+						{foreach name=aussen item=popular_products from=$module_data.FAQ_PRODUCTS_POPULAR}						<li>	
+						<a href="{$popular_products.PRODUCTS_LINK}">{$popular_products.PRODUCTS_NAME}</a>
+						</li>
+						{/foreach}
+						</ul> 
+						{/if} 
+						{if {$module_data.FAQ_SHOW_DISCOUNT_PRODUCTS} == '1'} 
+						{$smarty.const.TITLE_FEATURED_DEFAULT_SHORT} {$module_data.CATEGORY_NAME}:<br/>
+						<ul>					
+						{foreach name=aussen item=discount_products from=$module_data.FAQ_PRODUCTS_DISCOUNT}						<li>	
+						<a href="{$discount_products.PRODUCTS_LINK}">{$discount_products.PRODUCTS_NAME}</a>
+						</li>
+						{/foreach}
+						</ul>
+						{/if} 
+					</div>
+					</div>
+				</div>
+			</div>
+	</div>

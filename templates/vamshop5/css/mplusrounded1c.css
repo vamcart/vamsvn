@@ -1,0 +1,50 @@
+@font-face {
+    font-family: 'M PLUS Rounded 1c';
+    src: local('Rounded Mplus 1c Light'), local('RoundedMplus1c-Light'), url('../webfonts/Roundedmplus1clight.woff2') format('woff2'), url('../webfonts/Roundedmplus1clight.woff') format('woff'), url('../webfonts/Roundedmplus1clight.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'M PLUS Rounded 1c';
+    src: local('Rounded Mplus 1c'), local('RoundedMplus1c-Regular'), url('../webfonts/Roundedmplus1c.woff2') format('woff2'), url('../webfonts/Roundedmplus1c.woff') format('woff'), url('../webfonts/Roundedmplus1c.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'M PLUS Rounded 1c';
+    src: local('Rounded Mplus 1c Thin'), local('RoundedMplus1c-Thin'), url('../webfonts/Roundedmplus1cthin.woff2') format('woff2'), url('../webfonts/Roundedmplus1cthin.woff') format('woff'), url('../webfonts/Roundedmplus1cthin.ttf') format('truetype');
+    font-weight: 100;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'M PLUS Rounded 1c';
+    src: local('Rounded Mplus 1c ExtraBold'), local('RoundedMplus1c-ExtraBold'), url('../webfonts/Roundedmplus1cextrabold.woff2') format('woff2'), url('../webfonts/Roundedmplus1cextrabold.woff') format('woff'), url('../webfonts/Roundedmplus1cextrabold.ttf') format('truetype');
+    font-weight: 800;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'M PLUS Rounded 1c';
+    src: local('Rounded Mplus 1c Black'), local('RoundedMplus1c-Black'), url('../webfonts/Roundedmplus1cblack.woff2') format('woff2'), url('../webfonts/Roundedmplus1cblack.woff') format('woff'), url('../webfonts/Roundedmplus1cblack.ttf') format('truetype');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'M PLUS Rounded 1c';
+    src: local('Rounded Mplus 1c Medium'), local('RoundedMplus1c-Medium'), url('../webfonts/Roundedmplus1cmedium.woff2') format('woff2'), url('../webfonts/Roundedmplus1cmedium.woff') format('woff'), url('../webfonts/Roundedmplus1cmedium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'M PLUS Rounded 1c';
+    src: local('Rounded Mplus 1c Bold'), local('RoundedMplus1c-Bold'), url('../webfonts/Roundedmplus1cbold.woff2') format('woff2'), url('../webfonts/Roundedmplus1cbold.woff') format('woff'), url('../webfonts/Roundedmplus1cbold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+}

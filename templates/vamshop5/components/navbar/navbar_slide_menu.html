@@ -1,0 +1,108 @@
+
+  <!-- Mobile Header -->
+  <div class="wsmobileheader clearfix">
+    <a id="wsnavtoggle" class="wsanimated-arrow"><span></span></a>
+    <span class="smllogo"><a href="{$mainpage}"><img src="{$tpl_path}img/logo-small.png" width="160" height="60" class="img-fluid" alt="{$smarty.const.STORE_NAME}" /></a></span>
+    {if !$cart_current}
+      <div class="dropdown cart header wscart" id="divShoppingCartHeader">
+        {$box_CART}
+      </div>
+    {/if}
+    <!--
+    {if !$wishlist_current}
+      <div class="wswishlist" id="divWishlistHeader">
+        {$box_WISHLIST}
+      </div>
+    {/if}
+    -->
+    <div class="wssearch clearfix">
+      <i class="wsopensearch fas fa-search"></i>
+      <div class="wssearchform clearfix" itemscope itemtype="https://schema.org/WebSite">
+      <meta itemprop="url" content="{$smarty.const.HTTP_SERVER}{$smarty.const.DIR_WS_CATALOG}"/>
+		<form name="search" id="searchheader" action="advanced_search_result.php" method="get" class="form-inline topmenusearch" autocomplete="off" itemprop="potentialAction" itemscope itemtype="https://schema.org/SearchAction">
+		<meta itemprop="target" content="{$smarty.const.HTTP_SERVER}{$smarty.const.DIR_WS_CATALOG}{$smarty.const.FILENAME_ADVANCED_SEARCH_RESULT}?keywords={literal}{keywords}{/literal}"/>
+		<div class="input-group">
+		      <input itemprop="query-input" type="text" name="keywords" class="form-control border-right-0" id="quick_find_keyword_header" placeholder="{$smarty.const.BOX_HEADING_SEARCH}" />
+		      <div class="input-group-append">
+		         <span class="input-group-text microphone border-right-0" id="voice-trigger-header"><i class="fas fa-microphone text-secondary"></i></span>
+		      </div>
+		      <div class="input-group-append">
+		         <button class="btn btn-outline-secondary btn-outline-search fas fa-search border-left-0" type="submit"></button>
+		      </div>
+		</div>
+		</form>
+		<div class="ajaxQuickFindHeader" id="ajaxQuickFindHeader"></div>
+      </div>
+    </div>
+  </div>
+  <!-- Mobile Header -->
+  
+<header>
+
+  <div class="headtoppart clearfix">
+    <div class="headerwp clearfix">
+      <div class="headertopleft clearfix">
+        <div class="address clearfix"> 
+        <ul class="list-inline">
+		     <li class="list-inline-item pr-2 text-muted small"><a href="{$smarty.const.FILENAME_SPECIALS}">{$smarty.const.TITLE_SPECIALS_DEFAULT}</a></li>
+		     <li class="list-inline-item pr-2 text-muted small"><a href="{$smarty.const.FILENAME_MANUFACTURERS}">{$smarty.const.TITLE_MANUFACTURERS_DEFAULT}</a></li>
+		     <li class="list-inline-item pr-2 text-muted small"><a href="{$smarty.const.FILENAME_PRODUCTS_NEW}">{$smarty.const.TITLE_NEW_PRODUCTS_DEFAULT}</a></li>
+		     <li class="list-inline-item pr-2 text-muted small"><a href="{$smarty.const.FILENAME_FEATURED}">{$smarty.const.TITLE_FEATURED_DEFAULT_SHORT}</a></li>
+		     <li class="list-inline-item pr-2 text-muted small"><a href="{$smarty.const.FILENAME_REVIEWS}">{$smarty.const.TEXT_PRODUCT_REVIEWS}</a></li>
+        </ul>        
+        </div>
+      </div>
+      <div class="headertopright clearfix">
+      <ul class="list-inline">
+	     <li class="list-inline-item pr-2 d-none d-xl-inline-block text-muted small"><a href="{$mainpage}" data-toggle="modal" data-target="#myModal" aria-label="{$smarty.const.TEXT_CITY}"><i class="fas fa-map-marker-alt"></i> <span class="link">{if {cookie name="vamshop-city"}}{cookie name="vamshop-city"}{else}<span class="userCity">{geo_city}</span>{/if}</span></a></li>
+	     {if {$smarty.const.STORE_TELEPHONE} != ""}<li class="list-inline-item pr-2 text-muted small"><a href="tel:{$smarty.const.STORE_TELEPHONE}"><i class="fas fa-phone"></i> <span>{$smarty.const.STORE_TELEPHONE}</span></a></li>{/if}
+	     <li class="list-inline-item pr-2 text-muted small"><a href="contact_us.html"><i class="far fa-envelope"></i> {#text_contact_us#}</a></li>
+	     {if $smarty.session.customer_id}<li class="list-inline-item pr-2 text-muted small"><a href="{$logoff}"><i class="fa fa-power-off"></i> {#link_logoff#}</a></li>{/if}
+	     {if $smarty.session.customers_status.customers_status_id == 0}<li class="list-inline-item pr-2 text-muted small"><a href="{$admin_area_link}"><i class="fas fa-cog"></i> {#text_admin#}</a></li>{/if}
+	   </ul>  
+      </div>
+    </div>
+  </div>
+
+
+  <div class="headerfull">
+    <div class="wsmain clearfix">
+      <nav class="wsmenu clearfix">
+        <ul class="wsmenu-list">
+          <li class="d-none d-xl-block">
+			  <a href="{$mainpage}"><img src="{$tpl_path}img/logo-small.png" width="160" height="60" class="img-fluid" alt="{$smarty.const.STORE_NAME}" /></a>
+          </li>
+          <li aria-haspopup="true" class="wsshopcatalog"><a href="{$mainpage}"><i class="fas fa-bars"></i>{#text_catalog#}</a>
+            <div class="wsshoptabing wtsdepartmentmenu clearfix">
+              <div class="wsshopwp clearfix">
+                <ul class="wstabitem clearfix">
+                {$box_CATEGORIES3}
+                </ul>
+              </div>
+            </div>
+          </li>
+          <li class="wssearchbar clearfix">
+            {$box_SEARCH}
+          </li>
+          {if !$cart_current}
+          <li aria-haspopup="true" class="dropdown cart wscarticon clearfix" id="divShoppingCart">
+            {$box_CART}
+          </li>
+          {/if}
+          {if !$wishlist_current}
+          {if $smarty.const.ENABLE_WISHLIST == 'true'}
+          <li aria-haspopup="true" class="wsshopmyaccount clearfix" id="divWishlist">
+            {$box_WISHLIST}
+          </li>
+          {/if}
+          {/if}
+          <li class="wsshopmyaccount"><a href="{$smarty.const.FILENAME_LOGIN}"><i class="fas fa-user"></i>{$smarty.const.TEXT_MY_ORDERS}</a></li>
+        </ul>
+      </nav>
+    </div>
+    
+   
+  </div>
+
+  
+</header>  

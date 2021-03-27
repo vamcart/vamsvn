@@ -1,0 +1,185 @@
+extends partials/layout
+
+//- Override default config variables
+append config
+  - var vendorStyles = ['lightgallery.js/dist/css/lightgallery.min.css']
+  - var vendorScripts = ['imagesloaded/imagesloaded.pkgd.min.js', 'shufflejs/dist/shuffle.min.js', 'lightgallery.js/dist/js/lightgallery.min.js', 'lg-video.js/dist/lg-video.min.js']
+  - var pageTitle = 'Blog grid with sidebar'
+  - var breadcrumbs = [{'title': 'Blog', 'link': '#'}, {'title': 'Grid with sidebar'}]
+  - var parentMenu = 'Blog'
+
+//- Navbar
+block navbar
+  include partials/navbar-3-level-light
+
+//- Page title
+block page-title
+  include partials/page-title-light
+  
+//- Page Content
+block content
+
+  .container.pb-5.mb-2.mb-md-4
+
+    //- featured-posts-carousel.pug template
+    include partials/featured-posts-carousel
+    
+    hr.mt-5
+
+    .row.pt-5.mt-md-2
+
+      // Entries grid
+      section.col-lg-8
+        .masonry-grid(data-columns='2')
+
+          // Entry
+          article.masonry-grid-item
+            .card
+              .card-body
+                h2.h6.blog-entry-title
+                  a(href='blog-single-sidebar.html') Global Travel and Vacations on a Tight Budget
+                p.fs-sm Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua enim ad minim...
+                a(href='#').btn-tag.me-2.mb-2 Travel
+                a(href='#').btn-tag.me-2.mb-2 Personal finance
+              .card-footer.d-flex.align-items-center.fs-xs
+                a(href='#').blog-entry-meta-link
+                  .blog-entry-author-ava
+                    img(src='img/blog/meta/01.jpg' alt='Emma Gallaher')
+                  | Emma Gallaher
+                .ms-auto.text-nowrap
+                  a(href='#').blog-entry-meta-link.text-nowrap Aug 15
+                  span.blog-entry-meta-divider.mx-2
+                  a(href='blog-single-sidebar.html#comments').blog-entry-meta-link.text-nowrap
+                    i.ci-message
+                    | 8
+
+          // Entry
+          article.masonry-grid-item
+            .card
+              a(href='blog-single-sidebar.html').blog-entry-thumb
+                img(src='img/blog/01.jpg' alt='Post').card-img-top
+              .card-body
+                h2.h6.blog-entry-title
+                  a(href='blog-single-sidebar.html') Top New Trends in Suburban High Fashion
+                p.fs-sm Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt...
+                a(href='#').btn-tag.me-2.mb-2 Shopping
+                a(href='#').btn-tag.me-2.mb-2 Fashion
+              .card-footer.d-flex.align-items-center.fs-xs
+                a(href='#').blog-entry-meta-link
+                  .blog-entry-author-ava
+                    img(src='img/blog/meta/02.jpg' alt='Cynthia Gomez')
+                  | Cynthia Gomez
+                .ms-auto.text-nowrap
+                  a(href='#').blog-entry-meta-link.text-nowrap Jul 23
+                  span.blog-entry-meta-divider.mx-2
+                  a(href='blog-single-sidebar.html#comments').blog-entry-meta-link.text-nowrap
+                    i.ci-message
+                    | 19
+
+          // Entry
+          article.masonry-grid-item
+            .card
+              a(href='blog-single-sidebar.html').blog-entry-thumb
+                img(src='img/blog/02.jpg' alt='Post').card-img-top
+              .card-body
+                h2.h6.blog-entry-title
+                  a(href='blog-single-sidebar.html') Shopping Tips. Places Where to Buy Cheap
+                p.fs-sm Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua enim ad minim...
+                a(href='#').btn-tag.me-2.mb-2 Shopping
+                a(href='#').btn-tag.me-2.mb-2 Personal finance
+              .card-footer.d-flex.align-items-center.fs-xs
+                a(href='#').blog-entry-meta-link
+                  .blog-entry-author-ava
+                    img(src='img/blog/meta/03.jpg' alt='Paul Woodred')
+                  | Paul Woodred
+                .ms-auto.text-nowrap
+                  a(href='#').blog-entry-meta-link.text-nowrap Jul 6
+                  span.blog-entry-meta-divider.mx-2
+                  a(href='blog-single-sidebar.html#comments').blog-entry-meta-link.text-nowrap
+                    i.ci-message
+                    | 15
+
+          // Entry
+          article.masonry-grid-item
+            .card
+              .card-body
+                h2.h6.blog-entry-title
+                  a(href='blog-single-sidebar.html') Google Pay is Now Available in All Outlets
+                p.fs-sm Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua enim ad minim...
+                a(href='#').btn-tag.me-2.mb-2 Cartzilla news
+              .card-footer.d-flex.align-items-center.fs-xs
+                a(href='#').blog-entry-meta-link
+                  .blog-entry-author-ava
+                    img(src='img/blog/meta/04.jpg' alt='Olivia Reyes')
+                  | Olivia Reyes
+                .ms-auto.text-nowrap
+                  a(href='#').blog-entry-meta-link.text-nowrap Jun 12
+                  span.blog-entry-meta-divider.mx-2
+                  a(href='blog-single-sidebar.html#comments').blog-entry-meta-link.text-nowrap
+                    i.ci-message
+                    | 7
+
+          // Entry
+          article.masonry-grid-item
+            .card.gallery
+              a(href='https://www.youtube.com/watch?v=TedKIlo0c04').blog-entry-thumb.gallery-item.video-item
+                span.blog-entry-meta-label.fs-sm
+                  i.ci-video
+                  span.fs-ms Watch video
+                img(src='img/blog/03.jpg' alt='Post').card-img-top
+              .card-body
+                h2.h6.blog-entry-title
+                  a(href='blog-single-sidebar.html') We Launched Regular Drone Delivery in California. Watch Demo Video
+                p.fs-sm Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt...
+                a(href='#').btn-tag.me-2.mb-2 Cartzilla news
+              .card-footer.d-flex.align-items-center.fs-xs
+                a(href='#').blog-entry-meta-link
+                  .blog-entry-author-ava
+                    img(src='img/blog/meta/05.jpg' alt='Rafael Marquez')
+                  | Rafael Marquez
+                .ms-auto.text-nowrap
+                  a(href='#').blog-entry-meta-link.text-nowrap May 29
+                  span.blog-entry-meta-divider.mx-2
+                  a(href='blog-single-sidebar.html#comments').blog-entry-meta-link.text-nowrap
+                    i.ci-message
+                    | 31
+
+          // Entry
+          article.masonry-grid-item
+            .card
+              a(href='blog-single-sidebar.html').blog-entry-thumb
+                img(src='img/blog/04.jpg' alt='Post').card-img-top
+              .card-body
+                h2.h6.blog-entry-title
+                  a(href='blog-single-sidebar.html') Payments Made Easy. How New Technology will Affect E-Commerce Industry Worldwide?
+                p.fs-sm Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua enim ad minim...
+                a(href='#').btn-tag.me-2.mb-2 Shopping
+                a(href='#').btn-tag.me-2.mb-2 Technology
+              .card-footer.d-flex.align-items-center.fs-xs
+                a(href='#').blog-entry-meta-link
+                  .blog-entry-author-ava
+                    img(src='img/blog/meta/01.jpg' alt='Emma Gallaher')
+                  | Emma Gallaher
+                .ms-auto.text-nowrap
+                  a(href='#').blog-entry-meta-link.text-nowrap May 13
+                  span.blog-entry-meta-divider.mx-2
+                  a(href='blog-single-sidebar.html#comments').blog-entry-meta-link.text-nowrap
+                    i.ci-message
+                    | 28
+        
+        hr.mb-4
+
+        //- pagination.pug template
+        include partials/pagination
+
+      //- sidebar-blog.pug template
+      aside.col-lg-4
+        include partials/sidebar-blog
+
+//- Footer
+block footer
+  include partials/footer-dark
+
+//- Handheld toolbar
+block toolbar
+  include partials/toolbar-blog

@@ -1,0 +1,18 @@
+//
+// Accordion
+// --------------------------------------------------
+
+
+// Button
+.accordion-button {
+  font-weight: $accordion-button-font-weight;
+  &::after {
+    width: $accordion-icon-box-size;
+    height: $accordion-icon-box-size;
+    border-radius: $accordion-icon-box-border-radius;
+    background: {
+      position: center;
+      color: $accordion-icon-box-bg;
+    }
+  }
+}

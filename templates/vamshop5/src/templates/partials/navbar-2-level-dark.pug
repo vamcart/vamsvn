@@ -1,0 +1,100 @@
+// Navbar 2 Level (Dark)
+header
+
+  // Topbar
+  .topbar.topbar-dark.bg-darker
+    .container
+      .topbar-text.dropdown.d-md-none
+        a(href='#' data-bs-toggle='dropdown').topbar-link.dropdown-toggle Useful links
+        ul.dropdown-menu
+          li
+            a(href='tel:00331697720').dropdown-item
+              i.ci-support.text-muted.me-2
+              | (00) 33 169 7720
+          li
+            a(href='order-tracking.html').dropdown-item
+              i.ci-location.text-muted.me-2
+              | Order tracking
+      .topbar-text.text-nowrap.d-none.d-md-inline-block
+        i.ci-support
+        span.text-muted.me-1 Support
+        a(href='tel:00331697720').topbar-link (00) 33 169 7720
+      .tns-carousel.tns-controls-static.d-none.d-md-block
+        .tns-carousel-inner(data-carousel-options='{"mode": "gallery", "nav": false}')
+          .topbar-text Free shipping for order over $200
+          .topbar-text We return money within 30 days
+          .topbar-text Friendly 24/7 customer support
+      .ms-3.text-nowrap
+        a(href='order-tracking.html').topbar-link.me-4.d-none.d-md-inline-block
+          i.ci-location
+          | Order tracking
+        .topbar-text.dropdown.disable-autohide
+          a(href='#' data-bs-toggle='dropdown').topbar-link.dropdown-toggle
+            img(src='img/flags/en.png' width='20' alt='English').me-2
+            | Eng / $
+          ul.dropdown-menu.dropdown-menu-dark.dropdown-menu-end.border.border-light
+            li.dropdown-item
+              select.form-select.form-select-sm
+                option(value='usd') $ USD
+                option(value='eur') € EUR
+                option(value='ukp') £ UKP
+                option(value='jpy') ¥ JPY
+            li
+              a(href='#').dropdown-item.pb-1
+                img(src='img/flags/fr.png' width='20' alt='Français').me-2
+                | Français
+            li
+              a(href='#').dropdown-item.pb-1
+                img(src='img/flags/de.png' width='20' alt='Deutsch').me-2
+                | Deutsch
+            li
+              a(href='#').dropdown-item
+                img(src='img/flags/it.png' width='20' alt='Italiano').me-2
+                | Italiano
+
+  // Remove "navbar-sticky" class to make navigation bar scrollable with the page.
+  .navbar-sticky
+    .navbar.navbar-expand-lg.navbar-dark.bg-dark
+      .container
+        a(href='index.html').navbar-brand.d-none.d-sm-block.me-4.order-lg-1
+          img(src='img/logo-light.png' width='142' alt='Cartzilla')
+        a(href='index.html').navbar-brand.d-sm-none.me-2.order-lg-1
+          img(src='img/logo-icon-light.png' width='74' alt='Cartzilla')
+        
+        .navbar-toolbar.d-flex.align-items-center.order-lg-3
+          button(type='button' data-bs-toggle='collapse' data-bs-target='#navbarCollapse').navbar-toggler
+            span.navbar-toggler-icon
+          a(href='javascript:void(0)' data-bs-toggle='collapse' data-bs-target='#searchBox' role='button' aria-expanded='false', aria-controls='searchBox').navbar-tool.d-none.d-lg-flex
+            span.navbar-tool-tooltip Search
+            .navbar-tool-icon-box: i.navbar-tool-icon.ci-search
+          a(href='account-wishlist.html').navbar-tool.d-none.d-lg-flex
+            span.navbar-tool-tooltip Wishlist
+            .navbar-tool-icon-box: i.navbar-tool-icon.ci-heart
+          a(href='#signin-modal' data-bs-toggle='modal').navbar-tool.ms-1.me-n1
+            span.navbar-tool-tooltip Account
+            .navbar-tool-icon-box: i.navbar-tool-icon.ci-user
+          .navbar-tool.dropdown.ms-3
+            a(href='shop-cart.html').navbar-tool-icon-box.bg-secondary.dropdown-toggle
+              span.navbar-tool-label 4
+              i.navbar-tool-icon.ci-cart
+
+            //- cart-dropdown-dark.pug template
+            include cart-dropdown-dark
+
+        #navbarCollapse.collapse.navbar-collapse.me-auto.order-lg-2
+
+          // Search
+          .input-group.d-lg-none.my-3
+            i.ci-search.position-absolute.top-50.start-0.translate-middle-y.text-muted.fs-base.ms-3
+            input(type='text' placeholder='Search for products').form-control.rounded-start
+
+          //- menu-primary-dark.pug
+          include menu-primary-dark
+
+    // Search collapse
+    #searchBox.search-box.collapse
+      .card.bg-dark.pt-2.pb-4.border-0.rounded-0
+        .container
+          .input-group
+            i.ci-search.position-absolute.top-50.start-0.translate-middle-y.text-muted.fs-base.ms-3
+            input(type='text' placeholder='Search marketplace').form-control.rounded-start

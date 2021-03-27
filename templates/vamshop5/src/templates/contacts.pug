@@ -1,0 +1,177 @@
+extends partials/layout
+
+//- Override default config variables
+append config
+  - var pageTitle = 'Contacts'
+  - var breadcrumbs = [{'title': 'Contacts'}]
+  - var parentMenu = 'Pages'
+
+//- Navbar
+block navbar
+  include partials/navbar-3-level-light
+
+//- Page title
+block page-title
+  include partials/page-title-light
+  
+//- Page Content
+block content
+
+  // Contact detail cards
+  section.container-fluid.pt-grid-gutter
+    .row
+      .col-xl-3.col-sm-6.mb-grid-gutter
+        a(href='#map' data-scroll).card.h-100
+          .card-body.text-center
+            i.ci-location.h3.mt-2.mb-4.text-primary
+            h3.h6.mb-2 Main store address
+            p.fs-sm.text-muted 396 Lillian Blvd, Holbrook, NY 11741, USA
+            .fs-sm.text-primary
+              | Click to see map
+              i.ci-arrow-right.align-middle.ms-1
+      .col-xl-3.col-sm-6.mb-grid-gutter
+        .card.h-100
+          .card-body.text-center
+            i.ci-time.h3.mt-2.mb-4.text-primary
+            h3.h6.mb-3 Working hours
+            ul.list-unstyled.fs-sm.text-muted.mb-0
+              li Mon - Fri: 10AM - 7PM
+              li.mb-0 Sta: 11AM - 5PM
+      .col-xl-3.col-sm-6.mb-grid-gutter
+        .card.h-100
+          .card-body.text-center
+            i.ci-phone.h3.mt-2.mb-4.text-primary
+            h3.h6.mb-3 Phone numbers
+            ul.list-unstyled.fs-sm.mb-0
+              li
+                span.text-muted.me-1 For customers:
+                a(href='tel:+108044357260').nav-link-style +1 (080) 44 357 260
+              li.mb-0
+                span.text-muted.me-1 Tech support:
+                a(href='tel:+100331697720').nav-link-style +1 00 33 169 7720
+      .col-xl-3.col-sm-6.mb-grid-gutter
+        .card.h-100
+          .card-body.text-center
+            i.ci-mail.h3.mt-2.mb-4.text-primary
+            h3.h6.mb-3 Email addresses
+            ul.list-unstyled.fs-sm.mb-0
+              li
+                span.text-muted.me-1 For customers:
+                a(href='mailto:+108044357260').nav-link-style customer@example.com
+              li.mb-0
+                span.text-muted.me-1 Tech support:
+                a(href='mailto:support@example.com').nav-link-style support@example.com
+
+  // Outlet stores
+  section.container.pt-4.mt-md-4.mb-5
+    h2.h3.text-center.mb-3 Partner outlet stores
+    .row.pt-4
+      .col-md-4.col-sm-6.mb-grid-gutter
+        .card.border-0.shadow
+          img(src='img/contacts/orlando.jpg' alt='Orlando').card-img-top
+          .card-body
+            h6 Orlando, USA
+            ul.list-unstyled.mb-0
+              li.d-flex.pb-3.border-bottom
+                i.ci-location.fs-lg.mt-2.mb-0.text-primary
+                .ps-3
+                  span.fs-ms.text-muted Find us
+                  a(href='#').d-block.text-heading.fs-sm 514 S. Magnolia St. Orlando, FL 32806, USA
+              li.d-flex.pt-2.pb-3.border-bottom
+                i.ci-phone.fs-lg.mt-2.mb-0.text-primary
+                .ps-3
+                  span.fs-ms.text-muted Call us
+                  a(href='tel:+178632256040').d-block.text-heading.fs-sm +1 (786) 322 560 40
+              li.d-flex.pt-2
+                i.ci-mail.fs-lg.mt-2.mb-0.text-primary
+                .ps-3
+                  span.fs-ms.text-muted Write us
+                  a(href='mailto:orlando@example.com').d-block.text-heading.fs-sm orlando@example.com
+      .col-md-4.col-sm-6.mb-grid-gutter
+        .card.border-0.shadow
+          img(src='img/contacts/chicago.jpg' alt='Chicago').card-img-top
+          .card-body
+            h6 Chicago, USA
+            ul.list-unstyled.mb-0
+              li.d-flex.pb-3.border-bottom
+                i.ci-location.fs-lg.mt-2.mb-0.text-primary
+                .ps-3
+                  span.fs-ms.text-muted Find us
+                  a(href='#').d-block.text-heading.fs-sm 769, Industrial, West Chicago, IL 60185, USA
+              li.d-flex.pt-2.pb-3.border-bottom
+                i.ci-phone.fs-lg.mt-2.mb-0.text-primary
+                .ps-3
+                  span.fs-ms.text-muted Call us
+                  a(href='tel:+184725276533').d-block.text-heading.fs-sm +1 (847) 252 765 33
+              li.d-flex.pt-2
+                i.ci-mail.fs-lg.mt-2.mb-0.text-primary
+                .ps-3
+                  span.fs-ms.text-muted Write us
+                  a(href='mailto:chicago@example.com').d-block.text-heading.fs-sm chicago@example.com
+      .col-md-4.col-sm-12.mb-grid-gutter
+        .card.border-0.shadow
+          img(src='img/contacts/newyork.jpg' alt='New York').card-img-top
+          .card-body
+            h6 New York, USA
+            ul.list-unstyled.mb-0
+              li.d-flex.pb-3.border-bottom
+                i.ci-location.fs-lg.mt-2.mb-0.text-primary
+                .ps-3
+                  span.fs-ms.text-muted Find us
+                  a(href='#').d-block.text-heading.fs-sm 396 Lillian Blvd, Holbrook, NY 11741, USA
+              li.d-flex.pt-2.pb-3.border-bottom
+                i.ci-phone.fs-lg.mt-2.mb-0.text-primary
+                .ps-3
+                  span.fs-ms.text-muted Call us
+                  a(href='tel:+1212477690000').d-block.text-heading.fs-sm +1 (212) 477 690 000
+              li.d-flex.pt-2
+                i.ci-mail.fs-lg.mt-2.mb-0.text-primary
+                .ps-3
+                  span.fs-ms.text-muted Write us
+                  a(href='mailto:newyork@example.com').d-block.text-heading.fs-sm newyork@example.com
+
+  // Split section: Map + Contact form
+  #map.container-fluid.px-0
+    .row.g-0
+      .col-lg-6.iframe-full-height-wrap
+        iframe(width="600" height="250" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d53357.14257194912!2d-73.07268695801845!3d40.78017062807504!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89e8483b8bffed93%3A0x53467ceb834b7397!2s396+Lillian+Blvd%2C+Holbrook%2C+NY+11741%2C+USA!5e0!3m2!1sen!2sua!4v1558703206875!5m2!1sen!2sua").iframe-full-height
+      .col-lg-6.px-4.px-xl-5.py-5.border-top
+        h2.h4.mb-4 Drop us a line
+        form(novalidate).needs-validation.mb-3
+          .row.g-3
+            .col-sm-6
+              label(for='cf-name').form-label
+                | Your name:&nbsp;
+                span.text-danger *
+              input(type='text' id='cf-name' placeholder='John Doe' required).form-control
+              .invalid-feedback Please fill in you name!
+            .col-sm-6
+              label(for='cf-email').form-label
+                | Email address:&nbsp;
+                span.text-danger *
+              input(type='email' id='cf-email' placeholder='johndoe@email.com' required).form-control
+              .invalid-feedback Please provide valid email address!
+            .col-sm-6
+              label(for='cf-phone').form-label
+                | Your phone:&nbsp;
+                span.text-danger *
+              input(type='text' id='cf-phone' placeholder='+1 (212) 00 000 000' required).form-control
+              .invalid-feedback Please provide valid phone number!
+            .col-sm-6
+              label(for='cf-subject').form-label Subject:
+              input(type='text' id='cf-subject' placeholder='Provide short title of your request').form-control
+            .col-12
+              label(for='cf-message').form-label
+                | Message:&nbsp;
+                span.text-danger *
+              textarea(id='cf-message' rows='6' placeholder='Please describe in detail your request' required).form-control
+              .invalid-feedback Please write a message!
+              button(type='submit').btn.btn-primary.mt-4 Send message
+
+//- Footer
+block footer
+  include partials/footer-dark
+
+//- Handheld toolbar
+block toolbar
+  include partials/toolbar

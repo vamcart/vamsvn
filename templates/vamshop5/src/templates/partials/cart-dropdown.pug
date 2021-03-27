@@ -1,0 +1,72 @@
+// Cart dropdown
+.dropdown-menu.dropdown-menu-end
+  .widget.widget-cart.px-3.pt-2.pb-3(style='width: 20rem;')
+    div(style='height: 15rem;' data-simplebar data-simplebar-auto-hide='false')
+      .widget-cart-item.pb-2.border-bottom
+        button(type='button' class='btn-close text-danger' aria-label='Remove')
+          span(aria-hidden='true') &times;
+        .d-flex.align-items-center
+          a(href='shop-single-v1.html').flex-shrink-0
+            img(src='img/shop/cart/widget/01.jpg' width='64' alt='Product')
+          .ps-2
+            h6.widget-product-title
+              a(href='shop-single-v1.html') Women Colorblock Sneakers
+            .widget-product-meta
+              span.text-accent.me-2
+                | $150.
+                small 00
+              span.text-muted x 1
+      .widget-cart-item.py-2.border-bottom
+        button(type='button' class='btn-close text-danger' aria-label='Remove')
+          span(aria-hidden='true') &times;
+        .d-flex.align-items-center
+          a(href='shop-single-v1.html').flex-shrink-0
+            img(src='img/shop/cart/widget/02.jpg' width='64' alt='Product')
+          .ps-2
+            h6.widget-product-title
+              a(href='shop-single-v1.html') TH Jeans City Backpack
+            .widget-product-meta
+              span.text-accent.me-2
+                | $79.
+                small 50
+              span.text-muted x 1
+      .widget-cart-item.py-2.border-bottom
+        button(type='button' class='btn-close text-danger' aria-label='Remove')
+          span(aria-hidden='true') &times;
+        .d-flex.align-items-center
+          a(href='shop-single-v1.html').flex-shrink-0
+            img(src='img/shop/cart/widget/03.jpg' width='64' alt='Product')
+          .ps-2
+            h6.widget-product-title
+              a(href='shop-single-v1.html') 3-Color Sun Stash Hat
+            .widget-product-meta
+              span.text-accent.me-2
+                | $22.
+                small 50
+              span.text-muted x 1
+      .widget-cart-item.py-2.border-bottom
+        button(type='button' class='btn-close text-danger' aria-label='Remove')
+          span(aria-hidden='true') &times;
+        .d-flex.align-items-center
+          a(href='shop-single-v1.html').flex-shrink-0
+            img(src='img/shop/cart/widget/04.jpg' width='64' alt='Product')
+          .ps-2
+            h6.widget-product-title
+              a(href='shop-single-v1.html') Cotton Polo Regular Fit
+            .widget-product-meta
+              span.text-accent.me-2
+                | $9.
+                small 00
+              span.text-muted x 1
+    .d-flex.flex-wrap.justify-content-between.align-items-center.py-3
+      .fs-sm.me-2.py-2
+        span.text-muted Subtotal:
+        span.text-accent.fs-base.ms-1
+          | $265.
+          small 00
+      a(href='shop-cart.html').btn.btn-outline-secondary.btn-sm
+        | Expand cart
+        i.ci-arrow-right.ms-1.me-n1
+    a(href='checkout-details.html').btn.btn-primary.btn-sm.d-block.w-100
+      i.ci-card.me-2.fs-base.align-middle
+      | Checkout

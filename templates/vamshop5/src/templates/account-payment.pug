@@ -1,0 +1,129 @@
+extends partials/layout
+
+//- Override default config variables
+append config
+  - var pageTitle = 'My payment methods'
+  - var breadcrumbs = [{'title': 'Account', 'link': '#'}, {'title': 'Payment methods'}]
+  - var parentMenu = 'Account'
+
+//- Navbar + Modal
+block navbar
+  include partials/modal-payment
+  include partials/navbar-3-level-light
+
+//- Page title
+block page-title
+  include partials/page-title-shop
+
+//- Page Content
+block content
+
+  .container.pb-5.mb-2.mb-md-4
+    .row
+
+      // Sidebar
+      aside.col-lg-4.pt-4.pt-lg-0.pe-xl-5
+        //- sidebar-account.pug template
+        include partials/sidebar-account
+
+      // Content  
+      section.col-lg-8
+
+        // Toolbar
+        .d-none.d-lg-flex.justify-content-between.align-items-center.pt-lg-3.pb-4.pb-lg-5.mb-lg-3
+          h6.fs-base.text-light.mb-0 Primary payment method is used by default
+          a(href='account-signin.html').btn.btn-primary.btn-sm
+            i.ci-sign-out.me-2
+            | Sign out
+        
+        // Payment methods list
+        .table-responsive.fs-md.mb-4
+          table.table.table-hover.mb-0
+            thead
+              tr
+                th Your credit / debit cards
+                th Name on card
+                th Expires on
+                th
+            tbody
+              tr
+                td.py-3.align-middle
+                  .d-flex.align-items-center
+                    img(src='img/card-visa.png' width='39' alt='Visa')
+                    .ps-2
+                      span.fw-medium.text-heading.me-1 Visa
+                      | ending in 4999
+                      span.align-middle.badge.bg-info.ms-2 Primary
+                td.py-3.align-middle Susan Gardner
+                td.py-3.align-middle 08 / 2019
+                td.py-3.align-middle
+                  a(href='#' data-bs-toggle='tooltip' title='Edit').nav-link-style.me-2
+                    i.ci-edit
+                  a(href='#' data-bs-toggle='tooltip' title='Remove').nav-link-style.text-danger
+                    .ci-trash
+              tr
+                td.py-3.align-middle
+                  .d-flex.align-items-center
+                    img(src='img/card-master.png' width='39' alt='MesterCard')
+                    .ps-2
+                      span.fw-medium.text-heading.me-1 MasterCard
+                      | ending in 0015
+                td.py-3.align-middle Susan Gardner
+                td.py-3.align-middle 11 / 2021
+                td.py-3.align-middle
+                  a(href='#' data-bs-toggle='tooltip' title='Edit').nav-link-style.me-2
+                    i.ci-edit
+                  a(href='#' data-bs-toggle='tooltip' title='Remove').nav-link-style.text-danger
+                    .ci-trash
+              tr
+                td.py-3.align-middle
+                  .d-flex.align-items-center
+                    img(src='img/card-paypal.png' width='39' alt='PayPal')
+                    .ps-2
+                      span.fw-medium.text-heading.me-1 PayPal
+                      | s.gardner@example.com
+                td.py-3.align-middle &mdash;
+                td.py-3.align-middle &mdash;
+                td.py-3.align-middle
+                  a(href='#' data-bs-toggle='tooltip' title='Edit').nav-link-style.me-2
+                    i.ci-edit
+                  a(href='#' data-bs-toggle='tooltip' title='Remove').nav-link-style.text-danger
+                    .ci-trash
+              tr
+                td.py-3.align-middle
+                  .d-flex.align-items-center
+                    img(src='img/card-visa.png' width='39' alt='Visa')
+                    .ps-2
+                      span.fw-medium.text-heading.me-1 Visa
+                      | ending in 6073
+                td.py-3.align-middle Susan Gardner
+                td.py-3.align-middle 09 / 2021
+                td.py-3.align-middle
+                  a(href='#' data-bs-toggle='tooltip' title='Edit').nav-link-style.me-2
+                    i.ci-edit
+                  a(href='#' data-bs-toggle='tooltip' title='Remove').nav-link-style.text-danger
+                    .ci-trash
+              tr
+                td.py-3.align-middle
+                  .d-flex.align-items-center
+                    img(src='img/card-visa.png' width='39' alt='Visa')
+                    .ps-2
+                      span.fw-medium.text-heading.me-1 Visa
+                      | ending in 9791
+                td.py-3.align-middle Susan Gardner
+                td.py-3.align-middle 05 / 2021
+                td.py-3.align-middle
+                  a(href='#' data-bs-toggle='tooltip' title='Edit').nav-link-style.me-2
+                    i.ci-edit
+                  a(href='#' data-bs-toggle='tooltip' title='Remove').nav-link-style.text-danger
+                    .ci-trash
+        .text-sm-end
+          a(href='#add-payment' class='btn btn-primary' data-bs-toggle='modal') Add payment method
+
+//- Footer
+block footer
+  include partials/footer-dark
+
+//- Handheld toolbar
+block toolbar
+  include partials/toolbar

@@ -1,0 +1,187 @@
+//
+// Off-canvas
+// --------------------------------------------------
+
+
+// Off-canvas base styles
+
+.offcanvas {
+  display: flex;
+  position: fixed;
+  flex-direction: column;
+  top: 0;
+  left: 0;
+  width: 100%;
+  max-width: $offcanvas-width;
+  height: 100%;
+  will-change: transform, box-shadow;
+  transform: translateX(-100%);
+  transition: transform .4s cubic-bezier(.165, .84, .44, 1), box-shadow .3s ease;
+  background-color: $offcanvas-bg;
+  z-index: $zindex-offcanvas;
+  
+  // Off-canvas on the right
+  &.offcanvas-end {
+    right: 0;
+    left: auto;
+    transform: translateX(100%);
+  }
+
+  // Off-canvas show
+  &.show {
+    transform: none;
+    box-shadow: $offcanvas-box-shadow;
+  }
+
+  &.rounded-3 {
+    border-radius: 0 !important;
+  }
+}
+
+
+// Off-canvas caps: Header and/or Footer
+
+.offcanvas-cap {
+  display: flex;
+  justify-content: space-between;
+  flex-shrink: 0;
+  padding: $offcanvas-padding-y $offcanvas-padding-x;
+
+  .bg-dark & {
+    background-color: rgba($white, .05);
+  }
+}
+
+
+// Off-canvas body (content holder)
+
+.offcanvas-body {
+  height: 100%;
+  padding: 0 $offcanvas-padding-x;
+  overflow-y: auto;
+
+  // Custom scrollbar inside off-canvas
+  &::-webkit-scrollbar {
+    width: $scrollbar-width;
+    background-color: transparent;
+    opacity: 0;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: $scrollbar-bg;
+    @include border-radius($scrollbar-width / 2);
+  }
+  & > .simplebar-track {
+    display: block;
+    background-color: transparent;
+  }
+  .simplebar-vertical { margin-right: .1875rem; }
+}
+
+
+// Links widget inside expanded off-canvas body (docs)
+
+.offcanvas-expand .offcanvas-body {
+  .widget-links {
+    margin-left: -$offcanvas-padding-x;
+    .widget-title {
+      padding-left: $offcanvas-padding-x;
+    }
+  }
+  .widget-list-link {
+    padding-left: $offcanvas-padding-x - .125rem;
+    border-left: .125rem solid transparent;
+  }
+  .active > .widget-list-link {
+    border-left-color: $widget-links-dark-active-color;
+  }
+  .widget-light .active > .widget-list-link {
+    border-left-color: $widget-links-light-active-color;
+  }
+}
+
+
+// Backdrop
+
+.offcanvas-backdrop {
+  @extend .modal-backdrop;
+  transition: opacity .2s ease;
+  opacity: 0;
+
+  &.show {
+    opacity: .5;
+  }
+}
+
+
+// Kill the body scroll when offcanvas is open
+
+.offcanvas-open { overflow: hidden; }
+
+
+// Sidebar toggle
+
+.sidebar-toggle {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  border-radius: 0;
+  z-index: $zindex-btn-scroll-top;
+
+  &.right-15 {
+    right: 15px;
+    width: calc(100% - 15px);
+  }
+}
+
+
+// Control the breakpoint at which off-canvas expands or collapses
+@include media-breakpoint-up(lg) {
+
+  // Expand off-canvas from lg breakpoint
+  .offcanvas-expand {
+    transform: none;
+    &.offcanvas-end { transform: none; }
+  }
+
+  // Collapse off-canvas down from lg breakpoint
+  .offcanvas-collapse {
+    display: block;
+    position: static;
+    top: auto;
+    left: auto;
+    max-width: 100%;
+    height: auto;
+    transform: none;
+    background-color: transparent;
+
+    &.offcanvas-end {
+      right: auto;
+      transform: none;
+    }
+
+    .offcanvas-cap { display: none; }
+
+    .offcanvas-body {
+      padding: 0;
+      overflow-x: hidden;
+    }
+
+    &.rounded-3 {
+      border-radius: $border-radius-lg !important;
+    }
+  }
+
+  // Off-canvas enabled container (for layouts with fixed side navigation)
+  .offcanvas-enabled {
+    padding-left: $offcanvas-width + 1.5rem;
+
+    &.offcanvas-end {
+      padding: {
+        right: $offcanvas-width + 1.5rem;
+        left: 0;
+      }
+    }
+  }
+}

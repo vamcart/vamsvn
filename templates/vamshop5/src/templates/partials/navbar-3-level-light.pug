@@ -1,0 +1,56 @@
+// Navbar 3 Level (Light)
+header.shadow-sm
+
+  //- topbar.pug template
+  include topbar
+
+  // Remove "navbar-sticky" class to make navigation bar scrollable with the page.
+  .navbar-sticky.bg-light
+    .navbar.navbar-expand-lg.navbar-light
+      .container
+        a(href='index.html').navbar-brand.d-none.d-sm-block.flex-shrink-0
+          img(src='img/logo-dark.png' width='142' alt='Cartzilla')
+        a(href='index.html').navbar-brand.d-sm-none.flex-shrink-0.me-2
+          img(src='img/logo-icon.png' width='74' alt='Cartzilla')
+        .input-group.d-none.d-lg-flex.mx-4
+          input(type='text' placeholder='Search for products').form-control.rounded-end.pe-5
+          i.ci-search.position-absolute.top-50.end-0.translate-middle-y.text-muted.fs-base.me-3
+        .navbar-toolbar.d-flex.flex-shrink-0.align-items-center
+          button(type='button' data-bs-toggle='collapse' data-bs-target='#navbarCollapse').navbar-toggler
+            span.navbar-toggler-icon
+          a(href='#').navbar-tool.navbar-stuck-toggler
+            span.navbar-tool-tooltip Expand menu
+            .navbar-tool-icon-box: i.navbar-tool-icon.ci-menu
+          a(href='account-wishlist.html').navbar-tool.d-none.d-lg-flex
+            span.navbar-tool-tooltip Wishlist
+            .navbar-tool-icon-box: i.navbar-tool-icon.ci-heart
+          a(href='#signin-modal' data-bs-toggle='modal').navbar-tool.ms-1.ms-lg-0.me-n1.me-lg-2
+            .navbar-tool-icon-box: i.navbar-tool-icon.ci-user
+            .navbar-tool-text.ms-n3
+              small Hello, Sign in
+              | My Account
+          .navbar-tool.dropdown.ms-3
+            a(href='shop-cart.html').navbar-tool-icon-box.bg-secondary.dropdown-toggle
+              span.navbar-tool-label 4
+              i.navbar-tool-icon.ci-cart
+            a(href='shop-cart.html').navbar-tool-text
+              small My Cart
+              | $265.00
+              
+            //- cart-dropdown.pug template
+            include cart-dropdown
+
+    .navbar.navbar-expand-lg.navbar-light.navbar-stuck-menu.mt-n2.pt-0.pb-2
+      .container
+        #navbarCollapse.collapse.navbar-collapse
+
+          // Search
+          .input-group.d-lg-none.my-3
+            i.ci-search.position-absolute.top-50.start-0.translate-middle-y.text-muted.fs-base.ms-3
+            input(type='text' placeholder='Search for products').form-control.rounded-start
+
+          //- menu-departments.pug
+          include menu-departments
+
+          //- menu-primary.pug
+          include menu-primary

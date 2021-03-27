@@ -1,0 +1,44 @@
+<div class="box h-100" itemprop="review" itemscope itemtype="http://schema.org/Review">
+<div class="itemside row">
+<div class="aside col-md-3 my-auto text-center">
+<span class="icon-wrap icon-lg round bg-warning">
+<i class="fa fa-lightbulb white"></i>
+</span>
+</div>
+<div class="text-wrap col-md-9">
+<meta itemprop="itemReviewed" content="{$PRODUCTS_NAME}" />
+
+<div class="label-rating"><span class="bold">{#text_rating#}</span> <span itemprop="reviewRating" itemscope itemtype="http://schema.org/Rating"><span itemprop="ratingValue" content="{$module_data.RATING}">{$module_data.STAR_RATING}</span></span></div>
+<div class="label-rating"><span class="bold">{#text_date#}</span> <span content="{$module_data.REVIEW.DATE|date_format:"%Y-%m-%d"}" itemprop="datePublished">{$module_data.DATE}</span></div>
+<div class="desc"><span class="bold">{#text_author#}</span> <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">{$module_data.AUTHOR}</span></span></div>
+{if $module_data.CUSTOMER}<div class="desc"><span class="btn btn-rounded btn-sm"><i class="fas fa-user-check"></i> {$smarty.const.TEXT_BADGE_CUSTOMER}</span></div>{/if}
+<br />
+<span class="font-weight-bold text-secondary">{$smarty.const.TEXT_CUSTOMER_REVIEW}</span>
+<div class="desc" itemprop="reviewBody">
+{$module_data.TEXT}
+</div>
+{if {$module_data.REVIEWS_IMAGES}}
+<div class="owl-carousel owl-theme">
+{foreach name=aussen item=reviews_images from=$module_data.REVIEWS_IMAGES}
+<div class="card card-product card-sm h-100">
+	<div class="card-body">
+	{if {$reviews_images.IMAGE} != ''}
+	<div class="img-wrap">
+	<a class="lightbox" href="{$smarty.const.DIR_WS_CATALOG}{$smarty.const.DIR_WS_IMAGES}reviews/{$reviews_images.IMAGE}" title="{$PRODUCTS_NAME}"><img {if $smarty.const.ENABLE_LAZY_LOAD == 'true'}class="lazy" src="{$smarty.const.DIR_WS_IMAGES}pixel_trans.gif" data-src="{$smarty.const.DIR_WS_CATALOG}{$smarty.const.DIR_WS_IMAGES}reviews/{$reviews_images.IMAGE}"{else}src="{$reviews_images.IMAGE}"{/if} height="150" alt="{$PRODUCTS_NAME}"></a>
+	</div>
+	{/if}
+	</div>
+</div>
+{/foreach}
+</div>
+{/if}
+{if {$module_data.ANSWER} != ''}
+<span class="font-weight-bold text-primary">{$smarty.const.TEXT_STORE_ANSWER}</span>
+<div class="desc" itemprop="reviewBody">
+{$module_data.ANSWER}
+</div>
+<br />
+{/if}
+</div>
+</div>
+</div>

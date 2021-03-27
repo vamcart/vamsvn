@@ -1,0 +1,110 @@
+extends partials/layout
+
+//- Override default config variables
+append config
+  - var pageTitle = 'My orders'
+  - var breadcrumbs = [{'title': 'Account', 'link': '#'}, {'title': 'Orders history'}]
+  - var parentMenu = 'Account'
+
+//- Navbar + Modal
+block navbar
+  include partials/modal-order
+  include partials/navbar-3-level-light
+
+//- Page title
+block page-title
+  include partials/page-title-shop
+
+//- Page Content
+block content
+
+  .container.pb-5.mb-2.mb-md-4
+    .row
+
+      // Sidebar
+      aside.col-lg-4.pt-4.pt-lg-0.pe-xl-5
+        //- sidebar-account.pug template
+        include partials/sidebar-account
+
+      // Content  
+      section.col-lg-8
+
+        // Toolbar
+        .d-flex.justify-content-between.align-items-center.pt-lg-2.pb-4.pb-lg-5.mb-lg-3
+          .d-flex.align-items-center
+            label(for='order-sort').d-none.d-lg-block.fs-sm.text-light.text-nowrap.opacity-75.me-2 Sort orders:
+            label(for='order-sort').d-lg-none.fs-sm.text-nowrap.opacity-75.me-2 Sort orders:
+            select#order-sort.form-select
+              option All
+              option Delivered
+              option In Progress
+              option Delayed
+              option Canceled
+          a(href='account-signin.html').btn.btn-primary.btn-sm.d-none.d-lg-inline-block
+            i.ci-sign-out.me-2
+            | Sign out
+        
+        // Orders list
+        .table-responsive.fs-md.mb-4
+          table.table.table-hover.mb-0
+            thead
+              tr
+                th Order #
+                th Date Purchased
+                th Status
+                th Total
+            tbody
+              tr
+                td.py-3
+                  a(href='#order-details' data-bs-toggle='modal').nav-link-style.fw-medium.fs-sm 34VB5540K83
+                td.py-3 May 21, 2019
+                td.py-3
+                  span.badge.bg-info.m-0 In Progress
+                td.py-3 $358.75
+              tr
+                td.py-3
+                  a(href='#order-details' data-bs-toggle='modal').nav-link-style.fw-medium.fs-sm 78A643CD409
+                td.py-3 December 09, 2018
+                td.py-3
+                  span.badge.bg-danger.m-0 Canceled
+                td.py-3
+                  span $760.50
+              tr
+                td.py-3
+                  a(href='#order-details' data-bs-toggle='modal').nav-link-style.fw-medium.fs-sm 112P45A90V2
+                td.py-3 October 15, 2018
+                td.py-3
+                  span.badge.bg-warning.m-0 Delayed
+                td.py-3 $1,264.00
+              tr
+                td.py-3
+                  a(href='#order-details' data-bs-toggle='modal').nav-link-style.fw-medium.fs-sm 28BA67U0981
+                td.py-3 July 19, 2018
+                td.py-3
+                  span.badge.bg-success.m-0 Delivered
+                td.py-3 $198.35
+              tr
+                td.py-3
+                  a(href='#order-details' data-bs-toggle='modal').nav-link-style.fw-medium.fs-sm 502TR872W2
+                td.py-3 April 04, 2018
+                td.py-3
+                  span.badge.bg-success.m-0 Delivered
+                td.py-3 $2,133.90
+              tr
+                td.py-3
+                  a(href='#order-details' data-bs-toggle='modal').nav-link-style.fw-medium.fs-sm 47H76G09F33
+                td.py-3 March 30, 2018
+                td.py-3
+                  span.badge.bg-success.m-0 Delivered
+                td.py-3 $86.40
+
+        //- pagination.pug template
+        include partials/pagination
+
+//- Footer
+block footer
+  include partials/footer-dark
+
+//- Handheld toolbar
+block toolbar
+  include partials/toolbar
