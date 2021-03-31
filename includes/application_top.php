@@ -184,9 +184,10 @@ require_once (DIR_FS_INC.'vam_get_products_quantity_order_min.inc.php');
 require_once (DIR_FS_INC.'vam_get_products_quantity_order_max.inc.php');
 require_once (DIR_FS_INC.'vam_hide_session_id.inc.php');
 require_once (DIR_FS_INC.'vam_get_spsr_zone_id.inc.php');
-require_once (DIR_FS_INC . 'vam_get_subcategories.inc.php');
+require_once (DIR_FS_INC.'vam_get_subcategories.inc.php');
 require_once (DIR_FS_INC.'vam_get_label_name.inc.php');
 require_once (DIR_FS_INC.'vam_format_by_count.inc.php');
+require_once (DIR_FS_INC.'vam_truncate.inc.php');
 
 // функция обрезки окончаний (работает только для одного слова)
 require_once (DIR_FS_INC.'stemmer_pottera.inc.php');
