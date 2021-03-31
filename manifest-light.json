@@ -39,7 +39,50 @@
             "type": "image/png"
         }
     ],
-    "screenshots": [],
+    "features": [
+	    "PHP Shopping Cart Software",
+	    "Lightning Fast",
+	    "Google PageSpeed Insights Optimized",
+	    "PWA - Progressive Web Application"
+    ],
+    "screenshots": [
+	    {
+	      "src": "images/screens/screen1.png",
+	      "sizes": "440x848",
+	      "type": "image/png",
+	      "description": "VamShop Home Screen"
+	    },
+	    {
+	      "src": "images/screens/screen2.png",
+	      "sizes": "440x848",
+	      "type": "image/png",
+	      "description": "Product Listing Page"
+	    },
+	    {
+	      "src": "images/screens/screen3.png",
+	      "sizes": "440x848",
+	      "type": "image/png",
+	      "description": "Product Details Page"
+	    },
+	    {
+	      "src": "images/screens/screen4.png",
+	      "sizes": "440x848",
+	      "type": "image/png",
+	      "description": "Mobile Navigation Menu"
+	    },
+	    {
+	      "src": "images/screens/screen5.png",
+	      "sizes": "440x848",
+	      "type": "image/png",
+	      "description": "Mobile Shopping Cart"
+	    },
+	    {
+	      "src": "images/screens/screen6.png",
+	      "sizes": "440x848",
+	      "type": "image/png",
+	      "description": "Shopping Cart Page"
+	    }
+    ],
     "prefer_related_applications": false,
     "related_applications": [
     {
