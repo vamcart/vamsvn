@@ -70,7 +70,7 @@
 	    
 	    curl_close($curl);
 	    if($data === false) {
-		  if (MODULE_SHIPPING_CDEK_DEBUG == 'test') $error_block = "ID номер для города отправителя посылки не найден.";
+		  if (MODULE_SHIPPING_CDEK_DEBUG == 'test') $error_block .= "ID номер для города отправителя посылки не найден.";
 	    }
 	    
 	    $senderCity = json_decode($data, $assoc=true);
@@ -87,7 +87,7 @@
 	    
 	    curl_close($curl);
 	    if($data === false) {
-		  if (MODULE_SHIPPING_CDEK_DEBUG == 'test') $error_block = "ID номер для города получателя посылки не найден.";
+		  if (MODULE_SHIPPING_CDEK_DEBUG == 'test') $error_block .= "ID номер для города получателя посылки не найден.";
 	    }
 	    
 	    $receiverCity = json_decode($data, $assoc=true);
@@ -132,21 +132,21 @@
 			if ($calc->calculate() === true) {
 				$res = $calc->getResult();
 				
-				if (MODULE_SHIPPING_CDEK_DEBUG == 'test') $error_block = 'Цена доставки: ' . $res['result']['price'] . 'руб.<br />';
-				if (MODULE_SHIPPING_CDEK_DEBUG == 'test') $error_block = 'Срок доставки: ' . $res['result']['deliveryPeriodMin'] . '-' . 
+				if (MODULE_SHIPPING_CDEK_DEBUG == 'test') $error_block .= 'Цена доставки: ' . $res['result']['price'] . 'руб.<br />';
+				if (MODULE_SHIPPING_CDEK_DEBUG == 'test') $error_block .= 'Срок доставки: ' . $res['result']['deliveryPeriodMin'] . '-' . 
 										 $res['result']['deliveryPeriodMax'] . ' дн.<br />';
-				if (MODULE_SHIPPING_CDEK_DEBUG == 'test') $error_block = 'Планируемая дата доставки: c ' . $res['result']['deliveryDateMin'] . ' по ' . $res['result']['deliveryDateMax'] . '.<br />';
-				if (MODULE_SHIPPING_CDEK_DEBUG == 'test') $error_block = 'id тарифа, по которому произведён расчёт: ' . $res['result']['tariffId'] . '.<br />';
+				if (MODULE_SHIPPING_CDEK_DEBUG == 'test') $error_block .= 'Планируемая дата доставки: c ' . $res['result']['deliveryDateMin'] . ' по ' . $res['result']['deliveryDateMax'] . '.<br />';
+				if (MODULE_SHIPPING_CDEK_DEBUG == 'test') $error_block .= 'id тарифа, по которому произведён расчёт: ' . $res['result']['tariffId'] . '.<br />';
 		        if(array_key_exists('cashOnDelivery', $res['result'])) {
-		            if (MODULE_SHIPPING_CDEK_DEBUG == 'test') $error_block = 'Ограничение оплаты наличными, от (руб): ' . $res['result']['cashOnDelivery'] . '.<br />';
+		            if (MODULE_SHIPPING_CDEK_DEBUG == 'test') $error_block .= 'Ограничение оплаты наличными, от (руб): ' . $res['result']['cashOnDelivery'] . '.<br />';
 		        }
 			} else {
 				$err = $calc->getError();
 				if( isset($err['error']) && !empty($err) ) {
 					if (MODULE_SHIPPING_CDEK_DEBUG == 'test') var_dump($err);
 					foreach($err['error'] as $e) {
-						if (MODULE_SHIPPING_CDEK_DEBUG == 'test') $error_block = 'Код ошибки: ' . $e['code'] . '.<br />';
-						if (MODULE_SHIPPING_CDEK_DEBUG == 'test') $error_block = 'Текст ошибки: ' . $e['text'] . '.<br />';
+						if (MODULE_SHIPPING_CDEK_DEBUG == 'test') $error_block .= 'Код ошибки: ' . $e['code'] . '.<br />';
+						if (MODULE_SHIPPING_CDEK_DEBUG == 'test') $error_block .= 'Текст ошибки: ' . $e['text'] . '.<br />';
 					}
 				}
 			}
@@ -156,7 +156,7 @@
 		     //var_dump($calc->getError());
 		
 		} catch (Exception $e) {
-		    if (MODULE_SHIPPING_CDEK_DEBUG == 'test') $error_block = 'Ошибка: ' . $e->getMessage() . " | ";
+		    if (MODULE_SHIPPING_CDEK_DEBUG == 'test') $error_block .= 'Ошибка: ' . $e->getMessage() . " | ";
 		}
 			
 		$shipping_cost=  $res['result']['price'];
