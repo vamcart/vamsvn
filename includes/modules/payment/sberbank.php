@@ -350,7 +350,7 @@ if ($_SERVER["HTTP_X_FORWARDED_FOR"]) {
 		$url.= '&orderBundle={"cartItems":{"items":' .json_encode($bsk) . '}}';
 		$url = str_replace(' ', '+', $url); 
 		$response = file_get_contents($url);
-		echo var_dump($bsk);
+		//echo var_dump($bsk);
 		//echo var_dump($response);
 		if(!$response) return '<div>Нет доступа к серверу Сбербанка</div>';
 		$response = json_decode($response);
