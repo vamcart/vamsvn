@@ -25,7 +25,8 @@
   $count_cur='';
   foreach ($vamPrice->currencies as $key => $value) {
   $count_cur++;
-    $currencies_string .= ' <a href="' . vam_href_link(basename($PHP_SELF), 'currency=' . $key.'&'.vam_get_all_get_params(array('language', 'currency')), $request_type) . '">' . $value['title'] . '</a> ';
+    //$currencies_string .= '<option value="'.$key.'"'.($_SESSION['currency'] == $key ? ' selected' : null).'>'.$value['title'].'</option>';
+    $currencies_string .= '<option value="'.$key.'">'.$value['title'].'</option>';
   }
 
     $hidden_get_variables = '';

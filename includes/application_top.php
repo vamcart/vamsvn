@@ -403,6 +403,7 @@ if (!isset ($_SESSION['language']) || isset ($_GET['language']) || empty($langua
 	if (!isset ($_GET['language']))
 		$lng = new language(DEFAULT_LANGUAGE);
 
+	$_SESSION['language_name'] = $lng->language['name'];
 	$_SESSION['language'] = $lng->language['directory'];
 	$_SESSION['languages_id'] = $lng->language['id'];
 	$_SESSION['language_charset'] = $lng->language['language_charset'];
@@ -415,6 +416,7 @@ if (isset($_SESSION['language']) && !isset($_SESSION['language_charset'])) {
 	$lng = new language(vam_input_validation($_SESSION['language'], 'char', ''));
 
 
+	$_SESSION['language_name'] = $lng->language['name'];
 	$_SESSION['language'] = $lng->language['directory'];
 	$_SESSION['languages_id'] = $lng->language['id'];
 	$_SESSION['language_charset'] = $lng->language['language_charset'];

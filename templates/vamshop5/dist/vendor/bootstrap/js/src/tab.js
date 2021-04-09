@@ -1,17 +1,16 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.0.0-beta1): tab.js
+ * Bootstrap (v5.0.0-beta3): tab.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
 
 import {
-  getjQuery,
-  onDOMContentLoaded,
-  TRANSITION_END,
+  defineJQueryPlugin,
   emulateTransitionEnd,
   getElementFromSelector,
   getTransitionDurationFromElement,
+  isDisabled,
   reflow
 } from './util/index'
 import Data from './dom/data'
@@ -38,7 +37,6 @@ const EVENT_CLICK_DATA_API = `click${EVENT_KEY}${DATA_API_KEY}`
 
 const CLASS_NAME_DROPDOWN_MENU = 'dropdown-menu'
 const CLASS_NAME_ACTIVE = 'active'
-const CLASS_NAME_DISABLED = 'disabled'
 const CLASS_NAME_FADE = 'fade'
 const CLASS_NAME_SHOW = 'show'
 
@@ -69,7 +67,7 @@ class Tab extends BaseComponent {
     if ((this._element.parentNode &&
       this._element.parentNode.nodeType === Node.ELEMENT_NODE &&
       this._element.classList.contains(CLASS_NAME_ACTIVE)) ||
-      this._element.classList.contains(CLASS_NAME_DISABLED)) {
+      isDisabled(this._element)) {
       return
     }
 
@@ -83,13 +81,11 @@ class Tab extends BaseComponent {
       previous = previous[previous.length - 1]
     }
 
-    let hideEvent = null
-
-    if (previous) {
-      hideEvent = EventHandler.trigger(previous, EVENT_HIDE, {
+    const hideEvent = previous ?
+      EventHandler.trigger(previous, EVENT_HIDE, {
         relatedTarget: this._element
-      })
-    }
+      }) :
+      null
 
     const showEvent = EventHandler.trigger(this._element, EVENT_SHOW, {
       relatedTarget: previous
@@ -133,7 +129,7 @@ class Tab extends BaseComponent {
       const transitionDuration = getTransitionDurationFromElement(active)
       active.classList.remove(CLASS_NAME_SHOW)
 
-      EventHandler.one(active, TRANSITION_END, complete)
+      EventHandler.one(active, 'transitionend', complete)
       emulateTransitionEnd(active, transitionDuration)
     } else {
       complete()
@@ -186,7 +182,7 @@ class Tab extends BaseComponent {
 
   static jQueryInterface(config) {
     return this.each(function () {
-      const data = Data.getData(this, DATA_KEY) || new Tab(this)
+      const data = Data.get(this, DATA_KEY) || new Tab(this)
 
       if (typeof config === 'string') {
         if (typeof data[config] === 'undefined') {
@@ -208,7 +204,7 @@ class Tab extends BaseComponent {
 EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (event) {
   event.preventDefault()
 
-  const data = Data.getData(this, DATA_KEY) || new Tab(this)
+  const data = Data.get(this, DATA_KEY) || new Tab(this)
   data.show()
 })
 
@@ -219,18 +215,6 @@ EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (
  * add .Tab to jQuery only if jQuery is present
  */
 
-onDOMContentLoaded(() => {
-  const $ = getjQuery()
-  /* istanbul ignore if */
-  if ($) {
-    const JQUERY_NO_CONFLICT = $.fn[NAME]
-    $.fn[NAME] = Tab.jQueryInterface
-    $.fn[NAME].Constructor = Tab
-    $.fn[NAME].noConflict = () => {
-      $.fn[NAME] = JQUERY_NO_CONFLICT
-      return Tab.jQueryInterface
-    }
-  }
-})
+defineJQueryPlugin(NAME, Tab)
 
 export default Tab

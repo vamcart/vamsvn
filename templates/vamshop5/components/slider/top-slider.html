@@ -1,0 +1,9 @@
+{if {$slider_basic|@count} >= 1} 
+<div class="tns-carousel tns-controls-static d-none d-md-block">
+  <div class="tns-carousel-inner" data-carousel-options="{literal}{&quot;mode&quot;: &quot;gallery&quot;, &quot;nav&quot;: false}{/literal}">
+      {foreach item=banner_nav from=$slider_basic}
+      <div class="topbar-text"><a class="topbar-link" href="{$banner_nav.url}">{$banner_nav.title}</a></div>
+      {/foreach}
+  </div>
+</div>
+{/if}

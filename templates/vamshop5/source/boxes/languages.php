@@ -31,7 +31,7 @@
   $count_lng='';
   foreach ($lng->catalog_languages as $key => $value) {
   $count_lng++;
-    $languages_string .= ' <a href="' . vam_href_link(basename($PHP_SELF), 'language=' . $key.'&'.vam_get_all_get_params(array('language', 'currency')), $request_type) . '">' . $value['name'] . '</a> ';
+    $languages_string .= '<li><a class="dropdown-item pb-1" href="' . vam_href_link(basename($PHP_SELF), 'language=' . $key.'&'.vam_get_all_get_params(array('language', 'currency')), $request_type) . '"><img class="me-2" src="'.DIR_WS_CATALOG.'lang/'.$value['directory'].'/icon.gif" width="18" height="12" alt="'.$value['name'].'">'.$value['name'].'</a></li>';
   }
 
   // dont show box if there's only 1 language

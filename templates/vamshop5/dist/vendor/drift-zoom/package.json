@@ -1,31 +1,27 @@
 {
-  "_args": [
-    [
-      "drift-zoom@1.4.1",
-      "/home/vamshop/www/templates/vamshop5"
-    ]
-  ],
-  "_from": "drift-zoom@1.4.1",
-  "_id": "drift-zoom@1.4.1",
+  "_from": "drift-zoom@1.4.3",
+  "_id": "drift-zoom@1.4.3",
   "_inBundle": false,
-  "_integrity": "sha512-xo4mIOl1Q6vnTEFgEDAF4wCq72uds3MyKBVtEm7ct3LyBal5QFSk6+OzAtwjeQifuF7o90fDjarBazTOZINNnA==",
+  "_integrity": "sha512-48FzID3wFrnOFJCbYqrAph7nDZTqPR8D4yIJ9QIBj2Wc9PTh+PaH+4cc5SAR+8wECiTEgLasWt6SRIyAPEeiQQ==",
   "_location": "/drift-zoom",
   "_phantomChildren": {},
   "_requested": {
     "type": "version",
     "registry": true,
-    "raw": "drift-zoom@1.4.1",
+    "raw": "drift-zoom@1.4.3",
     "name": "drift-zoom",
     "escapedName": "drift-zoom",
-    "rawSpec": "1.4.1",
+    "rawSpec": "1.4.3",
     "saveSpec": null,
-    "fetchSpec": "1.4.1"
+    "fetchSpec": "1.4.3"
   },
   "_requiredBy": [
+    "#USER",
     "/"
   ],
-  "_resolved": "https://registry.npmjs.org/drift-zoom/-/drift-zoom-1.4.1.tgz",
-  "_spec": "1.4.1",
+  "_resolved": "https://registry.npmjs.org/drift-zoom/-/drift-zoom-1.4.3.tgz",
+  "_shasum": "c5586164aedde4a6cef10ebf99b837674ef32913",
+  "_spec": "drift-zoom@1.4.3",
   "_where": "/home/vamshop/www/templates/vamshop5",
   "author": {
     "name": "imgix"
@@ -42,6 +38,7 @@
   "bugs": {
     "url": "https://github.com/imgix/drift/issues"
   },
+  "bundleDependencies": false,
   "contributors": [
     {
       "name": "Frederick Fogerty",
@@ -54,40 +51,41 @@
       "url": "https://github.com/sherwinski"
     }
   ],
-  "dependencies": {},
+  "deprecated": false,
   "description": "Easily add \"zoom on hover\" functionality to your site's images. Lightweight, no-dependency JavaScript.",
   "devDependencies": {
-    "@babel/cli": "7.11.6",
-    "@babel/core": "7.11.6",
-    "@babel/plugin-proposal-class-properties": "7.10.4",
-    "@babel/preset-env": "7.11.5",
+    "@babel/cli": "7.13.0",
+    "@babel/core": "7.13.8",
+    "@babel/plugin-proposal-class-properties": "7.13.0",
+    "@babel/preset-env": "7.13.9",
     "babel-eslint": "10.1.0",
-    "babel-loader": "8.1.0",
+    "babel-loader": "8.2.2",
     "babel-preset-env": "7.0.0-beta.3",
-    "chai": "4.2.0",
-    "closure-webpack-plugin": "2.3.0",
-    "cross-env": "7.0.2",
+    "chai": "4.3.0",
+    "closure-webpack-plugin": "2.5.0",
+    "cross-env": "7.0.3",
     "cssnano": "4.1.10",
     "cssnano-preset-advanced": "4.0.7",
-    "eslint": "7.11.0",
+    "eslint": "7.21.0",
     "eslint-config-google": "0.14.0",
-    "eslint-config-prettier": "6.12.0",
+    "eslint-config-prettier": "8.1.0",
+    "google-closure-compiler": "20210202.0.0",
     "google-closure-compiler-js": "20200719.0.0",
     "jasmine-core": "3.6.0",
-    "karma": "5.2.3",
+    "karma": "6.1.1",
     "karma-chrome-launcher": "3.1.0",
-    "karma-firefox-launcher": "1.3.0",
+    "karma-firefox-launcher": "2.1.0",
     "karma-jasmine": "4.0.1",
     "karma-webpack": "4.0.2",
     "npm-run-all": "4.1.5",
-    "postcss-cli": "8.1.0",
-    "prettier": "2.1.2",
+    "postcss": "8.2.6",
+    "postcss-cli": "8.3.1",
+    "prettier": "2.2.1",
     "rimraf": "3.0.2",
-    "standard-version": "9.0.0",
-    "webpack": "4.44.2",
-    "webpack-cli": "3.3.12",
-    "webpack-closure-compiler": "2.1.6",
-    "yargs": "16.0.3"
+    "standard-version": "9.1.1",
+    "webpack": "4.46.0",
+    "webpack-cli": "4.5.0",
+    "yargs": "16.2.0"
   },
   "files": [
     "lib",
@@ -118,7 +116,7 @@
     "build:js:lib:commonjs": "cross-env BABEL_ENV=commonjs babel src/js --out-dir lib --source-maps",
     "build:js:lib:es": "cross-env BABEL_ENV=es babel src/js --out-dir es --source-maps",
     "build:serial": "npm run clean && run-s build:css:** build:js:**",
-    "build:watch": "webpack --progress --colors --watch --env dev",
+    "build:watch": "webpack --progress --color --watch --env dev",
     "clean": "rimraf lib es dist",
     "dev": "npm run build:watch",
     "format": "prettier --write \"{src,test}/**/*.js\"",
@@ -131,5 +129,5 @@
     "test:local": "karma start config/karma/karma-local.config.js --singleRun",
     "test:watch": "karma start config/karma/karma-local.config.js"
   },
-  "version": "1.4.1"
+  "version": "1.4.3"
 }
