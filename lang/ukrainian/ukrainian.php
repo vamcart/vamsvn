@@ -888,4 +888,42 @@ define('TEXT_PACKINGSLIP_29','МП');
 define('TEXT_PACKINGSLIP_30','Получатель:');
 define('TEXT_PACKINGSLIP_31','от');
 
+define('TEXT_USEFUL_LINKS','Контактная информация');
+define('TEXT_ORDER_TRACKING','Отслеживание заказа');
+define('TEXT_SUPPORT','Поддержка');
+define('TEXT_CURRENCY','Валюта');
+
+define('TEXT_PAGE_SHIPPING','Доставка');
+define('TEXT_PAGE_PAYMENT','Оплата');
+define('TEXT_PAGE_PRIVACY','Условия');
+define('TEXT_PAGE_ABOUT_US','О магазине');
+define('TEXT_PAGE_ABOUT_COMPANY','О компании');
+define('TEXT_PAGE_CONTACT_US','Обратная связь');
+
+define('TEXT_PAYMENT_METHODS','Способы оплаты');
+
+define('TEXT_ADVANTAGES_1_TITLE','Быстрая доставка');
+define('TEXT_ADVANTAGES_1_DESC','Доставляем быстро');
+define('TEXT_ADVANTAGES_2_TITLE','Удобная оплата');
+define('TEXT_ADVANTAGES_2_DESC','Безопасные онлайн платежи');
+define('TEXT_ADVANTAGES_3_TITLE','Поддержка 24/7');
+define('TEXT_ADVANTAGES_3_DESC','Служба заботы о клиентах 24/7');
+define('TEXT_ADVANTAGES_4_TITLE','Данные в безопасности');
+define('TEXT_ADVANTAGES_4_DESC','Мы используем SSL шифрование');
+
+define('TEXT_STAY_INFORMED','Будьте в курсе');
+define('TEXT_NEWSLETTER_EMAIL','Your email');
+define('TEXT_NEWSLETTER_SUBSCRIBE','Подписаться*');
+define('TEXT_NEWSLETTER_DESCRIPTION','*Узнайте первыми о скидках, распродажах, новинках в нашем магазине.');
+
+define('TEXT_DOWNLOAD_APP','Скачайте наше приложение');
+define('TEXT_DOWNLOAD_ON','Скачать в магазине приложений');
+define('TEXT_DOWNLOAD_ON_APPLE','App Store');
+define('TEXT_DOWNLOAD_ON_GOOGLE','Google Play');
+
+define('TEXT_PROFILE_INFORMATION','Профиль');
+
+define('TEXT_PAGE_MY_ORDERS','Мои заказы');
+define('TEXT_PAGE_INFORMATION','Информация');
+
 ?>

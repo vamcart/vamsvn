@@ -3,67 +3,51 @@
     <div class="row pb-2">
       <div class="col-md-4 col-sm-6">
         <div class="widget widget-links widget-light pb-2 mb-4">
-          <h3 class="widget-title text-light">Shop departments</h3>
+          <h3 class="widget-title text-light">{$smarty.const.TEXT_PAGE_INFORMATION}</h3>
           <ul class="widget-list">
-            <li class="widget-list-item"><a class="widget-list-link" href="#">Sneakers &amp; Athletic</a></li>
-            <li class="widget-list-item"><a class="widget-list-link" href="#">Athletic Apparel</a></li>
-            <li class="widget-list-item"><a class="widget-list-link" href="#">Sandals</a></li>
-            <li class="widget-list-item"><a class="widget-list-link" href="#">Jeans</a></li>
-            <li class="widget-list-item"><a class="widget-list-link" href="#">Shirts &amp; Tops</a></li>
-            <li class="widget-list-item"><a class="widget-list-link" href="#">Shorts</a></li>
-            <li class="widget-list-item"><a class="widget-list-link" href="#">T-Shirts</a></li>
-            <li class="widget-list-item"><a class="widget-list-link" href="#">Swimwear</a></li>
-            <li class="widget-list-item"><a class="widget-list-link" href="#">Clogs &amp; Mules</a></li>
-            <li class="widget-list-item"><a class="widget-list-link" href="#">Bags &amp; Wallets</a></li>
-            <li class="widget-list-item"><a class="widget-list-link" href="#">Accessories</a></li>
-            <li class="widget-list-item"><a class="widget-list-link" href="#">Sunglasses &amp; Eyewear</a></li>
-            <li class="widget-list-item"><a class="widget-list-link" href="#">Watches</a></li>
+            {$box_CONTENT_PULL}
+            {$box_INFORMATION}
           </ul>
         </div>
       </div>
       <div class="col-md-4 col-sm-6">
         <div class="widget widget-links widget-light pb-2 mb-4">
-          <h3 class="widget-title text-light">Account &amp; shipping info</h3>
+          <h3 class="widget-title text-light">{$smarty.const.TEXT_PROFILE_INFORMATION}</h3>
           <ul class="widget-list">
-            <li class="widget-list-item"><a class="widget-list-link" href="#">Your account</a></li>
-            <li class="widget-list-item"><a class="widget-list-link" href="#">Shipping rates &amp; policies</a></li>
-            <li class="widget-list-item"><a class="widget-list-link" href="#">Refunds &amp; replacements</a></li>
-            <li class="widget-list-item"><a class="widget-list-link" href="#">Order tracking</a></li>
-            <li class="widget-list-item"><a class="widget-list-link" href="#">Delivery info</a></li>
-            <li class="widget-list-item"><a class="widget-list-link" href="#">Taxes &amp; fees</a></li>
+            <li class="widget-list-item"><a class="widget-list-link" href="account_history.php">{$smarty.const.TEXT_PAGE_MY_ORDERS}</a></li>
+            <li class="widget-list-item"><a class="widget-list-link" href="address_book.php">{$smarty.const.NAVBAR_TITLE_2_ADDRESS_BOOK}</a></li>
+            <li class="widget-list-item"><a class="widget-list-link" href="account.php">{$smarty.const.TEXT_MY_ORDERS}</a></li>
+            <li class="widget-list-item"><a class="widget-list-link" href="shopping_cart.php">{$smarty.const.NAVBAR_TITLE_SHOPPING_CART}</a></li>
+            <li class="widget-list-item"><a class="widget-list-link" href="create_account.php">{$smarty.const.NAVBAR_TITLE_CREATE_ACCOUNT}</a></li>
+            <li class="widget-list-item"><a class="widget-list-link" href="account_history.php">{$smarty.const.TEXT_ORDER_TRACKING}</a></li>
           </ul>
         </div>
         <div class="widget widget-links widget-light pb-2 mb-4">
-          <h3 class="widget-title text-light">About us</h3>
+          <h3 class="widget-title text-light">{$smarty.const.TEXT_PAGE_ABOUT_US}</h3>
           <ul class="widget-list">
-            <li class="widget-list-item"><a class="widget-list-link" href="#">About company</a></li>
-            <li class="widget-list-item"><a class="widget-list-link" href="#">Our team</a></li>
-            <li class="widget-list-item"><a class="widget-list-link" href="#">Careers</a></li>
-            <li class="widget-list-item"><a class="widget-list-link" href="#">News</a></li>
+            <li class="widget-list-item"><a class="widget-list-link" href="about_us.html">{$smarty.const.TEXT_PAGE_ABOUT_COMPANY}</a></li>
+            <li class="widget-list-item"><a class="widget-list-link" href="articles.php">{$smarty.const.TEXT_RSS_ARTICLES}</a></li>
+            <li class="widget-list-item"><a class="widget-list-link" href="faq.php">{$smarty.const.NAVBAR_TITLE_FAQ}</a></li>
+            <li class="widget-list-item"><a class="widget-list-link" href="news.php">{$smarty.const.TEXT_RSS_NEWS}</a></li>
           </ul>
         </div>
       </div>
       <div class="col-md-4">
         <div class="widget pb-2 mb-4">
-          <h3 class="widget-title text-light pb-1">Stay informed</h3>
-          <form class="subscription-form validate" action="https://studio.us12.list-manage.com/subscribe/post?u=c7103e2c981361a6639545bd5&amp;amp;id=29ca296126" method="post" name="mc-embedded-subscribe-form" target="_blank" novalidate>
+          <h3 class="widget-title text-light pb-1">{$smarty.const.TEXT_STAY_INFORMED}</h3>
+          <form class="subscription-form-vamshop" action="{$smarty.const.HTTP_SERVER}{$smarty.const.DIR_WS_CATALOG}newsletter.php" method="post" name="subscribe-form" target="_blank" novalidate>
             <div class="input-group flex-nowrap"><i class="ci-mail position-absolute top-50 translate-middle-y text-muted fs-base ms-3"></i>
-              <input class="form-control rounded-start" type="email" name="EMAIL" placeholder="Your email" required>
-              <button class="btn btn-primary" type="submit" name="subscribe">Subscribe*</button>
+              <input class="form-control rounded-start" type="email" name="email" placeholder="{$smarty.const.TEXT_NEWSLETTER_EMAIL}" required>
+              <button class="btn btn-primary" type="submit" name="subscribe-button">{$smarty.const.TEXT_NEWSLETTER_SUBSCRIBE}</button>
             </div>
-            <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
-            <div style="position: absolute; left: -5000px;" aria-hidden="true">
-              <input class="subscription-form-antispam" type="text" name="b_c7103e2c981361a6639545bd5_29ca296126" tabindex="-1">
-            </div>
-            <div class="form-text text-light opacity-50">*Subscribe to our newsletter to receive early discount offers, updates and new products info.</div>
-            <div class="subscription-status"></div>
+            <div class="form-text text-light opacity-50">{$smarty.const.TEXT_NEWSLETTER_DESCRIPTION}</div>
           </form>
         </div>
         <div class="widget pb-2 mb-4">
-          <h3 class="widget-title text-light pb-1">Download our app</h3>
+          <h3 class="widget-title text-light pb-1">{$smarty.const.TEXT_DOWNLOAD_APP}</h3>
           <div class="d-flex flex-wrap">
-            <div class="me-2 mb-2"><a class="btn-market btn-apple" href="#" role="button"><span class="btn-market-subtitle">Download on the</span><span class="btn-market-title">App Store</span></a></div>
-            <div class="mb-2"><a class="btn-market btn-google" href="#" role="button"><span class="btn-market-subtitle">Download on the</span><span class="btn-market-title">Google Play</span></a></div>
+            <div class="me-2 mb-2"><a class="btn-market btn-google" href="https://play.google.com/store/apps/details?id=xyz.appmaker.wzxnid&hl=ru" role="button"><span class="btn-market-subtitle">{$smarty.const.TEXT_DOWNLOAD_ON}</span><span class="btn-market-title">{$smarty.const.TEXT_DOWNLOAD_ON_GOOGLE}</span></a></div>
+            <div class="mb-2"><a class="btn-market btn-apple" href="https://www.apple.com/search/vamshop?src=globalnav" role="button"><span class="btn-market-subtitle">{$smarty.const.TEXT_DOWNLOAD_ON}</span><span class="btn-market-title">{$smarty.const.TEXT_DOWNLOAD_ON_APPLE}</span></a></div>
           </div>
         </div>
       </div>
@@ -75,32 +59,32 @@
         <div class="col-md-3 col-sm-6 mb-4">
           <div class="d-flex"><i class="ci-rocket text-primary" style="font-size: 2.25rem;"></i>
             <div class="ps-3">
-              <h6 class="fs-base text-light mb-1">Fast and free delivery</h6>
-              <p class="mb-0 fs-ms text-light opacity-50">Free delivery for all orders over $200</p>
+              <h6 class="fs-base text-light mb-1">{$smarty.const.TEXT_ADVANTAGES_1_TITLE}</h6>
+              <p class="mb-0 fs-ms text-light opacity-50">{$smarty.const.TEXT_ADVANTAGES_1_DESC}</p>
             </div>
           </div>
         </div>
         <div class="col-md-3 col-sm-6 mb-4">
           <div class="d-flex"><i class="ci-currency-exchange text-primary" style="font-size: 2.25rem;"></i>
             <div class="ps-3">
-              <h6 class="fs-base text-light mb-1">Money back guarantee</h6>
-              <p class="mb-0 fs-ms text-light opacity-50">We return money within 30 days</p>
+              <h6 class="fs-base text-light mb-1">{$smarty.const.TEXT_ADVANTAGES_2_TITLE}</h6>
+              <p class="mb-0 fs-ms text-light opacity-50">{$smarty.const.TEXT_ADVANTAGES_2_DESC}</p>
             </div>
           </div>
         </div>
         <div class="col-md-3 col-sm-6 mb-4">
           <div class="d-flex"><i class="ci-support text-primary" style="font-size: 2.25rem;"></i>
             <div class="ps-3">
-              <h6 class="fs-base text-light mb-1">24/7 customer support</h6>
-              <p class="mb-0 fs-ms text-light opacity-50">Friendly 24/7 customer support</p>
+              <h6 class="fs-base text-light mb-1">{$smarty.const.TEXT_ADVANTAGES_3_TITLE}</h6>
+              <p class="mb-0 fs-ms text-light opacity-50">{$smarty.const.TEXT_ADVANTAGES_3_DESC}</p>
             </div>
           </div>
         </div>
         <div class="col-md-3 col-sm-6 mb-4">
           <div class="d-flex"><i class="ci-card text-primary" style="font-size: 2.25rem;"></i>
             <div class="ps-3">
-              <h6 class="fs-base text-light mb-1">Secure online payment</h6>
-              <p class="mb-0 fs-ms text-light opacity-50">We possess SSL / Secure сertificate</p>
+              <h6 class="fs-base text-light mb-1">{$smarty.const.TEXT_ADVANTAGES_4_TITLE}</h6>
+              <p class="mb-0 fs-ms text-light opacity-50">{$smarty.const.TEXT_ADVANTAGES_4_DESC}</p>
             </div>
           </div>
         </div>
@@ -108,39 +92,55 @@
       <hr class="hr-light mb-5">
       <div class="row pb-2">
         <div class="col-md-6 text-center text-md-start mb-4">
-          <div class="text-nowrap mb-4"><a class="d-inline-block align-middle mt-n1 me-3" href="#"><img class="d-block" src="{$tpl_path}dist/img/footer-logo-light.png" width="117" alt="Cartzilla"></a>
-            <div class="btn-group dropdown disable-autohide">
-              <button class="btn btn-outline-light border-light btn-sm dropdown-toggle px-2" type="button" data-bs-toggle="dropdown"><img class="me-2" src="{$tpl_path}dist/img/flags/en.png" width="20" alt="English">Eng / $</button>
-              <ul class="dropdown-menu my-1">
-                <li class="dropdown-item">
-                  <select class="form-select form-select-sm">
-                    <option value="usd">$ USD</option>
-                    <option value="eur">€ EUR</option>
-                    <option value="ukp">£ UKP</option>
-                    <option value="jpy">¥ JPY</option>
-                  </select>
-                </li>
-                <li><a class="dropdown-item pb-1" href="#"><img class="me-2" src="{$tpl_path}dist/img/flags/fr.png" width="20" alt="Français">Français</a></li>
-                <li><a class="dropdown-item pb-1" href="#"><img class="me-2" src="{$tpl_path}dist/img/flags/de.png" width="20" alt="Deutsch">Deutsch</a></li>
-                <li><a class="dropdown-item" href="#"><img class="me-2" src="{$tpl_path}dist/img/flags/it.png" width="20" alt="Italiano">Italiano</a></li>
-              </ul>
-            </div>
+          <div class="text-nowrap mb-4"><a class="d-inline-block align-middle mt-n1 me-3" href="#"><img class="d-block" src="{$tpl_path}img/logo-small.png" width="117" alt="{$smarty.const.STORE_NAME}"></a>
+	         {if {$box_LANGUAGES}}      
+	         <div class="btn-group dropdown disable-autohide">
+	           <button class="btn btn-outline-light border-light btn-sm dropdown-toggle px-2" type="button" data-bs-toggle="dropdown"><img class="me-2" src="{$smarty.const.DIR_WS_CATALOG}lang/{$smarty.session.language}/icon.gif" width="18" height="12" alt="{$smarty.session.language_name|capitalize}">{$smarty.session.language_name|capitalize} / {$smarty.session.currency}</button>
+	           <ul class="dropdown-menu my-1">
+	             {if {$box_CURRENCIES}}
+	             <li class="dropdown-item">
+                <form name="currencies-footer" id="currencies-footer" action="{$smarty.const.HTTP_SERVER}{$smarty.server.REDIRECT_URL}" method="get">
+	               <select class="form-select form-select-sm" name="currency" onchange="this.form.submit()">
+	                 <option value="">{$smarty.const.TEXT_CURRENCY}</option>
+	                 {$box_CURRENCIES}
+	               </select>
+	             </form>
+	             </li>
+	             {/if}
+	             {if {$box_LANGUAGES}}
+	             {$box_LANGUAGES}
+	             {/if}
+	           </ul>
+	         </div>
+	         {/if}
           </div>
           <div class="widget widget-links widget-light">
             <ul class="widget-list d-flex flex-wrap justify-content-center justify-content-md-start">
-              <li class="widget-list-item me-4"><a class="widget-list-link" href="#">Outlets</a></li>
-              <li class="widget-list-item me-4"><a class="widget-list-link" href="#">Affiliates</a></li>
-              <li class="widget-list-item me-4"><a class="widget-list-link" href="#">Support</a></li>
-              <li class="widget-list-item me-4"><a class="widget-list-link" href="#">Privacy</a></li>
-              <li class="widget-list-item me-4"><a class="widget-list-link" href="#">Terms of use</a></li>
+              <li class="widget-list-item me-4"><a class="widget-list-link" href="shipping.html">{$smarty.const.TEXT_PAGE_SHIPPING}</a></li>
+              <li class="widget-list-item me-4"><a class="widget-list-link" href="payment.html">{$smarty.const.TEXT_PAGE_PAYMENT}</a></li>
+              <li class="widget-list-item me-4"><a class="widget-list-link" href="pivacy.html">{$smarty.const.TEXT_PAGE_PRIVACY}</a></li>
+              <li class="widget-list-item me-4"><a class="widget-list-link" href="about_us.html">{$smarty.const.TEXT_PAGE_ABOUT_US}</a></li>
+              <li class="widget-list-item me-4"><a class="widget-list-link" href="contact_us.html">{$smarty.const.TEXT_PAGE_CONTACT_US}</a></li>
             </ul>
           </div>
         </div>
         <div class="col-md-6 text-center text-md-end mb-4">
-          <div class="mb-3"><a class="btn-social bs-light bs-twitter ms-2 mb-2" href="#"><i class="ci-twitter"></i></a><a class="btn-social bs-light bs-facebook ms-2 mb-2" href="#"><i class="ci-facebook"></i></a><a class="btn-social bs-light bs-instagram ms-2 mb-2" href="#"><i class="ci-instagram"></i></a><a class="btn-social bs-light bs-pinterest ms-2 mb-2" href="#"><i class="ci-pinterest"></i></a><a class="btn-social bs-light bs-youtube ms-2 mb-2" href="#"><i class="ci-youtube"></i></a></div><img class="d-inline-block" src="{$tpl_path}dist/img/cards-alt.png" width="187" alt="Payment methods">
+          <div class="mb-3">
+				{if $smarty.const.STORE_WHATSAPP}<a title="WhatsApp" data-toggle="tooltip" class="btn-social bs-messenger bs-dark ms-2 mb-2" href="https://wa.me/{$smarty.const.STORE_WHATSAPP}" aria-label="whatsapp"><i class="fab fa-whatsapp"></i></a>{/if}
+				{if $smarty.const.STORE_VIBER}<a title="Viber" data-toggle="tooltip" class="btn-social bs-light bs-messenger ms-2 mb-2" href="viber://chat?number={$smarty.const.STORE_VIBER}" aria-label="viber"><i class="fab fa-viber"></i></a>{/if}
+				{if $smarty.const.STORE_SKYPE}<a title="Skype" data-toggle="tooltip" class="btn-social bs-light bs-messenger ms-2 mb-2" href="skype:{$smarty.const.STORE_SKYPE}" aria-label="skype"><i class="fab fa-skype"></i></a>{/if}
+				{if $smarty.const.STORE_ICQ}<a title="ICQ" data-toggle="tooltip" class="btn-social bs-light bs-messenger ms-2 mb-2" href="http://icq.com/{$smarty.const.STORE_ICQ}" aria-label="icq"><i class="fas fa-cog"></i></a>{/if}
+				{if $smarty.const.STORE_VK}<a title="VK" data-toggle="tooltip" class="btn-social bs-light bs-messenger ms-2 mb-2" href="https://vk.com/{$smarty.const.STORE_VK}" aria-label="vk"><i class="fab fa-vk"></i></a>{/if}
+				{if $smarty.const.STORE_FACEBOOK}<a title="Facebook" data-toggle="tooltip" class="btn-social bs-light bs-messenger ms-2 mb-2" href="https://facebook.com/{$smarty.const.STORE_FACEBOOK}" aria-label="facebook"><i class="fab fa-facebook"></i></a>{/if}
+				{if $smarty.const.STORE_TELEGRAM}<a title="Telegram" data-toggle="tooltip" class="btn-social bs-light bs-messenger ms-2 mb-2" href="https://t.me/{$smarty.const.STORE_TELEGRAM}" aria-label="telegram"><i class="fab fa-telegram"></i></a>{/if}
+				{if $smarty.const.STORE_INSTAGRAM}<a title="Instagram" data-toggle="tooltip" class="btn-social bs-light bs-messenger ms-2 mb-2" href="https://instagram.com/{$smarty.const.STORE_INSTAGRAM}" aria-label="instagram"><i class="fab fa-instagram"></i></a>{/if}
+				{if $smarty.const.STORE_TWITTER}<a title="Twitter" data-toggle="tooltip" class="btn-social bs-light bs-messenger ms-2 mb-2" href="https://twitter.com/{$smarty.const.STORE_TWITTER}" aria-label="twitter"><i class="fab fa-twitter"></i></a>{/if}
+				{if $smarty.const.STORE_YOUTUBE}<a title="YouTube" data-toggle="tooltip" class="btn-social bs-light bs-messenger ms-2 mb-2" href="https://youtube.com/{$smarty.const.STORE_YOUTUBE}" aria-label="youtube"><i class="fab fa-youtube"></i></a>{/if}
+				<a title="RSS" data-toggle="tooltip" class="btn-social bs-light bs-messenger ms-2 mb-2" href="vam_rss2_info.php" aria-label="rss"><i class="fas fa-rss"></i></a>
+          </div><img class="d-inline-block" src="{$tpl_path}dist/img/cards-alt.png" width="187" alt="{$smarty.const.TEXT_PAYMENT_METHODS}">
         </div>
       </div>
-      <div class="pb-4 fs-xs text-light opacity-50 text-center text-md-start">© All rights reserved. Made by<a class="text-light" href="https://createx.studio/" target="_blank" rel="noopener">Createx Studio</a></div>
+      <div class="pb-4 fs-xs text-light opacity-50 text-center text-md-start">&copy; {$smarty.now|date_format:"%Y"} {$smarty.const.STORE_NAME}</div>
     </div>
   </div>
 </footer>
