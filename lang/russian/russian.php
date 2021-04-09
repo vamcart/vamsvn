@@ -959,4 +959,9 @@ define('TEXT_PROFILE_INFORMATION','Профиль');
 define('TEXT_PAGE_MY_ORDERS','Мои заказы');
 define('TEXT_PAGE_INFORMATION','Информация');
 
+define('TEXT_WIDGET_BLOG_TITLE','Читайте наш блог');
+define('TEXT_WIDGET_BLOG_DESC','Новости магазина, новинки и тренды сезона');
+define('TEXT_WIDGET_INSTAGRAM_TITLE','Подписывайте на наш Instagram');
+define('TEXT_WIDGET_INSTAGRAM_DESC','#vamcart');
+
 ?>
