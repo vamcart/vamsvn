@@ -38,6 +38,9 @@
         $banners_id = vam_db_prepare_input($_POST['banners_id']);
         $banners_title = vam_db_prepare_input($_POST['banners_title']);
         $banners_description = vam_db_prepare_input($_POST['banners_description']);
+        $banners_description_more = vam_db_prepare_input($_POST['banners_description_more']);
+        $banners_description_button = vam_db_prepare_input($_POST['banners_description_button']);
+        $banners_description_background = vam_db_prepare_input($_POST['banners_description_background']);
         $banners_url = vam_db_prepare_input($_POST['banners_url']);
         $new_banners_group = vam_db_prepare_input($_POST['new_banners_group']);
         $banners_group = (empty($new_banners_group)) ? vam_db_prepare_input($_POST['banners_group']) : $new_banners_group;
@@ -72,6 +75,9 @@
           $db_image_location = (vam_not_null($banners_image_local)) ? $banners_image_local : $banners_image_target . $banners_image->filename;
           $sql_data_array = array('banners_title' => $banners_title,
                                   'banners_description' => $banners_description,
+                                  'banners_description_more' => $banners_description_more,
+                                  'banners_description_button' => $banners_description_button,
+                                  'banners_description_background' => $banners_description_background,
                                   'banners_url' => $banners_url,
                                   'banners_image' => $db_image_location,
                                   'banners_group' => $banners_group,
@@ -231,7 +237,7 @@
       $bID = vam_db_prepare_input($_GET['bID']);
       $form_action = 'update';
 
-      $banner_query = vam_db_query("select banners_title, banners_description, banners_url, banners_image, banners_group, banners_html_text, status, date_format(date_scheduled, '%d/%m/%Y') as date_scheduled, date_format(expires_date, '%d/%m/%Y') as expires_date, expires_impressions, date_status_change from " . TABLE_BANNERS . " where banners_id = '" . vam_db_input($bID) . "'");
+      $banner_query = vam_db_query("select banners_title, banners_description, banners_description_more, banners_description_button, banners_description_background, banners_url, banners_image, banners_group, banners_html_text, status, date_format(date_scheduled, '%d/%m/%Y') as date_scheduled, date_format(expires_date, '%d/%m/%Y') as expires_date, expires_impressions, date_status_change from " . TABLE_BANNERS . " where banners_id = '" . vam_db_input($bID) . "'");
       $banner = vam_db_fetch_array($banner_query);
 
       $bInfo = new objectInfo($banner);
@@ -259,6 +265,18 @@
           <tr>
             <td valign="top" class="main"><?php echo TEXT_BANNERS_DESCRIPTION; ?></td>
             <td class="main"><?php echo vam_draw_textarea_field('banners_description', 'soft', '60', '5', $bInfo->banners_description); ?></td>
+          </tr>
+          <tr>
+            <td valign="top" class="main"><?php echo TEXT_BANNERS_DESCRIPTION_MORE; ?></td>
+            <td class="main"><?php echo vam_draw_textarea_field('banners_description_more', 'soft', '60', '5', $bInfo->banners_description_more); ?></td>
+          </tr>
+          <tr>
+            <td class="main"><?php echo TEXT_BANNERS_DESCRIPTION_BUTTON; ?></td>
+            <td class="main"><?php echo vam_draw_input_field('banners_description_button', $bInfo->banners_description_button); ?></td>
+          </tr>
+          <tr>
+            <td class="main"><?php echo TEXT_BANNERS_DESCRIPTION_BACKGROUND; ?></td>
+            <td class="main"><?php echo vam_draw_input_field('banners_description_background', $bInfo->banners_description_background); ?></td>
           </tr>
           <tr>
             <td class="main"><?php echo TEXT_BANNERS_URL; ?></td>

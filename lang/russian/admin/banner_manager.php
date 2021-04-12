@@ -27,6 +27,9 @@ define('TABLE_HEADING_ACTION', 'Действие');
 
 define('TEXT_BANNERS_TITLE', 'Название Баннера:');
 define('TEXT_BANNERS_DESCRIPTION', 'Описание Баннера:');
+define('TEXT_BANNERS_DESCRIPTION_MORE', 'Дополнительное описание баннера:');
+define('TEXT_BANNERS_DESCRIPTION_BUTTON', 'Текст для кнопки:');
+define('TEXT_BANNERS_DESCRIPTION_BACKGROUND', 'Цвет фона:');
 define('TEXT_BANNERS_URL', 'URL Баннера:');
 define('TEXT_BANNERS_GROUP', 'Группа Баннера:');
 define('TEXT_BANNERS_NEW_GROUP', ', выберите группу или создайте новую ниже');
