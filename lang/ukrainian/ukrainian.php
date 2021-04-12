@@ -912,9 +912,9 @@ define('TEXT_ADVANTAGES_4_TITLE','Данные в безопасности');
 define('TEXT_ADVANTAGES_4_DESC','Мы используем SSL шифрование');
 
 define('TEXT_STAY_INFORMED','Будьте в курсе');
-define('TEXT_NEWSLETTER_EMAIL','Your email');
+define('TEXT_NEWSLETTER_EMAIL','Ваш email');
 define('TEXT_NEWSLETTER_SUBSCRIBE','Подписаться*');
-define('TEXT_NEWSLETTER_DESCRIPTION','*Узнайте первыми о скидках, распродажах, новинках в нашем магазине.');
+define('TEXT_NEWSLETTER_DESCRIPTION','*Узнайте первыми о скидках, распродажах, новинках.');
 
 define('TEXT_DOWNLOAD_APP','Скачайте наше приложение');
 define('TEXT_DOWNLOAD_ON','Скачать в магазине приложений');
@@ -930,5 +930,13 @@ define('TEXT_WIDGET_BLOG_TITLE','Читайте наш блог');
 define('TEXT_WIDGET_BLOG_DESC','Новости магазина, новинки и тренды сезона');
 define('TEXT_WIDGET_INSTAGRAM_TITLE','Подписывайте на наш Instagram');
 define('TEXT_WIDGET_INSTAGRAM_DESC','#vamcart');
+
+define('TEXT_ADS_CONVERSE_TITLE','Спешите! Акция');
+define('TEXT_ADS_CONVERSE_DESC','Converse All Star');
+define('TEXT_ADS_CONVERSE_BUTTON','Смотреть');
+
+define('TEXT_ADS_BANNER_TITLE','Место для рекламы');
+define('TEXT_ADS_BANNER_DESC','Успейте занять место');
+define('TEXT_ADS_BANNER_BUTTON','Связаться');
 
 ?>
