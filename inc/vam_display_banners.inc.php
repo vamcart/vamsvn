@@ -25,7 +25,7 @@
       if ($banners['count'] > 0) {
 
 
-      $banners_data = vamDBquery("select banners_id, banners_title, banners_description, banners_image, banners_url, banners_html_text from " . TABLE_BANNERS . " where status = '1' and banners_group = '" . $identifier . "' order by rand()");
+      $banners_data = vamDBquery("select * from " . TABLE_BANNERS . " where status = '1' and banners_group = '" . $identifier . "' order by rand()");
 
 		$banners_array = array ();
 
@@ -44,6 +44,9 @@
 			'id' => $banner['banners_id'], 
 			'title' => $banner['banners_title'], 
 			'description' => $banner['banners_description'], 
+			'description_more' => $banner['banners_description_more'], 
+			'description_background' => $banner['banners_description_background'], 
+			'description_button' => $banner['banners_description_button'], 
 			'html' => $banner['banners_html_text'], 
 			'image' => $banner['banners_image'],
 			'image_width' => $width,
