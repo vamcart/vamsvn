@@ -57,4 +57,8 @@
   $vamTemplate->assign('slider_two_up',vam_display_banners('dynamic', 'slider_two_up'));
   }
 
+  if ($banner = vam_banner_exists('dynamic', 'vamshop5')) {
+  $vamTemplate->assign('vamshop5',vam_display_banners('dynamic', 'vamshop5'));
+  }
+
 ?>
