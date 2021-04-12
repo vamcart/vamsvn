@@ -1,9 +1,6 @@
-		<div class="card card-sm card-product">
-			<div class="img-wrap"><a href=""><img src="/images/product_images/thumbnail_images/1_0.png"></a></div>
-			<div class="info-wrap text-center">
-				<div class="title"><a href="">The name of this product goes here here here</a></div>
-				<p class="desc">Some small description goes here</p>
-			</div>
-      <div class="card-footer text-center">
-      </div>
-		</div>
+        <div class="d-flex align-items-center pb-2 border-bottom"><a class="d-block" href="{$module_data.PRODUCTS_LINK}"><img src="{$module_data.PRODUCTS_IMAGE}" width="64" alt="{$module_data.PRODUCTS_NAME}"></a>
+          <div class="ps-2">
+            <h6 class="widget-product-title"><a href="{$module_data.PRODUCTS_LINK}">{$module_data.PRODUCTS_NAME}</a></h6>
+            {if $module_data.PRODUCTS_PRICE_PLAIN > 0}<div class="widget-product-meta"><span class="text-accent me-2">{$module_data.PRODUCTS_PRICE}</span></div>{/if}
+          </div>
+        </div>
