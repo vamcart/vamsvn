@@ -4148,9 +4148,9 @@ INSERT INTO `banners` (`banners_id`, `banners_title`, `banners_description`, `ba
 (20, 'Слайд 3', 'Описание слайда 3', '', '', '', 'https://vamshop.ru', 'slide3.jpg', 'slider_bootstrap', '', NULL, NULL, NULL, '2019-04-07 23:02:50', NULL, 0),
 (21, 'Скидки', 'Все товары со скидкой', '', '', '', 'https://vamshop.ru', 'slide4.jpg', 'slider_bootstrap', '', NULL, NULL, NULL, '2019-04-07 23:03:55', NULL, 0),
 (22, 'Популярные', 'Рекомендуемые товары', '', '', '', 'https://vamshop.ru', 'slide5.jpg', 'slider_bootstrap', '', NULL, NULL, NULL, '2019-04-07 23:04:12', NULL, 0),
-(23, 'Только для Вас!', 'Большая летняя коллекция', 'Купальники, Топы, Шорты, Солнцезащитные очки и многое другое...', 'Смотреть', '#3aafd2', 'http://vamshop.com', '01.jpg', 'vamshop5', '', NULL, NULL, NULL, '2019-04-07 23:04:12', NULL, 1),
-(24, 'Спешите! Ограниченное предложение.', 'Спортивная экипировка', 'Кроссовки, Кеды, Свитшоты, Худи и многое другое...', 'Смотреть', '#f5b1b0', 'http://vamshop.com', '02.jpg', 'vamshop5', '', NULL, NULL, NULL, '2019-04-07 23:04:12', NULL, 1),
-(25, 'Завершите свой образ', 'Новая коллекция аксессуаров', 'Кепки и банданы, Солнцезащитные очки, Сумки и многое другое...', 'Смотреть', '#eba170', 'http://vamshop.com', '03.jpg', 'vamshop5', '', NULL, NULL, NULL, '2019-04-07 23:04:12', NULL, 1);
+(23, 'Только для Вас!', 'Большая летняя коллекция', 'Купальники, Топы, Шорты, Солнцезащитные очки и многое другое...', 'Смотреть', '#3aafd2', 'https://vamshop.ru', '01.jpg', 'vamshop5', '', NULL, NULL, NULL, '2019-04-07 23:04:12', NULL, 1),
+(24, 'Спешите! Ограниченное предложение.', 'Спортивная экипировка', 'Кроссовки, Кеды, Свитшоты, Худи и многое другое...', 'Смотреть', '#f5b1b0', 'https://vamshop.ru', '02.jpg', 'vamshop5', '', NULL, NULL, NULL, '2019-04-07 23:04:12', NULL, 1),
+(25, 'Завершите свой образ', 'Новая коллекция аксессуаров', 'Кепки и банданы, Солнцезащитные очки, Сумки и многое другое...', 'Смотреть', '#eba170', 'https://vamshop.ru', '03.jpg', 'vamshop5', '', NULL, NULL, NULL, '2019-04-07 23:04:12', NULL, 1);
 
 INSERT INTO `products_options` (`products_options_id`, `language_id`, `products_options_name`, `products_options_length`, `products_options_size`, `products_options_rows`, `products_options_type`, `sortorder`) VALUES
 (1, 1, 'Цвет', 64, 32, 1, 4, 1);
