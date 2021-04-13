@@ -19,7 +19,7 @@
 
   require('includes/application_top.php');
 
-  foreach (array_keys($HTTP_GET_VARS) as $key) {
+  foreach (array_keys($_GET) as $key) {
     switch ($key) {
       case 'banner':
         $banners_id = vam_db_prepare_input($_GET['banner']);
