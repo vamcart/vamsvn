@@ -1,4 +1,11 @@
-        <div class="d-flex align-items-center pb-2 border-bottom"><a class="d-block" href="{$module_data.PRODUCTS_LINK}"><img src="{$module_data.PRODUCTS_IMAGE}" width="64" alt="{$module_data.PRODUCTS_NAME}"></a>
+        <div class="d-flex align-items-center pb-2 border-bottom">
+        <a class="d-block" href="{$module_data.PRODUCTS_LINK}">
+        {if {$module_data.PRODUCTS_IMAGE} && {$module_data.CATEGORIES_IMAGE} != "images/categories/"}
+        <img src="{$module_data.PRODUCTS_IMAGE}" width="64" alt="{$module_data.PRODUCTS_NAME}">
+        {else}
+        <img src="images/product_images/noimage.png" width="64" alt="{$module_data.PRODUCTS_NAME}">
+        {/if}
+        </a>
           <div class="ps-2">
             <h6 class="widget-product-title text-truncate"><a href="{$module_data.PRODUCTS_LINK}">{$module_data.PRODUCTS_NAME}</a></h6>
             {if $module_data.PRODUCTS_PRICE_PLAIN > 0}<div class="widget-product-meta"><span class="text-accent me-2">{$module_data.PRODUCTS_PRICE}</span></div>{/if}

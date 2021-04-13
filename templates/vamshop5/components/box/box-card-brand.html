@@ -1,8 +1,10 @@
     <div class="col-md-3 col-sm-4 col-6">
     <a class="d-block bg-white shadow-sm rounded-3 py-3 py-sm-4 mb-grid-gutter" href="{$module_data.PRODUCTS_LINK}">
-    {if {$module_data.PRODUCTS_IMAGE} && {$module_data.PRODUCTS_IMAGE} != "images//"}
+    {if {$module_data.PRODUCTS_IMAGE} && {$module_data.PRODUCTS_IMAGE} != "images/"}
     <img class="d-block mx-auto" src="{$module_data.PRODUCTS_IMAGE}" style="width: 150px;" alt="{$module_data.PRODUCTS_NAME}">
+    {else}
+    <img class="d-block mx-auto" src="images/product_images/noimage.png" style="width: 150px;" alt="{$module_data.PRODUCTS_NAME}">
     {/if}
-    <h3 class="nav-link fs-base pt-1 mb-0 text-center">{$module_data.PRODUCTS_NAME}</h3>
+    <h3 class="nav-link fs-base pt-1 mb-0 text-center text-truncate">{$module_data.PRODUCTS_NAME}</h3>
     </a>
     </div>
