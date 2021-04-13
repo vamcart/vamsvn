@@ -19,9 +19,9 @@
 require_once(DIR_FS_INC.'vam_random_select.inc.php');   
   function vam_banner_exists($action, $identifier) {
     if ($action == 'dynamic') {
-      return vam_random_select("select banners_id, banners_title, banners_description, banners_image, banners_url, banners_group, banners_html_text from " . TABLE_BANNERS . " where status = '1' and banners_group = '" . $identifier . "'");
+      return vam_random_select("select * from " . TABLE_BANNERS . " where status = '1' and banners_group = '" . $identifier . "'");
     } elseif ($action == 'static') {
-      $banner_query = vam_db_query("select banners_id, banners_title, banners_description, banners_image, banners_url, banners_group, banners_html_text from " . TABLE_BANNERS . " where status = '1' and banners_id = '" . $identifier . "'");
+      $banner_query = vam_db_query("select * from " . TABLE_BANNERS . " where status = '1' and banners_id = '" . $identifier . "'");
       return vam_db_fetch_array($banner_query);
     } else {
       return false;
