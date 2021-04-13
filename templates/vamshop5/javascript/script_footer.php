@@ -1,5 +1,5 @@
+<script src="templates/<?php echo CURRENT_TEMPLATE; ?>/javascript/jscript_ajax_cart.js"></script>
 <!-- Vendor scrits: js libraries and plugins-->
-<script src="jscript/jquery/jquery-3.4.1.min.js"></script>
 <script src="templates/<?php echo CURRENT_TEMPLATE; ?>/dist/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 <script src="templates/<?php echo CURRENT_TEMPLATE; ?>/dist/vendor/simplebar/dist/simplebar.min.js"></script>
 <script src="templates/<?php echo CURRENT_TEMPLATE; ?>/dist/vendor/tiny-slider/dist/min/tiny-slider.js"></script>
