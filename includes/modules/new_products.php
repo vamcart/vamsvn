@@ -40,17 +40,23 @@ if ((!isset ($new_products_category_id)) || ($new_products_category_id == '0')) 
 	}
 
 	$new_products_query = "SELECT distinct * FROM
-	                                         ".TABLE_PRODUCTS." p,
-	                                         ".TABLE_PRODUCTS_DESCRIPTION." pd WHERE
-	                                         p.products_startpage = '1' and
-	                                         p.products_quantity > 0 and  
-	                                         p.products_id=pd.products_id 
-	                                         ".$group_check."
-	                                         ".$days."
-	                                         ".$fsk_lock."
-	                                         and p.products_status = '1' and p.products_quantity > 0 and pd.language_id = '".(int) $_SESSION['languages_id']."'
-	                                         group by p.products_id
-	                                         order by p.products_startpage_sort ASC, rand() limit ".MAX_DISPLAY_NEW_PRODUCTS;
+	                                        ".TABLE_PRODUCTS." p,
+	                                        ".TABLE_PRODUCTS_DESCRIPTION." pd,
+	                                        ".TABLE_PRODUCTS_TO_CATEGORIES." p2c,
+	                                        ".TABLE_CATEGORIES." c,
+	                                        ".TABLE_CATEGORIES_DESCRIPTION." cd
+	                                        where c.categories_status='1'
+	                                        and p.products_startpage = '1'
+	                                        and p.products_quantity > 0  
+	                                        and p.products_id = p2c.products_id and p.products_id=pd.products_id
+	                                        and p2c.categories_id = c.categories_id
+	                                        and cd.categories_id = c.categories_id
+	                                        ".$group_check."
+	                                        ".$days."
+	                                        ".$fsk_lock."
+	                                        and p.products_status = '1' and p.products_quantity > 0 and pd.language_id = '".(int) $_SESSION['languages_id']."' and cd.language_id = '".(int) $_SESSION['languages_id']."'
+	                                        group by p.products_id
+	                                        order by p.products_id DESC limit ".MAX_DISPLAY_NEW_PRODUCTS;
 } else {
 
 	if (GROUP_CHECK == 'true')

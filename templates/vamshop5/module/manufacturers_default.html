@@ -1,13 +1,8 @@
-{config_load file="$language/lang_$language.conf" section="manufacturers"} <div class="module">
-<h3><a href="{$MANUFACTURERS_LINK}">{#heading_text#}</a></h3>
-<div class="moduleContent">
-<div class="owl-carousel owl-theme">
+{config_load file="$language/lang_$language.conf" section="manufacturers"} <section class="container py-lg-4 mb-4">
+  <h2 class="h3 text-center pb-4">{#heading_text#}</h2>
+  <div class="row">
 {foreach name=aussen item=module_data from=$module_content}
-{include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/product-card/product-card-brand.html"}
+{include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/box/box-card-brand.html"}
 {/foreach}
-</div>
-</div>
-<div class="text-left">
-<a class="btn btn-rounded" href="{$MANUFACTURERS_LINK}"><span>{$smarty.const.TEXT_ALL_MANUFACTURERS}</span></a>
-</div>
-</div>
+  </div>
+</section>

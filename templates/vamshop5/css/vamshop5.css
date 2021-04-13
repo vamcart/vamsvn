@@ -1,0 +1,8 @@
+.tns-carousel .productOldPrice,
+.tns-carousel .your-discount,
+.widget .productOldPrice,
+.widget .your-discount {
+
+display: none;
+
+}

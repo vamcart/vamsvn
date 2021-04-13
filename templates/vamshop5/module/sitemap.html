@@ -1,12 +1,9 @@
 {config_load file="$language/lang_$language.conf" section="sitemap"} 
-<div class="module">
-<div class="pageContent">
-<div class="card-deck">
+<section class="container py-lg-4 mb-4">
+  <h2 class="h3 text-center pb-4">{#heading_sitemap#}</h2>
+  <div class="row">
 {foreach name=aussen item=module_data from=$module_content}
-<div class="col-6 col-sm-4 col-md-3 col-lg-2 col-xl-2 pb-2">
 {include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/box/box-card-category.html"}
-</div>
 {/foreach}
-</div>
-</div>
-</div>
+  </div>
+</section>

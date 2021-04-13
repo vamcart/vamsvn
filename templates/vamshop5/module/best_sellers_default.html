@@ -1,8 +1,7 @@
-{config_load file="$language/lang_$language.conf" section="best_sellers"} <div class="owl-carousel owl-theme">
-{foreach name=aussen item=module_data from=$module_content}
-{include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/product-card/product-card-simple.html"}
-{/foreach}
-</div>
-<div class="text-left pt-2">
-<a class="btn btn-rounded" href="{$BEST_SELLERS_LINK}"><span>{$smarty.const.TEXT_ALL_BEST_SELLERS}</span></a>
-</div>
+{config_load file="$language/lang_$language.conf" section="best_sellers"}       <div class="widget">
+        <h3 class="widget-title">{$smarty.const.TITLE_BEST_SELLERS_DEFAULT}</h3>
+          {foreach name=aussen item=module_data from=$module_content}
+          {include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/box/box-card.html"}
+          {/foreach}
+        <p class="mb-0">...</p><a class="fs-sm" href="{$BEST_SELLERS_LINK}">{$smarty.const.TEXT_ALL_BEST_SELLERS}<i class="ci-arrow-right fs-xs ms-1"></i></a>
+      </div>

@@ -1156,7 +1156,8 @@ $products_special = 100-($vamPrice->CheckSpecial($array['products_id'])*100/$vam
 				'PRODUCTS_DESCRIPTION' => $array['products_description'],
 				'PRODUCTS_EXPIRES' => $array['expires_date'],
 				'PRODUCTS_DATE_AVAILABLE' => vam_date_short($array['products_date_available']),
-				'PRODUCTS_CATEGORY_URL'=>$array['cat_url'],
+				'PRODUCTS_CATEGORY_URL'=>vam_href_link(FILENAME_DEFAULT, vam_category_link($array['categories_id'], $array['categories_name'])),
+				'PRODUCTS_CATEGORY_NAME'=>$array['categories_name'],
 				'PRODUCTS_SHORT_DESCRIPTION' => $array['products_short_description'], 
 				'PRODUCTS_FSK18' => $array['products_fsk18']);		
 				
