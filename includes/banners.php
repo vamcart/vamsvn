@@ -61,4 +61,16 @@
   $vamTemplate->assign('vamshop5',vam_display_banners('dynamic', 'vamshop5'));
   }
 
+  if ($banner = vam_banner_exists('dynamic', 'vamshop5_ad_1')) {
+  $vamTemplate->assign('vamshop5_ad_1',vam_display_banner('dynamic', 'vamshop5_ad_1'));
+  }
+
+  if ($banner = vam_banner_exists('dynamic', 'vamshop5_ad_2')) {
+  $vamTemplate->assign('vamshop5_ad_2',vam_display_banner('dynamic', 'vamshop5_ad_2'));
+  }
+
+  if ($banner = vam_banner_exists('dynamic', 'vamshop5_ad_3')) {
+  $vamTemplate->assign('vamshop5_ad_3',vam_display_banner('dynamic', 'vamshop5_ad_3'));
+  }
+  
 ?>
