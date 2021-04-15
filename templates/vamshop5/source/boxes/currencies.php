@@ -23,10 +23,15 @@
 
   $currencies_string = '';
   $count_cur='';
+  $box_data = array();
   foreach ($vamPrice->currencies as $key => $value) {
   $count_cur++;
-    //$currencies_string .= '<option value="'.$key.'"'.($_SESSION['currency'] == $key ? ' selected' : null).'>'.$value['title'].'</option>';
-    $currencies_string .= '<option value="'.$key.'">'.$value['title'].'</option>';
+
+  $box_data[] = array(
+  'currency_code' => $key,
+  'currency_name' => $value['title']
+  );    
+    
   }
 
     $hidden_get_variables = '';
@@ -42,8 +47,8 @@
 
   // dont show box if there's only 1 currency
   if ($count_cur > 1 ) {
-
-  $box->assign('BOX_CONTENT', $currencies_string . $hidden_get_variables);
+  $box->assign('box_data', $box_data);
+  $box->assign('hidden_variables', $hidden_get_variables);
   $box->assign('language', $_SESSION['language']);
     	  // set cache ID
    if (!CacheCheck()) {

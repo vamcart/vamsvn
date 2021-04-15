@@ -29,9 +29,18 @@
 
   $languages_string = '';
   $count_lng='';
+  $box_data = array();
   foreach ($lng->catalog_languages as $key => $value) {
   $count_lng++;
-    $languages_string .= '<li><a class="dropdown-item pb-1" href="' . vam_href_link(basename($PHP_SELF), 'language=' . $key.'&'.vam_get_all_get_params(array('language', 'currency')), $request_type) . '"><img class="me-2" src="'.DIR_WS_CATALOG.'lang/'.$value['directory'].'/icon.gif" width="18" height="12" alt="'.$value['name'].'">'.$value['name'].'</a></li>';
+  $box_data[] = array(
+  'language_id' => $value['id'],
+  'language_image' => $value['image'],
+  'language_code' => $value['code'],
+  'language_directory' => $value['directory'],
+  'language_name' => $value['name'],
+  'language_url' => vam_href_link(basename($PHP_SELF), 'language=' . $key.'&'.vam_get_all_get_params(array('language', 'currency')), $request_type)
+  );  
+      
   }
 
   // dont show box if there's only 1 language
@@ -40,7 +49,7 @@
  $box = new vamTemplate;
  $box->assign('tpl_path','templates/'.CURRENT_TEMPLATE.'/'); 
  $box_content='';
- $box->assign('BOX_CONTENT', $languages_string);
+ $box->assign('box_languages', $box_data);
  $box->assign('language', $_SESSION['language']);
 
 
