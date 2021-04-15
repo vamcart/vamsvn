@@ -1,2 +1,4 @@
-{config_load file="$language/lang_$language.conf" section="boxes"}
-{$BOX_CONTENT}
+{foreach name=aussen item=currencies from=$box_data}
+<option value="{$currencies.currency_code}">{$currencies.currency_name}</option>
+{/foreach}
+{$hidden_variables}
