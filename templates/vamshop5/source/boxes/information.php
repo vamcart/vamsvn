@@ -51,25 +51,31 @@ if (!$box->isCached(CURRENT_TEMPLATE.'/boxes/box_information.html', $cache_id) |
 	 					and file_flag=0 ".$group_check." and content_status=1 order by sort_order";
 
 	$content_query = vamDBquery($content_query);
-
+	
+	$box_information = array();
+	
 	while ($content_data = vam_db_fetch_array($content_query, true)) {
 		$SEF_parameter = '';
 		if (SEARCH_ENGINE_FRIENDLY_URLS == 'true')
-			$SEF_parameter = '&product='.vam_cleanName($content_data['content_title']);
+			$SEF_parameter = '&content='.vam_cleanName($content_data['content_title']);
 
 if ($content_data['content_url'] != '') {
-	$link = '<li><a href="'.$content_data['content_url'].'" target="_blank">';
+	$link = $content_data['content_url'];
 } else {
-	$link = '<li><a href="'.vam_href_link(FILENAME_CONTENT, 'coID='.$content_data['content_group'].$SEF_parameter).'">';
+	$link = vam_href_link(FILENAME_CONTENT, 'coID='.$content_data['content_group'].$SEF_parameter);
 }
 
-		$content_string .= $link.$content_data['content_title'].'</a></li>' . "\n";
+
+$box_information[] = array(
+'content_id' => $content_data['content_id'],
+'content_group' => $content_data['content_group'],
+'content_url' => $link,
+'content_title' => $content_data['content_title']
+);
+
 	}
-
-		$content_string .= '<li><a href="'.vam_href_link(FILENAME_SITE_REVIEWS).'">'.NAVBAR_TITLE_SITE_REVIEWS.'</a></li>' . "\n";
-
-	if ($content_string != '')
-		$box->assign('BOX_CONTENT', $content_string);
+	
+		$box->assign('box_information', $box_information);
 
 }
 

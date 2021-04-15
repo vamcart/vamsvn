@@ -1,13 +1,2 @@
 {config_load file="$language/lang_$language.conf" section="boxes"}
-        <div class="topbar-text dropdown disable-autohide"><a class="topbar-link dropdown-toggle" href="#" data-bs-toggle="dropdown">{$smarty.session.currency}</a>
-          <ul class="dropdown-menu dropdown-menu-end">
-            <li class="dropdown-item">
-            <form name="currencies" id="currencies" action="{$smarty.const.HTTP_SERVER}{$smarty.server.REDIRECT_URL}" method="get">
-              <select name="currency" class="form-select form-select-sm" onchange="this.form.submit()">
-                <option value="">{$smarty.const.TEXT_CURRENCY}</option>
-                {$BOX_CONTENT}
-              </select>
-            </form>
-            </li>
-          </ul>
-        </div>
+{$BOX_CONTENT}

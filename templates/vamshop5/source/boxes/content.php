@@ -52,6 +52,8 @@ if (!$box->isCached(CURRENT_TEMPLATE.'/boxes/box_content.html', $cache_id) || !$
 	 					and file_flag=1 ".$group_check." and content_status=1 order by sort_order";
 
 	$content_query = vamDBquery($content_query);
+	
+	$box_content = array();
 
 	while ($content_data = vam_db_fetch_array($content_query, true)) {
 		$SEF_parameter = '';
@@ -59,16 +61,23 @@ if (!$box->isCached(CURRENT_TEMPLATE.'/boxes/box_content.html', $cache_id) || !$
 			$SEF_parameter = '&content='.vam_cleanName($content_data['content_title']);
 
 if ($content_data['content_url'] != '') {
-	$link = '<li><a href="'.$content_data['content_url'].'" target="_blank">';
+	$link = $content_data['content_url'];
 } else {
-	$link = '<li><a href="'.vam_href_link(FILENAME_CONTENT, 'coID='.$content_data['content_group'].$SEF_parameter).'">';
+	$link = vam_href_link(FILENAME_CONTENT, 'coID='.$content_data['content_group'].$SEF_parameter);
 }
 
-		$content_string .= $link.$content_data['content_title'].'</a></li>' . "\n";
-	}
-	if ($content_string != '')
-		$box->assign('BOX_CONTENT', $content_string);
 
+$box_content[] = array(
+'content_id' => $content_data['content_id'],
+'content_group' => $content_data['content_group'],
+'content_url' => $link,
+'content_title' => $content_data['content_title']
+);
+
+	}
+	
+		$box->assign('box_content', $box_content);
+		
 }
 
 if (!$cache) {

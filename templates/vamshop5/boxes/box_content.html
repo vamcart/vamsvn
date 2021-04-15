@@ -1,8 +1,4 @@
 {config_load file="$language/lang_$language.conf" section="boxes"}
-{config_load file="$language/lang_$language.conf" section="index"}
-<section class="widget inner categories-widget">
-	<h3 class="widget-title">{#heading_content#}</h3>
-		<ul class="icons clearfix">
-			{$BOX_CONTENT}
-		</ul>
-</section>
+{foreach name=aussen item=box_data from=$box_content}
+<li class="widget-list-item"><a class="widget-list-link" href="{$box_data.content_url}">{$box_data.content_title}</a></li>
+{/foreach}

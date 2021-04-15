@@ -1,6 +1,2 @@
 {config_load file="$language/lang_$language.conf" section="boxes"}
-        <div class="topbar-text dropdown disable-autohide"><a class="topbar-link dropdown-toggle" href="#" data-bs-toggle="dropdown"><img class="me-2" src="{$smarty.const.DIR_WS_CATALOG}lang/{$smarty.session.language}/icon.gif" width="18" height="12" alt="{$smarty.session.language_name|capitalize}">{$smarty.session.language_name|capitalize}</a>
-          <ul class="dropdown-menu dropdown-menu-end">
-            {$BOX_CONTENT}
-          </ul>
-        </div>
+{$BOX_CONTENT}
