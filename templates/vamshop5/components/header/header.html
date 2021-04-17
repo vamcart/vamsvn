@@ -113,6 +113,7 @@
             <li class="nav-item"><a class="nav-link" href="{$smarty.const.FILENAME_FEATURED}">{$smarty.const.TITLE_FEATURED_DEFAULT_SHORT}</a></li>
             <li class="nav-item"><a class="nav-link" href="{$smarty.const.FILENAME_REVIEWS}">{$smarty.const.TEXT_PRODUCT_REVIEWS}</a></li>
             {$box_CONTENT_PULL}
+            {if $smarty.session.customers_status.customers_status_id == 0}<li class="nav-item"><a class="nav-link" href="{$admin_area_link}">{#text_admin#}</a></li>{/if}
           </ul>
         </div>
       </div>
