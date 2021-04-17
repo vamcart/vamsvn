@@ -21,7 +21,6 @@
   if (SET_BOX_AFFILIATE == 'true') include(DIR_WS_BOXES . 'affiliate.php');
   if (SET_BOX_CATEGORIES == 'true' && DEFAULT_NAVIGATION == "fullscreen_menu") include(DIR_WS_BOXES . 'categories.php');
   require(DIR_WS_BOXES . 'categories2.php');
-  if (DEFAULT_NAVIGATION == 'slide_menu') require(DIR_WS_BOXES . 'categories3.php');
   if (SET_BOX_AUTHORS == 'true') include(DIR_WS_BOXES . 'authors.php');
   if (SET_BOX_ARTICLES == 'true') include(DIR_WS_BOXES . 'articles.php');
   if (SET_BOX_ARTICLESNEW == 'true') include(DIR_WS_BOXES . 'articles_new.php');

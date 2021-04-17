@@ -1,17 +1,7 @@
 {config_load file="$language/lang_$language.conf" section="boxes"}
-{config_load file="$language/lang_$language.conf" section="index"}
-{config_load file="$language/lang_$language.conf" section="categorie_listing"}
-  <button class="btn btn-rounded d-xl-none mb-2" type="button" data-toggle="collapse" data-target="#collapseExampleCat" aria-expanded="false" aria-controls="collapseExample">
-    <i class="fas fa-list"></i> {#heading_more_categories#}
-  </button>
-  
-  <div class="collapse dont-collapse-sm" id="collapseExampleCat">
-    <div class="well">
-    <div class="filters categories-widget">
-    <div id ="categoriesBoxMenu" class="w-100">
-      {$BOX_CONTENT}
-    </div>
-    </div>
-    </div>
-  </div>
-<br />
+<!-- Departments menu-->
+<ul class="navbar-nav navbar-mega-nav pe-lg-2 me-lg-2">
+<li class="nav-item dropdown"><a class="nav-link dropdown-toggle ps-lg-0" href="#" data-bs-toggle="dropdown"><i class="ci-view-grid me-2"></i>{#heading_categories#}</a>
+{$BOX_CONTENT}
+</li>
+</ul>

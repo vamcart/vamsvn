@@ -15141,7 +15141,6 @@ a.nav-link:hover .media-tab-media {
 .navbar-mega-nav .dropdown-menu > .dropdown > a {
   padding-top: .75rem;
   padding-bottom: .75rem;
-  border-bottom: 1px solid #e3e9ef;
 }
 
 .navbar-mega-nav .dropdown-menu > .dropdown:last-child > a {

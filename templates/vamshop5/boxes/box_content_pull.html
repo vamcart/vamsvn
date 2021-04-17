@@ -1,3 +1,8 @@
 {config_load file="$language/lang_$language.conf" section="boxes"}
-{config_load file="$language/lang_$language.conf" section="index"}
-{$BOX_CONTENT_PULL}
+<li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">{$smarty.const.TEXT_PAGE_INFORMATION}</a>
+  <ul class="dropdown-menu">
+	{foreach name=aussen item=box_data from=$box_content}
+	<li><a class="dropdown-item" href="{$box_data.content_url}">{$box_data.content_title}</a></li>
+	{/foreach}
+  </ul>
+</li>  

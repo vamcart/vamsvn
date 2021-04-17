@@ -1,134 +1,194 @@
 <?php
 /* -----------------------------------------------------------------------------------------
-   $Id: categories.php 1302 2007-02-07 12:30:44 VaM $   
+   categories2.php 2013-04-07
 
-   VaM Shop - open source ecommerce solution
-   http://vamshop.ru
-   http://vamshop.com
+   VaM Shop
+   Author: Mironov Andrey (Skype: xenlil)
+   
+   Version: 1
 
-   Copyright (c) 2007 VaM Shop
    -----------------------------------------------------------------------------------------
-   based on: 
-   (c) 2000-2001 The Exchange Project  (earlier name of osCommerce)
-   (c) 2002-2003 osCommerce(categories.php,v 1.23 2002/11/12); www.oscommerce.com 
-   (c) 2003	 nextcommerce (categories.php,v 1.10 2003/08/17); www.nextcommerce.org
-   (c) 2004	 xt:Commerce (categories.php,v 1.10 2003/08/13); xt-commerce.com 
 
-   Released under the GNU General Public License 
-   -----------------------------------------------------------------------------------------
-   Third Party contributions:
-   Enable_Disable_Categories 1.3        	Autor: Mikel Williams | mikel@ladykatcostumes.com
+   Бокс со списком категорий с использованием всплывающего CSS-меню
 
-   Released under the GNU General Public License 
    ---------------------------------------------------------------------------------------*/
-// reset var
-$start = microtime();
-$box = new vamTemplate;
-$box_content = '';
-$id = '';
 
-$box->assign('language', $_SESSION['language']);
-// set cache ID
-if (!CacheCheck()) {
-	$cache=false;
-	$box->caching = 0;
-} else {
-	$cache=true;
-	$box->caching = 1;
-	$box->cache_lifetime = CACHE_LIFETIME;
-	$box->cache_modified_check = CACHE_CHECK;
-	$cache_id = $_SESSION['language'].$_SESSION['customers_status']['customers_status_id'].$current_category_id;
-}
-
-if(!$box->isCached(CURRENT_TEMPLATE.'/boxes/box_categories2.html', $cache_id) || !$cache){
-
-$box->assign('tpl_path', 'templates/'.CURRENT_TEMPLATE.'/');
-
-// include needed functions
-require_once (DIR_FS_CATALOG.'templates/'.CURRENT_TEMPLATE.'/source/inc/vam_show_category.inc.php');
 require_once (DIR_FS_INC.'vam_has_category_subcategories.inc.php');
 require_once (DIR_FS_INC.'vam_count_products_in_category.inc.php');
 
+$box = new vamTemplate;
+global $cPath;
+$split_cPath_array = array();
+if ( $cPath ) $split_cPath_array = preg_split( '/_/', $cPath );
+$categories_string2 = '';
 
-$categories_string = '';
-if (GROUP_CHECK == 'true') {
-	$group_check = "and c.group_permission_".$_SESSION['customers_status']['customers_status_id']."=1 "; 
- } else { $group_check=''; }
 
-$categories_new_query = "select c.categories_id,
-                                           cd.categories_name,
-                                           c.categories_image,
-                                           c.parent_id from ".TABLE_CATEGORIES." c, ".TABLE_CATEGORIES_DESCRIPTION." cd
-                                           where c.categories_status = '1'
-                                           and c.parent_id = '0'
-                                           ".$group_check."
-                                           and c.categories_id = cd.categories_id
-                                           and cd.language_id='".(int) $_SESSION['languages_id']."'
-                                           order by sort_order, cd.categories_name";
-$categories_new_query = vamDBquery($categories_new_query);
+function vam_category2_get_category_products( $cat_id )
+{
 
-while ($categories_new = vam_db_fetch_array($categories_new_query, true)) {
-	$foo[$categories_new['categories_id']] = array ('id' => $categories_new['categories_id'], 'name' => $categories_new['categories_name'], 'image' => $categories_new['categories_image'], 'parent' => $categories_new['parent_id'], 'level' => 0, 'path' => $categories_new['categories_id'], 'next_id' => false);
+    global $categories_string2;
 
-	if (isset ($prev_id)) {
-		$foo[$prev_id]['next_id'] = $categories_new['categories_id'];
-	}
+    $products_query = "select p.products_id, pd.products_name from ".TABLE_PRODUCTS." as p "
+    . "left join ".TABLE_PRODUCTS_DESCRIPTION." as pd on (p.products_id = pd.products_id) "
+    . "left join ".TABLE_PRODUCTS_TO_CATEGORIES." as ptc on (p.products_id = ptc.products_id) "
+    . "where ptc.categories_id = '".$cat_id."' and p.products_status = '1' and pd.language_id='" . (int)$_SESSION[ 'languages_id' ] . "' "
+    . "order by p.products_sort";
 
-	$prev_id = $categories_new['categories_id'];
+    $products_query = vamDBquery( $products_query );
 
-	if (!isset ($first_element)) {
-		$first_element = $categories_new['categories_id'];
-	}
-}
+    while ( $products = vam_db_fetch_array( $products_query, true ) )
+    {
+        $p_url = vam_product_link( $products[ 'products_id' ], $products[ 'products_name' ] );
+        $p_url = vam_href_link( FILENAME_PRODUCT_INFO, $p_url );
 
-//------------------------
-if ($cPath) {
-	$new_path = '';
-	$id = preg_split('/_/', $cPath);
-	foreach ($id as $key => $value) {	
-		unset ($prev_id);
-		unset ($first_id);
-		$categories_new_query = "select c.categories_id, c.categories_image, cd.categories_name, c.parent_id from ".TABLE_CATEGORIES." c, ".TABLE_CATEGORIES_DESCRIPTION." cd where c.categories_status = '1' and c.parent_id = '".$value."' ".$group_check." and c.categories_id = cd.categories_id and cd.language_id='".$_SESSION['languages_id']."' order by sort_order, cd.categories_name";
-		$categories_new_query = vamDBquery($categories_new_query);
-		$category_check = vam_db_num_rows($categories_new_query, true);
-		if ($category_check > 0) {
-			$new_path .= $value;
-			while ($row = vam_db_fetch_array($categories_new_query, true)) {
-				$foo[$row['categories_id']] = array ('id' => $row['categories_id'], 'name' => $row['categories_name'], 'image' => $row['categories_image'], 'parent' => $row['parent_id'], 'level' => $key +1, 'path' => $new_path.'_'.$row['categories_id'], 'next_id' => false);
+        $categories_string2 .= '<li class="categorie_product"><a href="' . $p_url . '">' . $products[ 'products_name' ] . '</a></li>';
 
-				if (isset ($prev_id)) {
-					$foo[$prev_id]['next_id'] = $row['categories_id'];
-				}
+    };  // while ( $products = vam_db_fetch_array( $products_query, true ) )
 
-				$prev_id = $row['categories_id'];
+    
+}  // function vam_category2_get_category_products( $cat_id )
 
-				if (!isset ($first_id)) {
-					$first_id = $row['categories_id'];
-				}
 
-				$last_id = $row['categories_id'];
-			}
-			$foo[$last_id]['next_id'] = $foo[$value]['next_id'];
-			$foo[$value]['next_id'] = $first_id;
-			$new_path .= '_';
-		} else {
-			break;
-		}
-	}
-}
+function vam_category2_get_subcategory( $owner_cat_id, $owner_cat_name = '', $owner_cat_image = '', $current_cPath = '', $level = 0 )
+{
 
-vam_show_category($first_element);
+    global $categories_string2;
+    
+    $cPath_new = vam_category_link( $owner_cat_id, $owner_cat_name );
+    $cPath_new_url = vam_href_link( FILENAME_DEFAULT, $cPath_new );
+    
 
-$box->assign('BOX_CONTENT', '<ul id="CatNavi">' . $categories_string . '</ul>');
+    if ( $owner_cat_id )
+    {
+        $products_count_string = '';
+        if (SHOW_COUNTS == 'true')
+        {
+            require_once ( DIR_FS_INC . 'vam_count_products_in_category.inc.php' );
+            $products_in_category = vam_count_products_in_category( $owner_cat_id );
+            if ( $products_in_category > 0 )
+            {
+                $products_count_string .= '&nbsp;(' . $products_in_category . ')';
+            };
+        };
 
-}
+        $categories_string2 .= '<li'.((vam_has_category_subcategories($owner_cat_id)) ? " class=\"dropdown\" " : "").'><a'.((vam_has_category_subcategories($owner_cat_id)) ? " class=\"dropdown-item dropdown-toggle\" data-bs-toggle=\"dropdown\" " : " class=\"dropdown-item\" ").'href="' . $cPath_new_url . '">' . $owner_cat_name . $products_count_string . '</a>'."\n";
+
+    };  // if ( $owner_cat_id )
+
+    $group_check = '';
+    if ( GROUP_CHECK == 'true' )
+    {
+        $group_check = "and c.group_permission_" . $_SESSION[ 'customers_status' ][ 'customers_status_id' ] . "=1 "; 
+    };
+
+    $categories_query = "select c.categories_id,
+                       cd.categories_name,
+                       c.categories_image,
+                       c.parent_id from " . TABLE_CATEGORIES . " c, " . TABLE_CATEGORIES_DESCRIPTION . " cd
+                       where c.categories_status = '1'
+                       and c.parent_id = '" . (int)$owner_cat_id . "'
+                       " . $group_check . "
+                       and c.categories_id = cd.categories_id
+                       and cd.language_id='" . (int)$_SESSION[ 'languages_id' ] . "'
+                       order by sort_order, cd.categories_name";
+
+    $categories_query = vamDBquery( $categories_query );
+    
+    $categories_current_level = array();
+
+    while ( $categories = vam_db_fetch_array( $categories_query, true ) )
+    {
+        $categories_current_level[ $categories[ 'categories_id' ] ] = array (
+            'id' => $categories[ 'categories_id' ],
+            'name' => $categories[ 'categories_name' ],
+            'image' => $categories[ 'categories_image' ],
+            'parent' => $categories[ 'parent_id' ],
+            'path' => ( $current_cPath ? $current_cPath . '_' . $categories[ 'categories_id' ] : $categories[ 'categories_id' ] ),
+            'level' => substr_count($current_cPath,'_')
+        );
+
+    };  // while ( $categories = vam_db_fetch_array( $categories_query, true ) )
+
+    if ( $categories_current_level )
+    {
+        if ( $owner_cat_id ) $categories_string2 .= '<ul class="dropdown-menu">';
+        
+        $level = 0;
+
+        foreach ( $categories_current_level as $v )
+        {
+        	$level++;
+            vam_category2_get_subcategory(
+                $v[ 'id' ],
+                $v[ 'name' ],
+                $v[ 'image' ],
+                $v[ 'path' ],
+                substr_count($current_cPath,'_')
+            );
+            
+        };
+
+// Uncomment this for output products in CSS menu
+//        vam_category2_get_category_products( $owner_cat_id );
+
+        if ( $owner_cat_id ) $categories_string2 .= '</ul>';
+
+    }  // if ( $categories_current_level )
+
+// Uncomment this for output products in CSS menu
+//    else {
+//        if ( $owner_cat_id ) $categories_string2 .= '<ul>';
+//        vam_category2_get_category_products( $owner_cat_id );
+//        if ( $owner_cat_id ) $categories_string2 .= '</ul>';
+//    }  // if ( $categories_current_level )
+    ;
+    
+
+    if ( $owner_cat_id ) $categories_string2 .= '</li>';
+    
+}  // function vam_category2_get_subcategory( ... )
+
+
+
+$box->assign( 'language', $_SESSION[ 'language' ] );
 
 // set cache ID
-if (!$cache) {
-	$box_categories2 = $box->fetch(CURRENT_TEMPLATE.'/boxes/box_categories2.html');
+if ( !CacheCheck() )
+{
+	$cache = false;
+	$box->caching = 0;
 } else {
-	$box_categories2 = $box->fetch(CURRENT_TEMPLATE.'/boxes/box_categories2.html', $cache_id);
-}
+	$cache = true;
+	$box->caching = 1;
+	$box->cache_lifetime = CACHE_LIFETIME;
+	$box->cache_modified_check = CACHE_CHECK;
+	$cache_id = $_SESSION[ 'language' ] . $_SESSION[ 'customers_status' ][ 'customers_status_id' ] . $current_category_id;
+};
 
-$vamTemplate->assign('box_CATEGORIES2', $box_categories2);
+if( !$box->isCached( CURRENT_TEMPLATE . '/boxes/box_categories2.html', $cache_id ) || !$cache )
+{
+
+  $box->assign('tpl_path', 'templates/' . CURRENT_TEMPLATE . '/');
+
+  // include needed functions
+//  require_once ( DIR_FS_INC . 'vam_has_category_subcategories.inc.php' );
+
+  vam_category2_get_subcategory( 0 );
+  
+  //echo var_dump($categories_string2); 
+
+
+$box->assign( 'BOX_CONTENT', '<ul class="dropdown-menu">' . $categories_string2 . '</ul>' );
+
+};  // if( !$box->isCached( CURRENT_TEMPLATE . '/boxes/box_categories2.html', $cache_id ) || !$cache )
+
+// set cache ID
+if ( !$cache )
+{
+	$box_categories2 = $box->fetch( CURRENT_TEMPLATE . '/boxes/box_categories2.html' );
+} else {
+	$box_categories2 = $box->fetch( CURRENT_TEMPLATE . '/boxes/box_categories2.html', $cache_id );
+};
+
+$vamTemplate->assign( 'box_CATEGORIES2', $box_categories2 );
 ?>
