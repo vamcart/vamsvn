@@ -340,6 +340,7 @@ $module = new vamTemplate;
 // EOF extra_sort
 // ALTER TABLE `vamvelosiped`.`products` ADD INDEX `idx_status_manufacturers_id` ( `products_status` , `manufacturers_id` )
   $listing_sql .= "select p.products_id,
+                          p.label_id,
                           p.products_fsk18,
                           p.products_shippingtime,
                           p.products_model,
@@ -353,7 +354,6 @@ $module = new vamTemplate;
                           pd.products_name,
                           pd.products_short_description,
                           pd.products_description,
-                          p.products_id,
                           p.manufacturers_id,
                           p.products_vpe,
                           p.products_vpe_status,
