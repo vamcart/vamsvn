@@ -39,9 +39,18 @@
       <div class="container"><a class="navbar-brand flex-shrink-0" href="index.html"><img src="{$tpl_path}img/logo-big.png" width="142" alt="{$smarty.const.STORE_NAME}"></a>
         {$box_SEARCH}
         <div class="navbar-toolbar d-flex flex-shrink-0 align-items-center">
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"><span class="navbar-toggler-icon"></span></button><a class="navbar-tool navbar-stuck-toggler" href="#"><span class="navbar-tool-tooltip">Expand menu</span>
-            <div class="navbar-tool-icon-box"><i class="navbar-tool-icon ci-menu"></i></div></a><a class="navbar-tool d-none d-lg-flex" href="account-wishlist.html"><span class="navbar-tool-tooltip">Wishlist</span>
-            <div class="navbar-tool-icon-box"><i class="navbar-tool-icon ci-heart"></i></div></a><a class="navbar-tool ms-1 ms-lg-0 me-n1 me-lg-2" href="#signin-modal" data-bs-toggle="modal">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"><span class="navbar-toggler-icon"></span></button>
+          <a class="navbar-tool navbar-stuck-toggler" href="#"><span class="navbar-tool-tooltip">Expand menu</span>
+            <div class="navbar-tool-icon-box"><i class="navbar-tool-icon ci-menu"></i></div>
+          </a>
+          {if !$wishlist_current}
+          {if $smarty.const.ENABLE_WISHLIST == 'true'}
+          <div id="divWishlist">
+            {$box_WISHLIST}
+          </div>
+          {/if}
+          {/if}
+            <a class="navbar-tool ms-1 ms-lg-0 me-n1 me-lg-2" href="#signin-modal" data-bs-toggle="modal">
             <div class="navbar-tool-icon-box"><i class="navbar-tool-icon ci-user"></i></div>
             <div class="navbar-tool-text ms-n3"><small>Hello, Sign in</small>My Account</div></a>
           <div class="navbar-tool dropdown ms-3"><a class="navbar-tool-icon-box bg-secondary dropdown-toggle" href="shop-cart.html"><span class="navbar-tool-label">4</span><i class="navbar-tool-icon ci-cart"></i></a><a class="navbar-tool-text" href="shop-cart.html"><small>My Cart</small>$265.00</a>
