@@ -8,3 +8,56 @@
 display: none;
 
 }
+
+/* Ajax quick find */
+
+div#ajaxQuickFind,
+div#ajaxQuickFindHeader {
+  text-align: left; 
+  color: #000;
+  position: absolute; 
+  z-index: 999; 
+  top: 50px;
+  width: inherit;
+  background-color: #fff;
+  border-radius: 4px;
+}
+
+div.ajaxQuickFind, 
+div.ajaxQuickFindHeader 
+   {
+     text-align: left;
+   }
+
+ul.ajaxQuickFind, 
+ul.ajaxQuickFindHeader 
+   {
+     list-style-type: none;
+     list-style-image: none;
+     padding: 0.5em;
+   }
+
+li.ajaxQuickFind, 
+li.ajaxQuickFindHeader 
+   {
+     padding-left: 0px;
+   } 
+
+#searchPreview table {
+  border: 1px #e5e5e5;
+  border-radius: 4px;
+  box-shadow: 0 1px 4px 0 rgba(0,0,0,.1);
+  background: #fff;
+  height: 300px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  margin-bottom: 0;
+}
+
+#searchPreview .table th, #searchPreview .table td {
+  border-color: #e5e5e5;
+  vertical-align: middle;
+  font-weight: normal;
+}	
+
+/* /Ajax quick find */

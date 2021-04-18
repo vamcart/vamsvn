@@ -1,3 +1,5 @@
+<script src="templates/<?php echo CURRENT_TEMPLATE; ?>/javascript/vamshop5.js"></script>
+<script src="templates/<?php echo CURRENT_TEMPLATE; ?>/javascript/jscript_ajax_wishlist.js"></script>
 <script src="templates/<?php echo CURRENT_TEMPLATE; ?>/javascript/jscript_ajax_cart.js"></script>
 <!-- Vendor scrits: js libraries and plugins-->
 <script src="templates/<?php echo CURRENT_TEMPLATE; ?>/dist/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>

@@ -44,92 +44,92 @@ window.addEventListener('beforeinstallprompt', function(e) {
 
 
 // Lazy Load
-var lazyLoadInstance = new LazyLoad({
-  elements_selector: ".lazy",
-  use_native: false
-});
+//var lazyLoadInstance = new LazyLoad({
+  //elements_selector: ".lazy",
+  //use_native: false
+//});
 
 //OWL Carousel Slider
-$(".owl-carousel").owlCarousel({
-    margin: 30,
-    nav: false,
-    center: false,
-    stagePadding: 30,
-    dots: false,
-    loop: false,
-    navText: ['<span class="fas fa-chevron-left fa-1x"></span>','<span class="fas fa-chevron-right fa-1x"></span>'],
-    responsive:{
-        0:{
-            items:1,
-            margin: 10,
-            stagePadding: 20
-        },
-        360:{
-            items:2,
-            margin: 10,
-            stagePadding: 20
-        },
-        768:{
-            items:3,
-            margin: 10,
-            stagePadding: 20
-        },
-        992:{
-            items:4,
-            margin: 10,
-            stagePadding: 20
-        },
-        1200:{
-            items:4,
-            margin: 10,
-            stagePadding: 20
-        }
-    }
-})
+//$(".owl-carousel").owlCarousel({
+    //margin: 30,
+    //nav: false,
+    //center: false,
+    //stagePadding: 30,
+    //dots: false,
+    //loop: false,
+    //navText: ['<span class="fas fa-chevron-left fa-1x"></span>','<span class="fas fa-chevron-right fa-1x"></span>'],
+    //responsive:{
+        //0:{
+            //items:1,
+            //margin: 10,
+            //stagePadding: 20
+        //},
+        //360:{
+            //items:2,
+            //margin: 10,
+            //stagePadding: 20
+        //},
+        //768:{
+            //items:3,
+            //margin: 10,
+            //stagePadding: 20
+        //},
+        //992:{
+            //items:4,
+            //margin: 10,
+            //stagePadding: 20
+        //},
+        //1200:{
+            //items:4,
+            //margin: 10,
+            //stagePadding: 20
+        //}
+    //}
+//})
 
 //OWL Carousel Slider
-$(".owl-carousel-tags").owlCarousel({
-    margin: 12,
-    nav: false,
-    center: false,
-    autoWidth: true,
-    stagePadding: 30,
-    dots: false,
-    loop: false,
-    navText: false
-})
+//$(".owl-carousel-tags").owlCarousel({
+    //margin: 12,
+    //nav: false,
+    //center: false,
+    //autoWidth: true,
+    //stagePadding: 30,
+    //dots: false,
+    //loop: false,
+    //navText: false
+//})
 
-$(".owl-carousel-reverse").owlCarousel({
-    margin: 30,
-    nav: false,
-    loop:false,
-    dots: false,
-    navText: ['<span class="fas fa-chevron-left fa-1x"></span>','<span class="fas fa-chevron-right fa-1x"></span>'],
-    responsive:{
-        0:{
-            items:1,
-            nav:true
-        },
-        360:{
-            items:2,
-            nav:true
-        },
-        768:{
-            items:3,
-            nav:true
-        },
-        992:{
-            items:4,
-            nav:true,
-            loop:false
-        },
-        1200:{
-            items:1,
-            nav:true,
-            loop:false
-        }
-    }
-})
+//$(".owl-carousel-reverse").owlCarousel({
+    //margin: 30,
+    //nav: false,
+    //loop:false,
+    //dots: false,
+    //navText: ['<span class="fas fa-chevron-left fa-1x"></span>','<span class="fas fa-chevron-right fa-1x"></span>'],
+    //responsive:{
+        //0:{
+            //items:1,
+            //nav:true
+        //},
+        //360:{
+            //items:2,
+            //nav:true
+        //},
+        //768:{
+            //items:3,
+            //nav:true
+        //},
+        //992:{
+            //items:4,
+            //nav:true,
+            //loop:false
+        //},
+        //1200:{
+            //items:1,
+            //nav:true,
+            //loop:false
+        //}
+    //}
+//})
 
 // hook into Bootstrap shown event and manually trigger 'resize' event so that Slick recalculates the widths
 $('span[data-toggle="tab"]').on('shown.bs.tab', function (e) {
@@ -481,32 +481,32 @@ function doDislike(id) {
 	
 //$(function () {
 // Responsive equal height
-if ($(window).width() > 350) {
-$(window).on('load', function () {
-    $('.card-body .img-wrap').matchHeight();
-    $('.card-body .attributes').matchHeight();
-    $('.card-body .title').matchHeight();
-    $('.card-body .price-wrap').matchHeight();
-    $('.payment-method .method-title').matchHeight();
-    $('.shipping-method .method-title').matchHeight();
-    $('.product-attribute-item .method-title').matchHeight();
-    $('.payment-method .card-title').matchHeight();
-    $('.shipping-method .card-title').matchHeight();
-    $('.product-attribute-item .card-title').matchHeight();
-});
-$(document).ajaxSuccess(function () {
-    $('.card-body .img-wrap').matchHeight();
-    $('.card-body .attributes').matchHeight();
-    $('.card-body .title').matchHeight();
-    $('.card-body .price-wrap').matchHeight();
-    $('.payment-method .method-title').matchHeight();
-    $('.shipping-method .method-title').matchHeight();
-    $('.product-attribute-item .method-title').matchHeight();
-    $('.payment-method .card-title').matchHeight();
-    $('.shipping-method .card-title').matchHeight();
-    $('.product-attribute-item .card-title').matchHeight();
-});
-}	
+//if ($(window).width() > 350) {
+//$(window).on('load', function () {
+    //$('.card-body .img-wrap').matchHeight();
+    //$('.card-body .attributes').matchHeight();
+    //$('.card-body .title').matchHeight();
+    //$('.card-body .price-wrap').matchHeight();
+    //$('.payment-method .method-title').matchHeight();
+    //$('.shipping-method .method-title').matchHeight();
+    //$('.product-attribute-item .method-title').matchHeight();
+    //$('.payment-method .card-title').matchHeight();
+    //$('.shipping-method .card-title').matchHeight();
+    //$('.product-attribute-item .card-title').matchHeight();
+//});
+//$(document).ajaxSuccess(function () {
+    //$('.card-body .img-wrap').matchHeight();
+    //$('.card-body .attributes').matchHeight();
+    //$('.card-body .title').matchHeight();
+    //$('.card-body .price-wrap').matchHeight();
+    //$('.payment-method .method-title').matchHeight();
+    //$('.shipping-method .method-title').matchHeight();
+    //$('.product-attribute-item .method-title').matchHeight();
+    //$('.payment-method .card-title').matchHeight();
+    //$('.shipping-method .card-title').matchHeight();
+    //$('.product-attribute-item .card-title').matchHeight();
+//});
+//}	
 //$(window).on('resize', function () {
     //$('.card-body .img-wrap').matchHeight();
     //$('.card-body .attributes').matchHeight();

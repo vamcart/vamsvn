@@ -37,9 +37,7 @@
   <div class="navbar-sticky bg-light">
     <div class="navbar navbar-expand-lg navbar-light">
       <div class="container"><a class="navbar-brand flex-shrink-0" href="index.html"><img src="{$tpl_path}img/logo-big.png" width="142" alt="{$smarty.const.STORE_NAME}"></a>
-        <div class="input-group d-none d-lg-flex mx-4">
-          <input class="form-control rounded-end pe-5" type="text" placeholder="Search for products"><i class="ci-search position-absolute top-50 end-0 translate-middle-y text-muted fs-base me-3"></i>
-        </div>
+        {$box_SEARCH}
         <div class="navbar-toolbar d-flex flex-shrink-0 align-items-center">
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"><span class="navbar-toggler-icon"></span></button><a class="navbar-tool navbar-stuck-toggler" href="#"><span class="navbar-tool-tooltip">Expand menu</span>
             <div class="navbar-tool-icon-box"><i class="navbar-tool-icon ci-menu"></i></div></a><a class="navbar-tool d-none d-lg-flex" href="account-wishlist.html"><span class="navbar-tool-tooltip">Wishlist</span>
@@ -99,11 +97,17 @@
     </div>
     <div class="navbar navbar-expand-lg navbar-light navbar-stuck-menu mt-n2 pt-0 pb-2">
       <div class="container">
-        <div class="collapse navbar-collapse" id="navbarCollapse">
+        <div class="collapse navbar-collapse" id="navbarCollapse" itemscope itemtype="https://schema.org/WebSite">
           <!-- Search-->
-          <div class="input-group d-lg-none my-3"><i class="ci-search position-absolute top-50 start-0 translate-middle-y text-muted fs-base ms-3"></i>
-            <input class="form-control rounded-start" type="text" placeholder="Search for products">
+          <meta itemprop="url" content="{$smarty.const.HTTP_SERVER}{$smarty.const.DIR_WS_CATALOG}"/>
+          <form name="search" id="searchheader" action="advanced_search_result.php" method="get" class="form-inline" autocomplete="off" itemprop="potentialAction" itemscope itemtype="https://schema.org/SearchAction">
+          <meta itemprop="target" content="{$smarty.const.HTTP_SERVER}{$smarty.const.DIR_WS_CATALOG}{$smarty.const.FILENAME_ADVANCED_SEARCH_RESULT}?keywords={literal}{keywords}{/literal}"/>
+          <div class="input-group d-lg-none my-3">
+            <input itemprop="query-input" class="form-control rounded-start" name="keywords" id="quick_find_keyword_header" placeholder="{$smarty.const.BOX_HEADING_SEARCH}" aria-label="{$smarty.const.BOX_HEADING_SEARCH}">
+            <button class="btn btn-outline-secondary align rounded-end" type="submit" aria-label="{$smarty.const.BOX_HEADING_SEARCH}"><i class="pt-1 ci-search position-absolute top-50 end-0 translate-middle-y text-muted fs-base me-3"></i></button>
+            <div class="ajaxQuickFindHeader" id="ajaxQuickFindHeader"></div>
           </div>
+          </form>
           {$box_CATEGORIES2}
           <!-- Primary menu-->
           <ul class="navbar-nav">

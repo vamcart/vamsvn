@@ -23,7 +23,7 @@ $box_content = '';
 require_once (DIR_FS_INC.'vam_image_submit.inc.php');
 require_once (DIR_FS_INC.'vam_hide_session_id.inc.php');
 
-$box->assign('FORM_ACTION', vam_draw_form('search', vam_href_link(FILENAME_ADVANCED_SEARCH_RESULT, '', 'NONSSL', false), 'get', 'class="form-inline topmenusearch" autocomplete="off"').vam_hide_session_id());
+$box->assign('FORM_ACTION', vam_draw_form('search', vam_href_link(FILENAME_ADVANCED_SEARCH_RESULT, '', 'NONSSL', false), 'get', 'class="w-100 d-none d-lg-flex autocomplete="off"').vam_hide_session_id());
 $box->assign('INPUT_SEARCH', vam_draw_input_field('keywords', '', 'class="form-control" id="quick_find_keyword"'));
 $box->assign('BUTTON_SUBMIT', vam_image_submit('search.png', IMAGE_BUTTON_SEARCH));
 $box->assign('FORM_END', '</form>');
