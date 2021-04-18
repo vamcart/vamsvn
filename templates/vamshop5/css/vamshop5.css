@@ -71,3 +71,25 @@ li.ajaxQuickFindHeader
 }
 
 /* /Ajax quick find */
+
+.wishlist-button {
+    position: absolute;
+    top: .75rem;
+    right: .75rem;
+    z-index: 5;
+    transition: color 0.25s ease-in-out,background-color 0.25s ease-in-out,border-color 0.25s ease-in-out,box-shadow 0.2s ease-in-out;
+    border: 0;
+    border-radius: 50%;
+    background-color: #f3f5f9;
+    color: #373f50;
+    text-align: center;    
+}
+
+.wishlist-button i {
+    color: #373f50;
+} 
+
+.wishlist-button:hover, 
+.wishlist-button i:hover {
+    color: #fe696a;
+}

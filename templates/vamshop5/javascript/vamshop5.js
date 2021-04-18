@@ -95,6 +95,10 @@ $('#cookie-alert').on('closed.bs.alert', function (e) {
 // Tooltips
 
 $(function () {
-  $('[data-toggle="tooltip"]').tooltip()
+  $('[data-toggle="tooltip"]').tooltip(
+  {
+  	template:'<div class="tooltip" role="tooltip"><div class="tooltip-inner"></div></div>'
+  }
+  )
 })
 	

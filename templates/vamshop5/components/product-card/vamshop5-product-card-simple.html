@@ -1,6 +1,9 @@
   <div class="col-lg-4 col-6 px-0 px-sm-2 mb-sm-4">
     <div class="card product-card card-static">
-      <button class="btn-wishlist btn-sm" type="button" data-bs-toggle="tooltip" data-bs-placement="left" title="{$smarty.const.TEXT_WISHLIST_BUTTON}"><i class="ci-heart"></i></button><a class="card-img-top d-block overflow-hidden text-center" href="{$module_data.PRODUCTS_LINK}"><img src="{$module_data.PRODUCTS_IMAGE}" alt="{$module_data.PRODUCTS_NAME}"></a>
+      {if $smarty.const.ENABLE_WISHLIST == 'true'}
+        <span class="wishlist-button btn-sm text-muted px-2 py-1">{$module_data.PRODUCTS_BUTTON_WISHLIST}</span>
+      {/if}	
+      <a class="card-img-top d-block overflow-hidden text-center" href="{$module_data.PRODUCTS_LINK}"><img src="{$module_data.PRODUCTS_IMAGE}" alt="{$module_data.PRODUCTS_NAME}"></a>
       <div class="card-body py-2"><a class="product-meta d-block fs-xs pb-1" href="{$module_data.PRODUCTS_CATEGORY_URL}">{$module_data.PRODUCTS_CATEGORY_NAME}</a>
         <h3 class="product-title fs-sm text-truncate"><a href="{$module_data.PRODUCTS_LINK}">{$module_data.PRODUCTS_NAME}</a></h3>
         <div class="d-flex justify-content-between">
