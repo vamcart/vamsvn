@@ -60,4 +60,14 @@ li.ajaxQuickFindHeader
   font-weight: normal;
 }	
 
+#searchPreview a {
+    color: #4b566b;
+}
+
+#searchPreview td:hover a,
+#searchPreview a:hover,
+#searchPreview a:focus {
+    color: #fe696a;
+}
+
 /* /Ajax quick find */
