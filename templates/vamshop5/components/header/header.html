@@ -4,13 +4,13 @@
     <div class="container">
       <div class="topbar-text dropdown d-md-none"><a class="topbar-link dropdown-toggle" href="#" data-bs-toggle="dropdown">{$smarty.const.TEXT_USEFUL_LINKS}</a>
         <ul class="dropdown-menu">
-          <li><a class="dropdown-item" href="tel:{$smarty.const.STORE_TELEPHONE}"><i class="ci-support text-muted me-2"></i>{$smarty.const.STORE_TELEPHONE}</a></li>
-          <li><a class="dropdown-item" href="{$smarty.const.FILENAME_ACCOUNT_HISTORY}"><i class="ci-location text-muted me-2"></i>{$smarty.const.TEXT_ORDER_TRACKING}</a></li>
+          <li><a class="dropdown-item" href="tel:{$smarty.const.STORE_TELEPHONE}"><i class="fas fa-headset text-muted me-2"></i>{$smarty.const.STORE_TELEPHONE}</a></li>
+          <li><a class="dropdown-item" href="{$smarty.const.FILENAME_ACCOUNT_HISTORY}"><i class="fas fa-map-marker-alt text-muted me-2"></i>{$smarty.const.TEXT_ORDER_TRACKING}</a></li>
         </ul>
       </div>
-      <div class="topbar-text text-nowrap d-none d-md-inline-block"><i class="ci-support"></i><span class="text-muted me-1">{$smarty.const.TEXT_SUPPORT}</span><a class="topbar-link" href="tel:{$smarty.const.STORE_TELEPHONE}">{$smarty.const.STORE_TELEPHONE}</a></div>
+      <div class="topbar-text text-nowrap d-none d-md-inline-block"><i class="fas fa-headset"></i><span class="text-muted me-1">{$smarty.const.TEXT_SUPPORT}</span><a class="topbar-link" href="tel:{$smarty.const.STORE_TELEPHONE}">{$smarty.const.STORE_TELEPHONE}</a></div>
       {include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/slider/top-slider.html"}
-      <div class="ms-3 text-nowrap"><a class="topbar-link me-4 d-none d-md-inline-block" href="{$smarty.const.FILENAME_ACCOUNT_HISTORY}"><i class="ci-location"></i>{$smarty.const.TEXT_ORDER_TRACKING}</a>
+      <div class="ms-3 text-nowrap"><a class="topbar-link me-4 d-none d-md-inline-block" href="{$smarty.const.FILENAME_ACCOUNT_HISTORY}"><i class="fas fa-map-marker-alt"></i>{$smarty.const.TEXT_ORDER_TRACKING}</a>
       {if {$box_LANGUAGES}}      
       <div class="topbar-text dropdown disable-autohide"><a class="topbar-link dropdown-toggle" href="#" data-bs-toggle="dropdown"><img class="me-2" src="{$smarty.const.DIR_WS_CATALOG}lang/{$smarty.session.language}/icon.gif" width="18" height="12" alt="{$smarty.session.language_name|capitalize}">{$smarty.session.language_name|capitalize} / {$smarty.session.currency}</a>
         <ul class="dropdown-menu dropdown-menu-end">
@@ -41,7 +41,7 @@
         <div class="navbar-toolbar d-flex flex-shrink-0 align-items-center">
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"><span class=""><i class="fas fa-bars"></i></span></button>
           <a class="navbar-tool navbar-stuck-toggler" href="#"><span class="navbar-tool-tooltip">{$smarty.const.TEXT_EXPAND_MENU}</span>
-            <div class="navbar-tool-icon-box"><i class="navbar-tool-icon ci-menu"></i></div>
+            <div class="navbar-tool-icon-box"><i class="navbar-tool-icon fas fa-bars"></i></div>
           </a>
           {if !$wishlist_current}
           {if $smarty.const.ENABLE_WISHLIST == 'true'}
@@ -51,7 +51,7 @@
           {/if}
           {/if}
             <a class="navbar-tool ms-1 ms-lg-0 me-n1 me-lg-2" href="#signin-modal" data-bs-toggle="modal">
-            <div class="navbar-tool-icon-box"><i class="navbar-tool-icon ci-user"></i></div>
+            <div class="navbar-tool-icon-box"><i class="navbar-tool-icon far fa-user"></i></div>
             <div class="navbar-tool-text ms-n3"><small>Hello, Sign in</small>My Account</div></a>
           <div class="navbar-tool dropdown ms-3" id="divShoppingCart">
             {$box_CART}
@@ -68,7 +68,7 @@
           <meta itemprop="target" content="{$smarty.const.HTTP_SERVER}{$smarty.const.DIR_WS_CATALOG}{$smarty.const.FILENAME_ADVANCED_SEARCH_RESULT}?keywords={literal}{keywords}{/literal}"/>
           <div class="input-group d-lg-none my-3">
             <input itemprop="query-input" class="form-control rounded-start" name="keywords" id="quick_find_keyword_header" placeholder="{$smarty.const.BOX_HEADING_SEARCH}" aria-label="{$smarty.const.BOX_HEADING_SEARCH}">
-            <button class="btn btn-outline-secondary align rounded-end" type="submit" aria-label="{$smarty.const.BOX_HEADING_SEARCH}"><i class="pt-1 ci-search position-absolute top-50 end-0 translate-middle-y text-muted fs-base me-3"></i></button>
+            <button class="btn btn-outline-secondary align rounded-end" type="submit" aria-label="{$smarty.const.BOX_HEADING_SEARCH}"><i class="pt-1 fas fa-search position-absolute top-50 end-0 translate-middle-y text-muted fs-base me-3"></i></button>
             <div class="ajaxQuickFindHeader" id="ajaxQuickFindHeader"></div>
           </div>
           </form>
