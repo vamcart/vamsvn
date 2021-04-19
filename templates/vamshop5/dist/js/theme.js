@@ -129,11 +129,11 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
             } else if (fileData.startsWith('data:video')) {
               icon.innerHTML = '';
               icon.className = '';
-              icon.className = 'file-drop-icon ci-video';
+              icon.className = 'file-drop-icon fas fa-video';
             } else {
               icon.innerHTML = '';
               icon.className = '';
-              icon.className = 'file-drop-icon ci-document';
+              icon.className = 'file-drop-icon far fa-file';
             }
           };
 
@@ -360,7 +360,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
     forEach(carousels, function (index, value) {
       var defaults = {
         container: value,
-        controlsText: ['<i class="ci-arrow-left"></i>', '<i class="ci-arrow-right"></i>'],
+        controlsText: ['<i class="fas fa-chevron-left"></i>', '<i class="fas fa-chevron-right"></i>'],
         navPosition: 'bottom',
         mouseDrag: true,
         speed: 500,

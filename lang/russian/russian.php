@@ -978,4 +978,6 @@ define('TEXT_CART_EMPTY','пуста');
 define('TEXT_EXPAND_MENU','Открыть меню');
 define('TEXT_MENU','Меню');
 
+define('TEXT_TO_TOP','Наверх');
+
 ?>

@@ -17,7 +17,7 @@ const carousel = (() => {
   forEach(carousels, function (index, value) {
     let defaults = {
       container: value,
-      controlsText: ['<i class="ci-arrow-left"></i>', '<i class="ci-arrow-right"></i>'],
+      controlsText: ['<i class="fas fa-chevron-left"></i>', '<i class="fas fa-chevron-right"></i>'],
       navPosition: 'bottom',
       mouseDrag: true,
       speed: 500,

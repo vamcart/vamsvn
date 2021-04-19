@@ -37,12 +37,12 @@ const fileDropArea = (() => {
           } else if (fileData.startsWith('data:video')) {
             icon.innerHTML = '';
             icon.className = '';
-            icon.className = 'file-drop-icon ci-video';
+            icon.className = 'file-drop-icon fas fa-video';
 
           } else {
             icon.innerHTML = '';
             icon.className = '';
-            icon.className = 'file-drop-icon ci-document';
+            icon.className = 'file-drop-icon far fa-file';
           }
         }
         reader.readAsDataURL(input.files[0]);
