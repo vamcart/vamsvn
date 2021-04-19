@@ -36,7 +36,7 @@
           <button class="btn btn-primary btn-shadow d-block w-100" type="submit">{$smarty.const.TEXT_LOGIN_SIGN_IN_BUTTON}</button>
         </form>
         {if {$smarty.const.SOCIAL_LOGIN} == "true"}
-        <div class="needs-validation tab-pane fade" autocomplete="off" novalidate id="social-tab">
+        <div class="needs-validation tab-pane fade" id="social-tab">
           <div class="mb-3">
 				<div class="social-login mt-2 mb-2"><span class="text-muted">{$smarty.const.TEXT_SOCIAL_LOGIN}:</span></div>
 				<a class="btn btn-outline-info btn-block" href="https://oauth.vk.com/authorize?client_id={$smarty.const.VK_OAUTH_CLIENT_ID}&redirect_uri={$smarty.const.HTTP_SERVER}{$smarty.const.DIR_WS_CATALOG}{$smarty.const.FILENAME_CREATE_ACCOUNT}?social_login=vk&response_type=code&display=page&scope=email"><i class="fab fa-vk" title="{$smarty.const.TEXT_SOCIAL_LOGIN_VK}"></i> {$smarty.const.TEXT_SOCIAL_LOGIN_VK}</a>
