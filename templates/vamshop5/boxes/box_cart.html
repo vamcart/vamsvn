@@ -4,12 +4,12 @@
 
           <a class="navbar-tool-icon-box bg-secondary dropdown-toggle" href="{$smarty.const.FILENAME_SHOPPING_CART}">
           {if $TOTAL_QUANTITY > 0}<span class="navbar-tool-label">{$TOTAL_QUANTITY}</span>{/if}
-          <i class="navbar-tool-icon ci-cart"></i>
+          <i class="navbar-tool-icon fas fa-shopping-basket"></i>
           </a>
           
           <a class="navbar-tool-text" href="{$smarty.const.FILENAME_SHOPPING_CART}">
-          <small>{$smarty.const.TEXT_CART}</small>
-          {if $TOTAL > 0}{$TOTAL}{else}0{/if}
+          <small class="text-center">{$smarty.const.TEXT_CART}</small>
+          <span class="cart-total">{if $TOTAL > 0}{$TOTAL}{else}0{/if}</span>
           </a>
           
             <!-- Cart dropdown-->

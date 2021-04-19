@@ -129,3 +129,57 @@ line-height: 1 !important;
 right: 20%;
 margin-top: 2px;
 }
+
+/* Handheld Cart */
+
+.handheld-toolbar .dropdown-menu,
+.handheld-toolbar .cart-total {
+display: none;
+}
+
+.handheld-toolbar .navbar-tool-icon-box .navbar-tool-label {
+    position: absolute;
+    top: -.3125rem;
+    right: -.3125rem;
+    width: 1.25rem;
+    height: 1.25rem;
+    border-radius: 50%;
+    background-color: #fe696a;
+    color: #fff;
+    font-size: .75rem;
+    font-weight: 500;
+    text-align: center;
+    line-height: 1.25rem;
+}
+
+.handheld-toolbar .navbar-tool-icon-box .navbar-tool-label {
+right: -50%;
+margin-top: 2px;
+}
+
+.handheld-toolbar .navbar-tool-text {
+display: inline;
+color: #7d879c;
+font-size: .6875rem;
+}
+
+.handheld-toolbar a.navbar-tool-text {
+    display: block;
+    padding: .5rem;
+    padding-top: .125rem;
+    text-align: center;
+}
+
+.handheld-toolbar .navbar-tool-text>small, 
+.handheld-toolbar .navbar-tool-text>.small {
+    display: inline;
+    font-size: .6875rem;
+}
+
+.handheld-toolbar-item {
+    padding: .5rem;
+    padding-top: .125rem;
+    border-left: 1px solid #e3e9ef;
+    border-right: 1px solid #e3e9ef;
+    text-align: center;
+}

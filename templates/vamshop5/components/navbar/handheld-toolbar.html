@@ -10,15 +10,14 @@
  {/if}  
 
   <a class="d-table-cell handheld-toolbar-item" href="javascript:void(0)" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" onclick="window.scrollTo(0, 0)">
-  <span class="handheld-toolbar-icon"><i class="ci-menu"></i></span><span class="handheld-toolbar-label">Menu</span>
+  <span class="handheld-toolbar-icon"><i class="fas fa-bars"></i></span><span class="handheld-toolbar-label">{$smarty.const.TEXT_MENU}</span>
   </a>
   
-  <a class="d-table-cell handheld-toolbar-item" href="shop-cart.html">
-  <span class="handheld-toolbar-icon"><i class="ci-cart"></i>
-  <span class="badge bg-primary rounded-pill ms-1">4</span>
-  </span>
-  <span class="handheld-toolbar-label">$265.00</span>
-  </a>
+ {if !$cart_current}
+   <div id="divShoppingCartHeader">
+     {$box_CART}
+   </div>
+ {/if}  
   
   </div>
 </div>
