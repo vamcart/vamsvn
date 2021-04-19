@@ -1,25 +1,111 @@
 {config_load file="$language/lang_$language.conf" section="boxes"}
-<section class="widget inner">
-	<h3 class="widget-title">{#heading_login#}</h3>
-		{$FORM_ACTION}
-			<div class="control-group">
-			<label class="control-label" for="inputEmail">{#text_email#}</label>
-				<div class="controls">
-					<input type="text" name="email_address" id="inputEmail" placeholder="{#text_email#}">
-				</div>
+{if !$smarty.session.customer_id}
+<div class="modal fade" id="signin-modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header bg-secondary">
+        <ul class="nav nav-tabs card-header-tabs" role="tablist">
+          <li class="nav-item"><a class="nav-link fw-medium active" href="#signin-tab" data-bs-toggle="tab" role="tab" aria-selected="true"><i class="fas fa-lock me-2 mt-n1"></i>{$smarty.const.TEXT_LOGIN_SIGNIN}</a></li>
+          {if {$smarty.const.SOCIAL_LOGIN} == "true"}<li class="nav-item"><a class="nav-link fw-medium" href="#social-tab" data-bs-toggle="tab" role="tab" aria-selected="false"><i class="fas fa-users me-2 mt-n1"></i>{$smarty.const.TEXT_LOGIN_SOCIAL}</a></li>{/if}
+          <li class="nav-item"><a class="nav-link fw-medium" href="#signup-tab" data-bs-toggle="tab" role="tab" aria-selected="false"><i class="fas fa-user me-2 mt-n1"></i>{$smarty.const.TEXT_LOGIN_SIGNUP}</a></li>
+        </ul>
+        <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="{$smarty.const.TEXT_LOGIN_CLOSE}"></button>
+      </div>
+      <div class="modal-body tab-content py-4">
+        <form method="post" action="login.php?action=process" class="needs-validation tab-pane fade show active" autocomplete="off" novalidate id="signin-tab">
+          <div class="mb-3">
+            <label class="form-label" for="si-email">{$smarty.const.TEXT_LOGIN_EMAIL}</label>
+            <input class="form-control" type="email" id="si-email" name="email_address" placeholder="{$smarty.const.TEXT_LOGIN_EMAIL_PLACEHOLDER}" required>
+            <div class="invalid-feedback">{$smarty.const.TEXT_LOGIN_EMAIL_ERROR}</div>
+          </div>
+          <div class="mb-3">
+            <label class="form-label" for="si-password">{$smarty.const.TEXT_LOGIN_PASSWORD}</label>
+            <div class="password-toggle">
+              <input class="form-control" type="password" name="password" id="si-password" required>
+              <label class="password-toggle-btn" aria-label="{$smarty.const.TEXT_LOGIN_PASSWORD_SHOW}">
+                <input class="password-toggle-check" type="checkbox"><span class="password-toggle-indicator"></span>
+              </label>
+            </div>
+          </div>
+          <div class="mb-3 d-flex flex-wrap justify-content-between">
+            <div class="form-check mb-2">
+              <input class="form-check-input" type="checkbox" name="remember_me" id="si-remember">
+              <label class="form-check-label" for="si-remember">{$smarty.const.TEXT_LOGIN_REMEMBER}</label>
+            </div><a class="fs-sm" href="{$smarty.const.FILENAME_PASSWORD_DOUBLE_OPT}">{$smarty.const.TEXT_LOGIN_FORGOT}</a>
+          </div>
+          <button class="btn btn-primary btn-shadow d-block w-100" type="submit">{$smarty.const.TEXT_LOGIN_SIGN_IN_BUTTON}</button>
+        </form>
+        {if {$smarty.const.SOCIAL_LOGIN} == "true"}
+        <div class="needs-validation tab-pane fade" autocomplete="off" novalidate id="social-tab">
+          <div class="mb-3">
+				<div class="social-login mt-2 mb-2"><span class="text-muted">{$smarty.const.TEXT_SOCIAL_LOGIN}:</span></div>
+				<a class="btn btn-outline-info btn-block" href="https://oauth.vk.com/authorize?client_id={$smarty.const.VK_OAUTH_CLIENT_ID}&redirect_uri={$smarty.const.HTTP_SERVER}{$smarty.const.DIR_WS_CATALOG}{$smarty.const.FILENAME_CREATE_ACCOUNT}?social_login=vk&response_type=code&display=page&scope=email"><i class="fab fa-vk" title="{$smarty.const.TEXT_SOCIAL_LOGIN_VK}"></i> {$smarty.const.TEXT_SOCIAL_LOGIN_VK}</a>
+				<a class="btn btn-outline-secondary btn-block" href="{$smarty.const.HTTP_SERVER}{$smarty.const.DIR_WS_CATALOG}{$smarty.const.FILENAME_CREATE_ACCOUNT}?social_login=google"><i class="fab fa-google" title="{$smarty.const.TEXT_SOCIAL_LOGIN_GOOGLE}"></i> {$smarty.const.TEXT_SOCIAL_LOGIN_GOOGLE}</a>
+				<a class="btn btn-outline-primary btn-block" href="https://www.facebook.com/dialog/oauth?client_id={$smarty.const.FACEBOOK_OAUTH_CLIENT_ID}&redirect_uri={$smarty.const.HTTP_SERVER}{$smarty.const.DIR_WS_CATALOG}{$smarty.const.FILENAME_CREATE_ACCOUNT}?social_login=fb&response_type=code&display=page&scope=public_profile,email"><i class="fab fa-facebook" title="{$smarty.const.TEXT_SOCIAL_LOGIN_FACEBOOK}"></i> {$smarty.const.TEXT_SOCIAL_LOGIN_FACEBOOK}</a>
+          </div>
+        </div>  
+        {/if}      
+        <form method="post" action="create_account.php" class="needs-validation tab-pane fade" autocomplete="off" novalidate id="signup-tab">
+          <div class="mb-3">
+            <label class="form-label" for="su-name">{$smarty.const.TEXT_REGISTER_FIRSTNAME}</label>
+           <input class="form-control" type="text" id="su-name" name="firstname" placeholder="{$smarty.const.TEXT_REGISTER_FIRSTNAME_PLACEHOLDER}" required>
+            <div class="invalid-feedback">{$smarty.const.TEXT_REGISTER_FIRSTNAME_ERROR}</div>
+          </div>
+          <div class="mb-3">
+            <label class="form-label" for="su-email">{$smarty.const.TEXT_REGISTER_EMAIL}</label>
+            <input class="form-control" type="email" id="su-email" name="email_address" placeholder="{$smarty.const.TEXT_REGISTER_EMAIL_PLACEHOLDER}" required>
+            <div class="invalid-feedback">{$smarty.const.TEXT_REGISTER_EMAIL_ERROR}</div>
+          </div>
+          <div class="mb-3">
+            <label class="form-label" for="su-password">{$smarty.const.TEXT_REGISTER_PASSWORD}</label>
+            <div class="password-toggle">
+              <input class="form-control" type="password" name="password" id="su-password" required>
+              <label class="password-toggle-btn" aria-label="{$smarty.const.TEXT_REGISTER_PASSWORD_SHOW}">
+                <input class="password-toggle-check" type="checkbox"><span class="password-toggle-indicator"></span>
+              </label>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="form-label" for="su-password-confirm">{$smarty.const.TEXT_REGISTER_PASSWORD_CONFIRM}</label>
+            <div class="password-toggle">
+              <input class="form-control" type="password" name="confirmation" id="su-password-confirm" required>
+              <label class="password-toggle-btn" aria-label="{$smarty.const.TEXT_REGISTER_PASSWORD_SHOW}">
+                <input class="password-toggle-check" type="checkbox"><span class="password-toggle-indicator"></span>
+              </label>
+            </div>
+          </div>
+          <button class="btn btn-primary btn-shadow d-block w-100" type="submit">{$smarty.const.TEXT_REGISTER_SIGN_UP_BUTTON}</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{else}
+<div class="modal fade" id="signin-modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header bg-secondary">
+        <ul class="nav nav-tabs card-header-tabs" role="tablist">
+          <li class="nav-item"><a class="nav-link fw-medium active" href="#signin-tab" data-bs-toggle="tab" role="tab" aria-selected="true"><i class="fas fa-unlock me-2 mt-n1"></i>{$smarty.const.TEXT_ACCOUNT_HEADER}</a></li>
+        </ul>
+        <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="{$smarty.const.TEXT_ACCOUNT_CLOSE}"></button>
+      </div>
+      <div class="modal-body tab-content py-4">
+
+			<div class="list-group mb-3">
+			  <a href="{$smarty.const.FILENAME_ACCOUNT}" class="list-group-item list-group-item-action">{$smarty.const.TEXT_ACCOUNT_PROFILE}</a>
+			  <a href="{$smarty.const.FILENAME_ACCOUNT_EDIT}" class="list-group-item list-group-item-action">{$smarty.const.TEXT_ACCOUNT_EDIT}</a>
+			  <a href="{$smarty.const.FILENAME_ACCOUNT_PASSWORD}" class="list-group-item list-group-item-action">{$smarty.const.TEXT_ACCOUNT_PASSWORD}</a>
+			  <a href="{$smarty.const.FILENAME_ACCOUNT_HISTORY}" class="list-group-item list-group-item-action">{$smarty.const.TEXT_ACCOUNT_HISTORY}</a>
+			  <a href="{$smarty.const.FILENAME_ADDRESS_BOOK}" class="list-group-item list-group-item-action">{$smarty.const.TEXT_ACCOUNT_ADDRESS_BOOK}</a>
+			  <a href="{$smarty.const.FILENAME_NEWSLETTER}" class="list-group-item list-group-item-action">{$smarty.const.TEXT_ACCOUNT_NEWSLETTER}</a>
 			</div>
-			<div class="control-group">
-			<label class="control-label" for="inputPassword">{#text_pwd#}</label>
-				<div class="controls">
-					<input type="password" name="password" id="inputPassword" placeholder="{#text_pwd#}" autocomplete="off">
-				</div>
-			</div>
-			<div class="control-group">
-				<div class="controls">
-					<button type="submit" class="btn btn-inverse"><i class="fa fa-check"></i> {#heading_login#}</button>
-				</div>
-			</div>
-		{$FORM_END}
-		<p><a href="{$LINK_NEW_ACCOUNT}">{#text_register#}</a></p>
-		<p><a href="{$LINK_LOST_PASSWORD}">{#text_password_forgotten#}</a></p>
-</section>
+
+          <a href="{$smarty.const.FILENAME_LOGOFF}" class="btn btn-primary btn-shadow d-block w-100">{$smarty.const.TEXT_ACCOUNT_LOGOFF_BUTTON}</a>
+          
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{/if}

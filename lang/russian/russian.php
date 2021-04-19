@@ -980,4 +980,43 @@ define('TEXT_MENU','Меню');
 
 define('TEXT_TO_TOP','Наверх');
 
+define('TEXT_LOGIN_SIGNIN','Вход');
+define('TEXT_LOGIN_SIGNUP','Регистрация');
+define('TEXT_LOGIN_CLOSE','Закрыть');
+define('TEXT_LOGIN_EMAIL','Email адрес');
+define('TEXT_LOGIN_EMAIL_PLACEHOLDER','');
+define('TEXT_LOGIN_EMAIL_ERROR','Пожалуйста, укажите правильный email адрес.');
+define('TEXT_LOGIN_PASSWORD','Пароль');
+define('TEXT_LOGIN_PASSWORD_SHOW','Показать/скрыть пароль');
+define('TEXT_LOGIN_REMEMBER','Запомнить');
+define('TEXT_LOGIN_FORGOT','Забыли пароль?');
+define('TEXT_LOGIN_SIGN_IN_BUTTON','Войти');
+define('TEXT_REGISTER_FIRSTNAME','Имя');
+define('TEXT_REGISTER_FIRSTNAME_PLACEHOLDER','');
+define('TEXT_REGISTER_FIRSTNAME_ERROR','Пожалуйста, укажите имя.');
+define('TEXT_REGISTER_EMAIL','Email адрес');
+define('TEXT_REGISTER_EMAIL_PLACEHOLDER','');
+define('TEXT_REGISTER_EMAIL_ERROR','Пожалуйста, укажите правильный email адрес.');
+define('TEXT_REGISTER_PASSWORD','Пароль');
+define('TEXT_REGISTER_PASSWORD_SHOW','Показать/скрыть пароль');
+define('TEXT_REGISTER_PASSWORD_CONFIRM','Подтверждение пароля');
+define('TEXT_REGISTER_SIGN_UP_BUTTON','Зарегистрироваться');
+
+define('TEXT_ACCOUNT_HEADER','Мой профиль');
+define('TEXT_ACCOUNT_CLOSE','Закрыть');
+define('TEXT_ACCOUNT_PROFILE','Личный кабинет');
+define('TEXT_ACCOUNT_EDIT','Редактировать данные');
+define('TEXT_ACCOUNT_PASSWORD','Изменить пароль');
+define('TEXT_ACCOUNT_HISTORY','История заказов');
+define('TEXT_ACCOUNT_ADDRESS_BOOK','Адресная книга');
+define('TEXT_ACCOUNT_NEWSLETTER','Рассылка');
+define('TEXT_ACCOUNT_LOGOFF_BUTTON','Выйти');
+
+define('TEXT_ACCOUNT_SIGN_IN','Войти');
+define('TEXT_LOGIN_HELLO','Здравствуйте');
+define('TEXT_LOGIN_MY_PROFILE','Личный кабинет');
+define('TEXT_LOGIN_MY_ORDERS','Мои заказы');
+
+define('TEXT_LOGIN_SOCIAL','Соц. сети');
+
 ?>

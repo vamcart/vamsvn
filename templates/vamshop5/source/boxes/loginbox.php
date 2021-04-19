@@ -27,7 +27,7 @@ $box_content = '';
 require_once (DIR_FS_INC.'vam_image_submit.inc.php');
 require_once (DIR_FS_INC.'vam_draw_password_field.inc.php');
 
-if (!vam_session_is_registered('customer_id')) {
+//if (!vam_session_is_registered('customer_id')) {
 
 	$box->assign('FORM_ACTION', '<form id="loginbox" method="post" action="'.vam_href_link(FILENAME_LOGIN, 'action=process', 'SSL').'">');
 	$box->assign('FIELD_EMAIL', vam_draw_input_field('email_address', '', ''));
@@ -43,5 +43,5 @@ if (!vam_session_is_registered('customer_id')) {
 	$box->assign('language', $_SESSION['language']);
 	$box_loginbox = $box->fetch(CURRENT_TEMPLATE.'/boxes/box_login.html');
 	$vamTemplate->assign('box_LOGIN', $box_loginbox);
-}
+//}
 ?>

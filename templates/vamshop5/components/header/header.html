@@ -52,7 +52,11 @@
           {/if}
             <a class="navbar-tool ms-1 ms-lg-0 me-n1 me-lg-2" href="#signin-modal" data-bs-toggle="modal">
             <div class="navbar-tool-icon-box"><i class="navbar-tool-icon far fa-user"></i></div>
-            <div class="navbar-tool-text ms-n3"><small>Hello, Sign in</small>My Account</div></a>
+            {if !$smarty.session.customer_id}
+            <div class="navbar-tool-text ms-n3"><small>{$smarty.const.TEXT_LOGIN_MY_PROFILE}</small>{$smarty.const.TEXT_ACCOUNT_SIGN_IN}</div></a>
+            {else}
+            <div class="navbar-tool-text ms-n3"><small>{$smarty.const.TEXT_LOGIN_MY_PROFILE}</small>{$smarty.const.TEXT_LOGIN_MY_ORDERS}</div></a>
+            {/if}
           <div class="navbar-tool dropdown ms-3" id="divShoppingCart">
             {$box_CART}
           </div>
