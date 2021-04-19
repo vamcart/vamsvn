@@ -972,4 +972,7 @@ define('TEXT_ADS_BANNER_TITLE','Место для рекламы');
 define('TEXT_ADS_BANNER_DESC','Успейте занять место');
 define('TEXT_ADS_BANNER_BUTTON','Связаться');
 
+define('TEXT_CART','Корзина');
+define('TEXT_CART_EMPTY','пуста');
+
 ?>

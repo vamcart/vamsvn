@@ -177,9 +177,9 @@
     margin-bottom: -.125rem;
   }
 }
-.dropdown .navbar-tool-text {
-  @include caret;
-}
+//.dropdown .navbar-tool-text {
+  //@include caret;
+//}
 
 @include media-breakpoint-down(md) {
   .search-box { display: none; }

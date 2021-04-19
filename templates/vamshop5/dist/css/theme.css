@@ -15242,21 +15242,6 @@ a.nav-link:hover .media-tab-media {
   margin-bottom: -.125rem;
 }
 
-.dropdown .navbar-tool-text::after {
-  display: inline-block;
-  margin-left: 0.23375rem;
-  vertical-align: 0.23375rem;
-  content: "";
-  border-top: 0.275rem solid;
-  border-right: 0.275rem solid transparent;
-  border-bottom: 0;
-  border-left: 0.275rem solid transparent;
-}
-
-.dropdown .navbar-tool-text:empty::after {
-  margin-left: 0;
-}
-
 @media (max-width: 767.98px) {
   .search-box {
     display: none;
