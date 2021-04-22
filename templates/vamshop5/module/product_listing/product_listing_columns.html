@@ -548,16 +548,23 @@
           <div class="d-flex justify-content-center justify-content-sm-between align-items-center pt-2 pb-4 pb-sm-5">
             <div class="d-flex flex-wrap">
               <div class="d-flex align-items-center flex-nowrap me-3 me-sm-4 pb-3">
-                <label class="text-light opacity-75 text-nowrap fs-sm me-2 d-none d-sm-block" for="sorting">Sort by:</label>
-                <select class="form-select" id="sorting">
-                  <option>Popularity</option>
-                  <option>Low - Hight Price</option>
-                  <option>High - Low Price</option>
-                  <option>Average Rating</option>
-                  <option>A - Z Order</option>
-                  <option>Z - A Order</option>
-                </select><span class="fs-sm text-light opacity-75 text-nowrap ms-2 d-none d-md-block">of 287 products</span>
-
+						<div class="dropdown">
+						  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+						    {#text_sort#}
+						  </button>
+						  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+						    <li><a class="dropdown-item{if {$smarty.get.sort == "name"} && {$smarty.get.direction == "asc"}} active{/if} mt-1" href="{$LINK_sort_name_asc}">{#text_sort_name_asc#}</a></li>  
+						    <li><a class="dropdown-item{if {$smarty.get.sort == "name"} && {$smarty.get.direction == "desc"}} active{/if} mt-1" href="{$LINK_sort_name_desc}">{#text_sort_name_desc#}</a></li>
+						    <li><a class="dropdown-item{if {$smarty.get.sort == "price"} && {$smarty.get.direction == "asc"}} active{/if} mt-1" href="{$LINK_sort_price_asc}">{#text_sort_price_asc#}</a></li>  
+						    <li><a class="dropdown-item{if {$smarty.get.sort == "price"} && {$smarty.get.direction == "desc"}} active{/if} mt-1" href="{$LINK_sort_price_desc}">{#text_sort_price_desc#}</a></li>
+						    <li><a class="dropdown-item{if {$smarty.get.sort == "ordered"} && {$smarty.get.direction == "asc"}} active{/if} mt-1" href="{$LINK_sort_ordered_asc}">{#text_sort_ordered_asc#}</a></li>
+						    <li><a class="dropdown-item{if {$smarty.get.sort == "ordered"} && {$smarty.get.direction == "desc"}} active{/if} mt-1" href="{$LINK_sort_ordered_desc}">{#text_sort_ordered_desc#}</a></li>
+						    <li><a class="dropdown-item{if {$smarty.get.sort == "id"} && {$smarty.get.direction == "asc"}} active{/if} mt-1" href="{$LINK_sort_id_asc}">{#text_sort_id_asc#}</a></li>  
+						    <li><a class="dropdown-item{if {$smarty.get.sort == "id"} && {$smarty.get.direction == "desc"}} active{/if} mt-1" href="{$LINK_sort_id_desc}">{#text_sort_id_desc#}</a></li>
+						    <li><a class="dropdown-item{if {$smarty.get.sort == "quantity"} && {$smarty.get.direction == "asc"}} active{/if} mt-1" href="{$LINK_sort_quantity_asc}">{#text_sort_quantity_asc#}</a></li>
+						    <li><a class="dropdown-item{if {$smarty.get.sort == "quantity"} && {$smarty.get.direction == "desc"}} active{/if} mt-1" href="{$LINK_sort_quantity_desc}">{#text_sort_quantity_desc#}</a></li>
+						  </ul>
+						</div>
               </div>
             </div>
             
@@ -565,7 +572,7 @@
             {$NAVIGATION_COMPACT}
             </div>
             
-            <div class="d-none d-sm-flex pb-3"><a class="btn btn-icon nav-link-style bg-light text-dark disabled opacity-100 me-2" href="#"><i class="ci-view-grid"></i></a><a class="btn btn-icon nav-link-style nav-link-light" href="shop-list-ls.html"><i class="ci-view-list"></i></a></div>
+            <div class="d-none d-sm-flex pb-3"><a class="btn btn-icon nav-link-style bg-light text-dark disabled opacity-100 me-2" href="{$smarty.server.REQUEST_URI}"><i class="ci-view-grid"></i></a><a class="btn btn-icon nav-link-style nav-link-light" href="{$smarty.server.REQUEST_URI}"><i class="ci-view-list"></i></a></div>
           </div>
           <!-- Products grid-->
           <div class="row mx-n2">
