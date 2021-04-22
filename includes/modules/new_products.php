@@ -39,7 +39,7 @@ if ((!isset ($new_products_category_id)) || ($new_products_category_id == '0')) 
 		//$days = " and p.products_date_added > '".$date_new_products."' ";
 	}
 
-	$new_products_query = "SELECT distinct * FROM
+	$new_products_query = "SELECT distinct p.*, pd.* FROM
 	                                        ".TABLE_PRODUCTS." p,
 	                                        ".TABLE_PRODUCTS_DESCRIPTION." pd,
 	                                        ".TABLE_PRODUCTS_TO_CATEGORIES." p2c,
@@ -66,7 +66,7 @@ if ((!isset ($new_products_category_id)) || ($new_products_category_id == '0')) 
 		$date_new_products = date("Y.m.d", mktime(1, 1, 1, date(m), date(d) - MAX_DISPLAY_NEW_PRODUCTS_DAYS, date(Y)));
 		//$days = " and p.products_date_added > '".$date_new_products."' ";
 	}
-	$new_products_query = "SELECT distinct * FROM
+	$new_products_query = "SELECT distinct p.*, pd.* FROM
 	                                        ".TABLE_PRODUCTS." p,
 	                                        ".TABLE_PRODUCTS_DESCRIPTION." pd,
 	                                        ".TABLE_PRODUCTS_TO_CATEGORIES." p2c,

@@ -1,5 +1,6 @@
   <div class="col-lg-4 col-6 px-0 px-sm-2 mb-sm-4">
     <div class="card product-card card-static">
+      {if $module_data.PRODUCTS_LABEL}{$module_data.PRODUCTS_LABEL}{/if}
       {if $smarty.const.ENABLE_WISHLIST == 'true'}
         <span class="wishlist-button btn-sm text-muted px-2 py-1">{$module_data.PRODUCTS_BUTTON_WISHLIST}</span>
       {/if}	

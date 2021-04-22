@@ -34,7 +34,7 @@ if ((!isset ($featured_products_category_id)) || ($featured_products_category_id
 	if (GROUP_CHECK == 'true')
 		$group_check = " and p.group_permission_".$_SESSION['customers_status']['customers_status_id']."=1 ";
 
-	$featured_products_query = "SELECT * FROM
+	$featured_products_query = "SELECT p.*, pd.* FROM
 	                                         ".TABLE_PRODUCTS." p left join " . TABLE_PRODUCTS_DESCRIPTION . " pd on pd.products_id = p.products_id,
 	                                         ".TABLE_FEATURED." f,
 	                                         ".TABLE_PRODUCTS_TO_CATEGORIES." p2c,
@@ -48,14 +48,15 @@ if ((!isset ($featured_products_category_id)) || ($featured_products_category_id
 	                                        and p2c.categories_id = c.categories_id
 	                                        and cd.categories_id = c.categories_id
 	                                         ".$fsk_lock."
-	                                         and p.products_status = '1' and p.products_quantity > 0 and f.status = '1' and pd.language_id = '".(int) $_SESSION['languages_id']."'
+	                                         and p.products_status = '1' and p.products_quantity > 0 and f.status = '1' and pd.language_id = '".(int) $_SESSION['languages_id']."' 
+	                                         and cd.language_id = '".(int) $_SESSION['languages_id']."'
 	                                         group by p.products_id order by p.products_id DESC limit ".MAX_DISPLAY_FEATURED_PRODUCTS;
 } else {
 
 	if (GROUP_CHECK == 'true')
 		$group_check = "and p.group_permission_".$_SESSION['customers_status']['customers_status_id']."=1 ";
 
-	$featured_products_query = "SELECT * FROM
+	$featured_products_query = "SELECT p.*, pd.* FROM
 	                                         ".TABLE_PRODUCTS." p left join " . TABLE_PRODUCTS_DESCRIPTION . " pd on pd.products_id = p.products_id,
 	                                         ".TABLE_FEATURED." f,
 	                                        ".TABLE_PRODUCTS_TO_CATEGORIES." p2c,
@@ -76,6 +77,8 @@ while ($featured_products = vam_db_fetch_array($featured_products_query, true)) 
 	$module_content[] = $product->buildDataArray($featured_products);
 
 }
+
+echo var_dump($module_content);
 
 if (PRODUCT_LISTING_ATTRIBUTES == 'true') {
 

@@ -183,3 +183,47 @@ font-size: .6875rem;
     border-right: 1px solid #e3e9ef;
     text-align: center;
 }
+
+/* Product Labels */
+
+.label {
+    right: auto;
+    position: absolute;
+    top: .75rem;
+    left: .75rem;
+    box-shadow: 0 .5rem 1.125rem -.275rem rgba(243,71,112,.9);
+    color: #fff;
+    background-color: #f34770;
+    display: inline-block;
+    padding: .25em .625em;
+    font-size: 75%;
+    font-weight: 400;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: .175rem;
+    transition: color .25s ease-in-out,background-color .25s ease-in-out,border-color .25s ease-in-out,box-shadow .2s ease-in-out;
+}
+
+.label.new {
+  background-color: #005685;
+  box-shadow: 0 .5rem 1.125rem -.275rem rgba(0,86,133,.9);
+}
+
+.label.hit {
+  background-color: #d91414;
+  box-shadow: 0 .5rem 1.125rem -.275rem rgba(217,20,20,.9);
+}
+
+.label.sale {
+  background-color: #006100;
+  box-shadow: 0 .5rem 1.125rem -.275rem rgba(0,97,0,.9);
+}
+
+.label.html {
+  background-color: transparent;
+  box-shadow: 0 .5rem 1.125rem -.275rem transparent;
+} 
+
+/* /Product Labels */
