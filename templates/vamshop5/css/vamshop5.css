@@ -195,6 +195,7 @@ font-size: .6875rem;
     color: #fff;
     background-color: #f34770;
     display: inline-block;
+    width: auto;
     padding: .25em .625em;
     font-size: 75%;
     font-weight: 400;
@@ -227,3 +228,8 @@ font-size: .6875rem;
 } 
 
 /* /Product Labels */
+
+.breadcrumb-separator {
+  padding: 0 .5rem;
+  color: #a6acb7;
+}

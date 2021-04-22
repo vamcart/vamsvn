@@ -128,9 +128,9 @@
 <p>
 {#title_viewed_products#}
 </p>
-<div class="card-deck">
+<div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 row-cols-xl-4 row-cols-xxl-5 g-4">
 {foreach name=history_products item=module_data from=$products_history} 
-<div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-3">
+<div class="col">
 {include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/product-card/product-card-details.html"}
 </div>
 {/foreach} 

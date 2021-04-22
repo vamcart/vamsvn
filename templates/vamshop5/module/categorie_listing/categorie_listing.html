@@ -17,9 +17,9 @@
 
 <div class="module">
 <div class="moduleContent">
-<div class="card-deck">
+<div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 row-cols-xl-4 row-cols-xxl-5 g-4">
 {foreach name=aussen item=module_data from=$module_content}
-<div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-3">
+<div class="col">
 {include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/box/box-card-category.html"}
 </div>
 {/foreach}

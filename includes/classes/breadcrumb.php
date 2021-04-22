@@ -38,12 +38,12 @@
 
       for ($i=0, $n=sizeof($this->_trail); $i<$n; $i++) {
         if (isset($this->_trail[$i]['link']) && vam_not_null($this->_trail[$i]['link'])) {
-          $trail_string .= '<span itemscope itemprop="itemListElement" itemtype="http://schema.org/ListItem"><a href="' . $this->_trail[$i]['link'] . '"><span itemprop="name">' . $this->_trail[$i]['title'] . '</span></a><meta itemprop="position" content="'.$position.'" /><meta itemprop="item" content="' . $this->_trail[$i]['link'] . '" /></span>';
+          $trail_string .= '<span class="breadcrumb-item text-nowrap" itemscope itemprop="itemListElement" itemtype="http://schema.org/ListItem"><a class="" href="' . $this->_trail[$i]['link'] . '"><span itemprop="name">' . $this->_trail[$i]['title'] . '</span></a><meta itemprop="position" content="'.$position.'" /><meta itemprop="item" content="' . $this->_trail[$i]['link'] . '" /></span>';
         } else {
-          $trail_string .= '<span itemscope itemprop="itemListElement" itemtype="http://schema.org/ListItem"><span itemprop="name">'.$this->_trail[$i]['title'].'</span><meta itemprop="position" content="'.$position.'" /><meta itemprop="item" content="' . ((isset($_GET['products_id'])) ? HTTP_SERVER . $_SERVER['REQUEST_URI'] : $this->_trail[$i]['link']) . '" /></span>';
+          $trail_string .= '<span class="breadcrumb-item text-nowrap" itemscope itemprop="itemListElement" itemtype="http://schema.org/ListItem"><span itemprop="name" class="breadcrumb-item active">'.$this->_trail[$i]['title'].'</span><meta itemprop="position" content="'.$position.'" /><meta itemprop="item" content="' . ((isset($_GET['products_id'])) ? HTTP_SERVER . $_SERVER['REQUEST_URI'] : $this->_trail[$i]['link']) . '" /></span>';
         }
 
-        if (($i+1) < $n) $trail_string .= $separator;
+        if (($i+1) < $n) $trail_string .= '<span class="breadcrumb-separator">'.$separator.'</span>';
         $position++;
       }
 

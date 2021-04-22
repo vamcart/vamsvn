@@ -277,6 +277,8 @@ if ($result != false) {
 	$module->assign('NAVIGATION', $navigation);
 	$module->assign('NAVIGATION_PAGES', $navigation_pages);
 
+	$module->assign('navtrail',$breadcrumb->trail(' &raquo; '));
+
 if (!strstr($PHP_SELF, FILENAME_ADVANCED_SEARCH_RESULT)) {	
   include (DIR_WS_MODULES.FILENAME_PRODUCTS_FILTERS);	
 

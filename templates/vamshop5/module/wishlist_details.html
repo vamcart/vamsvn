@@ -6,7 +6,7 @@
 
 {foreach from=$module_content key=category_name item=wishlist_data}
 <h3>{$category_name}</h3>
-<div class="card-deck">
+<div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 row-cols-xl-4 row-cols-xxl-5 g-4">
 {foreach name=aussen item=module_data from=$wishlist_data}
 <div class="col-6 col-sm-6 col-xs-6 col-md-12 col-lg-12 col-xl-12">
 {include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/item/item-wishlist-list.html"}

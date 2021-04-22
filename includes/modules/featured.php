@@ -78,8 +78,6 @@ while ($featured_products = vam_db_fetch_array($featured_products_query, true)) 
 
 }
 
-echo var_dump($module_content);
-
 if (PRODUCT_LISTING_ATTRIBUTES == 'true') {
 
 // Attributes start

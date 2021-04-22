@@ -1,6 +1,30 @@
 {config_load file="$language/lang_$language.conf" section="index"}
 
-{if $smarty.get.keywords}<h1>{$smarty.get.keywords|capitalize} {if {$smarty.get.page} && {$smarty.get.page} > 0} {$smarty.const.TEXT_PAGE_IN_CAT} {$smarty.get.page}{/if}</h1>{/if}
+    <!-- Page Title (Shop Alt)-->
+    <!-- used for shop templates with filters on top-->
+    <div class="bg-dark pt-4 pb-5">
+      <div class="container pt-2 pb-3 pt-lg-3 pb-lg-4">
+        <div class="d-lg-flex justify-content-between pb-3">
+          <div class="order-lg-2 mb-3 mb-lg-0 pt-lg-2">
+            <nav aria-label="breadcrumb">
+              <div class="breadcrumb breadcrumb-light flex-lg-nowrap justify-content-center justify-content-lg-start">
+              {$navtrail}
+              </div>
+            </nav>
+          </div>
+          <div class="order-lg-1 pe-lg-4 text-center text-lg-start">
+            <h1 class="h3 text-light mb-0">
+            {if $smarty.get.keywords}{$smarty.get.keywords|capitalize} {if {$smarty.get.page} && {$smarty.get.page} > 0} {$smarty.const.TEXT_PAGE_IN_CAT} {$smarty.get.page}{/if}{/if}
+            {if $CATEGORIES_NAME}
+            {if $CATEGORIES_HEADING_TITLE}{$CATEGORIES_HEADING_TITLE}{else}{$CATEGORIES_NAME}{/if}{if $MANUFACTURERS_NAME} {$MANUFACTURERS_NAME}{/if} {$FILTER}
+            {/if}
+            </h1>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container pb-5 mb-2 mb-md-4">
+
 
 {if $CATEGORIES_NAME}
 <h1>{if $CATEGORIES_HEADING_TITLE}{$CATEGORIES_HEADING_TITLE}{else}{$CATEGORIES_NAME}{/if}{if $MANUFACTURERS_NAME} {$MANUFACTURERS_NAME}{/if} {$FILTER}</h1>
@@ -63,12 +87,12 @@
 {if $CATEGORIES_NAME && SPECIFICATIONS_BOX_COMPARISON == "True"}
 <form action="{$smarty.const.FILENAME_COMPARISON}">{/if}
 
-<div class="card-deck">
+<div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 row-cols-xl-4 row-cols-xxl-5 g-4">
 {foreach name=aussen item=module_data from=$module_content}
 {if {$smarty.get.cat} > 0 && {$module_data.SPECS}}
-<div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-3">
+<div class="col">
 {else}
-<div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-3">
+<div class="col">
 {/if}
 {if $smarty.const.PRODUCT_LISTING_ATTRIBUTES == 'true'}
 {include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/product-card/product-card-attributes.html"}
@@ -122,3 +146,5 @@
 {$MODULE_faq}
 {$MODULE_articles}
 {/if}
+
+</div>
