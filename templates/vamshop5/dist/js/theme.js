@@ -462,6 +462,21 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
     }
   }();
   /**
+   * Image zoom on hover (used inside Product Gallery)
+   * @requires https://github.com/imgix/drift
+  */
+
+
+  var imageZoom = function () {
+    var images = document.querySelectorAll('.image-zoom');
+
+    for (var i = 0; i < images.length; i++) {
+      new Drift(images[i], {
+        paneContainer: images[i].parentElement.querySelector('.image-zoom-pane')
+      });
+    }
+  }();
+  /**
    * Countdown timer
   */
 

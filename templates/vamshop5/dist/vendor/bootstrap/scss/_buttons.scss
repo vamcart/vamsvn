@@ -55,7 +55,6 @@
 // Alternate buttons
 //
 
-// scss-docs-start btn-variant-loops
 @each $color, $value in $theme-colors {
   .btn-#{$color} {
     @include button-variant($value, $value);
@@ -67,7 +66,6 @@
     @include button-outline-variant($value);
   }
 }
-// scss-docs-end btn-variant-loops
 
 
 //

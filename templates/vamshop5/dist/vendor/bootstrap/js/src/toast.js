@@ -1,12 +1,14 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.0.0-beta3): toast.js
+ * Bootstrap (v5.0.0-beta1): toast.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
 
 import {
-  defineJQueryPlugin,
+  getjQuery,
+  onDOMContentLoaded,
+  TRANSITION_END,
   emulateTransitionEnd,
   getTransitionDurationFromElement,
   reflow,
@@ -115,7 +117,7 @@ class Toast extends BaseComponent {
     if (this._config.animation) {
       const transitionDuration = getTransitionDurationFromElement(this._element)
 
-      EventHandler.one(this._element, 'transitionend', complete)
+      EventHandler.one(this._element, TRANSITION_END, complete)
       emulateTransitionEnd(this._element, transitionDuration)
     } else {
       complete()
@@ -142,7 +144,7 @@ class Toast extends BaseComponent {
     if (this._config.animation) {
       const transitionDuration = getTransitionDurationFromElement(this._element)
 
-      EventHandler.one(this._element, 'transitionend', complete)
+      EventHandler.one(this._element, TRANSITION_END, complete)
       emulateTransitionEnd(this._element, transitionDuration)
     } else {
       complete()
@@ -189,7 +191,7 @@ class Toast extends BaseComponent {
 
   static jQueryInterface(config) {
     return this.each(function () {
-      let data = Data.get(this, DATA_KEY)
+      let data = Data.getData(this, DATA_KEY)
       const _config = typeof config === 'object' && config
 
       if (!data) {
@@ -214,6 +216,18 @@ class Toast extends BaseComponent {
  * add .Toast to jQuery only if jQuery is present
  */
 
-defineJQueryPlugin(NAME, Toast)
+onDOMContentLoaded(() => {
+  const $ = getjQuery()
+  /* istanbul ignore if */
+  if ($) {
+    const JQUERY_NO_CONFLICT = $.fn[NAME]
+    $.fn[NAME] = Toast.jQueryInterface
+    $.fn[NAME].Constructor = Toast
+    $.fn[NAME].noConflict = () => {
+      $.fn[NAME] = JQUERY_NO_CONFLICT
+      return Toast.jQueryInterface
+    }
+  }
+})
 
 export default Toast

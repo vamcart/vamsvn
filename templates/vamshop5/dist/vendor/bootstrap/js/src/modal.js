@@ -1,12 +1,14 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.0.0-beta3): modal.js
+ * Bootstrap (v5.0.0-beta1): modal.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
 
 import {
-  defineJQueryPlugin,
+  getjQuery,
+  onDOMContentLoaded,
+  TRANSITION_END,
   emulateTransitionEnd,
   getElementFromSelector,
   getTransitionDurationFromElement,
@@ -83,7 +85,7 @@ class Modal extends BaseComponent {
     super(element)
 
     this._config = this._getConfig(config)
-    this._dialog = SelectorEngine.findOne(SELECTOR_DIALOG, this._element)
+    this._dialog = SelectorEngine.findOne(SELECTOR_DIALOG, element)
     this._backdrop = null
     this._isShown = false
     this._isBodyOverflowing = false
@@ -113,7 +115,7 @@ class Modal extends BaseComponent {
       return
     }
 
-    if (this._isAnimated()) {
+    if (this._element.classList.contains(CLASS_NAME_FADE)) {
       this._isTransitioning = true
     }
 
@@ -164,9 +166,9 @@ class Modal extends BaseComponent {
     }
 
     this._isShown = false
-    const isAnimated = this._isAnimated()
+    const transition = this._element.classList.contains(CLASS_NAME_FADE)
 
-    if (isAnimated) {
+    if (transition) {
       this._isTransitioning = true
     }
 
@@ -180,10 +182,10 @@ class Modal extends BaseComponent {
     EventHandler.off(this._element, EVENT_CLICK_DISMISS)
     EventHandler.off(this._dialog, EVENT_MOUSEDOWN_DISMISS)
 
-    if (isAnimated) {
+    if (transition) {
       const transitionDuration = getTransitionDurationFromElement(this._element)
 
-      EventHandler.one(this._element, 'transitionend', event => this._hideModal(event))
+      EventHandler.one(this._element, TRANSITION_END, event => this._hideModal(event))
       emulateTransitionEnd(this._element, transitionDuration)
     } else {
       this._hideModal()
@@ -229,7 +231,7 @@ class Modal extends BaseComponent {
   }
 
   _showElement(relatedTarget) {
-    const isAnimated = this._isAnimated()
+    const transition = this._element.classList.contains(CLASS_NAME_FADE)
     const modalBody = SelectorEngine.findOne(SELECTOR_MODAL_BODY, this._dialog)
 
     if (!this._element.parentNode || this._element.parentNode.nodeType !== Node.ELEMENT_NODE) {
@@ -247,7 +249,7 @@ class Modal extends BaseComponent {
       modalBody.scrollTop = 0
     }
 
-    if (isAnimated) {
+    if (transition) {
       reflow(this._element)
     }
 
@@ -268,10 +270,10 @@ class Modal extends BaseComponent {
       })
     }
 
-    if (isAnimated) {
+    if (transition) {
       const transitionDuration = getTransitionDurationFromElement(this._dialog)
 
-      EventHandler.one(this._dialog, 'transitionend', transitionComplete)
+      EventHandler.one(this._dialog, TRANSITION_END, transitionComplete)
       emulateTransitionEnd(this._dialog, transitionDuration)
     } else {
       transitionComplete()
@@ -332,13 +334,16 @@ class Modal extends BaseComponent {
   }
 
   _showBackdrop(callback) {
-    const isAnimated = this._isAnimated()
+    const animate = this._element.classList.contains(CLASS_NAME_FADE) ?
+      CLASS_NAME_FADE :
+      ''
+
     if (this._isShown && this._config.backdrop) {
       this._backdrop = document.createElement('div')
       this._backdrop.className = CLASS_NAME_BACKDROP
 
-      if (isAnimated) {
-        this._backdrop.classList.add(CLASS_NAME_FADE)
+      if (animate) {
+        this._backdrop.classList.add(animate)
       }
 
       document.body.appendChild(this._backdrop)
@@ -360,20 +365,20 @@ class Modal extends BaseComponent {
         }
       })
 
-      if (isAnimated) {
+      if (animate) {
         reflow(this._backdrop)
       }
 
       this._backdrop.classList.add(CLASS_NAME_SHOW)
 
-      if (!isAnimated) {
+      if (!animate) {
         callback()
         return
       }
 
       const backdropTransitionDuration = getTransitionDurationFromElement(this._backdrop)
 
-      EventHandler.one(this._backdrop, 'transitionend', callback)
+      EventHandler.one(this._backdrop, TRANSITION_END, callback)
       emulateTransitionEnd(this._backdrop, backdropTransitionDuration)
     } else if (!this._isShown && this._backdrop) {
       this._backdrop.classList.remove(CLASS_NAME_SHOW)
@@ -383,9 +388,9 @@ class Modal extends BaseComponent {
         callback()
       }
 
-      if (isAnimated) {
+      if (this._element.classList.contains(CLASS_NAME_FADE)) {
         const backdropTransitionDuration = getTransitionDurationFromElement(this._backdrop)
-        EventHandler.one(this._backdrop, 'transitionend', callbackRemove)
+        EventHandler.one(this._backdrop, TRANSITION_END, callbackRemove)
         emulateTransitionEnd(this._backdrop, backdropTransitionDuration)
       } else {
         callbackRemove()
@@ -393,10 +398,6 @@ class Modal extends BaseComponent {
     } else {
       callback()
     }
-  }
-
-  _isAnimated() {
-    return this._element.classList.contains(CLASS_NAME_FADE)
   }
 
   _triggerBackdropTransition() {
@@ -413,11 +414,11 @@ class Modal extends BaseComponent {
 
     this._element.classList.add(CLASS_NAME_STATIC)
     const modalTransitionDuration = getTransitionDurationFromElement(this._dialog)
-    EventHandler.off(this._element, 'transitionend')
-    EventHandler.one(this._element, 'transitionend', () => {
+    EventHandler.off(this._element, TRANSITION_END)
+    EventHandler.one(this._element, TRANSITION_END, () => {
       this._element.classList.remove(CLASS_NAME_STATIC)
       if (!isModalOverflowing) {
-        EventHandler.one(this._element, 'transitionend', () => {
+        EventHandler.one(this._element, TRANSITION_END, () => {
           this._element.style.overflowY = ''
         })
         emulateTransitionEnd(this._element, modalTransitionDuration)
@@ -432,13 +433,14 @@ class Modal extends BaseComponent {
   // ----------------------------------------------------------------------
 
   _adjustDialog() {
-    const isModalOverflowing = this._element.scrollHeight > document.documentElement.clientHeight
+    const isModalOverflowing =
+      this._element.scrollHeight > document.documentElement.clientHeight
 
-    if ((!this._isBodyOverflowing && isModalOverflowing && !isRTL()) || (this._isBodyOverflowing && !isModalOverflowing && isRTL())) {
+    if ((!this._isBodyOverflowing && isModalOverflowing && !isRTL) || (this._isBodyOverflowing && !isModalOverflowing && isRTL)) {
       this._element.style.paddingLeft = `${this._scrollbarWidth}px`
     }
 
-    if ((this._isBodyOverflowing && !isModalOverflowing && !isRTL()) || (!this._isBodyOverflowing && isModalOverflowing && isRTL())) {
+    if ((this._isBodyOverflowing && !isModalOverflowing && !isRTL) || (!this._isBodyOverflowing && isModalOverflowing && isRTL)) {
       this._element.style.paddingRight = `${this._scrollbarWidth}px`
     }
   }
@@ -456,44 +458,67 @@ class Modal extends BaseComponent {
 
   _setScrollbar() {
     if (this._isBodyOverflowing) {
-      this._setElementAttributes(SELECTOR_FIXED_CONTENT, 'paddingRight', calculatedValue => calculatedValue + this._scrollbarWidth)
-      this._setElementAttributes(SELECTOR_STICKY_CONTENT, 'marginRight', calculatedValue => calculatedValue - this._scrollbarWidth)
-      this._setElementAttributes('body', 'paddingRight', calculatedValue => calculatedValue + this._scrollbarWidth)
+      // Note: DOMNode.style.paddingRight returns the actual value or '' if not set
+      //   while $(DOMNode).css('padding-right') returns the calculated value or 0 if not set
+
+      // Adjust fixed content padding
+      SelectorEngine.find(SELECTOR_FIXED_CONTENT)
+        .forEach(element => {
+          const actualPadding = element.style.paddingRight
+          const calculatedPadding = window.getComputedStyle(element)['padding-right']
+          Manipulator.setDataAttribute(element, 'padding-right', actualPadding)
+          element.style.paddingRight = `${Number.parseFloat(calculatedPadding) + this._scrollbarWidth}px`
+        })
+
+      // Adjust sticky content margin
+      SelectorEngine.find(SELECTOR_STICKY_CONTENT)
+        .forEach(element => {
+          const actualMargin = element.style.marginRight
+          const calculatedMargin = window.getComputedStyle(element)['margin-right']
+          Manipulator.setDataAttribute(element, 'margin-right', actualMargin)
+          element.style.marginRight = `${Number.parseFloat(calculatedMargin) - this._scrollbarWidth}px`
+        })
+
+      // Adjust body padding
+      const actualPadding = document.body.style.paddingRight
+      const calculatedPadding = window.getComputedStyle(document.body)['padding-right']
+
+      Manipulator.setDataAttribute(document.body, 'padding-right', actualPadding)
+      document.body.style.paddingRight = `${Number.parseFloat(calculatedPadding) + this._scrollbarWidth}px`
     }
 
     document.body.classList.add(CLASS_NAME_OPEN)
   }
 
-  _setElementAttributes(selector, styleProp, callback) {
-    SelectorEngine.find(selector)
-      .forEach(element => {
-        if (element !== document.body && window.innerWidth > element.clientWidth + this._scrollbarWidth) {
-          return
-        }
-
-        const actualValue = element.style[styleProp]
-        const calculatedValue = window.getComputedStyle(element)[styleProp]
-        Manipulator.setDataAttribute(element, styleProp, actualValue)
-        element.style[styleProp] = callback(Number.parseFloat(calculatedValue)) + 'px'
-      })
-  }
-
   _resetScrollbar() {
-    this._resetElementAttributes(SELECTOR_FIXED_CONTENT, 'paddingRight')
-    this._resetElementAttributes(SELECTOR_STICKY_CONTENT, 'marginRight')
-    this._resetElementAttributes('body', 'paddingRight')
-  }
+    // Restore fixed content padding
+    SelectorEngine.find(SELECTOR_FIXED_CONTENT)
+      .forEach(element => {
+        const padding = Manipulator.getDataAttribute(element, 'padding-right')
+        if (typeof padding !== 'undefined') {
+          Manipulator.removeDataAttribute(element, 'padding-right')
+          element.style.paddingRight = padding
+        }
+      })
 
-  _resetElementAttributes(selector, styleProp) {
-    SelectorEngine.find(selector).forEach(element => {
-      const value = Manipulator.getDataAttribute(element, styleProp)
-      if (typeof value === 'undefined' && element === document.body) {
-        element.style[styleProp] = ''
-      } else {
-        Manipulator.removeDataAttribute(element, styleProp)
-        element.style[styleProp] = value
-      }
-    })
+    // Restore sticky content and navbar-toggler margin
+    SelectorEngine.find(`${SELECTOR_STICKY_CONTENT}`)
+      .forEach(element => {
+        const margin = Manipulator.getDataAttribute(element, 'margin-right')
+        if (typeof margin !== 'undefined') {
+          Manipulator.removeDataAttribute(element, 'margin-right')
+          element.style.marginRight = margin
+        }
+      })
+
+    // Restore body padding
+    const padding = Manipulator.getDataAttribute(document.body, 'padding-right')
+    if (typeof padding === 'undefined') {
+      document.body.style.paddingRight = ''
+    } else {
+      Manipulator.removeDataAttribute(document.body, 'padding-right')
+      document.body.style.paddingRight = padding
+    }
   }
 
   _getScrollbarWidth() { // thx d.walsh
@@ -509,7 +534,7 @@ class Modal extends BaseComponent {
 
   static jQueryInterface(config, relatedTarget) {
     return this.each(function () {
-      let data = Data.get(this, DATA_KEY)
+      let data = Data.getData(this, DATA_KEY)
       const _config = {
         ...Default,
         ...Manipulator.getDataAttributes(this),
@@ -557,7 +582,7 @@ EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (
     })
   })
 
-  let data = Data.get(target, DATA_KEY)
+  let data = Data.getData(target, DATA_KEY)
   if (!data) {
     const config = {
       ...Manipulator.getDataAttributes(target),
@@ -567,7 +592,7 @@ EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (
     data = new Modal(target, config)
   }
 
-  data.toggle(this)
+  data.show(this)
 })
 
 /**
@@ -577,6 +602,18 @@ EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (
  * add .Modal to jQuery only if jQuery is present
  */
 
-defineJQueryPlugin(NAME, Modal)
+onDOMContentLoaded(() => {
+  const $ = getjQuery()
+  /* istanbul ignore if */
+  if ($) {
+    const JQUERY_NO_CONFLICT = $.fn[NAME]
+    $.fn[NAME] = Modal.jQueryInterface
+    $.fn[NAME].Constructor = Modal
+    $.fn[NAME].noConflict = () => {
+      $.fn[NAME] = JQUERY_NO_CONFLICT
+      return Modal.jQueryInterface
+    }
+  }
+})
 
 export default Modal

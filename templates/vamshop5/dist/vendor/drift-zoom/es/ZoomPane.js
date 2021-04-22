@@ -243,7 +243,7 @@ var ZoomPane = /*#__PURE__*/function () {
       removeClasses(this.el, this.openClasses);
       removeClasses(this.el, this.closingClasses);
       removeClasses(this.el, this.inlineClasses);
-      this.el.style = ""; // The window could have been resized above or below `inline`
+      this.el.setAttribute("style", ""); // The window could have been resized above or below `inline`
       // limits since the ZoomPane was shown. Because of this, we
       // can't rely on `this._isInline` here.
 

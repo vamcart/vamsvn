@@ -1,12 +1,14 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.0.0-beta3): alert.js
+ * Bootstrap (v5.0.0-beta1): alert.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
 
 import {
-  defineJQueryPlugin,
+  getjQuery,
+  onDOMContentLoaded,
+  TRANSITION_END,
   emulateTransitionEnd,
   getElementFromSelector,
   getTransitionDurationFromElement
@@ -32,9 +34,9 @@ const EVENT_CLOSE = `close${EVENT_KEY}`
 const EVENT_CLOSED = `closed${EVENT_KEY}`
 const EVENT_CLICK_DATA_API = `click${EVENT_KEY}${DATA_API_KEY}`
 
-const CLASS_NAME_ALERT = 'alert'
-const CLASS_NAME_FADE = 'fade'
-const CLASS_NAME_SHOW = 'show'
+const CLASSNAME_ALERT = 'alert'
+const CLASSNAME_FADE = 'fade'
+const CLASSNAME_SHOW = 'show'
 
 /**
  * ------------------------------------------------------------------------
@@ -65,7 +67,7 @@ class Alert extends BaseComponent {
   // Private
 
   _getRootElement(element) {
-    return getElementFromSelector(element) || element.closest(`.${CLASS_NAME_ALERT}`)
+    return getElementFromSelector(element) || element.closest(`.${CLASSNAME_ALERT}`)
   }
 
   _triggerCloseEvent(element) {
@@ -73,16 +75,16 @@ class Alert extends BaseComponent {
   }
 
   _removeElement(element) {
-    element.classList.remove(CLASS_NAME_SHOW)
+    element.classList.remove(CLASSNAME_SHOW)
 
-    if (!element.classList.contains(CLASS_NAME_FADE)) {
+    if (!element.classList.contains(CLASSNAME_FADE)) {
       this._destroyElement(element)
       return
     }
 
     const transitionDuration = getTransitionDurationFromElement(element)
 
-    EventHandler.one(element, 'transitionend', () => this._destroyElement(element))
+    EventHandler.one(element, TRANSITION_END, () => this._destroyElement(element))
     emulateTransitionEnd(element, transitionDuration)
   }
 
@@ -98,7 +100,7 @@ class Alert extends BaseComponent {
 
   static jQueryInterface(config) {
     return this.each(function () {
-      let data = Data.get(this, DATA_KEY)
+      let data = Data.getData(this, DATA_KEY)
 
       if (!data) {
         data = new Alert(this)
@@ -126,7 +128,6 @@ class Alert extends BaseComponent {
  * Data Api implementation
  * ------------------------------------------------------------------------
  */
-
 EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DISMISS, Alert.handleDismiss(new Alert()))
 
 /**
@@ -136,6 +137,18 @@ EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DISMISS, Alert.handleDi
  * add .Alert to jQuery only if jQuery is present
  */
 
-defineJQueryPlugin(NAME, Alert)
+onDOMContentLoaded(() => {
+  const $ = getjQuery()
+  /* istanbul ignore if */
+  if ($) {
+    const JQUERY_NO_CONFLICT = $.fn[NAME]
+    $.fn[NAME] = Alert.jQueryInterface
+    $.fn[NAME].Constructor = Alert
+    $.fn[NAME].noConflict = () => {
+      $.fn[NAME] = JQUERY_NO_CONFLICT
+      return Alert.jQueryInterface
+    }
+  }
+})
 
 export default Alert

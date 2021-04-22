@@ -2,7 +2,7 @@
   "_args": [
     [
       "tiny-slider@2.9.3",
-      "/home/vamshop/www/templates/vamshop5"
+      "/home/work/My/cartzilla/Cartzilla"
     ]
   ],
   "_from": "tiny-slider@2.9.3",
@@ -26,7 +26,7 @@
   ],
   "_resolved": "https://registry.npmjs.org/tiny-slider/-/tiny-slider-2.9.3.tgz",
   "_spec": "2.9.3",
-  "_where": "/home/vamshop/www/templates/vamshop5",
+  "_where": "/home/work/My/cartzilla/Cartzilla",
   "author": {
     "name": "ganlanyuan",
     "email": "ganlanyuan@gmail.com"

@@ -27,7 +27,7 @@ var Drift = /*#__PURE__*/function () {
 
     _classCallCheck(this, Drift);
 
-    this.VERSION = "1.4.3";
+    this.VERSION = "1.4.1";
     this.triggerEl = triggerEl;
     this.destroy = this.destroy.bind(this);
 

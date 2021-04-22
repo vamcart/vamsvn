@@ -51,19 +51,6 @@ function _setPrototypeOf(o, p) {
   return _setPrototypeOf(o, p);
 }
 
-function _isNativeReflectConstruct() {
-  if (typeof Reflect === "undefined" || !Reflect.construct) return false;
-  if (Reflect.construct.sham) return false;
-  if (typeof Proxy === "function") return true;
-
-  try {
-    Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {}));
-    return true;
-  } catch (e) {
-    return false;
-  }
-}
-
 function _assertThisInitialized(self) {
   if (self === void 0) {
     throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
@@ -78,25 +65,6 @@ function _possibleConstructorReturn(self, call) {
   }
 
   return _assertThisInitialized(self);
-}
-
-function _createSuper(Derived) {
-  var hasNativeReflectConstruct = _isNativeReflectConstruct();
-
-  return function _createSuperInternal() {
-    var Super = _getPrototypeOf(Derived),
-        result;
-
-    if (hasNativeReflectConstruct) {
-      var NewTarget = _getPrototypeOf(this).constructor;
-
-      result = Reflect.construct(Super, arguments, NewTarget);
-    } else {
-      result = Super.apply(this, arguments);
-    }
-
-    return _possibleConstructorReturn(this, result);
-  };
 }
 
 function E () {
@@ -279,7 +247,9 @@ function getNumber(value) {
   return parseFloat(value) || 0;
 }
 
-var Point = /*#__PURE__*/function () {
+var Point =
+/*#__PURE__*/
+function () {
   /**
    * Represents a coordinate pair.
    * @param {number} [x=0] X.
@@ -309,7 +279,9 @@ var Point = /*#__PURE__*/function () {
   return Point;
 }();
 
-var Rect = /*#__PURE__*/function () {
+var Rect =
+/*#__PURE__*/
+function () {
   /**
    * Class for representing rectangular regions.
    * https://github.com/google/closure-library/blob/master/closure/goog/math/rect.js
@@ -362,20 +334,17 @@ var Classes = {
   HIDDEN: 'shuffle-item--hidden'
 };
 
-var id$1 = 0;
+var id = 0;
 
-var ShuffleItem = /*#__PURE__*/function () {
-  function ShuffleItem(element, isRTL) {
+var ShuffleItem =
+/*#__PURE__*/
+function () {
+  function ShuffleItem(element) {
     _classCallCheck(this, ShuffleItem);
 
-    id$1 += 1;
-    this.id = id$1;
+    id += 1;
+    this.id = id;
     this.element = element;
-    /**
-     * Set correct direction of item
-     */
-
-    this.isRTL = isRTL;
     /**
      * Used to separate items for layout and shrink.
      */
@@ -412,7 +381,6 @@ var ShuffleItem = /*#__PURE__*/function () {
     value: function init() {
       this.addClasses([Classes.SHUFFLE_ITEM, Classes.VISIBLE]);
       this.applyCss(ShuffleItem.Css.INITIAL);
-      this.applyCss(this.isRTL ? ShuffleItem.Css.DIRECTION.rtl : ShuffleItem.Css.DIRECTION.ltr);
       this.scale = ShuffleItem.Scale.VISIBLE;
       this.point = new Point();
     }
@@ -459,16 +427,9 @@ ShuffleItem.Css = {
   INITIAL: {
     position: 'absolute',
     top: 0,
+    left: 0,
     visibility: 'visible',
     willChange: 'transform'
-  },
-  DIRECTION: {
-    ltr: {
-      left: 0
-    },
-    rtl: {
-      right: 0
-    }
   },
   VISIBLE: {
     before: {
@@ -575,7 +536,6 @@ var defaults = {
  */
 
 function sorter(arr, options) {
-  // eslint-disable-next-line prefer-object-spread
   var opts = Object.assign({}, defaults, options);
   var original = Array.from(arr);
   var revert = false;
@@ -907,12 +867,12 @@ function arrayUnique(x) {
 } // Used for unique instance variables
 
 
-var id = 0;
+var id$1 = 0;
 
-var Shuffle = /*#__PURE__*/function (_TinyEmitter) {
+var Shuffle =
+/*#__PURE__*/
+function (_TinyEmitter) {
   _inherits(Shuffle, _TinyEmitter);
-
-  var _super = _createSuper(Shuffle);
 
   /**
    * Categorize, sort, and filter a responsive grid of items.
@@ -928,8 +888,7 @@ var Shuffle = /*#__PURE__*/function (_TinyEmitter) {
 
     _classCallCheck(this, Shuffle);
 
-    _this = _super.call(this); // eslint-disable-next-line prefer-object-spread
-
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(Shuffle).call(this));
     _this.options = Object.assign({}, Shuffle.options, options); // Allow misspelling of delimiter since that's how it used to be.
     // Remove in v6.
 
@@ -954,8 +913,8 @@ var Shuffle = /*#__PURE__*/function (_TinyEmitter) {
     }
 
     _this.element = el;
-    _this.id = 'shuffle_' + id;
-    id += 1;
+    _this.id = 'shuffle_' + id$1;
+    id$1 += 1;
 
     _this._init();
 
@@ -1255,7 +1214,7 @@ var Shuffle = /*#__PURE__*/function (_TinyEmitter) {
       return Array.from(this.element.children).filter(function (el) {
         return matchesSelector(el, _this3.options.itemSelector);
       }).map(function (el) {
-        return new ShuffleItem(el, _this3.options.isRTL);
+        return new ShuffleItem(el);
       });
     }
     /**
@@ -1616,21 +1575,14 @@ var Shuffle = /*#__PURE__*/function (_TinyEmitter) {
     key: "getStylesForTransition",
     value: function getStylesForTransition(item, styleObject) {
       // Clone the object to avoid mutating the original.
-      // eslint-disable-next-line prefer-object-spread
       var styles = Object.assign({}, styleObject);
 
       if (this.options.useTransforms) {
-        var sign = this.options.isRTL ? '-' : '';
         var x = this.options.roundTransforms ? Math.round(item.point.x) : item.point.x;
         var y = this.options.roundTransforms ? Math.round(item.point.y) : item.point.y;
-        styles.transform = "translate(".concat(sign).concat(x, "px, ").concat(y, "px) scale(").concat(item.scale, ")");
+        styles.transform = "translate(".concat(x, "px, ").concat(y, "px) scale(").concat(item.scale, ")");
       } else {
-        if (this.options.isRTL) {
-          styles.right = item.point.x + 'px';
-        } else {
-          styles.left = item.point.x + 'px';
-        }
-
+        styles.left = item.point.x + 'px';
         styles.top = item.point.y + 'px';
       }
 
@@ -1864,7 +1816,7 @@ var Shuffle = /*#__PURE__*/function (_TinyEmitter) {
       var _this9 = this;
 
       var items = arrayUnique(newItems).map(function (el) {
-        return new ShuffleItem(el, _this9.options.isRTL);
+        return new ShuffleItem(el);
       }); // Add classes and set initial positions.
 
       this._initItems(items); // Determine which items will go with the current filter.
@@ -2213,8 +2165,6 @@ Shuffle.options = {
   filterMode: Shuffle.FilterMode.ANY,
   // Attempt to center grid items in each row.
   isCentered: false,
-  // Attempt to align grid items to right.
-  isRTL: false,
   // Whether to round pixel values used in translate(x, y). This usually avoids
   // blurriness.
   roundTransforms: true

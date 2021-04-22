@@ -1,33 +1,35 @@
 {
-  "_from": "nouislider@14.6.4",
-  "_id": "nouislider@14.6.4",
+  "_args": [
+    [
+      "nouislider@14.6.3",
+      "/home/work/My/cartzilla/Cartzilla"
+    ]
+  ],
+  "_from": "nouislider@14.6.3",
+  "_id": "nouislider@14.6.3",
   "_inBundle": false,
-  "_integrity": "sha512-PVCGYl+aC7/nVEbW61ypJWfuW3UCpvctz/luxpt4byxxli1FFyjBX9NIiy4Yak9AaO6a5BkPGfFYMCW4eg3eeQ==",
+  "_integrity": "sha512-/3tAqsWY2JYW9vd7bC14bFRA1P9A+pRHOtKmoMsyfnB0fQcd1UFx2pdY1Ey5wAUzTnXTesmYaEo/ecLVETijIQ==",
   "_location": "/nouislider",
   "_phantomChildren": {},
   "_requested": {
     "type": "version",
     "registry": true,
-    "raw": "nouislider@14.6.4",
+    "raw": "nouislider@14.6.3",
     "name": "nouislider",
     "escapedName": "nouislider",
-    "rawSpec": "14.6.4",
+    "rawSpec": "14.6.3",
     "saveSpec": null,
-    "fetchSpec": "14.6.4"
+    "fetchSpec": "14.6.3"
   },
   "_requiredBy": [
-    "#USER",
     "/"
   ],
-  "_resolved": "https://registry.npmjs.org/nouislider/-/nouislider-14.6.4.tgz",
-  "_shasum": "81eb9544309a59b013293278951661da69e46713",
-  "_spec": "nouislider@14.6.4",
-  "_where": "/home/vamshop/www/templates/vamshop5",
+  "_resolved": "https://registry.npmjs.org/nouislider/-/nouislider-14.6.3.tgz",
+  "_spec": "14.6.3",
+  "_where": "/home/work/My/cartzilla/Cartzilla",
   "bugs": {
     "url": "https://github.com/leongersen/noUiSlider/issues"
   },
-  "bundleDependencies": false,
-  "deprecated": false,
   "description": "noUiSlider is a lightweight JavaScript range slider.",
   "devDependencies": {
     "bannerize": "^1.1.4",
@@ -68,5 +70,5 @@
     "lint": "eslint src/nouislider.js"
   },
   "style": "distribute/nouislider.min.css",
-  "version": "14.6.4"
+  "version": "14.6.3"
 }

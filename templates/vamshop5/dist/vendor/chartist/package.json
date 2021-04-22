@@ -2,7 +2,7 @@
   "_args": [
     [
       "chartist@0.11.4",
-      "/home/vamshop/www/templates/vamshop5"
+      "/home/work/My/cartzilla/Cartzilla"
     ]
   ],
   "_from": "chartist@0.11.4",
@@ -26,7 +26,7 @@
   ],
   "_resolved": "https://registry.npmjs.org/chartist/-/chartist-0.11.4.tgz",
   "_spec": "0.11.4",
-  "_where": "/home/vamshop/www/templates/vamshop5",
+  "_where": "/home/work/My/cartzilla/Cartzilla",
   "author": {
     "name": "Gion Kunz"
   },

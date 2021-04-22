@@ -70,21 +70,27 @@
     function display_links($max_page_links, $parameters = '') {
       global $PHP_SELF, $request_type;
 
-      $display_links_string = '';
-
-      $class = 'class="pageResults"';
+      if ($this->number_of_pages == 1) return;
 
       if (vam_not_null($parameters) && (substr($parameters, -1) != '&')) $parameters .= '&';
 
+
       // previous button - not displayed on first page
+      $display_links_string .= '<ul class="pagination">';
 		if ($this->current_page_number > 1) { 
 			if(($this->current_page_number - 1) == '1'){
-				$display_links_string .= '<a href="' . vam_href_link(basename($PHP_SELF), $parameters, $request_type) . '" class="pageResults" title=" ' . PREVNEXT_TITLE_PREVIOUS_PAGE . ' ">' . PREVNEXT_BUTTON_PREV . '</a>&nbsp;&nbsp;';
+				$display_links_string .= '<li class="page-item"><a class="page-link" href="' . vam_href_link(basename($PHP_SELF), $parameters, $request_type) . '" title=" ' . PREVNEXT_TITLE_PREVIOUS_PAGE . ' "><i class="fas fa-chevron-left me-2"></i> ' . PREVNEXT_BUTTON_PREV . '</a></li>';
 			} else {
-				$display_links_string .= '<a href="' . vam_href_link(basename($PHP_SELF), $parameters . 'page=' . ($this->current_page_number - 1), $request_type) . '" class="pageResults" title=" ' . PREVNEXT_TITLE_PREVIOUS_PAGE . ' ">' . PREVNEXT_BUTTON_PREV . '</a>&nbsp;&nbsp;';
+				$display_links_string .= '<li class="page-item"><a class="page-link" href="' . vam_href_link(basename($PHP_SELF), $parameters . 'page=' . ($this->current_page_number - 1), $request_type) . '" title=" ' . PREVNEXT_TITLE_PREVIOUS_PAGE . ' "><i class="fas fa-chevron-left me-2"></i> ' . PREVNEXT_BUTTON_PREV . '</a></li>';
 			}
-		} 
+		} else {
+				$display_links_string .= '<li class="page-item disabled"><a class="page-link border-0" href="' . vam_href_link(basename($PHP_SELF), $parameters . 'page=' . ($this->current_page_number - 1), $request_type) . '" title=" ' . PREVNEXT_TITLE_PREVIOUS_PAGE . ' "><i class="fas fa-chevron-left me-2"></i> ' . PREVNEXT_BUTTON_PREV . '</a></li>';
+		}
+      $display_links_string .= '</ul>';
 		
+      $display_links_string .= '<ul class="pagination">';
+		$display_links_string .= '<li class="page-item d-sm-none"><span class="page-link page-link-static">'.$this->current_page_number.' / '.$this->number_of_pages.'</span></li>';
+
       // check if number_of_pages > $max_page_links
       $cur_window_num = intval($this->current_page_number / $max_page_links);
       if ($this->current_page_number % $max_page_links) $cur_window_num++;
@@ -93,31 +99,79 @@
       if ($this->number_of_pages % $max_page_links) $max_window_num++;
 
       // previous window of pages
-      if ($cur_window_num > 1) $display_links_string .= '<a href="' . vam_href_link(basename($PHP_SELF), $parameters . 'page=' . (($cur_window_num - 1) * $max_page_links), $request_type) . '" class="pageResults" title=" ' . sprintf(PREVNEXT_TITLE_PREV_SET_OF_NO_PAGE, $max_page_links) . ' ">...</a>';
+      if ($cur_window_num > 1) $display_links_string .= '<li class="page-item d-none d-sm-block"><a class="page-link" href="' . vam_href_link(basename($PHP_SELF), $parameters . 'page=' . (($cur_window_num - 1) * $max_page_links), $request_type) . '" title=" ' . sprintf(PREVNEXT_TITLE_PREV_SET_OF_NO_PAGE, $max_page_links) . ' ">...</a></li>';
 
       // page nn button
       for ($jump_to_page = 1 + (($cur_window_num - 1) * $max_page_links); ($jump_to_page <= ($cur_window_num * $max_page_links)) && ($jump_to_page <= $this->number_of_pages); $jump_to_page++) {
        $count = ++$i;
         if ($jump_to_page == $this->current_page_number) {
-          $display_links_string .= '&nbsp;<b>' . $jump_to_page . '</b>&nbsp;';
+          $display_links_string .= '<li class="page-item active d-none d-sm-block" aria-current="page"><span class="page-link">' . $jump_to_page . '<span class="visually-hidden">(current)</span></span></li>';
         } else {
 			if( ($count == '1') and ($cur_window_num == '1') ){
-				$display_links_string .= '&nbsp;<a href="' . vam_href_link(basename($PHP_SELF), $parameters, $request_type) . '" class="pageResults" title=" ' . sprintf(PREVNEXT_TITLE_PAGE_NO, $jump_to_page) . ' ">' . $jump_to_page . '</a>&nbsp;';
+				$display_links_string .= '<li class="page-item d-none d-sm-block"><a class="page-link" href="' . vam_href_link(basename($PHP_SELF), $parameters, $request_type) . '" title=" ' . sprintf(PREVNEXT_TITLE_PAGE_NO, $jump_to_page) . ' ">' . $jump_to_page . '</a></li>';
 			} else {
-				$display_links_string .= '&nbsp;<a href="' . vam_href_link(basename($PHP_SELF), $parameters . 'page=' . $jump_to_page, $request_type) . '" class="pageResults" title=" ' . sprintf(PREVNEXT_TITLE_PAGE_NO, $jump_to_page) . ' ">' . $jump_to_page . '</a>&nbsp;';
+				$display_links_string .= '<li class="page-item d-none d-sm-block"><a class="page-link" href="' . vam_href_link(basename($PHP_SELF), $parameters . 'page=' . $jump_to_page, $request_type) . '" title=" ' . sprintf(PREVNEXT_TITLE_PAGE_NO, $jump_to_page) . ' ">' . $jump_to_page . '</a></li>';
 			}
         }
       }
 
       // next window of pages
-      if ($cur_window_num < $max_window_num) $display_links_string .= '<a href="' . vam_href_link(basename($PHP_SELF), $parameters . 'page=' . (($cur_window_num) * $max_page_links + 1), $request_type) . '" class="pageResults" title=" ' . sprintf(PREVNEXT_TITLE_NEXT_SET_OF_NO_PAGE, $max_page_links) . ' ">...</a>&nbsp;';
+      if ($cur_window_num < $max_window_num) $display_links_string .= '<li class="page-item d-sm-none"><a class="page-link" href="' . vam_href_link(basename($PHP_SELF), $parameters . 'page=' . (($cur_window_num) * $max_page_links + 1), $request_type) . '" title=" ' . sprintf(PREVNEXT_TITLE_NEXT_SET_OF_NO_PAGE, $max_page_links) . ' ">...</a></li>';
+
+      $display_links_string .= '</ul>';
 
        // next button
-      if (($this->current_page_number < $this->number_of_pages) && ($this->number_of_pages != 1)) $display_links_string .= '&nbsp;<a href="' . vam_href_link(basename($PHP_SELF), $parameters . 'page=' . ($this->current_page_number + 1), $request_type) . '" class="pageResults" title=" ' . PREVNEXT_TITLE_NEXT_PAGE . ' ">' . PREVNEXT_BUTTON_NEXT . '</a>&nbsp;';
-
+      $display_links_string .= '<ul class="pagination">';
+      if (($this->current_page_number < $this->number_of_pages) && ($this->number_of_pages != 1)) {
+      $display_links_string .= '<li class="page-item"><a class="page-link" href="' . vam_href_link(basename($PHP_SELF), $parameters . 'page=' . ($this->current_page_number + 1), $request_type) . '" title=" ' . PREVNEXT_TITLE_NEXT_PAGE . ' ">' . PREVNEXT_BUTTON_NEXT . ' <i class="fas fa-chevron-right ms-2"></i></a></li>';
+      } else {
+      $display_links_string .= '<li class="page-item disabled"><a class="page-link border-0" href="' . vam_href_link(basename($PHP_SELF), $parameters . 'page=' . ($this->current_page_number + 1), $request_type) . '" title=" ' . PREVNEXT_TITLE_NEXT_PAGE . ' ">' . PREVNEXT_BUTTON_NEXT . ' <i class="fas fa-chevron-right ms-2"></i></a></li>';
+      }	
+      $display_links_string .= '</ul>';
+      
       return $display_links_string;
     }
 
+    // display compact split-page-number-links
+    function display_links_compact($max_page_links, $parameters = '') {
+      global $PHP_SELF, $request_type;
+      
+      if ($this->number_of_pages == 1) return;
+
+      if (vam_not_null($parameters) && (substr($parameters, -1) != '&')) $parameters .= '&';
+
+
+      // previous button - not displayed on first page
+
+		if ($this->current_page_number > 1) { 
+			if(($this->current_page_number - 1) == '1'){
+				$display_links_string .= '<a class="nav-link-style nav-link-light me-3" href="' . vam_href_link(basename($PHP_SELF), $parameters, $request_type) . '" title=" ' . PREVNEXT_TITLE_PREVIOUS_PAGE . ' "><i class="fas fa-chevron-left me-2"></i></a>';
+			} else {
+				$display_links_string .= '<a class="nav-link-style nav-link-light me-3" href="' . vam_href_link(basename($PHP_SELF), $parameters . 'page=' . ($this->current_page_number - 1), $request_type) . '" title=" ' . PREVNEXT_TITLE_PREVIOUS_PAGE . ' "><i class="fas fa-chevron-left me-2"></i></a>';
+			}
+		} else {
+				$display_links_string .= '<span class="nav-link-style nav-link-light me-3 disabled" href="' . vam_href_link(basename($PHP_SELF), $parameters . 'page=' . ($this->current_page_number - 1), $request_type) . '" title=" ' . PREVNEXT_TITLE_PREVIOUS_PAGE . ' "><i class="fas fa-chevron-left me-2"></i></span>';
+		}
+		
+		$display_links_string .= '<span class="fs-md text-light">'.$this->current_page_number.' / '.$this->number_of_pages.'</span>';
+
+      // check if number_of_pages > $max_page_links
+      $cur_window_num = intval($this->current_page_number / $max_page_links);
+      if ($this->current_page_number % $max_page_links) $cur_window_num++;
+
+      $max_window_num = intval($this->number_of_pages / $max_page_links);
+      if ($this->number_of_pages % $max_page_links) $max_window_num++;
+
+       // next button
+      if (($this->current_page_number < $this->number_of_pages) && ($this->number_of_pages != 1)) {
+      $display_links_string .= '<a class="nav-link-style nav-link-light ms-3" href="' . vam_href_link(basename($PHP_SELF), $parameters . 'page=' . ($this->current_page_number + 1), $request_type) . '" title=" ' . PREVNEXT_TITLE_NEXT_PAGE . ' "><i class="fas fa-chevron-right ms-2"></i></a>';
+      } else {
+      $display_links_string .= '<span class="nav-link-style nav-link-light ms-3 disabled" title=" ' . PREVNEXT_TITLE_NEXT_PAGE . ' "><i class="fas fa-chevron-right ms-2"></i></span>';
+      }	
+      
+      return $display_links_string;
+    }
+    
     // display number of total products found
     function display_count($text_output) {
       $to_num = ($this->number_of_rows_per_page * $this->current_page_number);

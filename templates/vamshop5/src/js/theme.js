@@ -14,7 +14,7 @@ import disableDropdownAutohide from './components/disable-dropdown-autohide';
 import carousel from './components/carousel';
 import gallery from './components/gallery';
 import productGallery from './components/product-gallery';
-//import imageZoom from './components/image-zoom';
+import imageZoom from './components/image-zoom';
 import countdown from './components/countdown';
 import charts from './components/charts';
 import videoButton from './components/video-button';

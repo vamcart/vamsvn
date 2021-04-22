@@ -2,7 +2,7 @@
   "_args": [
     [
       "lg-fullscreen.js@1.2.0",
-      "/home/vamshop/www/templates/vamshop5"
+      "/home/work/My/cartzilla/Cartzilla"
     ]
   ],
   "_from": "lg-fullscreen.js@1.2.0",
@@ -26,7 +26,7 @@
   ],
   "_resolved": "https://registry.npmjs.org/lg-fullscreen.js/-/lg-fullscreen.js-1.2.0.tgz",
   "_spec": "1.2.0",
-  "_where": "/home/vamshop/www/templates/vamshop5",
+  "_where": "/home/work/My/cartzilla/Cartzilla",
   "author": {
     "name": "Sachin N",
     "email": "sachi77n@gmail.com",

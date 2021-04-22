@@ -50,7 +50,8 @@ if ($listing_split->number_of_rows > 0) {
 
 
 
-	$navigation = TEXT_RESULT_PAGE.' '.$listing_split->display_links(MAX_DISPLAY_PAGE_LINKS, vam_get_all_get_params(array ('page', 'cPath', 'info', 'x', 'y')));
+	$navigation = $listing_split->display_links(MAX_DISPLAY_PAGE_LINKS, vam_get_all_get_params(array ('page', 'cPath', 'info', 'x', 'y')));
+	$navigation_compact = $listing_split->display_links_compact(MAX_DISPLAY_PAGE_LINKS, vam_get_all_get_params(array ('page', 'cPath', 'info', 'x', 'y')));
 	$navigation_pages = $listing_split->display_count(TEXT_DISPLAY_NUMBER_OF_PRODUCTS);
 	if (GROUP_CHECK == 'true') {
 		$group_check = "and c.group_permission_".$_SESSION['customers_status']['customers_status_id']."=1 ";
@@ -275,6 +276,7 @@ if ($result != false) {
 	$module->assign('LINK_sort_id_desc',vam_href_link(basename($PHP_SELF),vam_get_all_get_params(array ('page','sort', 'direction', 'info','x','y')) . 'sort=id&direction=desc'));
 
 	$module->assign('NAVIGATION', $navigation);
+	$module->assign('NAVIGATION_COMPACT', $navigation_compact);
 	$module->assign('NAVIGATION_PAGES', $navigation_pages);
 
 	$module->assign('navtrail',$breadcrumb->trail(' &raquo; '));

@@ -6,7 +6,8 @@
 <script src="templates/<?php echo CURRENT_TEMPLATE; ?>/dist/vendor/simplebar/dist/simplebar.min.js"></script>
 <script src="templates/<?php echo CURRENT_TEMPLATE; ?>/dist/vendor/tiny-slider/dist/min/tiny-slider.js"></script>
 <script src="templates/<?php echo CURRENT_TEMPLATE; ?>/dist/vendor/smooth-scroll/dist/smooth-scroll.polyfills.min.js"></script>
-<!--<script src="templates/<?php echo CURRENT_TEMPLATE; ?>/dist/vendor/drift-zoom/dist/Drift.min.js"></script>-->
+<script src="templates/<?php echo CURRENT_TEMPLATE; ?>/dist/vendor/nouislider/distribute/nouislider.min.js"></script>
+<script src="templates/<?php echo CURRENT_TEMPLATE; ?>/dist/vendor/drift-zoom/dist/Drift.min.js"></script>
 <!-- Main theme script-->
 <script src="templates/<?php echo CURRENT_TEMPLATE; ?>/dist/js/theme.min.js"></script>
 <?php
