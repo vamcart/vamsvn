@@ -131,12 +131,12 @@
       $display_links_string .= '<ul class="pagination">';
 		if ($this->current_page_number > 1) { 
 			if(($this->current_page_number - 1) == '1'){
-				$display_links_string .= '<li class="page-item"><a class="page-link" href="' . vam_href_link(basename($PHP_SELF), $parameters, $request_type) . '" title=" ' . PREVNEXT_TITLE_PREVIOUS_PAGE . ' "><i class="fas fa-chevron-left me-2"></i> ' . PREVNEXT_BUTTON_PREV . '</a></li>';
+				$display_links_string .= '<li class="page-item"><a class="page-link" href="' . vam_href_link(basename($PHP_SELF), $parameters, $request_type) . '" title=" ' . PREVNEXT_TITLE_PREVIOUS_PAGE . ' "><i class="fas fa-chevron-left me-2"></i> ' . BUTTON_PREV . '</a></li>';
 			} else {
-				$display_links_string .= '<li class="page-item"><a class="page-link" href="' . vam_href_link(basename($PHP_SELF), $parameters . 'page=' . ($this->current_page_number - 1), $request_type) . '" title=" ' . PREVNEXT_TITLE_PREVIOUS_PAGE . ' "><i class="fas fa-chevron-left me-2"></i> ' . PREVNEXT_BUTTON_PREV . '</a></li>';
+				$display_links_string .= '<li class="page-item"><a class="page-link" href="' . vam_href_link(basename($PHP_SELF), $parameters . 'page=' . ($this->current_page_number - 1), $request_type) . '" title=" ' . PREVNEXT_TITLE_PREVIOUS_PAGE . ' "><i class="fas fa-chevron-left me-2"></i> ' . BUTTON_PREV . '</a></li>';
 			}
 		} else {
-				$display_links_string .= '<li class="page-item disabled"><a class="page-link border-0" href="" title=" ' . PREVNEXT_TITLE_PREVIOUS_PAGE . ' "><i class="fas fa-chevron-left me-2"></i> ' . PREVNEXT_BUTTON_PREV . '</a></li>';
+				$display_links_string .= '<li class="page-item disabled"><a class="page-link border-0" href="" title=" ' . PREVNEXT_TITLE_PREVIOUS_PAGE . ' "><i class="fas fa-chevron-left me-2"></i> ' . BUTTON_PREV . '</a></li>';
 		}
       $display_links_string .= '</ul>';
 		
@@ -175,9 +175,9 @@
        // next button
       $display_links_string .= '<ul class="pagination">';
       if (($this->current_page_number < $this->number_of_pages) && ($this->number_of_pages != 1)) {
-      $display_links_string .= '<li class="page-item"><a class="page-link" href="' . vam_href_link(basename($PHP_SELF), $parameters . 'page=' . ($this->current_page_number + 1), $request_type) . '" title=" ' . PREVNEXT_TITLE_NEXT_PAGE . ' ">' . PREVNEXT_BUTTON_NEXT . ' <i class="fas fa-chevron-right ms-2"></i></a></li>';
+      $display_links_string .= '<li class="page-item"><a class="page-link" href="' . vam_href_link(basename($PHP_SELF), $parameters . 'page=' . ($this->current_page_number + 1), $request_type) . '" title=" ' . PREVNEXT_TITLE_NEXT_PAGE . ' ">' . BUTTON_NEXT . ' <i class="fas fa-chevron-right ms-2"></i></a></li>';
       } else {
-      $display_links_string .= '<li class="page-item disabled"><a class="page-link border-0" href="" title=" ' . PREVNEXT_TITLE_NEXT_PAGE . ' ">' . PREVNEXT_BUTTON_NEXT . ' <i class="fas fa-chevron-right ms-2"></i></a></li>';
+      $display_links_string .= '<li class="page-item disabled"><a class="page-link border-0" href="" title=" ' . PREVNEXT_TITLE_NEXT_PAGE . ' ">' . BUTTON_NEXT . ' <i class="fas fa-chevron-right ms-2"></i></a></li>';
       }	
       $display_links_string .= '</ul>';
       

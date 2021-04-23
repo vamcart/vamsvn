@@ -976,4 +976,7 @@ define('TEXT_LOGIN_MY_ORDERS','Мои заказы');
 
 define('TEXT_LOGIN_SOCIAL','Соц. сети');
 
+define('BUTTON_PREV', 'Назад');
+define('BUTTON_NEXT', 'Вперёд');
+
 ?>
