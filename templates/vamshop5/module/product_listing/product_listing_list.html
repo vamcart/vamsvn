@@ -577,7 +577,11 @@
           <!-- Products grid-->
           <div class="row mx-n2">
           {foreach name=aussen item=module_data from=$module_content}
+          {if $smarty.get.view == 'list'}
+          {include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/product-card/vamshop5-product-card-list.html"}
+          {else}
           {include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/product-card/vamshop5-product-card-featured.html"}
+          {/if}
           {/foreach}
           </div>
           <hr class="my-3">

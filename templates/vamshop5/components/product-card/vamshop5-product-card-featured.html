@@ -7,7 +7,8 @@
         <span class="wishlist-button btn-sm text-muted px-2 py-1">{$module_data.PRODUCTS_BUTTON_WISHLIST}</span>
         {/if}	
         <a class="card-img-top d-block overflow-hidden text-center" href="{$module_data.PRODUCTS_LINK}"><img src="{$module_data.PRODUCTS_IMAGE}" alt="{$module_data.PRODUCTS_NAME}"></a>
-        <div class="card-body py-2"><a class="product-meta d-block fs-xs pb-1" href="{$module_data.PRODUCTS_CATEGORY_URL}">{$module_data.PRODUCTS_CATEGORY_NAME}</a>
+        <div class="card-body py-2">
+        {if $module_data.PRODUCTS_CATEGORY_NAME != ''}<a class="product-meta d-block fs-xs pb-1" href="{$module_data.PRODUCTS_CATEGORY_URL}">{$module_data.PRODUCTS_CATEGORY_NAME}</a>{/if}
           <h3 class="product-title fs-sm text-truncate"><a href="{$module_data.PRODUCTS_LINK}">{$module_data.PRODUCTS_NAME}</a></h3>
           <div class="d-flex justify-content-between">
             {if $module_data.PRODUCTS_PRICE_PLAIN > 0}<div class="product-price"><span class="text-accent">{$module_data.PRODUCTS_PRICE}</span></div>{/if}

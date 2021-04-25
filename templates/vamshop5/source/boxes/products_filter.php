@@ -34,6 +34,7 @@ $box_content='';
 
 require_once(DIR_FS_INC . 'vam_get_subcategories.inc.php');
 
+//require_once(DIR_FS_CATALOG.'templates/'.CURRENT_TEMPLATE.'/functions/products_specifications.php');
 require_once(DIR_WS_FUNCTIONS . 'products_specifications.php');
 
 require_once(DIR_WS_CLASSES  . 'specifications.php');

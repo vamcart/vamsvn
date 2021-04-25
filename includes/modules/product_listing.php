@@ -59,6 +59,7 @@ if ($listing_split->number_of_rows > 0) {
 	}
 	$category_query = vamDBquery("select
 		                                    cd.categories_description,
+		                                    c.categories_id,
 		                                    cd.categories_name,
 						    cd.categories_heading_title,
 		                                    c.listing_template,
@@ -94,6 +95,11 @@ if ($listing_split->number_of_rows > 0) {
 		$manufacturers_description = $open_data["manufacturers_description"]; 
 		$module->assign('MANUFACTURERS_DESCRIPTION', $manufacturers_description);
 		$module->assign('MANUFACTURERS_NAME', $open_data["manufacturers_name"]);
+
+  $module->assign('CATEGORY_URL', vam_href_link(basename($PHP_SELF),vam_get_all_get_params(array ('sort','view', 'direction', 'info','x','y'))));
+  $module->assign('CATEGORY_URL_LIST', vam_href_link(basename($PHP_SELF),vam_get_all_get_params(array ('sort','view', 'direction', 'info','x','y')) . 'direction=list'));
+
+
 		
 	$rows = 0;
 	$listing_query = vamDBquery($listing_split->sql_query);

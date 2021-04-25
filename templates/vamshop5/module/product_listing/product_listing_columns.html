@@ -572,12 +572,23 @@
             {$NAVIGATION_COMPACT}
             </div>
             
-            <div class="d-none d-sm-flex pb-3"><a class="btn btn-icon nav-link-style bg-light text-dark disabled opacity-100 me-2" href="{$smarty.server.REQUEST_URI}"><i class="ci-view-grid"></i></a><a class="btn btn-icon nav-link-style nav-link-light" href="{$smarty.server.REQUEST_URI}"><i class="ci-view-list"></i></a></div>
+            <div class="d-none d-sm-flex pb-3">
+            <a class="btn btn-icon nav-link-style {if !$smarty.get.direction}bg-light text-dark disabled opacity-100 me-2{else}nav-link-light{/if}" href="{$CATEGORY_URL}">
+            <i class="fas fa-table"></i>
+            </a>
+            <a class="btn btn-icon nav-link-style {if $smarty.get.direction == "list"}bg-light text-dark disabled opacity-100 me-2{else}nav-link-light{/if}" href="{$CATEGORY_URL_LIST}">
+            <i class="fas fa-list"></i>
+            </a>
+            </div>
           </div>
           <!-- Products grid-->
           <div class="row mx-n2">
           {foreach name=aussen item=module_data from=$module_content}
+          {if $smarty.get.direction == 'list'}
+          {include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/product-card/vamshop5-product-card-list.html"}
+          {else}
           {include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/product-card/vamshop5-product-card-featured.html"}
+          {/if}
           {/foreach}
           </div>
           <hr class="my-3">
