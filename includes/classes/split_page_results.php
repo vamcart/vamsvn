@@ -202,7 +202,7 @@
 				$display_links_string .= '<a class="nav-link-style nav-link-light me-3" href="' . vam_href_link(basename($PHP_SELF), $parameters . 'page=' . ($this->current_page_number - 1), $request_type) . '" title=" ' . PREVNEXT_TITLE_PREVIOUS_PAGE . ' "><i class="fas fa-chevron-left me-2"></i></a>';
 			}
 		} else {
-				$display_links_string .= '<span class="nav-link-style nav-link-light me-3 disabled" href="' . vam_href_link(basename($PHP_SELF), $parameters . 'page=' . ($this->current_page_number - 1), $request_type) . '" title=" ' . PREVNEXT_TITLE_PREVIOUS_PAGE . ' "><i class="fas fa-chevron-left me-2"></i></span>';
+				$display_links_string .= '<span class="nav-link-style nav-link-light me-3 disabled" title=" ' . PREVNEXT_TITLE_PREVIOUS_PAGE . ' "><i class="fas fa-chevron-left me-2"></i></span>';
 		}
 		
 		$display_links_string .= '<span class="fs-md text-light">'.$this->current_page_number.' / '.$this->number_of_pages.'</span>';
