@@ -70,7 +70,7 @@ if ($order->delivery['city'] != '') {
 
 		// cache File Name
 		$iddd=md5($order->delivery['city']);
-		$file=SQL_CACHEDIR.$iddd.'sdekcity.vam';
+		$file=SQL_CACHEDIR.'sdekcity'.$iddd.'.vam';
 	    //$gzfile=SQL_CACHEDIR.$id.'.gz';
 
 		// file life time
@@ -96,7 +96,7 @@ if ($order->delivery['city'] != '') {
         fclose($fp);
 		
 	    }
-		
+	    
 	    $receiverCity = json_decode($data, $assoc=true);
 	    $receiverCityId = $receiverCity["geonames"][0]["id"];
 	    
@@ -105,14 +105,40 @@ if ($order->delivery['city'] != '') {
 	    } else {
 	    	$receiverZip = $order->delivery['postcode'];
 	    }
-	    
+
+		// cache File Name
+		$idddd=md5(MODULE_SHIPPING_SDEKPVZ_ZIP);
+		$file=SQL_CACHEDIR.'sdekcitysender'.$idddd.'.vam';
+	    //$gzfile=SQL_CACHEDIR.$id.'.gz';
+
+		// file life time
+		$expire = 240000; // 240 hours
+
+		if (file_exists($file) && filemtime($file) > (time() - $expire)) {
+
+		// get cached resulst
+        $data = file_get_contents($file);
+		} 
+		else {
+		if (file_exists($file)) @unlink($file);
+		
 	    $curl = curl_init();
 	    curl_setopt($curl, CURLOPT_URL, "http://api.cdek.ru/city/getListByTerm/json.php?q=".MODULE_SHIPPING_SDEKPVZ_ZIP);
 	    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 	    $data = curl_exec($curl);
-	    
+
+	    curl_close($curl);
+	    //$stream = $data;
+		$fp = fopen($file,"w");
+        fwrite($fp, $data);
+        fclose($fp);
+		
+	    }
+	    	    
 	    $senderCity = json_decode($data, $assoc=true);
-	    $senderCityId = $senderCity["geonames"][0]["id"];	    
+	    $senderCityId = $senderCity["geonames"][0]["id"];
+
+
 	    
 	    //запрос расчета стоимости отправления 
 	    $ret = $this->sdekpvz_api_calc($aut_login, $auth_Password, $date_Execute, $sender_postcode, $receiverZip, $total_weight, $receiverCityId, $senderCityId);
