@@ -97,19 +97,25 @@ if ($order->delivery['city'] != '') {
 		
 	    }
 		
-	    $senderCity = json_decode($data, $assoc=true);
-	    $senderCityId = $senderCity["geonames"][0]["id"];
+	    $receiverCity = json_decode($data, $assoc=true);
+	    $receiverCityId = $receiverCity["geonames"][0]["id"];
 	    
-	    if ($senderCity["geonames"][0]["postCodeArray"][0] != '') {
-	    	$receiverZip = $senderCity["geonames"][0]["postCodeArray"][0];
+	    if ($receiverCity["geonames"][0]["postCodeArray"][0] != '') {
+	    	$receiverZip = $receiverCity["geonames"][0]["postCodeArray"][0];
 	    } else {
 	    	$receiverZip = $order->delivery['postcode'];
 	    }
 	    
-		$receiverCityId = $senderCityId;
-		
+	    $curl = curl_init();
+	    curl_setopt($curl, CURLOPT_URL, "http://api.cdek.ru/city/getListByTerm/json.php?q=".MODULE_SHIPPING_SDEKPVZ_ZIP);
+	    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+	    $data = curl_exec($curl);
+	    
+	    $senderCity = json_decode($data, $assoc=true);
+	    $senderCityId = $senderCity["geonames"][0]["id"];	    
+	    
 	    //запрос расчета стоимости отправления 
-	    $ret = $this->sdekpvz_api_calc($aut_login, $auth_Password, $date_Execute, $sender_postcode, $receiverZip, $total_weight, $receiverCityId);
+	    $ret = $this->sdekpvz_api_calc($aut_login, $auth_Password, $date_Execute, $sender_postcode, $receiverZip, $total_weight, $receiverCityId, $senderCityId);
 		//print_r	($ret);	
 		
 }
@@ -264,7 +270,7 @@ if ($order->delivery['city'] != '') {
       vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value,  configuration_group_id, sort_order, date_added) values ('MODULE_SHIPPING_SDEKPVZ_COST_2', '100', '6', '0', now())");
 	  vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value,  configuration_group_id, sort_order, date_added) values ('MODULE_SHIPPING_SDEKPVZ_API_LOGIN', 'E50Hrgz08VWXby8xNddk37fyqsFk6FhX', '6', '0', now())");
       vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value,  configuration_group_id, sort_order, date_added) values ('MODULE_SHIPPING_SDEKPVZ_API_PASSWORD', 'nbVwlkmtzZvbwhBIlLpHmHtGX7ANkavF', '6', '0', now())");
-      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value,  configuration_group_id, sort_order, date_added) values ('MODULE_SHIPPING_SDEKPVZ_ZIP', '127051', '6', '0', now())");
+      vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value,  configuration_group_id, sort_order, date_added) values ('MODULE_SHIPPING_SDEKPVZ_ZIP', 'Москва', '6', '0', now())");
       vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value,  configuration_group_id, sort_order, use_function, set_function, date_added) values ('MODULE_SHIPPING_SDEKPVZ_TAX_CLASS', '0', '6', '0', 'vam_get_tax_class_title', 'vam_cfg_pull_down_tax_classes(', now())");
       vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value,  configuration_group_id, sort_order, use_function, set_function, date_added) values ('MODULE_SHIPPING_SDEKPVZ_ZONE', '0', '6', '0', 'vam_get_zone_class_title', 'vam_cfg_pull_down_zone_classes(', now())");
       vam_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_key, configuration_value,  configuration_group_id, sort_order, date_added) values ('MODULE_SHIPPING_SDEKPVZ_SORT_ORDER', '0', '6', '0', now())");
@@ -310,7 +316,7 @@ if ($_SESSION['cart']->show_total() > $min_sum) {
 	}
 }
 
-private function sdekpvz_api_calc($autlogin, $authPassword, $dateExecute, $senderPostcode, $receiverPostcode, $weight, $idCity)
+private function sdekpvz_api_calc($autlogin, $authPassword, $dateExecute, $senderPostcode, $receiverPostcode, $weight, $idCity, $idCitySender)
 {	
 	    if ($authPassword != '') {
         //аутентификация
@@ -321,10 +327,11 @@ private function sdekpvz_api_calc($autlogin, $authPassword, $dateExecute, $sende
 					'authLogin' => $autlogin,
 					'secure' => $secure,
 					'dateExecute' => $dateExecute, 
-					'senderCityPostCode' => $senderPostcode,
-					'receiverCityPostCode' => $receiverPostcode,
+					//'senderCityPostCode' => $senderPostcode,
+					//'receiverCityPostCode' => $receiverPostcode,
+					'senderCityId' => $idCitySender,
 					'receiverCityId' => $idCity,
-					'tariffId' => '136',
+					'tariffId' => '11',
 					'goods' => array(array('weight' => $weight,
 										   'volume' => '0.02' )));
 
