@@ -8,7 +8,7 @@ if (ENABLE_WHATSAPP == 'false') return;
 
 	    //Смотрим статус аккаунта whatsapp, что б отправка работала, статус должен быть authenticated
 	    //$curl = curl_init();
-	    //curl_setopt($curl, CURLOPT_URL, "https://eu26.chat-api.com/instance98353/status?token=e88e1szv1vn0yj8x");
+	    //curl_setopt($curl, CURLOPT_URL, CHATAPI_URL.'status?token='.CHATAPI_TOKEN);
 	    //curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 	    //$data = curl_exec($curl);
 	    
@@ -24,7 +24,7 @@ if (ENABLE_WHATSAPP == 'false') return;
 
 	    // Смотрим номер телефона, зарегистрирован ли в whatsapp и как давно был активен
 	    $curl = curl_init();
-	    curl_setopt($curl, CURLOPT_URL, CHATAPI_URL.'/checkPhone?phone='.$whatsapp_phone.'&token='.CHATAPI_TOKEN);
+	    curl_setopt($curl, CURLOPT_URL, CHATAPI_URL.'checkPhone?phone='.$whatsapp_phone.'&token='.CHATAPI_TOKEN);
 	    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 	    $data = curl_exec($curl);
 	    
@@ -58,7 +58,7 @@ if (ENABLE_WHATSAPP == 'false') return;
 					     );
 
     $curl = curl_init();
-    curl_setopt($curl, CURLOPT_URL, CHATAPI_URL.'/sendMessage?token='.CHATAPI_TOKEN);
+    curl_setopt($curl, CURLOPT_URL, CHATAPI_URL.'sendMessage?token='.CHATAPI_TOKEN);
     curl_setopt($curl, CURLOPT_POST, true);
     curl_setopt($curl, CURLOPT_POSTFIELDS, json_encode($request));
     curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
@@ -96,7 +96,7 @@ if (ENABLE_WHATSAPP == 'false') return;
 
 	    // Смотрим номер телефона, зарегистрирован ли в whatsapp
 	    $curl = curl_init();
-	    curl_setopt($curl, CURLOPT_URL, CHATAPI_URL.'/checkPhone?phone='.$whatsapp_phone.'&token='.CHATAPI_TOKEN);
+	    curl_setopt($curl, CURLOPT_URL, CHATAPI_URL.'checkPhone?phone='.$whatsapp_phone.'&token='.CHATAPI_TOKEN);
 	    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 	    $data = curl_exec($curl);
 	    
