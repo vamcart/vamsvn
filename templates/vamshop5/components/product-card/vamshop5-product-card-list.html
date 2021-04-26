@@ -1,0 +1,55 @@
+       <!-- Product-->
+       <form id="cart_quantity{$module_data.PRODUCTS_ID}" class="" action="{$module_data.PRODUCTS_LINK}/products_id/{$module_data.PRODUCTS_ID}/action/add_product" method="post" {if $smarty.const.AJAX_CART == 'true'}onsubmit="doAddProduct({$module_data.PRODUCTS_ID}); return false;"{/if}>
+       <div class="card product-card product-list">
+       {if $module_data.PRODUCTS_LABEL}{$module_data.PRODUCTS_LABEL}{/if}
+       {if $smarty.const.ENABLE_WISHLIST == 'true'}
+       <span class="wishlist-button btn-sm text-muted px-2 py-1">{$module_data.PRODUCTS_BUTTON_WISHLIST}</span>
+       {/if}	
+         <div class="d-sm-flex align-items-center"><a class="product-list-thumb" href="{$module_data.PRODUCTS_LINK}"><img src="{$module_data.PRODUCTS_IMAGE}" alt="{$module_data.PRODUCTS_NAME}"></a>
+           <div class="card-body py-2"><a class="product-meta d-block fs-xs pb-1" href="{$module_data.PRODUCTS_CATEGORY_URL}">{$module_data.PRODUCTS_CATEGORY_NAME}</a>
+             <h3 class="product-title fs-base"><a href="{$module_data.PRODUCTS_LINK}">{$module_data.PRODUCTS_NAME}</a></h3>
+             <div class="d-flex justify-content-between">
+               {if $module_data.PRODUCTS_PRICE_PLAIN > 0}<div class="product-price"><span class="text-accent">{$module_data.PRODUCTS_PRICE}</span></div>{/if}
+               {include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/product-card/vamshop5-product-rating-one-star.html"}
+             </div>
+             <div class="card-body card-body-hidden">
+               <!--
+               <div class="pb-2">
+                 <div class="form-check form-option form-check-inline mb-2">
+                   <input class="form-check-input" type="radio" name="color1" id="white" checked>
+                   <label class="form-option-label rounded-circle" for="white"><span class="form-option-color rounded-circle" style="background-color: #eaeaeb;"></span></label>
+                 </div>
+                 <div class="form-check form-option form-check-inline mb-2">
+                   <input class="form-check-input" type="radio" name="color1" id="blue">
+                   <label class="form-option-label rounded-circle" for="blue"><span class="form-option-color rounded-circle" style="background-color: #d1dceb;"></span></label>
+                 </div>
+                 <div class="form-check form-option form-check-inline mb-2">
+                   <input class="form-check-input" type="radio" name="color1" id="yellow">
+                   <label class="form-option-label rounded-circle" for="yellow"><span class="form-option-color rounded-circle" style="background-color: #f4e6a2;"></span></label>
+                 </div>
+                 <div class="form-check form-option form-check-inline mb-2">
+                   <input class="form-check-input" type="radio" name="color1" id="pink">
+                   <label class="form-option-label rounded-circle" for="pink"><span class="form-option-color rounded-circle" style="background-color: #f3dcff;"></span></label>
+                 </div>
+               </div>
+               -->
+               <div class="d-flex mb-2">
+               <!--
+                 <select class="form-select form-select-sm me-2" style="max-width: 6rem;">
+                   <option>XS</option>
+                   <option>S</option>
+                   <option>M</option>
+                   <option>L</option>
+                   <option>XL</option>
+                 </select>
+               -->
+		          <input type="hidden" name="products_id" value="{$module_data.PRODUCTS_ID}" />
+		          <input type="hidden" name="products_qty" value="1" />
+		          <button class="btn btn-primary btn-sm d-block w-100 mb-2" type="submit"><i class="fa fa-shopping-cart fs-sm me-1"></i>{$smarty.const.IMAGE_BUTTON_IN_CART}</button>
+               </div>
+               <!--<div class="text-start"><a class="nav-link-style fs-ms" href="#quick-view" data-bs-toggle="modal"><i class="ci-eye align-middle me-1"></i>Quick view</a></div>-->
+             </div>
+           </div>
+         </div>
+       </div>
+       </form>
