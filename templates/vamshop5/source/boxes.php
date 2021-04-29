@@ -33,7 +33,7 @@
    //if (substr(basename($PHP_SELF), 0,8) != 'advanced') { if (SET_BOX_WHATSNEW == 'true') require(DIR_WS_BOXES . 'whats_new.php'); }
   if (SET_BOX_SEARCH == 'true') require(DIR_WS_BOXES . 'search.php');
   if (SET_BOX_CONTENT == 'true') require(DIR_WS_BOXES . 'content.php');
-  //require(DIR_WS_BOXES . 'content_pull.php');
+  require(DIR_WS_BOXES . 'content_pull.php');
   if (SET_BOX_INFORMATION == 'true') require(DIR_WS_BOXES . 'information.php');
   //if (SET_BOX_LATESTNEWS == 'true') include(DIR_WS_BOXES . 'news.php');
   //include(DIR_WS_BOXES . 'news_dropdown.php');
