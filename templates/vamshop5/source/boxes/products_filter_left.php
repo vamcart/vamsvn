@@ -199,8 +199,8 @@ if (SPECIFICATIONS_FILTERS_BOX == 'True') {
 
 $box_head .= '
 
-<div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-12">
-<div class="filter card card-product card-sm text-center h-100 selected">
+<div class="col-12">
+<div class="filter card card-product card-sm text-center h-100 selected mt-2">
   <div class="card-header d-flex justify-content-between">
     <div class="method-title"><span class="title">'.$specification['specification_name'].'</span></div>
     <div></div>
@@ -215,8 +215,8 @@ $box_head .= '
 
 $box_head .= '
 
-<div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-12">
-<div class="filter card card-product card-sm text-center h-100">
+<div class="col-12">
+<div class="filter card card-product card-sm text-center h-100 mt-2">
   <div class="card-header d-flex justify-content-between">
     <div class="method-title"><span class="title">'.$specification['specification_name'].'</span></div>
     <div></div>
@@ -433,8 +433,6 @@ if ($specs_array['products_column_name'] == 'manufacturers_id') {
         $box_text .= '
 
  </div>
-  <div class="card-footer">
-  </div>
 </div>
 </div>        
         

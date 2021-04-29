@@ -233,3 +233,55 @@ font-size: .6875rem;
   padding: 0 .5rem;
   color: #a6acb7;
 }
+
+/*- Список разделов */
+
+#categoriesBoxMenu ul 
+   { 
+     padding: 0;
+     margin: 0;
+     list-style-type: none; 
+   }
+
+#categoriesBoxMenu #CatNavi .CatLevel {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+    align-items: center;
+    height: 44px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-bottom: 3px;
+    border-radius: .4375rem;
+}
+
+#categoriesBoxMenu #CatNavi .CatLevel:hover {
+    background: #f6f9fc;
+}
+
+#categoriesBoxMenu #CatNavi .CatLevel.Current {
+    background: #373f50;
+}
+
+#categoriesBoxMenu #CatNavi .CatLevel a {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+    align-items: center;
+    height: auto;
+    -ms-flex-positive: 2;
+    flex-grow: 2;
+    padding: 0 13px;
+    color: #4b566b;
+}
+
+#categoriesBoxMenu #CatNavi .CatLevel a:hover {
+
+}
+
+#categoriesBoxMenu #CatNavi .CatLevel.Current a {
+    color: #fff;
+}
+
+
+/*- /Список разделов */

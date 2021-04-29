@@ -306,13 +306,25 @@ function filters_select_array_sort($a, $b) {
 // EOF products_filters-multilinks
 // BOF nolink_active (remarka)
           if (!$flag_active) {
+          if (CURRENT_TEMPLATE == 'vamshop5') {
+            $field .= '<a class="list-group-item list-group-item-action d-flex justify-content-start align-items-left" href="' . $link . '"><i class="far fa-square"></i> ';
+          } else {
             $field .= '<a class="list-group-item list-group-item-action d-flex justify-content-between align-items-center" href="' . $link . '"><i class="far fa-square"></i> ';
+          }
+          } else {
+          if (CURRENT_TEMPLATE == 'vamshop5') {
+            $field .= '<div class="list-group-item list-group-item-action d-flex justify-content-start align-items-left disabled'.(($link_data['id']) != '0' ? ' active' : '').'" data-href="' . $link . '"><i class="fas fa-check-square"></i> ';
           } else {
             $field .= '<div class="list-group-item list-group-item-action d-flex justify-content-between align-items-center disabled'.(($link_data['id']) != '0' ? ' active' : '').'" data-href="' . $link . '"><i class="fas fa-check-square"></i> ';
           }
+          }
 // EOF nolink_active (remarka)
 
+          if (CURRENT_TEMPLATE == 'vamshop5') {
+          $field .= '<span class="ps-2 small">'.vam_output_string($link_data['text'] ).'</span>';
+          } else {
           $field .= '<span class="pl-2 flex-grow-1 small">'.vam_output_string($link_data['text'] ).'</span>';
+          }
           if ($link_data['count'] != '' && $link_data['count'] > 1 && SPECIFICATIONS_FILTER_SHOW_COUNT == 'True') {
             $field .= '<span class="filter_count badge badge-light badge-pill">' . $link_data['count'] . '</span>';
           }

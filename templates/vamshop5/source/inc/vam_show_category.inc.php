@@ -20,7 +20,7 @@
      function vam_show_category($counter) {
     global $foo, $categories_string, $id;
     
-    $categories_string .= '<li class="CatLevel'.$foo[$counter]['level'].'';
+    $categories_string .= '<li class="text-truncate CatLevel '.$foo[$counter]['level'].'';
 
     if ( ($id) && (in_array($counter, $id)) ) {
       $categories_string .=  ' Current">';
