@@ -21,6 +21,11 @@ $module = new vamTemplate;
 $module->assign('tpl_path', 'templates/'.CURRENT_TEMPLATE.'/');
 $result = true;
 
+// include boxes
+if (CURRENT_TEMPLATE == 'vamshop5') {
+require (DIR_FS_CATALOG.'templates/'.CURRENT_TEMPLATE.'/source/boxes/categories_left.php');
+require (DIR_FS_CATALOG.'templates/'.CURRENT_TEMPLATE.'/source/boxes/products_filter_left.php');
+}
 
 // Start product/catalog variables set fot template
 $module->assign( 'product_name_tpl', $product_name_tpl );
