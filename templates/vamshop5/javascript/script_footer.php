@@ -4,8 +4,9 @@
 <script src="templates/<?php echo CURRENT_TEMPLATE; ?>/dist/vendor/simplebar/dist/simplebar.min.js"></script>
 <script src="templates/<?php echo CURRENT_TEMPLATE; ?>/dist/vendor/tiny-slider/dist/min/tiny-slider.js"></script>
 <script src="templates/<?php echo CURRENT_TEMPLATE; ?>/dist/vendor/smooth-scroll/dist/smooth-scroll.polyfills.min.js"></script>
-<script src="templates/<?php echo CURRENT_TEMPLATE; ?>/dist/vendor/nouislider/distribute/nouislider.min.js"></script>
+<script src="templates/<?php echo CURRENT_TEMPLATE; ?>/dist/vendor/smooth-scroll/dist/smooth-scroll.polyfills.min.js"></script>
 <script src="templates/<?php echo CURRENT_TEMPLATE; ?>/dist/vendor/drift-zoom/dist/Drift.min.js"></script>
+<script src="templates/<?php echo CURRENT_TEMPLATE; ?>/dist/vendor/lightgallery.js/dist/js/lightgallery.min.js"></script>
 <!-- Main theme script-->
 <script src="templates/<?php echo CURRENT_TEMPLATE; ?>/dist/js/theme.min.js"></script>
 
@@ -173,24 +174,6 @@ $(document).ajaxComplete(function () {
 <?php
 if (strstr($PHP_SELF, FILENAME_PRODUCT_INFO) or strstr($PHP_SELF, FILENAME_PRODUCT_REVIEWS_INFO) or strstr($PHP_SELF, FILENAME_PRODUCT_REVIEWS) or strstr($PHP_SELF, FILENAME_REVIEWS)) {
 ?>
-<script src="jscript/jquery/plugins/zoom/jquery.zoom.js"></script>
-<script>
-// Product Images Zoom
-
-$(document).ready(function(){
-$(".image-zoom").each(function(arg, el){
-    var image = $(el).find("img");
-    //$(el).wrap('<span style="display:inline-block"></span>')
-    $(el).wrap('<span></span>')
-    $(el).css('display', 'block')
-    $(el).parent()    
-    $(el).zoom({
-        on: 'mouseover',
-        url: image.attr("src").replace("info_images", "popup_images")
-    });
-});
-});
-</script>
 <script src="jscript/jquery/plugins/colorbox/jquery.colorbox-min.js"></script>
 <?php
 if (file_exists(DIR_FS_CATALOG.'jscript/jquery/plugins/colorbox/i18n/jquery.colorbox-'.$_SESSION['language_code'].'.js')) {

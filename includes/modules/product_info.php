@@ -125,6 +125,7 @@ if (!is_object($product) || !$product->isProduct() OR !$product->data['products_
 		$info->assign('PRODUCT_LIKES', $product->data['likes']);
 		$info->assign('PRODUCT_DISLIKES', $product->data['dislikes']);
 
+		$info->assign('navtrail',$breadcrumb->trail(' &raquo; '));
 
 		if ($_SESSION['cart']->in_cart($product->data['products_id'])) {
 			$info->assign('IN_CART', 1);

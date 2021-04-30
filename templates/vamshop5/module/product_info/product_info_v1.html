@@ -1,6 +1,4 @@
 {config_load file="$language/lang_$language.conf" section="product_info"}
-<div class="page" itemscope itemtype="http://schema.org/Product">
-<div class="pageContent">
 {$FORM_ACTION}
 {if $info_message}
 <div class="contacterror">
@@ -8,260 +6,192 @@
 </div>
 {/if}
 
-{$PRODUCT_NAVIGATOR}
-
-{if $smarty.session.customers_status.customers_status_id == 0}
-{if $PRODUCTS_EDIT_LINK}
-<div class="edit-product py-2">
-<a class="btn btn-inverse" href="{$PRODUCTS_EDIT_LINK}"><i class="fa fa-pencil-alt"></i> {#text_product_edit#}</a>
-</div>
-{/if}
-{/if}
-
-  <div class="card card-product">
-	<div class="card-body">
-	<div class="row">
-		{if $LABEL_ID > 0}{$PRODUCT_LABEL}{/if}
-		{if $PRODUCTS_SPECIAL > 0}<span class="badge-offer"><b>-{$PRODUCTS_SPECIAL|round}%</b></span>{/if}
-		<div class="col-md-6">
-
-
-<div id="carouselExampleInterval" class="carousel slide text-center" data-interval="10000000" data-ride="false" data-wrap="true">
-{if {$mo_img}}      
-  <ol class="carousel-indicators">
-    <li data-target="#carouselExampleInterval" data-slide-to="0" class="active"></li>
-    {foreach name=slide item=slides from=$mo_img}
-    <li data-target="#carouselExampleInterval" data-slide-to="{counter}"></li>
-    {/foreach}
-  </ol>
-{/if}  
-  <div class="carousel-inner">
-
-    <div class="carousel-item active" data-interval="10000000" data-ride="false" data-wrap="true">
-			  {if $PRODUCTS_POPUP_LINK!=''}<a href="{$PRODUCTS_POPUP_IMAGE}" title="{$PRODUCTS_NAME}" class="lightbox image-zoom">{/if}<img class="product-info-image img-fluid" itemprop="image" src="{$PRODUCTS_IMAGE}" alt="{if $PRODUCTS_IMAGE_DESCRIPTION !=''}{$PRODUCTS_IMAGE_DESCRIPTION}{else}{$PRODUCTS_NAME}{/if}" />{if $PRODUCTS_POPUP_LINK!=''}</a>{/if}
-    </div>
-
-    {foreach name=slide item=slides from=$mo_img}
-    <div class="carousel-item" data-interval="10000000" data-ride="false" data-wrap="true">
-      {if $slides.PRODUCTS_MO_POPUP_LINK !=''}<a href="{$slides.PRODUCTS_MO_POPUP_IMAGE}" title="{$PRODUCTS_NAME}" class="lightbox image-zoom">{/if}<img class="product-info-image img-fluid" itemprop="image" src="{$slides.PRODUCTS_MO_IMAGE}" alt="{if $slides.PRODUCTS_MO_IMAGE_DESCRIPTION !=''}{$slides.PRODUCTS_MO_IMAGE_DESCRIPTION}{else}{$PRODUCTS_NAME}{/if}" />{if $slides.PRODUCTS_MO_POPUP_LINK !=''}</a>{/if}
-    </div>
-    {/foreach}
-    
-      </div>
-{if {$mo_img}}      
-  <a class="carousel-control-prev" href="#carouselExampleInterval" role="button" data-slide="prev">
-    <span class="fas fa-chevron-left fa-1x" aria-hidden="true"></span>
-    <span class="sr-only">{$smarty.const.PREVNEXT_BUTTON_PREV}</span>
-  </a>
-  <a class="carousel-control-next" href="#carouselExampleInterval" role="button" data-slide="next">
-    <span class="fas fa-chevron-right fa-1x" aria-hidden="true"></span>
-    <span class="sr-only">{$smarty.const.PREVNEXT_BUTTON_NEXT}</span>
-  </a>
-{/if}  
-</div>
-
-<div class="text-center py-2">
-    	<ul class="list-inline">
-			{if {$smarty.const.DISPLAY_LIKES} == "true"}<li class="list-inline-item"><span id="like" onclick="doLike('{$PRODUCTS_ID}'); return false;" class="btn btn-link btn-lg orange mr-1" data-toggle="tooltip" title="{$smarty.const.TEXT_LIKE}"><i class="far fa-thumbs-up"></i></span><span id="likes">{if {$PRODUCT_LIKES} > 0}{$PRODUCT_LIKES}{/if}</span></li>{/if}
-			{if {$smarty.const.DISPLAY_DISLIKES} == "true"}<li class="list-inline-item"><span id="dislike" onclick="doDislike('{$PRODUCTS_ID}'); return false;" class="btn btn-link btn-lg orange mr-1" data-toggle="tooltip" title="{$smarty.const.TEXT_DISLIKE}"><i class="far fa-thumbs-down"></i></span><span id="dislikes">{if {$PRODUCT_DISLIKES} > 0}{$PRODUCT_DISLIKES}{/if}</span></li>{/if}
-		</ul>
-</div>
-
-		</div>
-		<div class="col-md-6">
-			
-<div class="product-info">
-
-<h1 itemprop="name">{$PRODUCTS_NAME}</h1>
-
-{if $REVIEWS_TOTAL > 0}
-<div class="rating-wrap small">
-<ul class="list-inline">
-<li class="list-inline-item label-rating"><span class="text-muted"><i class="far fa-comments"></i> <a href="{$PRODUCTS_REVIEWS_URL}">{$smarty.const.TEXT_TOTAL_REVIEWS}</a>: {$REVIEWS_TOTAL}</span></li>
-<li class="list-inline-item">{$STAR_RATING} <span class="text-muted pr-2" title="{$smarty.const.TEXT_REVIEWS_RATING}">{$REVIEWS_RATING|number_format:1}</span></li>
-</ul>
-</div>
-{/if}
-
-<div class="rating-wrap small">
-<ul class="list-inline">
-<li class="list-inline-item"><span class="text-muted"><a class="popup-form" href="{$smarty.const.FILENAME_PRODUCT_REVIEWS_WRITE_POPUP}?products_id={$smarty.get.products_id}"><i class="fas fa-paper-plane"></i> {$smarty.const.TEXT_SITE_REVIEW_ADD}</a></span></li>
-<li class="list-inline-item"><span class="text-muted"><a class="iframe" href="{$ASK_PRODUCT_QUESTION_LINK}"><i class="far fa-question-circle"></i> {#question#}</a></span></li>
-</ul>
-</div>
-
-<ul class="list-inline small">
-{if $PRODUCTS_MODEL != ''}
-<li class="list-inline-item text-muted">
-	{#model#} <span class="font-weight-bold">{$PRODUCTS_MODEL}</span>
-</li>
-{/if}
-
-{if $SHIPPING_NAME}
-<li class="list-inline-item text-muted">
-	{#text_shippingtime#}&nbsp;{if $SHIPPING_IMAGE}<img src="{$SHIPPING_IMAGE}" alt="{$SHIPPING_NAME}" />{/if}<span class="font-weight-bold">{$SHIPPING_NAME}</span>
-</li>
-{/if}
-</ul>
-
-<!--
-{if {$PRODUCTS_QUANTITY} > 0}
-<div class="pt-2"><span class="text-success font-weight-bold"><i class="far fa-check-circle"></i> {$smarty.const.TEXT_IN_STOCK}</span></div>
-{else}
-<div class="pt-2"><span class="text-danger font-weight-bold"><i class="far fa-times-circle"></i> {$smarty.const.TEXT_OUT_OF_STOCK}</span></div>
-{/if}
--->
-
-{if {$PRODUCTS_QUANTITY} > 0 or {$PRODUCTS_PRICE_PLAIN} > 0}
-<div class="mt-3 mb-3"> 
-	<div class="price-block" itemprop="offers" itemscope itemtype="http://schema.org/Offer"> 
-		<span class="price">{$PRODUCTS_PRICE}</span>
-		<meta itemprop="price" content="{$PRODUCTS_PRICE_PLAIN}">
-		<meta itemprop="priceCurrency" content="{$smarty.session.currency}" />
-		<meta itemprop="availability" content="InStock" />
-		<meta itemprop="priceValidUntil" content="{$smarty.now + (1200*60*24*7)|date_format:"c"}" />
-		<meta itemprop="url" content="{$PRODUCTS_URL_INFO}" />
-	</div> 
-</div>
-{/if}
-
-{if $MODULE_tags != ''}
-{$MODULE_tags}
-{/if}
-	
-{if $extra_fields_data}
-<div class="description extra_fields text-muted">
-{foreach item=extra_fields from=$extra_fields_data} 
-{if $extra_fields@iteration > 5}{break}{/if} 
-<div class="{cycle values="spec-odd,spec-even"}">
-<span class="spec-name">{$extra_fields.NAME}:</span> <span class="spec-value font-weight-bold">{$extra_fields.VALUE}</span><br />
-</div>
-{/foreach}
-</div>
-{/if}
-{if $specifications}
-<div class="description specs text-muted">
-{foreach name=outer item=spec_group from=$specifications_data}
-{foreach key=key_data item=spec from=$spec_group.DATA}
-{if $spec@iteration > 5}{break}{/if} 
-<div class="{cycle values="spec-odd,spec-even"}">
-<span class="spec-name">{$spec.NAME}:</span> <span class="spec-value font-weight-bold">{$spec.VALUE}</span><br />
-</div>
-{/foreach}
-{/foreach}
-<br />
-</div>
-{/if}
-				
-
-{if $MODULE_product_options !=''}
-<div class="inner product_options">
-{$MODULE_product_options}
-</div>
-{/if}
-
-{if $MODULE_graduated_price !=''}
-<div class="inner">
-{$MODULE_graduated_price}
-</div>
-{/if}
-
-<hr>
-
-<div class="CartContentLeft">
-{if {$PRODUCTS_QUANTITY} > 0}
-  <div class="form-row d-flex justify-content-between">
-    <div class="col-auto mt-1">
-      <label class="sr-only" for="quantity{$PRODUCTS_ID}">{#quantity#}</label>
-      <div class="input-group">
-         <div class="input-group-prepend">
-	       <span class="btn btn-secondary value-control" data-action="minus" data-target="quantity{$PRODUCTS_ID}"><i class="fa fa-minus"></i></span>
-         </div>
-        {$ADD_QTY}
-         <div class="input-group-append">
-	       <span class="btn btn-secondary value-control" data-action="plus" data-target="quantity{$PRODUCTS_ID}"><i class="fa fa-plus"></i></span>
-         </div>
+    <!-- Page Title-->
+    <div class="page-title-overlap bg-dark pt-4">
+      <div class="container d-lg-flex justify-content-between py-2 py-lg-3">
+        <div class="order-lg-2 mb-3 mb-lg-0 pt-lg-2">
+          <nav aria-label="breadcrumb">
+              <div class="breadcrumb breadcrumb-light flex-lg-nowrap justify-content-center justify-content-lg-start" itemscope itemtype="http://schema.org/BreadcrumbList">
+              {$navtrail}
+              </div>
+          </nav>
+        </div>
+        <div class="order-lg-1 pe-lg-4 text-center text-lg-start">
+          <h1 class="h3 text-light mb-0">{$PRODUCTS_NAME}</h1>
+        </div>
       </div>
     </div>
-    <div class="col-auto mt-1">
-         <button class="btn btn-inverse checkout active btn-block cart-link-{$PRODUCTS_ID}{if $IN_CART} active{/if}"><i class="fas fa-cart-plus"></i> {if $IN_CART}{$smarty.const.IMAGE_BUTTON_IN_CART_IN}{else}{$smarty.const.BOX_HEADING_ADD_PRODUCT_ID}{/if}</button>
-    </div>
-    
-    {if {$PRODUCTS_QUANTITY} > 0 && {$smarty.const.ONE_CLICK_BUY} == 'true'}
-    <div class="col-auto mt-1">
-    <a class="btn btn-inverse checkout btn-block iframe" target="_blank" href="{$ONE_CLICK_BUY_LINK}"><i class="fas fa-shopping-cart"></i> {$smarty.const.ONE_CLICK_BUY_NAVBAR_TITLE}</a>
-    </div>
-    {/if}
-    
-    {if $smarty.const.ENABLE_WISHLIST == 'true'}
-    {if $smarty.const.AJAX_WISHLIST == 'true'}
-    <div class="col-auto mt-1">
-    <a class="wishlist-link-{$PRODUCTS_ID} btn btn-add-to-cart btn-block{if $IN_WISHLIST} btn-outline-danger text-danger{/if}" href="index.php?action=wishlist_now&BUYproducts_id={$PRODUCTS_ID}" onclick="doWishlistNow('{$PRODUCTS_ID}','1'); return false;" data-toggle="tooltip" title="{if $IN_WISHLIST}{$smarty.const.IMAGE_BUTTON_IN_WISHLIST_IN}{else}{$smarty.const.IMAGE_BUTTON_IN_WISHLIST}{/if}" aria-label="{if $IN_WISHLIST}{$smarty.const.IMAGE_BUTTON_IN_WISHLIST_IN}{else}{$smarty.const.IMAGE_BUTTON_IN_WISHLIST}{/if}"><i class="{if $IN_WISHLIST}fas{else}far{/if} fa-heart wishlist-icon-{$PRODUCTS_ID}"></i></a>
-    </div>
-    {/if}
-    {/if}
-        
-  </div>
-{else}
-  <div class="form-row align-items-center">
-    <div class="col-auto mt-1">
-         <span class="btn btn-outline-danger btn-block">{$smarty.const.TEXT_OUT_OF_STOCK}</span>
-    </div>
-  </div>
-{/if}  
-</div>
-
-</div>
-			
-		</div>
-
-	</div>
-	
-	
-	</div>
-</div>
-
-{$FORM_END}
-
-<ul class="nav nav-tabs">
-  <li class="nav-item">
-    <a class="nav-link active" id="description-tab" data-toggle="tab" href="#description" ><i class="fa fa-thumbs-up"></i> {$smarty.const.TEXT_PRODUCT_DESCRIPTION}</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" id="reviews-tab" data-toggle="tab" href="#reviews" ><i class="fa fa-comment"></i> {$smarty.const.TEXT_PRODUCT_REVIEWS}</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" id="shipping-tab" data-toggle="tab" href="#shipping" ><i class="fa fa-truck"></i> {$smarty.const.TEXT_PRODUCT_SHIPPING}</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" id="payment-tab" data-toggle="tab" href="#payment" ><i class="fa fa-credit-card"></i> {$smarty.const.TEXT_PRODUCT_PAYMENT}</a>
-  </li>
-  {if $MODULE_latest_news}
-  <li class="nav-item">
-    <a class="nav-link" id="news-tab" data-toggle="tab" href="#news" ><i class="fa fa-newspaper"></i> {$smarty.const.TEXT_RSS_NEWS}</a>
-  </li>
-  {/if}
-  {if $MODULE_faq}
-  <li class="nav-item">
-    <a class="nav-link" id="faq-tab" data-toggle="tab" href="#faq" ><i class="fa fa-question"></i> {$smarty.const.NAVBAR_TITLE_FAQ}</a>
-  </li>
-  {/if}
-  {if $MODULE_faq1}
-  <li class="nav-item">
-    <a class="nav-link" id="visitor_questions_tab" data-toggle="tab" href="#visitor_questions" ><i class="fa fa-user-graduate"></i> {$smarty.const.NAVBAR_TITLE_FAQ1}</a>
-  </li>
-  {/if}
-  {if $MODULE_articles}
-  <li class="nav-item">
-    <a class="nav-link" id="articles-tab" data-toggle="tab" href="#articles" ><i class="fa fa-list"></i> {$smarty.const.TEXT_RSS_ARTICLES}</a>
-  </li>
-  {/if}
-</ul>
-
-
-<div class="tab-content" id="myTabContent">
-
-  <div class="tab-pane fade show active" id="description" role="tabpanel" aria-labelledby="description-tab">
+    <div class="container">
+      <!-- Gallery + details-->
+      <div class="bg-light shadow-lg rounded-3 px-4 py-3 mb-5">
+        <div class="px-lg-3">
+          <div class="row">
+            <!-- Product gallery-->
+            <div class="col-lg-7 pe-lg-0 pt-lg-4">
+              <div class="product-gallery">
+                <div class="product-gallery-preview order-sm-2">
+                  <div class="product-gallery-preview-item active" id="first"><img class="image-zoom" src="{$tpl_path}dist/img/shop/single/gallery/01.jpg" data-zoom="{$tpl_path}dist/img/shop/single/gallery/01.jpg" alt="Product image">
+                    <div class="image-zoom-pane"></div>
+                  </div>
+                  <div class="product-gallery-preview-item" id="second"><img class="image-zoom" src="{$tpl_path}dist/img/shop/single/gallery/02.jpg" data-zoom="{$tpl_path}dist/img/shop/single/gallery/02.jpg" alt="Product image">
+                    <div class="image-zoom-pane"></div>
+                  </div>
+                  <div class="product-gallery-preview-item" id="third"><img class="image-zoom" src="{$tpl_path}dist/img/shop/single/gallery/03.jpg" data-zoom="{$tpl_path}dist/img/shop/single/gallery/03.jpg" alt="Product image">
+                    <div class="image-zoom-pane"></div>
+                  </div>
+                  <div class="product-gallery-preview-item" id="fourth"><img class="image-zoom" src="{$tpl_path}dist/img/shop/single/gallery/04.jpg" data-zoom="{$tpl_path}dist/img/shop/single/gallery/04.jpg" alt="Product image">
+                    <div class="image-zoom-pane"></div>
+                  </div>
+                </div>
+                <div class="product-gallery-thumblist order-sm-1"><a class="product-gallery-thumblist-item active" href="#first"><img src="{$tpl_path}dist/img/shop/single/gallery/th01.jpg" alt="Product thumb"></a><a class="product-gallery-thumblist-item" href="#second"><img src="{$tpl_path}dist/img/shop/single/gallery/th02.jpg" alt="Product thumb"></a><a class="product-gallery-thumblist-item" href="#third"><img src="{$tpl_path}dist/img/shop/single/gallery/th03.jpg" alt="Product thumb"></a><a class="product-gallery-thumblist-item" href="#fourth"><img src="{$tpl_path}dist/img/shop/single/gallery/th04.jpg" alt="Product thumb"></a><a class="product-gallery-thumblist-item video-item" href="https://www.youtube.com/watch?v=1vrXpMLLK14">
+                    <div class="product-gallery-thumblist-item-text"><i class="fas fa-video"></i>Video</div></a></div>
+              </div>
+            </div>
+            <!-- Product details-->
+            <div class="col-lg-5 pt-4 pt-lg-0">
+              <div class="product-details ms-auto pb-3">
+                <div class="d-flex justify-content-between align-items-center mb-2"><a href="#reviews" data-scroll>
+                    <div class="star-rating"><i class="star-rating-icon fas fa-star active"></i><i class="star-rating-icon fas fa-star active"></i><i class="star-rating-icon fas fa-star active"></i><i class="star-rating-icon fas fa-star active"></i><i class="star-rating-icon fas fa-star"></i>
+                    </div><span class="d-inline-block fs-sm text-body align-middle mt-1 ms-1">74 Reviews</span></a>
+                  <button class="btn-wishlist me-0 me-lg-n3" type="button" data-bs-toggle="tooltip" title="Add to wishlist"><i class="far fa-heart"></i></button>
+                </div>
+                <div class="mb-3"><span class="h3 fw-normal text-accent me-1">$18.<small>99</small></span>
+                  <del class="text-muted fs-lg me-3">$25.<small>00</small></del><span class="badge bg-danger badge-shadow align-middle mt-n2">Sale</span>
+                </div>
+                <div class="fs-sm mb-4"><span class="text-heading fw-medium me-1">Color:</span><span class="text-muted" id="colorOption">Red/Dark blue/White</span></div>
+                <div class="position-relative me-n4 mb-3">
+                  <div class="form-check form-option form-check-inline mb-2">
+                    <input class="form-check-input" type="radio" name="color" id="color1" data-bs-label="colorOption" value="Red/Dark blue/White" checked>
+                    <label class="form-option-label rounded-circle" for="color1"><span class="form-option-color rounded-circle" style="background-image: url(img/shop/single/color-opt-1.png)"></span></label>
+                  </div>
+                  <div class="form-check form-option form-check-inline mb-2">
+                    <input class="form-check-input" type="radio" name="color" id="color2" data-bs-label="colorOption" value="Beige/White/Dark grey">
+                    <label class="form-option-label rounded-circle" for="color2"><span class="form-option-color rounded-circle" style="background-image: url(img/shop/single/color-opt-2.png)"></span></label>
+                  </div>
+                  <div class="form-check form-option form-check-inline mb-2">
+                    <input class="form-check-input" type="radio" name="color" id="color3" data-bs-label="colorOption" value="Dark grey/White/Orange">
+                    <label class="form-option-label rounded-circle" for="color3"><span class="form-option-color rounded-circle" style="background-image: url(img/shop/single/color-opt-3.png)"></span></label>
+                  </div>
+                  {if {$PRODUCTS_QUANTITY} > 0}
+                  <div class="product-badge product-available mt-n1"><i class="far fa-check-circle"></i>Product available</div>
+                  {else}
+                  <div class="product-badge product-not-available mt-n1"><i class="far fa-times-circle"></i>Product not available</div>
+                  {/if}
+                </div>
+                <form class="mb-grid-gutter" method="post">
+                  <div class="mb-3">
+                    <div class="d-flex justify-content-between align-items-center pb-1">
+                      <label class="form-label" for="product-size">Size:</label>
+                      <!--<a class="nav-link-style fs-sm" href="#size-chart" data-bs-toggle="modal"><i class="fas fa-ruler-horizontal"></i>Size guide</a>-->
+                    </div>
+                    <select class="form-select" required id="product-size">
+                      <option value="">Select size</option>
+                      <option value="xs">XS</option>
+                      <option value="s">S</option>
+                      <option value="m">M</option>
+                      <option value="l">L</option>
+                      <option value="xl">XL</option>
+                    </select>
+                  </div>
+                  <div class="mb-3 d-flex align-items-center">
+                    <select class="form-select me-3" style="width: 5rem;">
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
+                      <option value="5">5</option>
+                    </select>
+                    <button class="btn btn-primary btn-shadow d-block w-100" type="submit"><i class="fas fa-shopping-basket fs-lg me-2"></i>Add to Cart</button>
+                  </div>
+                </form>
+                <!-- Product panels-->
+                <div class="accordion mb-4" id="productPanels">
+                  <div class="accordion-item">
+                    <h3 class="accordion-header"><a class="accordion-button" href="#productInfo" role="button" data-bs-toggle="collapse" aria-expanded="true" aria-controls="productInfo"><i class="far fa-lightbulb text-muted fs-lg align-middle mt-n1 me-2"></i>Product info</a></h3>
+                    <div class="accordion-collapse collapse show" id="productInfo" data-bs-parent="#productPanels">
+                      <div class="accordion-body">
+                        <h6 class="fs-sm mb-2">Composition</h6>
+                        <ul class="fs-sm ps-4">
+                          <li>Elastic rib: Cotton 95%, Elastane 5%</li>
+                          <li>Lining: Cotton 100%</li>
+                          <li>Cotton 80%, Polyester 20%</li>
+                        </ul>
+                        <h6 class="fs-sm mb-2">Art. No.</h6>
+                        <ul class="fs-sm ps-4 mb-0">
+                          <li>183260098</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="accordion-item">
+                    <h3 class="accordion-header"><a class="accordion-button collapsed" href="#shippingOptions" role="button" data-bs-toggle="collapse" aria-expanded="true" aria-controls="shippingOptions"><i class="fas fa-truck text-muted fs-lg align-middle mt-n1 me-2"></i>Shipping options</a></h3>
+                    <div class="accordion-collapse collapse" id="shippingOptions" data-bs-parent="#productPanels">
+                      <div class="accordion-body fs-sm">
+                        <div class="d-flex justify-content-between border-bottom pb-2">
+                          <div>
+                            <div class="fw-semibold text-dark">Courier</div>
+                            <div class="fs-sm text-muted">2 - 4 days</div>
+                          </div>
+                          <div>$26.50</div>
+                        </div>
+                        <div class="d-flex justify-content-between border-bottom py-2">
+                          <div>
+                            <div class="fw-semibold text-dark">Local shipping</div>
+                            <div class="fs-sm text-muted">up to one week</div>
+                          </div>
+                          <div>$10.00</div>
+                        </div>
+                        <div class="d-flex justify-content-between border-bottom py-2">
+                          <div>
+                            <div class="fw-semibold text-dark">Flat rate</div>
+                            <div class="fs-sm text-muted">5 - 7 days</div>
+                          </div>
+                          <div>$33.85</div>
+                        </div>
+                        <div class="d-flex justify-content-between border-bottom py-2">
+                          <div>
+                            <div class="fw-semibold text-dark">UPS ground shipping</div>
+                            <div class="fs-sm text-muted">4 - 6 days</div>
+                          </div>
+                          <div>$18.00</div>
+                        </div>
+                        <div class="d-flex justify-content-between pt-2">
+                          <div>
+                            <div class="fw-semibold text-dark">Local pickup from store</div>
+                            <div class="fs-sm text-muted">&mdash;</div>
+                          </div>
+                          <div>$0.00</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="accordion-item">
+                    <h3 class="accordion-header"><a class="accordion-button collapsed" href="#localStore" role="button" data-bs-toggle="collapse" aria-expanded="true" aria-controls="localStore"><i class="fas fa-map-marker-alt text-muted fs-lg align-middle mt-n1 me-2"></i>Find in local store</a></h3>
+                    <div class="accordion-collapse collapse" id="localStore" data-bs-parent="#productPanels">
+                      <div class="accordion-body">
+                        <select class="form-select">
+                          <option value>Select your country</option>
+                          <option value="Argentina">Argentina</option>
+                          <option value="Belgium">Belgium</option>
+                          <option value="France">France</option>
+                          <option value="Germany">Germany</option>
+                          <option value="Spain">Spain</option>
+                          <option value="UK">United Kingdom</option>
+                          <option value="USA">USA</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Sharing-->
+                <label class="form-label d-inline-block align-middle my-2 me-3">Share:</label><a class="btn-share btn-twitter me-2 my-2" href="#"><i class="fab fa-twitter"></i>Twitter</a><a class="btn-share btn-instagram me-2 my-2" href="#"><i class="fab fa-instagram"></i>Instagram</a><a class="btn-share btn-facebook my-2" href="#"><i class="fab fa-facebook"></i>Facebook</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Product description section 1-->
+      <div class="row align-items-center py-md-3">
 
    <div itemprop="description">{$PRODUCTS_DESCRIPTION}</div>
 
@@ -329,86 +259,357 @@
 	{$MODULE_tpt}
 	</p>
 	{/if}
-	  
-  </div>
-  
-  <div class="tab-pane fade" id="reviews" role="tabpanel" aria-labelledby="reviews-tab">
-  {$MODULE_products_reviews}
-  </div>
-  
-  <div class="tab-pane fade" id="shipping" role="tabpanel" aria-labelledby="shipping-tab">
-  <h5>{$smarty.const.TEXT_PRODUCT_SHIPPING}</h5>
-  {$text_shipping_info}
-  </div>
-  
-  <div class="tab-pane fade" id="payment" role="tabpanel" aria-labelledby="payment-tab">
-  <h5>{$smarty.const.TEXT_PRODUCT_PAYMENT}</h5>
-  {$text_payment_info}
-  </div>
 
-  {if $MODULE_latest_news}
-  <div class="tab-pane fade" id="news" role="tabpanel" aria-labelledby="news-tab">
-  {$MODULE_latest_news}
-  </div>
-  {/if}
+      </div>
 
-  {if $MODULE_faq}
-  <div class="tab-pane fade" id="faq" role="tabpanel" aria-labelledby="faq-tab">
-  {$MODULE_faq}
-  </div>
-  {/if}
-
-  {if $MODULE_faq1}
-  <div class="tab-pane fade" id="visitor_questions" role="tabpanel" aria-labelledby="visitor_questions_tab">
-  {$MODULE_faq1}
-  <a class="btn btn-default btn-add-to-cart iframe" href="{$ASK_PRODUCT_QUESTION_LINK}"><i class="far fa-question-circle"></i> {#question#}</a>
-  </div>
-  {/if}
-
-  {if $MODULE_articles}
-  <div class="tab-pane fade" id="articles" role="tabpanel" aria-labelledby="articles-tab">
-  {$MODULE_articles}
-  </div>
-  {/if}
-
-</div>
-
-</div>
-
-{if $MODULE_similar_products != ''}
-{$MODULE_similar_products}
-{/if}
-
-{if $MODULE_cross_selling != ''}
-{$MODULE_cross_selling}
-{/if}
-
-{if $MODULE_reverse_cross_selling != ''}
-{$MODULE_reverse_cross_selling}
-{/if}
-
-{if $MODULE_also_purchased != ''}
-{$MODULE_also_purchased}
-{/if}
-
-{if $MODULE_bundle != ''}
-{$MODULE_bundle}
-{/if}
-
-{if $smarty.const.DISPLAY_LAST_VIEWED =='true'}
-{if $products_history}
-<div class="module">
-<h3>{#title_viewed_products#}</h3>
-<div class="moduleContent">
-<div class="owl-carousel owl-theme">
-{foreach name=aussen item=module_data from=$products_history}
-{include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/product-card/product-card-details.html"}
-{/foreach}
-</div>
-<div class="clear"></div>
-</div>
-</div>
-{/if}
-{/if}
-
-</div>
+    </div>
+    
+    <!-- Reviews-->
+    <div class="border-top border-bottom my-lg-3 py-5">
+      <div class="container pt-md-2" id="reviews">
+        <div class="row pb-3">
+          <div class="col-lg-4 col-md-5">
+            <h2 class="h3 mb-4">74 Reviews</h2>
+            <div class="star-rating me-2"><i class="fas fa-star fs-sm text-accent me-1"></i><i class="fas fa-star fs-sm text-accent me-1"></i><i class="fas fa-star fs-sm text-accent me-1"></i><i class="fas fa-star fs-sm text-accent me-1"></i><i class="fas fa-star fs-sm text-muted me-1"></i></div><span class="d-inline-block align-middle">4.1 Overall rating</span>
+            <p class="pt-3 fs-sm text-muted">58 out of 74 (77%)<br>Customers recommended this product</p>
+          </div>
+          <div class="col-lg-8 col-md-7">
+            <div class="d-flex align-items-center mb-2">
+              <div class="text-nowrap me-3"><span class="d-inline-block align-middle text-muted">5</span><i class="fas fa-star fs-xs ms-1"></i></div>
+              <div class="w-100">
+                <div class="progress" style="height: 4px;">
+                  <div class="progress-bar bg-success" role="progressbar" style="width: 60%;" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+              </div><span class="text-muted ms-3">43</span>
+            </div>
+            <div class="d-flex align-items-center mb-2">
+              <div class="text-nowrap me-3"><span class="d-inline-block align-middle text-muted">4</span><i class="fas fa-star fs-xs ms-1"></i></div>
+              <div class="w-100">
+                <div class="progress" style="height: 4px;">
+                  <div class="progress-bar" role="progressbar" style="width: 27%; background-color: #a7e453;" aria-valuenow="27" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+              </div><span class="text-muted ms-3">16</span>
+            </div>
+            <div class="d-flex align-items-center mb-2">
+              <div class="text-nowrap me-3"><span class="d-inline-block align-middle text-muted">3</span><i class="fas fa-star fs-xs ms-1"></i></div>
+              <div class="w-100">
+                <div class="progress" style="height: 4px;">
+                  <div class="progress-bar" role="progressbar" style="width: 17%; background-color: #ffda75;" aria-valuenow="17" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+              </div><span class="text-muted ms-3">9</span>
+            </div>
+            <div class="d-flex align-items-center mb-2">
+              <div class="text-nowrap me-3"><span class="d-inline-block align-middle text-muted">2</span><i class="fas fa-star fs-xs ms-1"></i></div>
+              <div class="w-100">
+                <div class="progress" style="height: 4px;">
+                  <div class="progress-bar" role="progressbar" style="width: 9%; background-color: #fea569;" aria-valuenow="9" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+              </div><span class="text-muted ms-3">4</span>
+            </div>
+            <div class="d-flex align-items-center">
+              <div class="text-nowrap me-3"><span class="d-inline-block align-middle text-muted">1</span><i class="fas fa-star fs-xs ms-1"></i></div>
+              <div class="w-100">
+                <div class="progress" style="height: 4px;">
+                  <div class="progress-bar bg-danger" role="progressbar" style="width: 4%;" aria-valuenow="4" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+              </div><span class="text-muted ms-3">2</span>
+            </div>
+          </div>
+        </div>
+        <hr class="mt-4 mb-3">
+        <div class="row pt-4">
+          <!-- Reviews list-->
+          <div class="col-md-7">
+            <div class="d-flex justify-content-end pb-4">
+              <div class="d-flex align-items-center flex-nowrap">
+                <label class="fs-sm text-muted text-nowrap me-2 d-none d-sm-block" for="sort-reviews">Sort by:</label>
+                <select class="form-select form-select-sm" id="sort-reviews">
+                  <option>Newest</option>
+                  <option>Oldest</option>
+                  <option>Popular</option>
+                  <option>High rating</option>
+                  <option>Low rating</option>
+                </select>
+              </div>
+            </div>
+            <!-- Review-->
+            <div class="product-review pb-4 mb-4 border-bottom">
+              <div class="d-flex mb-3">
+                <div class="d-flex align-items-center me-4 pe-2"><img class="rounded-circle" src="{$tpl_path}dist/img/shop/reviews/01.jpg" width="50" alt="Rafael Marquez">
+                  <div class="ps-3">
+                    <h6 class="fs-sm mb-0">Rafael Marquez</h6><span class="fs-ms text-muted">June 28, 2019</span>
+                  </div>
+                </div>
+                <div>
+                  <div class="star-rating"><i class="star-rating-icon fas fa-star active"></i><i class="star-rating-icon fas fa-star active"></i><i class="star-rating-icon fas fa-star active"></i><i class="star-rating-icon fas fa-star active"></i><i class="star-rating-icon fas fa-star"></i>
+                  </div>
+                  <div class="fs-ms text-muted">83% of users found this review helpful</div>
+                </div>
+              </div>
+              <p class="fs-md mb-2">Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est...</p>
+              <ul class="list-unstyled fs-ms pt-1">
+                <li class="mb-1"><span class="fw-medium">Pros:&nbsp;</span>Consequuntur magni, voluptatem sequi, tempora</li>
+                <li class="mb-1"><span class="fw-medium">Cons:&nbsp;</span>Architecto beatae, quis autem</li>
+              </ul>
+              <div class="text-nowrap">
+                <button class="btn-like" type="button">15</button>
+                <button class="btn-dislike" type="button">3</button>
+              </div>
+            </div>
+            <!-- Review-->
+            <div class="product-review pb-4 mb-4 border-bottom">
+              <div class="d-flex mb-3">
+                <div class="d-flex align-items-center me-4 pe-2"><img class="rounded-circle" src="{$tpl_path}dist/img/shop/reviews/02.jpg" width="50" alt="Barbara Palson">
+                  <div class="ps-3">
+                    <h6 class="fs-sm mb-0">Barbara Palson</h6><span class="fs-ms text-muted">May 17, 2019</span>
+                  </div>
+                </div>
+                <div>
+                  <div class="star-rating"><i class="star-rating-icon fas fa-star active"></i><i class="star-rating-icon fas fa-star active"></i><i class="star-rating-icon fas fa-star active"></i><i class="star-rating-icon fas fa-star active"></i><i class="star-rating-icon fas fa-star active"></i>
+                  </div>
+                  <div class="fs-ms text-muted">99% of users found this review helpful</div>
+                </div>
+              </div>
+              <p class="fs-md mb-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+              <ul class="list-unstyled fs-ms pt-1">
+                <li class="mb-1"><span class="fw-medium">Pros:&nbsp;</span>Consequuntur magni, voluptatem sequi, tempora</li>
+                <li class="mb-1"><span class="fw-medium">Cons:&nbsp;</span>Architecto beatae, quis autem</li>
+              </ul>
+              <div class="text-nowrap">
+                <button class="btn-like" type="button">34</button>
+                <button class="btn-dislike" type="button">1</button>
+              </div>
+            </div>
+            <!-- Review-->
+            <div class="product-review pb-4 mb-4 border-bottom">
+              <div class="d-flex mb-3">
+                <div class="d-flex align-items-center me-4 pe-2"><img class="rounded-circle" src="{$tpl_path}dist/img/shop/reviews/03.jpg" width="50" alt="Daniel Adams">
+                  <div class="ps-3">
+                    <h6 class="fs-sm mb-0">Daniel Adams</h6><span class="fs-ms text-muted">May 8, 2019</span>
+                  </div>
+                </div>
+                <div>
+                  <div class="star-rating"><i class="star-rating-icon fas fa-star active"></i><i class="star-rating-icon fas fa-star active"></i><i class="star-rating-icon fas fa-star active"></i><i class="star-rating-icon fas fa-star"></i><i class="star-rating-icon fas fa-star"></i>
+                  </div>
+                  <div class="fs-ms text-muted">75% of users found this review helpful</div>
+                </div>
+              </div>
+              <p class="fs-md mb-2">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem.</p>
+              <ul class="list-unstyled fs-ms pt-1">
+                <li class="mb-1"><span class="fw-medium">Pros:&nbsp;</span>Consequuntur magni, voluptatem sequi</li>
+                <li class="mb-1"><span class="fw-medium">Cons:&nbsp;</span>Architecto beatae,  quis autem, voluptatem sequ</li>
+              </ul>
+              <div class="text-nowrap">
+                <button class="btn-like" type="button">26</button>
+                <button class="btn-dislike" type="button">9</button>
+              </div>
+            </div>
+            <div class="text-center">
+              <button class="btn btn-outline-accent" type="button"><i class="fas fa-redo-alt me-2"></i>Load more reviews</button>
+            </div>
+          </div>
+          <!-- Leave review form-->
+          <div class="col-md-5 mt-2 pt-4 mt-md-0 pt-md-0">
+            <div class="bg-secondary py-grid-gutter px-grid-gutter rounded-3">
+              <h3 class="h4 pb-2">Write a review</h3>
+              <form class="needs-validation" method="post" novalidate>
+                <div class="mb-3">
+                  <label class="form-label" for="review-name">Your name<span class="text-danger">*</span></label>
+                  <input class="form-control" type="text" required id="review-name">
+                  <div class="invalid-feedback">Please enter your name!</div><small class="form-text text-muted">Will be displayed on the comment.</small>
+                </div>
+                <div class="mb-3">
+                  <label class="form-label" for="review-email">Your email<span class="text-danger">*</span></label>
+                  <input class="form-control" type="email" required id="review-email">
+                  <div class="invalid-feedback">Please provide valid email address!</div><small class="form-text text-muted">Authentication only - we won't spam you.</small>
+                </div>
+                <div class="mb-3">
+                  <label class="form-label" for="review-rating">Rating<span class="text-danger">*</span></label>
+                  <select class="form-select" required id="review-rating">
+                    <option value="">Choose rating</option>
+                    <option value="5">5 stars</option>
+                    <option value="4">4 stars</option>
+                    <option value="3">3 stars</option>
+                    <option value="2">2 stars</option>
+                    <option value="1">1 star</option>
+                  </select>
+                  <div class="invalid-feedback">Please choose rating!</div>
+                </div>
+                <div class="mb-3">
+                  <label class="form-label" for="review-text">Review<span class="text-danger">*</span></label>
+                  <textarea class="form-control" rows="6" required id="review-text"></textarea>
+                  <div class="invalid-feedback">Please write a review!</div><small class="form-text text-muted">Your review must be at least 50 characters.</small>
+                </div>
+                <div class="mb-3">
+                  <label class="form-label" for="review-pros">Pros</label>
+                  <textarea class="form-control" rows="2" placeholder="Separated by commas" id="review-pros"></textarea>
+                </div>
+                <div class="mb-3 mb-4">
+                  <label class="form-label" for="review-cons">Cons</label>
+                  <textarea class="form-control" rows="2" placeholder="Separated by commas" id="review-cons"></textarea>
+                </div>
+                <button class="btn btn-primary btn-shadow d-block w-100" type="submit">Submit a Review</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Product carousel (Style with)-->
+    <div class="container pt-5">
+      <h2 class="h3 text-center pb-4">Style with</h2>
+      <div class="tns-carousel tns-controls-static tns-controls-outside">
+        <div class="tns-carousel-inner" data-carousel-options="{literal}{&quot;items&quot;: 2, &quot;controls&quot;: true, &quot;nav&quot;: false, &quot;responsive&quot;: {&quot;0&quot;:{&quot;items&quot;:1},&quot;500&quot;:{&quot;items&quot;:2, &quot;gutter&quot;: 18},&quot;768&quot;:{&quot;items&quot;:3, &quot;gutter&quot;: 20}, &quot;1100&quot;:{&quot;items&quot;:4, &quot;gutter&quot;: 30}}}{/literal}">
+          <!-- Product-->
+          <div>
+            <div class="card product-card card-static">
+              <button class="btn-wishlist btn-sm" type="button" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to wishlist"><i class="far fa-heart"></i></button><a class="card-img-top d-block overflow-hidden" href="#"><img src="{$tpl_path}dist/img/shop/catalog/14.jpg" alt="Product"></a>
+              <div class="card-body py-2"><a class="product-meta d-block fs-xs pb-1" href="#">Men’s Jeans</a>
+                <h3 class="product-title fs-sm"><a href="#">Slim Taper Fit Jeans</a></h3>
+                <div class="d-flex justify-content-between">
+                  <div class="product-price"><span class="text-accent">$58.<small>99</small></span></div>
+                  <div class="star-rating"><i class="star-rating-icon fas fa-star active"></i><i class="star-rating-icon fas fa-star active"></i><i class="star-rating-icon fas fa-star active"></i><i class="star-rating-icon fas fa-star active"></i><i class="star-rating-icon fas fa-star"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Product-->
+          <div>
+            <div class="card product-card card-static"><span class="badge bg-danger badge-shadow">Sale</span>
+              <button class="btn-wishlist btn-sm" type="button" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to wishlist"><i class="far fa-heart"></i></button><a class="card-img-top d-block overflow-hidden" href="#"><img src="{$tpl_path}dist/img/shop/catalog/17.jpg" alt="Product"></a>
+              <div class="card-body py-2"><a class="product-meta d-block fs-xs pb-1" href="#">Men’s T-shirts</a>
+                <h3 class="product-title fs-sm"><a href="#">Cotton T-shirt Regular Fit</a></h3>
+                <div class="d-flex justify-content-between">
+                  <div class="product-price"><span class="text-accent">$9.<small>50</small></span>
+                    <del class="fs-sm text-muted">$11.<small>50</small></del>
+                  </div>
+                  <div class="star-rating"><i class="star-rating-icon fas fa-star active"></i><i class="star-rating-icon fas fa-star active"></i><i class="star-rating-icon fas fa-star active"></i><i class="star-rating-icon fas fa-star-half active"></i><i class="star-rating-icon fas fa-star"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Product-->
+          <div>
+            <div class="card product-card card-static">
+              <button class="btn-wishlist btn-sm" type="button" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to wishlist"><i class="far fa-heart"></i></button><a class="card-img-top d-block overflow-hidden" href="#"><img src="{$tpl_path}dist/img/shop/catalog/18.jpg" alt="Product"></a>
+              <div class="card-body py-2"><a class="product-meta d-block fs-xs pb-1" href="#">Men’s Shoes</a>
+                <h3 class="product-title fs-sm"><a href="#">Men’s Leather Keds</a></h3>
+                <div class="d-flex justify-content-between">
+                  <div class="product-price text-accent">$64.<small>99</small></div>
+                  <div class="star-rating"><i class="star-rating-icon fas fa-star active"></i><i class="star-rating-icon fas fa-star active"></i><i class="star-rating-icon fas fa-star active"></i><i class="star-rating-icon fas fa-star active"></i><i class="star-rating-icon fas fa-star active"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Product-->
+          <div>
+            <div class="card product-card card-static">
+              <button class="btn-wishlist btn-sm" type="button" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to wishlist"><i class="far fa-heart"></i></button><a class="card-img-top d-block overflow-hidden" href="#"><img src="{$tpl_path}dist/img/shop/catalog/19.jpg" alt="Product"></a>
+              <div class="card-body py-2"><a class="product-meta d-block fs-xs pb-1" href="#">Men’s T-shirts</a>
+                <h3 class="product-title fs-sm"><a href="#">3 Color Collection of T-shirts</a></h3>
+                <div class="d-flex justify-content-between">
+                  <div class="product-price text-accent">$27.<small>99</small></div>
+                  <div class="star-rating"><i class="star-rating-icon fas fa-star active"></i><i class="star-rating-icon fas fa-star active"></i><i class="star-rating-icon fas fa-star active"></i><i class="star-rating-icon fas fa-star active"></i><i class="star-rating-icon fas fa-star-half active"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Product-->
+          <div>
+            <div class="card product-card card-static">
+              <button class="btn-wishlist btn-sm" type="button" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to wishlist"><i class="far fa-heart"></i></button><a class="card-img-top d-block overflow-hidden" href="#"><img src="{$tpl_path}dist/img/shop/catalog/13.jpg" alt="Product"></a>
+              <div class="card-body py-2"><a class="product-meta d-block fs-xs pb-1" href="#">Men’s T-shirts</a>
+                <h3 class="product-title fs-sm"><a href="#">Cotton Polo Regular Fit</a></h3>
+                <div class="d-flex justify-content-between">
+                  <div class="product-price text-accent">$13.<small>50</small></div>
+                  <div class="star-rating"><i class="star-rating-icon fas fa-star active"></i><i class="star-rating-icon fas fa-star active"></i><i class="star-rating-icon fas fa-star active"></i><i class="star-rating-icon fas fa-star"></i><i class="star-rating-icon fas fa-star"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Product carousel (You may also like)-->
+    <div class="container py-5 my-md-3">
+      <h2 class="h3 text-center pb-4">You may also like</h2>
+      <div class="tns-carousel tns-controls-static tns-controls-outside">
+        <div class="tns-carousel-inner" data-carousel-options="{literal}{&quot;items&quot;: 2, &quot;controls&quot;: true, &quot;nav&quot;: false, &quot;responsive&quot;: {&quot;0&quot;:{&quot;items&quot;:1},&quot;500&quot;:{&quot;items&quot;:2, &quot;gutter&quot;: 18},&quot;768&quot;:{&quot;items&quot;:3, &quot;gutter&quot;: 20}, &quot;1100&quot;:{&quot;items&quot;:4, &quot;gutter&quot;: 30}}}{/literal}">
+          <!-- Product-->
+          <div>
+            <div class="card product-card card-static">
+              <button class="btn-wishlist btn-sm" type="button" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to wishlist"><i class="far fa-heart"></i></button><a class="card-img-top d-block overflow-hidden" href="#"><img src="{$tpl_path}dist/img/shop/catalog/20.jpg" alt="Product"></a>
+              <div class="card-body py-2"><a class="product-meta d-block fs-xs pb-1" href="#">Men’s Hoodie</a>
+                <h3 class="product-title fs-sm"><a href="#">Block-colored Hooded Top</a></h3>
+                <div class="d-flex justify-content-between">
+                  <div class="product-price"><span class="text-accent">$24.<small>99</small></span></div>
+                  <div class="star-rating"><i class="star-rating-icon fas fa-star active"></i><i class="star-rating-icon fas fa-star active"></i><i class="star-rating-icon fas fa-star active"></i><i class="star-rating-icon fas fa-star-half active"></i><i class="star-rating-icon fas fa-star"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Product-->
+          <div>
+            <div class="card product-card card-static">
+              <button class="btn-wishlist btn-sm" type="button" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to wishlist"><i class="far fa-heart"></i></button><a class="card-img-top d-block overflow-hidden" href="#"><img src="{$tpl_path}dist/img/shop/catalog/21.jpg" alt="Product"></a>
+              <div class="card-body py-2"><a class="product-meta d-block fs-xs pb-1" href="#">Men’s Hoodie</a>
+                <h3 class="product-title fs-sm"><a href="#">Block-colored Hooded Top</a></h3>
+                <div class="d-flex justify-content-between">
+                  <div class="product-price text-accent">$26.<small>99</small></div>
+                  <div class="star-rating"><i class="star-rating-icon fas fa-star active"></i><i class="star-rating-icon fas fa-star active"></i><i class="star-rating-icon fas fa-star active"></i><i class="star-rating-icon fas fa-star active"></i><i class="star-rating-icon fas fa-star active"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Product-->
+          <div>
+            <div class="card product-card card-static">
+              <button class="btn-wishlist btn-sm" type="button" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to wishlist"><i class="far fa-heart"></i></button><a class="card-img-top d-block overflow-hidden" href="#"><img src="{$tpl_path}dist/img/shop/catalog/22.jpg" alt="Product"></a>
+              <div class="card-body py-2"><a class="product-meta d-block fs-xs pb-1" href="#">Men’s Hoodie</a>
+                <h3 class="product-title fs-sm"><a href="#">Block-colored Hooded Top</a></h3>
+                <div class="d-flex justify-content-between">
+                  <div class="product-price text-accent">$24.<small>99</small></div>
+                  <div class="star-rating"><i class="star-rating-icon fas fa-star active"></i><i class="star-rating-icon fas fa-star active"></i><i class="star-rating-icon fas fa-star-half active"></i><i class="star-rating-icon fas fa-star"></i><i class="star-rating-icon fas fa-star"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Product-->
+          <div>
+            <div class="card product-card card-static">
+              <button class="btn-wishlist btn-sm" type="button" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to wishlist"><i class="far fa-heart"></i></button><a class="card-img-top d-block overflow-hidden" href="#"><img src="{$tpl_path}dist/img/shop/catalog/23.jpg" alt="Product"></a>
+              <div class="card-body py-2"><a class="product-meta d-block fs-xs pb-1" href="#">Men’s Hoodie</a>
+                <h3 class="product-title fs-sm"><a href="#">Block-colored Hooded Top</a></h3>
+                <div class="d-flex justify-content-between">
+                  <div class="product-price text-accent">$24.<small>99</small></div>
+                  <div class="star-rating"><i class="star-rating-icon fas fa-star active"></i><i class="star-rating-icon fas fa-star active"></i><i class="star-rating-icon fas fa-star active"></i><i class="star-rating-icon fas fa-star active"></i><i class="star-rating-icon fas fa-star"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Product-->
+          <div>
+            <div class="card product-card card-static">
+              <button class="btn-wishlist btn-sm" type="button" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to wishlist"><i class="far fa-heart"></i></button><a class="card-img-top d-block overflow-hidden" href="#"><img src="{$tpl_path}dist/img/shop/catalog/24.jpg" alt="Product"></a>
+              <div class="card-body py-2"><a class="product-meta d-block fs-xs pb-1" href="#">Men’s Hoodie</a>
+                <h3 class="product-title fs-sm"><a href="#">Block-colored Hooded Top</a></h3>
+                <div class="d-flex justify-content-between">
+                  <div class="product-price text-accent">$25.<small>00</small></div>
+                  <div class="star-rating"><i class="star-rating-icon fas fa-star active"></i><i class="star-rating-icon fas fa-star active"></i><i class="star-rating-icon fas fa-star active"></i><i class="star-rating-icon fas fa-star"></i><i class="star-rating-icon fas fa-star"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>

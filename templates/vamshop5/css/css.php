@@ -8,6 +8,7 @@
 <link rel="stylesheet" media="screen" href="templates/<?php echo CURRENT_TEMPLATE; ?>/dist/vendor/tiny-slider/dist/tiny-slider.css"/>
 <link rel="stylesheet" media="screen" href="templates/<?php echo CURRENT_TEMPLATE; ?>/dist/vendor/nouislider/distribute/nouislider.min.css"/>
 <link rel="stylesheet" media="screen" href="templates/<?php echo CURRENT_TEMPLATE; ?>/dist/vendor/drift-zoom/dist/drift-basic.min.css"/>
+<link rel="stylesheet" media="screen" href="templates/<?php echo CURRENT_TEMPLATE; ?>/dist/vendor/lightgallery.js/dist/css/lightgallery.min.css"/>
 <!-- Main Theme Styles + Bootstrap-->
 <link rel="stylesheet" media="screen" href="templates/<?php echo CURRENT_TEMPLATE; ?>/dist/css/theme.min.css">
 <link rel="stylesheet" media="screen" href="templates/<?php echo CURRENT_TEMPLATE; ?>/css/vamshop5.css">
