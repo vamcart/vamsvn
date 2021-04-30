@@ -979,4 +979,6 @@ define('TEXT_LOGIN_SOCIAL','Соц. сети');
 define('BUTTON_PREV', 'Назад');
 define('BUTTON_NEXT', 'Вперёд');
 
+define('TEXT_SHARE', 'Поделиться:');
+
 ?>

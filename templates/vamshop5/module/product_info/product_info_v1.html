@@ -1,5 +1,4 @@
 {config_load file="$language/lang_$language.conf" section="product_info"}
-{$FORM_ACTION}
 {if $info_message}
 <div class="contacterror">
 {$info_message}
@@ -21,7 +20,7 @@
         </div>
       </div>
     </div>
-    <div class="container">
+    <div class="container product-info-page">
       <!-- Gallery + details-->
       <div class="bg-light shadow-lg rounded-3 px-4 py-3 mb-5">
         <div class="px-lg-3">
@@ -50,141 +49,117 @@
             <!-- Product details-->
             <div class="col-lg-5 pt-4 pt-lg-0">
               <div class="product-details ms-auto pb-3">
-                <div class="d-flex justify-content-between align-items-center mb-2"><a href="#reviews" data-scroll>
-                    <div class="star-rating"><i class="star-rating-icon fas fa-star active"></i><i class="star-rating-icon fas fa-star active"></i><i class="star-rating-icon fas fa-star active"></i><i class="star-rating-icon fas fa-star active"></i><i class="star-rating-icon fas fa-star"></i>
-                    </div><span class="d-inline-block fs-sm text-body align-middle mt-1 ms-1">74 Reviews</span></a>
-                  <button class="btn-wishlist me-0 me-lg-n3" type="button" data-bs-toggle="tooltip" title="Add to wishlist"><i class="far fa-heart"></i></button>
+                <div class="d-flex justify-content-between align-items-center mb-2"><a href="{$PRODUCTS_REVIEWS_URL}" data-scroll>
+                {if $REVIEWS_TOTAL > 0}
+                    <div class="star-rating">
+                    {$STAR_RATING}
+                    </div>
+                    <span class="d-inline-block fs-sm text-body align-middle mt-1 ms-1">{$smarty.const.TEXT_TOTAL_REVIEWS}: {$REVIEWS_TOTAL}</span></a>
+                {/if}
+                {if $smarty.const.ENABLE_WISHLIST == 'true'}
+                {if $smarty.const.AJAX_WISHLIST == 'true'}
+                  <a class="wishlist-link-{$PRODUCTS_ID} {if $IN_WISHLIST} btn-outline-danger text-danger{/if} btn-wishlist me-0 me-lg-n3" href="index.php?action=wishlist_now&BUYproducts_id={$PRODUCTS_ID}" onclick="doWishlistNow('{$PRODUCTS_ID}','1'); return false;" data-toggle="tooltip" title="{if $IN_WISHLIST}{$smarty.const.IMAGE_BUTTON_IN_WISHLIST_IN}{else}{$smarty.const.IMAGE_BUTTON_IN_WISHLIST}{/if}" aria-label="{if $IN_WISHLIST}{$smarty.const.IMAGE_BUTTON_IN_WISHLIST_IN}{else}{$smarty.const.IMAGE_BUTTON_IN_WISHLIST}{/if}"><i class="{if $IN_WISHLIST}fas{else}far{/if} fa-heart wishlist-icon-{$PRODUCTS_ID}"></i></a>
+                {/if}
+                {/if}
                 </div>
-                <div class="mb-3"><span class="h3 fw-normal text-accent me-1">$18.<small>99</small></span>
-                  <del class="text-muted fs-lg me-3">$25.<small>00</small></del><span class="badge bg-danger badge-shadow align-middle mt-n2">Sale</span>
+
+                {if $LABEL_ID > 0}  
+                <div class="mb-3">
+                  {$PRODUCT_LABEL}
                 </div>
-                <div class="fs-sm mb-4"><span class="text-heading fw-medium me-1">Color:</span><span class="text-muted" id="colorOption">Red/Dark blue/White</span></div>
+                {/if}
+
+                <div class="mb-3">
+						{if {$PRODUCTS_QUANTITY} > 0 or {$PRODUCTS_PRICE_PLAIN} > 0}
+							<div class="price-block d-inline" itemprop="offers" itemscope itemtype="http://schema.org/Offer"> 
+								<span class="price">{$PRODUCTS_PRICE}</span>
+								<meta itemprop="price" content="{$PRODUCTS_PRICE_PLAIN}">
+								<meta itemprop="priceCurrency" content="{$smarty.session.currency}" />
+								<meta itemprop="availability" content="InStock" />
+								<meta itemprop="priceValidUntil" content="{$smarty.now + (1200*60*24*7)|date_format:"c"}" />
+								<meta itemprop="url" content="{$PRODUCTS_URL_INFO}" />
+							</div> 
+						{/if}                
+                </div>
+                <!--
                 <div class="position-relative me-n4 mb-3">
-                  <div class="form-check form-option form-check-inline mb-2">
-                    <input class="form-check-input" type="radio" name="color" id="color1" data-bs-label="colorOption" value="Red/Dark blue/White" checked>
-                    <label class="form-option-label rounded-circle" for="color1"><span class="form-option-color rounded-circle" style="background-image: url(img/shop/single/color-opt-1.png)"></span></label>
-                  </div>
-                  <div class="form-check form-option form-check-inline mb-2">
-                    <input class="form-check-input" type="radio" name="color" id="color2" data-bs-label="colorOption" value="Beige/White/Dark grey">
-                    <label class="form-option-label rounded-circle" for="color2"><span class="form-option-color rounded-circle" style="background-image: url(img/shop/single/color-opt-2.png)"></span></label>
-                  </div>
-                  <div class="form-check form-option form-check-inline mb-2">
-                    <input class="form-check-input" type="radio" name="color" id="color3" data-bs-label="colorOption" value="Dark grey/White/Orange">
-                    <label class="form-option-label rounded-circle" for="color3"><span class="form-option-color rounded-circle" style="background-image: url(img/shop/single/color-opt-3.png)"></span></label>
-                  </div>
                   {if {$PRODUCTS_QUANTITY} > 0}
-                  <div class="product-badge product-available mt-n1"><i class="far fa-check-circle"></i>Product available</div>
+                  <div class="product-badge product-available mt-n1"><i class="far fa-check-circle"></i>{$smarty.const.TEXT_IN_STOCK}</div>
                   {else}
-                  <div class="product-badge product-not-available mt-n1"><i class="far fa-times-circle"></i>Product not available</div>
+                  <div class="product-badge product-not-available mt-n1"><i class="far fa-times-circle"></i>{$smarty.const.TEXT_OUT_OF_STOCK}</div>
                   {/if}
                 </div>
-                <form class="mb-grid-gutter" method="post">
-                  <div class="mb-3">
-                    <div class="d-flex justify-content-between align-items-center pb-1">
-                      <label class="form-label" for="product-size">Size:</label>
-                      <!--<a class="nav-link-style fs-sm" href="#size-chart" data-bs-toggle="modal"><i class="fas fa-ruler-horizontal"></i>Size guide</a>-->
-                    </div>
-                    <select class="form-select" required id="product-size">
-                      <option value="">Select size</option>
-                      <option value="xs">XS</option>
-                      <option value="s">S</option>
-                      <option value="m">M</option>
-                      <option value="l">L</option>
-                      <option value="xl">XL</option>
-                    </select>
+                -->
+                {$FORM_ACTION}
+                  {if $MODULE_product_options !=''}
+                  <div class="product_options mb-3">
+                  {$MODULE_product_options}
                   </div>
+                  {/if}
                   <div class="mb-3 d-flex align-items-center">
-                    <select class="form-select me-3" style="width: 5rem;">
+                    <select name="products_qty" id="quantity{$PRODUCTS_ID}" class="form-select me-3" style="width: 5rem;">
                       <option value="1">1</option>
                       <option value="2">2</option>
                       <option value="3">3</option>
                       <option value="4">4</option>
                       <option value="5">5</option>
                     </select>
-                    <button class="btn btn-primary btn-shadow d-block w-100" type="submit"><i class="fas fa-shopping-basket fs-lg me-2"></i>Add to Cart</button>
+                    <input type="hidden" name="products_id" value="{$PRODUCTS_ID}">
+                    <button class="btn btn-primary btn-shadow d-block w-100" type="submit" id="cart-link-{$PRODUCTS_ID}"><i class="fas fa-shopping-basket fs-lg me-2"></i>{$smarty.const.IMAGE_BUTTON_IN_CART}</button>
                   </div>
-                </form>
+                {$FORM_END}
                 <!-- Product panels-->
                 <div class="accordion mb-4" id="productPanels">
                   <div class="accordion-item">
-                    <h3 class="accordion-header"><a class="accordion-button" href="#productInfo" role="button" data-bs-toggle="collapse" aria-expanded="true" aria-controls="productInfo"><i class="far fa-lightbulb text-muted fs-lg align-middle mt-n1 me-2"></i>Product info</a></h3>
+                    <h3 class="accordion-header"><a class="accordion-button" href="#productInfo" role="button" data-bs-toggle="collapse" aria-expanded="true" aria-controls="productInfo"><i class="far fa-lightbulb text-muted fs-lg align-middle mt-n1 me-2"></i>{$smarty.const.TEXT_PAGE_INFORMATION}</a></h3>
                     <div class="accordion-collapse collapse show" id="productInfo" data-bs-parent="#productPanels">
                       <div class="accordion-body">
-                        <h6 class="fs-sm mb-2">Composition</h6>
-                        <ul class="fs-sm ps-4">
-                          <li>Elastic rib: Cotton 95%, Elastane 5%</li>
-                          <li>Lining: Cotton 100%</li>
-                          <li>Cotton 80%, Polyester 20%</li>
-                        </ul>
-                        <h6 class="fs-sm mb-2">Art. No.</h6>
+                        <h6 class="fs-sm mb-2">{$PRODUCTS_NAME}</h6>
+                        {if $extra_fields_data}
                         <ul class="fs-sm ps-4 mb-0">
-                          <li>183260098</li>
+                        {foreach item=extra_fields from=$extra_fields_data} 
+                        {if $extra_fields@iteration > 5}{break}{/if} 
+                        <li class="{cycle values="spec-odd,spec-even"}">
+                        <span class="spec-name">{$extra_fields.NAME}:</span> <span class="spec-value font-weight-bold">{$extra_fields.VALUE}</span><br />
+                        </li>
+                        {/foreach}
                         </ul>
+                        {/if}
+                        {if $specifications}
+                        <ul class="fs-sm ps-4 mb-0">
+                        {foreach name=outer item=spec_group from=$specifications_data}
+                        {foreach key=key_data item=spec from=$spec_group.DATA}
+                        {if $spec@iteration > 5}{break}{/if} 
+                        <li class="{cycle values="spec-odd,spec-even"}">
+                        <span class="spec-name">{$spec.NAME}:</span> <span class="spec-value font-weight-bold">{$spec.VALUE}</span><br />
+                        </li>
+                        {/foreach}
+                        {/foreach}
+                        </ul>
+                        {/if}
+                        
                       </div>
                     </div>
                   </div>
                   <div class="accordion-item">
-                    <h3 class="accordion-header"><a class="accordion-button collapsed" href="#shippingOptions" role="button" data-bs-toggle="collapse" aria-expanded="true" aria-controls="shippingOptions"><i class="fas fa-truck text-muted fs-lg align-middle mt-n1 me-2"></i>Shipping options</a></h3>
+                    <h3 class="accordion-header"><a class="accordion-button collapsed" href="#shippingOptions" role="button" data-bs-toggle="collapse" aria-expanded="true" aria-controls="shippingOptions"><i class="fas fa-truck text-muted fs-lg align-middle mt-n1 me-2"></i>{$smarty.const.TEXT_PRODUCT_SHIPPING}</a></h3>
                     <div class="accordion-collapse collapse" id="shippingOptions" data-bs-parent="#productPanels">
                       <div class="accordion-body fs-sm">
-                        <div class="d-flex justify-content-between border-bottom pb-2">
-                          <div>
-                            <div class="fw-semibold text-dark">Courier</div>
-                            <div class="fs-sm text-muted">2 - 4 days</div>
-                          </div>
-                          <div>$26.50</div>
-                        </div>
-                        <div class="d-flex justify-content-between border-bottom py-2">
-                          <div>
-                            <div class="fw-semibold text-dark">Local shipping</div>
-                            <div class="fs-sm text-muted">up to one week</div>
-                          </div>
-                          <div>$10.00</div>
-                        </div>
-                        <div class="d-flex justify-content-between border-bottom py-2">
-                          <div>
-                            <div class="fw-semibold text-dark">Flat rate</div>
-                            <div class="fs-sm text-muted">5 - 7 days</div>
-                          </div>
-                          <div>$33.85</div>
-                        </div>
-                        <div class="d-flex justify-content-between border-bottom py-2">
-                          <div>
-                            <div class="fw-semibold text-dark">UPS ground shipping</div>
-                            <div class="fs-sm text-muted">4 - 6 days</div>
-                          </div>
-                          <div>$18.00</div>
-                        </div>
-                        <div class="d-flex justify-content-between pt-2">
-                          <div>
-                            <div class="fw-semibold text-dark">Local pickup from store</div>
-                            <div class="fs-sm text-muted">&mdash;</div>
-                          </div>
-                          <div>$0.00</div>
-                        </div>
+                        {$text_shipping_info}
                       </div>
                     </div>
                   </div>
                   <div class="accordion-item">
-                    <h3 class="accordion-header"><a class="accordion-button collapsed" href="#localStore" role="button" data-bs-toggle="collapse" aria-expanded="true" aria-controls="localStore"><i class="fas fa-map-marker-alt text-muted fs-lg align-middle mt-n1 me-2"></i>Find in local store</a></h3>
+                    <h3 class="accordion-header"><a class="accordion-button collapsed" href="#localStore" role="button" data-bs-toggle="collapse" aria-expanded="true" aria-controls="localStore"><i class="fas fa-coins text-muted fs-lg align-middle mt-n1 me-2"></i>{$smarty.const.TEXT_PRODUCT_PAYMENT}</a></h3>
                     <div class="accordion-collapse collapse" id="localStore" data-bs-parent="#productPanels">
                       <div class="accordion-body">
-                        <select class="form-select">
-                          <option value>Select your country</option>
-                          <option value="Argentina">Argentina</option>
-                          <option value="Belgium">Belgium</option>
-                          <option value="France">France</option>
-                          <option value="Germany">Germany</option>
-                          <option value="Spain">Spain</option>
-                          <option value="UK">United Kingdom</option>
-                          <option value="USA">USA</option>
-                        </select>
+                        {$text_payment_info}
                       </div>
                     </div>
                   </div>
                 </div>
                 <!-- Sharing-->
-                <label class="form-label d-inline-block align-middle my-2 me-3">Share:</label><a class="btn-share btn-twitter me-2 my-2" href="#"><i class="fab fa-twitter"></i>Twitter</a><a class="btn-share btn-instagram me-2 my-2" href="#"><i class="fab fa-instagram"></i>Instagram</a><a class="btn-share btn-facebook my-2" href="#"><i class="fab fa-facebook"></i>Facebook</a>
+                <label class="form-label d-inline-block align-middle my-2 me-3">{$smarty.const.TEXT_SHARE}</label><a class="btn-share btn-twitter me-2 my-2" href="#"><i class="fab fa-twitter"></i>Twitter</a><a class="btn-share btn-instagram me-2 my-2" href="#"><i class="fab fa-instagram"></i>Instagram</a><a class="btn-share btn-facebook my-2" href="#"><i class="fab fa-facebook"></i>Facebook</a>
               </div>
             </div>
           </div>

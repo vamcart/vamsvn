@@ -47,12 +47,12 @@
 
 <!-- radio -->
 <div class="py-1">
-<strong>{$options_data.NAME}:</strong>
+<span class="text-heading fw-medium me-1">{$options_data.NAME}:</span>
 <br />
-<div class="card-deck product-attributes" data-toggle="buttons">
+<div class="row row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-xl-3 row-cols-xxl-3 g-3 product-attributes" data-toggle="buttons">
 {foreach key=key_data item=item_data from=$options_data.DATA}
-<div class="btn-group-toggle col-6 col-sm-6 col-md-4 col-lg-4 col-xl-4">
-<div class="btn btn-default product-attribute-item card card-product card-sm text-center h-100{if $item_data@first} active{/if}">
+<div class="btn-group-toggle col">
+<div class="btn btn-default product-attribute-item card card-product card-sm text-center h-100">
 <label class="h-100 attribute {$options_data.ID}">
   <input type="radio" class="options" name="id[{$options_data.ID}]" id="id[{$options_data.ID}]" data-price="{$item_data.FULL_PRICE}" value="{$item_data.ID}" {$item_data.CHECKED} />
   <div class="card-body">
