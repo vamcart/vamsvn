@@ -341,7 +341,7 @@ $manual_link = 'delete-manufacturer';
 
 } else {
 	
-	  $manufacturers_query_raw = "select manufacturers_id, manufacturers_name, manufacturers_status, manufacturers_image, date_added, last_modified from " . TABLE_MANUFACTURERS . " order by manufacturers_name";
+	  $manufacturers_query_raw = "select manufacturers_id, manufacturers_name, manufacturers_status, manufacturers_seo_url, manufacturers_image, date_added, last_modified from " . TABLE_MANUFACTURERS . " order by manufacturers_name";
   $manufacturers_split = new splitPageResults($_GET['page'], MAX_DISPLAY_ADMIN_PAGE, $manufacturers_query_raw, $manufacturers_query_numrows);
   $manufacturers_query = vam_db_query($manufacturers_query_raw);
   while ($manufacturers = vam_db_fetch_array($manufacturers_query)) {
