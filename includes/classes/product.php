@@ -358,30 +358,22 @@ $searchorder2 = array();
 //echo $q2;
 
 if ($q2 != '') {
-$listing_sql = "select
-							p.products_id,
-							p.label_id,
-							p.products_image,
-							p.products_quantity,
-							p.products_price,
-							p.products_fsk18,							
-							p.products_ordered,							
-							p.products_model,
-							pd.products_name, 
-							pd.products_short_description, 
-							pd.products_meta_title, 
-							pd.products_meta_description,
-							pd.products_description,
-							pd.products_keywords,
+$listing_sql = "select p.*, pd.*, cd.*,
 							$select_str
 							match (pd.products_name, pd.products_description, pd.products_keywords) against ('" . $q2 . "' IN BOOLEAN MODE) AS head_relevance							
-							from " . TABLE_PRODUCTS_DESCRIPTION . " pd
-							left join " . TABLE_PRODUCTS . " p
-							on (p.products_id = pd.products_id)
+							FROM
+	                                        ".TABLE_PRODUCTS." p,
+	                                        ".TABLE_PRODUCTS_DESCRIPTION." pd,
+	                                        ".TABLE_PRODUCTS_TO_CATEGORIES." p2c,
+	                                        ".TABLE_CATEGORIES." c,
+	                                        ".TABLE_CATEGORIES_DESCRIPTION." cd
 							where (match (pd.products_name) against ('" . $q2 . "' IN BOOLEAN MODE)
 							or match (pd.products_description) against ('" . $q2 . "' IN BOOLEAN MODE)
 							or match (pd.products_keywords) against ('" . $q2 . "' IN BOOLEAN MODE)
 							$searchorder3) 
+							and p.products_id = p2c.products_id and p.products_id=pd.products_id
+	                  and p2c.categories_id = c.categories_id
+	                  and cd.categories_id = c.categories_id
 							and p.products_status = '1'
 							and pd.language_id = '" . (int)$_SESSION['languages_id'] . "'
 							and pd.products_id NOT IN ('" . $this->pID . "') 
@@ -495,21 +487,15 @@ while ($item = vam_db_fetch_array($products_id_query, true)) {
 
 $products_id = '"'.join('","',$products_id_array).'"';
 
-$orders_query = "select
-                      p.products_fsk18,
-                      p.products_id,
-                      p.label_id,
-                      p.products_price,
-                      p.products_quantity,
-                      p.products_tax_class_id,
-                      p.products_image,
-                      pd.products_name,
-                      p.products_vpe,
-                      p.products_vpe_status,
-                      p.products_vpe_value,
-                      pd.products_short_description
-                    from ".TABLE_PRODUCTS." p, ".TABLE_PRODUCTS_DESCRIPTION." pd 
-                    where p.products_id = pd.products_id
+$orders_query = "SELECT p.*, pd.*, cd.* FROM
+	                                        ".TABLE_PRODUCTS." p,
+	                                        ".TABLE_PRODUCTS_DESCRIPTION." pd,
+	                                        ".TABLE_PRODUCTS_TO_CATEGORIES." p2c,
+	                                        ".TABLE_CATEGORIES." c,
+	                                        ".TABLE_CATEGORIES_DESCRIPTION." cd
+                    where p.products_id = p2c.products_id and p.products_id=pd.products_id
+	                 and p2c.categories_id = c.categories_id
+	                 and cd.categories_id = c.categories_id
                     and p.products_id in (".$products_id.")
                     and p.products_status = '1' 
                     and pd.language_id = '".(int) $_SESSION['languages_id']."'

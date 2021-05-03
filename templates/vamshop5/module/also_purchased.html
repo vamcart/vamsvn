@@ -1,13 +1,12 @@
 {config_load file="$language/lang_$language.conf" section="also_purchased"}
-<div class="module">
-<h3>{#heading_text#}</h3>
-<div class="moduleContent">
-<div class="owl-carousel owl-theme">
-{foreach name=aussen item=module_data from=$module_content}
-{include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/product-card/product-card-details.html"}
-{/foreach}
-</div>
-<div class="clear"></div>
-</div>
-
+<!-- Product carousel (Style with)-->
+<div class="container pt-5">
+  <h2 class="h3 text-center pb-4">{#heading_text#}</h2>
+  <div class="tns-carousel tns-controls-static tns-controls-outside">
+    <div class="tns-carousel-inner" data-carousel-options="{literal}{&quot;items&quot;: 2, &quot;controls&quot;: true, &quot;nav&quot;: false, &quot;responsive&quot;: {&quot;0&quot;:{&quot;items&quot;:1},&quot;500&quot;:{&quot;items&quot;:2, &quot;gutter&quot;: 18},&quot;768&quot;:{&quot;items&quot;:3, &quot;gutter&quot;: 20}, &quot;1100&quot;:{&quot;items&quot;:4, &quot;gutter&quot;: 30}}}{/literal}">
+          {foreach name=aussen item=module_data from=$module_content}
+          {include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/product-card/vamshop5-product-card-item.html"}
+          {/foreach}
+    </div>
+  </div>
 </div>
