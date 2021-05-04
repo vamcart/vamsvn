@@ -1,5 +1,5 @@
  <div class="star-rating" data-toggle="tooltip" title="{$smarty.const.TEXT_REVIEWS_RATING}">
 	{if {$module_data.REVIEWS_TOTAL_RATING} > 0}
-	<i class="star-rating-icon fas fa-star active"></i> <small>{$module_data.REVIEWS_TOTAL_RATING}</small>
+	<i class="star-rating-icon fas fa-star active"></i> <small>{$module_data.REVIEWS_TOTAL_RATING|number_format:1}</small>
 	{/if}                      
  </div>
