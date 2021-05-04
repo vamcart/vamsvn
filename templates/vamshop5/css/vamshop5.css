@@ -413,7 +413,7 @@ vertical-align: middle;
   border-left: 1px solid #dd2c00;
   border-right: 1px solid #dd2c00;
   border-bottom: 1px solid #dd2c00;
-  border-radius: 0px;
+  border-radius: .25rem;
   -webkit-transition: .2s;
   transition: .2s;
 }
@@ -426,7 +426,7 @@ vertical-align: middle;
   border-left: 1px solid #dd2c00;
   border-right: 1px solid #dd2c00;
   border-bottom: 1px solid #dd2c00;
-  border-radius: 0px;
+  border-radius: .25rem;
   -webkit-transition: .5s;
   transition: .5s;
 }
@@ -437,7 +437,7 @@ vertical-align: middle;
   border-left: 1px solid #dd2c00;
   border-right: 1px solid #dd2c00;
   border-bottom: 1px solid #dd2c00;
-  border-radius: 0px;
+  border-radius: .25rem;
 }
 
 .filter.selected .fields,
@@ -449,7 +449,7 @@ vertical-align: middle;
   border-left: 1px solid #dd2c00;
   border-right: 1px solid #dd2c00;
   border-bottom: 1px solid #dd2c00;
-  border-radius: 0px;
+  border-radius: .25rem;
 }
 
 .product-attributes .btn-group-toggle .btn {
