@@ -797,46 +797,6 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
     }
   }();
   /**
-   * Filter list of items by typing in the search field
-  */
-
-
-  var filterList = function () {
-    var filterListWidget = document.querySelectorAll('.widget-filter');
-
-    var _loop8 = function _loop8(i) {
-      var filterInput = filterListWidget[i].querySelector('.widget-filter-search'),
-          filterList = filterListWidget[i].querySelector('.widget-filter-list'),
-          filterItems = filterList.querySelectorAll('.widget-filter-item');
-
-      if (!filterInput) {
-        return "continue";
-      }
-
-      filterInput.addEventListener('keyup', filterListFunc);
-
-      function filterListFunc() {
-        var filterValue = filterInput.value.toLowerCase();
-
-        for (var _i6 = 0; _i6 < filterItems.length; _i6++) {
-          var filterText = filterItems[_i6].querySelector('.widget-filter-item-text').innerHTML;
-
-          if (filterText.toLowerCase().indexOf(filterValue) > -1) {
-            filterItems[_i6].classList.remove('d-none');
-          } else {
-            filterItems[_i6].classList.add('d-none');
-          }
-        }
-      }
-    };
-
-    for (var i = 0; i < filterListWidget.length; i++) {
-      var _ret2 = _loop8(i);
-
-      if (_ret2 === "continue") continue;
-    }
-  }();
-  /**
    * Data filtering (Comparison table)
   */
 
