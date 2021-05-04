@@ -1,6 +1,12 @@
 <div class="handheld-toolbar">
   <div class="d-table table-layout-fixed w-100">
 
+ {if {$current_category_id} > 0 && {$box_FILTERS} && !{$smarty.get.products_id} or {$current_category_id} > 0 && {$box_CATEGORIES2} && !{$smarty.get.products_id}}
+ <a class="d-table-cell handheld-toolbar-item" href="#" data-bs-toggle="offcanvas" data-bs-target="#shop-sidebar">
+     <span class="handheld-toolbar-icon"><i class="fas fa-sliders-h"></i></span><span class="handheld-toolbar-label">{$smarty.const.BOX_HEADING_PRODUCTS_FILTER}</span>
+ </a>
+ {/if}
+
  {if !$wishlist_current}
  {if $smarty.const.ENABLE_WISHLIST == 'true'}
  <div id="divWishlistHeader">

@@ -20,7 +20,7 @@ import charts from './components/charts';
 import videoButton from './components/video-button';
 import subscriptionForm from './components/subscription-form';
 import rangeSlider from './components/range-slider';
-import filterList from './components/filter-list';
+//import filterList from './components/filter-list';
 import dataFilter from './components/data-filter';
 import labelUpdate from './components/label-update';
 import radioTab from './components/radio-tab';
