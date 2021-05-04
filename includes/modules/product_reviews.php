@@ -37,12 +37,17 @@ require_once (DIR_FS_INC.'vam_date_short.inc.php');
 $info->assign('options', $products_options_data);
 
 $module->assign('PRODUCTS_NAME', $product->data['products_name']);
+$module->assign('PRODUCTS_ID', $product->data['products_id']);
+$module->assign('PRODUCTS_LINK', vam_href_link(FILENAME_PRODUCT_INFO, 'products_id='.$product->data['products_id'])); 
 
 global $current_category_id;
 $module->assign('CATEGORY_ID', $current_category_id);
 
 $module->assign('PRODUCTS_REVIEWS_COUNT', $product->getReviewsCount());
 $module->assign('PRODUCTS_REVIEWS_RATING', $product->getReviewsRating());
+
+$module->assign('PRODUCTS_REVIEWS_WRITE', vam_href_link(FILENAME_PRODUCT_REVIEWS_WRITE, vam_product_link($product->data['products_id'],$product->data['products_name'])));
+$module->assign('PRODUCTS_REVIEWS', vam_href_link(FILENAME_PRODUCT_REVIEWS, vam_product_link($product->data['products_id'],$product->data['products_name'])));
 
 $rating_count = 0;
 

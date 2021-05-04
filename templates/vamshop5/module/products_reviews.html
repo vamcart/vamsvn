@@ -1,90 +1,148 @@
 {config_load file="$language/lang_$language.conf" section="reviews"}
 
-<div class="module">
-<h3>{$PRODUCTS_NAME} {#heading_reviews#}</h3>
-<div class="moduleContent">
-{if {$PRODUCTS_REVIEWS_COUNT} > 0}
-<div class="row-fluid reviews-title" itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">
-  <div class="card card-product h-100">
-	<div class="card-body">
-	<div class="row">
-		<div class="col-md-3 py-2">
-			<div class="text-center">
-			<div class="display-4 font-weight-bolder"><span itemprop="ratingValue">{$PRODUCTS_REVIEWS_RATING|number_format:1}</span></div>
-			{$PRODUCTS_STAR_RATING}
-			</div>
-				{if {$PRODUCTS_REVIEWS_COUNT} > 0}
-				<div class="rating-wrap text-center">
-             {#text_total#}: <span itemprop="reviewCount">{$PRODUCTS_REVIEWS_COUNT}</span>
-				</div>
-				{/if}
-		</div>
-		<div class="col-md-6 py-2">
-		<div class="line pb-2">
-		<span class="progress-label">5</span>
-		<div class="progress">
-		  <div class="progress-bar font-weight-bolder{if $PRODUCTS_RATING_FIVE == 0} text-dark{/if}" role="progressbar" style="width: {$PRODUCTS_RATING_FIVE_PERCENT}%" aria-valuenow="{$PRODUCTS_RATING_FIVE_PERCENT}" aria-valuemin="0" aria-valuemax="100">
-		  {$PRODUCTS_RATING_FIVE_PERCENT}%
-		  </div>
-		</div>		
-		</div>		
-		<div class="line pb-2">
-		<span class="progress-label">4</span>
-		<div class="progress">
-		  <div class="progress-bar font-weight-bolder{if $PRODUCTS_RATING_FOUR == 0} text-dark{/if}" role="progressbar" style="width: {$PRODUCTS_RATING_FOUR_PERCENT}%" aria-valuenow="{$PRODUCTS_RATING_FOUR_PERCENT}" aria-valuemin="0" aria-valuemax="100">
-		  {$PRODUCTS_RATING_FOUR_PERCENT}%
-		  </div>
-		</div>
-		</div>		
-		<div class="line pb-2">
-		<span class="progress-label">3</span>
-		<div class="progress">
-		  <div class="progress-bar font-weight-bolder{if $PRODUCTS_RATING_THREE == 0} text-dark{/if}" role="progressbar" style="width: {$PRODUCTS_RATING_THREE_PERCENT}%" aria-valuenow="{$PRODUCTS_RATING_THREE_PERCENT}" aria-valuemin="0" aria-valuemax="100">
-		  {$PRODUCTS_RATING_THREE_PERCENT}%
-		  </div>
-		</div>
-		</div>		
-		<div class="line pb-2">
-		<span class="progress-label">2</span>
-		<div class="progress">
-		  <div class="progress-bar font-weight-bolder{if $PRODUCTS_RATING_TWO == 0} text-dark{/if}" role="progressbar" style="width: {$PRODUCTS_RATING_TWO_PERCENT}%" aria-valuenow="{$PRODUCTS_RATING_TWO_PERCENT}" aria-valuemin="0" aria-valuemax="100">
-		  {$PRODUCTS_RATING_TWO_PERCENT}%
-		  </div>
-		</div>
-		</div>		
-		<div class="line pb-2">
-		<span class="progress-label">1</span>
-		<div class="progress">
-		  <div class="progress-bar font-weight-bolder{if $PRODUCTS_RATING_ONE == 0} text-dark{/if}" role="progressbar" style="width: {$PRODUCTS_RATING_ONE_PERCENT}%" aria-valuenow="{$PRODUCTS_RATING_ONE_PERCENT}" aria-valuemin="0" aria-valuemax="100">
-		  {$PRODUCTS_RATING_ONE_PERCENT}%
-		  </div>
-		</div>
-		</div>
-
-		</div>
-		<div class="col-md-3 my-auto">
-			<div class="action-wrap text-center">
-           {$BUTTON_WRITE}	
-			</div>
-		</div>
-	</div>
-	</div>
-</div>
-</div>
-<div class="reviewsContent">
+    <!-- Reviews-->
+    <div class="border-top border-bottom my-lg-3 py-5">
+      <div class="container pt-md-2" id="reviews">
+      {if {$PRODUCTS_REVIEWS_COUNT} > 0}
+        <div class="row pb-3">
+          <div class="col-lg-4 col-md-5">
+            <h2 class="h3 mb-4">{#text_total#}: <span>{$PRODUCTS_REVIEWS_COUNT}</span></h2>
+            {if {$PRODUCTS_REVIEWS_COUNT} > 0}
+            <div class="star-rating me-2">
+            {$PRODUCTS_STAR_RATING}
+            </div>
+            {/if}
+            <span class="d-inline-block align-middle">{$smarty.const.TEXT_REVIEW_OVERALL_RATING} {$PRODUCTS_REVIEWS_RATING|number_format:1}</span>
+          </div>
+          <div class="col-lg-8 col-md-7">
+            <div class="d-flex align-items-center mb-2">
+              <div class="text-nowrap me-3"><span class="d-inline-block align-middle text-muted">5</span><i class="fas fa-star fs-xs ms-1"></i></div>
+              <div class="w-100">
+                <div class="progress" style="height: 4px;">
+                  <div class="progress-bar bg-success" role="progressbar" style="width: {$PRODUCTS_RATING_FIVE_PERCENT}%;" aria-valuenow="{$PRODUCTS_RATING_FIVE_PERCENT}" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+              </div><span class="text-muted ms-3">{$PRODUCTS_RATING_FIVE}</span>
+            </div>
+            <div class="d-flex align-items-center mb-2">
+              <div class="text-nowrap me-3"><span class="d-inline-block align-middle text-muted">4</span><i class="fas fa-star fs-xs ms-1"></i></div>
+              <div class="w-100">
+                <div class="progress" style="height: 4px;">
+                  <div class="progress-bar" role="progressbar" style="width: {$PRODUCTS_RATING_FOUR_PERCENT}%; background-color: #a7e453;" aria-valuenow="{$PRODUCTS_RATING_FOUR_PERCENT}" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+              </div><span class="text-muted ms-3">{$PRODUCTS_RATING_FOUR}</span>
+            </div>
+            <div class="d-flex align-items-center mb-2">
+              <div class="text-nowrap me-3"><span class="d-inline-block align-middle text-muted">3</span><i class="fas fa-star fs-xs ms-1"></i></div>
+              <div class="w-100">
+                <div class="progress" style="height: 4px;">
+                  <div class="progress-bar" role="progressbar" style="width: {$PRODUCTS_RATING_THREE_PERCENT}%; background-color: #ffda75;" aria-valuenow="{$PRODUCTS_RATING_THREE_PERCENT}" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+              </div><span class="text-muted ms-3">{$PRODUCTS_RATING_THREE}</span>
+            </div>
+            <div class="d-flex align-items-center mb-2">
+              <div class="text-nowrap me-3"><span class="d-inline-block align-middle text-muted">2</span><i class="fas fa-star fs-xs ms-1"></i></div>
+              <div class="w-100">
+                <div class="progress" style="height: 4px;">
+                  <div class="progress-bar" role="progressbar" style="width: {$PRODUCTS_RATING_TWO_PERCENT}%; background-color: #fea569;" aria-valuenow="{$PRODUCTS_RATING_TWO_PERCENT}" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+              </div><span class="text-muted ms-3">{$PRODUCTS_RATING_TWO}</span>
+            </div>
+            <div class="d-flex align-items-center">
+              <div class="text-nowrap me-3"><span class="d-inline-block align-middle text-muted">1</span><i class="fas fa-star fs-xs ms-1"></i></div>
+              <div class="w-100">
+                <div class="progress" style="height: 4px;">
+                  <div class="progress-bar bg-danger" role="progressbar" style="width: {$PRODUCTS_RATING_ONE_PERCENT}%;" aria-valuenow="{$PRODUCTS_RATING_ONE_PERCENT}" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+              </div><span class="text-muted ms-3">{$PRODUCTS_RATING_ONE}</span>
+            </div>
+          </div>
+        </div>
+        <hr class="mt-4 mb-3">
+        <div class="row pt-4">
+          <!-- Reviews list-->
+          <div class="col-md-7">
+            <div class="d-flex justify-content-end pb-4">
+              <div class="d-flex align-items-center flex-nowrap">
+						<span class="right"> 
+						<div class="dropdown">
+						  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+						    {$smarty.const.TEXT_SORT_REVIEW}{if $smarty.get.review_sort == "date"} {$smarty.const.TEXT_SORT_REVIEW_NEW}{elseif $smarty.get.review_sort == "rating"} {$smarty.const.TEXT_SORT_REVIEW_RATING}{else}{/if}
+						  </button>
+						  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+						    <a class="dropdown-item mt-1" href="{$PRODUCTS_LINK}?review_sort=date">{$smarty.const.TEXT_SORT_REVIEW_NEW}</a></li>
+						    <li><a class="dropdown-item mt-1" href="{$PRODUCTS_LINK}?review_sort=rating">{$smarty.const.TEXT_SORT_REVIEW_RATING}</a></li>
+						  </ul>
+						</div>						
+						 </span>  
+              </div>
+            </div>
+            
 {foreach name=aussen item=module_data from=$module_content}
-<div class="mt-2">	 
 {include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/item/item-reviews.html"}
-</div>
 {/foreach}
-</div>
-{else}
-{if $TEXT_FIRST_REVIEW != ''}
-<p>
-{$TEXT_FIRST_REVIEW}
-</p>
-{/if}
-{$BUTTON_WRITE}	
-{/if}
-</div>
-</div>
+            
+            <div class="text-center">
+              <a class="btn btn-outline-accent" href="{$PRODUCTS_REVIEWS}"><i class="fas fa-redo-alt me-2"></i>{$smarty.const.TEXT_ALL_REVIEWS}</a>
+            </div>
+          </div>
+          {/if}
+          
+<script type="text/javascript">
+{literal}
+$(function($){
+
+    $('.form-anti-bot, .form-anti-bot-2').hide(); // hide inputs from users
+    var answer = $('.form-anti-bot input#anti-bot-a').val(); // get answer
+    $('.form-anti-bot input#anti-bot-q').val( answer ); // set answer into other input
+
+    if ( $('form#product_reviews_write input#anti-bot-q').length == 0 ) {
+        var current_date = new Date();
+        var current_year = current_date.getFullYear();
+        $('form#product_reviews_write').append('<input type="hidden" name="anti-bot-q" id="anti-bot-q" value="'+current_year+'" />'); // add whole input with answer via javascript to form
+    }
+
+});
+{/literal}
+</script>          
+          
+          
+          <!-- Leave review form-->
+          <div class="col-md-5 mt-2 pt-4 mt-md-0 pt-md-0">
+            <div class="bg-secondary py-grid-gutter px-grid-gutter rounded-3">
+              <h3 class="h4 pb-2">{$smarty.const.TEXT_WRITE_REVIEW_HEADER}</h3>
+              <form name="product_reviews_write" class="needs-validation" id="product_reviews_write" action="{$smarty.const.FILENAME_PRODUCT_REVIEWS_WRITE}?action=process&amp;products_id={$PRODUCTS_ID}" method="post" enctype="multipart/form-data" cf="true" novalidate>
+                <div class="mb-3">
+                  <label class="form-label" for="review-rating">{$smarty.const.TEXT_WRITE_REVIEW_RATING}<span class="text-danger">*</span></label>
+                  <select name="rating" class="form-select" required id="review-rating">
+                    <option value="">{$smarty.const.TEXT_WRITE_REVIEW_RATING_CHOOSE}</option>
+                    <option value="5">5</option>
+                    <option value="4">4</option>
+                    <option value="3">3</option>
+                    <option value="2">2</option>
+                    <option value="1">1</option>
+                  </select>
+                  <div class="invalid-feedback">{$smarty.const.TEXT_WRITE_REVIEW_RATING_ERROR}</div>
+                </div>
+                <div class="mb-3 mb-4">
+                  <label class="form-label" for="review-text">{$smarty.const.TEXT_WRITE_REVIEW_TEXT}<span class="text-danger">*</span></label>
+                  <textarea name="review" class="form-control" rows="6" required id="review-text"></textarea>
+                  <div class="invalid-feedback">{$smarty.const.TEXT_WRITE_REVIEW_TEXT_ERROR}</div><small class="form-text text-muted">{$smarty.const.TEXT_WRITE_REVIEW_TEXT_ERROR1}</small>
+                </div>
+                
+					<div class="form-anti-bot" style="clear:both;">
+						<strong>Current <span style="display:none;">month</span> <span style="display:inline;">ye@r</span> <span style="display:none;">day</span></strong> <span class="required">*</span>
+						<input type="hidden" name="anti-bot-a" id="anti-bot-a" value="{$smarty.now|date_format:"%Y"}" />
+						<input type="text" name="anti-bot-q" id="anti-bot-q" size="30" value="19" />
+					</div>
+					<div class="form-anti-bot-2" style="display:none;">
+						<strong>Leave this field empty</strong> <span class="required">*</span>
+						<input type="text" name="anti-bot-e-email-url" id="anti-bot-e-email-url" size="30" value=""/>
+					</div>                
+                
+                <button class="btn btn-primary btn-shadow d-block w-100" type="submit">{$smarty.const.TEXT_WRITE_REVIEW_SUBMIT}</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>

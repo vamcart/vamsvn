@@ -981,4 +981,20 @@ define('BUTTON_NEXT', 'Вперёд');
 
 define('TEXT_SHARE', 'Поделиться:');
 
+define('TEXT_SORT_REVIEW', 'Сортировка');
+define('TEXT_SORT_REVIEW_NEW', 'по дате');
+define('TEXT_SORT_REVIEW_RATING', 'по рейтингу');
+define('TEXT_SORT_REVIEW_PHOTO', 'с фото');
+
+define('TEXT_REVIEW_OVERALL_RATING', 'Рейтинг');
+
+define('TEXT_WRITE_REVIEW_HEADER', 'Добавить отзыв');
+define('TEXT_WRITE_REVIEW_RATING', 'Рейтинг');
+define('TEXT_WRITE_REVIEW_RATING_CHOOSE', 'Выберите рейтинг');
+define('TEXT_WRITE_REVIEW_RATING_ERROR', 'Пожалуйста, выберите рейтинг!');
+define('TEXT_WRITE_REVIEW_TEXT', 'Отзыв');
+define('TEXT_WRITE_REVIEW_TEXT_ERROR', 'Пожалуйста, укажите свой отзыв!');
+define('TEXT_WRITE_REVIEW_TEXT_ERROR1', 'Ваш отзыв должен быть как минимум 20 символов.');
+define('TEXT_WRITE_REVIEW_SUBMIT', 'Добавить отзыв');
+
 ?>

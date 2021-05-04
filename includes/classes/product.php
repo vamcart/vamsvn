@@ -179,6 +179,16 @@ class product {
 
 	function getReviews() {
 
+    $sort_reviews = 'order by reviews_id DESC';
+    $where_rating = '';   
+    
+    if ($_GET['review_sort'] == 'rating') {
+
+    $sort_reviews = 'order by reviews_rating DESC, reviews_id DESC';
+    $where_rating = '';   
+    
+    } 
+    
 		$data_reviews = array ();
 		$reviews_query = vam_db_query("select
 									                                 r.reviews_rating,
@@ -193,9 +203,9 @@ class product {
 									                                 from ".TABLE_REVIEWS." r,
 									                                 ".TABLE_REVIEWS_DESCRIPTION." rd
 									                                 where r.products_id = '".$this->pID."'
+									                                 ".$where_rating."
 									                                 and  r.reviews_id=rd.reviews_id
-									                                 and rd.languages_id = '".$_SESSION['languages_id']."'
-									                                 order by reviews_id DESC");
+									                                 and rd.languages_id = '".$_SESSION['languages_id']."'" . $sort_reviews);
 		if (vam_db_num_rows($reviews_query)) {
 			$row = 0;
 			$data_reviews = array ();
@@ -219,6 +229,7 @@ class product {
 				'ID' => $reviews['reviews_id'], 
 				'URL' => vam_href_link(FILENAME_PRODUCT_REVIEWS_INFO, 'products_id='.$reviews['products_id'].'&reviews_id='.$reviews['reviews_id']), 
 				'DATE' => vam_date_short($reviews['date_added']), 
+				'DATE_LONG' => vam_date_long($reviews['date_added']), 
 				//'TEXT_COUNT' => '('.sprintf(TEXT_REVIEW_WORD_COUNT, vam_word_count($reviews['reviews_text'], ' ')).')<br />'.vam_break_string(htmlspecialchars($reviews['reviews_text']), 60, '-<br />').'..', 
 				'TEXT' => $reviews['reviews_text'], 
 				'ANSWER' => $reviews['reviews_answer'], 
