@@ -37,6 +37,15 @@
 		}
 		$q = implode(" ",$searchwords);
 
+//fsk18 lock
+$fsk_lock = '';
+if ($_SESSION['customers_status']['customers_fsk18_display'] == '0') {
+	$fsk_lock = ' and p.products_fsk18!=1';
+}
+if (GROUP_CHECK == 'true') {
+	$group_check = " and p.group_permission_".$_SESSION['customers_status']['customers_status_id']."=1 ";
+}
+
 		$products_query = vam_db_query("select distinct pd.products_id, pd.products_name, pd.products_keywords, p.products_image, p.products_tax_class_id, p.products_model
 							from " . TABLE_PRODUCTS_DESCRIPTION . " pd
 							inner join " . TABLE_PRODUCTS . " p
@@ -45,6 +54,8 @@
 							or match (p.products_model) against ('" . $q . "' in boolean mode) or match (pd.products_keywords) against ('" . $q . "' in boolean mode)" .
 							($_REQUEST['search_in_description'] == '1' ? "or match (pd.products_description) against ('" . $q . "' in boolean mode)" : "") . ")
 							and p.products_status = '1'
+							".$group_check."
+							".$fsk_lock."
 							and c.categories_status = '1'
 							and pd.language_id = '" . (int)$_SESSION['languages_id'] . "'
 							order by pd.products_name asc
