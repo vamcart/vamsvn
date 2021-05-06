@@ -1,4 +1,27 @@
 {config_load file="$language/lang_$language.conf" section="contact_us"}
+    <!-- Page Title (Light)-->
+    <div class="bg-dark py-4">
+      <div class="container d-lg-flex justify-content-between py-2 py-lg-3">
+        <div class="order-lg-2 mb-3 mb-lg-0 pt-lg-2">
+          <nav aria-label="breadcrumb">
+              <div class="breadcrumb breadcrumb-light flex-lg-nowrap justify-content-center justify-content-lg-start" itemscope itemtype="http://schema.org/BreadcrumbList">
+              {$navtrail}
+              </div>
+          </nav>
+        </div>
+        <div class="order-lg-1 pe-lg-4 text-center text-lg-start">
+          <h1 class="h3 text-light mb-0">{$CONTACT_HEADING}</h1>
+        </div>
+      </div>
+    </div>
+    <div class="container pb-5 pt-5 mb-2 mb-md-4">
+      <div class="row">
+        <!-- Content  -->
+        <section class="col-lg-12">
+          <!-- Products grid-->
+          <div class="row mx-n2">
+
+
 <script src="jscript/modified.js"></script>
 <script>
 {literal}
@@ -17,13 +40,6 @@ $(function($){
 });
 {/literal}
 </script>
-<!-- Скругленные углы -->
-<div class="page">
-<!-- Заголовок страницы -->
-<h1>{$CONTACT_HEADING}</h1>
-<!-- /Заголовок страницы -->
-<!-- Содержимое страницы -->
-<div class="pageContent">
 {if $error_message!=''}
 <div class="contacterror">{$error_message}</div>
 {/if}
@@ -74,5 +90,8 @@ $(function($){
 {$BUTTON_CONTINUE}
 </div>
 {/if}
-</div>
-</div>
+
+          </div>
+        </section>
+      </div>
+    </div>

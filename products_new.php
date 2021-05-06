@@ -42,30 +42,18 @@ if (MAX_DISPLAY_NEW_PRODUCTS_DAYS != '0') {
 	//$days = " and p.products_date_added > '".$date_new_products."' ";
 }
 	$products_new_query_raw = "select distinct
-	                                    p.products_id,
-	                                    p.label_id,
-	                                    p.products_fsk18,
-	                                    pd.products_name,
-	                                    pd.products_short_description,
-	                                    p.products_image,
-	                                    p.products_price,
-	                                    p.products_model,
-	                               	    p.products_vpe,
-	                               	    p.products_quantity,
-	                               	    p.products_vpe_status,
-	                                    p.products_vpe_value,                                                          
-	                                    p.products_tax_class_id,
-	                                    p.products_date_added,
-	                                    m.manufacturers_name
+	                                    p.*, pd.*, cd.*, m.* 
 	                                    from " . TABLE_PRODUCTS . " p
 	                                    left join " . TABLE_MANUFACTURERS . " m
 	                                    on p.manufacturers_id = m.manufacturers_id
 	                                    left join " . TABLE_PRODUCTS_DESCRIPTION . " pd
 	                                    on p.products_id = pd.products_id,
-	                                    " . TABLE_CATEGORIES . " c,
-	                                    " . TABLE_PRODUCTS_TO_CATEGORIES . " p2c 
+                                       ".TABLE_PRODUCTS_TO_CATEGORIES." p2c,
+                                       ".TABLE_CATEGORIES." c,
+                                       ".TABLE_CATEGORIES_DESCRIPTION." cd
 	                                    WHERE pd.language_id = '" . (int) $_SESSION['languages_id'] . "'
 	                                    and c.categories_status=1
+                                       and cd.categories_id = c.categories_id
 	                                    and p.products_id = p2c.products_id
 	                                    and c.categories_id = p2c.categories_id
 	                                    and products_quantity > 0 
@@ -248,7 +236,8 @@ $module_content[$k]['attrib'] = $products_options_data;
 if (($products_new_split->number_of_rows > 0)) {
 	$vamTemplate->assign('NAVIGATION_BAR', TEXT_RESULT_PAGE.' '.$products_new_split->display_links(MAX_DISPLAY_PAGE_LINKS, vam_get_all_get_params(array ('page', 'info', 'x', 'y'))));
 	$vamTemplate->assign('NAVIGATION_BAR_PAGES', $products_new_split->display_count(TEXT_DISPLAY_NUMBER_OF_PRODUCTS_NEW));
-
+	$vamTemplate->assign('NAVIGATION_BOOTSTRAP', $products_new_split->display_links_bootstrap(MAX_DISPLAY_PAGE_LINKS, vam_get_all_get_params(array ('page', 'info', 'x', 'y'))));
+	$vamTemplate->assign('NAVIGATION_COMPACT', $products_new_split->display_links_compact(MAX_DISPLAY_PAGE_LINKS, vam_get_all_get_params(array ('page', 'info', 'x', 'y'))));
 }
 
 $vamTemplate->assign('language', $_SESSION['language']);

@@ -58,6 +58,8 @@ while ($manufacturers = vam_db_fetch_array($manufacturers_query)) {
 
 if (($manufacturers_split->number_of_rows > 0)) {
 	$vamTemplate->assign('NAVIGATION_BAR', TEXT_RESULT_PAGE.' '.$manufacturers_split->display_links(MAX_DISPLAY_PAGE_LINKS, vam_get_all_get_params(array ('page', 'info', 'x', 'y'))));
+	$vamTemplate->assign('NAVIGATION_BOOTSTRAP', $manufacturers_split->display_links_bootstrap(MAX_DISPLAY_PAGE_LINKS, vam_get_all_get_params(array ('page', 'info', 'x', 'y'))));
+	$vamTemplate->assign('NAVIGATION_COMPACT', $manufacturers_split->display_links_compact(MAX_DISPLAY_PAGE_LINKS, vam_get_all_get_params(array ('page', 'info', 'x', 'y'))));
 	$vamTemplate->assign('NAVIGATION_BAR_PAGES', $manufacturers_split->display_count(TEXT_DISPLAY_NUMBER_OF_MANUFACTURERS));
 
 }

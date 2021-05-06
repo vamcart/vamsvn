@@ -1,21 +1,36 @@
-<!-- Скругленные углы -->
-<div class="page">
-<!-- Заголовок страницы -->
-{if !$file}<h1>{$CONTENT_HEADING}</h1>{/if}
-<!-- /Заголовок страницы -->
-<!-- Содержимое страницы -->
-<div class="pageContent">
-
-{foreach name=aussen item=sub_pages from=$sub_pages_content}
-&nbsp;&nbsp;&nbsp;<a href="{$sub_pages.PAGE_LINK}">{$sub_pages.PAGE_TITLE}</a><br />
-{/foreach} 
-
-{if $file}
-  {$file}
-{else}
-{$CONTENT_BODY}
-{/if}
-<!-- /Содержимое страницы -->
-</div>
-<!-- /Скругленные углы -->
-</div>
+{config_load file="$language/lang_$language.conf" section="index"}
+    <!-- Page Title (Light)-->
+    <div class="bg-dark py-4">
+      <div class="container d-lg-flex justify-content-between py-2 py-lg-3">
+        <div class="order-lg-2 mb-3 mb-lg-0 pt-lg-2">
+          <nav aria-label="breadcrumb">
+              <div class="breadcrumb breadcrumb-light flex-lg-nowrap justify-content-center justify-content-lg-start" itemscope itemtype="http://schema.org/BreadcrumbList">
+              {$navtrail}
+              </div>
+          </nav>
+        </div>
+        <div class="order-lg-1 pe-lg-4 text-center text-lg-start">
+          {if !$file}<h1 class="h3 text-light mb-0">{$CONTENT_HEADING}</h1>{/if}
+        </div>
+      </div>
+    </div>
+    <div class="container pb-5 pt-5 mb-2 mb-md-4">
+      <div class="row">
+        <!-- Content  -->
+        <section class="col-lg-12">
+          <!-- Products grid-->
+          <div class="row mx-n2">
+				<ul>
+				{foreach name=aussen item=sub_pages from=$sub_pages_content}
+				<li><a href="{$sub_pages.PAGE_LINK}">{$sub_pages.PAGE_TITLE}</a></li>
+				{/foreach} 
+				</ul>
+				{if $file}
+				{$file}
+				{else}
+				{$CONTENT_BODY}
+				{/if}
+          </div>
+        </section>
+      </div>
+    </div>

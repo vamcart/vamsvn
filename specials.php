@@ -43,18 +43,18 @@ $categories_id=0;
 if(isset($_GET["categories_id"]) && ctype_digit(trim($_GET["categories_id"])))
   $categories_id=$_GET["categories_id"];
 
-$specials_query_raw = "select distinct p.products_id,
-                                p.label_id,
-                                pd.products_name,
-                                pd.products_short_description,
-                                pd.products_description,
-                                p.products_price,
-                                p.products_tax_class_id,p.products_shippingtime,
-                                p.products_image,p.products_vpe_status,p.products_vpe_value,p.products_vpe,p.products_fsk18,
-                                s.specials_new_products_price from ".TABLE_PRODUCTS." p, ".TABLE_PRODUCTS_DESCRIPTION." pd,
- " . TABLE_PRODUCTS_TO_CATEGORIES . " p2c, ".TABLE_SPECIALS." s, " . TABLE_CATEGORIES . " c where p2c.categories_id = c.categories_id 
- and p.products_id = p2c.products_id and 
- s.products_id = p.products_id
+$specials_query_raw = "select p.*, pd.*, cd.*, s.* from  
+                                ".TABLE_PRODUCTS." p, 
+                                ".TABLE_PRODUCTS_DESCRIPTION." pd,
+                                ".TABLE_SPECIALS." s, 
+                                ".TABLE_PRODUCTS_TO_CATEGORIES." p2c,
+                                ".TABLE_CATEGORIES." c,
+                                ".TABLE_CATEGORIES_DESCRIPTION." cd
+                                where p2c.categories_id = c.categories_id 
+                                and c.categories_status=1
+                                and cd.categories_id = c.categories_id
+                                and p.products_id = p2c.products_id  
+                                and s.products_id = p.products_id
                                 and p.products_id = pd.products_id
                                 and p.products_quantity > 0 
                                 and p.products_status = '1' 
@@ -197,6 +197,8 @@ $module_content[$k]['attrib'] = $products_options_data;
 
 if (($specials_split->number_of_rows > 0)) {
 	$vamTemplate->assign('NAVBAR', TEXT_RESULT_PAGE.' '.$specials_split->display_links(MAX_DISPLAY_PAGE_LINKS, vam_get_all_get_params(array ('page', 'info', 'x', 'y'))));
+	$vamTemplate->assign('NAVIGATION_BOOTSTRAP', $specials_split->display_links_bootstrap(MAX_DISPLAY_PAGE_LINKS, vam_get_all_get_params(array ('page', 'info', 'x', 'y'))));
+	$vamTemplate->assign('NAVIGATION_COMPACT', $specials_split->display_links_compact(MAX_DISPLAY_PAGE_LINKS, vam_get_all_get_params(array ('page', 'info', 'x', 'y'))));
 	$vamTemplate->assign('NAVBAR_PAGES', $specials_split->display_count(TEXT_DISPLAY_NUMBER_OF_SPECIALS));
 
 }

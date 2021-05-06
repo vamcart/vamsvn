@@ -1,29 +1,47 @@
 {config_load file="$language/lang_$language.conf" section="specials"} 
-{config_load file="$language/lang_$language.conf" section="index"} 
-<div class="page">
-<h1>{#heading_text#}</h1>
-
-<div class="pageContent">
-
+{config_load file="$language/lang_$language.conf" section="index"}
+    <!-- Page Title (Light)-->
+    <div class="bg-dark py-4">
+      <div class="container d-lg-flex justify-content-between py-2 py-lg-3">
+        <div class="order-lg-2 mb-3 mb-lg-0 pt-lg-2">
+          <nav aria-label="breadcrumb">
+              <div class="breadcrumb breadcrumb-light flex-lg-nowrap justify-content-center justify-content-lg-start" itemscope itemtype="http://schema.org/BreadcrumbList">
+              {$navtrail}
+              </div>
+          </nav>
+        </div>
+        <div class="order-lg-1 pe-lg-4 text-center text-lg-start">
+          <h1 class="h3 text-light mb-0">{#heading_text#}</h1>
+        </div>
+      </div>
+    </div>
+    <div class="container pb-5 pt-5 mb-2 mb-md-4">
+      <div class="row">
+        <!-- Content  -->
+        <section class="col-lg-12">
+        
 <div class="specialCategory pb-3">
 {$SPECIAL_CATEGORY}
 </div>
+        
+          <!-- Products grid-->
+          <div class="row mx-n2">
+          {foreach name=aussen item=module_data from=$module_content}
+          {if $smarty.get.direction == 'list'}
+          {include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/product-card/vamshop5-product-card-list.html"}
+          {else}
+          {include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/product-card/vamshop5-product-card-featured.html"}
+          {/if}
+          {/foreach}
+          </div>
+          <hr class="my-3">
+          <!-- Pagination-->
+          <nav class="d-flex justify-content-between pt-2" aria-label="Page navigation">
 
-<div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 row-cols-xl-4 row-cols-xxl-5 g-4">
-{foreach name=aussen item=module_data from=$module_content}
-<div class="col">
-{include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/product-card/product-card-attributes.html"}
-</div>
-{/foreach}  
-</div>
+{$NAVIGATION_BOOTSTRAP}
 
-<div class="clear"></div>
-<div class="navigation">
-<span class="right">{$NAVBAR}</span>{$NAVBAR_PAGES}
-</div>
-<div class="clear"></div>
-
-</div>
-
-</div>
-
+          </nav>
+          
+        </section>
+      </div>
+    </div>
