@@ -66,14 +66,16 @@ if ((!isset ($new_products_category_id)) || ($new_products_category_id == '0')) 
 		$date_new_products = date("Y.m.d", mktime(1, 1, 1, date(m), date(d) - MAX_DISPLAY_NEW_PRODUCTS_DAYS, date(Y)));
 		//$days = " and p.products_date_added > '".$date_new_products."' ";
 	}
-	$new_products_query = "SELECT distinct p.*, pd.* FROM
+	$new_products_query = "SELECT distinct p.*, pd.*, cd.* FROM
 	                                        ".TABLE_PRODUCTS." p,
 	                                        ".TABLE_PRODUCTS_DESCRIPTION." pd,
 	                                        ".TABLE_PRODUCTS_TO_CATEGORIES." p2c,
-	                                        ".TABLE_CATEGORIES." c
+	                                        ".TABLE_CATEGORIES." c,
+	                                        ".TABLE_CATEGORIES_DESCRIPTION." cd
 	                                        where c.categories_status='1'
 	                                        and p.products_id = p2c.products_id and p.products_id=pd.products_id
 	                                        and p2c.categories_id = c.categories_id
+	                                        and cd.categories_id = c.categories_id
 	                                        ".$group_check."
 	                                        ".$days."
 	                                        ".$fsk_lock."

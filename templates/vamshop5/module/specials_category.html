@@ -1,10 +1,10 @@
-{config_load file="$language/lang_$language.conf" section="specials"} <div class="module">
-<h3><a href="{$SPECIALS_LINK}">{#heading_text#}</a></h3>
-<div class="moduleContent">
-<div class="owl-carousel owl-theme">
-{foreach name=aussen item=module_data from=$module_content}
-{include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/product-card/product-card-simple.html"}
-{/foreach}
-</div>
-</div>
-</div>
+{config_load file="$language/lang_$language.conf" section="specials"} 
+<section class="container pt-md-3 pb-5 mb-md-3">
+  <h2 class="h3 text-center">{#heading_text#}</h2>
+  <div class="row pt-4 mx-n2">
+    {foreach name=aussen item=module_data from=$module_content}
+    {include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/product-card/vamshop5-product-card-featured.html"}
+    {/foreach}
+  </div>
+  <div class="text-center pt-3"><a class="btn btn-outline-accent" href="{$SPECIALS_LINK}">{$smarty.const.TEXT_ALL_SPECIAL_PRODUCTS}<i class="fas fa-chevron-right ms-1"></i></a></div>
+</section>

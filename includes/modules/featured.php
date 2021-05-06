@@ -56,14 +56,16 @@ if ((!isset ($featured_products_category_id)) || ($featured_products_category_id
 	if (GROUP_CHECK == 'true')
 		$group_check = "and p.group_permission_".$_SESSION['customers_status']['customers_status_id']."=1 ";
 
-	$featured_products_query = "SELECT p.*, pd.* FROM
+	$featured_products_query = "SELECT p.*, pd.*, cd.* FROM
 	                                         ".TABLE_PRODUCTS." p left join " . TABLE_PRODUCTS_DESCRIPTION . " pd on pd.products_id = p.products_id,
 	                                         ".TABLE_FEATURED." f,
-	                                        ".TABLE_PRODUCTS_TO_CATEGORIES." p2c,
-	                                        ".TABLE_CATEGORIES." c
+	                                         ".TABLE_PRODUCTS_TO_CATEGORIES." p2c,
+	                                         ".TABLE_CATEGORIES." c,
+	                                         ".TABLE_CATEGORIES_DESCRIPTION." cd
 	                                        where c.categories_status='1'
 	                                        and p.products_id = p2c.products_id and p.products_id=f.products_id
 	                                        and p2c.categories_id = c.categories_id
+	                                        and cd.categories_id = c.categories_id
 	                                        ".$group_check."
 	                                        ".$fsk_lock."
 	                                        and c.parent_id = '".$featured_products_category_id."'

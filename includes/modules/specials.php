@@ -42,18 +42,20 @@ if ((!isset ($specials_products_category_id)) || ($specials_products_category_id
 		//$days = " and p.products_date_added > '".$date_special_products."' ";
 	}
 
-	$specials_products_query = "select
-                                           p.*,
-                                           pd.*,
-                                           s.specials_new_products_price
-                                           from ".TABLE_PRODUCTS." p,
-                                           ".TABLE_PRODUCTS_DESCRIPTION." pd,
-                                           ".TABLE_SPECIALS." s where p.products_status = '1' and p.products_quantity > 0 
-                                           and p.products_id = s.products_id
-                                           and pd.products_id = s.products_id
-                                           and pd.language_id = '".$_SESSION['languages_id']."'
-                                           and s.status = '1'
-                                           ".$group_check."
+	$specials_products_query = "SELECT p.*, pd.*, cd.* FROM
+	                                         ".TABLE_PRODUCTS." p left join " . TABLE_PRODUCTS_DESCRIPTION . " pd on pd.products_id = p.products_id,
+	                                         ".TABLE_SPECIALS." s,
+	                                         ".TABLE_PRODUCTS_TO_CATEGORIES." p2c,
+	                                         ".TABLE_CATEGORIES." c,
+	                                         ".TABLE_CATEGORIES_DESCRIPTION." cd
+	                                        where c.categories_status='1'
+	                                        and p.products_id = p2c.products_id and p.products_id=s.products_id
+	                                        and s.status = '1'
+	                                        and p2c.categories_id = c.categories_id
+	                                        and cd.categories_id = c.categories_id
+	                                        and p.products_quantity > 0 
+	                                        and p.products_status = '1' 
+	                                        ".$group_check."
                                            ".$days."
                                            ".$fsk_lock."                                             
                                            order by p.products_startpage_sort ASC, p.products_id DESC limit ".MAX_DISPLAY_SPECIAL_PRODUCTS;
@@ -67,25 +69,23 @@ if ((!isset ($specials_products_category_id)) || ($specials_products_category_id
 		//$days = " and p.products_date_added > '".$date_special_products."' ";
 	}
 	
-	$specials_products_query = "select distinct p.products_id,
-                                p.label_id,
-                                pd.products_name,
-                                pd.products_short_description,
-                                pd.products_description,
-                                p.products_price,
-                                p.products_tax_class_id,p.products_shippingtime,
-                                p.products_image,p.products_vpe_status,p.products_vpe_value,p.products_vpe,p.products_fsk18,
-                                s.specials_new_products_price from ".TABLE_PRODUCTS." p, ".TABLE_PRODUCTS_DESCRIPTION." pd,
- " . TABLE_PRODUCTS_TO_CATEGORIES . " p2c, ".TABLE_SPECIALS." s, " . TABLE_CATEGORIES . " c where p2c.categories_id = c.categories_id 
- and p.products_id = p2c.products_id and 
- s.products_id = p.products_id
-                                and p.products_id = pd.products_id
-                                and p.products_quantity > 0 
-                                and p.products_status = '1' 
-                                ".$group_check."
-                                ".$fsk_lock."
-                                and pd.language_id = '".(int) $_SESSION['languages_id']."'
-                                and s.status = '1'";
+	$specials_products_query = "SELECT p.*, pd.*, cd.* FROM
+	                                         ".TABLE_PRODUCTS." p left join " . TABLE_PRODUCTS_DESCRIPTION . " pd on pd.products_id = p.products_id,
+	                                         ".TABLE_SPECIALS." s,
+	                                         ".TABLE_PRODUCTS_TO_CATEGORIES." p2c,
+	                                         ".TABLE_CATEGORIES." c,
+	                                         ".TABLE_CATEGORIES_DESCRIPTION." cd
+	                                        where c.categories_status='1'
+	                                        and p.products_id = p2c.products_id and p.products_id=s.products_id
+	                                        and s.status = '1'
+	                                        and p2c.categories_id = c.categories_id
+	                                        and cd.categories_id = c.categories_id
+	                                        and p.products_quantity > 0 
+	                                        and p.products_status = '1' 
+	                                        ".$group_check."
+	                                        ".$fsk_lock."
+	                                        and pd.language_id = '".(int) $_SESSION['languages_id']."'
+	                                        and s.status = '1'";
                                 
   if($specials_products_category_id > 0)
 	$specials_products_query .= " and p2c.categories_id in (".vam_get_categories_ids($specials_products_category_id).$specials_products_category_id.")";
