@@ -1,7 +1,25 @@
 {config_load file="$language/lang_$language.conf" section="reviews"}
-<div class="page">
-<h1>{#heading_reviews#}</h1>
-<div class="pageContent">
+    <!-- Page Title (Light)-->
+    <div class="bg-dark py-4">
+      <div class="container d-lg-flex justify-content-between py-2 py-lg-3">
+        <div class="order-lg-2 mb-3 mb-lg-0 pt-lg-2">
+          {if $navtrail}
+          <nav aria-label="breadcrumb">
+              <div class="breadcrumb breadcrumb-light flex-lg-nowrap justify-content-center justify-content-lg-start" itemscope itemtype="http://schema.org/BreadcrumbList">
+              {$navtrail}
+              </div>
+          </nav>
+          {/if}
+        </div>
+        <div class="order-lg-1 pe-lg-4 text-center text-lg-start">
+          {if !$file}<h1 class="h3 text-light mb-0">{#heading_reviews#}</h1>{/if}
+        </div>
+      </div>
+    </div>
+    <div class="container pb-5 pt-5 mb-2 mb-md-4">
+      <div class="row">
+        <!-- Content  -->
+        <section class="col-lg-12">    
 {foreach name=aussen item=module_data from=$module_content}
 <div itemscope itemtype="http://schema.org/Product">
 
@@ -40,5 +58,7 @@
 <span class="right">{$NAVBAR}</span>{$NAVBAR_PAGES}
 </div>
 <div class="clear"></div>
-</div>
-</div>
+
+        </section>
+      </div>
+    </div>
