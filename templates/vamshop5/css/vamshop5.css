@@ -1285,6 +1285,10 @@ text-align: left;
 	position: static;
 }
 
+.sticky-top {
+	z-index: 700;
+}
+
 @media(min-width: 1200px) {
 	.sticky-wrapper {
 		position: relative;
