@@ -2,15 +2,12 @@
 {config_load file="$language/lang_$language.conf" section="boxes"}
 <!-- Sign in / sign up modal-->
 {$box_LOGIN}
-<!-- Quick View Modal-->
-{*include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/modals/quick-view-modal.html"*}
 <!-- Navbar 3 Level (Light)-->
 {include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/header/header.html"}
+{$box_DOWNLOADS}
 <!-- Hero slider-->
 {include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/slider/hero-slider.html"}
-<!--<div class="container pb-5 mb-2 mb-md-4">-->
 {$main_content}
-<!--</div>-->
 <!-- Footer-->
 {include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/footer/footer.html"}
 <!-- Toolbar for handheld devices (Default)-->
