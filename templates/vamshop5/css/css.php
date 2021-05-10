@@ -3,12 +3,12 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="templates/<?php echo CURRENT_TEMPLATE; ?>/webfonts/fa-regular-400.woff2"/>
 <link rel="preload" as="font" type="font/woff2" crossorigin href="templates/<?php echo CURRENT_TEMPLATE; ?>/webfonts/fa-brands-400.woff2"/>
 <!-- Vendor Styles including: Font Icons, Plugins, etc.-->
+<link rel="stylesheet" media="screen" href="templates/<?php echo CURRENT_TEMPLATE; ?>/css/font-rubik.css"/>
 <link rel="stylesheet" media="screen" href="templates/<?php echo CURRENT_TEMPLATE; ?>/css/font-awesome.css"/>
 <link rel="stylesheet" media="screen" href="templates/<?php echo CURRENT_TEMPLATE; ?>/dist/vendor/simplebar/dist/simplebar.min.css"/>
 <link rel="stylesheet" media="screen" href="templates/<?php echo CURRENT_TEMPLATE; ?>/dist/vendor/tiny-slider/dist/tiny-slider.css"/>
 <link rel="stylesheet" media="screen" href="templates/<?php echo CURRENT_TEMPLATE; ?>/dist/vendor/nouislider/distribute/nouislider.min.css"/>
 <link rel="stylesheet" media="screen" href="templates/<?php echo CURRENT_TEMPLATE; ?>/dist/vendor/drift-zoom/dist/drift-basic.min.css"/>
-<link rel="stylesheet" media="screen" href="templates/<?php echo CURRENT_TEMPLATE; ?>/dist/vendor/lightgallery.js/dist/css/lightgallery.min.css"/>
 <!-- Main Theme Styles + Bootstrap-->
 <link rel="stylesheet" media="screen" href="templates/<?php echo CURRENT_TEMPLATE; ?>/dist/css/theme.min.css">
 <link rel="stylesheet" media="screen" href="templates/<?php echo CURRENT_TEMPLATE; ?>/css/vamshop5.css">
