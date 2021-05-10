@@ -15,19 +15,36 @@ $(function($){
 });
 {/literal}
 </script>
-<div class="page">
-<div class="pageContent" id="create_account_form">
 
 {$FORM_ACTION}{if $error!=''}
 {$error}
 {/if}
 
-<div class="row">
-<div class="col-xl-9">
+
+    <!-- Page Title-->
+    <div class="page-title-overlap bg-dark pt-4">
+      <div class="container d-lg-flex justify-content-between py-2 py-lg-3">
+        <div class="order-lg-2 mb-3 mb-lg-0 pt-lg-2">
+          {if $navtrail}
+          <nav aria-label="breadcrumb">
+              <div class="breadcrumb breadcrumb-light flex-lg-nowrap justify-content-center justify-content-lg-start" itemscope itemtype="http://schema.org/BreadcrumbList">
+              {$navtrail}
+              </div>
+          </nav>
+          {/if}
+        </div>
+        <div class="order-lg-1 pe-lg-4 text-center text-lg-start">
+          <h1 class="h3 text-light mb-0">{$smarty.const.NAVBAR_TITLE_CREATE_ACCOUNT}</h1>
+        </div>
+      </div>
+    </div>
+    <div class="container pb-5 mb-2 mb-md-4">
+      <div class="row">
+        <section class="col-lg-8 bg-light shadow-lg rounded-3 px-4 py-4">
 
 <!-- форма -->
 
-<h3>{#title_personal#}</h3>
+<h2 class="h6 pt-1 pb-3 mb-3">{#title_personal#}</h2>
 
 {if $gender=='1'} 
   <div class="form-group">
@@ -66,7 +83,7 @@ $(function($){
   
 {if $company=='1'} 
 
-<h3>{#title_company#}</h3>
+<h2 class="h6 pt-1 pb-3 mb-3">{#title_company#}</h2>
 
   <div class="form-group">
       <label for="company">{#text_company#}</label>
@@ -82,7 +99,7 @@ $(function($){
 {/if}
 
 {if $street_address=='1'}
-<h3>{#title_address#}</h3>
+<h2 class="h6 pt-1 pb-3 mb-3">{#title_address#}</h2>
 {/if}
 
   <div class="row">
@@ -150,7 +167,7 @@ $(function($){
   </div>
   
 {if $telephone=='1'}
-<h3>{#title_contact#}</h3>
+<h2 class="h6 pt-1 pb-3 mb-3">{#title_contact#}</h2>
 {/if}
 
   <div class="row">
@@ -185,7 +202,7 @@ $(function($){
   
 {if $INPUT_CUSTOMERS_EXTRA_FIELDS}
 
-<h3>{#title_options#}</h3>
+<h2 class="h6 pt-1 pb-3 mb-3">{#title_options#}</h2>
 
 {foreach item=customers_extra_filelds from=$INPUT_CUSTOMERS_EXTRA_FIELDS}  <div class="form-group {if $suburb=='1'}col-md-6{else}col-md-12{/if}">
     <label for="address">{$customers_extra_filelds.NAME}:</label>
@@ -194,7 +211,7 @@ $(function($){
 {/foreach}
 {/if}
 
-<h3>{#title_password#}</h3>
+<h2 class="h6 pt-1 pb-3 mb-3">{#title_password#}</h2>
 
   <div class="row">
     <div class="form-group col-md-6">
@@ -218,18 +235,18 @@ $(function($){
 	<input type="text" name="anti-bot-e-email-url" id="anti-bot-e-email-url" size="30" value=""/>
 </div>
 
-</div>
+{$FORM_END}
 
-<div class="col-xl-3">
-<div class="sticky-wrapper">
-<div class="sticky-top">
 
-<div class="card card-product card-sm">
-<div class="card-header">
-<span class="h5">{#heading_create_account#}</span>
-</div>
-<div class="card-body">
-<div class="info-wrap">
+        </section>
+        <!-- Sidebar-->
+        <aside class="col-lg-4 pt-4 pt-lg-0 ps-xl-5">
+        <div class="sticky-wrapper">
+        <div class="sticky-top">
+        <div id="order_total_modules" class="sm_layout_box">
+          <div class="bg-white rounded-3 shadow-lg p-4 ms-lg-auto">
+            <div class="py-2 px-xl-2">
+
 {if $smarty.const.DISPLAY_PRIVACY_TEXT == 'true'}
 <div>
 <small>
@@ -238,18 +255,20 @@ $(function($){
 </div>
 <hr />
 {/if}
-</div>
-</div>
-<div class="card-footer text-center">
-<button type="submit" class="btn btn-primary btn-block"><i class="fa fa-check-o"></i> {$smarty.const.IMAGE_BUTTON_CONTINUE}</button>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
 
-{$FORM_END}
 
-</div>
-</div>
+            </div>
+
+<button type="submit" class="btn btn-primary btn-shadow d-block w-100 mb-4"><i class="far fa-check-circle fs-lg me-2"></i> {$smarty.const.IMAGE_BUTTON_CONTINUE}</button>
+
+</form>
+            
+        </div>
+        </div>
+        </div>
+        </div>
+        </aside>
+                
+      </div>
+
+    </div>

@@ -1,25 +1,20 @@
-  <div class="card card-product">
-	<div class="card-body">
-	<div class="row">
-		{if $module_data.PRODUCTS_LABEL}{$module_data.PRODUCTS_LABEL}{/if}
-		<span class="badge-offer pt-2">{$module_data.BOX_DELETE}</span>
-		<div class="col-md-2 my-auto">
-			<div class="img-wrap"><a href="{$module_data.PRODUCTS_LINK}" title="{$module_data.IMAGE_ALT}"><img class="img-sm" src="{$module_data.PRODUCTS_IMAGE}" alt="{$module_data.IMAGE_ALT}"></a></div>
-		</div>
-		<div class="col-md-5 my-auto">
-				<div class="title"><a href="{$module_data.PRODUCTS_LINK}" title="{$module_data.IMAGE_ALT}">{$module_data.PRODUCTS_NAME}</a></div>
-				{if $module_data.PRODUCTS_SHIPPING_TIME neq ""}<p><span class="text-muted small">{#text_shippingtime#}&nbsp;{$module_data.PRODUCTS_SHIPPING_TIME}</span></p>{/if}
-		</div>
-		<div class="col-md-2">
-				<div class="price-wrap font-weight-bold small text-muted">
-					<div><strong>{$module_data.PRODUCTS_PRICE}</strong></div>
-				</div>
-		</div>
-		<div class="col-md-2">
-			<div class="action-wrap text-center">
-         {$module_data.PRODUCTS_BUTTON_BUY_NOW_NEW}
-			</div>
-		</div>
-	</div>
-	</div>
-</div>
+ <!-- Item-->
+ <div class="d-sm-flex justify-content-between align-items-center my-2 pb-3 border-bottom">
+   <div class="d-block d-sm-flex align-items-center text-center text-sm-start"><a class="d-inline-block flex-shrink-0 mx-auto me-sm-4" href="{$module_data.PRODUCTS_LINK}"><img src="{$module_data.PRODUCTS_IMAGE}" width="160" alt="{$module_data.PRODUCTS_NAME}"></a>
+     <div class="pt-2">
+       <h3 class="product-title fs-base mb-2"><a href="{$module_data.PRODUCTS_LINK}">{$module_data.PRODUCTS_NAME}</a></h3>
+
+		{if $module_data.ATTRIBUTES!=''}
+		{foreach key=key_data item=item_data from=$module_data.ATTRIBUTES} 
+       <div class="fs-sm"><span class="text-muted me-2">{$item_data.NAME}:</span>{$item_data.VALUE_NAME}</div>
+		{/foreach}
+		{/if}
+				
+       <div class="fs-lg text-accent pt-2">{$module_data.PRODUCTS_PRICE}</div>
+
+     </div>
+   </div>
+   <div class="pt-2 pt-sm-0 ps-sm-3 mx-auto mx-sm-0 text-center text-sm-start" style="max-width: 9rem;">
+     <button class="btn btn-link px-0 text-danger wishlist_delete" type="button" value="{$module_data.PRODUCTS_ID}"><i class="far fa-times-circle me-2"></i><span class="fs-sm">{$smarty.const.IMAGE_BUTTON_DELETE}</span></button>
+   </div>
+ </div>
