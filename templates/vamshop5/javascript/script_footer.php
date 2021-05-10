@@ -1,5 +1,5 @@
 <!-- Vendor scrits: js libraries and plugins-->
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js" integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG" crossorigin="anonymous"></script>
+<script src="templates/<?php echo CURRENT_TEMPLATE; ?>/dist/vendor/bootstrap/dist/js/popper.min.js"></script>
 <script src="templates/<?php echo CURRENT_TEMPLATE; ?>/dist/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 <script src="templates/<?php echo CURRENT_TEMPLATE; ?>/dist/vendor/simplebar/dist/simplebar.min.js"></script>
 <script src="templates/<?php echo CURRENT_TEMPLATE; ?>/dist/vendor/tiny-slider/dist/min/tiny-slider.js"></script>
