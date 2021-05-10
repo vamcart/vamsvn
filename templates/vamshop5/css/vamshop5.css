@@ -664,6 +664,11 @@ margin-top: 4px;
   box-shadow: 0 0 0 0 transparent;
 }
 
+.login-form-modal .btn,
+.login-form .btn {
+  margin-bottom: 5px;
+}
+
 /* /Buttons */
 
 .page {
@@ -821,20 +826,16 @@ input[type="checkbox"] {
 
 label.error 
 	{
-		clear: both;
-		width: auto; 
-		margin: 5px 0 0; 
-		padding: 0 10px 0 10px;
-		border: 0px solid black;
-		background: #fcc;
-		color: var(--color-red);
-		font-weight: normal; 
-		text-align: right;
+    width: 100%;
+    margin-top: .375rem;
+    font-size: .75rem;
+    color: #f34770;
+    background: transparent;
 	}	 
 
 .error
 	{
-		background: #fcc;
+    border-color: #f34770;
 	}
 /*- /Подсветка ошибок формы */
 
@@ -1067,7 +1068,6 @@ text-align: center;
 .star-rating label span {
   display: inline-block;
   font-size: 12px;
-  color: var(--color);
 }
 
 /* :not(:checked) is a filter, so that browsers that don’t support :checked don’t 
@@ -1091,7 +1091,7 @@ text-align: center;
     cursor:pointer;
     font-size:150%;
     line-height:1.5;
-    color:#ddd;
+    color:#7d879c;
     /*text-shadow:1px 1px #bbb, 2px 2px #666, .1em .1em .2em rgba(0,0,0,.5);*/
 }
 
@@ -1104,7 +1104,6 @@ text-align: center;
 .star-rating label span {
   display: inline-block;
   font-size: 10px;
-  color: #212529;
 }
 
 }	
@@ -1167,8 +1166,7 @@ display: none;
 
 }
 
-#create_account_form span.Requirement, 
-#checkout span.Requirement {
+span.Requirement {
   display: none;
 }
 

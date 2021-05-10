@@ -1,41 +1,37 @@
 {config_load file="$language/lang_$language.conf" section="checkout_success"}
 {config_load file="$language/lang_$language.conf" section="reviews"}
 
-<div class="page">
-<div class="pageСontent text-center">
+ <div class="container pb-5 mb-sm-4">
+   <div class="pt-5">
+     <div class="card py-3 mt-sm-3">
+       <div class="card-body text-center">
+         <h2 class="h4 pb-3">{#heading_success#}</h2>
+         <p class="fs-sm mb-2">{#text_success#}</p>
+         <p class="fs-sm mb-2">{$smarty.const.TEXT_YOUR_ORDER_NUMBER} <span class="fw-medium">{$ORDER_ID}</span></p>
+         <a class="btn btn-secondary  mx-2 mb-2" href="{$smarty.const.FILENAME_DEFAULT}"><i class="fas fa-home"></i> {$smarty.const.TEXT_BACK_TO_SHOPPING}</a>
+         <a class="btn btn-primary  mx-2 mb-2" href="{$smarty.const.FILENAME_ACCOUNT_HISTORY_INFO}"><i class="fas fa-map-marker-alt"></i> {$smarty.const.TEXT_ORDER_TRACKING}</a>
+         
 {$FORM_ACTION}
 
 {$KUPIVKREDIT_CODE}
 
-<h1 class="text-success text-center"><i class="far fa-check-circle fa-7x"></i></h1>
-
-<h2 class="text-center font-weight-bold">{#heading_success#}</h1>
-
-<p>
-{#text_success#}
-</p>
-
-<p>
-{#text_thankyou#}
-</p>
-
 {$PAYMENT_METHOD}
 
 {if $GV_SEND_LINK}
-<p>
+<p class="fs-sm mx-2 mb-2">
 {#gv_has_vouchera#} {$GV_SEND_LINK} {#gv_has_voucherb#}
 </p>
 {/if}
 
-<p>
+<p class="fs-sm mx-2 mb-2">
 {$BUTTON_SCHET_PRINT}
 </p>
 
-<p>
+<p class="fs-sm mx-2 mb-2">
 {$BUTTON_PACKINGSLIP_PRINT}
 </p>
 
-<p>
+<p class="fs-sm mx-2 mb-2">
 {$BUTTON_KVITANCIA_PRINT}
 </p>
 
@@ -49,12 +45,15 @@
 {if $downloads_content neq ''}
   {$downloads_content}
 {/if}
-{$FORM_END}
+{$FORM_END}         
+         
+         
+       </div>
+     </div>
+   </div>
 
-</div>
-</div>
-
-<script type="text/javascript">
+ 
+ <script type="text/javascript">
 {literal}
 $(function($){
 
@@ -72,11 +71,11 @@ $(function($){
 {/literal}
 </script>
 
+   <div class="pt-4">
+
 <form name="product_reviews_write" id="product_reviews_write" action="{$smarty.const.FILENAME_SITE_REVIEWS_WRITE}?action=process" method="post" enctype="multipart/form-data" cf="true">
 
-<div class="page">
-<h1>{$smarty.const.TEXT_SITE_REVIEW_HEADER}</h1>
-<div class="pageContent">
+<h2 class="h6 pb-3">{$smarty.const.TEXT_SITE_REVIEW_HEADER}</h2>
 
   <div class="card card-product">
 	<div class="card-body">
@@ -126,5 +125,5 @@ $(function($){
 
 </form>
 
-</div>
-</div>
+       </div>
+     </div>

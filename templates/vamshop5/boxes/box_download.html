@@ -1,8 +1,8 @@
 {config_load file="$language/lang_$language.conf" section="boxes"}
 {config_load file="$language/lang_$language.conf" section="downloads_module"}
 
-<div class="module">
-<h3>{#heading_download#}</h3>
+<div class="module text-center">
+<h6 class="mt-2">{#heading_download#}</h6>
 <div class="moduleContent">
 
 {if $dl_prevented eq 'true'}
@@ -14,9 +14,13 @@
 {foreach name=aussen item=dl_data from=$dl}
 <p>
 {if $dl_data.pic_link}<a href="{$dl_data.pic_link}"><img src="{$tpl_path}img/img_download.jpg" alt="download" border="0" /></a>{else}<img src="{$tpl_path}img/img_download_locked.jpg" alt="" />{/if}
+{if $dl_data.pic_link}
 &nbsp;&nbsp;&nbsp;{$dl_data.download_link}
 &nbsp;&nbsp;&nbsp;{#table_heading_download_date#}&nbsp;{$dl_data.date}
 &nbsp;&nbsp;&nbsp;<span class="bold">{$dl_data.count}</span>&nbsp;{#table_heading_download_count#}
+{else}
+<span class="bold">{#download_not_allowed#}</span>
+{/if}
 </p>
 {/foreach}
 
