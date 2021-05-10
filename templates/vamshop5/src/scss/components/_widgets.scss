@@ -142,6 +142,7 @@
 
 .widget-cart-item {
   position: relative;
+  overflow-x: hidden;
   .btn-close {
     position: absolute;
     top: 50%;

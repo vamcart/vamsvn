@@ -1,5 +1,4 @@
 <script src="templates/<?php echo CURRENT_TEMPLATE; ?>/dist/vendor/smooth-scroll/dist/smooth-scroll.polyfills.min.js"></script>
-<script src="templates/<?php echo CURRENT_TEMPLATE; ?>/dist/vendor/simplebar/dist/simplebar.min.js"></script>
 <script src="templates/<?php echo CURRENT_TEMPLATE; ?>/dist/vendor/tiny-slider/dist/min/tiny-slider.js"></script>
 <script src="templates/<?php echo CURRENT_TEMPLATE; ?>/dist/vendor/drift-zoom/dist/Drift.min.js"></script>
 <?php
@@ -7,7 +6,6 @@ require_once(DIR_FS_CATALOG."vendor/Bender/Bender.class.php");
 $bender = new Bender();
 $bender->enqueue("jscript/jquery/jquery-3.4.1.min.js");
 $bender->enqueue("templates/".CURRENT_TEMPLATE."/dist/vendor/bootstrap/dist/js/bootstrap.bundle.min.js");
-//$bender->enqueue("templates/".CURRENT_TEMPLATE."/dist/vendor/simplebar/dist/simplebar.js");
 //$bender->enqueue("templates/".CURRENT_TEMPLATE."/dist/vendor/tiny-slider/dist/tiny-slider.js");
 //$bender->enqueue("templates/".CURRENT_TEMPLATE."/dist/vendor/smooth-scroll/dist/smooth-scroll.polyfills.js");
 //$bender->enqueue("templates/".CURRENT_TEMPLATE."/dist/vendor/drift-zoom/dist/Drift.min.js");

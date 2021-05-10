@@ -8,7 +8,6 @@ require_once(DIR_FS_CATALOG."vendor/Bender/Bender.class.php");
 $bender = new Bender();
 $bender->enqueue("templates/".CURRENT_TEMPLATE."/css/font-rubik.css");
 $bender->enqueue("templates/".CURRENT_TEMPLATE."/css/font-awesome.css");
-$bender->enqueue("templates/".CURRENT_TEMPLATE."/dist/vendor/simplebar/dist/simplebar.min.css");
 $bender->enqueue("templates/".CURRENT_TEMPLATE."/dist/vendor/tiny-slider/dist/tiny-slider.css");
 $bender->enqueue("templates/".CURRENT_TEMPLATE."/dist/vendor/nouislider/distribute/nouislider.min.css");
 $bender->enqueue("templates/".CURRENT_TEMPLATE."/dist/vendor/drift-zoom/dist/drift-basic.min.css");
