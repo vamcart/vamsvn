@@ -39,7 +39,7 @@ function doBuyNow( id, quantity, update, get_cart, attributes, popup ) {
 			}
 			
 			$(".cart-link-"+parseInt(id)).addClass('active');
-			$(".cart-icon-"+parseInt(id)).replaceWith('<i class="text-danger fas fa-cart-plus cart-icon-'+parseInt(id)+'""></i>');
+			$(".cart-icon-"+parseInt(id)).replaceWith('<i class="fas fa-cart-plus cart-icon-'+parseInt(id)+'""></i>');
 			$('[data-toggle="tooltip"]').tooltip('hide');
 	 
 			}   

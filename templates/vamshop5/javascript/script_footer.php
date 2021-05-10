@@ -1,6 +1,7 @@
 <script src="templates/<?php echo CURRENT_TEMPLATE; ?>/dist/vendor/smooth-scroll/dist/smooth-scroll.polyfills.min.js"></script>
 <script src="templates/<?php echo CURRENT_TEMPLATE; ?>/dist/vendor/simplebar/dist/simplebar.min.js"></script>
 <script src="templates/<?php echo CURRENT_TEMPLATE; ?>/dist/vendor/tiny-slider/dist/min/tiny-slider.js"></script>
+<script src="templates/<?php echo CURRENT_TEMPLATE; ?>/dist/vendor/drift-zoom/dist/Drift.min.js"></script>
 <?php
 require_once(DIR_FS_CATALOG."vendor/Bender/Bender.class.php");
 $bender = new Bender();
@@ -9,7 +10,7 @@ $bender->enqueue("templates/".CURRENT_TEMPLATE."/dist/vendor/bootstrap/dist/js/b
 //$bender->enqueue("templates/".CURRENT_TEMPLATE."/dist/vendor/simplebar/dist/simplebar.js");
 //$bender->enqueue("templates/".CURRENT_TEMPLATE."/dist/vendor/tiny-slider/dist/tiny-slider.js");
 //$bender->enqueue("templates/".CURRENT_TEMPLATE."/dist/vendor/smooth-scroll/dist/smooth-scroll.polyfills.js");
-$bender->enqueue("templates/".CURRENT_TEMPLATE."/dist/vendor/drift-zoom/dist/Drift.min.js");
+//$bender->enqueue("templates/".CURRENT_TEMPLATE."/dist/vendor/drift-zoom/dist/Drift.min.js");
 $bender->enqueue("templates/".CURRENT_TEMPLATE."/dist/js/theme.min.js");
 $bender->enqueue("templates/".CURRENT_TEMPLATE."/javascript/vamshop5.js");
 $bender->enqueue("templates/".CURRENT_TEMPLATE."/webslidemenu/webslidemenu.js");

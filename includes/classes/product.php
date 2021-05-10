@@ -802,6 +802,22 @@ $orders_query = "SELECT p.*, pd.*, cd.* FROM
 		return $link;
 	}
 	
+	
+	// beta
+	function getBuyNowButtonVamshop5($id, $name) {
+		global $PHP_SELF;
+		$vam_get_all_get_params_return = (basename($PHP_SELF) == 'product_info.php') ? preg_replace('/products_id=\d+&/', '', vam_get_all_get_params(array ('action'))) : vam_get_all_get_params(array ('action'));
+		if (AJAX_CART == 'true' && !vam_has_product_attributes($id)) {
+		$link = '<a class="cart-link-'.$id.' btn btn-primary btn-sm d-block w-100 mb-2'.(($this->getProductCartStatus($id) != 1) ? "" : " active").'" href="'.vam_href_link(basename($PHP_SELF), 'action=buy_now&BUYproducts_id='.$id, 'NONSSL').'" onclick="doBuyNow(\''.$id.'\',\'1\'); return false;" data-toggle="tooltip" title="'.(($this->getProductCartStatus($id) != 1) ? IMAGE_BUTTON_IN_CART_IN : IMAGE_BUTTON_IN_CART).'" aria-label="'.(($this->getProductCartStatus($id) != 1) ? IMAGE_BUTTON_IN_CART_IN : IMAGE_BUTTON_IN_CART).'"><i class="'.(($this->getProductCartStatus($id) != 1) ? 'fas fa-shopping-cart' : 'fas fa-cart-plus').' fs-sm me-1 cart-icon-'.$id.'"></i> '.(($this->getProductCartStatus($id) != 1) ? IMAGE_BUTTON_IN_CART : IMAGE_BUTTON_IN_CART_IN).'</a>';
+		} elseif (AJAX_CART == 'false' && vam_has_product_attributes($id)) {
+		$link = '<a class="cart-link-'.$id.' btn btn-primary btn-sm d-block w-100 mb-2'.(($this->getProductCartStatus($id) != 1) ? "" : " active").'" href="'.vam_href_link(basename($PHP_SELF), 'action=buy_now&BUYproducts_id='.$id, 'NONSSL').'" data-toggle="tooltip" title="'.(($this->getProductCartStatus($id) != 1) ? IMAGE_BUTTON_IN_CART_IN : IMAGE_BUTTON_IN_CART).'" aria-label="'.(($this->getProductCartStatus($id) != 1) ? IMAGE_BUTTON_IN_CART_IN : IMAGE_BUTTON_IN_CART).'"><i class="'.(($this->getProductCartStatus($id) != 1) ? 'fas fa-shopping-cart' : 'fas fa-cart-plus').' fs-sm me-1 cart-icon-'.$id.'"></i> '.(($this->getProductCartStatus($id) != 1) ? IMAGE_BUTTON_IN_CART : IMAGE_BUTTON_IN_CART_IN).'</a>';
+		} else {
+		$link = '<a class="cart-link-'.$id.' btn btn-primary btn-sm d-block w-100 mb-2'.(($this->getProductCartStatus($id) != 1) ? "" : " active").'" href="'.vam_href_link(FILENAME_SHOPPING_CART, 'action=buy_now&BUYproducts_id='.$id, 'NONSSL').'" data-toggle="tooltip" title="'.(($this->getProductCartStatus($id) != 1) ? IMAGE_BUTTON_IN_CART_IN : IMAGE_BUTTON_IN_CART).'" aria-label="'.(($this->getProductCartStatus($id) != 1) ? IMAGE_BUTTON_IN_CART_IN : IMAGE_BUTTON_IN_CART).'"><i class="'.(($this->getProductCartStatus($id) != 1) ? 'fas fa-shopping-cart' : 'fas fa-cart-plus').' fs-sm me-1 cart-icon-'.$id.'"></i> '.(($this->getProductCartStatus($id) != 1) ? IMAGE_BUTTON_IN_CART : IMAGE_BUTTON_IN_CART_IN).'</a>';
+		}
+		
+		return $link;
+	}
+		
 	// beta
 	function getWishlistButton($id, $name) {
 		global $PHP_SELF;
@@ -918,11 +934,13 @@ if (is_array($array)) {
 					$buy_now = $this->getBuyNowButton($array['products_id'], $array['products_name']);
 					$buy_now_new = $this->getBuyNowButtonNew($array['products_id'], $array['products_name']); 
 					$buy_now_icon = $this->getBuyNowButtonIcon($array['products_id'], $array['products_name']); 
+					$buy_now_vamshop5 = $this->getBuyNowButtonVamshop5($array['products_id'], $array['products_name']); 
 			 } 
 			} else {
 				$buy_now = $this->getBuyNowButton($array['products_id'], $array['products_name']);
 				$buy_now_new = $this->getBuyNowButtonNew($array['products_id'], $array['products_name']);
 				$buy_now_icon = $this->getBuyNowButtonIcon($array['products_id'], $array['products_name']);
+				$buy_now_vamshop5 = $this->getBuyNowButtonVamshop5($array['products_id'], $array['products_name']);
 			}
    	 }
 
@@ -1145,6 +1163,7 @@ $products_special = 100-($vamPrice->CheckSpecial($array['products_id'])*100/$vam
 				'PRODUCTS_BUTTON_BUY_NOW' => $buy_now,
 				'PRODUCTS_BUTTON_BUY_NOW_NEW' => $buy_now_new,
 				'PRODUCTS_BUTTON_BUY_NOW_ICON' => $buy_now_icon,
+				'PRODUCTS_BUTTON_BUY_NOW_VAMSHOP5' => $buy_now_vamshop5,
 				'PRODUCTS_BUTTON_WISHLIST' => $this->getWishlistButton($array['products_id'], $array['products_name']),
 				'PRODUCTS_CART_STATUS' => $this->getProductCartStatus($array['products_id']),
 				'PRODUCTS_WISHLIST_STATUS' => $this->getWishlistStatus($array['products_id']),

@@ -1,5 +1,4 @@
        <!-- Product-->
-       <form id="cart_quantity{$module_data.PRODUCTS_ID}" class="" action="{$module_data.PRODUCTS_LINK}/products_id/{$module_data.PRODUCTS_ID}/action/add_product" method="post" {if $smarty.const.AJAX_CART == 'true'}onsubmit="doAddProduct({$module_data.PRODUCTS_ID}); return false;"{/if}>
        <div class="card product-card product-list">
        {if $module_data.PRODUCTS_LABEL}{$module_data.PRODUCTS_LABEL}{/if}
        {if $smarty.const.ENABLE_WISHLIST == 'true'}
@@ -43,13 +42,10 @@
                    <option>XL</option>
                  </select>
                -->
-		          <input type="hidden" name="products_id" value="{$module_data.PRODUCTS_ID}" />
-		          <input type="hidden" name="products_qty" value="1" />
-		          <button class="btn btn-primary btn-sm d-block w-100 mb-2" type="submit"><i class="fa fa-shopping-cart fs-sm me-1"></i>{$smarty.const.IMAGE_BUTTON_IN_CART}</button>
+		          {$module_data.PRODUCTS_BUTTON_BUY_NOW_VAMSHOP5}
                </div>
                <!--<div class="text-start"><a class="nav-link-style fs-ms" href="#quick-view" data-bs-toggle="modal"><i class="ci-eye align-middle me-1"></i>Quick view</a></div>-->
              </div>
            </div>
          </div>
        </div>
-       </form>
