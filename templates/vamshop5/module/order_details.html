@@ -1,76 +1,57 @@
 {config_load file="$language/lang_$language.conf" section="shopping_cart"}
 {config_load file="$language/lang_$language.conf" section="product_info"}
+{config_load file="$language/lang_$language.conf" section="checkout_confirmation"}
 
-<div class="row">
-<div class="col-xl-9">
-
+    <!-- Page Title-->
+    <div class="page-title-overlap bg-dark pt-4">
+      <div class="container d-lg-flex justify-content-between py-2 py-lg-3">
+        <div class="order-lg-2 mb-3 mb-lg-0 pt-lg-2">
+          {if $navtrail}
+          <nav aria-label="breadcrumb">
+              <div class="breadcrumb breadcrumb-light flex-lg-nowrap justify-content-center justify-content-lg-start" itemscope itemtype="http://schema.org/BreadcrumbList">
+              {$navtrail}
+              </div>
+          </nav>
+          {/if}
+        </div>
+        <div class="order-lg-1 pe-lg-4 text-center text-lg-start">
+          <h1 class="h3 text-light mb-0">{$smarty.const.NAVBAR_TITLE_SHOPPING_CART}</h1>
+        </div>
+      </div>
+    </div>
+    <div class="container pb-5 mb-2 mb-md-4">
+      <div class="row">
+        <!-- List of items-->
+        <section class="col-lg-8">
+          <div class="d-flex justify-content-between align-items-center pt-3 pb-4 pb-sm-5 mt-1">
+            <h2 class="h6 text-light mb-0">{#text_products#}</h2><a class="btn btn-outline-primary btn-sm ps-2" href="shop-grid-ls.html"><i class="fas fa-chevron-left me-2"></i>{$smarty.const.TEXT_POPUP_CART_CONTINUE}</a>
+          </div>
+          
 {foreach from=$module_content key=category_name item=cart_data}
-<h3>{$category_name}</h3>
-<div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 row-cols-xl-4 row-cols-xxl-5 g-4">
 {foreach name=aussen item=module_data from=$cart_data}
-<div class="col-6 col-sm-6 col-xs-6 col-md-12 col-lg-12 col-xl-12">
 {include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/item/item-cart-list.html"}
-</div>
 {/foreach}
-</div>
-{/foreach}
+{/foreach}          
 
-{if $MODULE_cross_selling_cart_details}
-{$MODULE_cross_selling_cart_details}
-{/if}
-
-</div>
-
-<div class="col-xl-3">
-<div class="sticky-wrapper">
-<div class="sticky-top">
-
-<div class="card card-product card-sm">
-<div class="card-header">
-<span class="h5">{$smarty.const.TEXT_CHECKOUT_ALTERNATIVE}</span>
-</div>
-<div class="card-body">
-<div class="info-wrap">
-{if $TOTAL_QUANTITY > 0}
-<dl class="dlist-align">
-  <dt>{$smarty.const.TEXT_PRODUCTS_TOTAL}:</dt>
-  <dd class="text-right">{$TOTAL_QUANTITY}</dd>
-</dl>
-{/if}
-{if $UST_CONTENT}
-<dl class="dlist-align">
-  <dt>{$UST_CONTENT_NAME}:</dt>
-  <dd class="text-right">{$UST_CONTENT_VALUE}</dd>
-</dl>
-{/if}
-{if $TOTAL_DISCOUNT_VALUE}
-<dl class="dlist-align">
-  <dt>{$TOTAL_DISCOUNT_NAME}</dt>
-  <dd class="text-right">-{$TOTAL_DISCOUNT_VALUE}</dd>
-</dl>
-{/if}
-{if $TOTAL_SUBTOTAL_VALUE}
-<dl class="dlist-align">
-  <dt>{$TOTAL_SUBTOTAL_NAME}</dt>
-  <dd class="text-right"><strong>{$TOTAL_SUBTOTAL_VALUE}</strong></dd>
-</dl>
-{/if}
-<hr />
-</div>
-</div>
-<div class="card-footer text-center">
-<a class="btn btn-primary btn-block" href="{$smarty.const.FILENAME_CHECKOUT_SHIPPING}"><i class="fa fa-shopping-cart"></i> {$smarty.const.IMAGE_BUTTON_CHECKOUT}</a></div>
-</div>
-
+        </section>
+        <!-- Sidebar-->
+        <aside class="col-lg-4 pt-4 pt-lg-0 ps-xl-5">
+          <div class="bg-white rounded-3 shadow-lg p-4">
+            <div class="py-2 px-xl-2">
+              <div class="text-center mb-4 pb-3 border-bottom">
+                <h2 class="h6 mb-3 pb-1">{$TOTAL_SUBTOTAL_NAME}</h2>
+                <h3 class="fw-normal">{$TOTAL_SUBTOTAL_VALUE}</h3>
+              </div>
+              
 {if $MODULE_gift_cart}
 </form>
 {$MODULE_gift_cart}
 {/if}
-
-</div>
-</div>
-
-</div>
-
-</div>
-
+              
+              <a class="btn btn-primary btn-shadow d-block w-100 mt-4" href="checkout-details.html"><i class="fas fa-credit-card fs-lg me-2"></i>{$smarty.const.IMAGE_BUTTON_CHECKOUT}</a>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </div>
+    

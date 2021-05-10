@@ -57,9 +57,11 @@
             {else}
             <div class="navbar-tool-text ms-n3"><small>{$smarty.const.TEXT_LOGIN_MY_PROFILE}</small>{$smarty.const.TEXT_LOGIN_MY_ORDERS}</div></a>
             {/if}
+          {if !$cart_current}
           <div class="navbar-tool dropdown ms-3" id="divShoppingCart">
             {$box_CART}
           </div>
+          {/if}
         </div>
       </div>
     </div>

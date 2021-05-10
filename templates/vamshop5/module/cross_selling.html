@@ -1,9 +1,11 @@
 {config_load file="$language/lang_$language.conf" section="cross_selling"} <div class="module">
 <h3>{#heading_text#}</h3>
 <div class="moduleContent">
-{foreach name=aussen item=module_data from=$module_content}<p>{$module_data.GROUP}</p><div class="owl-carousel owl-theme">
+{foreach name=aussen item=module_data from=$module_content}<h3>{$module_data.GROUP}</h3><div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 row-cols-xl-4 row-cols-xxl-5 g-4">
 {foreach name=aussen item=module_data from=$module_data.PRODUCTS}
-{include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/product-card/product-card-details.html"}
+<div class="col">
+{include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/item/item-cart-list-cross-sell.html"}
+</div>
 {/foreach}
 </div>
 <div class="clear"></div>

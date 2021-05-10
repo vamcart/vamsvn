@@ -4,6 +4,12 @@
 <!-- Hero slider-->
 {include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/slider/hero-slider.html"}
 
+{if $text}
+<div class="container">
+{$text}
+</div>
+{/if}
+
 <!-- Shop by categories-->
 {$MODULE_sitemap}
 

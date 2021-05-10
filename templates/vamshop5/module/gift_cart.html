@@ -22,12 +22,20 @@
 {if $C_FLAG == 'true'}
 <!-- форма -->
 {$FORM_ACTION}
-<div class="input-group">
-  <input type="text" name="gv_redeem_code" class="form-control form-control-sm" placeholder="{#text_promo_code#}" aria-label="{#text_promo_code#}" aria-describedby="button-apply">
-  <div class="input-group-append">
-    <button class="btn btn-primary btn-sm" type="submit" id="button-apply"><i class="fas fa-check"></i> {$smarty.const.TEXT_BUTTON_SUBMIT}</button>
-  </div>
-</div>
+              <div class="" id="order-options">
+                <div class="">
+                  <div class="" id="promo-code" data-bs-parent="#order-options">
+                    <form class="needs-validation" method="post" novalidate>
+                      <div class="mb-3">
+                        <input name="gv_redeem_code" class="form-control" type="text" placeholder="{#text_promo_code#}" required>
+                        <div class="invalid-feedback">{#text_promo_code#}</div>
+                      </div>
+                      <button class="btn btn-outline-primary d-block w-100" type="submit">{$smarty.const.TEXT_BUTTON_SUBMIT}</button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+              
 {$FORM_END}
 <br />
 

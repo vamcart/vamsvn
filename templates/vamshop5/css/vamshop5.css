@@ -1,5 +1,5 @@
-.container .productOldPrice,
-.container .your-discount,
+.product-price .productOldPrice,
+.product-price .your-discount,
 .tns-carousel .productOldPrice,
 .tns-carousel .your-discount,
 .widget .productOldPrice,
@@ -9,6 +9,9 @@ display: none;
 
 }
 
+.price-wrap .your-discount,
+.page .your-discount,
+.pageContent .your-discount,
 .product-info-page .productOldPrice,
 .product-info-page .your-discount {
 
@@ -16,6 +19,9 @@ display: inline;
 
 }
 
+.price-wrap .your-discount,
+.page .your-discount,
+.pageContent .your-discount,
 .product-info-page .your-discount {
 padding: 0 .2em;
 margin: 0 .5em;
@@ -28,11 +34,17 @@ font-size: 12px;
 display: inline-block;
 }
 
+.price-wrap .productOldPrice,
+.page .productOldPrice,
+.pageContent .productOldPrice,
 .product-info-page .productOldPrice 
    {
 	  text-decoration: line-through;
    }
-   
+
+.price-wrap .productPrice,
+.page .productPrice,
+.pageContent .productPrice,
 .product-info-page .productPrice 
    {
      font-size: calc(1.3rem + .6vw);
@@ -632,6 +644,12 @@ del.button:hover span
 		/* cursor:not-allowed; */
 	}
 
+
+.btn.btn-inverse,
+.btn.btn-add-to-cart {
+margin-top: 4px;
+}
+
 /* /Buttons */
 
 .page {
@@ -650,37 +668,86 @@ color: #fff !important;
 
 }
 
-.pageContent {
+.page {
 padding-bottom: 1.5rem !important;
 }
 
 @media (min-width: 500px) {
-.pageContent {
+.page {
     max-width: 100%;
 }
 }
 @media (min-width: 768px) {
-.pageContent {
+.page {
     max-width: 100%;
 }
 }
 @media (min-width: 992px) {
-.pageContent {
+.page {
     max-width: 100%;
 }
 }
 @media (min-width: 1280px) {
-.pageContent {
+.page {
     max-width: 1260px;
 }
 }
-.pageContent {
+.page {
     width: 100%;
     padding-right: var(--bs-gutter-x, .9375rem);
     padding-left: var(--bs-gutter-x, .9375rem);
     margin-right: auto;
     margin-left: auto;
 }
+
+/*- Формы */
+
+form 
+   {
+	  width: 100%;
+	  margin: 0;
+   }
+
+.form input, textarea,
+input[type=text]
+   {
+		border: 1px solid;
+		border-color: var(--border-gray);
+		padding: .3em .5em;
+		/*min-width: 250px;*/
+   }
+
+.form textarea 
+   {
+	  width: 80%;
+   }
+
+fieldset.form
+	{
+		border: 0px;
+	}
+
+fieldset.form legend
+	{
+		font-weight: bold;
+	}
+
+.form p label
+	{
+		display: block; 
+		/*float: left;*/ 
+		margin: 0; 
+		padding: 0; 
+		border: 0px solid black; 
+		color: var(--color);
+		text-align: left;
+	}
+
+.form p
+	{
+		margin-bottom: .5em;
+		clear: both;
+	}
 
 input[type="text"],
 input[type="textarea"]
@@ -723,4 +790,347 @@ input:checked {
 input[type="checkbox"] {
 	padding: auto;
 	margin: auto;
+}
+
+		
+/*- Подсветка ошибок формы */
+#errormsg
+	{
+		border: 2px solid #c00;
+		padding: 5px;
+		width: 96%;
+	}	   
+
+label.error 
+	{
+		clear: both;
+		width: auto; 
+		margin: 5px 0 0; 
+		padding: 0 10px 0 10px;
+		border: 0px solid black;
+		background: #fcc;
+		color: var(--color-red);
+		font-weight: normal; 
+		text-align: right;
+	}	 
+
+.error
+	{
+		background: #fcc;
+	}
+/*- /Подсветка ошибок формы */
+
+span.Requirement 
+   {
+     color: red;
+   }
+
+/*- /Формы */
+
+.badge-offer {
+    display: block;
+    width: auto;
+    position: absolute;
+    top: 0;
+    right: 1em;
+    z-index: 2;
+}
+
+.badge-offer b {
+    background: #dd2c00;
+    padding: 4px;
+    text-align: center;
+    color: #fff;
+    font-size: 14px;
+    font-weight: normal;
+    display: inline-block;
+    height: 30px;
+    width: 50px;
+    position: relative;
+}
+
+.badge-offer b:after {
+    border-top: 7px solid #dd2c00;
+    border-left: 25px solid transparent;
+    border-right: 25px solid transparent;
+    content: "";
+    height: 0;
+    left: 0;
+    position: absolute;
+    top: 30px;
+    width: 0;
+}
+
+.img-wrap {
+
+text-align: center;
+
+}
+
+.card-product {
+  margin-bottom: 1em;
+}
+
+.progress-bar {
+  background: #0051A8;
+}
+
+.progress-label {
+  float: left;
+  margin-right: 1em;
+}
+
+.text-secondary {
+    color: #7d879c !important;
+}
+
+/* jQuery File Upload */
+
+.ajax-file-upload-statusbar 
+	{
+		display: inline-block;
+		float: left;
+		padding: 4px;
+		border: 1px solid #999999;
+		background-color: #FFFFFF;
+		margin: 5px;
+	}
+
+.ajax-file-upload-filename 
+	{
+		width: 100%;
+		height: auto;
+		margin: 0 5px 5px 10px;
+		color: #807579
+	}
+
+.ajax-file-upload-progress 
+	{
+		margin: 0 10px 5px 10px;
+		position: relative;
+		width: 220px;
+		border: 1px solid #ddd;
+		padding: 1px;
+		display: inline-block
+	}
+	
+.ajax-file-upload-bar 
+	{
+		background-color: #99ff00;
+		width: 0;
+		height: 4px;
+		color:#FFFFFF;
+	}
+
+.ajax-file-upload-percent 
+	{
+		position: absolute;
+		display: inline-block;
+		top: 3px;
+		left: 48%
+	}
+	
+.ajax-file-upload-red 
+	{
+		background-color: #e4685d;
+		display: inline-block;
+		color: #fff;
+		padding: 4px 15px;
+		text-decoration: none;
+		text-shadow: 0 1px 0 #b23e35;
+		cursor: pointer;
+		vertical-align: top;
+		margin-right:5px;
+	}
+
+.ajax-file-upload-green 
+	{
+		background-color: #99ff00;
+		margin: 0;
+		padding: 0;
+		display: inline-block;
+		color: #fff;
+		padding: 4px 15px;
+		text-decoration: none;
+		cursor: pointer;
+		text-shadow: 0 1px 0 #5b8a3c;
+		vertical-align: top;
+		margin-right:5px;
+	}
+
+.ajax-file-upload 
+	{
+		padding: 15px 20px;
+		cursor:pointer;	
+		line-height:20px;
+		height:25px;
+		margin:0 10px 10px 0;
+		display: inline-block;
+		background: #fff;
+		border: 1px solid #e8e8e8;
+		color: #888;
+		text-decoration: none;
+		padding: 6px 10px 4px 10px; 
+		color: #fff;
+		background: #2f8ab9;
+		border: none;
+		box-shadow: 0 2px 0 0 #13648d; 
+		vertical-align:middle;  
+  }
+  
+.ajax-file-upload:hover 
+	{
+		background: #3396c9;
+		box-shadow: 0 2px 0 0 #15719f;
+	}
+
+.ajax-upload-dragdrop
+	{
+		color: #DADCE3;
+		text-align:left;
+		border: 0px dotted #e5e5e5;
+		vertical-align:middle;
+		padding: .5em 0;
+	}
+
+#content_images 
+	{
+		list-style-image: none;
+		list-style-position: outside;
+		list-style-type: none;
+		margin: 0pt;
+		padding: 0pt;
+	}
+
+#content_images li 
+	{
+		display: block;
+		float: left;
+		padding: 4px;
+		border: 1px solid #999999;
+		background-color: #FFFFFF;
+		margin: 5px;
+	}
+	
+/* /jQuery File Upload */
+
+
+/* Star Rating */
+
+#product_reviews_write .error,
+.star-rating .error {
+  background: #fff;
+  color: #dd2c00;
+}
+
+.rating-block {
+  width: 100%;
+}
+
+.star-rating {
+    margin: 0 auto;
+    text-align: center;
+}
+
+.star-rating label span {
+  display: inline-block;
+  font-size: 12px;
+  color: var(--color);
+}
+
+/* :not(:checked) is a filter, so that browsers that don’t support :checked don’t 
+   follow these rules. Every browser that supports :checked also supports :not(), so
+   it doesn’t make the test unnecessarily selective */
+.star-rating:not(:checked) > input {
+    /*position:absolute;
+    top:-9999px;*/
+    display: none;
+}
+
+.star-rating:not(:checked) > label {
+    float:right;
+    text-align: center;
+    width:60px;
+    height: 70px;
+    border: 0px solid black;
+    padding:0 .1em;
+    overflow:hidden;
+    white-space:nowrap;
+    cursor:pointer;
+    font-size:150%;
+    line-height:1.5;
+    color:#ddd;
+    /*text-shadow:1px 1px #bbb, 2px 2px #666, .1em .1em .2em rgba(0,0,0,.5);*/
+}
+
+@media (max-width: 768px) {
+	
+.star-rating:not(:checked) > label {
+	width: 50px;
+}	
+
+.star-rating label span {
+  display: inline-block;
+  font-size: 10px;
+  color: #212529;
+}
+
+}	
+
+
+.star-rating:not(:checked) > label:before {
+    content: "\f005";
+    font-weight: 900;
+    font-family: "Font Awesome 5 Free";
+    display: block;
+}
+
+.star-rating > input:checked ~ label {
+    color: #f70;
+    /*text-shadow:1px 1px #c60, 2px 2px #940, .1em .1em .2em rgba(0,0,0,.5);*/
+}
+
+.star-rating:not(:checked) > label:hover,
+.star-rating:not(:checked) > label:hover ~ label {
+    color: gold;
+    /*text-shadow:1px 1px goldenrod, 2px 2px #B57340, .1em .1em .2em rgba(0,0,0,.5);*/
+}
+
+.star-rating > input:checked + label:hover,
+.star-rating > input:checked + label:hover ~ label,
+.star-rating > input:checked ~ label:hover,
+.star-rating > input:checked ~ label:hover ~ label,
+.star-rating > label:hover ~ input:checked ~ label {
+    color: #ea0;
+    /*text-shadow:1px 1px goldenrod, 2px 2px #B57340, .1em .1em .2em rgba(0,0,0,.5);*/
+}
+
+.star-rating > label:active {
+    position:relative;
+    top:2px;
+    left:2px;
+}
+
+@keyframes star-pop {
+	0% { color: #ef6c00; transform: translateX(-50%) translateY(-50%) scale(1) rotate(0); text-shadow: 0 3px 2px rgba(0,0,0,.25); }
+	80% { color: #0099d5; transform: translateX(-50%) translateY(-50%) scale(1.75) rotate(-5deg); text-shadow: 0 0 0 rgba(255,255,255,0); }
+	100% { color: #ef6c00; transform: translateX(-50%) translateY(-50%) scale(1) rotate(0); text-shadow: 0 3px 2px rgba(0,0,0,.25); }
+}
+@keyframes star-pop-2 {
+	0% { color: rgba(0,153,213,0); transform: translateX(-50%) translateY(-50%) scale(1) rotate(0); }
+	20% { color: rgba(0,153,213,0); transform: translateX(-50%) translateY(-50%) scale(1) rotate(0); }
+	60% { color: rgba(0,153,213,.325); transform: translateX(-50%) translateY(-57.5%) scale(2.5) rotate(-2.5deg); }
+	100% { color: rgba(255,255,255,0); transform: translateX(-50%) translateY(-65%) scale(4) rotate(0deg); }
+}
+@keyframes fade-in {
+	0% { opacity: 0; }
+	100% { opacity: 100%; }
+}
+
+/* /Star Rating */
+
+.box .icon-wrap {
+
+display: none;
+
 }
