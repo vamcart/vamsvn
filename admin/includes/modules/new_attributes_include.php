@@ -138,7 +138,7 @@ echo vam_draw_hidden_field(vam_session_name(), vam_session_id());
 //                echo "<td colspan=\"2\" class=\"main\">&nbsp;" . DL_FILE . "<br>" . vam_draw_pull_down_menu($current_value_id . '_download_file', vam_getDownloads(), $attribute_value_download_filename, '')."</td>";
                 echo "<td colspan=\"2\" class=\"main\">&nbsp;" . DL_FILE . "<br>" . vam_draw_pull_down_menu($current_value_id . '_download_file',$file_list,$attribute_value_download_filename)."</td>";                echo "<td class=\"main\">&nbsp;". DL_COUNT . "<br><input type=\"text\" name=\"" . $current_value_id . "_download_count\" value=\"" . $attribute_value_download_count . "\"></td>";                echo "<td class=\"main\">&nbsp;". DL_EXPIRE . "<br><input type=\"text\" name=\"" . $current_value_id . "_download_expire\" value=\"" . $attribute_value_download_expire . "\"></td>";
                 ?>
-                 <td class="main" align="left"><?php echo TABLE_TEXT_IS_PIN; ?> <?php echo vam_draw_checkbox_field($current_value_id . '_ispin', '',  $products_attributes_is_pin,1); ?>&nbsp;</td>
+                 <td class="main" align="left"><?php echo TABLE_TEXT_IS_PIN; ?> <?php echo vam_draw_checkbox_field($current_value_id . '_ispin', $products_attributes_is_pin,  $products_attributes_is_pin); ?>&nbsp;</td>
                 <?php
                 echo "</tr>";
             }
