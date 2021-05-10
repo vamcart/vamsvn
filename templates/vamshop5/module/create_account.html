@@ -45,7 +45,7 @@ $(function($){
 {/if}
 
 
-  <div class="form-row">
+  <div class="row">
     <div class="form-group {if $secondname=='1'}col-md-4{else}col-md-6{/if}">
       <label for="firstname">{#text_firstname#}</label>
       {$INPUT_FIRSTNAME}
@@ -85,7 +85,7 @@ $(function($){
 <h3>{#title_address#}</h3>
 {/if}
 
-  <div class="form-row">
+  <div class="row">
     {if $street_address=='1'}
     <div class="form-group {if $suburb=='1'}col-md-6{else}col-md-12{/if}">
       <label for="address">{#text_street#}</label>
@@ -100,7 +100,7 @@ $(function($){
     {/if}
   </div>
 
-  <div class="form-row">
+  <div class="row">
   {if $city=='1'}
     <div class="form-group col-md-9">
       <label for="city">{#text_city#}</label>
@@ -115,7 +115,7 @@ $(function($){
   {/if}
   </div>
 
-  <div class="form-row">
+  <div class="row">
     {if $country=='1'}
     <div class="form-group col-md-6">
       <label for="country">{#text_country#}</label>
@@ -153,7 +153,7 @@ $(function($){
 <h3>{#title_contact#}</h3>
 {/if}
 
-  <div class="form-row">
+  <div class="row">
     {if $telephone=='1'}
     <div class="form-group {if $fax=='1'}col-md-4{else}col-md-6{/if}">
       <label for="tel">{#text_tel#}</label>
@@ -196,7 +196,7 @@ $(function($){
 
 <h3>{#title_password#}</h3>
 
-  <div class="form-row">
+  <div class="row">
     <div class="form-group col-md-6">
       <label for="password">{#text_password#}</label>
       {$INPUT_PASSWORD}

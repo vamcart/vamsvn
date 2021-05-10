@@ -115,6 +115,7 @@ for ($i = 0, $n = sizeof($productss[$key]['products']); $i < $n; $i ++) {
 	
 	$module_content[$key][$i] = array (
 
+	'PRODUCTS_ID' => $productss[$key]['products'][$i]['id'], 
 	'PRODUCTS_NAME' => $productss[$key]['products'][$i]['name'].$mark_stock, 
 	'PRODUCTS_CATEGORIES_ID' => $productss[$key]['products'][$i]['categories_id'], 
 	'PRODUCTS_CATEGORIES_NAME' => $productss[$key]['products'][$i]['categories_name'], 

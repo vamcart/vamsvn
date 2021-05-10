@@ -106,3 +106,17 @@ var dropdownElementList = [].slice.call(document.querySelectorAll('.dropdown-tog
 var dropdownList = dropdownElementList.map(function (dropdownToggleEl) {
   return new bootstrap.Dropdown(dropdownToggleEl)
 })	
+
+//Sticky Column Calc Height
+if ($(window).width() > 1200) {
+$(document).ready(function(){
+var sticky_column_height = $(".sticky-wrapper").parent().parent().height();
+var sticky = $(".sticky-wrapper");
+sticky.css("min-height", sticky_column_height + "px");
+});  
+$(document).ajaxSuccess(function () {	
+var sticky_column_height = $(".sticky-wrapper").parent().parent().height();
+var sticky = $(".sticky-wrapper");
+sticky.css("min-height", sticky_column_height + "px");
+});  
+}

@@ -1,6 +1,5 @@
 {config_load file="$language/lang_$language.conf" section="create_account"}
-<div class="page">
-<div class="pageContent">
+
 <script>
 {literal}
 $(function($){
@@ -21,10 +20,27 @@ $(function($){
 <div id="load_status"></div>
 {$FORM_ACTION}
 
-<div class="row">
-<div class="col-xl-9">
+    <!-- Page Title-->
+    <div class="page-title-overlap bg-dark pt-4">
+      <div class="container d-lg-flex justify-content-between py-2 py-lg-3">
+        <div class="order-lg-2 mb-3 mb-lg-0 pt-lg-2">
+          {if $navtrail}
+          <nav aria-label="breadcrumb">
+              <div class="breadcrumb breadcrumb-light flex-lg-nowrap justify-content-center justify-content-lg-start" itemscope itemtype="http://schema.org/BreadcrumbList">
+              {$navtrail}
+              </div>
+          </nav>
+          {/if}
+        </div>
+        <div class="order-lg-1 pe-lg-4 text-center text-lg-start">
+          <h1 class="h3 text-light mb-0">{$smarty.const.NAVBAR_TITLE_1_CHECKOUT_CONFIRMATION}</h1>
+        </div>
+      </div>
+    </div>
+    <div class="container pb-5 mb-2 mb-md-4">
+      <div class="row">
+        <section class="col-lg-8 bg-light shadow-lg rounded-3 px-4 py-5">
 
-<!--<h1>{#heading_checkout#}</h1>-->
 <div id="box">
 <div id="checkout">
 {$PAYMENT_FIELDS}
@@ -40,30 +56,30 @@ $(function($){
 
 <div id="shipping_box" class="sm_layout_box">
 {if !$smarty.session.customer_id}
-<h3>{$TITLE_SHIPPING_ADDRESS}</h3>
+<h2 class="h6 pt-1 pb-3 mb-3">{$TITLE_SHIPPING_ADDRESS}</h2>
 {else}
 <div class="row">
 {if $ADDRESS_LABEL_SHIPPING_ADDRESS}
-<div class="col-md-6">
-<div class="no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative bg-white">
+<div class="col-md-6 mb-4">
+<div class="no-gutters border rounded overflow-hidden flex-md-row shadow-sm h-md-250 position-relative bg-white">
 <div class="col p-4 d-flex flex-column position-static">
 <h5 class="mb-0 font-weight-bold">{$TITLE_SHIPPING_ADDRESS}</h5>
 <div class="mb-1 text-muted"></div>
-<p class="card-text mb-auto">{$ADDRESS_LABEL_SHIPPING_ADDRESS}</p>
-{$BUTTON_SHIPPING_ADDRESS}
+<p class="card-text mb-auto fs-sm">{$ADDRESS_LABEL_SHIPPING_ADDRESS}</p>
+<a class="btn btn-outline-secondary btn-sm btn-shadow mt-3 mt-sm-0" href="{$smarty.const.FILENAME_CHECKOUT_SHIPPING_ADDRESS}"><i class="far fa-edit"></i> {$smarty.const.IMAGE_BUTTON_CHANGE_ADDRESS}</a>
 </div>
 </div>
 </div>
 {/if}
 {if $sc_payment_address_show}
 {if $ADDRESS_LABEL_PAYMENT_ADDRESS}
-<div class="col-md-6">
-<div class="no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative bg-white">
+<div class="col-md-6 mb-4">
+<div class="no-gutters border rounded overflow-hidden flex-md-row shadow-sm h-md-250 position-relative bg-white">
 <div class="col p-4 d-flex flex-column position-static">
 <h5 class="mb-0 font-weight-bold">{$TITLE_PAYMENT_ADDRESS}</h5>
 <div class="mb-1 text-muted"></div>
-<p class="card-text mb-auto">{$ADDRESS_LABEL_PAYMENT_ADDRESS}</p>
-{$BUTTON_PAYMENT_ADDRESS}
+<p class="card-text mb-auto fs-sm">{$ADDRESS_LABEL_PAYMENT_ADDRESS}</p>
+<a class="btn btn-outline-secondary btn-sm btn-shadow mt-3 mt-sm-0" href="{$smarty.const.FILENAME_CHECKOUT_PAYMENT_ADDRESS}"><i class="far fa-edit"></i> {$smarty.const.IMAGE_BUTTON_CHANGE_ADDRESS}</a>
 </div>
 </div>
 </div>
@@ -89,7 +105,7 @@ $(function($){
   </div>
 {/if}
 
-  <div class="form-row">
+  <div class="row">
     <div class="form-group {if $secondname=='1'}col-md-4{else}col-md-6{/if}">
       <label for="firstname">{#text_firstname#}</label>
       {$INPUT_FIRSTNAME}
@@ -116,7 +132,7 @@ $(function($){
 {/if}
 <div id="shipping_address">
 
-  <div class="form-row">
+  <div class="row">
     {if $street_address=='1'}
     <div class="form-group {if $suburb=='1'}col-md-6{else}col-md-12{/if}">
       <label for="address">{#text_street#}</label>
@@ -131,7 +147,7 @@ $(function($){
     {/if}
   </div>
 
-  <div class="form-row">
+  <div class="row">
   {if $city=='1'}
     <div class="form-group col-md-9">
       <label for="city">{#text_city#}</label>
@@ -146,7 +162,7 @@ $(function($){
   {/if}
   </div>
 
-  <div class="form-row">
+  <div class="row">
     {if $country=='1'}
     <div class="form-group col-md-6">
       <label for="country">{#text_country#}</label>
@@ -196,7 +212,7 @@ $(function($){
 </div>
 </div>
 <div id="payment_address">
-<h3>{$TITLE_PAYMENT_ADDRESS}</h3>
+<h2 class="h6 pt-1 pb-3 mb-3">{$TITLE_PAYMENT_ADDRESS}</h2>
 {if $gender_payment=='1'} 
   <div class="form-group">
       <label for="gender_payment">{#text_gender#}</label>
@@ -212,7 +228,7 @@ $(function($){
   </div>
 {/if}
 
-  <div class="form-row">
+  <div class="row">
     <div class="form-group {if $secondname_payment=='1'}col-md-4{else}col-md-6{/if}">
       <label for="firstname_payment">{#text_firstname#}</label>
       {$INPUT_FIRSTNAME_PAYMENT}
@@ -237,7 +253,7 @@ $(function($){
       {$INPUT_COMPANY_PAYMENT}
   </div>
 {/if}
-  <div class="form-row">
+  <div class="row">
     {if $street_address_payment=='1'}
     <div class="form-group {if $suburb_payment=='1'}col-md-6{else}col-md-12{/if}">
       <label for="address_payment">{#text_street#}</label>
@@ -252,7 +268,7 @@ $(function($){
     {/if}
   </div>
 
-  <div class="form-row">
+  <div class="row">
   {if $city_payment=='1'}
     <div class="form-group col-md-9">
       <label for="city_payment">{#text_city#}</label>
@@ -267,7 +283,7 @@ $(function($){
   {/if}
   </div>
 
-  <div class="form-row">
+  <div class="row">
     {if $country_payment=='1'}
     <div class="form-group col-md-6">
       <label for="country_payment">{#text_country#}</label>
@@ -308,9 +324,9 @@ $(function($){
 
 {if !$smarty.session.customer_id}
 <div id="contact_box" class="sm_layout_box">
-<h3>{$TITLE_CONTACT_ADDRESS}</h3>
+<h2 class="h6 pt-1 pb-3 mb-3">{$TITLE_CONTACT_ADDRESS}</h2>
 
-  <div class="form-row">
+  <div class="row">
     {if $telephone=='1'}
     <div class="form-group {if $fax=='1'}col-md-4{else}col-md-6{/if}">
       <label for="tel">{#text_tel#}</label>
@@ -344,7 +360,7 @@ $(function($){
 {if !$smarty.session.customer_id}
 <div id="password_box" class="sm_layout_box">
 <!--
-{if $TITLE_CONTACT_PASSWORD}<h3>{$TITLE_CONTACT_PASSWORD}</h3>{/if}
+{if $TITLE_CONTACT_PASSWORD}<h2 class="h6 pt-1 pb-3 mb-3">{$TITLE_CONTACT_PASSWORD}</h2>{/if}
 -->
 <div id="password_checkbox">
 {$PASSWORD_CHECKBOX}
@@ -367,7 +383,7 @@ $(function($){
 <input type="hidden" name="to_boxberry_address" id="to_boxberry_address" value="">
 {/if}
 <div id="shipping_modules_box" class="sm_layout_box">
-<h3>{$TITLE_SHIPPING_MODULES}</h3>
+<h2 class="h6 pt-1 pb-3 mb-3">{$TITLE_SHIPPING_MODULES}</h2>
 <div id="shipping_options"> 
 {$SHIPPING_BLOCK}
 </div> <!--div end shipping_options-->
@@ -375,7 +391,7 @@ $(function($){
 {/if}
 
 <div id="payment_options" class="sm_layout_box"> 
-<h3>{$TITLE_PAYMENT_MODULES}</h3>
+<h2 class="h6 pt-1 pb-3 mb-3">{$TITLE_PAYMENT_MODULES}</h2>
 {$PAYMENT_BLOCK}
 </div> <!--div end payment_options-->
 
@@ -388,7 +404,7 @@ $(function($){
 {if $comments=='1'}
 <div id="comment_box" class="sm_layout_box">
 <div class="form-group">
-  <label for="comments"><h3>{$TITLE_COMMENTS}</h3></label>
+  <label for="comments"><h2 class="h6 pt-1 pb-3 mb-3">{$TITLE_COMMENTS}</h2></label>
   {$COMMENTS}
 </div>
 </div><!--div end comment_box--> 
@@ -421,40 +437,31 @@ $(function($){
 </div><!-- Div end checkout -->
 </div><!-- Div end checkout_container -->
 
-</div>
+        </section>
+        <!-- Sidebar-->
+        <aside class="col-lg-4 pt-4 pt-lg-0 ps-xl-5">
+        <div class="sticky-wrapper">
+        <div class="sticky-top">
+        <div id="order_total_modules" class="sm_layout_box">
+          <div class="bg-white rounded-3 shadow-lg p-4 ms-lg-auto">
+            <div class="py-2 px-xl-2">
+              {$MODULE_order_details_checkout}
+					{$ORDER_TOTALS}
+            </div>
 
-
-<div class="col-xl-3">
-<div class="sticky-wrapper">
-<div class="sticky-top">
-<div id="order_total_modules" class="sm_layout_box">
-<div class="card card-product card-sm">
-<div class="card-header">
-<span class="h5">{$TITLE_TOTALS}</span>
-</div>
-<div class="card-body">
-<div class="info-wrap">
-{$ORDER_TOTALS}
-<hr />
-</div>
-</div>
-<div class="card-footer text-center">
-<button type="submit" class="btn btn-primary btn-block"><i class="fa fa-shopping-cart"></i> {$smarty.const.IMAGE_BUTTON_CHECKOUT}</button></div>
-</div>
-</div>
-
+<button type="submit" class="btn btn-primary btn-shadow d-block w-100 mb-4"><i class="far fa-check-circle fs-lg me-2"></i>{$smarty.const.IMAGE_BUTTON_CHECKOUT}</button>
+            
 {$FORM_END}
 
 {$MODULE_gift_cart}
 
-{$MODULE_order_details_checkout}
+</div>
+</div>            
+            
+        </div>
+        </div>
+        </aside>
+      </div>
 
-</div>
-</div>
+    </div>
 
-</div>
-
-</div>
-
-</div>
-</div>

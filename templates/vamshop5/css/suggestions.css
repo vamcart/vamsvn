@@ -5,7 +5,7 @@
 }
 .suggestions-input {
   box-sizing: border-box;
-  height: 35px !important;
+  /*height: 35px !important;*/
 }
 
 .suggestions-wrapper {

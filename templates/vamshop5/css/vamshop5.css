@@ -820,6 +820,20 @@ label.error
 	}
 /*- /Подсветка ошибок формы */
 
+/* Ошибка на странице свяжитесь с нами */
+
+.contacterror 
+   {
+     border: 1px solid; 
+     border-color: #ff0000; 
+     background-color: #FFCCCC; 
+     text-align: center; 
+     margin-bottom: 0em; 
+     margin-top: 0em;
+   }
+
+/* /Ошибка на странице свяжитесь с нами */
+
 span.Requirement 
    {
      color: red;
@@ -1134,3 +1148,137 @@ text-align: center;
 display: none;
 
 }
+
+#create_account_form span.Requirement, 
+#checkout span.Requirement {
+  display: none;
+}
+
+
+.dlist-align {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+}
+
+[class*="dlist-"] {
+    margin-bottom: 5px;
+}
+
+.dlist-align dt {
+    width: 50%;
+    word-wrap: break-word;
+    font-weight: normal;
+    font-size: .875rem !important;
+}
+
+dt {
+    font-weight: 700;
+    font-size: .875rem !important;
+}
+
+.dlist-align dd {
+    -webkit-box-flex: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+}
+
+[class*="dlist-"] dd {
+    margin-bottom: 0;
+    font-size: .875rem !important;
+
+}
+
+.text-right {
+text-align: right;
+}
+
+.text-left {
+text-align: left;
+}
+
+/* Ajax Preloader */
+.ajax-preloader {
+    z-index: 2300;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 50%;
+    left: auto;
+    vertical-align: middle;
+    display: block;
+    text-align: center;
+}
+
+.ajax-preloader__icon {
+	color: #dd2c00;
+	font-size: 10px;
+	margin: 0 auto;
+	position: relative;
+	text-indent: -9999em;
+	transform: translateZ(0);
+	animation-delay: -.16s!important;
+}
+
+.ajax-preloader__icon,
+.ajax-preloader__icon:after,
+.ajax-preloader__icon:before {
+	border-radius: 50%;
+	width: 1em;
+	height: 1em;
+	top: -1em;
+	animation-fill-mode: both;
+	animation: loading 1.2s ease-in-out infinite;
+}
+
+.ajax-preloader__icon:after,
+.ajax-preloader__icon:before {
+	content: "";
+	position: absolute;
+	top: 0;
+}
+
+.ajax-preloader__icon:before {
+	left: -1.5em;
+	animation-delay: -.32s;
+}
+
+.ajax-preloader__icon:after {
+	left: 1.5em;
+}
+
+.ajax-preloader__icon__in-btn {
+	display: inline-block;
+}
+@keyframes loading {
+	0%,
+	80%,
+	to {
+		box-shadow: 0 1em 0 -1.3em;
+	}
+	40% {
+		box-shadow: 0 1em 0 0;
+	}
+}
+/* /Ajax Preloader */
+
+
+/* Sticky Right Column */
+
+.sticky-wrapper {
+	position: static;
+}
+
+@media(min-width: 1200px) {
+	.sticky-wrapper {
+		position: relative;
+		/*min-height: 200vh;*/
+	}
+
+	.sticky-top {
+		position: sticky;
+		top: 90px;
+	}
+}
+
+/* /Sticky Right Column */

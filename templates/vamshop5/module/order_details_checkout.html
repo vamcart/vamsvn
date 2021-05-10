@@ -1,32 +1,16 @@
 {config_load file="$language/lang_$language.conf" section="shopping_cart"}
 {config_load file="$language/lang_$language.conf" section="product_info"}
 {if $smarty.const.DISPLAY_CART_IN_CHECKOUT == 'true'}
-<div class="card card-product card-sm">
-<div class="card-header">
-<span class="h5">{$smarty.const.NAVBAR_TITLE_SHOPPING_CART}</span>
-</div>
-<div class="card-body">
-<div class="checkout-cart-scroll">
 
-{$MODULE_order_details_checkout}
-
-<div class="row">
-<div class="col-xl-12">
+  <div class="widget mb-3">
+    <h2 class="widget-title text-center">{$smarty.const.TEXT_ORDER_SUMMARY}</h2>
 
 {foreach from=$module_content key=category_name item=cart_data}
-<span class="h6">{$category_name}</span>
 {foreach name=aussen item=module_data from=$cart_data}
 {include file="{$smarty.const.DIR_FS_CATALOG}{$tpl_path}components/item/item-cart-list-checkout.html"}
 {/foreach}
 {/foreach}
-</div>
 
-</div>
+  </div>
 
-</div>
-</div>
-<div class="card-footer text-left">
-<a class="text-muted small" href="{$smarty.const.FILENAME_SHOPPING_CART}"><i class="fa fa-shopping-cart"></i> {$smarty.const.SMALL_IMAGE_BUTTON_EDIT}</a></div>
-
-</div>
 {/if}
