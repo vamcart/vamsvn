@@ -997,4 +997,6 @@ define('TEXT_WRITE_REVIEW_TEXT_ERROR', 'Пожалуйста, укажите с�
 define('TEXT_WRITE_REVIEW_TEXT_ERROR1', 'Ваш отзыв должен быть как минимум 20 символов.');
 define('TEXT_WRITE_REVIEW_SUBMIT', 'Добавить отзыв');
 
+define('TEXT_YOUR_ORDER_NUMBER', 'Номер Вашего заказа:');
+
 ?>

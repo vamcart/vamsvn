@@ -180,7 +180,7 @@ define('IMAGE_BUTTON_ADD_ADDRESS', 'Добавить адрес');
 define('IMAGE_BUTTON_BACK', 'Назад');
 define('IMAGE_BUTTON_CHANGE_ADDRESS', 'Изменить адрес');
 define('IMAGE_BUTTON_CHECKOUT', 'Оформить заказ');
-define('IMAGE_BUTTON_CONFIRM_ORDER', 'Подтвердить Заказ');
+define('IMAGE_BUTTON_CONFIRM_ORDER', 'Подтвердить заказ');
 define('IMAGE_BUTTON_CONTINUE', 'Продолжить');
 define('IMAGE_BUTTON_DELETE', 'Удалить');
 define('IMAGE_BUTTON_LOGIN', 'Продолжить');
@@ -1045,5 +1045,6 @@ define('TEXT_CART_PRODUCTS', 'Товары');
 define('TEXT_CART_SUBTOTAL', 'Общая стоимость');
 define('TEXT_BACK_TO_SHOPPING', 'Продолжить покупки');
 
+define('TEXT_YOUR_ORDER_NUMBER', 'Номер Вашего заказа:');
 
 ?>
