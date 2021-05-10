@@ -650,6 +650,20 @@ del.button:hover span
 margin-top: 4px;
 }
 
+.btn.btn-rounded {
+  background: transparent !important;
+  color: #fe696a;
+  border-color: #fe696a;
+  box-shadow: 0 0 0 0 transparent;
+}
+
+.btn.btn-rounded:hover {
+  background: #fe696a !important;
+  color: #fff;
+  border-color: #fe696a;
+  box-shadow: 0 0 0 0 transparent;
+}
+
 /* /Buttons */
 
 .page {
@@ -707,6 +721,10 @@ form
 	  width: 100%;
 	  margin: 0;
    }
+   
+.form-group {
+  margin-bottom: .5em;
+}   
 
 .form input, textarea,
 input[type=text]
@@ -1282,3 +1300,28 @@ text-align: left;
 }
 
 /* /Sticky Right Column */
+
+.login-form {
+  max-width: 330px;
+  margin: 0 auto;
+}
+
+.social-login span {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.social-login span:before,
+.social-login span:after {
+    content: '';
+    border-top: 2px solid #a6a6a6;
+    margin: 0 20px 0 0;
+    flex: 1 0 20px;
+}
+
+.social-login span:after {
+    margin: 0 0 0 20px;
+}
