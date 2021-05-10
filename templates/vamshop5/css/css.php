@@ -2,16 +2,22 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="templates/<?php echo CURRENT_TEMPLATE; ?>/webfonts/fa-solid-900.woff2"/>
 <link rel="preload" as="font" type="font/woff2" crossorigin href="templates/<?php echo CURRENT_TEMPLATE; ?>/webfonts/fa-regular-400.woff2"/>
 <link rel="preload" as="font" type="font/woff2" crossorigin href="templates/<?php echo CURRENT_TEMPLATE; ?>/webfonts/fa-brands-400.woff2"/>
-<!-- Vendor Styles including: Font Icons, Plugins, etc.-->
-<link rel="stylesheet" media="screen" href="templates/<?php echo CURRENT_TEMPLATE; ?>/css/font-rubik.css"/>
-<link rel="stylesheet" media="screen" href="templates/<?php echo CURRENT_TEMPLATE; ?>/css/font-awesome.css"/>
-<link rel="stylesheet" media="screen" href="templates/<?php echo CURRENT_TEMPLATE; ?>/dist/vendor/simplebar/dist/simplebar.min.css"/>
-<link rel="stylesheet" media="screen" href="templates/<?php echo CURRENT_TEMPLATE; ?>/dist/vendor/tiny-slider/dist/tiny-slider.css"/>
-<link rel="stylesheet" media="screen" href="templates/<?php echo CURRENT_TEMPLATE; ?>/dist/vendor/nouislider/distribute/nouislider.min.css"/>
-<link rel="stylesheet" media="screen" href="templates/<?php echo CURRENT_TEMPLATE; ?>/dist/vendor/drift-zoom/dist/drift-basic.min.css"/>
-<!-- Main Theme Styles + Bootstrap-->
-<link rel="stylesheet" media="screen" href="templates/<?php echo CURRENT_TEMPLATE; ?>/dist/css/theme.min.css">
-<link rel="stylesheet" media="screen" href="templates/<?php echo CURRENT_TEMPLATE; ?>/css/vamshop5.css">
+
+<?php
+require_once(DIR_FS_CATALOG."vendor/Bender/Bender.class.php");
+$bender = new Bender();
+$bender->enqueue("templates/".CURRENT_TEMPLATE."/css/font-rubik.css");
+$bender->enqueue("templates/".CURRENT_TEMPLATE."/css/font-awesome.css");
+$bender->enqueue("templates/".CURRENT_TEMPLATE."/dist/vendor/simplebar/dist/simplebar.min.css");
+$bender->enqueue("templates/".CURRENT_TEMPLATE."/dist/vendor/tiny-slider/dist/tiny-slider.css");
+$bender->enqueue("templates/".CURRENT_TEMPLATE."/dist/vendor/nouislider/distribute/nouislider.min.css");
+$bender->enqueue("templates/".CURRENT_TEMPLATE."/dist/vendor/drift-zoom/dist/drift-basic.min.css");
+$bender->enqueue("templates/".CURRENT_TEMPLATE."/dist/css/theme.min.css");
+$bender->enqueue("templates/".CURRENT_TEMPLATE."/css/vamshop5.css");
+?>
+<?php
+echo $bender->output("templates/".CURRENT_TEMPLATE."/cache/".CURRENT_TEMPLATE."-packed.css");
+?>
 <?php
 if (strstr($PHP_SELF, FILENAME_PRODUCT_INFO) or strstr($PHP_SELF, FILENAME_PRODUCT_REVIEWS_INFO) or strstr($PHP_SELF, FILENAME_PRODUCT_REVIEWS) or strstr($PHP_SELF, FILENAME_REVIEWS)) {
 ?>

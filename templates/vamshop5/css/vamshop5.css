@@ -824,7 +824,7 @@ input[type="checkbox"] {
 		width: 96%;
 	}	   
 
-label.error 
+label.error
 	{
     width: 100%;
     margin-top: .375rem;
@@ -837,6 +837,16 @@ label.error
 	{
     border-color: #f34770;
 	}
+	
+.CheckoutError 
+	{
+    width: 100%;
+    margin-top: .375rem;
+    color: #f34770;
+    border: 0px solid #f34770;
+    background: transparent;
+	}	 
+	
 /*- /Подсветка ошибок формы */
 
 /* Ошибка на странице свяжитесь с нами */

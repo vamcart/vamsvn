@@ -1,16 +1,24 @@
-<!-- Vendor scrits: js libraries and plugins-->
-<script src="templates/<?php echo CURRENT_TEMPLATE; ?>/dist/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="templates/<?php echo CURRENT_TEMPLATE; ?>/dist/vendor/smooth-scroll/dist/smooth-scroll.polyfills.min.js"></script>
 <script src="templates/<?php echo CURRENT_TEMPLATE; ?>/dist/vendor/simplebar/dist/simplebar.min.js"></script>
 <script src="templates/<?php echo CURRENT_TEMPLATE; ?>/dist/vendor/tiny-slider/dist/min/tiny-slider.js"></script>
-<script src="templates/<?php echo CURRENT_TEMPLATE; ?>/dist/vendor/smooth-scroll/dist/smooth-scroll.polyfills.min.js"></script>
-<script src="templates/<?php echo CURRENT_TEMPLATE; ?>/dist/vendor/drift-zoom/dist/Drift.min.js"></script>
-<!-- Main theme script-->
-<script src="templates/<?php echo CURRENT_TEMPLATE; ?>/dist/js/theme.min.js"></script>
-
-<script src="templates/<?php echo CURRENT_TEMPLATE; ?>/javascript/vamshop5.js"></script>
-<script src="templates/<?php echo CURRENT_TEMPLATE; ?>/javascript/jscript_ajax_wishlist.js"></script>
-<script src="templates/<?php echo CURRENT_TEMPLATE; ?>/javascript/jscript_ajax_cart.js"></script>
-
+<?php
+require_once(DIR_FS_CATALOG."vendor/Bender/Bender.class.php");
+$bender = new Bender();
+$bender->enqueue("jscript/jquery/jquery-3.4.1.min.js");
+$bender->enqueue("templates/".CURRENT_TEMPLATE."/dist/vendor/bootstrap/dist/js/bootstrap.bundle.min.js");
+//$bender->enqueue("templates/".CURRENT_TEMPLATE."/dist/vendor/simplebar/dist/simplebar.js");
+//$bender->enqueue("templates/".CURRENT_TEMPLATE."/dist/vendor/tiny-slider/dist/tiny-slider.js");
+//$bender->enqueue("templates/".CURRENT_TEMPLATE."/dist/vendor/smooth-scroll/dist/smooth-scroll.polyfills.js");
+$bender->enqueue("templates/".CURRENT_TEMPLATE."/dist/vendor/drift-zoom/dist/Drift.min.js");
+$bender->enqueue("templates/".CURRENT_TEMPLATE."/dist/js/theme.min.js");
+$bender->enqueue("templates/".CURRENT_TEMPLATE."/javascript/vamshop5.js");
+$bender->enqueue("templates/".CURRENT_TEMPLATE."/webslidemenu/webslidemenu.js");
+if (AJAX_WISHLIST == 'true') $bender->enqueue("templates/".CURRENT_TEMPLATE."/javascript/jscript_ajax_wishlist.js"); 
+if (AJAX_CART == 'true') $bender->enqueue("templates/".CURRENT_TEMPLATE."/javascript/jscript_ajax_cart.js"); 
+?>
+<?php
+echo $bender->output("templates/".CURRENT_TEMPLATE."/cache/".CURRENT_TEMPLATE."-packed.js");
+?>
 <?php
 if ( strstr($PHP_SELF, FILENAME_ADDRESS_BOOK)
 	or strstr($PHP_SELF, FILENAME_ADDRESS_BOOK_PROCESS)
@@ -211,6 +219,7 @@ if (strstr($PHP_SELF, FILENAME_PRODUCT_REVIEWS_WRITE) or strstr($PHP_SELF, FILEN
 ?>
 <script src="jscript/jquery/plugins/uploadfile/jquery.uploadfile.js"></script>
 <?php } ?>
+<script>(function($,d){$.each(readyQ,function(i,f){$(f)});$.each(bindReadyQ,function(i,f){$(d).on("ready",f)})})(jQuery,document)</script>
 <?php
 if (file_exists(dirname(__FILE__) . '/local_footer.js.php')) include('local_footer.js.php');
 ?>
