@@ -1043,7 +1043,7 @@ define('TEXT_WRITE_REVIEW_SUBMIT', 'Добавить отзыв');
 define('TEXT_ORDER_SUMMARY', 'Ваш заказ');
 define('TEXT_CART_PRODUCTS', 'Товары');
 define('TEXT_CART_SUBTOTAL', 'Общая стоимость');
-define('TEXT_BACK_TO_SHOPPING', 'Продолжить покупки');
+define('TEXT_BACK_TO_SHOPPING', 'Вернуться на главную');
 
 define('TEXT_YOUR_ORDER_NUMBER', 'Номер Вашего заказа:');
 
