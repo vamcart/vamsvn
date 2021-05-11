@@ -39,19 +39,29 @@ if (GROUP_CHECK == 'true') {
 }
 
 	$best_sellers_query_raw = "select distinct
-	                                        p.*,
-	                                        pd.* from ".TABLE_PRODUCTS." p, ".TABLE_PRODUCTS_DESCRIPTION." pd, ".TABLE_PRODUCTS_TO_CATEGORIES." p2c, ".TABLE_CATEGORIES." c
-	                                        where p.products_status = '1'
-	                                        and c.categories_status = '1'
-	                                        and p.products_ordered > 0
-	                                        and p.products_id = pd.products_id
-	                                        and pd.language_id = '".(int) $_SESSION['languages_id']."'
-	                                        and p.products_id = p2c.products_id
-	                                        ".$group_check."
-	                                        ".$fsk_lock."
-	                                        and p2c.categories_id = c.categories_id and '".$current_category_id."'
-	                                        in (c.categories_id, c.parent_id)
-	                                        order by p.products_ordered desc ";
+	                                    p.*, pd.*, cd.*, m.* 
+	                                    from " . TABLE_PRODUCTS . " p
+	                                    left join " . TABLE_MANUFACTURERS . " m
+	                                    on p.manufacturers_id = m.manufacturers_id
+	                                    left join " . TABLE_PRODUCTS_DESCRIPTION . " pd
+	                                    on p.products_id = pd.products_id,
+                                       ".TABLE_PRODUCTS_TO_CATEGORIES." p2c,
+                                       ".TABLE_CATEGORIES." c,
+                                       ".TABLE_CATEGORIES_DESCRIPTION." cd
+	                                    WHERE pd.language_id = '" . (int) $_SESSION['languages_id'] . "'
+	                                    and c.categories_status=1
+                                       and cd.categories_id = c.categories_id
+	                                    and p.products_id = p2c.products_id
+	                                    and c.categories_id = p2c.categories_id
+	                                    and p.products_quantity > 0 
+	                                    and p.products_ordered > 0 
+	                                    and p.products_status = '1'
+	                                    " . $group_check . "
+	                                    " . $fsk_lock . "                                    
+	                                    " . $days . "
+	                                    order
+	                                    by
+	                                    p.products_ordered DESC ";
 $best_sellers_split = new splitPageResults($best_sellers_query_raw, $_GET['page'], MAX_DISPLAY_SEARCH_RESULTS);
 
 $module_content = array();
