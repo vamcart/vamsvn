@@ -181,6 +181,8 @@ $module_content[$k]['attrib'] = $products_options_data;
 
 if (($best_sellers_split->number_of_rows > 0)) {
 	$vamTemplate->assign('NAVIGATION_BAR', TEXT_RESULT_PAGE.' '.$best_sellers_split->display_links(MAX_DISPLAY_PAGE_LINKS, vam_get_all_get_params(array ('page', 'info', 'x', 'y'))));
+	$vamTemplate->assign('NAVIGATION_BOOTSTRAP', $best_sellers_split->display_links_bootstrap(MAX_DISPLAY_PAGE_LINKS, vam_get_all_get_params(array ('page', 'info', 'x', 'y'))));
+	$vamTemplate->assign('NAVIGATION_COMPACT', $best_sellers_split->display_links_compact(MAX_DISPLAY_PAGE_LINKS, vam_get_all_get_params(array ('page', 'info', 'x', 'y'))));
 	$vamTemplate->assign('NAVIGATION_BAR_PAGES', $best_sellers_split->display_count(TEXT_DISPLAY_NUMBER_OF_BEST_SELLERS));
 
 }
