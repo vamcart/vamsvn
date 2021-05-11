@@ -11,7 +11,7 @@
 					{$module_data.PRODUCT.PRODUCTS_PRICE}
 				</div>
 				{/if}
-				<div class="desc">&nbsp;{if $module_data.REVIEW.CUSTOMER}<span class="btn btn-rounded btn-sm"><i class="fas fa-user-check" data-toggle="tooltip" title="{$smarty.const.TEXT_BADGE_CUSTOMER}"></i></span>{/if}</div>
+				<div class="desc">&nbsp;{if $module_data.REVIEW.CUSTOMER}<span class="badge rounded-pill bg-primary"><i class="fas fa-user-check" data-toggle="tooltip" title="{$smarty.const.TEXT_BADGE_CUSTOMER}"></i></span>{/if}</div>
 				{if $module_data.REVIEW.RATING > 0}
 				<div class="rating-wrap small">
 					{$module_data.REVIEW.STAR_RATING}

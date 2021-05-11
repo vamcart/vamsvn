@@ -9,6 +9,7 @@ display: none;
 
 }
 
+#searchPreview .your-discount,
 .price-wrap .your-discount,
 .page .your-discount,
 .pageContent .your-discount,
@@ -19,6 +20,7 @@ display: inline;
 
 }
 
+#searchPreview .your-discount,
 .price-wrap .your-discount,
 .page .your-discount,
 .pageContent .your-discount,
@@ -34,6 +36,7 @@ font-size: 12px;
 display: inline-block;
 }
 
+#searchPreview .productOldPrice,
 .price-wrap .productOldPrice,
 .page .productOldPrice,
 .pageContent .productOldPrice,
@@ -53,6 +56,14 @@ display: inline-block;
      display: block;
    }   
 
+#searchPreview .productPrice
+   {
+     font-size: calc(0.7rem + .6vw);
+     font-weight: 400;
+     color: #4e54c8;
+     display: block;
+   } 
+   
 /* Ajax quick find */
 
 div#ajaxQuickFind,
