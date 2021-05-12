@@ -55,10 +55,11 @@ if ((!isset ($specials_products_category_id)) || ($specials_products_category_id
 	                                        and cd.categories_id = c.categories_id
 	                                        and p.products_quantity > 0 
 	                                        and p.products_status = '1' 
+	                                        and pd.language_id = '".(int) $_SESSION['languages_id']."' 
 	                                        ".$group_check."
                                            ".$days."
                                            ".$fsk_lock."                                             
-                                           order by p.products_startpage_sort ASC, p.products_id DESC limit ".MAX_DISPLAY_SPECIAL_PRODUCTS;
+                                           group by p.products_id order by p.products_startpage_sort ASC, p.products_id DESC limit ".MAX_DISPLAY_SPECIAL_PRODUCTS;
 } else {
 
 	if (GROUP_CHECK == 'true')

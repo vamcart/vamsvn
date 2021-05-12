@@ -53,7 +53,7 @@ if ($_SESSION['customers_status']['customers_fsk18_display'] == '0')
 	                                        ".$fsk_lock."
 	                                        and p2c.categories_id = c.categories_id and '".$current_category_id."'
 	                                        in (c.categories_id, c.parent_id)
-	                                        order by rand() limit ".MAX_DISPLAY_BESTSELLERS;
+	                                        group by p.products_id order by rand() limit ".MAX_DISPLAY_BESTSELLERS;
 
 $row = 0;
 $module_content = array ();
