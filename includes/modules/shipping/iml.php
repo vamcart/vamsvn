@@ -262,8 +262,8 @@ if ($order->delivery['city'] != '') {
 	  $this->quotes['error'] = $err_msg;
 
 
-	    if ($POST['pvz_iml'])
-	    $this->quotes['error'] = 'Выберите пункт выдачи заказов для расчёта стоимости.';
+	    //if ($POST['pvz_iml'])
+	    //$this->quotes['error'] = 'Выберите пункт выдачи заказов для расчёта стоимости.';
 
 	    if ($order->delivery['city'] == '')
 	    $this->quotes['error'] = 'Доставка IML в указанный город не осуществляется.';
@@ -285,8 +285,8 @@ if ($order->delivery['city'] != '') {
 	  //$this->quotes['error'] = 'Пункты выдачи. Доставка в этом направлении не осуществляется.'; 
 	  } 
 
-      if (!$shipping['price'] && !$_POST['pvz_iml']) 
-	    $this->quotes['error'] = 'Выберите пункт выдачи заказов.';
+      //if (!$shipping['price'] && !$_POST['pvz_iml']) 
+	    //$this->quotes['error'] = 'Выберите пункт выдачи заказов.';
 
       if (!$order->delivery['city']) 
 	    $this->quotes['error'] = 'Укажите город.';

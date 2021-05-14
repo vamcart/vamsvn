@@ -272,8 +272,8 @@ if ($order->delivery['city'] != '') {
 	  $this->quotes['error'] = $err_msg;
 
 
-	    if ($POST['pvz_boxberry'])
-	    $this->quotes['error'] = 'Выберите пункт выдачи заказов для расчёта стоимости.';
+	    //if ($POST['pvz_boxberry'])
+	    //$this->quotes['error'] = 'Выберите пункт выдачи заказов для расчёта стоимости.';
 
 	    if ($boxberry_city_id == 0)
 	    $this->quotes['error'] = 'Доставка Boxberry в указанный город не осуществляется.';
@@ -295,8 +295,8 @@ if ($order->delivery['city'] != '') {
 	  //$this->quotes['error'] = 'Пункты выдачи. Доставка в этом направлении не осуществляется.'; 
 	  } 
 
-      if (!$shipping['price'] && !$_POST['pvz_boxberry']) 
-	    $this->quotes['error'] = 'Выберите пункт выдачи заказов.';
+      //if (!$shipping['price'] && !$_POST['pvz_boxberry']) 
+	    //$this->quotes['error'] = 'Выберите пункт выдачи заказов.';
 
       if (!$order->delivery['city']) 
 	    $this->quotes['error'] = 'Укажите город.';
