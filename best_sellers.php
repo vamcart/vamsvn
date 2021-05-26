@@ -59,7 +59,7 @@ if (GROUP_CHECK == 'true') {
 	                                    " . $group_check . "
 	                                    " . $fsk_lock . "                                    
 	                                    " . $days . "
-	                                    order
+	                                    group by p.products_id order
 	                                    by
 	                                    p.products_ordered DESC ";
 $best_sellers_split = new splitPageResults($best_sellers_query_raw, $_GET['page'], MAX_DISPLAY_SEARCH_RESULTS);

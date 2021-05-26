@@ -54,7 +54,7 @@ $featured_query_raw = "select p.*, pd.*, cd.*, f.* from
                                 ".$group_check."
                                 ".$fsk_lock."
                                 and pd.language_id = '".(int) $_SESSION['languages_id']."'
-                                and f.status = '1' order by f.featured_date_added DESC";
+                                and f.status = '1' group by p.products_id order by f.featured_date_added DESC";
 $featured_split = new splitPageResults($featured_query_raw, $_GET['page'], MAX_DISPLAY_FEATURED_PRODUCTS);
 
 $module_content = array();

@@ -66,7 +66,7 @@ $specials_query_raw = "select p.*, pd.*, cd.*, s.* from
   if($categories_id > 0)
 	$specials_query_raw .= " and p2c.categories_id in (".vam_get_categories_ids($categories_id).$categories_id.")";
 	
-  $specials_query_raw .= " order by s.specials_date_added DESC";
+  $specials_query_raw .= " group by p.products_id order by s.specials_date_added DESC";
                                   
 $specials_split = new splitPageResults($specials_query_raw, $_GET['page'], MAX_DISPLAY_SPECIAL_PRODUCTS);
 

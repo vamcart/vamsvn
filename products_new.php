@@ -61,7 +61,7 @@ if (MAX_DISPLAY_NEW_PRODUCTS_DAYS != '0') {
 	                                    " . $group_check . "
 	                                    " . $fsk_lock . "                                    
 	                                    " . $days . "
-	                                    order
+	                                    group by p.products_id order
 	                                    by
 	                                    p.products_date_added DESC ";
 $products_new_split = new splitPageResults($products_new_query_raw, $_GET['page'], MAX_DISPLAY_PRODUCTS_NEW);
