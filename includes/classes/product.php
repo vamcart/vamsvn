@@ -510,10 +510,11 @@ $orders_query = "SELECT p.*, pd.*, cd.* FROM
                     and p.products_id in (".$products_id.")
                     and p.products_status = '1' 
                     and pd.language_id = '".(int) $_SESSION['languages_id']."'
+                    and cd.language_id = '".(int) $_SESSION['languages_id']."'
                     and p.products_quantity > '0' 
                     ".$group_check."
                     ".$fsk_lock."
-                    ORDER BY FIELD(p.products_id,".$products_id.") limit ".MAX_DISPLAY_ALSO_PURCHASED;
+                    group by p.products_id ORDER BY FIELD(p.products_id,".$products_id.") limit ".MAX_DISPLAY_ALSO_PURCHASED;
                     
 		$orders_query = vamDBquery($orders_query);
 		while ($orders = vam_db_fetch_array($orders_query, true)) {
