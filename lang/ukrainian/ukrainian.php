@@ -65,13 +65,13 @@ define('BOX_MANUFACTURER_INFO_OTHER_PRODUCTS', 'Інші товари даног
 define('BOX_HEADING_ADD_PRODUCT_ID','Додати в кошик');
   
 define('BOX_LOGINBOX_STATUS','Група:');     
-define('BOX_LOGINBOX_DISCOUNT','Ваша снижка');
+define('BOX_LOGINBOX_DISCOUNT','Ваша знижка');
 define('BOX_LOGINBOX_DISCOUNT_TEXT','Знижка від суми замовлення');
 define('BOX_LOGINBOX_DISCOUNT_OT','');
 
 // reviews box text in includes/boxes/reviews.php
-define('BOX_REVIEWS_WRITE_REVIEW', 'Оставить отзыв!');
-define('BOX_REVIEWS_TEXT_OF_5_STARS', '%s из 5 звёзд!');
+define('BOX_REVIEWS_WRITE_REVIEW', 'Залишити відгук!');
+define('BOX_REVIEWS_TEXT_OF_5_STARS', '%s з 5 зірок!');
 
 // pull down default text
 define('PULL_DOWN_DEFAULT', 'Виберіть');
@@ -82,9 +82,9 @@ define('JS_ERROR', 'Чи не вказана необхідна інформац
 define('JS_REVIEW_TEXT', '* Поле Текст відгуку має містити не менше'. REVIEW_TEXT_MIN_LENGTH. 'символів. \n');
 define('JS_REVIEW_RATING', '* Ви не вказали рейтинг. \n');
 define('JS_REVIEW_CAPTCHA', '* Ви не вказали код з зображення. \n');
-define('JS_ERROR_NO_PAYMENT_MODULE_SELECTED', '* Виберіть спосіб оплати для Вашого замовлення. \n');
+define('JS_ERROR_NO_PAYMENT_MODULE_SELECTED', '* Оберіть спосіб оплати для Вашого замовлення. \n');
 define('JS_ERROR_SUBMITTED', 'Ця форма вже заповнена. Натискайте Ok.');
-define('ERROR_NO_PAYMENT_MODULE_SELECTED', '* Виберіть спосіб оплати для Вашого замовлення.');
+define('ERROR_NO_PAYMENT_MODULE_SELECTED', '* Оберіть спосіб оплати для Вашого замовлення.');
 /*
  *
  * ACCOUNT FORMS
@@ -102,9 +102,9 @@ define('ENTRY_LAST_NAME_ERROR', 'Поле Прізвище повинно міс
 define('ENTRY_LAST_NAME_TEXT', '*');
 define('ENTRY_DATE_OF_BIRTH_ERROR', 'Дату народження необхідно вводити в такому форматі: DD / MM / YYYY (приклад 21/05/1970)');
 define('ENTRY_DATE_OF_BIRTH_TEXT', '* (приклад 21/05/1970)');
-define('ENTRY_EMAIL_ADDRESS_ERROR', 'Поле E-Mail має правильно заповнено і містити як мінімум'. ENTRY_EMAIL_ADDRESS_MIN_LENGTH. 'символів.');
+define('ENTRY_EMAIL_ADDRESS_ERROR', 'Поле E-Mail має бути правильно заповнене і містити як мінімум'. ENTRY_EMAIL_ADDRESS_MIN_LENGTH. 'символів.');
 define('ENTRY_EMAIL_ADDRESS_CHECK_ERROR', 'Ваша E-Mail адреса вказана невірно, спробуйте ще раз.');
-define('ENTRY_EMAIL_ADDRESS_ERROR_EXISTS', 'Ваша E-Mail адреса вже зареєстрова в нашому магазині, спробуйте вказати іншу E-Mail адресу.');
+define('ENTRY_EMAIL_ADDRESS_ERROR_EXISTS', 'Вашу E-Mail адресу вже зареєстровано в нашому магазині, спробуйте вказати іншу E-Mail адресу.');
 define('ENTRY_EMAIL_ADDRESS_TEXT', '*');
 define('ENTRY_STREET_ADDRESS_ERROR', 'Поле Вулиця та номер будинку повинно містити як мінімум'. ENTRY_STREET_ADDRESS_MIN_LENGTH. 'символів.');
 define('ENTRY_STREET_ADDRESS_TEXT', '* Приклад: вул. Незалежності 346, кв. 78');
@@ -183,9 +183,9 @@ define('IMAGE_BUTTON_CONTINUE', 'Продовжити');
 define('IMAGE_BUTTON_DELETE', 'Видалити');
 define('IMAGE_BUTTON_LOGIN', 'Продовжити');
 define('IMAGE_BUTTON_IN_CART', 'Додати в кошик');
-define('IMAGE_BUTTON_IN_CART_IN', 'В корзине');
-define('IMAGE_BUTTON_IN_WISHLIST', 'Добавить в избранное');
-define('IMAGE_BUTTON_IN_WISHLIST_IN', 'В избранном');
+define('IMAGE_BUTTON_IN_CART_IN', 'В кошику');
+define('IMAGE_BUTTON_IN_WISHLIST', 'Додати у вибране');
+define('IMAGE_BUTTON_IN_WISHLIST_IN', 'У вибраному');
 define('IMAGE_BUTTON_SEARCH', 'Шукати');
 define('IMAGE_BUTTON_UPDATE', 'Оновити');
 define('IMAGE_BUTTON_UPDATE_CART', 'Перерахувати');
@@ -201,7 +201,7 @@ define('SMALL_IMAGE_BUTTON_VIEW', 'Дивитися');
 
 define('ICON_ARROW_RIGHT', 'Перейти');
 define('ICON_CART', 'В кошик');
-define('ICON_WISHLIST', 'В избранное');
+define('ICON_WISHLIST', 'У вибране');
 define('ICON_SUCCESS', 'Виконано');
 define('ICON_WARNING', 'Увага');
 /*
@@ -244,11 +244,11 @@ define('SUCCESS_ACCOUNT_UPDATED', 'Ваші дані оновлені!');
 define('SUCCESS_PASSWORD_UPDATED', 'Ваш пароль змінено!');
 define('ERROR_CURRENT_PASSWORD_NOT_MATCHING', 'Зазначений пароль не збігається з поточним паролем. Спробуйте ще раз.');
 define('TEXT_MAXIMUM_ENTRIES', '<span class="bold"> ЗАУВАЖЕННЯ: </span> Максимальний об\'єм адресної книги - <span class="bold">%s</span> записів');
-define('SUCCESS_ADDRESS_BOOK_ENTRY_DELETED', 'Обраний адреса видалений з адресної книги.');
+define('SUCCESS_ADDRESS_BOOK_ENTRY_DELETED', 'Обрана адреса видалена з адресної книги.');
 define('SUCCESS_ADDRESS_BOOK_ENTRY_UPDATED', 'Ваша адресна книга була поновлена.');
-define('WARNING_PRIMARY_ADDRESS_DELETION', 'Адреса, встановлений за замовчуванням, не може бути видалений. Встановіть статус за замовчуванням на іншу адресу і спробуйте ще раз.');
+define('WARNING_PRIMARY_ADDRESS_DELETION', 'Адреса, встановлена за замовчуванням, не може бути видалена. Встановіть статус за замовчуванням на іншу адресу і спробуйте ще раз.');
 define('ERROR_NONEXISTING_ADDRESS_BOOK_ENTRY', 'Адресна книга не знайдена.');
-define('ERROR_ADDRESS_BOOK_FULL', 'Ваша адресна книга повністю заповнена. Видаліть непотрібний Вам адресу і тільки після цього Ви зможете додати нову адресу.');
+define('ERROR_ADDRESS_BOOK_FULL', 'Ваша адресна книга повністю заповнена. Видаліть непотрібну Вам адресу і тільки після цього Ви зможете додати нову адресу.');
 
 //  conditions check
 
@@ -295,14 +295,14 @@ define('TEXT_DATE_ADDED', 'Товар був доданий в наш катал
 define('TEXT_DATE_AVAILABLE', 'Товар буде в наявності %s');
 define('SUB_TITLE_SUB_TOTAL', 'Вартість товару:');
 
-define('OUT_OF_STOCK_CANT_CHECKOUT', 'Товари, виділені'. STOCK_MARK_PRODUCT_OUT_OF_STOCK. 'є на нашому складі в недостатньому для Вашого замовлення кількості. <br /> Будь ласка, поміняйте кількість продуктів виділених ('. STOCK_MARK_PRODUCT_OUT_OF_STOCK. '), дякуємо Вам.');
-define('OUT_OF_STOCK_CAN_CHECKOUT', 'Товари, виділені'. STOCK_MARK_PRODUCT_OUT_OF_STOCK. 'є на нашому складі в недостатньому для Вашого замовлення кількості. <br /> Проте, Ви можете оформити замовлення для поетапної доставки замовленого товару.');
+define('OUT_OF_STOCK_CANT_CHECKOUT', 'Товари, виділені'. STOCK_MARK_PRODUCT_OUT_OF_STOCK. 'є на нашому складі в недостатній для Вашого замовлення кількості. <br /> Будь ласка, змініть кількість продуктів виділених ('. STOCK_MARK_PRODUCT_OUT_OF_STOCK. '), дякуємо Вам.');
+define('OUT_OF_STOCK_CAN_CHECKOUT', 'Товари, виділені'. STOCK_MARK_PRODUCT_OUT_OF_STOCK. 'є на нашому складі в недостатній для Вашого замовлення кількості. <br /> Проте, Ви можете оформити замовлення для поетапної доставки замовленого товару.');
 
 define('MINIMUM_ORDER_VALUE_NOT_REACHED_1', 'Мінімальна сума замовлення повинна бути:');
 define('MINIMUM_ORDER_VALUE_NOT_REACHED_2', '<br /> Збільште Ваше замовлення як мінімум на:');
 define('MAXIMUM_ORDER_VALUE_REACHED_1', 'Ви перевищили максимально дозволену суму замовлення, встановлену в:');
 define('MAXIMUM_ORDER_VALUE_REACHED_2', '<br /> Зменшіть Ваше замовлення як мінімум на:');
-define('ERROR_INVALID_PRODUCT', 'Товар не знайден!');
+define('ERROR_INVALID_PRODUCT', 'Товар не знайдений!');
 
 /*
  *
@@ -347,7 +347,7 @@ define('NAVBAR_TITLE_LOGIN', 'Вхід');
 define('NAVBAR_TITLE_LOGOFF', 'Вихід');
 define('NAVBAR_TITLE_PRODUCTS_NEW', 'Нові товари');
 define('NAVBAR_TITLE_SHOPPING_CART', 'Кошик');
-define('NAVBAR_TITLE_WISHLIST', 'Избранное');
+define('NAVBAR_TITLE_WISHLIST', 'Вибране');
 define('NAVBAR_TITLE_SPECIALS', 'Знижки');
 define('NAVBAR_TITLE_FEATURED', 'Рекомендовані товари');
 define('NAVBAR_TITLE_COOKIE_USAGE', 'Помилка cookies');
@@ -367,7 +367,7 @@ define('NAVBAR_GV_SEND', 'Відправити сертифікат');
  */
 
 define('TEXT_NEWSLETTER', 'Хочете дізнаватися про новинки першим? <br /> Підпишіться на наші новини і Ви першим дізнаєтеся про всі зміни і новинки.');
-define('TEXT_EMAIL_INPUT', 'Ваш E-Mail адреса був успішно зареєстрований в нашій системі. <br /> Вам було відправлено лист з персональної посиланням на підтвердження. Будь ласка, перейдіть за посиланням, вказаної в листі. В іншому випадку Ви не будете отримувати поштову розсилку! ');
+define('TEXT_EMAIL_INPUT', 'Ваш E-Mail адреса була успішно зареєстрованай в нашій системі. <br /> Вам було відправлено лист з персональним посиланням на підтвердження. Будь ласка, перейдіть за посиланням, вказаним у листі. В іншому випадку Ви не будете отримувати поштову розсилку! ');
 
 define('TEXT_WRONG_CODE', 'Заповніть поля E-mail і Секретний код. <br /> Будь ласка, будьте уважні!');
 define('TEXT_EMAIL_EXIST_NO_NEWSLETTER', 'Вказана E-Mail адреса зареєстрована, але не активована!');
@@ -376,12 +376,12 @@ define('TEXT_EMAIL_NOT_EXIST', 'Вказана E-Mail адреса не заре
 define('TEXT_EMAIL_DEL', 'Вказана E-Mail адреса успішно видалена.');
 define('TEXT_EMAIL_DEL_ERROR', 'Помилка, E-Mail адреса не була видалена!');
 define('TEXT_EMAIL_ACTIVE', 'Ваша E-Mail адреса була додана до списку розсилки!');
-define('TEXT_EMAIL_ACTIVE_ERROR', 'Помилка, E-Mail адреса не був активована!');
+define('TEXT_EMAIL_ACTIVE_ERROR', 'Помилка, E-Mail адреса не була активована!');
 define('TEXT_EMAIL_SUBJECT', 'Поштова розсилка');
 
 define('TEXT_CUSTOMER_GUEST', 'Гість');
 
-define('TEXT_LINK_MAIL_SENDED', 'Вам надіслано листа з персональної посиланням на підтвердження про відновлення пароля. <br /> Вам необхідно перейти за посиланням, зазначеної в листі. Після підтвердження запиту на відновлення пароля ми відправимо Вам новий пароль для входу в магазин. Якщо ви не перейдете за вказаним URL, новий пароль не буде відправлено! ');
+define('TEXT_LINK_MAIL_SENDED', 'Вам надіслано листа з персональним посиланням на підтвердження про відновлення пароля. <br /> Вам необхідно перейти за посиланням, зазначеним у листі. Після підтвердження запиту на відновлення пароля ми вишлемо Вам новий пароль для входу в магазин. Якщо ви не перейдете за вказаним URL, новий пароль не буде відправлено! ');
 define('TEXT_PASSWORD_MAIL_SENDED', 'Вам надіслано листа з новим паролем до Вашої персональної інформації. <br /> Будь ласка, не забудьте змінити Ваш новий пароль після першого входу в магазин.');
 define('TEXT_CODE_ERROR', 'Ви ввели неправильний e-mail і / або напис на зображенні.');
 define('TEXT_EMAIL_ERROR', 'Ви ввели неправильний e-mail і / або напис на зображенні.');
@@ -401,7 +401,7 @@ define('EMAIL_GV_TEXT_SUBJECT', 'Подарунок від %s');
 define('MAIN_MESSAGE', 'Ви вирішили відправити сертифікат на суму %s своєму знайомому %s, його E-Mail адреса: %s <br /> <br /> Одержувач сертифікату отримає наступне повідомлення: <br /> <br /> Шановний %s <br /> <br />
                         Вам відправлений сертифікат на суму %s, відправник: %s ');
 define('ERROR_REDEEMED_AMOUNT', 'Ваш сертифікат використаний');
-define('REDEEMED_AMOUNT', 'Ваш подарочный сертификат успешно активирован. Сумма сертификата: ');
+define('REDEEMED_AMOUNT', 'Ваш подарунковий сертифікат успішно активований. Сумма сертифіката: ');
 define('REDEEMED_COUPON', 'Ваш купон активований і буде використаний при оформленні замовлення.');
 
 define('ERROR_INVALID_USES_USER_COUPON', 'Клієнт може використовувати тільки даний купон');
@@ -419,10 +419,10 @@ define('TEXT_CLOSE_WINDOW', 'Закрити вікно.');
  *
  */
 
-define('TEXT_COUPON_HELP_HEADER', 'Вітаємо, Ви використовували купон.');
+define('TEXT_COUPON_HELP_HEADER', 'Вітаємо, Ви використали купон.');
 define('TEXT_COUPON_HELP_NAME', '<br /> <br /> Назва купона: %s');
 define('TEXT_COUPON_HELP_FIXED', '<br /> <br /> Купон надає знижку в розмірі %s');
-define('TEXT_COUPON_HELP_MINORDER', '<br /> <br /> Замовлення повинен бути мінімум на суму %s щоб у Вас з\'явилася можливість використовувати купон');
+define('TEXT_COUPON_HELP_MINORDER', '<br /> <br /> Замовлення повинне бути мінімум на суму %s щоб у Вас з\'явилася можливість використовувати купон');
 define('TEXT_COUPON_HELP_FREESHIP', '<br /> <br /> Даний купон надає можливість безкоштовної доставки Вашого замовлення');
 define('TEXT_COUPON_HELP_DESC', '<br /> <br /> Опис купона: %s');
 define('TEXT_COUPON_HELP_DATE', '<br /> <br /> Даний купон дійсний з %s до %s');
@@ -503,7 +503,7 @@ define('TABLE_HEADING_LATEST_NEWS', 'Останні новини');
 define('NAVBAR_TITLE_NEWS', 'Новини');
 
 define('TEXT_DISPLAY_NUMBER_OF_LATEST_NEWS', 'Показано <span class="bold">%d</span> - <span class="bold">%d</span> (всього <span class="bold">% d < / span> новин) ');
-define('TEXT_NO_NEWS', 'Ні новин.');
+define('TEXT_NO_NEWS', 'Нема новин.');
 define('TEXT_INFO_SHOW_PRICE_NO', 'У Вас немає доступу для перегляду цін');
 define('TEXT_OF_5_STARS', '%s з 5 зірок!');
 define('IMAGE_BUTTON_PRINT', 'Роздрукувати');
@@ -550,7 +550,7 @@ define('CATEGORY_EXTRA_FIELDS', 'Додаткова інформація');
 
 define('TEXT_RSS_NEWS', 'Новини');
 define('TEXT_RSS_ARTICLES', 'Статті');
-define('TEXT_RSS_REVIEWS','Обзоры');
+define('TEXT_RSS_REVIEWS','Огляди');
 define('TEXT_RSS_CATEGORIES', 'Категорії');
 define('TEXT_RSS_NEW_PRODUCTS', 'Новинки');
 define('TEXT_RSS_FEATURED_PRODUCTS', 'Рекомендовані товари');
@@ -649,7 +649,7 @@ define('TEXT_NO_PRODUCTS_AVAILABLE', 'Товари для порівняння �
 define('TEXT_NO_COMPARISON_AVAILABLE', 'Адміністратором були задані специфікації товару для порівняння. <a href="http://vamshop.ru/manual/ch06.html" target="_blank"> Налаштування специфікацій </a>.') ;
 define('TEXT_COMPARE', 'Порівняння товару');
 define('TEXT_BUY_BUTTON', 'Купити');
-define('TEXT_WISHLIST_BUTTON', 'В избранное');
+define('TEXT_WISHLIST_BUTTON', 'В обране');
 define('TEXT_BEST_BUY', 'встигни придбати!');
 define('TEXT_BEST_BUY_UP', 'Встигни прибдати!');
 define('TEXT_READ_MORE', 'докладніше');
@@ -667,8 +667,8 @@ define('TEXT_PAGE_IN_CAT', 'Сторінка');
 define('TEXT_TOTAL_REVIEWS', 'Відгуки');
 define('TEXT_REVIEWS_RATING', 'Рейтинг');
 define('TEXT_CHECKOUT_PROCESS_PAYMENT', 'Оплатити замовлення');
-define('TEXT_MY_ORDERS', 'Мої замовлення');
-define('TEXT_MY_PROFILE', 'Профиль');
+define('TEXT_MY_ORDERS', 'Особистий кабінет');
+define('TEXT_MY_PROFILE', 'Профіль');
 define('TEXT_MY_ACCOUNT', 'Аккаунт');
 define('TEXT_BACK', 'Повернутися');
 define('PRIVACY_TEXT', 'Натискаючи кнопку, я даю згоду на обробку своїх персональних даних. <a href="privacy.html"> Детальніше про захист персональної інформації. </a>');
@@ -679,19 +679,19 @@ define('TEXT_PRODUCTS_BY_BUNDLE', 'Даний набір включає в се�
 define('TEXT_RATE_COSTS', 'Вартість товарів окремо:');
 define('TEXT_IT_SAVE', 'Ви економите');
 define('TEXT_SOLD_IN_BUNDLE', 'Даний товар може буде куплений тільки в наступному комплекті:');
-define('IMAGE_BUTTON_OUT_OF_STOCK', 'Ні на складі');
+define('IMAGE_BUTTON_OUT_OF_STOCK', 'Нема на складі');
 define('TEXT_BUNDLE_ONLY', 'Чи не продається окремо');
 // EOF Bundled Products
 
 define('TEXT_POPUP_CART_ADD', 'Товар доданий в кошик!');
 define('TEXT_POPUP_CART_CONTINUE', 'Продовжити покупки');
-define('TEXT_POPUP_CART_CART', 'Перейти в корзину');
+define('TEXT_POPUP_CART_CART', 'Перейти в кошик');
 define('TEXT_POPUP_CART_CHECKOUT', 'Оформити замовлення');
 
-define('TEXT_POPUP_WISHLIST_ADD','Товар добавлен в избранное!');
-define('TEXT_POPUP_WISHLIST_CONTINUE','Продолжить покупки');
-define('TEXT_POPUP_WISHLIST_WISHLIST', 'Перейти в избранное');
-define('TEXT_POPUP_WISHLIST_CHECKOUT', 'Оформить заказ');
+define('TEXT_POPUP_WISHLIST_ADD','Товар доданий в обране!');
+define('TEXT_POPUP_WISHLIST_CONTINUE','Продовжити покупки');
+define('TEXT_POPUP_WISHLIST_WISHLIST', 'Перейти в обране');
+define('TEXT_POPUP_WISHLIST_CHECKOUT', 'Оформити замовлення');
 
 define('TITLE_DEFAULT_PAGE', 'Головна');
 define('TITLE_SPECIALS_DEFAULT', 'Знижки');
@@ -702,9 +702,9 @@ define('TITLE_FEATURED_DEFAULT', 'Рекомендовані товари');
 define('TITLE_FEATURED_DEFAULT_SHORT', 'Рекомендовані');
 define('TITLE_SPECIALS_DEFAULT', 'Знижки');
 
-define('TEXT_NOT_FOUND', 'Не найдено.');
+define('TEXT_NOT_FOUND', 'Не знайдено.');
 
-define('TEXT_SOCIAL_LOGIN', 'Войти через');
+define('TEXT_SOCIAL_LOGIN', 'Увійти через');
 define('TEXT_SOCIAL_LOGIN_GOOGLE', 'Google');
 define('TEXT_SOCIAL_LOGIN_FACEBOOK', 'Facebook');
 define('TEXT_SOCIAL_LOGIN_VK', 'ВКонтакте');
@@ -712,118 +712,118 @@ define('TEXT_SOCIAL_LOGIN_VK', 'ВКонтакте');
 define('TEXT_PRODUCT_SHIPPING', 'Доставка');
 define('TEXT_PRODUCT_PAYMENT', 'Оплата');
 
-define('TEXT_CITY', 'Город');
-define('TEXT_CITY_LOCATION', 'Ваш город');
-define('TEXT_CITY_NAME', 'Город');
-define('TEXT_CITY_CLOSE', 'Закрыть');
-define('TEXT_CITY_SAVE', 'Сохранить');
+define('TEXT_CITY', 'Місто');
+define('TEXT_CITY_LOCATION', 'Ваше місто');
+define('TEXT_CITY_NAME', 'Місто');
+define('TEXT_CITY_CLOSE', 'Закрити');
+define('TEXT_CITY_SAVE', 'Зберегти');
 
-define('TEXT_ALERT_COOKIE', 'Мы используем файлы cookie для обеспечения работоспособности и улучшения качества обслуживания, используя наш сайт вы соглашаетесь с использованием файлов cookie.');
-define('TEXT_COOKIE_CLOSE', 'Закрыть');
-define('TEXT_COOKIE_OK', 'Разрешаю');
+define('TEXT_ALERT_COOKIE', 'Ми використовуємо файли cookie для забезпечення працездатності та покращення якості обслуговування, використовуючи наш сайт ви погоджуєтесь з використанм файлів cookie.');
+define('TEXT_COOKIE_CLOSE', 'Закрити');
+define('TEXT_COOKIE_OK', 'Дозволяю');
 
-define('TEXT_SELECT_OPTIONS','Опции');
+define('TEXT_SELECT_OPTIONS','Опції');
 
-define('TEXT_TAGS','Тэги');
+define('TEXT_TAGS','Теги');
 
-define('TEXT_AUTHOR_COMMENTS','Отзывы об авторе');
+define('TEXT_AUTHOR_COMMENTS','Відгуки про автора');
 define('TEXT_AUTHOR_RATING','Рейтинг автора');
-define('TEXT_ARTICLE_COMMENTS','Отзывы о статье');
-define('TEXT_ARTICLE_RATING','Рейтинг статьи');
-define('TEXT_ARTICLE_REVIEWS_READ','читать все отзывы о статье');
-define('TEXT_ARTICLE_REVIEWS_ADD','добавить отзыв о статье');
-define('TEXT_AUTHOR_REVIEWS_READ','читать все отзывы об авторе');
-define('TEXT_AUTHOR_REVIEWS_ADD','добавить отзыв об авторе');
+define('TEXT_ARTICLE_COMMENTS','Відгуки про статтю');
+define('TEXT_ARTICLE_RATING','Рейтинг статті');
+define('TEXT_ARTICLE_REVIEWS_READ','читати всі відгуки про статтю');
+define('TEXT_ARTICLE_REVIEWS_ADD','додати відгук про статтю');
+define('TEXT_AUTHOR_REVIEWS_READ','читать всі відгуки про автора');
+define('TEXT_AUTHOR_REVIEWS_ADD','додати відгук про автора');
 
-define('VOICE_SEARCH','Голосовой поиск');
+define('VOICE_SEARCH','Голосовий пошук');
 
-define('TEXT_BADGE_CUSTOMER','Реальный покупатель');
+define('TEXT_BADGE_CUSTOMER','Реальний покупець');
 
-define('ENTRY_REMEMBER_ME', 'Запомнить');
+define('ENTRY_REMEMBER_ME', 'Запам\'ятати');
 
-define('TEXT_LIKE', 'Нравится');
-define('TEXT_DISLIKE', 'Не нравится');
+define('TEXT_LIKE', 'Подобається');
+define('TEXT_DISLIKE', 'Не подобається');
 
-define('TEXT_READ_REVIEW', 'Читать отзыв');
+define('TEXT_READ_REVIEW', 'Читати відгук');
 
-define('TEXT_BUTTON_SUBMIT', 'Применить');
-define('TEXT_PRODUCTS_IN_CART', 'Товаров в корзине');
-define('TEXT_PRODUCTS_IN_WISHLIST', 'Товаров в избранном');
-define('TEXT_PRODUCTS_TOTAL', 'Всего товаров');
+define('TEXT_BUTTON_SUBMIT', 'Застосувати');
+define('TEXT_PRODUCTS_IN_CART', 'Товарів у кошику');
+define('TEXT_PRODUCTS_IN_WISHLIST', 'Товарів в обраному');
+define('TEXT_PRODUCTS_TOTAL', 'Всього товарів');
 define('TEXT_PIECE', 'шт.');
 
-define('TEXT_CUSTOMER_REVIEW', 'Отзыв покупателя:');
-define('TEXT_STORE_ANSWER', 'Ответ магазина:');
+define('TEXT_CUSTOMER_REVIEW', 'Відгук покупця:');
+define('TEXT_STORE_ANSWER', 'Відповідь магазина:');
 
-define('ONE_CLICK_BUY_NAVBAR_TITLE','Купить в 1 клик');
-define('ONE_CLICK_BUY_TEXT_EMAIL_SUCCESSFUL_SENT','Ваш заказ <b>%s</b> успешно оформлен, мы свяжемся с Вами в самое ближайшее время.');
-define('ONE_CLICK_BUY_THX_SUCCESSFUL_SENT','Спасибо большое!');
-define('ONE_CLICK_BUY_TEXT_MESSAGE_ERROR','Вы не заполнили поле комментарий.');
+define('ONE_CLICK_BUY_NAVBAR_TITLE','Купити в 1 клік');
+define('ONE_CLICK_BUY_TEXT_EMAIL_SUCCESSFUL_SENT','Ваше замовлення <b>%s</b> успішно оформлене, мы зв\'яжемось з Вами найближчим часом.');
+define('ONE_CLICK_BUY_THX_SUCCESSFUL_SENT','Дуже дякую!');
+define('ONE_CLICK_BUY_TEXT_MESSAGE_ERROR','Ви не заповнили поле коментар.');
 
-define('TEXT_IN_STOCK','В наличии');
-define('TEXT_OUT_OF_STOCK','Нет в наличии');
+define('TEXT_IN_STOCK','В наявності');
+define('TEXT_OUT_OF_STOCK','Нема в наявності');
 
-define('TEXT_ALL_NEW_PRODUCTS','Все новинки');
-define('TEXT_ALL_SPECIAL_PRODUCTS','Все скидки');
-define('TEXT_ALL_BEST_SELLERS','Все популярные товары');
-define('TEXT_ALL_FEATURED_PRODUCTS','Все рекомендуемые');
-define('TEXT_ALL_REVIEWS','Все отзывы');
-define('TEXT_ALL_SITE_REVIEWS','Все отзывы о магазине');
-define('TEXT_ALL_NEWS','Все новости');
-define('TEXT_ALL_FAQ','Все вопросы и ответы');
-define('TEXT_ALL_TAGS','Все тэги');
-define('TEXT_ALL_ARTICLES','Все статьи');
-define('TEXT_ALL_MANUFACTURERS','Все бренды');
+define('TEXT_ALL_NEW_PRODUCTS','Всі новинки');
+define('TEXT_ALL_SPECIAL_PRODUCTS','Всі знижки');
+define('TEXT_ALL_BEST_SELLERS','Всі популярні товари');
+define('TEXT_ALL_FEATURED_PRODUCTS','Всі рекомендовані');
+define('TEXT_ALL_REVIEWS','Всі відгуки');
+define('TEXT_ALL_SITE_REVIEWS','Всі відгуки про магазин');
+define('TEXT_ALL_NEWS','Всі новини');
+define('TEXT_ALL_FAQ','Всі питання і відповіді');
+define('TEXT_ALL_TAGS','Всі теги');
+define('TEXT_ALL_ARTICLES','Всі статті');
+define('TEXT_ALL_MANUFACTURERS','Всі бренди');
 
-define('TEXT_DUPLICATE_ORDER','Повторить заказ');
-define('TEXT_DUPLICATE_ORDER_ADD_TO_CART','Переложить в корзину');
-define('TEXT_DUPLICATE_ORDER_ADD_TO_WISHLIST','Переложить в избранное');
-define('TEXT_DUPLICATE_ORDER_ORDER_NUMBER','Номер заказа');
-define('TEXT_DUPLICATE_ORDER_PRICE','Цена');
+define('TEXT_DUPLICATE_ORDER','Повторити замовлення');
+define('TEXT_DUPLICATE_ORDER_ADD_TO_CART','Перекласти в кошик');
+define('TEXT_DUPLICATE_ORDER_ADD_TO_WISHLIST','Перекласти в избране');
+define('TEXT_DUPLICATE_ORDER_ORDER_NUMBER','Номер замовлення');
+define('TEXT_DUPLICATE_ORDER_PRICE','Ціна');
 
-define('TABLE_HEADING_TAGS', 'Тэги');
-define('NAVBAR_TITLE_TAGS', 'Тэги');
-define('TEXT_DISPLAY_NUMBER_OF_TAGS', 'Показано <span class="bold">%d</span> - <span class="bold">%d</span> (всего <span class="bold">%d</span> тэгов)');
-define('TEXT_NO_TAGS', 'Нет тэгов.');
+define('TABLE_HEADING_TAGS', 'Теги');
+define('NAVBAR_TITLE_TAGS', 'Теги');
+define('TEXT_DISPLAY_NUMBER_OF_TAGS', 'Показано <span class="bold">%d</span> - <span class="bold">%d</span> (всього <span class="bold">%d</span> тегів)');
+define('TEXT_NO_TAGS', 'Нема тегів.');
 
-define('REVIEW_NEW_SUBJECT', 'Добавлен новый отзыв');
-define('REVIEW_PHOTO_HEADER', 'Добавить фотографии (необязательно)');
-define('REVIEW_PHOTO', 'Картинка');
+define('REVIEW_NEW_SUBJECT', 'Додано новий відгук');
+define('REVIEW_PHOTO_HEADER', 'Додати фотографії (необов\'язково)');
+define('REVIEW_PHOTO', 'Зображення');
 
-define('THEME_DARK', 'Тёмная тема');
-define('THEME_LIGHT', 'Светлая тема');
+define('THEME_DARK', 'Темна тема');
+define('THEME_LIGHT', 'Світла тема');
 
-define('ADD_FILES', 'Добавить фотографии');
+define('ADD_FILES', 'Додати фотографії');
 
-define('UPLOAD_TEXT_ABORT', 'Прервать');
-define('UPLOAD_TEXT_CANCEL', 'Отменить');
-define('UPLOAD_TEXT_DELETE', 'Удалить');
-define('UPLOAD_TEXT_DONE', 'Загружено');
-define('UPLOAD_TEXT_MULTI_ERROR', 'Загрузка сразу нескольких файлов перетаскиваним (drag &amp; drop) запрещена.');
-define('UPLOAD_TEXT_EXT_ERROR', 'не может быть загружен. Разрешённые типы файлов: ');
-define('UPLOAD_TEXT_SIZE_ERROR', 'не может быть загружен. Разрешенный максимальный размер файла: ');
-define('UPLOAD_TEXT_UPLOAD_ERROR', 'Загрузка запрещена');
-define('UPLOAD_TEXT_COUNT_ERROR', ' не может быть загружен. Максимально разрешённое количество файлов: ');
-define('UPLOAD_TEXT_DOWNLOAD', 'Скачать');
+define('UPLOAD_TEXT_ABORT', 'Перервати');
+define('UPLOAD_TEXT_CANCEL', 'Скасувати');
+define('UPLOAD_TEXT_DELETE', 'Видалити');
+define('UPLOAD_TEXT_DONE', 'Завантажено');
+define('UPLOAD_TEXT_MULTI_ERROR', 'Завантаження декількох файлів разом перетягуванням (drag &amp; drop) заборонена.');
+define('UPLOAD_TEXT_EXT_ERROR', 'не може бути завантажений. Дозволені типи файлів: ');
+define('UPLOAD_TEXT_SIZE_ERROR', 'не може бути завантажений. Дозволений максимальный размір файла: ');
+define('UPLOAD_TEXT_UPLOAD_ERROR', 'Завантаження заборонене');
+define('UPLOAD_TEXT_COUNT_ERROR', ' не может бути завантажений. Максимально дозволена кількість файлів: ');
+define('UPLOAD_TEXT_DOWNLOAD', 'Завантажити');
 
-define('RATING_STAR_5','Отличный');
-define('RATING_STAR_4','Хороший');
-define('RATING_STAR_3','Неплохой');
-define('RATING_STAR_2','Так себе');
-define('RATING_STAR_1','Плохой');
+define('RATING_STAR_5','Відмінний');
+define('RATING_STAR_4','Добрий');
+define('RATING_STAR_3','Непаганий');
+define('RATING_STAR_2','Так собі');
+define('RATING_STAR_1','Поганий');
 
-define('TEXT_STAR_5','5 звёзд');
-define('TEXT_STAR_4','4 звезды');
-define('TEXT_STAR_3','3 звезды');
-define('TEXT_STAR_2','2 звезды');
-define('TEXT_STAR_1','1 звезда');
+define('TEXT_STAR_5','5 зірок');
+define('TEXT_STAR_4','4 зірки');
+define('TEXT_STAR_3','3 зірки');
+define('TEXT_STAR_2','2 зірки');
+define('TEXT_STAR_1','1 зірка');
 
-define('TEXT_SITE_REVIEW_HEADER','Пожалуйста, оставьте отзыв о магазине!');
-define('TEXT_SITE_REVIEW_ADD','Добавить отзыв');
+define('TEXT_SITE_REVIEW_HEADER','Будь ласка, залишіть відгук про магазин!');
+define('TEXT_SITE_REVIEW_ADD','Додати відгук ');
 
-define('SITE_REVIEW_NEW_SUBJECT', 'Добавлен новый отзыв о магазине');
+define('SITE_REVIEW_NEW_SUBJECT', 'Доданий новий відгук про магазин');
 
-define('NAVBAR_TITLE_FAQ1', 'Вопросы посетителей');
+define('NAVBAR_TITLE_FAQ1', 'Питання відвідувачів');
 
 define('TEXT_SCHET_1','Поставщик');
 define('TEXT_SCHET_2','Адрес');
@@ -888,120 +888,130 @@ define('TEXT_PACKINGSLIP_29','МП');
 define('TEXT_PACKINGSLIP_30','Получатель:');
 define('TEXT_PACKINGSLIP_31','от');
 
-define('TEXT_USEFUL_LINKS','Контактная информация');
-define('TEXT_ORDER_TRACKING','Отслеживание заказа');
-define('TEXT_SUPPORT','Поддержка');
+define('TEXT_USEFUL_LINKS','Контактна інформація');
+define('TEXT_ORDER_TRACKING','Відстежити замовлення');
+define('TEXT_SUPPORT','Підтримка');
 define('TEXT_CURRENCY','Валюта');
 
 define('TEXT_PAGE_SHIPPING','Доставка');
 define('TEXT_PAGE_PAYMENT','Оплата');
-define('TEXT_PAGE_PRIVACY','Условия');
-define('TEXT_PAGE_ABOUT_US','О магазине');
-define('TEXT_PAGE_ABOUT_COMPANY','О компании');
-define('TEXT_PAGE_CONTACT_US','Обратная связь');
+define('TEXT_PAGE_PRIVACY','Умови');
+define('TEXT_PAGE_ABOUT_US','Про магазин');
+define('TEXT_PAGE_ABOUT_COMPANY','Про компанію');
+define('TEXT_PAGE_CONTACT_US','Зворотній зв\'язок');
 
-define('TEXT_PAYMENT_METHODS','Способы оплаты');
+define('TEXT_PAYMENT_METHODS','Способи оплати');
 
-define('TEXT_ADVANTAGES_1_TITLE','Быстрая доставка');
-define('TEXT_ADVANTAGES_1_DESC','Доставляем быстро');
-define('TEXT_ADVANTAGES_2_TITLE','Удобная оплата');
-define('TEXT_ADVANTAGES_2_DESC','Безопасные онлайн платежи');
-define('TEXT_ADVANTAGES_3_TITLE','Поддержка 24/7');
-define('TEXT_ADVANTAGES_3_DESC','Служба заботы о клиентах 24/7');
-define('TEXT_ADVANTAGES_4_TITLE','Данные в безопасности');
-define('TEXT_ADVANTAGES_4_DESC','Мы используем SSL шифрование');
+define('TEXT_ADVANTAGES_1_TITLE','Швидка доставка');
+define('TEXT_ADVANTAGES_1_DESC','Доставляєм швидко');
+define('TEXT_ADVANTAGES_2_TITLE','Зручна оплата');
+define('TEXT_ADVANTAGES_2_DESC','Безпечні онлайн платежі');
+define('TEXT_ADVANTAGES_3_TITLE','Підтримка 24/7');
+define('TEXT_ADVANTAGES_3_DESC','Служба турботи про клієнтів 24/7');
+define('TEXT_ADVANTAGES_4_TITLE','Данні в безпеці');
+define('TEXT_ADVANTAGES_4_DESC','Ми використовуємо SSL шифруваня');
 
-define('TEXT_STAY_INFORMED','Будьте в курсе');
+define('TEXT_STAY_INFORMED','Будьте в курсі');
 define('TEXT_NEWSLETTER_EMAIL','Ваш email');
-define('TEXT_NEWSLETTER_SUBSCRIBE','Подписаться*');
-define('TEXT_NEWSLETTER_DESCRIPTION','*Узнайте первыми о скидках, распродажах, новинках.');
+define('TEXT_NEWSLETTER_SUBSCRIBE','Підписатися*');
+define('TEXT_NEWSLETTER_DESCRIPTION','*Взнайте першими про знижки, розпродажі, новинки.');
 
-define('TEXT_DOWNLOAD_APP','Скачайте наше приложение');
-define('TEXT_DOWNLOAD_ON','Скачать в магазине приложений');
+define('TEXT_DOWNLOAD_APP','Завантажте наш додаток');
+define('TEXT_DOWNLOAD_ON','Завантажити в магазині додатків');
 define('TEXT_DOWNLOAD_ON_APPLE','App Store');
 define('TEXT_DOWNLOAD_ON_GOOGLE','Google Play');
 
-define('TEXT_PROFILE_INFORMATION','Профиль');
+define('TEXT_PROFILE_INFORMATION','Профіль');
 
-define('TEXT_PAGE_MY_ORDERS','Мои заказы');
-define('TEXT_PAGE_INFORMATION','Информация');
+define('TEXT_PAGE_MY_ORDERS','Мої замовлення');
+define('TEXT_PAGE_INFORMATION','Інформація');
 
 define('TEXT_WIDGET_BLOG_TITLE','Читайте наш блог');
-define('TEXT_WIDGET_BLOG_DESC','Новости магазина, новинки и тренды сезона');
-define('TEXT_WIDGET_INSTAGRAM_TITLE','Подписывайте на наш Instagram');
+define('TEXT_WIDGET_BLOG_DESC','Новини магазина, новинки і тренди сезона');
+define('TEXT_WIDGET_INSTAGRAM_TITLE','Подпишіться на наш Instagram');
 define('TEXT_WIDGET_INSTAGRAM_DESC','#vamcart');
 
-define('TEXT_ADS_CONVERSE_TITLE','Спешите! Акция');
+define('TEXT_ADS_CONVERSE_TITLE','Поспішіть! Акція');
 define('TEXT_ADS_CONVERSE_DESC','Converse All Star');
-define('TEXT_ADS_CONVERSE_BUTTON','Смотреть');
+define('TEXT_ADS_CONVERSE_BUTTON','Дивитися');
 
-define('TEXT_ADS_BANNER_TITLE','Место для рекламы');
-define('TEXT_ADS_BANNER_DESC','Успейте занять место');
-define('TEXT_ADS_BANNER_BUTTON','Связаться');
+define('TEXT_ADS_BANNER_TITLE','Місце для реклами');
+define('TEXT_ADS_BANNER_DESC','Встигніть зайняти місце');
+define('TEXT_ADS_BANNER_BUTTON','Зв\'язатися');
 
-define('TEXT_CART','Корзина');
-define('TEXT_CART_EMPTY','пуста');
+define('TEXT_CART','Кошик');
+define('TEXT_CART_EMPTY','пустий');
 
-define('TEXT_EXPAND_MENU','Открыть меню');
+define('TEXT_EXPAND_MENU','Розгорнути меню');
 define('TEXT_MENU','Меню');
 
-define('TEXT_TO_TOP','Наверх');
+define('TEXT_TO_TOP','Вгору');
 
-define('TEXT_LOGIN_SIGNIN','Вход');
-define('TEXT_LOGIN_SIGNUP','Регистрация');
-define('TEXT_LOGIN_CLOSE','Закрыть');
-define('TEXT_LOGIN_EMAIL','Email адрес');
+define('TEXT_LOGIN_SIGNIN','Вхід');
+define('TEXT_LOGIN_SIGNUP','Реєстрація');
+define('TEXT_LOGIN_CLOSE','Закрити');
+define('TEXT_LOGIN_EMAIL','Email адреса');
 define('TEXT_LOGIN_EMAIL_PLACEHOLDER','');
-define('TEXT_LOGIN_EMAIL_ERROR','Пожалуйста, укажите правильный email адрес.');
+define('TEXT_LOGIN_EMAIL_ERROR','Будь ласка, вкажіть правильний email');
 define('TEXT_LOGIN_PASSWORD','Пароль');
-define('TEXT_LOGIN_PASSWORD_SHOW','Показать/скрыть пароль');
-define('TEXT_LOGIN_REMEMBER','Запомнить');
-define('TEXT_LOGIN_FORGOT','Забыли пароль?');
-define('TEXT_LOGIN_SIGN_IN_BUTTON','Войти');
-define('TEXT_REGISTER_FIRSTNAME','Имя');
+define('TEXT_LOGIN_PASSWORD_SHOW','Показати/приховати пароль');
+define('TEXT_LOGIN_REMEMBER','Запам\'ятати');
+define('TEXT_LOGIN_FORGOT','Забули пароль?');
+define('TEXT_LOGIN_SIGN_IN_BUTTON','Увійти');
+define('TEXT_REGISTER_FIRSTNAME','Ім\'я');
 define('TEXT_REGISTER_FIRSTNAME_PLACEHOLDER','');
-define('TEXT_REGISTER_FIRSTNAME_ERROR','Пожалуйста, укажите имя.');
-define('TEXT_REGISTER_EMAIL','Email адрес');
+define('TEXT_REGISTER_FIRSTNAME_ERROR','Будь ласка, вкажіть ім\'я.');
+define('TEXT_REGISTER_EMAIL','Email адреса');
 define('TEXT_REGISTER_EMAIL_PLACEHOLDER','');
-define('TEXT_REGISTER_EMAIL_ERROR','Пожалуйста, укажите правильный email адрес.');
+define('TEXT_REGISTER_EMAIL_ERROR','Будь ласка, вкажіть правильний email');
 define('TEXT_REGISTER_PASSWORD','Пароль');
-define('TEXT_REGISTER_PASSWORD_SHOW','Показать/скрыть пароль');
-define('TEXT_REGISTER_PASSWORD_CONFIRM','Подтверждение пароля');
-define('TEXT_REGISTER_SIGN_UP_BUTTON','Зарегистрироваться');
+define('TEXT_REGISTER_PASSWORD_SHOW','Показати/приховати пароль');
+define('TEXT_REGISTER_PASSWORD_CONFIRM','Підтвердження пароля');
+define('TEXT_REGISTER_SIGN_UP_BUTTON','Зареєструватися');
 
-define('TEXT_ACCOUNT_SIGN_IN','Войти');
-define('TEXT_LOGIN_HELLO','Здравствуйте');
-define('TEXT_LOGIN_MY_PROFILE','Личный кабинет');
-define('TEXT_LOGIN_MY_ORDERS','Мои заказы');
+define('TEXT_ACCOUNT_HEADER','Мій профіль');
+define('TEXT_ACCOUNT_CLOSE','Закрити');
+define('TEXT_ACCOUNT_PROFILE','Особистий кабінет');
+define('TEXT_ACCOUNT_EDIT','Редагувати данні');
+define('TEXT_ACCOUNT_PASSWORD','Змінити пароль');
+define('TEXT_ACCOUNT_HISTORY','Історія замовлень');
+define('TEXT_ACCOUNT_ADDRESS_BOOK','Адресна книга');
+define('TEXT_ACCOUNT_NEWSLETTER','Розсилка');
+define('TEXT_ACCOUNT_LOGOFF_BUTTON','Вийти');
 
-define('TEXT_LOGIN_SOCIAL','Соц. сети');
+define('TEXT_ACCOUNT_SIGN_IN','Увійти');
+define('TEXT_LOGIN_HELLO','Здрастуйте');
+define('TEXT_LOGIN_MY_PROFILE','Особистий кабінет');
+define('TEXT_LOGIN_MY_ORDERS','Мої замовлення');
+
+define('TEXT_LOGIN_SOCIAL','Соц. мережі');
 
 define('BUTTON_PREV', 'Назад');
-define('BUTTON_NEXT', 'Вперёд');
+define('BUTTON_NEXT', 'Вперед');
 
-define('TEXT_SHARE', 'Поделиться:');
+define('TEXT_SHARE', 'Поділитися:');
 
-define('TEXT_SORT_REVIEW', 'Сортировка');
-define('TEXT_SORT_REVIEW_NEW', 'по дате');
-define('TEXT_SORT_REVIEW_RATING', 'по рейтингу');
-define('TEXT_SORT_REVIEW_PHOTO', 'с фото');
+define('TEXT_SORT_REVIEW', 'Сортування');
+define('TEXT_SORT_REVIEW_NEW', 'за датою');
+define('TEXT_SORT_REVIEW_RATING', 'за рейтингом');
+define('TEXT_SORT_REVIEW_PHOTO', 'із фото');
 
 define('TEXT_REVIEW_OVERALL_RATING', 'Рейтинг');
 
-define('TEXT_WRITE_REVIEW_HEADER', 'Добавить отзыв');
+define('TEXT_WRITE_REVIEW_HEADER', 'Додати відгук');
 define('TEXT_WRITE_REVIEW_RATING', 'Рейтинг');
-define('TEXT_WRITE_REVIEW_RATING_CHOOSE', 'Выберите рейтинг');
-define('TEXT_WRITE_REVIEW_RATING_ERROR', 'Пожалуйста, выберите рейтинг!');
-define('TEXT_WRITE_REVIEW_TEXT', 'Отзыв');
-define('TEXT_WRITE_REVIEW_TEXT_ERROR', 'Пожалуйста, укажите свой отзыв!');
-define('TEXT_WRITE_REVIEW_TEXT_ERROR1', 'Ваш отзыв должен быть как минимум 20 символов.');
-define('TEXT_WRITE_REVIEW_SUBMIT', 'Добавить отзыв');
+define('TEXT_WRITE_REVIEW_RATING_CHOOSE', 'Оберіть рейтинг');
+define('TEXT_WRITE_REVIEW_RATING_ERROR', 'Будь ласка, оберіть рейтинг!');
+define('TEXT_WRITE_REVIEW_TEXT', 'Відгук');
+define('TEXT_WRITE_REVIEW_TEXT_ERROR', 'Будь ласка, вкажіть свій відгук!');
+define('TEXT_WRITE_REVIEW_TEXT_ERROR1', 'Ваш відгук повинен мати принвймні 20 символів.');
+define('TEXT_WRITE_REVIEW_SUBMIT', 'Додати відгук');
 
-define('TEXT_ORDER_SUMMARY', 'Ваш заказ');
-define('TEXT_CART_PRODUCTS', 'Товары');
-define('TEXT_CART_SUBTOTAL', 'Общая стоимость');
-define('TEXT_BACK_TO_SHOPPING', 'Вернуться на главную');
+define('TEXT_ORDER_SUMMARY', 'Ваше замовлення');
+define('TEXT_CART_PRODUCTS', 'Товари');
+define('TEXT_CART_SUBTOTAL', 'Загальна вартість');
+define('TEXT_BACK_TO_SHOPPING', 'Повернутися на головну');
 
-define('TEXT_YOUR_ORDER_NUMBER', 'Номер Вашего заказа:');
+define('TEXT_YOUR_ORDER_NUMBER', 'Номер Вашего замовлення:');
 
 ?>
