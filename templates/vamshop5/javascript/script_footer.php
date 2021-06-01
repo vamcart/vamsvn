@@ -10,6 +10,7 @@ $bender->enqueue("templates/".CURRENT_TEMPLATE."/dist/vendor/bootstrap/dist/js/b
 //$bender->enqueue("templates/".CURRENT_TEMPLATE."/dist/vendor/smooth-scroll/dist/smooth-scroll.polyfills.js");
 //$bender->enqueue("templates/".CURRENT_TEMPLATE."/dist/vendor/drift-zoom/dist/Drift.min.js");
 $bender->enqueue("templates/".CURRENT_TEMPLATE."/dist/js/theme.min.js");
+$bender->enqueue("jscript/jquery/plugins/cookie/jquery.cookie.js");
 $bender->enqueue("templates/".CURRENT_TEMPLATE."/javascript/vamshop5.js");
 if (AJAX_WISHLIST == 'true') $bender->enqueue("templates/".CURRENT_TEMPLATE."/javascript/jscript_ajax_wishlist.js"); 
 if (AJAX_CART == 'true') $bender->enqueue("templates/".CURRENT_TEMPLATE."/javascript/jscript_ajax_cart.js"); 

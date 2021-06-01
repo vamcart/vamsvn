@@ -120,3 +120,10 @@ var sticky = $(".sticky-wrapper");
 sticky.css("min-height", sticky_column_height + "px");
 });  
 }
+
+
+//Cookie alert
+var myAlert = document.getElementById('cookie-alert')
+myAlert.addEventListener('closed.bs.alert', function () {
+  $.cookie("cookie-alert", 1, { expires : 365, path: "/" });
+})
