@@ -266,7 +266,7 @@ while ($products = vam_db_fetch_array($products_query)) {
     vam_yml_out('  <vendorCode>' . $products['products_model'] . '</vendorCode>');
   }
 
-    vam_yml_out('  <model>' . $products['products_name'] . '</model>');
+    vam_yml_out('  <model>' . vam_yml_clear_string($products['products_name']) . '</model>');
 
 $cat_query = vamDBquery("SELECT
                                  categories_name
