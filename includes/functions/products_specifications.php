@@ -306,25 +306,14 @@ function filters_select_array_sort($a, $b) {
 // EOF products_filters-multilinks
 // BOF nolink_active (remarka)
           if (!$flag_active) {
-          if (CURRENT_TEMPLATE == 'vamshop5') {
-            $field .= '<a class="list-group-item d-flex justify-content-between align-items-start" href="' . $link . '"><i class="far fa-square"></i> ';
-          } else {
             $field .= '<a class="list-group-item list-group-item-action d-flex justify-content-between align-items-center" href="' . $link . '"><i class="far fa-square"></i> ';
-          }
-          } else {
-          if (CURRENT_TEMPLATE == 'vamshop5') {
-            $field .= '<a class="list-group-item d-flex justify-content-between align-items-start'.(($link_data['id']) != '0' ? ' active' : '').'" href="' . $link . '"><i class="fas fa-check-square"></i> ';
           } else {
             $field .= '<a class="list-group-item list-group-item-action d-flex justify-content-between align-items-center'.(($link_data['id']) != '0' ? ' active' : '').'" href="' . $link . '"><i class="fas fa-check-square"></i> ';
           }
-          }
 // EOF nolink_active (remarka)
 
-          if (CURRENT_TEMPLATE == 'vamshop5') {
-          $field .= '<span class="ms-2 me-auto ps-2 small">'.vam_output_string($link_data['text'] );
-          } else {
-          $field .= '<span class="pl-2 flex-grow-1 small">'.vam_output_string($link_data['text'] );
-          }
+          $field .= '<span class="ml-2 ms-2 mr-auto me-auto pl-2 ps-2 small">'.vam_output_string($link_data['text'] );
+
           if ($link_data['count'] != '' && $link_data['count'] > 1 && SPECIFICATIONS_FILTER_SHOW_COUNT == 'True') {
             $field .= '<span class="filter_count px-2">(' . $link_data['count'] . ')</span>';
           }
