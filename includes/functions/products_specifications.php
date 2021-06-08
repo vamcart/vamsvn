@@ -307,13 +307,13 @@ function filters_select_array_sort($a, $b) {
 // BOF nolink_active (remarka)
           if (!$flag_active) {
           if (CURRENT_TEMPLATE == 'vamshop5') {
-            $field .= '<a class="list-group-item list-group-item-action d-flex justify-content-start align-items-left" href="' . $link . '"><i class="far fa-square"></i> ';
+            $field .= '<a class="list-group-item d-flex justify-content-between align-items-start" href="' . $link . '"><i class="far fa-square"></i> ';
           } else {
             $field .= '<a class="list-group-item list-group-item-action d-flex justify-content-between align-items-center" href="' . $link . '"><i class="far fa-square"></i> ';
           }
           } else {
           if (CURRENT_TEMPLATE == 'vamshop5') {
-            $field .= '<a class="list-group-item list-group-item-action d-flex justify-content-start align-items-left'.(($link_data['id']) != '0' ? ' active' : '').'" href="' . $link . '"><i class="fas fa-check-square"></i> ';
+            $field .= '<a class="list-group-item d-flex justify-content-between align-items-start'.(($link_data['id']) != '0' ? ' active' : '').'" href="' . $link . '"><i class="fas fa-check-square"></i> ';
           } else {
             $field .= '<a class="list-group-item list-group-item-action d-flex justify-content-between align-items-center'.(($link_data['id']) != '0' ? ' active' : '').'" href="' . $link . '"><i class="fas fa-check-square"></i> ';
           }
@@ -321,12 +321,17 @@ function filters_select_array_sort($a, $b) {
 // EOF nolink_active (remarka)
 
           if (CURRENT_TEMPLATE == 'vamshop5') {
-          $field .= '<span class="ps-2 small">'.vam_output_string($link_data['text'] ).'</span>';
+          $field .= '<span class="ms-2 me-auto ps-2 small">'.vam_output_string($link_data['text'] );
           } else {
-          $field .= '<span class="pl-2 flex-grow-1 small">'.vam_output_string($link_data['text'] ).'</span>';
+          $field .= '<span class="pl-2 flex-grow-1 small">'.vam_output_string($link_data['text'] );
           }
           if ($link_data['count'] != '' && $link_data['count'] > 1 && SPECIFICATIONS_FILTER_SHOW_COUNT == 'True') {
-            $field .= '<span class="filter_count badge badge-light badge-pill">' . $link_data['count'] . '</span>';
+            $field .= '<span class="filter_count px-2">(' . $link_data['count'] . ')</span>';
+          }
+          $field .= '</span>';
+          
+          if ($flag_active && $link_data['id'] != 0) {
+          $field .= '<span class="text-light" title="' . TEXT_CITY_CLOSE . '" ><i class="fas fa-times"></i></span>';
           }
 
 //          $field .= '</a>';
@@ -861,7 +866,7 @@ if ($not_found) {
               $box_text .= '<span class="no_results">' . '&nbsp;';
               $box_text .= vam_output_string($filter['text'] );
               $box_text .= '</span>';
-              if (SPECIFICATIONS_FILTER_SHOW_COUNT == 'True' && $filter['count'] != '' && $filter['count'] > 1) {
+              if (SPECIFICATIONS_FILTER_SHOW_COUNT == 'True' && $filter['count'] != '' && $filter['count'] > 0) {
                 $box_text .= '<span class="filter_count"> (' . $filter['count'] . ')</span>';
               }
               $box_text .= '</label><br />' . "\n";
@@ -870,7 +875,7 @@ if ($not_found) {
             default:
               $box_text .= '<label>'.vam_draw_radio_field($filter_name, $filter['id'], $checked, 'onClick="this.form.submit();"') . '&nbsp;' . $filter['text'];
 
-              if (SPECIFICATIONS_FILTER_SHOW_COUNT == 'True' && $filter['count'] != '' && $filter['count'] > 1) {
+              if (SPECIFICATIONS_FILTER_SHOW_COUNT == 'True' && $filter['count'] != '' && $filter['count'] > 0) {
                 $box_text .= '<span class="filter_count"> (' . $filter['count'] . ')</span>';
               }
               $box_text .= '</label><br />' . "\n";
@@ -913,7 +918,7 @@ if ($not_found) {
               $box_text .= '<span class="no_results">' . '&nbsp;';
               $box_text .= vam_output_string($filter['text'] );
               $box_text .= '</span>';
-              if (SPECIFICATIONS_FILTER_SHOW_COUNT == 'True' && $filter['count'] > 1) {
+              if (SPECIFICATIONS_FILTER_SHOW_COUNT == 'True' && $filter['count'] > 0) {
                 $box_text .= '<span class="filter_count"> (' . $filter['count'] . ')</span>';
               }
               $box_text .= '</label><br />' . "\n";
@@ -923,7 +928,7 @@ if ($not_found) {
               $box_text .= '<label class="form-check">'.vam_draw_checkbox_field ($filter_name . '[' . $checkbox_id . ']', $filter['id'], $checked, 'class="form-check-input"') . '&nbsp;' . $filter['text'];
               //$box_text .= '<label class="form-check">'.vam_draw_checkbox_field($filter_name . '[' . $checkbox_id . ']', $filter['id'], $checked, 'onClick="this.form.submit();" class="form-check-input"') . '&nbsp;' . $filter['text'];
               
-              if (SPECIFICATIONS_FILTER_SHOW_COUNT == 'True' && $filter['count'] > 1) {
+              if (SPECIFICATIONS_FILTER_SHOW_COUNT == 'True' && $filter['count'] > 0) {
                 $box_text .= '<span class="filter_count"> (' . $filter['count'] . ')</span>';
               }
               $box_text .= '</label><br />' . "\n";
