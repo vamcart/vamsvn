@@ -313,9 +313,9 @@ function filters_select_array_sort($a, $b) {
           }
           } else {
           if (CURRENT_TEMPLATE == 'vamshop5') {
-            $field .= '<div class="list-group-item list-group-item-action d-flex justify-content-start align-items-left disabled'.(($link_data['id']) != '0' ? ' active' : '').'" data-href="' . $link . '"><i class="fas fa-check-square"></i> ';
+            $field .= '<a class="list-group-item list-group-item-action d-flex justify-content-start align-items-left'.(($link_data['id']) != '0' ? ' active' : '').'" href="' . $link . '"><i class="fas fa-check-square"></i> ';
           } else {
-            $field .= '<div class="list-group-item list-group-item-action d-flex justify-content-between align-items-center disabled'.(($link_data['id']) != '0' ? ' active' : '').'" data-href="' . $link . '"><i class="fas fa-check-square"></i> ';
+            $field .= '<a class="list-group-item list-group-item-action d-flex justify-content-between align-items-center'.(($link_data['id']) != '0' ? ' active' : '').'" href="' . $link . '"><i class="fas fa-check-square"></i> ';
           }
           }
 // EOF nolink_active (remarka)
@@ -334,7 +334,7 @@ function filters_select_array_sort($a, $b) {
           if (!$flag_active) {
             $field .= '</a>';
           } else {
-            $field .= '</div>';
+            $field .= '</a>';
           }
 // EOF nolink_active (remarka)
 
