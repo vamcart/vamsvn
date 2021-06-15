@@ -7,7 +7,7 @@
         {/if}
         </a>
           <div class="ps-2">
-            <h6 class="widget-product-title text-truncate"><a href="{$module_data.PRODUCTS_LINK}">{$module_data.PRODUCTS_NAME}</a></h6>
+            <h6 class="widget-product-title text-truncate"><a href="{$module_data.PRODUCTS_LINK}">{$module_data.PRODUCTS_NAME|vam_truncate:42}</a></h6>
             {if $module_data.PRODUCTS_PRICE_PLAIN > 0}<div class="widget-product-meta"><span class="text-accent me-2">{$module_data.PRODUCTS_PRICE}</span></div>{/if}
           </div>
         </div>
