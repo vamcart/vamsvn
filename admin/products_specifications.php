@@ -1425,11 +1425,11 @@
             case 'products_url':
             case 'products_viewed':
         
-            case 'products_name':
-              $products_array[] = array ('id' => $row['Field'],
-                                         'text' => TEXT_PRODUCTS_NAME
-              );
-              break;
+            //case 'products_name':
+              //$products_array[] = array ('id' => $row['Field'],
+                //                         'text' => TEXT_PRODUCTS_NAME
+              //);
+              //break;
         
             default:  // Show everything else by formatting the field name
               $title_string = preg_replace ('/_/', ' ', $row['Field']);
