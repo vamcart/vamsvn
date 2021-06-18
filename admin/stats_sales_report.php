@@ -109,6 +109,13 @@
  	$srPayment = 0;
   }
   
+   // shippingtype
+  if ( ($_GET['shipping']) && (vam_not_null($_GET['shipping'])) )
+{    $srShipping = $_GET['shipping'];
+  } else {
+ 	$srShipping = 0;
+  }  
+  
   // sort
   if ( ($_GET['sort']) && (vam_not_null($_GET['sort'])) ) {
     $srSort = $_GET['sort'];
@@ -171,7 +178,7 @@
   }
   
   require(DIR_WS_CLASSES . 'sales_report.php');
-  $sr = new sales_report($srView, $startDate, $endDate, $srSort, $srStatus, $srFilter,$srPayment);  
+  $sr = new sales_report($srView, $startDate, $endDate, $srSort, $srStatus, $srFilter,$srPayment,$srShipping);  
   $startDate = $sr->startDate;
   $endDate = $sr->endDate;  
 
@@ -329,6 +336,28 @@
                        
 ?>
                     </select><br />
+                   <?php echo REPORT_SHIPPING_FILTER; ?><br />
+                    <select name="shipping" size="1">
+                      <option value="0"><?php echo REPORT_ALL; ?></option>
+<?php
+
+  $shippings = preg_split('/;/', MODULE_SHIPPING_INSTALLED);
+  for ($i=0; $i<count($shippings); $i++){
+  
+  require(DIR_FS_LANGUAGES . $_SESSION['language'] . '/modules/shipping/' . $shippings[$i]);	
+  
+  $shipping = substr($shippings[$i], 0, strrpos($shippings[$i], '.'));	
+  $shipping_text = constant(MODULE_SHIPPING_.strtoupper($shipping)._TEXT_TITLE);
+  
+                         
+?>                           
+    <option value="<?php echo $shipping; ?>"<?php if ($shipping = $srShipping) echo " selected"; ?>><?php echo $shipping_text; ?></option>
+                           
+  <?php                         
+  }
+                       
+?>
+                    </select><br />                    
                   </td>
                   <td rowspan="2" align="left" class="menuBoxHeading">
                     <?php echo REPORT_EXP; ?><br />

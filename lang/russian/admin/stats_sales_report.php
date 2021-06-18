@@ -57,6 +57,7 @@ define('SORT_VAL6', 'Цена по убыванию');
 
 define('REPORT_STATUS_FILTER', 'Статусы заказов');
 define('REPORT_PAYMENT_FILTER','Способ оплаты');
+define('REPORT_SHIPPING_FILTER','Способ доставки');
 
 define('SR_SEPARATOR1', ';');
 define('SR_SEPARATOR2', ';');

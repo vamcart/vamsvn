@@ -51,7 +51,7 @@
   class sales_report {
     var $mode, $globalStartDate, $startDate, $endDate, $actDate, $showDate, $showDateEnd, $sortString, $status, $outlet;
 
-    function sales_report($mode, $startDate = 0, $endDate = 0, $sort = 0, $statusFilter = 0, $filter = 0,$payment = 0) {
+    function sales_report($mode, $startDate = 0, $endDate = 0, $sort = 0, $statusFilter = 0, $filter = 0,$payment = 0,$shipping = 0) {
       // startDate and endDate have to be a unix timestamp. Use mktime !
       // if set then both have to be valid startDate and endDate
       $this->mode = $mode;
@@ -59,6 +59,7 @@
 
       $this->statusFilter = $statusFilter;
       $this->paymentFilter = $payment;     
+      $this->shippingFilter = $shipping;     
       // get date of first sale
       $firstQuery = vam_db_query("select UNIX_TIMESTAMP(min(date_purchased)) as first FROM " . TABLE_ORDERS);
       $first = vam_db_fetch_array($firstQuery);
@@ -168,7 +169,11 @@
       if (!is_numeric($this->paymentFilter)) {
       	$filterString .= " AND o.payment_method ='" . vam_db_prepare_input($this->paymentFilter) . "' ";
       }
-      
+
+      if (!is_numeric($this->shippingFilter)) {
+      	$filterString .= " AND o.shipping_class ='" . vam_db_prepare_input($this->shippingFilter.'_'.$this->shippingFilter) . "' ";
+      }
+            
       $rqOrders = vam_db_query($this->queryOrderCnt . " WHERE o.date_purchased >= '" . vam_db_input(date("Y-m-d\TH:i:s", $sd)) . "' AND o.date_purchased < '" . vam_db_input(date("Y-m-d\TH:i:s", $ed)) . "'" . $filterString);
       $order = vam_db_fetch_array($rqOrders);
 
