@@ -283,7 +283,7 @@ $similar_products = array();
 if ($_GET['articles_id']) {
 $products_info_query = "select articles_head_title_tag, articles_name from " . TABLE_ARTICLES_DESCRIPTION . " where articles_id = '" . (int)$_GET['articles_id'] . "'"; 
 } else {
-$products_info_query = "select products_name, products_meta_title, products_keywords from " . TABLE_PRODUCTS_DESCRIPTION . " where products_id = '" . $this->pID . "'";
+$products_info_query = "select distinct products_name, products_meta_title, products_keywords from " . TABLE_PRODUCTS_DESCRIPTION . " where products_id = '" . $this->pID . "' group by products_id";
 }
 $products_info_query2 = vamDBquery($products_info_query);
 $products_info = vam_db_fetch_array($products_info_query2, true);
@@ -389,6 +389,7 @@ $listing_sql = "select p.*, pd.*, cd.*,
 							and pd.language_id = '" . (int)$_SESSION['languages_id'] . "'
 							and pd.products_id NOT IN ('" . $this->pID . "') 
 							$w
+							group by p.products_id
 							order by head_relevance desc, searchorder
 							limit ". SIMILAR_PRODUCTS_FULL ."";
 
@@ -510,11 +511,10 @@ $orders_query = "SELECT p.*, pd.*, cd.* FROM
                     and p.products_id in (".$products_id.")
                     and p.products_status = '1' 
                     and pd.language_id = '".(int) $_SESSION['languages_id']."'
-                    and cd.language_id = '".(int) $_SESSION['languages_id']."'
                     and p.products_quantity > '0' 
                     ".$group_check."
                     ".$fsk_lock."
-                    group by p.products_id ORDER BY FIELD(p.products_id,".$products_id.") limit ".MAX_DISPLAY_ALSO_PURCHASED;
+                    ORDER BY FIELD(p.products_id,".$products_id.") limit ".MAX_DISPLAY_ALSO_PURCHASED;
                     
 		$orders_query = vamDBquery($orders_query);
 		while ($orders = vam_db_fetch_array($orders_query, true)) {
